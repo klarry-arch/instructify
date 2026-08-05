@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Backend | Instructify Kenya</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230D6E4F'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='Arial'>IK</text></svg>">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<nav id="navbar" class="navbar scrolled">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo" style="background:var(--color-kenya-red)">IK</div>
+      <div class="nav-brand-text">
+        <span class="nav-brand-name">Instructify Admin</span>
+        <span class="nav-brand-tagline">Administrative Suite</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <div class="flex items-center gap-md">
+        <div class="avatar-placeholder avatar-sm" style="background:var(--color-kenya-red)">OO</div>
+        <span style="font-size:var(--text-sm);font-weight:600">Prof. Ochieng Otieno</span>
+        <button onclick="logout()" class="btn btn-outline btn-sm">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="dashboard-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-user">
+        <div class="avatar-placeholder avatar-md" style="background:var(--color-kenya-red)">OO</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Prof. Ochieng Otieno</div>
+          <div class="sidebar-user-role">System Administrator</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Management Panel</div>
+        <a href="#kpi" class="sidebar-link active" onclick="switchAdminTab(this, 'kpi')">
+          <span class="sidebar-link-icon">📈</span> Executive Overview
+        </a>
+        <a href="#users" class="sidebar-link" onclick="switchAdminTab(this, 'users')">
+          <span class="sidebar-link-icon">👥</span> User Management
+        </a>
+        <a href="#courses" class="sidebar-link" onclick="switchAdminTab(this, 'courses')">
+          <span class="sidebar-link-icon">📚</span> Course Directory
+        </a>
+        <a href="#finance" class="sidebar-link" onclick="switchAdminTab(this, 'finance')">
+          <span class="sidebar-link-icon">💰</span> Finance &amp; Revenue
+        </a>
+        <a href="#certs" class="sidebar-link" onclick="switchAdminTab(this, 'certs')">
+          <span class="sidebar-link-icon">🏆</span> Certification Engine
+        </a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button onclick="logout()" class="btn btn-ghost w-full justify-start" style="color:#EF4444">
+        <span>🚪</span> Log Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="dashboard-main">
+    
+    <!-- Tab 1: Executive KPI -->
+    <div id="admin-panel-kpi" class="admin-panel active">
+      <div class="dashboard-header">
+        <div>
+          <h1 class="dashboard-title">System Overview &amp; Analytics</h1>
+          <div class="dashboard-subtitle">Real-time stats across all 47 Kenyan Counties.</div>
+        </div>
+        <div class="dashboard-actions">
+          <button onclick="showToast('Exporting system audit report (PDF)...','success')" class="btn btn-primary btn-sm">📥 Export Report</button>
+        </div>
+      </div>
+
+      <div class="admin-kpi-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(13,110,79,0.15);color:var(--color-primary-light)">💰</div>
+          <div class="stat-value">KES 14.2M</div>
+          <div class="stat-label">Total Revenue (YTD)</div>
+          <div class="stat-change up"><span>↑ 18%</span> vs last month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(0,180,216,0.15);color:var(--color-accent)">👥</div>
+          <div class="stat-value">10,482</div>
+          <div class="stat-label">Registered Educators</div>
+          <div class="stat-change up"><span>↑ 340</span> new this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(245,166,35,0.15);color:var(--color-secondary)">📚</div>
+          <div class="stat-value">204</div>
+          <div class="stat-label">Active Courses</div>
+          <div class="stat-change up"><span>✓</span> 100% KICD Aligned</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(138,92,246,0.15);color:#8B5CF6">🏆</div>
+          <div class="stat-value">8,910</div>
+          <div class="stat-label">CPD Certificates Issued</div>
+          <div class="stat-change up"><span>✓</span> Verified</div>
+        </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="admin-charts-grid">
+        <div class="dashboard-section">
+          <div class="dashboard-section-header">
+            <h2 class="dashboard-section-title">Revenue &amp; Enrollment Trends (2026)</h2>
+          </div>
+          <div class="chart-container">
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </div>
+
+        <div class="dashboard-section">
+          <div class="dashboard-section-header">
+            <h2 class="dashboard-section-title">Category Distribution</h2>
+          </div>
+          <div class="chart-container">
+            <canvas id="categoryChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Users -->
+    <div id="admin-panel-users" class="admin-panel" style="display:none">
+      <div class="dashboard-header">
+        <h1 class="dashboard-title">User Management</h1>
+        <button onclick="showToast('Opening user creation modal...','info')" class="btn btn-primary btn-sm">➕ Add User</button>
+      </div>
+
+      <div class="dashboard-section">
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>County</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>James Mwangi</strong></td>
+                <td><span class="badge badge-info">Learner</span></td>
+                <td>learner@instructify.ke</td>
+                <td>Nairobi</td>
+                <td><span class="badge badge-success">Active</span></td>
+                <td>
+                  <div class="action-btn-group">
+                    <button class="action-btn edit" title="Edit">✏️</button>
+                    <button class="action-btn delete" title="Suspend">🚫</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Dr. Wanjiku Kamau</strong></td>
+                <td><span class="badge badge-purple">Trainer</span></td>
+                <td>trainer@instructify.ke</td>
+                <td>Kiambu</td>
+                <td><span class="badge badge-success">Active</span></td>
+                <td>
+                  <div class="action-btn-group">
+                    <button class="action-btn edit" title="Edit">✏️</button>
+                    <button class="action-btn delete" title="Suspend">🚫</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 3: Courses -->
+    <div id="admin-panel-courses" class="admin-panel" style="display:none">
+      <div class="dashboard-header">
+        <h1 class="dashboard-title">Course Management</h1>
+        <button onclick="showToast('Opening course editor...','info')" class="btn btn-primary btn-sm">➕ Create New Course</button>
+      </div>
+      <div class="dashboard-section">
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Course Name</th>
+                <th>Category</th>
+                <th>Fee</th>
+                <th>Enrollments</th>
+                <th>Rating</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ICT Integration in Education</strong></td>
+                <td>ICT</td>
+                <td>KES 15,000</td>
+                <td>1,847</td>
+                <td>⭐ 4.8</td>
+                <td>
+                  <div class="action-btn-group">
+                    <button class="action-btn edit">✏️</button>
+                    <button class="action-btn delete">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Digital Literacy Certification</strong></td>
+                <td>Digital Skills</td>
+                <td>KES 8,500</td>
+                <td>3,204</td>
+                <td>⭐ 4.9</td>
+                <td>
+                  <div class="action-btn-group">
+                    <button class="action-btn edit">✏️</button>
+                    <button class="action-btn delete">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 4: Finance -->
+    <div id="admin-panel-finance" class="admin-panel" style="display:none">
+      <div class="dashboard-header">
+        <h1 class="dashboard-title">Financial Audit &amp; M-Pesa Logs</h1>
+      </div>
+      <div class="dashboard-section">
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Transaction ID</th>
+                <th>Learner</th>
+                <th>Method</th>
+                <th>Amount</th>
+                <th>Timestamp</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>MPESA-Q8829104</td>
+                <td>James Mwangi</td>
+                <td>M-Pesa Express</td>
+                <td>KES 15,000</td>
+                <td>2026-08-01 14:22 EAT</td>
+                <td><span class="badge badge-success">Cleared</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 5: Certs -->
+    <div id="admin-panel-certs" class="admin-panel" style="display:none">
+      <div class="dashboard-header">
+        <h1 class="dashboard-title">Certification Registry &amp; Verification</h1>
+      </div>
+      <div class="dashboard-section">
+        <p style="font-size:var(--text-sm);color:var(--text-secondary);margin-bottom:var(--space-md)">
+          Search or issue verifiable digital certificates on the Instructify Registry.
+        </p>
+        <div class="flex gap-md mb-lg">
+          <input type="text" class="form-input" placeholder="Enter Certificate Hash / ID (e.g. IK-CERT-2026-9921)" style="max-width:400px">
+          <a href="certification.html" target="_blank" class="btn btn-outline">Go to Public Portal ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const session = window.requireAuth(['admin']);
+  if (!session) return;
+  initAdminCharts();
+});
+
+function switchAdminTab(link, tabId) {
+  if (link) {
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+  }
+  document.querySelectorAll('.admin-panel').forEach(p => p.style.display = 'none');
+  const target = document.getElementById(`admin-panel-${tabId}`);
+  if (target) target.style.display = 'block';
+}
+
+function initAdminCharts() {
+  // Revenue Chart
+  const ctxRev = document.getElementById('revenueChart');
+  if (ctxRev) {
+    new Chart(ctxRev, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+        datasets: [{
+          label: 'Revenue (KES Millions)',
+          data: [1.2, 1.5, 1.8, 1.4, 2.1, 2.5, 2.8, 3.2],
+          borderColor: '#14A06E',
+          backgroundColor: 'rgba(20, 160, 110, 0.1)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: '#8D9DC0' } } },
+        scales: {
+          x: { ticks: { color: '#8D9DC0' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+          y: { ticks: { color: '#8D9DC0' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+        }
+      }
+    });
+  }
+
+  // Category Chart
+  const ctxCat = document.getElementById('categoryChart');
+  if (ctxCat) {
+    new Chart(ctxCat, {
+      type: 'doughnut',
+      data: {
+        labels: ['ICT Integration', 'Digital Literacy', 'CBE Curriculum', 'AI in Education', 'Others'],
+        datasets: [{
+          data: [35, 25, 20, 12, 8],
+          backgroundColor: ['#0D6E4F', '#00B4D8', '#F5A623', '#8B5CF6', '#566282']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { color: '#8D9DC0' } } }
+      }
+    });
+  }
+}
+</script>
+</body>
+</html>

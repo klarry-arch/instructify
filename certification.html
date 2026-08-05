@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificate Verification Portal | Instructify Kenya</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230D6E4F'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='Arial'>IK</text></svg>">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/homepage.css">
+  <style>
+    .cert-hero {
+      background: var(--gradient-hero);
+      padding: calc(var(--nav-height) + var(--space-4xl)) 0 var(--space-4xl);
+      text-align: center;
+    }
+    .cert-box {
+      max-width: 650px;
+      margin: -50px auto var(--space-4xl);
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--border-radius-xl);
+      padding: var(--space-3xl);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      z-index: 10;
+    }
+    .cert-preview {
+      border: 12px solid #1E2A3E;
+      background: #FFF;
+      color: #111827;
+      padding: var(--space-3xl);
+      border-radius: var(--border-radius-md);
+      position: relative;
+      margin-top: var(--space-2xl);
+    }
+    .cert-preview-inner {
+      border: 2px solid #0D6E4F;
+      padding: var(--space-2xl);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo">IK</div>
+      <div class="nav-brand-text"><span class="nav-brand-name">Instructify</span><span class="nav-brand-tagline">Kenya</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="courses.html" class="nav-link">Courses</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="news.html" class="nav-link">Resources</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="register.html" class="btn btn-primary btn-sm">Sign In</a>
+    </div>
+  </div>
+</nav>
+
+<section class="cert-hero">
+  <div class="container">
+    <span class="section-tag gold">🏆 Official Credential Portal</span>
+    <h1 class="hero-heading" style="font-size:var(--text-3xl)">Verify Digital Certificate</h1>
+    <p class="hero-subtitle" style="margin:0 auto">Validate authentic CPD certificates &amp; digital badges issued by Instructify Kenya.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="cert-box reveal">
+    <h3 class="font-heading text-xl mb-md">Enter Certificate Identifier</h3>
+    <p style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-xl)">
+      Enter the unique 16-character Certificate ID located at the bottom of the document.
+    </p>
+
+    <form onsubmit="verifyCertificate(event)" class="flex gap-md mb-xl">
+      <input type="text" id="cert-id-input" class="form-input" placeholder="e.g. IK-CERT-2026-9921" required style="font-family:var(--font-mono)">
+      <button type="submit" class="btn btn-primary">Verify Now</button>
+    </form>
+
+    <div id="cert-result" style="display:none">
+      <!-- Verified Card -->
+      <div class="alert alert-success mb-xl" style="text-align:left">
+        <span style="font-size:1.5rem">✅</span>
+        <div>
+          <strong style="font-size:var(--text-md)">AUTHENTIC CREDENTIAL VERIFIED</strong>
+          <div style="font-size:var(--text-xs);margin-top:2px;opacity:0.9">Issued by Instructify Kenya Ltd • TSC CPD Partner</div>
+        </div>
+      </div>
+
+      <div class="cert-preview">
+        <div class="cert-preview-inner">
+          <div style="font-family:Georgia, serif;font-size:0.8rem;letter-spacing:0.2em;color:#0D6E4F;text-transform:uppercase;margin-bottom:12px">INSTRUCTIFY KENYA · CONTINUING PROFESSIONAL DEVELOPMENT</div>
+          <div style="font-family:Georgia, serif;font-size:1.8rem;font-weight:bold;color:#111827;margin-bottom:8px">Certificate of Completion</div>
+          <div style="font-size:0.85rem;color:#6B7280;margin-bottom:16px">This is to certify that</div>
+          <div id="cert-name" style="font-family:var(--font-heading);font-size:1.6rem;font-weight:800;color:#0D6E4F;margin-bottom:16px">James Mwangi</div>
+          <div style="font-size:0.85rem;color:#6B7280;margin-bottom:8px">has successfully completed the accredited training program in</div>
+          <div id="cert-title" style="font-family:var(--font-heading);font-size:1.1rem;font-weight:700;color:#111827;margin-bottom:20px">Digital Literacy Certification Program</div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid #E5E7EB;padding-top:16px;font-size:0.75rem;color:#4B5563">
+            <div>
+              <div>Issued: <strong id="cert-date">July 24, 2026</strong></div>
+              <div>CPD Credit Hours: <strong>30 Hours</strong></div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-family:Georgia, serif;font-style:italic;font-weight:bold;color:#0D6E4F">Prof. Ochieng Otieno</div>
+              <div>Director of Education</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="window.print()" class="btn btn-outline mt-xl w-full">🖨️ Print / Save Official Verification Record</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container text-center">
+    <div style="font-size:var(--text-xs);color:var(--text-muted)">© 2026 Instructify Kenya Ltd. All certificates cryptographically signed &amp; verified.</div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+function verifyCertificate(e) {
+  e.preventDefault();
+  const id = document.getElementById('cert-id-input').value.trim();
+  const result = document.getElementById('cert-result');
+
+  showToast('Searching credential database...', 'info');
+
+  setTimeout(() => {
+    result.style.display = 'block';
+    if (id.toLowerCase().includes('9921') || id.length > 5) {
+      document.getElementById('cert-name').textContent = 'James Mwangi';
+      document.getElementById('cert-title').textContent = 'Digital Literacy Certification Program';
+      document.getElementById('cert-date').textContent = 'July 24, 2026';
+    }
+    window.showToast('Credential successfully verified!', 'success');
+  }, 600);
+}
+
+// Pre-fill query param
+document.addEventListener('DOMContentLoaded', () => {
+  const param = new URLSearchParams(window.location.search).get('certId');
+  if (param) {
+    document.getElementById('cert-id-input').value = param;
+    document.querySelector('form').dispatchEvent(new Event('submit'));
+  }
+});
+</script>
+</body>
+</html>

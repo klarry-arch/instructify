@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse 200+ accredited CPD courses, ICT integration, CBE curriculum, AI in Education, and Digital Literacy programs on Instructify Kenya.">
+  <title>Course Catalog | Instructify Kenya</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230D6E4F'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='Arial'>IK</text></svg>">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .courses-hero {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-dark) 100%);
+      padding: calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .catalog-layout { display: grid; grid-template-columns: 280px 1fr; gap: var(--space-2xl); padding: var(--space-3xl) 0; }
+    .filter-sidebar { position: sticky; top: calc(var(--nav-height) + 20px); height: fit-content; }
+    .filter-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--border-radius-lg); padding: var(--space-xl); margin-bottom: var(--space-lg); }
+    .filter-title { font-family: var(--font-heading); font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: var(--space-lg); }
+    .filter-options { display: flex; flex-direction: column; gap: var(--space-sm); }
+    .filter-chip { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; border-radius: var(--border-radius-sm); background: var(--bg-surface); border: 1px solid var(--border-subtle); cursor: pointer; font-size: var(--text-sm); color: var(--text-secondary); transition: all var(--transition-fast); }
+    .filter-chip:hover, .filter-chip.active { border-color: var(--color-primary); color: var(--color-primary-light); background: var(--color-primary-glow); }
+    .filter-chip-count { font-size: var(--text-xs); color: var(--text-muted); }
+    .catalog-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-xl); flex-wrap: wrap; gap: var(--space-md); }
+    .catalog-count { font-size: var(--text-sm); color: var(--text-muted); }
+    .catalog-sort { display: flex; align-items: center; gap: var(--space-sm); }
+    .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl); }
+    .no-results { grid-column: 1/-1; text-align: center; padding: var(--space-5xl); color: var(--text-muted); }
+    .range-slider { width: 100%; accent-color: var(--color-primary); margin: var(--space-sm) 0; }
+    @media (max-width: 1024px) { .catalog-layout { grid-template-columns: 1fr; } .filter-sidebar { position: static; } .courses-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .courses-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo">IK</div>
+      <div class="nav-brand-text"><span class="nav-brand-name">Instructify</span><span class="nav-brand-tagline">Kenya · Est. 2019</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="courses.html" class="nav-link active">Courses</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="news.html" class="nav-link">Resources</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="register.html" id="nav-login-btn" class="btn btn-outline btn-sm">Sign In</a>
+      <div id="nav-user-menu" style="display:none" class="flex items-center gap-sm">
+        <div class="avatar-placeholder avatar-sm" id="nav-user-avatar" style="font-size:0.75rem"></div>
+        <a href="dashboard-learner.html" class="btn btn-primary btn-sm">Dashboard</a>
+      </div>
+      <button id="nav-hamburger" class="nav-hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div id="nav-mobile" class="nav-mobile">
+  <div class="nav-mobile-links">
+    <a href="index.html" class="nav-mobile-link">🏠 Home</a>
+    <a href="courses.html" class="nav-mobile-link">📚 Courses</a>
+    <a href="about.html" class="nav-mobile-link">ℹ️ About</a>
+    <a href="contact.html" class="nav-mobile-link">📞 Contact</a>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="courses-hero">
+  <div class="container">
+    <div class="breadcrumb mb-md">
+      <a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Course Catalog</span>
+    </div>
+    <h1 class="section-title animate-fade-in-up" style="text-align:left;font-size:var(--text-3xl)">
+      Explore Our <span class="text-gradient-green">200+ Courses</span>
+    </h1>
+    <p class="section-subtitle animate-fade-in-up delay-100" style="text-align:left;margin:0;margin-top:var(--space-md)">
+      Accredited CPD programs, ICT integration, CBE curriculum, AI in Education, and more — all designed for Kenya's educators.
+    </p>
+    <div class="search-bar animate-fade-in-up delay-200" style="max-width:600px;margin-top:var(--space-xl)">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="course-search" placeholder="Search courses, instructors, topics...">
+      <button class="search-btn">Search</button>
+    </div>
+    <!-- Quick filters -->
+    <div style="display:flex;gap:var(--space-sm);margin-top:var(--space-lg);flex-wrap:wrap">
+      <button class="filter-chip active" data-quick="all" onclick="quickFilter(this,'all')">All Courses</button>
+      <button class="filter-chip" data-quick="cpd" onclick="quickFilter(this,'cpd')">✅ CPD Accredited</button>
+      <button class="filter-chip" data-quick="ict" onclick="quickFilter(this,'ICT')">💻 ICT</button>
+      <button class="filter-chip" data-quick="cbe" onclick="quickFilter(this,'CBE')">📋 CBE</button>
+      <button class="filter-chip" data-quick="ai" onclick="quickFilter(this,'AI & Tech')">🤖 AI</button>
+      <button class="filter-chip" data-quick="digital" onclick="quickFilter(this,'Digital Skills')">📱 Digital Literacy</button>
+      <button class="filter-chip" data-quick="leadership" onclick="quickFilter(this,'Leadership')">🏛️ Leadership</button>
+    </div>
+  </div>
+</section>
+
+<!-- Main Layout -->
+<div class="container">
+  <div class="catalog-layout">
+    
+    <!-- Sidebar Filters -->
+    <aside class="filter-sidebar">
+      <div class="filter-card">
+        <div class="filter-title">📊 Level</div>
+        <div class="filter-options">
+          <button class="filter-chip active" onclick="setFilter('level','all',this)">All Levels</button>
+          <button class="filter-chip" onclick="setFilter('level','Beginner',this)">🟢 Beginner</button>
+          <button class="filter-chip" onclick="setFilter('level','Intermediate',this)">🟡 Intermediate</button>
+          <button class="filter-chip" onclick="setFilter('level','Advanced',this)">🔴 Advanced</button>
+        </div>
+      </div>
+      
+      <div class="filter-card">
+        <div class="filter-title">📡 Format</div>
+        <div class="filter-options">
+          <button class="filter-chip active" onclick="setFilter('format','all',this)">All Formats</button>
+          <button class="filter-chip" onclick="setFilter('format','Online',this)">💻 100% Online</button>
+          <button class="filter-chip" onclick="setFilter('format','Blended',this)">🔄 Blended</button>
+        </div>
+      </div>
+
+      <div class="filter-card">
+        <div class="filter-title">💰 Max Price (KES)</div>
+        <input type="range" class="range-slider" id="price-range" min="0" max="30000" step="500" value="30000" oninput="updatePriceFilter(this.value)">
+        <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--text-muted);margin-top:4px">
+          <span>KES 0</span>
+          <span id="price-label" style="color:var(--color-primary-light);font-weight:600">Any Price</span>
+          <span>KES 30,000</span>
+        </div>
+      </div>
+
+      <div class="filter-card">
+        <div class="filter-title">🔃 Sort By</div>
+        <div class="filter-options">
+          <button class="filter-chip active" onclick="setSortFilter('popular',this)">🔥 Most Popular</button>
+          <button class="filter-chip" onclick="setSortFilter('rating',this)">⭐ Highest Rated</button>
+          <button class="filter-chip" onclick="setSortFilter('price-low',this)">💲 Price: Low to High</button>
+          <button class="filter-chip" onclick="setSortFilter('price-high',this)">💲 Price: High to Low</button>
+          <button class="filter-chip" onclick="setSortFilter('newest',this)">🆕 Newest First</button>
+        </div>
+      </div>
+
+      <button class="btn btn-outline w-full" onclick="resetFilters()">🔄 Reset All Filters</button>
+    </aside>
+
+    <!-- Courses Grid -->
+    <div>
+      <div class="catalog-header">
+        <div class="catalog-count" id="catalog-count">Showing 8 courses</div>
+        <div class="catalog-sort">
+          <span style="font-size:var(--text-sm);color:var(--text-muted)">View:</span>
+          <button onclick="setGridCols(3)" class="btn btn-ghost btn-sm" title="3 columns">⊞</button>
+          <button onclick="setGridCols(2)" class="btn btn-ghost btn-sm" title="2 columns">☰</button>
+        </div>
+      </div>
+      <div id="courses-grid" class="courses-grid stagger-children">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="pagination" style="margin-top:var(--space-3xl)" id="pagination"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer" style="margin-top:var(--space-4xl)">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-md)">
+      <a href="index.html" class="nav-brand"><div class="nav-logo">IK</div><div class="nav-brand-text"><span class="nav-brand-name">Instructify Kenya</span></div></a>
+      <div style="font-size:var(--text-sm);color:var(--text-muted)">© 2026 Instructify Kenya Ltd. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/courses.js"></script>
+<script>
+let filters = { query: '', level: 'all', format: 'all', maxPrice: 30000, sort: 'popular', category: 'all', cpd: false };
+
+function renderCourses() {
+  const grid = document.getElementById('courses-grid');
+  const options = { ...filters };
+  if (filters.level !== 'all') options.level = filters.level;
+  if (filters.format !== 'all') options.format = filters.format;
+  if (filters.category !== 'all') options.category = filters.category;
+  if (filters.maxPrice < 30000) options.maxPrice = filters.maxPrice;
+  if (filters.sort) options.sort = filters.sort;
+  
+  const results = window.filterCourses(options);
+  document.getElementById('catalog-count').textContent = `Showing ${results.length} course${results.length !== 1 ? 's' : ''}`;
+  
+  if (results.length === 0) {
+    grid.innerHTML = '<div class="no-results"><div style="font-size:3rem;margin-bottom:1rem">🔍</div><h3 style="color:var(--text-primary);margin-bottom:0.5rem">No courses found</h3><p>Try adjusting your filters or search term.</p></div>';
+  } else {
+    grid.innerHTML = results.map(c => window.renderCourseCard(c)).join('');
+    initScrollReveal();
+  }
+}
+
+function quickFilter(btn, cat) {
+  document.querySelectorAll('[data-quick]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (cat === 'all') { filters.category = 'all'; filters.cpd = false; }
+  else if (cat === 'cpd') { filters.category = 'all'; filters.cpd = true; }
+  else { filters.category = cat; filters.cpd = false; }
+  renderCourses();
+}
+
+function setFilter(key, val, btn) {
+  if (btn) {
+    btn.closest('.filter-options').querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  filters[key] = val;
+  renderCourses();
+}
+
+function setSortFilter(val, btn) {
+  btn.closest('.filter-options').querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filters.sort = val;
+  renderCourses();
+}
+
+function updatePriceFilter(val) {
+  filters.maxPrice = parseInt(val);
+  document.getElementById('price-label').textContent = val >= 30000 ? 'Any Price' : `KES ${parseInt(val).toLocaleString()}`;
+  renderCourses();
+}
+
+function setGridCols(cols) {
+  const grid = document.getElementById('courses-grid');
+  grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+}
+
+function resetFilters() {
+  filters = { query: '', level: 'all', format: 'all', maxPrice: 30000, sort: 'popular', category: 'all', cpd: false };
+  document.getElementById('price-range').value = 30000;
+  document.getElementById('price-label').textContent = 'Any Price';
+  document.getElementById('course-search').value = '';
+  document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('[data-quick="all"]').forEach(b => b.classList.add('active'));
+  renderCourses();
+}
+
+// Search handler
+let searchTimeout;
+document.getElementById('course-search').addEventListener('input', (e) => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => { filters.query = e.target.value; renderCourses(); }, 300);
+});
+
+// URL param pre-filter
+const urlParams = new URLSearchParams(window.location.search);
+const catParam = urlParams.get('cat');
+if (catParam) {
+  const catMap = { ict: 'ICT', cbe: 'Curriculum', ai: 'AI & Tech', cpd: 'CPD', digital: 'Digital Skills', leadership: 'Leadership', assessment: 'Assessment', online: 'Pedagogy' };
+  if (catMap[catParam]) filters.category = catMap[catParam];
+}
+
+document.addEventListener('DOMContentLoaded', renderCourses);
+</script>
+</body>
+</html>

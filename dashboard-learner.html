@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learner Dashboard | Instructify Kenya</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230D6E4F'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='Arial'>IK</text></svg>">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<nav id="navbar" class="navbar scrolled">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo">IK</div>
+      <div class="nav-brand-text">
+        <span class="nav-brand-name">Instructify</span>
+        <span class="nav-brand-tagline">Learner Portal</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <div class="flex items-center gap-md">
+        <div class="avatar-placeholder avatar-sm" id="user-avatar-top">JM</div>
+        <span id="user-name-top" style="font-size:var(--text-sm);font-weight:600">James Mwangi</span>
+        <button onclick="logout()" class="btn btn-outline btn-sm">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="dashboard-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-user">
+        <div class="avatar-placeholder avatar-md" id="sidebar-avatar">JM</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="sidebar-user-name">James Mwangi</div>
+          <div class="sidebar-user-role">TSC Teacher · Nairobi</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Main Menu</div>
+        <a href="#overview" class="sidebar-link active" onclick="switchDashboardTab(this, 'overview')">
+          <span class="sidebar-link-icon">📊</span> Overview
+        </a>
+        <a href="#my-courses" class="sidebar-link" onclick="switchDashboardTab(this, 'my-courses')">
+          <span class="sidebar-link-icon">📚</span> My Courses
+          <span class="sidebar-link-badge">3</span>
+        </a>
+        <a href="#assessments" class="sidebar-link" onclick="switchDashboardTab(this, 'assessments')">
+          <span class="sidebar-link-icon">📝</span> Quizzes &amp; Assignments
+        </a>
+        <a href="#certificates" class="sidebar-link" onclick="switchDashboardTab(this, 'certificates')">
+          <span class="sidebar-link-icon">🏆</span> Certificates &amp; Badges
+        </a>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-label">Account &amp; Support</div>
+        <a href="#payments" class="sidebar-link" onclick="switchDashboardTab(this, 'payments')">
+          <span class="sidebar-link-icon">💳</span> Payment History
+        </a>
+        <a href="#notifications" class="sidebar-link" onclick="switchDashboardTab(this, 'notifications')">
+          <span class="sidebar-link-icon">🔔</span> Notifications
+        </a>
+        <a href="courses.html" class="sidebar-link">
+          <span class="sidebar-link-icon">🔍</span> Explore Courses
+        </a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button onclick="logout()" class="btn btn-ghost w-full justify-start" style="color:#EF4444">
+        <span>🚪</span> Log Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="dashboard-main">
+    
+    <!-- Tab 1: Overview -->
+    <div id="dash-panel-overview" class="dash-panel active">
+      <div class="dashboard-header">
+        <div>
+          <h1 class="dashboard-title">Jambo, <span id="welcome-name">James</span>! 👋</h1>
+          <div class="dashboard-subtitle">Here is your professional learning progress and upcoming schedule.</div>
+        </div>
+        <div class="dashboard-actions">
+          <a href="courses.html" class="btn btn-primary btn-sm">➕ Enroll New Course</a>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(13,110,79,0.15);color:var(--color-primary-light)">📚</div>
+          <div class="stat-value">3</div>
+          <div class="stat-label">Enrolled Courses</div>
+          <div class="stat-change up"><span>↑</span> 1 active this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(245,166,35,0.15);color:var(--color-secondary)">⏱️</div>
+          <div class="stat-value">45 hrs</div>
+          <div class="stat-label">CPD Credits Earned</div>
+          <div class="stat-change up"><span>↑</span> 15 hrs left for annual TSC target</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(0,180,216,0.15);color:var(--color-accent)">📝</div>
+          <div class="stat-value">92%</div>
+          <div class="stat-label">Average Quiz Score</div>
+          <div class="stat-change up"><span>★</span> Top 5% Learner</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(138,92,246,0.15);color:#8B5CF6">🏆</div>
+          <div class="stat-value">2</div>
+          <div class="stat-label">Certificates Issued</div>
+          <a href="#certificates" onclick="switchDashboardTab(null, 'certificates')" style="font-size:var(--text-xs);color:var(--color-primary-light);display:block;margin-top:4px">View certificates →</a>
+        </div>
+      </div>
+
+      <div class="grid-2 mb-xl" style="grid-template-columns:2fr 1fr">
+        <!-- In Progress Courses -->
+        <div class="dashboard-section">
+          <div class="dashboard-section-header">
+            <h2 class="dashboard-section-title">In Progress Courses</h2>
+            <a href="#my-courses" onclick="switchDashboardTab(null, 'my-courses')" style="font-size:var(--text-xs);color:var(--color-primary-light)">View all →</a>
+          </div>
+
+          <div class="course-progress-item">
+            <div style="width:50px;height:50px;border-radius:var(--border-radius-sm);background:var(--gradient-green);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0">💻</div>
+            <div class="course-progress-info">
+              <div class="course-progress-name">ICT Integration in Education</div>
+              <div class="course-progress-meta">
+                <span>Module 4 of 12</span> • <span>Next: Digital Lesson Design</span>
+              </div>
+              <div class="progress mt-sm" style="height:6px">
+                <div class="progress-bar" style="width:65%"></div>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="course-progress-pct">65%</div>
+              <button onclick="showToast('Resuming module 4 video lecture...','info')" class="btn btn-primary btn-sm mt-sm">Resume</button>
+            </div>
+          </div>
+
+          <div class="course-progress-item">
+            <div style="width:50px;height:50px;border-radius:var(--border-radius-sm);background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0">📋</div>
+            <div class="course-progress-info">
+              <div class="course-progress-name">CBE Curriculum Implementation</div>
+              <div class="course-progress-meta">
+                <span>Module 2 of 10</span> • <span>Next: Portfolio Assessment</span>
+              </div>
+              <div class="progress mt-sm" style="height:6px">
+                <div class="progress-bar gold" style="width:30%"></div>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="course-progress-pct" style="color:var(--color-secondary)">30%</div>
+              <button onclick="showToast('Resuming module 2 quiz...','info')" class="btn btn-outline btn-sm mt-sm">Resume</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming Deadlines -->
+        <div class="dashboard-section">
+          <div class="dashboard-section-header">
+            <h2 class="dashboard-section-title">Upcoming Tasks</h2>
+          </div>
+
+          <div class="deadline-item">
+            <div class="deadline-date">
+              <div class="deadline-day">12</div>
+              <div class="deadline-month">AUG</div>
+            </div>
+            <div class="deadline-info">
+              <div class="deadline-title">ICT Lesson Plan Assignment</div>
+              <div class="deadline-course">ICT Integration in Education</div>
+            </div>
+          </div>
+
+          <div class="deadline-item">
+            <div class="deadline-date" style="border-color:var(--color-secondary);background:rgba(245,166,35,0.1)">
+              <div class="deadline-day" style="color:var(--color-secondary)">18</div>
+              <div class="deadline-month" style="color:var(--color-secondary)">AUG</div>
+            </div>
+            <div class="deadline-info">
+              <div class="deadline-title">Live Webinar: CBE Assessment</div>
+              <div class="deadline-course">CBE Curriculum Implementation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: My Courses -->
+    <div id="dash-panel-my-courses" class="dash-panel" style="display:none">
+      <div class="dashboard-header">
+        <h1 class="dashboard-title">My Enrolled Courses</h1>
+      </div>
+      <div class="grid-3" id="enrolled-courses-container">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+
+    <!-- Tab 3: Assessments -->
+    <div id="dash-panel-assessments" class="dash-panel" style="display:none">
+      <div class="dashboard-header">
+        <h1 class="dashboard-title">Quizzes &amp; Assignments</h1>
+      </div>
+      <div class="dashboard-section">
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Course</th>
+                <th>Due Date</th>
+                <th>Score</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Digital Literacy Fundamentals Quiz</td>
+                <td>Digital Literacy Certification</td>
+                <td>Aug 02, 2026</td>
+                <td><strong style="color:#10B981">95%</strong></td>
+                <td><span class="badge badge-success">Passed</span></td>
+                <td><button class="btn btn-ghost btn-sm" onclick="showToast('Viewing submission feedback...','info')">Review</button></td>
+              </tr>
+              <tr>
+                <td>ICT Lesson Plan Submission</td>
+                <td>ICT Integration in Education</td>
+                <td>Aug 12, 2026</td>
+                <td>—</td>
+                <td><span class="badge badge-warning">Pending</span></td>
+                <td><button class="btn btn-primary btn-sm" onclick="showToast('Opening assignment uploader...','info')">Submit</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 4: Certificates -->
+    <div id="dash-panel-certificates" class="dash-panel" style="display:none">
+      <div class="dashboard-header">
+        <h1 class="dashboard-title">Certificates &amp; Badges</h1>
+      </div>
+      <div class="grid-2">
+        <div class="card" style="border:1px solid var(--color-primary-light);background:var(--bg-glass)">
+          <div style="font-size:2rem;margin-bottom:var(--space-md)">🏆</div>
+          <h3 class="font-heading text-lg" style="margin-bottom:var(--space-xs)">Digital Literacy Certification</h3>
+          <div style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-md)">Issued Jul 24, 2026 • Certificate ID: IK-CERT-2026-9921</div>
+          <div class="flex gap-sm">
+            <a href="certification.html?certId=IK-CERT-2026-9921" target="_blank" class="btn btn-primary btn-sm">View Certificate</a>
+            <button onclick="showToast('Downloading Certificate PDF...','success')" class="btn btn-outline btn-sm">Download PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 5: Payments -->
+    <div id="dash-panel-payments" class="dash-panel" style="display:none">
+      <div class="dashboard-header">
+        <h1 class="dashboard-title">Payment History</h1>
+      </div>
+      <div class="dashboard-section">
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Receipt / Ref</th>
+                <th>Course</th>
+                <th>Amount</th>
+                <th>Method</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IK8829104A</td>
+                <td>ICT Integration in Education</td>
+                <td>KES 15,000</td>
+                <td>M-Pesa</td>
+                <td>Jul 10, 2026</td>
+                <td><span class="badge badge-success">Completed</span></td>
+              </tr>
+              <tr>
+                <td>IK7738291B</td>
+                <td>Digital Literacy Certification</td>
+                <td>KES 8,500</td>
+                <td>M-Pesa</td>
+                <td>Jun 15, 2026</td>
+                <td><span class="badge badge-success">Completed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 6: Notifications -->
+    <div id="dash-panel-notifications" class="dash-panel" style="display:none">
+      <div class="dashboard-header">
+        <h1 class="dashboard-title">Notifications &amp; Announcements</h1>
+      </div>
+      <div class="dashboard-section">
+        <div class="notification-item unread">
+          <div class="notification-dot"></div>
+          <div class="notification-text">
+            <strong>Assignment Grading:</strong> Your Digital Literacy Fundamentals Quiz has been graded. You scored 95%!
+          </div>
+          <div class="notification-time">2 hours ago</div>
+        </div>
+        <div class="notification-item">
+          <div class="notification-dot" style="background:var(--color-secondary)"></div>
+          <div class="notification-text">
+            <strong>Webinar Notice:</strong> Live Q&amp;A session for CBE Assessment strategies starts on Aug 18 at 4:00 PM EAT.
+          </div>
+          <div class="notification-time">1 day ago</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/courses.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const session = window.requireAuth(['learner', 'trainer', 'admin']);
+  if (!session) return;
+
+  document.getElementById('user-name-top').textContent = session.name;
+  document.getElementById('welcome-name').textContent = session.name.split(' ')[0];
+  document.getElementById('sidebar-user-name').textContent = session.name;
+  document.getElementById('user-avatar-top').textContent = session.avatar || 'JM';
+  document.getElementById('sidebar-avatar').textContent = session.avatar || 'JM';
+
+  renderEnrolledCourses();
+});
+
+function switchDashboardTab(link, tabId) {
+  if (link) {
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+  }
+  document.querySelectorAll('.dash-panel').forEach(p => p.style.display = 'none');
+  const target = document.getElementById(`dash-panel-${tabId}`);
+  if (target) target.style.display = 'block';
+}
+
+function renderEnrolledCourses() {
+  const container = document.getElementById('enrolled-courses-container');
+  if (!container || !window.COURSES) return;
+
+  const courses = window.COURSES.slice(0, 3);
+  container.innerHTML = courses.map(c => window.renderCourseCard(c)).join('');
+}
+</script>
+</body>
+</html>
