@@ -29,12 +29,13 @@
 
     <ul class="nav-links">
       <li><a href="index.html" class="nav-link active">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
       <li><a href="courses.html" class="nav-link">Courses</a></li>
-      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="training.html" class="nav-link">Training</a></li>
       <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="schools.html" class="nav-link">Schools</a></li>
+      <li><a href="community.html" class="nav-link">Community</a></li>
       <li><a href="resources.html" class="nav-link">Resources</a></li>
-      <li><a href="events.html" class="nav-link">Events</a></li>
-      <li><a href="news.html" class="nav-link">Blog</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
 
@@ -44,7 +45,7 @@
         <div class="avatar-placeholder avatar-sm" id="nav-user-avatar" style="font-size:0.75rem;background:var(--color-primary)"></div>
         <a href="dashboard-learner.html" class="btn btn-primary btn-sm">Dashboard</a>
       </div>
-      <a href="courses.html" class="btn btn-orange btn-sm">Enroll Today</a>
+      <a href="courses.html" class="btn btn-orange btn-sm">Start Learning</a>
       <button id="nav-hamburger" class="nav-hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -76,25 +77,93 @@
 <section class="hero-section" id="hero">
   <div class="container hero-container">
     <div class="hero-content animate-fade-in-left">
-      <h1 class="hero-heading" style="color:var(--text-primary)">
+      <!-- Badge Above Headline -->
+      <div class="hero-badge">
+        Education • Training • Consultancy
+      </div>
+
+      <!-- Main H1 -->
+      <h1 class="hero-heading">
         Ignite Curiosity. Transform Learning.
       </h1>
+
+      <!-- Hero Paragraph -->
       <p class="hero-subtitle">
-        At Instructify Kenya, we believe that curiosity is the spark that fuels lifelong learning. We empower educators, learners, and institutions through practical training, transformative tools, consultancy, curriculum development, and meaningful learning experiences.
+        At Instructify Kenya, we empower educators, learners, and institutions through practical training, transformative tools, consultancy, curriculum development, and meaningful learning experiences.
       </p>
+
+      <!-- Hero Buttons -->
       <div class="hero-ctas">
-        <a href="courses.html" class="btn btn-primary btn-lg">Explore Courses</a>
-        <a href="contact.html" class="btn btn-orange btn-lg">Partner With Us</a>
+        <a href="courses.html" class="btn btn-blue btn-lg hero-btn-primary">Explore Courses</a>
+        <a href="contact.html" class="btn btn-orange btn-lg hero-btn-secondary">Partner With Us</a>
+      </div>
+
+      <!-- 3 Trust Indicators -->
+      <div class="hero-trust">
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Practical Training</span>
+        </div>
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Curriculum Support</span>
+        </div>
+        <div class="trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Digital Learning</span>
+        </div>
       </div>
     </div>
+
+    <!-- Right Hero Visual -->
     <div class="hero-visual animate-fade-in-right delay-200">
       <div class="hero-image-frame">
-        <img src="assets/images/hero.png" alt="African educators in digital learning" class="hero-main-image" style="border-radius:var(--border-radius-xl); box-shadow:var(--shadow-lg);">
-        <div class="hero-float-card hero-float-card-2 animate-float">
-          <div class="float-card-icon" style="background:var(--color-primary-bg);color:var(--color-primary)">🎓</div>
-          <div>
-            <div class="float-card-value" style="font-size:var(--text-sm)">Training • Consultancy • Curriculum Development</div>
+        <img src="assets/images/hero.png" alt="African educators in digital learning" class="hero-main-image">
+        <div class="hero-overlay-card">
+          <div class="overlay-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           </div>
+          <div class="overlay-text">
+            Training • Consultancy • Curriculum Development
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     1. IMPACT STRIP
+══════════════════════════════════════════════════ -->
+<section class="impact-strip">
+  <div class="container">
+    <div class="impact-grid">
+      <div class="impact-item">
+        <div class="impact-icon">🎓</div>
+        <div>
+          <h4>Educator Training</h4>
+          <p>Practical CPD skills</p>
+        </div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">💻</div>
+        <div>
+          <h4>Digital Learning</h4>
+          <p>EdTech integration</p>
+        </div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">📚</div>
+        <div>
+          <h4>Curriculum Development</h4>
+          <p>CBC &amp; KICD aligned</p>
+        </div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">🏛️</div>
+        <div>
+          <h4>Institutional Support</h4>
+          <p>Strategic advisory</p>
         </div>
       </div>
     </div>
@@ -114,7 +183,7 @@
       <!-- Card 1: Educators -->
       <div class="support-card reveal">
         <div class="support-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
             <path d="M6 12v5c3 3 9 3 12 0v-5"/>
           </svg>
@@ -126,7 +195,7 @@
       <!-- Card 2: Learners -->
       <div class="support-card reveal delay-100">
         <div class="support-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
           </svg>
@@ -138,7 +207,7 @@
       <!-- Card 3: Schools -->
       <div class="support-card reveal delay-200">
         <div class="support-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M18 22V8a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/>
             <path d="M4 22h16"/>
             <path d="M12 2v4"/>
@@ -154,7 +223,7 @@
       <!-- Card 4: Institutions & Organizations -->
       <div class="support-card reveal delay-300">
         <div class="support-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="3" y1="22" x2="21" y2="22"/>
             <line x1="6" y1="18" x2="6" y2="11"/>
             <line x1="10" y1="18" x2="10" y2="11"/>
@@ -175,33 +244,37 @@
   </div>
 </section>
 
-
 <!-- ══════════════════════════════════════════════════
      3. WHAT WE DO
 ══════════════════════════════════════════════════ -->
-<section class="section">
+<section class="section" id="what-we-do">
   <div class="container">
     <div class="section-header text-center reveal">
       <h2 class="section-title">What We Do</h2>
+      <p class="section-subtitle">Core services designed to empower educators, strengthen schools, and transform learning environments.</p>
     </div>
     <div class="grid-3 stagger-children">
-      <div class="card reveal">
-        <div style="font-size:2.5rem; margin-bottom:var(--space-sm); color:var(--color-primary);">🎓</div>
-        <h3 class="font-heading text-lg mb-sm">Training</h3>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary); margin-bottom:var(--space-md);">Accredited CPD programs equipping educators with practical, 21st-century teaching competencies.</p>
-        <a href="courses.html" style="font-weight:600; color:var(--color-primary); text-decoration:none;">Learn More →</a>
+      <div class="service-card reveal">
+        <div class="service-icon">🎓</div>
+        <h3>Training</h3>
+        <p>Accredited CPD and digital literacy programs equipping educators with practical, 21st-century teaching competencies.</p>
+        <a href="courses.html" class="service-link">Explore Training →</a>
       </div>
-      <div class="card reveal delay-100">
-        <div style="font-size:2.5rem; margin-bottom:var(--space-sm); color:var(--color-primary);">💼</div>
-        <h3 class="font-heading text-lg mb-sm">Consultancy</h3>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary); margin-bottom:var(--space-md);">Strategic advisory for institutional transformation and scalable educational strategies.</p>
-        <a href="consultancy.html" style="font-weight:600; color:var(--color-primary); text-decoration:none;">Learn More →</a>
+      <div class="service-card reveal delay-100">
+        <div class="service-icon">💼</div>
+        <h3>Consultancy</h3>
+        <p>Strategic advisory and institutional support for capacity building, EdTech integration, and educational growth.</p>
+        <a href="consultancy.html" class="service-link">Explore Consultancy →</a>
       </div>
-      <div class="card reveal delay-200">
-        <div style="font-size:2.5rem; margin-bottom:var(--space-sm); color:var(--color-primary);">📐</div>
-        <h3 class="font-heading text-lg mb-sm">Curriculum Development</h3>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary); margin-bottom:var(--space-md);">Designing contextual, competency-based learning outcomes and instructional blueprints.</p>
-        <a href="consultancy.html" style="font-weight:600; color:var(--color-primary); text-decoration:none;">Learn More →</a>
+      <div class="service-card reveal delay-200">
+        <div class="service-icon">📚</div>
+        <h3>Curriculum Development</h3>
+        <p>Custom curriculum design, instructional resource creation, and competency-based framework alignment.</p>
+        <a href="consultancy.html" class="service-link">Explore Curriculum →</a>
+      </div>
+    </div>
+  </div>
+</section>
       </div>
       <div class="card reveal delay-300">
         <div style="font-size:2.5rem; margin-bottom:var(--space-sm); color:var(--color-primary);">💻</div>

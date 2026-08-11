@@ -20,13 +20,19 @@
 }
 
 .about-section-light {
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-light);
 }
 
-.about-hero {
+.about-hero-section {
+  padding: calc(var(--nav-height) + 40px) 0 64px 0;
+  background: linear-gradient(135deg, #F8FAFC 0%, #EEF5FF 50%, #F8FAFC 100%);
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.about-hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--about-gap);
+  gap: 48px;
   align-items: center;
 }
 

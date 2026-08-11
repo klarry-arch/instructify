@@ -6,60 +6,49 @@
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
-  /* Extended Brand Palette Tokens */
-  --primary-blue:         #2454E6;
-  --deep-navy:            #0B2545;
-  --sky-blue:             #38BDF8;
-  --teal:                 #14B8A6;
-  --green:                #22C55E;
-  --gold:                 #FBBF24;
-  --orange:               #F97316;
-  --purple:               #7C3AED;
-  --pink:                 #EC4899;
+  /* Official LMS Brand Palette */
+  --color-primary-blue:   #1E5BFF;
+  --color-deep-navy:      #0B1F3A;
+  --color-curiosity-orange:#FF8A00;
+  --color-soft-grey:      #F5F7FA;
+  --color-light-blue:     #EAF1FF;
+  --color-light-orange:   #FFF3E0;
+  --color-growth-green:   #2EAD5B;
 
-  --text-dark:            #182033;
-  --text-muted:           #5B6475;
-  --background:           #F8FAFC;
-  --soft-blue:            #EEF5FF;
-  --soft-teal:            #ECFDF5;
-  --soft-gold:            #FFF7DC;
-  --soft-purple:          #F3E8FF;
-  --white:                #FFFFFF;
+  --color-primary:        #1E5BFF;
+  --color-navy:           #0B1F3A;
+  --color-orange:         #FF8A00;
+  --color-blue-accent:    #1E5BFF;
+  --color-mint:           #2EAD5B;
+  --color-mint-bg:        #EAF1FF;
 
-  /* Official Brand System Aliases */
-  --color-navy:           #1E3A8A;
-  --color-orange:         #FF4D00;
-  --color-blue-accent:    #3B82F6;
-  --color-mint:           #5EEAD4;
-  --color-mint-bg:        rgba(94, 234, 212, 0.15);
-
-  --color-primary:        #1E3A8A;
-  --color-primary-light:  #3B82F6;
-  --color-primary-dark:   #152C6B;
-  --color-primary-bg:     #EFF6FF;
-  --color-primary-glow:   rgba(30, 58, 138, 0.15);
+  --color-primary-light:  #1E5BFF;
+  --color-primary-dark:   #0B1F3A;
+  --color-primary-bg:     #EAF1FF;
+  --color-primary-glow:   rgba(30, 91, 255, 0.15);
 
   /* Button System Tokens */
-  --btn-orange:           #F24822;
-  --btn-orange-hover:     #FF4D00;
-  --btn-blue:             #007AFF;
-  --btn-blue-hover:       #1E3A8A;
+  --btn-orange:           #FF8A00;
+  --btn-orange-hover:     #E57C00;
+  --btn-blue:             #1E5BFF;
+  --btn-blue-hover:       #0B1F3A;
 
   /* Neutrals */
-  --bg-dark:              #1E3A8A;
+  --bg-dark:              #0B1F3A;
   --bg-surface:           #1F2937;
   --bg-card:              #FFFFFF;
-  --bg-card-hover:        #F8FAFC;
-  --bg-light:             #F8FAFC;
+  --bg-card-hover:        #F5F7FA;
+  --bg-light:             #F5F7FA;
   --bg-white:             #FFFFFF;
 
   /* Text Colors */
-  --text-heading:         #020202;
-  --text-primary:         #020202;
+  --text-heading:         #0B1F3A;
+  --text-primary:         #0B1F3A;
   --text-body:            #1F2937;
   --text-secondary:       #1F2937;
-  --text-navy:            #1E3A8A;
-  --text-orange:          #FF4D00;
+  --text-muted:           #6B7280;
+  --text-navy:            #0B1F3A;
+  --text-orange:          #FF8A00;
 
   /* Gradients */
   --gradient-blue:        linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
@@ -107,7 +96,7 @@
 
   /* Layout & Nav */
   --max-width:        1120px;
-  --nav-height:       76px;
+  --nav-height:       86px;
 
   /* Transitions */
   --transition-fast:   0.15s ease;
