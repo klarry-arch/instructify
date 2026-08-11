@@ -6,49 +6,49 @@
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
-  /* Official LMS Brand Palette */
-  --color-primary-blue:   #1E5BFF;
-  --color-deep-navy:      #0B1F3A;
-  --color-curiosity-orange:#FF8A00;
-  --color-soft-grey:      #F5F7FA;
-  --color-light-blue:     #EAF1FF;
-  --color-light-orange:   #FFF3E0;
+  /* Requested Color Palette */
+  --color-primary-blue:   #1473E6;
+  --color-deep-navy:      #071D3A;
+  --color-curiosity-orange:#F4511E;
+  --color-soft-grey:      #F5F8FC;
+  --color-light-blue:     #EAF3FF;
+  --color-light-orange:   #FFF1E8;
   --color-growth-green:   #2EAD5B;
 
-  --color-primary:        #1E5BFF;
-  --color-navy:           #0B1F3A;
-  --color-orange:         #FF8A00;
-  --color-blue-accent:    #1E5BFF;
+  --color-primary:        #1473E6;
+  --color-navy:           #071D3A;
+  --color-orange:         #F4511E;
+  --color-blue-accent:    #1473E6;
   --color-mint:           #2EAD5B;
-  --color-mint-bg:        #EAF1FF;
+  --color-mint-bg:        #EAF3FF;
 
-  --color-primary-light:  #1E5BFF;
-  --color-primary-dark:   #0B1F3A;
-  --color-primary-bg:     #EAF1FF;
-  --color-primary-glow:   rgba(30, 91, 255, 0.15);
+  --color-primary-light:  #1473E6;
+  --color-primary-dark:   #071D3A;
+  --color-primary-bg:     #EAF3FF;
+  --color-primary-glow:   rgba(20, 115, 230, 0.15);
 
   /* Button System Tokens */
-  --btn-orange:           #FF8A00;
-  --btn-orange-hover:     #E57C00;
-  --btn-blue:             #1E5BFF;
-  --btn-blue-hover:       #0B1F3A;
+  --btn-orange:           #F4511E;
+  --btn-orange-hover:     #D83A06;
+  --btn-blue:             #1473E6;
+  --btn-blue-hover:       #071D3A;
 
   /* Neutrals */
-  --bg-dark:              #0B1F3A;
+  --bg-dark:              #071D3A;
   --bg-surface:           #1F2937;
   --bg-card:              #FFFFFF;
-  --bg-card-hover:        #F5F7FA;
-  --bg-light:             #F5F7FA;
+  --bg-card-hover:        #F5F8FC;
+  --bg-light:             #F5F8FC;
   --bg-white:             #FFFFFF;
 
   /* Text Colors */
-  --text-heading:         #0B1F3A;
-  --text-primary:         #0B1F3A;
+  --text-heading:         #071D3A;
+  --text-primary:         #071D3A;
   --text-body:            #1F2937;
   --text-secondary:       #1F2937;
   --text-muted:           #6B7280;
-  --text-navy:            #0B1F3A;
-  --text-orange:          #FF8A00;
+  --text-navy:            #071D3A;
+  --text-orange:          #F4511E;
 
   /* Gradients */
   --gradient-blue:        linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
