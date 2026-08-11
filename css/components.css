@@ -291,19 +291,19 @@
 /* ── SaaS Course Card Components ─────────────────────────────── */
 .course-card {
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
+  border: 1px solid rgba(0,0,0,0.05);
   border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .course-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.1);
-  border-color: #2563EB;
+  box-shadow: 0 15px 40px rgba(20, 115, 230, 0.1);
+  border-color: rgba(20, 115, 230, 0.3);
 }
 
 .course-card-image {
