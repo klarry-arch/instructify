@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse 200+ accredited CPD courses, ICT integration, CBE curriculum, AI in Education, and Digital Literacy programs on Instructify Kenya.">
+  <title>Course Catalog | Instructify Kenya</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230D6E4F'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='Arial'>IK</text></svg>">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/homepage.css">
+  <style>
+    .courses-hero {
+      background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-dark) 100%);
+      padding: calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .catalog-layout { display: grid; grid-template-columns: 280px 1fr; gap: var(--space-2xl); padding: var(--space-3xl) 0; }
+    .filter-sidebar { position: sticky; top: calc(var(--nav-height) + 20px); height: fit-content; }
+    .filter-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--border-radius-lg); padding: var(--space-xl); margin-bottom: var(--space-lg); }
+    .filter-title { font-family: var(--font-heading); font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: var(--space-lg); }
+    .filter-options { display: flex; flex-direction: column; gap: var(--space-sm); }
+    .filter-chip { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; border-radius: var(--border-radius-sm); background: var(--bg-surface); border: 1px solid var(--border-subtle); cursor: pointer; font-size: var(--text-sm); color: var(--text-secondary); transition: all var(--transition-fast); }
+    .filter-chip:hover, .filter-chip.active { border-color: var(--color-primary); color: var(--color-primary-light); background: var(--color-primary-glow); }
+    .filter-chip-count { font-size: var(--text-xs); color: var(--text-muted); }
+    .catalog-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-xl); flex-wrap: wrap; gap: var(--space-md); }
+    .catalog-count { font-size: var(--text-sm); color: var(--text-muted); }
+    .catalog-sort { display: flex; align-items: center; gap: var(--space-sm); }
+    .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl); }
+    .no-results { grid-column: 1/-1; text-align: center; padding: var(--space-5xl); color: var(--text-muted); }
+    .range-slider { width: 100%; accent-color: var(--color-primary); margin: var(--space-sm) 0; }
+    @media (max-width: 1024px) { .catalog-layout { grid-template-columns: 1fr; } .filter-sidebar { position: static; } .courses-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .courses-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<body>
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+  <div class="nav-brand-text" style="display: flex; flex-direction: column; justify-content: center; line-height: 1.1;"><span class="nav-brand-name" style="font-weight: 800; font-size: 1.25rem; color: #111827; letter-spacing: -0.5px;">Instructify</span><span class="nav-brand-tagline" style="font-size: 0.75rem; font-weight: 700; color: #ea580c; text-transform: uppercase; letter-spacing: 1.5px;">Kenya</span></div>
+
+</a>
+        <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li class="nav-dropdown-container">
+        <a href="courses.html" class="nav-link">Courses ▾</a>
+        <ul class="nav-dropdown">
+          <li><a href="courses.html?cat=ict">ICT Integration</a></li>
+          <li><a href="courses.html?cat=cbe">CBE Curriculum</a></li>
+          <li><a href="courses.html?cat=ai">AI in Education</a></li>
+          <li><a href="courses.html?cat=digital">Digital Literacy</a></li>
+          <li><a href="courses.html?cat=leadership">Leadership</a></li>
+        </ul>
+      </li>
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+      <li><a href="events.html" class="nav-link">Events</a></li>
+      <li><a href="news.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="register.html" id="nav-login-btn" class="btn btn-outline btn-sm">Sign In</a>
+      <div id="nav-user-menu" style="display:none" class="flex items-center gap-sm">
+        <div class="avatar-placeholder avatar-sm" id="nav-user-avatar" style="font-size:0.75rem"></div>
+        <a href="dashboard-learner.html" class="btn btn-primary btn-sm">Dashboard</a>
+      </div>
+      <a href="courses.html" class="btn btn-orange btn-sm">Enroll Today</a>
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="container" style="padding: calc(var(--nav-height) + 3rem) 0 5rem;">
+  <div style="text-align: center; margin-bottom: 3rem;">
+    <h1 style="font-family: var(--font-heading); color: #111827; font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">Enroll & Checkout</h1>
+    <p style="color: #6b7280; font-size: 1.1rem;">Securely complete your enrollment below.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 380px; gap: 3rem; align-items: start;" id="checkout-grid">
+    
+    <!-- Left: Form -->
+    <div style="background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+      <h2 style="font-family: var(--font-heading); color: #111827; font-size: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #f3f4f6; padding-bottom: 1rem;">Student Details</h2>
+      
+      <form id="enrollment-form">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+          <div>
+            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Full Name *</label>
+            <input type="text" id="fullname" required style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none;">
+          </div>
+          <div>
+            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Phone Number *</label>
+            <input type="tel" id="phone" required placeholder="07XX XXX XXX" style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none;">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Email Address *</label>
+          <input type="email" id="email" required style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none;">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+          <div>
+            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Learner Type *</label>
+            <select id="learner-type" required style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none; background: white;">
+              <option value="">Select...</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Parent">Parent</option>
+              <option value="Child">Child</option>
+              <option value="School">School/Organization</option>
+            </select>
+          </div>
+          <div>
+            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Preferred Format *</label>
+            <select id="format" required style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none; background: white;">
+              <option value="">Select...</option>
+              <option value="Online">Online</option>
+              <option value="In-Person">In-Person</option>
+              <option value="Blended">Blended</option>
+              <option value="School-Based">School-Based</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+          <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Additional Notes</label>
+          <textarea id="notes" rows="3" style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none; resize: vertical;"></textarea>
+        </div>
+      </form>
+    </div>
+
+    <!-- Right: Summary & Payment -->
+    <div>
+      <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
+        <h3 style="font-family: var(--font-heading); color: #111827; font-size: 1.25rem; margin-bottom: 1rem;">Order Summary</h3>
+        <div id="course-summary-box">
+          <p style="color: #6b7280; font-style: italic;">Loading course details...</p>
+        </div>
+      </div>
+
+      <div style="background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem;">
+        <h3 style="font-family: var(--font-heading); color: #111827; font-size: 1.25rem; margin-bottom: 1rem;">Payment Method</h3>
+        
+        <!-- Payment Tabs -->
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem;">
+          <button class="pay-tab active" data-method="mpesa" style="flex: 1; padding: 0.5rem; border: none; background: #dbeafe; color: #1d4ed8; font-weight: 700; border-radius: 6px; cursor: pointer;">M-Pesa</button>
+          <button class="pay-tab" data-method="cheque" style="flex: 1; padding: 0.5rem; border: none; background: transparent; color: #6b7280; font-weight: 600; cursor: pointer;">Cheque</button>
+          <button class="pay-tab" data-method="cash" style="flex: 1; padding: 0.5rem; border: none; background: transparent; color: #6b7280; font-weight: 600; cursor: pointer;">Cash</button>
+        </div>
+
+        <!-- Payment Contents -->
+        <div id="pay-mpesa" class="pay-content">
+          <p style="font-size: 0.9rem; color: #4b5563; margin-bottom: 1rem;"><strong>Recommended:</strong> Enter your M-Pesa registered phone number below. You will receive an STK prompt on your phone to enter your PIN.</p>
+          <input type="tel" id="mpesa-phone" placeholder="07XX XXX XXX" style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none; margin-bottom: 1rem;">
+        </div>
+
+        <div id="pay-cheque" class="pay-content" style="display: none;">
+          <p style="font-size: 0.9rem; color: #4b5563; margin-bottom: 1rem;">Make cheques payable to <strong>Instructify Kenya Ltd</strong>. Your enrollment will remain pending until the cheque clears.</p>
+          <input type="text" id="cheque-ref" placeholder="Organization / Reference Name" style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none; margin-bottom: 1rem;">
+        </div>
+
+        <div id="pay-cash" class="pay-content" style="display: none;">
+          <p style="font-size: 0.9rem; color: #4b5563; margin-bottom: 1rem;">Cash payments must be made in person at our Nairobi training center prior to course commencement.</p>
+        </div>
+
+        <button id="submit-btn" style="width: 100%; padding: 1rem; background: #ea580c; color: white; border: none; border-radius: 8px; font-weight: 800; font-size: 1.1rem; cursor: pointer; box-shadow: 0 4px 6px rgba(234, 88, 12, 0.2); transition: 0.2s;">
+          Complete Enrollment
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/courses.js"></script>
+<script>
+  // Setup tabs
+  let selectedMethod = 'mpesa';
+  document.querySelectorAll('.pay-tab').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      document.querySelectorAll('.pay-tab').forEach(t => {
+        t.style.background = 'transparent';
+        t.style.color = '#6b7280';
+        t.classList.remove('active');
+      });
+      document.querySelectorAll('.pay-content').forEach(c => c.style.display = 'none');
+      
+      e.target.style.background = '#dbeafe';
+      e.target.style.color = '#1d4ed8';
+      e.target.classList.add('active');
+      
+      selectedMethod = e.target.getAttribute('data-method');
+      document.getElementById('pay-' + selectedMethod).style.display = 'block';
+    });
+  });
+
+  // Load Course Details
+  const urlParams = new URLSearchParams(window.location.search);
+  const courseId = urlParams.get('id');
+  let selectedCourse = null;
+
+  if (courseId && window.COURSES) {
+    selectedCourse = window.COURSES.find(c => c.id === courseId);
+  }
+
+  const summaryBox = document.getElementById('course-summary-box');
+  if (selectedCourse) {
+    summaryBox.innerHTML = `
+      <div style="font-weight: 800; color: #111827; margin-bottom: 0.5rem; line-height: 1.4;">${selectedCourse.title}</div>
+      <div style="display: flex; justify-content: space-between; border-top: 1px solid #e5e7eb; padding-top: 1rem; margin-top: 1rem;">
+        <span style="font-weight: 600; color: #4b5563;">Total</span>
+        <span style="font-weight: 800; color: #1d4ed8; font-size: 1.2rem;">${selectedCourse.price}</span>
+      </div>
+    `;
+  } else {
+    summaryBox.innerHTML = '<p style="color: red;">Error: No course selected. Please return to the courses page.</p>';
+    document.getElementById('submit-btn').disabled = true;
+  }
+
+  // Handle Submission (Simulated Backend)
+  document.getElementById('submit-btn').addEventListener('click', () => {
+    if (!selectedCourse) return;
+    
+    // Basic validation
+    const name = document.getElementById('fullname').value;
+    const email = document.getElementById('email').value;
+    if (!name || !email) {
+      alert('Please fill in your Name and Email address.');
+      return;
+    }
+
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Processing...';
+    btn.disabled = true;
+
+    // Simulate STK Push delay if mpesa
+    setTimeout(() => {
+      const enrollment = {
+        id: 'ENR' + Math.floor(Math.random() * 100000),
+        date: new Date().toISOString(),
+        name,
+        email,
+        phone: document.getElementById('phone').value,
+        learnerType: document.getElementById('learner-type').value,
+        format: document.getElementById('format').value,
+        notes: document.getElementById('notes').value,
+        courseTitle: selectedCourse.title,
+        price: selectedCourse.price,
+        paymentMethod: selectedMethod,
+        status: 'Pending Payment'
+      };
+
+      // Save to localStorage
+      const existing = JSON.parse(localStorage.getItem('instructify_enrollments') || '[]');
+      existing.unshift(enrollment);
+      localStorage.setItem('instructify_enrollments', JSON.stringify(existing));
+
+      // Success
+      document.getElementById('checkout-grid').innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 4rem; background: #dbeafe; border-radius: 12px; border: 1px solid #1d4ed8;">
+          <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+          <h2 style="font-family: var(--font-heading); color: #1d4ed8; font-size: 2rem; margin-bottom: 1rem;">Enrollment Received!</h2>
+          <p style="font-size: 1.1rem; color: #374151; max-width: 500px; margin: 0 auto 2rem;">
+            Thank you for enrolling in <strong>${selectedCourse.title}</strong>. Your enrollment ID is <strong>${enrollment.id}</strong>.
+            ${selectedMethod === 'mpesa' ? 'If you did not receive the M-Pesa prompt, our team will contact you shortly.' : 'Please follow the instructions provided to complete your payment.'}
+          </p>
+          <a href="courses.html" class="btn" style="background: #1d4ed8; color: white; padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700;">Return to Courses</a>
+        </div>
+      `;
+      
+      window.scrollTo(0,0);
+    }, 1500); // 1.5s simulated delay
+  });
+</script>
+<footer class="footer" style="margin-top:var(--space-4xl)">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-md)">
+      <a href="index.html" class="nav-brand">
+
+  <div class="nav-brand-text" style="display: flex; flex-direction: column; justify-content: center; line-height: 1.1;"><span class="nav-brand-name" style="font-weight: 800; font-size: 1.25rem; color: #111827; letter-spacing: -0.5px;">Instructify</span><span class="nav-brand-tagline" style="font-size: 0.75rem; font-weight: 700; color: #ea580c; text-transform: uppercase; letter-spacing: 1.5px;">Kenya</span></div>
+
+</a>
+      <div style="font-size:var(--text-sm);color:var(--text-muted)">© 2026 Instructify Kenya Ltd. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/courses.js"></script>
+<script>
+let filters = { query: '', level: 'all', format: 'all', maxPrice: 30000, sort: 'popular', category: 'all', cpd: false };
+
+function renderCourses() {
+  const grid = document.getElementById('courses-grid');
+  const options = { ...filters };
+  if (filters.level !== 'all') options.level = filters.level;
+  if (filters.format !== 'all') options.format = filters.format;
+  if (filters.category !== 'all') options.category = filters.category;
+  if (filters.maxPrice < 30000) options.maxPrice = filters.maxPrice;
+  if (filters.sort) options.sort = filters.sort;
+  
+  const results = window.filterCourses(options);
+  document.getElementById('catalog-count').textContent = `Showing ${results.length} course${results.length !== 1 ? 's' : ''}`;
+  
+  if (results.length === 0) {
+    grid.innerHTML = '<div class="no-results"><div style="font-size:3rem;margin-bottom:1rem">🔍</div><h3 style="color:var(--text-primary);margin-bottom:0.5rem">No courses found</h3><p>Try adjusting your filters or search term.</p></div>';
+  } else {
+    grid.innerHTML = results.map(c => window.renderCourseCard(c)).join('');
+    initScrollReveal();
+  }
+}
+
+function quickFilter(btn, cat) {
+  document.querySelectorAll('[data-quick]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (cat === 'all') { filters.category = 'all'; filters.cpd = false; }
+  else if (cat === 'cpd') { filters.category = 'all'; filters.cpd = true; }
+  else { filters.category = cat; filters.cpd = false; }
+  renderCourses();
+}
+
+function setFilter(key, val, btn) {
+  if (btn) {
+    btn.closest('.filter-options').querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  filters[key] = val;
+  renderCourses();
+}
+
+function setSortFilter(val, btn) {
+  btn.closest('.filter-options').querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filters.sort = val;
+  renderCourses();
+}
+
+function updatePriceFilter(val) {
+  filters.maxPrice = parseInt(val);
+  document.getElementById('price-label').textContent = val >= 30000 ? 'Any Price' : `KES ${parseInt(val).toLocaleString()}`;
+  renderCourses();
+}
+
+function setGridCols(cols) {
+  const grid = document.getElementById('courses-grid');
+  grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+}
+
+function resetFilters() {
+  filters = { query: '', level: 'all', format: 'all', maxPrice: 30000, sort: 'popular', category: 'all', cpd: false };
+  document.getElementById('price-range').value = 30000;
+  document.getElementById('price-label').textContent = 'Any Price';
+  document.getElementById('course-search').value = '';
+  document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('[data-quick="all"]').forEach(b => b.classList.add('active'));
+  renderCourses();
+}
+
+// Search handler
+let searchTimeout;
+document.getElementById('course-search').addEventListener('input', (e) => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => { filters.query = e.target.value; renderCourses(); }, 300);
+});
+
+// URL param pre-filter
+const urlParams = new URLSearchParams(window.location.search);
+const catParam = urlParams.get('cat');
+if (catParam) {
+  const catMap = { ict: 'ICT', cbe: 'Curriculum', ai: 'AI & Tech', cpd: 'CPD', digital: 'Digital Skills', leadership: 'Leadership', assessment: 'Assessment', online: 'Pedagogy' };
+  if (catMap[catParam]) filters.category = catMap[catParam];
+}
+
+document.addEventListener('DOMContentLoaded', renderCourses);
+
+
+function updateFilters() {
+  if (typeof renderCourses === 'function') renderCourses();
+}
+document.addEventListener('change', (e) => {
+  if (e.target.classList.contains('filter-checkbox')) updateFilters();
+});
+document.addEventListener('input', (e) => {
+  if (e.target.id === 'course-search') updateFilters();
+});
+</script>
+</body>
+</html>
+

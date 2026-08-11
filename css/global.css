@@ -2,128 +2,120 @@
    INSTRUCTIFY KENYA — GLOBAL DESIGN SYSTEM & BRAND TOKENS
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap');
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
-  /* Royal Blue Primary Palette */
-  --color-primary:        #0057D9;
-  --color-primary-light:  #2575FC;
-  --color-primary-dark:   #003B95;
-  --color-primary-bg:     #E8F1FF;
-  --color-primary-glow:   rgba(0, 87, 217, 0.25);
+  /* Extended Brand Palette Tokens */
+  --primary-blue:         #2454E6;
+  --deep-navy:            #0B2545;
+  --sky-blue:             #38BDF8;
+  --teal:                 #14B8A6;
+  --green:                #22C55E;
+  --gold:                 #FBBF24;
+  --orange:               #F97316;
+  --purple:               #7C3AED;
+  --pink:                 #EC4899;
 
-  /* Gold Yellow Palette */
-  --color-gold:           #FFC107;
-  --color-gold-dark:      #E6A700;
-  --color-gold-light:     #FFF4CC;
-  --color-gold-glow:      rgba(255, 193, 7, 0.25);
+  --text-dark:            #182033;
+  --text-muted:           #5B6475;
+  --background:           #F8FAFC;
+  --soft-blue:            #EEF5FF;
+  --soft-teal:            #ECFDF5;
+  --soft-gold:            #FFF7DC;
+  --soft-purple:          #F3E8FF;
+  --white:                #FFFFFF;
 
-  /* Orange CTA Palette */
-  --color-orange:         #FF6B00;
-  --color-orange-dark:    #E65C00;
-  --color-orange-light:   #FFF0E6;
-  --color-orange-glow:    rgba(255, 107, 0, 0.25);
+  /* Official Brand System Aliases */
+  --color-navy:           #1E3A8A;
+  --color-orange:         #FF4D00;
+  --color-blue-accent:    #3B82F6;
+  --color-mint:           #5EEAD4;
+  --color-mint-bg:        rgba(94, 234, 212, 0.15);
 
-  /* Functional Status Colors */
-  --color-success:        #28A745;
-  --color-danger:         #DC3545;
-  --color-info:           #17A2B8;
+  --color-primary:        #1E3A8A;
+  --color-primary-light:  #3B82F6;
+  --color-primary-dark:   #152C6B;
+  --color-primary-bg:     #EFF6FF;
+  --color-primary-glow:   rgba(30, 58, 138, 0.15);
 
-  /* Neutral Corporate Palette */
-  --bg-dark:              #0F172A;
-  --bg-surface:           #1E293B;
-  --bg-card:              #182234;
-  --bg-card-hover:        #212E46;
-  --bg-elevated:          #24334D;
-  --bg-light:             #F5F7FA;
+  /* Button System Tokens */
+  --btn-orange:           #F24822;
+  --btn-orange-hover:     #FF4D00;
+  --btn-blue:             #007AFF;
+  --btn-blue-hover:       #1E3A8A;
+
+  /* Neutrals */
+  --bg-dark:              #1E3A8A;
+  --bg-surface:           #1F2937;
+  --bg-card:              #FFFFFF;
+  --bg-card-hover:        #F8FAFC;
+  --bg-light:             #F8FAFC;
   --bg-white:             #FFFFFF;
-  --bg-glass:             rgba(24, 34, 52, 0.75);
-  --bg-glass-border:      rgba(255, 255, 255, 0.12);
-  --bg-input:             rgba(255, 255, 255, 0.06);
 
   /* Text Colors */
-  --text-primary:         #F8FAFC;
-  --text-secondary:       #94A3B8;
-  --text-muted:           #64748B;
-  --text-dark:            #2D3748;
-  --text-accent:          #0057D9;
-  --text-gold:            #FFC107;
-  --text-orange:          #FF6B00;
+  --text-heading:         #020202;
+  --text-primary:         #020202;
+  --text-body:            #1F2937;
+  --text-secondary:       #1F2937;
+  --text-navy:            #1E3A8A;
+  --text-orange:          #FF4D00;
 
   /* Gradients */
-  --gradient-hero:        linear-gradient(135deg, #003B95 0%, #0057D9 45%, #0F172A 100%);
-  --gradient-gold:        linear-gradient(135deg, #FFC107 0%, #E6A700 100%);
-  --gradient-orange:      linear-gradient(135deg, #FF6B00 0%, #E65C00 100%);
-  --gradient-blue:        linear-gradient(135deg, #0057D9 0%, #2575FC 100%);
-  --gradient-card:        linear-gradient(145deg, rgba(0,87,217,0.1), rgba(255,107,0,0.05));
-  --gradient-shimmer:     linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
-
+  --gradient-blue:        linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+  --gradient-orange:      linear-gradient(135deg, #F24822 0%, #FF4D00 100%);
+  
   /* Borders & Radii */
-  --border-subtle:        rgba(255, 255, 255, 0.09);
-  --border-card:          rgba(255, 255, 255, 0.14);
-  --border-active:        rgba(0, 87, 217, 0.6);
+  --border-subtle:        #E5E7EB;
+  --border-card:          #E5E7EB;
   --border-radius-sm:     8px;
   --border-radius-md:     12px;
-  --border-radius-lg:     20px;
-  --border-radius-xl:     28px;
-  --border-radius-full:   9999px;
+  --border-radius-lg:     16px;
+  --border-radius-xl:     24px;
+  --border-radius-full:   999px;
 
   /* Shadows */
-  --shadow-sm:            0 2px 8px rgba(0,0,0,0.25);
-  --shadow-md:            0 8px 32px rgba(0,0,0,0.35);
-  --shadow-lg:            0 16px 64px rgba(0,0,0,0.45);
-  --shadow-blue:          0 8px 32px rgba(0, 87, 217, 0.35);
-  --shadow-gold:          0 8px 32px rgba(255, 193, 7, 0.3);
-  --shadow-orange:        0 8px 32px rgba(255, 107, 0, 0.35);
+  --shadow-sm:            0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md:            0 4px 6px -1px rgba(0,0,0,0.08);
+  --shadow-lg:            0 10px 30px rgba(0,0,0,0.06);
+  --shadow-blue:          0 4px 14px rgba(30, 58, 138, 0.25);
 
   /* Typography */
-  --font-heading:         'Outfit', sans-serif;
+  --font-heading:         'Poppins', sans-serif;
   --font-body:            'Inter', sans-serif;
-  --font-mono:            'JetBrains Mono', monospace;
 
   /* Sizes */
-  --text-xs:    0.75rem;
-  --text-sm:    0.875rem;
-  --text-base:  1rem;
-  --text-md:    1.125rem;
-  --text-lg:    1.25rem;
-  --text-xl:    1.5rem;
-  --text-2xl:   2rem;
-  --text-3xl:   2.5rem;
-  --text-4xl:   3.5rem;
-  --text-5xl:   4.5rem;
-  --text-hero:  clamp(2.5rem, 5.5vw, 4.8rem);
+  --text-xs:    14px;
+  --text-sm:    15px;
+  --text-base:  16px;
+  --text-md:    18px;
+  --text-lg:    20px;
+  --text-xl:    24px;
+  --text-2xl:   32px;
+  --text-3xl:   44px;
+  --text-4xl:   48px;
 
   /* Spacing */
-  --space-xs:   0.25rem;
-  --space-sm:   0.5rem;
-  --space-md:   1rem;
-  --space-lg:   1.5rem;
-  --space-xl:   2rem;
-  --space-2xl:  3rem;
-  --space-3xl:  4rem;
-  --space-4xl:  6rem;
-  --space-5xl:  8rem;
+  --space-xs:   8px;
+  --space-sm:   16px;
+  --space-md:   24px;
+  --space-lg:   32px;
+  --space-xl:   48px;
+  --space-2xl:  64px;
+  --space-3xl:  80px;
+  --space-4xl:  96px;
 
   /* Layout & Nav */
-  --max-width:        1280px;
+  --max-width:        1120px;
   --nav-height:       76px;
-  --sidebar-width:    260px;
 
   /* Transitions */
   --transition-fast:   0.15s ease;
   --transition-base:   0.25s ease;
-  --transition-slow:   0.4s ease;
-  --transition-spring: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Z-index */
   --z-base:    1;
-  --z-dropdown: 100;
   --z-sticky:  200;
-  --z-overlay: 300;
-  --z-modal:   400;
-  --z-toast:   500;
 }
 
 /* ── Reset ─────────────────────────────────────────────────── */
@@ -141,8 +133,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-dark);
-  color: var(--text-primary);
+  background-color: var(--bg-white);
+  color: var(--text-secondary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;

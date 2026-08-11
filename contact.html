@@ -31,60 +31,153 @@
   </div>
 </nav>
 
-<section class="courses-hero" style="background:var(--gradient-hero)">
+<!-- Hero Section -->
+<section class="hero-section" style="background:var(--bg-light); padding:calc(var(--nav-height) + var(--space-4xl)) 0 var(--space-3xl);">
   <div class="container text-center">
-    <span class="section-tag gold">📞 Get in Touch</span>
-    <h1 class="hero-heading" style="font-size:var(--text-3xl)">Contact &amp; Support</h1>
-    <p class="hero-subtitle" style="margin:0 auto">We are here to help teachers, trainers, institutions, and learners across Kenya.</p>
+    <h1 class="hero-heading" style="color:var(--text-primary); font-size:var(--text-4xl);">
+      Contact Instructify Kenya
+    </h1>
+    <p class="hero-subtitle" style="margin:0 auto; max-width:800px;">
+      Have a question, partnership idea, training request, or curriculum project? We would love to hear from you.
+    </p>
   </div>
 </section>
 
+<!-- Contact Information and Form Section -->
 <section class="section">
   <div class="container">
-    <div class="grid-2">
+    <div class="grid-2" style="align-items:flex-start;">
       <!-- Contact Info -->
-      <div class="card">
-        <h3 class="font-heading text-xl mb-lg">Instructify Kenya Headquarters</h3>
-        <div class="flex flex-col gap-md text-sm text-secondary mb-xl">
-          <div>📍 <strong>Location:</strong> Upper Hill Financial District, Nairobi, Kenya</div>
-          <div>📞 <strong>Phone:</strong> +254 700 123 456 / +254 733 987 654</div>
-          <div>📧 <strong>Email:</strong> info@instructify.ke / support@instructify.ke</div>
-          <div>🕒 <strong>Office Hours:</strong> Monday – Friday: 8:00 AM – 6:00 PM EAT</div>
+      <div class="card reveal-left" style="background:transparent; border:none; box-shadow:none; padding:0;">
+        <h2 class="font-heading text-2xl mb-lg">Get in Touch</h2>
+        <div style="display:flex; flex-direction:column; gap:var(--space-lg); margin-bottom:var(--space-xl);">
+          <div style="display:flex; gap:var(--space-md);">
+            <div style="font-size:1.5rem; color:var(--color-primary);">📧</div>
+            <div>
+              <h4 class="font-heading text-md" style="margin-bottom:4px;">Email</h4>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm);">info@instructify.ke</p>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm);">support@instructify.ke</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:var(--space-md);">
+            <div style="font-size:1.5rem; color:var(--color-primary);">📞</div>
+            <div>
+              <h4 class="font-heading text-md" style="margin-bottom:4px;">Phone / WhatsApp</h4>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm);">+254 700 123 456</p>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm);">+254 733 987 654</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:var(--space-md);">
+            <div style="font-size:1.5rem; color:var(--color-primary);">📍</div>
+            <div>
+              <h4 class="font-heading text-md" style="margin-bottom:4px;">Location</h4>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm);">Upper Hill Financial District, Nairobi, Kenya</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:var(--space-md);">
+            <div style="font-size:1.5rem; color:var(--color-primary);">🕒</div>
+            <div>
+              <h4 class="font-heading text-md" style="margin-bottom:4px;">Business Hours</h4>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm);">Monday – Friday: 8:00 AM – 6:00 PM EAT</p>
+            </div>
+          </div>
         </div>
-        <div class="alert alert-info">
-          <span>ℹ️</span> <strong>Institutional Inquiries:</strong> Contact our team for customized school-wide ICT training and CBE integration programs.
+        <div class="alert" style="background:var(--color-primary-glow); border:1px solid var(--color-primary-light); border-radius:var(--border-radius-md); padding:var(--space-md); display:flex; gap:var(--space-sm);">
+          <span>ℹ️</span>
+          <span style="color:var(--text-primary); font-size:var(--text-sm);">We typically respond within 24–48 business hours.</span>
         </div>
       </div>
 
       <!-- Contact Form -->
-      <div class="card">
-        <h3 class="font-heading text-xl mb-md">Send Us a Message</h3>
+      <div class="card reveal-right" style="padding:var(--space-2xl); border:1px solid var(--border-subtle); box-shadow:var(--shadow-md);">
         <form onsubmit="handleContactSubmit(event)">
-          <div class="form-group mb-md">
-            <label class="form-label">Your Full Name</label>
-            <input type="text" class="form-input" placeholder="e.g. Jane Wanjiku" required>
+          <div class="grid-2" style="gap:var(--space-md);">
+            <div class="form-group mb-md">
+              <label class="form-label">Full Name <span style="color:red;">*</span></label>
+              <input type="text" class="form-input" placeholder="e.g. Jane Wanjiku" required>
+            </div>
+            <div class="form-group mb-md">
+              <label class="form-label">Email Address <span style="color:red;">*</span></label>
+              <input type="email" class="form-input" placeholder="jane@example.com" required>
+            </div>
           </div>
-          <div class="form-group mb-md">
-            <label class="form-label">Email Address</label>
-            <input type="email" class="form-input" placeholder="jane@example.com" required>
+          
+          <div class="grid-2" style="gap:var(--space-md);">
+            <div class="form-group mb-md">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-input" placeholder="e.g. +254 700 000 000">
+            </div>
+            <div class="form-group mb-md">
+              <label class="form-label">Organization / School Name</label>
+              <input type="text" class="form-input" placeholder="e.g. Alliance High School">
+            </div>
           </div>
+
           <div class="form-group mb-md">
-            <label class="form-label">Subject</label>
-            <select class="form-select">
+            <label class="form-label">Inquiry Type <span style="color:red;">*</span></label>
+            <select class="form-select" required>
+              <option value="" disabled selected>Select an option</option>
               <option>Course Inquiry</option>
-              <option>Institutional Partnership</option>
-              <option>Technical Support</option>
-              <option>Certificate Verification</option>
+              <option>Training Request</option>
+              <option>Consultancy</option>
+              <option>Curriculum Development</option>
+              <option>Partnership</option>
+              <option>General Inquiry</option>
             </select>
           </div>
+          
           <div class="form-group mb-lg">
-            <label class="form-label">Message</label>
-            <textarea class="form-input form-textarea" placeholder="How can we assist you?" required></textarea>
+            <label class="form-label">Message <span style="color:red;">*</span></label>
+            <textarea class="form-input form-textarea" placeholder="How can we assist you?" rows="5" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg w-full">🚀 Send Message</button>
+          
+          <button type="submit" class="btn btn-primary btn-lg w-full">Send Message</button>
         </form>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Inquiry Cards Section -->
+<section class="section" style="background:var(--bg-light);">
+  <div class="container">
+    <div class="grid-4 stagger-children" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+      <!-- Card 1 -->
+      <div class="card reveal text-center" style="padding:var(--space-xl);">
+        <div style="font-size:2rem; margin-bottom:var(--space-sm); color:var(--color-primary);">📚</div>
+        <h4 class="font-heading text-md mb-xs">Course Support</h4>
+        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Get help with enrollment, certificates, or platform access.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="card reveal delay-100 text-center" style="padding:var(--space-xl);">
+        <div style="font-size:2rem; margin-bottom:var(--space-sm); color:var(--color-primary);">🎤</div>
+        <h4 class="font-heading text-md mb-xs">Training & Workshops</h4>
+        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Request customized workshops for your institution.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="card reveal delay-200 text-center" style="padding:var(--space-xl);">
+        <div style="font-size:2rem; margin-bottom:var(--space-sm); color:var(--color-primary);">💼</div>
+        <h4 class="font-heading text-md mb-xs">Consultancy Services</h4>
+        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Discuss strategy, evaluation, or institutional transformation.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="card reveal delay-300 text-center" style="padding:var(--space-xl);">
+        <div style="font-size:2rem; margin-bottom:var(--space-sm); color:var(--color-primary);">📐</div>
+        <h4 class="font-heading text-md mb-xs">Curriculum Development</h4>
+        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Collaborate on designing competency-based frameworks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partnership CTA Section -->
+<section class="section text-center" style="background:var(--color-primary-bg); padding:var(--space-4xl) 20px;">
+  <div class="container" style="max-width:800px;">
+    <h2 class="font-heading" style="font-size:var(--text-3xl); margin-bottom:var(--space-md);">Partner With Instructify Kenya</h2>
+    <p style="font-size:var(--text-lg); color:var(--text-secondary); margin-bottom:var(--space-xl);">
+      We collaborate with schools, institutions, ministries, and organizations to design learning experiences that create lasting impact.
+    </p>
+    <a href="#hero" class="btn btn-primary btn-xl">Start a Conversation</a>
   </div>
 </section>
 
