@@ -11,21 +11,29 @@
 </head>
 <body>
 
-<nav id="navbar" class="navbar scrolled">
+<nav id="navbar" class="navbar">
   <div class="container">
     <a href="index.html" class="nav-brand">
-      <div class="nav-logo">IK</div>
+      <div class="nav-logo" style="background:var(--color-primary-blue);">IK</div>
       <div class="nav-brand-text">
         <span class="nav-brand-name">Instructify</span>
-        <span class="nav-brand-tagline">Learner Portal</span>
+        <span class="nav-brand-tagline">Kenya</span>
       </div>
     </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="courses.html" class="nav-link">Courses</a></li>
+      <li><a href="training.html" class="nav-link">Training</a></li>
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="consultancy.html#curriculum" class="nav-link">Curriculum</a></li>
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
     <div class="nav-actions">
-      <div class="flex items-center gap-md">
-        <div class="avatar-placeholder avatar-sm" id="user-avatar-top">JM</div>
-        <span id="user-name-top" style="font-size:var(--text-sm);font-weight:600">James Mwangi</span>
-        <button onclick="logout()" class="btn btn-outline btn-sm">Logout</button>
-      </div>
+      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="courses.html" class="btn btn-orange btn-sm">Start Learning</a>
     </div>
   </div>
 </nav>

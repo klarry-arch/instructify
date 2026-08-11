@@ -11,24 +11,29 @@
 </head>
 <body>
 
-<nav id="navbar" class="navbar scrolled">
+<nav id="navbar" class="navbar">
   <div class="container">
     <a href="index.html" class="nav-brand">
-      <div class="nav-logo">IK</div>
-      <div class="nav-brand-text"><span class="nav-brand-name">Instructify</span><span class="nav-brand-tagline">Kenya</span></div>
+      <div class="nav-logo" style="background:var(--color-primary-blue);">IK</div>
+      <div class="nav-brand-text">
+        <span class="nav-brand-name">Instructify</span>
+        <span class="nav-brand-tagline">Kenya</span>
+      </div>
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="courses.html" class="nav-link">Courses</a></li>
       <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="courses.html" class="nav-link">Courses</a></li>
+      <li><a href="training.html" class="nav-link">Training</a></li>
       <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
-      <li><a href="resources.html" class="nav-link active">Resources</a></li>
-      <li><a href="events.html" class="nav-link">Events</a></li>
-      <li><a href="news.html" class="nav-link">Blog</a></li>
+      <li><a href="consultancy.html#curriculum" class="nav-link">Curriculum</a></li>
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="register.html" class="btn btn-primary btn-sm">Sign In</a>
+      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="courses.html" class="btn btn-orange btn-sm">Start Learning</a>
     </div>
   </div>
 </nav>
@@ -179,9 +184,45 @@
   </div>
 </section>
 
-<footer class="footer">
-  <div class="container text-center">
-    <div style="font-size:var(--text-xs);color:var(--text-muted)">© 2026 Instructify Kenya Ltd. All rights reserved.</div>
+<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
+  <div class="container">
+    <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
+      <div>
+        <h3 style="font-size:18px; font-weight:700; margin-bottom:16px;">Instructify Kenya</h3>
+        <p style="font-size:14px; color:rgba(255,255,255,0.8); line-height:1.6; margin-bottom:24px;">
+          Ignite Curiosity. Transform Learning. Renew Communities.
+        </p>
+        <a href="contact.html" class="btn btn-orange btn-sm">Partner With Us</a>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Quick Links</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
+          <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
+          <li><a href="training.html" style="color:var(--color-white); text-decoration:none;">Teacher Training</a></li>
+          <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Discover</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="schools.html" style="color:var(--color-white); text-decoration:none;">Institutions</a></li>
+          <li><a href="community.html" style="color:var(--color-white); text-decoration:none;">Community Impact</a></li>
+          <li><a href="resources.html" style="color:var(--color-white); text-decoration:none;">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px;">Newsletter Signup</h4>
+        <p style="font-size:13px; color:rgba(255,255,255,0.8); margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
+        <div style="display:flex; gap:8px;">
+          <input type="email" placeholder="Your email" style="padding:10px; border-radius:6px; border:none; width:100%;">
+          <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:24px 0; font-size:13px; color:rgba(255,255,255,0.7);">
+      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color:#FFF;">Contact Us</a>
+    </div>
   </div>
 </footer>
 
