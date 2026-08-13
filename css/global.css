@@ -266,12 +266,15 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
-/* Navigation links & buttons — semi-bold for clarity */
+/* Navigation links, menu headings & buttons — bold for high visibility */
 nav a,
 .nav-link,
-.nav-brand-name {
+.nav-mobile-link,
+.nav-brand-name,
+.menu-heading,
+.sidebar-section-label {
   font-family: inherit;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* Hero titles & major section titles — bold for impact */
