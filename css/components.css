@@ -1,8 +1,8 @@
 /* ============================================================
    INSTRUCTIFY KENYA — REUSABLE COMPONENTS & NAVIGATION
+   Premium LMS v2.0
    ============================================================ */
 
-/* ── Navigation Bar ─────────────────────────────────────────── */
 /* ── Navigation Bar ─────────────────────────────────────────── */
 .navbar {
   position: fixed;
@@ -11,14 +11,16 @@
   z-index: var(--z-sticky);
   display: flex;
   align-items: center;
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
   transition: background var(--transition-base), box-shadow var(--transition-base);
 }
 
 .navbar.scrolled {
-  background: #FFFFFF;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
 }
 
 .navbar .container {
@@ -31,6 +33,7 @@
   padding: 0 var(--space-xl);
 }
 
+/* ── Brand Logo ─────────────────────────────────────────────── */
 .nav-brand {
   display: flex;
   align-items: center;
@@ -42,17 +45,18 @@
 .nav-logo {
   width: 42px;
   height: 42px;
-  background: var(--color-navy);
+  background: var(--gradient-primary);
   border-radius: var(--border-radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.15rem;
+  font-weight: 800;
+  font-size: 1.1rem;
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(30, 58, 138, 0.2);
+  box-shadow: var(--shadow-blue);
   flex-shrink: 0;
+  letter-spacing: -0.02em;
 }
 
 .nav-brand-text {
@@ -63,24 +67,25 @@
 
 .nav-brand-name {
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.15rem;
-  color: #020202;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .nav-brand-tagline {
-  font-size: 0.65rem;
-  color: #6B7280;
-  font-weight: 600;
+  font-size: 0.62rem;
+  color: var(--color-primary);
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
 }
 
+/* ── Nav Links ──────────────────────────────────────────────── */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -88,35 +93,49 @@
 
 .nav-link {
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
-  color: #1F2937;
-  padding: 10px 16px;
+  color: var(--text-secondary);
+  padding: 8px 14px;
   border-radius: var(--border-radius-full);
   transition: all var(--transition-fast);
   text-decoration: none;
   white-space: nowrap;
+  position: relative;
 }
 
 .nav-link:hover {
-  color: #F24822;
-  background: #FFF5F0;
+  color: var(--color-primary);
+  background: var(--color-primary-bg);
 }
 
 .nav-link.active {
-  color: #1E3A8A;
-  background: #EFF6FF;
+  color: var(--color-primary);
+  background: var(--color-primary-bg);
   font-weight: 600;
 }
 
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2.5px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+/* ── Nav Actions ────────────────────────────────────────────── */
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-shrink: 0;
 }
 
-/* Hamburger */
+/* ── Hamburger ──────────────────────────────────────────────── */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -131,7 +150,7 @@
   display: block;
   width: 22px;
   height: 2px;
-  background: #1F2937;
+  background: var(--text-primary);
   border-radius: 1px;
   transition: transform var(--transition-base), opacity var(--transition-fast);
 }
@@ -140,7 +159,7 @@
 .nav-hamburger.open span:nth-child(2) { opacity: 0; }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Mobile Navigation */
+/* ── Mobile Navigation ──────────────────────────────────────── */
 .nav-mobile {
   display: none;
   position: fixed;
@@ -150,7 +169,7 @@
   border-bottom: 1px solid var(--border-subtle);
   padding: var(--space-lg);
   z-index: var(--z-sticky);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
 }
 
 .nav-mobile.open {
@@ -160,7 +179,7 @@
 .nav-mobile-links {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   margin-bottom: var(--space-lg);
 }
 
@@ -171,111 +190,153 @@
   border-radius: var(--border-radius-sm);
   font-size: var(--text-base);
   font-weight: 500;
-  color: #1F2937;
+  color: var(--text-secondary);
   text-decoration: none;
   transition: all var(--transition-fast);
 }
 .nav-mobile-link:hover {
-  color: #1E3A8A;
-  background: #EFF6FF;
+  color: var(--color-primary);
+  background: var(--color-primary-bg);
 }
 
-/* ── Buttons System ──────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   BUTTON SYSTEM — Premium LMS
+   ══════════════════════════════════════════════════════════════ */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 24px;
-  border-radius: 999px;
+  padding: 12px 24px;
+  border-radius: var(--border-radius-full);
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.01em;
   cursor: pointer;
   border: none;
   text-decoration: none;
-  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color var(--transition-base),
+              transform var(--transition-base),
+              box-shadow var(--transition-base),
+              color var(--transition-fast);
   position: relative;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.btn:active { transform: scale(0.98); }
+.btn:active { transform: scale(0.97); }
 
-/* Button Option 1: Orange CTA (High Energy Action & Curiosity) */
-.btn-orange,
-.btn-accent {
-  background-color: #F4511E;
-  color: #FFFFFF;
-}
-.btn-orange:hover,
-.btn-accent:hover {
-  background-color: #D83A06;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(244, 81, 30, 0.25);
-}
-
-/* Button Option 2: Blue CTA (Institutional & Professional Learning) */
+/* ── Primary Blue Button ─────────────────────────────────────── */
 .btn-primary,
 .btn-blue {
-  background-color: #1473E6;
+  background: var(--color-primary);
   color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
 }
 .btn-primary:hover,
 .btn-blue:hover {
-  background-color: #071D3A;
+  background: var(--color-primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(20, 115, 230, 0.25);
+  box-shadow: var(--shadow-blue);
+  color: #FFFFFF;
 }
 
-/* Outline Button */
+/* ── Orange CTA Button ───────────────────────────────────────── */
+.btn-orange,
+.btn-accent {
+  background: var(--gradient-orange);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(244, 81, 30, 0.3);
+}
+.btn-orange:hover,
+.btn-accent:hover {
+  background: var(--color-orange-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-orange);
+  color: #FFFFFF;
+}
+
+/* ── Teal Button ─────────────────────────────────────────────── */
+.btn-teal {
+  background: var(--color-teal);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.3);
+}
+.btn-teal:hover {
+  background: var(--color-teal-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-teal);
+  color: #FFFFFF;
+}
+
+/* ── Outline Button ──────────────────────────────────────────── */
 .btn-outline {
   background: transparent;
-  color: #1473E6;
-  border: 1.5px solid #1473E6;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
 .btn-outline:hover {
-  color: #1473E6;
-  background: #EAF3FF;
-  border-color: #1473E6;
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-blue);
 }
 
+/* ── Ghost Button ────────────────────────────────────────────── */
 .btn-ghost {
   background: transparent;
-  color: #1F2937;
-  padding: 8px 16px;
+  color: var(--text-secondary);
+  padding: 10px 18px;
 }
 .btn-ghost:hover {
-  color: #1473E6;
-  background: #F5F8FC;
+  color: var(--color-primary);
+  background: var(--color-primary-bg);
 }
 
-.btn-sm { padding: 10px 18px; font-size: 14px; }
-.btn-lg { padding: 16px 32px; font-size: 16px; }
-
-/* ── Responsive Breakpoints ──────────────────────────────────── */
-@media (max-width: 1080px) {
-  .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
-}
-
-/* ── Footer Styling ──────────────────────────────────────────── */
-.footer {
-  background-color: #071D3A;
+/* ── Dark Button ─────────────────────────────────────────────── */
+.btn-dark {
+  background: var(--bg-dark);
   color: #FFFFFF;
-  padding: 64px 0 32px 0;
+}
+.btn-dark:hover {
+  background: var(--bg-dark-surface);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Button Sizes ────────────────────────────────────────────── */
+.btn-sm { padding: 8px 18px; font-size: 13px; }
+.btn-lg { padding: 16px 36px; font-size: 16px; }
+.btn-xl { padding: 18px 40px; font-size: 17px; }
+
+/* ══════════════════════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════════════════════ */
+.footer {
+  background: var(--bg-dark);
+  color: #FFFFFF;
+  padding: 72px 0 32px 0;
   margin-top: auto;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
 }
 
 .footer a {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.75);
   transition: color var(--transition-fast);
 }
 
 .footer a:hover {
-  color: #F4511E;
+  color: var(--color-teal-light);
 }
 
 .footer .nav-brand-name {
@@ -284,33 +345,37 @@
 
 .footer-text,
 .footer-copy {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.55);
   font-size: var(--text-sm);
 }
 
-/* ── SaaS Course Card Components ─────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   COURSE CARDS — Premium LMS Style
+   ══════════════════════════════════════════════════════════════ */
 .course-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(0,0,0,0.05);
-  border-radius: 16px;
+  background: var(--bg-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-lg);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base),
+              border-color var(--transition-base);
 }
 
 .course-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 15px 40px rgba(20, 115, 230, 0.1);
-  border-color: rgba(20, 115, 230, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.25);
 }
 
 .course-card-image {
   position: relative;
   width: 100%;
-  height: 180px;
-  background: #F1F5F9;
+  height: 190px;
+  background: linear-gradient(135deg, var(--color-primary-bg), var(--color-teal-bg));
   overflow: hidden;
 }
 
@@ -318,62 +383,73 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
 .course-card:hover .course-card-image img {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
 .course-card-badge {
   position: absolute;
   top: 12px;
   left: 12px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
-  background: #FFFFFF;
-  color: #2563EB;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 4px 12px;
+  border-radius: var(--border-radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .course-card-wishlist {
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.15s ease;
+  font-size: 16px;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.course-card-wishlist:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
 }
 
 .course-card-body {
-  padding: 20px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
 .course-card-category {
-  font-size: 13px;
-  font-weight: 500;
-  color: #2563EB;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-teal);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 6px;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
 }
 
 .course-card-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: #0F172A;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
   line-height: 1.35;
   margin-bottom: 12px;
 }
@@ -384,39 +460,45 @@
   gap: 8px;
   font-size: 13px;
   font-weight: 500;
-  color: #64748B;
-  margin-bottom: 12px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
 }
 
 .instructor-avatar {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: #DBEAFE;
-  color: #2563EB;
+  background: var(--gradient-primary);
+  color: #FFFFFF;
   font-size: 11px;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .course-card-stats {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-size: 13px;
   font-weight: 500;
-  color: #64748B;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.course-card-stats .rating {
+  color: var(--color-amber);
 }
 
 .course-card-footer {
-  padding: 16px 20px;
-  border-top: 1px solid #F1F5F9;
+  padding: 16px 22px;
+  border-top: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #FFFFFF;
+  background: var(--bg-canvas);
 }
 
 .course-price {
@@ -427,14 +509,74 @@
 
 .price-current {
   font-size: 18px;
-  font-weight: 700;
-  color: #0F172A;
+  font-weight: 800;
+  color: var(--text-primary);
 }
 
 .price-original {
   font-size: 13px;
-  color: #94A3B8;
+  color: var(--text-muted);
   text-decoration: line-through;
 }
 
+/* ══════════════════════════════════════════════════════════════
+   TOAST NOTIFICATIONS
+   ══════════════════════════════════════════════════════════════ */
+#toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
 
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: var(--border-radius-md);
+  background: var(--bg-dark);
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: var(--shadow-xl);
+  pointer-events: all;
+  cursor: pointer;
+  animation: slideInUp 0.35s ease both;
+  max-width: 360px;
+  border-left: 4px solid var(--color-primary);
+}
+
+.toast-success { border-left-color: var(--color-mint); }
+.toast-error   { border-left-color: var(--color-danger); }
+.toast-warning { border-left-color: var(--color-amber); }
+.toast-info    { border-left-color: var(--color-info); }
+
+.toast.hiding {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: translateX(20px); }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 1080px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+
+@media (max-width: 768px) {
+  .btn-lg { padding: 14px 28px; }
+}
