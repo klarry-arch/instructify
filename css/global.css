@@ -3,7 +3,7 @@
    Premium LMS Color System v2.0
    ============================================================ */
 
-/* System font stack — no external import needed */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
@@ -157,9 +157,9 @@
   /* ══════════════════════════════════════════
      TYPOGRAPHY
      ══════════════════════════════════════════ */
-  --font-system:            "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  --font-heading:           "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  --font-body:              "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-system:            "Poppins", sans-serif;
+  --font-heading:           "Poppins", sans-serif;
+  --font-body:              "Poppins", sans-serif;
 
   --text-xs:    13px;
   --text-sm:    14px;
@@ -266,14 +266,14 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
 }
 
-/* Navigation links, menu headings & buttons — bold with #020202 for high visibility */
+/* Navigation links, menu headings & buttons */
 nav a,
 .nav-link,
 .nav-mobile-link,
 .nav-brand-name,
 .menu-heading {
   font-family: inherit;
-  font-weight: 700;
+  font-weight: 500;
   color: #020202;
 }
 
