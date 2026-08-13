@@ -12,13 +12,13 @@
      Inspired by: Coursera, Canvas, Teachable, Moodle
      ══════════════════════════════════════════ */
 
-  /* Primary — Kenyan Green (growth, trust, action — CTA color) */
-  --color-primary:          #16A34A;
-  --color-primary-dark:     #15803D;
-  --color-primary-darker:   #166534;
-  --color-primary-light:    #22C55E;
-  --color-primary-bg:       #F0FDF4;
-  --color-primary-glow:     rgba(22, 163, 74, 0.15);
+  /* Primary — Bold Accent (action, energy, CTA color) */
+  --color-primary:          #DC2E0A;
+  --color-primary-dark:     #B22206;
+  --color-primary-darker:   #961B04;
+  --color-primary-light:    #F4511E;
+  --color-primary-bg:       #FFF4F0;
+  --color-primary-glow:     rgba(220, 46, 10, 0.15);
 
   /* Secondary — Energetic Teal (progress, completion, growth) */
   --color-teal:             #0D9488;
@@ -59,10 +59,10 @@
   --color-teal-bg:          #F0FDFA;
   --color-teal-glow:        rgba(13, 148, 136, 0.15);
 
-  /* Success / Mint */
-  --color-mint:             #16A34A;
-  --color-mint-bg:          #F0FDF4;
-  --color-growth-green:     #16A34A;
+  /* Accent / Mint / Brand */
+  --color-mint:             #DC2E0A;
+  --color-mint-bg:          #FFF4F0;
+  --color-growth-green:     #DC2E0A;
 
   /* Danger / Error */
   --color-danger:           #EF4444;
@@ -92,10 +92,10 @@
   --text-secondary:         #475569;   /* Secondary — Slate 600          */
   --text-muted:             #94A3B8;   /* Muted — Slate 400              */
   --text-navy:              #0F172A;
-  --text-orange:            #F4511E;
+  --text-orange:            #DC2E0A;
   --text-blue:              #1E3A8A;
   --text-teal:              #0D9488;
-  --text-green:             #16A34A;
+  --text-green:             #DC2E0A;
   --color-white:            #FFFFFF;
 
   /* Legacy compat */
@@ -106,24 +106,24 @@
   /* ══════════════════════════════════════════
      GRADIENTS
      ══════════════════════════════════════════ */
-  --gradient-primary:       linear-gradient(135deg, #15803D 0%, #16A34A 50%, #22C55E 100%);
-  --gradient-green:         linear-gradient(135deg, #166534 0%, #16A34A 100%);
+  --gradient-primary:       linear-gradient(135deg, #B22206 0%, #DC2E0A 50%, #F4511E 100%);
+  --gradient-green:         linear-gradient(135deg, #961B04 0%, #DC2E0A 100%);
   --gradient-blue:          linear-gradient(135deg, #1B3278 0%, #1E3A8A 100%);
   --gradient-teal:          linear-gradient(135deg, #0F766E 0%, #0D9488 100%);
-  --gradient-orange:        linear-gradient(135deg, #DC2E0A 0%, #F4511E 100%);
-  --gradient-warm:          linear-gradient(135deg, #F59E0B 0%, #F4511E 100%);
-  --gradient-hero:          linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #166534 100%);
-  --gradient-hero-light:    linear-gradient(135deg, #EFF6FF 0%, #F0FDF4 100%);
+  --gradient-orange:        linear-gradient(135deg, #961B04 0%, #DC2E0A 100%);
+  --gradient-warm:          linear-gradient(135deg, #F59E0B 0%, #DC2E0A 100%);
+  --gradient-hero:          linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #961B04 100%);
+  --gradient-hero-light:    linear-gradient(135deg, #EFF6FF 0%, #FFF4F0 100%);
   --gradient-card:          linear-gradient(145deg, #FFFFFF 0%, #F8FAFF 100%);
   --gradient-shimmer:       linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
-  --gradient-surface:       linear-gradient(135deg, #EFF6FF 0%, #F0FDF4 100%);
+  --gradient-surface:       linear-gradient(135deg, #EFF6FF 0%, #FFF4F0 100%);
 
   /* ══════════════════════════════════════════
      BORDERS & RADII
      ══════════════════════════════════════════ */
   --border-subtle:          #E2E8F0;
   --border-card:            #E2E8F0;
-  --border-focus:           #16A34A;
+  --border-focus:           #DC2E0A;
   --border-radius-xs:       4px;
   --border-radius-sm:       8px;
   --border-radius-md:       12px;
@@ -141,18 +141,18 @@
   --shadow-lg:              0 12px 36px rgba(15,23,42,0.10);
   --shadow-xl:              0 24px 60px rgba(15,23,42,0.12);
   --shadow-blue:            0 6px 24px rgba(30, 58, 138, 0.28);
-  --shadow-green:           0 6px 24px rgba(22, 163, 74, 0.28);
+  --shadow-green:           0 6px 24px rgba(220, 46, 10, 0.28);
   --shadow-teal:            0 6px 24px rgba(13, 148, 136, 0.25);
-  --shadow-orange:          0 6px 24px rgba(244, 81, 30, 0.25);
+  --shadow-orange:          0 6px 24px rgba(220, 46, 10, 0.25);
   --shadow-card:            0 2px 12px rgba(15,23,42,0.06), 0 1px 3px rgba(15,23,42,0.04);
 
   /* Button System Tokens */
-  --btn-orange:             #F4511E;
-  --btn-orange-hover:       #DC2E0A;
+  --btn-orange:             #DC2E0A;
+  --btn-orange-hover:       #B22206;
   --btn-blue:               #1E3A8A;
   --btn-blue-hover:         #1B3278;
-  --btn-green:              #16A34A;
-  --btn-green-hover:        #15803D;
+  --btn-green:              #DC2E0A;
+  --btn-green-hover:        #B22206;
 
   /* ══════════════════════════════════════════
      TYPOGRAPHY
@@ -369,7 +369,7 @@ nav a,
 .section-tag.green {
   color: var(--color-primary);
   background: var(--color-primary-bg);
-  border: 1px solid rgba(22, 163, 74, 0.2);
+  border: 1px solid rgba(220, 46, 10, 0.2);
 }
 
 .section-tag.orange {

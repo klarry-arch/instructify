@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    INSTRUCTIFY KENYA — COURSE DATA & CATALOG MODULE
    ============================================================ */
 
@@ -262,7 +262,7 @@ window.renderCourseCard = function(course) {
     <div class="course-card reveal">
       <div class="course-card-image">
         <img src="${course.image}" alt="${course.title}" loading="lazy" 
-             onerror="this.parentElement.style.background='linear-gradient(135deg,#0D6E4F,#00B4D8)';this.style.display='none'">
+             onerror="this.parentElement.style.background='linear-gradient(135deg,#DC2E0A,#00B4D8)';this.style.display='none'">
         <span class="course-card-badge ${course.badge}">${course.badgeText}</span>
         <button class="course-card-wishlist" onclick="toggleWishlist(this)" title="Add to wishlist">🤍</button>
       </div>

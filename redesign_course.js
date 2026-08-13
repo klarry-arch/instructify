@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 const cssPath = path.join('c:\\instructify', 'css', 'global.css');
@@ -24,7 +24,7 @@ const newRenderCourseCard = `window.renderCourseCard = function(course) {
   return \`
     <div class="course-card reveal" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); border-radius: var(--border-radius-xl); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;">
       <div class="course-card-image" style="position: relative; height: 200px; overflow: hidden;">
-        <img src="\${course.image}" alt="\${course.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease;" onerror="this.parentElement.style.background='linear-gradient(135deg,#0D6E4F,#00B4D8)';this.style.display='none'">
+        <img src="\${course.image}" alt="\${course.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease;" onerror="this.parentElement.style.background='linear-gradient(135deg,#DC2E0A,#00B4D8)';this.style.display='none'">
         <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%); opacity: 0.8;"></div>
         <span class="course-card-badge \${course.badge}" style="position: absolute; top: 16px; left: 16px; padding: 6px 14px; border-radius: 99px; font-weight: 700; font-size: 0.75rem; box-shadow: 0 4px 12px rgba(0,0,0,0.25); z-index: 2; text-transform: uppercase; letter-spacing: 0.05em;">\${course.badgeText}</span>
         <button class="course-card-wishlist" onclick="toggleWishlist(this)" title="Add to wishlist" style="position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.5); color: white; display: flex; align-items: center; justify-content: center; z-index: 2; transition: all 0.2s; cursor: pointer;">🤍</button>
@@ -41,7 +41,7 @@ const newRenderCourseCard = `window.renderCourseCard = function(course) {
           <span style="font-weight: 500; display:flex; align-items:center; gap:4px;">⏱️ \${course.duration}</span>
           <span style="font-weight: 500; display:flex; align-items:center; gap:4px;">📈 \${course.level}</span>
         </div>
-        \${course.cpd ? \`<div style="margin-top: auto; padding-top: 0.5rem;"><span class="badge badge-success" style="background: rgba(22, 163, 74, 0.1); color: #16a34a; border: 1px solid rgba(22,163,74,0.2); padding: 6px 12px; font-size: 0.75rem;">✅ CPD Accredited · \${course.cpdHours} hrs</span></div>\` : '<div style="margin-top: auto;"></div>'}
+        \${course.cpd ? \`<div style="margin-top: auto; padding-top: 0.5rem;"><span class="badge badge-success" style="background: rgba(220, 46, 10, 0.1); color: #DC2E0A; border: 1px solid rgba(220,46,10,0.2); padding: 6px 12px; font-size: 0.75rem;">✅ CPD Accredited · \${course.cpdHours} hrs</span></div>\` : '<div style="margin-top: auto;"></div>'}
       </div>
       <div class="course-card-footer" style="padding: 1.5rem 1.75rem; border-top: 1px solid rgba(229, 231, 235, 0.6); display: flex; align-items: center; justify-content: space-between; background: rgba(248, 250, 252, 0.4);">
         <div class="course-price" style="display: flex; flex-direction: column;">
