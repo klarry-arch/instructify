@@ -293,3 +293,24 @@ window.renderCourseCard = function(course) {
     </div>
   `;
 };
+
+// ── Wishlist Toggle ────────────────────────────────────────
+window.toggleWishlist = function(btn) {
+  var card = btn.closest && (btn.closest("[data-course-id]") || btn.closest(".course-card"));
+  var courseId = card ? card.getAttribute("data-course-id") : null;
+  var wishlist = JSON.parse(localStorage.getItem("ik_wishlist") || "[]");
+  var isWishlisted = btn.classList.contains("wishlisted");
+  if (isWishlisted) {
+    btn.classList.remove("wishlisted");
+    btn.innerHTML = "🤍";
+    btn.title = "Add to wishlist";
+    if (courseId) { var idx = wishlist.indexOf(courseId); if (idx > -1) wishlist.splice(idx, 1); }
+  } else {
+    btn.classList.add("wishlisted");
+    btn.innerHTML = "❤️";
+    btn.title = "Remove from wishlist";
+    if (courseId && !wishlist.includes(courseId)) wishlist.push(courseId);
+  }
+  localStorage.setItem("ik_wishlist", JSON.stringify(wishlist));
+  if (window.showToast) { window.showToast(isWishlisted ? "Removed from wishlist" : "Added to wishlist! ❤️", "info", 2000); }
+};

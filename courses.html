@@ -436,12 +436,20 @@ function setFilter(key, val) {
   renderCourses();
 }
 
+function toggleCPD(checkbox) {
+  filters.cpd = checkbox.checked;
+  renderCourses();
+}
+
 // Search handler
 let searchTimeout;
-document.getElementById('course-search').addEventListener('input', (e) => {
-  clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(() => { filters.query = e.target.value; renderCourses(); }, 300);
-});
+const _searchEl = document.getElementById('course-search');
+if (_searchEl) {
+  _searchEl.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => { filters.query = e.target.value; renderCourses(); }, 300);
+  });
+}
 
 document.addEventListener('DOMContentLoaded', renderCourses);
 </script>
