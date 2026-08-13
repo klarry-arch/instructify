@@ -154,15 +154,15 @@
   /* ══════════════════════════════════════════
      SPACING
      ══════════════════════════════════════════ */
-  --space-xs:   6px;
-  --space-sm:   12px;
-  --space-md:   20px;
-  --space-lg:   28px;
-  --space-xl:   40px;
-  --space-2xl:  56px;
-  --space-3xl:  72px;
-  --space-4xl:  96px;
-  --space-5xl:  120px;
+  --space-xs:   4px;
+  --space-sm:   10px;
+  --space-md:   16px;
+  --space-lg:   24px;
+  --space-xl:   36px;
+  --space-2xl:  48px;
+  --space-3xl:  64px;
+  --space-4xl:  80px;
+  --space-5xl:  96px;
 
   /* ══════════════════════════════════════════
      LAYOUT & NAV
@@ -309,12 +309,12 @@ nav a,
 
 /* ── Section Standardizations ──────────────────────────────────── */
 .section {
-  padding: var(--space-5xl) 0;
+  padding: var(--space-4xl) 0;
   position: relative;
 }
 
 .section-sm {
-  padding: var(--space-3xl) 0;
+  padding: var(--space-2xl) 0;
 }
 
 /* ── Section Tags / Badges ──────────────────────────────────────── */
@@ -362,22 +362,22 @@ nav a,
   font-size: var(--text-3xl);
   font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
   line-height: 1.2;
 }
 
 .section-subtitle {
   font-size: var(--text-md);
   color: var(--text-secondary);
-  max-width: 680px;
+  max-width: 660px;
   margin: 0 auto;
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
 /* ── Section Header ─────────────────────────────────────────── */
 .section-header {
   text-align: center;
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-3xl);
 }
 
 /* ── Layout Utilities ───────────────────────────────────────── */
@@ -480,5 +480,5 @@ nav a,
   .container { padding: 0 var(--space-lg); }
   .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
   .section-title { font-size: var(--text-2xl); }
-  .section { padding: var(--space-4xl) 0; }
+  .section { padding: var(--space-3xl) 0; }
 }
