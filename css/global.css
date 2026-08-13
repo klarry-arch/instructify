@@ -12,13 +12,13 @@
      Inspired by: Coursera, Canvas, Teachable, Moodle
      ══════════════════════════════════════════ */
 
-  /* Primary — Deep Institutional Blue (trust, authority, learning) */
-  --color-primary:          #2563EB;
-  --color-primary-dark:     #1B3D7B;
-  --color-primary-darker:   #1E3A8A;
-  --color-primary-light:    #3B82F6;
-  --color-primary-bg:       #EFF6FF;
-  --color-primary-glow:     rgba(37, 99, 235, 0.15);
+  /* Primary — Kenyan Green (growth, trust, action — CTA color) */
+  --color-primary:          #16A34A;
+  --color-primary-dark:     #15803D;
+  --color-primary-darker:   #166534;
+  --color-primary-light:    #22C55E;
+  --color-primary-bg:       #F0FDF4;
+  --color-primary-glow:     rgba(22, 163, 74, 0.15);
 
   /* Secondary — Energetic Teal (progress, completion, growth) */
   --color-teal:             #0D9488;
@@ -40,15 +40,29 @@
   --color-curiosity-orange: #F4511E;
   --color-light-orange:     #FFF4F0;
 
+  /* Blue — Institutional (secondary, headings, nav, outlines) */
+  --color-blue:             #1E3A8A;
+  --color-blue-dark:        #1B3278;
+  --color-blue-light:       #2563EB;
+  --color-blue-bg:          #EFF6FF;
+  --color-blue-glow:        rgba(37, 99, 235, 0.15);
+
   /* Blue Aliases — backwards compat */
-  --color-primary-blue:     #2563EB;
-  --color-blue-accent:      #0EA5E9;
+  --color-primary-blue:     #1E3A8A;
+  --color-blue-accent:      #2563EB;
   --color-light-blue:       #EFF6FF;
 
+  /* Teal — Progress, completion */
+  --color-teal:             #0D9488;
+  --color-teal-dark:        #0F766E;
+  --color-teal-light:       #14B8A6;
+  --color-teal-bg:          #F0FDFA;
+  --color-teal-glow:        rgba(13, 148, 136, 0.15);
+
   /* Success / Mint */
-  --color-mint:             #10B981;
-  --color-mint-bg:          #ECFDF5;
-  --color-growth-green:     #10B981;
+  --color-mint:             #16A34A;
+  --color-mint-bg:          #F0FDF4;
+  --color-growth-green:     #16A34A;
 
   /* Danger / Error */
   --color-danger:           #EF4444;
@@ -72,15 +86,16 @@
   /* ══════════════════════════════════════════
      TEXT COLORS
      ══════════════════════════════════════════ */
-  --text-primary:           #0F172A;   /* Headings — Slate 900           */
+  --text-primary:           #0F172A;   /* Headings — Slate 950           */
   --text-heading:           #0F172A;
   --text-body:              #334155;   /* Body — Slate 700               */
   --text-secondary:         #475569;   /* Secondary — Slate 600          */
   --text-muted:             #94A3B8;   /* Muted — Slate 400              */
   --text-navy:              #0F172A;
   --text-orange:            #F4511E;
-  --text-blue:              #2563EB;
+  --text-blue:              #1E3A8A;
   --text-teal:              #0D9488;
+  --text-green:             #16A34A;
   --color-white:            #FFFFFF;
 
   /* Legacy compat */
@@ -91,22 +106,24 @@
   /* ══════════════════════════════════════════
      GRADIENTS
      ══════════════════════════════════════════ */
-  --gradient-primary:       linear-gradient(135deg, #1B3D7B 0%, #2563EB 50%, #3B82F6 100%);
-  --gradient-blue:          linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+  --gradient-primary:       linear-gradient(135deg, #15803D 0%, #16A34A 50%, #22C55E 100%);
+  --gradient-green:         linear-gradient(135deg, #166534 0%, #16A34A 100%);
+  --gradient-blue:          linear-gradient(135deg, #1B3278 0%, #1E3A8A 100%);
   --gradient-teal:          linear-gradient(135deg, #0F766E 0%, #0D9488 100%);
   --gradient-orange:        linear-gradient(135deg, #DC2E0A 0%, #F4511E 100%);
   --gradient-warm:          linear-gradient(135deg, #F59E0B 0%, #F4511E 100%);
-  --gradient-hero:          linear-gradient(135deg, #0F172A 0%, #1B3D7B 50%, #1E3A8A 100%);
+  --gradient-hero:          linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #166534 100%);
+  --gradient-hero-light:    linear-gradient(135deg, #EFF6FF 0%, #F0FDF4 100%);
   --gradient-card:          linear-gradient(145deg, #FFFFFF 0%, #F8FAFF 100%);
   --gradient-shimmer:       linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
-  --gradient-surface:       linear-gradient(135deg, #EFF6FF 0%, #F0FDFA 100%);
+  --gradient-surface:       linear-gradient(135deg, #EFF6FF 0%, #F0FDF4 100%);
 
   /* ══════════════════════════════════════════
      BORDERS & RADII
      ══════════════════════════════════════════ */
   --border-subtle:          #E2E8F0;
   --border-card:            #E2E8F0;
-  --border-focus:           #2563EB;
+  --border-focus:           #16A34A;
   --border-radius-xs:       4px;
   --border-radius-sm:       8px;
   --border-radius-md:       12px;
@@ -123,7 +140,8 @@
   --shadow-md:              0 4px 16px rgba(15,23,42,0.08);
   --shadow-lg:              0 12px 36px rgba(15,23,42,0.10);
   --shadow-xl:              0 24px 60px rgba(15,23,42,0.12);
-  --shadow-blue:            0 6px 24px rgba(37, 99, 235, 0.25);
+  --shadow-blue:            0 6px 24px rgba(30, 58, 138, 0.28);
+  --shadow-green:           0 6px 24px rgba(22, 163, 74, 0.28);
   --shadow-teal:            0 6px 24px rgba(13, 148, 136, 0.25);
   --shadow-orange:          0 6px 24px rgba(244, 81, 30, 0.25);
   --shadow-card:            0 2px 12px rgba(15,23,42,0.06), 0 1px 3px rgba(15,23,42,0.04);
@@ -131,8 +149,10 @@
   /* Button System Tokens */
   --btn-orange:             #F4511E;
   --btn-orange-hover:       #DC2E0A;
-  --btn-blue:               #2563EB;
-  --btn-blue-hover:         #1B3D7B;
+  --btn-blue:               #1E3A8A;
+  --btn-blue-hover:         #1B3278;
+  --btn-green:              #16A34A;
+  --btn-green-hover:        #15803D;
 
   /* ══════════════════════════════════════════
      TYPOGRAPHY
@@ -274,7 +294,8 @@ nav a,
 .font-heading { font-family: inherit; font-weight: 600; }
 
 .text-orange  { color: var(--color-orange); }
-.text-blue    { color: var(--color-primary); }
+.text-blue    { color: var(--color-blue); }
+.text-green   { color: var(--color-primary); }
 .text-teal    { color: var(--color-teal); }
 .text-amber   { color: var(--color-amber); }
 .text-muted   { color: var(--text-muted); }
@@ -295,6 +316,13 @@ nav a,
 
 .text-gradient-orange {
   background: var(--gradient-orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-green {
+  background: var(--gradient-green);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -333,9 +361,15 @@ nav a,
 }
 
 .section-tag.blue {
+  color: var(--color-blue);
+  background: var(--color-blue-bg);
+  border: 1px solid rgba(30, 58, 138, 0.2);
+}
+
+.section-tag.green {
   color: var(--color-primary);
   background: var(--color-primary-bg);
-  border: 1px solid rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(22, 163, 74, 0.2);
 }
 
 .section-tag.orange {
