@@ -315,3 +315,98 @@
     height: 200px;
   }
 }
+
+/* ── Distinctiveness Cards (Classy, Modernized, Centered) ── */
+.distinct-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 38px 28px 34px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.distinct-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+  border-radius: 0 0 4px 4px;
+}
+
+.distinct-card.card-orange::before {
+  background: var(--color-accent);
+}
+
+.distinct-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 255, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 255, 0.22);
+}
+
+.distinct-card.card-orange:hover {
+  box-shadow: 0 20px 40px rgba(242, 72, 34, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
+  border-color: rgba(242, 72, 34, 0.25);
+}
+
+.distinct-card:hover::before {
+  width: 50px;
+}
+
+.distinct-icon-box {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.distinct-card:hover .distinct-icon-box {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.distinct-icon-blue {
+  background: linear-gradient(135deg, #EEF4FF 0%, #E0EDFF 100%);
+  border: 1.5px solid rgba(0, 0, 255, 0.14);
+  box-shadow: 0 8px 20px rgba(0, 0, 255, 0.10);
+}
+
+.distinct-icon-orange {
+  background: linear-gradient(135deg, #FFF0ED 0%, #FFE2DC 100%);
+  border: 1.5px solid rgba(242, 72, 34, 0.16);
+  box-shadow: 0 8px 20px rgba(242, 72, 34, 0.10);
+}
+
+.distinct-card-title {
+  font-size: 21px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.distinct-card-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #64748B;
+  margin: 0;
+  max-width: 320px;
+}
