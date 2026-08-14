@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +41,7 @@
 <nav id="navbar" class="navbar">
   <div class="container">
     <a href="index.html" class="nav-brand">
-      <div class="nav-logo"><img src="assets/images/instructify-logo.svg" alt="Instructify Kenya Logo"></div>
+      
       <div class="nav-brand-text">
         <span class="nav-brand-name">Instructify</span>
         <span class="nav-brand-tagline">Kenya</span>
@@ -252,7 +252,7 @@
       // Success
       document.getElementById('checkout-grid').innerHTML = `
         <div style="grid-column: 1/-1; text-align: center; padding: 4rem; background: #dbeafe; border-radius: 12px; border: 1px solid #1d4ed8;">
-          <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+          <div style="font-size: 4rem; margin-bottom: 1rem;">?</div>
           <h2 style="font-family: var(--font-heading); color: #1d4ed8; font-size: 2rem; margin-bottom: 1rem;">Enrollment Received!</h2>
           <p style="font-size: 1.1rem; color: #374151; max-width: 500px; margin: 0 auto 2rem;">
             Thank you for enrolling in <strong>${selectedCourse.title}</strong>. Your enrollment ID is <strong>${enrollment.id}</strong>.
@@ -327,7 +327,7 @@ function renderCourses() {
   document.getElementById('catalog-count').textContent = `Showing ${results.length} course${results.length !== 1 ? 's' : ''}`;
   
   if (results.length === 0) {
-    grid.innerHTML = '<div class="no-results"><div style="font-size:3rem;margin-bottom:1rem">🔍</div><h3 style="color:var(--text-primary);margin-bottom:0.5rem">No courses found</h3><p>Try adjusting your filters or search term.</p></div>';
+    grid.innerHTML = '<div class="no-results"><div style="font-size:3rem;margin-bottom:1rem">??</div><h3 style="color:var(--text-primary);margin-bottom:0.5rem">No courses found</h3><p>Try adjusting your filters or search term.</p></div>';
   } else {
     grid.innerHTML = results.map(c => window.renderCourseCard(c)).join('');
     initScrollReveal();

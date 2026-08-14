@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 <nav id="navbar" class="navbar">
   <div class="container">
     <a href="index.html" class="nav-brand">
-      <div class="nav-logo"><img src="assets/images/instructify-logo.svg" alt="Instructify Kenya Logo"></div>
+      
       <div class="nav-brand-text">
         <span class="nav-brand-name">Instructify</span>
         <span class="nav-brand-tagline">Kenya</span>
@@ -39,35 +39,39 @@
   </div>
 </nav>
 
-<section style="background:var(--gradient-hero);padding:calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);color:#fff">
-  <div class="container">
-    <div class="breadcrumb mb-md" style="color:rgba(255,255,255,0.7)">
-      <a href="index.html" style="color:rgba(255,255,255,0.9)">Home</a><span class="breadcrumb-sep">›</span>
-      <a href="courses.html" style="color:rgba(255,255,255,0.9)">Courses</a><span class="breadcrumb-sep">›</span>
-      <span id="course-title-breadcrumb">Course Detail</span>
+<section style="background:var(--gradient-hero);padding:calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);color:#fff;position:relative;overflow:hidden">
+  <!-- Ambient background glow elements -->
+  <div style="position:absolute;width:450px;height:450px;background:rgba(37,99,235,0.22);border-radius:50%;filter:blur(90px);top:-100px;left:-100px;pointer-events:none"></div>
+  <div style="position:absolute;width:350px;height:350px;background:rgba(244,81,30,0.18);border-radius:50%;filter:blur(90px);bottom:-50px;right:-50px;pointer-events:none"></div>
+
+  <div class="container" style="position:relative;z-index:1">
+    <div class="breadcrumb mb-md" style="color:rgba(255,255,255,0.75);font-weight:500">
+      <a href="index.html" style="color:rgba(255,255,255,0.9)">Home</a><span class="breadcrumb-sep" style="margin:0 8px">›</span>
+      <a href="courses.html" style="color:rgba(255,255,255,0.9)">Courses</a><span class="breadcrumb-sep" style="margin:0 8px">›</span>
+      <span id="course-title-breadcrumb" style="color:#FFFFFF;font-weight:600">Course Detail</span>
     </div>
 
     <div class="grid-2 items-center" style="grid-template-columns:2fr 1fr;gap:var(--space-2xl)">
       <div>
-        <span class="badge badge-green mb-md" id="course-badge">CPD ACCREDITED</span>
-        <h1 class="hero-heading" id="course-title" style="font-size:var(--text-3xl);margin-bottom:var(--space-md)">Loading Course Title...</h1>
-        <p id="course-desc" style="color:rgba(255,255,255,0.85);font-size:var(--text-md);line-height:1.7;margin-bottom:var(--space-xl)">Description placeholder...</p>
-        <div class="flex items-center gap-xl text-sm" style="color:rgba(255,255,255,0.8)">
-          <div>⭐ <strong id="course-rating">4.8</strong> (<span id="course-reviews">312</span> reviews)</div>
-          <div>👨‍🏫 Instructor: <strong id="course-instructor">Dr. Wanjiku Kamau</strong></div>
-          <div>⏱️ Duration: <strong id="course-duration">8 weeks</strong></div>
+        <span class="badge mb-md" id="course-badge" style="background:rgba(16,185,129,0.18);color:#34D399;border:1px solid rgba(52,211,153,0.4);padding:6px 16px;border-radius:99px;font-weight:700;font-size:0.75rem;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:6px">✨ CPD ACCREDITED</span>
+        <h1 class="hero-heading" id="course-title" style="font-size:clamp(2rem, 4vw, 3rem);color:#FFFFFF !important;font-weight:800;line-height:1.2;margin-bottom:var(--space-md);text-shadow:0 2px 14px rgba(0,0,0,0.3)">Loading Course Title...</h1>
+        <p id="course-desc" style="color:rgba(241,245,249,0.92);font-size:var(--text-md);line-height:1.7;margin-bottom:var(--space-xl);max-width:720px">Description placeholder...</p>
+        <div class="flex items-center gap-xl text-sm" style="color:rgba(255,255,255,0.9);flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:6px">⭐ <strong id="course-rating" style="color:#FBBF24">4.8</strong> (<span id="course-reviews">312</span> reviews)</div>
+          <div style="display:flex;align-items:center;gap:6px">👨‍🏫 Instructor: <strong id="course-instructor">Dr. Wanjiku Kamau</strong></div>
+          <div style="display:flex;align-items:center;gap:6px">⏱️ Duration: <strong id="course-duration">8 weeks</strong></div>
         </div>
       </div>
 
-      <div class="card" style="background:var(--bg-elevated);border-color:var(--border-card)">
-        <div class="mb-md">
-          <div style="font-size:var(--text-xs);color:var(--text-muted);text-transform:uppercase">Course Fee</div>
-          <div class="font-heading text-3xl font-extrabold" style="color:var(--color-primary-light)" id="course-price">KES 15,000</div>
-          <div style="font-size:var(--text-xs);color:var(--text-muted);text-decoration:line-through" id="course-orig-price">KES 22,000</div>
+      <div class="card" style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:18px;padding:32px;box-shadow:0 24px 48px rgba(0,0,0,0.3);color:#0F172A">
+        <div class="mb-md" style="margin-bottom:20px">
+          <div style="font-size:12px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">Course Fee</div>
+          <div class="font-heading text-3xl font-extrabold" style="color:#DC2E0A;font-size:34px;line-height:1.1;font-weight:900" id="course-price">KES 15,000</div>
+          <div style="font-size:14px;color:#94A3B8;text-decoration:line-through;margin-top:4px;font-weight:500" id="course-orig-price">KES 22,000</div>
         </div>
-        <button onclick="handleEnrollClick()" class="btn btn-secondary btn-lg w-full mb-md" style="width:100%">⚡ Enroll Now</button>
-        <button onclick="toggleWishlist(this)" class="btn btn-outline btn-sm w-full" style="width:100%">🤍 Save to Wishlist</button>
-        <div class="text-xs text-muted text-center mt-md">🔒 30-Day Guarantee • Flexible Installments</div>
+        <button onclick="handleEnrollClick()" class="btn btn-lg w-full mb-md" style="width:100%;background:linear-gradient(135deg,#DC2E0A 0%,#B22206 100%);color:#FFFFFF;font-weight:700;font-size:16px;border-radius:99px;padding:14px 24px;border:none;box-shadow:0 6px 20px rgba(220,46,10,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;transition:all 0.2s">⚡ Enroll Now</button>
+        <button onclick="toggleWishlist(this)" class="btn btn-sm w-full" style="width:100%;background:#F8FAFC;color:#1E3A8A;border:1.5px solid #CBD5E1;font-weight:700;font-size:14px;border-radius:99px;padding:11px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s">🤍 Save to Wishlist</button>
+        <div style="color:#64748B;font-size:13px;font-weight:500;text-align:center;margin-top:18px;display:flex;align-items:center;justify-content:center;gap:6px">🔒 30-Day Guarantee • Flexible Installments</div>
       </div>
     </div>
   </div>
