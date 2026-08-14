@@ -17,16 +17,16 @@
   --color-primary:          #0000FF;   /* Navbar, footer, headings, brand    */
   --color-primary-light:    #123C8C;   /* Links, secondary btns, tabs        */
 
-  /* ─ Accent — Deep Orange (CTA actions) */
-  --color-accent:           #F97316;   /* Enroll Now, Sign Up, Submit        */
-  --color-accent-hover:     #EA580C;   /* Button hover state                 */
-  --color-accent-light:     #FF8A1F;   /* Icons, badges, progress accents    */
+  /* ─ Accent / Secondary Brand — #F24822 (CTA actions & highlights) */
+  --color-accent:           #F24822;   /* Enroll Now, Sign Up, Submit, Highlights */
+  --color-accent-hover:     #D93815;   /* Button hover state                 */
+  --color-accent-light:     #FF6340;   /* Icons, badges, progress accents    */
 
   /* ─ Surfaces */
   --color-background:       #F8FAFC;   /* Main website background            */
   --color-surface:          #FFFFFF;   /* Cards, modals, content containers  */
   --color-section-blue:     #EEF4FF;   /* Soft blue section backgrounds      */
-  --color-section-orange:   #FFF3E8;   /* Promo banners, featured panels     */
+  --color-section-orange:   #FFF0ED;   /* Promo banners, featured panels     */
 
   /* ─ Text */
   --color-text-main:        #111827;   /* Main text                          */
@@ -45,8 +45,8 @@
      ══════════════════════════════════════════ */
 
   /* ─ Accent variants */
-  --color-accent-bg:        #FFF3E8;
-  --color-accent-glow:      rgba(249, 115, 22, 0.18);
+  --color-accent-bg:        #FFF0ED;
+  --color-accent-glow:      rgba(242, 72, 34, 0.18);
 
   /* ─ Primary-light (royal blue) variants */
   --color-blue:             #123C8C;
@@ -86,20 +86,20 @@
      so existing HTML & components keep working
      ══════════════════════════════════════════ */
 
-  /* Old --color-primary* (orange) → now --color-accent* */
-  --color-orange:           #F97316;
-  --color-orange-hover:     #EA580C;
-  --color-orange-bg:        #FFF3E8;
-  --color-orange-glow:      rgba(249, 115, 22, 0.18);
-  --color-curiosity-orange: #F97316;
-  --color-light-orange:     #FFF3E8;
-  --color-warm-orange:      #FF8A1F;
-  --color-warm-orange-bg:   #FFF3E8;
+  /* Old --color-primary* (orange/accent) → now #F24822 */
+  --color-orange:           #F24822;
+  --color-orange-hover:     #D93815;
+  --color-orange-bg:        #FFF0ED;
+  --color-orange-glow:      rgba(242, 72, 34, 0.18);
+  --color-curiosity-orange: #F24822;
+  --color-light-orange:     #FFF0ED;
+  --color-warm-orange:      #F24822;
+  --color-warm-orange-bg:   #FFF0ED;
 
-  /* These point to accent (orange) for backward compat */
-  --color-mint:             #F97316;
-  --color-mint-bg:          #FFF3E8;
-  --color-growth-green:     #F97316;
+  /* These point to accent (#F24822) for backward compat */
+  --color-mint:             #F24822;
+  --color-mint-bg:          #FFF0ED;
+  --color-growth-green:     #F24822;
   --color-primary-blue:     #123C8C;
   --color-blue-accent:      #1A52BB;
   --color-light-blue:       #EEF4FF;
@@ -113,7 +113,7 @@
   --bg-white:               #FFFFFF;
   --bg-canvas:              #F8FAFC;
   --bg-light:               #EEF4FF;
-  --bg-promo:               #FFF3E8;
+  --bg-promo:               #FFF0ED;
   --bg-surface:             #EEF4FF;
   --bg-dark:                #0000FF;
   --bg-dark-surface:        #123C8C;
@@ -127,40 +127,40 @@
   --text-secondary:         #6B7280;
   --text-muted:             #9CA3AF;
   --text-navy:              #0000FF;
-  --text-orange:            #F97316;
+  --text-orange:            #F24822;
   --text-blue:              #123C8C;
   --text-teal:              #0D9488;
-  --text-green:             #F97316;
+  --text-green:             #F24822;
   --color-white:            #FFFFFF;
 
   /* Border aliases */
   --border-subtle:          #E5E7EB;
   --border-card:            #E5E7EB;
-  --border-focus:           #F97316;
+  --border-focus:           #F24822;
 
   /* Button aliases */
-  --btn-orange:             #F97316;
-  --btn-orange-hover:       #EA580C;
+  --btn-orange:             #F24822;
+  --btn-orange-hover:       #D93815;
   --btn-blue:               #123C8C;
   --btn-blue-hover:         #0E2E6E;
-  --btn-green:              #F97316;
-  --btn-green-hover:        #EA580C;
+  --btn-green:              #F24822;
+  --btn-green-hover:        #D93815;
 
   /* ══════════════════════════════════════════
      GRADIENTS
      ══════════════════════════════════════════ */
-  --gradient-primary:       linear-gradient(135deg, #EA580C 0%, #F97316 50%, #FF8A1F 100%);
-  --gradient-accent:        linear-gradient(135deg, #EA580C 0%, #F97316 100%);
-  --gradient-green:         linear-gradient(135deg, #EA580C 0%, #F97316 100%);
+  --gradient-primary:       linear-gradient(135deg, #D93815 0%, #F24822 100%);
+  --gradient-accent:        linear-gradient(135deg, #D93815 0%, #F24822 100%);
+  --gradient-green:         linear-gradient(135deg, #D93815 0%, #F24822 100%);
   --gradient-blue:          linear-gradient(135deg, #0000CC 0%, #0000FF 100%);
   --gradient-teal:          linear-gradient(135deg, #0F766E 0%, #0D9488 100%);
-  --gradient-orange:        linear-gradient(135deg, #EA580C 0%, #F97316 100%);
-  --gradient-warm:          linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
+  --gradient-orange:        linear-gradient(135deg, #D93815 0%, #F24822 100%);
+  --gradient-warm:          linear-gradient(135deg, #D93815 0%, #F24822 100%);
   --gradient-hero:          linear-gradient(135deg, #0000CC 0%, #0000FF 55%, #0000CC 100%);
-  --gradient-hero-light:    linear-gradient(135deg, #EEF4FF 0%, #FFF3E8 100%);
+  --gradient-hero-light:    linear-gradient(135deg, #EEF4FF 0%, #FFF0ED 100%);
   --gradient-card:          linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
   --gradient-shimmer:       linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
-  --gradient-surface:       linear-gradient(135deg, #EEF4FF 0%, #FFF3E8 100%);
+  --gradient-surface:       linear-gradient(135deg, #EEF4FF 0%, #FFF0ED 100%);
 
   /* ══════════════════════════════════════════
      BORDER RADII
@@ -182,10 +182,10 @@
   --shadow-lg:              0 12px 36px rgba(0,0,255,0.13);
   --shadow-xl:              0 24px 60px rgba(0,0,255,0.16);
   --shadow-blue:            0 6px 24px rgba(0, 0, 255, 0.32);
-  --shadow-green:           0 6px 24px rgba(249, 115, 22, 0.28);
+  --shadow-green:           0 6px 24px rgba(242, 72, 34, 0.28);
   --shadow-teal:            0 6px 24px rgba(13, 148, 136, 0.25);
-  --shadow-orange:          0 6px 24px rgba(249, 115, 22, 0.28);
-  --shadow-accent:          0 6px 24px rgba(249, 115, 22, 0.28);
+  --shadow-orange:          0 6px 24px rgba(242, 72, 34, 0.28);
+  --shadow-accent:          0 6px 24px rgba(242, 72, 34, 0.28);
   --shadow-card:            0 2px 12px rgba(0,0,255,0.07), 0 1px 3px rgba(0,0,255,0.04);
 
   /* ══════════════════════════════════════════
