@@ -280,12 +280,12 @@
 /* ── Gradient Text — LMS Premium ────────────────────────────── */
 .animated-gradient-text {
   background: linear-gradient(90deg,
-    #1B3D7B 0%,
-    #2563EB 20%,
+    #0B1F4D 0%,
+    #123C8C 20%,
     #0D9488 40%,
-    #F59E0B 60%,
-    #F4511E 80%,
-    #2563EB 100%
+    #F97316 60%,
+    #FF8A1F 80%,
+    #123C8C 100%
   );
   background-size: 300% auto;
   -webkit-background-clip: text;
@@ -296,7 +296,7 @@
 
 /* ── Glowing Border (premium feel) ─────────────────────────── */
 .glow-border-blue {
-  box-shadow: 0 0 0 2px var(--color-primary-bg), 0 0 0 3px var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-blue-bg), 0 0 0 3px var(--color-blue);
 }
 
 .glow-border-teal {
@@ -379,7 +379,7 @@
 
 .tab-btn.active {
   background: var(--bg-white);
-  color: var(--color-primary);
+  color: var(--color-blue);
   box-shadow: var(--shadow-sm);
 }
 

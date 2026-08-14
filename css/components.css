@@ -1,6 +1,6 @@
 /* ============================================================
    INSTRUCTIFY KENYA — REUSABLE COMPONENTS & NAVIGATION
-   Premium LMS v2.0
+   Premium LMS v3.0 — Deep Blue & Deep Orange
    ============================================================ */
 
 /* ── Navigation Bar ─────────────────────────────────────────── */
@@ -11,16 +11,16 @@
   z-index: var(--z-sticky);
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(11, 31, 77, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: background var(--transition-base), box-shadow var(--transition-base);
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+  background: rgba(11, 31, 77, 0.99);
+  box-shadow: 0 4px 24px rgba(11, 31, 77, 0.28);
 }
 
 .navbar .container {
@@ -45,13 +45,13 @@
 .nav-logo {
   width: 42px;
   height: 42px;
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
   border-radius: var(--border-radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
-  border: 1px solid var(--border-subtle);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   flex-shrink: 0;
   overflow: hidden;
   padding: 4px;
@@ -73,13 +73,13 @@
   font-family: var(--font-heading);
   font-weight: 800;
   font-size: 1.1rem;
-  color: #020202;
+  color: #FFFFFF;
   letter-spacing: -0.02em;
 }
 
 .nav-brand-tagline {
   font-size: 0.62rem;
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -98,8 +98,8 @@
 .nav-link {
   font-family: var(--font-body);
   font-size: 15px;
-  font-weight: 700;
-  color: #020202;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
   padding: 8px 14px;
   border-radius: var(--border-radius-full);
   transition: all var(--transition-fast);
@@ -109,13 +109,13 @@
 }
 
 .nav-link:hover {
-  color: var(--color-primary);
-  background: var(--color-primary-bg);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .nav-link.active {
-  color: var(--color-primary);
-  background: var(--color-primary-bg);
+  color: var(--color-primary-light);
+  background: rgba(249, 115, 22, 0.18);
   font-weight: 700;
 }
 
@@ -154,7 +154,7 @@
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--text-primary);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 1px;
   transition: transform var(--transition-base), opacity var(--transition-fast);
 }
@@ -169,11 +169,11 @@
   position: fixed;
   top: var(--nav-height);
   left: 0; right: 0;
-  background: #FFFFFF;
-  border-bottom: 1px solid var(--border-subtle);
+  background: var(--color-brand);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding: var(--space-lg);
   z-index: var(--z-sticky);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 16px 40px rgba(11, 31, 77, 0.28);
 }
 
 .nav-mobile.open {
@@ -193,14 +193,14 @@
   padding: 12px 16px;
   border-radius: var(--border-radius-sm);
   font-size: var(--text-base);
-  font-weight: 700;
-  color: #020202;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
   transition: all var(--transition-fast);
 }
 .nav-mobile-link:hover {
-  color: var(--color-primary);
-  background: var(--color-primary-bg);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -231,35 +231,35 @@
 
 .btn:active { transform: scale(0.97); }
 
-/* ── Primary CTA Button (#DC2E0A) ────────────────────────── */
+/* ── Primary CTA Button — Deep Orange (#F97316) ─────────── */
 .btn-primary,
 .btn-accent,
 .btn-orange {
   background: var(--color-primary);
   color: #FFFFFF;
-  box-shadow: 0 2px 8px rgba(220, 46, 10, 0.3);
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.30);
 }
 .btn-primary:hover,
 .btn-accent:hover,
 .btn-orange:hover {
   background: var(--color-primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(220, 46, 10, 0.35);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.38);
   color: #FFFFFF;
 }
 
-/* ── Secondary / Blue Button (#1E3A8A) ───────────────────── */
+/* ── Secondary / Royal Blue Button (#123C8C) ─────────────── */
 .btn-secondary,
 .btn-blue {
   background: var(--color-blue);
   color: #FFFFFF;
-  box-shadow: 0 2px 8px rgba(30, 58, 138, 0.28);
+  box-shadow: 0 2px 8px rgba(18, 60, 140, 0.28);
 }
 .btn-secondary:hover,
 .btn-blue:hover {
   background: var(--color-blue-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(30, 58, 138, 0.30);
+  box-shadow: 0 8px 24px rgba(18, 60, 140, 0.32);
   color: #FFFFFF;
 }
 
@@ -276,7 +276,7 @@
   color: #FFFFFF;
 }
 
-/* ── Secondary Outline Button (#1E3A8A) ──────────────────── */
+/* ── Secondary Outline Button — Royal Blue (#123C8C) ─────── */
 .btn-outline {
   background: transparent;
   color: var(--color-blue);
@@ -287,7 +287,7 @@
   color: #FFFFFF;
   border-color: var(--color-blue);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(30, 58, 138, 0.28);
+  box-shadow: 0 8px 24px rgba(18, 60, 140, 0.30);
 }
 
 /* ── Ghost Button ────────────────────────────────────────────── */
@@ -297,19 +297,19 @@
   padding: 10px 18px;
 }
 .btn-ghost:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   background: var(--color-primary-bg);
 }
 
-/* ── Dark Button ─────────────────────────────────────────────── */
+/* ── Brand Dark Button — Deep Blue ──────────────────────────── */
 .btn-dark {
-  background: var(--bg-dark);
+  background: var(--color-brand);
   color: #FFFFFF;
 }
 .btn-dark:hover {
-  background: var(--bg-dark-surface);
+  background: var(--color-brand-dark);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-blue);
 }
 
 /* ── Button Sizes ────────────────────────────────────────────── */
@@ -321,7 +321,7 @@
    FOOTER
    ══════════════════════════════════════════════════════════════ */
 .footer {
-  background: var(--bg-dark);
+  background: var(--color-brand);
   color: #FFFFFF;
   padding: 56px 0 28px 0;
   margin-top: auto;
@@ -342,7 +342,7 @@
 }
 
 .footer a:hover {
-  color: var(--color-teal-light);
+  color: var(--color-primary-light);
 }
 
 .footer .nav-brand-name {
@@ -373,15 +373,15 @@
 
 .course-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(220, 46, 10, 0.12);
-  border-color: rgba(220, 46, 10, 0.30);
+  box-shadow: 0 20px 50px rgba(249, 115, 22, 0.14);
+  border-color: rgba(249, 115, 22, 0.30);
 }
 
 .course-card-image {
   position: relative;
   width: 100%;
   height: 172px;
-  background: linear-gradient(135deg, var(--color-blue-bg), var(--color-primary-bg));
+  background: linear-gradient(135deg, #EEF4FF, #FFF3E8);
   overflow: hidden;
 }
 
@@ -408,7 +408,7 @@
   text-transform: uppercase;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(4px);
-  color: var(--color-primary);
+  color: var(--color-blue);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
@@ -446,7 +446,7 @@
 .course-card-category {
   font-size: 11px;
   font-weight: 700;
-  color: var(--color-teal);
+  color: var(--color-blue);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 8px;
@@ -504,7 +504,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--bg-canvas);
+  background: #F8FAFC;
 }
 
 .course-price {
@@ -545,7 +545,7 @@
   gap: 10px;
   padding: 14px 20px;
   border-radius: var(--border-radius-md);
-  background: var(--bg-dark);
+  background: var(--color-brand);
   color: #FFFFFF;
   font-size: 14px;
   font-weight: 500;
