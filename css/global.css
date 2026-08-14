@@ -13,8 +13,8 @@
        All component CSS should reference these.
      ══════════════════════════════════════════ */
 
-  /* ─ Primary Brand — Deep Blue */
-  --color-primary:          #007AFF;   /* Navbar, footer, headings, brand    */
+  /* ─ Primary Brand — Blue */
+  --color-primary:          #0000FF;   /* Navbar, footer, headings, brand    */
   --color-primary-light:    #123C8C;   /* Links, secondary btns, tabs        */
 
   /* ─ Accent — Deep Orange (CTA actions) */
@@ -55,11 +55,11 @@
   --color-blue-bg:          #EEF4FF;
   --color-blue-glow:        rgba(18, 60, 140, 0.18);
 
-  /* ─ Primary (deep blue) variants */
-  --color-brand:            #007AFF;
-  --color-brand-dark:       #005FCC;
+  /* ─ Primary (blue) variants */
+  --color-brand:            #0000FF;
+  --color-brand-dark:       #0000CC;
   --color-brand-bg:         #EEF4FF;
-  --color-brand-glow:       rgba(0, 122, 255, 0.15);
+  --color-brand-glow:       rgba(0, 0, 255, 0.15);
 
   /* ─ Teal — Progress & completion */
   --color-teal:             #0D9488;
@@ -103,8 +103,8 @@
   --color-primary-blue:     #123C8C;
   --color-blue-accent:      #1A52BB;
   --color-light-blue:       #EEF4FF;
-  --color-deep-navy:        #007AFF;
-  --color-navy:             #007AFF;
+  --color-deep-navy:        #0000FF;
+  --color-navy:             #0000FF;
   --color-soft-grey:        #F8FAFC;
   --color-danger:           #DC2626;
   --color-danger-bg:        #FEF2F2;
@@ -115,7 +115,7 @@
   --bg-light:               #EEF4FF;
   --bg-promo:               #FFF3E8;
   --bg-surface:             #EEF4FF;
-  --bg-dark:                #007AFF;
+  --bg-dark:                #0000FF;
   --bg-dark-surface:        #123C8C;
   --bg-card:                #FFFFFF;
   --bg-elevated:            #FFFFFF;
@@ -126,7 +126,7 @@
   --text-body:              #111827;
   --text-secondary:         #6B7280;
   --text-muted:             #9CA3AF;
-  --text-navy:              #007AFF;
+  --text-navy:              #0000FF;
   --text-orange:            #F97316;
   --text-blue:              #123C8C;
   --text-teal:              #0D9488;
@@ -152,11 +152,11 @@
   --gradient-primary:       linear-gradient(135deg, #EA580C 0%, #F97316 50%, #FF8A1F 100%);
   --gradient-accent:        linear-gradient(135deg, #EA580C 0%, #F97316 100%);
   --gradient-green:         linear-gradient(135deg, #EA580C 0%, #F97316 100%);
-  --gradient-blue:          linear-gradient(135deg, #005FCC 0%, #007AFF 100%);
+  --gradient-blue:          linear-gradient(135deg, #0000CC 0%, #0000FF 100%);
   --gradient-teal:          linear-gradient(135deg, #0F766E 0%, #0D9488 100%);
   --gradient-orange:        linear-gradient(135deg, #EA580C 0%, #F97316 100%);
   --gradient-warm:          linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
-  --gradient-hero:          linear-gradient(135deg, #005FCC 0%, #007AFF 55%, #005FCC 100%);
+  --gradient-hero:          linear-gradient(135deg, #0000CC 0%, #0000FF 55%, #0000CC 100%);
   --gradient-hero-light:    linear-gradient(135deg, #EEF4FF 0%, #FFF3E8 100%);
   --gradient-card:          linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
   --gradient-shimmer:       linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
@@ -177,16 +177,16 @@
      SHADOWS
      ══════════════════════════════════════════ */
   --shadow-xs:              0 1px 2px rgba(0,0,0,0.04);
-  --shadow-sm:              0 2px 8px rgba(0,122,255,0.07);
-  --shadow-md:              0 4px 16px rgba(0,122,255,0.10);
-  --shadow-lg:              0 12px 36px rgba(0,122,255,0.13);
-  --shadow-xl:              0 24px 60px rgba(0,122,255,0.16);
-  --shadow-blue:            0 6px 24px rgba(0, 122, 255, 0.32);
+  --shadow-sm:              0 2px 8px rgba(0,0,255,0.07);
+  --shadow-md:              0 4px 16px rgba(0,0,255,0.10);
+  --shadow-lg:              0 12px 36px rgba(0,0,255,0.13);
+  --shadow-xl:              0 24px 60px rgba(0,0,255,0.16);
+  --shadow-blue:            0 6px 24px rgba(0, 0, 255, 0.32);
   --shadow-green:           0 6px 24px rgba(249, 115, 22, 0.28);
   --shadow-teal:            0 6px 24px rgba(13, 148, 136, 0.25);
   --shadow-orange:          0 6px 24px rgba(249, 115, 22, 0.28);
   --shadow-accent:          0 6px 24px rgba(249, 115, 22, 0.28);
-  --shadow-card:            0 2px 12px rgba(0,122,255,0.07), 0 1px 3px rgba(0,122,255,0.04);
+  --shadow-card:            0 2px 12px rgba(0,0,255,0.07), 0 1px 3px rgba(0,0,255,0.04);
 
   /* ══════════════════════════════════════════
      TYPOGRAPHY
