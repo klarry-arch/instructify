@@ -33,7 +33,7 @@
   --color-text-muted:       #6B7280;   /* Secondary / descriptive text       */
 
   /* ─ Border */
-  --color-border:           #E5E7EB;   /* Borders, dividers, inputs          */
+  --color-border:           #E2E8F0;   /* Slate-200 — Clean, modern borders & dividers */
 
   /* ─ Status */
   --color-success:          #16A34A;
@@ -134,15 +134,17 @@
   --color-white:            #FFFFFF;
 
   /* Border aliases */
-  --border-subtle:          #E5E7EB;
-  --border-card:            #E5E7EB;
-  --border-focus:           #F24822;
+  --border-subtle:          #E2E8F0;
+  --border-card:            #E2E8F0;
+  --border-card-hover:      rgba(0, 0, 255, 0.20);
+  --border-focus:           #0000FF;
+  --border-focus-glow:      rgba(0, 0, 255, 0.15);
 
   /* Button aliases */
   --btn-orange:             #F24822;
   --btn-orange-hover:       #D93815;
-  --btn-blue:               #123C8C;
-  --btn-blue-hover:         #0E2E6E;
+  --btn-blue:               #0000FF;
+  --btn-blue-hover:         #0000CC;
   --btn-green:              #F24822;
   --btn-green-hover:        #D93815;
 
@@ -522,25 +524,42 @@ h1, h2, h3, h4, h5, h6 {
 .card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-3px);
-  border-color: rgba(18, 60, 140, 0.18);
+  border-color: var(--border-card-hover);
 }
 
 /* ── Form Elements ──────────────────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.form-input,
+.form-textarea,
 .form-select {
   background: var(--bg-white);
   border: 1.5px solid var(--border-subtle);
   border-radius: var(--border-radius-sm);
+  padding: 10px 14px;
   font-family: inherit;
   font-size: var(--text-sm);
   color: var(--text-primary);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-  cursor: pointer;
   outline: none;
+  width: 100%;
 }
 
+.form-input:focus,
+.form-textarea:focus,
 .form-select:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-primary-glow);
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--border-focus-glow);
 }
 
 /* ── Scrollbar & Selection ──────────────────────────────────── */
