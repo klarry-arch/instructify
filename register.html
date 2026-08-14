@@ -111,23 +111,17 @@
         </div>
       </div>
       <div class="auth-feature">
-        <div class="auth-feature-icon">??</div>
-        <div>
-          <div class="auth-feature-title">Learn Anywhere, Any Device</div>
+        <div class="auth-feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div><div><div class="auth-feature-title">Learn Anywhere, Any Device</div>
           <div class="auth-feature-text">Full access on mobile, tablet, and desktop with offline support</div>
         </div>
       </div>
       <div class="auth-feature">
-        <div class="auth-feature-icon">??</div>
-        <div>
-          <div class="auth-feature-title">M-Pesa & Card Payments</div>
+        <div class="auth-feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></div><div><div class="auth-feature-title">M-Pesa & Card Payments</div>
           <div class="auth-feature-text">Secure payment with M-Pesa, Visa/Mastercard, and bank transfer</div>
         </div>
       </div>
       <div class="auth-feature">
-        <div class="auth-feature-icon">??</div>
-        <div>
-          <div class="auth-feature-title">Digital Certificates & Badges</div>
+        <div class="auth-feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div><div><div class="auth-feature-title">Digital Certificates & Badges</div>
           <div class="auth-feature-text">Verifiable digital credentials shareable on LinkedIn and professional platforms</div>
         </div>
       </div>
@@ -152,19 +146,17 @@
 
       <!-- SIGN IN TAB -->
       <div id="tab-signin" class="tab-panel active" data-tabs-container>
-        <h2 class="auth-heading">Welcome Back! ??</h2>
+        <h2 class="auth-heading">Welcome Back!</h2>
         <p class="auth-subheading">Sign in to continue your learning journey</p>
 
-        <div id="signin-error" class="alert alert-danger" style="display:none;margin-bottom:var(--space-lg)">
-          <span>??</span><span id="signin-error-msg"></span>
+        <div id="signin-error" class="alert alert-danger" style="display:none;margin-bottom:var(--space-lg)"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span><span id="signin-error-msg"></span>
         </div>
 
         <form id="signin-form" onsubmit="handleSignIn(event)">
           <div class="form-group mb-lg">
             <label class="form-label" for="signin-email">Email Address</label>
             <div class="form-input-icon">
-              <span class="input-icon">??</span>
-              <input type="email" id="signin-email" class="form-input" placeholder="your@email.com" required autocomplete="email">
+              <span class="input-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><input type="email" id="signin-email" class="form-input" placeholder="your@email.com" required autocomplete="email">
             </div>
           </div>
           <div class="form-group mb-xl">
@@ -173,14 +165,13 @@
               <button type="button" onclick="showForgotPassword()" style="font-size:var(--text-xs);color:var(--color-accent);background:none;border:none;cursor:pointer;font-weight:500">Forgot password?</button>
             </div>
             <div class="form-input-icon">
-              <span class="input-icon">??</span>
-              <input type="password" id="signin-password" class="form-input" placeholder="Your password" required autocomplete="current-password">
+              <span class="input-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><input type="password" id="signin-password" class="form-input" placeholder="Your password" required autocomplete="current-password">
             </div>
           </div>
 
           <!-- Demo credentials hint -->
           <div class="alert alert-info" style="margin-bottom:var(--space-lg);font-size:var(--text-xs)">
-            <span>??</span>
+            <span style="display:inline-flex;align-items:center;color:var(--color-primary);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
             <div>
               <strong>Demo accounts:</strong><br>
               Learner: learner@instructify.ke / Learn@2024<br>
@@ -190,15 +181,15 @@
           </div>
 
           <button type="submit" class="btn btn-blue btn-lg w-full" id="signin-btn" style="width:100%">
-            ?? Sign In to Instructify
+            Sign In to Instructify
           </button>
         </form>
 
         <div class="divider-text">or continue as</div>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-sm);margin-bottom:var(--space-xl)">
-          <button onclick="quickLogin('learner')" class="btn btn-outline btn-sm">?? Learner Demo</button>
-          <button onclick="quickLogin('admin')" class="btn btn-outline btn-sm">?? Admin Demo</button>
+          <button onclick="quickLogin('learner')" class="btn btn-outline btn-sm">Learner Demo</button>
+          <button onclick="quickLogin('admin')" class="btn btn-outline btn-sm">Admin Demo</button>
         </div>
 
         <p style="text-align:center;font-size:var(--text-sm);color:var(--text-muted)">
@@ -208,7 +199,7 @@
 
       <!-- SIGN UP TAB -->
       <div id="tab-signup" class="tab-panel" data-tabs-container>
-        <h2 class="auth-heading">Create Your Account ??</h2>
+        <h2 class="auth-heading">Create Your Account</h2>
         <p class="auth-subheading">Join Kenya's largest professional learning community</p>
 
         <!-- Role Selector -->
@@ -216,62 +207,53 @@
           <div class="form-label" style="margin-bottom:var(--space-md)">I am registering as:</div>
           <div class="role-selector">
             <div class="role-card selected" onclick="selectRole(this,'learner')" id="role-learner">
-              <div class="role-card-icon">??</div>
-              <div class="role-card-name">Learner</div>
+              <div class="role-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div class="role-card-name">Learner</div>
               <div class="role-card-desc">Teacher / Trainee</div>
             </div>
             <div class="role-card" onclick="selectRole(this,'trainer')" id="role-trainer">
-              <div class="role-card-icon">?????</div>
-              <div class="role-card-name">Trainer</div>
+              <div class="role-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="role-card-name">Trainer</div>
               <div class="role-card-desc">Facilitator / Expert</div>
             </div>
             <div class="role-card" onclick="selectRole(this,'institution')" id="role-institution">
-              <div class="role-card-icon">??</div>
-              <div class="role-card-name">Institution</div>
+              <div class="role-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 8-4 8 4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4"/><path d="M18 5v17"/><path d="M6 5v17"/></svg></div><div class="role-card-name">Institution</div>
               <div class="role-card-desc">School / Org</div>
             </div>
           </div>
           <input type="hidden" id="selected-role" value="learner">
         </div>
 
-        <div id="signup-error" class="alert alert-danger" style="display:none;margin-bottom:var(--space-lg)">
-          <span>??</span><span id="signup-error-msg"></span>
+        <div id="signup-error" class="alert alert-danger" style="display:none;margin-bottom:var(--space-lg)"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span><span id="signup-error-msg"></span>
         </div>
 
         <form id="signup-form" onsubmit="handleSignUp(event)">
           <div class="form-group mb-md">
             <label class="form-label">Full Name</label>
             <div class="form-input-icon">
-              <span class="input-icon">??</span>
-              <input type="text" id="signup-name" class="form-input" placeholder="Your full name" required>
+              <span class="input-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><input type="text" id="signup-name" class="form-input" placeholder="Your full name" required>
             </div>
           </div>
           <div class="form-group mb-md">
             <label class="form-label">Email Address</label>
             <div class="form-input-icon">
-              <span class="input-icon">??</span>
-              <input type="email" id="signup-email" class="form-input" placeholder="your@email.com" required>
+              <span class="input-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><input type="email" id="signup-email" class="form-input" placeholder="your@email.com" required>
             </div>
           </div>
           <div class="form-group mb-md">
             <label class="form-label">Phone Number (M-Pesa)</label>
             <div class="form-input-icon">
-              <span class="input-icon">??</span>
-              <input type="tel" id="signup-phone" class="form-input" placeholder="07XX XXX XXX">
+              <span class="input-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><input type="tel" id="signup-phone" class="form-input" placeholder="07XX XXX XXX">
             </div>
           </div>
           <div id="institution-field" style="display:none" class="form-group mb-md">
             <label class="form-label">Institution / Organization Name</label>
             <div class="form-input-icon">
-              <span class="input-icon">??</span>
-              <input type="text" id="signup-institution" class="form-input" placeholder="School or organization name">
+              <span class="input-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 8-4 8 4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4"/><path d="M18 5v17"/><path d="M6 5v17"/></svg></span><input type="text" id="signup-institution" class="form-input" placeholder="School or organization name">
             </div>
           </div>
           <div class="form-group mb-lg">
             <label class="form-label">Create Password</label>
             <div class="form-input-icon">
-              <span class="input-icon">??</span>
-              <input type="password" id="signup-password" class="form-input" placeholder="Min. 8 characters" required minlength="8">
+              <span class="input-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><input type="password" id="signup-password" class="form-input" placeholder="Min. 8 characters" required minlength="8">
             </div>
           </div>
 
@@ -340,10 +322,10 @@ function handleSignIn(e) {
     const result = window.attemptLogin(email, password);
     
     btn.classList.remove('btn-loading');
-    btn.textContent = '?? Sign In to Instructify';
+    btn.textContent = 'Sign In to Instructify';
     
     if (result.success) {
-      window.showToast('Welcome back, ' + result.user.name.split(' ')[0] + '! ??', 'success');
+      window.showToast('Welcome back, ' + result.user.name.split(' ')[0] + '!', 'success');
       setTimeout(() => {
         const map = { admin: 'dashboard-admin.html', trainer: 'dashboard-trainer.html', learner: 'dashboard-learner.html', institution: 'dashboard-learner.html' };
         window.location.href = map[result.user.role] || 'dashboard-learner.html';
@@ -373,7 +355,7 @@ function handleSignUp(e) {
     btn.classList.remove('btn-loading');
     
     if (result.success) {
-      window.showToast('Account created successfully! Welcome to Instructify Kenya! ??', 'success');
+      window.showToast('Account created successfully! Welcome to Instructify Kenya!', 'success');
       setTimeout(() => {
         const map = { admin: 'dashboard-admin.html', trainer: 'dashboard-trainer.html', learner: 'dashboard-learner.html' };
         window.location.href = map[result.user.role] || 'dashboard-learner.html';
