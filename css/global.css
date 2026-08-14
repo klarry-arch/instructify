@@ -1,6 +1,6 @@
 /* ============================================================
    INSTRUCTIFY KENYA — GLOBAL DESIGN SYSTEM & BRAND TOKENS
-   Premium LMS Color System v3.0 — Deep Blue & Deep Orange
+   Premium LMS Color System v4.0 — Canonical Token Schema
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
@@ -8,95 +8,124 @@
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
   /* ══════════════════════════════════════════
-     BRAND CORE — Deep Blue & Deep Orange Palette
-     Premium LMS for students, teachers, schools & institutions
+     ★ CANONICAL DESIGN TOKENS (v4.0)
+       These are the single source of truth.
+       All component CSS should reference these.
      ══════════════════════════════════════════ */
 
-  /* ─ Deep Blue — Main brand: nav, footer, headings, key elements */
-  --color-brand:            #0B1F4D;
-  --color-brand-dark:       #081540;
-  --color-brand-darker:     #050E2E;
-  --color-brand-bg:         #EEF4FF;
-  --color-brand-glow:       rgba(11, 31, 77, 0.15);
+  /* ─ Primary Brand — Deep Blue */
+  --color-primary:          #0B1F4D;   /* Navbar, footer, headings, brand    */
+  --color-primary-light:    #123C8C;   /* Links, secondary btns, tabs        */
 
-  /* ─ Royal Blue — Secondary: links, secondary buttons, selected tabs, highlights */
+  /* ─ Accent — Deep Orange (CTA actions) */
+  --color-accent:           #F97316;   /* Enroll Now, Sign Up, Submit        */
+  --color-accent-hover:     #EA580C;   /* Button hover state                 */
+  --color-accent-light:     #FF8A1F;   /* Icons, badges, progress accents    */
+
+  /* ─ Surfaces */
+  --color-background:       #F8FAFC;   /* Main website background            */
+  --color-surface:          #FFFFFF;   /* Cards, modals, content containers  */
+  --color-section-blue:     #EEF4FF;   /* Soft blue section backgrounds      */
+  --color-section-orange:   #FFF3E8;   /* Promo banners, featured panels     */
+
+  /* ─ Text */
+  --color-text-main:        #111827;   /* Main text                          */
+  --color-text-muted:       #6B7280;   /* Secondary / descriptive text       */
+
+  /* ─ Border */
+  --color-border:           #E5E7EB;   /* Borders, dividers, inputs          */
+
+  /* ─ Status */
+  --color-success:          #16A34A;
+  --color-warning:          #F59E0B;
+  --color-error:            #DC2626;
+
+  /* ══════════════════════════════════════════
+     DERIVED / COMPUTED TOKENS
+     ══════════════════════════════════════════ */
+
+  /* ─ Accent variants */
+  --color-accent-bg:        #FFF3E8;
+  --color-accent-glow:      rgba(249, 115, 22, 0.18);
+
+  /* ─ Primary-light (royal blue) variants */
   --color-blue:             #123C8C;
   --color-blue-dark:        #0E2E6E;
   --color-blue-light:       #1A52BB;
   --color-blue-bg:          #EEF4FF;
   --color-blue-glow:        rgba(18, 60, 140, 0.18);
 
-  /* Blue backwards-compat aliases */
-  --color-primary-blue:     #123C8C;
-  --color-blue-accent:      #1A52BB;
-  --color-light-blue:       #EEF4FF;
+  /* ─ Primary (deep blue) variants */
+  --color-brand:            #0B1F4D;
+  --color-brand-dark:       #081540;
+  --color-brand-bg:         #EEF4FF;
+  --color-brand-glow:       rgba(11, 31, 77, 0.15);
 
-  /* ─ Deep Orange — Primary CTA: Enroll Now, Start Learning, Sign Up, Submit */
-  --color-primary:          #F97316;
-  --color-primary-dark:     #EA580C;
-  --color-primary-darker:   #C2410C;
-  --color-primary-light:    #FF8A1F;
-  --color-primary-bg:       #FFF3E8;
-  --color-primary-glow:     rgba(249, 115, 22, 0.18);
-
-  /* ─ Orange aliases — keep .btn-orange, .text-orange etc. working */
-  --color-orange:           #F97316;
-  --color-orange-hover:     #EA580C;
-  --color-orange-bg:        #FFF3E8;
-  --color-orange-glow:      rgba(249, 115, 22, 0.18);
-  --color-curiosity-orange: #F97316;
-  --color-light-orange:     #FFF3E8;
-
-  /* ─ Warm Orange — icons, badges, progress highlights, small accents */
-  --color-warm-orange:      #FF8A1F;
-  --color-warm-orange-bg:   #FFF3E8;
-
-  /* ─ Teal — Progress & completion (kept for legacy use) */
+  /* ─ Teal — Progress & completion */
   --color-teal:             #0D9488;
   --color-teal-dark:        #0F766E;
   --color-teal-light:       #14B8A6;
   --color-teal-bg:          #F0FDFA;
   --color-teal-glow:        rgba(13, 148, 136, 0.15);
 
-  /* ─ Amber — Achievements, ratings, star badges */
+  /* ─ Amber — Achievements, ratings */
   --color-amber:            #F59E0B;
   --color-amber-dark:       #D97706;
   --color-amber-bg:         #FFFBEB;
 
-  /* ─ Mint / Growth aliases mapped to orange */
-  --color-mint:             #F97316;
-  --color-mint-bg:          #FFF3E8;
-  --color-growth-green:     #F97316;
-
-  /* ─ Danger / Error */
-  --color-danger:           #EF4444;
-  --color-danger-bg:        #FEF2F2;
-
-  /* ─ Info */
+  /* ─ Status extras */
+  --color-success-bg:       #DCFCE7;
+  --color-warning-bg:       #FFFBEB;
+  --color-error-bg:         #FEF2F2;
   --color-info:             #0EA5E9;
   --color-info-bg:          #F0F9FF;
 
   /* ══════════════════════════════════════════
-     BACKGROUND SURFACES
+     LEGACY ALIASES
+     Point old token names to canonical values
+     so existing HTML & components keep working
      ══════════════════════════════════════════ */
-  --bg-white:               #FFFFFF;   /* Cards, modals, content containers  */
-  --bg-canvas:              #F8FAFC;   /* Main website background             */
-  --bg-light:               #EEF4FF;   /* Section backgrounds — soft blue     */
-  --bg-promo:               #FFF3E8;   /* Promo banners, featured sections    */
-  --bg-surface:             #EEF4FF;   /* Hover surfaces, sidebar             */
-  --bg-dark:                #0B1F4D;   /* Footer, dark hero — deep brand blue */
-  --bg-dark-surface:        #123C8C;   /* Dark card bg — royal blue           */
-  --bg-card:                #FFFFFF;
-  --bg-elevated:            #FFFFFF;   /* Elevated card bg                    */
 
-  /* ══════════════════════════════════════════
-     TEXT COLORS
-     ══════════════════════════════════════════ */
-  --text-primary:           #111827;   /* Main text                           */
-  --text-heading:           #111827;   /* Headings                            */
-  --text-body:              #111827;   /* Body copy                           */
-  --text-secondary:         #6B7280;   /* Secondary / descriptive text        */
-  --text-muted:             #9CA3AF;   /* Muted / metadata                    */
+  /* Old --color-primary* (orange) → now --color-accent* */
+  --color-orange:           #F97316;
+  --color-orange-hover:     #EA580C;
+  --color-orange-bg:        #FFF3E8;
+  --color-orange-glow:      rgba(249, 115, 22, 0.18);
+  --color-curiosity-orange: #F97316;
+  --color-light-orange:     #FFF3E8;
+  --color-warm-orange:      #FF8A1F;
+  --color-warm-orange-bg:   #FFF3E8;
+
+  /* These point to accent (orange) for backward compat */
+  --color-mint:             #F97316;
+  --color-mint-bg:          #FFF3E8;
+  --color-growth-green:     #F97316;
+  --color-primary-blue:     #123C8C;
+  --color-blue-accent:      #1A52BB;
+  --color-light-blue:       #EEF4FF;
+  --color-deep-navy:        #0B1F4D;
+  --color-navy:             #0B1F4D;
+  --color-soft-grey:        #F8FAFC;
+  --color-danger:           #DC2626;
+  --color-danger-bg:        #FEF2F2;
+
+  /* Background aliases */
+  --bg-white:               #FFFFFF;
+  --bg-canvas:              #F8FAFC;
+  --bg-light:               #EEF4FF;
+  --bg-promo:               #FFF3E8;
+  --bg-surface:             #EEF4FF;
+  --bg-dark:                #0B1F4D;
+  --bg-dark-surface:        #123C8C;
+  --bg-card:                #FFFFFF;
+  --bg-elevated:            #FFFFFF;
+
+  /* Text aliases */
+  --text-primary:           #111827;
+  --text-heading:           #111827;
+  --text-body:              #111827;
+  --text-secondary:         #6B7280;
+  --text-muted:             #9CA3AF;
   --text-navy:              #0B1F4D;
   --text-orange:            #F97316;
   --text-blue:              #123C8C;
@@ -104,15 +133,24 @@
   --text-green:             #F97316;
   --color-white:            #FFFFFF;
 
-  /* Legacy compat */
-  --color-deep-navy:        #0B1F4D;
-  --color-navy:             #0B1F4D;
-  --color-soft-grey:        #F8FAFC;
+  /* Border aliases */
+  --border-subtle:          #E5E7EB;
+  --border-card:            #E5E7EB;
+  --border-focus:           #F97316;
+
+  /* Button aliases */
+  --btn-orange:             #F97316;
+  --btn-orange-hover:       #EA580C;
+  --btn-blue:               #123C8C;
+  --btn-blue-hover:         #0E2E6E;
+  --btn-green:              #F97316;
+  --btn-green-hover:        #EA580C;
 
   /* ══════════════════════════════════════════
      GRADIENTS
      ══════════════════════════════════════════ */
   --gradient-primary:       linear-gradient(135deg, #EA580C 0%, #F97316 50%, #FF8A1F 100%);
+  --gradient-accent:        linear-gradient(135deg, #EA580C 0%, #F97316 100%);
   --gradient-green:         linear-gradient(135deg, #EA580C 0%, #F97316 100%);
   --gradient-blue:          linear-gradient(135deg, #0B1F4D 0%, #123C8C 100%);
   --gradient-teal:          linear-gradient(135deg, #0F766E 0%, #0D9488 100%);
@@ -125,11 +163,8 @@
   --gradient-surface:       linear-gradient(135deg, #EEF4FF 0%, #FFF3E8 100%);
 
   /* ══════════════════════════════════════════
-     BORDERS & RADII
+     BORDER RADII
      ══════════════════════════════════════════ */
-  --border-subtle:          #E5E7EB;
-  --border-card:            #E5E7EB;
-  --border-focus:           #F97316;
   --border-radius-xs:       4px;
   --border-radius-sm:       8px;
   --border-radius-md:       12px;
@@ -150,15 +185,8 @@
   --shadow-green:           0 6px 24px rgba(249, 115, 22, 0.28);
   --shadow-teal:            0 6px 24px rgba(13, 148, 136, 0.25);
   --shadow-orange:          0 6px 24px rgba(249, 115, 22, 0.28);
+  --shadow-accent:          0 6px 24px rgba(249, 115, 22, 0.28);
   --shadow-card:            0 2px 12px rgba(11,31,77,0.06), 0 1px 3px rgba(11,31,77,0.04);
-
-  /* ─ Button System Tokens */
-  --btn-orange:             #F97316;
-  --btn-orange-hover:       #EA580C;
-  --btn-blue:               #123C8C;
-  --btn-blue-hover:         #0E2E6E;
-  --btn-green:              #F97316;
-  --btn-green-hover:        #EA580C;
 
   /* ══════════════════════════════════════════
      TYPOGRAPHY
@@ -230,8 +258,8 @@ html {
 body {
   font-family: var(--font-body);
   font-weight: 400;
-  background-color: var(--bg-canvas);
-  color: var(--text-body);
+  background-color: var(--color-background);
+  color: var(--color-text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -260,7 +288,7 @@ button {
 
 input, textarea, select {
   font-family: inherit;
-  color: var(--text-primary);
+  color: var(--color-text-main);
 }
 
 ul, ol { list-style: none; }
@@ -269,7 +297,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
   line-height: 1.2;
   font-weight: 600;
-  color: var(--color-brand);
+  color: var(--color-primary);
 }
 
 /* Navigation links, menu headings & buttons */
@@ -281,7 +309,7 @@ nav a,
 .sidebar-section-label {
   font-family: inherit;
   font-weight: 700;
-  color: var(--color-brand);
+  color: var(--color-primary);
 }
 
 /* Hero titles & major section titles — bold for impact */
@@ -309,12 +337,12 @@ nav a,
 
 .font-heading { font-family: inherit; font-weight: 600; }
 
-.text-orange  { color: var(--color-orange); }
-.text-blue    { color: var(--color-blue); }
-.text-green   { color: var(--color-primary); }
+.text-orange  { color: var(--color-accent); }
+.text-blue    { color: var(--color-primary-light); }
+.text-green   { color: var(--color-accent); }
 .text-teal    { color: var(--color-teal); }
 .text-amber   { color: var(--color-amber); }
-.text-muted   { color: var(--text-muted); }
+.text-muted   { color: var(--color-text-muted); }
 
 .text-gradient-blue {
   background: var(--gradient-blue);
@@ -362,10 +390,10 @@ nav a,
 }
 
 /* ── Section Background Utilities ───────────────────────────────── */
-.section-bg-light  { background: var(--bg-light); }    /* EEF4FF soft blue     */
-.section-bg-promo  { background: var(--bg-promo); }    /* FFF3E8 warm orange   */
-.section-bg-canvas { background: var(--bg-canvas); }   /* F8FAFC default       */
-.section-bg-brand  { background: var(--color-brand); color: #FFFFFF; }
+.section-bg-light  { background: var(--color-section-blue); }    /* EEF4FF soft blue     */
+.section-bg-promo  { background: var(--color-section-orange); }    /* FFF3E8 warm orange   */
+.section-bg-canvas { background: var(--color-background); }   /* F8FAFC default       */
+.section-bg-brand  { background: var(--color-primary); color: #FFFFFF; }
 
 /* ── Section Tags / Badges ──────────────────────────────────────── */
 .section-tag {
@@ -383,15 +411,15 @@ nav a,
 }
 
 .section-tag.blue {
-  color: var(--color-blue);
-  background: var(--color-blue-bg);
+  color: var(--color-primary-light);
+  background: var(--color-section-blue);
   border: 1px solid rgba(18, 60, 140, 0.2);
 }
 
 .section-tag.green,
 .section-tag.orange {
-  color: var(--color-primary-dark);
-  background: var(--color-primary-bg);
+  color: var(--color-accent-hover);
+  background: var(--color-accent-bg);
   border: 1px solid rgba(249, 115, 22, 0.25);
 }
 
@@ -412,14 +440,14 @@ nav a,
   font-family: inherit;
   font-size: var(--text-3xl);
   font-weight: 800;
-  color: var(--color-brand);
+  color: var(--color-primary);
   margin-bottom: var(--space-sm);
   line-height: 1.2;
 }
 
 .section-subtitle {
   font-size: var(--text-md);
-  color: var(--text-secondary);
+  color: var(--color-text-muted);
   max-width: 660px;
   margin: 0 auto;
   line-height: 1.65;
@@ -472,11 +500,11 @@ nav a,
   font-weight: 600;
 }
 /* Category / dashboard highlights — royal blue */
-.badge-blue   { background: var(--color-blue-bg);     color: var(--color-blue); }
+.badge-blue   { background: var(--color-section-blue);    color: var(--color-primary-light); }
 /* Progress / completion */
-.badge-teal   { background: var(--color-teal-bg);     color: var(--color-teal); }
+.badge-teal   { background: var(--color-teal-bg);         color: var(--color-teal); }
 /* CTA accent / warm orange */
-.badge-orange { background: var(--color-orange-bg);   color: var(--color-primary-dark); }
+.badge-orange { background: var(--color-accent-bg);       color: var(--color-accent-hover); }
 /* Achievements */
 .badge-amber  { background: var(--color-amber-bg);    color: var(--color-amber-dark); }
 /* General accent — orange */
