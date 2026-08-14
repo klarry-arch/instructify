@@ -58,7 +58,7 @@
 
 .nav-brand-tagline {
   font-size: 0.62rem;
-  color: var(--color-primary-light);
+  color: #FF8A1F;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -78,7 +78,7 @@
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.92);
   padding: 8px 14px;
   border-radius: var(--border-radius-full);
   transition: all var(--transition-fast);
@@ -89,13 +89,14 @@
 
 .nav-link:hover {
   color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .nav-link.active {
-  color: var(--color-primary-light);
-  background: rgba(249, 115, 22, 0.18);
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.22);
   font-weight: 700;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
 }
 
 .nav-link.active::after {
@@ -104,10 +105,11 @@
   bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
-  width: 20px;
-  height: 2.5px;
-  background: var(--color-primary);
+  width: 22px;
+  height: 3px;
+  background: #FF8A1F;
   border-radius: 2px;
+  box-shadow: 0 0 8px rgba(255, 138, 31, 0.8);
 }
 
 /* ── Nav Actions ────────────────────────────────────────────── */
@@ -177,9 +179,11 @@
   text-decoration: none;
   transition: all var(--transition-fast);
 }
-.nav-mobile-link:hover {
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.1);
+.nav-mobile-link:hover,
+.nav-mobile-link.active {
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 700;
 }
 
 /* ══════════════════════════════════════════════════════════════
