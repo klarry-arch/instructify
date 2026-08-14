@@ -85,18 +85,14 @@
   letter-spacing: -0.02em;
 }
 
-.hero-title .highlight-blue {
-  background: var(--gradient-blue);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero-title .highlight-blue,
+.highlight-blue {
+  color: var(--color-primary);
 }
 
-.hero-title .highlight-teal {
-  background: var(--gradient-teal);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero-title .highlight-orange,
+.highlight-orange {
+  color: var(--color-accent);
 }
 
 .hero-subtitle {
