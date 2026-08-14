@@ -297,7 +297,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
   line-height: 1.2;
   font-weight: 600;
-  color: var(--color-primary);
+  color: var(--color-text-main);
 }
 
 /* Navigation links, menu headings & buttons */
@@ -321,8 +321,7 @@ nav a,
 }
 
 .hero-heading {
-  color: #FFFFFF !important;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  color: var(--color-text-main);
 }
 
 /* ── Utility Typography ────────────────────────────────────── */
@@ -440,7 +439,7 @@ nav a,
   font-family: inherit;
   font-size: var(--text-3xl);
   font-weight: 800;
-  color: var(--color-primary);
+  color: var(--color-text-main);
   margin-bottom: var(--space-sm);
   line-height: 1.2;
 }
