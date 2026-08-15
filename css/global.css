@@ -3,7 +3,7 @@
    Premium LMS Color System v4.0 — Canonical Token Schema
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
@@ -191,21 +191,51 @@
   --shadow-card:            0 2px 12px rgba(0,0,255,0.07), 0 1px 3px rgba(0,0,255,0.04);
 
   /* ══════════════════════════════════════════
-     TYPOGRAPHY
+     TYPOGRAPHY SYSTEM (Inter & Segoe UI)
+     Clean, Accessible & Student-Friendly
      ══════════════════════════════════════════ */
-  --font-system:            "Poppins", sans-serif;
-  --font-heading:           "Poppins", sans-serif;
-  --font-body:              "Poppins", sans-serif;
+  --font-sans:              'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-system:            var(--font-sans);
+  --font-heading:           var(--font-sans);
+  --font-body:              var(--font-sans);
+  --font-mono:              ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
+  /* Desktop Heading Scale */
+  --font-size-h1:           48px;
+  --font-size-h2:           40px;
+  --font-size-h3:           32px;
+  --font-size-h4:           24px;
+  --font-size-h5:           20px;
+  --font-size-h6:           16px;
+
+  /* Line Heights */
+  --line-height-h1:         1.15;
+  --line-height-h2:         1.20;
+  --line-height-h3:         1.25;
+  --line-height-h4:         1.30;
+  --line-height-h5:         1.40;
+  --line-height-h6:         1.45;
+  --line-height-body:       1.60;
+  --line-height-relaxed:    1.65;
+
+  /* Font Weights */
+  --font-weight-light:      300;
+  --font-weight-normal:     400;
+  --font-weight-medium:     500;
+  --font-weight-semibold:   600;
+  --font-weight-bold:       700;
+  --font-weight-extrabold:  800;
+
+  /* Text Scale Tokens */
   --text-xs:    13px;
   --text-sm:    14px;
   --text-base:  16px;
   --text-md:    18px;
   --text-lg:    20px;
   --text-xl:    24px;
-  --text-2xl:   30px;
+  --text-2xl:   32px;
   --text-3xl:   40px;
-  --text-4xl:   52px;
+  --text-4xl:   48px;
 
   /* ══════════════════════════════════════════
      SPACING
@@ -244,7 +274,7 @@
   --z-toast:    400;
 }
 
-/* ── Reset ─────────────────────────────────────────────────── */
+/* ── Reset & Base Document Setup ────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -262,7 +292,7 @@ body {
   font-weight: 400;
   background-color: var(--color-background);
   color: var(--color-text-main);
-  line-height: 1.6;
+  line-height: var(--line-height-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -295,44 +325,195 @@ input, textarea, select {
 
 ul, ol { list-style: none; }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: inherit;
-  line-height: 1.2;
-  font-weight: 600;
+/* ── Heading Styles (H1 - H6) — Desktop Scale ───────────────── */
+h1, .h1 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+  font-weight: 700;
+  letter-spacing: -0.025em;
   color: var(--color-text-main);
+  margin-bottom: 0.4em;
+}
+
+h2, .h2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: 700;
+  letter-spacing: -0.020em;
+  color: var(--color-text-main);
+  margin-bottom: 0.4em;
+}
+
+h3, .h3 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--color-text-main);
+  margin-bottom: 0.4em;
+}
+
+h4, .h4 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-h4);
+  font-weight: 600;
+  letter-spacing: -0.010em;
+  color: var(--color-text-main);
+  margin-bottom: 0.4em;
+}
+
+h5, .h5 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--color-text-main);
+  margin-bottom: 0.4em;
+}
+
+h6, .h6 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h6);
+  line-height: var(--line-height-h6);
+  font-weight: 600;
+  letter-spacing: 0em;
+  color: var(--color-text-main);
+  margin-bottom: 0.4em;
+}
+
+/* ── Paragraphs & Educational Body Hierarchy ────────────────── */
+p {
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.lead,
+.hero-lead,
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.65;
+  color: #475569;
+  font-weight: 400;
+}
+
+/* Section Titles & Subtitles */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: 700;
+  letter-spacing: -0.020em;
+  color: var(--color-text-main);
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  line-height: 1.65;
+  color: #475569;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Menu headings & sidebar labels */
 .menu-heading,
 .sidebar-section-label {
-  font-family: inherit;
+  font-family: var(--font-heading);
   font-weight: 700;
   color: var(--color-primary);
 }
 
-/* Hero titles & major section titles — bold for impact */
+/* Hero Headings */
 .hero h1,
 .hero-title,
 .hero-heading,
-.section-title {
+.hero-h1 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
   font-weight: 700;
-}
-
-.hero-heading {
+  letter-spacing: -0.025em;
   color: var(--color-text-main);
 }
 
-/* ── Utility Typography ────────────────────────────────────── */
-.text-3xl    { font-size: var(--text-3xl); }
-.text-2xl    { font-size: var(--text-2xl); }
-.text-xl     { font-size: var(--text-xl); }
-.text-lg     { font-size: var(--text-lg); }
-.text-md     { font-size: var(--text-md); }
-.text-base   { font-size: var(--text-base); }
-.text-sm     { font-size: var(--text-sm); }
-.text-xs     { font-size: var(--text-xs); }
+/* ── LMS, Course Pages, Lesson Modules & Assessment Hierarchy ── */
+.dashboard-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--color-text-main);
+}
 
-.font-heading { font-family: inherit; font-weight: 600; }
+.dashboard-subtitle {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #64748B;
+  margin-top: 4px;
+}
+
+.course-card-title-custom,
+.course-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 8px;
+}
+
+.module-title,
+.lesson-module-heading {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-h4);
+  font-weight: 600;
+  letter-spacing: -0.010em;
+  color: var(--color-text-main);
+  margin-bottom: 10px;
+}
+
+.lesson-title,
+.assignment-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 8px;
+}
+
+.module-desc,
+.lesson-desc,
+.assignment-desc {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #475569;
+}
+
+/* ── Utility Typography ────────────────────────────────────── */
+.text-4xl    { font-size: var(--text-4xl); line-height: var(--line-height-h1); }
+.text-3xl    { font-size: var(--text-3xl); line-height: var(--line-height-h2); }
+.text-2xl    { font-size: var(--text-2xl); line-height: var(--line-height-h3); }
+.text-xl     { font-size: var(--text-xl); line-height: var(--line-height-h4); }
+.text-lg     { font-size: var(--text-lg); line-height: var(--line-height-h5); }
+.text-md     { font-size: var(--text-md); line-height: 1.5; }
+.text-base   { font-size: var(--text-base); line-height: var(--line-height-body); }
+.text-sm     { font-size: var(--text-sm); line-height: 1.5; }
+.text-xs     { font-size: var(--text-xs); line-height: 1.45; }
+
+.font-heading { font-family: var(--font-heading); font-weight: 600; }
 
 .text-orange  { color: var(--color-accent); }
 .text-blue    { color: var(--color-primary-light); }
@@ -570,14 +751,67 @@ h1, h2, h3, h4, h5, h6 {
 
 ::selection { background: var(--color-primary-bg); color: var(--color-primary-dark); }
 
-/* ── Responsive ─────────────────────────────────────────────── */
+/* ── Responsive & Mobile Typography Scale ─────────────────────── */
 @media (max-width: 1024px) {
   .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
+  :root {
+    --font-size-h1: 36px;
+    --font-size-h2: 30px;
+    --font-size-h3: 24px;
+    --font-size-h4: 20px;
+    --font-size-h5: 18px;
+    --font-size-h6: 16px;
+    --text-4xl:     36px;
+    --text-3xl:     30px;
+    --text-2xl:     24px;
+    --text-xl:      20px;
+  }
+
   .container { padding: 0 var(--space-lg); }
   .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-  .section-title { font-size: var(--text-2xl); }
   .section { padding: var(--space-3xl) 0; }
+
+  /* Mobile Heading Scale */
+  h1, .h1, .hero h1, .hero-title, .hero-heading, .hero-h1 {
+    font-size: 36px !important;
+    line-height: 1.20 !important;
+  }
+
+  h2, .h2, .section-title {
+    font-size: 30px !important;
+    line-height: 1.25 !important;
+  }
+
+  h3, .h3, .dashboard-title {
+    font-size: 24px !important;
+    line-height: 1.30 !important;
+  }
+
+  h4, .h4, .module-title, .lesson-module-heading {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+  }
+
+  h5, .h5, .course-card-title-custom, .course-title, .lesson-title, .assignment-title {
+    font-size: 18px !important;
+    line-height: 1.40 !important;
+  }
+
+  h6, .h6 {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+  }
+
+  .lead, .hero-lead, .hero-subtitle {
+    font-size: 16px;
+    line-height: 1.60;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
+    line-height: 1.60;
+  }
 }
