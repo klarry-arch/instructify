@@ -13,7 +13,7 @@
   z-index: var(--z-sticky);
   display: flex;
   align-items: center;
-  background: rgba(0, 0, 255, 0.97);
+  background: rgba(72, 14, 116, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -21,8 +21,8 @@
 }
 
 .navbar.scrolled {
-  background: rgba(0, 0, 255, 0.99);
-  box-shadow: 0 4px 24px rgba(0, 0, 255, 0.28);
+  background: rgba(72, 14, 116, 0.99);
+  box-shadow: 0 4px 24px rgba(72, 14, 116, 0.28);
 }
 
 .navbar .container {
@@ -107,9 +107,9 @@
   transform: translateX(-50%);
   width: 22px;
   height: 3px;
-  background: #F24822;
+  background: #F2542D;
   border-radius: 2px;
-  box-shadow: 0 0 8px rgba(242, 72, 34, 0.8);
+  box-shadow: 0 0 8px rgba(242, 84, 45, 0.8);
 }
 
 /* ── Nav Actions ────────────────────────────────────────────── */
@@ -184,7 +184,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding: var(--space-lg);
   z-index: var(--z-sticky);
-  box-shadow: 0 16px 40px rgba(0, 0, 255, 0.28);
+  box-shadow: 0 16px 40px rgba(72, 14, 116, 0.28);
 }
 
 .nav-mobile.open {
@@ -247,13 +247,13 @@
   transform: scale(0.97);
 }
 
-/* ── Primary CTA Button — Accent (#F24822) ─────────────────── */
+/* ── Primary CTA Button — Accent (#F2542D) ─────────────────── */
 .btn-primary,
 .btn-accent,
 .btn-orange {
   background: var(--color-accent);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(242, 72, 34, 0.32);
+  box-shadow: 0 4px 14px rgba(242, 84, 45, 0.32);
 }
 
 .btn-primary:hover,
@@ -261,23 +261,23 @@
 .btn-orange:hover {
   background: var(--color-accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(242, 72, 34, 0.42);
+  box-shadow: 0 8px 24px rgba(242, 84, 45, 0.42);
   color: #FFFFFF;
 }
 
-/* ── Secondary Button — Pure Brand Blue (#0000FF) ───────────── */
+/* ── Secondary Button — Pure Brand Blue (#480E74) ───────────── */
 .btn-secondary,
 .btn-blue {
   background: var(--color-primary);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(0, 0, 255, 0.28);
+  box-shadow: 0 4px 14px rgba(72, 14, 116, 0.28);
 }
 
 .btn-secondary:hover,
 .btn-blue:hover {
   background: var(--color-brand-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 255, 0.38);
+  box-shadow: 0 8px 24px rgba(72, 14, 116, 0.38);
   color: #FFFFFF;
 }
 
@@ -295,10 +295,10 @@
   color: #FFFFFF;
   border-color: var(--color-primary);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 255, 0.25);
+  box-shadow: 0 6px 20px rgba(72, 14, 116, 0.25);
 }
 
-/* ── Outline Button — Accent Vermilion (#F24822) ────────────── */
+/* ── Outline Button — Accent Vermilion (#F2542D) ────────────── */
 .btn-outline-accent,
 .btn-outline-orange {
   background: transparent;
@@ -312,7 +312,7 @@
   color: #FFFFFF;
   border-color: var(--color-accent);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(242, 72, 34, 0.30);
+  box-shadow: 0 6px 20px rgba(242, 84, 45, 0.30);
 }
 
 /* ── Outline Button — White (for dark sections) ─────────────── */
@@ -335,13 +335,13 @@
 .btn-light {
   background: #FFFFFF;
   color: var(--color-primary);
-  border: 1px solid rgba(0, 0, 255, 0.08);
+  border: 1px solid rgba(72, 14, 116, 0.08);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 .btn-white:hover,
 .btn-light:hover {
-  background: #F8FAFC;
+  background: #F8F6FC;
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
   color: var(--color-primary);
@@ -450,15 +450,15 @@
 
 .course-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(242, 72, 34, 0.14);
-  border-color: rgba(242, 72, 34, 0.30);
+  box-shadow: 0 20px 50px rgba(242, 84, 45, 0.14);
+  border-color: rgba(242, 84, 45, 0.30);
 }
 
 .course-card-image {
   position: relative;
   width: 100%;
   height: 172px;
-  background: linear-gradient(135deg, #EEF4FF, #FFF0ED);
+  background: linear-gradient(135deg, #F3E8FF, #FFF1EE);
   overflow: hidden;
 }
 
@@ -581,7 +581,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #F8FAFC;
+  background: #F8F6FC;
 }
 
 .course-price {

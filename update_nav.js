@@ -48,7 +48,7 @@ if (!cssContent.includes('.nav-dropdown')) {
 }
 
 .nav-dropdown li a:hover {
-  background: #eff6ff;
+  background: #F3E8FF;
   color: var(--color-primary);
 }
 `;

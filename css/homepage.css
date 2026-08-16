@@ -10,9 +10,9 @@
   display: flex;
   align-items: center;
   background:
-    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(242, 72, 34, 0.08) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(18, 60, 140, 0.07) 0%, transparent 50%),
-    linear-gradient(135deg, #EEF4FF 0%, #FFF0ED 100%);
+    radial-gradient(ellipse 80% 50% at 100% 0%, rgba(242, 84, 45, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(106, 27, 154, 0.07) 0%, transparent 50%),
+    linear-gradient(135deg, #F3E8FF 0%, #FFF1EE 100%);
   overflow: hidden;
   padding-top: calc(var(--nav-height) + 20px);
   padding-bottom: 52px;
@@ -27,7 +27,7 @@
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(242, 72, 34, 0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(242, 84, 45, 0.07) 0%, transparent 70%);
   pointer-events: none;
   animation: heroGlow 8s ease-in-out infinite;
 }
@@ -40,7 +40,7 @@
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(18, 60, 140, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(106, 27, 154, 0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -71,7 +71,7 @@
   margin-bottom: 16px;
   background: var(--color-blue-bg);
   color: var(--color-blue);
-  border: 1px solid rgba(18, 60, 140, 0.25);
+  border: 1px solid rgba(106, 27, 154, 0.25);
   letter-spacing: 0.04em;
 }
 
@@ -260,8 +260,8 @@
 
 .pathway-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 48px rgba(18, 60, 140, 0.12);
-  border-color: rgba(18, 60, 140, 0.22);
+  box-shadow: 0 24px 48px rgba(106, 27, 154, 0.12);
+  border-color: rgba(106, 27, 154, 0.22);
 }
 
 .pathway-card:hover::before {
@@ -293,7 +293,7 @@
 .support-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  border-color: rgba(242, 72, 34, 0.28);
+  border-color: rgba(242, 84, 45, 0.28);
 }
 
 .support-icon {
@@ -414,7 +414,7 @@
 
 .testimonial-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 48px rgba(18, 60, 140, 0.10);
+  box-shadow: 0 20px 48px rgba(106, 27, 154, 0.10);
 }
 
 /* ── LMS Progress Bar ─────────────────────────────────────────── */
