@@ -3,7 +3,7 @@
    Premium LMS Color System v4.0 — Canonical Token Schema
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&display=swap');
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
@@ -194,23 +194,23 @@
      TYPOGRAPHY SYSTEM (Inter & Segoe UI)
      Clean, Accessible & Student-Friendly
      ══════════════════════════════════════════ */
-  --font-sans:              'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-sans:              'Plus Jakarta Sans', 'Outfit', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-system:            var(--font-sans);
-  --font-heading:           var(--font-sans);
-  --font-body:              var(--font-sans);
+  --font-heading:           'Plus Jakarta Sans', 'Outfit', 'Poppins', sans-serif;
+  --font-body:              'Plus Jakarta Sans', 'Inter', sans-serif;
   --font-mono:              ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* Desktop Heading Scale */
-  --font-size-h1:           48px;
-  --font-size-h2:           40px;
+  --font-size-h1:           54px;
+  --font-size-h2:           42px;
   --font-size-h3:           32px;
   --font-size-h4:           24px;
   --font-size-h5:           20px;
   --font-size-h6:           16px;
 
   /* Line Heights */
-  --line-height-h1:         1.15;
-  --line-height-h2:         1.20;
+  --line-height-h1:         1.08;
+  --line-height-h2:         1.14;
   --line-height-h3:         1.25;
   --line-height-h4:         1.30;
   --line-height-h5:         1.40;
@@ -513,7 +513,7 @@ p:last-child {
 .text-sm     { font-size: var(--text-sm); line-height: 1.5; }
 .text-xs     { font-size: var(--text-xs); line-height: 1.45; }
 
-.font-heading { font-family: var(--font-heading); font-weight: 600; }
+.font-heading { font-family: var(--font-heading); font-weight: 800; }
 
 .text-orange  { color: var(--color-accent); }
 .text-blue    { color: var(--color-primary-light); }
@@ -581,7 +581,7 @@ p:last-child {
   font-family: inherit;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: -0.028em;
   text-transform: uppercase;
   padding: 6px 16px;
   border-radius: var(--border-radius-full);
