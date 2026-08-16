@@ -1,35 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 100" fill="none">
-  <!-- Pen & Swooshes Icon (Instructify Kenya) -->
-  <g transform="translate(10, 10)">
-    <!-- Pen Barrel -->
-    <path d="M52 14 L80 44 L44 80 L16 50 Z" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" fill="none" width="100%" height="100%">
+  <defs>
+    <style>
+      .wordmark {
+        font-family: 'Inter', 'Poppins', 'Segoe UI', system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 88px;
+        fill: #FFFFFF;
+        letter-spacing: -0.015em;
+      }
+      .tagline {
+        font-family: 'Inter', 'Poppins', 'Segoe UI', system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 26px;
+        fill: #FA5E1F;
+        letter-spacing: 0.38em;
+      }
+    </style>
+  </defs>
+
+  <!-- ── Fountain Pen & Nib ── -->
+  <g id="pen-graphic">
+    <!-- Pen Barrel Outer Shadow / Dark Border -->
+    <path d="M165 62 L202 99 C206 103 205 109 200 114 L142 172 L105 135 L163 77 C168 72 174 71 165 62 Z" fill="#1C1917"/>
+
+    <!-- Pen Upper Cap & Body (White) -->
+    <path d="M164 64 L198 98 C202 102 201 107 197 111 L148 160 L114 126 L163 77 C167 73 172 72 164 64 Z" fill="#FFFFFF"/>
     
-    <!-- Pen Nib -->
-    <path d="M16 50 L44 80 L28 92 L6 98 L12 76 Z" fill="#FFFFFF"/>
-    <path d="M6 98 L28 92 L22 72 Z" fill="rgba(0,0,0,0.15)"/>
-    <!-- Nib Split & Breather Hole -->
-    <line x1="6" y1="98" x2="30" y2="74" stroke="#0000FF" stroke-width="2"/>
-    <circle cx="30" cy="74" r="2.5" fill="#0000FF"/>
+    <!-- Pen Cap Clip (Curving Outward) -->
+    <path d="M178 78 C198 94 212 118 202 148 C198 160 190 166 178 162 C168 158 174 146 178 140 C186 126 182 108 170 94 Z" fill="#FFFFFF" stroke="#1C1917" stroke-width="4" stroke-linejoin="round"/>
 
-    <!-- Gold/Orange Accent Grip Ring -->
-    <polygon points="40 40 48 32 60 44 52 52" fill="#F24822"/>
-    <polygon points="32 48 40 40 52 52 44 60" fill="#D93815"/>
+    <!-- Pen Barrel Longitudinal Stripes -->
+    <path d="M142 104 L174 136" stroke="#1C1917" stroke-width="8" stroke-linecap="round"/>
+    <path d="M156 90 L188 122" stroke="#1C1917" stroke-width="7" stroke-linecap="round"/>
 
-    <!-- Pen Body Inset Stripes -->
-    <line x1="56" y1="24" x2="72" y2="40" stroke="#0000FF" stroke-width="3" stroke-linecap="round"/>
-    <line x1="64" y1="32" x2="76" y2="44" stroke="#0000FF" stroke-width="2" stroke-linecap="round"/>
+    <!-- Orange Grip Ring Accent -->
+    <polygon points="103 137 115 125 149 159 137 171" fill="#FA5E1F" stroke="#1C1917" stroke-width="5" stroke-linejoin="round"/>
 
-    <!-- Pen Cap & Clip -->
-    <path d="M74 20 C64 36 56 52 50 68" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round"/>
-    <circle cx="49" cy="69" r="3" fill="#F24822"/>
+    <!-- Pen Nib Section (White with Dark Border) -->
+    <path d="M101 140 L135 174 L94 215 C82 227 68 238 48 248 C58 228 69 214 81 202 Z" fill="#FFFFFF" stroke="#1C1917" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M48 248 L94 215 L80 187 Z" fill="#E2E8F0"/>
 
-    <!-- Top Orange Wave Swoosh -->
-    <path d="M6 98 C36 82 76 80 112 86 C144 91 176 96 206 88" fill="none" stroke="#F24822" stroke-width="4.5" stroke-linecap="round"/>
-    <!-- Bottom White Wave Swoosh -->
-    <path d="M4 102 C38 94 80 98 116 106 C152 114 188 110 220 96" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    <!-- Nib Center Slit & Breather Hole -->
+    <line x1="48" y1="248" x2="108" y2="188" stroke="#1C1917" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="106" cy="190" r="4.5" fill="#1C1917"/>
   </g>
 
-  <!-- Typography -->
-  <text x="135" y="56" font-family="'Poppins', sans-serif" font-size="34" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">Instructify</text>
-  <text x="137" y="78" font-family="'Poppins', sans-serif" font-size="11.5" font-weight="800" fill="#F24822" letter-spacing="4.5">KENYA</text>
+  <!-- ── Underline Dynamic Swoosh Waves ── -->
+  <!-- Top Orange Wave -->
+  <path d="M48 248 C115 220 200 222 305 254 C405 284 500 286 620 220 C505 272 400 270 300 240 C205 212 120 214 48 248 Z" fill="#FA5E1F"/>
+
+  <!-- Bottom White Wave -->
+  <path d="M35 258 C115 240 210 248 310 286 C405 322 510 324 640 268 C515 310 405 306 305 272 C210 238 120 230 35 258 Z" fill="#FFFFFF"/>
+
+  <!-- ── Brand Typography ── -->
+  <!-- "instructify" lowercase text -->
+  <text x="215" y="196" class="wordmark">instructify</text>
+
+  <!-- "— K E N Y A —" Subtitle -->
+  <g id="kenya-sub">
+    <!-- Left Orange Rule -->
+    <line x1="220" y1="238" x2="310" y2="238" stroke="#FA5E1F" stroke-width="4.5" stroke-linecap="round"/>
+    
+    <!-- "K E N Y A" text -->
+    <text x="332" y="247" class="tagline">KENYA</text>
+    
+    <!-- Right Orange Rule -->
+    <line x1="595" y1="238" x2="685" y2="238" stroke="#FA5E1F" stroke-width="4.5" stroke-linecap="round"/>
+  </g>
 </svg>
