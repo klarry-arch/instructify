@@ -8,187 +8,177 @@
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
   /* ══════════════════════════════════════════
-     ★ CANONICAL DESIGN TOKENS (v4.0)
-       These are the single source of truth.
-       All component CSS should reference these.
+     ★ CANONICAL DESIGN TOKENS (v5.0 — Professional Palette)
      ══════════════════════════════════════════ */
 
-  /* ─ Primary Brand — Blue */
-  --color-primary:          #480E74;   /* Navbar, footer, headings, brand    */
-  --color-primary-light:    #6A1B9A;   /* Links, secondary btns, tabs        */
+  /* ─ Primary Brand — Professional Blue */
+  --color-primary:          #2563EB;   /* Main buttons, active nav, links, CTAs */
+  --color-primary-hover:    #1D4ED8;   /* Primary button hover state */
+  --color-primary-light:    #3B82F6;   /* Focus rings, blue highlights */
+  --color-primary-dark:     #1E40AF;   /* Dark blue headings/accents */
+  --color-primary-bg:       #EFF6FF;   /* Soft blue background (Blue 50) */
+  --color-primary-glow:     rgba(37, 99, 235, 0.15);
 
-  /* ─ Accent / Secondary Brand — #F2542D (CTA actions & highlights) */
-  --color-accent:           #F2542D;   /* Enroll Now, Sign Up, Submit, Highlights */
-  --color-accent-hover:     #D83E15;   /* Button hover state                 */
-  --color-accent-light:     #FF724D;   /* Icons, badges, progress accents    */
+  /* ─ Secondary Brand — Teal (Progress, completion, learning paths) */
+  --color-secondary:        #14B8A6;   /* Progress indicators, completed modules */
+  --color-secondary-hover:  #0D9488;   /* Secondary hover state */
+  --color-secondary-light:  #5EEAD4;   /* Light teal accents */
+  --color-secondary-dark:   #0F766E;   /* Deep teal text/borders */
+  --color-secondary-bg:     #F0FDFA;   /* Soft teal background (Teal 50) */
+  --color-secondary-glow:   rgba(20, 184, 166, 0.15);
 
-  /* ─ Surfaces */
-  --color-background:       #F8F6FC;   /* Main website background            */
-  --color-surface:          #FFFFFF;   /* Cards, modals, content containers  */
-  --color-section-blue:     #F3E8FF;   /* Soft blue section backgrounds      */
-  --color-section-orange:   #FFF1EE;   /* Promo banners, featured panels     */
+  /* ─ Accent — Amber (Workshop highlights, reminders, announcements) */
+  --color-accent:           #F59E0B;   /* Workshop highlights, reminders, ratings */
+  --color-accent-hover:     #D97706;   /* Accent hover state */
+  --color-accent-light:     #FCD34D;   /* Light amber accents */
+  --color-accent-dark:      #B45309;   /* Deep amber text/borders */
+  --color-accent-bg:        #FFFBEB;   /* Soft amber background (Amber 50) */
+  --color-accent-glow:      rgba(245, 158, 11, 0.15);
 
-  /* ─ Text */
-  --color-text-main:        #111827;   /* Main text                          */
-  --color-text-muted:       #6B7280;   /* Secondary / descriptive text       */
+  /* ─ Surfaces & Backgrounds */
+  --color-background:       #F8FAFC;   /* Main background (Slate 50) */
+  --color-surface:          #FFFFFF;   /* Cards, modals, containers */
+  --color-surface-soft:     #F1F5F9;   /* Soft surface background (Slate 100) */
+  --color-section-blue:     #EFF6FF;   /* Soft blue section backgrounds */
+  --color-section-teal:     #F0FDFA;   /* Soft teal section backgrounds */
+  --color-section-amber:    #FFFBEB;   /* Soft amber section backgrounds */
 
-  /* ─ Border */
-  --color-border:           #E2E8F0;   /* Slate-200 — Clean, modern borders & dividers */
+  /* ─ Typography & Text System */
+  --color-text-main:        #0F172A;   /* Slate 900 — Headings & primary text */
+  --color-text-secondary:   #475569;   /* Slate 600 — Body & secondary text */
+  --color-text-muted:       #64748B;   /* Slate 500 — Metadata & subtle text */
+  --color-text-on-primary:  #FFFFFF;   /* Text on primary buttons */
 
-  /* ─ Status */
-  --color-success:          #16A34A;
-  --color-warning:          #F59E0B;
-  --color-error:            #DC2626;
+  /* ─ Borders & Dividers */
+  --color-border:           #E2E8F0;   /* Slate 200 — Clean borders & dividers */
+  --color-border-subtle:    #F1F5F9;   /* Subtle divider lines */
+  --color-border-focus:     #2563EB;   /* Active focus border */
+  --color-border-focus-glow:rgba(37, 99, 235, 0.20);
+
+  /* ─ Status Colors */
+  --color-success:          #22C55E;   /* Green 500 */
+  --color-success-bg:       #F0FDF4;   /* Green 50 background */
+  --color-warning:          #F97316;   /* Orange 500 */
+  --color-warning-bg:       #FFF7ED;   /* Orange 50 background */
+  --color-danger:           #EF4444;   /* Red 500 */
+  --color-danger-bg:        #FEF2F2;   /* Red 50 background */
+  --color-error:            #EF4444;
+  --color-error-bg:         #FEF2F2;
+  --color-info:             #38BDF8;   /* Sky 400 */
+  --color-info-bg:          #F0F9FF;   /* Sky 50 background */
 
   /* ══════════════════════════════════════════
-     DERIVED / COMPUTED TOKENS
+     LEGACY ALIASES & COMPATIBILITY MAP
      ══════════════════════════════════════════ */
+  --color-brand:            #0F172A;
+  --color-brand-dark:       #020617;
+  --color-brand-bg:         #EFF6FF;
+  --color-brand-glow:       rgba(37, 99, 235, 0.15);
 
-  /* ─ Accent variants */
-  --color-accent-bg:        #FFF1EE;
-  --color-accent-glow:      rgba(242, 84, 45, 0.18);
+  --color-blue:             #2563EB;
+  --color-blue-dark:        #1D4ED8;
+  --color-blue-light:       #3B82F6;
+  --color-blue-bg:          #EFF6FF;
+  --color-blue-glow:        rgba(37, 99, 235, 0.15);
 
-  /* ─ Primary-light (royal blue) variants */
-  --color-blue:             #6A1B9A;
-  --color-blue-dark:        #0E2E6E;
-  --color-blue-light:       #7E22CE;
-  --color-blue-bg:          #F3E8FF;
-  --color-blue-glow:        rgba(106, 27, 154, 0.18);
-
-  /* ─ Primary (blue) variants */
-  --color-brand:            #480E74;
-  --color-brand-dark:       #2E0550;
-  --color-brand-bg:         #F3E8FF;
-  --color-brand-glow:       rgba(72, 14, 116, 0.15);
-
-  /* ─ Teal — Progress & completion */
-  --color-teal:             #0D9488;
-  --color-teal-dark:        #0F766E;
-  --color-teal-light:       #14B8A6;
+  --color-teal:             #14B8A6;
+  --color-teal-dark:        #0D9488;
+  --color-teal-light:       #5EEAD4;
   --color-teal-bg:          #F0FDFA;
-  --color-teal-glow:        rgba(13, 148, 136, 0.15);
+  --color-teal-glow:        rgba(20, 184, 166, 0.15);
 
-  /* ─ Amber — Achievements, ratings */
   --color-amber:            #F59E0B;
   --color-amber-dark:       #D97706;
+  --color-amber-light:      #FCD34D;
   --color-amber-bg:         #FFFBEB;
 
-  /* ─ Status extras */
-  --color-success-bg:       #DCFCE7;
-  --color-warning-bg:       #FFFBEB;
-  --color-error-bg:         #FEF2F2;
-  --color-info:             #0EA5E9;
-  --color-info-bg:          #F0F9FF;
+  --color-orange:           #2563EB;   /* Old orange buttons → Primary Blue */
+  --color-orange-hover:     #1D4ED8;
+  --color-orange-bg:        #EFF6FF;
+  --color-orange-glow:      rgba(37, 99, 235, 0.18);
+  --color-curiosity-orange: #F59E0B;   /* Curiosity spark → Amber */
+  --color-light-orange:     #FFFBEB;
+  --color-warm-orange:      #F59E0B;
+  --color-warm-orange-bg:   #FFFBEB;
 
-  /* ══════════════════════════════════════════
-     LEGACY ALIASES
-     Point old token names to canonical values
-     so existing HTML & components keep working
-     ══════════════════════════════════════════ */
-
-  /* Old --color-primary* (orange/accent) → now #F2542D */
-  --color-orange:           #F2542D;
-  --color-orange-hover:     #D83E15;
-  --color-orange-bg:        #FFF1EE;
-  --color-orange-glow:      rgba(242, 84, 45, 0.18);
-  --color-curiosity-orange: #F2542D;
-  --color-light-orange:     #FFF1EE;
-  --color-warm-orange:      #F2542D;
-  --color-warm-orange-bg:   #FFF1EE;
-
-  /* These point to accent (#F2542D) for backward compat */
-  --color-mint:             #F2542D;
-  --color-mint-bg:          #FFF1EE;
-  --color-growth-green:     #F2542D;
-  --color-primary-blue:     #6A1B9A;
-  --color-blue-accent:      #7E22CE;
-  --color-light-blue:       #F3E8FF;
-  --color-deep-navy:        #480E74;
-  --color-navy:             #480E74;
-  --color-soft-grey:        #F8F6FC;
-  --color-danger:           #DC2626;
-  --color-danger-bg:        #FEF2F2;
+  --color-mint:             #14B8A6;
+  --color-mint-bg:          #F0FDFA;
+  --color-growth-green:     #22C55E;
+  --color-primary-blue:     #2563EB;
+  --color-blue-accent:      #1D4ED8;
+  --color-light-blue:       #EFF6FF;
+  --color-deep-navy:        #0F172A;
+  --color-navy:             #0F172A;
+  --color-soft-grey:        #F1F5F9;
 
   /* Background aliases */
   --bg-white:               #FFFFFF;
-  --bg-canvas:              #F8F6FC;
-  --bg-light:               #F3E8FF;
-  --bg-promo:               #FFF1EE;
-  --bg-surface:             #F3E8FF;
-  --bg-dark:                #480E74;
-  --bg-dark-surface:        #6A1B9A;
+  --bg-canvas:              #F8FAFC;
+  --bg-light:               #F1F5F9;
+  --bg-promo:               #FFFBEB;
+  --bg-surface:             #FFFFFF;
+  --bg-dark:                #0F172A;
+  --bg-dark-surface:        #1E293B;
   --bg-card:                #FFFFFF;
   --bg-elevated:            #FFFFFF;
 
   /* Text aliases */
-  --text-primary:           #111827;
-  --text-heading:           #111827;
-  --text-body:              #111827;
-  --text-secondary:         #6B7280;
-  --text-muted:             #9CA3AF;
-  --text-navy:              #480E74;
-  --text-orange:            #F2542D;
-  --text-blue:              #6A1B9A;
-  --text-teal:              #0D9488;
-  --text-green:             #F2542D;
+  --text-primary:           #0F172A;
+  --text-heading:           #0F172A;
+  --text-body:              #475569;
+  --text-secondary:         #475569;
+  --text-muted:             #64748B;
+  --text-navy:              #0F172A;
+  --text-orange:            #2563EB;
+  --text-blue:              #2563EB;
+  --text-teal:              #14B8A6;
+  --text-green:             #22C55E;
   --color-white:            #FFFFFF;
 
   /* Border aliases */
   --border-subtle:          #E2E8F0;
   --border-card:            #E2E8F0;
-  --border-card-hover:      rgba(72, 14, 116, 0.20);
-  --border-focus:           #480E74;
-  --border-focus-glow:      rgba(72, 14, 116, 0.15);
+  --border-card-hover:      rgba(37, 99, 235, 0.20);
+  --border-focus:           #2563EB;
+  --border-focus-glow:      rgba(37, 99, 235, 0.18);
 
   /* Button aliases */
-  --btn-orange:             #F2542D;
-  --btn-orange-hover:       #D83E15;
-  --btn-blue:               #480E74;
-  --btn-blue-hover:         #2E0550;
-  --btn-green:              #F2542D;
-  --btn-green-hover:        #D83E15;
+  --btn-orange:             #2563EB;
+  --btn-orange-hover:       #1D4ED8;
+  --btn-blue:               #2563EB;
+  --btn-blue-hover:         #1D4ED8;
+  --btn-teal:               #14B8A6;
+  --btn-teal-hover:         #0D9488;
+  --btn-amber:              #F59E0B;
+  --btn-amber-hover:        #D97706;
 
   /* ══════════════════════════════════════════
      GRADIENTS
      ══════════════════════════════════════════ */
-  --gradient-primary:       linear-gradient(135deg, #D83E15 0%, #F2542D 100%);
-  --gradient-accent:        linear-gradient(135deg, #D83E15 0%, #F2542D 100%);
-  --gradient-green:         linear-gradient(135deg, #D83E15 0%, #F2542D 100%);
-  --gradient-blue:          linear-gradient(135deg, #2E0550 0%, #480E74 100%);
-  --gradient-teal:          linear-gradient(135deg, #0F766E 0%, #0D9488 100%);
-  --gradient-orange:        linear-gradient(135deg, #D83E15 0%, #F2542D 100%);
-  --gradient-warm:          linear-gradient(135deg, #D83E15 0%, #F2542D 100%);
-  --gradient-hero:          linear-gradient(135deg, #2E0550 0%, #480E74 55%, #2E0550 100%);
-  --gradient-hero-light:    linear-gradient(135deg, #F3E8FF 0%, #FFF1EE 100%);
-  --gradient-card:          linear-gradient(145deg, #FFFFFF 0%, #F8F6FC 100%);
+  --gradient-primary:       linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  --gradient-accent:        linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  --gradient-green:         linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+  --gradient-blue:          linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  --gradient-teal:          linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
+  --gradient-orange:        linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  --gradient-hero:          linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  --gradient-hero-light:    linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 100%);
+  --gradient-card:          linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
   --gradient-shimmer:       linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
-  --gradient-surface:       linear-gradient(135deg, #F3E8FF 0%, #FFF1EE 100%);
-
-  /* ══════════════════════════════════════════
-     BORDER RADII
-     ══════════════════════════════════════════ */
-  --border-radius-xs:       4px;
-  --border-radius-sm:       8px;
-  --border-radius-md:       12px;
-  --border-radius-lg:       16px;
-  --border-radius-xl:       20px;
-  --border-radius-2xl:      24px;
-  --border-radius-full:     999px;
+  --gradient-surface:       linear-gradient(135deg, #EFF6FF 0%, #F0FDFA 100%);
 
   /* ══════════════════════════════════════════
      SHADOWS
      ══════════════════════════════════════════ */
-  --shadow-xs:              0 1px 2px rgba(0,0,0,0.04);
-  --shadow-sm:              0 2px 8px rgba(72, 14, 116,0.07);
-  --shadow-md:              0 4px 16px rgba(72, 14, 116,0.10);
-  --shadow-lg:              0 12px 36px rgba(72, 14, 116,0.13);
-  --shadow-xl:              0 24px 60px rgba(72, 14, 116,0.16);
-  --shadow-blue:            0 6px 24px rgba(72, 14, 116, 0.32);
-  --shadow-green:           0 6px 24px rgba(242, 84, 45, 0.28);
-  --shadow-teal:            0 6px 24px rgba(13, 148, 136, 0.25);
-  --shadow-orange:          0 6px 24px rgba(242, 84, 45, 0.28);
-  --shadow-accent:          0 6px 24px rgba(242, 84, 45, 0.28);
-  --shadow-card:            0 2px 12px rgba(72, 14, 116,0.07), 0 1px 3px rgba(72, 14, 116,0.04);
+  --shadow-xs:              0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm:              0 2px 8px rgba(15, 23, 42, 0.06);
+  --shadow-md:              0 4px 16px rgba(15, 23, 42, 0.08);
+  --shadow-lg:              0 12px 36px rgba(15, 23, 42, 0.11);
+  --shadow-xl:              0 24px 60px rgba(15, 23, 42, 0.14);
+  --shadow-blue:            0 6px 24px rgba(37, 99, 235, 0.28);
+  --shadow-teal:            0 6px 24px rgba(20, 184, 166, 0.25);
+  --shadow-amber:           0 6px 24px rgba(245, 158, 11, 0.25);
+  --shadow-card:            0 2px 12px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
 
   /* ══════════════════════════════════════════
      TYPOGRAPHY SYSTEM (Inter & Segoe UI)
