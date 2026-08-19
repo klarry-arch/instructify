@@ -3,7 +3,7 @@
    Premium LMS Color System v4.0 — Canonical Token Schema
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
@@ -1222,4 +1222,173 @@ input, select, textarea, .form-input, .form-select, .form-textarea {
     font-size: 19px !important;
     margin-bottom: 10px;
   }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   GOOGLE LEARNING (https://learning.google/) DESIGN SYSTEM
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Google Learning Color Tokens */
+  --color-primary:          #1A73E8;   /* Google Blue — Main CTAs & Links */
+  --color-primary-hover:    #1557B0;   /* Primary button hover */
+  --color-primary-light:    #4285F4;
+  --color-primary-bg:       #E8F0FE;   /* Light blue surface fill */
+
+  --color-secondary:        #14B8A6;   /* Supportive Teal / Growth */
+  --color-secondary-hover:  #0D9488;
+  --color-secondary-bg:     #E6F4EA;
+
+  --color-accent:           #F59E0B;   /* Google Amber / Yellow */
+  --color-accent-hover:     #D97706;
+  --color-accent-text:      #111827;
+  --color-accent-bg:        #FEF7E0;
+
+  --color-background:       #F8FAFC;   /* Canvas background */
+  --color-surface:          #FFFFFF;   /* Main card surface */
+  --color-surface-soft:     #F1F5F9;
+
+  --color-text-main:        #1F1F1F;   /* Google Slate Main Text */
+  --color-text-secondary:   #3C4043;   /* Secondary Text */
+  --color-text-muted:       #5F6368;   /* Muted Metadata Text */
+
+  --color-border:           #DADCE0;   /* Clean Google border */
+  --color-border-subtle:    #F1F3F4;
+  --color-border-focus:     #1A73E8;
+
+  --color-success:          #34A853;   /* Google Green */
+  --color-warning:          #FBBC04;   /* Google Yellow */
+  --color-danger:           #EA4335;   /* Google Red */
+
+  --font-sans:              'Plus Jakarta Sans', 'Inter', 'Google Sans', 'Segoe UI', Roboto, sans-serif;
+  --font-heading:           'Plus Jakarta Sans', 'Inter', 'Google Sans', sans-serif;
+  --font-body:              'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+/* Global Font Inheritance — Google Learning Aesthetic */
+html, body, h1, h2, h3, h4, h5, h6, p,
+span, a, button, input, select, textarea,
+.btn, .nav-link, .nav-brand, .card, .course-card,
+.distinct-card, .dashboard-card, .stat-card,
+table, th, td, modal, .modal, .sidebar, form, label {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Google Sans', 'Segoe UI', Roboto, sans-serif !important;
+}
+
+body {
+  background-color: #F8FAFC !important;
+  color: #1F1F1F !important;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Container Centered Layout */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Google Learning Headings */
+h1, .h1, .hero-title, .page-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Google Sans', sans-serif !important;
+  font-size: 48px;
+  font-weight: 800 !important;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #1F1F1F !important;
+  margin-bottom: 20px;
+}
+
+h2, .h2, .section-title, .dashboard-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Google Sans', sans-serif !important;
+  font-size: 32px;
+  font-weight: 800 !important;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  color: #1F1F1F !important;
+  margin-bottom: 16px;
+}
+
+h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Google Sans', sans-serif !important;
+  font-size: 22px;
+  font-weight: 700 !important;
+  line-height: 1.30;
+  color: #1F1F1F !important;
+  margin-bottom: 12px;
+}
+
+p {
+  color: #3C4043;
+  line-height: 1.65;
+}
+
+/* Google Learning Pill Buttons */
+.btn {
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  font-size: 15px;
+  padding: 12px 24px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-primary, .btn-blue, .btn-main {
+  background-color: #1A73E8 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  box-shadow: 0 1px 3px rgba(60,64,67,0.15) !important;
+}
+
+.btn-primary:hover, .btn-blue:hover, .btn-main:hover {
+  background-color: #1557B0 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(26,115,232,0.30) !important;
+  transform: translateY(-1px);
+}
+
+.btn-secondary, .btn-teal {
+  background-color: #14B8A6 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+.btn-secondary:hover, .btn-teal:hover {
+  background-color: #0D9488 !important;
+  color: #FFFFFF !important;
+}
+
+/* Google Learning Cards & Soft Elevation */
+.card,
+.course-card,
+.distinct-card,
+.pathway-card,
+.dashboard-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #DADCE0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 1px 3px rgba(60,64,67,0.12), 0 1px 2px rgba(60,64,67,0.08) !important;
+  padding: 24px;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease !important;
+}
+
+.card:hover,
+.course-card:hover,
+.distinct-card:hover,
+.pathway-card:hover,
+.dashboard-card:hover {
+  box-shadow: 0 8px 24px rgba(60,64,67,0.15) !important;
+  transform: translateY(-2px);
+  border-color: rgba(26,115,232,0.4) !important;
+}
+
+/* Mobile Responsive Google Settings */
+@media (max-width: 768px) {
+  .container { padding-left: 16px; padding-right: 16px; }
+  h1, .h1, .hero-title, .page-title { font-size: 34px !important; line-height: 1.18 !important; }
+  h2, .h2, .section-title { font-size: 26px !important; }
+  h3, .h3, .card-title { font-size: 19px !important; }
 }
