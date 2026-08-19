@@ -1781,3 +1781,129 @@ p {
 .text-muted, .text-secondary, .muted {
   color: #6B7280 !important;
 }
+
+
+/* ══════════════════════════════════════════════════════════════
+   BALANCED TYPOGRAPHY & HEADING SCALE
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --font-size-h1:   36px;   /* Balanced H1 Display / Hero Title */
+  --font-size-h2:   28px;   /* Balanced H2 Section Title */
+  --font-size-h3:   20px;   /* Balanced H3 Card & Widget Title */
+  --font-size-h4:   17px;   /* Balanced H4 Sub-title */
+  --font-size-h5:   15px;
+  --font-size-h6:   13px;
+
+  --font-size-lead: 16px;   /* Balanced Lead Subtitle */
+  --font-size-body: 15px;   /* Balanced Body Copy */
+  --font-size-sm:   14px;
+  --font-size-xs:   13px;
+}
+
+/* H1: Balanced Main Page Title (36px Desktop / 32px Tablet / 28px Mobile) */
+h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
+  font-family: var(--font-heading) !important;
+  font-size: 36px !important;
+  font-weight: 800 !important;
+  line-height: 1.20 !important;
+  letter-spacing: -0.02em !important;
+  color: #111827 !important;
+  margin-bottom: 16px !important;
+}
+
+/* H2: Balanced Section Titles (28px Desktop / 24px Tablet / 22px Mobile) */
+h2, .h2, .section-title, .dashboard-title {
+  font-family: var(--font-heading) !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.015em !important;
+  color: #111827 !important;
+  margin-bottom: 14px !important;
+}
+
+/* H3: Course Cards, Workshop Cards, Widgets (20px Desktop / 18px Mobile) */
+h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title, .dashboard-section-title {
+  font-family: var(--font-heading) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  line-height: 1.30 !important;
+  letter-spacing: -0.01em !important;
+  color: #111827 !important;
+  margin-bottom: 10px !important;
+}
+
+/* H4: Sub-card Titles (17px Desktop / 16px Mobile) */
+h4, .h4, .sub-card-title {
+  font-family: var(--font-heading) !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  color: #111827 !important;
+  margin-bottom: 8px !important;
+}
+
+h5, .h5 { font-size: 15px !important; font-weight: 600 !important; color: #111827 !important; margin-bottom: 6px; }
+h6, .h6 { font-size: 13px !important; font-weight: 600 !important; color: #111827 !important; margin-bottom: 6px; }
+
+/* Balanced Lead Subtitles (16px Desktop / 15px Mobile) */
+.lead, .hero-subtitle, .section-subtitle, .lead-text {
+  font-family: var(--font-body) !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: 1.60 !important;
+  color: #4B5563 !important;
+  margin-bottom: 24px !important;
+}
+
+p {
+  font-family: var(--font-body) !important;
+  font-size: 15px !important;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #374151 !important;
+  margin-bottom: 14px;
+}
+
+/* Responsive Balanced Scale for Tablets and Mobile */
+@media (max-width: 1024px) {
+  h1, .h1, .hero-title, .page-title, .hero-heading {
+    font-size: 32px !important;
+    line-height: 1.22 !important;
+  }
+
+  h2, .h2, .section-title, .dashboard-title {
+    font-size: 24px !important;
+    line-height: 1.25 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  h1, .h1, .hero-title, .page-title, .hero-heading {
+    font-size: 28px !important;
+    line-height: 1.24 !important;
+    margin-bottom: 12px !important;
+  }
+
+  h2, .h2, .section-title, .dashboard-title {
+    font-size: 22px !important;
+    line-height: 1.28 !important;
+    margin-bottom: 10px !important;
+  }
+
+  h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .lead, .hero-subtitle, .section-subtitle {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+  }
+
+  p {
+    font-size: 14.5px !important;
+  }
+}
