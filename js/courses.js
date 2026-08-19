@@ -286,7 +286,7 @@ window.renderCourseCard = function(course) {
           <span class="price-current">KES ${course.price.toLocaleString()}</span>
           <span class="price-original">KES ${course.originalPrice.toLocaleString()}</span>
         </div>
-        <a href="course-detail.html?id=${course.id}" class="btn btn-primary btn-sm">
+        <a href="course-detail.html?id=${course.id}" class="btn btn-secondary btn-sm">
           ${enrolled ? '📚 Continue' : 'View Course'}
         </a>
       </div>
