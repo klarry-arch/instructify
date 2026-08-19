@@ -358,48 +358,39 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   FOOTER
+   FOOTER — High Contrast Bright Text
    ══════════════════════════════════════════════════════════════ */
 .footer {
-  background: var(--color-brand);
-  color: #FFFFFF;
+  background: #1E3A8A !important;
+  color: #FFFFFF !important;
   padding: 56px 0 28px 0;
   margin-top: auto;
   position: relative;
+  border-top: 2px solid #F24822 !important;
 }
 
-.footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: #FFFFFF;
+.footer h1, .footer h2, .footer h3, .footer h4, .footer h5, .footer h6 {
+  color: #FFFFFF !important;
+}
+
+.footer h3 span, .footer h4 span, .footer h2 span {
+  color: #F24822 !important;
+}
+
+.footer p, .footer span, .footer-text, .footer-copy {
+  color: #E2E8F0 !important;
 }
 
 .footer a {
-  color: rgba(255, 255, 255, 0.75);
+  color: #E2E8F0 !important;
   transition: color var(--transition-fast);
 }
 
 .footer a:hover {
-  color: var(--color-primary-light);
+  color: #FFFFFF !important;
+  text-decoration: underline !important;
 }
 
-.footer .nav-brand-name {
-  color: #FFFFFF;
-}
-
-.footer-text,
-.footer-copy {
-  color: rgba(255, 255, 255, 0.55);
-  font-size: var(--text-sm);
-}
-
-/* ══════════════════════════════════════════════════════════════
-   COURSE CARDS — Premium LMS Style
-   ══════════════════════════════════════════════════════════════ */
 .course-card {
   background: var(--bg-white);
   border: 1px solid var(--border-subtle);
