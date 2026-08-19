@@ -10,13 +10,12 @@
   left: 0;
   right: 0;
   height: var(--nav-height);
-  z-index: var(--z-sticky);
+  z-index: 1000 !important;
   display: flex;
   align-items: center;
-  background: rgba(15, 23, 42, 0.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0F172A !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.25);
   transition: background var(--transition-base), box-shadow var(--transition-base);
 }
 
