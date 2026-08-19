@@ -11,47 +11,47 @@
      ★ CANONICAL DESIGN TOKENS — Instructify Kenya Color Palette
      ══════════════════════════════════════════ */
 
-  /* Primary Brand — Strong Professional Blue */
-  --color-primary:          #2563EB;   /* Main buttons, active nav items, links, CTAs */
-  --color-primary-hover:    #1D4ED8;   /* Primary hover state */
+    /* Primary Brand — Royal Blue (#1E3A8A) */
+  --color-primary:          #1E3A8A;   /* Main navigation, primary buttons, headings, links, active states */
+  --color-primary-hover:    #172554;   /* Primary hover state */
   --color-primary-light:    #3B82F6;
-  --color-primary-dark:     #1E40AF;
+  --color-primary-dark:     #172554;
   --color-primary-bg:       #EFF6FF;
-  --color-primary-glow:     rgba(37, 99, 235, 0.15);
+  --color-primary-glow:     rgba(30, 58, 138, 0.15);
 
-  /* Secondary Brand — Supportive Teal */
-  --color-secondary:        #14B8A6;   /* Progress indicators, completed modules, learning paths, supportive actions */
-  --color-secondary-hover:  #0D9488;
-  --color-secondary-light:  #5EEAD4;
-  --color-secondary-dark:   #0F766E;
-  --color-secondary-bg:     #F0FDFA;
+  /* Secondary Brand — Deep Yellow/Gold (#F2B705) */
+  --color-secondary:        #F2B705;   /* Highlights, call-to-action accents, icons, badges, section dividers */
+  --color-secondary-hover:  #D9A104;
+  --color-secondary-light:  #FDE047;
+  --color-secondary-dark:   #B45309;
+  --color-secondary-bg:     #FEF9C3;
 
-  /* Accent — Amber */
-  --color-accent:           #F59E0B;   /* Workshop highlights, reminders, announcements, featured content */
-  --color-accent-hover:     #D97706;
-  --color-accent-text:      #111827;   /* Dark text for amber badges */
-  --color-accent-bg:        #FFFBEB;
+  /* Accent — Orange (#F97316) */
+  --color-accent:           #F97316;   /* Hover states, secondary buttons, energetic visual accents */
+  --color-accent-hover:     #EA580C;
+  --color-accent-text:      #FFFFFF;
+  --color-accent-bg:        #FFEDD5;
 
-  --color-amber:            #F59E0B;
+  --color-amber:            #F2B705;
   --color-amber-hover:      #D97706;
   --color-amber-text:       #111827;
-  --color-amber-bg:         #FFFBEB;
+  --color-amber-bg:         #FEF9C3;
 
   /* Surfaces & Backgrounds */
-  --color-background:       #F8FAFC;   /* Main page background */
-  --color-surface:          #FFFFFF;   /* Main surface / card color */
-  --color-surface-soft:     #F1F5F9;   /* Soft surface color */
+  --color-background:       #F8FAFC;   /* Off-white background */
+  --color-surface:          #FFFFFF;   /* Pure white card surface */
+  --color-surface-soft:     #F1F5F9;   /* Soft surface fill */
 
   /* Text Typography System */
-  --color-text-main:        #0F172A;   /* Main text color */
-  --color-text-secondary:   #475569;   /* Secondary text color */
-  --color-text-muted:       #64748B;   /* Muted text color */
+  --color-text-main:        #111827;   /* Dark text */
+  --color-text-secondary:   #374151;   /* Secondary text */
+  --color-text-muted:       #6B7280;   /* Muted text */
   --color-text-on-primary:  #FFFFFF;
 
   /* Borders & Cards */
-  --color-border:           #E2E8F0;   /* Border color */
-  --color-border-subtle:    #F1F5F9;
-  --color-border-focus:     #2563EB;
+  --color-border:           #E5E7EB;   /* Light border */
+  --color-border-subtle:    #F3F4F6;
+  --color-border-focus:     #1E3A8A;
 
   /* Status Colors */
   --color-success:          #22C55E;   /* Success color */
@@ -1680,4 +1680,104 @@ input, select, textarea, .form-input, .form-select, .form-textarea {
   --border-subtle:          #E2E8F0;
 
   --shadow-card:            0 2px 12px rgba(0, 43, 73, 0.06);
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   INSTRUCTIFY KENYA — ROYAL BLUE (#1E3A8A), DEEP GOLD (#F2B705), ORANGE (#F97316)
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Primary Brand — Royal Blue (#1E3A8A) */
+  --color-primary:          #1E3A8A;   /* Main navigation, primary buttons, headings, links, active states */
+  --color-primary-hover:    #172554;   /* Darker Royal Blue hover */
+  --color-primary-light:    #3B82F6;   /* Focus highlights */
+  --color-primary-dark:     #172554;
+  --color-primary-bg:       #EFF6FF;   /* Soft blue surface fill */
+  --color-primary-glow:     rgba(30, 58, 138, 0.15);
+
+  /* Secondary Brand — Deep Yellow/Gold (#F2B705) */
+  --color-secondary:        #F2B705;   /* Main highlights, CTA accents, icons, badges, section dividers */
+  --color-secondary-hover:  #D9A104;   /* Gold hover */
+  --color-secondary-light:  #FDE047;
+  --color-secondary-dark:   #B45309;
+  --color-secondary-bg:     #FEF9C3;   /* Soft gold badge background */
+
+  /* Accent — Orange (#F97316) */
+  --color-accent:           #F97316;   /* Hover states, secondary buttons, energetic accents */
+  --color-accent-hover:     #EA580C;   /* Orange hover */
+  --color-accent-text:      #FFFFFF;
+  --color-accent-bg:        #FFEDD5;
+
+  --color-amber:            #F2B705;
+  --color-amber-hover:      #D9A104;
+  --color-amber-text:       #111827;
+  --color-amber-bg:         #FEF9C3;
+
+  /* Supporting Neutrals */
+  --color-background:       #F8FAFC;   /* Off-white background */
+  --color-surface:          #FFFFFF;   /* Pure White card surface */
+  --color-surface-soft:     #F1F5F9;   /* Soft surface fill */
+
+  /* Text System */
+  --color-text-main:        #111827;   /* Dark text */
+  --color-text-secondary:   #374151;   /* Secondary body text */
+  --color-text-muted:       #6B7280;   /* Muted text */
+  --color-text-on-primary:  #FFFFFF;
+
+  /* Borders & Dividers */
+  --color-border:           #E5E7EB;   /* Light border */
+  --color-border-subtle:    #F3F4F6;
+  --color-border-focus:     #1E3A8A;
+
+  /* Status System */
+  --color-success:          #22C55E;   /* Success green */
+  --color-warning:          #F2B705;   /* Gold warning */
+  --color-danger:           #EF4444;   /* Red error */
+  --color-info:             #38BDF8;   /* Info blue */
+
+  /* Compatibility Mapping */
+  --color-brand:            #1E3A8A;
+  --color-blue:             #1E3A8A;
+  --color-blue-hover:       #172554;
+  --color-teal:             #F2B705;
+  --color-teal-hover:       #D9A104;
+  --color-orange:           #F97316;
+  --color-orange-hover:     #EA580C;
+  --color-curiosity-orange: #F97316;
+  --color-deep-navy:        #1E3A8A;
+  --color-soft-grey:        #F8FAFC;
+
+  --bg-white:               #FFFFFF;
+  --bg-canvas:              #F8FAFC;
+  --bg-light:               #F1F5F9;
+  --bg-card:                #FFFFFF;
+
+  --text-primary:           #111827;
+  --text-body:              #374151;
+  --text-secondary:         #374151;
+  --text-muted:             #6B7280;
+
+  --border-card:            #E5E7EB;
+  --border-subtle:          #E5E7EB;
+
+  --shadow-card:            0 2px 12px rgba(30, 58, 138, 0.05);
+}
+
+/* Base Body & Heading Rule Overrides for High-Contrast Accessibility */
+body {
+  background-color: #F8FAFC !important;
+  color: #111827 !important;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, h6 {
+  color: #111827 !important;
+}
+
+p {
+  color: #374151;
+}
+
+.text-muted, .text-secondary, .muted {
+  color: #6B7280 !important;
 }
