@@ -7,25 +7,29 @@
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
-  /* Primary buttons */
-  --color-primary:          #2563EB;   /* Main button background */
-  --color-primary-hover:    #1D4ED8;   /* Main button hover background */
+  /* ══════════════════════════════════════════
+     ★ CANONICAL DESIGN TOKENS — Instructify Kenya Color Palette
+     ══════════════════════════════════════════ */
+
+  /* Primary Brand — Strong Professional Blue */
+  --color-primary:          #2563EB;   /* Main buttons, active nav items, links, CTAs */
+  --color-primary-hover:    #1D4ED8;   /* Primary hover state */
   --color-primary-light:    #3B82F6;
   --color-primary-dark:     #1E40AF;
   --color-primary-bg:       #EFF6FF;
   --color-primary-glow:     rgba(37, 99, 235, 0.15);
 
-  /* Secondary buttons */
-  --color-secondary:        #14B8A6;   /* Secondary button background */
-  --color-secondary-hover:  #0D9488;   /* Secondary button hover state */
+  /* Secondary Brand — Supportive Teal */
+  --color-secondary:        #14B8A6;   /* Progress indicators, completed modules, learning paths, supportive actions */
+  --color-secondary-hover:  #0D9488;
   --color-secondary-light:  #5EEAD4;
   --color-secondary-dark:   #0F766E;
   --color-secondary-bg:     #F0FDFA;
 
-  /* Workshop badges and highlight labels */
-  --color-accent:           #F59E0B;   /* Workshop badges & highlight labels background */
+  /* Accent — Amber */
+  --color-accent:           #F59E0B;   /* Workshop highlights, reminders, announcements, featured content */
   --color-accent-hover:     #D97706;
-  --color-accent-text:      #111827;   /* Badge text color */
+  --color-accent-text:      #111827;   /* Dark text for amber badges */
   --color-accent-bg:        #FFFBEB;
 
   --color-amber:            #F59E0B;
@@ -33,35 +37,35 @@
   --color-amber-text:       #111827;
   --color-amber-bg:         #FFFBEB;
 
-  /* Page body & surfaces */
-  --color-background:       #F8FAFC;   /* Page body background color */
-  --color-surface:          #FFFFFF;   /* Course cards background color */
-  --color-surface-soft:     #F1F5F9;
+  /* Surfaces & Backgrounds */
+  --color-background:       #F8FAFC;   /* Main page background */
+  --color-surface:          #FFFFFF;   /* Main surface / card color */
+  --color-surface-soft:     #F1F5F9;   /* Soft surface color */
 
-  /* Text colors */
+  /* Text Typography System */
   --color-text-main:        #0F172A;   /* Main text color */
-  --color-text-secondary:   #64748B;   /* Muted text color */
+  --color-text-secondary:   #475569;   /* Secondary text color */
   --color-text-muted:       #64748B;   /* Muted text color */
-  --color-text-on-primary:  #FFFFFF;   /* Primary button text color */
+  --color-text-on-primary:  #FFFFFF;
 
-  /* Course cards border */
-  --color-border:           #E2E8F0;   /* Course cards border: 1px solid #E2E8F0 */
+  /* Borders & Cards */
+  --color-border:           #E2E8F0;   /* Border color */
   --color-border-subtle:    #F1F5F9;
   --color-border-focus:     #2563EB;
 
   /* Status Colors */
-  --color-success:          #22C55E;
+  --color-success:          #22C55E;   /* Success color */
   --color-success-bg:       #F0FDF4;
-  --color-warning:          #F97316;
+  --color-warning:          #F97316;   /* Warning color */
   --color-warning-bg:       #FFF7ED;
-  --color-danger:           #EF4444;
-  --color-danger-bg:        #FEF2F2;
+  --color-danger:           #EF4444;   /* Danger/error color */
   --color-error:            #EF4444;
+  --color-danger-bg:        #FEF2F2;
   --color-error-bg:         #FEF2F2;
-  --color-info:             #38BDF8;
+  --color-info:             #38BDF8;   /* Info color */
   --color-info-bg:          #F0F9FF;
 
-  /* Legacy Maps */
+  /* Legacy Compatibility Aliases */
   --color-brand:            #0F172A;
   --color-blue:             #2563EB;
   --color-blue-hover:       #1D4ED8;
@@ -71,7 +75,7 @@
   --color-orange-hover:     #1D4ED8;
   --color-curiosity-orange: #F59E0B;
   --color-deep-navy:        #0F172A;
-  --color-soft-grey:        #F8FAFC;
+  --color-soft-grey:        #F1F5F9;
 
   --bg-white:               #FFFFFF;
   --bg-canvas:              #F8FAFC;
@@ -79,14 +83,15 @@
   --bg-card:                #FFFFFF;
 
   --text-primary:           #0F172A;
-  --text-body:              #0F172A;
-  --text-secondary:         #64748B;
+  --text-body:              #475569;
+  --text-secondary:         #475569;
   --text-muted:             #64748B;
 
   --border-card:            #E2E8F0;
   --border-subtle:          #E2E8F0;
 
   --shadow-card:            0 2px 12px rgba(15, 23, 42, 0.05);
+}
 }
 
   /* ══════════════════════════════════════════
