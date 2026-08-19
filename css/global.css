@@ -1769,7 +1769,7 @@ body {
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, h6 {
-  color: inherit;
+  color: #111827 !important;
 }
 
 p {
@@ -1905,22 +1905,3 @@ p {
     font-size: 14.5px !important;
   }
 }
-
-/* ══════════════════════════════════════════════════════════════
-   HIGH-CONTRAST BRIGHT TEXT OVERRIDES FOR DARK & BLUE SECTIONS
-   ══════════════════════════════════════════════════════════════ */
-.navbar, .footer, .hero-section, .hero, .bg-dark, .bg-blue, .bg-primary,
-[style*="background:#1E3A8A"], [style*="background: #1E3A8A"],
-[style*="background:#0F172A"], [style*="background: #0F172A"],
-[style*="background:var(--color-deep-navy)"] {
-  color: #FFFFFF !important;
-}
-
-.navbar h1, .navbar h2, .navbar h3, .navbar h4, .navbar p, .navbar a,
-.footer h1, .footer h2, .footer h3, .footer h4, .footer p, .footer a, .footer-text, .footer-copy,
-.hero-section h1, .hero-section h2, .hero-section h3, .hero-section .hero-title, .hero-section p, .hero-section .hero-subtitle,
-.bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark p,
-.bg-blue h1, .bg-blue h2, .bg-blue h3, .bg-blue p {
-  color: #FFFFFF !important;
-}
-
