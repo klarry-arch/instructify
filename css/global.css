@@ -1907,15 +1907,13 @@ p {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   HIGH-CONTRAST ICE-SILVER (#E2E8F0) TEXT FOR DARK/BLUE SECTIONS
+   HIGH-CONTRAST TEXT FOR DARK CONTAINER SECTIONS
    ══════════════════════════════════════════════════════════════ */
-[style*="background: linear-gradient"] h1, [style*="background: linear-gradient"] h2, [style*="background: linear-gradient"] h3, [style*="background: linear-gradient"] h4,
-[style*="background:linear-gradient"] h1, [style*="background:linear-gradient"] h2, [style*="background:linear-gradient"] h3, [style*="background:linear-gradient"] h4,
-.dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4 {
+.dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4,
+.blue-section h1, .blue-section h2, .blue-section h3, .blue-section h4 {
   color: #FFFFFF !important;
 }
 
-[style*="background: linear-gradient"] p, [style*="background:linear-gradient"] p,
 .dark-section p, .blue-section p {
   color: #E2E8F0 !important;
 }
