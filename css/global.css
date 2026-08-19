@@ -8,10 +8,10 @@
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
   /* ══════════════════════════════════════════
-     ★ CANONICAL DESIGN TOKENS (v5.0 — Professional Palette)
+     ★ CANONICAL DESIGN TOKENS (v6.0 — Blue, Teal & Electric Violet)
      ══════════════════════════════════════════ */
 
-  /* ─ Primary Brand — Professional Blue */
+  /* ─ Primary Brand — Royal Blue */
   --color-primary:          #2563EB;   /* Main buttons, active nav, links, CTAs */
   --color-primary-hover:    #1D4ED8;   /* Primary button hover state */
   --color-primary-light:    #3B82F6;   /* Focus rings, blue highlights */
@@ -19,7 +19,7 @@
   --color-primary-bg:       #EFF6FF;   /* Soft blue background (Blue 50) */
   --color-primary-glow:     rgba(37, 99, 235, 0.15);
 
-  /* ─ Secondary Brand — Teal (Progress, completion, learning paths) */
+  /* ─ Secondary Brand — Supportive Teal */
   --color-secondary:        #14B8A6;   /* Progress indicators, completed modules */
   --color-secondary-hover:  #0D9488;   /* Secondary hover state */
   --color-secondary-light:  #5EEAD4;   /* Light teal accents */
@@ -27,13 +27,13 @@
   --color-secondary-bg:     #F0FDFA;   /* Soft teal background (Teal 50) */
   --color-secondary-glow:   rgba(20, 184, 166, 0.15);
 
-  /* ─ Accent — Amber (Workshop highlights, reminders, announcements) */
-  --color-accent:           #F59E0B;   /* Workshop highlights, reminders, ratings */
-  --color-accent-hover:     #D97706;   /* Accent hover state */
-  --color-accent-light:     #FCD34D;   /* Light amber accents */
-  --color-accent-dark:      #B45309;   /* Deep amber text/borders */
-  --color-accent-bg:        #FFFBEB;   /* Soft amber background (Amber 50) */
-  --color-accent-glow:      rgba(245, 158, 11, 0.15);
+  /* ─ Catchy Accent — Electric Violet (Replaces Orange) */
+  --color-accent:           #7C3AED;   /* Featured content, workshop highlights, sparks */
+  --color-accent-hover:     #6D28D9;   /* Accent hover state */
+  --color-accent-light:     #A78BFA;   /* Light violet accents */
+  --color-accent-dark:      #5B21B6;   /* Deep violet text/borders */
+  --color-accent-bg:        #F5F3FF;   /* Soft violet background (Violet 50) */
+  --color-accent-glow:      rgba(124, 58, 237, 0.18);
 
   /* ─ Surfaces & Backgrounds */
   --color-background:       #F8FAFC;   /* Main background (Slate 50) */
@@ -41,7 +41,8 @@
   --color-surface-soft:     #F1F5F9;   /* Soft surface background (Slate 100) */
   --color-section-blue:     #EFF6FF;   /* Soft blue section backgrounds */
   --color-section-teal:     #F0FDFA;   /* Soft teal section backgrounds */
-  --color-section-amber:    #FFFBEB;   /* Soft amber section backgrounds */
+  --color-section-violet:   #F5F3FF;   /* Soft violet section backgrounds */
+  --color-section-orange:   #F5F3FF;   /* Alias mapped to violet */
 
   /* ─ Typography & Text System */
   --color-text-main:        #0F172A;   /* Slate 900 — Headings & primary text */
@@ -87,19 +88,19 @@
   --color-teal-bg:          #F0FDFA;
   --color-teal-glow:        rgba(20, 184, 166, 0.15);
 
-  --color-amber:            #F59E0B;
-  --color-amber-dark:       #D97706;
-  --color-amber-light:      #FCD34D;
-  --color-amber-bg:         #FFFBEB;
+  --color-violet:           #7C3AED;
+  --color-violet-dark:      #6D28D9;
+  --color-violet-light:     #A78BFA;
+  --color-violet-bg:        #F5F3FF;
 
-  --color-orange:           #2563EB;   /* Old orange buttons → Primary Blue */
-  --color-orange-hover:     #1D4ED8;
-  --color-orange-bg:        #EFF6FF;
-  --color-orange-glow:      rgba(37, 99, 235, 0.18);
-  --color-curiosity-orange: #F59E0B;   /* Curiosity spark → Amber */
-  --color-light-orange:     #FFFBEB;
-  --color-warm-orange:      #F59E0B;
-  --color-warm-orange-bg:   #FFFBEB;
+  --color-orange:           #7C3AED;   /* Old orange mapped to Electric Violet */
+  --color-orange-hover:     #6D28D9;
+  --color-orange-bg:        #F5F3FF;
+  --color-orange-glow:      rgba(124, 58, 237, 0.18);
+  --color-curiosity-orange: #7C3AED;   /* Curiosity spark → Electric Violet */
+  --color-light-orange:     #F5F3FF;
+  --color-warm-orange:      #7C3AED;
+  --color-warm-orange-bg:   #F5F3FF;
 
   --color-mint:             #14B8A6;
   --color-mint-bg:          #F0FDFA;
@@ -115,7 +116,7 @@
   --bg-white:               #FFFFFF;
   --bg-canvas:              #F8FAFC;
   --bg-light:               #F1F5F9;
-  --bg-promo:               #FFFBEB;
+  --bg-promo:               #F5F3FF;
   --bg-surface:             #FFFFFF;
   --bg-dark:                #0F172A;
   --bg-dark-surface:        #1E293B;
@@ -129,7 +130,8 @@
   --text-secondary:         #475569;
   --text-muted:             #64748B;
   --text-navy:              #0F172A;
-  --text-orange:            #2563EB;
+  --text-orange:            #7C3AED;
+  --text-violet:            #7C3AED;
   --text-blue:              #2563EB;
   --text-teal:              #14B8A6;
   --text-green:             #22C55E;
@@ -138,7 +140,7 @@
   /* Border aliases */
   --border-subtle:          #E2E8F0;
   --border-card:            #E2E8F0;
-  --border-card-hover:      rgba(37, 99, 235, 0.20);
+  --border-card-hover:      rgba(124, 58, 237, 0.20);
   --border-focus:           #2563EB;
   --border-focus-glow:      rgba(37, 99, 235, 0.18);
 
@@ -149,23 +151,26 @@
   --btn-blue-hover:         #1D4ED8;
   --btn-teal:               #14B8A6;
   --btn-teal-hover:         #0D9488;
-  --btn-amber:              #F59E0B;
-  --btn-amber-hover:        #D97706;
+  --btn-violet:             #7C3AED;
+  --btn-violet-hover:       #6D28D9;
+  --btn-amber:              #7C3AED;
+  --btn-amber-hover:        #6D28D9;
 
   /* ══════════════════════════════════════════
      GRADIENTS
      ══════════════════════════════════════════ */
   --gradient-primary:       linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-  --gradient-accent:        linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  --gradient-accent:        linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
   --gradient-green:         linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
   --gradient-blue:          linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
   --gradient-teal:          linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
-  --gradient-orange:        linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  --gradient-violet:        linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+  --gradient-orange:        linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
   --gradient-hero:          linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-  --gradient-hero-light:    linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 100%);
+  --gradient-hero-light:    linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%);
   --gradient-card:          linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
   --gradient-shimmer:       linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
-  --gradient-surface:       linear-gradient(135deg, #EFF6FF 0%, #F0FDFA 100%);
+  --gradient-surface:       linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%);
 
   /* ══════════════════════════════════════════
      SHADOWS
@@ -177,7 +182,8 @@
   --shadow-xl:              0 24px 60px rgba(15, 23, 42, 0.14);
   --shadow-blue:            0 6px 24px rgba(37, 99, 235, 0.28);
   --shadow-teal:            0 6px 24px rgba(20, 184, 166, 0.25);
-  --shadow-amber:           0 6px 24px rgba(245, 158, 11, 0.25);
+  --shadow-violet:          0 6px 24px rgba(124, 58, 237, 0.25);
+  --shadow-amber:           0 6px 24px rgba(124, 58, 237, 0.25);
   --shadow-card:            0 2px 12px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
 
   /* ══════════════════════════════════════════
