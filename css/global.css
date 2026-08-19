@@ -7,179 +7,87 @@
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
-  /* ══════════════════════════════════════════
-     ★ CANONICAL DESIGN TOKENS — Professional Blue, Teal & Amber Specification
-     ══════════════════════════════════════════ */
-
-  /* ─ Main Buttons & Primary Brand — Strong Professional Blue */
-  --color-primary:          #2563EB;   /* Main button background (#2563EB) & primary CTAs */
-  --color-primary-hover:    #1D4ED8;   /* Main button hover background (#1D4ED8) */
-  --color-primary-light:    #3B82F6;   /* Focus rings, blue highlights */
-  --color-primary-dark:     #1E40AF;   /* Dark blue accents */
-  --color-primary-bg:       #EFF6FF;   /* Soft blue background (Blue 50) */
+  /* Primary buttons */
+  --color-primary:          #2563EB;   /* Main button background */
+  --color-primary-hover:    #1D4ED8;   /* Main button hover background */
+  --color-primary-light:    #3B82F6;
+  --color-primary-dark:     #1E40AF;
+  --color-primary-bg:       #EFF6FF;
   --color-primary-glow:     rgba(37, 99, 235, 0.15);
 
-  /* ─ Secondary Buttons & Supportive Actions — Teal */
-  --color-secondary:        #14B8A6;   /* Secondary buttons (#14B8A6), "View Details", "Continue", "Save Progress" */
-  --color-secondary-hover:  #0D9488;   /* Secondary button hover state (#0D9488) */
-  --color-secondary-light:  #5EEAD4;   /* Light teal accents */
-  --color-secondary-dark:   #0F766E;   /* Deep teal text/borders */
-  --color-secondary-bg:     #F0FDFA;   /* Soft teal background (Teal 50) */
-  --color-secondary-glow:   rgba(20, 184, 166, 0.15);
+  /* Secondary buttons */
+  --color-secondary:        #14B8A6;   /* Secondary button background */
+  --color-secondary-hover:  #0D9488;   /* Secondary button hover state */
+  --color-secondary-light:  #5EEAD4;
+  --color-secondary-dark:   #0F766E;
+  --color-secondary-bg:     #F0FDFA;
 
-  /* ─ Workshop Highlights, Labels, Featured Sessions & Badges — Amber with Dark Text */
-  --color-accent:           #F59E0B;   /* Workshop highlights, labels, featured sessions (#F59E0B) */
-  --color-accent-hover:     #D97706;   /* Amber hover state */
-  --color-accent-text:      #111827;   /* Dark text (#111827) for clear contrast without looking aggressive */
-  --color-accent-light:     #FCD34D;   /* Light amber accents */
-  --color-accent-dark:      #B45309;   /* Deep amber text/borders */
-  --color-accent-bg:        #FFFBEB;   /* Light amber surface background */
-  --color-accent-glow:      rgba(245, 158, 11, 0.18);
+  /* Workshop badges and highlight labels */
+  --color-accent:           #F59E0B;   /* Workshop badges & highlight labels background */
+  --color-accent-hover:     #D97706;
+  --color-accent-text:      #111827;   /* Badge text color */
+  --color-accent-bg:        #FFFBEB;
 
   --color-amber:            #F59E0B;
   --color-amber-hover:      #D97706;
   --color-amber-text:       #111827;
   --color-amber-bg:         #FFFBEB;
 
-  /* ─ Surfaces & Backgrounds */
-  --color-background:       #F8FAFC;   /* Main page background (#F8FAFC) */
-  --color-surface:          #FFFFFF;   /* Course cards (#FFFFFF), modals, containers */
-  --color-surface-soft:     #F1F5F9;   /* Soft surface background (Slate 100) */
-  --color-section-blue:     #EFF6FF;   /* Soft blue section backgrounds */
-  --color-section-teal:     #F0FDFA;   /* Soft teal section backgrounds */
-  --color-section-amber:    #FFFBEB;   /* Soft amber section backgrounds */
+  /* Page body & surfaces */
+  --color-background:       #F8FAFC;   /* Page body background color */
+  --color-surface:          #FFFFFF;   /* Course cards background color */
+  --color-surface-soft:     #F1F5F9;
 
-  /* ─ Typography & Text System */
-  --color-text-main:        #0F172A;   /* Slate 900 (#0F172A) — Main text for strong readability */
-  --color-text-secondary:   #475569;   /* Slate 600 — Secondary body copy */
-  --color-text-muted:       #64748B;   /* Slate 500 (#64748B) — Course descriptions, instructor names, dates, durations, categories, helper text */
-  --color-text-on-primary:  #FFFFFF;   /* White text on main & secondary buttons */
+  /* Text colors */
+  --color-text-main:        #0F172A;   /* Main text color */
+  --color-text-secondary:   #64748B;   /* Muted text color */
+  --color-text-muted:       #64748B;   /* Muted text color */
+  --color-text-on-primary:  #FFFFFF;   /* Primary button text color */
 
-  /* ─ Borders & Card System */
-  --color-border:           #E2E8F0;   /* Light border (#E2E8F0) for course cards & dividers */
-  --color-border-subtle:    #F1F5F9;   /* Subtle divider lines */
-  --color-border-focus:     #2563EB;   /* Active focus border */
-  --color-border-focus-glow:rgba(37, 99, 235, 0.20);
+  /* Course cards border */
+  --color-border:           #E2E8F0;   /* Course cards border: 1px solid #E2E8F0 */
+  --color-border-subtle:    #F1F5F9;
+  --color-border-focus:     #2563EB;
 
-  /* ─ Status Colors */
-  --color-success:          #22C55E;   /* Green 500 */
-  --color-success-bg:       #F0FDF4;   /* Green 50 background */
-  --color-warning:          #F97316;   /* Orange 500 */
-  --color-warning-bg:       #FFF7ED;   /* Orange 50 background */
-  --color-danger:           #EF4444;   /* Red 500 */
-  --color-danger-bg:        #FEF2F2;   /* Red 50 background */
+  /* Status Colors */
+  --color-success:          #22C55E;
+  --color-success-bg:       #F0FDF4;
+  --color-warning:          #F97316;
+  --color-warning-bg:       #FFF7ED;
+  --color-danger:           #EF4444;
+  --color-danger-bg:        #FEF2F2;
   --color-error:            #EF4444;
   --color-error-bg:         #FEF2F2;
-  --color-info:             #38BDF8;   /* Sky 400 */
-  --color-info-bg:          #F0F9FF;   /* Sky 50 background */
+  --color-info:             #38BDF8;
+  --color-info-bg:          #F0F9FF;
 
-  /* ══════════════════════════════════════════
-     LEGACY ALIASES & COMPATIBILITY MAP
-     ══════════════════════════════════════════ */
+  /* Legacy Maps */
   --color-brand:            #0F172A;
-  --color-brand-dark:       #020617;
-  --color-brand-bg:         #EFF6FF;
-  --color-brand-glow:       rgba(37, 99, 235, 0.15);
-
   --color-blue:             #2563EB;
-  --color-blue-dark:        #1D4ED8;
-  --color-blue-light:       #3B82F6;
-  --color-blue-bg:          #EFF6FF;
-  --color-blue-glow:        rgba(37, 99, 235, 0.15);
-
+  --color-blue-hover:       #1D4ED8;
   --color-teal:             #14B8A6;
-  --color-teal-dark:        #0D9488;
-  --color-teal-light:       #5EEAD4;
-  --color-teal-bg:          #F0FDFA;
-
-  --color-violet:           #7C3AED;
-  --color-violet-dark:      #6D28D9;
-  --color-violet-light:     #A78BFA;
-  --color-violet-bg:        #F5F3FF;
-
-  --color-orange:           #2563EB;   /* Main button blue */
+  --color-teal-hover:       #0D9488;
+  --color-orange:           #2563EB;
   --color-orange-hover:     #1D4ED8;
-  --color-orange-bg:        #EFF6FF;
-  --color-curiosity-orange: #F59E0B;   /* Amber highlight */
-  --color-light-orange:     #FFFBEB;
-
-  --color-mint:             #14B8A6;
-  --color-mint-bg:          #F0FDFA;
-  --color-growth-green:     #22C55E;
-  --color-primary-blue:     #2563EB;
-  --color-blue-accent:      #1D4ED8;
-  --color-light-blue:       #EFF6FF;
+  --color-curiosity-orange: #F59E0B;
   --color-deep-navy:        #0F172A;
-  --color-navy:             #0F172A;
   --color-soft-grey:        #F8FAFC;
 
-  /* Background aliases */
   --bg-white:               #FFFFFF;
   --bg-canvas:              #F8FAFC;
   --bg-light:               #F1F5F9;
-  --bg-promo:               #FFFBEB;
-  --bg-surface:             #FFFFFF;
-  --bg-dark:                #0F172A;
-  --bg-dark-surface:        #1E293B;
   --bg-card:                #FFFFFF;
-  --bg-elevated:            #FFFFFF;
 
-  /* Text aliases */
   --text-primary:           #0F172A;
-  --text-heading:           #0F172A;
-  --text-body:              #475569;
-  --text-secondary:         #64748B;   /* Muted secondary text (#64748B) */
-  --text-muted:             #64748B;   /* Muted text (#64748B) */
-  --text-navy:              #0F172A;
-  --text-orange:            #2563EB;
-  --text-blue:              #2563EB;
-  --text-teal:              #14B8A6;
-  --text-green:             #22C55E;
-  --color-white:            #FFFFFF;
+  --text-body:              #0F172A;
+  --text-secondary:         #64748B;
+  --text-muted:             #64748B;
 
-  /* Border aliases */
-  --border-subtle:          #E2E8F0;
   --border-card:            #E2E8F0;
-  --border-card-hover:      rgba(37, 99, 235, 0.20);
-  --border-focus:           #2563EB;
-  --border-focus-glow:      rgba(37, 99, 235, 0.18);
+  --border-subtle:          #E2E8F0;
 
-  /* Button aliases */
-  --btn-orange:             #2563EB;
-  --btn-orange-hover:       #1D4ED8;
-  --btn-blue:               #2563EB;
-  --btn-blue-hover:         #1D4ED8;
-  --btn-teal:               #14B8A6;
-  --btn-teal-hover:         #0D9488;
-  --btn-secondary:          #14B8A6;
-  --btn-secondary-hover:    #0D9488;
-
-  /* ══════════════════════════════════════════
-     GRADIENTS
-     ══════════════════════════════════════════ */
-  --gradient-primary:       linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-  --gradient-accent:        linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  --gradient-green:         linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
-  --gradient-blue:          linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-  --gradient-teal:          linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
-  --gradient-hero:          linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-  --gradient-hero-light:    linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 100%);
-  --gradient-card:          linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
-  --gradient-shimmer:       linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
-  --gradient-surface:       linear-gradient(135deg, #EFF6FF 0%, #F0FDFA 100%);
-
-  /* ══════════════════════════════════════════
-     SHADOWS & CARDS
-     ══════════════════════════════════════════ */
-  --shadow-xs:              0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-sm:              0 2px 8px rgba(15, 23, 42, 0.06);
-  --shadow-md:              0 4px 16px rgba(15, 23, 42, 0.08);
-  --shadow-lg:              0 12px 36px rgba(15, 23, 42, 0.11);
-  --shadow-xl:              0 24px 60px rgba(15, 23, 42, 0.14);
-  --shadow-blue:            0 6px 24px rgba(37, 99, 235, 0.28);
-  --shadow-teal:            0 6px 24px rgba(20, 184, 166, 0.25);
-  --shadow-amber:           0 6px 24px rgba(245, 158, 11, 0.25);
-  --shadow-card:            0 2px 12px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
+  --shadow-card:            0 2px 12px rgba(15, 23, 42, 0.05);
+}
 
   /* ══════════════════════════════════════════
      TYPOGRAPHY SYSTEM (Inter & Segoe UI)
