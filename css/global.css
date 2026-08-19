@@ -1801,49 +1801,49 @@ p {
 
 /* H1: Balanced Main Page Title (36px Desktop / 32px Tablet / 28px Mobile) */
 h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
-  font-family: var(--font-heading) !important;
-  font-size: 36px !important;
-  font-weight: 800 !important;
-  line-height: 1.20 !important;
-  letter-spacing: -0.02em !important;
-  color: #111827 !important;
-  margin-bottom: 16px !important;
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.20;
+  letter-spacing: -0.02em;
+  color: #111827;
+  margin-bottom: 16px;
 }
 
 /* H2: Balanced Section Titles (28px Desktop / 24px Tablet / 22px Mobile) */
 h2, .h2, .section-title, .dashboard-title {
-  font-family: var(--font-heading) !important;
-  font-size: 28px !important;
-  font-weight: 700 !important;
-  line-height: 1.25 !important;
-  letter-spacing: -0.015em !important;
-  color: #111827 !important;
-  margin-bottom: 14px !important;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: #111827;
+  margin-bottom: 14px;
 }
 
 /* H3: Course Cards, Workshop Cards, Widgets (20px Desktop / 18px Mobile) */
 h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title, .dashboard-section-title {
-  font-family: var(--font-heading) !important;
-  font-size: 20px !important;
-  font-weight: 700 !important;
-  line-height: 1.30 !important;
-  letter-spacing: -0.01em !important;
-  color: #111827 !important;
-  margin-bottom: 10px !important;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.30;
+  letter-spacing: -0.01em;
+  color: #111827;
+  margin-bottom: 10px;
 }
 
 /* H4: Sub-card Titles (17px Desktop / 16px Mobile) */
 h4, .h4, .sub-card-title {
-  font-family: var(--font-heading) !important;
-  font-size: 17px !important;
-  font-weight: 600 !important;
-  line-height: 1.35 !important;
-  color: #111827 !important;
-  margin-bottom: 8px !important;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #111827;
+  margin-bottom: 8px;
 }
 
-h5, .h5 { font-size: 15px !important; font-weight: 600 !important; color: #111827 !important; margin-bottom: 6px; }
-h6, .h6 { font-size: 13px !important; font-weight: 600 !important; color: #111827 !important; margin-bottom: 6px; }
+h5, .h5 { font-size: 15px; font-weight: 600; color: #111827; margin-bottom: 6px; }
+h6, .h6 { font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 6px; }
 
 /* Balanced Lead Subtitles (16px Desktop / 15px Mobile) */
 .lead, .hero-subtitle, .section-subtitle, .lead-text {
@@ -1905,3 +1905,18 @@ p {
     font-size: 14.5px !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   HIGH-CONTRAST ICE-SILVER (#E2E8F0) TEXT FOR DARK/BLUE SECTIONS
+   ══════════════════════════════════════════════════════════════ */
+[style*="background: linear-gradient"] h1, [style*="background: linear-gradient"] h2, [style*="background: linear-gradient"] h3, [style*="background: linear-gradient"] h4,
+[style*="background:linear-gradient"] h1, [style*="background:linear-gradient"] h2, [style*="background:linear-gradient"] h3, [style*="background:linear-gradient"] h4,
+.dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4 {
+  color: #FFFFFF !important;
+}
+
+[style*="background: linear-gradient"] p, [style*="background:linear-gradient"] p,
+.dark-section p, .blue-section p {
+  color: #E2E8F0 !important;
+}
+
