@@ -3,7 +3,7 @@
    Premium LMS Color System v4.0 — Canonical Token Schema
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
@@ -1058,5 +1058,168 @@ h4, .h4, .sub-card-title {
 
   .card, .course-card, .distinct-card, .dashboard-card {
     padding: 20px;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   GLOBAL "INTER" TYPOGRAPHY SYSTEM
+   font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --font-sans:     "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-heading:  "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-body:     "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-system:   "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Global Font Family Inheritance */
+html, body, h1, h2, h3, h4, h5, h6, p,
+span, a, button, input, select, textarea,
+.btn, .nav-link, .nav-brand, .card, .course-card,
+.distinct-card, .dashboard-card, .stat-card,
+table, th, td, modal, .modal, .sidebar, form, label {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* Body & Base Paragraphs */
+body {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #0F172A !important;
+  background-color: #F8FAFC !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* H1: Bold, Modern, Suitable for Page Titles */
+h1, .h1, .hero-title, .page-title, .hero-heading {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 48px;
+  font-weight: 800 !important;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #0F172A !important;
+  margin-bottom: 20px;
+}
+
+/* H2: Major Section Titles */
+h2, .h2, .section-title, .dashboard-title {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 32px;
+  font-weight: 800 !important;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  color: #0F172A !important;
+  margin-bottom: 16px;
+}
+
+/* H3: Course Cards, Workshop Cards, and Dashboard Widgets */
+h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title, .dashboard-section-title {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 22px;
+  font-weight: 700 !important;
+  line-height: 1.30;
+  color: #0F172A !important;
+  margin-bottom: 12px;
+}
+
+/* H4 - H6 */
+h4, .h4, .sub-card-title {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 18px;
+  font-weight: 700 !important;
+  line-height: 1.35;
+  color: #0F172A !important;
+  margin-bottom: 10px;
+}
+
+h5, .h5 { font-size: 16px; font-weight: 600 !important; color: #0F172A !important; margin-bottom: 8px; }
+h6, .h6 { font-size: 14px; font-weight: 600 !important; color: #0F172A !important; margin-bottom: 6px; }
+
+/* Buttons & Navigation Links: Medium Font Weight (600 / 500) */
+.btn,
+button,
+input[type="submit"],
+input[type="button"] {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+
+.nav-link {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+
+/* Form Labels: Clear, Readable, and Consistent */
+label,
+.form-label {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14px;
+  font-weight: 600 !important;
+  color: #0F172A !important;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input, select, textarea, .form-input, .form-select, .form-textarea {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14.5px;
+  font-weight: 400;
+}
+
+/* Muted Text: Slightly Smaller and Softer Color */
+.text-muted,
+.text-secondary,
+.muted,
+.course-desc,
+.instructor-name,
+.course-date,
+.course-duration,
+.course-category,
+.stat-label,
+.dashboard-subtitle,
+.form-help {
+  font-size: 13.5px !important;
+  color: #64748B !important;
+  font-weight: 400;
+}
+
+/* Responsive Scaling for Mobile Screens */
+@media (max-width: 768px) {
+  h1, .h1, .hero-title, .page-title, .hero-heading {
+    font-size: 34px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 16px;
+  }
+
+  h2, .h2, .section-title, .dashboard-title {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 14px;
+  }
+
+  h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
+    font-size: 19px !important;
+    margin-bottom: 10px;
   }
 }
