@@ -3,7 +3,7 @@
    Premium LMS Color System v4.0 — Canonical Token Schema
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@400;500;600;700;800&display=swap');
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
@@ -1391,4 +1391,209 @@ p {
   h1, .h1, .hero-title, .page-title { font-size: 34px !important; line-height: 1.18 !important; }
   h2, .h2, .section-title { font-size: 26px !important; }
   h3, .h3, .card-title { font-size: 19px !important; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   GOOGLE LEARNING (https://learning.google/) TYPOGRAPHY & SIZE SCALE
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --font-sans:     'Google Sans', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading:  'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-body:     'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-system:   'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif;
+
+  /* Google Learning Type Sizes (Desktop) */
+  --font-size-h1:  56px;   /* 3.5rem Display Title */
+  --font-size-h2:  36px;   /* 2.25rem Section Title */
+  --font-size-h3:  22px;   /* 1.375rem Card & Widget Title */
+  --font-size-h4:  18px;   /* 1.125rem Sub-card Title */
+  --font-size-h5:  15px;   /* 0.9375rem Small Heading */
+  --font-size-h6:  13px;   /* 0.8125rem Badge & Caption */
+
+  --font-size-lead:18px;   /* Lead Subtitle */
+  --font-size-body:16px;   /* Body Paragraph */
+  --font-size-sm:  14px;   /* Small Text */
+  --font-size-xs:  13px;   /* Muted Metadata */
+}
+
+/* Global Font Inheritance — Google Learning Style */
+html, body, h1, h2, h3, h4, h5, h6, p,
+span, a, button, input, select, textarea,
+.btn, .nav-link, .nav-brand, .card, .course-card,
+.distinct-card, .dashboard-card, .stat-card,
+table, th, td, modal, .modal, .sidebar, form, label {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Body & Base Document */
+body {
+  font-family: 'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #1F1F1F !important;
+  background-color: #F8FAFC !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-family: 'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #3C4043 !important;
+  margin-bottom: 16px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* H1: Display / Hero Title (56px Desktop / 36px Mobile) */
+h1, .h1, .hero-title, .page-title, .hero-heading {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 56px !important;
+  font-weight: 700 !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.02em !important;
+  color: #1F1F1F !important;
+  margin-bottom: 20px;
+}
+
+/* H2: Section Titles (36px Desktop / 28px Mobile) */
+h2, .h2, .section-title, .dashboard-title {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  line-height: 1.20 !important;
+  letter-spacing: -0.015em !important;
+  color: #1F1F1F !important;
+  margin-bottom: 16px;
+}
+
+/* H3: Course Cards, Workshop Cards, Dashboard Widgets (22px Desktop / 19px Mobile) */
+h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title, .dashboard-section-title {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.30 !important;
+  letter-spacing: -0.01em !important;
+  color: #1F1F1F !important;
+  margin-bottom: 12px;
+}
+
+/* H4: Sub-card Titles (18px Desktop / 16px Mobile) */
+h4, .h4, .sub-card-title {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  color: #1F1F1F !important;
+  margin-bottom: 10px;
+}
+
+h5, .h5 { font-size: 15px !important; font-weight: 600 !important; color: #1F1F1F !important; margin-bottom: 8px; }
+h6, .h6 { font-size: 13px !important; font-weight: 600 !important; color: #1F1F1F !important; margin-bottom: 6px; }
+
+/* Lead Subtitle & Section Subtitles (18px Desktop / 16px Mobile) */
+.lead, .hero-subtitle, .section-subtitle, .lead-text {
+  font-family: 'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: 1.60 !important;
+  color: #3C4043 !important;
+  margin-bottom: 28px;
+}
+
+/* Buttons & Navigation Links (15px / Weight 600) */
+.btn,
+button,
+input[type="submit"],
+input[type="button"] {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.01em !important;
+}
+
+.nav-link {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Form Labels (14px / Weight 600) */
+label,
+.form-label {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #1F1F1F !important;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input, select, textarea, .form-input, .form-select, .form-textarea {
+  font-family: 'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 400 !important;
+}
+
+/* Muted Metadata Text (13px / Color #5F6368) */
+.text-muted,
+.text-secondary,
+.muted,
+.course-desc,
+.instructor-name,
+.course-date,
+.course-duration,
+.course-category,
+.stat-label,
+.dashboard-subtitle,
+.form-help {
+  font-family: 'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  color: #5F6368 !important;
+  font-weight: 400 !important;
+}
+
+/* Google Learning Mobile Responsive Font Scale */
+@media (max-width: 1024px) {
+  h1, .h1, .hero-title, .page-title, .hero-heading {
+    font-size: 44px !important;
+    line-height: 1.15 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  h1, .h1, .hero-title, .page-title, .hero-heading {
+    font-size: 36px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 16px;
+  }
+
+  h2, .h2, .section-title, .dashboard-title {
+    font-size: 28px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 14px;
+  }
+
+  h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
+    font-size: 19px !important;
+    margin-bottom: 10px;
+  }
+
+  .lead, .hero-subtitle, .section-subtitle {
+    font-size: 16px !important;
+    line-height: 1.60 !important;
+  }
+
+  p {
+    font-size: 15px !important;
+  }
 }
