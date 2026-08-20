@@ -1214,9 +1214,10 @@ body {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   A4 LANDSCAPE DYNAMIC CERTIFICATE SYSTEM (Instructify Kenya)
+   EXACT INSTRUCTIFY KENYA CERTIFICATE TEMPLATE
+   Matches Uploaded Official Design Pixel-for-Pixel
    ══════════════════════════════════════════════════════════════ */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@700;800&family=Great+Vibes&display=swap');
 
 .certificate-canvas-wrapper {
   width: 100%;
@@ -1226,12 +1227,12 @@ body {
   box-sizing: border-box;
 }
 
-.certificate-canvas {
+.certificate-canvas.exact-template {
   width: 960px;
   height: 640px;
   background: #FFFFFF;
   border-radius: 12px;
-  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.15);
+  box-shadow: 0 20px 60px rgba(7, 19, 43, 0.2);
   display: flex;
   position: relative;
   overflow: hidden;
@@ -1240,282 +1241,408 @@ body {
   margin: 0 auto;
 }
 
-/* Left Branded Tech Panel */
-.cert-panel-left {
-  width: 220px;
-  background: linear-gradient(180deg, #0F172A 0%, #1E3A8A 60%, #172554 100%);
-  padding: 32px 20px;
+/* Gold Frame & Corner Ornaments */
+.cert-gold-frame {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1.5px solid #D97706;
+  outline: 1px solid #F59E0B;
+  outline-offset: -4px;
+  pointer-events: none;
+  z-index: 10;
+  border-radius: 4px;
+}
+
+.cert-gold-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: #D97706;
+  border-style: solid;
+  z-index: 11;
+  pointer-events: none;
+}
+.cert-gold-corner.top-left { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
+.cert-gold-corner.top-right { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
+.cert-gold-corner.bottom-left { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
+.cert-gold-corner.bottom-right { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
+
+/* Left Panel & Orange Curved Swoosh */
+.cert-panel-left-exact {
+  width: 250px;
+  background: linear-gradient(175deg, #07132B 0%, #0F224A 50%, #081735 100%);
+  color: #FFFFFF;
+  position: relative;
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-  color: #FFFFFF;
+  z-index: 5;
   flex-shrink: 0;
+  border-radius: 0 120px 120px 0 / 0 50% 50% 0;
+  box-shadow: 6px 0 20px rgba(0, 0, 0, 0.25);
+  border-right: 4px solid #FF4D00;
 }
 
-.cert-panel-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-}
-
-.cert-panel-brand-title {
-  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-weight: 800;
-  font-size: 20px;
-  color: #FFFFFF;
-  letter-spacing: -0.02em;
-}
-
-.cert-panel-brand-sub {
-  font-size: 11px;
-  font-weight: 800;
-  color: #FF4D00;
-  letter-spacing: 2.5px;
-}
-
-.cert-panel-circuit {
+.cert-circuit-overlay {
   position: absolute;
-  top: 90px;
-  left: 10px;
-  width: 200px;
-  height: 260px;
-  opacity: 0.6;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(rgba(56, 189, 248, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.5;
   pointer-events: none;
 }
 
-.cert-panel-badges {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  position: relative;
-  z-index: 2;
-}
-
-.cert-panel-badge {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 11px;
-}
-
-.cert-panel-badge .badge-icon {
-  font-size: 16px;
-  line-height: 1;
-}
-
-.cert-panel-footer {
-  font-size: 9.5px;
-  color: rgba(255, 255, 255, 0.7);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding-top: 12px;
-  letter-spacing: 0.05em;
-  position: relative;
-  z-index: 2;
-}
-
-/* Main Certificate Panel */
-.cert-panel-main {
-  flex: 1;
-  background: #FFFFFF;
-  padding: 32px 36px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  box-sizing: border-box;
-  border: 8px solid #F8FAFC;
-  outline: 1.5px solid #CBD5E1;
-  outline-offset: -8px;
-}
-
-.cert-main-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.cert-brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.cert-tagline {
-  font-size: 11.5px;
-  color: #64748B;
-  font-style: italic;
-  font-weight: 500;
-  margin-top: 4px;
-}
-
-.cert-qr-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.cert-qr-label {
-  font-size: 9px;
-  font-weight: 700;
-  color: #64748B;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* Certificate Text & Body */
-.cert-body {
+/* 3D Gold CPD Accredited Seal */
+.cert-3d-gold-seal {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FEF08A 0%, #EAB308 65%, #CA8A04 100%);
+  border: 3px solid #FEF08A;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  color: #07132B;
   text-align: center;
-  margin: 12px 0;
-}
-
-.cert-doc-type {
-  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  color: #0F172A;
-  margin-bottom: 4px;
-}
-
-.cert-lead {
-  font-size: 13px;
-  color: #64748B;
-  font-weight: 500;
-}
-
-.cert-recipient-name {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 32px;
-  font-weight: 800;
-  color: #1E3A8A;
-  margin: 8px 0;
-  line-height: 1.2;
-}
-
-.cert-statement {
-  font-size: 13px;
-  color: #475569;
-}
-
-.cert-course-title {
-  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
-  font-size: 18px;
-  font-weight: 800;
-  color: #0F172A;
-  margin: 6px 0;
-  line-height: 1.3;
-}
-
-.cert-course-summary {
-  font-size: 11.5px;
-  color: #64748B;
-  max-width: 540px;
   margin: 0 auto 12px;
-  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+.seal-stars { font-size: 7px; color: #07132B; letter-spacing: 1px; font-weight: 800; }
+.seal-main-text { font-size: 16px; font-weight: 900; line-height: 1; margin: 1px 0; color: #07132B; font-family: var(--font-heading); }
+.seal-sub-text { font-size: 7.5px; font-weight: 800; letter-spacing: 0.5px; color: #07132B; }
+
+/* 4 Feature Items */
+.cert-left-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+  margin: 8px 0;
 }
 
-.cert-meta-strip {
+.cert-left-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feature-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  padding: 8px 16px;
-  width: fit-content;
+  flex-shrink: 0;
+}
+
+.feature-text {
+  font-size: 8.5px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+/* Bottom Left Emblem */
+.cert-left-emblem {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(56, 189, 248, 0.4);
   margin: 0 auto;
 }
 
-.cert-meta-item {
-  font-size: 11.5px;
-  color: #334155;
-}
-
-.cert-meta-item .meta-label {
-  color: #64748B;
-  font-weight: 500;
-  margin-right: 4px;
-}
-
-.cert-meta-item .meta-val {
-  font-weight: 700;
-  color: #0F172A;
-}
-
-.cert-meta-item .meta-val.highlight {
-  color: #FF4D00;
-}
-
-/* Footer Signatures & Crest */
-.cert-footer {
+/* Main Certificate Canvas */
+.cert-panel-main-exact {
+  flex: 1;
+  padding: 24px 28px 16px;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
   justify-content: space-between;
-  border-top: 1px solid #E2E8F0;
-  padding-top: 14px;
+  position: relative;
+  z-index: 5;
+  background: #FFFFFF;
 }
 
-.cert-signature-box {
-  text-align: center;
-  width: 170px;
+/* Header & Top Right QR */
+.cert-header-exact {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
-.cert-signature-line {
-  font-family: 'Playfair Display', Georgia, serif;
+.brand-logo-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-name-box {
+  display: flex;
+  align-items: center;
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 900;
+  color: #07132B;
+  letter-spacing: -0.02em;
+}
+
+.brand-subtitle {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 900;
+  color: #FF4D00;
+  margin-left: 6px;
+}
+
+.cert-tagline-text {
+  font-size: 11px;
+  color: #64748B;
   font-style: italic;
-  font-size: 16px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.cert-qr-box-exact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  text-align: center;
+}
+
+.qr-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #07132B;
+  color: #FFFFFF;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.qr-svg-wrapper {
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  padding: 3px;
+  background: #FFFFFF;
+}
+
+.qr-subtext {
+  font-size: 8.5px;
   font-weight: 700;
-  color: #1E3A8A;
-  border-bottom: 1.5px solid #0F172A;
-  padding-bottom: 4px;
+  color: #64748B;
+  line-height: 1.15;
+}
+
+/* Titles & Recipient */
+.cert-body-exact {
+  text-align: center;
+  margin: 4px 0;
+}
+
+.cert-main-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #07132B;
+  letter-spacing: 4px;
+  margin: 0;
+  line-height: 1;
+}
+
+.cert-sub-title {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #FF4D00;
+  letter-spacing: 3px;
+  margin-top: 3px;
   margin-bottom: 4px;
 }
 
-.cert-signatory-name {
-  font-size: 11.5px;
+.cert-lead-text {
+  font-size: 12.5px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.cert-learner-name {
+  font-family: 'Alex Brush', 'Great Vibes', cursive;
+  font-size: 48px;
   font-weight: 700;
-  color: #0F172A;
+  color: #07132B;
+  margin: 2px 0;
+  line-height: 1.1;
 }
 
-.cert-signatory-title {
+.cert-flourish {
+  color: #D97706;
   font-size: 10px;
-  color: #64748B;
+  margin-bottom: 6px;
+  opacity: 0.8;
 }
 
-.cert-crest {
+.cert-completion-lead {
+  font-size: 12.5px;
+  color: #475569;
+}
+
+.cert-course-title-exact {
+  font-family: var(--font-heading);
+  font-size: 19px;
+  font-weight: 800;
+  color: #07132B;
+  margin: 4px 0;
+}
+
+.cert-course-desc {
+  font-size: 10.5px;
+  color: #64748B;
+  max-width: 520px;
+  margin: 0 auto 10px;
+  line-height: 1.4;
+}
+
+/* 3 Column Meta Strip */
+.cert-meta-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 6px 14px;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+}
+
+.meta-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+}
+
+.meta-icon {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.cert-seal-inner {
+.meta-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #64748B;
+  letter-spacing: 0.04em;
+}
+
+.meta-val {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #07132B;
+}
+
+.meta-val.highlight {
+  color: #07132B;
+}
+
+.meta-divider {
+  width: 1px;
+  height: 24px;
+  background: #CBD5E1;
+}
+
+/* Signatures & Center Crest */
+.cert-footer-exact {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 4px;
+}
+
+.signatory-column {
+  text-align: center;
+  width: 160px;
+}
+
+.signature-script {
+  font-family: 'Alex Brush', 'Great Vibes', cursive;
+  font-size: 22px;
+  color: #07132B;
+  margin-bottom: -4px;
+}
+
+.signatory-line {
+  height: 1.5px;
+  background: #07132B;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.signatory-name {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #07132B;
+}
+
+.signatory-title {
+  font-size: 9.5px;
+  color: #64748B;
+}
+
+.center-gold-crest {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
 }
 
-.cert-seal-inner .seal-text {
-  font-size: 9px;
+.crest-text {
+  font-size: 8.5px;
   font-weight: 800;
-  color: #D97706;
-  letter-spacing: 0.1em;
+  color: #FF4D00;
+  letter-spacing: 1.5px;
 }
 
-.cert-security-note {
-  font-size: 9.5px;
-  color: #64748B;
+/* Bottom Dark Security Banner */
+.cert-bottom-security-banner {
+  background: #07132B;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 6px 18px;
+  border-radius: 999px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 6px;
-  border-top: 1px dashed #E2E8F0;
-  padding-top: 4px;
+  gap: 8px;
+  justify-content: center;
+  width: fit-content;
+  margin: 6px auto 0;
+  box-shadow: 0 4px 12px rgba(7,19,43,0.15);
 }
 
 /* Modal Overlay Styles */

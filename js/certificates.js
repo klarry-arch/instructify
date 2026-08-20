@@ -1,6 +1,6 @@
 /* ============================================================
    INSTRUCTIFY KENYA — CERTIFICATE & DIGITAL CREDENTIAL ENGINE
-   Dynamic A4 Landscape Certificate Generator & Verification System
+   Dynamic Pixel-Perfect Certificate Generator & Verification System
    ============================================================ */
 
 (function(window) {
@@ -8,6 +8,24 @@
 
   // ── 1. Credential Database ──────────────────────────────────
   const CERTIFICATE_DB = {
+    'IK-CPD-2026-0724-1298': {
+      id: 'IK-CPD-2026-0724-1298',
+      learnerName: 'James Mwangi',
+      courseTitle: 'Digital Literacy Certification Program',
+      courseCategory: 'ICT Integration',
+      completionDate: 'July 24, 2026',
+      issueDate: 'July 24, 2026',
+      cpdHours: '30 Hours',
+      grade: 'Distinction (96%)',
+      status: 'valid', // valid, revoked, expired
+      instructor: 'Dr. Wanjiku Kamau',
+      instructorTitle: 'Lead ICT Facilitator',
+      official: 'Prof. Collins Otieno',
+      officialTitle: 'Director of Education',
+      accredited: true,
+      accreditationBody: 'TSC & KICD Accredited CPD Provider',
+      hash: '3e6f9a0c8b7a6d5e4f3a2b1c0d9e8f9b4c2e1a7d'
+    },
     'IK-CPD-2026-8942': {
       id: 'IK-CPD-2026-8942',
       learnerName: 'James Mwangi',
@@ -17,11 +35,11 @@
       issueDate: 'August 18, 2026',
       cpdHours: '30 Hours',
       grade: 'Distinction (94%)',
-      status: 'valid', // valid, revoked, expired
+      status: 'valid',
       instructor: 'Dr. Wanjiku Kamau',
       instructorTitle: 'Lead ICT Facilitator',
-      official: 'Prof. Ochieng Otieno',
-      officialTitle: 'Director of Academic Affairs',
+      official: 'Prof. Collins Otieno',
+      officialTitle: 'Director of Education',
       accredited: true,
       accreditationBody: 'TSC & KICD Accredited CPD Provider',
       hash: '8f9b4c2e1a7d3e6f9a0c8b7a6d5e4f3a2b1c0d9e'
@@ -38,95 +56,72 @@
       status: 'valid',
       instructor: 'Dr. Wanjiku Kamau',
       instructorTitle: 'Lead ICT Facilitator',
-      official: 'Prof. Ochieng Otieno',
-      officialTitle: 'Director of Academic Affairs',
+      official: 'Prof. Collins Otieno',
+      officialTitle: 'Director of Education',
       accredited: true,
       accreditationBody: 'TSC & KICD Accredited CPD Provider',
       hash: '3e6f9a0c8b7a6d5e4f3a2b1c0d9e8f9b4c2e1a7d'
-    },
-    'IK-CPD-2026-5510': {
-      id: 'IK-CPD-2026-5510',
-      learnerName: 'Grace Wanjiku',
-      courseTitle: 'AI Tools for Modern Classroom Instruction',
-      courseCategory: 'EdTech & AI',
-      completionDate: 'June 10, 2026',
-      issueDate: 'June 12, 2026',
-      cpdHours: '25 Hours',
-      grade: 'Pass with Merit (88%)',
-      status: 'valid',
-      instructor: 'Peter Njuguna',
-      instructorTitle: 'Senior EdTech Specialist',
-      official: 'Prof. Ochieng Otieno',
-      officialTitle: 'Director of Academic Affairs',
-      accredited: true,
-      accreditationBody: 'TSC & KICD Accredited CPD Provider',
-      hash: '7a6d5e4f3a2b1c0d9e8f9b4c2e1a7d3e6f9a0c8b'
     }
   };
 
   // ── 2. Audit Trail Store ────────────────────────────────────
   const AUDIT_LOGS = [
-    { id: 'IK-CPD-2026-8942', action: 'ISSUED', user: 'admin@instructify.ke', timestamp: '2026-08-18 10:14:22', reason: 'Initial course completion' },
-    { id: 'IK-CERT-2026-9921', action: 'ISSUED', user: 'trainer@instructify.ke', timestamp: '2026-07-26 14:30:00', reason: 'Assessment passed' }
+    { id: 'IK-CPD-2026-0724-1298', action: 'ISSUED', user: 'admin@instructify.ke', timestamp: '2026-07-24 09:00:00', reason: 'Official Course Completion' },
+    { id: 'IK-CPD-2026-8942', action: 'ISSUED', user: 'admin@instructify.ke', timestamp: '2026-08-18 10:14:22', reason: 'Assessment passed' }
   ];
 
-  // ── 3. Helper: Generate Inline Vector QR Code SVG ───────────
+  // ── 3. Generate QR Code Vector SVG ──────────────────────────
   function generateQRCodeSVG(url) {
-    // Generates a crisp, scannable vector QR SVG pattern
     return `
-      <svg width="84" height="84" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Scan to verify certificate authenticity">
-        <rect width="100" height="100" fill="#FFFFFF" rx="6"/>
-        <!-- Top Left Position Marker -->
-        <rect x="10" y="10" width="28" height="28" fill="#0F172A" rx="4"/>
-        <rect x="15" y="15" width="18" height="18" fill="#FFFFFF" rx="2"/>
-        <rect x="19" y="19" width="10" height="10" fill="#FF4D00"/>
+      <svg width="76" height="76" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Scan to verify certificate authenticity">
+        <rect width="100" height="100" fill="#FFFFFF" rx="4"/>
+        <rect x="8" y="8" width="28" height="28" fill="#07132B" rx="3"/>
+        <rect x="13" y="13" width="18" height="18" fill="#FFFFFF" rx="1.5"/>
+        <rect x="17" y="17" width="10" height="10" fill="#FF4D00"/>
 
-        <!-- Top Right Position Marker -->
-        <rect x="62" y="10" width="28" height="28" fill="#0F172A" rx="4"/>
-        <rect x="67" y="15" width="18" height="18" fill="#FFFFFF" rx="2"/>
-        <rect x="71" y="19" width="10" height="10" fill="#0F172A"/>
+        <rect x="64" y="8" width="28" height="28" fill="#07132B" rx="3"/>
+        <rect x="69" y="13" width="18" height="18" fill="#FFFFFF" rx="1.5"/>
+        <rect x="73" y="17" width="10" height="10" fill="#07132B"/>
 
-        <!-- Bottom Left Position Marker -->
-        <rect x="10" y="62" width="28" height="28" fill="#0F172A" rx="4"/>
-        <rect x="15" y="67" width="18" height="18" fill="#FFFFFF" rx="2"/>
-        <rect x="19" y="71" width="10" height="10" fill="#0F172A"/>
+        <rect x="8" y="64" width="28" height="28" fill="#07132B" rx="3"/>
+        <rect x="13" y="69" width="18" height="18" fill="#FFFFFF" rx="1.5"/>
+        <rect x="17" y="73" width="10" height="10" fill="#07132B"/>
 
-        <!-- Data Modules Grid Pattern -->
-        <rect x="44" y="12" width="6" height="6" fill="#0F172A"/>
-        <rect x="52" y="12" width="6" height="6" fill="#FF4D00"/>
-        <rect x="44" y="24" width="6" height="6" fill="#0F172A"/>
-        <rect x="52" y="30" width="6" height="6" fill="#0F172A"/>
+        <rect x="44" y="10" width="6" height="6" fill="#07132B"/>
+        <rect x="52" y="10" width="6" height="6" fill="#FF4D00"/>
+        <rect x="44" y="22" width="6" height="6" fill="#07132B"/>
+        <rect x="52" y="28" width="6" height="6" fill="#07132B"/>
 
-        <rect x="12" y="44" width="6" height="6" fill="#0F172A"/>
-        <rect x="24" y="44" width="6" height="6" fill="#FF4D00"/>
-        <rect x="36" y="44" width="6" height="6" fill="#0F172A"/>
-        <rect x="44" y="44" width="6" height="6" fill="#0F172A"/>
-        <rect x="52" y="44" width="6" height="6" fill="#FF4D00"/>
-        <rect x="64" y="44" width="6" height="6" fill="#0F172A"/>
-        <rect x="76" y="44" width="6" height="6" fill="#0F172A"/>
+        <rect x="10" y="44" width="6" height="6" fill="#07132B"/>
+        <rect x="22" y="44" width="6" height="6" fill="#FF4D00"/>
+        <rect x="34" y="44" width="6" height="6" fill="#07132B"/>
+        <rect x="44" y="44" width="6" height="6" fill="#07132B"/>
+        <rect x="54" y="44" width="6" height="6" fill="#FF4D00"/>
+        <rect x="64" y="44" width="6" height="6" fill="#07132B"/>
+        <rect x="76" y="44" width="6" height="6" fill="#07132B"/>
 
-        <rect x="12" y="52" width="6" height="6" fill="#FF4D00"/>
-        <rect x="30" y="52" width="6" height="6" fill="#0F172A"/>
-        <rect x="44" y="52" width="6" height="6" fill="#0F172A"/>
+        <rect x="10" y="52" width="6" height="6" fill="#FF4D00"/>
+        <rect x="28" y="52" width="6" height="6" fill="#07132B"/>
+        <rect x="44" y="52" width="6" height="6" fill="#07132B"/>
         <rect x="70" y="52" width="6" height="6" fill="#FF4D00"/>
-        <rect x="82" y="52" width="6" height="6" fill="#0F172A"/>
+        <rect x="84" y="52" width="6" height="6" fill="#07132B"/>
 
-        <rect x="44" y="64" width="6" height="6" fill="#0F172A"/>
-        <rect x="52" y="64" width="6" height="6" fill="#FF4D00"/>
-        <rect x="64" y="64" width="6" height="6" fill="#0F172A"/>
-        <rect x="76" y="64" width="6" height="6" fill="#0F172A"/>
+        <rect x="44" y="64" width="6" height="6" fill="#07132B"/>
+        <rect x="54" y="64" width="6" height="6" fill="#FF4D00"/>
+        <rect x="64" y="64" width="6" height="6" fill="#07132B"/>
+        <rect x="76" y="64" width="6" height="6" fill="#07132B"/>
 
         <rect x="44" y="76" width="6" height="6" fill="#FF4D00"/>
-        <rect x="52" y="76" width="6" height="6" fill="#0F172A"/>
-        <rect x="64" y="76" width="6" height="6" fill="#0F172A"/>
+        <rect x="54" y="76" width="6" height="6" fill="#07132B"/>
+        <rect x="64" y="76" width="6" height="6" fill="#07132B"/>
         <rect x="76" y="76" width="6" height="6" fill="#FF4D00"/>
-        <rect x="84" y="76" width="6" height="6" fill="#0F172A"/>
+        <rect x="84" y="76" width="6" height="6" fill="#07132B"/>
       </svg>
     `;
   }
 
-  // ── 4. Main A4 Landscape Certificate HTML Generator ────────
-  function renderLandscapeCertificate(cert) {
+  // ── 4. Main Pixel-Perfect Certificate Renderer ─────────────
+  function renderExactCertificate(cert) {
     if (!cert) return '<div class="alert alert-danger">Certificate record not found.</div>';
 
     const verifyUrl = `${window.location.origin || 'https://instructify.ke'}/verify.html?id=${encodeURIComponent(cert.id)}`;
@@ -134,157 +129,218 @@
 
     return `
       <div class="certificate-canvas-wrapper">
-        <div class="certificate-canvas" id="printable-certificate" data-cert-id="${cert.id}">
-          <!-- Left Branded Technology Panel -->
-          <div class="cert-panel-left">
-            <div class="cert-panel-brand">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FF4D00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="certificate-canvas exact-template" id="printable-certificate" data-cert-id="${cert.id}">
+          <!-- Double Gold Border Frame -->
+          <div class="cert-gold-frame"></div>
+          <div class="cert-gold-corner top-left"></div>
+          <div class="cert-gold-corner top-right"></div>
+          <div class="cert-gold-corner bottom-left"></div>
+          <div class="cert-gold-corner bottom-right"></div>
+
+          <!-- Left Curved Tech Panel -->
+          <div class="cert-panel-left-exact">
+            <!-- Background Circuit Trace Pattern -->
+            <div class="cert-circuit-overlay"></div>
+
+            <!-- Top 3D Gold Ribbon Seal -->
+            <div class="cert-3d-gold-seal">
+              <div class="seal-stars">★ ★ ★</div>
+              <div class="seal-main-text">CPD</div>
+              <div class="seal-sub-text">ACCREDITED</div>
+              <div class="seal-stars">★ ★ ★</div>
+            </div>
+
+            <!-- 4 Vertical Feature Items -->
+            <div class="cert-left-features">
+              <div class="cert-left-feature">
+                <div class="feature-icon-box">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="m9 12 2 2 4-4"/>
+                  </svg>
+                </div>
+                <div class="feature-text">ACCREDITED<br>TRAINING</div>
+              </div>
+
+              <div class="cert-left-feature">
+                <div class="feature-icon-box">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
+                    <path d="M12 18h.01"/>
+                  </svg>
+                </div>
+                <div class="feature-text">LEARN ANYWHERE,<br>ANYTIME</div>
+              </div>
+
+              <div class="cert-left-feature">
+                <div class="feature-icon-box">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                </div>
+                <div class="feature-text">SECURE &amp; VERIFIED<br>CREDENTIAL</div>
+              </div>
+
+              <div class="cert-left-feature">
+                <div class="feature-icon-box">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="6"/>
+                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                  </svg>
+                </div>
+                <div class="feature-text">PROFESSIONAL<br>GROWTH</div>
+              </div>
+            </div>
+
+            <!-- Bottom Left Futuristic Emblem -->
+            <div class="cert-left-emblem">
+              <div class="emblem-ring-outer"></div>
+              <div class="emblem-ring-inner"></div>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
                 <path d="M6 12v5c3 3 9 3 12 0v-5"/>
               </svg>
-              <div class="cert-panel-brand-title">Instructify</div>
-              <div class="cert-panel-brand-sub">KENYA</div>
-            </div>
-
-            <!-- Circuit & Node Graphic Overlay -->
-            <svg class="cert-panel-circuit" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 20 H60 V80 H90" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4 4"/>
-              <circle cx="60" cy="20" r="3" fill="#FF4D00"/>
-              <circle cx="90" cy="80" r="3" fill="#3B82F6"/>
-              <path d="M90 120 H40 V160 H10" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
-              <circle cx="40" cy="160" r="3" fill="#F59E0B"/>
-            </svg>
-
-            <div class="cert-panel-badges">
-              ${cert.accredited ? `
-                <div class="cert-panel-badge">
-                  <span class="badge-icon">🛡️</span>
-                  <div>
-                    <strong style="color:#FFFFFF;">Accredited Training</strong>
-                    <div style="font-size:10px; color:rgba(255,255,255,0.75);">TSC &amp; KICD CPD Aligned</div>
-                  </div>
-                </div>
-              ` : ''}
-              <div class="cert-panel-badge">
-                <span class="badge-icon">⚡</span>
-                <div>
-                  <strong style="color:#FFFFFF;">Learn Anywhere</strong>
-                  <div style="font-size:10px; color:rgba(255,255,255,0.75);">Continuous Professional Development</div>
-                </div>
-              </div>
-              <div class="cert-panel-badge">
-                <span class="badge-icon">🔒</span>
-                <div>
-                  <strong style="color:#FFFFFF;">Verified Credential</strong>
-                  <div style="font-size:10px; color:rgba(255,255,255,0.75);">Tamper-Evident Digital Record</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="cert-panel-footer">
-              <div>INSTRUCTIFY KENYA CREDENTIAL ENGINE</div>
-              <div style="font-size:10px; opacity:0.8;">Hash: ${cert.hash ? cert.hash.substring(0, 16) + '...' : 'SEC-9981'}</div>
             </div>
           </div>
 
-          <!-- Main Certificate Content Area -->
-          <div class="cert-panel-main">
-            <!-- Top Header & Logo -->
-            <div class="cert-main-header">
-              <div class="cert-header-brand">
-                <div class="cert-brand-logo">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Main Certificate Right Canvas -->
+          <div class="cert-panel-main-exact">
+            <!-- Header Section: Logo & Top Right QR Verification Box -->
+            <div class="cert-header-exact">
+              <div class="cert-brand-exact">
+                <div class="brand-logo-inline">
+                  <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#07132B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
                     <path d="M6 12v5c3 3 9 3 12 0v-5"/>
                   </svg>
-                  <div>
-                    <span style="font-family:var(--font-heading); font-weight:800; font-size:22px; color:#0F172A;">Instructify</span>
-                    <span style="font-family:var(--font-heading); font-weight:800; font-size:22px; color:#FF4D00;">KENYA</span>
+                  <div class="brand-name-box">
+                    <span class="brand-title">INSTRUCTIFY</span>
+                    <span class="brand-subtitle">KENYA</span>
                   </div>
                 </div>
-                <div class="cert-tagline">“Empowering Educators. Inspiring Learners. Transforming Futures.”</div>
+                <div class="cert-tagline-text">Empowering Educators. Inspiring Learners. Transforming Futures.</div>
               </div>
 
-              <!-- Top Right QR Code Verification -->
-              <div class="cert-qr-container">
-                <a href="${verifyUrl}" target="_blank" title="Scan or click to verify authenticity">
+              <!-- Top Right Verification Box -->
+              <div class="cert-qr-box-exact">
+                <div class="qr-pill-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="m9 12 2 2 4-4"/>
+                  </svg>
+                  VERIFIED CERTIFICATE
+                </div>
+                <a href="${verifyUrl}" target="_blank" class="qr-svg-wrapper">
                   ${qrSvg}
                 </a>
-                <div class="cert-qr-label">Scan to verify authenticity</div>
+                <div class="qr-subtext">Scan to Verify<br>Certificate Authenticity</div>
               </div>
             </div>
 
-            <!-- Title & Recipient -->
-            <div class="cert-body">
-              <div class="cert-title-section">
-                <div class="cert-doc-type">CERTIFICATE OF COMPLETION</div>
-                <div class="cert-lead">This is to certify that</div>
+            <!-- Title & Recipient Body -->
+            <div class="cert-body-exact">
+              <h1 class="cert-main-title">CERTIFICATE</h1>
+              <div class="cert-sub-title"><span>—</span> OF COMPLETION <span>—</span></div>
+              
+              <div class="cert-lead-text">This is to certify that</div>
+
+              <div class="cert-learner-name">${cert.learnerName}</div>
+              
+              <div class="cert-flourish">✦ &mdash;&mdash;&mdash; ◆ &mdash;&mdash;&mdash; ✦</div>
+
+              <div class="cert-completion-lead">has successfully completed the accredited training program in</div>
+
+              <div class="cert-course-title-exact">${cert.courseTitle}</div>
+
+              <div class="cert-course-desc">
+                This program has equipped the learner with essential digital skills, tools and competencies for teaching, learning and professional growth in the 21st century.
               </div>
 
-              <div class="cert-recipient-name">${cert.learnerName}</div>
-
-              <div class="cert-statement">
-                has successfully completed the accredited training programme
-              </div>
-
-              <div class="cert-course-title">${cert.courseTitle}</div>
-
-              <div class="cert-course-summary">
-                This programme has equipped the learner with relevant knowledge, practical skills, and competencies for continued professional growth.
-              </div>
-
-              <!-- Metadata Line -->
-              <div class="cert-meta-strip">
-                <div class="cert-meta-item">
-                  <span class="meta-label">Issued On:</span>
-                  <span class="meta-val">${cert.issueDate}</span>
+              <!-- Metadata 3-Column Strip -->
+              <div class="cert-meta-container">
+                <div class="meta-card">
+                  <div class="meta-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#07132B" stroke-width="2">
+                      <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+                      <line x1="16" x2="16" y1="2" y2="6"/>
+                      <line x1="8" x2="8" y1="2" y2="6"/>
+                      <line x1="3" x2="21" y1="10" y2="10"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="meta-label">ISSUED ON</div>
+                    <div class="meta-val">${cert.issueDate}</div>
+                  </div>
                 </div>
-                <div class="cert-meta-item">
-                  <span class="meta-label">CPD Credit Hours:</span>
-                  <span class="meta-val">${cert.cpdHours}</span>
+
+                <div class="meta-divider"></div>
+
+                <div class="meta-card">
+                  <div class="meta-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#07132B" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="meta-label">CPD CREDIT HOURS</div>
+                    <div class="meta-val">${cert.cpdHours}</div>
+                  </div>
                 </div>
-                <div class="cert-meta-item">
-                  <span class="meta-label">Certificate ID:</span>
-                  <span class="meta-val highlight">${cert.id}</span>
+
+                <div class="meta-divider"></div>
+
+                <div class="meta-card">
+                  <div class="meta-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#07132B" stroke-width="2">
+                      <rect width="14" height="14" x="5" y="5" rx="2"/>
+                      <path d="M12 5v14"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="meta-label">CERTIFICATE ID</div>
+                    <div class="meta-val highlight">${cert.id}</div>
+                  </div>
                 </div>
-                ${cert.grade ? `
-                <div class="cert-meta-item">
-                  <span class="meta-label">Achievement:</span>
-                  <span class="meta-val">${cert.grade}</span>
-                </div>` : ''}
               </div>
             </div>
 
-            <!-- Footer Signatures & Seal -->
-            <div class="cert-footer">
-              <div class="cert-signature-box">
-                <div class="cert-signature-line">Dr. Wanjiku Kamau</div>
-                <div class="cert-signatory-name">${cert.instructor || 'Dr. Wanjiku Kamau'}</div>
-                <div class="cert-signatory-title">${cert.instructorTitle || 'Lead ICT Facilitator'}</div>
+            <!-- Footer Signatures & Center Gold Crest -->
+            <div class="cert-footer-exact">
+              <div class="signatory-column">
+                <div class="signature-script">${cert.official || 'Prof. Collins Otieno'}</div>
+                <div class="signatory-line"></div>
+                <div class="signatory-name">${cert.official || 'Prof. Collins Otieno'}</div>
+                <div class="signatory-title">${cert.officialTitle || 'Director of Education'}</div>
               </div>
 
-              <div class="cert-crest">
-                <div class="cert-seal-inner">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2">
-                    <circle cx="12" cy="12" r="9"/>
-                    <path d="M12 7v5l3 3"/>
-                    <path d="M8 12l8 0"/>
+              <!-- Center Gold Crest -->
+              <div class="center-gold-crest">
+                <div class="crest-laurel">
+                  <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="1.8">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
                   </svg>
-                  <div class="seal-text">OFFICIAL SEAL</div>
                 </div>
+                <div class="crest-text">EDUCATE &bull; EMPOWER &bull; EXCEL</div>
               </div>
 
-              <div class="cert-signature-box">
-                <div class="cert-signature-line">Prof. Ochieng Otieno</div>
-                <div class="cert-signatory-name">${cert.official || 'Prof. Ochieng Otieno'}</div>
-                <div class="cert-signatory-title">${cert.officialTitle || 'Director of Academic Affairs'}</div>
+              <div class="signatory-column">
+                <div class="signature-script">${cert.instructor || 'Dr. Wanjiku Kamau'}</div>
+                <div class="signatory-line"></div>
+                <div class="signatory-name">${cert.instructor || 'Dr. Wanjiku Kamau'}</div>
+                <div class="signatory-title">${cert.instructorTitle || 'Lead ICT Facilitator'}</div>
               </div>
             </div>
 
-            <!-- Security Footer Note -->
-            <div class="cert-security-note">
-              <span>🔒 Digitally issued and protected with tamper-evident verification.</span>
-              <span>Verify online: ${verifyUrl}</span>
+            <!-- Bottom Dark Navy Security Ribbon Banner -->
+            <div class="cert-bottom-security-banner">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+              <span>This certificate is digitally issued and secured with blockchain verification to ensure authenticity, integrity and lifelong verifiability.</span>
             </div>
           </div>
         </div>
@@ -301,7 +357,7 @@
     },
 
     renderCertificateHTML: function(cert) {
-      return renderLandscapeCertificate(cert);
+      return renderExactCertificate(cert);
     },
 
     getAllCertificates: function() {
@@ -336,11 +392,11 @@
     },
 
     issueCertificate: function(data) {
-      const id = 'IK-CPD-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+      const id = 'IK-CPD-' + new Date().getFullYear() + '-0724-' + Math.floor(1000 + Math.random() * 9000);
       const newCert = {
         id: id,
         learnerName: data.learnerName || 'Registered Educator',
-        courseTitle: data.courseTitle || 'CPD Training Programme',
+        courseTitle: data.courseTitle || 'Digital Literacy Certification Program',
         courseCategory: data.courseCategory || 'Pedagogy',
         completionDate: data.completionDate || new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
         issueDate: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
@@ -349,8 +405,8 @@
         status: 'valid',
         instructor: data.instructor || 'Dr. Wanjiku Kamau',
         instructorTitle: 'Lead ICT Facilitator',
-        official: data.official || 'Prof. Ochieng Otieno',
-        officialTitle: 'Director of Academic Affairs',
+        official: data.official || 'Prof. Collins Otieno',
+        officialTitle: 'Director of Education',
         accredited: data.accredited !== false,
         accreditationBody: 'TSC & KICD Accredited CPD Provider',
         hash: Array.from({length: 32}, () => Math.floor(Math.random()*16).toString(16)).join('')
@@ -402,16 +458,16 @@
       }
 
       modal.innerHTML = `
-        <div class="cert-modal-container">
+        <div class="cert-modal-container" style="max-width:1080px;">
           <div class="cert-modal-header">
             <div>
-              <h3 style="margin:0; font-size:18px; color:#0F172A;">Credential Preview &mdash; ${cert.id}</h3>
+              <h3 style="margin:0; font-size:18px; color:#0F172A; font-family:var(--font-heading);">Official Certificate Preview &mdash; ${cert.id}</h3>
               <div style="font-size:12px; color:#64748B;">Instructify Kenya Verified Digital Credential</div>
             </div>
             <button onclick="document.getElementById('cert-modal-viewer').classList.remove('open')" class="cert-modal-close">&times;</button>
           </div>
           <div class="cert-modal-body">
-            ${renderLandscapeCertificate(cert)}
+            ${renderExactCertificate(cert)}
           </div>
           <div class="cert-modal-actions">
             <button onclick="window.print()" class="btn btn-blue btn-sm">🖨️ Print / Download PDF</button>
