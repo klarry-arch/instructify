@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    INSTRUCTIFY KENYA — COURSE DATA & CATALOG MODULE
    ============================================================ */
 
@@ -256,89 +256,42 @@ window.filterCourses = function(options = {}) {
 };
 
 // ── Render Course Card ──────────────────────────────────────────
-window.renderCourseCard = function(course, index = 0) {
-  let tierType = 'premier';
-  if (course.level === 'Intermediate' || course.featured || index % 3 === 1) {
-    tierType = 'executive';
-  } else if (course.level === 'Advanced' || index % 3 === 2) {
-    tierType = 'platinum';
-  }
-
+window.renderCourseCard = function(course) {
   const enrolled = window.isEnrolled ? window.isEnrolled(course.id) : false;
-  const formattedPrice = typeof course.price === 'number' ? `KES. ${course.price.toLocaleString()}` : (course.price || 'KES. 200,000');
-
-  let outcomesList = course.outcomes || [
-    'Digital Literacy & Classroom Tools Integration',
-    'Competency-Based Assessment Rubrics & Portfolios',
-    'Interactive Lesson Plans & Student Engagement',
-    'TSC CPD Points Accreditation Included',
-    'High Resolution Digital Certificate'
-  ];
-
-  if (tierType === 'premier') {
-    return `
-      <div class="tier-card tier-card-premier reveal" data-course-id="${course.id}">
-        <div class="tier-header-pill tier-header-pill-white">
-          <h3 class="tier-header-title">${course.title}</h3>
+  return `
+    <div class="course-card reveal">
+      <div class="course-card-image">
+        <img src="${course.image}" alt="${course.title}" loading="lazy" 
+             onerror="this.parentElement.style.background='linear-gradient(135deg,#DC2E0A,#00B4D8)';this.style.display='none'">
+        <span class="course-card-badge ${course.badge}">${course.badgeText}</span>
+        <button class="course-card-wishlist" onclick="toggleWishlist(this)" title="Add to wishlist">🤍</button>
+      </div>
+      <div class="course-card-body">
+        <span class="course-card-category">${course.category}</span>
+        <h3 class="course-card-title">${course.title}</h3>
+        <div class="course-card-instructor">
+          <div class="instructor-avatar">${course.instructorAvatar}</div>
+          <span>${course.instructor}</span>
         </div>
-        <div class="tier-body">
-          <span class="tier-benefits-title">Benefits</span>
-          <ul class="tier-benefits-list">
-            ${outcomesList.slice(0, 5).map(item => `<li>${item}</li>`).join('')}
-          </ul>
-          <div class="tier-footnote">
-            KES. 100,000 max for children*
-          </div>
+        <div class="course-card-stats">
+          <span class="rating">⭐ ${course.rating}</span>
+          <span>(${course.reviewCount.toLocaleString()})</span>
+          <span>• ${course.duration}</span>
+          <span>• ${course.level}</span>
         </div>
-        <a href="checkout.html?id=${course.id}" class="tier-footer-pill tier-footer-pill-white">
-          <span class="tier-price-val">${formattedPrice}</span>
-          <span class="tier-price-sub">${enrolled ? 'Enrolled' : 'Package Value'}</span>
+        ${course.cpd ? `<div style="margin-top:4px"><span class="badge badge-green">✅ CPD Accredited · ${course.cpdHours} hrs</span></div>` : ''}
+      </div>
+      <div class="course-card-footer">
+        <div class="course-price">
+          <span class="price-current">KES ${course.price.toLocaleString()}</span>
+          <span class="price-original">KES ${course.originalPrice.toLocaleString()}</span>
+        </div>
+        <a href="course-detail.html?id=${course.id}" class="btn btn-secondary btn-sm">
+          ${enrolled ? '📚 Continue' : 'View Course'}
         </a>
       </div>
-    `;
-  } else if (tierType === 'executive') {
-    return `
-      <div class="tier-card tier-card-executive reveal" data-course-id="${course.id}">
-        <div class="tier-header-pill tier-header-pill-orange">
-          <h3 class="tier-header-title">${course.title}</h3>
-        </div>
-        <div class="tier-body">
-          <span class="tier-benefits-title" style="color:#111827;">Benefits</span>
-          <ul class="tier-benefits-list">
-            ${outcomesList.slice(0, 5).map(item => `<li>${item}</li>`).join('')}
-          </ul>
-          <div class="tier-footnote">
-            KES. 100,000 max for children*
-          </div>
-        </div>
-        <a href="checkout.html?id=${course.id}" class="tier-footer-pill tier-footer-pill-orange">
-          <span class="tier-price-val">${formattedPrice}</span>
-          <span class="tier-price-sub">${enrolled ? 'Enrolled' : 'Package Value'}</span>
-        </a>
-      </div>
-    `;
-  } else {
-    return `
-      <div class="tier-card tier-card-platinum reveal" data-course-id="${course.id}">
-        <div class="tier-header-pill tier-header-pill-navy">
-          <h3 class="tier-header-title">${course.title}</h3>
-        </div>
-        <div class="tier-body">
-          <span class="tier-benefits-title">Benefits</span>
-          <ul class="tier-benefits-list">
-            ${outcomesList.slice(0, 6).map(item => `<li>${item}</li>`).join('')}
-          </ul>
-          <div class="tier-footnote">
-            KES. 100,000 max for children*
-          </div>
-        </div>
-        <a href="checkout.html?id=${course.id}" class="tier-footer-pill tier-footer-pill-navy">
-          <span class="tier-price-val">${formattedPrice}</span>
-          <span class="tier-price-sub">${enrolled ? 'Enrolled' : 'Package Value'}</span>
-        </a>
-      </div>
-    `;
-  }
+    </div>
+  `;
 };
 
 // ── Wishlist Toggle ────────────────────────────────────────
