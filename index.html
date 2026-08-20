@@ -286,8 +286,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.getElementById('featured-courses-grid');
   if (grid && window.COURSES) {
-    grid.innerHTML = window.COURSES.slice(0, 6).map(c => window.renderCourseCard(c)).join('');
-    initScrollReveal();
+    grid.innerHTML = window.COURSES.slice(0, 6).map((c, index) => window.renderCourseCard(c, index)).join('');
+    if (typeof initScrollReveal === 'function') initScrollReveal();
   }
 });
 </script>
