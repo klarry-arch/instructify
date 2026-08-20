@@ -28,7 +28,7 @@ const proLayout = `
   .filter-label {
     display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; color: #4b5563; font-size: 0.95rem; cursor: pointer;
   }
-  .filter-checkbox { accent-color: #ea580c; width: 16px; height: 16px; cursor: pointer; }
+  .filter-checkbox { accent-color: #FF4D00; width: 16px; height: 16px; cursor: pointer; }
   
   .pro-grid {
     display: grid;
@@ -57,7 +57,7 @@ const proLayout = `
   
   .pro-card:hover {
     box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-    border-color: #ea580c;
+    border-color: #FF4D00;
     transform: translateY(-4px);
     z-index: 10;
   }
@@ -157,7 +157,7 @@ const newRenderCourseCard = `window.renderCourseCard = function(course) {
     <div class="pro-card">
       <div style="padding: 1.25rem;">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-          <span style="background: #fff3ed; color: #ea580c; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">\${course.category}</span>
+          <span style="background: #fff3ed; color: #FF4D00; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">\${course.category}</span>
           <span style="font-size: 1.2rem;">\${course.format.toLowerCase().includes('online') ? '🌐' : '🏫'}</span>
         </div>
         
@@ -176,7 +176,7 @@ const newRenderCourseCard = `window.renderCourseCard = function(course) {
             <div><strong style="color: #374151;">⏱️ Duration:</strong> \${course.duration}</div>
             <div><strong style="color: #374151;">💻 Format:</strong> \${course.format}</div>
           </div>
-          <a href="course-detail.html?id=\${course.id}" class="btn" style="background: #ea580c; color: white; width: 100%; border-radius: 8px; padding: 0.75rem; font-weight: 700; display: inline-block; text-align: center; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#c2410a'" onmouseout="this.style.background='#ea580c'">
+          <a href="course-detail.html?id=\${course.id}" class="btn" style="background: #FF4D00; color: white; width: 100%; border-radius: 8px; padding: 0.75rem; font-weight: 700; display: inline-block; text-align: center; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#c2410a'" onmouseout="this.style.background='#FF4D00'">
             \${course.ctaText}
           </a>
         </div>

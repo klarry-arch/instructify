@@ -37,7 +37,7 @@ ${headHtml.replace('<title>Courses', '<title>Student Login')}
       </button>
     </form>
     
-    <p style="margin-top: 2rem; color: #6b7280; font-size: 0.9rem;">Don't have an account? <a href="courses.html" style="color: #ea580c; font-weight: 700; text-decoration: none;">Browse Courses</a></p>
+    <p style="margin-top: 2rem; color: #6b7280; font-size: 0.9rem;">Don't have an account? <a href="courses.html" style="color: #FF4D00; font-weight: 700; text-decoration: none;">Browse Courses</a></p>
   </div>
 
   <script>
@@ -60,7 +60,7 @@ ${headHtml.replace('<title>Courses', '<title>My Dashboard')}
   <nav style="background: white; border-bottom: 1px solid #e5e7eb; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100;">
     <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
       <img src="assets/images/logo.png" style="height: 40px; margin-right: 12px;">
-      <div style="line-height: 1.1;"><span style="font-weight: 800; font-size: 1.1rem; color: #111827;">Instructify</span><span style="display:block; font-size: 0.65rem; font-weight: 700; color: #ea580c; text-transform: uppercase; letter-spacing: 1px;">Kenya</span></div>
+      <div style="line-height: 1.1;"><span style="font-weight: 800; font-size: 1.1rem; color: #111827;">Instructify</span><span style="display:block; font-size: 0.65rem; font-weight: 700; color: #FF4D00; text-transform: uppercase; letter-spacing: 1px;">Kenya</span></div>
     </a>
     <div style="display: flex; align-items: center; gap: 1.5rem;">
       <a href="courses.html" style="color: #4b5563; font-weight: 600; text-decoration: none;">Explore Catalog</a>
@@ -99,7 +99,7 @@ ${headHtml.replace('<title>Courses', '<title>My Dashboard')}
         <div style="grid-column: 1/-1; text-align: center; padding: 4rem; background: white; border-radius: 12px; border: 1px dashed #d1d5db;">
           <h3 style="color:#111827;margin-bottom:0.5rem; font-size: 1.25rem;">You haven't enrolled in any courses yet.</h3>
           <p style="color:#6b7280; margin-bottom: 1.5rem;">Ready to start learning? Explore our catalog.</p>
-          <a href="courses.html" class="btn" style="background: #ea580c; color: white; padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700;">Browse Courses</a>
+          <a href="courses.html" class="btn" style="background: #FF4D00; color: white; padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700;">Browse Courses</a>
         </div>
       \`;
     } else {
@@ -112,13 +112,13 @@ ${headHtml.replace('<title>Courses', '<title>My Dashboard')}
             <div style="height: 160px; background: #1d4ed8; position: relative; display: flex; align-items: center; justify-content: center; padding: 2rem; text-align: center;">
               <h3 style="color: white; font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">\${enr.courseTitle}</h3>
               <div style="position: absolute; bottom: 0; left: 0; height: 4px; background: #e5e7eb; width: 100%;">
-                <div style="height: 100%; background: #ea580c; width: \${Math.floor(Math.random() * 40 + 10)}%;"></div>
+                <div style="height: 100%; background: #FF4D00; width: \${Math.floor(Math.random() * 40 + 10)}%;"></div>
               </div>
             </div>
             <div style="padding: 1.5rem; display: flex; flex-direction: column; flex: 1;">
               <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.85rem;">
                 <span style="color: #6b7280;">Format: <strong>\${enr.format}</strong></span>
-                <span style="color: \${enr.status.includes('Confirmed') ? '#0d8a57' : '#ea580c'}; font-weight: 700;">\${enr.status}</span>
+                <span style="color: \${enr.status.includes('Confirmed') ? '#0d8a57' : '#FF4D00'}; font-weight: 700;">\${enr.status}</span>
               </div>
               <a href="course-player.html?course=\${encodeURIComponent(enr.courseTitle)}" style="margin-top: auto; width: 100%; padding: 0.75rem; background: #f3f4f6; color: #111827; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 700; border: 1px solid #d1d5db; transition: 0.2s;" onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">
                 Go to Course
@@ -184,7 +184,7 @@ ${headHtml.replace('<title>Courses', '<title>Course Player')}
     <main class="player-main">
       <div style="background: white; border-bottom: 1px solid #e5e7eb; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
         <h1 style="font-family: var(--font-heading); color: #111827; font-size: 1.25rem; margin: 0;">Welcome & Overview</h1>
-        <button style="background: #ea580c; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 700; cursor: pointer;">Next Lesson →</button>
+        <button style="background: #FF4D00; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 700; cursor: pointer;">Next Lesson →</button>
       </div>
 
       <div style="padding: 2rem; max-width: 900px; margin: 0 auto; width: 100%;">
@@ -196,7 +196,7 @@ ${headHtml.replace('<title>Courses', '<title>Course Player')}
           </div>
           <div style="position: absolute; bottom: 0; width: 100%; height: 50px; background: linear-gradient(transparent, rgba(0,0,0,0.7)); display: flex; align-items: center; padding: 0 1rem; box-sizing: border-box;">
             <div style="width: 100%; height: 4px; background: rgba(255,255,255,0.3); border-radius: 2px;">
-              <div style="width: 30%; height: 100%; background: #ea580c; border-radius: 2px;"></div>
+              <div style="width: 30%; height: 100%; background: #FF4D00; border-radius: 2px;"></div>
             </div>
           </div>
         </div>

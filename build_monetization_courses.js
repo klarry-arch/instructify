@@ -14,7 +14,7 @@ const newRenderCourseCard = `window.renderCourseCard = function(course) {
     <div class="pro-card">
       <div style="padding: 1.25rem;">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-          <span style="background: #fff3ed; color: #ea580c; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">\${course.category}</span>
+          <span style="background: #fff3ed; color: #FF4D00; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">\${course.category}</span>
           <span style="font-size: 1.2rem;">\${course.format.toLowerCase().includes('online') ? '🌐' : '🏫'}</span>
         </div>
         
@@ -32,7 +32,7 @@ const newRenderCourseCard = `window.renderCourseCard = function(course) {
             <div><strong style="color: #374151;">⏱️ Duration:</strong> \${course.duration}</div>
             <div><strong style="color: #374151;">💻 Format:</strong> \${course.format}</div>
           </div>
-          <a href="checkout.html?id=\${course.id}" class="btn" style="background: #ea580c; color: white; width: 100%; border-radius: 8px; padding: 0.75rem; font-weight: 700; display: inline-block; text-align: center; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#c2410a'" onmouseout="this.style.background='#ea580c'">
+          <a href="checkout.html?id=\${course.id}" class="btn" style="background: #FF4D00; color: white; width: 100%; border-radius: 8px; padding: 0.75rem; font-weight: 700; display: inline-block; text-align: center; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#c2410a'" onmouseout="this.style.background='#FF4D00'">
             \${btnText}
           </a>
         </div>
@@ -93,7 +93,7 @@ const newSections = `
     </p>
     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
       <a href="#catalog" class="btn" style="background: white; color: #1d4ed8; padding: 0.9rem 2rem; border-radius: 8px; font-weight: 700; text-decoration: none;">Explore Courses</a>
-      <a href="#catalog" class="btn" style="background: #ea580c; color: white; padding: 0.9rem 2rem; border-radius: 8px; font-weight: 700; text-decoration: none;">Enroll Now</a>
+      <a href="#catalog" class="btn" style="background: #FF4D00; color: white; padding: 0.9rem 2rem; border-radius: 8px; font-weight: 700; text-decoration: none;">Enroll Now</a>
       <a href="contact.html" class="btn" style="background: transparent; color: white; border: 2px solid white; padding: 0.9rem 2rem; border-radius: 8px; font-weight: 700; text-decoration: none;">Request School Quote</a>
       <a href="contact.html" class="btn" style="background: transparent; color: white; border: 2px solid white; padding: 0.9rem 2rem; border-radius: 8px; font-weight: 700; text-decoration: none;">Contact Us</a>
     </div>

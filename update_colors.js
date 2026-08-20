@@ -14,9 +14,9 @@ files.forEach(file => {
   const filePath = path.join(dir, file);
   let content = fs.readFileSync(filePath, 'utf8');
   
-  // Replace the color for the word "Kenya" (it was #1d4ed8, we want #ea580c)
+  // Replace the color for the word "Kenya" (it was #1d4ed8, we want #FF4D00)
   // `<span class="nav-brand-tagline" style="font-size: 0.75rem; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 1.5px;">Kenya</span>`
-  content = content.replace(/(class="nav-brand-tagline"[^>]*color:\s*)#1d4ed8/g, '$1#ea580c');
+  content = content.replace(/(class="nav-brand-tagline"[^>]*color:\s*)#1d4ed8/g, '$1#FF4D00');
   
   // Just in case it was written without inline styles, although my previous script added it inline.
   fs.writeFileSync(filePath, content);
@@ -35,7 +35,7 @@ if (!cssContent.includes('.nav-link { color: #000000 !important; }')) {
     font-weight: 600 !important;
 }
 .nav-link:hover, .dropdown-link:hover { 
-    color: #ea580c !important; 
+    color: #FF4D00 !important; 
 }
 `;
   fs.writeFileSync(cssPath, cssContent);

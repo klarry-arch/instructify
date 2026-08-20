@@ -20,7 +20,7 @@ const newRenderCourseCard = `window.renderCourseCard = function(course) {
     <div class="pro-card" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
       <div style="padding: 1.25rem;">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-          <span style="background: #fff3ed; color: #ea580c; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">\${course.category}</span>
+          <span style="background: #fff3ed; color: #FF4D00; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">\${course.category}</span>
           <span style="font-size: 1.2rem;">\${course.format.toLowerCase().includes('online') ? '🌐' : '🏫'}</span>
         </div>
         
@@ -43,7 +43,7 @@ const newRenderCourseCard = `window.renderCourseCard = function(course) {
         <div style="color: #1d4ed8; font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem; text-align: center;">
           \${displayPrice}
         </div>
-        <a href="checkout.html?id=\${course.id}" class="btn" style="background: #ea580c; color: white; width: 100%; border-radius: 8px; padding: 0.75rem; font-weight: 700; display: inline-block; text-align: center; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#c2410a'" onmouseout="this.style.background='#ea580c'">
+        <a href="checkout.html?id=\${course.id}" class="btn" style="background: #FF4D00; color: white; width: 100%; border-radius: 8px; padding: 0.75rem; font-weight: 700; display: inline-block; text-align: center; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#c2410a'" onmouseout="this.style.background='#FF4D00'">
           \${btnText}
         </a>
       </div>
