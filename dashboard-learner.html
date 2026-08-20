@@ -263,19 +263,71 @@
       </div>
     </div>
 
-    <!-- Tab 4: Certificates -->
+    <!-- Tab 4: Certificates & Badges -->
     <div id="dash-panel-certificates" class="dash-panel" style="display:none">
       <div class="dashboard-header">
-        <h1 class="dashboard-title">Certificates &amp; Badges</h1>
+        <div>
+          <h1 class="dashboard-title">Certificates &amp; Digital Badges</h1>
+          <div class="dashboard-subtitle">Manage, verify, download, and share your official CPD accredited credentials.</div>
+        </div>
       </div>
-      <div class="grid-2">
-        <div class="card" style="border:1px solid var(--color-primary-light);background:var(--bg-glass)">
-          <div style="width:64px;height:64px;border-radius:18px;background:var(--color-section-orange);color:var(--color-accent);display:inline-flex;align-items:center;justify-content:center;margin-bottom:var(--space-md);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
-          <h3 class="font-heading text-lg" style="margin-bottom:var(--space-xs)">Digital Literacy Certification</h3>
-          <div style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-md)">Issued Jul 24, 2026 &bull; Certificate ID: IK-CERT-2026-9921</div>
-          <div class="flex gap-sm">
-            <a href="certification.html?certId=IK-CERT-2026-9921" target="_blank" class="btn btn-view-achievement btn-sm">View Certificate</a>
-            <button onclick="showToast('Downloading Certificate PDF...','success')" class="btn btn-download-cert btn-sm">Download PDF</button>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap:24px;">
+        <!-- Credential Card 1 -->
+        <div class="stat-card" style="padding:28px; border:1.5px solid #CBD5E1; background:#FFFFFF;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
+            <div style="display:inline-flex; align-items:center; gap:8px; background:#DCFCE7; color:#166534; padding:4px 12px; border-radius:999px; font-size:12px; font-weight:800; border:1px solid #22C55E;">
+              ✅ Valid Credential &bull; CPD Accredited
+            </div>
+            <span style="font-size:12px; font-family:var(--font-mono); color:#FF4D00; font-weight:700;">IK-CERT-2026-9921</span>
+          </div>
+
+          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin-bottom:6px; line-height:1.3;">
+            Digital Literacy &amp; ICT Integration in Teaching
+          </h3>
+          <div style="font-size:13px; color:#64748B; margin-bottom:16px;">
+            Issued on July 26, 2026 &bull; <strong>40 CPD Hours</strong> &bull; Distinction (96%)
+          </div>
+
+          <div style="font-size:12px; color:#475569; background:#F8FAFC; padding:12px 14px; border-radius:8px; border:1px solid #E2E8F0; margin-bottom:20px;">
+            🔒 <strong>Verification Hash:</strong> 3e6f9a0c8b7a6d5e... &bull; Digitally Signed
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button onclick="window.CertificateEngine.openModalPreview('IK-CERT-2026-9921')" class="btn btn-blue btn-sm">👁️ View Certificate</button>
+            <a href="verify.html?id=IK-CERT-2026-9921" target="_blank" class="btn btn-outline btn-sm">🔍 Verify Credential</a>
+            <button onclick="window.CertificateEngine.openModalPreview('IK-CERT-2026-9921')" class="btn btn-ghost btn-sm">🖨️ Download PDF</button>
+            <button onclick="navigator.clipboard.writeText(window.location.origin + '/verify.html?id=IK-CERT-2026-9921'); window.showToast('Verification link copied!','success');" class="btn btn-ghost btn-sm">📋 Copy Link</button>
+            <a href="https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=Digital+Literacy+Certification&organizationName=Instructify+Kenya" target="_blank" class="btn btn-ghost btn-sm" style="color:#0A66C2;">🔗 Add to LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Credential Card 2 -->
+        <div class="stat-card" style="padding:28px; border:1.5px solid #CBD5E1; background:#FFFFFF;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
+            <div style="display:inline-flex; align-items:center; gap:8px; background:#DCFCE7; color:#166534; padding:4px 12px; border-radius:999px; font-size:12px; font-weight:800; border:1px solid #22C55E;">
+              ✅ Valid Credential &bull; CPD Accredited
+            </div>
+            <span style="font-size:12px; font-family:var(--font-mono); color:#FF4D00; font-weight:700;">IK-CPD-2026-8942</span>
+          </div>
+
+          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin-bottom:6px; line-height:1.3;">
+            Competency-Based Curriculum (CBC) Pedagogy &amp; Assessment
+          </h3>
+          <div style="font-size:13px; color:#64748B; margin-bottom:16px;">
+            Issued on August 18, 2026 &bull; <strong>30 CPD Hours</strong> &bull; Distinction (94%)
+          </div>
+
+          <div style="font-size:12px; color:#475569; background:#F8FAFC; padding:12px 14px; border-radius:8px; border:1px solid #E2E8F0; margin-bottom:20px;">
+            🔒 <strong>Verification Hash:</strong> 8f9b4c2e1a7d3e6f... &bull; Digitally Signed
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button onclick="window.CertificateEngine.openModalPreview('IK-CPD-2026-8942')" class="btn btn-blue btn-sm">👁️ View Certificate</button>
+            <a href="verify.html?id=IK-CPD-2026-8942" target="_blank" class="btn btn-outline btn-sm">🔍 Verify Credential</a>
+            <button onclick="window.CertificateEngine.openModalPreview('IK-CPD-2026-8942')" class="btn btn-ghost btn-sm">🖨️ Download PDF</button>
+            <button onclick="navigator.clipboard.writeText(window.location.origin + '/verify.html?id=IK-CPD-2026-8942'); window.showToast('Verification link copied!','success');" class="btn btn-ghost btn-sm">📋 Copy Link</button>
+            <a href="https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=CBC+Pedagogy+Certification&organizationName=Instructify+Kenya" target="_blank" class="btn btn-ghost btn-sm" style="color:#0A66C2;">🔗 Add to LinkedIn</a>
           </div>
         </div>
       </div>
@@ -350,6 +402,7 @@
 
 <script src="js/main.js"></script>
 <script src="js/auth.js"></script>
+<script src="js/certificates.js"></script>
 <script src="js/courses.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {

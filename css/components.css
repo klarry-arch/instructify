@@ -1212,3 +1212,400 @@ body {
   justify-content: center !important;
   white-space: nowrap !important;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   A4 LANDSCAPE DYNAMIC CERTIFICATE SYSTEM (Instructify Kenya)
+   ══════════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap');
+
+.certificate-canvas-wrapper {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+
+.certificate-canvas {
+  width: 960px;
+  height: 640px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.15);
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  margin: 0 auto;
+}
+
+/* Left Branded Tech Panel */
+.cert-panel-left {
+  width: 220px;
+  background: linear-gradient(180deg, #0F172A 0%, #1E3A8A 60%, #172554 100%);
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.cert-panel-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.cert-panel-brand-title {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-weight: 800;
+  font-size: 20px;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.cert-panel-brand-sub {
+  font-size: 11px;
+  font-weight: 800;
+  color: #FF4D00;
+  letter-spacing: 2.5px;
+}
+
+.cert-panel-circuit {
+  position: absolute;
+  top: 90px;
+  left: 10px;
+  width: 200px;
+  height: 260px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.cert-panel-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.cert-panel-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 11px;
+}
+
+.cert-panel-badge .badge-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.cert-panel-footer {
+  font-size: 9.5px;
+  color: rgba(255, 255, 255, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 12px;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 2;
+}
+
+/* Main Certificate Panel */
+.cert-panel-main {
+  flex: 1;
+  background: #FFFFFF;
+  padding: 32px 36px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  box-sizing: border-box;
+  border: 8px solid #F8FAFC;
+  outline: 1.5px solid #CBD5E1;
+  outline-offset: -8px;
+}
+
+.cert-main-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.cert-brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cert-tagline {
+  font-size: 11.5px;
+  color: #64748B;
+  font-style: italic;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.cert-qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.cert-qr-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Certificate Text & Body */
+.cert-body {
+  text-align: center;
+  margin: 12px 0;
+}
+
+.cert-doc-type {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #0F172A;
+  margin-bottom: 4px;
+}
+
+.cert-lead {
+  font-size: 13px;
+  color: #64748B;
+  font-weight: 500;
+}
+
+.cert-recipient-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #1E3A8A;
+  margin: 8px 0;
+  line-height: 1.2;
+}
+
+.cert-statement {
+  font-size: 13px;
+  color: #475569;
+}
+
+.cert-course-title {
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 18px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 6px 0;
+  line-height: 1.3;
+}
+
+.cert-course-summary {
+  font-size: 11.5px;
+  color: #64748B;
+  max-width: 540px;
+  margin: 0 auto 12px;
+  line-height: 1.5;
+}
+
+.cert-meta-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.cert-meta-item {
+  font-size: 11.5px;
+  color: #334155;
+}
+
+.cert-meta-item .meta-label {
+  color: #64748B;
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.cert-meta-item .meta-val {
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.cert-meta-item .meta-val.highlight {
+  color: #FF4D00;
+}
+
+/* Footer Signatures & Crest */
+.cert-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-top: 1px solid #E2E8F0;
+  padding-top: 14px;
+}
+
+.cert-signature-box {
+  text-align: center;
+  width: 170px;
+}
+
+.cert-signature-line {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1E3A8A;
+  border-bottom: 1.5px solid #0F172A;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+
+.cert-signatory-name {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.cert-signatory-title {
+  font-size: 10px;
+  color: #64748B;
+}
+
+.cert-crest {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-seal-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cert-seal-inner .seal-text {
+  font-size: 9px;
+  font-weight: 800;
+  color: #D97706;
+  letter-spacing: 0.1em;
+}
+
+.cert-security-note {
+  font-size: 9.5px;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+  border-top: 1px dashed #E2E8F0;
+  padding-top: 4px;
+}
+
+/* Modal Overlay Styles */
+.cert-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.cert-modal-overlay.open {
+  display: flex;
+  opacity: 1;
+}
+
+.cert-modal-container {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+  max-width: 1020px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.cert-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.cert-modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #64748B;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.cert-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Print Stylesheet for A4 Landscape Output */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  
+  #printable-certificate,
+  #printable-certificate * {
+    visibility: visible !important;
+  }
+
+  #printable-certificate {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 297mm !important;
+    height: 210mm !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+}

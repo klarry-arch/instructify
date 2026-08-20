@@ -170,8 +170,107 @@
           </tbody>
         </table>
       </div>
+    <!-- Certificate Management Workflow Section -->
+    <div class="dashboard-section" id="cert-management-section">
+      <div class="dashboard-section-header">
+        <div>
+          <h2 class="dashboard-section-title">Certificate Issuance &amp; Credential Management</h2>
+          <div style="font-size:13px; color:#64748B;">Preview, issue, manage, or revoke official CPD accredited certificates for completing learners.</div>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button onclick="openIssueCertModal()" class="btn btn-blue btn-sm">🎓 Issue New Certificate</button>
+          <button onclick="exportAuditLogs()" class="btn btn-outline btn-sm">📊 Export Issuance Report</button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Certificate ID</th>
+              <th>Learner Name</th>
+              <th>Course Title</th>
+              <th>CPD Hours</th>
+              <th>Issue Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="cert-management-tbody">
+            <tr>
+              <td><strong style="font-family:var(--font-mono); color:#FF4D00;">IK-CPD-2026-8942</strong></td>
+              <td>James Mwangi</td>
+              <td>CBC Pedagogy &amp; Assessment</td>
+              <td>30 Hours</td>
+              <td>Aug 18, 2026</td>
+              <td><span class="badge badge-success">Valid / Issued</span></td>
+              <td style="display:flex; gap:6px;">
+                <button onclick="window.CertificateEngine.openModalPreview('IK-CPD-2026-8942')" class="btn btn-blue btn-sm">Preview</button>
+                <button onclick="handleRevokeClick('IK-CPD-2026-8942')" class="btn btn-ghost btn-sm" style="color:#EF4444;">Revoke</button>
+              </td>
+            </tr>
+            <tr>
+              <td><strong style="font-family:var(--font-mono); color:#FF4D00;">IK-CERT-2026-9921</strong></td>
+              <td>James Mwangi</td>
+              <td>Digital Literacy &amp; ICT Integration</td>
+              <td>40 Hours</td>
+              <td>Jul 26, 2026</td>
+              <td><span class="badge badge-success">Valid / Issued</span></td>
+              <td style="display:flex; gap:6px;">
+                <button onclick="window.CertificateEngine.openModalPreview('IK-CERT-2026-9921')" class="btn btn-blue btn-sm">Preview</button>
+                <button onclick="handleRevokeClick('IK-CERT-2026-9921')" class="btn btn-ghost btn-sm" style="color:#EF4444;">Revoke</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
+</div>
+
+<!-- Issue Certificate Modal -->
+<div id="issue-cert-modal" class="cert-modal-overlay">
+  <div class="cert-modal-container" style="max-width:540px;">
+    <div class="cert-modal-header">
+      <h3 style="margin:0; font-size:20px; color:#0F172A;">Issue Official CPD Certificate</h3>
+      <button onclick="document.getElementById('issue-cert-modal').classList.remove('open')" class="cert-modal-close">&times;</button>
+    </div>
+    <form onsubmit="handleIssueFormSubmit(event)" style="display:flex; flex-direction:column; gap:14px;">
+      <div>
+        <label class="form-label">Learner Full Legal Name</label>
+        <input type="text" id="modal-learner-name" class="form-input" placeholder="e.g. James Mwangi" required>
+      </div>
+      <div>
+        <label class="form-label">Course Title</label>
+        <input type="text" id="modal-course-title" class="form-input" placeholder="e.g. CBC Pedagogy & Assessment" required>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div>
+          <label class="form-label">CPD Hours</label>
+          <input type="text" id="modal-cpd-hours" class="form-input" value="30 Hours" required>
+        </div>
+        <div>
+          <label class="form-label">Grade / Score</label>
+          <input type="text" id="modal-grade" class="form-input" value="Distinction (92%)">
+        </div>
+      </div>
+      <div>
+        <label class="form-label">Authorized Signatory</label>
+        <select id="modal-signatory" class="form-input">
+          <option value="Dr. Wanjiku Kamau">Dr. Wanjiku Kamau (Lead ICT Facilitator)</option>
+          <option value="Peter Njuguna">Peter Njuguna (Senior EdTech Specialist)</option>
+        </select>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <input type="checkbox" id="modal-accredited" checked>
+        <label for="modal-accredited" style="font-size:13px; font-weight:600; color:#0F172A;">TSC &amp; KICD Accredited Training Claim</label>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:12px;">
+        <button type="button" onclick="document.getElementById('issue-cert-modal').classList.remove('open')" class="btn btn-ghost">Cancel</button>
+        <button type="submit" class="btn btn-blue">Confirm &amp; Issue Credential</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 <!-- Floating Navigation Toggle Button for Mobile / Tablet -->
@@ -185,6 +284,54 @@
 
 <script src="js/main.js"></script>
 <script src="js/auth.js"></script>
+<script src="js/certificates.js"></script>
+<script>
+function openIssueCertModal() {
+  document.getElementById('issue-cert-modal').classList.add('open');
+}
+
+function handleIssueFormSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('modal-learner-name').value;
+  const course = document.getElementById('modal-course-title').value;
+  const hours = document.getElementById('modal-cpd-hours').value;
+  const grade = document.getElementById('modal-grade').value;
+  const instructor = document.getElementById('modal-signatory').value;
+  const accredited = document.getElementById('modal-accredited').checked;
+
+  const newCert = window.CertificateEngine.issueCertificate({
+    learnerName: name,
+    courseTitle: course,
+    cpdHours: hours,
+    grade: grade,
+    instructor: instructor,
+    accredited: accredited
+  });
+
+  document.getElementById('issue-cert-modal').classList.remove('open');
+  window.showToast('Official Certificate issued! ID: ' + newCert.id, 'success');
+
+  window.CertificateEngine.openModalPreview(newCert.id);
+}
+
+function handleRevokeClick(id) {
+  if (confirm('Are you sure you want to REVOKE certificate ID: ' + id + '? This action will be recorded in the audit trail.')) {
+    window.CertificateEngine.revokeCertificate(id, 'Revoked by trainer/admin action');
+    window.showToast('Certificate ' + id + ' has been revoked.', 'warning');
+  }
+}
+
+function exportAuditLogs() {
+  const logs = window.CertificateEngine.getAuditLogs();
+  const csv = 'ID,Action,User,Timestamp,Reason\n' + logs.map(l => `"${l.id}","${l.action}","${l.user}","${l.timestamp}","${l.reason}"`).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Instructify_Certificate_Audit_Log.csv';
+  a.click();
+  window.showToast('Exported certificate audit trail report.', 'success');
+}
 <script>
 function toggleSidebar() {
   const sidebar = document.querySelector('.sidebar');

@@ -294,11 +294,12 @@
       </div>
       <div class="dashboard-section">
         <p style="font-size:var(--text-sm);color:var(--text-secondary);margin-bottom:var(--space-md)">
-          Search or issue verifiable digital certificates on the Instructify Registry.
+          Search, issue, preview, or revoke verifiable digital certificates on the Instructify Kenya Credential Engine.
         </p>
-        <div class="flex gap-md mb-lg">
-          <input type="text" class="form-input" placeholder="Enter Certificate Hash / ID (e.g. IK-CERT-2026-9921)" style="max-width:400px">
-          <a href="certification.html" target="_blank" class="btn btn-outline">Go to Public Portal ?</a>
+        <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
+          <input type="text" id="admin-cert-id-input" class="form-input" placeholder="Enter Certificate Hash / ID (e.g. IK-CPD-2026-8942)" style="max-width:380px;">
+          <button onclick="const val=document.getElementById('admin-cert-id-input').value.trim()||'IK-CPD-2026-8942'; window.CertificateEngine.openModalPreview(val);" class="btn btn-blue">👁️ Preview Certificate</button>
+          <a href="verify.html" target="_blank" class="btn btn-outline">🔍 Go to Public Verification Portal ↗</a>
         </div>
       </div>
     </div>
@@ -308,6 +309,7 @@
 
 <script src="js/main.js"></script>
 <script src="js/auth.js"></script>
+<script src="js/certificates.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const session = window.requireAuth(['admin']);
