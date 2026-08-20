@@ -37,18 +37,33 @@
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
     <div class="nav-actions">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="courses.html" class="nav-link">Courses</a></li>
+      
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
       <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
       <a href="courses.html" class="btn btn-orange btn-sm">Start Learning</a>
     </div>
   </div>
 </nav>
 
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
 <div class="dashboard-layout">
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-header">
       <div class="sidebar-user">
-        <div class="avatar-placeholder avatar-md" style="background:var(--gradient-teal)">WK</div>
+        <div class="avatar-placeholder avatar-md" style="background:linear-gradient(135deg, #1E3A8A, #FF4D00); color: #FFFFFF; font-weight: 800;">WK</div>
         <div class="sidebar-user-info">
           <div class="sidebar-user-name">Dr. Wanjiku Kamau</div>
           <div class="sidebar-user-role">Lead ICT Facilitator</div>
@@ -90,34 +105,34 @@
         <div class="dashboard-subtitle">Monitor learner performance, review assignments, and manage your active courses.</div>
       </div>
       <div class="dashboard-actions">
-        <button onclick="showToast('Opening course creator...','info')" class="btn btn-blue btn-sm">? Create New Course</button>
+        <button onclick="showToast('Opening course creator...','info')" class="btn btn-blue btn-sm">➕ Create New Course</button>
       </div>
     </div>
 
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-icon" style="background:rgba(72, 14, 116,0.12);color:var(--color-primary)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg></div>
+        <div class="stat-icon" style="background:rgba(37, 99, 235,0.1);color:#2563EB"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <div class="stat-value">1,847</div>
         <div class="stat-label">Active Learners</div>
-        <div class="stat-change up"><span>?</span> Across 3 courses</div>
+        <div class="stat-change up"><span style="font-weight:700;">↗</span> Across 3 courses</div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon" style="background:rgba(37, 99, 235,0.12);color:var(--color-accent)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <div class="stat-icon" style="background:rgba(255, 77, 0, 0.1);color:#FF4D00"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg></div>
         <div class="stat-value">3</div>
         <div class="stat-label">Published Courses</div>
-        <div class="stat-change up"><span>?</span> Active</div>
+        <div class="stat-change up"><span style="font-weight:700;">✓</span> Active</div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon" style="background:rgba(72, 14, 116,0.12);color:var(--color-primary)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <div class="stat-icon" style="background:rgba(239, 68, 68, 0.1);color:#EF4444"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
         <div class="stat-value">4</div>
         <div class="stat-label">Assignments to Grade</div>
-        <div class="stat-change down"><span style="display:inline-flex;align-items:center;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span> Action needed</div>
+        <div class="stat-change down"><span style="font-weight:700;">⚠️</span> Action needed</div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon" style="background:rgba(138,92,246,0.15);color:#8B5CF6">?</div>
+        <div class="stat-icon" style="background:rgba(245, 158, 11, 0.12);color:#D97706">⭐</div>
         <div class="stat-value">4.8 / 5.0</div>
         <div class="stat-label">Trainer Rating</div>
-        <div class="stat-change up"><span>?</span> 312 Reviews</div>
+        <div class="stat-change up"><span style="font-weight:700;">★</span> 312 Reviews</div>
       </div>
     </div>
 
@@ -159,9 +174,25 @@
   </main>
 </div>
 
+<!-- Floating Navigation Toggle Button for Mobile / Tablet -->
+<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Navigation">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="6" x2="21" y2="6"/>
+    <line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+</button>
+
 <script src="js/main.js"></script>
 <script src="js/auth.js"></script>
 <script>
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  if (sidebar) sidebar.classList.toggle('open');
+  if (overlay) overlay.classList.toggle('open');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   window.requireAuth(['trainer', 'admin']);
 });
