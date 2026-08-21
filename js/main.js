@@ -451,14 +451,14 @@ window.switchFounderVisionTab = function(btn, tabName) {
   const quoteText = document.getElementById('founder-quote-text');
 
   if (tabName === 'awakening') {
-    if (visionP1) visionP1.innerHTML = "You’ve arrived at a place where curiosity is sacred, and learning is a journey of renewal. Instructify Academy was born from a dream—to empower minds, stir hearts, and transform communities through education that speaks to both soil and spirit.";
+    if (visionP1) visionP1.innerHTML = "You’ve arrived at a place where learning is a journey of renewal and growth. Instructify Academy was born from a dream—to empower minds, stir hearts, and transform communities through practical, visionary education.";
     if (quoteText) quoteText.innerHTML = '<span class="gold-glow">"Here, we don’t just teach. We awaken."</span><br><span class="orange-glow">"We don’t just deliver content. We ignite purpose."</span>';
-  } else if (tabName === 'soil-spirit') {
-    if (visionP1) visionP1.innerHTML = "Our pedagogy bridges local African realities with global innovation. We ground knowledge in the soil of our communities while elevating the human spirit to envision global possibilities.";
-    if (quoteText) quoteText.innerHTML = '<span class="gold-glow">"Education must speak to both soil and spirit."</span><br><span class="orange-glow">"Rooted in culture, reaching for global excellence."</span>';
+  } else if (tabName === 'pedagogy') {
+    if (visionP1) visionP1.innerHTML = "Our pedagogy bridges local African realities with global innovation. We ground knowledge in practical classroom tools while elevating learning communities to achieve global excellence.";
+    if (quoteText) quoteText.innerHTML = '<span class="gold-glow">"Practical innovation for modern classrooms."</span><br><span class="orange-glow">"Rooted in context, reaching for global excellence."</span>';
   } else if (tabName === 'transformation') {
     if (visionP1) visionP1.innerHTML = "Whether you're crafting a lesson, leading a fellowship, or exploring new ideas, this space is yours. May every module, message, and moment here spark something deeper in you.";
-    if (quoteText) quoteText.innerHTML = '<span class="gold-glow">"Curiosity becomes transformation."</span><br><span class="orange-glow">"Welcome home to learning that matters."</span>';
+    if (quoteText) quoteText.innerHTML = '<span class="gold-glow">"Ignite purpose through transformative learning."</span><br><span class="orange-glow">"Welcome home to learning that matters."</span>';
   }
 };
 
