@@ -1,418 +1,550 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Browse 200+ accredited CPD courses, ICT integration, CBE curriculum, AI in Education, and Digital Literacy programs on Instructify Kenya.">
-  <title>Course Catalog | Instructify Kenya</title>
+  <title>Enroll & Checkout | Instructify Kenya</title>
+  <meta name="description" content="Securely complete your course enrollment on Instructify Kenya. Pay via M-Pesa or card.">
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/homepage.css">
+  <!-- Paystack Inline JS — loaded async; CheckoutEngine checks availability -->
+  <script src="https://js.paystack.co/v1/inline.js" async></script>
   <style>
-    .courses-hero {
-      background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-dark) 100%);
-      padding: calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);
-      border-bottom: 1px solid var(--border-subtle);
+    .checkout-page {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 60%, #172554 100%);
+      padding: calc(var(--nav-height, 72px) + 2rem) 0 4rem;
     }
-    .catalog-layout { display: grid; grid-template-columns: 280px 1fr; gap: var(--space-2xl); padding: var(--space-3xl) 0; }
-    .filter-sidebar { position: sticky; top: calc(var(--nav-height) + 20px); height: fit-content; }
-    .filter-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--border-radius-lg); padding: var(--space-xl); margin-bottom: var(--space-lg); }
-    .filter-title { font-family: var(--font-heading); font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: var(--space-lg); }
-    .filter-options { display: flex; flex-direction: column; gap: var(--space-sm); }
-    .filter-chip { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; border-radius: var(--border-radius-sm); background: var(--bg-surface); border: 1px solid var(--border-subtle); cursor: pointer; font-size: var(--text-sm); color: var(--text-secondary); transition: all var(--transition-fast); }
-    .filter-chip:hover, .filter-chip.active { border-color: var(--color-primary); color: var(--color-primary-light); background: var(--color-primary-glow); }
-    .filter-chip-count { font-size: var(--text-xs); color: var(--text-muted); }
-    .catalog-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-xl); flex-wrap: wrap; gap: var(--space-md); }
-    .catalog-count { font-size: var(--text-sm); color: var(--text-muted); }
-    .catalog-sort { display: flex; align-items: center; gap: var(--space-sm); }
-    .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl); }
-    .no-results { grid-column: 1/-1; text-align: center; padding: var(--space-5xl); color: var(--text-muted); }
-    .range-slider { width: 100%; accent-color: var(--color-primary); margin: var(--space-sm) 0; }
-    @media (max-width: 1024px) { .catalog-layout { grid-template-columns: 1fr; } .filter-sidebar { position: static; } .courses-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 640px) { .courses-grid { grid-template-columns: 1fr; } }
+    .checkout-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .checkout-grid { grid-template-columns: 1fr; } }
+
+    /* ── Order Summary Card ── */
+    .order-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 2rem;
+      color: #fff;
+      position: sticky;
+      top: calc(var(--nav-height, 72px) + 1rem);
+    }
+    .order-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+    .order-card-title { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; line-height: 1.35; margin-bottom: 1.5rem; }
+    .order-card-divider { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 1rem 0; }
+    .order-card-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: rgba(255,255,255,0.75); margin-bottom: 8px; }
+    .order-card-total { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #FF4D00; line-height: 1; }
+    .order-card-original { font-size: 0.85rem; color: rgba(255,255,255,0.4); text-decoration: line-through; margin-top: 2px; }
+    .order-guarantee { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
+
+    /* ── Checkout Form Card ── */
+    .form-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+    }
+    .form-card-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #0F172A; margin-bottom: 0.25rem; }
+    .form-card-sub { color: #64748B; font-size: 0.9rem; margin-bottom: 1.75rem; }
+    .step-indicator { display: flex; gap: 8px; margin-bottom: 2rem; }
+    .step { flex: 1; height: 4px; border-radius: 4px; background: #E2E8F0; transition: background 0.3s; }
+    .step.active { background: #1E3A8A; }
+    .step.done { background: var(--color-tertiary, #059669); }
+
+    /* ── Form fields ── */
+    .field-group { margin-bottom: 1.25rem; }
+    .field-label { display: block; font-weight: 600; font-size: 0.875rem; color: #374151; margin-bottom: 6px; }
+    .field-input {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1.5px solid #D1D5DB; border-radius: 10px;
+      font-family: var(--font-body); font-size: 0.95rem; color: #111827;
+      background: #F9FAFB; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+    }
+    .field-input:focus { border-color: #1E3A8A; box-shadow: 0 0 0 3px rgba(30,58,138,0.1); background: #fff; }
+    .field-input.error { border-color: #EF4444; }
+    .field-error { font-size: 0.78rem; color: #EF4444; margin-top: 4px; display: none; }
+    .field-error.visible { display: block; }
+    .field-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 480px) { .field-grid-2 { grid-template-columns: 1fr; } }
+    .field-hint { font-size: 0.78rem; color: #94A3B8; margin-top: 4px; }
+
+    /* ── Payment method tabs ── */
+    .pay-method-tabs { display: flex; gap: 10px; margin-bottom: 1.5rem; }
+    .pay-method-tab {
+      flex: 1; padding: 14px 8px; border: 2px solid #E2E8F0;
+      border-radius: 12px; background: #F9FAFB; cursor: pointer;
+      transition: all 0.2s; text-align: center;
+    }
+    .pay-method-tab:hover { border-color: #1E3A8A; }
+    .pay-method-tab.active { border-color: #1E3A8A; background: #EFF6FF; }
+    .pay-method-tab .tab-icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
+    .pay-method-tab .tab-name { font-size: 0.7rem; font-weight: 700; color: #374151; letter-spacing: 0.05em; text-transform: uppercase; }
+    .pay-method-tab.active .tab-name { color: #1E3A8A; }
+    .pay-panel { display: none; }
+    .pay-panel.active { display: block; }
+
+    /* ── Status screens ── */
+    .status-screen { text-align: center; padding: 2rem 1rem; }
+    .status-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 1.25rem; }
+    .status-icon.spin { animation: spin 1.2s linear infinite; }
+    .status-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #111827; margin-bottom: 0.5rem; }
+    .status-sub { color: #64748B; font-size: 0.9rem; line-height: 1.6; max-width: 360px; margin: 0 auto 1.5rem; }
+    .status-ref { font-size: 0.8rem; color: #94A3B8; background: #F1F5F9; border-radius: 8px; padding: 8px 14px; display: inline-block; margin-bottom: 1.5rem; }
+    .status-ref strong { color: #1E3A8A; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    /* ── Submit button ── */
+    .btn-enroll {
+      width: 100%; padding: 16px;
+      background: linear-gradient(135deg, #DC2E0A 0%, #B22206 100%);
+      color: #fff; font-family: var(--font-heading); font-weight: 800;
+      font-size: 1.05rem; border: none; border-radius: 99px;
+      cursor: pointer; transition: all 0.2s;
+      box-shadow: 0 6px 20px rgba(220,46,10,0.35);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-enroll:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(220,46,10,0.45); }
+    .btn-enroll:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .btn-secondary-outline {
+      width: 100%; padding: 13px;
+      background: transparent; color: #1E3A8A;
+      border: 1.5px solid #CBD5E1; border-radius: 99px;
+      font-weight: 700; font-size: 0.9rem; cursor: pointer;
+      transition: all 0.2s; margin-top: 10px;
+    }
+    .btn-secondary-outline:hover { border-color: #1E3A8A; background: #EFF6FF; }
+
+    /* ── SSL badge ── */
+    .ssl-badge { text-align: center; font-size: 0.75rem; color: #94A3B8; margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .installment-badge { background: #ECFDF5; color: #065F46; border: 1px solid rgba(5,150,105,0.2); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 1.25rem; }
   </style>
 </head>
 <body>
 
-<body>
 <nav id="navbar" class="navbar">
   <div class="container">
-    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya" style="display: inline-flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap;">
-      <div class="nav-brand-icon" style="display: inline-flex; align-items: center; justify-content: center; margin: 0; padding: 0; flex-shrink: 0; background: none; border: none; box-shadow: none;">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya" style="display:inline-flex;flex-direction:row;align-items:center;gap:10px;text-decoration:none;white-space:nowrap;">
+      <div class="nav-brand-icon" style="display:inline-flex;align-items:center;justify-content:center;margin:0;padding:0;flex-shrink:0;background:none;border:none;box-shadow:none;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
         </svg>
       </div>
-      <div class="nav-brand-text-box" style="display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; white-space: nowrap; margin: 0; padding: 0; line-height: 1;">
-        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #FFFFFF; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
-        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #FF4D00; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
+      <div class="nav-brand-text-box" style="display:inline-flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:1px;white-space:nowrap;margin:0;padding:0;line-height:1;">
+        <span class="nav-brand-title" style="font-family:var(--font-heading);font-weight:800;font-size:1.35rem;color:#FFFFFF;letter-spacing:-0.03em;margin:0;line-height:1;display:block;">Instructify</span>
+        <span class="nav-brand-subtitle" style="font-family:var(--font-heading);font-size:0.72rem;font-weight:800;color:#FF4D00;text-transform:uppercase;letter-spacing:2px;margin:0;line-height:1;display:block;">KENYA</span>
       </div>
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="about.html" class="nav-link">About Us</a></li>
-      <li><a href="courses.html" class="nav-link active">Courses</a></li>
-      
-      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
-      
-      <li><a href="resources.html" class="nav-link">Resources</a></li>
-      <li><a href="schools.html" class="nav-link">Institutions</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
-    </ul>
     <div class="nav-actions">
-      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
-      <a href="courses.html" class="btn btn-orange btn-sm">Start Learning</a>
+      <a href="courses.html" class="btn btn-outline btn-sm">Browse Courses</a>
     </div>
   </div>
 </nav>
 
-<div class="container" style="padding: calc(var(--nav-height) + 3rem) 0 5rem;">
-  <div style="text-align: center; margin-bottom: 3rem;">
-    <h1 style="font-family: var(--font-heading); color: #111827; font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">Enroll & Checkout</h1>
-    <p style="color: #6b7280; font-size: 1.1rem;">Securely complete your enrollment below.</p>
-  </div>
+<div class="checkout-page">
+  <div class="checkout-container">
 
-  <div style="display: grid; grid-template-columns: 1fr 380px; gap: 3rem; align-items: start;" id="checkout-grid">
-    
-    <!-- Left: Form -->
-    <div style="background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
-      <h2 style="font-family: var(--font-heading); color: #111827; font-size: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #f3f4f6; padding-bottom: 1rem;">Student Details</h2>
-      
-      <form id="enrollment-form">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-          <div>
-            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Full Name *</label>
-            <input type="text" id="fullname" required style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none;">
-          </div>
-          <div>
-            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Phone Number *</label>
-            <input type="tel" id="phone" required placeholder="07XX XXX XXX" style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none;">
-          </div>
-        </div>
-
-        <div style="margin-bottom: 1.5rem;">
-          <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Email Address *</label>
-          <input type="email" id="email" required style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none;">
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-          <div>
-            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Learner Type *</label>
-            <select id="learner-type" required style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none; background: white;">
-              <option value="">Select...</option>
-              <option value="Teacher">Teacher</option>
-              <option value="Parent">Parent</option>
-              <option value="Child">Child</option>
-              <option value="School">School/Organization</option>
-            </select>
-          </div>
-          <div>
-            <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Preferred Format *</label>
-            <select id="format" required style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none; background: white;">
-              <option value="">Select...</option>
-              <option value="Online">Online</option>
-              <option value="In-Person">In-Person</option>
-              <option value="Blended">Blended</option>
-              <option value="School-Based">School-Based</option>
-            </select>
-          </div>
-        </div>
-
-        <div style="margin-bottom: 2rem;">
-          <label style="display: block; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Additional Notes</label>
-          <textarea id="notes" rows="3" style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none; resize: vertical;"></textarea>
-        </div>
-      </form>
+    <!-- Breadcrumb -->
+    <div style="color:rgba(255,255,255,0.6);font-size:0.85rem;margin-bottom:1.5rem;">
+      <a href="courses.html" style="color:rgba(255,255,255,0.8);text-decoration:none;">Courses</a>
+      <span style="margin:0 8px">›</span>
+      <a id="crumb-course" href="courses.html" style="color:rgba(255,255,255,0.8);text-decoration:none;">Course</a>
+      <span style="margin:0 8px">›</span>
+      <span style="color:#fff;">Checkout</span>
     </div>
 
-    <!-- Right: Summary & Payment -->
-    <div>
-      <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem; margin-bottom: 2rem;">
-        <h3 style="font-family: var(--font-heading); color: #111827; font-size: 1.25rem; margin-bottom: 1rem;">Order Summary</h3>
-        <div id="course-summary-box">
-          <p style="color: #6b7280; font-style: italic;">Loading course details...</p>
+    <div class="checkout-grid">
+
+      <!-- ══ LEFT: Checkout Form ══════════════════════════════ -->
+      <div class="form-card" id="checkout-form-card">
+
+        <!-- Step indicator -->
+        <div class="step-indicator" id="step-indicator" aria-label="Checkout steps">
+          <div class="step active" id="step-1" title="Your details"></div>
+          <div class="step" id="step-2" title="Payment"></div>
+          <div class="step" id="step-3" title="Confirmation"></div>
+        </div>
+
+        <!-- ── State: initializing ── -->
+        <div id="screen-loading" class="status-screen">
+          <div class="status-icon spin" style="background:#EFF6FF;border:3px solid #1E3A8A;">⏳</div>
+          <div class="status-title">Preparing your checkout…</div>
+          <div class="status-sub">Please wait while we load your order details.</div>
+        </div>
+
+        <!-- ── State: details form ── -->
+        <div id="screen-details" style="display:none;">
+          <div class="form-card-title">Your Details</div>
+          <div class="form-card-sub">Pre-filled from your account — edit if needed.</div>
+
+          <div class="field-group">
+            <label class="field-label" for="ck-name">Full Name</label>
+            <input type="text" id="ck-name" class="field-input" placeholder="Jane Wanjiku" autocomplete="name" required>
+          </div>
+          <div class="field-grid-2">
+            <div class="field-group">
+              <label class="field-label" for="ck-email">Email Address</label>
+              <input type="email" id="ck-email" class="field-input" placeholder="jane@example.com" autocomplete="email" required>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="ck-phone">Phone (for M-Pesa)</label>
+              <input type="tel" id="ck-phone" class="field-input" placeholder="0712 345 678" autocomplete="tel">
+            </div>
+          </div>
+
+          <button class="btn-enroll" id="btn-continue-details" onclick="continueToPayment()">
+            Continue to Payment →
+          </button>
+        </div>
+
+        <!-- ── State: payment selection ── -->
+        <div id="screen-payment" style="display:none;">
+          <div class="form-card-title">Choose Payment Method</div>
+          <div class="form-card-sub">Your payment is secured by Paystack · 256-bit SSL</div>
+
+          <!-- Installment notice -->
+          <div class="installment-badge">
+            <span>💳</span>
+            <div>
+              <strong>Flexible Installments</strong> — Coming soon.
+              Currently accepting full payment via M-Pesa or card.
+            </div>
+          </div>
+
+          <div class="pay-method-tabs" role="tablist">
+            <button class="pay-method-tab active" id="tab-mpesa" role="tab" aria-selected="true"
+              aria-controls="panel-mpesa" onclick="selectPayMethod('mpesa')">
+              <span class="tab-icon">📱</span>
+              <span class="tab-name">M-Pesa</span>
+            </button>
+            <button class="pay-method-tab" id="tab-card" role="tab" aria-selected="false"
+              aria-controls="panel-card" onclick="selectPayMethod('card')">
+              <span class="tab-icon">💳</span>
+              <span class="tab-name">Card</span>
+            </button>
+          </div>
+
+          <!-- M-Pesa Panel -->
+          <div id="panel-mpesa" class="pay-panel active" role="tabpanel">
+            <div class="field-group">
+              <label class="field-label" for="mpesa-phone-input">Safaricom M-Pesa Number</label>
+              <input type="tel" id="mpesa-phone-input" class="field-input"
+                placeholder="0712 345 678" maxlength="15" autocomplete="tel"
+                aria-describedby="mpesa-hint">
+              <div class="field-hint" id="mpesa-hint">Accepts: 07XX, 01XX, +2547XX, 2547XX formats</div>
+              <div class="field-error" id="mpesa-phone-error">Please enter a valid Safaricom number.</div>
+            </div>
+            <button class="btn-enroll" id="btn-pay-mpesa" onclick="submitMpesa()">
+              📱 Pay KES <span id="pay-amount-mpesa">8,500</span> via M-Pesa
+            </button>
+          </div>
+
+          <!-- Card Panel -->
+          <div id="panel-card" class="pay-panel" role="tabpanel">
+            <p style="font-size:0.875rem;color:#64748B;line-height:1.6;margin-bottom:1.25rem;">
+              Click the button below to open the secure Paystack payment window.
+              Your card details are entered directly on Paystack's encrypted form — 
+              Instructify never sees or stores your card number.
+            </p>
+            <button class="btn-enroll" id="btn-pay-card" onclick="submitCard()">
+              💳 Pay KES <span id="pay-amount-card">8,500</span> Securely
+            </button>
+          </div>
+
+          <button class="btn-secondary-outline" onclick="goBackToDetails()">← Change Details</button>
+          <div class="ssl-badge">🔒 Secured by Paystack · PCI DSS Compliant · 30-Day Guarantee</div>
+        </div>
+
+        <!-- ── State: processing / polling ── -->
+        <div id="screen-processing" class="status-screen" style="display:none;">
+          <div class="status-icon spin" style="background:#EFF6FF;border:3px solid #1E3A8A;">⏳</div>
+          <div class="status-title" id="processing-title">Processing Payment…</div>
+          <div class="status-sub" id="processing-sub">
+            Please complete the M-Pesa prompt on your phone. Do not close this page.
+          </div>
+          <div class="status-ref">Order: <strong id="processing-ref">—</strong></div>
+          <div style="width:100%;background:#E2E8F0;border-radius:99px;height:4px;overflow:hidden;max-width:280px;margin:0 auto 1.5rem;">
+            <div id="progress-bar" style="height:100%;background:#1E3A8A;border-radius:99px;width:0;transition:width 90s linear;"></div>
+          </div>
+          <button class="btn-secondary-outline" style="max-width:240px;margin:0 auto;" onclick="cancelCheckout()">Cancel</button>
+        </div>
+
+        <!-- ── State: success ── -->
+        <div id="screen-success" class="status-screen" style="display:none;">
+          <div class="status-icon" style="background:rgba(5,150,105,0.1);border:3px solid #059669;">✅</div>
+          <div class="status-title" style="color:#059669;">Enrollment Confirmed!</div>
+          <div class="status-sub">
+            You are now enrolled in <strong id="success-course-name">the course</strong>.
+            A confirmation has been saved to your account.
+          </div>
+          <div class="status-ref">
+            Ref: <strong id="success-ref">—</strong>
+            &nbsp;·&nbsp; Amount: <strong id="success-amount">KES 8,500</strong>
+          </div>
+          <a href="dashboard-learner.html" class="btn-enroll" style="text-decoration:none;margin-top:0.5rem;">
+            🚀 Start Learning
+          </a>
+        </div>
+
+        <!-- ── State: failed / cancelled / timeout ── -->
+        <div id="screen-error" class="status-screen" style="display:none;">
+          <div class="status-icon" style="background:#FEF2F2;border:3px solid #EF4444;">❌</div>
+          <div class="status-title" style="color:#EF4444;" id="error-title">Payment Failed</div>
+          <div class="status-sub" id="error-sub">
+            Your payment could not be completed. No charges were made.
+          </div>
+          <div class="status-ref" id="error-ref" style="display:none;">Order: <strong></strong></div>
+          <button class="btn-enroll" onclick="retryCheckout()" style="margin-top:0.5rem;">Try Again</button>
+          <button class="btn-secondary-outline" onclick="window.location.href='courses.html'">Browse Courses</button>
+          <p style="font-size:0.78rem;color:#94A3B8;margin-top:1rem;">
+            Need help? <a href="contact.html" style="color:#1E3A8A;">Contact support</a> with your order reference.
+          </p>
+        </div>
+
+      </div><!-- /.form-card -->
+
+      <!-- ══ RIGHT: Order Summary ══════════════════════════════ -->
+      <div class="order-card" id="order-summary">
+        <div class="order-card-label">Course Fee</div>
+        <div class="order-card-total" id="summary-price">KES 8,500</div>
+        <div class="order-card-original" id="summary-original">KES 14,000</div>
+        <hr class="order-card-divider">
+        <div class="order-card-title" id="summary-title">Loading course…</div>
+        <div class="order-card-row">
+          <span>Duration</span><span id="summary-duration">—</span>
+        </div>
+        <div class="order-card-row">
+          <span>Level</span><span id="summary-level">—</span>
+        </div>
+        <div class="order-card-row">
+          <span>Certificate</span><span>✅ Included</span>
+        </div>
+        <div class="order-card-row">
+          <span>CPD Hours</span><span id="summary-cpd">—</span>
+        </div>
+        <div class="order-guarantee">
+          🔒 30-Day Money-Back Guarantee
+          · <a href="contact.html" style="color:rgba(255,255,255,0.6);text-decoration:underline;">Refund Policy</a>
         </div>
       </div>
 
-      <div style="background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem;">
-        <h3 style="font-family: var(--font-heading); color: #111827; font-size: 1.25rem; margin-bottom: 1rem;">Payment Method</h3>
-        
-        <!-- Payment Tabs -->
-        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem;">
-          <button class="pay-tab active" data-method="mpesa" style="flex: 1; padding: 0.5rem; border: none; background: #dbeafe; color: #1d4ed8; font-weight: 700; border-radius: 6px; cursor: pointer;">M-Pesa</button>
-          <button class="pay-tab" data-method="cheque" style="flex: 1; padding: 0.5rem; border: none; background: transparent; color: #6b7280; font-weight: 600; cursor: pointer;">Cheque</button>
-          <button class="pay-tab" data-method="cash" style="flex: 1; padding: 0.5rem; border: none; background: transparent; color: #6b7280; font-weight: 600; cursor: pointer;">Cash</button>
-        </div>
-
-        <!-- Payment Contents -->
-        <div id="pay-mpesa" class="pay-content">
-          <p style="font-size: 0.9rem; color: #4b5563; margin-bottom: 1rem;"><strong>Recommended:</strong> Enter your M-Pesa registered phone number below. You will receive an STK prompt on your phone to enter your PIN.</p>
-          <input type="tel" id="mpesa-phone" placeholder="07XX XXX XXX" style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none; margin-bottom: 1rem;">
-        </div>
-
-        <div id="pay-cheque" class="pay-content" style="display: none;">
-          <p style="font-size: 0.9rem; color: #4b5563; margin-bottom: 1rem;">Make cheques payable to <strong>Instructify Kenya Ltd</strong>. Your enrollment will remain pending until the cheque clears.</p>
-          <input type="text" id="cheque-ref" placeholder="Organization / Reference Name" style="width: 100%; padding: 0.8rem; border: 1px solid #d1d5db; border-radius: 8px; outline: none; margin-bottom: 1rem;">
-        </div>
-
-        <div id="pay-cash" class="pay-content" style="display: none;">
-          <p style="font-size: 0.9rem; color: #4b5563; margin-bottom: 1rem;">Cash payments must be made in person at our Nairobi training center prior to course commencement.</p>
-        </div>
-
-        <button id="submit-btn" style="width: 100%; padding: 1rem; background: #2563EB; color: white; border: none; border-radius: 8px; font-weight: 800; font-size: 1.1rem; cursor: pointer; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2); transition: 0.2s;">
-          Complete Enrollment
-        </button>
-      </div>
-    </div>
+    </div><!-- /.checkout-grid -->
   </div>
 </div>
-
-<script src="js/courses.js"></script>
-<script>
-  // Setup tabs
-  let selectedMethod = 'mpesa';
-  document.querySelectorAll('.pay-tab').forEach(tab => {
-    tab.addEventListener('click', (e) => {
-      document.querySelectorAll('.pay-tab').forEach(t => {
-        t.style.background = 'transparent';
-        t.style.color = '#6b7280';
-        t.classList.remove('active');
-      });
-      document.querySelectorAll('.pay-content').forEach(c => c.style.display = 'none');
-      
-      e.target.style.background = '#dbeafe';
-      e.target.style.color = '#1d4ed8';
-      e.target.classList.add('active');
-      
-      selectedMethod = e.target.getAttribute('data-method');
-      document.getElementById('pay-' + selectedMethod).style.display = 'block';
-    });
-  });
-
-  // Load Course Details
-  const urlParams = new URLSearchParams(window.location.search);
-  const courseId = urlParams.get('id');
-  let selectedCourse = null;
-
-  if (courseId && window.COURSES) {
-    selectedCourse = window.COURSES.find(c => c.id === courseId);
-  }
-
-  const summaryBox = document.getElementById('course-summary-box');
-  if (selectedCourse) {
-    summaryBox.innerHTML = `
-      <div style="font-weight: 800; color: #111827; margin-bottom: 0.5rem; line-height: 1.4;">${selectedCourse.title}</div>
-      <div style="display: flex; justify-content: space-between; border-top: 1px solid #e5e7eb; padding-top: 1rem; margin-top: 1rem;">
-        <span style="font-weight: 600; color: #4b5563;">Total</span>
-        <span style="font-weight: 800; color: #1d4ed8; font-size: 1.2rem;">${selectedCourse.price}</span>
-      </div>
-    `;
-  } else {
-    summaryBox.innerHTML = '<p style="color: red;">Error: No course selected. Please return to the courses page.</p>';
-    document.getElementById('submit-btn').disabled = true;
-  }
-
-  // Handle Submission (Simulated Backend)
-  document.getElementById('submit-btn').addEventListener('click', () => {
-    if (!selectedCourse) return;
-    
-    // Basic validation
-    const name = document.getElementById('fullname').value;
-    const email = document.getElementById('email').value;
-    if (!name || !email) {
-      alert('Please fill in your Name and Email address.');
-      return;
-    }
-
-    const btn = document.getElementById('submit-btn');
-    btn.textContent = 'Processing...';
-    btn.disabled = true;
-
-    // Simulate STK Push delay if mpesa
-    setTimeout(() => {
-      const enrollment = {
-        id: 'ENR' + Math.floor(Math.random() * 100000),
-        date: new Date().toISOString(),
-        name,
-        email,
-        phone: document.getElementById('phone').value,
-        learnerType: document.getElementById('learner-type').value,
-        format: document.getElementById('format').value,
-        notes: document.getElementById('notes').value,
-        courseTitle: selectedCourse.title,
-        price: selectedCourse.price,
-        paymentMethod: selectedMethod,
-        status: 'Pending Payment'
-      };
-
-      // Save to localStorage
-      const existing = JSON.parse(localStorage.getItem('instructify_enrollments') || '[]');
-      existing.unshift(enrollment);
-      localStorage.setItem('instructify_enrollments', JSON.stringify(existing));
-
-      // Success
-      document.getElementById('checkout-grid').innerHTML = `
-        <div style="grid-column: 1/-1; text-align: center; padding: 4rem; background: #dbeafe; border-radius: 12px; border: 1px solid #1d4ed8;">
-          <div style="font-size: 4rem; margin-bottom: 1rem;">?</div>
-          <h2 style="font-family: var(--font-heading); color: #1d4ed8; font-size: 2rem; margin-bottom: 1rem;">Enrollment Received!</h2>
-          <p style="font-size: 1.1rem; color: #374151; max-width: 500px; margin: 0 auto 2rem;">
-            Thank you for enrolling in <strong>${selectedCourse.title}</strong>. Your enrollment ID is <strong>${enrollment.id}</strong>.
-            ${selectedMethod === 'mpesa' ? 'If you did not receive the M-Pesa prompt, our team will contact you shortly.' : 'Please follow the instructions provided to complete your payment.'}
-          </p>
-          <a href="courses.html" class="btn" style="background: #1d4ed8; color: white; padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700;">Return to Courses</a>
-        </div>
-      `;
-      
-      window.scrollTo(0,0);
-    }, 1500); // 1.5s simulated delay
-  });
-</script>
-<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
-  <div class="container">
-    <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.12);">
-      <div>
-        <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span style="color: #FF4D00 !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span></h3>
-        <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
-          Ignite Curiosity. Transform Learning. Renew Communities.
-        </p>
-        <a href="contact.html" class="btn btn-orange btn-sm">Partner With Us</a>
-      </div>
-      <div>
-        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
-        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
-          <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
-          <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
-          
-          <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Discover</h4>
-        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
-          <li><a href="schools.html" style="color:var(--color-white); text-decoration:none;">Institutions</a></li>
-          <li><a href="community.html" style="color:var(--color-white); text-decoration:none;">Community Impact</a></li>
-          <li><a href="resources.html" style="color:var(--color-white); text-decoration:none;">Resources</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
-        <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
-        <div style="display:flex; gap:8px;">
-          <input type="email" placeholder="Your email" style="padding:10px; border-radius:6px; border:none; width:100%;">
-          <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center; padding:24px 0; font-size:13px; color:#E2E8F0 !important; font-weight:500;">
-      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: #FF4D00; font-weight:700; text-decoration:underline;">Contact Us</a>
-    </div>
-  </div>
-</footer>
 
 <script src="js/main.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/courses.js"></script>
+<script src="js/checkout-engine.js"></script>
 <script>
-let filters = { query: '', level: 'all', format: 'all', maxPrice: 30000, sort: 'popular', category: 'all', cpd: false };
+'use strict';
 
-function renderCourses() {
-  const grid = document.getElementById('courses-grid');
-  const options = { ...filters };
-  if (filters.level !== 'all') options.level = filters.level;
-  if (filters.format !== 'all') options.format = filters.format;
-  if (filters.category !== 'all') options.category = filters.category;
-  if (filters.maxPrice < 30000) options.maxPrice = filters.maxPrice;
-  if (filters.sort) options.sort = filters.sort;
-  
-  const results = window.filterCourses(options);
-  document.getElementById('catalog-count').textContent = `Showing ${results.length} course${results.length !== 1 ? 's' : ''}`;
-  
-  if (results.length === 0) {
-    grid.innerHTML = '<div class="no-results"><div style="width:64px;height:64px;border-radius:18px;background:var(--color-section-blue);display:inline-flex;align-items:center;justify-content:center;margin:0 auto 1rem;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div><h3 style="color:var(--text-primary);margin-bottom:0.5rem">No courses found</h3><p>Try adjusting your filters or search term.</p></div>';
-  } else {
-    grid.innerHTML = results.map(c => window.renderCourseCard(c)).join('');
-    initScrollReveal();
+// ── Page state ────────────────────────────────────────────────
+let currentCourseId = null;
+let currentMethod = 'mpesa';
+
+// ── Init ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  updateAuthUI();
+
+  // Resume post-login redirect if set
+  const returnTo = localStorage.getItem('ik_return_to');
+  if (returnTo) {
+    try {
+      const rt = JSON.parse(returnTo);
+      if (rt.action === 'enroll' && rt.courseId) {
+        currentCourseId = rt.courseId;
+        localStorage.removeItem('ik_return_to');
+      }
+    } catch { /* ignore */ }
+  }
+
+  // Get courseId from URL or return_to
+  const params = new URLSearchParams(window.location.search);
+  const urlId = params.get('id');
+  if (urlId) currentCourseId = urlId;
+
+  if (!currentCourseId) {
+    showScreen('error');
+    document.getElementById('error-title').textContent = 'No Course Selected';
+    document.getElementById('error-sub').textContent = 'Please return to the courses page and select a course.';
+    return;
+  }
+
+  // Pre-fill course details from local data
+  const course = window.COURSES ? window.COURSES.find(c => c.id === currentCourseId) : null;
+  if (course) {
+    document.getElementById('summary-title').textContent = course.title;
+    document.getElementById('summary-price').textContent = `KES ${course.price.toLocaleString()}`;
+    document.getElementById('summary-original').textContent = `KES ${course.originalPrice.toLocaleString()}`;
+    document.getElementById('summary-duration').textContent = course.duration || '—';
+    document.getElementById('summary-level').textContent = course.level || '—';
+    document.getElementById('summary-cpd').textContent = course.cpdHours ? `${course.cpdHours} hrs` : '—';
+    document.getElementById('crumb-course').textContent = course.title;
+    document.getElementById('crumb-course').href = `course-detail.html?id=${course.id}`;
+    document.getElementById('pay-amount-mpesa').textContent = course.price.toLocaleString();
+    document.getElementById('pay-amount-card').textContent = course.price.toLocaleString();
+  }
+
+  // Pre-fill user details
+  const session = window.getSession ? window.getSession() : null;
+  if (!session) {
+    // Not logged in — redirect to register
+    localStorage.setItem('ik_return_to', JSON.stringify({ action: 'enroll', courseId: currentCourseId, url: window.location.href }));
+    showToast('Please sign in to enroll.', 'warning');
+    setTimeout(() => { window.location.href = 'register.html'; }, 1200);
+    return;
+  }
+
+  document.getElementById('ck-name').value = session.name || '';
+  document.getElementById('ck-email').value = session.email || '';
+  document.getElementById('ck-phone').value = session.phone || '';
+  document.getElementById('mpesa-phone-input').value = session.phone || '';
+
+  // Listen to CheckoutEngine state changes
+  CheckoutEngine.onStatusChange(renderState);
+
+  // Start the checkout
+  showScreen('details');
+});
+
+// ── Screen management ─────────────────────────────────────────
+const SCREENS = ['loading', 'details', 'payment', 'processing', 'success', 'error'];
+function showScreen(name) {
+  SCREENS.forEach(s => {
+    const el = document.getElementById(`screen-${s}`);
+    if (el) el.style.display = s === name ? '' : 'none';
+  });
+  // Update step indicator
+  const stepMap = { details: 0, payment: 1, processing: 1, success: 2, error: 2 };
+  const step = stepMap[name] ?? 0;
+  document.querySelectorAll('.step').forEach((el, i) => {
+    el.className = 'step' + (i < step ? ' done' : i === step ? ' active' : '');
+  });
+}
+
+// ── State renderer ────────────────────────────────────────────
+function renderState(state) {
+  if (state.status === 'creating_order') {
+    showScreen('loading');
+    return;
+  }
+  if (state.status === 'awaiting_payment') {
+    showScreen('payment');
+    return;
+  }
+  if (state.status === 'processing' || state.status === 'awaiting_authorization') {
+    showScreen('processing');
+    document.getElementById('processing-ref').textContent = state.orderReference || '—';
+    if (state.method === 'card') {
+      document.getElementById('processing-title').textContent = 'Awaiting card payment…';
+      document.getElementById('processing-sub').textContent = 'Complete the payment in the Paystack window.';
+    } else {
+      document.getElementById('processing-title').textContent = 'Waiting for M-Pesa…';
+      document.getElementById('processing-sub').textContent =
+        state.message || 'Enter your M-Pesa PIN on your phone. Do not close this page.';
+    }
+    // Animate progress bar
+    setTimeout(() => { document.getElementById('progress-bar').style.width = '100%'; }, 100);
+    return;
+  }
+  if (state.status === 'paid') {
+    showScreen('success');
+    const course = window.COURSES ? window.COURSES.find(c => c.id === currentCourseId) : null;
+    document.getElementById('success-course-name').textContent = course ? course.title : 'your course';
+    document.getElementById('success-ref').textContent = state.transactionReference || state.orderReference || '—';
+    if (course) document.getElementById('success-amount').textContent = `KES ${course.price.toLocaleString()}`;
+    return;
+  }
+  if (['failed', 'cancelled', 'timeout'].includes(state.status)) {
+    showScreen('error');
+    const titles = { failed: 'Payment Failed', cancelled: 'Payment Cancelled', timeout: 'Payment Timed Out' };
+    document.getElementById('error-title').textContent = titles[state.status] || 'Payment Error';
+    document.getElementById('error-sub').textContent =
+      state.error || 'Your payment could not be completed. No charges were made.';
+    if (state.orderReference) {
+      const refBox = document.getElementById('error-ref');
+      refBox.style.display = '';
+      refBox.querySelector('strong').textContent = state.orderReference;
+    }
+    return;
   }
 }
 
-function quickFilter(btn, cat) {
-  document.querySelectorAll('[data-quick]').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  if (cat === 'all') { filters.category = 'all'; filters.cpd = false; }
-  else if (cat === 'cpd') { filters.category = 'all'; filters.cpd = true; }
-  else { filters.category = cat; filters.cpd = false; }
-  renderCourses();
-}
-
-function setFilter(key, val, btn) {
-  if (btn) {
-    btn.closest('.filter-options').querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+// ── UI handlers ───────────────────────────────────────────────
+function continueToPayment() {
+  // Validate name + email
+  const name = document.getElementById('ck-name').value.trim();
+  const email = document.getElementById('ck-email').value.trim();
+  if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showToast('Please fill in your name and a valid email.', 'error');
+    return;
   }
-  filters[key] = val;
-  renderCourses();
+  showScreen('payment');
+  // Trigger order creation in background
+  CheckoutEngine.startCheckout(currentCourseId);
 }
 
-function setSortFilter(val, btn) {
-  btn.closest('.filter-options').querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  filters.sort = val;
-  renderCourses();
+function goBackToDetails() {
+  showScreen('details');
 }
 
-function updatePriceFilter(val) {
-  filters.maxPrice = parseInt(val);
-  document.getElementById('price-label').textContent = val >= 30000 ? 'Any Price' : `KES ${parseInt(val).toLocaleString()}`;
-  renderCourses();
+function selectPayMethod(method) {
+  currentMethod = method;
+  document.querySelectorAll('.pay-method-tab').forEach(t => {
+    t.classList.toggle('active', t.id === `tab-${method}`);
+    t.setAttribute('aria-selected', t.id === `tab-${method}`);
+  });
+  document.querySelectorAll('.pay-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(`panel-${method}`).classList.add('active');
 }
 
-function setGridCols(cols) {
-  const grid = document.getElementById('courses-grid');
-  grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+function submitMpesa() {
+  const phone = document.getElementById('mpesa-phone-input').value.trim();
+  const errorEl = document.getElementById('mpesa-phone-error');
+  if (!phone) {
+    errorEl.classList.add('visible');
+    document.getElementById('mpesa-phone-input').classList.add('error');
+    return;
+  }
+  errorEl.classList.remove('visible');
+  document.getElementById('mpesa-phone-input').classList.remove('error');
+  document.getElementById('btn-pay-mpesa').disabled = true;
+  CheckoutEngine.payWithMpesa(phone);
 }
 
-function resetFilters() {
-  filters = { query: '', level: 'all', format: 'all', maxPrice: 30000, sort: 'popular', category: 'all', cpd: false };
-  document.getElementById('price-range').value = 30000;
-  document.getElementById('price-label').textContent = 'Any Price';
-  document.getElementById('course-search').value = '';
-  document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('[data-quick="all"]').forEach(b => b.classList.add('active'));
-  renderCourses();
+function submitCard() {
+  document.getElementById('btn-pay-card').disabled = true;
+  CheckoutEngine.payWithCard();
 }
 
-// Search handler
-let searchTimeout;
-document.getElementById('course-search').addEventListener('input', (e) => {
-  clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(() => { filters.query = e.target.value; renderCourses(); }, 300);
-});
-
-// URL param pre-filter
-const urlParams = new URLSearchParams(window.location.search);
-const catParam = urlParams.get('cat');
-if (catParam) {
-  const catMap = { ict: 'ICT', cbe: 'Curriculum', ai: 'AI & Tech', cpd: 'CPD', digital: 'Digital Skills', leadership: 'Leadership', assessment: 'Assessment', online: 'Pedagogy' };
-  if (catMap[catParam]) filters.category = catMap[catParam];
+function cancelCheckout() {
+  CheckoutEngine.cancel();
+  showScreen('payment');
+  document.getElementById('progress-bar').style.width = '0';
+  document.getElementById('progress-bar').style.transition = 'none';
+  setTimeout(() => { document.getElementById('progress-bar').style.transition = 'width 90s linear'; }, 50);
+  document.getElementById('btn-pay-mpesa').disabled = false;
+  document.getElementById('btn-pay-card').disabled = false;
 }
 
-document.addEventListener('DOMContentLoaded', renderCourses);
-
-
-function updateFilters() {
-  if (typeof renderCourses === 'function') renderCourses();
+function retryCheckout() {
+  showScreen('details');
+  document.getElementById('btn-pay-mpesa').disabled = false;
+  document.getElementById('btn-pay-card').disabled = false;
 }
-document.addEventListener('change', (e) => {
-  if (e.target.classList.contains('filter-checkbox')) updateFilters();
-});
-document.addEventListener('input', (e) => {
-  if (e.target.id === 'course-search') updateFilters();
-});
 </script>
 </body>
 </html>
-

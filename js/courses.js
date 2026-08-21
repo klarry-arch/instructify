@@ -181,19 +181,18 @@ window.isEnrolled = function(courseId) {
 window.enrollCourse = function(courseId) {
   const session = window.getSession ? window.getSession() : null;
   if (!session) {
+    localStorage.setItem('ik_return_to', JSON.stringify({ action: 'enroll', courseId, url: `checkout.html?id=${courseId}` }));
     window.showToast('Please log in to enroll in courses.', 'warning');
     setTimeout(() => window.location.href = 'register.html', 1200);
     return;
   }
-  
   if (window.isEnrolled(courseId)) {
     window.showToast('You are already enrolled in this course!', 'info');
+    setTimeout(() => window.location.href = 'dashboard-learner.html', 1200);
     return;
   }
-  
-  saveEnrollment(courseId);
-  window.showToast('Successfully enrolled! Redirecting to your dashboard...', 'success');
-  setTimeout(() => window.location.href = 'dashboard-learner.html', 1500);
+  // Route through payment flow — no free enrollment
+  window.location.href = `checkout.html?id=${encodeURIComponent(courseId)}`;
 };
 
 window.getUserEnrolledCourses = function() {
@@ -299,22 +298,80 @@ window.renderCourseCard = function(course) {
 };
 
 // ── Wishlist Toggle ────────────────────────────────────────
-window.toggleWishlist = function(btn) {
-  var card = btn.closest && (btn.closest("[data-course-id]") || btn.closest(".course-card"));
-  var courseId = card ? card.getAttribute("data-course-id") : null;
-  var wishlist = JSON.parse(localStorage.getItem("ik_wishlist") || "[]");
-  var isWishlisted = btn.classList.contains("wishlisted");
-  if (isWishlisted) {
-    btn.classList.remove("wishlisted");
-    btn.innerHTML = "🤍";
-    btn.title = "Add to wishlist";
-    if (courseId) { var idx = wishlist.indexOf(courseId); if (idx > -1) wishlist.splice(idx, 1); }
-  } else {
-    btn.classList.add("wishlisted");
-    btn.innerHTML = "❤️";
-    btn.title = "Remove from wishlist";
-    if (courseId && !wishlist.includes(courseId)) wishlist.push(courseId);
+window.toggleWishlist = async function(btn) {
+  // Require auth
+  const session = window.getSession ? window.getSession() : null;
+  if (!session) {
+    window.showToast('Please log in to save courses to your wishlist.', 'warning');
+    setTimeout(() => window.location.href = 'register.html', 1200);
+    return;
   }
-  localStorage.setItem("ik_wishlist", JSON.stringify(wishlist));
-  if (window.showToast) { window.showToast(isWishlisted ? "Removed from wishlist" : "Added to wishlist! ❤️", "info", 2000); }
+
+  const card = btn.closest('[data-course-id]') || btn.closest('.course-card');
+  const courseId = card ? card.getAttribute('data-course-id') :
+    (btn.dataset.courseId || null);
+  if (!courseId) return;
+
+  const isWishlisted = btn.classList.contains('wishlisted');
+
+  // Optimistic UI update
+  if (isWishlisted) {
+    btn.classList.remove('wishlisted');
+    btn.innerHTML = btn.textContent.includes('Save') ? '🤍 Save to Wishlist' : '🤍';
+    if (btn.title !== undefined) btn.title = 'Add to wishlist';
+  } else {
+    btn.classList.add('wishlisted');
+    btn.innerHTML = btn.textContent.includes('Save') ? '❤️ Saved to Wishlist' : '❤️';
+    if (btn.title !== undefined) btn.title = 'Remove from wishlist';
+  }
+
+  // Sync localStorage
+  const wishlist = JSON.parse(localStorage.getItem('ik_wishlist') || '[]');
+  if (isWishlisted) {
+    const idx = wishlist.indexOf(courseId);
+    if (idx > -1) wishlist.splice(idx, 1);
+  } else {
+    if (!wishlist.includes(courseId)) wishlist.push(courseId);
+  }
+  localStorage.setItem('ik_wishlist', JSON.stringify(wishlist));
+
+  // Sync server (non-blocking — UI already updated)
+  try {
+    await fetch('/api/wishlist', {
+      method: isWishlisted ? 'DELETE' : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: session.id, courseId }),
+    });
+  } catch { /* server sync is best-effort */ }
+
+  if (window.showToast) {
+    window.showToast(
+      isWishlisted ? 'Removed from wishlist' : 'Saved to wishlist ❤️',
+      'info',
+      2000
+    );
+  }
+};
+
+/**
+ * Load wishlist state from server and sync to localStorage.
+ * Call on page load to restore saved courses.
+ */
+window.loadServerWishlist = async function () {
+  const session = window.getSession ? window.getSession() : null;
+  if (!session) return;
+  try {
+    const res = await fetch(`/api/wishlist?userId=${encodeURIComponent(session.id)}`);
+    if (!res.ok) return;
+    const { wishlist } = await res.json();
+    localStorage.setItem('ik_wishlist', JSON.stringify(wishlist || []));
+    // Update any visible wishlist buttons
+    (wishlist || []).forEach(courseId => {
+      const btn = document.querySelector(`[data-course-id="${courseId}"] .course-card-wishlist`);
+      if (btn && !btn.classList.contains('wishlisted')) {
+        btn.classList.add('wishlisted');
+        btn.innerHTML = '❤️';
+      }
+    });
+  } catch { /* non-critical */ }
 };

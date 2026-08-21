@@ -74,8 +74,8 @@
           <div class="font-heading text-3xl font-extrabold" style="color:#DC2E0A;font-size:34px;line-height:1.1;font-weight:900" id="course-price">KES 15,000</div>
           <div style="font-size:14px;color:#94A3B8;text-decoration:line-through;margin-top:4px;font-weight:500" id="course-orig-price">KES 22,000</div>
         </div>
-        <button onclick="handleEnrollClick()" class="btn btn-lg w-full mb-md" style="width:100%;background:linear-gradient(135deg,#DC2E0A 0%,#B22206 100%);color:#FFFFFF;font-weight:700;font-size:16px;border-radius:99px;padding:14px 24px;border:none;box-shadow:0 6px 20px rgba(220,46,10,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;transition:all 0.2s">⚡ Enroll Now</button>
-        <button onclick="toggleWishlist(this)" class="btn btn-sm w-full" style="width:100%;background:#F8FAFC;color: #FF4D00;border:1.5px solid #CBD5E1;font-weight:700;font-size:14px;border-radius:99px;padding:11px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s">🤍 Save to Wishlist</button>
+        <button onclick="handleEnrollClick()" class="btn btn-lg w-full mb-md" id="enroll-btn" style="width:100%;background:linear-gradient(135deg,#DC2E0A 0%,#B22206 100%);color:#FFFFFF;font-weight:700;font-size:16px;border-radius:99px;padding:14px 24px;border:none;box-shadow:0 6px 20px rgba(220,46,10,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;transition:all 0.2s">⚡ Enroll Now</button>
+        <button onclick="toggleWishlist(this)" id="wishlist-btn" data-course-id="" class="btn btn-sm w-full" style="width:100%;background:#F8FAFC;color:#FF4D00;border:1.5px solid #CBD5E1;font-weight:700;font-size:14px;border-radius:99px;padding:11px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s">🤍 Save to Wishlist</button>
         <div style="color:#64748B;font-size:13px;font-weight:500;text-align:center;margin-top:18px;display:flex;align-items:center;justify-content:center;gap:6px">🔒 30-Day Guarantee • Flexible Installments</div>
       </div>
     </div>
@@ -192,6 +192,7 @@
 <script src="js/auth.js"></script>
 <script src="js/courses.js"></script>
 <script src="js/payment.js"></script>
+<script src="js/checkout-engine.js"></script>
 <script>
 let currentCourse = null;
 
@@ -212,10 +213,36 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function handleEnrollClick() {
-  if (currentCourse) {
-    window.initPaymentFlow(currentCourse.id, currentCourse.price);
+  if (!currentCourse) return;
+  const btn = document.getElementById('enroll-btn');
+
+  // Check if already enrolled locally
+  if (window.isEnrolled && window.isEnrolled(currentCourse.id)) {
+    window.showToast('You are already enrolled in this course!', 'info');
+    setTimeout(() => window.location.href = 'dashboard-learner.html', 1200);
+    return;
   }
+
+  // Disable button to prevent duplicate clicks
+  if (btn) { btn.disabled = true; btn.textContent = 'Starting checkout…'; }
+
+  // Navigate to the checkout page
+  window.location.href = `checkout.html?id=${encodeURIComponent(currentCourse.id)}`;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Set data-course-id on wishlist button for toggleWishlist
+  const wishlistBtn = document.getElementById('wishlist-btn');
+  if (wishlistBtn && currentCourse) {
+    wishlistBtn.dataset.courseId = currentCourse.id;
+    // Restore saved wishlist state
+    const wishlist = JSON.parse(localStorage.getItem('ik_wishlist') || '[]');
+    if (wishlist.includes(currentCourse.id)) {
+      wishlistBtn.classList.add('wishlisted');
+      wishlistBtn.innerHTML = '❤️ Saved to Wishlist';
+    }
+  }
+});
 </script>
 </body>
 </html>
