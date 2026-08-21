@@ -65,6 +65,14 @@
   --color-info:             #38BDF8;   /* Info color */
   --color-info-bg:          #F0F9FF;
 
+  /* Tertiary Brand — Emerald Green (#059669) */
+  /* Bridges navy blue & orange-red; ideal for progress, growth & success states */
+  --color-tertiary:         #059669;   /* Emerald green — course progress, achievement badges, CTA highlights */
+  --color-tertiary-hover:   #047857;   /* Darker emerald for hover */
+  --color-tertiary-light:   #34D399;   /* Lighter mint for icon accents */
+  --color-tertiary-bg:      #ECFDF5;   /* Soft green tint for card backgrounds */
+  --color-tertiary-glow:    rgba(5, 150, 105, 0.15);
+
   /* Legacy Compatibility Aliases */
   --color-brand:            #0F172A;
   --color-blue:             #2563EB;
@@ -591,7 +599,7 @@ p:last-child {
 /* Achievements */
 .badge-amber  { background: var(--color-amber-bg);    color: var(--color-amber-dark); }
 /* General accent — orange */
-.badge-green  { background: var(--color-primary-bg);  color: var(--color-primary-dark); }
+.badge-green  { background: var(--color-tertiary-bg);  color: var(--color-tertiary); }
 /* Subject-specific */
 .badge-ict    { background: #F3E8FF; color: #6A1B9A; }
 .badge-cbe    { background: #ECFDF5; color: #065F46; }
