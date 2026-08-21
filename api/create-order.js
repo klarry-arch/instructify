@@ -33,13 +33,95 @@ function json(status, body) {
   });
 }
 
-export default async function handler(req) {
+export default async function handler(req, res) {
+  // Check if standard Node.js req/res signature
+  if (res && typeof res.status === 'function') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (req.method === 'OPTIONS') return res.status(204).end();
+    if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+    let body = req.body;
+    if (typeof body === 'string') {
+      try { body = JSON.parse(body); } catch { return res.status(400).json({ error: 'Invalid JSON body' }); }
+    }
+    body = body || {};
+
+    const { courseId, userId, userEmail, userName } = body;
+    if (!courseId || typeof courseId !== 'string') return res.status(400).json({ error: 'courseId is required' });
+    if (!userId || typeof userId !== 'string') return res.status(400).json({ error: 'userId is required. Please log in.' });
+    if (!userEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)) return res.status(400).json({ error: 'A valid email address is required.' });
+
+    const course = getCourse(courseId);
+    if (!course) return res.status(404).json({ error: 'Course not found or is no longer available.' });
+
+    const enrollmentKey = `enrollment:${userId}:${courseId}`;
+    const existingEnrollment = await storeGet(enrollmentKey);
+    if (existingEnrollment) {
+      return res.status(409).json({
+        error: 'already_enrolled',
+        message: 'You are already enrolled in this course.',
+        dashboardUrl: 'dashboard-learner.html',
+      });
+    }
+
+    const pendingKey = `pending_order:${userId}:${courseId}`;
+    const existingPending = await storeGet(pendingKey);
+    if (existingPending) {
+      return res.status(200).json({
+        orderReference: existingPending.orderReference,
+        courseId: course.id,
+        courseTitle: course.title,
+        amount: course.amount,
+        currency: course.currency,
+        paystackPublicKey: process.env.PAYSTACK_PUBLIC_KEY || '',
+        resumed: true,
+      });
+    }
+
+    const orderReference = generateOrderRef();
+    const orderId = generateId('ord');
+    const now = new Date().toISOString();
+
+    const order = {
+      id: orderId,
+      orderReference,
+      userId,
+      userEmail,
+      userName: userName || '',
+      courseId: course.id,
+      courseTitle: course.title,
+      amount: course.amount,
+      currency: course.currency,
+      status: 'pending',
+      paymentMethod: null,
+      createdAt: now,
+      updatedAt: now,
+    };
+
+    await storeSet(`order:ref:${orderReference}`, order);
+    await storeSet(`order:id:${orderId}`, order);
+    await storeSet(pendingKey, { orderReference }, 300);
+
+    return res.status(200).json({
+      orderReference,
+      courseId: course.id,
+      courseTitle: course.title,
+      amount: course.amount,
+      currency: course.currency,
+      paystackPublicKey: process.env.PAYSTACK_PUBLIC_KEY || '',
+    });
+  }
+
+  // Web API / Edge runtime fallback
   if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: CORS });
   if (req.method !== 'POST') return json(405, { error: 'Method not allowed' });
 
   let body;
   try {
-    body = await req.json();
+    body = typeof req.json === 'function' ? await req.json() : req.body;
   } catch {
     return json(400, { error: 'Invalid JSON body' });
   }
