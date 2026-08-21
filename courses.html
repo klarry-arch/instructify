@@ -3,171 +3,408 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Browse 200+ accredited CPD courses, ICT integration, CBE curriculum, AI in Education, and Digital Literacy programs on Instructify Kenya.">
-  <title>Course Catalog | Instructify Kenya</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230D6E4F'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='Arial'>IK</text></svg>">
+  <meta name="description" content="Explore top-rated online courses, teacher professional development, ICT integration, and CBE curriculum programs on Instructify Kenya.">
+  <title>Course Catalog &amp; Learning Platform | Instructify Kenya</title>
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css">
   <style>
-    .courses-hero {
-      background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-dark) 100%);
-      padding: calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);
-      border-bottom: 1px solid var(--border-subtle);
+    :root {
+      --saas-blue: #2563EB;
+      --saas-navy: #0F172A;
+      --saas-bg: #F8FAFC;
+      --saas-card: #FFFFFF;
+      --saas-border: #E2E8F0;
+      --saas-text-dark: #0F172A;
+      --saas-text-muted: #64748B;
     }
-    .catalog-layout { display: grid; grid-template-columns: 280px 1fr; gap: var(--space-2xl); padding: var(--space-3xl) 0; }
-    .filter-sidebar { position: sticky; top: calc(var(--nav-height) + 20px); height: fit-content; }
-    .filter-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--border-radius-lg); padding: var(--space-xl); margin-bottom: var(--space-lg); }
-    .filter-title { font-family: var(--font-heading); font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: var(--space-lg); }
-    .filter-options { display: flex; flex-direction: column; gap: var(--space-sm); }
-    .filter-chip { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; border-radius: var(--border-radius-sm); background: var(--bg-surface); border: 1px solid var(--border-subtle); cursor: pointer; font-size: var(--text-sm); color: var(--text-secondary); transition: all var(--transition-fast); }
-    .filter-chip:hover, .filter-chip.active { border-color: var(--color-primary); color: var(--color-primary-light); background: var(--color-primary-glow); }
-    .filter-chip-count { font-size: var(--text-xs); color: var(--text-muted); }
-    .catalog-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-xl); flex-wrap: wrap; gap: var(--space-md); }
-    .catalog-count { font-size: var(--text-sm); color: var(--text-muted); }
-    .catalog-sort { display: flex; align-items: center; gap: var(--space-sm); }
-    .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl); }
-    .no-results { grid-column: 1/-1; text-align: center; padding: var(--space-5xl); color: var(--text-muted); }
-    .range-slider { width: 100%; accent-color: var(--color-primary); margin: var(--space-sm) 0; }
-    @media (max-width: 1024px) { .catalog-layout { grid-template-columns: 1fr; } .filter-sidebar { position: static; } .courses-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 640px) { .courses-grid { grid-template-columns: 1fr; } }
+    body { background-color: var(--saas-bg); color: var(--saas-text-dark); }
+    .catalog-hero { background: var(--saas-bg); padding: calc(var(--nav-height) + 48px) 0 48px; border-bottom: 1px solid var(--saas-border); }
+    .hero-h1 { font-size: 40px; font-weight: 700; color: var(--saas-navy); line-height: 1.2; margin-bottom: 16px; }
+    .hero-lead { font-size: 16px; font-weight: 400; color: var(--saas-text-muted); max-width: 680px; margin: 0 auto 32px; line-height: 1.6; }
+    .saas-search-box { background: var(--saas-card); border: 1px solid var(--saas-border); border-radius: 16px; padding: 8px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); max-width: 720px; margin: 0 auto; }
+    .saas-search-box input { border: none; outline: none; padding: 12px; font-size: 16px; width: 100%; color: var(--saas-text-dark); background: transparent; }
+    
+    /* Stats Bar */
+    .stats-dashboard { background: var(--saas-card); border-bottom: 1px solid var(--saas-border); padding: 32px 0; }
+    .stat-item { text-align: center; }
+    .stat-number { font-size: 32px; font-weight: 700; color: var(--saas-blue); }
+    .stat-label { font-size: 13px; font-weight: 500; color: var(--saas-text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+
+    /* Catalog Layout */
+    .saas-layout { display: grid; grid-template-columns: 280px 1fr; gap: 32px; padding: 48px 0; }
+    .filter-panel { background: var(--saas-card); border: 1px solid var(--saas-border); border-radius: 16px; padding: 24px; position: sticky; top: calc(var(--nav-height) + 24px); height: fit-content; }
+    .filter-group-title { font-size: 13px; font-weight: 600; text-transform: uppercase; color: var(--saas-navy); letter-spacing: 0.08em; margin-bottom: 16px; display: block; }
+    .filter-checkbox { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--saas-text-dark); cursor: pointer; padding: 6px 0; transition: color 0.15s ease; }
+    .filter-checkbox:hover { color: var(--saas-blue); }
+    
+    /* Section Heading Rules */
+    .saas-h2 { font-size: 28px; font-weight: 600; color: var(--saas-navy); margin-bottom: 24px; }
+    .course-card-title-custom { font-size: 20px; font-weight: 600; color: var(--saas-navy); margin-bottom: 8px; line-height: 1.3; }
+    .metadata-text { font-size: 13px; font-weight: 500; color: var(--saas-text-muted); }
+    
+    /* Testimonials */
+    .testimonial-card { background: var(--saas-card); border: 1px solid var(--saas-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: transform 0.2s ease; }
+    .testimonial-card:hover { transform: translateY(-4px); }
+    
+    @media (max-width: 1024px) {
+      .saas-layout { grid-template-columns: 1fr; }
+      .filter-panel { position: static; }
+    }
   </style>
 </head>
 <body>
+
+<!-- Navigation -->
 <nav id="navbar" class="navbar">
   <div class="container">
-    <a href="index.html" class="nav-brand">
-      <div class="nav-logo">IK</div>
-      <div class="nav-brand-text"><span class="nav-brand-name">Instructify</span><span class="nav-brand-tagline">Kenya · Est. 2019</span></div>
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya" style="display: inline-flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap;">
+      <div class="nav-brand-icon" style="display: inline-flex; align-items: center; justify-content: center; margin: 0; padding: 0; flex-shrink: 0; background: none; border: none; box-shadow: none;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="nav-brand-text-box" style="display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; white-space: nowrap; margin: 0; padding: 0; line-height: 1;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #FFFFFF; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #FF4D00; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
+      </div>
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
       <li><a href="courses.html" class="nav-link active">Courses</a></li>
-      <li><a href="about.html" class="nav-link">About</a></li>
-      <li><a href="news.html" class="nav-link">Resources</a></li>
+      
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="register.html" id="nav-login-btn" class="btn btn-outline btn-sm">Sign In</a>
-      <div id="nav-user-menu" style="display:none" class="flex items-center gap-sm">
-        <div class="avatar-placeholder avatar-sm" id="nav-user-avatar" style="font-size:0.75rem"></div>
-        <a href="dashboard-learner.html" class="btn btn-primary btn-sm">Dashboard</a>
-      </div>
-      <button id="nav-hamburger" class="nav-hamburger"><span></span><span></span><span></span></button>
+      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="courses.html" class="btn btn-orange btn-sm">Start Learning</a>
     </div>
   </div>
 </nav>
-<div id="nav-mobile" class="nav-mobile">
-  <div class="nav-mobile-links">
-    <a href="index.html" class="nav-mobile-link">🏠 Home</a>
-    <a href="courses.html" class="nav-mobile-link">📚 Courses</a>
-    <a href="about.html" class="nav-mobile-link">ℹ️ About</a>
-    <a href="contact.html" class="nav-mobile-link">📞 Contact</a>
+
+<!-- Hero Section -->
+<header class="catalog-hero">
+  <div class="container text-center">
+    <h1 class="hero-h1">Explore World-Class Learning Programs</h1>
+    <p class="hero-lead">
+      Instructify Academy is your launchpad for practical, poetic, and powerfully interdisciplinary learning. Explore accredited programs in digital literacy, teacher professional development, curriculum design, and learning technologies.
+    </p>
+
+    <!-- Search Box -->
+    <div class="saas-search-box">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="course-search" placeholder="Search by course title, topic, or instructor...">
+      <button class="btn btn-blue btn-sm" onclick="setFilter('query', document.getElementById('course-search').value)">Search</button>
+    </div>
+  </div>
+</header>
+<!-- Learning Statistics Dashboard -->
+<div class="stats-dashboard">
+  <div class="container">
+    <div class="grid-4 text-center">
+      <div class="stat-item">
+        <div class="stat-number">50,000+</div>
+        <div class="stat-label">Active Learners</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">200+</div>
+        <div class="stat-label">Accredited Courses</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Completion Satisfaction</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">40+</div>
+        <div class="stat-label">CPD Hours Offered</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- Hero -->
-<section class="courses-hero">
+<!-- Featured Course Section -->
+<section class="section" style="padding: 48px 0 24px 0;">
   <div class="container">
-    <div class="breadcrumb mb-md">
-      <a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Course Catalog</span>
-    </div>
-    <h1 class="section-title animate-fade-in-up" style="text-align:left;font-size:var(--text-3xl)">
-      Explore Our <span class="text-gradient-green">200+ Courses</span>
-    </h1>
-    <p class="section-subtitle animate-fade-in-up delay-100" style="text-align:left;margin:0;margin-top:var(--space-md)">
-      Accredited CPD programs, ICT integration, CBE curriculum, AI in Education, and more — all designed for Kenya's educators.
-    </p>
-    <div class="search-bar animate-fade-in-up delay-200" style="max-width:600px;margin-top:var(--space-xl)">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="course-search" placeholder="Search courses, instructors, topics...">
-      <button class="search-btn">Search</button>
-    </div>
-    <!-- Quick filters -->
-    <div style="display:flex;gap:var(--space-sm);margin-top:var(--space-lg);flex-wrap:wrap">
-      <button class="filter-chip active" data-quick="all" onclick="quickFilter(this,'all')">All Courses</button>
-      <button class="filter-chip" data-quick="cpd" onclick="quickFilter(this,'cpd')">✅ CPD Accredited</button>
-      <button class="filter-chip" data-quick="ict" onclick="quickFilter(this,'ICT')">💻 ICT</button>
-      <button class="filter-chip" data-quick="cbe" onclick="quickFilter(this,'CBE')">📋 CBE</button>
-      <button class="filter-chip" data-quick="ai" onclick="quickFilter(this,'AI & Tech')">🤖 AI</button>
-      <button class="filter-chip" data-quick="digital" onclick="quickFilter(this,'Digital Skills')">📱 Digital Literacy</button>
-      <button class="filter-chip" data-quick="leadership" onclick="quickFilter(this,'Leadership')">🏛️ Leadership</button>
+    <h2 class="saas-h2">Featured Masterclass</h2>
+    <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--saas-border); border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+      <div class="grid-2" style="gap:0; align-items:stretch;">
+        <div>
+          <img src="assets/images/course-digital.png" alt="Digital Literacy Masterclass" style="width:100%; height:100%; object-fit:cover; min-height:280px;">
+        </div>
+        <div style="padding:40px; display:flex; flex-direction:column; justify-content:center; background:#FFFFFF;">
+          <span style="display:inline-block; padding:4px 12px; background:#EFF6FF; color: #FF4D00; border-radius:999px; font-size:13px; font-weight:600; width:fit-content; margin-bottom:12px;">FEATURED PROGRAM</span>
+          <h3 class="course-card-title-custom" style="font-size:24px;">Digital Literacy for Educators Masterclass</h3>
+          <p style="font-size:16px; color:var(--saas-text-muted); margin-bottom:20px; line-height:1.6;">
+            A comprehensive, hands-on program designed to empower educators with modern digital tools, classroom technology integration, and interactive lesson design strategies.
+          </p>
+          <div style="display:flex; gap:16px; align-items:center; margin-bottom:24px;" class="metadata-text">
+            <span>? 4.9 (523 reviews)</span>
+            <span>� 6 Weeks</span>
+            <span>� Beginner to Intermediate</span>
+          </div>
+          <div>
+            <a href="course-detail.html?id=crs_002" class="btn btn-blue">Enroll Now</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Main Layout -->
-<div class="container">
-  <div class="catalog-layout">
-    
-    <!-- Sidebar Filters -->
-    <aside class="filter-sidebar">
-      <div class="filter-card">
-        <div class="filter-title">📊 Level</div>
-        <div class="filter-options">
-          <button class="filter-chip active" onclick="setFilter('level','all',this)">All Levels</button>
-          <button class="filter-chip" onclick="setFilter('level','Beginner',this)">🟢 Beginner</button>
-          <button class="filter-chip" onclick="setFilter('level','Intermediate',this)">🟡 Intermediate</button>
-          <button class="filter-chip" onclick="setFilter('level','Advanced',this)">🔴 Advanced</button>
+<!-- Training Programs Grid -->
+<section class="section" style="background:#F8FAFC; border-top:1px solid #E2E8F0; border-bottom:1px solid #E2E8F0;">
+  <div class="container text-center">
+    <span class="section-tag orange" style="background: #F5F3FF; color: #FF4D00; font-weight:700;">CORE TRAINING TRACKS</span>
+    <h2 style="font-size:36px; font-weight:700; color:#111827; margin-top:12px; margin-bottom:36px;">
+      Targeted Professional Development Tracks
+    </h2>
+
+    <div class="grid-3" style="gap:28px;">
+      <!-- Track 1: Digital Literacy & ICT -->
+      <div class="distinct-card" style="background:#FFFFFF; border:1.5px solid #E2E8F0; border-radius:20px; padding:38px 28px 32px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:space-between;">
+        <div>
+          <div class="distinct-icon-box distinct-icon-blue" style="width:62px; height:62px; border-radius:18px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px; background:linear-gradient(135deg, #EFF6FF 0%, #E0EDFF 100%); border:1.5px solid rgba(72, 14, 116, 0.14); box-shadow:0 8px 20px rgba(72, 14, 116, 0.10);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Digital Literacy &amp; ICT Integration" role="img">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3 style="font-size:21px; font-weight:700; color:#111827; margin-bottom:12px; line-height:1.35;">Digital Literacy &amp; ICT Integration</h3>
+          <p style="font-size:14.5px; color:#64748B; line-height:1.65; margin-bottom:24px; max-width:320px;">
+            Master classroom multimedia, LMS management, educational apps, and safe internet delivery for modern instruction.
+          </p>
         </div>
-      </div>
-      
-      <div class="filter-card">
-        <div class="filter-title">📡 Format</div>
-        <div class="filter-options">
-          <button class="filter-chip active" onclick="setFilter('format','all',this)">All Formats</button>
-          <button class="filter-chip" onclick="setFilter('format','Online',this)">💻 100% Online</button>
-          <button class="filter-chip" onclick="setFilter('format','Blended',this)">🔄 Blended</button>
-        </div>
+        <a href="courses.html?category=Digital" class="btn btn-blue btn-sm">View Track &rarr;</a>
       </div>
 
-      <div class="filter-card">
-        <div class="filter-title">💰 Max Price (KES)</div>
-        <input type="range" class="range-slider" id="price-range" min="0" max="30000" step="500" value="30000" oninput="updatePriceFilter(this.value)">
-        <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--text-muted);margin-top:4px">
-          <span>KES 0</span>
-          <span id="price-label" style="color:var(--color-primary-light);font-weight:600">Any Price</span>
-          <span>KES 30,000</span>
+      <!-- Track 2: CBE & Competency Pedagogy -->
+      <div class="distinct-card card-orange" style="background:#FFFFFF; border:1.5px solid #E2E8F0; border-radius:20px; padding:38px 28px 32px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:space-between;">
+        <div>
+          <div class="distinct-icon-box distinct-icon-orange" style="width:62px; height:62px; border-radius:18px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px; background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%); border:1.5px solid rgba(37, 99, 235, 0.16); box-shadow:0 8px 20px rgba(37, 99, 235, 0.10);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="CBE &amp; Competency Pedagogy" role="img">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+              <polyline points="2 17 12 22 22 17"/>
+              <polyline points="2 12 12 17 22 12"/>
+            </svg>
+          </div>
+          <h3 style="font-size:21px; font-weight:700; color:#111827; margin-bottom:12px; line-height:1.35;">CBE &amp; Competency Pedagogy</h3>
+          <p style="font-size:14.5px; color:#64748B; line-height:1.65; margin-bottom:24px; max-width:320px;">
+            Understand Kenya's Competency-Based Education framework, portfolio assessment, rubrics, and learner engagement strategies.
+          </p>
         </div>
+        <a href="courses.html?category=Curriculum" class="btn btn-orange btn-sm">View Track &rarr;</a>
       </div>
 
-      <div class="filter-card">
-        <div class="filter-title">🔃 Sort By</div>
-        <div class="filter-options">
-          <button class="filter-chip active" onclick="setSortFilter('popular',this)">🔥 Most Popular</button>
-          <button class="filter-chip" onclick="setSortFilter('rating',this)">⭐ Highest Rated</button>
-          <button class="filter-chip" onclick="setSortFilter('price-low',this)">💲 Price: Low to High</button>
-          <button class="filter-chip" onclick="setSortFilter('price-high',this)">💲 Price: High to Low</button>
-          <button class="filter-chip" onclick="setSortFilter('newest',this)">🆕 Newest First</button>
+      <!-- Track 3: AI Tools for Educators -->
+      <div class="distinct-card" style="background:#FFFFFF; border:1.5px solid #E2E8F0; border-radius:20px; padding:38px 28px 32px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:space-between;">
+        <div>
+          <div class="distinct-icon-box distinct-icon-blue" style="width:62px; height:62px; border-radius:18px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px; background:linear-gradient(135deg, #EFF6FF 0%, #E0EDFF 100%); border:1.5px solid rgba(72, 14, 116, 0.14); box-shadow:0 8px 20px rgba(72, 14, 116, 0.10);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="AI Tools for Educators" role="img">
+              <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/>
+              <path d="M19 3v4"/>
+              <path d="M21 5h-4"/>
+            </svg>
+          </div>
+          <h3 style="font-size:21px; font-weight:700; color:#111827; margin-bottom:12px; line-height:1.35;">AI Tools for Educators</h3>
+          <p style="font-size:14.5px; color:#64748B; line-height:1.65; margin-bottom:24px; max-width:320px;">
+            Learn to leverage AI for lesson plan generation, automated grading support, personalized student feedback, and interactive content.
+          </p>
         </div>
+        <a href="courses.html?category=AI" class="btn btn-blue btn-sm">View Track &rarr;</a>
       </div>
-
-      <button class="btn btn-outline w-full" onclick="resetFilters()">🔄 Reset All Filters</button>
-    </aside>
-
-    <!-- Courses Grid -->
-    <div>
-      <div class="catalog-header">
-        <div class="catalog-count" id="catalog-count">Showing 8 courses</div>
-        <div class="catalog-sort">
-          <span style="font-size:var(--text-sm);color:var(--text-muted)">View:</span>
-          <button onclick="setGridCols(3)" class="btn btn-ghost btn-sm" title="3 columns">⊞</button>
-          <button onclick="setGridCols(2)" class="btn btn-ghost btn-sm" title="2 columns">☰</button>
-        </div>
-      </div>
-      <div id="courses-grid" class="courses-grid stagger-children">
-        <!-- Rendered by JS -->
-      </div>
-      <div class="pagination" style="margin-top:var(--space-3xl)" id="pagination"></div>
     </div>
   </div>
-</div>
+</section>
 
-<footer class="footer" style="margin-top:var(--space-4xl)">
+<!-- Curriculum Development Service -->
+<section class="section" style="background:var(--color-soft-grey);">
   <div class="container">
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-md)">
-      <a href="index.html" class="nav-brand"><div class="nav-logo">IK</div><div class="nav-brand-text"><span class="nav-brand-name">Instructify Kenya</span></div></a>
-      <div style="font-size:var(--text-sm);color:var(--text-muted)">© 2026 Instructify Kenya Ltd. All rights reserved.</div>
+    <div class="section-header text-center">
+      <span class="section-tag blue">OUR EXPERTISE</span>
+      <h2 class="section-title">Curriculum Development</h2>
+    </div>
+    <!-- Service 1: Curriculum -->
+    <div class="card reveal mb-xl" style="padding:0; overflow:hidden; border:none; box-shadow:var(--shadow-md);">
+      <div class="grid-2" style="gap:0; align-items:stretch;">
+        <div style="padding:var(--space-4xl); display:flex; flex-direction:column; justify-content:center;">
+          <div style="width:56px; height:56px; border-radius:16px; background:var(--color-section-blue); display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-md);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Curriculum Development" role="img">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+          <h3 class="font-heading text-2xl mb-md">Curriculum Development</h3>
+          <p style="color:var(--text-secondary); margin-bottom:var(--space-lg); line-height:1.6;">
+            We design competency-based education (CBE) frameworks, learning outcomes, rubrics, and digital instructional materials tailored to your institution's unique goals and regulatory requirements.
+          </p>
+          <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:8px;">
+            <li style="display:flex; align-items:center; gap:8px; color:var(--text-secondary);"><span style="color:var(--color-primary); font-weight:bold;">&check;</span> Competency mapping</li>
+            <li style="display:flex; align-items:center; gap:8px; color:var(--text-secondary);"><span style="color:var(--color-primary); font-weight:bold;">&check;</span> Assessment rubric design</li>
+            <li style="display:flex; align-items:center; gap:8px; color:var(--text-secondary);"><span style="color:var(--color-primary); font-weight:bold;">&check;</span> Instructional material creation</li>
+          </ul>
+        </div>
+        <div>
+          <img src="assets/images/course-cbe.png" alt="Curriculum Development" style="width:100%; height:100%; object-fit:cover; min-height:300px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Main Course Catalog with Filter Sidebar -->
+<section class="section" style="padding: 24px 0 64px 0;">
+  <div class="container">
+    <div class="saas-layout">
+      <!-- Filter Sidebar -->
+      <aside class="filter-panel">
+        <span class="filter-group-title">Filter Courses</span>
+        
+        <div style="margin-bottom:24px;">
+          <span class="filter-group-title" style="font-size:12px; color:var(--saas-text-muted);">Category</span>
+          <label class="filter-checkbox"><input type="radio" name="cat" checked onclick="setFilter('category','all')"> All Categories</label>
+          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','Digital Skills')"> Digital Literacy</label>
+          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','CPD')"> Teacher CPD</label>
+          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','Curriculum')"> Curriculum Design</label>
+          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','Leadership')"> Educational Leadership</label>
+          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','AI & Tech')"> Learning Technology</label>
+        </div>
+
+        <div style="margin-bottom:24px;">
+          <span class="filter-group-title" style="font-size:12px; color:var(--saas-text-muted);">Skill Level</span>
+          <label class="filter-checkbox"><input type="radio" name="lvl" checked onclick="setFilter('level','all')"> All Levels</label>
+          <label class="filter-checkbox"><input type="radio" name="lvl" onclick="setFilter('level','Beginner')"> Beginner</label>
+          <label class="filter-checkbox"><input type="radio" name="lvl" onclick="setFilter('level','Intermediate')"> Intermediate</label>
+          <label class="filter-checkbox"><input type="radio" name="lvl" onclick="setFilter('level','Advanced')"> Advanced</label>
+        </div>
+
+        <div>
+          <span class="filter-group-title" style="font-size:12px; color:var(--saas-text-muted);">Accreditation</span>
+          <label class="filter-checkbox"><input type="checkbox" checked onclick="toggleCPD(this)"> CPD Accredited Only</label>
+        </div>
+      </aside>
+
+      <!-- Course Cards Catalog Grid -->
+      <main>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+          <h2 class="saas-h2" style="margin:0;" id="catalog-count">All Courses</h2>
+          <select class="form-select" onchange="setFilter('sort', this.value)" style="padding:10px 16px; border-radius:8px; border:1px solid var(--saas-border);">
+            <option value="popular">Most Popular</option>
+            <option value="rating">Highest Rated</option>
+            <option value="newest">Newest First</option>
+            <option value="price-low">Price: Low to High</option>
+          </select>
+        </div>
+
+        <div id="courses-grid" class="courses-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap:24px; width:100%;">
+          <!-- Course cards rendered dynamically by JS -->
+        </div>
+      </main>
+    </div>
+  </div>
+</section>
+
+<!-- Student Testimonials Section -->
+<section class="section" style="background:#FFFFFF; border-top:1px solid var(--saas-border); padding:64px 0;">
+  <div class="container text-center">
+    <h2 class="saas-h2">Trusted by Educators Across Kenya</h2>
+    <p style="font-size:16px; color:var(--saas-text-muted); max-width:600px; margin:0 auto 40px;">
+      Hear how our accredited training programs have transformed classroom delivery and professional growth.
+    </p>
+
+    <div class="grid-3" style="text-align:left;">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card">
+        <p style="font-size:15px; color:#334155; margin-bottom:16px; line-height:1.6;">
+          "The ICT Integration course provided practical tools I could use in my daily lessons immediately. My students are significantly more engaged."
+        </p>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:40px; height:40px; border-radius:50%; background:#DBEAFE; color: #FF4D00; font-weight:700; display:flex; align-items:center; justify-content:center;">JK</div>
+          <div>
+            <h4 style="font-size:15px; font-weight:600; margin:0; color:var(--saas-navy);">Jane Korir</h4>
+            <span class="metadata-text">High School Teacher, Nakuru</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card">
+        <p style="font-size:15px; color:#334155; margin-bottom:16px; line-height:1.6;">
+          "Clear, structured, and CBC-aligned. The curriculum development masterclass gave our department a unified roadmap for implementation."
+        </p>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:40px; height:40px; border-radius:50%; background:#E0E7FF; color:#4338CA; font-weight:700; display:flex; align-items:center; justify-content:center;">DM</div>
+          <div>
+            <h4 style="font-size:15px; font-weight:600; margin:0; color:var(--saas-navy);">David Mutua</h4>
+            <span class="metadata-text">Head of Curriculum, Nairobi</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card">
+        <p style="font-size:15px; color:#334155; margin-bottom:16px; line-height:1.6;">
+          "As an education administrator, the Leadership &amp; Management program equipped me with actionable insights for institutional growth."
+        </p>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:40px; height:40px; border-radius:50%; background:#CCFBF1; color:#0D9488; font-weight:700; display:flex; align-items:center; justify-content:center;">AM</div>
+          <div>
+            <h4 style="font-size:15px; font-weight:600; margin:0; color:var(--saas-navy);">Anne Mwangi</h4>
+            <span class="metadata-text">Principal, Mombasa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
+  <div class="container">
+    <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.12);">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span style="color: #FF4D00 !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span></h3>
+        <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
+          Ignite Curiosity. Transform Learning. Renew Communities.
+        </p>
+        <a href="contact.html" class="btn btn-orange btn-sm">Partner With Us</a>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
+          <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
+          
+          <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Discover</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="schools.html" style="color:var(--color-white); text-decoration:none;">Institutions</a></li>
+          <li><a href="community.html" style="color:var(--color-white); text-decoration:none;">Community Impact</a></li>
+          <li><a href="resources.html" style="color:var(--color-white); text-decoration:none;">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
+        <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
+        <div style="display:flex; gap:8px;">
+          <input type="email" placeholder="Your email" style="padding:10px; border-radius:6px; border:none; width:100%;">
+          <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:24px 0; font-size:13px; color:#E2E8F0 !important; font-weight:500;">
+      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: #FF4D00; font-weight:700; text-decoration:underline;">Contact Us</a>
     </div>
   </div>
 </footer>
@@ -178,20 +415,39 @@
 <script>
 let filters = { query: '', level: 'all', format: 'all', maxPrice: 30000, sort: 'popular', category: 'all', cpd: false };
 
+// Override the render function to match the new design requirements
+window.renderCourseCard = function(course) {
+  return `
+    <div class="card reveal" style="padding:0; overflow:hidden; display:flex; flex-direction:column; border:1px solid var(--border-subtle); box-shadow:var(--shadow-sm);">
+      <img src="${course.image}" alt="${course.title}" style="width:100%; height:200px; object-fit:cover;">
+      <div style="padding:var(--space-lg); display:flex; flex-direction:column; flex-grow:1;">
+        <span style="font-size:var(--text-xs); color:var(--color-primary); font-weight:700; margin-bottom:8px; text-transform:uppercase;">${course.category}</span>
+        <h3 class="font-heading text-lg mb-sm" style="color:var(--text-primary);">${course.title}</h3>
+        <p style="font-size:var(--text-sm); color:var(--text-secondary); flex-grow:1; margin-bottom:var(--space-md);">${course.description.substring(0, 100)}...</p>
+        
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:var(--space-lg); padding-bottom:var(--space-md); border-bottom:1px solid var(--border-subtle);">
+          <div style="font-size:var(--text-xs); color:var(--text-secondary);"><strong>Level:</strong> ${course.level}</div>
+          <div style="font-size:var(--text-xs); color:var(--text-secondary);"><strong>Audience:</strong> Educators</div>
+          <div style="font-size:var(--text-xs); color:var(--text-secondary);"><strong>Duration:</strong> ${course.duration}</div>
+        </div>
+        
+        <a href="course-detail.html?id=${course.id}" class="btn btn-outline btn-sm w-full" style="text-align:center;">View Details</a>
+      </div>
+    </div>
+  `;
+};
+
 function renderCourses() {
   const grid = document.getElementById('courses-grid');
   const options = { ...filters };
   if (filters.level !== 'all') options.level = filters.level;
-  if (filters.format !== 'all') options.format = filters.format;
   if (filters.category !== 'all') options.category = filters.category;
-  if (filters.maxPrice < 30000) options.maxPrice = filters.maxPrice;
-  if (filters.sort) options.sort = filters.sort;
   
   const results = window.filterCourses(options);
   document.getElementById('catalog-count').textContent = `Showing ${results.length} course${results.length !== 1 ? 's' : ''}`;
   
   if (results.length === 0) {
-    grid.innerHTML = '<div class="no-results"><div style="font-size:3rem;margin-bottom:1rem">🔍</div><h3 style="color:var(--text-primary);margin-bottom:0.5rem">No courses found</h3><p>Try adjusting your filters or search term.</p></div>';
+    grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:var(--space-4xl); color:var(--text-muted);">No courses found matching your criteria.</div>';
   } else {
     grid.innerHTML = results.map(c => window.renderCourseCard(c)).join('');
     initScrollReveal();
@@ -207,56 +463,24 @@ function quickFilter(btn, cat) {
   renderCourses();
 }
 
-function setFilter(key, val, btn) {
-  if (btn) {
-    btn.closest('.filter-options').querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
+function setFilter(key, val) {
   filters[key] = val;
   renderCourses();
 }
 
-function setSortFilter(val, btn) {
-  btn.closest('.filter-options').querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  filters.sort = val;
-  renderCourses();
-}
-
-function updatePriceFilter(val) {
-  filters.maxPrice = parseInt(val);
-  document.getElementById('price-label').textContent = val >= 30000 ? 'Any Price' : `KES ${parseInt(val).toLocaleString()}`;
-  renderCourses();
-}
-
-function setGridCols(cols) {
-  const grid = document.getElementById('courses-grid');
-  grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-}
-
-function resetFilters() {
-  filters = { query: '', level: 'all', format: 'all', maxPrice: 30000, sort: 'popular', category: 'all', cpd: false };
-  document.getElementById('price-range').value = 30000;
-  document.getElementById('price-label').textContent = 'Any Price';
-  document.getElementById('course-search').value = '';
-  document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('[data-quick="all"]').forEach(b => b.classList.add('active'));
+function toggleCPD(checkbox) {
+  filters.cpd = checkbox.checked;
   renderCourses();
 }
 
 // Search handler
 let searchTimeout;
-document.getElementById('course-search').addEventListener('input', (e) => {
-  clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(() => { filters.query = e.target.value; renderCourses(); }, 300);
-});
-
-// URL param pre-filter
-const urlParams = new URLSearchParams(window.location.search);
-const catParam = urlParams.get('cat');
-if (catParam) {
-  const catMap = { ict: 'ICT', cbe: 'Curriculum', ai: 'AI & Tech', cpd: 'CPD', digital: 'Digital Skills', leadership: 'Leadership', assessment: 'Assessment', online: 'Pedagogy' };
-  if (catMap[catParam]) filters.category = catMap[catParam];
+const _searchEl = document.getElementById('course-search');
+if (_searchEl) {
+  _searchEl.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => { filters.query = e.target.value; renderCourses(); }, 300);
+  });
 }
 
 document.addEventListener('DOMContentLoaded', renderCourses);

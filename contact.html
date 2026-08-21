@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact & Support | Instructify Kenya</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230D6E4F'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='Arial'>IK</text></svg>">
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css">
@@ -14,83 +14,269 @@
 
 <nav id="navbar" class="navbar">
   <div class="container">
-    <a href="index.html" class="nav-brand">
-      <div class="nav-logo">IK</div>
-      <div class="nav-brand-text"><span class="nav-brand-name">Instructify</span><span class="nav-brand-tagline">Kenya</span></div>
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya" style="display: inline-flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap;">
+      <div class="nav-brand-icon" style="display: inline-flex; align-items: center; justify-content: center; margin: 0; padding: 0; flex-shrink: 0; background: none; border: none; box-shadow: none;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="nav-brand-text-box" style="display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; white-space: nowrap; margin: 0; padding: 0; line-height: 1;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #FFFFFF; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #FF4D00; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
+      </div>
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="courses.html" class="nav-link">Courses</a></li>
       <li><a href="about.html" class="nav-link">About Us</a></li>
-      <li><a href="news.html" class="nav-link">Resources</a></li>
+      <li><a href="courses.html" class="nav-link">Courses</a></li>
+      
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
       <li><a href="contact.html" class="nav-link active">Contact</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="register.html" class="btn btn-primary btn-sm">Sign In</a>
+      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="courses.html" class="btn btn-orange btn-sm">Start Learning</a>
     </div>
   </div>
 </nav>
 
-<section class="courses-hero" style="background:var(--gradient-hero)">
+<!-- Hero Section -->
+<section class="hero-section" style="background:var(--bg-light); padding:calc(var(--nav-height) + var(--space-4xl)) 0 var(--space-3xl);">
   <div class="container text-center">
-    <span class="section-tag gold">📞 Get in Touch</span>
-    <h1 class="hero-heading" style="font-size:var(--text-3xl)">Contact &amp; Support</h1>
-    <p class="hero-subtitle" style="margin:0 auto">We are here to help teachers, trainers, institutions, and learners across Kenya.</p>
+    <h1 class="hero-heading" style="color:var(--text-primary); font-size:var(--text-4xl);">
+      Contact Instructify Kenya
+    </h1>
+    <p class="hero-subtitle" style="margin:0 auto; max-width:800px;">
+      Have a question, partnership idea, training request, or curriculum project? We would love to hear from you.
+    </p>
   </div>
 </section>
 
+<!-- Contact Information and Form Section -->
 <section class="section">
   <div class="container">
-    <div class="grid-2">
+    <div class="grid-2" style="align-items:flex-start;">
       <!-- Contact Info -->
-      <div class="card">
-        <h3 class="font-heading text-xl mb-lg">Instructify Kenya Headquarters</h3>
-        <div class="flex flex-col gap-md text-sm text-secondary mb-xl">
-          <div>📍 <strong>Location:</strong> Upper Hill Financial District, Nairobi, Kenya</div>
-          <div>📞 <strong>Phone:</strong> +254 700 123 456 / +254 733 987 654</div>
-          <div>📧 <strong>Email:</strong> info@instructify.ke / support@instructify.ke</div>
-          <div>🕒 <strong>Office Hours:</strong> Monday – Friday: 8:00 AM – 6:00 PM EAT</div>
+      <div class="card reveal-left" style="background:transparent; border:none; box-shadow:none; padding:0;">
+        <h2 class="font-heading text-2xl mb-lg">Get in Touch</h2>
+        <div style="display:flex; flex-direction:column; gap:var(--space-lg); margin-bottom:var(--space-xl);">
+          <div style="display:flex; gap:var(--space-md);">
+            <div style="width:44px; height:44px; border-radius:10px; background:var(--color-section-blue); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Email" role="img">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-heading text-md" style="margin-bottom:4px;">Email</h4>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm);">info@instructify.ke</p>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm);">support@instructify.ke</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:var(--space-md);">
+            <div style="width:44px; height:44px; border-radius:10px; background:var(--color-section-blue); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Phone and WhatsApp" role="img">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-heading text-md" style="margin-bottom:4px;">Phone / WhatsApp</h4>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm);">+254 700 123 456</p>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm);">+254 733 987 654</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:var(--space-md);">
+            <div style="width:44px; height:44px; border-radius:10px; background:var(--color-section-blue); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Location" role="img">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-heading text-md" style="margin-bottom:4px;">Location</h4>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm);">Upper Hill Financial District, Nairobi, Kenya</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:var(--space-md);">
+            <div style="width:44px; height:44px; border-radius:10px; background:var(--color-section-blue); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Business Hours" role="img">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-heading text-md" style="margin-bottom:4px;">Business Hours</h4>
+              <p style="color:var(--text-secondary); font-size:var(--text-sm);">Monday – Friday: 8:00 AM – 6:00 PM EAT</p>
+            </div>
+          </div>
         </div>
-        <div class="alert alert-info">
-          <span>ℹ️</span> <strong>Institutional Inquiries:</strong> Contact our team for customized school-wide ICT training and CBE integration programs.
+        <div class="alert" style="background:var(--color-primary-glow); border:1px solid var(--color-primary-light); border-radius:var(--border-radius-md); padding:var(--space-md); display:flex; gap:var(--space-sm);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;" aria-label="Notice" role="img">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span style="color:var(--text-primary); font-size:var(--text-sm);">We typically respond within 24–48 business hours.</span>
         </div>
       </div>
 
       <!-- Contact Form -->
-      <div class="card">
-        <h3 class="font-heading text-xl mb-md">Send Us a Message</h3>
+      <div class="card reveal-right" style="padding:var(--space-2xl); border:1px solid var(--border-subtle); box-shadow:var(--shadow-md);">
         <form onsubmit="handleContactSubmit(event)">
-          <div class="form-group mb-md">
-            <label class="form-label">Your Full Name</label>
-            <input type="text" class="form-input" placeholder="e.g. Jane Wanjiku" required>
+          <div class="grid-2" style="gap:var(--space-md);">
+            <div class="form-group mb-md">
+              <label class="form-label">Full Name <span style="color:red;">*</span></label>
+              <input type="text" class="form-input" placeholder="e.g. Jane Wanjiku" required>
+            </div>
+            <div class="form-group mb-md">
+              <label class="form-label">Email Address <span style="color:red;">*</span></label>
+              <input type="email" class="form-input" placeholder="jane@example.com" required>
+            </div>
           </div>
-          <div class="form-group mb-md">
-            <label class="form-label">Email Address</label>
-            <input type="email" class="form-input" placeholder="jane@example.com" required>
+          
+          <div class="grid-2" style="gap:var(--space-md);">
+            <div class="form-group mb-md">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-input" placeholder="e.g. +254 700 000 000">
+            </div>
+            <div class="form-group mb-md">
+              <label class="form-label">Organization / School Name</label>
+              <input type="text" class="form-input" placeholder="e.g. Alliance High School">
+            </div>
           </div>
+
           <div class="form-group mb-md">
-            <label class="form-label">Subject</label>
-            <select class="form-select">
+            <label class="form-label">Inquiry Type <span style="color:red;">*</span></label>
+            <select class="form-select" required>
+              <option value="" disabled selected>Select an option</option>
               <option>Course Inquiry</option>
-              <option>Institutional Partnership</option>
-              <option>Technical Support</option>
-              <option>Certificate Verification</option>
+              <option>Training Request</option>
+              <option>Consultancy</option>
+              <option>Curriculum Development</option>
+              <option>Partnership</option>
+              <option>General Inquiry</option>
             </select>
           </div>
+          
           <div class="form-group mb-lg">
-            <label class="form-label">Message</label>
-            <textarea class="form-input form-textarea" placeholder="How can we assist you?" required></textarea>
+            <label class="form-label">Message <span style="color:red;">*</span></label>
+            <textarea class="form-input form-textarea" placeholder="How can we assist you?" rows="5" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg w-full">🚀 Send Message</button>
+          
+          <button type="submit" class="btn btn-blue btn-lg w-full">Send Message</button>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="footer">
-  <div class="container text-center">
-    <div style="font-size:var(--text-xs);color:var(--text-muted)">© 2026 Instructify Kenya Ltd. All rights reserved.</div>
+<!-- Inquiry Cards Section -->
+<section class="section" style="background:var(--bg-light);">
+  <div class="container">
+    <div class="grid-4 stagger-children" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+      <!-- Card 1 -->
+      <div class="card reveal text-center" style="padding:var(--space-xl);">
+        <div style="width:52px; height:52px; border-radius:12px; background:var(--color-section-blue); display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-sm);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Course Support" role="img">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+            <path d="M6 6h10"/>
+            <path d="M6 10h10"/>
+          </svg>
+        </div>
+        <h4 class="font-heading text-md mb-xs">Course Support</h4>
+        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Get help with enrollment, certificates, or platform access.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="card reveal delay-100 text-center" style="padding:var(--space-xl);">
+        <div style="width:52px; height:52px; border-radius:12px; background:var(--color-section-blue); display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-sm);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Training & Workshops" role="img">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <h4 class="font-heading text-md mb-xs">Training & Workshops</h4>
+        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Request customized workshops for your institution.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="card reveal delay-200 text-center" style="padding:var(--space-xl);">
+        <div style="width:52px; height:52px; border-radius:12px; background:var(--color-section-orange); display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-sm);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Consultancy Services" role="img">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          </svg>
+        </div>
+        <h4 class="font-heading text-md mb-xs">Consultancy Services</h4>
+        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Discuss strategy, evaluation, or institutional transformation.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="card reveal delay-300 text-center" style="padding:var(--space-xl);">
+        <div style="width:52px; height:52px; border-radius:12px; background:var(--color-section-orange); display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-sm);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Curriculum Development" role="img">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+        </div>
+        <h4 class="font-heading text-md mb-xs">Curriculum Development</h4>
+        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Collaborate on designing competency-based frameworks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partnership CTA Section -->
+<section class="section text-center" style="background:var(--color-primary-bg); padding:var(--space-4xl) 20px;">
+  <div class="container" style="max-width:800px;">
+    <h2 class="font-heading" style="font-size:var(--text-3xl); margin-bottom:var(--space-md);">Partner With Instructify Kenya</h2>
+    <p style="font-size:var(--text-lg); color:var(--text-secondary); margin-bottom:var(--space-xl);">
+      We collaborate with schools, institutions, ministries, and organizations to design learning experiences that create lasting impact.
+    </p>
+    <a href="#hero" class="btn btn-blue btn-xl">Start a Conversation</a>
+  </div>
+</section>
+
+<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
+  <div class="container">
+    <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.12);">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span style="color: #FF4D00 !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span></h3>
+        <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
+          Ignite Curiosity. Transform Learning. Renew Communities.
+        </p>
+        <a href="contact.html" class="btn btn-orange btn-sm">Partner With Us</a>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
+          <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
+          
+          <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Discover</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="schools.html" style="color:var(--color-white); text-decoration:none;">Institutions</a></li>
+          <li><a href="community.html" style="color:var(--color-white); text-decoration:none;">Community Impact</a></li>
+          <li><a href="resources.html" style="color:var(--color-white); text-decoration:none;">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
+        <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
+        <div style="display:flex; gap:8px;">
+          <input type="email" placeholder="Your email" style="padding:10px; border-radius:6px; border:none; width:100%;">
+          <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:24px 0; font-size:13px; color:#E2E8F0 !important; font-weight:500;">
+      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: #FF4D00; font-weight:700; text-decoration:underline;">Contact Us</a>
+    </div>
   </div>
 </footer>
 

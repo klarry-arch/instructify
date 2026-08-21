@@ -181,19 +181,18 @@ window.isEnrolled = function(courseId) {
 window.enrollCourse = function(courseId) {
   const session = window.getSession ? window.getSession() : null;
   if (!session) {
+    localStorage.setItem('ik_return_to', JSON.stringify({ action: 'enroll', courseId, url: `checkout.html?id=${courseId}` }));
     window.showToast('Please log in to enroll in courses.', 'warning');
     setTimeout(() => window.location.href = 'register.html', 1200);
     return;
   }
-  
   if (window.isEnrolled(courseId)) {
     window.showToast('You are already enrolled in this course!', 'info');
+    setTimeout(() => window.location.href = 'dashboard-learner.html', 1200);
     return;
   }
-  
-  saveEnrollment(courseId);
-  window.showToast('Successfully enrolled! Redirecting to your dashboard...', 'success');
-  setTimeout(() => window.location.href = 'dashboard-learner.html', 1500);
+  // Route through payment flow — no free enrollment
+  window.location.href = `checkout.html?id=${encodeURIComponent(courseId)}`;
 };
 
 window.getUserEnrolledCourses = function() {
@@ -258,38 +257,121 @@ window.filterCourses = function(options = {}) {
 // ── Render Course Card ──────────────────────────────────────────
 window.renderCourseCard = function(course) {
   const enrolled = window.isEnrolled ? window.isEnrolled(course.id) : false;
+  const badgeText = course.badgeText || course.category;
+  const badgeClass = course.badge || 'badge-cpd';
+  
   return `
-    <div class="course-card reveal">
+    <div class="course-card reveal" data-course-id="${course.id}">
       <div class="course-card-image">
         <img src="${course.image}" alt="${course.title}" loading="lazy" 
-             onerror="this.parentElement.style.background='linear-gradient(135deg,#0D6E4F,#00B4D8)';this.style.display='none'">
-        <span class="course-card-badge ${course.badge}">${course.badgeText}</span>
+             onerror="this.parentElement.style.background='linear-gradient(135deg,#1E3A8A,#2563EB)';this.style.display='none'">
+        <span class="course-card-badge ${badgeClass}">${badgeText}</span>
         <button class="course-card-wishlist" onclick="toggleWishlist(this)" title="Add to wishlist">🤍</button>
       </div>
       <div class="course-card-body">
         <span class="course-card-category">${course.category}</span>
         <h3 class="course-card-title">${course.title}</h3>
+        ${course.description ? `<p class="course-card-description">${course.description.length > 100 ? course.description.substring(0, 100) + '...' : course.description}</p>` : ''}
         <div class="course-card-instructor">
-          <div class="instructor-avatar">${course.instructorAvatar}</div>
-          <span>${course.instructor}</span>
+          <div class="instructor-avatar">${course.instructorAvatar || 'IK'}</div>
+          <span>${course.instructor || 'Instructify Faculty'}</span>
         </div>
         <div class="course-card-stats">
-          <span class="rating">⭐ ${course.rating}</span>
-          <span>(${course.reviewCount.toLocaleString()})</span>
-          <span>• ${course.duration}</span>
-          <span>• ${course.level}</span>
+          <span class="rating">⭐ ${course.rating || '4.8'}</span>
+          <span>(${course.reviewCount ? course.reviewCount.toLocaleString() : '150'})</span>
+          <span>• ${course.duration || '6 weeks'}</span>
+          <span>• ${course.level || 'All Levels'}</span>
         </div>
-        ${course.cpd ? `<div style="margin-top:4px"><span class="badge badge-green">✅ CPD Accredited · ${course.cpdHours} hrs</span></div>` : ''}
+        ${course.cpd ? `<div style="margin-top:8px"><span class="badge badge-green" style="background:#ECFDF5; color:#059669; padding:4px 8px; border-radius:6px; font-size:11px; font-weight:600;">✅ CPD Accredited · ${course.cpdHours || 30} hrs</span></div>` : ''}
       </div>
       <div class="course-card-footer">
         <div class="course-price">
-          <span class="price-current">KES ${course.price.toLocaleString()}</span>
-          <span class="price-original">KES ${course.originalPrice.toLocaleString()}</span>
+          <span class="price-current">KES ${typeof course.price === 'number' ? course.price.toLocaleString() : course.price}</span>
+          ${course.originalPrice ? `<span class="price-original">KES ${course.originalPrice.toLocaleString()}</span>` : ''}
         </div>
-        <a href="course-detail.html?id=${course.id}" class="btn btn-primary btn-sm">
+        <a href="course-detail.html?id=${course.id}" class="btn btn-secondary btn-sm">
           ${enrolled ? '📚 Continue' : 'View Course'}
         </a>
       </div>
     </div>
   `;
+};
+
+// ── Wishlist Toggle ────────────────────────────────────────
+window.toggleWishlist = async function(btn) {
+  // Require auth
+  const session = window.getSession ? window.getSession() : null;
+  if (!session) {
+    window.showToast('Please log in to save courses to your wishlist.', 'warning');
+    setTimeout(() => window.location.href = 'register.html', 1200);
+    return;
+  }
+
+  const card = btn.closest('[data-course-id]') || btn.closest('.course-card');
+  const courseId = card ? card.getAttribute('data-course-id') :
+    (btn.dataset.courseId || null);
+  if (!courseId) return;
+
+  const isWishlisted = btn.classList.contains('wishlisted');
+
+  // Optimistic UI update
+  if (isWishlisted) {
+    btn.classList.remove('wishlisted');
+    btn.innerHTML = btn.textContent.includes('Save') ? '🤍 Save to Wishlist' : '🤍';
+    if (btn.title !== undefined) btn.title = 'Add to wishlist';
+  } else {
+    btn.classList.add('wishlisted');
+    btn.innerHTML = btn.textContent.includes('Save') ? '❤️ Saved to Wishlist' : '❤️';
+    if (btn.title !== undefined) btn.title = 'Remove from wishlist';
+  }
+
+  // Sync localStorage
+  const wishlist = JSON.parse(localStorage.getItem('ik_wishlist') || '[]');
+  if (isWishlisted) {
+    const idx = wishlist.indexOf(courseId);
+    if (idx > -1) wishlist.splice(idx, 1);
+  } else {
+    if (!wishlist.includes(courseId)) wishlist.push(courseId);
+  }
+  localStorage.setItem('ik_wishlist', JSON.stringify(wishlist));
+
+  // Sync server (non-blocking — UI already updated)
+  try {
+    await fetch('/api/wishlist', {
+      method: isWishlisted ? 'DELETE' : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: session.id, courseId }),
+    });
+  } catch { /* server sync is best-effort */ }
+
+  if (window.showToast) {
+    window.showToast(
+      isWishlisted ? 'Removed from wishlist' : 'Saved to wishlist ❤️',
+      'info',
+      2000
+    );
+  }
+};
+
+/**
+ * Load wishlist state from server and sync to localStorage.
+ * Call on page load to restore saved courses.
+ */
+window.loadServerWishlist = async function () {
+  const session = window.getSession ? window.getSession() : null;
+  if (!session) return;
+  try {
+    const res = await fetch(`/api/wishlist?userId=${encodeURIComponent(session.id)}`);
+    if (!res.ok) return;
+    const { wishlist } = await res.json();
+    localStorage.setItem('ik_wishlist', JSON.stringify(wishlist || []));
+    // Update any visible wishlist buttons
+    (wishlist || []).forEach(courseId => {
+      const btn = document.querySelector(`[data-course-id="${courseId}"] .course-card-wishlist`);
+      if (btn && !btn.classList.contains('wishlisted')) {
+        btn.classList.add('wishlisted');
+        btn.innerHTML = '❤️';
+      }
+    });
+  } catch { /* non-critical */ }
 };

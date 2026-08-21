@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News & Educational Insights | Instructify Kenya</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230D6E4F'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='Arial'>IK</text></svg>">
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css">
@@ -14,26 +14,39 @@
 
 <nav id="navbar" class="navbar">
   <div class="container">
-    <a href="index.html" class="nav-brand">
-      <div class="nav-logo">IK</div>
-      <div class="nav-brand-text"><span class="nav-brand-name">Instructify</span><span class="nav-brand-tagline">Kenya</span></div>
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya" style="display: inline-flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap;">
+      <div class="nav-brand-icon" style="display: inline-flex; align-items: center; justify-content: center; margin: 0; padding: 0; flex-shrink: 0; background: none; border: none; box-shadow: none;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="nav-brand-text-box" style="display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; white-space: nowrap; margin: 0; padding: 0; line-height: 1;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #FFFFFF; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #FF4D00; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
+      </div>
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="courses.html" class="nav-link">Courses</a></li>
       <li><a href="about.html" class="nav-link">About Us</a></li>
-      <li><a href="news.html" class="nav-link active">Resources</a></li>
+      <li><a href="courses.html" class="nav-link">Courses</a></li>
+      
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      
+      <li><a href="resources.html" class="nav-link active">Resources</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="register.html" class="btn btn-primary btn-sm">Sign In</a>
+      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="courses.html" class="btn btn-orange btn-sm">Start Learning</a>
     </div>
   </div>
 </nav>
 
-<section class="courses-hero" style="background:var(--gradient-hero)">
+<section class="courses-hero" style="background:var(--gradient-hero); padding:calc(var(--nav-height) + 48px) 0 48px 0;">
   <div class="container text-center">
-    <span class="section-tag teal">📰 News &amp; Resources</span>
+    <span class="section-tag teal" style="display:inline-flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg> News &amp; Resources</span>
     <h1 class="hero-heading" style="font-size:var(--text-3xl)">Educational Insights &amp; Updates</h1>
     <p class="hero-subtitle" style="margin:0 auto">Latest articles, guides, and policy updates on CBE, ICT integration, and teacher CPD in Kenya.</p>
   </div>
@@ -43,36 +56,36 @@
   <div class="container">
     <div class="grid-3">
       <article class="news-card">
-        <div class="news-card-image" style="background:linear-gradient(135deg,#0D6E4F,#14A06E)">
-          <span class="news-card-cat">📋 CBE</span>
-          <div style="font-size:3rem;opacity:0.3;text-align:center;padding-top:20px">📚</div>
+        <div class="news-card-image" style="background:linear-gradient(135deg,#B22206,#DC2E0A);display:flex;flex-direction:column;justify-content:space-between;padding:16px;">
+          <span class="news-card-cat" style="display:inline-flex;align-items:center;gap:4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg> CBE</span>
+          <div style="opacity:0.35;text-align:center;padding:10px 0;"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
         </div>
         <div class="news-card-body">
-          <div class="news-meta"><span>August 1, 2026</span> • <span>5 min read</span></div>
+          <div class="news-meta"><span>August 1, 2026</span> &mdash; <span>5 min read</span></div>
           <h3 class="news-title">Kenya's CBE at a Crossroads: How Digital Tools Are Accelerating Competency Development</h3>
-          <p class="news-excerpt">An in-depth analysis of how ICT integration is supporting Kenya's Grade 1–9 CBE implementation.</p>
+          <p class="news-excerpt">An in-depth analysis of how ICT integration is supporting Kenya's Grade 1&mdash;9 CBE implementation.</p>
         </div>
       </article>
 
       <article class="news-card">
-        <div class="news-card-image" style="background:linear-gradient(135deg,#00B4D8,#0077A8)">
-          <span class="news-card-cat">🤖 AI</span>
-          <div style="font-size:3rem;opacity:0.3;text-align:center;padding-top:20px">🤖</div>
+        <div class="news-card-image" style="background:linear-gradient(135deg,#00B4D8,#0077A8);display:flex;flex-direction:column;justify-content:space-between;padding:16px;">
+          <span class="news-card-cat" style="display:inline-flex;align-items:center;gap:4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/></svg> AI</span>
+          <div style="opacity:0.35;text-align:center;padding:10px 0;"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/></svg></div>
         </div>
         <div class="news-card-body">
-          <div class="news-meta"><span>July 28, 2026</span> • <span>7 min read</span></div>
+          <div class="news-meta"><span>July 28, 2026</span> &mdash; <span>7 min read</span></div>
           <h3 class="news-title">10 AI Tools Every Kenyan Teacher Should Know in 2026</h3>
-          <p class="news-excerpt">From AI lesson planners to automated assessment tools — transforming Kenyan classrooms.</p>
+          <p class="news-excerpt">From AI lesson planners to automated assessment tools &mdash; transforming Kenyan classrooms.</p>
         </div>
       </article>
 
       <article class="news-card">
-        <div class="news-card-image" style="background:linear-gradient(135deg,#F5A623,#C8841A)">
-          <span class="news-card-cat">🏅 CPD</span>
-          <div style="font-size:3rem;opacity:0.3;text-align:center;padding-top:20px">🎓</div>
+        <div class="news-card-image" style="background:linear-gradient(135deg,#F5A623,#C8841A);display:flex;flex-direction:column;justify-content:space-between;padding:16px;">
+          <span class="news-card-cat" style="display:inline-flex;align-items:center;gap:4px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg> CPD</span>
+          <div style="opacity:0.35;text-align:center;padding:10px 0;"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
         </div>
         <div class="news-card-body">
-          <div class="news-meta"><span>July 20, 2026</span> • <span>4 min read</span></div>
+          <div class="news-meta"><span>July 20, 2026</span> &mdash; <span>4 min read</span></div>
           <h3 class="news-title">TSC CPD Requirements 2026: Everything Teachers Need to Know</h3>
           <p class="news-excerpt">New TSC regulations require 40 CPD hours annually. Here's how to meet them.</p>
         </div>
@@ -81,9 +94,45 @@
   </div>
 </section>
 
-<footer class="footer">
-  <div class="container text-center">
-    <div style="font-size:var(--text-xs);color:var(--text-muted)">© 2026 Instructify Kenya Ltd. All rights reserved.</div>
+<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
+  <div class="container">
+    <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.12);">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span style="color: #FF4D00 !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span></h3>
+        <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
+          Ignite Curiosity. Transform Learning. Renew Communities.
+        </p>
+        <a href="contact.html" class="btn btn-orange btn-sm">Partner With Us</a>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
+          <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
+          
+          <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Discover</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="schools.html" style="color:var(--color-white); text-decoration:none;">Institutions</a></li>
+          <li><a href="community.html" style="color:var(--color-white); text-decoration:none;">Community Impact</a></li>
+          <li><a href="resources.html" style="color:var(--color-white); text-decoration:none;">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
+        <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
+        <div style="display:flex; gap:8px;">
+          <input type="email" placeholder="Your email" style="padding:10px; border-radius:6px; border:none; width:100%;">
+          <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:24px 0; font-size:13px; color:#E2E8F0 !important; font-weight:500;">
+      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: #FF4D00; font-weight:700; text-decoration:underline;">Contact Us</a>
+    </div>
   </div>
 </footer>
 

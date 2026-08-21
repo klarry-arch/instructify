@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Instructify Kenya — Transform Teaching and Learning Through Technology. Empowering teachers, trainers, and learners with professional development, digital literacy, ICT integration, and CBE training.">
-  <meta name="keywords" content="LMS Kenya, CPD Kenya, teacher training Kenya, ICT education, CBE curriculum, digital literacy Kenya, AI in education Kenya">
-  <title>Instructify Kenya | Transform Teaching and Learning Through Technology</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230057D9'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='Arial'>IK</text></svg>">
+  <meta name="description" content="Instructify Kenya — Ignite Curiosity. Transform Learning. Renew Communities. Empowering educators, learners, and institutions with LMS, CPD training, and consultancy.">
+  <title>Instructify Kenya | Modern Education Innovation Platform</title>
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css">
@@ -14,355 +13,72 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════
-     NAVIGATION
-══════════════════════════════════════════════════ -->
+<!-- Navigation -->
 <nav id="navbar" class="navbar">
   <div class="container">
-    <a href="index.html" class="nav-brand">
-      <div class="nav-logo">IK</div>
-      <div class="nav-brand-text">
-        <span class="nav-brand-name">Instructify</span>
-        <span class="nav-brand-tagline">Kenya</span>
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya" style="display: inline-flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap;">
+      <div class="nav-brand-icon" style="display: inline-flex; align-items: center; justify-content: center; margin: 0; padding: 0; flex-shrink: 0; background: none; border: none; box-shadow: none;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="nav-brand-text-box" style="display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; white-space: nowrap; margin: 0; padding: 0; line-height: 1;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #FFFFFF; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #FF4D00; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
       </div>
     </a>
-
     <ul class="nav-links">
       <li><a href="index.html" class="nav-link active">Home</a></li>
-      <li><a href="courses.html" class="nav-link">Courses</a></li>
       <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="courses.html" class="nav-link">Courses</a></li>
       <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
       <li><a href="resources.html" class="nav-link">Resources</a></li>
-      <li><a href="events.html" class="nav-link">Events</a></li>
-      <li><a href="news.html" class="nav-link">Blog</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
-
     <div class="nav-actions">
-      <a href="register.html" id="nav-login-btn" class="btn btn-outline btn-sm">Sign In</a>
-      <div id="nav-user-menu" style="display:none" class="flex items-center gap-sm">
-        <div class="avatar-placeholder avatar-sm" id="nav-user-avatar" style="font-size:0.75rem;background:var(--color-primary)"></div>
-        <a href="dashboard-learner.html" class="btn btn-primary btn-sm">Dashboard</a>
-      </div>
-      <a href="courses.html" class="btn btn-orange btn-sm">Enroll Today</a>
-      <button id="nav-hamburger" class="nav-hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="courses.html" class="btn btn-orange btn-sm">Start Learning</a>
     </div>
   </div>
 </nav>
 
-<!-- Mobile Nav -->
-<div id="nav-mobile" class="nav-mobile">
-  <div class="nav-mobile-links">
-    <a href="index.html" class="nav-mobile-link">🏠 Home</a>
-    <a href="courses.html" class="nav-mobile-link">📚 Courses</a>
-    <a href="about.html" class="nav-mobile-link">ℹ️ About Us</a>
-    <a href="consultancy.html" class="nav-mobile-link">💼 Consultancy</a>
-    <a href="resources.html" class="nav-mobile-link">📂 Resource Center</a>
-    <a href="events.html" class="nav-mobile-link">📅 Events &amp; Webinars</a>
-    <a href="news.html" class="nav-mobile-link">📰 Blog &amp; Insights</a>
-    <a href="contact.html" class="nav-mobile-link">📞 Contact</a>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:var(--space-sm)">
-    <a href="register.html" class="btn btn-outline">Sign In</a>
-    <a href="courses.html" class="btn btn-orange">Enroll Today</a>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════
-     1. HERO SECTION
-══════════════════════════════════════════════════ -->
-<section class="hero-section" id="hero" style="background:var(--gradient-hero)">
-  <div class="hero-orb hero-orb-1" style="background:rgba(0,87,217,0.35)"></div>
-  <div class="hero-orb hero-orb-2" style="background:rgba(255,107,0,0.2)"></div>
-  <div class="hero-orb hero-orb-3" style="background:rgba(255,193,7,0.15)"></div>
-
-  <div class="container hero-container">
-    <div class="hero-content animate-fade-in-left">
-      <div class="hero-tag">
-        <span class="tag-dot" style="background:var(--color-gold)"></span>
-        🇰🇪 Leading Educational Consultancy &amp; CPD Provider
-      </div>
-
-      <h1 class="hero-heading animate-fade-in-up delay-200" style="color:#fff">
-        Transform Teaching &amp; Learning
-        <span class="animated-gradient-text" style="background:linear-gradient(90deg, #FFC107, #FF6B00, #2575FC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block">
-          Through Technology
-        </span>
-      </h1>
-
-      <p class="hero-subtitle animate-fade-in-up delay-300">
-        Empowering teachers, trainers, and learners with professional development programs, 
-        digital literacy skills, ICT integration solutions, and Competency-Based Education (CBE) training.
-      </p>
-
-      <div class="hero-ctas animate-fade-in-up delay-400">
-        <a href="courses.html" class="btn btn-primary btn-xl">
-          <span>🚀</span> Explore Courses
-        </a>
-        <a href="courses.html" class="btn btn-orange btn-xl">
-          <span>⚡</span> Enroll Today
-        </a>
-        <a href="register.html?role=trainer" class="btn btn-gold btn-xl">
-          <span>🎓</span> Become a Trainer
-        </a>
-      </div>
-
-      <div class="hero-trust animate-fade-in-up delay-500">
-        <div class="trust-item"><span class="trust-icon">✅</span> TSC Accredited CPD</div>
-        <div class="trust-item"><span class="trust-icon">🎓</span> KICD Aligned</div>
-        <div class="trust-item"><span class="trust-icon">🏅</span> Verifiable Certificates</div>
-      </div>
-    </div>
-
-    <div class="hero-visual animate-fade-in-right delay-300">
-      <div class="hero-image-frame">
-        <img src="assets/images/hero.png" alt="Kenyan educators using technology" class="hero-main-image">
-        
-        <div class="hero-float-card hero-float-card-1 animate-float">
-          <div class="float-card-icon" style="background:rgba(255,193,7,0.15);color:var(--color-gold)">📚</div>
-          <div>
-            <div class="float-card-value">200+</div>
-            <div class="float-card-label">Active Courses</div>
-          </div>
-        </div>
-
-        <div class="hero-float-card hero-float-card-2 animate-float delay-300">
-          <div class="float-card-icon" style="background:rgba(255,107,0,0.15);color:var(--color-orange)">🏆</div>
-          <div>
-            <div class="float-card-value">98%</div>
-            <div class="float-card-label">Satisfaction Rate</div>
-          </div>
-        </div>
-
-        <div class="hero-float-card hero-float-card-3 animate-float delay-600">
-          <div class="float-card-icon" style="background:rgba(0,87,217,0.15);color:var(--color-primary-light)">🎓</div>
-          <div>
-            <div class="float-card-value">10K+</div>
-            <div class="float-card-label">Educators Trained</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════
-     2. LEARNING STATISTICS
-══════════════════════════════════════════════════ -->
-<section class="stats-bar section-sm">
+<!-- 1. Hero Section -->
+<section class="hero-section">
   <div class="container">
-    <div class="stats-bar-grid">
-      <div class="stats-bar-item reveal">
-        <div class="stats-bar-value" style="background:var(--gradient-blue);-webkit-background-clip:text;-webkit-text-fill-color:transparent">
-          <span data-counter="10000" data-suffix="+">0+</span>
+    <div class="hero-grid">
+      <div class="hero-text animate-fade-in-left">
+        <div class="hero-badge" style="background:var(--color-light-blue); color:var(--color-primary-blue);">
+          LMS &amp; Education Innovation Platform
         </div>
-        <div class="stats-bar-label">Teachers &amp; Learners</div>
-      </div>
-      <div class="stats-bar-divider"></div>
-      <div class="stats-bar-item reveal delay-100">
-        <div class="stats-bar-value" style="background:var(--gradient-orange);-webkit-background-clip:text;-webkit-text-fill-color:transparent">
-          <span data-counter="500" data-suffix="+">0+</span>
-        </div>
-        <div class="stats-bar-label">Certified Trainers</div>
-      </div>
-      <div class="stats-bar-divider"></div>
-      <div class="stats-bar-item reveal delay-200">
-        <div class="stats-bar-value" style="background:var(--gradient-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent">
-          <span data-counter="200" data-suffix="+">0+</span>
-        </div>
-        <div class="stats-bar-label">CPD Accredited Courses</div>
-      </div>
-      <div class="stats-bar-divider"></div>
-      <div class="stats-bar-item reveal delay-300">
-        <div class="stats-bar-value" style="background:var(--gradient-blue);-webkit-background-clip:text;-webkit-text-fill-color:transparent">
-          <span data-counter="47" data-suffix=" Counties">0</span>
-        </div>
-        <div class="stats-bar-label">National Coverage</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════
-     3. ABOUT INSTRUCTIFY KENYA
-══════════════════════════════════════════════════ -->
-<section class="about-strip section">
-  <div class="container">
-    <div class="about-strip-grid">
-      <div class="about-strip-image reveal-left">
-        <img src="assets/images/about.png" alt="Instructify Kenya workshop" class="about-img">
-        <div class="about-img-badge" style="border-color:var(--color-gold)">
-          <div class="about-badge-inner">
-            <span style="font-size:2rem">🏆</span>
-            <div>
-              <div style="font-family:var(--font-heading);font-weight:800;font-size:1.1rem;color:var(--color-gold)">7 Years</div>
-              <div style="font-size:0.75rem;color:var(--text-muted)">Educational Leadership</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="about-strip-content reveal-right">
-        <span class="section-tag blue">🌱 About Instructify Kenya</span>
-        <h2 class="section-title" style="text-align:left">
-          Leading Educational Consultancy &amp; <span class="text-gradient-gold">Digital Transformation</span>
-        </h2>
-        <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:var(--space-xl)">
-          Instructify Kenya is a premier educational consultancy specializing in Continuing Professional Development (CPD), 
-          ICT integration, CBE curriculum implementation, AI in education, and digital literacy training. We serve teachers, 
-          school leaders, institutions, government agencies, and NGOs across Africa.
+        <h1 class="hero-title" style="color: #0F172A; font-family: var(--font-heading); font-size: 52px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.03em;">
+          Ignite Curiosity.<br>
+          <span style="color: #FF4D00;">Transform Learning.</span><br>
+          Renew Communities.
+        </h1>
+        <p class="hero-subtitle" style="color: #334155 !important; font-family: var(--font-body); font-size: 1.125rem; font-style: normal; font-weight: 500; line-height: 1.65; max-width: 640px; margin-bottom: 28px;">
+          Whether you're a teacher seeking fresh strategies, a school rethinking its curriculum, or a learner hungry for deeper understanding—<strong>Instructify Academy</strong> is your launchpad. We blend local relevance with global insight, crafting experiences that are practical, poetic, and powerfully interdisciplinary.
         </p>
-
-        <div class="about-values-grid">
-          <div class="about-value-item">
-            <div class="about-value-icon" style="background:var(--color-primary-glow);color:var(--color-primary-light)">🎯</div>
-            <div>
-              <div class="about-value-title">Excellence &amp; Innovation</div>
-              <div class="about-value-text">World-class training aligned with national KICD &amp; TSC standards.</div>
-            </div>
-          </div>
-          <div class="about-value-item">
-            <div class="about-value-icon" style="background:var(--color-orange-glow);color:var(--color-orange)">💡</div>
-            <div>
-              <div class="about-value-title">Digital Empowerment</div>
-              <div class="about-value-text">Equipping educators with modern EdTech tools and AI techniques.</div>
-            </div>
-          </div>
-          <div class="about-value-item">
-            <div class="about-value-icon" style="background:var(--color-gold-glow);color:var(--color-gold)">🤝</div>
-            <div>
-              <div class="about-value-title">Inclusion &amp; Growth</div>
-              <div class="about-value-text">Accessible lifelong learning for urban and rural schools alike.</div>
-            </div>
-          </div>
-          <div class="about-value-item">
-            <div class="about-value-icon" style="background:rgba(40,167,69,0.15);color:var(--color-success)">🔒</div>
-            <div>
-              <div class="about-value-title">Integrity &amp; Impact</div>
-              <div class="about-value-text">Transparent digital certification with verifiable credit hours.</div>
-            </div>
-          </div>
+        <div class="hero-ctas">
+          <a href="courses.html" class="btn btn-orange btn-lg">Start Learning</a>
+          <a href="contact.html" class="btn btn-outline btn-lg">Partner With Us</a>
         </div>
-
-        <div style="margin-top:var(--space-xl);display:flex;gap:var(--space-md);flex-wrap:wrap">
-          <a href="about.html" class="btn btn-primary">Discover Our Mission</a>
-          <a href="consultancy.html" class="btn btn-outline">Consultancy Services</a>
+        
+        <!-- Proof Points / Features -->
+        <div class="hero-trust">
+          <div class="trust-item"><span style="color:var(--color-growth-green);">✔</span> Practical Training</div>
+          <div class="trust-item"><span style="color:var(--color-growth-green);">✔</span> Digital Learning</div>
+          <div class="trust-item"><span style="color:var(--color-growth-green);">✔</span> Expert Consultancy</div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════
-     4. FEATURED TRAINING PROGRAMS
-══════════════════════════════════════════════════ -->
-<section class="section" style="background:var(--bg-surface)" id="courses">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag gold">📚 Featured Training Programs</span>
-      <h2 class="section-title">Acquire <span class="text-gradient-orange">In-Demand Skills</span> &amp; CPD Credits</h2>
-      <p class="section-subtitle">
-        Explore accredited programs in ICT Integration, CBE Curriculum, AI in Education, and Digital Literacy.
-      </p>
-    </div>
-
-    <div id="featured-courses-grid" class="grid-3 stagger-children">
-      <!-- JS rendered -->
-    </div>
-
-    <div style="text-align:center;margin-top:var(--space-3xl)">
-      <a href="courses.html" class="btn btn-orange btn-lg">Explore Full Course Catalog →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════
-     5. CONSULTANCY SERVICES
-══════════════════════════════════════════════════ -->
-<section class="section" id="consultancy">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag blue">💼 Institutional Advisory</span>
-      <h2 class="section-title">Educational Consultancy &amp; <span class="text-gradient-blue">Institutional Solutions</span></h2>
-      <p class="section-subtitle">We partner with schools, universities, ministries, and NGOs to drive digital transformation and curriculum innovation.</p>
-    </div>
-
-    <div class="grid-3 stagger-children">
-      <div class="card reveal">
-        <div style="font-size:2.5rem;margin-bottom:var(--space-md)">📐</div>
-        <h3 class="font-heading text-lg mb-sm">Curriculum Development</h3>
-        <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.6">Designing competency-based learning outcomes, module frameworks, and digital courseware for institutions.</p>
-      </div>
-      <div class="card reveal delay-100">
-        <div style="font-size:2.5rem;margin-bottom:var(--space-md)">💻</div>
-        <h3 class="font-heading text-lg mb-sm">ICT Integration Strategies</h3>
-        <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.6">Helping schools roll out smart classrooms, LMS infrastructures, device management, and digital pedagogy adoption plans.</p>
-      </div>
-      <div class="card reveal delay-200">
-        <div style="font-size:2.5rem;margin-bottom:var(--space-md)">🏢</div>
-        <h3 class="font-heading text-lg mb-sm">Institutional Capacity Building</h3>
-        <p style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.6">Custom professional development programs, leadership retreats, and school-wide digital competency audits.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════
-     6. WHY CHOOSE US
-══════════════════════════════════════════════════ -->
-<section class="section why-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag gold">⭐ Why Choose Instructify Kenya</span>
-      <h2 class="section-title">Built for <span class="text-gradient-gold">Educational Excellence</span></h2>
-    </div>
-
-    <div class="grid-3 stagger-children">
-      <div class="why-card reveal">
-        <div class="why-icon" style="background:var(--color-primary-glow)"><span>✅</span></div>
-        <h3 class="why-title">Accredited CPD Programs</h3>
-        <p class="why-desc">All courses offer recognized CPD points compliant with TSC requirements and KICD standards.</p>
-      </div>
-      <div class="why-card reveal delay-100">
-        <div class="why-icon" style="background:var(--color-orange-glow)"><span>👨‍🏫</span></div>
-        <h3 class="why-title">Expert Trainer Network</h3>
-        <p class="why-desc">Learn directly from certified university professors, KICD developers, and ICT specialists.</p>
-      </div>
-      <div class="why-card reveal delay-200">
-        <div class="why-icon" style="background:var(--color-gold-glow)"><span>📱</span></div>
-        <h3 class="why-title">Flexible Digital Learning</h3>
-        <p class="why-desc">Access interactive video modules, quizzes, and live webinars on any mobile or desktop device.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════
-     7. SUCCESS STORIES
-══════════════════════════════════════════════════ -->
-<section class="section testimonials-section" id="testimonials">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag orange">💬 Success Stories</span>
-      <h2 class="section-title">What Our <span class="text-gradient-orange">Educators Say</span></h2>
-    </div>
-
-    <div class="testimonials-carousel reveal">
-      <div class="testimonials-track" id="testimonials-track">
-        <div class="testimonial-card active">
-          <div class="testimonial-quote" style="color:var(--color-orange)">❝</div>
-          <p class="testimonial-text">
-            "Instructify Kenya's ICT Integration program transformed how I design my math lessons. 
-            My Grade 7 students are now actively engaged with interactive digital tasks daily!"
-          </p>
-          <div class="testimonial-author">
-            <div class="avatar-placeholder avatar-md" style="background:var(--gradient-blue)">JM</div>
-            <div>
-              <div class="testimonial-name">James Mwangi</div>
-              <div class="testimonial-role">Mathematics Educator, Alliance High School</div>
-            </div>
+      <div class="hero-visual animate-fade-in-right delay-200">
+        <img src="assets/images/hero.png" alt="Kenyan educators collaborating" class="hero-img">
+        <div class="hero-floating-card">
+          <div class="icon" style="background:var(--color-light-orange); color: var(--color-accent);">🎓</div>
+          <div>
+            <strong>10,000+</strong>
+            <span>Active Learners</span>
           </div>
         </div>
       </div>
@@ -370,173 +86,195 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
-     8. PARTNERS & INSTITUTIONS
-══════════════════════════════════════════════════ -->
-<section class="partners-section">
+<!-- 2. Impact Metrics Strip -->
+<section class="impact-strip" style="background:var(--color-deep-navy); color:var(--color-white); padding:40px 0;">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag blue">🤝 Partner Institutions</span>
-      <h2 class="section-title" style="font-size:var(--text-2xl)">Collaborating Organizations &amp; Clients</h2>
-    </div>
-    <div class="ticker-wrapper">
-      <div class="ticker-track partners-track">
-        <div class="partner-item">🏫 Ministry of Education</div>
-        <div class="partner-item">📋 KICD</div>
-        <div class="partner-item">👩‍🏫 TSC Kenya</div>
-        <div class="partner-item">🎓 University of Nairobi</div>
-        <div class="partner-item">💻 Microsoft EDU</div>
-        <div class="partner-item">🌍 UNESCO Kenya</div>
-        <div class="partner-item">📚 KEPSHA</div>
+    <div class="grid-4 text-center">
+      <div>
+        <div style="font-size:36px; font-weight:800; ">50,000+</div>
+        <div style="font-size:14px; opacity:0.8;">Learners Reached</div>
+      </div>
+      <div>
+        <div style="font-size:36px; font-weight:800; ">1,200+</div>
+        <div style="font-size:14px; opacity:0.8;">Schools Supported</div>
+      </div>
+      <div>
+        <div style="font-size:36px; font-weight:800; ">47</div>
+        <div style="font-size:14px; opacity:0.8;">Counties Impacted</div>
+      </div>
+      <div>
+        <div style="font-size:36px; font-weight:800; ">98%</div>
+        <div style="font-size:14px; opacity:0.8;">Partner Satisfaction</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
-     9. LATEST BLOG ARTICLES & INSIGHTS
-══════════════════════════════════════════════════ -->
-<section class="section" id="news">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag orange">📰 Knowledge Hub &amp; Blog</span>
-      <h2 class="section-title">Latest Articles &amp; <span class="text-gradient-orange">EdTech Insights</span></h2>
-    </div>
+<!-- 3. Learning Model & Benefits -->
+<section class="section" style="background:var(--color-soft-grey);">
+  <div class="container text-center">
+    <span class="section-tag blue">OUR APPROACH</span>
+    <h2 class="section-title">The Instructify Learning Model</h2>
+    <p class="section-subtitle">A clear, actionable journey from discovery to transformation.</p>
 
-    <div class="grid-3 stagger-children">
-      <article class="news-card reveal">
-        <div class="news-card-image" style="background:var(--gradient-blue)">
-          <span class="news-card-cat" style="background:var(--color-primary)">🤖 AI in Education</span>
-          <div style="font-size:3rem;opacity:0.3;text-align:center;padding-top:20px">🤖</div>
-        </div>
-        <div class="news-card-body">
-          <div class="news-meta"><span>August 2026</span> • <span>6 min read</span></div>
-          <h3 class="news-title">Integrating Artificial Intelligence into Teaching and Learning</h3>
-          <p class="news-excerpt">Practical AI tools for lesson preparation, automated grading, and personalized learner support in Kenya.</p>
-        </div>
-      </article>
-
-      <article class="news-card reveal delay-100">
-        <div class="news-card-image" style="background:var(--gradient-orange)">
-          <span class="news-card-cat" style="background:var(--color-orange)">📋 CBE Framework</span>
-          <div style="font-size:3rem;opacity:0.3;text-align:center;padding-top:20px">📚</div>
-        </div>
-        <div class="news-card-body">
-          <div class="news-meta"><span>July 2026</span> • <span>5 min read</span></div>
-          <h3 class="news-title">Competency-Based Education Best Practices for 2026</h3>
-          <p class="news-excerpt">Proven classroom strategies for rubric-based assessment, learner portfolios, and competency tracking.</p>
-        </div>
-      </article>
-
-      <article class="news-card reveal delay-200">
-        <div class="news-card-image" style="background:var(--gradient-gold)">
-          <span class="news-card-cat" style="background:var(--color-gold-dark);color:#fff">💻 Digital Skills</span>
-          <div style="font-size:3rem;opacity:0.3;text-align:center;padding-top:20px">📱</div>
-        </div>
-        <div class="news-card-body">
-          <div class="news-meta"><span>July 2026</span> • <span>4 min read</span></div>
-          <h3 class="news-title">Digital Skills Every Teacher Needs in 2026</h3>
-          <p class="news-excerpt">A comprehensive guide to essential ICT competencies for modern African educators.</p>
-        </div>
-      </article>
+    <div class="grid-4 text-left" style="margin-top:40px;">
+      <div class="card" style="padding:32px; border-radius:16px;">
+        <div style="font-size:32px; margin-bottom:16px;">🔍</div>
+        <h3 style="font-size:20px; font-weight:700; color:var(--color-deep-navy); margin-bottom:8px;">1. Discover</h3>
+        <p style="font-size:15px; color:var(--text-body);">Identify gaps in curriculum, pedagogy, or digital skills through our expert advisory.</p>
+      </div>
+      <div class="card" style="padding:32px; border-radius:16px;">
+        <div style="font-size:32px; margin-bottom:16px;">📚</div>
+        <h3 style="font-size:20px; font-weight:700; color:var(--color-deep-navy); margin-bottom:8px;">2. Learn</h3>
+        <p style="font-size:15px; color:var(--text-body);">Engage with our LMS courses, hands-on workshops, and interactive CPD training.</p>
+      </div>
+      <div class="card" style="padding:32px; border-radius:16px;">
+        <div style="font-size:32px; margin-bottom:16px;">🛠️</div>
+        <h3 style="font-size:20px; font-weight:700; color:var(--color-deep-navy); margin-bottom:8px;">3. Apply</h3>
+        <p style="font-size:15px; color:var(--text-body);">Implement practical frameworks, lesson plans, and EdTech tools directly in the classroom.</p>
+      </div>
+      <div class="card" style="padding:32px; border-radius:16px;">
+        <div style="font-size:32px; margin-bottom:16px;">🌱</div>
+        <h3 style="font-size:20px; font-weight:700; color:var(--color-deep-navy); margin-bottom:8px;">4. Transform</h3>
+        <p style="font-size:15px; color:var(--text-body);">Witness improved learner outcomes, institutional growth, and community renewal.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
-     10. EVENTS & WEBINARS
-══════════════════════════════════════════════════ -->
-<section class="section" style="background:var(--bg-surface)">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag gold">📅 Upcoming Events &amp; Webinars</span>
-      <h2 class="section-title">Join Live Workshops &amp; <span class="text-gradient-gold">Masterclasses</span></h2>
-    </div>
+<!-- 4. Service Pathways -->
+<section class="section" style="background:var(--color-white);">
+  <div class="container text-center">
+    <span class="section-tag orange">HOW WE HELP</span>
+    <h2 class="section-title">Educational Pathways</h2>
+    <p class="section-subtitle">Tailored solutions for every stakeholder in the learning ecosystem.</p>
 
-    <div class="grid-2">
-      <div class="card flex gap-md items-center">
-        <div style="background:var(--color-orange-glow);color:var(--color-orange);padding:16px 20px;border-radius:var(--border-radius-md);text-align:center">
-          <div style="font-size:1.5rem;font-weight:800">18</div>
-          <div style="font-size:0.7rem;font-weight:700">AUG</div>
-        </div>
-        <div>
-          <h4 class="font-heading text-md">AI Tools for CBE Assessment Creation</h4>
-          <div style="font-size:var(--text-xs);color:var(--text-muted);margin:4px 0">Live Online Webinar • 4:00 PM - 5:30 PM EAT</div>
-          <button onclick="showToast('Webinar seat reserved! Check your email for access details.','success')" class="btn btn-orange btn-sm">Reserve Seat</button>
+    <div class="grid-3 text-left" style="margin-top:40px;">
+      <!-- Pathway 1 -->
+      <div class="card pathway-card">
+        <img src="assets/images/course-digital.png" alt="Educator Training" style="width:100%; height:200px; object-fit:cover; border-radius:12px 12px 0 0; margin-bottom:20px;">
+        <div style="padding:0 24px 24px 24px;">
+          <h3 style="font-size:22px; font-weight:700; color:var(--color-deep-navy); margin-bottom:12px;">For Educators</h3>
+          <p style="font-size:15px; color:var(--text-body); margin-bottom:24px;">Accredited CPD programs, digital literacy, and modern pedagogical skills.</p>
+          <a href="training.html" class="btn btn-blue btn-sm">Explore Training →</a>
         </div>
       </div>
-
-      <div class="card flex gap-md items-center">
-        <div style="background:var(--color-primary-glow);color:var(--color-primary-light);padding:16px 20px;border-radius:var(--border-radius-md);text-align:center">
-          <div style="font-size:1.5rem;font-weight:800">25</div>
-          <div style="font-size:0.7rem;font-weight:700">AUG</div>
+      <!-- Pathway 2 -->
+      <div class="card pathway-card">
+        <img src="assets/images/course-cbe.png" alt="School Consultancy" style="width:100%; height:200px; object-fit:cover; border-radius:12px 12px 0 0; margin-bottom:20px;">
+        <div style="padding:0 24px 24px 24px;">
+          <h3 style="font-size:22px; font-weight:700; color:var(--color-deep-navy); margin-bottom:12px;">For Schools &amp; Institutions</h3>
+          <p style="font-size:15px; color:var(--text-body); margin-bottom:24px;">Strategic advisory, curriculum alignment, and institutional capacity building.</p>
+          <a href="schools.html" class="btn btn-blue btn-sm">Institutional Services →</a>
         </div>
-        <div>
-          <h4 class="font-heading text-md">National ICT Integration Masterclass</h4>
-          <div style="font-size:var(--text-xs);color:var(--text-muted);margin:4px 0">Blended Workshop • Nairobi &amp; Online</div>
-          <button onclick="showToast('Workshop registration successful!','success')" class="btn btn-primary btn-sm">Register Free</button>
+      </div>
+      <!-- Pathway 3 -->
+      <div class="card pathway-card">
+        <img src="assets/images/course-ai.png" alt="Online Learning" style="width:100%; height:200px; object-fit:cover; border-radius:12px 12px 0 0; margin-bottom:20px;">
+        <div style="padding:0 24px 24px 24px;">
+          <h3 style="font-size:22px; font-weight:700; color:var(--color-deep-navy); margin-bottom:12px;">For Online Learners</h3>
+          <p style="font-size:15px; color:var(--text-body); margin-bottom:24px;">Access our modern LMS, self-paced courses, and interactive resources anytime.</p>
+          <a href="courses.html" class="btn btn-blue btn-sm">View Course Catalog →</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════════════ -->
-<footer class="footer">
+<!-- 5. Testimonials (Proof Points) -->
+<section class="section" style="background:var(--color-soft-grey);">
+  <div class="container text-center">
+    <span class="section-tag blue">SUCCESS STORIES</span>
+    <h2 class="section-title">Trusted by Educators Across Kenya</h2>
+    
+    <div class="grid-3 text-left" style="margin-top:40px;">
+      <div class="card" style="padding:32px; border-radius:16px;">
+        <div style="color: var(--color-accent); font-size:20px; margin-bottom:16px;">★★★★★</div>
+        <p style="font-size:15px; color:var(--text-body); font-style:italic; margin-bottom:24px;">"The digital literacy training transformed how our teachers deliver lessons. Instructify Kenya provides practical tools that work in real classrooms."</p>
+        <div style="font-weight:700; color:var(--color-deep-navy);">Sarah M.</div>
+        <div style="font-size:13px; color:var(--text-muted);">High School Principal, Nairobi</div>
+      </div>
+      <div class="card" style="padding:32px; border-radius:16px;">
+        <div style="color: var(--color-accent); font-size:20px; margin-bottom:16px;">★★★★★</div>
+        <p style="font-size:15px; color:var(--text-body); font-style:italic; margin-bottom:24px;">"Their consultancy on CBC implementation saved our institution months of planning. Highly professional and deeply contextualized."</p>
+        <div style="font-weight:700; color:var(--color-deep-navy);">David K.</div>
+        <div style="font-size:13px; color:var(--text-muted);">Director of Education NGO</div>
+      </div>
+      <div class="card" style="padding:32px; border-radius:16px;">
+        <div style="color: var(--color-accent); font-size:20px; margin-bottom:16px;">★★★★★</div>
+        <p style="font-size:15px; color:var(--text-body); font-style:italic; margin-bottom:24px;">"The online LMS is intuitive, and the CPD courses are engaging. I finally feel confident integrating AI into my daily lesson planning."</p>
+        <div style="font-weight:700; color:var(--color-deep-navy);">Mercy W.</div>
+        <div style="font-size:13px; color:var(--text-muted);">Primary School Teacher</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Lead Inquiry Form Section -->
+<section class="section" style="background:var(--color-white);">
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-brand" style="margin-bottom:var(--space-md);display:inline-flex">
-          <div class="nav-logo">IK</div>
-          <div class="nav-brand-text">
-            <span class="nav-brand-name">Instructify Kenya</span>
-            <span class="nav-brand-tagline">Transforming Teaching</span>
-          </div>
-        </a>
-        <p>Kenya's leading educational consultancy and Learning Management System for CPD, ICT Integration, and Competency-Based Education.</p>
-        <div class="footer-social">
-          <a href="#" class="social-link">𝕏</a>
-          <a href="#" class="social-link">f</a>
-          <a href="#" class="social-link">in</a>
-          <a href="#" class="social-link">💬</a>
-        </div>
+    <div class="grid-2" style="align-items:center; background:var(--color-light-blue); border-radius:24px; overflow:hidden;">
+      <div style="padding:64px 48px;">
+        <h2 style="font-size:36px; font-weight:800; color:var(--color-deep-navy); margin-bottom:16px;">Ready to Transform Your Learning Environment?</h2>
+        <p style="font-size:16px; color:var(--text-body); margin-bottom:32px; line-height:1.6;">Book a free consultation with our educational experts to discuss your school’s training needs, curriculum design, or EdTech integration.</p>
+        <form style="display:flex; flex-direction:column; gap:16px;">
+          <input type="text" placeholder="Your Name" style="padding:16px; border:1px solid #CBD5E1; border-radius:8px; width:100%; " required>
+          <input type="email" placeholder="Email Address" style="padding:16px; border:1px solid #CBD5E1; border-radius:8px; width:100%; " required>
+          <select style="padding:16px; border:1px solid #CBD5E1; border-radius:8px; width:100%; " required>
+            <option value="">What are you interested in?</option>
+            <option value="training">Teacher Training</option>
+            <option value="consultancy">School Consultancy</option>
+            <option value="curriculum">Curriculum Development</option>
+            <option value="lms">LMS Platform Access</option>
+          </select>
+          <button type="submit" class="btn btn-orange btn-lg" style="width:100%; border:none; cursor:pointer;">Book Consultation</button>
+        </form>
       </div>
-
-      <div class="footer-section">
-        <h4>Training Programs</h4>
-        <div class="footer-links">
-          <a href="courses.html?cat=ict" class="footer-link">→ ICT Integration</a>
-          <a href="courses.html?cat=cbe" class="footer-link">→ CBE Curriculum</a>
-          <a href="courses.html?cat=ai" class="footer-link">→ AI in Education</a>
-          <a href="courses.html?cat=digital" class="footer-link">→ Digital Literacy</a>
-        </div>
+      <div style="height:100%; background:url('assets/images/about.png') center/cover;">
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="footer-section">
-        <h4>Explore</h4>
-        <div class="footer-links">
-          <a href="about.html" class="footer-link">→ About Us</a>
-          <a href="consultancy.html" class="footer-link">→ Consultancy</a>
-          <a href="resources.html" class="footer-link">→ Resource Center</a>
-          <a href="news.html" class="footer-link">→ Blog &amp; Insights</a>
-        </div>
+<!-- Footer -->
+<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
+  <div class="container">
+    <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.12);">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span style="color: #FF4D00 !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span></h3>
+        <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
+          Ignite Curiosity. Transform Learning. Renew Communities.
+        </p>
+        <a href="contact.html" class="btn btn-orange btn-sm">Partner With Us</a>
       </div>
-
-      <div class="footer-section">
-        <h4>Contact</h4>
-        <div class="footer-links">
-          <div class="footer-link">📍 Nairobi, Kenya</div>
-          <div class="footer-link">📞 +254 700 123 456</div>
-          <div class="footer-link">📧 info@instructify.ke</div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
+          <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
+          
+          <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Discover</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="schools.html" style="color:var(--color-white); text-decoration:none;">Institutions</a></li>
+          <li><a href="community.html" style="color:var(--color-white); text-decoration:none;">Community Impact</a></li>
+          <li><a href="resources.html" style="color:var(--color-white); text-decoration:none;">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
+        <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
+        <div style="display:flex; gap:8px;">
+          <input type="email" placeholder="Your email" style="padding:10px; border-radius:6px; border:none; width:100%;">
+          <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
         </div>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 Instructify Kenya Ltd. All rights reserved.</span>
-      <span style="color:var(--color-gold)">Empowering Educators Through Technology</span>
+    <div style="text-align:center; padding:24px 0; font-size:13px; color:#E2E8F0 !important; font-weight:500;">
+      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: #FF4D00; font-weight:700; text-decoration:underline;">Contact Us</a>
     </div>
   </div>
 </footer>

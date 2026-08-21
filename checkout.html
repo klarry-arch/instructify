@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enroll & Checkout | Instructify Kenya</title>
+  <meta name="description" content="Securely complete your course enrollment on Instructify Kenya. Pay via M-Pesa or card.">
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <!-- Paystack Inline JS — loaded async; CheckoutEngine checks availability -->
+  <script src="https://js.paystack.co/v1/inline.js" async></script>
+  <style>
+    .checkout-page {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 60%, #172554 100%);
+      padding: calc(var(--nav-height, 72px) + 2rem) 0 4rem;
+    }
+    .checkout-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .checkout-grid { grid-template-columns: 1fr; } }
+
+    /* ── Order Summary Card ── */
+    .order-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 2rem;
+      color: #fff;
+      position: sticky;
+      top: calc(var(--nav-height, 72px) + 1rem);
+    }
+    .order-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+    .order-card-title { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; line-height: 1.35; margin-bottom: 1.5rem; }
+    .order-card-divider { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 1rem 0; }
+    .order-card-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: rgba(255,255,255,0.75); margin-bottom: 8px; }
+    .order-card-total { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #FF4D00; line-height: 1; }
+    .order-card-original { font-size: 0.85rem; color: rgba(255,255,255,0.4); text-decoration: line-through; margin-top: 2px; }
+    .order-guarantee { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
+
+    /* ── Checkout Form Card ── */
+    .form-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+    }
+    .form-card-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #0F172A; margin-bottom: 0.25rem; }
+    .form-card-sub { color: #64748B; font-size: 0.9rem; margin-bottom: 1.75rem; }
+    .step-indicator { display: flex; gap: 8px; margin-bottom: 2rem; }
+    .step { flex: 1; height: 4px; border-radius: 4px; background: #E2E8F0; transition: background 0.3s; }
+    .step.active { background: #1E3A8A; }
+    .step.done { background: var(--color-tertiary, #059669); }
+
+    /* ── Form fields ── */
+    .field-group { margin-bottom: 1.25rem; }
+    .field-label { display: block; font-weight: 600; font-size: 0.875rem; color: #374151; margin-bottom: 6px; }
+    .field-input {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1.5px solid #D1D5DB; border-radius: 10px;
+      font-family: var(--font-body); font-size: 0.95rem; color: #111827;
+      background: #F9FAFB; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+    }
+    .field-input:focus { border-color: #1E3A8A; box-shadow: 0 0 0 3px rgba(30,58,138,0.1); background: #fff; }
+    .field-input.error { border-color: #EF4444; }
+    .field-error { font-size: 0.78rem; color: #EF4444; margin-top: 4px; display: none; }
+    .field-error.visible { display: block; }
+    .field-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 480px) { .field-grid-2 { grid-template-columns: 1fr; } }
+    .field-hint { font-size: 0.78rem; color: #94A3B8; margin-top: 4px; }
+
+    /* ── Payment method tabs ── */
+    .pay-method-tabs { display: flex; gap: 10px; margin-bottom: 1.5rem; }
+    .pay-method-tab {
+      flex: 1; padding: 14px 8px; border: 2px solid #E2E8F0;
+      border-radius: 12px; background: #F9FAFB; cursor: pointer;
+      transition: all 0.2s; text-align: center;
+    }
+    .pay-method-tab:hover { border-color: #1E3A8A; }
+    .pay-method-tab.active { border-color: #1E3A8A; background: #EFF6FF; }
+    .pay-method-tab .tab-icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
+    .pay-method-tab .tab-name { font-size: 0.7rem; font-weight: 700; color: #374151; letter-spacing: 0.05em; text-transform: uppercase; }
+    .pay-method-tab.active .tab-name { color: #1E3A8A; }
+    .pay-panel { display: none; }
+    .pay-panel.active { display: block; }
+
+    /* ── Status screens ── */
+    .status-screen { text-align: center; padding: 2rem 1rem; }
+    .status-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 1.25rem; }
+    .status-icon.spin { animation: spin 1.2s linear infinite; }
+    .status-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #111827; margin-bottom: 0.5rem; }
+    .status-sub { color: #64748B; font-size: 0.9rem; line-height: 1.6; max-width: 360px; margin: 0 auto 1.5rem; }
+    .status-ref { font-size: 0.8rem; color: #94A3B8; background: #F1F5F9; border-radius: 8px; padding: 8px 14px; display: inline-block; margin-bottom: 1.5rem; }
+    .status-ref strong { color: #1E3A8A; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    /* ── Submit button ── */
+    .btn-enroll {
+      width: 100%; padding: 16px;
+      background: linear-gradient(135deg, #DC2E0A 0%, #B22206 100%);
+      color: #fff; font-family: var(--font-heading); font-weight: 800;
+      font-size: 1.05rem; border: none; border-radius: 99px;
+      cursor: pointer; transition: all 0.2s;
+      box-shadow: 0 6px 20px rgba(220,46,10,0.35);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-enroll:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(220,46,10,0.45); }
+    .btn-enroll:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .btn-secondary-outline {
+      width: 100%; padding: 13px;
+      background: transparent; color: #1E3A8A;
+      border: 1.5px solid #CBD5E1; border-radius: 99px;
+      font-weight: 700; font-size: 0.9rem; cursor: pointer;
+      transition: all 0.2s; margin-top: 10px;
+    }
+    .btn-secondary-outline:hover { border-color: #1E3A8A; background: #EFF6FF; }
+
+    /* ── SSL badge ── */
+    .ssl-badge { text-align: center; font-size: 0.75rem; color: #94A3B8; margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .installment-badge { background: #ECFDF5; color: #065F46; border: 1px solid rgba(5,150,105,0.2); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 1.25rem; }
+  </style>
+</head>
+<body>
+
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya" style="display:inline-flex;flex-direction:row;align-items:center;gap:10px;text-decoration:none;white-space:nowrap;">
+      <div class="nav-brand-icon" style="display:inline-flex;align-items:center;justify-content:center;margin:0;padding:0;flex-shrink:0;background:none;border:none;box-shadow:none;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="nav-brand-text-box" style="display:inline-flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:1px;white-space:nowrap;margin:0;padding:0;line-height:1;">
+        <span class="nav-brand-title" style="font-family:var(--font-heading);font-weight:800;font-size:1.35rem;color:#FFFFFF;letter-spacing:-0.03em;margin:0;line-height:1;display:block;">Instructify</span>
+        <span class="nav-brand-subtitle" style="font-family:var(--font-heading);font-size:0.72rem;font-weight:800;color:#FF4D00;text-transform:uppercase;letter-spacing:2px;margin:0;line-height:1;display:block;">KENYA</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a href="courses.html" class="btn btn-outline btn-sm">Browse Courses</a>
+    </div>
+  </div>
+</nav>
+
+<div class="checkout-page">
+  <div class="checkout-container">
+
+    <!-- Breadcrumb -->
+    <div style="color:rgba(255,255,255,0.6);font-size:0.85rem;margin-bottom:1.5rem;">
+      <a href="courses.html" style="color:rgba(255,255,255,0.8);text-decoration:none;">Courses</a>
+      <span style="margin:0 8px">›</span>
+      <a id="crumb-course" href="courses.html" style="color:rgba(255,255,255,0.8);text-decoration:none;">Course</a>
+      <span style="margin:0 8px">›</span>
+      <span style="color:#fff;">Checkout</span>
+    </div>
+
+    <div class="checkout-grid">
+
+      <!-- ══ LEFT: Checkout Form ══════════════════════════════ -->
+      <div class="form-card" id="checkout-form-card">
+
+        <!-- Step indicator -->
+        <div class="step-indicator" id="step-indicator" aria-label="Checkout steps">
+          <div class="step active" id="step-1" title="Your details"></div>
+          <div class="step" id="step-2" title="Payment"></div>
+          <div class="step" id="step-3" title="Confirmation"></div>
+        </div>
+
+        <!-- ── State: initializing ── -->
+        <div id="screen-loading" class="status-screen">
+          <div class="status-icon spin" style="background:#EFF6FF;border:3px solid #1E3A8A;">⏳</div>
+          <div class="status-title">Preparing your checkout…</div>
+          <div class="status-sub">Please wait while we load your order details.</div>
+        </div>
+
+        <!-- ── State: details form ── -->
+        <div id="screen-details" style="display:none;">
+          <div class="form-card-title">Your Details</div>
+          <div class="form-card-sub">Pre-filled from your account — edit if needed.</div>
+
+          <div class="field-group">
+            <label class="field-label" for="ck-name">Full Name</label>
+            <input type="text" id="ck-name" class="field-input" placeholder="Jane Wanjiku" autocomplete="name" required>
+          </div>
+          <div class="field-grid-2">
+            <div class="field-group">
+              <label class="field-label" for="ck-email">Email Address</label>
+              <input type="email" id="ck-email" class="field-input" placeholder="jane@example.com" autocomplete="email" required>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="ck-phone">Phone (for M-Pesa)</label>
+              <input type="tel" id="ck-phone" class="field-input" placeholder="0712 345 678" autocomplete="tel">
+            </div>
+          </div>
+
+          <button class="btn-enroll" id="btn-continue-details" onclick="continueToPayment()">
+            Continue to Payment →
+          </button>
+        </div>
+
+        <!-- ── State: payment selection ── -->
+        <div id="screen-payment" style="display:none;">
+          <div class="form-card-title">Choose Payment Method</div>
+          <div class="form-card-sub">Your payment is secured by Paystack · 256-bit SSL</div>
+
+          <!-- Installment notice -->
+          <div class="installment-badge">
+            <span>💳</span>
+            <div>
+              <strong>Flexible Installments</strong> — Coming soon.
+              Currently accepting full payment via M-Pesa or card.
+            </div>
+          </div>
+
+          <div class="pay-method-tabs" role="tablist">
+            <button class="pay-method-tab active" id="tab-mpesa" role="tab" aria-selected="true"
+              aria-controls="panel-mpesa" onclick="selectPayMethod('mpesa')">
+              <span class="tab-icon">📱</span>
+              <span class="tab-name">M-Pesa</span>
+            </button>
+            <button class="pay-method-tab" id="tab-card" role="tab" aria-selected="false"
+              aria-controls="panel-card" onclick="selectPayMethod('card')">
+              <span class="tab-icon">💳</span>
+              <span class="tab-name">Card</span>
+            </button>
+          </div>
+
+          <!-- M-Pesa Panel -->
+          <div id="panel-mpesa" class="pay-panel active" role="tabpanel">
+            <div class="field-group">
+              <label class="field-label" for="mpesa-phone-input">Safaricom M-Pesa Number</label>
+              <input type="tel" id="mpesa-phone-input" class="field-input"
+                placeholder="0712 345 678" maxlength="15" autocomplete="tel"
+                aria-describedby="mpesa-hint">
+              <div class="field-hint" id="mpesa-hint">Accepts: 07XX, 01XX, +2547XX, 2547XX formats</div>
+              <div class="field-error" id="mpesa-phone-error">Please enter a valid Safaricom number.</div>
+            </div>
+            <button class="btn-enroll" id="btn-pay-mpesa" onclick="submitMpesa()">
+              📱 Pay KES <span id="pay-amount-mpesa">8,500</span> via M-Pesa
+            </button>
+          </div>
+
+          <!-- Card Panel -->
+          <div id="panel-card" class="pay-panel" role="tabpanel">
+            <p style="font-size:0.875rem;color:#64748B;line-height:1.6;margin-bottom:1.25rem;">
+              Click the button below to open the secure Paystack payment window.
+              Your card details are entered directly on Paystack's encrypted form — 
+              Instructify never sees or stores your card number.
+            </p>
+            <button class="btn-enroll" id="btn-pay-card" onclick="submitCard()">
+              💳 Pay KES <span id="pay-amount-card">8,500</span> Securely
+            </button>
+          </div>
+
+          <button class="btn-secondary-outline" onclick="goBackToDetails()">← Change Details</button>
+          <div class="ssl-badge">🔒 Secured by Paystack · PCI DSS Compliant · 30-Day Guarantee</div>
+        </div>
+
+        <!-- ── State: processing / polling ── -->
+        <div id="screen-processing" class="status-screen" style="display:none;">
+          <div class="status-icon spin" style="background:#EFF6FF;border:3px solid #1E3A8A;">⏳</div>
+          <div class="status-title" id="processing-title">Processing Payment…</div>
+          <div class="status-sub" id="processing-sub">
+            Please complete the M-Pesa prompt on your phone. Do not close this page.
+          </div>
+          <div class="status-ref">Order: <strong id="processing-ref">—</strong></div>
+          <div style="width:100%;background:#E2E8F0;border-radius:99px;height:4px;overflow:hidden;max-width:280px;margin:0 auto 1.5rem;">
+            <div id="progress-bar" style="height:100%;background:#1E3A8A;border-radius:99px;width:0;transition:width 90s linear;"></div>
+          </div>
+          <button class="btn-secondary-outline" style="max-width:240px;margin:0 auto;" onclick="cancelCheckout()">Cancel</button>
+        </div>
+
+        <!-- ── State: success ── -->
+        <div id="screen-success" class="status-screen" style="display:none;">
+          <div class="status-icon" style="background:rgba(5,150,105,0.1);border:3px solid #059669;">✅</div>
+          <div class="status-title" style="color:#059669;">Enrollment Confirmed!</div>
+          <div class="status-sub">
+            You are now enrolled in <strong id="success-course-name">the course</strong>.
+            A confirmation has been saved to your account.
+          </div>
+          <div class="status-ref">
+            Ref: <strong id="success-ref">—</strong>
+            &nbsp;·&nbsp; Amount: <strong id="success-amount">KES 8,500</strong>
+          </div>
+          <a href="dashboard-learner.html" class="btn-enroll" style="text-decoration:none;margin-top:0.5rem;">
+            🚀 Start Learning
+          </a>
+        </div>
+
+        <!-- ── State: failed / cancelled / timeout ── -->
+        <div id="screen-error" class="status-screen" style="display:none;">
+          <div class="status-icon" style="background:#FEF2F2;border:3px solid #EF4444;">❌</div>
+          <div class="status-title" style="color:#EF4444;" id="error-title">Payment Failed</div>
+          <div class="status-sub" id="error-sub">
+            Your payment could not be completed. No charges were made.
+          </div>
+          <div class="status-ref" id="error-ref" style="display:none;">Order: <strong></strong></div>
+          <button class="btn-enroll" onclick="retryCheckout()" style="margin-top:0.5rem;">Try Again</button>
+          <button class="btn-secondary-outline" onclick="window.location.href='courses.html'">Browse Courses</button>
+          <p style="font-size:0.78rem;color:#94A3B8;margin-top:1rem;">
+            Need help? <a href="contact.html" style="color:#1E3A8A;">Contact support</a> with your order reference.
+          </p>
+        </div>
+
+      </div><!-- /.form-card -->
+
+      <!-- ══ RIGHT: Order Summary ══════════════════════════════ -->
+      <div class="order-card" id="order-summary">
+        <div class="order-card-label">Course Fee</div>
+        <div class="order-card-total" id="summary-price">KES 8,500</div>
+        <div class="order-card-original" id="summary-original">KES 14,000</div>
+        <hr class="order-card-divider">
+        <div class="order-card-title" id="summary-title">Loading course…</div>
+        <div class="order-card-row">
+          <span>Duration</span><span id="summary-duration">—</span>
+        </div>
+        <div class="order-card-row">
+          <span>Level</span><span id="summary-level">—</span>
+        </div>
+        <div class="order-card-row">
+          <span>Certificate</span><span>✅ Included</span>
+        </div>
+        <div class="order-card-row">
+          <span>CPD Hours</span><span id="summary-cpd">—</span>
+        </div>
+        <div class="order-guarantee">
+          🔒 30-Day Money-Back Guarantee
+          · <a href="contact.html" style="color:rgba(255,255,255,0.6);text-decoration:underline;">Refund Policy</a>
+        </div>
+      </div>
+
+    </div><!-- /.checkout-grid -->
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/checkout-engine.js"></script>
+<script>
+'use strict';
+
+// ── Page state ────────────────────────────────────────────────
+let currentCourseId = null;
+let currentMethod = 'mpesa';
+
+// ── Init ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  updateAuthUI();
+
+  // Resume post-login redirect if set
+  const returnTo = localStorage.getItem('ik_return_to');
+  if (returnTo) {
+    try {
+      const rt = JSON.parse(returnTo);
+      if (rt.action === 'enroll' && rt.courseId) {
+        currentCourseId = rt.courseId;
+        localStorage.removeItem('ik_return_to');
+      }
+    } catch { /* ignore */ }
+  }
+
+  // Get courseId from URL or return_to
+  const params = new URLSearchParams(window.location.search);
+  const urlId = params.get('id');
+  if (urlId) currentCourseId = urlId;
+
+  if (!currentCourseId) {
+    showScreen('error');
+    document.getElementById('error-title').textContent = 'No Course Selected';
+    document.getElementById('error-sub').textContent = 'Please return to the courses page and select a course.';
+    return;
+  }
+
+  // Pre-fill course details from local data
+  const course = window.COURSES ? window.COURSES.find(c => c.id === currentCourseId) : null;
+  if (course) {
+    document.getElementById('summary-title').textContent = course.title;
+    document.getElementById('summary-price').textContent = `KES ${course.price.toLocaleString()}`;
+    document.getElementById('summary-original').textContent = `KES ${course.originalPrice.toLocaleString()}`;
+    document.getElementById('summary-duration').textContent = course.duration || '—';
+    document.getElementById('summary-level').textContent = course.level || '—';
+    document.getElementById('summary-cpd').textContent = course.cpdHours ? `${course.cpdHours} hrs` : '—';
+    document.getElementById('crumb-course').textContent = course.title;
+    document.getElementById('crumb-course').href = `course-detail.html?id=${course.id}`;
+    document.getElementById('pay-amount-mpesa').textContent = course.price.toLocaleString();
+    document.getElementById('pay-amount-card').textContent = course.price.toLocaleString();
+  }
+
+  // Pre-fill user details
+  const session = window.getSession ? window.getSession() : null;
+  if (!session) {
+    // Not logged in — redirect to register
+    localStorage.setItem('ik_return_to', JSON.stringify({ action: 'enroll', courseId: currentCourseId, url: window.location.href }));
+    showToast('Please sign in to enroll.', 'warning');
+    setTimeout(() => { window.location.href = 'register.html'; }, 1200);
+    return;
+  }
+
+  document.getElementById('ck-name').value = session.name || '';
+  document.getElementById('ck-email').value = session.email || '';
+  document.getElementById('ck-phone').value = session.phone || '';
+  document.getElementById('mpesa-phone-input').value = session.phone || '';
+
+  // Listen to CheckoutEngine state changes
+  CheckoutEngine.onStatusChange(renderState);
+
+  // Start the checkout
+  showScreen('details');
+});
+
+// ── Screen management ─────────────────────────────────────────
+const SCREENS = ['loading', 'details', 'payment', 'processing', 'success', 'error'];
+function showScreen(name) {
+  SCREENS.forEach(s => {
+    const el = document.getElementById(`screen-${s}`);
+    if (el) el.style.display = s === name ? '' : 'none';
+  });
+  // Update step indicator
+  const stepMap = { details: 0, payment: 1, processing: 1, success: 2, error: 2 };
+  const step = stepMap[name] ?? 0;
+  document.querySelectorAll('.step').forEach((el, i) => {
+    el.className = 'step' + (i < step ? ' done' : i === step ? ' active' : '');
+  });
+}
+
+// ── State renderer ────────────────────────────────────────────
+function renderState(state) {
+  if (state.status === 'creating_order') {
+    showScreen('loading');
+    return;
+  }
+  if (state.status === 'awaiting_payment') {
+    showScreen('payment');
+    return;
+  }
+  if (state.status === 'processing' || state.status === 'awaiting_authorization') {
+    showScreen('processing');
+    document.getElementById('processing-ref').textContent = state.orderReference || '—';
+    if (state.method === 'card') {
+      document.getElementById('processing-title').textContent = 'Awaiting card payment…';
+      document.getElementById('processing-sub').textContent = 'Complete the payment in the Paystack window.';
+    } else {
+      document.getElementById('processing-title').textContent = 'Waiting for M-Pesa…';
+      document.getElementById('processing-sub').textContent =
+        state.message || 'Enter your M-Pesa PIN on your phone. Do not close this page.';
+    }
+    // Animate progress bar
+    setTimeout(() => { document.getElementById('progress-bar').style.width = '100%'; }, 100);
+    return;
+  }
+  if (state.status === 'paid') {
+    showScreen('success');
+    const course = window.COURSES ? window.COURSES.find(c => c.id === currentCourseId) : null;
+    document.getElementById('success-course-name').textContent = course ? course.title : 'your course';
+    document.getElementById('success-ref').textContent = state.transactionReference || state.orderReference || '—';
+    if (course) document.getElementById('success-amount').textContent = `KES ${course.price.toLocaleString()}`;
+    return;
+  }
+  if (['failed', 'cancelled', 'timeout'].includes(state.status)) {
+    showScreen('error');
+    const titles = { failed: 'Payment Failed', cancelled: 'Payment Cancelled', timeout: 'Payment Timed Out' };
+    document.getElementById('error-title').textContent = titles[state.status] || 'Payment Error';
+    document.getElementById('error-sub').textContent =
+      state.error || 'Your payment could not be completed. No charges were made.';
+    if (state.orderReference) {
+      const refBox = document.getElementById('error-ref');
+      refBox.style.display = '';
+      refBox.querySelector('strong').textContent = state.orderReference;
+    }
+    return;
+  }
+}
+
+// ── UI handlers ───────────────────────────────────────────────
+function continueToPayment() {
+  // Validate name + email
+  const name = document.getElementById('ck-name').value.trim();
+  const email = document.getElementById('ck-email').value.trim();
+  if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showToast('Please fill in your name and a valid email.', 'error');
+    return;
+  }
+  showScreen('payment');
+  // Trigger order creation in background
+  CheckoutEngine.startCheckout(currentCourseId);
+}
+
+function goBackToDetails() {
+  showScreen('details');
+}
+
+function selectPayMethod(method) {
+  currentMethod = method;
+  document.querySelectorAll('.pay-method-tab').forEach(t => {
+    t.classList.toggle('active', t.id === `tab-${method}`);
+    t.setAttribute('aria-selected', t.id === `tab-${method}`);
+  });
+  document.querySelectorAll('.pay-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(`panel-${method}`).classList.add('active');
+}
+
+function submitMpesa() {
+  const phone = document.getElementById('mpesa-phone-input').value.trim();
+  const errorEl = document.getElementById('mpesa-phone-error');
+  if (!phone) {
+    errorEl.classList.add('visible');
+    document.getElementById('mpesa-phone-input').classList.add('error');
+    return;
+  }
+  errorEl.classList.remove('visible');
+  document.getElementById('mpesa-phone-input').classList.remove('error');
+  document.getElementById('btn-pay-mpesa').disabled = true;
+  CheckoutEngine.payWithMpesa(phone);
+}
+
+function submitCard() {
+  document.getElementById('btn-pay-card').disabled = true;
+  CheckoutEngine.payWithCard();
+}
+
+function cancelCheckout() {
+  CheckoutEngine.cancel();
+  showScreen('payment');
+  document.getElementById('progress-bar').style.width = '0';
+  document.getElementById('progress-bar').style.transition = 'none';
+  setTimeout(() => { document.getElementById('progress-bar').style.transition = 'width 90s linear'; }, 50);
+  document.getElementById('btn-pay-mpesa').disabled = false;
+  document.getElementById('btn-pay-card').disabled = false;
+}
+
+function retryCheckout() {
+  showScreen('details');
+  document.getElementById('btn-pay-mpesa').disabled = false;
+  document.getElementById('btn-pay-card').disabled = false;
+}
+</script>
+</body>
+</html>

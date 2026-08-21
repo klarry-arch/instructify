@@ -1,132 +1,193 @@
 /* ============================================================
    INSTRUCTIFY KENYA — GLOBAL DESIGN SYSTEM & BRAND TOKENS
+   Premium LMS Color System v4.0 — Canonical Token Schema
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@400;500;600;700;800&display=swap');
 
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
-  /* Royal Blue Primary Palette */
-  --color-primary:        #0057D9;
-  --color-primary-light:  #2575FC;
-  --color-primary-dark:   #003B95;
-  --color-primary-bg:     #E8F1FF;
-  --color-primary-glow:   rgba(0, 87, 217, 0.25);
+  /* ══════════════════════════════════════════
+     ★ CANONICAL DESIGN TOKENS — Instructify Kenya Color Palette
+     ══════════════════════════════════════════ */
 
-  /* Gold Yellow Palette */
-  --color-gold:           #FFC107;
-  --color-gold-dark:      #E6A700;
-  --color-gold-light:     #FFF4CC;
-  --color-gold-glow:      rgba(255, 193, 7, 0.25);
+    /* Primary Brand — Royal Blue (#1E3A8A) */
+  --color-primary:          #1E3A8A;   /* Main navigation, primary buttons, headings, links, active states */
+  --color-primary-hover:    #172554;   /* Primary hover state */
+  --color-primary-light:    #3B82F6;
+  --color-primary-dark:     #172554;
+  --color-primary-bg:       #EFF6FF;
+  --color-primary-glow:     rgba(30, 58, 138, 0.15);
 
-  /* Orange CTA Palette */
-  --color-orange:         #FF6B00;
-  --color-orange-dark:    #E65C00;
-  --color-orange-light:   #FFF0E6;
-  --color-orange-glow:    rgba(255, 107, 0, 0.25);
+  /* Secondary Brand — Deep Yellow/Gold (#FF4D00) */
+  --color-secondary:        #FF4D00;   /* Highlights, call-to-action accents, icons, badges, section dividers */
+  --color-secondary-hover:  #D9A104;
+  --color-secondary-light:  #FDE047;
+  --color-secondary-dark:   #B45309;
+  --color-secondary-bg:     #FEF9C3;
 
-  /* Functional Status Colors */
-  --color-success:        #28A745;
-  --color-danger:         #DC3545;
-  --color-info:           #17A2B8;
+  /* Accent — Orange (#FF4D00) */
+  --color-accent:           #FF4D00;   /* Hover states, secondary buttons, energetic visual accents */
+  --color-accent-hover:     #FF4D00;
+  --color-accent-text:      #FFFFFF;
+  --color-accent-bg:        #FFEDD5;
 
-  /* Neutral Corporate Palette */
-  --bg-dark:              #0F172A;
-  --bg-surface:           #1E293B;
-  --bg-card:              #182234;
-  --bg-card-hover:        #212E46;
-  --bg-elevated:          #24334D;
-  --bg-light:             #F5F7FA;
-  --bg-white:             #FFFFFF;
-  --bg-glass:             rgba(24, 34, 52, 0.75);
-  --bg-glass-border:      rgba(255, 255, 255, 0.12);
-  --bg-input:             rgba(255, 255, 255, 0.06);
+  --color-amber:            #FF4D00;
+  --color-amber-hover:      #D97706;
+  --color-amber-text:       #111827;
+  --color-amber-bg:         #FEF9C3;
 
-  /* Text Colors */
-  --text-primary:         #F8FAFC;
-  --text-secondary:       #94A3B8;
-  --text-muted:           #64748B;
-  --text-dark:            #2D3748;
-  --text-accent:          #0057D9;
-  --text-gold:            #FFC107;
-  --text-orange:          #FF6B00;
+  /* Surfaces & Backgrounds */
+  --color-background:       #F8FAFC;   /* Off-white background */
+  --color-surface:          #FFFFFF;   /* Pure white card surface */
+  --color-surface-soft:     #F1F5F9;   /* Soft surface fill */
 
-  /* Gradients */
-  --gradient-hero:        linear-gradient(135deg, #003B95 0%, #0057D9 45%, #0F172A 100%);
-  --gradient-gold:        linear-gradient(135deg, #FFC107 0%, #E6A700 100%);
-  --gradient-orange:      linear-gradient(135deg, #FF6B00 0%, #E65C00 100%);
-  --gradient-blue:        linear-gradient(135deg, #0057D9 0%, #2575FC 100%);
-  --gradient-card:        linear-gradient(145deg, rgba(0,87,217,0.1), rgba(255,107,0,0.05));
-  --gradient-shimmer:     linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  /* Text Typography System */
+  --color-text-main:        #111827;   /* Dark text */
+  --color-text-secondary:   #374151;   /* Secondary text */
+  --color-text-muted:       #6B7280;   /* Muted text */
+  --color-text-on-primary:  #FFFFFF;
 
-  /* Borders & Radii */
-  --border-subtle:        rgba(255, 255, 255, 0.09);
-  --border-card:          rgba(255, 255, 255, 0.14);
-  --border-active:        rgba(0, 87, 217, 0.6);
-  --border-radius-sm:     8px;
-  --border-radius-md:     12px;
-  --border-radius-lg:     20px;
-  --border-radius-xl:     28px;
-  --border-radius-full:   9999px;
+  /* Borders & Cards */
+  --color-border:           #E5E7EB;   /* Light border */
+  --color-border-subtle:    #F3F4F6;
+  --color-border-focus:     #1E3A8A;
 
-  /* Shadows */
-  --shadow-sm:            0 2px 8px rgba(0,0,0,0.25);
-  --shadow-md:            0 8px 32px rgba(0,0,0,0.35);
-  --shadow-lg:            0 16px 64px rgba(0,0,0,0.45);
-  --shadow-blue:          0 8px 32px rgba(0, 87, 217, 0.35);
-  --shadow-gold:          0 8px 32px rgba(255, 193, 7, 0.3);
-  --shadow-orange:        0 8px 32px rgba(255, 107, 0, 0.35);
+  /* Status Colors */
+  --color-success:          #22C55E;   /* Success color */
+  --color-success-bg:       #F0FDF4;
+  --color-warning:          #FF4D00;   /* Warning color */
+  --color-warning-bg:       #FFF7ED;
+  --color-danger:           #EF4444;   /* Danger/error color */
+  --color-error:            #EF4444;
+  --color-danger-bg:        #FEF2F2;
+  --color-error-bg:         #FEF2F2;
+  --color-info:             #38BDF8;   /* Info color */
+  --color-info-bg:          #F0F9FF;
 
-  /* Typography */
-  --font-heading:         'Outfit', sans-serif;
-  --font-body:            'Inter', sans-serif;
-  --font-mono:            'JetBrains Mono', monospace;
+  /* Tertiary Brand — Emerald Green (#059669) */
+  /* Bridges navy blue & orange-red; ideal for progress, growth & success states */
+  --color-tertiary:         #059669;   /* Emerald green — course progress, achievement badges, CTA highlights */
+  --color-tertiary-hover:   #047857;   /* Darker emerald for hover */
+  --color-tertiary-light:   #34D399;   /* Lighter mint for icon accents */
+  --color-tertiary-bg:      #ECFDF5;   /* Soft green tint for card backgrounds */
+  --color-tertiary-glow:    rgba(5, 150, 105, 0.15);
 
-  /* Sizes */
-  --text-xs:    0.75rem;
-  --text-sm:    0.875rem;
-  --text-base:  1rem;
-  --text-md:    1.125rem;
-  --text-lg:    1.25rem;
-  --text-xl:    1.5rem;
-  --text-2xl:   2rem;
-  --text-3xl:   2.5rem;
-  --text-4xl:   3.5rem;
-  --text-5xl:   4.5rem;
-  --text-hero:  clamp(2.5rem, 5.5vw, 4.8rem);
+  /* Legacy Compatibility Aliases */
+  --color-brand:            #0F172A;
+  --color-blue:             #2563EB;
+  --color-blue-hover:       #1D4ED8;
+  --color-teal:             #14B8A6;
+  --color-teal-hover:       #0D9488;
+  --color-orange:           #2563EB;
+  --color-orange-hover:     #1D4ED8;
+  --color-curiosity-orange: #F59E0B;
+  --color-deep-navy:        #0F172A;
+  --color-soft-grey:        #F1F5F9;
 
-  /* Spacing */
-  --space-xs:   0.25rem;
-  --space-sm:   0.5rem;
-  --space-md:   1rem;
-  --space-lg:   1.5rem;
-  --space-xl:   2rem;
-  --space-2xl:  3rem;
-  --space-3xl:  4rem;
-  --space-4xl:  6rem;
-  --space-5xl:  8rem;
+  --gradient-hero:          linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #172554 100%);
+  --gradient-primary:       linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%);
+  --bg-dark:                #F8FAFC;
+  --bg-white:               #FFFFFF;
+  --bg-canvas:              #F8FAFC;
+  --bg-light:               #F1F5F9;
+  --bg-card:                #FFFFFF;
 
-  /* Layout & Nav */
-  --max-width:        1280px;
-  --nav-height:       76px;
-  --sidebar-width:    260px;
+  --text-primary:           #0F172A;
+  --text-body:              #475569;
+  --text-secondary:         #475569;
+  --text-muted:             #64748B;
 
-  /* Transitions */
-  --transition-fast:   0.15s ease;
-  --transition-base:   0.25s ease;
-  --transition-slow:   0.4s ease;
-  --transition-spring: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --border-card:            #E2E8F0;
+  --border-subtle:          #E2E8F0;
 
-  /* Z-index */
-  --z-base:    1;
-  --z-dropdown: 100;
-  --z-sticky:  200;
-  --z-overlay: 300;
-  --z-modal:   400;
-  --z-toast:   500;
+  --shadow-card:            0 2px 12px rgba(15, 23, 42, 0.05);
+
+  /* ══════════════════════════════════════════
+     TYPOGRAPHY SYSTEM (Plus Jakarta Sans & Inter)
+     Clean, Accessible & Student-Friendly
+     ══════════════════════════════════════════ */
+  --font-sans:              'Plus Jakarta Sans', 'Outfit', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-system:            var(--font-sans);
+  --font-heading:           'Plus Jakarta Sans', 'Outfit', 'Poppins', sans-serif;
+  --font-body:              'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-mono:              ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Desktop Heading Scale */
+  --font-size-h1:           46px;
+  --font-size-h2:           42px;
+  --font-size-h3:           32px;
+  --font-size-h4:           24px;
+  --font-size-h5:           20px;
+  --font-size-h6:           16px;
+
+  /* Line Heights */
+  --line-height-h1:         1.08;
+  --line-height-h2:         1.14;
+  --line-height-h3:         1.25;
+  --line-height-h4:         1.30;
+  --line-height-h5:         1.40;
+  --line-height-h6:         1.45;
+  --line-height-body:       1.60;
+  --line-height-relaxed:    1.65;
+
+  /* Font Weights */
+  --font-weight-light:      300;
+  --font-weight-normal:     400;
+  --font-weight-medium:     500;
+  --font-weight-semibold:   600;
+  --font-weight-bold:       700;
+  --font-weight-extrabold:  800;
+
+  /* Text Scale Tokens */
+  --text-xs:    13px;
+  --text-sm:    14px;
+  --text-base:  16px;
+  --text-md:    18px;
+  --text-lg:    20px;
+  --text-xl:    24px;
+  --text-2xl:   32px;
+  --text-3xl:   40px;
+  --text-4xl:   48px;
+
+  /* ══════════════════════════════════════════
+     SPACING
+     ══════════════════════════════════════════ */
+  --space-xs:   4px;
+  --space-sm:   10px;
+  --space-md:   16px;
+  --space-lg:   24px;
+  --space-xl:   36px;
+  --space-2xl:  48px;
+  --space-3xl:  64px;
+  --space-4xl:  80px;
+  --space-5xl:  96px;
+
+  /* ══════════════════════════════════════════
+     LAYOUT & NAV
+     ══════════════════════════════════════════ */
+  --max-width:      1200px;
+  --nav-height:     76px;
+
+  /* ══════════════════════════════════════════
+     TRANSITIONS
+     ══════════════════════════════════════════ */
+  --transition-fast:    0.15s ease;
+  --transition-base:    0.25s ease;
+  --transition-slow:    0.4s ease;
+  --transition-spring:  0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ══════════════════════════════════════════
+     Z-INDEX
+     ══════════════════════════════════════════ */
+  --z-base:     1;
+  --z-overlay:  100;
+  --z-sticky:   200;
+  --z-modal:    300;
+  --z-toast:    400;
 }
 
-/* ── Reset ─────────────────────────────────────────────────── */
+/* ── Reset & Base Document Setup ────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -141,10 +202,12 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-dark);
-  color: var(--text-primary);
-  line-height: 1.6;
+  font-weight: 400;
+  background-color: var(--color-background);
+  color: var(--color-text-main);
+  line-height: var(--line-height-body);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
@@ -157,42 +220,220 @@ img, video {
 a {
   color: inherit;
   text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
 button {
   cursor: pointer;
-  font-family: var(--font-body);
+  font-family: inherit;
+  font-weight: 600;
   border: none;
   background: none;
 }
 
 input, textarea, select {
-  font-family: var(--font-body);
-  color: var(--text-primary);
+  font-family: inherit;
+  color: var(--color-text-main);
 }
 
 ul, ol { list-style: none; }
 
-h1, h2, h3, h4, h5, h6 {
+/* ── Heading Styles (H1 - H6) — Desktop Scale ───────────────── */
+h1, .h1 {
   font-family: var(--font-heading);
-  line-height: 1.2;
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
   font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-text-main);
+  margin-bottom: 0.4em;
+}
+
+h2, .h2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: 700;
+  letter-spacing: -0.020em;
+  color: var(--color-text-main);
+  margin-bottom: 0.4em;
+}
+
+h3, .h3 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--color-text-main);
+  margin-bottom: 0.4em;
+}
+
+h4, .h4 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-h4);
+  font-weight: 600;
+  letter-spacing: -0.010em;
+  color: var(--color-text-main);
+  margin-bottom: 0.4em;
+}
+
+h5, .h5 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--color-text-main);
+  margin-bottom: 0.4em;
+}
+
+h6, .h6 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h6);
+  line-height: var(--line-height-h6);
+  font-weight: 600;
+  letter-spacing: 0em;
+  color: var(--color-text-main);
+  margin-bottom: 0.4em;
+}
+
+/* ── Paragraphs & Educational Body Hierarchy ────────────────── */
+p {
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.lead,
+.hero-lead,
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.65;
+  color: #475569;
+  font-weight: 400;
+}
+
+/* Section Titles & Subtitles */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: 700;
+  letter-spacing: -0.020em;
+  color: var(--color-text-main);
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-size: 17px;
+  line-height: 1.65;
+  color: #475569;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Menu headings & sidebar labels */
+.menu-heading,
+.sidebar-section-label {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Hero Headings */
+.hero h1,
+.hero-title,
+.hero-heading,
+.hero-h1 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-text-main);
+}
+
+/* ── LMS, Course Pages, Lesson Modules & Assessment Hierarchy ── */
+.dashboard-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--color-text-main);
+}
+
+.dashboard-subtitle {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #64748B;
+  margin-top: 4px;
+}
+
+.course-card-title-custom,
+.course-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 8px;
+}
+
+.module-title,
+.lesson-module-heading {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-h4);
+  font-weight: 600;
+  letter-spacing: -0.010em;
+  color: var(--color-text-main);
+  margin-bottom: 10px;
+}
+
+.lesson-title,
+.assignment-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 8px;
+}
+
+.module-desc,
+.lesson-desc,
+.assignment-desc {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #475569;
 }
 
 /* ── Utility Typography ────────────────────────────────────── */
-.text-hero   { font-size: var(--text-hero); font-weight: 800; }
-.text-3xl    { font-size: var(--text-3xl); }
-.text-2xl    { font-size: var(--text-2xl); }
-.text-xl     { font-size: var(--text-xl); }
-.text-lg     { font-size: var(--text-lg); }
-.text-md     { font-size: var(--text-md); }
-.text-base   { font-size: var(--text-base); }
-.text-sm     { font-size: var(--text-sm); }
-.text-xs     { font-size: var(--text-xs); }
+.text-4xl    { font-size: var(--text-4xl); line-height: var(--line-height-h1); }
+.text-3xl    { font-size: var(--text-3xl); line-height: var(--line-height-h2); }
+.text-2xl    { font-size: var(--text-2xl); line-height: var(--line-height-h3); }
+.text-xl     { font-size: var(--text-xl); line-height: var(--line-height-h4); }
+.text-lg     { font-size: var(--text-lg); line-height: var(--line-height-h5); }
+.text-md     { font-size: var(--text-md); line-height: 1.5; }
+.text-base   { font-size: var(--text-base); line-height: var(--line-height-body); }
+.text-sm     { font-size: var(--text-sm); line-height: 1.5; }
+.text-xs     { font-size: var(--text-xs); line-height: 1.45; }
 
-.text-gold   { color: var(--color-gold); }
-.text-orange { color: var(--color-orange); }
-.text-blue   { color: var(--color-primary-light); }
+.font-heading { font-family: var(--font-heading); font-weight: 800; }
+
+.text-orange  { color: var(--color-accent); }
+.text-blue    { color: var(--color-primary-light); }
+.text-green   { color: var(--color-accent); }
+.text-teal    { color: var(--color-teal); }
+.text-amber   { color: var(--color-amber); }
+.text-muted   { color: var(--color-text-muted); }
 
 .text-gradient-blue {
   background: var(--gradient-blue);
@@ -201,8 +442,8 @@ h1, h2, h3, h4, h5, h6 {
   background-clip: text;
 }
 
-.text-gradient-gold {
-  background: var(--gradient-gold);
+.text-gradient-teal {
+  background: var(--gradient-teal);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -215,19 +456,105 @@ h1, h2, h3, h4, h5, h6 {
   background-clip: text;
 }
 
+.text-gradient-green {
+  background: var(--gradient-green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background: var(--gradient-warm);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Section Standardizations ──────────────────────────────────── */
+.section {
+  padding: var(--space-4xl) 0;
+  position: relative;
+}
+
+.section-sm {
+  padding: var(--space-2xl) 0;
+}
+
+/* ── Section Background Utilities ───────────────────────────────── */
+.section-bg-light  { background: var(--color-section-blue); }    /* EEF4FF soft blue     */
+.section-bg-promo  { background: var(--color-section-orange); }    /* FFF3E8 warm orange   */
+.section-bg-canvas { background: var(--color-background); }   /* F8FAFC default       */
+.section-bg-brand  { background: var(--color-primary); color: #FFFFFF; }
+
+/* ── Section Tags / Badges ──────────────────────────────────────── */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: var(--border-radius-full);
+  margin-bottom: var(--space-md);
+}
+
+.section-tag.blue {
+  color: var(--color-primary-light);
+  background: var(--color-section-blue);
+  border: 1px solid rgba(30, 58, 138, 0.2);
+}
+
+.section-tag.green,
+.section-tag.orange {
+  color: var(--color-accent-hover);
+  background: var(--color-accent-bg);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+}
+
+.section-tag.teal {
+  color: var(--color-teal);
+  background: var(--color-teal-bg);
+  border: 1px solid rgba(13, 148, 136, 0.2);
+}
+
+.section-tag.amber {
+  color: var(--color-amber-dark);
+  background: var(--color-amber-bg);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+/* ── Section Titles ─────────────────────────────────────────── */
+.section-title {
+  font-family: inherit;
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-bottom: var(--space-sm);
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+  max-width: 660px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ── Section Header ─────────────────────────────────────────── */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
 /* ── Layout Utilities ───────────────────────────────────────── */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--space-xl);
-}
-
-.section {
-  padding: var(--space-5xl) 0;
-}
-
-.section-sm {
-  padding: var(--space-4xl) 0;
 }
 
 .flex           { display: flex; }
@@ -240,79 +567,1365 @@ h1, h2, h3, h4, h5, h6 {
 .gap-lg         { gap: var(--space-lg); }
 .gap-xl         { gap: var(--space-xl); }
 .gap-2xl        { gap: var(--space-2xl); }
+.mb-sm          { margin-bottom: var(--space-sm); }
+.mb-md          { margin-bottom: var(--space-md); }
+.mb-lg          { margin-bottom: var(--space-lg); }
+.mb-xl          { margin-bottom: var(--space-xl); }
 
 .grid           { display: grid; }
-.grid-2         { grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); }
-.grid-3         { grid-template-columns: repeat(3, 1fr); gap: var(--space-xl); }
-.grid-4         { grid-template-columns: repeat(4, 1fr); gap: var(--space-xl); }
+.grid-2         { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); }
+.grid-3         { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl); }
+.grid-4         { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xl); }
 
 .w-full         { width: 100%; }
 .text-center    { text-align: center; }
 
-/* ── Section Header ─────────────────────────────────────────── */
-.section-header {
-  text-align: center;
-  margin-bottom: var(--space-3xl);
-}
-
-.section-tag {
+/* ── Badges ─────────────────────────────────────────────────── */
+.badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
-  font-family: var(--font-heading);
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  padding: 6px 18px;
+  gap: 4px;
+  padding: 3px 10px;
   border-radius: var(--border-radius-full);
-  background: var(--color-gold-glow);
-  border: 1px solid rgba(255, 193, 7, 0.3);
-  margin-bottom: var(--space-lg);
+  font-size: 12px;
+  font-weight: 600;
+}
+/* Category / dashboard highlights — royal blue */
+.badge-blue   { background: var(--color-section-blue);    color: var(--color-primary-light); }
+/* Progress / completion */
+.badge-teal   { background: var(--color-teal-bg);         color: var(--color-teal); }
+/* CTA accent / warm orange */
+.badge-orange { background: var(--color-accent-bg);       color: var(--color-accent-hover); }
+/* Achievements */
+.badge-amber  { background: var(--color-amber-bg);    color: var(--color-amber-dark); }
+/* General accent — orange */
+.badge-green  { background: var(--color-tertiary-bg);  color: var(--color-tertiary); }
+/* Subject-specific */
+.badge-ict    { background: #F3E8FF; color: #6A1B9A; }
+.badge-cbe    { background: #ECFDF5; color: #065F46; }
+.badge-ai     { background: #F5F3FF; color: #6D28D9; }
+.badge-cpd    { background: #FFFBEB; color: #92400E; }
+
+/* ── Card Base ──────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-card);
+  transition: box-shadow var(--transition-base), transform var(--transition-base), border-color var(--transition-base);
 }
 
-.section-tag.blue {
-  color: #2575FC;
-  background: var(--color-primary-glow);
-  border-color: rgba(0, 87, 217, 0.3);
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  border-color: var(--border-card-hover);
 }
 
-.section-tag.orange {
-  color: var(--color-orange);
-  background: var(--color-orange-glow);
-  border-color: rgba(255, 107, 0, 0.3);
+/* ── Form Elements ──────────────────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.section-title {
-  font-family: var(--font-heading);
-  font-size: var(--text-3xl);
-  font-weight: 800;
+.form-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: var(--space-md);
-  line-height: 1.25;
 }
 
-.section-subtitle {
-  font-size: var(--text-md);
-  color: var(--text-secondary);
-  max-width: 680px;
-  margin: 0 auto;
-  line-height: 1.7;
+.form-input,
+.form-textarea,
+.form-select {
+  background: var(--bg-white);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--border-radius-sm);
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+  width: 100%;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--border-focus-glow);
 }
 
 /* ── Scrollbar & Selection ──────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-dark); }
-::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 3px; }
-::selection { background: var(--color-primary-glow); color: var(--color-gold); }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-canvas); }
+::-webkit-scrollbar-thumb { background: var(--color-blue); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-brand); }
 
+::selection { background: var(--color-primary-bg); color: var(--color-primary-dark); }
+
+/* ── Responsive & Mobile Typography Scale ─────────────────────── */
 @media (max-width: 1024px) {
   .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
+  :root {
+    --font-size-h1: 36px;
+    --font-size-h2: 30px;
+    --font-size-h3: 24px;
+    --font-size-h4: 20px;
+    --font-size-h5: 18px;
+    --font-size-h6: 16px;
+    --text-4xl:     36px;
+    --text-3xl:     30px;
+    --text-2xl:     24px;
+    --text-xl:      20px;
+  }
+
   .container { padding: 0 var(--space-lg); }
   .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-  .section-title { font-size: var(--text-2xl); }
+  .section { padding: var(--space-3xl) 0; }
+
+  /* Mobile Heading Scale */
+  h1, .h1, .hero h1, .hero-title, .hero-heading, .hero-h1 {
+    font-size: 36px !important;
+    line-height: 1.20 !important;
+  }
+
+  h2, .h2, .section-title {
+    font-size: 30px !important;
+    line-height: 1.25 !important;
+  }
+
+  h3, .h3, .dashboard-title {
+    font-size: 24px !important;
+    line-height: 1.30 !important;
+  }
+
+  h4, .h4, .module-title, .lesson-module-heading {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+  }
+
+  h5, .h5, .course-card-title-custom, .course-title, .lesson-title, .assignment-title {
+    font-size: 18px !important;
+    line-height: 1.40 !important;
+  }
+
+  h6, .h6 {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+  }
+
+  .lead, .hero-lead, .hero-subtitle {
+    font-size: 16px;
+    line-height: 1.60;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
+    line-height: 1.60;
+  }
 }
+
+
+/* ══════════════════════════════════════════════════════════════
+   STANDARDIZED MARGIN & SPACING SYSTEM
+   ══════════════════════════════════════════════════════════════ */
+
+/* Container Setup */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Section Margins & Padding */
+.section,
+section {
+  padding: 64px 0;
+  margin: 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title {
+  margin-bottom: 14px;
+}
+
+.section-subtitle {
+  margin-bottom: 0;
+}
+
+/* Heading & Paragraph Margins */
+h1, .h1 { margin-bottom: 20px; }
+h2, .h2 { margin-bottom: 16px; }
+h3, .h3 { margin-bottom: 14px; }
+h4, .h4 { margin-bottom: 12px; }
+p { margin-bottom: 16px; }
+p:last-child { margin-bottom: 0; }
+
+/* Grid Spacing & Gaps */
+.grid-2, .grid-3, .grid-4 {
+  gap: 24px;
+}
+
+/* Form Group Margins */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Button Group Spacing */
+.hero-ctas,
+.btn-group,
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Mobile Responsive Margin Corrections */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .section,
+  section {
+    padding: 44px 0;
+  }
+
+  .section-header {
+    margin-bottom: 28px;
+  }
+
+  h1, .h1 { margin-bottom: 16px; }
+  h2, .h2 { margin-bottom: 12px; }
+  h3, .h3 { margin-bottom: 10px; }
+
+  .grid-2, .grid-3, .grid-4 {
+    gap: 16px;
+  }
+
+  .hero-ctas,
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-ctas .btn,
+  .btn-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   MODERN LAYOUT ARCHITECTURE & TYPOGRAPHY SYSTEM
+   ══════════════════════════════════════════════════════════════ */
+
+/* Reset & Root Canvas */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Centered Max-Width Content Wrapper */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Clear Section Separation */
+.section,
+section {
+  padding: 72px 0;
+  margin: 0;
+  position: relative;
+}
+
+.section-alt {
+  background-color: #FFFFFF !important;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.section-soft {
+  background-color: #F1F5F9 !important;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 44px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Clear Heading Hierarchy */
+h1, .h1, .hero-title, .page-title {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #0F172A;
+  margin-bottom: 20px;
+}
+
+h2, .h2, .section-title {
+  font-family: var(--font-heading);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.20;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin-bottom: 16px;
+}
+
+h3, .h3, .card-title, .widget-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.30;
+  color: #0F172A;
+  margin-bottom: 12px;
+}
+
+h4, .h4, .sub-card-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #0F172A;
+  margin-bottom: 10px;
+}
+
+.section-subtitle, .hero-subtitle, .lead-text {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 450;
+  font-style: normal !important;
+  line-height: 1.65;
+  color: #64748B !important;
+  margin-bottom: 28px;
+}
+
+/* Clean Grid Alignment & Uniform Card Sizing */
+.grid { display: grid; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+/* Uniform Rounded Cards with Soft Shadows */
+.card,
+.course-card,
+.distinct-card,
+.pathway-card,
+.dashboard-card,
+.stat-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05) !important;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover,
+.course-card:hover,
+.distinct-card:hover,
+.pathway-card:hover,
+.dashboard-card:hover,
+.stat-card:hover {
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.10) !important;
+  transform: translateY(-3px);
+  border-color: rgba(37, 99, 235, 0.3) !important;
+}
+
+/* Muted & Secondary Text Alignment */
+.text-muted,
+.text-secondary,
+.course-desc,
+.instructor-name,
+.course-date,
+.course-duration,
+.course-category,
+.stat-label {
+  color: #64748B !important;
+}
+
+/* Modern Form Element Spacing */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0F172A;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+  font-family: inherit;
+  font-size: 14.5px;
+  color: #0F172A !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  width: 100%;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: #2563EB !important;
+  box-shadow: 0 0 0 3.5px rgba(37, 99, 235, 0.18) !important;
+}
+
+/* Tablet & Mobile Responsive Spacing */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .section, section {
+    padding: 48px 0;
+  }
+
+  .section-header {
+    margin-bottom: 32px;
+  }
+
+  h1, .h1, .hero-title, .page-title {
+    font-size: 34px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 16px;
+  }
+
+  h2, .h2, .section-title {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 14px;
+  }
+
+  h3, .h3, .card-title, .widget-title {
+    font-size: 20px !important;
+    margin-bottom: 10px;
+  }
+
+  .grid-4, .grid-3, .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card, .course-card, .distinct-card, .dashboard-card {
+    padding: 20px;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   GLOBAL "INTER" TYPOGRAPHY SYSTEM
+   font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --font-sans:     "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-heading:  "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-body:     "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-system:   "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Global Font Family Inheritance */
+html, body, h1, h2, h3, h4, h5, h6, p,
+span, a, button, input, select, textarea,
+.btn, .nav-link, .nav-brand, .card, .course-card,
+.distinct-card, .dashboard-card, .stat-card,
+table, th, td, modal, .modal, .sidebar, form, label {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* Body & Base Paragraphs */
+body {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #0F172A !important;
+  background-color: #F8FAFC !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* H1: Bold, Modern, Suitable for Page Titles */
+h1, .h1, .hero-title, .page-title, .hero-heading {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 48px;
+  font-weight: 800 !important;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #0F172A !important;
+  margin-bottom: 20px;
+}
+
+/* H2: Major Section Titles */
+h2, .h2, .section-title, .dashboard-title {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 32px;
+  font-weight: 800 !important;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  color: #0F172A !important;
+  margin-bottom: 16px;
+}
+
+/* H3: Course Cards, Workshop Cards, and Dashboard Widgets */
+h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title, .dashboard-section-title {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 22px;
+  font-weight: 700 !important;
+  line-height: 1.30;
+  color: #0F172A !important;
+  margin-bottom: 12px;
+}
+
+/* H4 - H6 */
+h4, .h4, .sub-card-title {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 18px;
+  font-weight: 700 !important;
+  line-height: 1.35;
+  color: #0F172A !important;
+  margin-bottom: 10px;
+}
+
+h5, .h5 { font-size: 16px; font-weight: 600 !important; color: #0F172A !important; margin-bottom: 8px; }
+h6, .h6 { font-size: 14px; font-weight: 600 !important; color: #0F172A !important; margin-bottom: 6px; }
+
+/* Buttons & Navigation Links: Medium Font Weight (600 / 500) */
+.btn,
+button,
+input[type="submit"],
+input[type="button"] {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+
+.nav-link {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+
+/* Form Labels: Clear, Readable, and Consistent */
+label,
+.form-label {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14px;
+  font-weight: 600 !important;
+  color: #0F172A !important;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input, select, textarea, .form-input, .form-select, .form-textarea {
+  font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14.5px;
+  font-weight: 400;
+}
+
+/* Muted Text: Slightly Smaller and Softer Color */
+.text-muted,
+.text-secondary,
+.muted,
+.course-desc,
+.instructor-name,
+.course-date,
+.course-duration,
+.course-category,
+.stat-label,
+.dashboard-subtitle,
+.form-help {
+  font-size: 13.5px !important;
+  color: #64748B !important;
+  font-weight: 400;
+}
+
+/* Responsive Scaling for Mobile Screens */
+@media (max-width: 768px) {
+  h1, .h1, .hero-title, .page-title, .hero-heading {
+    font-size: 34px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 16px;
+  }
+
+  h2, .h2, .section-title, .dashboard-title {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 14px;
+  }
+
+  h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
+    font-size: 19px !important;
+    margin-bottom: 10px;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   GOOGLE LEARNING (https://learning.google/) DESIGN SYSTEM
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Google Learning Color Tokens */
+  --color-primary:          #1A73E8;   /* Google Blue — Main CTAs & Links */
+  --color-primary-hover:    #1557B0;   /* Primary button hover */
+  --color-primary-light:    #4285F4;
+  --color-primary-bg:       #E8F0FE;   /* Light blue surface fill */
+
+  --color-secondary:        #14B8A6;   /* Supportive Teal / Growth */
+  --color-secondary-hover:  #0D9488;
+  --color-secondary-bg:     #E6F4EA;
+
+  --color-accent:           #F59E0B;   /* Google Amber / Yellow */
+  --color-accent-hover:     #D97706;
+  --color-accent-text:      #111827;
+  --color-accent-bg:        #FEF7E0;
+
+  --color-background:       #F8FAFC;   /* Canvas background */
+  --color-surface:          #FFFFFF;   /* Main card surface */
+  --color-surface-soft:     #F1F5F9;
+
+  --color-text-main:        #1F1F1F;   /* Google Slate Main Text */
+  --color-text-secondary:   #3C4043;   /* Secondary Text */
+  --color-text-muted:       #5F6368;   /* Muted Metadata Text */
+
+  --color-border:           #DADCE0;   /* Clean Google border */
+  --color-border-subtle:    #F1F3F4;
+  --color-border-focus:     #1A73E8;
+
+  --color-success:          #34A853;   /* Google Green */
+  --color-warning:          #FBBC04;   /* Google Yellow */
+  --color-danger:           #EA4335;   /* Google Red */
+
+  --font-sans:              'Plus Jakarta Sans', 'Inter', 'Google Sans', 'Segoe UI', Roboto, sans-serif;
+  --font-heading:           'Plus Jakarta Sans', 'Inter', 'Google Sans', sans-serif;
+  --font-body:              'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+/* Global Font Inheritance — Google Learning Aesthetic */
+html, body, h1, h2, h3, h4, h5, h6, p,
+span, a, button, input, select, textarea,
+.btn, .nav-link, .nav-brand, .card, .course-card,
+.distinct-card, .dashboard-card, .stat-card,
+table, th, td, modal, .modal, .sidebar, form, label {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Google Sans', 'Segoe UI', Roboto, sans-serif !important;
+}
+
+body {
+  background-color: #F8FAFC !important;
+  color: #1F1F1F !important;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Container Centered Layout */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Google Learning Headings */
+h1, .h1, .hero-title, .page-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Google Sans', sans-serif !important;
+  font-size: 48px;
+  font-weight: 800 !important;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #1F1F1F !important;
+  margin-bottom: 20px;
+}
+
+h2, .h2, .section-title, .dashboard-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Google Sans', sans-serif !important;
+  font-size: 32px;
+  font-weight: 800 !important;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  color: #1F1F1F !important;
+  margin-bottom: 16px;
+}
+
+h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Google Sans', sans-serif !important;
+  font-size: 22px;
+  font-weight: 700 !important;
+  line-height: 1.30;
+  color: #1F1F1F !important;
+  margin-bottom: 12px;
+}
+
+p {
+  color: #3C4043;
+  line-height: 1.65;
+}
+
+/* Google Learning Pill Buttons */
+.btn {
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  font-size: 15px;
+  padding: 12px 24px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-primary, .btn-blue, .btn-main {
+  background-color: #1A73E8 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  box-shadow: 0 1px 3px rgba(60,64,67,0.15) !important;
+}
+
+.btn-primary:hover, .btn-blue:hover, .btn-main:hover {
+  background-color: #1557B0 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(26,115,232,0.30) !important;
+  transform: translateY(-1px);
+}
+
+.btn-secondary, .btn-teal {
+  background-color: #14B8A6 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+.btn-secondary:hover, .btn-teal:hover {
+  background-color: #0D9488 !important;
+  color: #FFFFFF !important;
+}
+
+/* Google Learning Cards & Soft Elevation */
+.card,
+.course-card,
+.distinct-card,
+.pathway-card,
+.dashboard-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #DADCE0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 1px 3px rgba(60,64,67,0.12), 0 1px 2px rgba(60,64,67,0.08) !important;
+  padding: 24px;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease !important;
+}
+
+.card:hover,
+.course-card:hover,
+.distinct-card:hover,
+.pathway-card:hover,
+.dashboard-card:hover {
+  box-shadow: 0 8px 24px rgba(60,64,67,0.15) !important;
+  transform: translateY(-2px);
+  border-color: rgba(26,115,232,0.4) !important;
+}
+
+/* Mobile Responsive Google Settings */
+@media (max-width: 768px) {
+  .container { padding-left: 16px; padding-right: 16px; }
+  h1, .h1, .hero-title, .page-title { font-size: 34px !important; line-height: 1.18 !important; }
+  h2, .h2, .section-title { font-size: 26px !important; }
+  h3, .h3, .card-title { font-size: 19px !important; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   GOOGLE LEARNING (https://learning.google/) TYPOGRAPHY & SIZE SCALE
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --font-sans:     'Google Sans', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading:  'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-body:     'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-system:   'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif;
+
+  /* Google Learning Type Sizes (Desktop) */
+  --font-size-h1:  56px;   /* 3.5rem Display Title */
+  --font-size-h2:  36px;   /* 2.25rem Section Title */
+  --font-size-h3:  22px;   /* 1.375rem Card & Widget Title */
+  --font-size-h4:  18px;   /* 1.125rem Sub-card Title */
+  --font-size-h5:  15px;   /* 0.9375rem Small Heading */
+  --font-size-h6:  13px;   /* 0.8125rem Badge & Caption */
+
+  --font-size-lead:18px;   /* Lead Subtitle */
+  --font-size-body:16px;   /* Body Paragraph */
+  --font-size-sm:  14px;   /* Small Text */
+  --font-size-xs:  13px;   /* Muted Metadata */
+}
+
+/* Global Font Inheritance — Google Learning Style */
+html, body, h1, h2, h3, h4, h5, h6, p,
+span, a, button, input, select, textarea,
+.btn, .nav-link, .nav-brand, .card, .course-card,
+.distinct-card, .dashboard-card, .stat-card,
+table, th, td, modal, .modal, .sidebar, form, label {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Body & Base Document */
+body {
+  font-family: 'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #1F1F1F !important;
+  background-color: #F8FAFC !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-family: 'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #3C4043 !important;
+  margin-bottom: 16px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* H1: Display / Hero Title (56px Desktop / 36px Mobile) */
+h1, .h1, .hero-title, .page-title, .hero-heading {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 56px !important;
+  font-weight: 700 !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.02em !important;
+  color: #1F1F1F !important;
+  margin-bottom: 20px;
+}
+
+/* H2: Section Titles (36px Desktop / 28px Mobile) */
+h2, .h2, .section-title, .dashboard-title {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  line-height: 1.20 !important;
+  letter-spacing: -0.015em !important;
+  color: #1F1F1F !important;
+  margin-bottom: 16px;
+}
+
+/* H3: Course Cards, Workshop Cards, Dashboard Widgets (22px Desktop / 19px Mobile) */
+h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title, .dashboard-section-title {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.30 !important;
+  letter-spacing: -0.01em !important;
+  color: #1F1F1F !important;
+  margin-bottom: 12px;
+}
+
+/* H4: Sub-card Titles (18px Desktop / 16px Mobile) */
+h4, .h4, .sub-card-title {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  color: #1F1F1F !important;
+  margin-bottom: 10px;
+}
+
+h5, .h5 { font-size: 15px !important; font-weight: 600 !important; color: #1F1F1F !important; margin-bottom: 8px; }
+h6, .h6 { font-size: 13px !important; font-weight: 600 !important; color: #1F1F1F !important; margin-bottom: 6px; }
+
+/* Lead Subtitle & Section Subtitles (18px Desktop / 16px Mobile) */
+.lead, .hero-subtitle, .section-subtitle, .lead-text {
+  font-family: 'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: 1.60 !important;
+  color: #3C4043 !important;
+  margin-bottom: 28px;
+}
+
+/* Buttons & Navigation Links (15px / Weight 600) */
+.btn,
+button,
+input[type="submit"],
+input[type="button"] {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.01em !important;
+}
+
+.nav-link {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Form Labels (14px / Weight 600) */
+label,
+.form-label {
+  font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #1F1F1F !important;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input, select, textarea, .form-input, .form-select, .form-textarea {
+  font-family: 'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 400 !important;
+}
+
+/* Muted Metadata Text (13px / Color #5F6368) */
+.text-muted,
+.text-secondary,
+.muted,
+.course-desc,
+.instructor-name,
+.course-date,
+.course-duration,
+.course-category,
+.stat-label,
+.dashboard-subtitle,
+.form-help {
+  font-family: 'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  color: #5F6368 !important;
+  font-weight: 400 !important;
+}
+
+/* Google Learning Mobile Responsive Font Scale */
+@media (max-width: 1024px) {
+  h1, .h1, .hero-title, .page-title, .hero-heading {
+    font-size: 44px !important;
+    line-height: 1.15 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  h1, .h1, .hero-title, .page-title, .hero-heading {
+    font-size: 36px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 16px;
+  }
+
+  h2, .h2, .section-title, .dashboard-title {
+    font-size: 28px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 14px;
+  }
+
+  h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
+    font-size: 19px !important;
+    margin-bottom: 10px;
+  }
+
+  .lead, .hero-subtitle, .section-subtitle {
+    font-size: 16px !important;
+    line-height: 1.60 !important;
+  }
+
+  p {
+    font-size: 15px !important;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   STRATHMORE UNIVERSITY (strathmore.edu) COLOR PALETTE
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Strathmore Navy (Primary Brand) */
+  --color-primary:          #002B49;   /* Strathmore Deep Navy — Main buttons, header & CTAs */
+  --color-primary-hover:    #001F35;   /* Hover navy */
+  --color-primary-light:    #004070;   /* Active highlights */
+  --color-primary-dark:     #00182B;
+  --color-primary-bg:       #E8F0F8;   /* Light navy fill */
+  --color-primary-glow:     rgba(0, 43, 73, 0.15);
+
+  /* Strathmore Gold (Secondary & Academic Excellence) */
+  --color-secondary:        #C29B38;   /* Strathmore Gold — Progress indicators, learning paths, badges */
+  --color-secondary-hover:  #A6822B;   /* Hover gold */
+  --color-secondary-light:  #E5C568;
+  --color-secondary-dark:   #8C6A18;
+  --color-secondary-bg:     #FDFBEE;
+
+  /* Strathmore Accent & Crimson */
+  --color-accent:           #C29B38;   /* Strathmore Gold Accent */
+  --color-accent-hover:     #A6822B;
+  --color-accent-text:      #002B49;   /* Deep Navy text on Gold badges */
+  --color-accent-bg:        #FDFBEE;
+
+  --color-amber:            #C29B38;
+  --color-amber-hover:      #A6822B;
+  --color-amber-text:       #002B49;
+  --color-amber-bg:         #FDFBEE;
+
+  --color-crimson:          #800020;   /* Strathmore Crimson for special recognition */
+
+  /* Page Surfaces & Canvas */
+  --color-background:       #F8FAFC;   /* Main background canvas */
+  --color-surface:          #FFFFFF;   /* Main card surface */
+  --color-surface-soft:     #F1F5F9;   /* Soft surface fill */
+
+  /* Text Typography System */
+  --color-text-main:        #002B49;   /* Strathmore Deep Navy main headings */
+  --color-text-secondary:   #334155;   /* Secondary body text */
+  --color-text-muted:       #64748B;   /* Muted metadata text */
+  --color-text-on-primary:  #FFFFFF;
+
+  /* Borders & Dividers */
+  --color-border:           #E2E8F0;   /* Clean border color */
+  --color-border-subtle:    #F1F5F9;
+  --color-border-focus:     #002B49;
+
+  /* Status Colors */
+  --color-success:          #22C55E;   /* Verified green */
+  --color-warning:          #C29B38;   /* Strathmore Gold warning */
+  --color-danger:           #EF4444;   /* Red danger */
+  --color-info:             #0284C7;   /* Info blue */
+
+  /* Legacy Compatibility Maps */
+  --color-brand:            #002B49;
+  --color-blue:             #002B49;
+  --color-blue-hover:       #001F35;
+  --color-teal:             #C29B38;
+  --color-teal-hover:       #A6822B;
+  --color-orange:           #002B49;
+  --color-orange-hover:     #001F35;
+  --color-curiosity-orange: #C29B38;
+  --color-deep-navy:        #002B49;
+  --color-soft-grey:        #F8FAFC;
+
+  --bg-white:               #FFFFFF;
+  --bg-canvas:              #F8FAFC;
+  --bg-light:               #F1F5F9;
+  --bg-card:                #FFFFFF;
+
+  --text-primary:           #002B49;
+  --text-body:              #334155;
+  --text-secondary:         #334155;
+  --text-muted:             #64748B;
+
+  --border-card:            #E2E8F0;
+  --border-subtle:          #E2E8F0;
+
+  --shadow-card:            0 2px 12px rgba(0, 43, 73, 0.06);
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   INSTRUCTIFY KENYA — ROYAL BLUE (#1E3A8A), DEEP GOLD (#FF4D00), ORANGE (#FF4D00)
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Primary Brand — Royal Blue (#1E3A8A) */
+  --color-primary:          #1E3A8A;   /* Main navigation, primary buttons, headings, links, active states */
+  --color-primary-hover:    #172554;   /* Darker Royal Blue hover */
+  --color-primary-light:    #3B82F6;   /* Focus highlights */
+  --color-primary-dark:     #172554;
+  --color-primary-bg:       #EFF6FF;   /* Soft blue surface fill */
+  --color-primary-glow:     rgba(30, 58, 138, 0.15);
+
+  /* Secondary Brand — Deep Yellow/Gold (#FF4D00) */
+  --color-secondary:        #FF4D00;   /* Main highlights, CTA accents, icons, badges, section dividers */
+  --color-secondary-hover:  #D9A104;   /* Gold hover */
+  --color-secondary-light:  #FDE047;
+  --color-secondary-dark:   #B45309;
+  --color-secondary-bg:     #FEF9C3;   /* Soft gold badge background */
+
+  /* Accent — Orange (#FF4D00) */
+  --color-accent:           #FF4D00;   /* Hover states, secondary buttons, energetic accents */
+  --color-accent-hover:     #FF4D00;   /* Orange hover */
+  --color-accent-text:      #FFFFFF;
+  --color-accent-bg:        #FFEDD5;
+
+  --color-amber:            #FF4D00;
+  --color-amber-hover:      #D9A104;
+  --color-amber-text:       #111827;
+  --color-amber-bg:         #FEF9C3;
+
+  /* Supporting Neutrals */
+  --color-background:       #F8FAFC;   /* Off-white background */
+  --color-surface:          #FFFFFF;   /* Pure White card surface */
+  --color-surface-soft:     #F1F5F9;   /* Soft surface fill */
+
+  /* Text System */
+  --color-text-main:        #111827;   /* Dark text */
+  --color-text-secondary:   #374151;   /* Secondary body text */
+  --color-text-muted:       #6B7280;   /* Muted text */
+  --color-text-on-primary:  #FFFFFF;
+
+  /* Borders & Dividers */
+  --color-border:           #E5E7EB;   /* Light border */
+  --color-border-subtle:    #F3F4F6;
+  --color-border-focus:     #1E3A8A;
+
+  /* Status System */
+  --color-success:          #22C55E;   /* Success green */
+  --color-warning:          #FF4D00;   /* Gold warning */
+  --color-danger:           #EF4444;   /* Red error */
+  --color-info:             #38BDF8;   /* Info blue */
+
+  /* Compatibility Mapping */
+  --color-brand:            #1E3A8A;
+  --color-blue:             #1E3A8A;
+  --color-blue-hover:       #172554;
+  --color-teal:             #FF4D00;
+  --color-teal-hover:       #D9A104;
+  --color-orange:           #FF4D00;
+  --color-orange-hover:     #FF4D00;
+  --color-curiosity-orange: #FF4D00;
+  --color-deep-navy:        #1E3A8A;
+  --color-soft-grey:        #F8FAFC;
+
+  --bg-white:               #FFFFFF;
+  --bg-canvas:              #F8FAFC;
+  --bg-light:               #F1F5F9;
+  --bg-card:                #FFFFFF;
+
+  --text-primary:           #111827;
+  --text-body:              #374151;
+  --text-secondary:         #374151;
+  --text-muted:             #6B7280;
+
+  --border-card:            #E5E7EB;
+  --border-subtle:          #E5E7EB;
+
+  --shadow-card:            0 2px 12px rgba(30, 58, 138, 0.05);
+}
+
+/* Base Body & Heading Rule Overrides for High-Contrast Accessibility */
+body {
+  background-color: #F8FAFC !important;
+  color: #111827 !important;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, h6 {
+  color: #111827 !important;
+}
+
+p {
+  color: #374151;
+}
+
+.text-muted, .text-secondary, .muted {
+  color: #6B7280 !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   BALANCED TYPOGRAPHY & HEADING SCALE
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --font-size-h1:   36px;   /* Balanced H1 Display / Hero Title */
+  --font-size-h2:   28px;   /* Balanced H2 Section Title */
+  --font-size-h3:   20px;   /* Balanced H3 Card & Widget Title */
+  --font-size-h4:   17px;   /* Balanced H4 Sub-title */
+  --font-size-h5:   15px;
+  --font-size-h6:   13px;
+
+  --font-size-lead: 16px;   /* Balanced Lead Subtitle */
+  --font-size-body: 15px;   /* Balanced Body Copy */
+  --font-size-sm:   14px;
+  --font-size-xs:   13px;
+}
+
+/* H1: Balanced Main Page Title (36px Desktop / 32px Tablet / 28px Mobile) */
+h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.20;
+  letter-spacing: -0.02em;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+/* H2: Balanced Section Titles (28px Desktop / 24px Tablet / 22px Mobile) */
+h2, .h2, .section-title, .dashboard-title {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: #111827;
+  margin-bottom: 14px;
+}
+
+/* H3: Course Cards, Workshop Cards, Widgets (20px Desktop / 18px Mobile) */
+h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title, .dashboard-section-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.30;
+  letter-spacing: -0.01em;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+/* H4: Sub-card Titles (17px Desktop / 16px Mobile) */
+h4, .h4, .sub-card-title {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+h5, .h5 { font-size: 15px; font-weight: 600; color: #111827; margin-bottom: 6px; }
+h6, .h6 { font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 6px; }
+
+/* Balanced Lead Subtitles (16px Desktop / 15px Mobile) */
+.lead, .hero-subtitle, .section-subtitle, .lead-text {
+  font-family: var(--font-body) !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: 1.60 !important;
+  color: #4B5563 !important;
+  margin-bottom: 24px !important;
+}
+
+p {
+  font-family: var(--font-body) !important;
+  font-size: 15px !important;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #374151 !important;
+  margin-bottom: 14px;
+}
+
+/* Responsive Balanced Scale for Tablets and Mobile */
+@media (max-width: 1024px) {
+  h1, .h1, .hero-title, .page-title, .hero-heading {
+    font-size: 32px !important;
+    line-height: 1.22 !important;
+  }
+
+  h2, .h2, .section-title, .dashboard-title {
+    font-size: 24px !important;
+    line-height: 1.25 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  h1, .h1, .hero-title, .page-title, .hero-heading {
+    font-size: 28px !important;
+    line-height: 1.24 !important;
+    margin-bottom: 12px !important;
+  }
+
+  h2, .h2, .section-title, .dashboard-title {
+    font-size: 22px !important;
+    line-height: 1.28 !important;
+    margin-bottom: 10px !important;
+  }
+
+  h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .lead, .hero-subtitle, .section-subtitle {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+  }
+
+  p {
+    font-size: 14.5px !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HIGH-CONTRAST TEXT FOR DARK CONTAINER SECTIONS
+   ══════════════════════════════════════════════════════════════ */
+.dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4,
+.blue-section h1, .blue-section h2, .blue-section h3, .blue-section h4 {
+  color: #FFFFFF !important;
+}
+
+.dark-section p, .blue-section p {
+  color: #E2E8F0 !important;
+}
+

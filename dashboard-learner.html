@@ -4,28 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learner Dashboard | Instructify Kenya</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230D6E4F'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold' font-family='Arial'>IK</text></svg>">
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
 
-<nav id="navbar" class="navbar scrolled">
+<nav id="navbar" class="navbar">
   <div class="container">
-    <a href="index.html" class="nav-brand">
-      <div class="nav-logo">IK</div>
-      <div class="nav-brand-text">
-        <span class="nav-brand-name">Instructify</span>
-        <span class="nav-brand-tagline">Learner Portal</span>
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya" style="display: inline-flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap;">
+      <div class="nav-brand-icon" style="display: inline-flex; align-items: center; justify-content: center; margin: 0; padding: 0; flex-shrink: 0; background: none; border: none; box-shadow: none;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="nav-brand-text-box" style="display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; white-space: nowrap; margin: 0; padding: 0; line-height: 1;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #FFFFFF; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #FF4D00; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
       </div>
     </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="courses.html" class="nav-link">Courses</a></li>
+      
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
     <div class="nav-actions">
-      <div class="flex items-center gap-md">
-        <div class="avatar-placeholder avatar-sm" id="user-avatar-top">JM</div>
-        <span id="user-name-top" style="font-size:var(--text-sm);font-weight:600">James Mwangi</span>
-        <button onclick="logout()" class="btn btn-outline btn-sm">Logout</button>
-      </div>
+      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="courses.html" class="btn btn-orange btn-sm">Start Learning</a>
     </div>
   </div>
 </nav>
@@ -38,7 +51,7 @@
         <div class="avatar-placeholder avatar-md" id="sidebar-avatar">JM</div>
         <div class="sidebar-user-info">
           <div class="sidebar-user-name" id="sidebar-user-name">James Mwangi</div>
-          <div class="sidebar-user-role">TSC Teacher · Nairobi</div>
+          <div class="sidebar-user-role">TSC Teacher &bull; Nairobi</div>
         </div>
       </div>
     </div>
@@ -47,37 +60,37 @@
       <div class="sidebar-section">
         <div class="sidebar-section-label">Main Menu</div>
         <a href="#overview" class="sidebar-link active" onclick="switchDashboardTab(this, 'overview')">
-          <span class="sidebar-link-icon">📊</span> Overview
+          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></span> Overview
         </a>
         <a href="#my-courses" class="sidebar-link" onclick="switchDashboardTab(this, 'my-courses')">
-          <span class="sidebar-link-icon">📚</span> My Courses
+          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg></span> My Courses
           <span class="sidebar-link-badge">3</span>
         </a>
         <a href="#assessments" class="sidebar-link" onclick="switchDashboardTab(this, 'assessments')">
-          <span class="sidebar-link-icon">📝</span> Quizzes &amp; Assignments
+          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span> Quizzes &amp; Assignments
         </a>
         <a href="#certificates" class="sidebar-link" onclick="switchDashboardTab(this, 'certificates')">
-          <span class="sidebar-link-icon">🏆</span> Certificates &amp; Badges
+          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span> Certificates &amp; Badges
         </a>
       </div>
 
       <div class="sidebar-section">
         <div class="sidebar-section-label">Account &amp; Support</div>
         <a href="#payments" class="sidebar-link" onclick="switchDashboardTab(this, 'payments')">
-          <span class="sidebar-link-icon">💳</span> Payment History
+          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span> Payment History
         </a>
         <a href="#notifications" class="sidebar-link" onclick="switchDashboardTab(this, 'notifications')">
-          <span class="sidebar-link-icon">🔔</span> Notifications
+          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span> Notifications
         </a>
         <a href="courses.html" class="sidebar-link">
-          <span class="sidebar-link-icon">🔍</span> Explore Courses
+          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span> Explore Courses
         </a>
       </div>
     </nav>
 
     <div class="sidebar-footer">
       <button onclick="logout()" class="btn btn-ghost w-full justify-start" style="color:#EF4444">
-        <span>🚪</span> Log Out
+        <span style="display:inline-flex;align-items:center;margin-right:6px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg></span> Log Out
       </button>
     </div>
   </aside>
@@ -93,35 +106,35 @@
           <div class="dashboard-subtitle">Here is your professional learning progress and upcoming schedule.</div>
         </div>
         <div class="dashboard-actions">
-          <a href="courses.html" class="btn btn-primary btn-sm">➕ Enroll New Course</a>
+          <a href="courses.html" class="btn btn-blue btn-sm">➕ Enroll New Course</a>
         </div>
       </div>
 
       <!-- Stats Grid -->
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-icon" style="background:rgba(13,110,79,0.15);color:var(--color-primary-light)">📚</div>
+          <div class="stat-icon" style="background:rgba(72, 14, 116,0.12);color:var(--color-primary)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg></div>
           <div class="stat-value">3</div>
           <div class="stat-label">Enrolled Courses</div>
-          <div class="stat-change up"><span>↑</span> 1 active this month</div>
+          <div class="stat-change up"><span style="font-weight:700;">↗</span> 1 active this month</div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="background:rgba(245,166,35,0.15);color:var(--color-secondary)">⏱️</div>
+          <div class="stat-icon" style="background:rgba(37, 99, 235,0.12);color:var(--color-accent)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <div class="stat-value">45 hrs</div>
           <div class="stat-label">CPD Credits Earned</div>
-          <div class="stat-change up"><span>↑</span> 15 hrs left for annual TSC target</div>
+          <div class="stat-change up"><span style="font-weight:700;">↗</span> 15 hrs left for annual TSC target</div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="background:rgba(0,180,216,0.15);color:var(--color-accent)">📝</div>
+          <div class="stat-icon" style="background:rgba(72, 14, 116,0.12);color:var(--color-primary)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <div class="stat-value">92%</div>
           <div class="stat-label">Average Quiz Score</div>
-          <div class="stat-change up"><span>★</span> Top 5% Learner</div>
+          <div class="stat-change up"><span style="font-weight:700;">↗</span> Top 5% Learner</div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="background:rgba(138,92,246,0.15);color:#8B5CF6">🏆</div>
+          <div class="stat-icon" style="background:rgba(37, 99, 235,0.12);color:var(--color-accent)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
           <div class="stat-value">2</div>
           <div class="stat-label">Certificates Issued</div>
-          <a href="#certificates" onclick="switchDashboardTab(null, 'certificates')" style="font-size:var(--text-xs);color:var(--color-primary-light);display:block;margin-top:4px">View certificates →</a>
+          <a href="#certificates" onclick="switchDashboardTab(null, 'certificates')" style="font-size:var(--text-xs);color:var(--color-primary-light);display:block;margin-top:4px">View certificates ↗</a>
         </div>
       </div>
 
@@ -130,15 +143,15 @@
         <div class="dashboard-section">
           <div class="dashboard-section-header">
             <h2 class="dashboard-section-title">In Progress Courses</h2>
-            <a href="#my-courses" onclick="switchDashboardTab(null, 'my-courses')" style="font-size:var(--text-xs);color:var(--color-primary-light)">View all →</a>
+            <a href="#my-courses" onclick="switchDashboardTab(null, 'my-courses')" style="font-size:var(--text-xs);color:var(--color-primary-light)">View all ?</a>
           </div>
 
           <div class="course-progress-item">
-            <div style="width:50px;height:50px;border-radius:var(--border-radius-sm);background:var(--gradient-green);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0">💻</div>
+            <div style="width:50px;height:50px;border-radius:var(--border-radius-sm);background:var(--color-section-blue);color:var(--color-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg></div>
             <div class="course-progress-info">
               <div class="course-progress-name">ICT Integration in Education</div>
               <div class="course-progress-meta">
-                <span>Module 4 of 12</span> • <span>Next: Digital Lesson Design</span>
+                <span>Module 4 of 12</span> &bull; <span>Next: Digital Lesson Design</span>
               </div>
               <div class="progress mt-sm" style="height:6px">
                 <div class="progress-bar" style="width:65%"></div>
@@ -146,23 +159,23 @@
             </div>
             <div class="text-right">
               <div class="course-progress-pct">65%</div>
-              <button onclick="showToast('Resuming module 4 video lecture...','info')" class="btn btn-primary btn-sm mt-sm">Resume</button>
+              <button onclick="showToast('Resuming module 4 video lecture...','info')" class="btn btn-blue btn-sm mt-sm">Resume</button>
             </div>
           </div>
 
           <div class="course-progress-item">
-            <div style="width:50px;height:50px;border-radius:var(--border-radius-sm);background:var(--gradient-gold);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0">📋</div>
+            <div style="width:50px;height:50px;border-radius:var(--border-radius-sm);background:var(--color-section-orange);color:var(--color-accent);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
             <div class="course-progress-info">
               <div class="course-progress-name">CBE Curriculum Implementation</div>
               <div class="course-progress-meta">
-                <span>Module 2 of 10</span> • <span>Next: Portfolio Assessment</span>
+                <span>Module 2 of 10</span> &bull; <span>Next: Portfolio Assessment</span>
               </div>
               <div class="progress mt-sm" style="height:6px">
                 <div class="progress-bar gold" style="width:30%"></div>
               </div>
             </div>
             <div class="text-right">
-              <div class="course-progress-pct" style="color:var(--color-secondary)">30%</div>
+              <div class="course-progress-pct" style="color:#14B8A6">30%</div>
               <button onclick="showToast('Resuming module 2 quiz...','info')" class="btn btn-outline btn-sm mt-sm">Resume</button>
             </div>
           </div>
@@ -240,9 +253,9 @@
                 <td>ICT Lesson Plan Submission</td>
                 <td>ICT Integration in Education</td>
                 <td>Aug 12, 2026</td>
-                <td>—</td>
+                <td>&bull;</td>
                 <td><span class="badge badge-warning">Pending</span></td>
-                <td><button class="btn btn-primary btn-sm" onclick="showToast('Opening assignment uploader...','info')">Submit</button></td>
+                <td><button class="btn btn-blue btn-sm" onclick="showToast('Opening assignment uploader...','info')">Submit</button></td>
               </tr>
             </tbody>
           </table>
@@ -250,19 +263,71 @@
       </div>
     </div>
 
-    <!-- Tab 4: Certificates -->
+    <!-- Tab 4: Certificates & Badges -->
     <div id="dash-panel-certificates" class="dash-panel" style="display:none">
       <div class="dashboard-header">
-        <h1 class="dashboard-title">Certificates &amp; Badges</h1>
+        <div>
+          <h1 class="dashboard-title">Certificates &amp; Digital Badges</h1>
+          <div class="dashboard-subtitle">Manage, verify, download, and share your official CPD accredited credentials.</div>
+        </div>
       </div>
-      <div class="grid-2">
-        <div class="card" style="border:1px solid var(--color-primary-light);background:var(--bg-glass)">
-          <div style="font-size:2rem;margin-bottom:var(--space-md)">🏆</div>
-          <h3 class="font-heading text-lg" style="margin-bottom:var(--space-xs)">Digital Literacy Certification</h3>
-          <div style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-md)">Issued Jul 24, 2026 • Certificate ID: IK-CERT-2026-9921</div>
-          <div class="flex gap-sm">
-            <a href="certification.html?certId=IK-CERT-2026-9921" target="_blank" class="btn btn-primary btn-sm">View Certificate</a>
-            <button onclick="showToast('Downloading Certificate PDF...','success')" class="btn btn-outline btn-sm">Download PDF</button>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap:24px;">
+        <!-- Credential Card 1 -->
+        <div class="stat-card" style="padding:28px; border:1.5px solid #CBD5E1; background:#FFFFFF;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
+            <div style="display:inline-flex; align-items:center; gap:8px; background:#DCFCE7; color:#166534; padding:4px 12px; border-radius:999px; font-size:12px; font-weight:800; border:1px solid #22C55E;">
+              ✅ Valid Credential &bull; CPD Accredited
+            </div>
+            <span style="font-size:12px; font-family:var(--font-mono); color:#FF4D00; font-weight:700;">IK-CERT-2026-9921</span>
+          </div>
+
+          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin-bottom:6px; line-height:1.3;">
+            Digital Literacy &amp; ICT Integration in Teaching
+          </h3>
+          <div style="font-size:13px; color:#64748B; margin-bottom:16px;">
+            Issued on July 26, 2026 &bull; <strong>40 CPD Hours</strong> &bull; Distinction (96%)
+          </div>
+
+          <div style="font-size:12px; color:#475569; background:#F8FAFC; padding:12px 14px; border-radius:8px; border:1px solid #E2E8F0; margin-bottom:20px;">
+            🔒 <strong>Verification Hash:</strong> 3e6f9a0c8b7a6d5e... &bull; Digitally Signed
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button onclick="window.CertificateEngine.openModalPreview('IK-CERT-2026-9921')" class="btn btn-blue btn-sm">👁️ View Certificate</button>
+            <a href="verify.html?id=IK-CERT-2026-9921" target="_blank" class="btn btn-outline btn-sm">🔍 Verify Credential</a>
+            <button onclick="window.CertificateEngine.openModalPreview('IK-CERT-2026-9921')" class="btn btn-ghost btn-sm">🖨️ Download PDF</button>
+            <button onclick="navigator.clipboard.writeText(window.location.origin + '/verify.html?id=IK-CERT-2026-9921'); window.showToast('Verification link copied!','success');" class="btn btn-ghost btn-sm">📋 Copy Link</button>
+            <a href="https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=Digital+Literacy+Certification&organizationName=Instructify+Kenya" target="_blank" class="btn btn-ghost btn-sm" style="color:#0A66C2;">🔗 Add to LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Credential Card 2 -->
+        <div class="stat-card" style="padding:28px; border:1.5px solid #CBD5E1; background:#FFFFFF;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
+            <div style="display:inline-flex; align-items:center; gap:8px; background:#DCFCE7; color:#166534; padding:4px 12px; border-radius:999px; font-size:12px; font-weight:800; border:1px solid #22C55E;">
+              ✅ Valid Credential &bull; CPD Accredited
+            </div>
+            <span style="font-size:12px; font-family:var(--font-mono); color:#FF4D00; font-weight:700;">IK-CPD-2026-8942</span>
+          </div>
+
+          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin-bottom:6px; line-height:1.3;">
+            Competency-Based Curriculum (CBC) Pedagogy &amp; Assessment
+          </h3>
+          <div style="font-size:13px; color:#64748B; margin-bottom:16px;">
+            Issued on August 18, 2026 &bull; <strong>30 CPD Hours</strong> &bull; Distinction (94%)
+          </div>
+
+          <div style="font-size:12px; color:#475569; background:#F8FAFC; padding:12px 14px; border-radius:8px; border:1px solid #E2E8F0; margin-bottom:20px;">
+            🔒 <strong>Verification Hash:</strong> 8f9b4c2e1a7d3e6f... &bull; Digitally Signed
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button onclick="window.CertificateEngine.openModalPreview('IK-CPD-2026-8942')" class="btn btn-blue btn-sm">👁️ View Certificate</button>
+            <a href="verify.html?id=IK-CPD-2026-8942" target="_blank" class="btn btn-outline btn-sm">🔍 Verify Credential</a>
+            <button onclick="window.CertificateEngine.openModalPreview('IK-CPD-2026-8942')" class="btn btn-ghost btn-sm">🖨️ Download PDF</button>
+            <button onclick="navigator.clipboard.writeText(window.location.origin + '/verify.html?id=IK-CPD-2026-8942'); window.showToast('Verification link copied!','success');" class="btn btn-ghost btn-sm">📋 Copy Link</button>
+            <a href="https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=CBC+Pedagogy+Certification&organizationName=Instructify+Kenya" target="_blank" class="btn btn-ghost btn-sm" style="color:#0A66C2;">🔗 Add to LinkedIn</a>
           </div>
         </div>
       </div>
@@ -337,6 +402,7 @@
 
 <script src="js/main.js"></script>
 <script src="js/auth.js"></script>
+<script src="js/certificates.js"></script>
 <script src="js/courses.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {

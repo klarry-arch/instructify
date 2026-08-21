@@ -1,0 +1,25 @@
+{
+  "name": "instructify-ke",
+  "version": "1.0.0",
+  "description": "Instructify Kenya — LMS Payment & Enrollment Backend",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@vercel/kv": "^2.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "node-fetch": "^3.3.2"
+  },
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --testPathPattern=tests/",
+    "dev": "vercel dev"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {}
+  }
+}
