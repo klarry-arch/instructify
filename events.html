@@ -55,8 +55,14 @@
 
 <section class="section">
   <div class="container">
+    <div class="section-title-wrap text-center mb-xl">
+      <span class="section-tag orange">UPCOMING SESSIONS</span>
+      <h2 class="section-title">Explore Workshops &amp; Masterclasses</h2>
+      <p class="section-subtitle">Reserve your spot in our upcoming interactive training workshops.</p>
+    </div>
+
     <div class="grid-2">
-      <div class="card flex gap-md items-center">
+      <div class="card flex gap-md items-center" style="border:1px solid #E2E8F0; border-radius:16px; padding:24px;">
         <div style="background:var(--color-orange-glow);color:var(--color-orange);padding:20px;border-radius:var(--border-radius-md);text-align:center;min-width:80px">
           <div style="font-size:1.8rem;font-weight:800">18</div>
           <div style="font-size:0.75rem;font-weight:700">AUG</div>
@@ -65,25 +71,249 @@
           <span class="badge badge-orange mb-xs">LIVE WEBINAR</span>
           <h3 class="font-heading text-lg">AI Tools for CBE Assessment Creation</h3>
           <div style="font-size:var(--text-xs);color:var(--text-muted);margin:4px 0">Time: 4:00 PM &mdash; 5:30 PM EAT &mdash; Platform: Zoom / Instructify Live</div>
-          <button onclick="showToast('Webinar seat reserved! Check your email for access details.','success')" class="btn btn-orange btn-sm mt-sm">Reserve Free Seat</button>
+          <button onclick="registerForWorkshop('AI Tools for CBE Assessment Creation')" class="btn btn-orange btn-sm mt-sm">Register For Workshop</button>
         </div>
       </div>
 
-      <div class="card flex gap-md items-center">
+      <div class="card flex gap-md items-center" style="border:1px solid #E2E8F0; border-radius:16px; padding:24px;">
         <div style="background:var(--color-primary-glow);color:var(--color-primary-light);padding:20px;border-radius:var(--border-radius-md);text-align:center;min-width:80px">
           <div style="font-size:1.8rem;font-weight:800">25</div>
           <div style="font-size:0.75rem;font-weight:700">AUG</div>
         </div>
         <div>
-          <span class="badge badge-info mb-xs">WORKSHOP</span>
+          <span class="badge badge-info mb-xs">MASTERCLASS</span>
           <h3 class="font-heading text-lg">National ICT Integration Masterclass</h3>
           <div style="font-size:var(--text-xs);color:var(--text-muted);margin:4px 0">Location: Nairobi Conference Center &amp; Live Stream</div>
-          <button onclick="showToast('Workshop registration confirmed!','success')" class="btn btn-blue btn-sm mt-sm">Register Workshop</button>
+          <button onclick="registerForWorkshop('National ICT Integration Masterclass')" class="btn btn-blue btn-sm mt-sm">Register For Workshop</button>
+        </div>
+      </div>
+
+      <div class="card flex gap-md items-center" style="border:1px solid #E2E8F0; border-radius:16px; padding:24px;">
+        <div style="background:linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);color:#047857;padding:20px;border-radius:var(--border-radius-md);text-align:center;min-width:80px">
+          <div style="font-size:1.8rem;font-weight:800">02</div>
+          <div style="font-size:0.75rem;font-weight:700">SEP</div>
+        </div>
+        <div>
+          <span class="badge badge-success mb-xs">HANDS-ON WORKSHOP</span>
+          <h3 class="font-heading text-lg">Creative Learning with Local Materials &amp; Digital Tools</h3>
+          <div style="font-size:var(--text-xs);color:var(--text-muted);margin:4px 0">Location: Instructify Lab, Nairobi &amp; Virtual Hybrid</div>
+          <button onclick="registerForWorkshop('Creative Learning with Local Materials &amp; Digital Tools')" class="btn btn-orange btn-sm mt-sm">Register For Workshop</button>
+        </div>
+      </div>
+
+      <div class="card flex gap-md items-center" style="border:1px solid #E2E8F0; border-radius:16px; padding:24px;">
+        <div style="background:linear-gradient(135deg, #F3E8FF 0%, #E9D5FF 100%);color:#6B21A8;padding:20px;border-radius:var(--border-radius-md);text-align:center;min-width:80px">
+          <div style="font-size:1.8rem;font-weight:800">10</div>
+          <div style="font-size:0.75rem;font-weight:700">SEP</div>
+        </div>
+        <div>
+          <span class="badge badge-warning mb-xs">STORYTELLING LAB</span>
+          <h3 class="font-heading text-lg">Poetic Storytelling &amp; Tech in Action</h3>
+          <div style="font-size:var(--text-xs);color:var(--text-muted);margin:4px 0">Location: Live Virtual Workshop &mdash; Open to All Counties</div>
+          <button onclick="registerForWorkshop('Poetic Storytelling &amp; Tech in Action')" class="btn btn-blue btn-sm mt-sm">Register For Workshop</button>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Workshop Registration Form Section -->
+<section class="section" id="workshop-form-section" style="background:#F8FAFC; padding: 60px 0;">
+  <div class="container">
+    <div class="workshop-card" id="workshop-form">
+      <div class="workshop-caption-badge">
+        🧪 Hands-On Learning That Sticks
+      </div>
+      <h2 class="workshop-header-title">Workshop Registration Form</h2>
+      <p class="workshop-header-desc">
+        Join our creative workshops and experience learning through local materials, digital tools, and poetic storytelling.<br><br>
+        Register here to attend one of our upcoming workshops. Perfect for educators, youth leaders, and learners who want to explore teaching, tech, and transformation in action.
+      </p>
+
+      <form id="workshop-registration-form" onsubmit="handleWorkshopSubmit(event)">
+        <!-- 1. Full Name -->
+        <div class="form-group mb-lg">
+          <label class="form-label" for="workshop-fullname">Full Name <span style="color:#FF4D00">*</span></label>
+          <input type="text" id="workshop-fullname" class="form-input" placeholder="e.g. Jane Wanjiku Mwangi" required>
+        </div>
+
+        <div class="form-grid-2 mb-lg">
+          <!-- 2. Workshop Title / Theme -->
+          <div class="form-group">
+            <label class="form-label" for="workshop-title-select">Workshop Title / Theme <span style="color:#FF4D00">*</span></label>
+            <select id="workshop-title-select" class="form-input" required>
+              <option value="" disabled selected>Select a Workshop Theme</option>
+              <option value="National ICT Integration Masterclass">National ICT Integration Masterclass</option>
+              <option value="AI Tools for CBE Assessment Creation">AI Tools for CBE Assessment Creation</option>
+              <option value="Creative Learning with Local Materials &amp; Digital Tools">Creative Learning with Local Materials &amp; Digital Tools</option>
+              <option value="Poetic Storytelling &amp; Tech in Action">Poetic Storytelling &amp; Tech in Action</option>
+              <option value="Other">Other / Request Custom Theme</option>
+            </select>
+          </div>
+
+          <!-- Preferred Language -->
+          <div class="form-group">
+            <label class="form-label" for="workshop-language">Preferred Language <span style="color:#FF4D00">*</span></label>
+            <select id="workshop-language" class="form-input" required>
+              <option value="Kiswahili">Kiswahili</option>
+              <option value="English" selected>English</option>
+              <option value="Bilingual (Kiswahili &amp; English)">Bilingual (Kiswahili &amp; English)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Custom Workshop Theme Group -->
+        <div class="form-group mb-lg" id="custom-workshop-group" style="display:none;">
+          <label class="form-label" for="workshop-title-custom">Specify Workshop Title / Theme Topic <span style="color:#FF4D00">*</span></label>
+          <input type="text" id="workshop-title-custom" class="form-input" placeholder="Describe the theme or custom workshop topic">
+        </div>
+
+        <!-- 3. Role Selection -->
+        <div class="form-group mb-lg">
+          <label class="form-label">Role <span style="color:#FF4D00">*</span></label>
+          <div class="role-chip-group">
+            <label class="role-chip selected" onclick="selectWorkshopRole(this, 'Teacher')">
+              <input type="radio" name="workshop_role" value="Teacher" checked>
+              <span>🍎 Teacher / Educator</span>
+            </label>
+            <label class="role-chip" onclick="selectWorkshopRole(this, 'Student')">
+              <input type="radio" name="workshop_role" value="Student">
+              <span>🎓 Student / Trainee</span>
+            </label>
+            <label class="role-chip" onclick="selectWorkshopRole(this, 'Youth Leader')">
+              <input type="radio" name="workshop_role" value="Youth Leader">
+              <span>🌟 Youth Leader</span>
+            </label>
+            <label class="role-chip" onclick="selectWorkshopRole(this, 'School Administrator')">
+              <input type="radio" name="workshop_role" value="School Administrator">
+              <span>🏫 School Administrator</span>
+            </label>
+            <label class="role-chip" onclick="selectWorkshopRole(this, 'Other')">
+              <input type="radio" name="workshop_role" value="Other">
+              <span>🤝 Other</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 4. Contact Information -->
+        <div class="form-grid-2 mb-lg">
+          <div class="form-group">
+            <label class="form-label" for="workshop-email">Email Address <span style="color:#FF4D00">*</span></label>
+            <input type="email" id="workshop-email" class="form-input" placeholder="yourname@example.ke" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="workshop-phone">Phone / WhatsApp Number <span style="color:#FF4D00">*</span></label>
+            <input type="tel" id="workshop-phone" class="form-input" placeholder="+254 7XX XXX XXX" required autocomplete="tel">
+          </div>
+        </div>
+
+        <!-- 5. Dietary or Accessibility Needs -->
+        <div class="form-group mb-lg">
+          <label class="form-label" for="workshop-needs">Dietary or Accessibility Needs <span style="font-weight:400;color:#64748B;">(if applicable)</span></label>
+          <textarea id="workshop-needs" class="form-input" rows="2" placeholder="e.g. Vegetarian, Wheelchair access required, Sign language support, etc."></textarea>
+        </div>
+
+        <!-- 6. Payment Option -->
+        <div class="form-group mb-xl">
+          <label class="form-label">Payment Option <span style="color:#FF4D00">*</span></label>
+          <div class="payment-grid">
+            <label class="payment-card selected" onclick="selectPaymentOption(this, 'Free / Sponsored')">
+              <input type="radio" name="workshop_payment" value="Free / Sponsored" checked>
+              <div class="payment-card-title">
+                <span>🎁 Free / Sponsored</span>
+                <span class="badge badge-success" style="font-size:10px;">Free</span>
+              </div>
+              <div class="payment-card-sub">Full sponsorship available for eligible educators</div>
+            </label>
+
+            <label class="payment-card" onclick="selectPaymentOption(this, 'M-Pesa Mobile Money')">
+              <input type="radio" name="workshop_payment" value="M-Pesa Mobile Money">
+              <div class="payment-card-title">
+                <span>📱 M-Pesa</span>
+                <span class="badge badge-warning" style="font-size:10px;background:#15803D;color:#FFF;">Express</span>
+              </div>
+              <div class="payment-card-sub">Instant mobile money checkout</div>
+            </label>
+
+            <label class="payment-card" onclick="selectPaymentOption(this, 'Credit / Debit Card')">
+              <input type="radio" name="workshop_payment" value="Credit / Debit Card">
+              <div class="payment-card-title">
+                <span>💳 Card Payment</span>
+              </div>
+              <div class="payment-card-sub">Visa &amp; Mastercard accepted</div>
+            </label>
+
+            <label class="payment-card" onclick="selectPaymentOption(this, 'School / Org Invoice')">
+              <input type="radio" name="workshop_payment" value="School / Org Invoice">
+              <div class="payment-card-title">
+                <span>🏢 Institution Invoice</span>
+              </div>
+              <div class="payment-card-sub">Bill direct to school or organization</div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div style="display:flex; justify-content:flex-end; gap:16px; align-items:center; flex-wrap:wrap;">
+          <a href="workshop-registration.html" class="btn btn-outline" style="text-decoration:none;">Open Standalone Form Page ↗</a>
+          <button type="submit" class="btn btn-orange btn-lg" style="padding:14px 32px; font-weight:700;">
+            Complete Workshop Registration 🎉
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Ticket Pass Modal -->
+<div id="ticket-modal" class="ticket-modal-overlay">
+  <div class="ticket-modal-card">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h3 style="font-family:var(--font-heading); font-size:20px; font-weight:800; color:#0F172A; margin:0;">
+        🎉 Registration Confirmed!
+      </h3>
+      <button onclick="closeTicketModal()" class="cert-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <p style="font-size:14px; color:#64748B; margin-top:4px;">
+      Here is your official Workshop Entry Pass for Instructify Kenya.
+    </p>
+
+    <div class="ticket-stub">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; position:relative; z-index:1;">
+        <div>
+          <span style="font-size:11px; font-weight:800; color:#FFAD00; text-transform:uppercase; letter-spacing:1px;">Instructify Kenya Pass</span>
+          <h4 id="ticket-workshop" style="font-size:18px; font-weight:800; color:#FFFFFF; margin:4px 0 0;">Workshop Title</h4>
+        </div>
+        <div style="background:rgba(255,255,255,0.15); padding:6px 12px; border-radius:8px; font-family:monospace; font-size:12px; font-weight:700; color:#93C5FD;" id="ticket-code">
+          INST-WKSP-000000
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:13px; border-top:1px solid rgba(255,255,255,0.15); padding-top:12px; position:relative; z-index:1;">
+        <div>
+          <span style="color:rgba(255,255,255,0.7); display:block; font-size:11px;">Attendee Name</span>
+          <strong id="ticket-name" style="color:#FFFFFF;">Jane Doe</strong>
+        </div>
+        <div>
+          <span style="color:rgba(255,255,255,0.7); display:block; font-size:11px;">Role &amp; Language</span>
+          <span id="ticket-role" style="color:#FFFFFF; font-weight:600;">Teacher</span> &bull; <span id="ticket-lang" style="color:#FFAD00;">English</span>
+        </div>
+        <div>
+          <span style="color:rgba(255,255,255,0.7); display:block; font-size:11px;">Contact Details</span>
+          <span id="ticket-contact" style="color:#FFFFFF; font-size:12px;">email@example.ke</span>
+        </div>
+        <div>
+          <span style="color:rgba(255,255,255,0.7); display:block; font-size:11px;">Payment Option</span>
+          <span id="ticket-payment" style="color:#4ADE80; font-weight:700;">Free / Sponsored</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px; display:flex; gap:12px; justify-content:flex-end;">
+      <button onclick="window.print()" class="btn btn-outline btn-sm">Print Ticket Pass</button>
+      <button onclick="closeTicketModal()" class="btn btn-orange btn-sm">Done &amp; Close</button>
+    </div>
+  </div>
+</div>
 
 <footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
   <div class="container">
