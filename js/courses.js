@@ -7,6 +7,24 @@
 // ── Course Database ─────────────────────────────────────────────
 window.COURSES = [
   {
+    id: 'crs_000', slug: 'digital-teaching-smart-classrooms',
+    title: 'Digital Teaching & Smart Classrooms',
+    subtitle: '“From Chalk to Click”',
+    category: 'EdTech & Smart Learning', tag: 'badge-ict',
+    description: 'Reimagine your classroom with smart boards, ClassVR, and interactive content that brings learning to life.',
+    instructor: 'Alex & Dr. Wanjiku', instructorTitle: 'EdTech & Virtual Learning Specialists', instructorAvatar: 'ED',
+    duration: '6 weeks', level: 'All Levels', format: 'Online + Hands-On',
+    price: 16500, originalPrice: 24000,
+    rating: 4.9, reviewCount: 410, enrollments: 2150,
+    image: 'assets/images/course-ict.png',
+    badge: 'badge-ict', badgeText: 'SMART ED',
+    cpd: true, cpdHours: 35,
+    outcomes: ['From Chalk to Click classroom transition', 'ClassVR & Virtual Reality in teaching', 'Interactive smart board instruction', 'Engaging interactive digital content creation'],
+    modules: 10, assignments: 5, quizzes: 4, certificate: true,
+    schedule: '2026-09-05', tags: ['Smart Classrooms', 'ClassVR', 'Chalk to Click', 'Digital Teaching'],
+    featured: true, popular: true
+  },
+  {
     id: 'crs_001', slug: 'ict-integration-education',
     title: 'ICT Integration in Education',
     category: 'ICT', tag: 'badge-ict',
