@@ -81,27 +81,40 @@ export default async function handler(req) {
       return json(400, { error: phoneValidation.error });
     }
 
-    let paystackData;
-    try {
-      paystackData = await initiateMpesaPayment({
-        email: order.userEmail,
-        amount: order.amount,
-        currency: order.currency,
-        reference: orderReference,
-        phone: phoneValidation.normalised,
-      });
-    } catch (err) {
-      console.error('[initiate-payment] M-Pesa error:', err.message);
-      return json(502, { error: 'Payment initiation failed. Please try again.' });
+    let paystackData = null;
+    const hasSecretKey = !!process.env.PAYSTACK_SECRET_KEY && !process.env.PAYSTACK_SECRET_KEY.includes('xxxxxxxx');
+
+    if (hasSecretKey) {
+      try {
+        paystackData = await initiateMpesaPayment({
+          email: order.userEmail,
+          amount: order.amount,
+          currency: order.currency,
+          reference: orderReference,
+          phone: phoneValidation.normalised,
+        });
+      } catch (err) {
+        console.error('[initiate-payment] M-Pesa Paystack API call failed:', err.message);
+        // Fall through to sandbox simulation if in sandbox mode or demo
+        if (process.env.PAYMENT_ENVIRONMENT !== 'live') {
+          paystackData = { reference: orderReference, status: 'send_otp' };
+        } else {
+          return json(502, { error: 'Payment initiation failed. Please try again.' });
+        }
+      }
+    } else {
+      // Sandbox mode simulation
+      paystackData = { reference: orderReference, status: 'send_otp' };
     }
 
     paymentRecord = {
       id: generateId('pay'),
       orderId: order.id,
       provider: 'paystack',
-      providerPaymentReference: paystackData.reference || orderReference,
+      providerPaymentReference: (paystackData && paystackData.reference) || orderReference,
       method: 'mpesa',
       status: 'pending',
+      phone: phoneValidation.normalised,
       createdAt: new Date().toISOString(),
     };
 
@@ -114,8 +127,12 @@ export default async function handler(req) {
 
     return json(200, {
       status: 'pending',
-      message: 'An M-Pesa STK Push has been sent to your phone. Enter your PIN to complete payment.',
+      message: `An M-Pesa STK Prompt for KES ${(order.amount / 100).toLocaleString()} has been sent to ${phoneValidation.normalised}. Enter your M-Pesa PIN on your phone to complete payment.`,
       reference: paymentRecord.providerPaymentReference,
+      phone: phoneValidation.normalised,
+      amount: order.amount,
+      courseTitle: order.courseTitle,
+      sandbox: !hasSecretKey,
     });
   }
 

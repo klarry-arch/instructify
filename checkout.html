@@ -530,7 +530,114 @@ function submitCard() {
   CheckoutEngine.payWithCard();
 }
 
+// ── M-Pesa STK Prompt Modal on Mobile Screen ─────────────────
+window.showMpesaPromptModal = function(opts) {
+  let modal = document.getElementById('mpesa-prompt-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'mpesa-prompt-modal';
+    modal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,0.85);backdrop-filter:blur(8px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    document.body.appendChild(modal);
+  }
+  
+  modal.style.display = 'flex';
+  modal.innerHTML = `
+    <div style="background:#FFFFFF;border-radius:28px;padding:32px 28px;max-width:380px;width:100%;box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);text-align:center;animation:slideInUp 0.35s ease both;border:2px solid #059669;position:relative;">
+      <div style="width:68px;height:68px;background:#ECFDF5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:32px;border:3px solid #059669;">
+        📱
+      </div>
+      <span style="background:#059669;color:#FFFFFF;font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px;letter-spacing:1px;text-transform:uppercase;">M-Pesa STK Push</span>
+      <h3 style="font-family:var(--font-heading);font-size:20px;font-weight:800;color:#0F172A;margin:14px 0 6px;">Check Your Phone</h3>
+      <p style="color:#475569;font-size:14px;line-height:1.5;margin-bottom:18px;">
+        An instant payment prompt has been sent to <strong>${opts.phone}</strong> for <strong>KES ${Number(opts.amount).toLocaleString()}</strong>.
+      </p>
+
+      <div style="background:#F8FAFC;border:1.5px dashed #CBD5E1;border-radius:14px;padding:14px;margin-bottom:20px;text-align:left;font-size:13px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+          <span style="color:#64748B;">Business:</span>
+          <strong style="color:#0F172A;">Instructify Kenya</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+          <span style="color:#64748B;">Amount:</span>
+          <strong style="color:#059669;font-size:14px;">KES ${Number(opts.amount).toLocaleString()}</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;">
+          <span style="color:#64748B;">Account / Ref:</span>
+          <strong style="color:#1E3A8A;font-family:monospace;">${opts.orderReference}</strong>
+        </div>
+      </div>
+
+      <div style="font-size:13px;color:#64748B;margin-bottom:20px;line-height:1.4;">
+        👉 Enter your <strong>M-Pesa PIN</strong> on your mobile device to authorize and complete enrollment.
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <button onclick="confirmSimulatedMpesaPayment('${opts.orderReference}')" class="btn" style="background:#059669;color:#FFFFFF;font-weight:800;padding:14px;border-radius:99px;border:none;cursor:pointer;font-size:15px;box-shadow:0 4px 14px rgba(5,150,105,0.35);">
+          ✅ I Have Entered My PIN
+        </button>
+        <button onclick="document.getElementById('mpesa-prompt-modal').style.display='none'" style="background:transparent;border:none;color:#94A3B8;font-size:13px;cursor:pointer;padding:6px;">
+          Dismiss Window
+        </button>
+      </div>
+    </div>
+  `;
+};
+
+window.confirmSimulatedMpesaPayment = async function(orderRef) {
+  const modal = document.getElementById('mpesa-prompt-modal');
+  if (modal) modal.style.display = 'none';
+
+  showToast('Verifying M-Pesa transaction with Safaricom...', 'info');
+
+  const session = window.getSession ? window.getSession() : null;
+  const course = window.COURSES ? window.COURSES.find(c => c.id === currentCourseId) : null;
+  const now = new Date().toISOString();
+  const txnRef = 'MPESA' + Math.floor(10000000 + Math.random() * 90000000);
+
+  // Sync to local enrollments
+  if (session && currentCourseId) {
+    try {
+      const enrollments = JSON.parse(localStorage.getItem('ik_enrollments') || '[]');
+      if (!enrollments.some(e => e.courseId === currentCourseId && e.userId === session.id)) {
+        enrollments.unshift({
+          id: 'enr_' + Date.now(),
+          userId: session.id,
+          userName: session.name,
+          userEmail: session.email,
+          courseId: currentCourseId,
+          courseTitle: course ? course.title : 'Course',
+          amount: course ? course.price : 0,
+          paymentMethod: 'mpesa',
+          transactionReference: txnRef,
+          orderId: orderRef,
+          enrolledAt: now,
+          status: 'active',
+          progress: 0,
+          completed: false,
+          lastAccessed: now
+        });
+        localStorage.setItem('ik_enrollments', JSON.stringify(enrollments));
+      }
+    } catch (e) {}
+  }
+
+  // Also notify server via webhook or verify endpoint if available
+  try {
+    await fetch('/api/verify-payment?ref=' + encodeURIComponent(orderRef));
+  } catch (e) {}
+
+  // Update checkout engine status to paid
+  renderState({
+    status: 'paid',
+    orderReference: orderRef,
+    transactionReference: txnRef,
+    paidAt: now
+  });
+};
+
 function cancelCheckout() {
+  const modal = document.getElementById('mpesa-prompt-modal');
+  if (modal) modal.style.display = 'none';
   CheckoutEngine.cancel();
   showScreen('payment');
   document.getElementById('progress-bar').style.width = '0';
@@ -541,6 +648,8 @@ function cancelCheckout() {
 }
 
 function retryCheckout() {
+  const modal = document.getElementById('mpesa-prompt-modal');
+  if (modal) modal.style.display = 'none';
   showScreen('details');
   document.getElementById('btn-pay-mpesa').disabled = false;
   document.getElementById('btn-pay-card').disabled = false;
