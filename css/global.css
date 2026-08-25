@@ -8,100 +8,106 @@
 /* ── CSS Custom Properties ─────────────────────────────────── */
 :root {
   /* ══════════════════════════════════════════
-     ★ CANONICAL DESIGN TOKENS — Instructify Kenya Color Palette
+     ★ CANONICAL DESIGN TOKENS — Instructify Kenya LMS Palette
      ══════════════════════════════════════════ */
 
-    /* Primary Brand — Royal Blue (#1E3A8A) */
-  --color-primary:          #1E3A8A;   /* Main navigation, primary buttons, headings, links, active states */
-  --color-primary-hover:    #172554;   /* Primary hover state */
-  --color-primary-light:    #3B82F6;
-  --color-primary-dark:     #172554;
-  --color-primary-bg:       #EFF6FF;
-  --color-primary-glow:     rgba(30, 58, 138, 0.15);
+  /* Primary Brand — Indigo (#4F46E5) */
+  --color-primary:          #4F46E5;   /* Active states, primary actions, progress indicators */
+  --color-primary-hover:    #4338CA;   /* Primary hover state */
+  --color-primary-light:    #818CF8;
+  --color-primary-dark:     #3730A3;
+  --color-primary-bg:       #EEF2FF;
+  --color-primary-glow:     rgba(79, 70, 229, 0.15);
 
-  /* Secondary Brand — Deep Yellow/Gold (#FF4D00) */
-  --color-secondary:        #FF4D00;   /* Highlights, call-to-action accents, icons, badges, section dividers */
-  --color-secondary-hover:  #D9A104;
-  --color-secondary-light:  #FDE047;
-  --color-secondary-dark:   #B45309;
-  --color-secondary-bg:     #FEF9C3;
+  /* Secondary Brand — Blue (#2563EB) */
+  --color-secondary:        #2563EB;   /* Highlights, secondary brand accents */
+  --color-secondary-hover:  #1D4ED8;
+  --color-secondary-light:  #60A5FA;
+  --color-secondary-dark:   #1E40AF;
+  --color-secondary-bg:     #EFF6FF;
 
-  /* Accent — Orange (#FF4D00) */
-  --color-accent:           #FF4D00;   /* Hover states, secondary buttons, energetic visual accents */
-  --color-accent-hover:     #FF4D00;
+  /* CTA / Accent — Emerald (#10B981) */
+  --color-cta:              #10B981;   /* High-value positive action CTA */
+  --color-cta-hover:        #059669;
+  --color-accent:           #10B981;
+  --color-accent-hover:     #059669;
   --color-accent-text:      #FFFFFF;
-  --color-accent-bg:        #FFEDD5;
+  --color-accent-bg:        #ECFDF5;
 
-  --color-amber:            #FF4D00;
+  --color-amber:            #F59E0B;
   --color-amber-hover:      #D97706;
-  --color-amber-text:       #111827;
-  --color-amber-bg:         #FEF9C3;
+  --color-amber-text:       #0F172A;
+  --color-amber-bg:         #FEF3C7;
 
   /* Surfaces & Backgrounds */
-  --color-background:       #F8FAFC;   /* Off-white background */
+  --color-background:       #F8FAFC;   /* Main page background */
   --color-surface:          #FFFFFF;   /* Pure white card surface */
   --color-surface-soft:     #F1F5F9;   /* Soft surface fill */
 
   /* Text Typography System */
-  --color-text-main:        #020202;   /* Content and body text */
-  --color-text-secondary:   #020202;   /* Secondary content text */
-  --color-text-muted:       #020202;   /* Muted text */
+  --color-heading:          #0F172A;   /* Major headings & important titles */
+  --color-text-main:        #334155;   /* Primary body content */
+  --color-text-body:        #334155;   /* Body content */
+  --color-text-secondary:   #64748B;   /* Descriptions, metadata, secondary information */
+  --color-text-muted:       #64748B;   /* Muted text */
   --color-text-on-primary:  #FFFFFF;
 
-  /* Borders & Cards */
-  --color-border:           #E5E7EB;   /* Light border */
-  --color-border-subtle:    #F3F4F6;
-  --color-border-focus:     #1E3A8A;
+  /* Borders & Dividers */
+  --color-border:           #E2E8F0;   /* Borders & dividers */
+  --color-border-subtle:    #F1F5F9;
+  --color-border-focus:     #4F46E5;
 
   /* Status Colors */
-  --color-success:          #22C55E;   /* Success color */
+  --color-success:          #16A34A;   /* Success status */
   --color-success-bg:       #F0FDF4;
-  --color-warning:          #FF4D00;   /* Warning color */
-  --color-warning-bg:       #FFF7ED;
-  --color-danger:           #EF4444;   /* Danger/error color */
+  --color-warning:          #F59E0B;   /* Warning status */
+  --color-warning-bg:       #FEF3C7;
+  --color-danger:           #EF4444;   /* Danger/error status */
   --color-error:            #EF4444;
   --color-danger-bg:        #FEF2F2;
   --color-error-bg:         #FEF2F2;
-  --color-info:             #38BDF8;   /* Info color */
+  --color-info:             #0EA5E9;   /* Information status */
   --color-info-bg:          #F0F9FF;
 
-  /* Tertiary Brand — Emerald Green (#059669) */
-  /* Bridges navy blue & orange-red; ideal for progress, growth & success states */
-  --color-tertiary:         #059669;   /* Emerald green — course progress, achievement badges, CTA highlights */
-  --color-tertiary-hover:   #047857;   /* Darker emerald for hover */
-  --color-tertiary-light:   #34D399;   /* Lighter mint for icon accents */
-  --color-tertiary-bg:      #ECFDF5;   /* Soft green tint for card backgrounds */
-  --color-tertiary-glow:    rgba(5, 150, 105, 0.15);
+  /* Tertiary Brand — Emerald Green (#10B981) */
+  --color-tertiary:         #10B981;
+  --color-tertiary-hover:   #059669;
+  --color-tertiary-light:   #34D399;
+  --color-tertiary-bg:      #ECFDF5;
+  --color-tertiary-glow:    rgba(16, 185, 129, 0.15);
 
   /* Legacy Compatibility Aliases */
-  --color-brand:            #0F172A;
+  --color-brand:            #4F46E5;
   --color-blue:             #2563EB;
   --color-blue-hover:       #1D4ED8;
-  --color-teal:             #14B8A6;
-  --color-teal-hover:       #0D9488;
-  --color-orange:           #2563EB;
-  --color-orange-hover:     #1D4ED8;
+  --color-teal:             #0EA5E9;
+  --color-teal-hover:       #0284C7;
+  --color-orange:           #4F46E5;
+  --color-orange-hover:     #4338CA;
   --color-curiosity-orange: #F59E0B;
   --color-deep-navy:        #0F172A;
-  --color-soft-grey:        #F1F5F9;
+  --color-soft-grey:        #F8FAFC;
 
-  --gradient-hero:          linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #172554 100%);
-  --gradient-primary:       linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%);
+  --gradient-hero:          linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%);
+  --gradient-primary:       linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
   --bg-dark:                #F8FAFC;
   --bg-white:               #FFFFFF;
   --bg-canvas:              #F8FAFC;
-  --bg-light:               #F1F5F9;
+  --bg-light:               #F8FAFC;
   --bg-card:                #FFFFFF;
 
-  --text-primary:           #020202;
-  --text-body:              #020202;
-  --text-secondary:         #020202;
-  --text-muted:             #020202;
+  --text-primary:           #0F172A;
+  --text-body:              #334155;
+  --text-secondary:         #64748B;
+  --text-muted:             #64748B;
 
   --border-card:            #E2E8F0;
   --border-subtle:          #E2E8F0;
 
-  --shadow-card:            0 2px 12px rgba(15, 23, 42, 0.05);
+  --shadow-card:            0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm:              0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md:              0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg:              0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
 
   /* ══════════════════════════════════════════
      TYPOGRAPHY SYSTEM (Plus Jakarta Sans & Inter)
@@ -245,7 +251,7 @@ h1, .h1 {
   line-height: var(--line-height-h1);
   font-weight: 700;
   letter-spacing: -0.025em;
-  color: var(--color-text-main);
+  color: var(--color-heading);
   margin-bottom: 0.4em;
 }
 
@@ -255,7 +261,7 @@ h2, .h2 {
   line-height: var(--line-height-h2);
   font-weight: 700;
   letter-spacing: -0.020em;
-  color: var(--color-text-main);
+  color: var(--color-heading);
   margin-bottom: 0.4em;
 }
 
@@ -265,7 +271,7 @@ h3, .h3 {
   line-height: var(--line-height-h3);
   font-weight: 600;
   letter-spacing: -0.015em;
-  color: var(--color-text-main);
+  color: var(--color-heading);
   margin-bottom: 0.4em;
 }
 
@@ -275,7 +281,7 @@ h4, .h4 {
   line-height: var(--line-height-h4);
   font-weight: 600;
   letter-spacing: -0.010em;
-  color: var(--color-text-main);
+  color: var(--color-heading);
   margin-bottom: 0.4em;
 }
 
@@ -285,7 +291,7 @@ h5, .h5 {
   line-height: var(--line-height-h5);
   font-weight: 600;
   letter-spacing: -0.005em;
-  color: var(--color-text-main);
+  color: var(--color-heading);
   margin-bottom: 0.4em;
 }
 
@@ -295,7 +301,7 @@ h6, .h6 {
   line-height: var(--line-height-h6);
   font-weight: 600;
   letter-spacing: 0em;
-  color: var(--color-text-main);
+  color: var(--color-heading);
   margin-bottom: 0.4em;
 }
 
@@ -313,7 +319,7 @@ p:last-child {
 .hero-subtitle {
   font-size: 18px;
   line-height: 1.65;
-  color: #020202;
+  color: var(--color-text-main);
   font-weight: 400;
 }
 
@@ -324,7 +330,7 @@ p:last-child {
   line-height: var(--line-height-h2);
   font-weight: 700;
   letter-spacing: -0.020em;
-  color: var(--color-text-main);
+  color: var(--color-heading);
   margin-top: 10px;
   margin-bottom: 12px;
 }
@@ -332,7 +338,7 @@ p:last-child {
 .section-subtitle {
   font-size: 17px;
   line-height: 1.65;
-  color: #475569;
+  color: var(--color-text-muted);
   max-width: 680px;
   margin-left: auto;
   margin-right: auto;
@@ -356,7 +362,7 @@ p:last-child {
   line-height: var(--line-height-h1);
   font-weight: 700;
   letter-spacing: -0.025em;
-  color: var(--color-text-main);
+  color: var(--color-heading);
 }
 
 /* ── LMS, Course Pages, Lesson Modules & Assessment Hierarchy ── */

@@ -5,6 +5,7 @@
 
 
 /* ── Modern Navigation Header ──────────────────────────────── */
+/* ── Modern Navigation Header ──────────────────────────────── */
 .navbar {
   position: fixed;
   top: 0;
@@ -14,9 +15,9 @@
   z-index: 1000 !important;
   display: flex;
   align-items: center;
-  background: #1E3A8A !important;
-  border-bottom: 2px solid #FFAD00 !important;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.25);
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
   transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -28,6 +29,14 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+.nav-brand-title {
+  color: #0F172A !important;
+}
+
+.nav-brand-subtitle {
+  color: #4F46E5 !important;
 }
 
 .nav-links {
@@ -43,9 +52,9 @@
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.90);
+  color: #64748B !important;
   padding: 8px 16px;
-  border-radius: 999px;
+  border-radius: 8px;
   transition: all 0.2s ease;
   text-decoration: none;
   white-space: nowrap;
@@ -53,28 +62,25 @@
 }
 
 .nav-link:hover {
-  color: #FFFFFF !important;
-  background: rgba(255, 255, 255, 0.14);
+  color: #0F172A !important;
+  background: #F8FAFC;
 }
 
 .nav-link.active {
-  color: #FFFFFF !important;
-  background: rgba(255, 255, 255, 0.20);
+  color: #4F46E5 !important;
+  background: #EEF2FF;
   font-weight: 700;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
 }
 
 .nav-link.active::after {
   content: '';
   position: absolute;
-  bottom: 2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 22px;
-  height: 3px;
-  background: #C29B38;
+  bottom: 0px;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: #4F46E5;
   border-radius: 2px;
-  box-shadow: 0 0 8px rgba(37, 99, 235, 0.8);
 }
 
 /* ── Nav Actions ────────────────────────────────────────────── */
@@ -88,22 +94,22 @@
 .navbar .btn-outline,
 .nav-actions .btn-outline,
 .nav-mobile .btn-outline {
-  background: rgba(255, 255, 255, 0.12);
-  color: #FFFFFF !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: #FFFFFF;
+  color: #334155 !important;
+  border: 1px solid #E2E8F0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   font-weight: 600;
 }
 
 .navbar .btn-outline:hover,
 .nav-actions .btn-outline:hover,
 .nav-mobile .btn-outline:hover {
-  background: #FFFFFF;
-  color: var(--color-primary) !important;
-  border-color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.20);
+  background: #F8FAFC;
+  color: #4F46E5 !important;
+  border-color: #CBD5E1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05);
 }
 
 /* ── Hamburger ──────────────────────────────────────────────── */
@@ -121,7 +127,7 @@
   display: block;
   width: 22px;
   height: 2px;
-  background: rgba(255, 255, 255, 0.9);
+  background: #0F172A;
   border-radius: 1px;
   transition: transform var(--transition-base), opacity var(--transition-fast);
 }
@@ -145,11 +151,11 @@
   top: var(--nav-height);
   left: 0;
   right: 0;
-  background: var(--color-brand);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
   padding: var(--space-lg);
   z-index: var(--z-sticky);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.25);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
 }
 
 .nav-mobile.open {
@@ -167,18 +173,18 @@
   display: flex;
   align-items: center;
   padding: 12px 16px;
-  border-radius: var(--border-radius-sm);
+  border-radius: 8px;
   font-size: var(--text-base);
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.88);
+  color: #64748B;
   text-decoration: none;
   transition: all var(--transition-fast);
 }
 
 .nav-mobile-link:hover,
 .nav-mobile-link.active {
-  color: #FFFFFF !important;
-  background: rgba(255, 255, 255, 0.2);
+  color: #4F46E5 !important;
+  background: #EEF2FF;
   font-weight: 700;
 }
 
@@ -190,183 +196,204 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
-  border-radius: var(--border-radius-full);
+  padding: 10px 22px;
+  border-radius: 8px;
   font-family: var(--font-body);
   font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 0.01em;
+  font-weight: 600;
+  letter-spacing: 0em;
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   text-decoration: none;
-  transition: background-color var(--transition-base),
-    transform var(--transition-base),
-    box-shadow var(--transition-base),
-    color var(--transition-fast);
+  transition: background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
 }
 
 .btn:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
-/* ── Primary CTA Button — Accent (#F2542D) ─────────────────── */
+/* ── Primary Action Button — Indigo (#4F46E5) ──────────────── */
 .btn-primary,
-.btn-accent,
-.btn-orange {
-  background: var(--color-accent);
-  color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.32);
+.btn-indigo {
+  background: #4F46E5;
+  color: #FFFFFF !important;
+  border-color: #4F46E5;
+  box-shadow: 0 1px 2px rgba(79, 70, 229, 0.2);
 }
 
 .btn-primary:hover,
-.btn-accent:hover,
-.btn-orange:hover {
-  background: var(--color-accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.42);
-  color: #FFFFFF;
+.btn-indigo:hover {
+  background: #4338CA;
+  border-color: #4338CA;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  color: #FFFFFF !important;
 }
 
-/* ── Secondary Button — Pure Brand Blue (#480E74) ───────────── */
+/* ── CTA / Success Action Button — Emerald (#10B981) ────────── */
+.btn-cta,
+.btn-emerald,
+.btn-success-cta {
+  background: #10B981;
+  color: #FFFFFF !important;
+  border-color: #10B981;
+  box-shadow: 0 1px 2px rgba(16, 185, 129, 0.2);
+}
+
+.btn-cta:hover,
+.btn-emerald:hover,
+.btn-success-cta:hover {
+  background: #059669;
+  border-color: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+  color: #FFFFFF !important;
+}
+
+/* Legacy Button Class Mappings */
+.btn-accent,
+.btn-orange,
+.btn-amber {
+  background: #4F46E5;
+  color: #FFFFFF !important;
+  border-color: #4F46E5;
+}
+
+.btn-accent:hover,
+.btn-orange:hover,
+.btn-amber:hover {
+  background: #4338CA;
+  border-color: #4338CA;
+  color: #FFFFFF !important;
+}
+
+/* ── Secondary Button — Soft Slate Surface ────────────────── */
 .btn-secondary,
 .btn-blue {
-  background: var(--color-primary);
-  color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+  background: #2563EB;
+  color: #FFFFFF !important;
+  border-color: #2563EB;
 }
 
 .btn-secondary:hover,
 .btn-blue:hover {
-  background: var(--color-brand-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(20, 184, 166, 0.38);
-  color: #FFFFFF;
+  background: #1D4ED8;
+  border-color: #1D4ED8;
+  color: #FFFFFF !important;
 }
 
-/* ── Outline Button — Brand Blue ────────────────────────────── */
+/* ── Outline Button — Clean Neutral ────────────────────────── */
 .btn-outline,
 .btn-outline-blue {
-  background: transparent;
-  color: var(--color-primary);
-  border: 1.5px solid var(--color-primary);
+  background: #FFFFFF;
+  color: #334155 !important;
+  border: 1px solid #E2E8F0;
 }
 
 .btn-outline:hover,
 .btn-outline-blue:hover {
-  background: var(--color-primary);
-  color: #FFFFFF;
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+  background: #F8FAFC;
+  color: #4F46E5 !important;
+  border-color: #CBD5E1;
+  transform: translateY(-1px);
 }
 
-/* ── Outline Button — Accent Vermilion (#F2542D) ────────────── */
 .btn-outline-accent,
 .btn-outline-orange {
   background: transparent;
-  color: var(--color-accent);
-  border: 1.5px solid var(--color-accent);
+  color: #4F46E5 !important;
+  border: 1px solid #4F46E5;
 }
 
 .btn-outline-accent:hover,
 .btn-outline-orange:hover {
-  background: var(--color-accent);
-  color: #FFFFFF;
-  border-color: var(--color-accent);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.30);
+  background: #EEF2FF;
+  color: #4338CA !important;
+  border-color: #4338CA;
 }
 
-/* ── Outline Button — White (for dark sections) ─────────────── */
 .btn-outline-white {
   background: transparent;
-  color: #FFFFFF;
-  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .btn-outline-white:hover {
   background: #FFFFFF;
-  color: var(--color-primary);
+  color: #0F172A !important;
   border-color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* ── Solid White / Light Button ─────────────────────────────── */
 .btn-white,
 .btn-light {
   background: #FFFFFF;
-  color: var(--color-primary);
-  border: 1px solid rgba(72, 14, 116, 0.08);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  color: #0F172A !important;
+  border: 1px solid #E2E8F0;
 }
 
 .btn-white:hover,
 .btn-light:hover {
   background: #F8FAFC;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
-  color: var(--color-primary);
+  color: #4F46E5 !important;
 }
 
-/* ── Ghost Button ────────────────────────────────────────────── */
 .btn-ghost {
   background: transparent;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-subtle);
-  padding: 10px 18px;
+  color: #64748B !important;
+  border: 1px solid transparent;
+  padding: 8px 16px;
 }
 
 .btn-ghost:hover {
-  color: var(--color-primary);
-  background: var(--color-section-blue);
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
+  color: #0F172A !important;
+  background: #F1F5F9;
 }
 
-/* ── Brand Dark Button — Deep Blue ──────────────────────────── */
 .btn-dark {
-  background: var(--color-brand);
-  color: #FFFFFF;
+  background: #0F172A;
+  color: #FFFFFF !important;
 }
 
 .btn-dark:hover {
-  background: var(--color-brand-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-blue);
+  background: #1E293B;
+  color: #FFFFFF !important;
 }
 
 /* ── Button Sizes ────────────────────────────────────────────── */
 .btn-sm {
-  padding: 8px 18px;
+  padding: 6px 14px;
   font-size: 13px;
 }
 
 .btn-lg {
-  padding: 16px 36px;
+  padding: 12px 28px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .btn-xl {
-  padding: 18px 40px;
+  padding: 14px 32px;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* ══════════════════════════════════════════════════════════════
-   FOOTER — High Contrast Bright Text
+   FOOTER — Professional Modern SaaS LMS Footer
    ══════════════════════════════════════════════════════════════ */
 .footer {
-  background: #1E3A8A !important;
+  background: #0F172A !important;
   color: #FFFFFF !important;
   padding: 56px 0 28px 0;
   margin-top: auto;
   position: relative;
-  border-top: 2px solid #FF4D00 !important;
+  border-top: 1px solid #1E293B !important;
 }
 
 .footer h1, .footer h2, .footer h3, .footer h4, .footer h5, .footer h6 {
@@ -374,21 +401,21 @@
 }
 
 .footer h3 span, .footer h4 span, .footer h2 span {
-  color: #FF4D00 !important;
+  color: #4F46E5 !important;
 }
 
 .footer p, .footer span, .footer-text, .footer-copy {
-  color: #E2E8F0 !important;
+  color: #94A3B8 !important;
 }
 
 .footer a {
-  color: #E2E8F0 !important;
+  color: #CBD5E1 !important;
   transition: color var(--transition-fast);
 }
 
 .footer a:hover {
   color: #FFFFFF !important;
-  text-decoration: underline !important;
+  text-decoration: none !important;
 }
 
 /* ── Course Grid & Responsive Layout ──────────────────────── */
@@ -855,39 +882,39 @@ body {
 .alert-success,
 .cert-verified-box {
   background-color: #F0FDF4 !important;
-  border-left: 4px solid #22C55E !important;
+  border-left: 4px solid #16A34A !important;
   color: #15803D !important;
 }
 
 .earned-cert-card {
   background-color: #FFFFFF !important;
   border: 1px solid #E2E8F0 !important;
-  border-top: 4px solid #22C55E !important;
-  border-radius: 16px !important;
-  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.08) !important;
+  border-top: 4px solid #16A34A !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
 }
 
-/* 2. Learning Milestones & Progress Indicators — Emerald Green (--color-tertiary) */
+/* 2. Learning Milestones & Progress Indicators — Indigo (#4F46E5) */
 .progress-bar,
 .progress-fill,
 .course-progress-bar,
 .milestone-fill {
-  background: var(--color-tertiary) !important;
+  background: #4F46E5 !important;
   border-radius: 999px;
 }
 
 .course-progress-pct,
 .milestone-pct,
 .milestone-text {
-  color: var(--color-tertiary) !important;
+  color: #4F46E5 !important;
   font-weight: 700 !important;
 }
 
 .badge-milestone,
 .milestone-tag {
-  background-color: var(--color-tertiary-bg) !important;
-  color: var(--color-tertiary-hover) !important;
-  border: 1px solid var(--color-tertiary-glow) !important;
+  background-color: #EEF2FF !important;
+  color: #4F46E5 !important;
+  border: 1px solid #C7D2FE !important;
   font-weight: 700 !important;
   border-radius: 999px;
   padding: 4px 12px;
