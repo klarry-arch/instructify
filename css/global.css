@@ -11,93 +11,93 @@
      ★ CANONICAL DESIGN TOKENS — Instructify Kenya LMS Palette
      ══════════════════════════════════════════ */
 
-  /* Primary Brand — Indigo (#4F46E5) */
-  --color-primary:          #4F46E5;   /* Active states, primary actions, progress indicators */
-  --color-primary-hover:    #4338CA;   /* Primary hover state */
-  --color-primary-light:    #818CF8;
-  --color-primary-dark:     #3730A3;
-  --color-primary-bg:       #EEF2FF;
-  --color-primary-glow:     rgba(79, 70, 229, 0.15);
+  /* Primary Brand — Indigo (#12355B) */
+  --color-primary:          #12355B;   /* Active states, primary actions, progress indicators */
+  --color-primary-hover:    #0C2340;   /* Primary hover state */
+  --color-primary-light:    #1A4A7A;
+  --color-primary-dark:     #091929;
+  --color-primary-bg:       #E8F0F8;
+  --color-primary-glow:     rgba(18, 53, 91, 0.15);
 
   /* Secondary Brand — Blue (#2563EB) */
   --color-secondary:        #2563EB;   /* Highlights, secondary brand accents */
   --color-secondary-hover:  #1D4ED8;
   --color-secondary-light:  #60A5FA;
   --color-secondary-dark:   #1E40AF;
-  --color-secondary-bg:     #EFF6FF;
+  --color-secondary-bg:     #E8F0F8;
 
-  /* CTA / Accent — Emerald (#10B981) */
-  --color-cta:              #10B981;   /* High-value positive action CTA */
-  --color-cta-hover:        #059669;
-  --color-accent:           #10B981;
-  --color-accent-hover:     #059669;
+  /* CTA / Accent — Emerald (#0F9D8A) */
+  --color-cta:              #F59E0B;   /* High-value positive action CTA */
+  --color-cta-hover:        #D97706;
+  --color-accent:           #0F9D8A;
+  --color-accent-hover:     #0C7A6B;
   --color-accent-text:      #FFFFFF;
-  --color-accent-bg:        #ECFDF5;
+  --color-accent-bg:        #E0F5F2;
 
   --color-amber:            #F59E0B;
   --color-amber-hover:      #D97706;
-  --color-amber-text:       #0F172A;
+  --color-amber-text:       #1E293B;
   --color-amber-bg:         #FEF3C7;
 
   /* Surfaces & Backgrounds */
-  --color-background:       #F8FAFC;   /* Main page background */
+  --color-background:       #F5F8FC;   /* Main page background */
   --color-surface:          #FFFFFF;   /* Pure white card surface */
-  --color-surface-soft:     #F1F5F9;   /* Soft surface fill */
+  --color-surface-soft:     #EEF4FB;   /* Soft surface fill */
 
   /* Text Typography System */
-  --color-heading:          #0F172A;   /* Major headings & important titles */
-  --color-text-main:        #334155;   /* Primary body content */
-  --color-text-body:        #334155;   /* Body content */
+  --color-heading:          #1E293B;   /* Major headings & important titles */
+  --color-text-main:        #1E293B;   /* Primary body content */
+  --color-text-body:        #1E293B;   /* Body content */
   --color-text-secondary:   #64748B;   /* Descriptions, metadata, secondary information */
   --color-text-muted:       #64748B;   /* Muted text */
   --color-text-on-primary:  #FFFFFF;
 
   /* Borders & Dividers */
   --color-border:           #E2E8F0;   /* Borders & dividers */
-  --color-border-subtle:    #F1F5F9;
-  --color-border-focus:     #4F46E5;
+  --color-border-subtle:    #EEF4FB;
+  --color-border-focus:     #2563EB;
 
   /* Status Colors */
   --color-success:          #16A34A;   /* Success status */
   --color-success-bg:       #F0FDF4;
-  --color-warning:          #F59E0B;   /* Warning status */
-  --color-warning-bg:       #FEF3C7;
-  --color-danger:           #EF4444;   /* Danger/error status */
-  --color-error:            #EF4444;
+  --color-warning:          #F97316;   /* Warning status */
+  --color-warning-bg:       #FFF7ED;
+  --color-danger:           #DC2626;   /* Danger/error status */
+  --color-error:            #DC2626;
   --color-danger-bg:        #FEF2F2;
   --color-error-bg:         #FEF2F2;
   --color-info:             #0EA5E9;   /* Information status */
   --color-info-bg:          #F0F9FF;
 
-  /* Tertiary Brand — Emerald Green (#10B981) */
-  --color-tertiary:         #10B981;
-  --color-tertiary-hover:   #059669;
-  --color-tertiary-light:   #34D399;
-  --color-tertiary-bg:      #ECFDF5;
-  --color-tertiary-glow:    rgba(16, 185, 129, 0.15);
+  /* Tertiary Brand — Emerald Green (#0F9D8A) */
+  --color-tertiary:         #0F9D8A;
+  --color-tertiary-hover:   #0C7A6B;
+  --color-tertiary-light:   #2DC3B0;
+  --color-tertiary-bg:      #E0F5F2;
+  --color-tertiary-glow:    rgba(15, 157, 138, 0.15);
 
   /* Legacy Compatibility Aliases */
-  --color-brand:            #4F46E5;
+  --color-brand:            #12355B;
   --color-blue:             #2563EB;
   --color-blue-hover:       #1D4ED8;
-  --color-teal:             #0EA5E9;
-  --color-teal-hover:       #0284C7;
-  --color-orange:           #4F46E5;
-  --color-orange-hover:     #4338CA;
+  --color-teal:             #0F9D8A;
+  --color-teal-hover:       #0C7A6B;
+  --color-orange:           #12355B;
+  --color-orange-hover:     #0C2340;
   --color-curiosity-orange: #F59E0B;
-  --color-deep-navy:        #0F172A;
-  --color-soft-grey:        #F8FAFC;
+  --color-deep-navy:        #12355B;
+  --color-soft-grey:        #F5F8FC;
 
-  --gradient-hero:          linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%);
-  --gradient-primary:       linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
-  --bg-dark:                #F8FAFC;
+  --gradient-hero:          linear-gradient(135deg, #091929 0%, #12355B 60%, #1A4A7A 100%);
+  --gradient-primary:       linear-gradient(135deg, #12355B 0%, #2563EB 100%);
+  --bg-dark:                #F5F8FC;
   --bg-white:               #FFFFFF;
-  --bg-canvas:              #F8FAFC;
-  --bg-light:               #F8FAFC;
+  --bg-canvas:              #F5F8FC;
+  --bg-light:               #EEF4FB;
   --bg-card:                #FFFFFF;
 
-  --text-primary:           #0F172A;
-  --text-body:              #334155;
+  --text-primary:           #1E293B;
+  --text-body:              #1E293B;
   --text-secondary:         #64748B;
   --text-muted:             #64748B;
 
@@ -418,7 +418,7 @@ p:last-child {
 .assignment-desc {
   font-size: 14.5px;
   line-height: 1.65;
-  color: #475569;
+  color: #64748B;
 }
 
 /* ── Utility Typography ────────────────────────────────────── */
@@ -608,7 +608,7 @@ p:last-child {
 .badge-green  { background: var(--color-tertiary-bg);  color: var(--color-tertiary); }
 /* Subject-specific */
 .badge-ict    { background: #F3E8FF; color: #6A1B9A; }
-.badge-cbe    { background: #ECFDF5; color: #065F46; }
+.badge-cbe    { background: #E0F5F2; color: #065F46; }
 .badge-ai     { background: #F5F3FF; color: #6D28D9; }
 .badge-cpd    { background: #FFFBEB; color: #92400E; }
 
@@ -853,8 +853,8 @@ html {
 body {
   font-family: var(--font-body);
   font-weight: 400;
-  background-color: #F8FAFC !important;
-  color: #0F172A !important;
+  background-color: #F5F8FC !important;
+  color: #1E293B !important;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -886,7 +886,7 @@ section {
 }
 
 .section-soft {
-  background-color: #F1F5F9 !important;
+  background-color: #EEF4FB !important;
 }
 
 .section-header {
@@ -904,7 +904,7 @@ h1, .h1, .hero-title, .page-title {
   font-weight: 800;
   line-height: 1.12;
   letter-spacing: -0.03em;
-  color: #0F172A;
+  color: #1E293B;
   margin-bottom: 20px;
 }
 
@@ -914,7 +914,7 @@ h2, .h2, .section-title {
   font-weight: 800;
   line-height: 1.20;
   letter-spacing: -0.025em;
-  color: #0F172A;
+  color: #1E293B;
   margin-bottom: 16px;
 }
 
@@ -923,7 +923,7 @@ h3, .h3, .card-title, .widget-title {
   font-size: 22px;
   font-weight: 700;
   line-height: 1.30;
-  color: #0F172A;
+  color: #1E293B;
   margin-bottom: 12px;
 }
 
@@ -932,7 +932,7 @@ h4, .h4, .sub-card-title {
   font-size: 18px;
   font-weight: 700;
   line-height: 1.35;
-  color: #0F172A;
+  color: #1E293B;
   margin-bottom: 10px;
 }
 
@@ -1002,7 +1002,7 @@ h4, .h4, .sub-card-title {
 .form-label {
   font-size: 14px;
   font-weight: 600;
-  color: #0F172A;
+  color: #1E293B;
   margin-bottom: 6px;
   display: block;
 }
@@ -1016,7 +1016,7 @@ h4, .h4, .sub-card-title {
   padding: 12px 16px !important;
   font-family: inherit;
   font-size: 14.5px;
-  color: #0F172A !important;
+  color: #1E293B !important;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
   width: 100%;
@@ -1104,8 +1104,8 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.65;
-  color: #0F172A !important;
-  background-color: #F8FAFC !important;
+  color: #1E293B !important;
+  background-color: #F5F8FC !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -1114,7 +1114,7 @@ p {
   font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
   font-size: 16px;
   line-height: 1.65;
-  color: #475569;
+  color: #64748B;
   margin-bottom: 16px;
 }
 
@@ -1129,7 +1129,7 @@ h1, .h1, .hero-title, .page-title, .hero-heading {
   font-weight: 800 !important;
   line-height: 1.15;
   letter-spacing: -0.03em;
-  color: #0F172A;
+  color: #1E293B;
   margin-bottom: 20px;
 }
 
@@ -1140,7 +1140,7 @@ h2, .h2, .section-title, .dashboard-title {
   font-weight: 800 !important;
   line-height: 1.22;
   letter-spacing: -0.025em;
-  color: #0F172A;
+  color: #1E293B;
   margin-bottom: 16px;
 }
 
@@ -1150,7 +1150,7 @@ h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title, .dashb
   font-size: 22px;
   font-weight: 700 !important;
   line-height: 1.30;
-  color: #0F172A;
+  color: #1E293B;
   margin-bottom: 12px;
 }
 
@@ -1160,12 +1160,12 @@ h4, .h4, .sub-card-title {
   font-size: 18px;
   font-weight: 700 !important;
   line-height: 1.35;
-  color: #0F172A;
+  color: #1E293B;
   margin-bottom: 10px;
 }
 
-h5, .h5 { font-size: 16px; font-weight: 600 !important; color: #0F172A; margin-bottom: 8px; }
-h6, .h6 { font-size: 14px; font-weight: 600 !important; color: #0F172A; margin-bottom: 6px; }
+h5, .h5 { font-size: 16px; font-weight: 600 !important; color: #1E293B; margin-bottom: 8px; }
+h6, .h6 { font-size: 14px; font-weight: 600 !important; color: #1E293B; margin-bottom: 6px; }
 
 /* Buttons & Navigation Links: Medium Font Weight (600 / 500) */
 .btn,
@@ -1191,7 +1191,7 @@ label,
   font-family: "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
   font-size: 14px;
   font-weight: 600 !important;
-  color: #0F172A !important;
+  color: #1E293B !important;
   margin-bottom: 6px;
   display: block;
 }
@@ -1246,35 +1246,35 @@ input, select, textarea, .form-input, .form-select, .form-textarea {
 
 :root {
   /* Google Learning Color Tokens */
-  --color-primary:          #1A73E8;   /* Google Blue — Main CTAs & Links */
-  --color-primary-hover:    #1557B0;   /* Primary button hover */
-  --color-primary-light:    #4285F4;
-  --color-primary-bg:       #E8F0FE;   /* Light blue surface fill */
+  --color-primary:          #12355B;   /* Google Blue — Main CTAs & Links */
+  --color-primary-hover:    #0C2340;   /* Primary button hover */
+  --color-primary-light:    #1A4A7A;
+  --color-primary-bg:       #E8F0F8;   /* Light blue surface fill */
 
-  --color-secondary:        #14B8A6;   /* Supportive Teal / Growth */
-  --color-secondary-hover:  #0D9488;
-  --color-secondary-bg:     #E6F4EA;
+  --color-secondary:        #2563EB;   /* Supportive Teal / Growth */
+  --color-secondary-hover:  #1D4ED8;
+  --color-secondary-bg:     #E8F0F8;
 
-  --color-accent:           #F59E0B;   /* Google Amber / Yellow */
-  --color-accent-hover:     #D97706;
-  --color-accent-text:      #111827;
-  --color-accent-bg:        #FEF7E0;
+  --color-accent:           #0F9D8A;   /* Google Amber / Yellow */
+  --color-accent-hover:     #0C7A6B;
+  --color-accent-text:      #FFFFFF;
+  --color-accent-bg:        #E0F5F2;
 
-  --color-background:       #F8FAFC;   /* Canvas background */
+  --color-background:       #F5F8FC;   /* Canvas background */
   --color-surface:          #FFFFFF;   /* Main card surface */
-  --color-surface-soft:     #F1F5F9;
+  --color-surface-soft:     #EEF4FB;
 
-  --color-text-main:        #1F1F1F;   /* Google Slate Main Text */
-  --color-text-secondary:   #3C4043;   /* Secondary Text */
-  --color-text-muted:       #5F6368;   /* Muted Metadata Text */
+  --color-text-main:        #1E293B;   /* Google Slate Main Text */
+  --color-text-secondary:   #64748B;   /* Secondary Text */
+  --color-text-muted:       #64748B;   /* Muted Metadata Text */
 
-  --color-border:           #DADCE0;   /* Clean Google border */
-  --color-border-subtle:    #F1F3F4;
-  --color-border-focus:     #1A73E8;
+  --color-border:           #E2E8F0;   /* Clean Google border */
+  --color-border-subtle:    #EEF4FB;
+  --color-border-focus:     #2563EB;
 
-  --color-success:          #34A853;   /* Google Green */
-  --color-warning:          #FBBC04;   /* Google Yellow */
-  --color-danger:           #EA4335;   /* Google Red */
+  --color-success:          #16A34A;   /* Google Green */
+  --color-warning:          #F97316;   /* Google Yellow */
+  --color-danger:           #DC2626;   /* Google Red */
 
   --font-sans:              'Plus Jakarta Sans', 'Inter', 'Google Sans', 'Segoe UI', Roboto, sans-serif;
   --font-heading:           'Plus Jakarta Sans', 'Inter', 'Google Sans', sans-serif;
@@ -1291,8 +1291,8 @@ table, th, td, modal, .modal, .sidebar, form, label {
 }
 
 body {
-  background-color: #F8FAFC !important;
-  color: #1F1F1F !important;
+  background-color: #F5F8FC !important;
+  color: #1E293B !important;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
@@ -1314,7 +1314,7 @@ h1, .h1, .hero-title, .page-title {
   font-weight: 800 !important;
   line-height: 1.15;
   letter-spacing: -0.03em;
-  color: #1F1F1F !important;
+  color: #1E293B !important;
   margin-bottom: 20px;
 }
 
@@ -1324,7 +1324,7 @@ h2, .h2, .section-title, .dashboard-title {
   font-weight: 800 !important;
   line-height: 1.22;
   letter-spacing: -0.025em;
-  color: #1F1F1F !important;
+  color: #1E293B !important;
   margin-bottom: 16px;
 }
 
@@ -1333,12 +1333,12 @@ h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
   font-size: 22px;
   font-weight: 700 !important;
   line-height: 1.30;
-  color: #1F1F1F !important;
+  color: #1E293B !important;
   margin-bottom: 12px;
 }
 
 p {
-  color: #3C4043;
+  color: #64748B;
   line-height: 1.65;
 }
 
@@ -1352,14 +1352,14 @@ p {
 }
 
 .btn-primary, .btn-blue, .btn-main {
-  background-color: #1A73E8 !important;
+  background-color: #2563EB !important;
   color: #FFFFFF !important;
   border: none !important;
   box-shadow: 0 1px 3px rgba(60,64,67,0.15) !important;
 }
 
 .btn-primary:hover, .btn-blue:hover, .btn-main:hover {
-  background-color: #1557B0 !important;
+  background-color: #1D4ED8 !important;
   color: #FFFFFF !important;
   box-shadow: 0 4px 12px rgba(26,115,232,0.30) !important;
   transform: translateY(-1px);
@@ -1448,8 +1448,8 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.65;
-  color: #1F1F1F !important;
-  background-color: #F8FAFC !important;
+  color: #1E293B !important;
+  background-color: #F5F8FC !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -1459,7 +1459,7 @@ p {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.65;
-  color: #3C4043 !important;
+  color: #64748B !important;
   margin-bottom: 16px;
 }
 
@@ -1474,7 +1474,7 @@ h1, .h1, .hero-title, .page-title, .hero-heading {
   font-weight: 700 !important;
   line-height: 1.12 !important;
   letter-spacing: -0.02em !important;
-  color: #1F1F1F !important;
+  color: #1E293B !important;
   margin-bottom: 20px;
 }
 
@@ -1485,7 +1485,7 @@ h2, .h2, .section-title, .dashboard-title {
   font-weight: 700 !important;
   line-height: 1.20 !important;
   letter-spacing: -0.015em !important;
-  color: #1F1F1F !important;
+  color: #1E293B !important;
   margin-bottom: 16px;
 }
 
@@ -1496,7 +1496,7 @@ h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title, .dashb
   font-weight: 700 !important;
   line-height: 1.30 !important;
   letter-spacing: -0.01em !important;
-  color: #1F1F1F !important;
+  color: #1E293B !important;
   margin-bottom: 12px;
 }
 
@@ -1506,12 +1506,12 @@ h4, .h4, .sub-card-title {
   font-size: 18px !important;
   font-weight: 600 !important;
   line-height: 1.35 !important;
-  color: #1F1F1F !important;
+  color: #1E293B !important;
   margin-bottom: 10px;
 }
 
-h5, .h5 { font-size: 15px !important; font-weight: 600 !important; color: #1F1F1F !important; margin-bottom: 8px; }
-h6, .h6 { font-size: 13px !important; font-weight: 600 !important; color: #1F1F1F !important; margin-bottom: 6px; }
+h5, .h5 { font-size: 15px !important; font-weight: 600 !important; color: #1E293B !important; margin-bottom: 8px; }
+h6, .h6 { font-size: 13px !important; font-weight: 600 !important; color: #1E293B !important; margin-bottom: 6px; }
 
 /* Lead Subtitle & Section Subtitles (18px Desktop / 16px Mobile) */
 .lead, .hero-subtitle, .section-subtitle, .lead-text {
@@ -1520,7 +1520,7 @@ h6, .h6 { font-size: 13px !important; font-weight: 600 !important; color: #1F1F1
   font-weight: 400 !important;
   font-style: normal !important;
   line-height: 1.60 !important;
-  color: #3C4043 !important;
+  color: #64748B !important;
   margin-bottom: 28px;
 }
 
@@ -1548,7 +1548,7 @@ label,
   font-family: 'Google Sans', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
   font-size: 14px !important;
   font-weight: 600 !important;
-  color: #1F1F1F !important;
+  color: #1E293B !important;
   margin-bottom: 6px;
   display: block;
 }
@@ -1559,7 +1559,7 @@ input, select, textarea, .form-input, .form-select, .form-textarea {
   font-weight: 400 !important;
 }
 
-/* Muted Metadata Text (13px / Color #5F6368) */
+/* Muted Metadata Text (13px / Color #64748B) */
 .text-muted,
 .text-secondary,
 .muted,
@@ -1573,7 +1573,7 @@ input, select, textarea, .form-input, .form-select, .form-textarea {
 .form-help {
   font-family: 'Google Sans Text', 'Plus Jakarta Sans', 'Inter', sans-serif !important;
   font-size: 13px !important;
-  color: #5F6368 !important;
+  color: #64748B !important;
   font-weight: 400 !important;
 }
 
@@ -1620,75 +1620,75 @@ input, select, textarea, .form-input, .form-select, .form-textarea {
 
 :root {
   /* Strathmore Navy (Primary Brand) */
-  --color-primary:          #002B49;   /* Strathmore Deep Navy — Main buttons, header & CTAs */
-  --color-primary-hover:    #001F35;   /* Hover navy */
-  --color-primary-light:    #004070;   /* Active highlights */
-  --color-primary-dark:     #00182B;
+  --color-primary:          #12355B;   /* Strathmore Deep Navy — Main buttons, header & CTAs */
+  --color-primary-hover:    #0C2340;   /* Hover navy */
+  --color-primary-light:    #1A4A7A;   /* Active highlights */
+  --color-primary-dark:     #091929;
   --color-primary-bg:       #E8F0F8;   /* Light navy fill */
-  --color-primary-glow:     rgba(0, 43, 73, 0.15);
+  --color-primary-glow:     rgba(18, 53, 91, 0.15);
 
   /* Strathmore Gold (Secondary & Academic Excellence) */
-  --color-secondary:        #C29B38;   /* Strathmore Gold — Progress indicators, learning paths, badges */
-  --color-secondary-hover:  #A6822B;   /* Hover gold */
-  --color-secondary-light:  #E5C568;
-  --color-secondary-dark:   #8C6A18;
-  --color-secondary-bg:     #FDFBEE;
+  --color-secondary:        #2563EB;   /* Strathmore Gold — Progress indicators, learning paths, badges */
+  --color-secondary-hover:  #1D4ED8;   /* Hover gold */
+  --color-secondary-light:  #60A5FA;
+  --color-secondary-dark:   #1E40AF;
+  --color-secondary-bg:     #E8F0F8;
 
   /* Strathmore Accent & Crimson */
-  --color-accent:           #C29B38;   /* Strathmore Gold Accent */
-  --color-accent-hover:     #A6822B;
-  --color-accent-text:      #002B49;   /* Deep Navy text on Gold badges */
-  --color-accent-bg:        #FDFBEE;
+  --color-accent:           #0F9D8A;   /* Strathmore Gold Accent */
+  --color-accent-hover:     #0C7A6B;
+  --color-accent-text:      #FFFFFF;   /* Deep Navy text on Gold badges */
+  --color-accent-bg:        #E0F5F2;
 
-  --color-amber:            #C29B38;
-  --color-amber-hover:      #A6822B;
-  --color-amber-text:       #002B49;
-  --color-amber-bg:         #FDFBEE;
+  --color-amber:            #F59E0B;
+  --color-amber-hover:      #D97706;
+  --color-amber-text:       #1E293B;
+  --color-amber-bg:         #FEF3C7;
 
   --color-crimson:          #800020;   /* Strathmore Crimson for special recognition */
 
   /* Page Surfaces & Canvas */
-  --color-background:       #F8FAFC;   /* Main background canvas */
+  --color-background:       #F5F8FC;   /* Main background canvas */
   --color-surface:          #FFFFFF;   /* Main card surface */
-  --color-surface-soft:     #F1F5F9;   /* Soft surface fill */
+  --color-surface-soft:     #EEF4FB;   /* Soft surface fill */
 
   /* Text Typography System */
-  --color-text-main:        #002B49;   /* Strathmore Deep Navy main headings */
-  --color-text-secondary:   #334155;   /* Secondary body text */
+  --color-text-main:        #1E293B;   /* Strathmore Deep Navy main headings */
+  --color-text-secondary:   #64748B;   /* Secondary body text */
   --color-text-muted:       #64748B;   /* Muted metadata text */
   --color-text-on-primary:  #FFFFFF;
 
   /* Borders & Dividers */
   --color-border:           #E2E8F0;   /* Clean border color */
-  --color-border-subtle:    #F1F5F9;
-  --color-border-focus:     #002B49;
+  --color-border-subtle:    #EEF4FB;
+  --color-border-focus:     #2563EB;
 
   /* Status Colors */
-  --color-success:          #22C55E;   /* Verified green */
-  --color-warning:          #C29B38;   /* Strathmore Gold warning */
-  --color-danger:           #EF4444;   /* Red danger */
+  --color-success:          #16A34A;   /* Verified green */
+  --color-warning:          #F97316;   /* Strathmore Gold warning */
+  --color-danger:           #DC2626;   /* Red danger */
   --color-info:             #0284C7;   /* Info blue */
 
   /* Legacy Compatibility Maps */
-  --color-brand:            #002B49;
-  --color-blue:             #002B49;
-  --color-blue-hover:       #001F35;
-  --color-teal:             #C29B38;
-  --color-teal-hover:       #A6822B;
-  --color-orange:           #002B49;
-  --color-orange-hover:     #001F35;
-  --color-curiosity-orange: #C29B38;
-  --color-deep-navy:        #002B49;
-  --color-soft-grey:        #F8FAFC;
+  --color-brand:            #12355B;
+  --color-blue:             #2563EB;
+  --color-blue-hover:       #1D4ED8;
+  --color-teal:             #0F9D8A;
+  --color-teal-hover:       #0C7A6B;
+  --color-orange:           #12355B;
+  --color-orange-hover:     #0C2340;
+  --color-curiosity-orange: #F59E0B;
+  --color-deep-navy:        #12355B;
+  --color-soft-grey:        #F5F8FC;
 
   --bg-white:               #FFFFFF;
-  --bg-canvas:              #F8FAFC;
-  --bg-light:               #F1F5F9;
+  --bg-canvas:              #F5F8FC;
+  --bg-light:               #EEF4FB;
   --bg-card:                #FFFFFF;
 
-  --text-primary:           #002B49;
-  --text-body:              #334155;
-  --text-secondary:         #334155;
+  --text-primary:           #1E293B;
+  --text-body:              #1E293B;
+  --text-secondary:         #64748B;
   --text-muted:             #64748B;
 
   --border-card:            #E2E8F0;
@@ -1699,102 +1699,102 @@ input, select, textarea, .form-input, .form-select, .form-textarea {
 
 
 /* ══════════════════════════════════════════════════════════════
-   INSTRUCTIFY KENYA — ROYAL BLUE (#1E3A8A), DEEP GOLD (#FF4D00), ORANGE (#FF4D00)
+   INSTRUCTIFY KENYA — ROYAL BLUE (#12355B), DEEP GOLD (#0F9D8A), ORANGE (#0F9D8A)
    ══════════════════════════════════════════════════════════════ */
 
 :root {
-  /* Primary Brand — Royal Blue (#1E3A8A) */
-  --color-primary:          #1E3A8A;   /* Main navigation, primary buttons, headings, links, active states */
-  --color-primary-hover:    #172554;   /* Darker Royal Blue hover */
-  --color-primary-light:    #3B82F6;   /* Focus highlights */
-  --color-primary-dark:     #172554;
-  --color-primary-bg:       #EFF6FF;   /* Soft blue surface fill */
-  --color-primary-glow:     rgba(30, 58, 138, 0.15);
+  /* Primary Brand — Royal Blue (#12355B) */
+  --color-primary:          #12355B;   /* Main navigation, primary buttons, headings, links, active states */
+  --color-primary-hover:    #0C2340;   /* Darker Royal Blue hover */
+  --color-primary-light:    #1A4A7A;   /* Focus highlights */
+  --color-primary-dark:     #091929;
+  --color-primary-bg:       #E8F0F8;   /* Soft blue surface fill */
+  --color-primary-glow:     rgba(18, 53, 91, 0.15);
 
-  /* Secondary Brand — Deep Yellow/Gold (#FF4D00) */
-  --color-secondary:        #FF4D00;   /* Main highlights, CTA accents, icons, badges, section dividers */
-  --color-secondary-hover:  #D9A104;   /* Gold hover */
-  --color-secondary-light:  #FDE047;
-  --color-secondary-dark:   #B45309;
-  --color-secondary-bg:     #FEF9C3;   /* Soft gold badge background */
+  /* Secondary Brand — Deep Yellow/Gold (#0F9D8A) */
+  --color-secondary:        #2563EB;   /* Main highlights, CTA accents, icons, badges, section dividers */
+  --color-secondary-hover:  #1D4ED8;   /* Gold hover */
+  --color-secondary-light:  #60A5FA;
+  --color-secondary-dark:   #1E40AF;
+  --color-secondary-bg:     #E8F0F8;   /* Soft gold badge background */
 
-  /* Accent — Orange (#FF4D00) */
-  --color-accent:           #FF4D00;   /* Hover states, secondary buttons, energetic accents */
-  --color-accent-hover:     #FF4D00;   /* Orange hover */
+  /* Accent — Orange (#0F9D8A) */
+  --color-accent:           #0F9D8A;   /* Hover states, secondary buttons, energetic accents */
+  --color-accent-hover:     #0C7A6B;   /* Orange hover */
   --color-accent-text:      #FFFFFF;
-  --color-accent-bg:        #FFEDD5;
+  --color-accent-bg:        #E0F5F2;
 
-  --color-amber:            #FF4D00;
-  --color-amber-hover:      #D9A104;
-  --color-amber-text:       #111827;
-  --color-amber-bg:         #FEF9C3;
+  --color-amber:            #F59E0B;
+  --color-amber-hover:      #D97706;
+  --color-amber-text:       #1E293B;
+  --color-amber-bg:         #FEF3C7;
 
   /* Supporting Neutrals */
-  --color-background:       #F8FAFC;   /* Off-white background */
+  --color-background:       #F5F8FC;   /* Off-white background */
   --color-surface:          #FFFFFF;   /* Pure White card surface */
-  --color-surface-soft:     #F1F5F9;   /* Soft surface fill */
+  --color-surface-soft:     #EEF4FB;   /* Soft surface fill */
 
   /* Text System */
-  --color-text-main:        #111827;   /* Dark text */
-  --color-text-secondary:   #374151;   /* Secondary body text */
-  --color-text-muted:       #6B7280;   /* Muted text */
+  --color-text-main:        #1E293B;   /* Dark text */
+  --color-text-secondary:   #64748B;   /* Secondary body text */
+  --color-text-muted:       #64748B;   /* Muted text */
   --color-text-on-primary:  #FFFFFF;
 
   /* Borders & Dividers */
-  --color-border:           #E5E7EB;   /* Light border */
-  --color-border-subtle:    #F3F4F6;
-  --color-border-focus:     #1E3A8A;
+  --color-border:           #E2E8F0;   /* Light border */
+  --color-border-subtle:    #EEF4FB;
+  --color-border-focus:     #2563EB;
 
   /* Status System */
-  --color-success:          #22C55E;   /* Success green */
-  --color-warning:          #FF4D00;   /* Gold warning */
-  --color-danger:           #EF4444;   /* Red error */
+  --color-success:          #16A34A;   /* Success green */
+  --color-warning:          #F97316;   /* Gold warning */
+  --color-danger:           #DC2626;   /* Red error */
   --color-info:             #38BDF8;   /* Info blue */
 
   /* Compatibility Mapping */
-  --color-brand:            #1E3A8A;
-  --color-blue:             #1E3A8A;
-  --color-blue-hover:       #172554;
-  --color-teal:             #FF4D00;
-  --color-teal-hover:       #D9A104;
-  --color-orange:           #FF4D00;
-  --color-orange-hover:     #FF4D00;
-  --color-curiosity-orange: #FF4D00;
-  --color-deep-navy:        #1E3A8A;
-  --color-soft-grey:        #F8FAFC;
+  --color-brand:            #12355B;
+  --color-blue:             #2563EB;
+  --color-blue-hover:       #1D4ED8;
+  --color-teal:             #0F9D8A;
+  --color-teal-hover:       #0C7A6B;
+  --color-orange:           #12355B;
+  --color-orange-hover:     #0C2340;
+  --color-curiosity-orange: #F59E0B;
+  --color-deep-navy:        #12355B;
+  --color-soft-grey:        #F5F8FC;
 
   --bg-white:               #FFFFFF;
-  --bg-canvas:              #F8FAFC;
-  --bg-light:               #F1F5F9;
+  --bg-canvas:              #F5F8FC;
+  --bg-light:               #EEF4FB;
   --bg-card:                #FFFFFF;
 
-  --text-primary:           #111827;
-  --text-body:              #374151;
-  --text-secondary:         #374151;
-  --text-muted:             #6B7280;
+  --text-primary:           #1E293B;
+  --text-body:              #1E293B;
+  --text-secondary:         #64748B;
+  --text-muted:             #64748B;
 
-  --border-card:            #E5E7EB;
-  --border-subtle:          #E5E7EB;
+  --border-card:            #E2E8F0;
+  --border-subtle:          #E2E8F0;
 
   --shadow-card:            0 2px 12px rgba(30, 58, 138, 0.05);
 }
 
 /* Base Body & Heading Rule Overrides for High-Contrast Accessibility */
 body {
-  background-color: #F8FAFC !important;
-  color: #111827 !important;
+  background-color: #F5F8FC !important;
+  color: #1E293B !important;
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, h6 {
-  color: #111827 !important;
+  color: #1E293B !important;
 }
 
 p {
-  color: #374151;
+  color: #64748B;
 }
 
 .text-muted, .text-secondary, .muted {
-  color: #6B7280 !important;
+  color: #64748B !important;
 }
 
 
@@ -1823,7 +1823,7 @@ h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
   font-weight: 800;
   line-height: 1.20;
   letter-spacing: -0.02em;
-  color: #111827;
+  color: #1E293B;
   margin-bottom: 16px;
 }
 
@@ -1834,7 +1834,7 @@ h2, .h2, .section-title, .dashboard-title {
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.015em;
-  color: #111827;
+  color: #1E293B;
   margin-bottom: 14px;
 }
 
@@ -1845,7 +1845,7 @@ h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title, .dashb
   font-weight: 700;
   line-height: 1.30;
   letter-spacing: -0.01em;
-  color: #111827;
+  color: #1E293B;
   margin-bottom: 10px;
 }
 
@@ -1855,12 +1855,12 @@ h4, .h4, .sub-card-title {
   font-size: 17px;
   font-weight: 600;
   line-height: 1.35;
-  color: #111827;
+  color: #1E293B;
   margin-bottom: 8px;
 }
 
-h5, .h5 { font-size: 15px; font-weight: 600; color: #111827; margin-bottom: 6px; }
-h6, .h6 { font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 6px; }
+h5, .h5 { font-size: 15px; font-weight: 600; color: #1E293B; margin-bottom: 6px; }
+h6, .h6 { font-size: 13px; font-weight: 600; color: #1E293B; margin-bottom: 6px; }
 
 /* Balanced Lead Subtitles (16px Desktop / 15px Mobile) */
 .lead, .hero-subtitle, .section-subtitle, .lead-text {
@@ -1869,7 +1869,7 @@ h6, .h6 { font-size: 13px; font-weight: 600; color: #111827; margin-bottom: 6px;
   font-weight: 400 !important;
   font-style: normal !important;
   line-height: 1.60 !important;
-  color: #4B5563 !important;
+  color: #64748B !important;
   margin-bottom: 24px !important;
 }
 
@@ -1878,7 +1878,7 @@ p {
   font-size: 15px !important;
   font-weight: 400;
   line-height: 1.65;
-  color: #374151 !important;
+  color: #64748B !important;
   margin-bottom: 14px;
 }
 

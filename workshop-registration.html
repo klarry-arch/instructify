@@ -17,14 +17,14 @@
   <div class="container">
     <a href="index.html" class="nav-brand" aria-label="Instructify Kenya" style="display: inline-flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap;">
       <div class="nav-brand-icon" style="display: inline-flex; align-items: center; justify-content: center; margin: 0; padding: 0; flex-shrink: 0; background: none; border: none; box-shadow: none;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#12355B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
           <path d="M6 12v5c3 3 9 3 12 0v-5"/>
         </svg>
       </div>
       <div class="nav-brand-text-box" style="display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; white-space: nowrap; margin: 0; padding: 0; line-height: 1;">
-        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #0F172A; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
-        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #4F46E5; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
+        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #1E293B; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #12355B; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
       </div>
     </a>
     <ul class="nav-links">
@@ -59,15 +59,15 @@
 </section>
 
 <!-- Form Container Section -->
-<section class="section" style="background:#F8FAFC; padding: 60px 0;">
+<section class="section" style="background:#F5F8FC; padding: 60px 0;">
   <div class="container">
     <div class="workshop-card" id="workshop-form" style="max-width:960px; margin:0 auto;">
       <div style="margin-bottom:28px; border-bottom:1px solid #E2E8F0; padding-bottom:20px;">
-        <span style="font-size:0.85rem; font-weight:800; color:#FF4D00; text-transform:uppercase; letter-spacing:1px;">Registration Portal</span>
-        <h2 style="font-family:var(--font-heading); font-size:24px; font-weight:800; color:#0F172A; margin:6px 0 10px;">
+        <span style="font-size:0.85rem; font-weight:800; color:#0F9D8A; text-transform:uppercase; letter-spacing:1px;">Registration Portal</span>
+        <h2 style="font-family:var(--font-heading); font-size:24px; font-weight:800; color:#1E293B; margin:6px 0 10px;">
           Register for Upcoming Creative Workshops
         </h2>
-        <p style="color:#475569; font-size:15px; line-height:1.6; margin:0;">
+        <p style="color:#64748B; font-size:15px; line-height:1.6; margin:0;">
           Register here to attend one of our upcoming workshops. Perfect for educators, youth leaders, and learners who want to explore teaching, tech, and transformation in action.
         </p>
       </div>
@@ -75,14 +75,14 @@
       <form id="workshop-registration-form" onsubmit="handleWorkshopSubmit(event)">
         <!-- 1. Full Name -->
         <div class="form-group mb-lg">
-          <label class="form-label" for="workshop-fullname">Full Name <span style="color:#FF4D00">*</span></label>
+          <label class="form-label" for="workshop-fullname">Full Name <span style="color:#0F9D8A">*</span></label>
           <input type="text" id="workshop-fullname" class="form-input" placeholder="e.g. Jane Wanjiku Mwangi" required>
         </div>
 
         <div class="form-grid-2 mb-lg">
           <!-- 2. Workshop Title / Theme -->
           <div class="form-group">
-            <label class="form-label" for="workshop-title-select">Workshop Title / Theme <span style="color:#FF4D00">*</span></label>
+            <label class="form-label" for="workshop-title-select">Workshop Title / Theme <span style="color:#0F9D8A">*</span></label>
             <select id="workshop-title-select" class="form-input" required>
               <option value="" disabled selected>Select a Workshop Theme</option>
               <option value="National ICT Integration Masterclass">National ICT Integration Masterclass</option>
@@ -95,7 +95,7 @@
 
           <!-- Preferred Language -->
           <div class="form-group">
-            <label class="form-label" for="workshop-language">Preferred Language <span style="color:#FF4D00">*</span></label>
+            <label class="form-label" for="workshop-language">Preferred Language <span style="color:#0F9D8A">*</span></label>
             <select id="workshop-language" class="form-input" required>
               <option value="Kiswahili">Kiswahili</option>
               <option value="English" selected>English</option>
@@ -106,13 +106,13 @@
 
         <!-- Custom Workshop Theme Field -->
         <div class="form-group mb-lg" id="custom-workshop-group" style="display:none;">
-          <label class="form-label" for="workshop-title-custom">Specify Workshop Title / Theme Topic <span style="color:#FF4D00">*</span></label>
+          <label class="form-label" for="workshop-title-custom">Specify Workshop Title / Theme Topic <span style="color:#0F9D8A">*</span></label>
           <input type="text" id="workshop-title-custom" class="form-input" placeholder="Describe the theme or custom workshop topic">
         </div>
 
         <!-- 3. Role Selection -->
         <div class="form-group mb-lg">
-          <label class="form-label">Role <span style="color:#FF4D00">*</span></label>
+          <label class="form-label">Role <span style="color:#0F9D8A">*</span></label>
           <div class="role-chip-group">
             <label class="role-chip selected" onclick="selectWorkshopRole(this, 'Teacher')">
               <input type="radio" name="workshop_role" value="Teacher" checked>
@@ -140,11 +140,11 @@
         <!-- 4. Contact Information -->
         <div class="form-grid-2 mb-lg">
           <div class="form-group">
-            <label class="form-label" for="workshop-email">Email Address <span style="color:#FF4D00">*</span></label>
+            <label class="form-label" for="workshop-email">Email Address <span style="color:#0F9D8A">*</span></label>
             <input type="email" id="workshop-email" class="form-input" placeholder="yourname@example.ke" required autocomplete="email">
           </div>
           <div class="form-group">
-            <label class="form-label" for="workshop-phone">Phone / WhatsApp Number <span style="color:#FF4D00">*</span></label>
+            <label class="form-label" for="workshop-phone">Phone / WhatsApp Number <span style="color:#0F9D8A">*</span></label>
             <input type="tel" id="workshop-phone" class="form-input" placeholder="+254 7XX XXX XXX" required autocomplete="tel">
           </div>
         </div>
@@ -157,7 +157,7 @@
 
         <!-- 6. Payment Option -->
         <div class="form-group mb-xl">
-          <label class="form-label">Payment Option <span style="color:#FF4D00">*</span></label>
+          <label class="form-label">Payment Option <span style="color:#0F9D8A">*</span></label>
           <div class="payment-grid">
             <label class="payment-card selected" onclick="selectPaymentOption(this, 'Free / Sponsored')">
               <input type="radio" name="workshop_payment" value="Free / Sponsored" checked>
@@ -172,7 +172,7 @@
               <input type="radio" name="workshop_payment" value="M-Pesa Mobile Money">
               <div class="payment-card-title">
                 <span>📱 M-Pesa</span>
-                <span class="badge badge-warning" style="font-size:10px;background:#15803D;color:#FFF;">Express</span>
+                <span class="badge badge-warning" style="font-size:10px;background:#16A34A;color:#FFF;">Express</span>
               </div>
               <div class="payment-card-sub">Instant mobile money checkout</div>
             </label>
@@ -211,7 +211,7 @@
 <div id="ticket-modal" class="ticket-modal-overlay">
   <div class="ticket-modal-card">
     <div style="display:flex; justify-content:space-between; align-items:center;">
-      <h3 style="font-family:var(--font-heading); font-size:20px; font-weight:800; color:#0F172A; margin:0;">
+      <h3 style="font-family:var(--font-heading); font-size:20px; font-weight:800; color:#1E293B; margin:0;">
         🎉 Registration Confirmed!
       </h3>
       <button onclick="closeTicketModal()" class="cert-modal-close" aria-label="Close">&times;</button>
@@ -262,7 +262,7 @@
   <div class="container">
     <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.12);">
       <div>
-        <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span style="color: #FF4D00 !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span></h3>
+        <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span style="color: #0F9D8A !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span></h3>
         <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
           Ignite Curiosity. Transform Learning. Renew Communities.
         </p>
@@ -295,7 +295,7 @@
       </div>
     </div>
     <div style="text-align:center; padding:24px 0; font-size:13px; color:#E2E8F0 !important; font-weight:500;">
-      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: #FF4D00; font-weight:700; text-decoration:underline;">Contact Us</a>
+      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: #0F9D8A; font-weight:700; text-decoration:underline;">Contact Us</a>
     </div>
   </div>
 </footer>

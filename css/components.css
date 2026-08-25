@@ -15,8 +15,8 @@
   z-index: 1000 !important;
   display: flex;
   align-items: center;
-  background: #FFFFFF !important;
-  border-bottom: 1px solid #E2E8F0 !important;
+  background: #12355B !important;
+  border-bottom: 1px solid #0C2340 !important;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
   transition: background 0.25s ease, box-shadow 0.25s ease;
 }
@@ -32,11 +32,11 @@
 }
 
 .nav-brand-title {
-  color: #0F172A !important;
+  color: #FFFFFF !important;
 }
 
 .nav-brand-subtitle {
-  color: #4F46E5 !important;
+  color: #F59E0B !important;
 }
 
 .nav-links {
@@ -52,7 +52,7 @@
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 600;
-  color: #64748B !important;
+  color: #E2E8F0 !important;
   padding: 8px 16px;
   border-radius: 8px;
   transition: all 0.2s ease;
@@ -62,13 +62,13 @@
 }
 
 .nav-link:hover {
-  color: #0F172A !important;
-  background: #F8FAFC;
+  color: #FFFFFF !important;
+  background: rgba(255,255,255,0.12);
 }
 
 .nav-link.active {
-  color: #4F46E5 !important;
-  background: #EEF2FF;
+  color: #FFFFFF !important;
+  background: rgba(255,255,255,0.18);
   font-weight: 700;
 }
 
@@ -79,7 +79,7 @@
   left: 16px;
   right: 16px;
   height: 2px;
-  background: #4F46E5;
+  background: #F59E0B;
   border-radius: 2px;
 }
 
@@ -94,9 +94,9 @@
 .navbar .btn-outline,
 .nav-actions .btn-outline,
 .nav-mobile .btn-outline {
-  background: #FFFFFF;
-  color: #334155 !important;
-  border: 1px solid #E2E8F0;
+  background: transparent;
+  color: #E2E8F0 !important;
+  border: 1px solid rgba(255,255,255,0.3);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   font-weight: 600;
@@ -105,8 +105,8 @@
 .navbar .btn-outline:hover,
 .nav-actions .btn-outline:hover,
 .nav-mobile .btn-outline:hover {
-  background: #F8FAFC;
-  color: #4F46E5 !important;
+  background: rgba(255,255,255,0.12);
+  color: #2563EB !important;
   border-color: #CBD5E1;
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05);
@@ -127,7 +127,7 @@
   display: block;
   width: 22px;
   height: 2px;
-  background: #0F172A;
+  background: #E2E8F0;
   border-radius: 1px;
   transition: transform var(--transition-base), opacity var(--transition-fast);
 }
@@ -183,8 +183,8 @@
 
 .nav-mobile-link:hover,
 .nav-mobile-link.active {
-  color: #4F46E5 !important;
-  background: #EEF2FF;
+  color: #2563EB !important;
+  background: #EFF6FF;
   font-weight: 700;
 }
 
@@ -219,39 +219,39 @@
   transform: scale(0.98);
 }
 
-/* ── Primary Action Button — Indigo (#4F46E5) ──────────────── */
+/* ── Primary Action Button — Indigo (#12355B) ──────────────── */
 .btn-primary,
 .btn-indigo {
-  background: #4F46E5;
+  background: #2563EB;
   color: #FFFFFF !important;
-  border-color: #4F46E5;
+  border-color: #2563EB;
   box-shadow: 0 1px 2px rgba(79, 70, 229, 0.2);
 }
 
 .btn-primary:hover,
 .btn-indigo:hover {
-  background: #4338CA;
-  border-color: #4338CA;
+  background: #1D4ED8;
+  border-color: #1D4ED8;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
   color: #FFFFFF !important;
 }
 
-/* ── CTA / Success Action Button — Emerald (#10B981) ────────── */
+/* ── CTA / Success Action Button — Emerald (#0F9D8A) ────────── */
 .btn-cta,
 .btn-emerald,
 .btn-success-cta {
-  background: #10B981;
+  background: #0F9D8A;
   color: #FFFFFF !important;
-  border-color: #10B981;
+  border-color: #0F9D8A;
   box-shadow: 0 1px 2px rgba(16, 185, 129, 0.2);
 }
 
 .btn-cta:hover,
 .btn-emerald:hover,
 .btn-success-cta:hover {
-  background: #059669;
-  border-color: #059669;
+  background: #0C7A6B;
+  border-color: #0C7A6B;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
   color: #FFFFFF !important;
@@ -261,16 +261,16 @@
 .btn-accent,
 .btn-orange,
 .btn-amber {
-  background: #4F46E5;
+  background: #2563EB;
   color: #FFFFFF !important;
-  border-color: #4F46E5;
+  border-color: #F59E0B;
 }
 
 .btn-accent:hover,
 .btn-orange:hover,
 .btn-amber:hover {
-  background: #4338CA;
-  border-color: #4338CA;
+  background: #D97706;
+  border-color: #0C2340;
   color: #FFFFFF !important;
 }
 
@@ -293,14 +293,14 @@
 .btn-outline,
 .btn-outline-blue {
   background: #FFFFFF;
-  color: #334155 !important;
+  color: #1E293B !important;
   border: 1px solid #E2E8F0;
 }
 
 .btn-outline:hover,
 .btn-outline-blue:hover {
-  background: #F8FAFC;
-  color: #4F46E5 !important;
+  background: #F5F8FC;
+  color: #2563EB !important;
   border-color: #CBD5E1;
   transform: translateY(-1px);
 }
@@ -308,15 +308,15 @@
 .btn-outline-accent,
 .btn-outline-orange {
   background: transparent;
-  color: #4F46E5 !important;
-  border: 1px solid #4F46E5;
+  color: #12355B !important;
+  border: 1px solid #12355B;
 }
 
 .btn-outline-accent:hover,
 .btn-outline-orange:hover {
-  background: #EEF2FF;
-  color: #4338CA !important;
-  border-color: #4338CA;
+  background: #E8F0F8;
+  color: #0C2340 !important;
+  border-color: #0C2340;
 }
 
 .btn-outline-white {
@@ -327,21 +327,21 @@
 
 .btn-outline-white:hover {
   background: #FFFFFF;
-  color: #0F172A !important;
+  color: #1E293B !important;
   border-color: #FFFFFF;
 }
 
 .btn-white,
 .btn-light {
   background: #FFFFFF;
-  color: #0F172A !important;
+  color: #1E293B !important;
   border: 1px solid #E2E8F0;
 }
 
 .btn-white:hover,
 .btn-light:hover {
-  background: #F8FAFC;
-  color: #4F46E5 !important;
+  background: #F5F8FC;
+  color: #12355B !important;
 }
 
 .btn-ghost {
@@ -352,12 +352,12 @@
 }
 
 .btn-ghost:hover {
-  color: #0F172A !important;
-  background: #F1F5F9;
+  color: #1E293B !important;
+  background: #EEF4FB;
 }
 
 .btn-dark {
-  background: #0F172A;
+  background: #1E293B;
   color: #FFFFFF !important;
 }
 
@@ -388,7 +388,7 @@
    FOOTER — Professional Modern SaaS LMS Footer
    ══════════════════════════════════════════════════════════════ */
 .footer {
-  background: #0F172A !important;
+  background: #1E293B !important;
   color: #FFFFFF !important;
   padding: 56px 0 28px 0;
   margin-top: auto;
@@ -401,7 +401,7 @@
 }
 
 .footer h3 span, .footer h4 span, .footer h2 span {
-  color: #4F46E5 !important;
+  color: #F59E0B !important;
 }
 
 .footer p, .footer span, .footer-text, .footer-copy {
@@ -447,7 +447,7 @@
 
 .course-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.14);
+  box-shadow: 0 18px 40px rgba(18, 53, 91, 0.14);
   border-color: rgba(37, 99, 235, 0.30);
 }
 
@@ -532,7 +532,7 @@
   font-family: var(--font-heading, 'Inter', sans-serif);
   font-size: 18px;
   font-weight: 700;
-  color: var(--text-primary, #0F172A);
+  color: var(--text-primary, #1E293B);
   line-height: 1.35;
   margin-bottom: 10px;
 }
@@ -597,7 +597,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #F8FAFC;
+  background: #F5F8FC;
   margin-top: auto;
 }
 
@@ -751,8 +751,8 @@
 
 /* Page Body */
 body {
-  background-color: #F8FAFC !important;
-  color: #0F172A !important;
+  background-color: #F5F8FC !important;
+  color: #1E293B !important;
 }
 
 /* Primary Buttons */
@@ -760,7 +760,7 @@ body {
 .btn-blue,
 .btn-orange,
 .btn-main {
-  background-color: #1E3A8A !important;
+  background-color: #12355B !important;
   color: #FFFFFF !important;
   border: none;
   padding: 12px 24px;
@@ -774,7 +774,7 @@ body {
 .btn-blue:hover,
 .btn-orange:hover,
 .btn-main:hover {
-  background-color: #172554 !important;
+  background-color: #0C2340 !important;
   color: #FFFFFF !important;
 }
 
@@ -782,7 +782,7 @@ body {
 .btn-secondary,
 .btn-teal,
 .btn-supportive {
-  background-color: #FF4D00 !important;
+  background-color: #0F9D8A !important;
   color: #FFFFFF !important;
   border: none;
   padding: 12px 24px;
@@ -809,7 +809,7 @@ body {
 .section-tag.orange,
 .section-tag.violet {
   background-color: #F59E0B !important;
-  color: #111827 !important;
+  color: #1E293B !important;
   font-weight: 700 !important;
   padding: 6px 14px;
   border-radius: 999px;
@@ -861,14 +861,14 @@ body {
    CERTIFICATES, ACHIEVEMENTS & COMPLETION STYLING SYSTEM
    ══════════════════════════════════════════════════════════════ */
 
-/* 1. Completed Courses, Earned Certificates & Success States (#22C55E) */
+/* 1. Completed Courses, Earned Certificates & Success States (#16A34A) */
 .badge-success,
 .badge-completed,
 .badge-earned,
 .status-completed,
 .completed-course-badge,
 .cert-verified-stamp {
-  background-color: #22C55E !important;
+  background-color: #16A34A !important;
   color: #FFFFFF !important;
   font-weight: 700 !important;
   border-radius: 999px;
@@ -883,7 +883,7 @@ body {
 .cert-verified-box {
   background-color: #F0FDF4 !important;
   border-left: 4px solid #16A34A !important;
-  color: #15803D !important;
+  color: #16A34A !important;
 }
 
 .earned-cert-card {
@@ -894,40 +894,40 @@ body {
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
 }
 
-/* 2. Learning Milestones & Progress Indicators — Indigo (#4F46E5) */
+/* 2. Learning Milestones & Progress Indicators — Indigo (#12355B) */
 .progress-bar,
 .progress-fill,
 .course-progress-bar,
 .milestone-fill {
-  background: #4F46E5 !important;
+  background: #12355B !important;
   border-radius: 999px;
 }
 
 .course-progress-pct,
 .milestone-pct,
 .milestone-text {
-  color: #4F46E5 !important;
+  color: #12355B !important;
   font-weight: 700 !important;
 }
 
 .badge-milestone,
 .milestone-tag {
-  background-color: #EEF2FF !important;
-  color: #4F46E5 !important;
+  background-color: #E8F0F8 !important;
+  color: #12355B !important;
   border: 1px solid #C7D2FE !important;
   font-weight: 700 !important;
   border-radius: 999px;
   padding: 4px 12px;
 }
 
-/* 3. Achievement Badges, Highlighted Certificates & Special Recognition (#F59E0B with #111827 text) */
+/* 3. Achievement Badges, Highlighted Certificates & Special Recognition (#F59E0B with #1E293B text) */
 .badge-achievement,
 .badge-featured-cert,
 .achievement-badge,
 .special-recognition,
 .reward-badge {
   background-color: #F59E0B !important;
-  color: #111827 !important;
+  color: #1E293B !important;
   font-weight: 700 !important;
   border-radius: 999px;
   padding: 4px 12px;
@@ -959,7 +959,7 @@ body {
 .btn-download-cert,
 .btn-view-achievement,
 .btn-verify-cert {
-  background-color: #1E3A8A !important;
+  background-color: #12355B !important;
   color: #FFFFFF !important;
   font-weight: 700 !important;
   border-radius: 999px !important;
@@ -973,7 +973,7 @@ body {
 .btn-download-cert:hover,
 .btn-view-achievement:hover,
 .btn-verify-cert:hover {
-  background-color: #172554 !important;
+  background-color: #0C2340 !important;
   color: #FFFFFF !important;
   transform: translateY(-2px) !important;
 }
@@ -991,7 +991,7 @@ body {
   z-index: 1000 !important;
   display: flex !important;
   align-items: center !important;
-  background: #1E3A8A !important;
+  background: #12355B !important;
   border-bottom: 2px solid #FFAD00 !important;
   box-shadow: 0 4px 20px rgba(0, 43, 73, 0.30);
   transition: background 0.25s ease, box-shadow 0.25s ease;
@@ -1095,7 +1095,7 @@ body {
   z-index: 1000 !important;
   display: flex !important;
   align-items: center !important;
-  background: #1E3A8A !important;
+  background: #12355B !important;
   border-bottom: 2px solid #FFAD00 !important;
   box-shadow: 0 4px 20px rgba(0, 43, 73, 0.30);
   transition: background 0.25s ease, box-shadow 0.25s ease;
@@ -1130,7 +1130,7 @@ body {
   width: 38px !important;
   height: 38px !important;
   border-radius: 10px !important;
-  background: linear-gradient(135deg, #002B49 0%, #001F35 100%) !important;
+  background: linear-gradient(135deg, #12355B 0%, #0C2340 100%) !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1210,7 +1210,7 @@ body {
   color: #FFFFFF !important;
   background: rgba(255, 255, 255, 0.22) !important;
   font-weight: 700 !important;
-  box-shadow: inset 0 0 0 1.5px #FF4D00 !important;
+  box-shadow: inset 0 0 0 1.5px #0F9D8A !important;
 }
 
 .nav-link.active::after {
@@ -1309,7 +1309,7 @@ body {
   flex-shrink: 0;
   border-radius: 0 120px 120px 0 / 0 50% 50% 0;
   box-shadow: 6px 0 20px rgba(0, 0, 0, 0.25);
-  border-right: 4px solid #FF4D00;
+  border-right: 4px solid #0F9D8A;
 }
 
 .cert-circuit-overlay {
@@ -1436,7 +1436,7 @@ body {
   font-family: var(--font-heading);
   font-size: 20px;
   font-weight: 900;
-  color: #FF4D00;
+  color: #0F9D8A;
   margin-left: 6px;
 }
 
@@ -1502,7 +1502,7 @@ body {
 .cert-sub-title {
   font-size: 11.5px;
   font-weight: 800;
-  color: #FF4D00;
+  color: #0F9D8A;
   letter-spacing: 3px;
   margin-top: 3px;
   margin-bottom: 4px;
@@ -1510,7 +1510,7 @@ body {
 
 .cert-lead-text {
   font-size: 12.5px;
-  color: #475569;
+  color: #64748B;
   font-weight: 500;
 }
 
@@ -1532,7 +1532,7 @@ body {
 
 .cert-completion-lead {
   font-size: 12.5px;
-  color: #475569;
+  color: #64748B;
 }
 
 .cert-course-title-exact {
@@ -1556,7 +1556,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: #F8FAFC;
+  background: #F5F8FC;
   border: 1px solid #E2E8F0;
   border-radius: 8px;
   padding: 6px 14px;
@@ -1649,7 +1649,7 @@ body {
 .crest-text {
   font-size: 8.5px;
   font-weight: 800;
-  color: #FF4D00;
+  color: #0F9D8A;
   letter-spacing: 1.5px;
 }
 
@@ -1781,7 +1781,7 @@ body {
   left: 0;
   right: 0;
   height: 6px;
-  background: linear-gradient(90deg, #FF4D00 0%, #FFAD00 50%, #1E3A8A 100%);
+  background: linear-gradient(90deg, #0F9D8A 0%, #FFAD00 50%, #12355B 100%);
 }
 
 .workshop-caption-badge {
@@ -1803,14 +1803,14 @@ body {
   font-family: var(--font-heading);
   font-size: 2.2rem;
   font-weight: 800;
-  color: #0F172A;
+  color: #1E293B;
   margin-bottom: 12px;
   line-height: 1.25;
 }
 
 .workshop-header-desc {
   font-size: 1.05rem;
-  color: #475569;
+  color: #64748B;
   line-height: 1.65;
   max-width: 780px;
   margin-bottom: 32px;
@@ -1848,8 +1848,8 @@ body {
   padding: 10px 16px;
   border: 1.5px solid #CBD5E1;
   border-radius: 12px;
-  background: #F8FAFC;
-  color: #334155;
+  background: #F5F8FC;
+  color: #1E293B;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -1858,9 +1858,9 @@ body {
 }
 
 .role-chip:hover {
-  border-color: #1E3A8A;
-  background: #EFF6FF;
-  color: #1E3A8A;
+  border-color: #12355B;
+  background: #E8F0F8;
+  color: #12355B;
 }
 
 .role-chip input[type="radio"] {
@@ -1868,7 +1868,7 @@ body {
 }
 
 .role-chip.selected {
-  border-color: #FF4D00;
+  border-color: #0F9D8A;
   background: #FFF7ED;
   color: #C2410C;
   font-weight: 700;
@@ -1895,8 +1895,8 @@ body {
 }
 
 .payment-card:hover {
-  border-color: #1E3A8A;
-  background: #F8FAFC;
+  border-color: #12355B;
+  background: #F5F8FC;
 }
 
 .payment-card input[type="radio"] {
@@ -1904,15 +1904,15 @@ body {
 }
 
 .payment-card.selected {
-  border-color: #1E3A8A;
-  background: #EFF6FF;
+  border-color: #12355B;
+  background: #E8F0F8;
   box-shadow: 0 4px 14px rgba(30, 58, 138, 0.12);
 }
 
 .payment-card-title {
   font-size: 0.92rem;
   font-weight: 700;
-  color: #0F172A;
+  color: #1E293B;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1965,7 +1965,7 @@ body {
 }
 
 .ticket-stub {
-  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+  background: linear-gradient(135deg, #1E293B 0%, #12355B 100%);
   color: #FFFFFF;
   border-radius: 16px;
   padding: 24px;
@@ -2005,16 +2005,16 @@ body {
   left: 0;
   right: 0;
   height: 6px;
-  background: linear-gradient(90deg, #1E3A8A 0%, #2563EB 50%, #FF4D00 100%);
+  background: linear-gradient(90deg, #12355B 0%, #2563EB 50%, #0F9D8A 100%);
 }
 
 .training-caption-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  background: linear-gradient(135deg, #E8F0F8 0%, #E8F0F8 100%);
   border: 1px solid #93C5FD;
-  color: #1E3A8A;
+  color: #12355B;
   font-weight: 700;
   font-size: 0.95rem;
   padding: 8px 18px;
@@ -2034,24 +2034,24 @@ body {
   border: 1.5px solid #CBD5E1;
   border-radius: 12px;
   padding: 12px 16px;
-  background: #F8FAFC;
+  background: #F5F8FC;
   cursor: pointer;
   text-align: center;
   font-weight: 700;
   font-size: 0.95rem;
-  color: #334155;
+  color: #1E293B;
   transition: all 0.2s ease;
 }
 
 .cert-toggle-option:hover {
-  border-color: #1E3A8A;
-  background: #EFF6FF;
+  border-color: #12355B;
+  background: #E8F0F8;
 }
 
 .cert-toggle-option.selected {
-  border-color: #15803D;
+  border-color: #16A34A;
   background: #DCFCE7;
-  color: #15803D;
+  color: #16A34A;
   box-shadow: 0 4px 12px rgba(21, 128, 61, 0.15);
 }
 
@@ -2059,7 +2059,7 @@ body {
 .founder-hero-wrap {
   background: radial-gradient(circle at 85% 15%, rgba(255, 173, 0, 0.15) 0%, transparent 45%),
               radial-gradient(circle at 15% 85%, rgba(37, 99, 235, 0.2) 0%, transparent 50%),
-              linear-gradient(135deg, #070C18 0%, #0F172A 50%, #0B132B 100%);
+              linear-gradient(135deg, #070C18 0%, #1E293B 50%, #0B132B 100%);
   color: #FFFFFF;
   padding: 60px 0;
   position: relative;
@@ -2176,7 +2176,7 @@ body {
 
 .soundwave-bar {
   width: 3px;
-  background: #FF4D00;
+  background: #0F9D8A;
   border-radius: 2px;
   animation: soundwavePulse 1.2s ease-in-out infinite alternate;
 }
@@ -2246,18 +2246,18 @@ body {
 .founder-hero-wrap p {
   font-size: 1.02rem !important;
   line-height: 1.7 !important;
-  color: #F8FAFC !important;
+  color: #F5F8FC !important;
   font-weight: 400 !important;
   margin: 0;
 }
 
 /* Striking Balanced Focal Quote Box */
 .cinematic-quote-banner {
-  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%) !important;
+  background: linear-gradient(135deg, #1E293B 0%, #12355B 100%) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1.5px solid #FFAD00 !important;
-  border-left: 5px solid #FF4D00 !important;
+  border-left: 5px solid #0F9D8A !important;
   border-radius: 16px;
   padding: 20px 24px;
   position: relative;
@@ -2295,7 +2295,7 @@ body {
 }
 
 .cinematic-quote-text span.orange-glow {
-  color: #FF4D00;
+  color: #0F9D8A;
   text-shadow: 0 0 20px rgba(255, 77, 0, 0.35);
 }
 
@@ -2345,7 +2345,7 @@ body {
 }
 
 .founder-tab-btn.active {
-  background: #1E3A8A;
+  background: #2563EB;
   color: #FFFFFF;
   border-color: #FFAD00;
   box-shadow: 0 4px 16px rgba(30, 58, 138, 0.4);
@@ -2374,7 +2374,7 @@ body {
   height: 60px;
   border-radius: 50%;
   padding: 3px;
-  background: linear-gradient(135deg, #FFAD00 0%, #FF4D00 100%);
+  background: linear-gradient(135deg, #FFAD00 0%, #0F9D8A 100%);
   box-shadow: 0 6px 18px rgba(255, 77, 0, 0.35);
 }
 
@@ -2382,7 +2382,7 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: #0F172A;
+  background: #1E293B;
   display: flex;
   align-items: center;
   justify-content: center;
