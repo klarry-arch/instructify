@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    INSTRUCTIFY KENYA — MAIN JAVASCRIPT
    ============================================================ */
 
@@ -452,7 +452,7 @@ window.switchFounderVisionTab = function(btn, tabName) {
   const quoteText = document.getElementById('founder-quote-text');
 
   if (tabName === 'awakening') {
-    if (visionP1) visionP1.innerHTML = "You’ve arrived at a place where learning is a journey of renewal and growth. Instructify Academy was born from a dream—to empower minds, stir hearts, and transform communities through practical, visionary education.";
+    if (visionP1) visionP1.innerHTML = "You’ve arrived at a place where learning is a journey of renewal and growth. Instructify Kenya was born from a dream—to empower minds, stir hearts, and transform communities through practical, visionary education.";
     if (quoteText) quoteText.innerHTML = '<span class="gold-glow">"Here, we don’t just teach. We awaken."</span><br><span class="orange-glow">"We don’t just deliver content. We ignite purpose."</span>';
   } else if (tabName === 'pedagogy') {
     if (visionP1) visionP1.innerHTML = "Our pedagogy bridges local African realities with global innovation. We ground knowledge in practical classroom tools while elevating learning communities to achieve global excellence.";
