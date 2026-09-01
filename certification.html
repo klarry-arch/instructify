@@ -89,10 +89,10 @@
 
 <footer class="footer" style="background:#0F172A; color:#FFFFFF; padding:40px 0 24px;">
   <div class="container text-center">
-    <p style="font-size:14px; color:#94A3B8; margin-bottom:8px;">
+    <p style="font-size:14px; color:#CBD5E1; margin-bottom:8px;">
       Instructify Kenya Ltd &mdash; TSC &amp; KICD Accredited CPD Training Partner
     </p>
-    <div style="font-size:12px; color:#64748B;">
+    <div style="font-size:12px; color:var(--text-muted, #475569);">
       &copy; 2026 Instructify Kenya. All rights reserved. | <a href="contact.html" style="color:#8B5CF6; text-decoration:underline;">Contact Support</a>
     </div>
   </div>
@@ -108,7 +108,7 @@ function handleVerificationSubmit(e) {
   if (!query) return;
 
   const resultContainer = document.getElementById('cert-result');
-  resultContainer.innerHTML = '<div style="text-align:center; padding:40px 0; color:#64748B;">🔍 Checking credential database...</div>';
+  resultContainer.innerHTML = '<div style="text-align:center; padding:40px 0; color:var(--text-muted, #475569);">🔍 Checking credential database...</div>';
 
   setTimeout(() => {
     const res = window.CertificateEngine.verify(query);

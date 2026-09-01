@@ -631,8 +631,8 @@
   padding: 3px 8px;
   border-radius: 999px;
 }
-.stat-change.up   { background: var(--success-bg, #F0FDF4); color: var(--success, #16A34A); }
-.stat-change.down { background: var(--error-bg,   #FEF2F2); color: var(--error,   #DC2626); }
+.stat-change.up   { background: var(--success-bg, #F0FDF4); color: #166534; font-weight: 700; }
+.stat-change.down { background: var(--error-bg,   #FEF2F2); color: #991B1B; font-weight: 700; }
 
 /* Data tables */
 .table-wrapper {
@@ -680,8 +680,8 @@
 /* Badge variants used in tables */
 .badge-warning {
   background: var(--warning-bg, #FFFBEB);
-  color: var(--warning, #D97706);
-  border: 1px solid rgba(217, 119, 6, 0.25);
+  color: #92400E;
+  border: 1px solid rgba(217, 119, 6, 0.30);
   font-size: 11px;
   font-weight: 700;
   padding: 3px 10px;
@@ -693,8 +693,8 @@
 
 .badge-success {
   background: var(--success-bg, #F0FDF4);
-  color: var(--success, #16A34A);
-  border: 1px solid rgba(22, 163, 74, 0.25);
+  color: #166534;
+  border: 1px solid rgba(22, 163, 74, 0.30);
   font-size: 11px;
   font-weight: 700;
   padding: 3px 10px;
@@ -708,8 +708,8 @@
 .badge-danger,
 .badge-revoked {
   background: var(--error-bg, #FEF2F2);
-  color: var(--error, #DC2626);
-  border: 1px solid rgba(220, 38, 38, 0.25);
+  color: #991B1B;
+  border: 1px solid rgba(220, 38, 38, 0.30);
   font-size: 11px;
   font-weight: 700;
   padding: 3px 10px;

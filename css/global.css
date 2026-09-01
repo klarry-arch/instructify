@@ -45,17 +45,22 @@
   --color-surface:        #FFFFFF;
   --color-surface-soft:   #F1F5F9;
 
-  /* ── Text ── */
+  /* ── Text (WCAG AA Accessible Scale) ── */
   --text-main:            #0F172A;
   --text-secondary:       #334155;
-  --text-muted:           #64748B;
-  --text-disabled:        #94A3B8;
+  --text-muted:           #475569;
+  --text-disabled:        #64748B;
+  --text-on-dark:         #FFFFFF;
   --text-on-primary:      #FFFFFF;
-  --text-on-dark:         #F1F5F9;
+  --text-on-secondary:    #062F2B;
+  --text-on-accent:       #FFFFFF;
+  --link-default:         #305CDE;
+  --link-hover:           #254BC4;
+  --border-readable:      #CBD5E1;
 
   --color-text-main:      #0F172A;
   --color-text-secondary: #334155;
-  --color-text-muted:     #64748B;
+  --color-text-muted:     #475569;
   --color-heading:        #0F172A;
 
   /* ── Borders & Dividers ── */
@@ -430,16 +435,16 @@ p:last-child { margin-bottom: 0; }
 
 /* ── Text Utilities ────────────────────────────────────── */
 .text-primary    { color: var(--primary) !important; }
-.text-secondary  { color: var(--secondary) !important; }
-.text-accent     { color: var(--accent) !important; }
+.text-secondary  { color: var(--text-secondary) !important; }
+.text-accent     { color: #6D28D9 !important; }
 .text-muted      { color: var(--text-muted) !important; }
 .text-main       { color: var(--text-main) !important; }
 .text-white      { color: #FFFFFF !important; }
 .text-blue       { color: var(--primary) !important; }
-.text-teal       { color: var(--secondary) !important; }
-.text-orange     { color: var(--accent) !important; }
-.text-green      { color: var(--secondary) !important; }
-.text-amber      { color: var(--color-amber) !important; }
+.text-teal       { color: #0F766E !important; }
+.text-orange     { color: #7C3AED !important; }
+.text-green      { color: #166534 !important; }
+.text-amber      { color: #92400E !important; }
 .text-center     { text-align: center; }
 .text-left       { text-align: left; }
 .text-right      { text-align: right; }
@@ -633,16 +638,16 @@ p:last-child { margin-bottom: 0; }
   font-weight: 700;
   letter-spacing: 0.02em;
 }
-.badge-blue     { background: var(--primary-bg);    color: var(--primary); }
-.badge-teal     { background: var(--secondary-bg);  color: var(--secondary-dark); }
-.badge-purple   { background: var(--accent-bg);     color: var(--accent-dark); }
-.badge-orange   { background: var(--accent-bg);     color: var(--accent-dark); }
-.badge-amber    { background: var(--color-amber-bg); color: var(--color-amber-dark); }
-.badge-green    { background: var(--secondary-bg);  color: var(--secondary-dark); }
-.badge-ict      { background: #F3EEFF; color: #6D28D9; }
-.badge-cbe      { background: #CCFBF1; color: #0F766E; }
-.badge-ai       { background: #F3EEFF; color: #6D28D9; }
-.badge-cpd      { background: #FEF3C7; color: #92400E; }
+.badge-blue     { background: var(--primary-bg);    color: #1A3A9F; }
+.badge-teal     { background: var(--secondary-bg);  color: #0F766E; }
+.badge-purple   { background: var(--accent-bg);     color: #6D28D9; }
+.badge-orange   { background: var(--accent-bg);     color: #6D28D9; }
+.badge-amber    { background: #FEF3C7;              color: #92400E; }
+.badge-green    { background: #F0FDF4;              color: #166534; }
+.badge-ict      { background: #F3EEFF;              color: #6D28D9; }
+.badge-cbe      { background: #CCFBF1;              color: #0F766E; }
+.badge-ai       { background: #F3EEFF;              color: #6D28D9; }
+.badge-cpd      { background: #FEF3C7;              color: #92400E; }
 
 /* ══════════════════════════════════════════════════════════════
    FORM ELEMENTS
@@ -679,7 +684,7 @@ p:last-child { margin-bottom: 0; }
 }
 
 .form-input::placeholder,
-.form-textarea::placeholder { color: var(--text-muted); }
+.form-textarea::placeholder { color: #64748B; opacity: 1; }
 
 .form-input:focus,
 .form-textarea:focus,
@@ -695,7 +700,7 @@ p:last-child { margin-bottom: 0; }
   box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
 }
 
-.form-error { font-size: 13px; color: var(--error); margin-top: 4px; }
+.form-error { font-size: 13px; color: #B91C1C; font-weight: 600; margin-top: 4px; }
 .form-help  { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
 
 /* ══════════════════════════════════════════════════════════════

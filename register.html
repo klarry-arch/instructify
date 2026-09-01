@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -67,8 +67,8 @@
     .role-card.selected { border-color: #305CDE; background: #EEF3FF; }
     .role-card-icon { font-size: 1.5rem; margin-bottom: 4px; }
     .role-card-name { font-size: 12px; font-weight: 700; color: #0F172A; }
-    .role-card-desc { font-size: 0.65rem; color: #64748B; margin-top: 2px; }
-    .divider-text { display: flex; align-items: center; gap: 16px; margin: 24px 0; color: #64748B !important; font-size: 13px; font-weight: 600; }
+    .role-card-desc { font-size: 0.65rem; color:var(--text-muted, #475569); margin-top: 2px; }
+    .divider-text { display: flex; align-items: center; gap: 16px; margin: 24px 0; color:var(--text-muted, #475569) !important; font-size: 13px; font-weight: 600; }
     .divider-text::before, .divider-text::after { content: ''; flex: 1; height: 1px; background: #E2E8F0; }
     .auth-features { display: flex; flex-direction: column; gap: 20px; position: relative; z-index: 1; }
     .auth-feature { display: flex; align-items: flex-start; gap: 16px; }
@@ -81,7 +81,7 @@
     .auth-stat-label { font-size: 12px; color: rgba(255,255,255,0.82) !important; font-weight: 600; margin-top: 2px; }
     
     .tab-group { background: #E2E8F0 !important; padding: 4px; border-radius: 999px; display: flex; gap: 4px; margin-bottom: 28px; }
-    .tab-btn { flex: 1; border: none; background: transparent; padding: 10px 20px; font-size: 14px; font-weight: 700; color: #64748B !important; border-radius: 999px; cursor: pointer; transition: all 0.2s ease; }
+    .tab-btn { flex: 1; border: none; background: transparent; padding: 10px 20px; font-size: 14px; font-weight: 700; color:var(--text-muted, #475569) !important; border-radius: 999px; cursor: pointer; transition: all 0.2s ease; }
     .tab-btn.active { background: #305CDE !important; color: #FFFFFF !important; box-shadow: 0 4px 14px rgba(48,92,222,0.35) !important; }
     
     .form-label { color: #0F172A !important; font-weight: 700 !important; display: block; margin-bottom: 6px; }
@@ -105,15 +105,15 @@
         </svg>
       </div>
       <div class="nav-brand-text-box" style="display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; white-space: nowrap; margin: 0; padding: 0; line-height: 1;">
-        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #0F172A !important; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
-        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #305CDE !important; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
+        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #FFFFFF !important; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #5EEAD4 !important; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
       </div>
     </a>
 
     <h2 style="font-family:var(--font-heading);font-size:32px;font-weight:800;color:#FFFFFF !important;margin-bottom:8px;position:relative;z-index:1">
       Hello, Curious Mind 👋
     </h2>
-    <div style="font-size:18px;font-weight:700;color:#FFAD00 !important;margin-bottom:12px;position:relative;z-index:1">
+    <div style="font-size:18px;font-weight:700;color: #FCD34D !important;margin-bottom:12px;position:relative;z-index:1">
       Ready to spark something new today?
     </div>
     <p style="color:rgba(255,255,255,0.92) !important;font-size:14.5px;line-height:1.6;margin-bottom:12px;position:relative;z-index:1">
@@ -220,7 +220,7 @@
           <button onclick="quickLogin('admin')" class="btn btn-outline btn-sm">Admin Demo</button>
         </div>
 
-        <p style="text-align:center;font-size:14px;color:#64748B;">
+        <p style="text-align:center;font-size:14px;color:var(--text-muted, #475569);">
           Don't have an account? <button onclick="switchTab('signup')" style="color:#305CDE;background:none;border:none;cursor:pointer;font-weight:700">Create one free ↗</button>
         </p>
       </div>
@@ -285,7 +285,7 @@
           </button>
         </form>
 
-        <p style="text-align:center;font-size:14px;color:#64748B;margin-top:20px;">
+        <p style="text-align:center;font-size:14px;color:var(--text-muted, #475569);margin-top:20px;">
           Already have an account? <button onclick="switchTab('signin')" style="color:#305CDE;background:none;border:none;cursor:pointer;font-weight:700">Sign in here ↗</button>
         </p>
       </div>

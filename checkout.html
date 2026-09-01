@@ -57,7 +57,7 @@
       box-shadow: 0 24px 64px rgba(0,0,0,0.25);
     }
     .form-card-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #0F172A; margin-bottom: 0.25rem; }
-    .form-card-sub { color: #64748B; font-size: 0.9rem; margin-bottom: 1.75rem; }
+    .form-card-sub { color:var(--text-muted, #475569); font-size: 0.9rem; margin-bottom: 1.75rem; }
     .step-indicator { display: flex; gap: 8px; margin-bottom: 2rem; }
     .step { flex: 1; height: 4px; border-radius: 4px; background: #E2E8F0; transition: background 0.3s; }
     .step.active { background: #FFFFFF; }
@@ -65,7 +65,7 @@
 
     /* ── Form fields ── */
     .field-group { margin-bottom: 1.25rem; }
-    .field-label { display: block; font-weight: 600; font-size: 0.875rem; color: #64748B; margin-bottom: 6px; }
+    .field-label { display: block; font-weight: 600; font-size: 0.875rem; color:var(--text-muted, #475569); margin-bottom: 6px; }
     .field-input {
       width: 100%; padding: 0.75rem 1rem;
       border: 1.5px solid #D1D5DB; border-radius: 10px;
@@ -79,7 +79,7 @@
     .field-error.visible { display: block; }
     .field-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     @media (max-width: 480px) { .field-grid-2 { grid-template-columns: 1fr; } }
-    .field-hint { font-size: 0.78rem; color: #94A3B8; margin-top: 4px; }
+    .field-hint { font-size: 0.78rem; color:#CBD5E1; margin-top: 4px; }
 
     /* ── Payment method tabs ── */
     .pay-method-tabs { display: flex; gap: 10px; margin-bottom: 1.5rem; }
@@ -91,7 +91,7 @@
     .pay-method-tab:hover { border-color: #305CDE; }
     .pay-method-tab.active { border-color: #305CDE; background: #E8F0F8; }
     .pay-method-tab .tab-icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
-    .pay-method-tab .tab-name { font-size: 0.7rem; font-weight: 700; color: #64748B; letter-spacing: 0.05em; text-transform: uppercase; }
+    .pay-method-tab .tab-name { font-size: 0.7rem; font-weight: 700; color:var(--text-muted, #475569); letter-spacing: 0.05em; text-transform: uppercase; }
     .pay-method-tab.active .tab-name { color: #305CDE; }
     .pay-panel { display: none; }
     .pay-panel.active { display: block; }
@@ -101,8 +101,8 @@
     .status-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 1.25rem; }
     .status-icon.spin { animation: spin 1.2s linear infinite; }
     .status-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem; }
-    .status-sub { color: #64748B; font-size: 0.9rem; line-height: 1.6; max-width: 360px; margin: 0 auto 1.5rem; }
-    .status-ref { font-size: 0.8rem; color: #94A3B8; background: #EEF4FB; border-radius: 8px; padding: 8px 14px; display: inline-block; margin-bottom: 1.5rem; }
+    .status-sub { color:var(--text-muted, #475569); font-size: 0.9rem; line-height: 1.6; max-width: 360px; margin: 0 auto 1.5rem; }
+    .status-ref { font-size: 0.8rem; color:#CBD5E1; background: #EEF4FB; border-radius: 8px; padding: 8px 14px; display: inline-block; margin-bottom: 1.5rem; }
     .status-ref strong { color: #305CDE; }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
@@ -128,7 +128,7 @@
     .btn-secondary-outline:hover { border-color: #305CDE; background: #E8F0F8; }
 
     /* ── SSL badge ── */
-    .ssl-badge { text-align: center; font-size: 0.75rem; color: #94A3B8; margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .ssl-badge { text-align: center; font-size: 0.75rem; color:#CBD5E1; margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
     .installment-badge { background: #E0F5F2; color: #065F46; border: 1px solid rgba(5,150,105,0.2); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 1.25rem; }
   </style>
 </head>
@@ -253,7 +253,7 @@
 
           <!-- Card Panel -->
           <div id="panel-card" class="pay-panel" role="tabpanel">
-            <p style="font-size:0.875rem;color:#64748B;line-height:1.6;margin-bottom:1.25rem;">
+            <p style="font-size:0.875rem;color:var(--text-muted, #475569);line-height:1.6;margin-bottom:1.25rem;">
               Click the button below to open the secure Paystack payment window.
               Your card details are entered directly on Paystack's encrypted form — 
               Instructify never sees or stores your card number.
@@ -308,7 +308,7 @@
           <div class="status-ref" id="error-ref" style="display:none;">Order: <strong></strong></div>
           <button class="btn-enroll" onclick="retryCheckout()" style="margin-top:0.5rem;">Try Again</button>
           <button class="btn-secondary-outline" onclick="window.location.href='courses.html'">Browse Courses</button>
-          <p style="font-size:0.78rem;color:#94A3B8;margin-top:1rem;">
+          <p style="font-size:0.78rem;color:#CBD5E1;margin-top:1rem;">
             Need help? <a href="contact.html" style="color:#305CDE;">Contact support</a> with your order reference.
           </p>
         </div>
@@ -548,26 +548,26 @@ window.showMpesaPromptModal = function(opts) {
       </div>
       <span style="background:#0C7A6B;color:#FFFFFF;font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px;letter-spacing:1px;text-transform:uppercase;">M-Pesa STK Push</span>
       <h3 style="font-family:var(--font-heading);font-size:20px;font-weight:800;color:#0F172A;margin:14px 0 6px;">Check Your Phone</h3>
-      <p style="color:#64748B;font-size:14px;line-height:1.5;margin-bottom:18px;">
+      <p style="color:var(--text-muted, #475569);font-size:14px;line-height:1.5;margin-bottom:18px;">
         An instant payment prompt has been sent to <strong>${opts.phone}</strong> for <strong>KES ${Number(opts.amount).toLocaleString()}</strong>.
       </p>
 
       <div style="background:#F8FAFC;border:1.5px dashed #CBD5E1;border-radius:14px;padding:14px;margin-bottom:20px;text-align:left;font-size:13px;">
         <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-          <span style="color:#64748B;">Business:</span>
+          <span style="color:var(--text-muted, #475569);">Business:</span>
           <strong style="color:#0F172A;">Instructify Kenya</strong>
         </div>
         <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-          <span style="color:#64748B;">Amount:</span>
+          <span style="color:var(--text-muted, #475569);">Amount:</span>
           <strong style="color:#0C7A6B;font-size:14px;">KES ${Number(opts.amount).toLocaleString()}</strong>
         </div>
         <div style="display:flex;justify-content:space-between;">
-          <span style="color:#64748B;">Account / Ref:</span>
+          <span style="color:var(--text-muted, #475569);">Account / Ref:</span>
           <strong style="color:#305CDE;font-family:monospace;">${opts.orderReference}</strong>
         </div>
       </div>
 
-      <div style="font-size:13px;color:#64748B;margin-bottom:20px;line-height:1.4;">
+      <div style="font-size:13px;color:var(--text-muted, #475569);margin-bottom:20px;line-height:1.4;">
         👉 Enter your <strong>M-Pesa PIN</strong> on your mobile device to authorize and complete enrollment.
       </div>
 
@@ -575,7 +575,7 @@ window.showMpesaPromptModal = function(opts) {
         <button onclick="confirmSimulatedMpesaPayment('${opts.orderReference}')" class="btn" style="background:#0C7A6B;color:#FFFFFF;font-weight:800;padding:14px;border-radius:99px;border:none;cursor:pointer;font-size:15px;box-shadow:0 4px 14px rgba(5,150,105,0.35);">
           ✅ I Have Entered My PIN
         </button>
-        <button onclick="document.getElementById('mpesa-prompt-modal').style.display='none'" style="background:transparent;border:none;color:#94A3B8;font-size:13px;cursor:pointer;padding:6px;">
+        <button onclick="document.getElementById('mpesa-prompt-modal').style.display='none'" style="background:transparent;border:none;color:#CBD5E1;font-size:13px;cursor:pointer;padding:6px;">
           Dismiss Window
         </button>
       </div>

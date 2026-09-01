@@ -291,13 +291,15 @@
 }
 .btn-primary:disabled,
 .btn-blue:disabled,
-.btn-orange:disabled {
-  background: var(--border);
-  border-color: var(--border);
-  color: var(--text-muted) !important;
+.btn-orange:disabled,
+.btn:disabled {
+  background: var(--border) !important;
+  border-color: var(--border-strong) !important;
+  color: var(--text-disabled, #64748B) !important;
   cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 0.85;
 }
 
 /* ── Secondary — #14B8A6 (Workshop registration, progress actions) ── */
@@ -307,8 +309,9 @@
 .btn-emerald,
 .btn-success-cta {
   background: var(--secondary);
-  color: #FFFFFF !important;
+  color: var(--text-on-secondary, #062F2B) !important;
   border-color: var(--secondary);
+  font-weight: 700;
   box-shadow: 0 1px 3px rgba(20, 184, 166, 0.20);
 }
 .btn-secondary:hover,
@@ -316,11 +319,11 @@
 .btn-cta:hover,
 .btn-emerald:hover,
 .btn-success-cta:hover {
-  background: var(--secondary-hover);
-  border-color: var(--secondary-hover);
+  background: var(--secondary-dark, #0F766E);
+  border-color: var(--secondary-dark, #0F766E);
   color: #FFFFFF !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(20, 184, 166, 0.32);
+  box-shadow: 0 8px 20px rgba(15, 118, 110, 0.32);
 }
 
 /* ── Accent Purple — #8B5CF6 (Premium, certification, featured) ── */
@@ -517,11 +520,12 @@
 .footer h2 span { color: var(--secondary) !important; }
 
 .footer p, .footer-text, .footer-copy {
-  color: #94A3B8 !important;
+  color: #CBD5E1 !important;
+  line-height: 1.65;
 }
 
 .footer a {
-  color: #94A3B8 !important;
+  color: #CBD5E1 !important;
   transition: color var(--transition-fast);
 }
 .footer a:hover {
@@ -687,7 +691,7 @@
 
 .course-card-description {
   font-size: 13.5px;
-  color: var(--text-muted);
+  color: var(--text-secondary, #334155);
   line-height: 1.55;
   margin-bottom: 14px;
   display: -webkit-box;
@@ -703,7 +707,7 @@
   gap: 8px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--text-muted, #475569);
   margin-top: auto;
   margin-bottom: 12px;
 }
@@ -728,13 +732,13 @@
   gap: 6px;
   font-size: 12.5px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--text-muted, #475569);
   flex-wrap: wrap;
   padding-top: 10px;
   border-top: 1px dashed var(--border);
 }
 
-.course-card-stats .rating { color: #F59E0B; font-weight: 700; }
+.course-card-stats .rating { color: #D97706; font-weight: 700; }
 
 .course-card-footer {
   padding: 14px 20px;
@@ -1076,7 +1080,7 @@
 
 .payment-card-sub {
   font-size: 12px;
-  color: var(--text-muted, #64748B);
+  color: var(--text-muted, #475569);
   line-height: 1.4;
 }
 

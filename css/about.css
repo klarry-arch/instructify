@@ -408,7 +408,7 @@
 .distinct-card-title {
   font-size: 21px;
   font-weight: 700;
-  color: #1E293B;
+  color: var(--text-main, #0F172A);
   margin-bottom: 12px;
   line-height: 1.35;
   letter-spacing: -0.01em;
@@ -417,7 +417,7 @@
 .distinct-card-desc {
   font-size: 15px;
   line-height: 1.65;
-  color: #64748B;
+  color: var(--text-secondary, #334155);
   margin: 0;
   max-width: 320px;
 }
@@ -571,7 +571,7 @@
 .pillar-card-title {
   font-size: 22px;
   font-weight: 700;
-  color: #1E293B;
+  color: var(--text-main, #0F172A);
   margin-bottom: 12px;
   line-height: 1.3;
 }
@@ -579,7 +579,7 @@
 .pillar-card-desc {
   font-size: 14.5px;
   line-height: 1.65;
-  color: #64748B;
+  color: var(--text-secondary, #334155);
   margin: 0 0 24px 0;
   max-width: 300px;
 }
@@ -619,7 +619,7 @@
 .pillar-sub-link {
   font-size: 12.5px;
   font-weight: 600;
-  color: #94A3B8;
+  color: var(--text-muted, #475569);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -628,5 +628,5 @@
 }
 
 .pillar-sub-link:hover {
-  color: var(--color-primary);
+  color: var(--primary);
 }

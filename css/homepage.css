@@ -162,7 +162,7 @@
   min-width: 0;
 }
 
-.hero-search input::placeholder { color: rgba(255,255,255,0.60); }
+.hero-search input::placeholder { color: rgba(255,255,255,0.85); opacity: 1; }
 
 .hero-search-btn {
   background: #FFFFFF;
@@ -496,7 +496,16 @@
 }
 
 .cta-form-section input::placeholder,
-.cta-form-section select::placeholder { color: rgba(255,255,255,0.55) !important; }
+.cta-form-section select::placeholder,
+.cta-form-section textarea::placeholder {
+  color: rgba(255,255,255,0.85) !important;
+  opacity: 1;
+}
+
+.cta-form-section select option {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+}
 
 .cta-form-section input:focus,
 .cta-form-section select:focus {
