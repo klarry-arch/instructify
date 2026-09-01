@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -269,47 +269,81 @@
 
         <!-- ── State: processing / polling ── -->
         <div id="screen-processing" class="status-screen" style="display:none;">
-          <div class="status-icon spin" style="background:#E8F0F8;border:3px solid #305CDE;">⏳</div>
-          <div class="status-title" id="processing-title">Processing Payment…</div>
+          <div class="status-icon spin" style="background:var(--primary-bg, #EEF3FF);border:3px solid var(--primary, #305CDE);font-size:2rem;">⏳</div>
+          <div class="status-title" id="processing-title">Check your phone to complete payment</div>
           <div class="status-sub" id="processing-sub">
-            Please complete the M-Pesa prompt on your phone. Do not close this page.
+            An M-Pesa payment request has been sent to <strong id="processing-phone-masked">your phone</strong>. Enter your M-Pesa PIN on your phone to authorize the payment. Do not close this page.
           </div>
-          <div class="status-ref">Order: <strong id="processing-ref">—</strong></div>
-          <div style="width:100%;background:#E2E8F0;border-radius:99px;height:4px;overflow:hidden;max-width:280px;margin:0 auto 1.5rem;">
-            <div id="progress-bar" style="height:100%;background: #FFFFFF;border-radius:99px;width:0;transition:width 90s linear;"></div>
+          <div class="status-ref" style="margin-bottom:1.25rem;">
+            Order: <strong id="processing-ref">—</strong> &nbsp;·&nbsp; Amount: <strong id="processing-amount">KES 8,500</strong>
           </div>
-          <button class="btn-secondary-outline" style="max-width:240px;margin:0 auto;" onclick="cancelCheckout()">Cancel</button>
+          <div style="width:100%;background:#E2E8F0;border-radius:99px;height:4px;overflow:hidden;max-width:320px;margin:0 auto 1.75rem;">
+            <div id="progress-bar" style="height:100%;background:var(--primary, #305CDE);border-radius:99px;width:0;transition:width 90s linear;"></div>
+          </div>
+          
+          <!-- Actions -->
+          <div style="display:flex;flex-direction:column;gap:10px;max-width:320px;width:100%;margin:0 auto;">
+            <button class="btn btn-primary btn-sm" id="btn-manual-verify" onclick="checkStatusNow()" style="width:100%;font-weight:700;">
+              🔄 Check Payment Status
+            </button>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-outline btn-sm" id="btn-resend-prompt" onclick="resendPrompt()" style="flex:1;font-size:12.5px;padding:8px 10px;" disabled>
+                Resend (<span id="cooldown-timer">30</span>s)
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="changePhoneNumber()" style="flex:1;font-size:12.5px;padding:8px 10px;">
+                Change Phone
+              </button>
+            </div>
+            <button class="btn-secondary-outline" style="width:100%;margin-top:2px;" onclick="cancelCheckout()">
+              Cancel Payment
+            </button>
+          </div>
         </div>
 
         <!-- ── State: success ── -->
         <div id="screen-success" class="status-screen" style="display:none;">
-          <div class="status-icon" style="background:rgba(5,150,105,0.1);border:3px solid #0C7A6B;">✅</div>
-          <div class="status-title" style="color:#0C7A6B;">Enrollment Confirmed!</div>
-          <div class="status-sub">
-            You are now enrolled in <strong id="success-course-name">the course</strong>.
-            A confirmation has been saved to your account.
+          <div class="status-icon" style="background:#F0FDF4;border:3px solid #16A34A;font-size:2rem;">✅</div>
+          <div class="status-title" style="color:#166534;">Payment Successful!</div>
+          <div class="status-sub" style="margin-bottom:1.25rem;">
+            You are now enrolled in <strong id="success-course-name">the course</strong>. A confirmation and receipt have been registered to your account.
           </div>
-          <div class="status-ref">
-            Ref: <strong id="success-ref">—</strong>
-            &nbsp;·&nbsp; Amount: <strong id="success-amount">KES 8,500</strong>
+
+          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:14px;padding:16px 20px;margin-bottom:1.5rem;text-align:left;font-size:13.5px;width:100%;max-width:360px;margin-left:auto;margin-right:auto;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="color:#64748B;">Order Reference:</span>
+              <strong id="success-ref" style="color:#0F172A;font-family:monospace;">—</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="color:#64748B;">M-Pesa Receipt:</span>
+              <strong id="success-receipt" style="color:#305CDE;font-family:monospace;font-weight:700;">—</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="color:#64748B;">Amount Paid:</span>
+              <strong id="success-amount" style="color:#166534;font-weight:700;">KES 8,500</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;">
+              <span style="color:#64748B;">Date:</span>
+              <span id="success-date" style="color:#0F172A;font-weight:600;">—</span>
+            </div>
           </div>
-          <a href="dashboard-learner.html" class="btn-enroll" style="text-decoration:none;margin-top:0.5rem;">
+
+          <a href="dashboard-learner.html" class="btn-enroll" style="text-decoration:none;margin-top:0.5rem;display:inline-block;width:100%;max-width:320px;">
             🚀 Start Learning
           </a>
         </div>
 
         <!-- ── State: failed / cancelled / timeout ── -->
         <div id="screen-error" class="status-screen" style="display:none;">
-          <div class="status-icon" style="background:#FEF2F2;border:3px solid #DC2626;">❌</div>
+          <div class="status-icon" style="background:#FEF2F2;border:3px solid #DC2626;font-size:2rem;">❌</div>
           <div class="status-title" style="color:#DC2626;" id="error-title">Payment Failed</div>
           <div class="status-sub" id="error-sub">
             Your payment could not be completed. No charges were made.
           </div>
-          <div class="status-ref" id="error-ref" style="display:none;">Order: <strong></strong></div>
-          <button class="btn-enroll" onclick="retryCheckout()" style="margin-top:0.5rem;">Try Again</button>
-          <button class="btn-secondary-outline" onclick="window.location.href='courses.html'">Browse Courses</button>
-          <p style="font-size:0.78rem;color:#CBD5E1;margin-top:1rem;">
-            Need help? <a href="contact.html" style="color:#305CDE;">Contact support</a> with your order reference.
+          <div class="status-ref" id="error-ref" style="display:none;margin-bottom:1.25rem;">Order: <strong></strong></div>
+          <button class="btn-enroll" onclick="retryCheckout()" style="margin-top:0.5rem;max-width:320px;width:100%;">Try Again</button>
+          <button class="btn-secondary-outline" onclick="window.location.href='courses.html'" style="max-width:320px;width:100%;margin-top:8px;">Browse Courses</button>
+          <p style="font-size:0.8rem;color:#64748B;margin-top:1.25rem;">
+            Need help? <a href="contact.html" style="color:#305CDE;font-weight:600;">Contact support</a> with your order reference.
           </p>
         </div>
 
@@ -371,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch { /* ignore */ }
   }
 
-  // Get courseId from URL or return_to
+  // Get courseId from URL
   const params = new URLSearchParams(window.location.search);
   const urlId = params.get('id');
   if (urlId) currentCourseId = urlId;
@@ -379,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!currentCourseId) {
     showScreen('error');
     document.getElementById('error-title').textContent = 'No Course Selected';
-    document.getElementById('error-sub').textContent = 'Please return to the courses page and select a course.';
+    document.getElementById('error-sub').textContent = 'Please return to the courses page and select a course to enroll.';
     return;
   }
 
@@ -401,7 +435,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Pre-fill user details
   const session = window.getSession ? window.getSession() : null;
   if (!session) {
-    // Not logged in — redirect to register
     localStorage.setItem('ik_return_to', JSON.stringify({ action: 'enroll', courseId: currentCourseId, url: window.location.href }));
     showToast('Please sign in to enroll.', 'warning');
     setTimeout(() => { window.location.href = 'register.html'; }, 1200);
@@ -416,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Listen to CheckoutEngine state changes
   CheckoutEngine.onStatusChange(renderState);
 
-  // Start the checkout
+  // Show details screen
   showScreen('details');
 });
 
@@ -441,36 +474,69 @@ function renderState(state) {
     showScreen('loading');
     return;
   }
+
   if (state.status === 'awaiting_payment') {
     showScreen('payment');
+    document.getElementById('btn-pay-mpesa').disabled = false;
+    document.getElementById('btn-pay-card').disabled = false;
     return;
   }
-  if (state.status === 'processing' || state.status === 'awaiting_authorization') {
+
+  if (state.status === 'processing') {
     showScreen('processing');
     document.getElementById('processing-ref').textContent = state.orderReference || '—';
+    const amountVal = state.payableAmountKes || (state.amount ? Math.round(state.amount / 100) : 8500);
+    document.getElementById('processing-amount').textContent = `KES ${amountVal.toLocaleString()}`;
+    
     if (state.method === 'card') {
-      document.getElementById('processing-title').textContent = 'Awaiting card payment…';
-      document.getElementById('processing-sub').textContent = 'Complete the payment in the Paystack window.';
+      document.getElementById('processing-title').textContent = 'Awaiting Card Payment…';
+      document.getElementById('processing-sub').textContent = 'Complete the payment in the secure payment window.';
     } else {
-      document.getElementById('processing-title').textContent = 'Waiting for M-Pesa…';
-      document.getElementById('processing-sub').textContent =
-        state.message || 'Enter your M-Pesa PIN on your phone. Do not close this page.';
+      document.getElementById('processing-title').textContent = 'Check your phone to complete payment';
+      const masked = state.maskedPhone || 'your phone';
+      document.getElementById('processing-phone-masked').textContent = masked;
+      document.getElementById('processing-sub').innerHTML =
+        `An M-Pesa payment request has been sent to <strong>${masked}</strong>. Enter your M-Pesa PIN on your phone to authorize the payment. Do not close this page.`;
     }
+
+    // Cooldown button handling
+    const resendBtn = document.getElementById('btn-resend-prompt');
+    const cooldownTimer = document.getElementById('cooldown-timer');
+    if (state.cooldownRemaining > 0) {
+      resendBtn.disabled = true;
+      resendBtn.innerHTML = `Resend (<span id="cooldown-timer">${state.cooldownRemaining}</span>s)`;
+    } else {
+      resendBtn.disabled = false;
+      resendBtn.innerHTML = 'Resend Prompt';
+    }
+
     // Animate progress bar
     setTimeout(() => { document.getElementById('progress-bar').style.width = '100%'; }, 100);
     return;
   }
+
   if (state.status === 'paid') {
     showScreen('success');
     const course = window.COURSES ? window.COURSES.find(c => c.id === currentCourseId) : null;
-    document.getElementById('success-course-name').textContent = course ? course.title : 'your course';
-    document.getElementById('success-ref').textContent = state.transactionReference || state.orderReference || '—';
-    if (course) document.getElementById('success-amount').textContent = `KES ${course.price.toLocaleString()}`;
+    document.getElementById('success-course-name').textContent = state.courseTitle || (course ? course.title : 'your course');
+    document.getElementById('success-ref').textContent = state.orderReference || '—';
+    document.getElementById('success-receipt').textContent = state.receiptNumber || 'Confirmed';
+    const amountVal = state.payableAmountKes || (course ? course.price : 8500);
+    document.getElementById('success-amount').textContent = `KES ${amountVal.toLocaleString()}`;
+    document.getElementById('success-date').textContent = new Date(state.paidAt || Date.now()).toLocaleDateString('en-KE', {
+      day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
+    });
     return;
   }
-  if (['failed', 'cancelled', 'timeout'].includes(state.status)) {
+
+  if (['failed', 'cancelled', 'timed_out', 'amount_mismatch'].includes(state.status)) {
     showScreen('error');
-    const titles = { failed: 'Payment Failed', cancelled: 'Payment Cancelled', timeout: 'Payment Timed Out' };
+    const titles = {
+      failed: 'Payment Failed',
+      cancelled: 'Payment Cancelled',
+      timed_out: 'Payment Timed Out',
+      amount_mismatch: 'Payment Amount Mismatch'
+    };
     document.getElementById('error-title').textContent = titles[state.status] || 'Payment Error';
     document.getElementById('error-sub').textContent =
       state.error || 'Your payment could not be completed. No charges were made.';
@@ -479,13 +545,14 @@ function renderState(state) {
       refBox.style.display = '';
       refBox.querySelector('strong').textContent = state.orderReference;
     }
+    document.getElementById('btn-pay-mpesa').disabled = false;
+    document.getElementById('btn-pay-card').disabled = false;
     return;
   }
 }
 
 // ── UI handlers ───────────────────────────────────────────────
 function continueToPayment() {
-  // Validate name + email
   const name = document.getElementById('ck-name').value.trim();
   const email = document.getElementById('ck-email').value.trim();
   if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -493,7 +560,6 @@ function continueToPayment() {
     return;
   }
   showScreen('payment');
-  // Trigger order creation in background
   CheckoutEngine.startCheckout(currentCourseId);
 }
 
@@ -530,114 +596,21 @@ function submitCard() {
   CheckoutEngine.payWithCard();
 }
 
-// ── M-Pesa STK Prompt Modal on Mobile Screen ─────────────────
-window.showMpesaPromptModal = function(opts) {
-  let modal = document.getElementById('mpesa-prompt-modal');
-  if (!modal) {
-    modal = document.createElement('div');
-    modal.id = 'mpesa-prompt-modal';
-    modal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,0.85);backdrop-filter:blur(8px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
-    document.body.appendChild(modal);
-  }
-  
-  modal.style.display = 'flex';
-  modal.innerHTML = `
-    <div style="background:#FFFFFF;border-radius:28px;padding:32px 28px;max-width:380px;width:100%;box-shadow:0 25px 50px -12px rgba(0,0,0,0.5);text-align:center;animation:slideInUp 0.35s ease both;border:2px solid #0C7A6B;position:relative;">
-      <div style="width:68px;height:68px;background:#E0F5F2;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:32px;border:3px solid #0C7A6B;">
-        📱
-      </div>
-      <span style="background:#0C7A6B;color:#FFFFFF;font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px;letter-spacing:1px;text-transform:uppercase;">M-Pesa STK Push</span>
-      <h3 style="font-family:var(--font-heading);font-size:20px;font-weight:800;color:#0F172A;margin:14px 0 6px;">Check Your Phone</h3>
-      <p style="color:var(--text-muted, #475569);font-size:14px;line-height:1.5;margin-bottom:18px;">
-        An instant payment prompt has been sent to <strong>${opts.phone}</strong> for <strong>KES ${Number(opts.amount).toLocaleString()}</strong>.
-      </p>
+function resendPrompt() {
+  CheckoutEngine.resendPrompt();
+}
 
-      <div style="background:#F8FAFC;border:1.5px dashed #CBD5E1;border-radius:14px;padding:14px;margin-bottom:20px;text-align:left;font-size:13px;">
-        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-          <span style="color:var(--text-muted, #475569);">Business:</span>
-          <strong style="color:#0F172A;">Instructify Kenya</strong>
-        </div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-          <span style="color:var(--text-muted, #475569);">Amount:</span>
-          <strong style="color:#0C7A6B;font-size:14px;">KES ${Number(opts.amount).toLocaleString()}</strong>
-        </div>
-        <div style="display:flex;justify-content:space-between;">
-          <span style="color:var(--text-muted, #475569);">Account / Ref:</span>
-          <strong style="color:#305CDE;font-family:monospace;">${opts.orderReference}</strong>
-        </div>
-      </div>
+function checkStatusNow() {
+  CheckoutEngine.checkStatusNow();
+}
 
-      <div style="font-size:13px;color:var(--text-muted, #475569);margin-bottom:20px;line-height:1.4;">
-        👉 Enter your <strong>M-Pesa PIN</strong> on your mobile device to authorize and complete enrollment.
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <button onclick="confirmSimulatedMpesaPayment('${opts.orderReference}')" class="btn" style="background:#0C7A6B;color:#FFFFFF;font-weight:800;padding:14px;border-radius:99px;border:none;cursor:pointer;font-size:15px;box-shadow:0 4px 14px rgba(5,150,105,0.35);">
-          ✅ I Have Entered My PIN
-        </button>
-        <button onclick="document.getElementById('mpesa-prompt-modal').style.display='none'" style="background:transparent;border:none;color:#CBD5E1;font-size:13px;cursor:pointer;padding:6px;">
-          Dismiss Window
-        </button>
-      </div>
-    </div>
-  `;
-};
-
-window.confirmSimulatedMpesaPayment = async function(orderRef) {
-  const modal = document.getElementById('mpesa-prompt-modal');
-  if (modal) modal.style.display = 'none';
-
-  showToast('Verifying M-Pesa transaction with Safaricom...', 'info');
-
-  const session = window.getSession ? window.getSession() : null;
-  const course = window.COURSES ? window.COURSES.find(c => c.id === currentCourseId) : null;
-  const now = new Date().toISOString();
-  const txnRef = 'MPESA' + Math.floor(10000000 + Math.random() * 90000000);
-
-  // Sync to local enrollments
-  if (session && currentCourseId) {
-    try {
-      const enrollments = JSON.parse(localStorage.getItem('ik_enrollments') || '[]');
-      if (!enrollments.some(e => e.courseId === currentCourseId && e.userId === session.id)) {
-        enrollments.unshift({
-          id: 'enr_' + Date.now(),
-          userId: session.id,
-          userName: session.name,
-          userEmail: session.email,
-          courseId: currentCourseId,
-          courseTitle: course ? course.title : 'Course',
-          amount: course ? course.price : 0,
-          paymentMethod: 'mpesa',
-          transactionReference: txnRef,
-          orderId: orderRef,
-          enrolledAt: now,
-          status: 'active',
-          progress: 0,
-          completed: false,
-          lastAccessed: now
-        });
-        localStorage.setItem('ik_enrollments', JSON.stringify(enrollments));
-      }
-    } catch (e) {}
-  }
-
-  // Also notify server via webhook or verify endpoint if available
-  try {
-    await fetch('/api/verify-payment?ref=' + encodeURIComponent(orderRef));
-  } catch (e) {}
-
-  // Update checkout engine status to paid
-  renderState({
-    status: 'paid',
-    orderReference: orderRef,
-    transactionReference: txnRef,
-    paidAt: now
-  });
-};
+function changePhoneNumber() {
+  CheckoutEngine.changePhoneNumber();
+  showScreen('payment');
+  document.getElementById('mpesa-phone-input').focus();
+}
 
 function cancelCheckout() {
-  const modal = document.getElementById('mpesa-prompt-modal');
-  if (modal) modal.style.display = 'none';
   CheckoutEngine.cancel();
   showScreen('payment');
   document.getElementById('progress-bar').style.width = '0';
@@ -648,8 +621,6 @@ function cancelCheckout() {
 }
 
 function retryCheckout() {
-  const modal = document.getElementById('mpesa-prompt-modal');
-  if (modal) modal.style.display = 'none';
   showScreen('details');
   document.getElementById('btn-pay-mpesa').disabled = false;
   document.getElementById('btn-pay-card').disabled = false;
