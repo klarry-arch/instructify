@@ -106,14 +106,19 @@
 .hero-title .highlight-teal { color: var(--secondary); }
 .hero-title .highlight-amber { color: #FCD34D; }
 
-/* ── Hero Subtitle ── */
-.hero-subtitle {
+/* ── Hero Subtitle (Homepage dark hero) ── */
+.hero-section .hero-subtitle {
   font-size: 17px;
   line-height: 1.70;
-  color: rgba(255,255,255,0.88) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
   max-width: 560px;
   margin-bottom: 36px;
   font-weight: 400;
+}
+
+.page-hero .hero-subtitle,
+.hero-light .hero-subtitle {
+  color: var(--text-secondary, #334155) !important;
 }
 
 /* ── Hero CTAs ── */
