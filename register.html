@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -16,11 +16,11 @@
       grid-template-columns: 1fr 1fr;
     }
     .auth-panel-left {
-      background: linear-gradient(135deg, #091929 0%, #12355B 60%, #1A4A7A 100%) !important;
+      background: linear-gradient(135deg, #305CDE 0%, #4F6EF0 60%, #8B5CF6 100%) !important;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: var(--space-4xl, 48px);
+      padding: 56px 48px;
       position: relative;
       overflow: hidden;
       color: #FFFFFF !important;
@@ -33,7 +33,7 @@
       width: 500px;
       height: 500px;
       border-radius: 50%;
-      background: rgba(37, 99, 235, 0.25);
+      background: rgba(255, 255, 255, 0.07);
       filter: blur(80px);
     }
     .auth-panel-left::after {
@@ -44,50 +44,51 @@
       width: 400px;
       height: 400px;
       border-radius: 50%;
-      background: rgba(255, 77, 0, 0.15);
+      background: rgba(20, 184, 166, 0.15);
       filter: blur(80px);
     }
     .auth-panel-right {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: var(--space-4xl, 48px);
-      background: #F5F8FC !important;
+      padding: 56px 48px;
+      background: var(--background, #F8FAFC) !important;
       overflow-y: auto;
     }
     .auth-form-container {
       width: 100%;
       max-width: 440px;
     }
-    .auth-heading { font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: #1E293B !important; margin-bottom: 8px; }
-    .auth-subheading { color: #64748B !important; font-size: 14px; margin-bottom: 24px; }
+    .auth-heading { font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: var(--text-main, #0F172A) !important; margin-bottom: 8px; }
+    .auth-subheading { color: var(--text-muted, #64748B) !important; font-size: 14px; margin-bottom: 24px; }
     .role-selector { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-    .role-card { border: 2px solid #CBD5E1; border-radius: 12px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.2s ease; background: #FFFFFF; }
-    .role-card:hover { border-color: #12355B; }
-    .role-card.selected { border-color: #12355B; background: #E8F0F8; }
+    .role-card { border: 2px solid #E2E8F0; border-radius: 12px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.2s ease; background: #FFFFFF; }
+    .role-card:hover { border-color: #305CDE; background: #EEF3FF; }
+    .role-card.selected { border-color: #305CDE; background: #EEF3FF; }
     .role-card-icon { font-size: 1.5rem; margin-bottom: 4px; }
-    .role-card-name { font-size: 12px; font-weight: 700; color: #1E293B; }
+    .role-card-name { font-size: 12px; font-weight: 700; color: #0F172A; }
     .role-card-desc { font-size: 0.65rem; color: #64748B; margin-top: 2px; }
     .divider-text { display: flex; align-items: center; gap: 16px; margin: 24px 0; color: #64748B !important; font-size: 13px; font-weight: 600; }
-    .divider-text::before, .divider-text::after { content: ''; flex: 1; height: 1px; background: #CBD5E1; }
+    .divider-text::before, .divider-text::after { content: ''; flex: 1; height: 1px; background: #E2E8F0; }
     .auth-features { display: flex; flex-direction: column; gap: 20px; position: relative; z-index: 1; }
     .auth-feature { display: flex; align-items: flex-start; gap: 16px; }
-    .auth-feature-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.18); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-    .auth-feature-text { color: rgba(255,255,255,0.90) !important; font-size: 14px; line-height: 1.5; }
+    .auth-feature-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.15); color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .auth-feature-text { color: rgba(255,255,255,0.88) !important; font-size: 14px; line-height: 1.5; }
     .auth-feature-title { font-weight: 700; color: #FFFFFF !important; margin-bottom: 2px; }
-    .auth-stat-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.2); position: relative; z-index: 1; }
+    .auth-stat-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.18); position: relative; z-index: 1; }
     .auth-stat { text-align: center; }
-    .auth-stat-value { font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: #FF4D00 !important; }
-    .auth-stat-label { font-size: 12px; color: rgba(255,255,255,0.85) !important; font-weight: 600; margin-top: 2px; }
+    .auth-stat-value { font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: #5EEAD4 !important; }
+    .auth-stat-label { font-size: 12px; color: rgba(255,255,255,0.82) !important; font-weight: 600; margin-top: 2px; }
     
     .tab-group { background: #E2E8F0 !important; padding: 4px; border-radius: 999px; display: flex; gap: 4px; margin-bottom: 28px; }
     .tab-btn { flex: 1; border: none; background: transparent; padding: 10px 20px; font-size: 14px; font-weight: 700; color: #64748B !important; border-radius: 999px; cursor: pointer; transition: all 0.2s ease; }
-    .tab-btn.active { background: #FFFFFF !important; color: #FFFFFF !important; box-shadow: 0 4px 14px rgba(30,58,138,0.3) !important; }
+    .tab-btn.active { background: #305CDE !important; color: #FFFFFF !important; box-shadow: 0 4px 14px rgba(48,92,222,0.35) !important; }
     
-    .form-label { color: #1E293B !important; font-weight: 700 !important; display: block; margin-bottom: 6px; }
-    .form-input { background: #FFFFFF !important; border: 1.5px solid #CBD5E1 !important; color: #1E293B !important; font-weight: 500 !important; padding: 12px 16px; border-radius: 8px; width: 100%; }
-    .btn-outline { border: 1.5px solid #12355B !important; color: #12355B !important; background: #FFFFFF !important; font-weight: 700 !important; }
-    .btn-outline:hover { background: #E8F0F8 !important; }
+    .form-label { color: #0F172A !important; font-weight: 700 !important; display: block; margin-bottom: 6px; }
+    .form-input { background: #FFFFFF !important; border: 1.5px solid #E2E8F0 !important; color: #0F172A !important; font-weight: 500 !important; padding: 12px 16px; border-radius: 10px; width: 100%; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    .form-input:focus { border-color: #305CDE !important; box-shadow: 0 0 0 3px rgba(48,92,222,0.18) !important; }
+    .btn-outline { border: 1.5px solid #305CDE !important; color: #305CDE !important; background: #FFFFFF !important; font-weight: 700 !important; }
+    .btn-outline:hover { background: #EEF3FF !important; }
     @media (max-width: 768px) { .auth-page { grid-template-columns: 1fr; } .auth-panel-left { display: none; } .auth-panel-right { padding: 32px 16px; } }
   </style>
 </head>
@@ -97,15 +98,15 @@
   <!-- Left Panel -->
   <div class="auth-panel-left">
     <a href="index.html" class="nav-brand" aria-label="Instructify Kenya" style="display: inline-flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap; margin-bottom: 32px; position: relative; z-index: 1;">
-      <div class="nav-brand-icon" style="display: inline-flex; align-items: center; justify-content: center; margin: 0; padding: 0; flex-shrink: 0; background: none; border: none; box-shadow: none;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#12355B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="nav-brand-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
           <path d="M6 12v5c3 3 9 3 12 0v-5"/>
         </svg>
       </div>
       <div class="nav-brand-text-box" style="display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; white-space: nowrap; margin: 0; padding: 0; line-height: 1;">
-        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #1E293B !important; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
-        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #12355B !important; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
+        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #0F172A !important; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #305CDE !important; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
       </div>
     </a>
 
@@ -190,7 +191,7 @@
           <div class="form-group mb-xl" style="margin-bottom:24px;">
             <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
               <label class="form-label" for="signin-password">Password</label>
-              <button type="button" onclick="showForgotPassword()" style="font-size:13px;color:#FF4D00;background:none;border:none;cursor:pointer;font-weight:700">Forgot password?</button>
+              <button type="button" onclick="showForgotPassword()" style="font-size:13px;color:#8B5CF6;background:none;border:none;cursor:pointer;font-weight:700">Forgot password?</button>
             </div>
             <div class="form-input-icon">
               <input type="password" id="signin-password" class="form-input" placeholder="Your password" required autocomplete="current-password">
@@ -198,7 +199,7 @@
           </div>
 
           <!-- Demo credentials hint -->
-          <div class="alert alert-info" style="margin-bottom:20px;font-size:13px;background:#E8F0F8;border:1px solid #93C5FD;padding:12px 16px;border-radius:8px;color:#12355B;">
+          <div class="alert alert-info" style="margin-bottom:20px;font-size:13px;background:#E8F0F8;border:1px solid #93C5FD;padding:12px 16px;border-radius:8px;color:#305CDE;">
             <div>
               <strong>Demo accounts:</strong><br>
               Learner: learner@instructify.ke / Learn@2024<br>
@@ -220,7 +221,7 @@
         </div>
 
         <p style="text-align:center;font-size:14px;color:#64748B;">
-          Don't have an account? <button onclick="switchTab('signup')" style="color:#12355B;background:none;border:none;cursor:pointer;font-weight:700">Create one free ↗</button>
+          Don't have an account? <button onclick="switchTab('signup')" style="color:#305CDE;background:none;border:none;cursor:pointer;font-weight:700">Create one free ↗</button>
         </p>
       </div>
 
@@ -285,7 +286,7 @@
         </form>
 
         <p style="text-align:center;font-size:14px;color:#64748B;margin-top:20px;">
-          Already have an account? <button onclick="switchTab('signin')" style="color:#12355B;background:none;border:none;cursor:pointer;font-weight:700">Sign in here ↗</button>
+          Already have an account? <button onclick="switchTab('signin')" style="color:#305CDE;background:none;border:none;cursor:pointer;font-weight:700">Sign in here ↗</button>
         </p>
       </div>
 

@@ -68,13 +68,14 @@ function markActiveNavLink() {
 
 // ── Scroll Reveal ──────────────────────────────────────────────
 function initScrollReveal() {
-  const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
   if (!elements.length) return;
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('revealed');
+        entry.target.classList.add('in-view');
         observer.unobserve(entry.target);
       }
     });

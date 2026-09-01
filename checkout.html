@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,7 +14,7 @@
   <style>
     .checkout-page {
       min-height: 100vh;
-      background: linear-gradient(135deg, #091929 0%, #12355B 60%, #1A4A7A 100%);
+      background: linear-gradient(135deg, #091929 0%, #305CDE 60%, #4F7AF7 100%);
       padding: calc(var(--nav-height, 72px) + 2rem) 0 4rem;
     }
     .checkout-container {
@@ -45,7 +45,7 @@
     .order-card-title { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; line-height: 1.35; margin-bottom: 1.5rem; }
     .order-card-divider { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 1rem 0; }
     .order-card-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: rgba(255,255,255,0.75); margin-bottom: 8px; }
-    .order-card-total { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #FF4D00; line-height: 1; }
+    .order-card-total { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #8B5CF6; line-height: 1; }
     .order-card-original { font-size: 0.85rem; color: rgba(255,255,255,0.4); text-decoration: line-through; margin-top: 2px; }
     .order-guarantee { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
 
@@ -56,7 +56,7 @@
       padding: 2rem;
       box-shadow: 0 24px 64px rgba(0,0,0,0.25);
     }
-    .form-card-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #1E293B; margin-bottom: 0.25rem; }
+    .form-card-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #0F172A; margin-bottom: 0.25rem; }
     .form-card-sub { color: #64748B; font-size: 0.9rem; margin-bottom: 1.75rem; }
     .step-indicator { display: flex; gap: 8px; margin-bottom: 2rem; }
     .step { flex: 1; height: 4px; border-radius: 4px; background: #E2E8F0; transition: background 0.3s; }
@@ -69,11 +69,11 @@
     .field-input {
       width: 100%; padding: 0.75rem 1rem;
       border: 1.5px solid #D1D5DB; border-radius: 10px;
-      font-family: var(--font-body); font-size: 0.95rem; color: #1E293B;
+      font-family: var(--font-body); font-size: 0.95rem; color: #0F172A;
       background: #F9FAFB; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
       box-sizing: border-box;
     }
-    .field-input:focus { border-color: #12355B; box-shadow: 0 0 0 3px rgba(30,58,138,0.1); background: #fff; }
+    .field-input:focus { border-color: #305CDE; box-shadow: 0 0 0 3px rgba(30,58,138,0.1); background: #fff; }
     .field-input.error { border-color: #DC2626; }
     .field-error { font-size: 0.78rem; color: #DC2626; margin-top: 4px; display: none; }
     .field-error.visible { display: block; }
@@ -88,11 +88,11 @@
       border-radius: 12px; background: #F9FAFB; cursor: pointer;
       transition: all 0.2s; text-align: center;
     }
-    .pay-method-tab:hover { border-color: #12355B; }
-    .pay-method-tab.active { border-color: #12355B; background: #E8F0F8; }
+    .pay-method-tab:hover { border-color: #305CDE; }
+    .pay-method-tab.active { border-color: #305CDE; background: #E8F0F8; }
     .pay-method-tab .tab-icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
     .pay-method-tab .tab-name { font-size: 0.7rem; font-weight: 700; color: #64748B; letter-spacing: 0.05em; text-transform: uppercase; }
-    .pay-method-tab.active .tab-name { color: #12355B; }
+    .pay-method-tab.active .tab-name { color: #305CDE; }
     .pay-panel { display: none; }
     .pay-panel.active { display: block; }
 
@@ -100,10 +100,10 @@
     .status-screen { text-align: center; padding: 2rem 1rem; }
     .status-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 1.25rem; }
     .status-icon.spin { animation: spin 1.2s linear infinite; }
-    .status-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #1E293B; margin-bottom: 0.5rem; }
+    .status-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem; }
     .status-sub { color: #64748B; font-size: 0.9rem; line-height: 1.6; max-width: 360px; margin: 0 auto 1.5rem; }
     .status-ref { font-size: 0.8rem; color: #94A3B8; background: #EEF4FB; border-radius: 8px; padding: 8px 14px; display: inline-block; margin-bottom: 1.5rem; }
-    .status-ref strong { color: #12355B; }
+    .status-ref strong { color: #305CDE; }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     /* ── Submit button ── */
@@ -120,12 +120,12 @@
     .btn-enroll:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
     .btn-secondary-outline {
       width: 100%; padding: 13px;
-      background: transparent; color: #12355B;
+      background: transparent; color: #305CDE;
       border: 1.5px solid #CBD5E1; border-radius: 99px;
       font-weight: 700; font-size: 0.9rem; cursor: pointer;
       transition: all 0.2s; margin-top: 10px;
     }
-    .btn-secondary-outline:hover { border-color: #12355B; background: #E8F0F8; }
+    .btn-secondary-outline:hover { border-color: #305CDE; background: #E8F0F8; }
 
     /* ── SSL badge ── */
     .ssl-badge { text-align: center; font-size: 0.75rem; color: #94A3B8; margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
@@ -138,13 +138,13 @@
   <div class="container">
     <a href="index.html" class="nav-brand" aria-label="Instructify Kenya" style="display:inline-flex;flex-direction:row;align-items:center;gap:10px;text-decoration:none;white-space:nowrap;">
       <div class="nav-brand-icon" style="display:inline-flex;align-items:center;justify-content:center;margin:0;padding:0;flex-shrink:0;background:none;border:none;box-shadow:none;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#12355B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
         </svg>
       </div>
       <div class="nav-brand-text-box" style="display:inline-flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:1px;white-space:nowrap;margin:0;padding:0;line-height:1;">
-        <span class="nav-brand-title" style="font-family:var(--font-heading);font-weight:800;font-size:1.35rem;color:#1E293B;letter-spacing:-0.03em;margin:0;line-height:1;display:block;">Instructify</span>
-        <span class="nav-brand-subtitle" style="font-family:var(--font-heading);font-size:0.72rem;font-weight:800;color:#12355B;text-transform:uppercase;letter-spacing:2px;margin:0;line-height:1;display:block;">KENYA</span>
+        <span class="nav-brand-title" style="font-family:var(--font-heading);font-weight:800;font-size:1.35rem;color:#0F172A;letter-spacing:-0.03em;margin:0;line-height:1;display:block;">Instructify</span>
+        <span class="nav-brand-subtitle" style="font-family:var(--font-heading);font-size:0.72rem;font-weight:800;color:#305CDE;text-transform:uppercase;letter-spacing:2px;margin:0;line-height:1;display:block;">KENYA</span>
       </div>
     </a>
     <div class="nav-actions">
@@ -179,7 +179,7 @@
 
         <!-- ── State: initializing ── -->
         <div id="screen-loading" class="status-screen">
-          <div class="status-icon spin" style="background:#E8F0F8;border:3px solid #12355B;">⏳</div>
+          <div class="status-icon spin" style="background:#E8F0F8;border:3px solid #305CDE;">⏳</div>
           <div class="status-title">Preparing your checkout…</div>
           <div class="status-sub">Please wait while we load your order details.</div>
         </div>
@@ -269,7 +269,7 @@
 
         <!-- ── State: processing / polling ── -->
         <div id="screen-processing" class="status-screen" style="display:none;">
-          <div class="status-icon spin" style="background:#E8F0F8;border:3px solid #12355B;">⏳</div>
+          <div class="status-icon spin" style="background:#E8F0F8;border:3px solid #305CDE;">⏳</div>
           <div class="status-title" id="processing-title">Processing Payment…</div>
           <div class="status-sub" id="processing-sub">
             Please complete the M-Pesa prompt on your phone. Do not close this page.
@@ -309,7 +309,7 @@
           <button class="btn-enroll" onclick="retryCheckout()" style="margin-top:0.5rem;">Try Again</button>
           <button class="btn-secondary-outline" onclick="window.location.href='courses.html'">Browse Courses</button>
           <p style="font-size:0.78rem;color:#94A3B8;margin-top:1rem;">
-            Need help? <a href="contact.html" style="color:#12355B;">Contact support</a> with your order reference.
+            Need help? <a href="contact.html" style="color:#305CDE;">Contact support</a> with your order reference.
           </p>
         </div>
 
@@ -547,15 +547,15 @@ window.showMpesaPromptModal = function(opts) {
         📱
       </div>
       <span style="background:#0C7A6B;color:#FFFFFF;font-size:11px;font-weight:800;padding:4px 12px;border-radius:999px;letter-spacing:1px;text-transform:uppercase;">M-Pesa STK Push</span>
-      <h3 style="font-family:var(--font-heading);font-size:20px;font-weight:800;color:#1E293B;margin:14px 0 6px;">Check Your Phone</h3>
+      <h3 style="font-family:var(--font-heading);font-size:20px;font-weight:800;color:#0F172A;margin:14px 0 6px;">Check Your Phone</h3>
       <p style="color:#64748B;font-size:14px;line-height:1.5;margin-bottom:18px;">
         An instant payment prompt has been sent to <strong>${opts.phone}</strong> for <strong>KES ${Number(opts.amount).toLocaleString()}</strong>.
       </p>
 
-      <div style="background:#F5F8FC;border:1.5px dashed #CBD5E1;border-radius:14px;padding:14px;margin-bottom:20px;text-align:left;font-size:13px;">
+      <div style="background:#F8FAFC;border:1.5px dashed #CBD5E1;border-radius:14px;padding:14px;margin-bottom:20px;text-align:left;font-size:13px;">
         <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
           <span style="color:#64748B;">Business:</span>
-          <strong style="color:#1E293B;">Instructify Kenya</strong>
+          <strong style="color:#0F172A;">Instructify Kenya</strong>
         </div>
         <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
           <span style="color:#64748B;">Amount:</span>
@@ -563,7 +563,7 @@ window.showMpesaPromptModal = function(opts) {
         </div>
         <div style="display:flex;justify-content:space-between;">
           <span style="color:#64748B;">Account / Ref:</span>
-          <strong style="color:#12355B;font-family:monospace;">${opts.orderReference}</strong>
+          <strong style="color:#305CDE;font-family:monospace;">${opts.orderReference}</strong>
         </div>
       </div>
 

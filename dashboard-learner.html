@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,35 +13,37 @@
 
 <nav id="navbar" class="navbar">
   <div class="container">
-    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya" style="display: inline-flex; flex-direction: row; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap;">
-      <div class="nav-brand-icon" style="display: inline-flex; align-items: center; justify-content: center; margin: 0; padding: 0; flex-shrink: 0; background: none; border: none; box-shadow: none;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#12355B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya">
+      <div class="nav-brand-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
           <path d="M6 12v5c3 3 9 3 12 0v-5"/>
         </svg>
       </div>
-      <div class="nav-brand-text-box" style="display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; white-space: nowrap; margin: 0; padding: 0; line-height: 1;">
-        <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #1E293B; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
-        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #12355B; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
+      <div class="nav-brand-text-box">
+        <span class="nav-brand-title">Instructify</span>
+        <span class="nav-brand-subtitle">KENYA</span>
       </div>
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" role="list">
       <li><a href="index.html" class="nav-link">Home</a></li>
       <li><a href="about.html" class="nav-link">About Us</a></li>
       <li><a href="courses.html" class="nav-link">Courses</a></li>
-      
       <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
-      
       <li><a href="resources.html" class="nav-link">Resources</a></li>
       <li><a href="schools.html" class="nav-link">Institutions</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
     <div class="nav-actions">
       <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
-      <a href="courses.html" class="btn btn-orange btn-sm">Start Learning</a>
+      <a href="courses.html" class="btn btn-primary btn-sm">Start Learning</a>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
 
 <div class="dashboard-layout">
   <!-- Sidebar -->
@@ -111,7 +113,7 @@
       </div>
 
       <!-- Curious Mind Welcome Banner -->
-      <div class="welcome-banner" style="background: linear-gradient(135deg, #12355B 0%, #1E293B 100%); color: #FFFFFF; border-radius: 16px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15); border-left: 5px solid #FFAD00; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+      <div class="welcome-banner" style="background: linear-gradient(135deg, #305CDE 0%, #0F172A 100%); color: #FFFFFF; border-radius: 16px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15); border-left: 5px solid #FFAD00; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
         <div style="max-width: 650px;">
           <h2 style="font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
             Hello, Curious Mind 👋
@@ -127,12 +129,12 @@
           </div>
         </div>
         <div>
-          <a href="courses.html" class="btn btn-orange btn-sm" style="font-weight: 700; white-space: nowrap;">Explore Modules →</a>
+          <a href="courses.html" class="btn btn-primary btn-sm" style="font-weight: 700; white-space: nowrap;">Explore Modules →</a>
         </div>
       </div>
 
       <!-- Founder's Welcome Message Card -->
-      <div style="background: linear-gradient(135deg, #1E293B 0%, #12355B 100%); color: #FFFFFF !important; border-radius: 16px; padding: 26px 28px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2); position: relative; overflow: hidden;">
+      <div style="background: linear-gradient(135deg, #0F172A 0%, #305CDE 100%); color: #FFFFFF !important; border-radius: 16px; padding: 26px 28px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2); position: relative; overflow: hidden;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
           <span style="font-size: 12px; font-weight: 800; color: #FFAD00 !important; text-transform: uppercase; letter-spacing: 0.08em; display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 173, 0, 0.25); border: 1px solid #FFAD00; padding: 4px 12px; border-radius: 999px;">
             💬 Founder’s Welcome Message
@@ -145,14 +147,14 @@
         <div style="font-size: 14px; font-weight: 700; color: #FFC038 !important; margin-bottom: 12px;">
           Dear Educator, Learner, and Visionary,
         </div>
-        <p style="font-size: 14px; color: #F5F8FC !important; line-height: 1.65; margin-bottom: 12px;">
+        <p style="font-size: 14px; color: #F8FAFC !important; line-height: 1.65; margin-bottom: 12px;">
           You’ve arrived at a place where learning is a journey of renewal and growth. Instructify Academy was born from a dream—to empower minds, stir hearts, and transform communities through practical, visionary education.
         </p>
         <div style="background: rgba(255, 255, 255, 0.08); border-left: 4px solid #FF5500; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 14px; font-size: 14px; font-weight: 800; line-height: 1.5;">
           <span style="color: #FFD700 !important; display: block; margin-bottom: 4px;">"Here, we don’t just teach. We awaken."</span>
           <span style="color: #FF7733 !important; display: block;">"We don’t just deliver content. We ignite purpose."</span>
         </div>
-        <p style="font-size: 14px; color: #F5F8FC !important; line-height: 1.65; margin-bottom: 14px;">
+        <p style="font-size: 14px; color: #F8FAFC !important; line-height: 1.65; margin-bottom: 14px;">
           Whether you're crafting a lesson, leading a fellowship, or exploring new ideas, this space is yours. May every module, message, and moment here spark something deeper in you.
         </p>
         <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 14px; margin-top: 8px;">
@@ -167,25 +169,25 @@
       <!-- Stats Grid -->
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-icon" style="background:#E8F0F8;color:#12355B"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg></div>
+          <div class="stat-icon" style="background:#E8F0F8;color:#305CDE"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg></div>
           <div class="stat-value">3</div>
           <div class="stat-label">Enrolled Courses</div>
           <div class="stat-change up"><span style="font-weight:700;">↗</span> 1 active this month</div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="background:#E0F5F2;color:#FF4D00"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="stat-icon" style="background:#E0F5F2;color:#8B5CF6"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <div class="stat-value">45 hrs</div>
           <div class="stat-label">CPD Credits Earned</div>
           <div class="stat-change up"><span style="font-weight:700;">↗</span> 15 hrs left for annual TSC target</div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="background:#E8F0F8;color:#12355B"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <div class="stat-icon" style="background:#E8F0F8;color:#305CDE"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <div class="stat-value">92%</div>
           <div class="stat-label">Average Quiz Score</div>
           <div class="stat-change up"><span style="font-weight:700;">↗</span> Top 5% Learner</div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="background:#E0F5F2;color:#FF4D00"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+          <div class="stat-icon" style="background:#E0F5F2;color:#8B5CF6"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
           <div class="stat-value">2</div>
           <div class="stat-label">Certificates Issued</div>
           <a href="#certificates" onclick="switchDashboardTab(null, 'certificates')" style="font-size:var(--text-xs);color:var(--color-primary-light);display:block;margin-top:4px">View certificates ↗</a>
@@ -299,7 +301,7 @@
                 <td>Digital Literacy Fundamentals Quiz</td>
                 <td>Digital Literacy Certification</td>
                 <td>Aug 02, 2026</td>
-                <td><strong style="color:#FF4D00">95%</strong></td>
+                <td><strong style="color:#8B5CF6">95%</strong></td>
                 <td><span class="badge badge-success">Passed</span></td>
                 <td><button class="btn btn-ghost btn-sm" onclick="showToast('Viewing submission feedback...','info')">Review</button></td>
               </tr>
@@ -333,17 +335,17 @@
             <div style="display:inline-flex; align-items:center; gap:8px; background:#DCFCE7; color:#166534; padding:4px 12px; border-radius:999px; font-size:12px; font-weight:800; border:1px solid #16A34A;">
               ✅ Valid Credential &bull; CPD Accredited
             </div>
-            <span style="font-size:12px; font-family:var(--font-mono); color:#FF4D00; font-weight:700;">IK-CERT-2026-9921</span>
+            <span style="font-size:12px; font-family:var(--font-mono); color:#8B5CF6; font-weight:700;">IK-CERT-2026-9921</span>
           </div>
 
-          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#1E293B; margin-bottom:6px; line-height:1.3;">
+          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin-bottom:6px; line-height:1.3;">
             Digital Literacy &amp; ICT Integration in Teaching
           </h3>
           <div style="font-size:13px; color:#64748B; margin-bottom:16px;">
             Issued on July 26, 2026 &bull; <strong>40 CPD Hours</strong> &bull; Distinction (96%)
           </div>
 
-          <div style="font-size:12px; color:#64748B; background:#F5F8FC; padding:12px 14px; border-radius:8px; border:1px solid #E2E8F0; margin-bottom:20px;">
+          <div style="font-size:12px; color:#64748B; background:#F8FAFC; padding:12px 14px; border-radius:8px; border:1px solid #E2E8F0; margin-bottom:20px;">
             🔒 <strong>Verification Hash:</strong> 3e6f9a0c8b7a6d5e... &bull; Digitally Signed
           </div>
 
@@ -362,17 +364,17 @@
             <div style="display:inline-flex; align-items:center; gap:8px; background:#DCFCE7; color:#166534; padding:4px 12px; border-radius:999px; font-size:12px; font-weight:800; border:1px solid #16A34A;">
               ✅ Valid Credential &bull; CPD Accredited
             </div>
-            <span style="font-size:12px; font-family:var(--font-mono); color:#FF4D00; font-weight:700;">IK-CPD-2026-8942</span>
+            <span style="font-size:12px; font-family:var(--font-mono); color:#8B5CF6; font-weight:700;">IK-CPD-2026-8942</span>
           </div>
 
-          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#1E293B; margin-bottom:6px; line-height:1.3;">
+          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin-bottom:6px; line-height:1.3;">
             Competency-Based Curriculum (CBC) Pedagogy &amp; Assessment
           </h3>
           <div style="font-size:13px; color:#64748B; margin-bottom:16px;">
             Issued on August 18, 2026 &bull; <strong>30 CPD Hours</strong> &bull; Distinction (94%)
           </div>
 
-          <div style="font-size:12px; color:#64748B; background:#F5F8FC; padding:12px 14px; border-radius:8px; border:1px solid #E2E8F0; margin-bottom:20px;">
+          <div style="font-size:12px; color:#64748B; background:#F8FAFC; padding:12px 14px; border-radius:8px; border:1px solid #E2E8F0; margin-bottom:20px;">
             🔒 <strong>Verification Hash:</strong> 8f9b4c2e1a7d3e6f... &bull; Digitally Signed
           </div>
 
