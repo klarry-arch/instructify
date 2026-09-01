@@ -428,10 +428,11 @@ p:last-child { margin-bottom: 0; }
 /* Dark/Hero Section Text Overrides */
 .dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4,
 .blue-section h1, .blue-section h2, .blue-section h3, .blue-section h4,
-.hero-section h1, .hero-section h2, .hero-section h3 {
+.hero-dark h1, .hero-dark h2, .hero-dark h3,
+.courses-hero h1, .courses-hero h2, .courses-hero h3 {
   color: #FFFFFF;
 }
-.dark-section p, .blue-section p { color: rgba(255,255,255,0.85); }
+.dark-section p, .blue-section p, .hero-dark p, .courses-hero p { color: rgba(255,255,255,0.90); }
 
 /* ── Text Utilities ────────────────────────────────────── */
 .text-primary    { color: var(--primary) !important; }

@@ -1399,9 +1399,16 @@ body {
 .section-soft { background: var(--surface-soft); }
 
 /* Hero section subtitle in dark hero */
-.hero-section .hero-subtitle,
-.hero-section .lead {
-  color: rgba(255,255,255,0.88) !important;
+.hero-dark .hero-subtitle,
+.dark-section .hero-subtitle,
+.courses-hero .hero-subtitle,
+.hero-dark .lead,
+.dark-section .lead {
+  color: rgba(255,255,255,0.92) !important;
+}
+
+.hero-subtitle {
+  color: var(--text-secondary, #334155);
 }
 
 /* Service/support card base */
