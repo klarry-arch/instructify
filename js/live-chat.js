@@ -8,7 +8,7 @@
 
   let chatOpen = false;
   const config = window.INSTRUCTIFY_COMM_CONFIG || {};
-  const contact = config.contact || { whatsappNumber: '254700123456', displayPhone: '+254 700 123 456', email: 'info@instructify.ke' };
+  const contact = config.contact || { whatsappNumber: '254143024416', displayPhone: '0143 024 416', email: 'info@instructify.ke' };
   const chatConfig = config.chat || {};
 
   function initLiveChat() {

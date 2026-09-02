@@ -12,9 +12,9 @@ window.INSTRUCTIFY_COMM_CONFIG = {
 
   // Verified Contact Channels
   contact: {
-    whatsappNumber: '254700123456',
-    displayPhone: '+254 700 123 456',
-    secondaryPhone: '+254 733 987 654',
+    whatsappNumber: '254143024416',
+    displayPhone: '0143 024 416',
+    internationalPhone: '+254 143 024 416',
     email: 'info@instructify.ke',
     supportEmail: 'support@instructify.ke',
     officeLocation: 'Nairobi, Kenya',
@@ -115,9 +115,9 @@ window.INSTRUCTIFY_COMM_CONFIG = {
         title: '💬 Connect with an Advisor',
         text: 'Our admissions and consultancy team in Nairobi is ready to assist you. Choose your preferred contact method:',
         actions: [
-          { text: 'Chat on WhatsApp (+254 700 123 456)', action: 'whatsapp', topic: 'General Enquiry', type: 'whatsapp' },
+          { text: 'Chat on WhatsApp (0143 024 416)', action: 'whatsapp', topic: 'General Enquiry', type: 'whatsapp' },
           { text: 'Leave a Message / Callback', action: 'form', topic: 'General Support', type: 'primary' },
-          { text: 'Call Us Now', url: 'tel:+254700123456', type: 'secondary' }
+          { text: 'Call Us Now (0143 024 416)', url: 'tel:+254143024416', type: 'secondary' }
         ]
       }
     }
