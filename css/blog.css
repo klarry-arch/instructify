@@ -553,3 +553,85 @@
 .share-btn.linkedin { background: #0A66C2; }
 .share-btn.twitter { background: #0F172A; }
 .share-btn.copy { background: #475569; }
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE-FIRST RESPONSIVE BLOG & ARTICLE RULES
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 992px) {
+  .blog-hero-section {
+    padding-top: calc(var(--nav-height, 74px) + 32px) !important;
+    padding-bottom: 40px !important;
+  }
+  .blog-featured-card {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+    padding: 24px !important;
+  }
+  .blog-featured-img {
+    height: 260px !important;
+  }
+  .articles-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-hero-title {
+    font-size: clamp(28px, 6.5vw, 36px) !important;
+  }
+  .blog-hero-subtitle {
+    font-size: 15.5px !important;
+  }
+  .articles-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  .blog-category-bar {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 8px;
+    gap: 8px;
+    flex-wrap: nowrap !important;
+  }
+  .blog-category-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .blog-cat-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 7px 14px !important;
+    font-size: 12.5px !important;
+  }
+  .article-detail-container {
+    padding: 24px 16px 48px !important;
+  }
+  .article-body {
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+  }
+  .article-podcast-promo,
+  .article-author-card,
+  .article-takeaways-box,
+  .article-download-card {
+    padding: 22px 18px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 414px) {
+  .blog-featured-card {
+    padding: 16px 14px !important;
+  }
+  .article-card-body {
+    padding: 18px 14px !important;
+  }
+  .share-btn {
+    padding: 7px 12px !important;
+    font-size: 12px !important;
+  }
+}

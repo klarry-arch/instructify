@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    INSTRUCTIFY KENYA — MAIN JAVASCRIPT
    ============================================================ */
 
@@ -31,27 +31,37 @@ function initNavbar() {
   handleScroll();
 
   if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', (e) => {
+    const closeMenu = () => {
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileNav.classList.remove('open');
+      document.body.classList.remove('menu-open');
+    };
+
+    const toggleMenu = (e) => {
       e.stopPropagation();
       const isOpen = hamburger.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
       mobileNav.classList.toggle('open', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
+      document.body.classList.toggle('menu-open', isOpen);
+    };
+
+    hamburger.addEventListener('click', toggleMenu);
 
     document.addEventListener('click', (e) => {
       if (!navbar.contains(e.target) && !mobileNav.contains(e.target)) {
-        hamburger.classList.remove('open');
-        mobileNav.classList.remove('open');
-        document.body.style.overflow = '';
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && hamburger.classList.contains('open')) {
+        closeMenu();
       }
     });
 
     mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileNav.classList.remove('open');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', closeMenu);
     });
   }
 }

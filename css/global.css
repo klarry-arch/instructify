@@ -755,58 +755,119 @@ p:last-child { margin-bottom: 0; }
 ::selection { background: var(--primary-bg); color: var(--primary-dark); }
 
 /* ══════════════════════════════════════════════════════════════
-   RESPONSIVE BREAKPOINTS
+   GLOBAL MOBILE SAFEGUARDS & RESPONSIVE BREAKPOINTS
    ══════════════════════════════════════════════════════════════ */
-@media (max-width: 1024px) {
-  .grid-4 { grid-template-columns: repeat(2, 1fr); }
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body.menu-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+img, video, iframe, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1080px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
   h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
-    font-size: 42px;
-    line-height: 1.14;
+    font-size: clamp(32px, 5vw, 44px) !important;
+    line-height: 1.18 !important;
   }
 }
 
 @media (max-width: 768px) {
   :root {
-    --font-size-h1: 32px;
-    --font-size-h2: 26px;
-    --font-size-h3: 21px;
-    --font-size-h4: 18px;
-    --font-size-h5: 16px;
+    --font-size-h1: clamp(28px, 6vw, 36px);
+    --font-size-h2: clamp(22px, 5vw, 28px);
+    --font-size-h3: clamp(18px, 4vw, 22px);
+    --font-size-h4: 17px;
+    --font-size-h5: 15px;
+    --nav-height: 68px;
   }
 
-  .container { padding-left: 16px; padding-right: 16px; }
-  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; gap: 16px; }
-  .section, section { padding: 48px 0; }
-  .section-header { margin-bottom: 32px; }
+  .container {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .grid-4, .grid-3, .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .section, section {
+    padding: 44px 0 !important;
+  }
+
+  .section-header {
+    margin-bottom: 28px !important;
+  }
 
   h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
-    font-size: 32px !important;
-    line-height: 1.20 !important;
-    margin-bottom: 14px;
+    font-size: clamp(28px, 6.5vw, 36px) !important;
+    line-height: 1.22 !important;
+    margin-bottom: 12px !important;
   }
+
   h2, .h2, .section-title, .dashboard-title {
-    font-size: 26px !important;
-    line-height: 1.25 !important;
-    margin-bottom: 12px;
+    font-size: clamp(22px, 5vw, 28px) !important;
+    line-height: 1.28 !important;
+    margin-bottom: 10px !important;
   }
+
   h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
-    font-size: 20px !important;
-    margin-bottom: 10px;
+    font-size: clamp(18px, 4.5vw, 22px) !important;
+    margin-bottom: 8px !important;
   }
-  .lead, .hero-lead, .hero-subtitle, .section-subtitle {
-    font-size: 15px !important;
-    line-height: 1.60 !important;
+
+  p, .lead, .hero-lead, .hero-subtitle, .section-subtitle {
+    font-size: 15.5px !important;
+    line-height: 1.65 !important;
   }
+
   .hero-ctas, .btn-group {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
   }
+
   .hero-ctas .btn, .btn-group .btn {
-    width: 100%;
-    justify-content: center;
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+    font-size: 15.5px !important;
+  }
+}
+
+/* Small Smartphone Optimizations (320px – 390px) */
+@media (max-width: 414px) {
+  .container {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
+    font-size: 26px !important;
+  }
+
+  h2, .h2, .section-title {
+    font-size: 20px !important;
+  }
+
+  .btn {
+    padding: 12px 18px !important;
+    font-size: 14.5px !important;
   }
 }
 
