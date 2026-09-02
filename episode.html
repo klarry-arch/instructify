@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Listen to in-depth conversations, read full interactive transcripts, and explore key takeaways on The Instructify Kenya Podcast.">
+  <title>Episode Details | The Instructify Kenya Podcast</title>
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/homepage.css">
+  <link rel="stylesheet" href="css/podcast.css">
+</head>
+<body id="episode-detail-root">
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+      <div class="nav-brand-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="nav-brand-text-box">
+        <span class="nav-brand-title">Instructify</span>
+        <span class="nav-brand-subtitle">KENYA</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="courses.html" class="nav-link">Courses</a></li>
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+      <li><a href="podcast.html" class="nav-link active" aria-current="page">Podcast</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="courses.html" class="btn btn-primary btn-sm">Start Learning</a>
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     1. EPISODE HEADER
+     ══════════════════════════════════════════════════════════ -->
+<header class="ep-detail-header">
+  <div class="container" style="max-width:960px;">
+    <div style="margin-bottom:20px;">
+      <a href="podcast.html" style="color:#93C5FD; text-decoration:none; font-weight:700; font-size:14px; display:inline-flex; align-items:center; gap:6px;">
+        ← Back to All Conversations
+      </a>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px; flex-wrap:wrap;">
+      <span class="ep-badge blue" id="ep-detail-category">AI &amp; Innovation</span>
+      <span style="font-size:13px; font-weight:800; color:#93C5FD; text-transform:uppercase; letter-spacing:1px;" id="ep-detail-num">Episode 01</span>
+      <span style="font-size:13px; color:#E2E8F0;" id="ep-detail-date">August 28, 2026</span>
+      <span style="font-size:13px; font-weight:700; color:#FFFFFF;" id="ep-detail-duration">42 min</span>
+    </div>
+
+    <h1 style="font-size:38px; font-weight:800; color:#FFFFFF !important; line-height:1.2; margin-bottom:12px;" id="ep-detail-title">
+      AI in Education: Preparing Learners for the Future of Work
+    </h1>
+    <p style="font-size:18px; color:#E2E8F0 !important; line-height:1.6; font-weight:450; margin-bottom:28px;" id="ep-detail-subtitle">
+      How generative AI, ethical adoption, and personalized tutoring are reshaping African classrooms.
+    </p>
+
+    <!-- Dedicated Audio Player -->
+    <div class="audio-player-box" style="background:rgba(15,23,42,0.65); backdrop-filter:blur(12px); border-color:rgba(255,255,255,0.2); color:#FFFFFF;">
+      <div class="player-controls-row">
+        <button class="play-btn-main" id="main-play-btn" aria-label="Play audio">
+          <span id="main-play-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </button>
+
+        <div class="player-track-info">
+          <div class="progress-container" id="progress-container" style="background:rgba(255,255,255,0.2);">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+          </div>
+          <div class="progress-time-row" style="color:#CBD5E1;">
+            <span id="current-time">00:00</span>
+            <span id="total-time">42:00</span>
+          </div>
+        </div>
+
+        <div class="player-aux-controls">
+          <button class="speed-select-btn" id="speed-btn" style="background:rgba(255,255,255,0.15); color:#FFFFFF; border-color:rgba(255,255,255,0.3);">1x</button>
+          <button class="btn btn-outline btn-sm" onclick="openShareModal()" style="color:#FFFFFF !important; border-color:rgba(255,255,255,0.4) !important;">
+            Share
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     2. EPISODE CONTENT BODY
+     ══════════════════════════════════════════════════════════ -->
+<main class="section" style="background:#F8FAFC;">
+  <div class="container" style="max-width:960px;">
+    
+    <!-- Episode Overview -->
+    <div class="card" style="background:#FFFFFF; border:1.5px solid #E2E8F0; border-radius:20px; padding:36px; margin-bottom:32px;">
+      <h2 style="font-size:22px; font-weight:800; color:var(--color-deep-navy); margin-bottom:12px;">Episode Overview</h2>
+      <p style="font-size:16px; color:#475569; line-height:1.7; margin:0;" id="ep-detail-desc">
+        In this premiere episode, we sit down with Dr. Angela Mutua to unpack how Artificial Intelligence is moving from tech buzzword to essential classroom tool.
+      </p>
+    </div>
+
+    <!-- Key Takeaways -->
+    <div class="takeaways-card">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span class="section-tag blue" style="margin:0;">EDUCATIONAL VALUE</span>
+        <h2 style="font-size:22px; font-weight:800; color:var(--color-deep-navy); margin:0;">Key Takeaways</h2>
+      </div>
+      <p style="font-size:14.5px; color:#64748B; margin-top:6px;">Core insights and actionable lessons from this conversation:</p>
+      
+      <ul class="takeaways-list" id="ep-detail-takeaways-list">
+        <!-- Injected via JavaScript -->
+      </ul>
+    </div>
+
+    <!-- Featured Guest Biography -->
+    <div class="card" style="background:#FFFFFF; border:1.5px solid #E2E8F0; border-radius:20px; padding:36px; margin-bottom:32px;">
+      <h2 style="font-size:22px; font-weight:800; color:var(--color-deep-navy); margin-bottom:20px;">Featured Guest</h2>
+      <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+        <div style="width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:20px; color:#0F172A;" id="ep-detail-guest-initials">
+          AM
+        </div>
+        <div>
+          <h3 style="font-size:20px; font-weight:800; color:#0F172A; margin:0 0 4px;" id="ep-detail-guest-name">Dr. Angela Mutua</h3>
+          <p style="font-size:14px; color:#305CDE; font-weight:600; margin:0 0 8px;" id="ep-detail-guest-title">Senior AI Researcher &amp; EdTech Advisor · African Institute for Future Intelligence</p>
+          <p style="font-size:15px; color:#475569; line-height:1.6; margin:0;" id="ep-detail-guest-bio">
+            Dr. Mutua is a leading voice on ethical AI deployment in emerging markets, advising national education ministries and UNESCO.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Transcript Section -->
+    <div class="transcript-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px;">
+        <h2 style="font-size:22px; font-weight:800; color:var(--color-deep-navy); margin:0;">Read Episode Transcript</h2>
+        <span style="font-size:13px; font-weight:600; color:#64748B;">Click timestamps to jump audio player</span>
+      </div>
+      <p style="font-size:14.5px; color:#64748B; margin:0 0 20px;">
+        Full interactive transcript with time-indexed navigation for reading and accessible study.
+      </p>
+
+      <div id="ep-detail-transcript-list">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+
+    <!-- Contextual Course / Consultancy CTA -->
+    <div class="card" style="background:linear-gradient(135deg, #091929 0%, #1E3A8A 60%, #305CDE 100%); color:#FFFFFF; border-radius:20px; padding:36px 40px; margin-bottom:48px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;">
+      <div style="max-width:580px;">
+        <span style="background:#FFAD00; color:#0F172A; font-size:11px; font-weight:800; padding:4px 10px; border-radius:999px; text-transform:uppercase; letter-spacing:1px; display:inline-block; margin-bottom:8px;" id="ep-detail-course-category">
+          RECOMMENDED TRAINING
+        </span>
+        <h3 style="font-size:24px; font-weight:800; color:#FFFFFF !important; margin-bottom:8px;" id="ep-detail-course-title">
+          AI in Education: Teacher's Masterclass
+        </h3>
+        <p style="font-size:15px; color:#E2E8F0 !important; margin:0;">
+          Ready to implement the strategies discussed in this episode? Explore our certified courses and institutional advisory.
+        </p>
+      </div>
+      <div>
+        <a href="courses.html" class="btn btn-orange btn-lg" id="ep-detail-course-link" style="font-weight:700; white-space:nowrap;">
+          Explore Training &amp; Advisory →
+        </a>
+      </div>
+    </div>
+
+    <!-- Related Episodes -->
+    <div>
+      <h2 style="font-size:24px; font-weight:800; color:var(--color-deep-navy); margin-bottom:20px;">Related Conversations</h2>
+      <div class="grid-3" id="related-episodes-grid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ── Sticky Bottom Audio Player Bar ──────────────────────── -->
+<div class="sticky-audio-bar" id="sticky-audio-bar">
+  <div style="display:flex; align-items:center; gap:14px; max-width:320px;">
+    <button class="play-btn-main" id="sticky-play-btn" style="width:42px; height:42px;" aria-label="Play or pause sticky player">
+      <span id="sticky-play-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+    </button>
+    <div style="overflow:hidden;">
+      <div id="sticky-title" style="font-size:13.5px; font-weight:700; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">AI in Education</div>
+      <div id="sticky-guest" style="font-size:11.5px; color:#94A3B8;">Dr. Angela Mutua</div>
+    </div>
+  </div>
+
+  <div style="flex-grow:1; max-width:540px;">
+    <div class="progress-container" id="sticky-progress-container" style="height:6px; margin:0;">
+      <div class="progress-bar-fill" id="sticky-progress-fill"></div>
+    </div>
+  </div>
+
+  <div>
+    <a href="#" class="btn btn-outline btn-sm" style="color:#FFFFFF !important; border-color:rgba(255,255,255,0.3) !important; font-size:11.5px; padding:4px 10px;">
+      Top ↑
+    </a>
+  </div>
+</div>
+
+<!-- ── Modal: Share Episode ─────────────────────────────────── -->
+<div class="podcast-modal-overlay" id="share-modal-overlay">
+  <div class="podcast-modal" style="max-width:480px;">
+    <button class="modal-close-btn" onclick="closeShareModal()" aria-label="Close modal">✕</button>
+    <h3 style="font-size:22px; font-weight:800; color:#0F172A; margin-bottom:8px;">Share This Conversation</h3>
+    <p style="font-size:14px; color:#64748B; margin-bottom:20px;">Copy the link below to share this conversation with colleagues and networks.</p>
+    
+    <div style="display:flex; gap:8px;">
+      <input type="text" id="share-url-input" readonly style="flex-grow:1; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:13.5px; background:#F8FAFC;">
+      <button class="btn btn-primary btn-sm" id="copy-share-btn" onclick="copyShareUrl()">Copy Link</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════════════════ -->
+<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
+  <div class="container">
+    <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1.5px solid #F4B400;">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+          <span style="color: #8B5CF6 !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span>
+        </h3>
+        <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
+          Ignite Curiosity. Transform Learning. Renew Communities.
+        </p>
+        <a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
+          <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
+          <li><a href="podcast.html" style="color:#93C5FD; font-weight:700; text-decoration:none;">Podcast &amp; Media</a></li>
+          <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Discover</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="schools.html" style="color:var(--color-white); text-decoration:none;">Institutions</a></li>
+          <li><a href="community.html" style="color:var(--color-white); text-decoration:none;">Community Impact</a></li>
+          <li><a href="podcast.html" style="color:var(--color-white); text-decoration:none;">Podcast Episodes</a></li>
+          <li><a href="resources.html" style="color:var(--color-white); text-decoration:none;">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
+        <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
+        <div style="display:flex; gap:8px;">
+          <input type="email" placeholder="Your email" style="padding:10px; border-radius:6px; border:none; width:100%;">
+          <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:24px 0; font-size:13px; color:#E2E8F0 !important; font-weight:500;">
+      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: #8B5CF6; font-weight:700; text-decoration:underline;">Contact Us</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/podcast-data.js"></script>
+<script src="js/podcast.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

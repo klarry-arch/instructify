@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Listen to the Instructify Kenya Podcast for insightful conversations on education, technology, AI, innovation, leadership, digital skills and the future of learning and work.">
+  <title>The Instructify Kenya Podcast | Education, Technology &amp; Innovation</title>
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/homepage.css">
+  <link rel="stylesheet" href="css/podcast.css">
+</head>
+<body>
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+      <div class="nav-brand-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="nav-brand-text-box">
+        <span class="nav-brand-title">Instructify</span>
+        <span class="nav-brand-subtitle">KENYA</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="courses.html" class="nav-link">Courses</a></li>
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+      <li><a href="podcast.html" class="nav-link active" aria-current="page">Podcast</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="courses.html" class="btn btn-primary btn-sm">Start Learning</a>
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     1. HERO SECTION
+     ══════════════════════════════════════════════════════════ -->
+<header class="podcast-hero">
+  <div class="container">
+    <div class="podcast-hero-grid">
+      <div>
+        <div class="podcast-hero-badge">
+          <span class="podcast-hero-dot"></span>
+          <span>THE INSTRUCTIFY KENYA PODCAST</span>
+        </div>
+        <h1 class="podcast-hero-title">
+          Ideas That Inspire. <br>Conversations That Transform.
+        </h1>
+        <p class="podcast-hero-subtitle">
+          Welcome to the Instructify Kenya Podcast — where education, technology, innovation and human potential come together. Discover practical insights, inspiring stories and meaningful conversations shaping the future of learning and work.
+        </p>
+        <div class="podcast-hero-ctas">
+          <a href="#latest-episode" class="btn btn-orange btn-lg" style="display:inline-flex; align-items:center; gap:8px;">
+            <span>▶</span> Listen to Latest Episode
+          </a>
+          <a href="#featured-conversations" class="btn btn-outline btn-lg" style="color:#FFFFFF !important; border-color:#FFFFFF !important;">
+            Explore Episodes
+          </a>
+        </div>
+      </div>
+
+      <!-- Visual Studio Graphic -->
+      <div class="podcast-hero-visual">
+        <div class="podcast-visual-card">
+          <div class="podcast-art-box">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" y1="19" x2="12" y2="23"/>
+              <line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+            <div style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-top:8px; color:rgba(255,255,255,0.9);">
+              Instructify Audio
+            </div>
+          </div>
+          <div style="font-size:16px; font-weight:800; color:#FFFFFF; margin-bottom:4px;">“Conversations for a Smarter Future”</div>
+          <p style="font-size:13px; color:#94A3B8; margin:0 0 16px;">Learn · Connect · Innovate · Transform</p>
+          <div class="podcast-waveform">
+            <div class="waveform-bar"></div>
+            <div class="waveform-bar"></div>
+            <div class="waveform-bar"></div>
+            <div class="waveform-bar"></div>
+            <div class="waveform-bar"></div>
+            <div class="waveform-bar"></div>
+            <div class="waveform-bar"></div>
+            <div class="waveform-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     2. STREAMING PLATFORMS BAR
+     ══════════════════════════════════════════════════════════ -->
+<section class="podcast-platforms-bar">
+  <div class="container">
+    <div class="platforms-container">
+      <div class="platforms-label">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>
+        <span>Listen &amp; Follow On:</span>
+      </div>
+      <div class="platforms-list">
+        <a href="#" class="platform-pill" aria-label="Spotify">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.524 4.477 10 10 10s10-4.476 10-10c0-5.523-4.477-10-10-10zm4.586 14.424c-.18.295-.563.387-.857.207-2.35-1.435-5.308-1.76-8.792-.963-.335.077-.67-.133-.746-.468-.077-.334.132-.67.467-.746 3.808-.87 7.076-.505 9.72 1.113.295.18.388.563.208.857zm1.225-2.723c-.226.367-.706.482-1.072.257-2.69-1.653-6.79-2.133-9.97-1.168-.413.125-.85-.11-.975-.523-.125-.413.11-.85.523-.975 3.633-1.102 8.147-.568 11.237 1.332.366.226.482.706.257 1.077zm.105-2.836C14.692 8.95 9.375 8.775 6.297 9.71c-.495.15-1.02-.13-1.17-.625-.15-.495.13-1.02.625-1.17 3.534-1.072 9.404-.866 13.115 1.338.445.264.59.84.326 1.285-.264.446-.84.59-1.285.326z"/></svg>
+          <span>Spotify</span>
+        </a>
+        <a href="#" class="platform-pill" aria-label="Apple Podcasts">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.37c.62-.75 1.04-1.8 0.93-2.85-.9.04-1.99.6-2.63 1.35-.56.65-1.05 1.71-.92 2.73 1.01.08 2.04-.5 2.62-1.23z"/></svg>
+          <span>Apple Podcasts</span>
+        </a>
+        <a href="#" class="platform-pill" aria-label="YouTube">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          <span>YouTube</span>
+        </a>
+        <a href="#" class="platform-pill" aria-label="Google Podcasts">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 1-2 0v-.07A7.003 7.003 0 0 1 5.07 11H5a1 1 0 0 1 0-2h.07A7.003 7.003 0 0 1 11 3.07V3a1 1 0 0 1 2 0v.07A7.003 7.003 0 0 1 18.93 9H19a1 1 0 0 1 0 2h-.07A7.003 7.003 0 0 1 13 16.93z"/></svg>
+          <span>Google Podcasts</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     3. LATEST EPISODE SPOTLIGHT
+     ══════════════════════════════════════════════════════════ -->
+<section class="latest-ep-section" id="latest-episode">
+  <div class="container">
+    <div class="section-header text-center" style="margin-bottom:32px;">
+      <span class="section-tag blue">LATEST EPISODE</span>
+      <h2 class="section-title">Tune Into the Latest Conversation</h2>
+      <p class="section-subtitle">Deep dive with leading voices shaping African educational reform and digital readiness.</p>
+    </div>
+
+    <div class="latest-ep-card">
+      <div class="latest-ep-art">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+          <line x1="12" y1="19" x2="12" y2="23"/>
+          <line x1="8" y1="23" x2="16" y2="23"/>
+        </svg>
+        <span style="font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:#93C5FD;" id="latest-ep-num">Episode 01</span>
+        <div style="font-size:16px; font-weight:800; margin-top:4px;">Instructify Kenya</div>
+      </div>
+
+      <div>
+        <div class="latest-ep-meta">
+          <span class="ep-badge blue" id="latest-ep-cat">AI &amp; Innovation</span>
+          <span style="font-size:13px; font-weight:600; color:#64748B;" id="latest-ep-date">August 28, 2026</span>
+          <span style="font-size:13px; font-weight:700; color:#0F172A;" id="latest-ep-duration">42 min</span>
+        </div>
+
+        <h3 class="latest-ep-title" id="latest-ep-title">
+          AI in Education: Preparing Learners for the Future of Work
+        </h3>
+        <p class="latest-ep-desc" id="latest-ep-desc">
+          In this premiere episode, we sit down with Dr. Angela Mutua to unpack how Artificial Intelligence is moving from tech buzzword to essential classroom tool. We explore practical strategies teachers can use today, data privacy in schools, and the specific skillsets Kenyan learners need to thrive in an AI-powered economy.
+        </p>
+
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+          <div style="width:36px; height:36px; border-radius:50%; background:#EEF2FF; color:#305CDE; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:12px;">AM</div>
+          <div>
+            <div style="font-size:14px; font-weight:700; color:#0F172A;" id="latest-guest-name">Dr. Angela Mutua</div>
+            <div style="font-size:12px; color:#64748B;" id="latest-guest-title">Senior AI Researcher &amp; EdTech Advisor · African Institute for Future Intelligence</div>
+          </div>
+        </div>
+
+        <!-- Built-in Audio Player -->
+        <div class="audio-player-box">
+          <div class="player-controls-row">
+            <button class="play-btn-main" id="main-play-btn" aria-label="Play audio">
+              <span id="main-play-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </button>
+
+            <div class="player-track-info">
+              <div class="progress-container" id="progress-container">
+                <div class="progress-bar-fill" id="progress-bar-fill"></div>
+              </div>
+              <div class="progress-time-row">
+                <span id="current-time">00:00</span>
+                <span id="total-time">42:00</span>
+              </div>
+            </div>
+
+            <div class="player-aux-controls">
+              <button class="speed-select-btn" id="speed-btn" title="Playback Speed">1x</button>
+              <button class="btn btn-outline btn-sm" onclick="openShareModal('AI in Education: Preparing Learners for the Future of Work')" style="padding:6px 12px; font-size:12px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:4px;"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                Share
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     4. SEARCH & CATEGORY FILTER
+     ══════════════════════════════════════════════════════════ -->
+<section class="filter-search-section" id="featured-conversations">
+  <div class="container">
+    <div class="search-filter-wrapper">
+      <div class="search-input-box">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="podcast-search" class="podcast-search-input" placeholder="Search conversations, guests, topics or keywords..." aria-label="Search podcast episodes">
+      </div>
+
+      <div class="category-pills-bar" id="category-pills">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     5. FEATURED CONVERSATIONS GRID
+     ══════════════════════════════════════════════════════════ -->
+<section class="episodes-section">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:28px;">
+      <h2 style="font-size:24px; font-weight:800; color:var(--color-deep-navy); margin:0;">Featured Conversations</h2>
+      <span style="font-size:14px; font-weight:600; color:#64748B;" id="episodes-count">Showing 6 conversations</span>
+    </div>
+
+    <div class="episodes-grid" id="episodes-grid">
+      <!-- Injected via JavaScript -->
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     6. VOICES THAT MOVE US FORWARD (GUEST SPOTLIGHT)
+     ══════════════════════════════════════════════════════════ -->
+<section class="voices-section">
+  <div class="container text-center">
+    <span class="section-tag teal">GUEST VOICES</span>
+    <h2 class="section-title">Voices That Move Us Forward</h2>
+    <p class="section-subtitle" style="max-width:720px; margin:0 auto;">
+      We bring together diverse voices and experiences — educators, industry experts, technology leaders, entrepreneurs, researchers, policy thinkers and innovators — to explore the challenges and opportunities shaping education and society.
+    </p>
+
+    <div class="voices-grid" id="voices-grid">
+      <!-- Injected via JavaScript -->
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     7. MEET YOUR HOST
+     ══════════════════════════════════════════════════════════ -->
+<section class="host-section">
+  <div class="container">
+    <div class="host-card">
+      <div class="host-photo-box">
+        <img src="assets/images/founder_alex.jpg" alt="Alex Nderitu - Host of The Instructify Kenya Podcast" loading="lazy">
+      </div>
+      <div>
+        <span style="background:rgba(255,255,255,0.15); color:#FFFFFF; font-size:11px; font-weight:800; padding:4px 12px; border-radius:999px; text-transform:uppercase; letter-spacing:1px; display:inline-block; margin-bottom:14px;">
+          MEET YOUR HOST
+        </span>
+        <h2 style="font-size:32px; font-weight:800; color:#FFFFFF !important; margin-bottom:8px;">Alex Nderitu</h2>
+        <div style="font-size:16px; color:#93C5FD; font-weight:600; margin-bottom:18px;">Lead Educator &amp; EdTech Strategist, Instructify Kenya</div>
+        <p style="font-size:16px; color:#E2E8F0 !important; line-height:1.65; margin-bottom:24px;">
+          “Behind every great conversation is a curiosity to learn, question and discover. The Instructify Kenya Podcast brings together educators, innovators, industry experts and change-makers to explore the ideas shaping our future. Our goal is simple: turn conversations into ideas, and ideas into tangible educational impact.”
+        </p>
+        <div style="display:flex; gap:16px; flex-wrap:wrap;">
+          <a href="about.html" class="btn btn-orange btn-sm">About Instructify Team</a>
+          <button class="btn btn-outline btn-sm" onclick="openGuestModal('guest')" style="color:#FFFFFF !important; border-color:#FFFFFF !important;">
+            Pitch a Guest
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     8. WHY LISTEN TO INSTRUCTIFY? (5 BENEFIT CARDS)
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" style="background:#F8FAFC;">
+  <div class="container text-center">
+    <span class="section-tag blue">WHY LISTEN</span>
+    <h2 class="section-title">Why Listen to Instructify?</h2>
+    <p class="section-subtitle">A podcast built for those who believe learning is the ultimate catalyst for human growth.</p>
+
+    <div class="why-listen-grid">
+      <!-- 1. Practical Insights (Blue) -->
+      <div class="benefit-card" style="--card-accent:#305CDE; --card-glow:rgba(48,92,222,0.2);">
+        <div class="benefit-icon-box" style="background:linear-gradient(135deg, #EEF2FF 0%, #DBEAFE 100%); border:1px solid rgba(48,92,222,0.2);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#305CDE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">Practical Insights</h3>
+        <p class="benefit-desc">Actionable strategies, frameworks, and pedagogical tips you can apply directly in your classroom, institution, or team.</p>
+      </div>
+
+      <!-- 2. Expert Perspectives (Teal) -->
+      <div class="benefit-card" style="--card-accent:#0D9488; --card-glow:rgba(13,148,136,0.2);">
+        <div class="benefit-icon-box" style="background:linear-gradient(135deg, #CCFBF1 0%, #99F6E4 100%); border:1px solid rgba(13,148,136,0.2);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">Expert Perspectives</h3>
+        <p class="benefit-desc">Learn directly from senior policymakers, EdTech founders, researchers, master trainers, and industry leaders.</p>
+      </div>
+
+      <!-- 3. Local Context, Global Thinking (Purple) -->
+      <div class="benefit-card" style="--card-accent:#8B5CF6; --card-glow:rgba(139,92,246,0.2);">
+        <div class="benefit-icon-box" style="background:linear-gradient(135deg, #F3EEFF 0%, #DDD6FE 100%); border:1px solid rgba(139,92,246,0.2);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">Local Reality, Global Reach</h3>
+        <p class="benefit-desc">Rooted in Kenyan and African educational realities while connecting them to global technological advancements.</p>
+      </div>
+
+      <!-- 4. Future-Focused Conversations (Amber) -->
+      <div class="benefit-card" style="--card-accent:#D97706; --card-glow:rgba(217,119,6,0.2);">
+        <div class="benefit-icon-box" style="background:linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border:1px solid rgba(217,119,6,0.25);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">Future-Focused</h3>
+        <p class="benefit-desc">Stay ahead of AI developments, hybrid pedagogical paradigms, digital transformation, and emerging career opportunities.</p>
+      </div>
+
+      <!-- 5. Inspiration to Take Action (Blue) -->
+      <div class="benefit-card" style="--card-accent:#2563EB; --card-glow:rgba(37,99,235,0.2);">
+        <div class="benefit-icon-box" style="background:linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border:1px solid rgba(37,99,235,0.2);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <h3 class="benefit-title">Actionable Impact</h3>
+        <p class="benefit-desc">Transform conversations into real-world innovations, classroom excellence, and measurable community empowerment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     9. ABOUT INSTRUCTIFY KENYA — A LEARNING MOVEMENT
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" style="background:#FFFFFF;">
+  <div class="container">
+    <div class="card" style="background:linear-gradient(135deg, #091929 0%, #1E3A8A 60%, #305CDE 100%); color:#FFFFFF; border-radius:24px; padding:48px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:32px; box-shadow:0 20px 40px -10px rgba(15, 23, 42, 0.2);">
+      <div style="max-width:680px;">
+        <span style="background:#FFAD00; color:#0F172A; font-weight:800; font-size:11px; padding:4px 12px; border-radius:999px; text-transform:uppercase; letter-spacing:1px; display:inline-block; margin-bottom:12px;">
+          OUR BROADER MISSION
+        </span>
+        <h2 style="font-size:32px; font-weight:800; color:#FFFFFF !important; line-height:1.2; margin-bottom:12px;">
+          More Than a Podcast. A Learning Movement.
+        </h2>
+        <p style="font-size:16.5px; color:#E2E8F0 !important; line-height:1.65; margin:0;">
+          Instructify Kenya is committed to making learning relevant, practical and future-ready. Through training, consultancy, digital learning and thought leadership, we connect people and organisations with the knowledge and skills needed to thrive in a changing world.
+        </p>
+      </div>
+      <div>
+        <a href="about.html" class="btn btn-orange btn-lg" style="font-weight:700; white-space:nowrap;">
+          Discover Instructify Kenya →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     10. CALL TO ACTION: GUESTS & TOPICS
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" style="background:#F8FAFC;">
+  <div class="container text-center" style="max-width:780px;">
+    <span class="section-tag amber">JOIN THE CONVERSATION</span>
+    <h2 class="section-title">Have a Story, Idea or Perspective Worth Sharing?</h2>
+    <p class="section-subtitle">
+      We are always looking for inspiring educators, innovators, entrepreneurs, professionals and thought leaders to join the conversation and inspire the next generation.
+    </p>
+
+    <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-top:28px;">
+      <button class="btn btn-primary btn-lg" onclick="openGuestModal('guest')">
+        Become a Guest
+      </button>
+      <a href="contact.html" class="btn btn-outline btn-lg">
+        Partner With Us
+      </a>
+      <button class="btn btn-outline btn-lg" onclick="openGuestModal('topic')">
+        Suggest a Topic
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     11. SUBSCRIBE SECTION
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" style="background:#0F172A; color:#FFFFFF;">
+  <div class="container text-center" style="max-width:680px;">
+    <span style="background:rgba(255,255,255,0.12); color:#FFFFFF; font-size:11px; font-weight:800; padding:4px 12px; border-radius:999px; text-transform:uppercase; letter-spacing:1px; display:inline-block; margin-bottom:14px;">
+      STAY INFORMED
+    </span>
+    <h2 style="font-size:36px; font-weight:800; color:#FFFFFF !important; margin-bottom:12px;">Never Miss a Conversation</h2>
+    <p style="font-size:16px; color:#94A3B8; margin-bottom:32px;">
+      Get new episodes, insightful learning resources, and key educational updates from Instructify Kenya delivered straight to your inbox.
+    </p>
+
+    <form id="podcast-subscribe-form" style="display:flex; gap:12px; max-width:520px; margin:0 auto 16px; flex-wrap:wrap;">
+      <input type="email" placeholder="Enter your email address" required style="flex-grow:1; min-width:240px; padding:14px 20px; border-radius:10px; border:1px solid #334155; background:#1E293B; color:#FFFFFF; outline:none;">
+      <button type="submit" class="btn btn-blue" style="font-weight:700; padding:14px 24px;">Subscribe for Updates</button>
+    </form>
+    <p style="font-size:13px; color:#64748B; margin:0;">🔒 We respect your privacy. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- ── Sticky Bottom Audio Player Bar ──────────────────────── -->
+<div class="sticky-audio-bar" id="sticky-audio-bar">
+  <div style="display:flex; align-items:center; gap:14px; max-width:320px;">
+    <button class="play-btn-main" id="sticky-play-btn" style="width:42px; height:42px;" aria-label="Play or pause sticky player">
+      <span id="sticky-play-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+    </button>
+    <div style="overflow:hidden;">
+      <div id="sticky-title" style="font-size:13.5px; font-weight:700; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">AI in Education</div>
+      <div id="sticky-guest" style="font-size:11.5px; color:#94A3B8;">Dr. Angela Mutua</div>
+    </div>
+  </div>
+
+  <div style="flex-grow:1; max-width:540px;">
+    <div class="progress-container" id="sticky-progress-container" style="height:6px; margin:0;">
+      <div class="progress-bar-fill" id="sticky-progress-fill"></div>
+    </div>
+  </div>
+
+  <div>
+    <a href="podcast.html#latest-episode" class="btn btn-outline btn-sm" style="color:#FFFFFF !important; border-color:rgba(255,255,255,0.3) !important; font-size:11.5px; padding:4px 10px;">
+      View Player ↑
+    </a>
+  </div>
+</div>
+
+<!-- ── Modal: Become a Guest / Suggest a Topic ──────────────── -->
+<div class="podcast-modal-overlay" id="guest-modal-overlay">
+  <div class="podcast-modal">
+    <button class="modal-close-btn" onclick="closeGuestModal()" aria-label="Close modal">✕</button>
+    <h3 style="font-size:24px; font-weight:800; color:#0F172A; margin-bottom:8px;" id="guest-modal-title">Become a Podcast Guest</h3>
+    <p style="font-size:14.5px; color:#64748B; margin-bottom:24px;" id="guest-modal-desc">
+      Share your insights and inspire thousands of educators and innovators across East Africa.
+    </p>
+
+    <form id="guest-form">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div>
+          <label style="display:block; font-size:13px; font-weight:700; color:#0F172A; margin-bottom:6px;">Your Full Name *</label>
+          <input type="text" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:14px;">
+        </div>
+        <div>
+          <label style="display:block; font-size:13px; font-weight:700; color:#0F172A; margin-bottom:6px;">Email Address *</label>
+          <input type="email" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:14px;">
+        </div>
+        <div>
+          <label style="display:block; font-size:13px; font-weight:700; color:#0F172A; margin-bottom:6px;">Organization / School / Institution</label>
+          <input type="text" style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:14px;">
+        </div>
+        <div>
+          <label style="display:block; font-size:13px; font-weight:700; color:#0F172A; margin-bottom:6px;">Proposed Topic / Summary of Perspective *</label>
+          <textarea rows="4" required placeholder="Tell us briefly about the story or key takeaway you would like to share..." style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:14px; resize:vertical;"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%; margin-top:8px;">Submit Proposal</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ── Modal: Share Episode ─────────────────────────────────── -->
+<div class="podcast-modal-overlay" id="share-modal-overlay">
+  <div class="podcast-modal" style="max-width:480px;">
+    <button class="modal-close-btn" onclick="closeShareModal()" aria-label="Close modal">✕</button>
+    <h3 style="font-size:22px; font-weight:800; color:#0F172A; margin-bottom:8px;">Share This Episode</h3>
+    <p style="font-size:14px; color:#64748B; margin-bottom:20px;">Copy the link below to share this conversation with colleagues and networks.</p>
+    
+    <div style="display:flex; gap:8px;">
+      <input type="text" id="share-url-input" readonly style="flex-grow:1; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:13.5px; background:#F8FAFC;">
+      <button class="btn btn-primary btn-sm" id="copy-share-btn" onclick="copyShareUrl()">Copy Link</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════════════════ -->
+<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
+  <div class="container">
+    <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1.5px solid #F4B400;">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+          <span style="color: #8B5CF6 !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span>
+        </h3>
+        <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
+          Ignite Curiosity. Transform Learning. Renew Communities.
+        </p>
+        <a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
+          <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
+          <li><a href="podcast.html" style="color:#93C5FD; font-weight:700; text-decoration:none;">Podcast &amp; Media</a></li>
+          <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Discover</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="schools.html" style="color:var(--color-white); text-decoration:none;">Institutions</a></li>
+          <li><a href="community.html" style="color:var(--color-white); text-decoration:none;">Community Impact</a></li>
+          <li><a href="podcast.html" style="color:var(--color-white); text-decoration:none;">Podcast Episodes</a></li>
+          <li><a href="resources.html" style="color:var(--color-white); text-decoration:none;">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
+        <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
+        <div style="display:flex; gap:8px;">
+          <input type="email" placeholder="Your email" style="padding:10px; border-radius:6px; border:none; width:100%;">
+          <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:24px 0; font-size:13px; color:#E2E8F0 !important; font-weight:500;">
+      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: #8B5CF6; font-weight:700; text-decoration:underline;">Contact Us</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/podcast-data.js"></script>
+<script src="js/podcast.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
