@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read in-depth educational insights, technology analysis, and thought leadership articles on the Instructify Kenya Knowledge Hub.">
+  <title>Article | Instructify Kenya Knowledge Hub</title>
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/homepage.css">
+  <link rel="stylesheet" href="css/blog.css">
+</head>
+<body id="article-detail-root">
+
+<!-- Top Reading Progress Bar -->
+<div class="reading-progress-bar" id="reading-progress-bar"></div>
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+      <div class="nav-brand-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="nav-brand-text-box">
+        <span class="nav-brand-title">Instructify</span>
+        <span class="nav-brand-subtitle">KENYA</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="courses.html" class="nav-link">Courses</a></li>
+      <li><a href="podcast.html" class="nav-link">Podcast</a></li>
+      <li><a href="blog.html" class="nav-link active" aria-current="page">Blog</a></li>
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="resources.html" class="nav-link">Resources</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="courses.html" class="btn btn-primary btn-sm">Start Learning</a>
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     1. ARTICLE HEADER
+     ══════════════════════════════════════════════════════════ -->
+<header class="article-detail-header">
+  <div class="container" style="max-width:860px;">
+    <div style="margin-bottom:20px;">
+      <a href="blog.html" style="color:#93C5FD; text-decoration:none; font-weight:700; font-size:14px; display:inline-flex; align-items:center; gap:6px;">
+        ← Back to Knowledge Hub
+      </a>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap;">
+      <span class="ep-badge blue" id="art-detail-category">Artificial Intelligence</span>
+      <span style="font-size:13px; color:#E2E8F0;" id="art-detail-date">August 29, 2026</span>
+      <span style="font-size:13px; font-weight:700; color:#93C5FD;" id="art-detail-read-time">7 min read</span>
+    </div>
+
+    <h1 style="font-size:38px; font-weight:800; color:#FFFFFF !important; line-height:1.2; margin-bottom:14px;" id="art-detail-title">
+      How Artificial Intelligence Is Transforming Education in Africa
+    </h1>
+    <p style="font-size:18px; color:#E2E8F0 !important; line-height:1.6; font-weight:450; margin-bottom:28px;" id="art-detail-subtitle">
+      AI is changing how we teach, learn and work. Explore the opportunities, challenges and practical strategies educators and institutions can use to prepare learners for an AI-powered future.
+    </p>
+
+    <!-- Author Byline -->
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.2);">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div class="author-avatar" id="art-detail-author-avatar" style="background:#FFFFFF; color:#305CDE; font-weight:800;">AM</div>
+        <div>
+          <div style="font-size:15px; font-weight:800; color:#FFFFFF;" id="art-detail-author-name">Dr. Angela Mutua</div>
+          <div style="font-size:12.5px; color:#CBD5E1;" id="art-detail-author-title">Senior AI Researcher · African Institute for Future Intelligence</div>
+        </div>
+      </div>
+
+      <!-- Social Share -->
+      <div class="social-share-bar" style="margin:0; padding:0;">
+        <button class="share-btn whatsapp" onclick="shareArticle('whatsapp')" aria-label="Share on WhatsApp">WhatsApp</button>
+        <button class="share-btn linkedin" onclick="shareArticle('linkedin')" aria-label="Share on LinkedIn">LinkedIn</button>
+        <button class="share-btn twitter" onclick="shareArticle('twitter')" aria-label="Share on X">X</button>
+        <button class="share-btn copy" onclick="shareArticle('copy')" aria-label="Copy link">Copy Link</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     2. ARTICLE MAIN CONTENT BODY
+     ══════════════════════════════════════════════════════════ -->
+<main class="section" style="background:#FFFFFF; padding-top:0;">
+  <div class="article-reader-container">
+    
+    <!-- Featured Image Banner -->
+    <div style="margin:-32px 0 40px; border-radius:20px; overflow:hidden; box-shadow:0 12px 32px -8px rgba(15,23,42,0.12);">
+      <img src="assets/images/course-ai.png" alt="Featured Article Cover" id="art-detail-cover-image" style="width:100%; max-height:420px; object-fit:cover; display:block;">
+    </div>
+
+    <!-- Structured Markdown / HTML Content -->
+    <div class="article-body-content" id="art-detail-body-content">
+      <!-- Injected via JavaScript -->
+    </div>
+
+    <!-- ── 3. Key Takeaways Box ── -->
+    <div class="article-takeaways-box">
+      <h3>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Key Takeaways
+      </h3>
+      <p style="font-size:14.5px; color:#15803D; margin-bottom:16px;">Core insights from this article to apply in your classroom or institution:</p>
+      <ul style="list-style:none; padding:0; margin:0;" id="art-detail-takeaways">
+        <!-- Injected via JavaScript -->
+      </ul>
+    </div>
+
+    <!-- ── 4. Downloadable Resource Box ── -->
+    <div class="article-resource-box" id="art-detail-resource-box">
+      <div style="display:flex; align-items:center; gap:18px;">
+        <div style="width:52px; height:52px; border-radius:14px; background:#EFF6FF; color:#305CDE; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <div>
+          <span style="font-size:11px; font-weight:800; color:#305CDE; text-transform:uppercase; letter-spacing:0.06em;">PRACTICAL TOOLKIT</span>
+          <h4 style="font-size:17px; font-weight:800; color:#0F172A; margin:2px 0 4px;" id="art-resource-title">
+            Institutional AI Adoption Checklist &amp; Policy Framework
+          </h4>
+          <p style="font-size:13.5px; color:#64748B; margin:0;" id="art-resource-desc">
+            A comprehensive 12-point guide for school principals and academic directors.
+          </p>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-primary btn-sm" onclick="downloadResource()" style="white-space:nowrap; font-weight:700;">
+          Download Resource (PDF) ↓
+        </button>
+      </div>
+    </div>
+
+    <!-- ── 5. Podcast Connection Box ── -->
+    <div class="article-podcast-box" id="art-detail-podcast-box">
+      <div style="max-width:540px;">
+        <span style="background:#FFAD00; color:#0F172A; font-size:11px; font-weight:800; padding:4px 10px; border-radius:999px; text-transform:uppercase; letter-spacing:0.06em; display:inline-block; margin-bottom:8px;">
+          PODCAST DEEP DIVE
+        </span>
+        <h4 style="font-size:20px; font-weight:800; color:#FFFFFF !important; margin:0 0 6px;" id="art-podcast-title">
+          Listen to the Conversation on The Instructify Kenya Podcast
+        </h4>
+        <p style="font-size:14.5px; color:#E2E8F0 !important; margin:0;">
+          Prefer audio? Listen to the full 42-minute interview unpacking these strategies with practical case studies.
+        </p>
+      </div>
+      <div>
+        <a href="episode.html?id=ep-01" class="btn btn-orange btn-md" id="art-podcast-link" style="white-space:nowrap; font-weight:700;">
+          Listen to Episode 01 🎧
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 6. Author Profile Card ── -->
+    <div class="article-author-card">
+      <div class="author-avatar" id="art-author-card-avatar" style="width:68px; height:68px; font-size:20px; background:#EEF2FF; color:#305CDE;">AM</div>
+      <div style="flex-grow:1;">
+        <div style="font-size:12px; font-weight:800; color:#64748B; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:2px;">WRITTEN BY</div>
+        <h3 style="font-size:20px; font-weight:800; color:#0F172A; margin:0 0 4px;" id="art-author-card-name">Dr. Angela Mutua</h3>
+        <p style="font-size:13.5px; font-weight:600; color:#305CDE; margin:0 0 10px;" id="art-author-card-title">Senior AI Researcher &amp; EdTech Advisor</p>
+        <p style="font-size:14.5px; color:#475569; line-height:1.6; margin:0;" id="art-author-card-bio">
+          Dr. Mutua advises education ministries and international organizations on ethical AI deployment, curriculum data governance, and scalable digital literacy.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── 7. Contextual Course / Consultancy CTA ── -->
+    <div class="card" style="background:linear-gradient(135deg, #091929 0%, #1E3A8A 60%, #305CDE 100%); color:#FFFFFF; border-radius:20px; padding:36px 40px; margin-bottom:56px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;">
+      <div style="max-width:560px;">
+        <span style="background:#FFAD00; color:#0F172A; font-size:11px; font-weight:800; padding:4px 10px; border-radius:999px; text-transform:uppercase; letter-spacing:1px; display:inline-block; margin-bottom:8px;" id="art-course-category">
+          RECOMMENDED TRAINING
+        </span>
+        <h3 style="font-size:24px; font-weight:800; color:#FFFFFF !important; margin-bottom:8px;" id="art-course-title">
+          AI in Education: Teacher's Masterclass
+        </h3>
+        <p style="font-size:15px; color:#E2E8F0 !important; margin:0;">
+          Ready to turn insight into action? Explore our certified courses and institutional advisory.
+        </p>
+      </div>
+      <div>
+        <a href="courses.html" class="btn btn-orange btn-lg" id="art-course-link" style="font-weight:700; white-space:nowrap;">
+          Explore Training &amp; Advisory →
+        </a>
+      </div>
+    </div>
+
+    <!-- ── 8. Related Articles ("You May Also Like") ── -->
+    <div>
+      <h2 style="font-size:24px; font-weight:800; color:var(--color-deep-navy); margin-bottom:24px;">You May Also Like</h2>
+      <div class="grid-3" id="art-related-grid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════════════════ -->
+<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
+  <div class="container">
+    <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1.5px solid #F4B400;">
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+          <span style="color: #8B5CF6 !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span>
+        </h3>
+        <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
+          Ignite Curiosity. Transform Learning. Renew Communities.
+        </p>
+        <a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
+          <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
+          <li><a href="podcast.html" style="color:var(--color-white); text-decoration:none;">Podcast &amp; Media</a></li>
+          <li><a href="blog.html" style="color:#93C5FD; font-weight:700; text-decoration:none;">Knowledge Hub &amp; Blog</a></li>
+          <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Discover</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="schools.html" style="color:var(--color-white); text-decoration:none;">Institutions</a></li>
+          <li><a href="community.html" style="color:var(--color-white); text-decoration:none;">Community Impact</a></li>
+          <li><a href="blog.html" style="color:var(--color-white); text-decoration:none;">Articles &amp; Insights</a></li>
+          <li><a href="resources.html" style="color:var(--color-white); text-decoration:none;">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
+        <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
+        <div style="display:flex; gap:8px;">
+          <input type="email" placeholder="Your email" style="padding:10px; border-radius:6px; border:none; width:100%;">
+          <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:24px 0; font-size:13px; color:#E2E8F0 !important; font-weight:500;">
+      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: #8B5CF6; font-weight:700; text-decoration:underline;">Contact Us</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/blog-data.js"></script>
+<script src="js/blog.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
