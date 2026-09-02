@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -61,78 +61,259 @@
 </header>
 
 <!-- Who We Serve Section -->
-<section class="section" style="background:#FFFFFF;">
+<style>
+  /* ══════════════════════════════════════════════════════════════
+     MODERNIZED INSTITUTIONAL CLIENTELE CARDS
+     ══════════════════════════════════════════════════════════════ */
+  .clientele-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 36px;
+  }
+
+  @media (max-width: 1024px) {
+    .clientele-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .clientele-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  .clientele-card {
+    position: relative;
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 36px 24px 32px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+
+  /* Colored top accent bar */
+  .clientele-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--card-accent, #305CDE);
+    transition: height 0.3s ease, opacity 0.3s ease;
+  }
+
+  .clientele-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--card-accent, #305CDE);
+    box-shadow: 0 20px 35px -10px var(--card-glow, rgba(48, 92, 222, 0.20)), 0 8px 16px -4px rgba(15, 23, 42, 0.04);
+  }
+
+  .clientele-card:hover::before {
+    height: 6px;
+  }
+
+  .clientele-icon-box {
+    width: 68px;
+    height: 68px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+  }
+
+  .clientele-card:hover .clientele-icon-box {
+    transform: scale(1.10) translateY(-2px);
+  }
+
+  .clientele-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+
+  .clientele-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 12px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .clientele-desc {
+    font-size: 14.5px;
+    color: #475569;
+    line-height: 1.65;
+    margin: 0;
+    text-align: center;
+    font-weight: 450;
+  }
+
+  /* Specific Card Color Variants */
+  .card-blue {
+    --card-accent: #305CDE;
+    --card-glow: rgba(48, 92, 222, 0.22);
+  }
+  .card-blue .clientele-icon-box {
+    background: linear-gradient(135deg, #EEF2FF 0%, #DBEAFE 100%);
+    border: 1px solid rgba(48, 92, 222, 0.2);
+    box-shadow: 0 8px 16px -4px rgba(48, 92, 222, 0.22);
+  }
+  .card-blue .clientele-badge {
+    background: #EEF2FF;
+    color: #254BC4;
+    border: 1px solid rgba(48, 92, 222, 0.2);
+  }
+
+  .card-teal {
+    --card-accent: #0D9488;
+    --card-glow: rgba(13, 148, 136, 0.22);
+  }
+  .card-teal .clientele-icon-box {
+    background: linear-gradient(135deg, #CCFBF1 0%, #99F6E4 100%);
+    border: 1px solid rgba(13, 148, 136, 0.2);
+    box-shadow: 0 8px 16px -4px rgba(13, 148, 136, 0.22);
+  }
+  .card-teal .clientele-badge {
+    background: #CCFBF1;
+    color: #0F766E;
+    border: 1px solid rgba(13, 148, 136, 0.25);
+  }
+
+  .card-purple {
+    --card-accent: #8B5CF6;
+    --card-glow: rgba(139, 92, 246, 0.22);
+  }
+  .card-purple .clientele-icon-box {
+    background: linear-gradient(135deg, #F3EEFF 0%, #DDD6FE 100%);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 8px 16px -4px rgba(139, 92, 246, 0.22);
+  }
+  .card-purple .clientele-badge {
+    background: #F3EEFF;
+    color: #6D28D9;
+    border: 1px solid rgba(139, 92, 246, 0.25);
+  }
+
+  .card-amber {
+    --card-accent: #D97706;
+    --card-glow: rgba(217, 119, 6, 0.22);
+  }
+  .card-amber .clientele-icon-box {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    border: 1px solid rgba(217, 119, 6, 0.25);
+    box-shadow: 0 8px 16px -4px rgba(217, 119, 6, 0.22);
+  }
+  .card-amber .clientele-badge {
+    background: #FEF3C7;
+    color: #B45309;
+    border: 1px solid rgba(217, 119, 6, 0.25);
+  }
+</style>
+
+<section class="section" style="background:#F8FAFC;">
   <div class="container text-center">
     <span class="section-tag blue" style="background:var(--color-light-blue); color:var(--color-primary-blue); font-weight:700;">OUR INSTITUTIONAL CLIENTELE</span>
-    <h2 style="font-size:36px; font-weight:700; color:var(--color-deep-navy); margin-top:12px; margin-bottom:28px;">
+    <h2 style="font-size:36px; font-weight:800; color:var(--color-deep-navy); margin-top:12px; margin-bottom:32px; letter-spacing: -0.02em;">
       Tailored Solutions for Every Educational Entity
     </h2>
 
-    <div class="grid-4" style="text-align:left;">
-      <div class="card" style="background:var(--color-soft-grey); border:1px solid #E2E8F0; border-radius:16px; padding:28px;">
-        <div style="width:52px; height:52px; background:#E8F0F8; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 9.5L12 4l9 5.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
-            <path d="M9 21V12h6v9"/>
-            <path d="M12 4v2"/>
-            <circle cx="12" cy="2" r="1" fill="#0F172A" stroke="none"/>
+    <div class="clientele-grid">
+      <!-- 1. Primary & High Schools -->
+      <div class="clientele-card card-blue">
+        <span class="clientele-badge">K-12 &amp; Academies</span>
+        <div class="clientele-icon-box">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#305CDE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 10.5L12 4.5l9 6V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5z" fill="rgba(48,92,222,0.12)"/>
+            <path d="M9 21V13h6v8"/>
+            <circle cx="12" cy="9.5" r="1.75" fill="#305CDE" stroke="none"/>
+            <path d="M12 2v2.5"/>
+            <path d="M12 2h2.5"/>
           </svg>
         </div>
-        <h3 style="font-size:20px; font-weight:700; color:var(--color-deep-navy); margin-bottom:8px;">Primary &amp; High Schools</h3>
-        <p style="font-size:14px; color:var(--text-muted, #475569); line-height:1.6;">Capacity building for teachers, CBC alignment, digital lab setup, and school-wide EdTech implementation.</p>
+        <h3 class="clientele-title">Primary &amp; High Schools</h3>
+        <p class="clientele-desc">Capacity building for teachers, CBC alignment, digital lab setup, and school-wide EdTech implementation.</p>
       </div>
 
-      <div class="card" style="background:var(--color-soft-grey); border:1px solid #E2E8F0; border-radius:16px; padding:28px;">
-        <div style="width:52px; height:52px; background:#E8F0F8; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <!-- 2. Ministries & Agencies -->
+      <div class="clientele-card card-teal">
+        <span class="clientele-badge">Public Sector &amp; Policy</span>
+        <div class="clientele-icon-box">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 21h18"/>
-            <path d="M4 21V7l8-4 8 4v14"/>
-            <path d="M9 21V12h6v9"/>
-            <path d="M5 10h1m8 0h1"/>
-            <rect x="11" y="2" width="2" height="3" rx="0.5" fill="#2563EB" stroke="none"/>
+            <path d="M4 21V10l8-6 8 6v11" fill="rgba(13,148,136,0.12)"/>
+            <path d="M9 10v7M15 10v7M12 10v7"/>
+            <path d="M12 4v-2"/>
+            <circle cx="12" cy="2" r="0.75" fill="#0D9488" stroke="none"/>
           </svg>
         </div>
-        <h3 style="font-size:20px; font-weight:700; color:var(--color-deep-navy); margin-bottom:8px;">Ministries &amp; Agencies</h3>
-        <p style="font-size:14px; color:var(--text-muted, #475569); line-height:1.6;">Policy support, teacher training rollout at county/national scale, and curriculum evaluation systems.</p>
+        <h3 class="clientele-title">Ministries &amp; Agencies</h3>
+        <p class="clientele-desc">Policy support, teacher training rollout at county/national scale, and curriculum evaluation systems.</p>
       </div>
 
-      <div class="card" style="background:var(--color-soft-grey); border:1px solid #E2E8F0; border-radius:16px; padding:28px;">
-        <div style="width:52px; height:52px; background: #F5F3FF; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            <path d="M8 12h8" stroke="#FFFFFF" stroke-width="1.4"/>
+      <!-- 3. NGOs & Donors -->
+      <div class="clientele-card card-purple">
+        <span class="clientele-badge">Grants &amp; Development</span>
+        <div class="clientele-icon-box">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="rgba(139,92,246,0.14)"/>
+            <path d="M12 9v5M9.5 11.5h5" stroke-width="2.2"/>
           </svg>
         </div>
-        <h3 style="font-size:20px; font-weight:700; color:var(--color-deep-navy); margin-bottom:8px;">NGOs &amp; Donors</h3>
-        <p style="font-size:14px; color:var(--text-muted, #475569); line-height:1.6;">Custom educational interventions, community literacy initiatives, and measurable impact tracking.</p>
+        <h3 class="clientele-title">NGOs &amp; Donors</h3>
+        <p class="clientele-desc">Custom educational interventions, community literacy initiatives, and measurable impact tracking.</p>
       </div>
 
-      <div class="card" style="background:var(--color-soft-grey); border:1px solid #E2E8F0; border-radius:16px; padding:28px;">
-        <div style="width:52px; height:52px; background: #F5F3FF; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            <path d="M8 11l3 3 5-5" stroke="#FFFFFF" stroke-width="1.4"/>
+      <!-- 4. Faith-Based Institutions -->
+      <div class="clientele-card card-amber">
+        <span class="clientele-badge">Faith &amp; Community</span>
+        <div class="clientele-icon-box">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 7L3 13v8a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-8l-9-6z" fill="rgba(217,119,6,0.12)"/>
+            <path d="M12 2v5M10 4h4"/>
+            <path d="M9 22v-5a3 3 0 0 1 6 0v5"/>
           </svg>
         </div>
-        <h3 style="font-size:20px; font-weight:700; color:var(--color-deep-navy); margin-bottom:8px;">Faith-Based Institutions</h3>
-        <p style="font-size:14px; color:var(--text-muted, #475569); line-height:1.6;">Character-integrated curriculum design, community learning centers, and youth skill workshops.</p>
+        <h3 class="clientele-title">Faith-Based Institutions</h3>
+        <p class="clientele-desc">Character-integrated curriculum design, community learning centers, and youth skill workshops.</p>
       </div>
+    </div>
 
-      <!-- Smart Classrooms Spotlight Card -->
-      <div class="card" style="background: linear-gradient(135deg, #0F172A 0%, #305CDE 100%); color: #FFFFFF; border-radius: 20px; padding: 36px 40px; margin-top: 36px; text-align: left; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; box-shadow: 0 15px 35px rgba(15, 23, 42, 0.18);">
-        <div style="max-width: 680px;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-            <span style="background: #FFAD00; color: #0F172A; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 1px;">FLAGSHIP SOLUTION</span>
-            <span style="color: #93C5FD; font-size: 15px; font-weight: 700; font-style: italic;">“From Chalk to Click”</span>
-          </div>
-          <h3 style="font-size: 28px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 10px; line-height: 1.2;">Digital Teaching &amp; Smart Classrooms</h3>
-          <p style="font-size: 16px; color: #E2E8F0 !important; line-height: 1.65; margin: 0; font-weight: 500;">
-            Reimagine your classroom with smart boards, ClassVR, and interactive content that brings learning to life.
-          </p>
+    <!-- Smart Classrooms Spotlight Card -->
+    <div class="card" style="background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #305CDE 100%); color: #FFFFFF; border-radius: 20px; padding: 36px 40px; margin-top: 24px; text-align: left; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; box-shadow: 0 15px 35px rgba(15, 23, 42, 0.18); border: 1px solid rgba(255,255,255,0.1);">
+      <div style="max-width: 680px;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <span style="background: #FFAD00; color: #0F172A; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 1px;">FLAGSHIP SOLUTION</span>
+          <span style="color: #93C5FD; font-size: 15px; font-weight: 700; font-style: italic;">“From Chalk to Click”</span>
         </div>
-        <div>
-          <a href="contact.html" class="btn btn-orange btn-lg" style="font-weight: 700; white-space: nowrap;">Deploy Smart Classrooms →</a>
-        </div>
+        <h3 style="font-size: 28px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 10px; line-height: 1.2;">Digital Teaching &amp; Smart Classrooms</h3>
+        <p style="font-size: 16px; color: #E2E8F0 !important; line-height: 1.65; margin: 0; font-weight: 500;">
+          Reimagine your classroom with smart boards, ClassVR, and interactive content that brings learning to life.
+        </p>
+      </div>
+      <div>
+        <a href="contact.html" class="btn btn-orange btn-lg" style="font-weight: 700; white-space: nowrap;">Deploy Smart Classrooms →</a>
       </div>
     </div>
   </div>
