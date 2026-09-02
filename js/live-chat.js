@@ -292,6 +292,19 @@
 
   // Public Interface for Inline Actions
   window.InstructifyChat = {
+    injectMessage: function(name, topic, userMsg, botReply) {
+      appendUserBubble('[Ticket: ' + (topic || 'Enquiry') + '] ' + userMsg);
+      setTimeout(function() {
+        appendBotCard({
+          title: 'Hello ' + name + '! 👋',
+          text: botReply,
+          actions: [
+            { text: 'Chat on WhatsApp (0143 024 416)', action: 'whatsapp', topic: topic, type: 'whatsapp' },
+            { text: 'Browse Courses →', url: 'courses.html', type: 'primary' }
+          ]
+        });
+      }, 300);
+    },
     open: function() { if (!chatOpen) toggleChat(); },
     close: closeChat,
     showLeadForm: function(topic) { appendLeadForm(topic); },

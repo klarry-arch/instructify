@@ -40,6 +40,7 @@ const apiHandlers = {
   '/api/webhook/mpesa': () => import('./api/webhook/mpesa.js'),
   '/api/webhook/paystack': () => import('./api/webhook/paystack.js'),
   '/api/wishlist': () => import('./api/wishlist.js'),
+  '/api/contact': () => import('./api/contact.js'),
 };
 
 const PORT = process.env.PORT || 8080;

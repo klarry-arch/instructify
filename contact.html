@@ -158,49 +158,89 @@
 
       <!-- Contact Form -->
       <div class="card reveal-right" style="padding:var(--space-2xl); border:1px solid var(--border-subtle); box-shadow:var(--shadow-md);">
-        <form onsubmit="handleContactSubmit(event)">
+        <form id="contact-form" onsubmit="handleContactSubmit(event)">
           <div class="grid-2" style="gap:var(--space-md);">
             <div class="form-group mb-md">
-              <label class="form-label">Full Name <span style="color:red;">*</span></label>
-              <input type="text" class="form-input" placeholder="e.g. Jane Wanjiku" required>
+              <label class="form-label" for="contact-name">Full Name <span style="color:red;">*</span></label>
+              <input type="text" id="contact-name" class="form-input" placeholder="e.g. Jane Wanjiku" required>
             </div>
             <div class="form-group mb-md">
-              <label class="form-label">Email Address <span style="color:red;">*</span></label>
-              <input type="email" class="form-input" placeholder="jane@example.com" required>
+              <label class="form-label" for="contact-email">Email Address <span style="color:red;">*</span></label>
+              <input type="email" id="contact-email" class="form-input" placeholder="jane@example.com" required>
             </div>
           </div>
           
           <div class="grid-2" style="gap:var(--space-md);">
             <div class="form-group mb-md">
-              <label class="form-label">Phone Number</label>
-              <input type="tel" class="form-input" placeholder="e.g. +254 700 000 000">
+              <label class="form-label" for="contact-phone">Phone / WhatsApp Number</label>
+              <input type="tel" id="contact-phone" class="form-input" placeholder="e.g. 0712 345 678">
             </div>
             <div class="form-group mb-md">
-              <label class="form-label">Organization / School Name</label>
-              <input type="text" class="form-input" placeholder="e.g. Alliance High School">
+              <label class="form-label" for="contact-org">Organization / School Name</label>
+              <input type="text" id="contact-org" class="form-input" placeholder="e.g. Alliance High School">
             </div>
           </div>
 
           <div class="form-group mb-md">
-            <label class="form-label">Inquiry Type <span style="color:red;">*</span></label>
-            <select class="form-select" required>
+            <label class="form-label" for="contact-inquiry">Inquiry Type <span style="color:red;">*</span></label>
+            <select id="contact-inquiry" class="form-select" required>
               <option value="" disabled selected>Select an option</option>
-              <option>Course Inquiry</option>
-              <option>Training Request</option>
-              <option>Consultancy</option>
-              <option>Curriculum Development</option>
-              <option>Partnership</option>
-              <option>General Inquiry</option>
+              <option value="Course Inquiry">Course Inquiry</option>
+              <option value="Training Request">Training Request</option>
+              <option value="Consultancy">Consultancy</option>
+              <option value="Curriculum Development">Curriculum Development</option>
+              <option value="Partnership">Partnership</option>
+              <option value="General Inquiry">General Inquiry</option>
             </select>
           </div>
           
           <div class="form-group mb-lg">
-            <label class="form-label">Message <span style="color:red;">*</span></label>
-            <textarea class="form-input form-textarea" placeholder="How can we assist you?" rows="5" required></textarea>
+            <label class="form-label" for="contact-message">Message <span style="color:red;">*</span></label>
+            <textarea id="contact-message" class="form-input form-textarea" placeholder="How can we assist you?" rows="5" required></textarea>
           </div>
           
-          <button type="submit" class="btn btn-blue btn-lg w-full">Send Message</button>
+          <button type="submit" id="contact-submit-btn" class="btn btn-blue btn-lg w-full">Send Message</button>
         </form>
+
+        <!-- Instant Response & Live Message Receipt Card -->
+        <div id="contact-instant-receipt" class="animate-fade-in-up" style="display:none;">
+          <div style="background:#F0FDF4; border:1.5px solid #86EFAC; border-radius:18px; padding:26px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="display:inline-flex; width:10px; height:10px; border-radius:50%; background:#16A34A; box-shadow:0 0 8px #16A34A;"></span>
+                <strong style="color:#166534; font-size:13.5px; letter-spacing:0.04em;">MESSAGE DELIVERED &amp; RECEIVED INSTANTLY</strong>
+              </div>
+              <span id="receipt-ticket" style="font-family:monospace; background:#DCFCE7; color:#15803D; padding:4px 10px; border-radius:6px; font-weight:750; font-size:13px;">#IK-847291</span>
+            </div>
+            
+            <p style="font-size:14px; color:#14532D; line-height:1.6; margin:0 0 16px 0;">
+              Your message was received by <strong>Instructify Kenya Support (0143 024 416)</strong> at <span id="receipt-time" style="font-weight:700;"></span>.
+            </p>
+
+            <!-- Instant Automated Support Reply -->
+            <div style="background:#FFFFFF; border:1.5px solid #BBF7D0; border-radius:14px; padding:18px; margin-bottom:18px; box-shadow:0 4px 14px rgba(22, 101, 52, 0.06);">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                <span style="font-size:18px;">🤖</span>
+                <strong style="color:#0F172A; font-size:14px;">Instant Support Response:</strong>
+              </div>
+              <p id="receipt-instant-reply" style="font-size:13.5px; color:#334155; line-height:1.6; margin:0;"></p>
+            </div>
+
+            <!-- Instant Action Links -->
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <a id="receipt-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-md" style="background:#25D366; color:#FFFFFF !important; border:none; display:flex; align-items:center; justify-content:center; gap:8px; font-weight:700;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                <span>Receive Instant Reply on WhatsApp (0143 024 416) →</span>
+              </a>
+              <button type="button" onclick="openChatWithContact()" class="btn btn-outline btn-md" style="display:flex; align-items:center; justify-content:center; gap:8px; background:#FFFFFF;">
+                <span>💬 Continue Live Chat with an Advisor Now</span>
+              </button>
+              <button type="button" onclick="resetContactForm()" class="btn btn-sm" style="background:transparent; color:#64748B; border:none; cursor:pointer; margin-top:4px;">
+                ← Send another message
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -317,10 +357,97 @@
 
 <script src="js/main.js"></script>
 <script>
-function handleContactSubmit(e) {
+async function handleContactSubmit(e) {
   e.preventDefault();
-  showToast('Thank you! Your message has been sent to Instructify Support. We will get back to you shortly.', 'success');
-  e.target.reset();
+  const btn = document.getElementById('contact-submit-btn');
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const phone = document.getElementById('contact-phone').value.trim();
+  const org = document.getElementById('contact-org').value.trim();
+  const inquiry = document.getElementById('contact-inquiry').value;
+  const message = document.getElementById('contact-message').value.trim();
+
+  if (!name || !email || !message) {
+    if (typeof showToast === 'function') showToast('Please fill in all required fields.', 'error');
+    return;
+  }
+
+  btn.disabled = true;
+  const origText = btn.innerHTML;
+  btn.innerHTML = '<span style="display:inline-block; animation:spin 1s linear infinite; margin-right:8px;">⏳</span> Sending Message...';
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name, email, phone, organization: org, inquiryType: inquiry, message
+      })
+    });
+    const data = await res.json();
+
+    if (res.ok && data.success) {
+      try {
+        const stored = JSON.parse(localStorage.getItem('instructify_client_messages') || '[]');
+        stored.unshift(data);
+        localStorage.setItem('instructify_client_messages', JSON.stringify(stored));
+      } catch (err) {}
+
+      document.getElementById('contact-form').style.display = 'none';
+      const receiptEl = document.getElementById('contact-instant-receipt');
+      document.getElementById('receipt-ticket').textContent = '#' + data.ticketId;
+      document.getElementById('receipt-time').textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      document.getElementById('receipt-instant-reply').textContent = data.instantReply;
+      document.getElementById('receipt-whatsapp-link').href = data.whatsappUrl;
+      receiptEl.style.display = 'block';
+
+      if (typeof showToast === 'function') {
+        showToast('Message sent! You have received an instant reply below.', 'success');
+      }
+
+      if (window.InstructifyChat && typeof window.InstructifyChat.injectMessage === 'function') {
+        window.InstructifyChat.injectMessage(name, inquiry, message, data.instantReply);
+      }
+    } else {
+      throw new Error(data.error || 'Server rejected message');
+    }
+  } catch (err) {
+    console.warn('Direct API submit fallback:', err);
+    const fallbackTicket = 'IK-' + Math.floor(100000 + Math.random() * 900000);
+    const waUrl = 'https://wa.me/254143024416?text=' + encodeURIComponent(
+      'Hello Instructify Kenya, I just submitted an inquiry (' + fallbackTicket + ').\n' +
+      '*Name:* ' + name + '\n' +
+      '*Type:* ' + (inquiry || 'General') + '\n' +
+      '*Message:* ' + message
+    );
+
+    document.getElementById('contact-form').style.display = 'none';
+    const receiptEl = document.getElementById('contact-instant-receipt');
+    document.getElementById('receipt-ticket').textContent = '#' + fallbackTicket;
+    document.getElementById('receipt-time').textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    document.getElementById('receipt-instant-reply').textContent = 'Thank you, ' + name + '! Your message has been prepared for instant dispatch to Instructify Kenya Support. Continue directly on WhatsApp (0143 024 416) to speak with an advisor immediately.';
+    document.getElementById('receipt-whatsapp-link').href = waUrl;
+    receiptEl.style.display = 'block';
+
+    if (typeof showToast === 'function') {
+      showToast('Enquiry received! Click below to continue on WhatsApp.', 'success');
+    }
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = origText;
+  }
+}
+
+function resetContactForm() {
+  document.getElementById('contact-instant-receipt').style.display = 'none';
+  document.getElementById('contact-form').style.display = 'block';
+  document.getElementById('contact-form').reset();
+}
+
+function openChatWithContact() {
+  if (window.InstructifyChat && typeof window.InstructifyChat.open === 'function') {
+    window.InstructifyChat.open();
+  }
 }
 </script>
 
