@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/live-chat.css">
 </head>
 <body>
 
@@ -492,5 +493,7 @@ function renderEnrolledCourses() {
   container.innerHTML = courses.map(c => window.renderCourseCard(c)).join('');
 }
 </script>
+  <script src="js/chat-config.js"></script>
+  <script src="js/live-chat.js"></script>
 </body>
 </html>
