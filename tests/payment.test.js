@@ -10,10 +10,10 @@
 
 import assert from 'node:assert/strict';
 import { createHmac } from 'node:crypto';
-import { normalisePhone, isSafaricomNumber, validateKenyanPhone, maskPhone } from '../api/_lib/phone.js';
-import { getDarajaConfig, generateDarajaTimestamp, generateDarajaPassword, initiateStkPush } from '../api/_lib/daraja.js';
-import { getCourse, validateAmount } from '../api/_lib/courses-config.js';
-import { storeGet, storeSet, storeDel, generateOrderRef, generateId } from '../api/_lib/store.js';
+import { normalisePhone, isSafaricomNumber, validateKenyanPhone, maskPhone } from '../lib/phone.js';
+import { getDarajaConfig, generateDarajaTimestamp, generateDarajaPassword, initiateStkPush } from '../lib/daraja.js';
+import { getCourse, validateAmount } from '../lib/courses-config.js';
+import { storeGet, storeSet, storeDel, generateOrderRef, generateId } from '../lib/store.js';
 import createOrderHandler from '../api/create-order.js';
 import initiatePaymentHandler from '../api/initiate-payment.js';
 import webhookMpesaHandler from '../api/webhook/mpesa.js';

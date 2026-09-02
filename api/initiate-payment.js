@@ -20,10 +20,10 @@
 
 'use strict';
 
-import { storeGet, storeSet, generateId } from './_lib/store.js';
-import { initiateStkPush } from './_lib/daraja.js';
-import { initializeCardPayment } from './_lib/paystack.js';
-import { validateKenyanPhone, maskPhone } from './_lib/phone.js';
+import { storeGet, storeSet, generateId } from '../lib/store.js';
+import { initiateStkPush } from '../lib/daraja.js';
+import { initializeCardPayment } from '../lib/paystack.js';
+import { validateKenyanPhone, maskPhone } from '../lib/phone.js';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',

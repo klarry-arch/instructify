@@ -25,8 +25,8 @@
 
 'use strict';
 
-import { verifyWebhookSignature, sanitiseTransaction } from '../_lib/paystack.js';
-import { storeGet, storeSet, storeSetHas, storeSetAdd, generateId } from '../_lib/store.js';
+import { verifyWebhookSignature, sanitiseTransaction } from '../../lib/paystack.js';
+import { storeGet, storeSet, storeSetHas, storeSetAdd, generateId } from '../../lib/store.js';
 
 function json(status, body = {}) {
   return new Response(JSON.stringify(body), {

@@ -5,7 +5,7 @@
 
 'use strict';
 
-import { storeSet, storeGet } from './_lib/store.js';
+import { storeSet, storeGet } from '../lib/store.js';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
