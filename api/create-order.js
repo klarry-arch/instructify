@@ -15,10 +15,10 @@
 
 'use strict';
 
-import { getCourse } from './lib/courses-config.js';
+import { getCourse } from './_lib/courses-config.js';
 import {
   storeGet, storeSet, storeSetHas, generateOrderRef, generateId,
-} from './lib/store.js';
+} from './_lib/store.js';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',

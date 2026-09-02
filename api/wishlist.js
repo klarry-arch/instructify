@@ -10,7 +10,7 @@
 
 'use strict';
 
-import { storeSetAdd, storeSetHas, storeSetRemove, storeSetMembers } from './lib/store.js';
+import { storeSetAdd, storeSetHas, storeSetRemove, storeSetMembers } from './_lib/store.js';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',

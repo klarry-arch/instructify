@@ -6,8 +6,8 @@
 
 'use strict';
 
-import { storeGet, storeSet, storeSetAdd, generateId } from './lib/store.js';
-import { queryStkPushStatus } from './lib/daraja.js';
+import { storeGet, storeSet, storeSetAdd, generateId } from './_lib/store.js';
+import { queryStkPushStatus } from './_lib/daraja.js';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
