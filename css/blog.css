@@ -1,6 +1,6 @@
 /* ============================================================
    INSTRUCTIFY KENYA — KNOWLEDGE HUB & BLOG STYLES v1.0
-   Brand Colors: #305CDE (Primary) · #14B8A6 (Secondary) · #8B5CF6 (Accent) · #D97706 (Amber)
+   Brand Colors: #2145E6 (Primary) · #3C3DDC (Secondary) · #FF4D00 (Accent) · #D97706 (Amber)
    ============================================================ */
 
 /* ══════════════════════════════════════════════════════════════
@@ -12,7 +12,7 @@
   left: 0;
   height: 4px;
   width: 0%;
-  background: linear-gradient(90deg, #305CDE, #14B8A6, #8B5CF6);
+  background: linear-gradient(90deg, #2145E6, #3C3DDC, #FF4D00);
   z-index: 9999;
   transition: width 0.1s linear;
 }
@@ -22,7 +22,7 @@
    ══════════════════════════════════════════════════════════════ */
 .blog-hero {
   position: relative;
-  background: linear-gradient(135deg, #091929 0%, #17326B 45%, #305CDE 85%, #4F7AF7 100%);
+  background: linear-gradient(135deg, #091929 0%, #17326B 45%, #2145E6 85%, #3C3DDC 100%);
   color: #FFFFFF;
   padding-top: calc(var(--nav-height) + 54px);
   padding-bottom: 72px;
@@ -37,7 +37,7 @@
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.20) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 77, 0, 0.20) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -49,7 +49,7 @@
   width: 450px;
   height: 450px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(20, 184, 166, 0.20) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(60, 61, 220, 0.20) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -118,8 +118,8 @@
 
 .featured-article-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 48px -12px rgba(48, 92, 222, 0.18);
-  border-color: #305CDE;
+  box-shadow: 0 24px 48px -12px rgba(33, 69, 230, 0.18);
+  border-color: #2145E6;
 }
 
 .featured-content-side {
@@ -131,7 +131,7 @@
 
 .featured-image-side {
   position: relative;
-  background: linear-gradient(135deg, #091929 0%, #1E3A8A 60%, #305CDE 100%);
+  background: linear-gradient(135deg, #091929 0%, #1E3A8A 60%, #2145E6 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,7 +170,7 @@
 }
 
 .featured-title a:hover {
-  color: #305CDE;
+  color: #2145E6;
 }
 
 .featured-excerpt {
@@ -191,7 +191,7 @@
   height: 44px;
   border-radius: 50%;
   background: #EEF2FF;
-  color: #305CDE;
+  color: #2145E6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -241,9 +241,9 @@
 }
 
 .blog-search-input:focus {
-  border-color: #305CDE;
+  border-color: #2145E6;
   background: #FFFFFF;
-  box-shadow: 0 0 0 4px rgba(48, 92, 222, 0.12);
+  box-shadow: 0 0 0 4px rgba(33, 69, 230, 0.12);
 }
 
 .blog-category-pills {
@@ -279,9 +279,9 @@
 }
 
 .blog-cat-pill.active {
-  background: #305CDE;
+  background: #2145E6;
   color: #FFFFFF;
-  box-shadow: 0 4px 12px -2px rgba(48, 92, 222, 0.35);
+  box-shadow: 0 4px 12px -2px rgba(33, 69, 230, 0.35);
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -342,8 +342,8 @@
 
 .article-card:hover {
   transform: translateY(-8px);
-  border-color: var(--art-accent, #305CDE);
-  box-shadow: 0 20px 35px -10px var(--art-glow, rgba(48, 92, 222, 0.18));
+  border-color: var(--art-accent, #2145E6);
+  box-shadow: 0 20px 35px -10px var(--art-glow, rgba(33, 69, 230, 0.18));
 }
 
 .article-card-title {
@@ -364,7 +364,7 @@
 }
 
 .article-card-title a:hover {
-  color: #305CDE;
+  color: #2145E6;
 }
 
 .article-card-excerpt {
@@ -392,7 +392,7 @@
    6. ARTICLE DETAIL PAGE (Editorial Reader)
    ══════════════════════════════════════════════════════════════ */
 .article-detail-header {
-  background: linear-gradient(135deg, #091929 0%, #17326B 60%, #305CDE 100%);
+  background: linear-gradient(135deg, #091929 0%, #17326B 60%, #2145E6 100%);
   color: #FFFFFF;
   padding: calc(var(--nav-height) + 48px) 0 64px;
 }
@@ -432,7 +432,7 @@
 }
 
 .article-body-content blockquote {
-  border-left: 4px solid #305CDE;
+  border-left: 4px solid #2145E6;
   background: #F8FAFC;
   padding: 20px 24px;
   margin: 32px 0;
@@ -488,13 +488,13 @@
 }
 
 .article-resource-box:hover {
-  border-color: #305CDE;
+  border-color: #2145E6;
   background: #F8FAFC;
 }
 
 /* ── Podcast Cross-Link Box ── */
 .article-podcast-box {
-  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #305CDE 100%);
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #2145E6 100%);
   color: #FFFFFF;
   border-radius: 20px;
   padding: 32px;

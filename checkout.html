@@ -14,7 +14,7 @@
   <style>
     .checkout-page {
       min-height: 100vh;
-      background: linear-gradient(135deg, #091929 0%, #305CDE 60%, #4F7AF7 100%);
+      background: linear-gradient(135deg, #091929 0%, #2145E6 60%, #3C3DDC 100%);
       padding: calc(var(--nav-height, 72px) + 2rem) 0 4rem;
     }
     .checkout-container {
@@ -45,7 +45,7 @@
     .order-card-title { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; line-height: 1.35; margin-bottom: 1.5rem; }
     .order-card-divider { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 1rem 0; }
     .order-card-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: rgba(255,255,255,0.75); margin-bottom: 8px; }
-    .order-card-total { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #8B5CF6; line-height: 1; }
+    .order-card-total { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #FF4D00; line-height: 1; }
     .order-card-original { font-size: 0.85rem; color: rgba(255,255,255,0.4); text-decoration: line-through; margin-top: 2px; }
     .order-guarantee { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
 
@@ -73,7 +73,7 @@
       background: #F9FAFB; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
       box-sizing: border-box;
     }
-    .field-input:focus { border-color: #305CDE; box-shadow: 0 0 0 3px rgba(30,58,138,0.1); background: #fff; }
+    .field-input:focus { border-color: #2145E6; box-shadow: 0 0 0 3px rgba(30,58,138,0.1); background: #fff; }
     .field-input.error { border-color: #DC2626; }
     .field-error { font-size: 0.78rem; color: #DC2626; margin-top: 4px; display: none; }
     .field-error.visible { display: block; }
@@ -88,11 +88,11 @@
       border-radius: 12px; background: #F9FAFB; cursor: pointer;
       transition: all 0.2s; text-align: center;
     }
-    .pay-method-tab:hover { border-color: #305CDE; }
-    .pay-method-tab.active { border-color: #305CDE; background: #E8F0F8; }
+    .pay-method-tab:hover { border-color: #2145E6; }
+    .pay-method-tab.active { border-color: #2145E6; background: #E8F0F8; }
     .pay-method-tab .tab-icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
     .pay-method-tab .tab-name { font-size: 0.7rem; font-weight: 700; color:var(--text-muted, #475569); letter-spacing: 0.05em; text-transform: uppercase; }
-    .pay-method-tab.active .tab-name { color: #305CDE; }
+    .pay-method-tab.active .tab-name { color: #2145E6; }
     .pay-panel { display: none; }
     .pay-panel.active { display: block; }
 
@@ -103,7 +103,7 @@
     .status-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem; }
     .status-sub { color:var(--text-muted, #475569); font-size: 0.9rem; line-height: 1.6; max-width: 360px; margin: 0 auto 1.5rem; }
     .status-ref { font-size: 0.8rem; color:#CBD5E1; background: #EEF4FB; border-radius: 8px; padding: 8px 14px; display: inline-block; margin-bottom: 1.5rem; }
-    .status-ref strong { color: #305CDE; }
+    .status-ref strong { color: #2145E6; }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     /* ── Submit button ── */
@@ -120,12 +120,12 @@
     .btn-enroll:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
     .btn-secondary-outline {
       width: 100%; padding: 13px;
-      background: transparent; color: #305CDE;
+      background: transparent; color: #2145E6;
       border: 1.5px solid #CBD5E1; border-radius: 99px;
       font-weight: 700; font-size: 0.9rem; cursor: pointer;
       transition: all 0.2s; margin-top: 10px;
     }
-    .btn-secondary-outline:hover { border-color: #305CDE; background: #E8F0F8; }
+    .btn-secondary-outline:hover { border-color: #2145E6; background: #E8F0F8; }
 
     /* ── SSL badge ── */
     .ssl-badge { text-align: center; font-size: 0.75rem; color:#CBD5E1; margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
@@ -150,7 +150,7 @@
       <li><a href="about.html" class="nav-link" data-nav="about">About Us</a></li>
       <li><a href="courses.html" class="nav-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a></li>
       <li><a href="podcast.html" class="nav-link" data-nav="podcast">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></a></li>
-      <li><a href="blog.html" class="nav-link" data-nav="blog">Blog <span class="nav-badge badge-teal">Hub</span></a></li>
+      <li><a href="blog.html" class="nav-link" data-nav="blog">Blog <span class="nav-badge badge-blue">Hub</span></a></li>
       <li><a href="consultancy.html" class="nav-link" data-nav="consultancy">Consultancy</a></li>
       <li><a href="resources.html" class="nav-link" data-nav="resources">Resources</a></li>
       <li><a href="schools.html" class="nav-link" data-nav="schools">Institutions</a></li>
@@ -175,7 +175,7 @@
     <a href="about.html" class="nav-mobile-link" data-nav="about">About Us</a>
     <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
     <a href="podcast.html" class="nav-mobile-link" data-nav="podcast">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></a>
-    <a href="blog.html" class="nav-link-blog nav-mobile-link" data-nav="blog">Blog <span class="nav-badge badge-teal">Hub</span></a>
+    <a href="blog.html" class="nav-link-blog nav-mobile-link" data-nav="blog">Blog <span class="nav-badge badge-blue">Hub</span></a>
     <a href="consultancy.html" class="nav-mobile-link" data-nav="consultancy">Consultancy</a>
     <a href="resources.html" class="nav-mobile-link" data-nav="resources">Resources</a>
     <a href="schools.html" class="nav-mobile-link" data-nav="schools">Institutions</a>
@@ -213,7 +213,7 @@
 
         <!-- ── State: initializing ── -->
         <div id="screen-loading" class="status-screen">
-          <div class="status-icon spin" style="background:#E8F0F8;border:3px solid #305CDE;">⏳</div>
+          <div class="status-icon spin" style="background:#E8F0F8;border:3px solid #2145E6;">⏳</div>
           <div class="status-title">Preparing your checkout…</div>
           <div class="status-sub">Please wait while we load your order details.</div>
         </div>
@@ -303,7 +303,7 @@
 
         <!-- ── State: processing / polling ── -->
         <div id="screen-processing" class="status-screen" style="display:none;">
-          <div class="status-icon spin" style="background:var(--primary-bg, #EEF3FF);border:3px solid var(--primary, #305CDE);font-size:2rem;">⏳</div>
+          <div class="status-icon spin" style="background:var(--primary-bg, #EEF3FF);border:3px solid var(--primary, #2145E6);font-size:2rem;">⏳</div>
           <div class="status-title" id="processing-title">Check your phone to complete payment</div>
           <div class="status-sub" id="processing-sub">
             An M-Pesa payment request has been sent to <strong id="processing-phone-masked">your phone</strong>. Enter your M-Pesa PIN on your phone to authorize the payment. Do not close this page.
@@ -312,7 +312,7 @@
             Order: <strong id="processing-ref">—</strong> &nbsp;·&nbsp; Amount: <strong id="processing-amount">KES 8,500</strong>
           </div>
           <div style="width:100%;background:#E2E8F0;border-radius:99px;height:4px;overflow:hidden;max-width:320px;margin:0 auto 1.75rem;">
-            <div id="progress-bar" style="height:100%;background:var(--primary, #305CDE);border-radius:99px;width:0;transition:width 90s linear;"></div>
+            <div id="progress-bar" style="height:100%;background:var(--primary, #2145E6);border-radius:99px;width:0;transition:width 90s linear;"></div>
           </div>
           
           <!-- Actions -->
@@ -349,7 +349,7 @@
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
               <span style="color:#64748B;">M-Pesa Receipt:</span>
-              <strong id="success-receipt" style="color:#305CDE;font-family:monospace;font-weight:700;">—</strong>
+              <strong id="success-receipt" style="color:#2145E6;font-family:monospace;font-weight:700;">—</strong>
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
               <span style="color:#64748B;">Amount Paid:</span>
@@ -377,7 +377,7 @@
           <button class="btn-enroll" onclick="retryCheckout()" style="margin-top:0.5rem;max-width:320px;width:100%;">Try Again</button>
           <button class="btn-secondary-outline" onclick="window.location.href='courses.html'" style="max-width:320px;width:100%;margin-top:8px;">Browse Courses</button>
           <p style="font-size:0.8rem;color:#64748B;margin-top:1.25rem;">
-            Need help? <a href="contact.html" style="color:#305CDE;font-weight:600;">Contact support</a> with your order reference.
+            Need help? <a href="contact.html" style="color:#2145E6;font-weight:600;">Contact support</a> with your order reference.
           </p>
         </div>
 

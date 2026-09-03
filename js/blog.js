@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     articlesGrid.innerHTML = articles.map(art => {
       const author = BLOG_INFO.authors[art.authorId] || { name: "Instructify Editorial", title: "Educator", initials: "IE" };
       return `
-        <article class="article-card" style="--art-accent:${art.themeColor}; --art-glow:rgba(48,92,222,0.18);">
+        <article class="article-card" style="--art-accent:${art.themeColor}; --art-glow:rgba(33, 69, 230,0.18);">
           <img src="${art.coverImage}" alt="${art.title}" class="article-card-cover" loading="lazy">
           <div class="article-card-body">
             <div>

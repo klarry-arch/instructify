@@ -1,6 +1,6 @@
 /* ============================================================
    INSTRUCTIFY KENYA — ANIMATIONS & MICRO-INTERACTIONS v5.0
-   Brand: #305CDE · #14B8A6 · #8B5CF6
+   Brand: #2145E6 · #3C3DDC · #FF4D00
    ============================================================ */
 
 /* ══════════════════════════════════════════════════════════════
@@ -52,8 +52,8 @@
 }
 
 @keyframes pulseBorder {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(48, 92, 222, 0.4); }
-  50%       { box-shadow: 0 0 0 8px rgba(48, 92, 222, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(33, 69, 230, 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(33, 69, 230, 0); }
 }
 
 @keyframes spin {
@@ -83,18 +83,18 @@
 }
 
 @keyframes glow-pulse-blue {
-  0%, 100% { box-shadow: 0 0 20px rgba(48, 92, 222, 0.20); }
-  50%       { box-shadow: 0 0 50px rgba(48, 92, 222, 0.45), 0 0 90px rgba(48, 92, 222, 0.15); }
+  0%, 100% { box-shadow: 0 0 20px rgba(33, 69, 230, 0.20); }
+  50%       { box-shadow: 0 0 50px rgba(33, 69, 230, 0.45), 0 0 90px rgba(33, 69, 230, 0.15); }
 }
 
 @keyframes glow-pulse-teal {
-  0%, 100% { box-shadow: 0 0 20px rgba(20, 184, 166, 0.20); }
-  50%       { box-shadow: 0 0 50px rgba(20, 184, 166, 0.45), 0 0 90px rgba(20, 184, 166, 0.15); }
+  0%, 100% { box-shadow: 0 0 20px rgba(60, 61, 220, 0.20); }
+  50%       { box-shadow: 0 0 50px rgba(60, 61, 220, 0.45), 0 0 90px rgba(60, 61, 220, 0.15); }
 }
 
 @keyframes glow-pulse-purple {
-  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.20); }
-  50%       { box-shadow: 0 0 50px rgba(139, 92, 246, 0.45), 0 0 90px rgba(139, 92, 246, 0.15); }
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 77, 0, 0.20); }
+  50%       { box-shadow: 0 0 50px rgba(255, 77, 0, 0.45), 0 0 90px rgba(255, 77, 0, 0.15); }
 }
 
 @keyframes border-spin {
@@ -244,12 +244,12 @@
   transition: box-shadow 0.25s ease;
 }
 .hover-glow-blue:hover {
-  box-shadow: 0 0 24px rgba(48, 92, 222, 0.30);
+  box-shadow: 0 0 24px rgba(33, 69, 230, 0.30);
 }
 
 /* Focus Ring Override */
 .focus-ring:focus-visible {
-  outline: 3px solid rgba(48, 92, 222, 0.50);
+  outline: 3px solid rgba(33, 69, 230, 0.50);
   outline-offset: 2px;
 }
 
@@ -286,7 +286,7 @@
 
 /* Gradient Animated Background */
 .gradient-animated {
-  background: linear-gradient(270deg, #305CDE, #4F6EF0, #8B5CF6, #14B8A6);
+  background: linear-gradient(270deg, #2145E6, #2145E6, #FF4D00, #3C3DDC);
   background-size: 400% 400%;
   animation: gradient-shift 8s ease infinite;
 }

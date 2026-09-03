@@ -56,8 +56,8 @@ const PODCAST_EPISODES = [
     durationSeconds: 2520,
     audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg", // Sample audio placeholder
     featured: true,
-    coverColor: "linear-gradient(135deg, #091929 0%, #1E3A8A 60%, #305CDE 100%)",
-    themeColor: "#305CDE",
+    coverColor: "linear-gradient(135deg, #091929 0%, #1E3A8A 60%, #2145E6 100%)",
+    themeColor: "#2145E6",
     guest: {
       name: "Dr. Angela Mutua",
       title: "Senior AI Researcher & EdTech Advisor",
@@ -104,8 +104,8 @@ const PODCAST_EPISODES = [
     durationSeconds: 2280,
     audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
     featured: true,
-    coverColor: "linear-gradient(135deg, #064E3B 0%, #0D9488 60%, #14B8A6 100%)",
-    themeColor: "#0D9488",
+    coverColor: "linear-gradient(135deg, #064E3B 0%, #183AD6 60%, #3C3DDC 100%)",
+    themeColor: "#183AD6",
     guest: {
       name: "Michael Otieno",
       title: "Curriculum Innovation Specialist & Former KICD Consultant",
@@ -147,8 +147,8 @@ const PODCAST_EPISODES = [
     durationSeconds: 2700,
     audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
     featured: true,
-    coverColor: "linear-gradient(135deg, #3B0764 0%, #6D28D9 60%, #8B5CF6 100%)",
-    themeColor: "#8B5CF6",
+    coverColor: "linear-gradient(135deg, #3B0764 0%, #CC3E00 60%, #FF4D00 100%)",
+    themeColor: "#FF4D00",
     guest: {
       name: "Sarah Wanjiku",
       title: "Chief People & Talent Officer",
@@ -271,7 +271,7 @@ const PODCAST_EPISODES = [
     durationSeconds: 2880,
     audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
     featured: false,
-    coverColor: "linear-gradient(135deg, #1E1B4B 0%, #4338CA 60%, #6366F1 100%)",
+    coverColor: "linear-gradient(135deg, #1E1B4B 0%, #4338CA 60%, #2145E6 100%)",
     themeColor: "#4F46E5",
     guest: {
       name: "Prof. Julius Kariuki",
@@ -305,7 +305,7 @@ const PODCAST_VOICES = [
     org: "African Institute for Future Intelligence",
     tag: "Technology & AI",
     avatarBg: "linear-gradient(135deg, #EEF2FF 0%, #DBEAFE 100%)",
-    accentColor: "#305CDE",
+    accentColor: "#2145E6",
     initials: "AM",
     episodeId: "ep-01"
   },
@@ -315,7 +315,7 @@ const PODCAST_VOICES = [
     org: "Center for Educational Transformation",
     tag: "CBE & Curriculum",
     avatarBg: "linear-gradient(135deg, #CCFBF1 0%, #99F6E4 100%)",
-    accentColor: "#0D9488",
+    accentColor: "#183AD6",
     initials: "MO",
     episodeId: "ep-02"
   },
@@ -325,7 +325,7 @@ const PODCAST_VOICES = [
     org: "FinTech Horizons Africa",
     tag: "Leadership & Skills",
     avatarBg: "linear-gradient(135deg, #F3EEFF 0%, #DDD6FE 100%)",
-    accentColor: "#8B5CF6",
+    accentColor: "#FF4D00",
     initials: "SW",
     episodeId: "ep-03"
   },

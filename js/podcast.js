@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     episodesGrid.innerHTML = episodes.map(ep => {
       const isCurPlaying = isPlaying && currentEpisode && currentEpisode.id === ep.id;
       return `
-        <div class="ep-card" style="--ep-accent:${ep.themeColor}; --ep-glow:rgba(48,92,222,0.18);">
+        <div class="ep-card" style="--ep-accent:${ep.themeColor}; --ep-glow:rgba(33, 69, 230,0.18);">
           <div>
             <div class="ep-card-header">
               <span class="ep-badge blue">${ep.category}</span>

@@ -1,6 +1,6 @@
 /* ============================================================
    INSTRUCTIFY KENYA — HOMEPAGE STYLES v5.0
-   Hero gradient: #305CDE → #4F6EF0 → #8B5CF6
+   Hero gradient: #183AD6 → #2145E6 → #3C3DDC
    ============================================================ */
 
 /* ══════════════════════════════════════════════════════════════
@@ -39,7 +39,7 @@
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(20,184,166,0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(60, 61, 220,0.12) 0%, transparent 70%);
   pointer-events: none;
   animation: heroGlow 10s ease-in-out infinite reverse;
 }
@@ -231,7 +231,7 @@
   height: 460px;
   object-fit: cover;
   border-radius: var(--radius-2xl);
-  box-shadow: 0 32px 64px rgba(0,0,0,0.25), 0 8px 24px rgba(48,92,222,0.20);
+  box-shadow: 0 32px 64px rgba(0,0,0,0.25), 0 8px 24px rgba(33, 69, 230,0.20);
 }
 
 /* ── Floating Cards ── */
@@ -396,14 +396,14 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--card-accent, #305CDE);
+  background: var(--card-accent, #2145E6);
   transition: height 0.3s ease, opacity 0.3s ease;
 }
 
 .learning-step-card:hover {
   transform: translateY(-8px);
-  border-color: var(--card-accent, #305CDE);
-  box-shadow: 0 20px 35px -10px var(--card-glow, rgba(48, 92, 222, 0.20)), 0 8px 16px -4px rgba(15, 23, 42, 0.04);
+  border-color: var(--card-accent, #2145E6);
+  box-shadow: 0 20px 35px -10px var(--card-glow, rgba(33, 69, 230, 0.20)), 0 8px 16px -4px rgba(15, 23, 42, 0.04);
 }
 
 .learning-step-card:hover::before {
@@ -458,22 +458,22 @@
 
 /* Specific Step Color Themes */
 .card-blue {
-  --card-accent: #305CDE;
-  --card-glow: rgba(48, 92, 222, 0.22);
+  --card-accent: #2145E6;
+  --card-glow: rgba(33, 69, 230, 0.22);
 }
 .card-blue .step-icon-box {
   background: linear-gradient(135deg, #EEF2FF 0%, #DBEAFE 100%);
-  border: 1px solid rgba(48, 92, 222, 0.2);
-  box-shadow: 0 8px 16px -4px rgba(48, 92, 222, 0.22);
+  border: 1px solid rgba(33, 69, 230, 0.2);
+  box-shadow: 0 8px 16px -4px rgba(33, 69, 230, 0.22);
 }
 .card-blue .step-badge {
   background: #EEF2FF;
-  color: #254BC4;
-  border: 1px solid rgba(48, 92, 222, 0.2);
+  color: #183AD6;
+  border: 1px solid rgba(33, 69, 230, 0.2);
 }
 
 .card-teal {
-  --card-accent: #0D9488;
+  --card-accent: #183AD6;
   --card-glow: rgba(13, 148, 136, 0.22);
 }
 .card-teal .step-icon-box {
@@ -488,18 +488,18 @@
 }
 
 .card-purple {
-  --card-accent: #8B5CF6;
-  --card-glow: rgba(139, 92, 246, 0.22);
+  --card-accent: #FF4D00;
+  --card-glow: rgba(255, 77, 0, 0.22);
 }
 .card-purple .step-icon-box {
   background: linear-gradient(135deg, #F3EEFF 0%, #DDD6FE 100%);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  box-shadow: 0 8px 16px -4px rgba(139, 92, 246, 0.22);
+  border: 1px solid rgba(255, 77, 0, 0.2);
+  box-shadow: 0 8px 16px -4px rgba(255, 77, 0, 0.22);
 }
 .card-purple .step-badge {
   background: #F3EEFF;
-  color: #6D28D9;
-  border: 1px solid rgba(139, 92, 246, 0.25);
+  color: #CC3E00;
+  border: 1px solid rgba(255, 77, 0, 0.25);
 }
 
 .card-amber {
@@ -546,7 +546,7 @@
 .pathway-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-xl);
-  border-color: rgba(48,92,222,0.22);
+  border-color: rgba(33, 69, 230,0.22);
 }
 .pathway-card:hover::before { transform: scaleX(1); }
 
@@ -651,7 +651,7 @@
 .support-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(48,92,222,0.20);
+  border-color: rgba(33, 69, 230,0.20);
 }
 
 .support-icon {
@@ -690,7 +690,7 @@
   top: -80px; right: -80px;
   width: 300px; height: 300px;
   border-radius: 50%;
-  background: rgba(48, 92, 222, 0.12);
+  background: rgba(33, 69, 230, 0.12);
   pointer-events: none;
 }
 

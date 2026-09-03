@@ -16,7 +16,7 @@
       grid-template-columns: 1fr 1fr;
     }
     .auth-panel-left {
-      background: linear-gradient(135deg, #305CDE 0%, #4F6EF0 60%, #8B5CF6 100%) !important;
+      background: linear-gradient(135deg, #2145E6 0%, #2145E6 60%, #FF4D00 100%) !important;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -44,7 +44,7 @@
       width: 400px;
       height: 400px;
       border-radius: 50%;
-      background: rgba(20, 184, 166, 0.15);
+      background: rgba(60, 61, 220, 0.15);
       filter: blur(80px);
     }
     .auth-panel-right {
@@ -63,8 +63,8 @@
     .auth-subheading { color: var(--text-muted, #64748B) !important; font-size: 14px; margin-bottom: 24px; }
     .role-selector { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
     .role-card { border: 2px solid #E2E8F0; border-radius: 12px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.2s ease; background: #FFFFFF; }
-    .role-card:hover { border-color: #305CDE; background: #EEF3FF; }
-    .role-card.selected { border-color: #305CDE; background: #EEF3FF; }
+    .role-card:hover { border-color: #2145E6; background: #EEF3FF; }
+    .role-card.selected { border-color: #2145E6; background: #EEF3FF; }
     .role-card-icon { font-size: 1.5rem; margin-bottom: 4px; }
     .role-card-name { font-size: 12px; font-weight: 700; color: #0F172A; }
     .role-card-desc { font-size: 0.65rem; color:var(--text-muted, #475569); margin-top: 2px; }
@@ -77,17 +77,17 @@
     .auth-feature-title { font-weight: 700; color: #FFFFFF !important; margin-bottom: 2px; }
     .auth-stat-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.18); position: relative; z-index: 1; }
     .auth-stat { text-align: center; }
-    .auth-stat-value { font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: #5EEAD4 !important; }
+    .auth-stat-value { font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: var(--cta-color, #F5812D) !important; }
     .auth-stat-label { font-size: 12px; color: rgba(255,255,255,0.82) !important; font-weight: 600; margin-top: 2px; }
     
     .tab-group { background: #E2E8F0 !important; padding: 4px; border-radius: 999px; display: flex; gap: 4px; margin-bottom: 28px; }
     .tab-btn { flex: 1; border: none; background: transparent; padding: 10px 20px; font-size: 14px; font-weight: 700; color:var(--text-muted, #475569) !important; border-radius: 999px; cursor: pointer; transition: all 0.2s ease; }
-    .tab-btn.active { background: #305CDE !important; color: #FFFFFF !important; box-shadow: 0 4px 14px rgba(48,92,222,0.35) !important; }
+    .tab-btn.active { background: #2145E6 !important; color: #FFFFFF !important; box-shadow: 0 4px 14px rgba(33, 69, 230,0.35) !important; }
     
     .form-label { color: #0F172A !important; font-weight: 700 !important; display: block; margin-bottom: 6px; }
     .form-input { background: #FFFFFF !important; border: 1.5px solid #E2E8F0 !important; color: #0F172A !important; font-weight: 500 !important; padding: 12px 16px; border-radius: 10px; width: 100%; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
-    .form-input:focus { border-color: #305CDE !important; box-shadow: 0 0 0 3px rgba(48,92,222,0.18) !important; }
-    .btn-outline { border: 1.5px solid #305CDE !important; color: #305CDE !important; background: #FFFFFF !important; font-weight: 700 !important; }
+    .form-input:focus { border-color: #2145E6 !important; box-shadow: 0 0 0 3px rgba(33, 69, 230,0.18) !important; }
+    .btn-outline { border: 1.5px solid #2145E6 !important; color: #2145E6 !important; background: #FFFFFF !important; font-weight: 700 !important; }
     .btn-outline:hover { background: #EEF3FF !important; }
     @media (max-width: 768px) { .auth-page { grid-template-columns: 1fr; } .auth-panel-left { display: none; } .auth-panel-right { padding: 32px 16px; } }
   </style>
@@ -106,7 +106,7 @@
       </div>
       <div class="nav-brand-text-box" style="display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 1px; white-space: nowrap; margin: 0; padding: 0; line-height: 1;">
         <span class="nav-brand-title" style="font-family: var(--font-heading); font-weight: 800; font-size: 1.35rem; color: #FFFFFF !important; letter-spacing: -0.03em; margin: 0; line-height: 1; display: block;">Instructify</span>
-        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #5EEAD4 !important; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 800; color: #FF4D00 !important; text-transform: uppercase; letter-spacing: 2px; margin: 0; line-height: 1; display: block;">KENYA</span>
       </div>
     </a>
 
@@ -191,7 +191,7 @@
           <div class="form-group mb-xl" style="margin-bottom:24px;">
             <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
               <label class="form-label" for="signin-password">Password</label>
-              <button type="button" onclick="showForgotPassword()" style="font-size:13px;color:#8B5CF6;background:none;border:none;cursor:pointer;font-weight:700">Forgot password?</button>
+              <button type="button" onclick="showForgotPassword()" style="font-size:13px;color:#FF4D00;background:none;border:none;cursor:pointer;font-weight:700">Forgot password?</button>
             </div>
             <div class="form-input-icon">
               <input type="password" id="signin-password" class="form-input" placeholder="Your password" required autocomplete="current-password">
@@ -199,7 +199,7 @@
           </div>
 
           <!-- Demo credentials hint -->
-          <div class="alert alert-info" style="margin-bottom:20px;font-size:13px;background:#E8F0F8;border:1px solid #93C5FD;padding:12px 16px;border-radius:8px;color:#305CDE;">
+          <div class="alert alert-info" style="margin-bottom:20px;font-size:13px;background:#E8F0F8;border:1px solid #93C5FD;padding:12px 16px;border-radius:8px;color:#2145E6;">
             <div>
               <strong>Demo accounts:</strong><br>
               Learner: learner@instructify.ke / Learn@2024<br>
@@ -208,7 +208,7 @@
             </div>
           </div>
 
-          <button type="submit" class="btn btn-blue btn-lg w-full" id="signin-btn" style="width:100%;background: #FFFFFF;color:#FFFFFF;font-weight:700;padding:12px;border-radius:8px;border:none;cursor:pointer;">
+          <button type="submit" class="btn btn-primary btn-lg w-full" id="signin-btn" style="width:100%;background:var(--cta-color, #F5812D);color:#FFFFFF;font-weight:700;padding:12px;border-radius:8px;border:none;cursor:pointer;box-shadow:var(--shadow-cta);">
             Sign In to Instructify
           </button>
         </form>
@@ -221,7 +221,7 @@
         </div>
 
         <p style="text-align:center;font-size:14px;color:var(--text-muted, #475569);">
-          Don't have an account? <button onclick="switchTab('signup')" style="color:#305CDE;background:none;border:none;cursor:pointer;font-weight:700">Create one free ↗</button>
+          Don't have an account? <button onclick="switchTab('signup')" style="color:#2145E6;background:none;border:none;cursor:pointer;font-weight:700">Create one free ↗</button>
         </p>
       </div>
 
@@ -280,13 +280,13 @@
             <input type="password" id="signup-password" class="form-input" placeholder="Min. 8 characters" required minlength="8">
           </div>
 
-          <button type="submit" class="btn btn-blue btn-lg w-full" id="signup-btn" style="width:100%;background: #FFFFFF;color:#FFFFFF;font-weight:700;padding:12px;border-radius:8px;border:none;cursor:pointer;">
+          <button type="submit" class="btn btn-primary btn-lg w-full" id="signup-btn" style="width:100%;background:var(--cta-color, #F5812D);color:#FFFFFF;font-weight:700;padding:12px;border-radius:8px;border:none;cursor:pointer;box-shadow:var(--shadow-cta);">
             Create Free Account
           </button>
         </form>
 
         <p style="text-align:center;font-size:14px;color:var(--text-muted, #475569);margin-top:20px;">
-          Already have an account? <button onclick="switchTab('signin')" style="color:#305CDE;background:none;border:none;cursor:pointer;font-weight:700">Sign in here ↗</button>
+          Already have an account? <button onclick="switchTab('signin')" style="color:#2145E6;background:none;border:none;cursor:pointer;font-weight:700">Sign in here ↗</button>
         </p>
       </div>
 
