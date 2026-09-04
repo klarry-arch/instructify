@@ -206,6 +206,21 @@ assert(
   'Form controls have standardized high-contrast focus rings'
 );
 
+// ── 6. Social Media Icons & Community Integration ────────────
+console.log('\n🌐 6. Social Media Icons & Community Integration');
+assert(
+  componentsCss.includes('.social-icon-pill.linkedin') && componentsCss.includes('background: #0A66C2;'),
+  'LinkedIn social pill has signature blue branding by default'
+);
+assert(
+  schoolsHtml.includes('class="connect-section"') && schoolsHtml.includes('social-icon-pill linkedin') && schoolsHtml.includes('social-icon-pill instagram'),
+  'Schools & Institutions page features Connect Section with all 6 social network pills'
+);
+assert(
+  schoolsHtml.includes('class="footer-social-row"') && aboutHtml.includes('class="footer-social-row"') && indexHtml.includes('class="footer-social-row"'),
+  'Global footers across main templates feature the 6-icon social media row'
+);
+
 // ── Summary ────────────────────────────────────────────────
 console.log('\n========================================');
 console.log(`UI/UX Audit Summary: ${passedTests} passed, ${failedTests} failed out of ${totalTests} tests`);
