@@ -307,8 +307,8 @@ window.renderCourseCard = function(course) {
           <span class="price-current">KES ${typeof course.price === 'number' ? course.price.toLocaleString() : course.price}</span>
           ${course.originalPrice ? `<span class="price-original">KES ${course.originalPrice.toLocaleString()}</span>` : ''}
         </div>
-        <a href="course-detail.html?id=${course.id}" class="btn btn-secondary btn-sm">
-          ${enrolled ? '📚 Continue' : 'View Course'}
+        <a href="course-detail.html?id=${course.id}" class="btn btn-primary btn-sm" style="font-weight:750;">
+          ${enrolled ? '📚 Continue Learning' : 'Explore Course &rarr;'}
         </a>
       </div>
     </div>

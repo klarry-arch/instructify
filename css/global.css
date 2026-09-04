@@ -239,17 +239,19 @@
   --font-sans:      'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono:      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
-  /* ── Type Scale (Desktop) ── */
-  --font-size-h1:   52px;
-  --font-size-h2:   38px;
-  --font-size-h3:   26px;
-  --font-size-h4:   20px;
-  --font-size-h5:   17px;
-  --font-size-h6:   15px;
-  --font-size-lead: 18px;
-  --font-size-body: 16px;
-  --font-size-sm:   14px;
-  --font-size-xs:   13px;
+  /* ── Unified Fluid Typography Scale ── */
+  --font-size-hero:    clamp(32px, 5.2vw, 48px);
+  --font-size-page:    clamp(26px, 3.8vw, 38px);
+  --font-size-h1:      clamp(28px, 4.5vw, 44px);
+  --font-size-h2:      clamp(22px, 3.2vw, 32px);
+  --font-size-h3:      clamp(18px, 2.2vw, 24px);
+  --font-size-h4:      clamp(16px, 1.8vw, 20px);
+  --font-size-h5:      clamp(14.5px, 1.4vw, 17px);
+  --font-size-h6:      14px;
+  --font-size-lead:    clamp(16px, 1.8vw, 18px);
+  --font-size-body:    clamp(14.5px, 1.5vw, 15.5px);
+  --font-size-sm:      13.5px;
+  --font-size-xs:      12px;
 
   /* ── Line Heights ── */
   --line-height-tight:    1.10;
@@ -291,7 +293,7 @@
   --space-5xl: 96px;
 
   /* ── Layout ── */
-  --max-width:            1200px;
+  --max-width:            1240px;
   --nav-height:           72px;
   --sidebar-width:        270px;
 
@@ -606,30 +608,181 @@ p:last-child { margin-bottom: 0; }
 .h-full  { height: 100%; }
 
 /* ══════════════════════════════════════════════════════════════
-   CARD BASE SYSTEM
+   CARD BASE SYSTEM — Standardized Across All 9 Categories
    ══════════════════════════════════════════════════════════════ */
 .card,
+.card-base,
 .course-card,
 .distinct-card,
 .pathway-card,
 .dashboard-card,
-.stat-card {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-card);
-  transition: box-shadow var(--transition-base), transform var(--transition-base), border-color var(--transition-base);
+.stat-card,
+.learning-step-card,
+.clientele-card,
+.testimonial-card,
+.consultancy-card,
+.service-card,
+.info-card,
+.event-card,
+.article-card,
+.episode-card,
+.pricing-card,
+.widget-card,
+.cert-card {
+  background-color: var(--surface, #FFFFFF);
+  border: 1.5px solid var(--border-color-card, #E2E8F0);
+  border-radius: var(--radius-xl, 20px);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card:hover,
+.card-base:hover,
 .course-card:hover,
 .distinct-card:hover,
 .pathway-card:hover,
 .dashboard-card:hover,
-.stat-card:hover {
-  box-shadow: var(--shadow-lg);
+.stat-card:hover,
+.learning-step-card:hover,
+.clientele-card:hover,
+.testimonial-card:hover,
+.consultancy-card:hover,
+.service-card:hover,
+.info-card:hover,
+.event-card:hover,
+.article-card:hover,
+.episode-card:hover,
+.pricing-card:hover,
+.widget-card:hover,
+.cert-card:hover {
+  box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.10), 0 6px 14px -2px rgba(15, 23, 42, 0.05);
   transform: translateY(-4px);
-  border-color: rgba(33, 69, 230, 0.25);
+  border-color: rgba(33, 69, 230, 0.32);
+}
+
+/* Card Internal Standard Elements */
+.card-body,
+.card-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title,
+.card-heading,
+.card h3,
+.distinct-card-title,
+.pathway-card h3,
+.clientele-card h3,
+.learning-step-card h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(17.5px, 2.2vw, 20px);
+  font-weight: 750;
+  line-height: 1.32;
+  color: var(--text-main, #0F172A);
+  margin-bottom: 10px;
+  letter-spacing: -0.015em;
+}
+
+.card-desc,
+.card-text,
+.card p,
+.distinct-card-desc,
+.pathway-card p,
+.clientele-card p,
+.learning-step-card p {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: var(--text-secondary, #334155);
+  margin-bottom: 16px;
+}
+
+.card-action,
+.card-footer {
+  margin-top: auto;
+  padding-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PURPOSE-DRIVEN BRAND STATEMENT BANNER
+   ══════════════════════════════════════════════════════════════ */
+.brand-statement-banner {
+  position: relative;
+  background: linear-gradient(135deg, #091929 0%, #183AD6 55%, #3C3DDC 100%);
+  color: #FFFFFF !important;
+  border-radius: var(--radius-2xl, 24px);
+  padding: clamp(32px, 5vw, 48px) clamp(20px, 4vw, 40px);
+  margin: 36px 0;
+  box-shadow: 0 16px 36px -8px rgba(33, 69, 230, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+  text-align: center;
+}
+
+.brand-statement-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-accent);
+}
+
+.brand-statement-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #FFFFFF !important;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 5px 16px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.brand-statement-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 4.2vw, 38px);
+  font-weight: 850;
+  color: #FFFFFF !important;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brand-statement-sub {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.8vw, 17.5px);
+  color: #E2E8F0 !important;
+  line-height: 1.65;
+  font-weight: 500;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
 }
 
 /* ══════════════════════════════════════════════════════════════

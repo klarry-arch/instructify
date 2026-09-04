@@ -558,7 +558,7 @@
       <div>
         <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span style="color: #FF4D00 !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span></h3>
         <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
-          Ignite Curiosity. Transform Learning. Renew Communities.
+          We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.
         </p>
         <a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
       </div>
@@ -605,20 +605,27 @@ let filters = { query: '', level: 'all', format: 'all', maxPrice: 30000, sort: '
 // Override the render function to match the new design requirements
 window.renderCourseCard = function(course) {
   return `
-    <div class="card reveal" style="padding:0; overflow:hidden; display:flex; flex-direction:column; border:1px solid var(--border-subtle); box-shadow:var(--shadow-sm);">
-      <img src="${course.image}" alt="${course.title}" style="width:100%; height:200px; object-fit:cover;" loading="lazy">
-      <div style="padding:var(--space-lg); display:flex; flex-direction:column; flex-grow:1;">
-        <span style="font-size:var(--text-xs); color:var(--color-primary); font-weight:700; margin-bottom:8px; text-transform:uppercase;">${course.category}</span>
-        <h3 class="font-heading text-lg mb-sm" style="color:var(--text-primary);">${course.title}</h3>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary); flex-grow:1; margin-bottom:var(--space-md);">${course.description.substring(0, 100)}...</p>
-        
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:var(--space-lg); padding-bottom:var(--space-md); border-bottom:1px solid var(--border-subtle);">
-          <div style="font-size:var(--text-xs); color:var(--text-secondary);"><strong>Level:</strong> ${course.level}</div>
-          <div style="font-size:var(--text-xs); color:var(--text-secondary);"><strong>Audience:</strong> Educators</div>
-          <div style="font-size:var(--text-xs); color:var(--text-secondary);"><strong>Duration:</strong> ${course.duration}</div>
+    <div class="card course-card reveal" style="padding:0; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; border:1.5px solid var(--border-color-card, #E2E8F0); border-radius:20px; box-shadow:0 4px 20px -2px rgba(15,23,42,0.05); background:#FFFFFF; height:100%;">
+      <div>
+        <div style="position:relative; width:100%; height:200px; overflow:hidden;">
+          <img src="${course.image}" alt="${course.title}" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy">
+          <span style="position:absolute; top:12px; left:12px; background:rgba(255,255,255,0.92); color:var(--primary, #2145E6); padding:4px 12px; border-radius:999px; font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; backdrop-filter:blur(4px); box-shadow:0 2px 8px rgba(0,0,0,0.12);">${course.category}</span>
         </div>
-        
-        <a href="course-detail.html?id=${course.id}" class="btn btn-outline btn-sm w-full" style="text-align:center;">View Details</a>
+        <div style="padding:22px 22px 14px; display:flex; flex-direction:column;">
+          <h3 style="font-family:var(--font-heading); font-size:17.5px; font-weight:750; line-height:1.32; color:var(--text-main, #0F172A); margin-bottom:8px;">${course.title}</h3>
+          <p style="font-size:14px; line-height:1.58; color:var(--text-secondary, #334155); margin-bottom:16px;">${course.description.substring(0, 105)}...</p>
+          
+          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+            <span style="background:#F1F5F9; color:#475569; padding:4px 10px; border-radius:8px; font-size:11.5px; font-weight:600;">🎯 ${course.level}</span>
+            <span style="background:#F1F5F9; color:#475569; padding:4px 10px; border-radius:8px; font-size:11.5px; font-weight:600;">⏱️ ${course.duration}</span>
+            ${course.cpd ? '<span style="background:#ECFDF5; color:#059669; padding:4px 10px; border-radius:8px; font-size:11.5px; font-weight:700;">✅ CPD Accredited</span>' : ''}
+          </div>
+        </div>
+      </div>
+      
+      <div style="padding:14px 22px 18px; border-top:1px solid #F1F5F9; background:#FAFAFC; display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto;">
+        <span style="font-family:var(--font-heading); font-size:17px; font-weight:800; color:var(--primary, #2145E6);">KES ${typeof course.price === 'number' ? course.price.toLocaleString() : (course.price || '15,000')}</span>
+        <a href="course-detail.html?id=${course.id}" class="btn btn-primary btn-sm" style="text-decoration:none; font-weight:750; white-space:nowrap;">Explore Course &rarr;</a>
       </div>
     </div>
   `;
