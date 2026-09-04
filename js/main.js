@@ -6,6 +6,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
+  initDashboardSidebar();
   initScrollReveal();
   initCounterAnimations();
   initToastSystem();
@@ -15,6 +16,54 @@ document.addEventListener('DOMContentLoaded', () => {
   initWorkshopForm();
   initTrainingForm();
 });
+
+// ── Dashboard Sidebar Toggle & Mobile Handling ─────────────────
+window.toggleSidebar = function() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  if (!sidebar) return;
+  const isOpen = sidebar.classList.toggle('open');
+  if (overlay) {
+    overlay.classList.toggle('active', isOpen);
+    overlay.classList.toggle('open', isOpen);
+  }
+  document.body.classList.toggle('sidebar-open', isOpen);
+};
+
+window.closeSidebar = function() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  if (sidebar) sidebar.classList.remove('open');
+  if (overlay) {
+    overlay.classList.remove('active');
+    overlay.classList.remove('open');
+  }
+  document.body.classList.remove('sidebar-open');
+};
+
+function initDashboardSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  if (!sidebar) return;
+
+  if (overlay) {
+    overlay.addEventListener('click', window.closeSidebar);
+  }
+
+  sidebar.querySelectorAll('.sidebar-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        window.closeSidebar();
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      window.closeSidebar();
+    }
+  });
+}
 
 // ── Navbar & Mobile Toggle ──────────────────────────────────────
 function initNavbar() {

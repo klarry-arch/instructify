@@ -45,6 +45,25 @@
   </div>
 </nav>
 
+<!-- Mobile Nav Drawer -->
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+  <div class="nav-mobile-links">
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="about.html" class="nav-mobile-link">About Us</a>
+    <a href="courses.html" class="nav-mobile-link">Courses</a>
+    <a href="podcast.html" class="nav-mobile-link">Podcast</a>
+    <a href="blog.html" class="nav-mobile-link">Blog</a>
+    <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
+    <a href="resources.html" class="nav-mobile-link">Resources</a>
+    <a href="schools.html" class="nav-mobile-link">Institutions</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+  </div>
+  <div class="nav-mobile-actions">
+    <a href="dashboard-trainer.html" class="btn btn-primary btn-md">Trainer Dashboard</a>
+    <button onclick="logout()" class="btn btn-outline btn-md" style="color:#DC2626 !important; border-color:#DC2626;">Log Out</button>
+  </div>
+</div>
+
 
 <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
@@ -101,7 +120,7 @@
 
     <!-- Curious Mind Welcome Banner -->
     <div class="welcome-banner" style="background: linear-gradient(135deg, #2145E6 0%, #0F172A 100%); color: #FFFFFF; border-radius: 16px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15); border-left: 5px solid #FFAD00; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-      <div style="max-width: 650px;">
+      <div style="max-width:650px; width:100%;">
         <h2 style="font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
           Hello, Curious Mind 👋
         </h2>
@@ -238,7 +257,7 @@
 
 <!-- Issue Certificate Modal -->
 <div id="issue-cert-modal" class="cert-modal-overlay">
-  <div class="cert-modal-container" style="max-width:540px;">
+  <div class="cert-modal-container" style="max-width:540px; width:100%;">
     <div class="cert-modal-header">
       <h3 style="margin:0; font-size:20px; color:#0F172A;">Issue Official CPD Certificate</h3>
       <button onclick="document.getElementById('issue-cert-modal').classList.remove('open')" class="cert-modal-close">&times;</button>
@@ -246,20 +265,20 @@
     <form onsubmit="handleIssueFormSubmit(event)" style="display:flex; flex-direction:column; gap:14px;">
       <div>
         <label class="form-label">Learner Full Legal Name</label>
-        <input type="text" id="modal-learner-name" class="form-input" placeholder="e.g. James Mwangi" required>
+        <input type="text" id="modal-learner-name" aria-label="Learner Full Name" class="form-input" placeholder="e.g. James Mwangi" required>
       </div>
       <div>
         <label class="form-label">Course Title</label>
-        <input type="text" id="modal-course-title" class="form-input" placeholder="e.g. CBC Pedagogy & Assessment" required>
+        <input type="text" id="modal-course-title" aria-label="Course Title" class="form-input" placeholder="e.g. CBC Pedagogy & Assessment" required>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
         <div>
           <label class="form-label">CPD Hours</label>
-          <input type="text" id="modal-cpd-hours" class="form-input" value="30 Hours" required>
+          <input type="text" id="modal-cpd-hours" aria-label="CPD Hours" class="form-input" value="30 Hours" required>
         </div>
         <div>
           <label class="form-label">Grade / Score</label>
-          <input type="text" id="modal-grade" class="form-input" value="Distinction (92%)">
+          <input type="text" id="modal-grade" aria-label="Grade or Percentage Score" class="form-input" value="Distinction (92%)">
         </div>
       </div>
       <div>

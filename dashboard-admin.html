@@ -42,9 +42,41 @@
       <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
       <a href="courses.html" class="btn btn-primary btn-sm">Start Learning</a>
     </div>
+  
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
+<!-- Mobile Nav Drawer -->
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+  <div class="nav-mobile-links">
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="about.html" class="nav-mobile-link">About Us</a>
+    <a href="courses.html" class="nav-mobile-link">Courses</a>
+    <a href="podcast.html" class="nav-mobile-link">Podcast</a>
+    <a href="blog.html" class="nav-mobile-link">Blog</a>
+    <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
+    <a href="resources.html" class="nav-mobile-link">Resources</a>
+    <a href="schools.html" class="nav-mobile-link">Institutions</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+  </div>
+  <div class="nav-mobile-actions">
+    <a href="dashboard-admin.html" class="btn btn-primary btn-md">Admin Console</a>
+    <button onclick="logout()" class="btn btn-outline btn-md" style="color:#DC2626 !important; border-color:#DC2626;">Log Out</button>
+  </div>
+</div>
+
+
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Admin Navigation">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</button>
 <div class="dashboard-layout">
   <!-- Sidebar -->
   <aside class="sidebar">
@@ -301,7 +333,7 @@
           Search, issue, preview, or revoke verifiable digital certificates on the Instructify Kenya Credential Engine.
         </p>
         <div style="display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
-          <input type="text" id="admin-cert-id-input" class="form-input" placeholder="Enter Certificate Hash / ID (e.g. IK-CPD-2026-8942)" style="max-width:380px;">
+          <input type="text" id="admin-cert-id-input" aria-label="Search Certificate ID" class="form-input" placeholder="Enter Certificate Hash / ID (e.g. IK-CPD-2026-8942)" style="max-width:380px;">
           <button onclick="const val=document.getElementById('admin-cert-id-input').value.trim()||'IK-CPD-2026-8942'; window.CertificateEngine.openModalPreview(val);" class="btn btn-blue">👁️ Preview Certificate</button>
           <a href="verify.html" target="_blank" class="btn btn-outline">🔍 Go to Public Verification Portal ↗</a>
         </div>
@@ -448,7 +480,7 @@ document.addEventListener('DOMContentLoaded', function() {
   panel.className = 'admin-panel';
   panel.style.display = 'none';
   panel.innerHTML = '<div class="dashboard-header"><div><h1 class="dashboard-title">Payments &amp; Orders</h1><div class="dashboard-subtitle" id="pay-count">Loading…</div></div><div class="dashboard-actions" style="display:flex;gap:10px;align-items:center;"><span style="font-size:13px;color:var(--text-muted);">Confirmed Revenue: <strong id="pay-revenue" style="color:var(--color-tertiary);">KES 0</strong></span><button onclick="exportPaymentsCSV()" class="btn btn-blue btn-sm">Export CSV</button></div></div>' +
-    '<div class="dashboard-section"><div style="display:flex;gap:10px;margin-bottom:1.25rem;flex-wrap:wrap;"><input type="text" id="pay-search" placeholder="Search by name, email, ref…" oninput="loadPaymentsPanel()" style="flex:1;min-width:220px;padding:10px 14px;border:1.5px solid var(--border-subtle);border-radius:10px;font-size:14px;outline:none;background:var(--bg-input,#fff);color:var(--text-primary);"><select id="pay-status-filter" onchange="loadPaymentsPanel()" style="padding:10px 14px;border:1.5px solid var(--border-subtle);border-radius:10px;font-size:14px;outline:none;"><option value="">All Statuses</option><option value="paid">Paid</option><option value="pending">Pending</option><option value="processing">Processing</option><option value="failed">Failed</option><option value="cancelled">Cancelled</option></select><button onclick="loadPaymentsPanel()" class="btn btn-sm btn-outline">🔄 Refresh</button></div>' +
+    '<div class="dashboard-section"><div style="display:flex;gap:10px;margin-bottom:1.25rem;flex-wrap:wrap;"><input type="text" id="pay-search" aria-label="Filter payment records by name or order ref" placeholder="Search by name, email, ref…" oninput="loadPaymentsPanel()" style="flex:1;min-width:220px;padding:10px 14px;border:1.5px solid var(--border-subtle);border-radius:10px;font-size:14px;outline:none;background:var(--bg-input,#fff);color:var(--text-primary);"><select id="pay-status-filter" onchange="loadPaymentsPanel()" style="padding:10px 14px;border:1.5px solid var(--border-subtle);border-radius:10px;font-size:14px;outline:none;"><option value="">All Statuses</option><option value="paid">Paid</option><option value="pending">Pending</option><option value="processing">Processing</option><option value="failed">Failed</option><option value="cancelled">Cancelled</option></select><button onclick="loadPaymentsPanel()" class="btn btn-sm btn-outline">🔄 Refresh</button></div>' +
     '<div class="table-wrapper"><table class="data-table"><thead><tr><th>Order Ref</th><th>Client</th><th>Course</th><th>Amount</th><th>Status</th><th>Method</th><th>Transaction Ref</th><th>Note</th></tr></thead><tbody id="pay-table-body"><tr><td colspan="8" style="text-align:center;color:#CBD5E1;padding:2rem;">Click "Payments &amp; Orders" to load data.</td></tr></tbody></table></div></div>';
   main.appendChild(panel);
 });

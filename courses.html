@@ -125,7 +125,7 @@
     <!-- Search Box -->
     <div class="saas-search-box">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input type="text" id="course-search" placeholder="Search by course title, topic, or instructor...">
+      <input type="text" id="course-search" aria-label="Search courses and workshops" placeholder="Search by course title, topic, or instructor...">
       <button class="btn btn-blue btn-sm" onclick="setFilter('query', document.getElementById('course-search').value)">Search</button>
     </div>
   </div>
@@ -161,7 +161,7 @@
     <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--saas-border); border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
       <div class="grid-2" style="gap:0; align-items:stretch;">
         <div>
-          <img src="assets/images/course-digital.png" alt="Digital Literacy Masterclass" style="width:100%; height:100%; object-fit:cover; min-height:280px;">
+          <img src="assets/images/course-digital.png" alt="Digital Literacy Masterclass" style="width:100%; height:100%; object-fit:cover; min-height:280px;" loading="lazy">
         </div>
         <div style="padding:40px; display:flex; flex-direction:column; justify-content:center; background:#FFFFFF;">
           <span style="display:inline-block; padding:4px 12px; background:var(--accent-bg, #F3EEFF); color:#CC3E00; border-radius:999px; font-size:13px; font-weight:600; width:fit-content; margin-bottom:12px;">FEATURED PROGRAM</span>
@@ -259,7 +259,7 @@
       <h2 style="font-family:var(--font-heading); font-size:2.2rem; font-weight:800; color:#0F172A; margin-bottom:12px; line-height:1.25;">
         🎓 Training Registration Form
       </h2>
-      <p style="font-size:1.05rem; color:var(--text-muted, #475569); line-height:1.65; max-width:780px; margin-bottom:32px;">
+      <p style="font-size:1.05rem; color:var(--text-muted, #475569); line-height:1.65; max-width:780px; width:100%; margin-bottom:32px;">
         Sign up for our professional development trainings and become a certified creative educator.<br><br>
         This form allows you to register for our educator training programs. Learn how to use smart boards, ClassVR, robokits, and more—while deepening your leadership and teaching skills.
       </p>
@@ -437,7 +437,7 @@
           </ul>
         </div>
         <div>
-          <img src="assets/images/course-cbe.png" alt="Curriculum Development" style="width:100%; height:100%; object-fit:cover; min-height:300px;">
+          <img src="assets/images/course-cbe.png" alt="Curriculum Development" style="width:100%; height:100%; object-fit:cover; min-height:300px;" loading="lazy">
         </div>
       </div>
     </div>
@@ -501,7 +501,7 @@
 <section class="section" style="background:#FFFFFF; border-top:1px solid var(--saas-border); padding:64px 0;">
   <div class="container text-center">
     <h2 class="saas-h2">Trusted by Educators Across Kenya</h2>
-    <p style="font-size:16px; color:var(--saas-text-muted); max-width:600px; margin:0 auto 40px;">
+    <p style="font-size:16px; color:var(--saas-text-muted); max-width:600px; width:100%; margin:0 auto 40px;">
       Hear how our accredited training programs have transformed classroom delivery and professional growth.
     </p>
 
@@ -585,7 +585,7 @@
         <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
         <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
         <div style="display:flex; gap:8px;">
-          <input type="email" placeholder="Your email" style="padding:10px; border-radius:6px; border:none; width:100%;">
+          <input type="email" placeholder="Your email" aria-label="Your email address" style="padding:10px; border-radius:6px; border:none; width:100%;">
           <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
         </div>
       </div>
@@ -606,7 +606,7 @@ let filters = { query: '', level: 'all', format: 'all', maxPrice: 30000, sort: '
 window.renderCourseCard = function(course) {
   return `
     <div class="card reveal" style="padding:0; overflow:hidden; display:flex; flex-direction:column; border:1px solid var(--border-subtle); box-shadow:var(--shadow-sm);">
-      <img src="${course.image}" alt="${course.title}" style="width:100%; height:200px; object-fit:cover;">
+      <img src="${course.image}" alt="${course.title}" style="width:100%; height:200px; object-fit:cover;" loading="lazy">
       <div style="padding:var(--space-lg); display:flex; flex-direction:column; flex-grow:1;">
         <span style="font-size:var(--text-xs); color:var(--color-primary); font-weight:700; margin-bottom:8px; text-transform:uppercase;">${course.category}</span>
         <h3 class="font-heading text-lg mb-sm" style="color:var(--text-primary);">${course.title}</h3>

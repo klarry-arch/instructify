@@ -67,7 +67,7 @@
 
 <section style="background:var(--gradient-hero);padding:calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);color:#fff;position:relative;overflow:hidden">
   <!-- Ambient background glow elements -->
-  <div style="position:absolute;width:450px;height:450px;background:rgba(37,99,235,0.22);border-radius:50%;filter:blur(90px);top:-100px;left:-100px;pointer-events:none"></div>
+  <div style="position:absolute;max-width:450px; width:100%;height:450px;background:rgba(37,99,235,0.22);border-radius:50%;filter:blur(90px);top:-100px;left:-100px;pointer-events:none"></div>
   <div style="position:absolute;width:350px;height:350px;background:rgba(244,81,30,0.18);border-radius:50%;filter:blur(90px);bottom:-50px;right:-50px;pointer-events:none"></div>
 
   <div class="container" style="position:relative;z-index:1">
@@ -81,7 +81,7 @@
       <div>
         <span class="badge mb-md" id="course-badge" style="background:rgba(16,185,129,0.18);color:#2DC3B0;border:1px solid rgba(52,211,153,0.4);padding:6px 16px;border-radius:99px;font-weight:700;font-size:0.75rem;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:6px">✨ CPD ACCREDITED</span>
         <h1 class="hero-heading" id="course-title" style="font-size:clamp(2rem, 4vw, 3rem);color:#FFFFFF !important;font-weight:800;line-height:1.2;margin-bottom:var(--space-md);text-shadow:0 2px 14px rgba(0,0,0,0.3)">Loading Course Title...</h1>
-        <p id="course-desc" style="color:rgba(241,245,249,0.92);font-size:var(--text-md);line-height:1.7;margin-bottom:var(--space-xl);max-width:720px">Description placeholder...</p>
+        <p id="course-desc" style="color:rgba(241,245,249,0.92);font-size:var(--text-md);line-height:1.7;margin-bottom:var(--space-xl);max-width:720px; width:100%;">Description placeholder...</p>
         <div class="flex items-center gap-xl text-sm" style="color:rgba(255,255,255,0.9);flex-wrap:wrap">
           <div style="display:flex;align-items:center;gap:6px">⭐ <strong id="course-rating" style="color:#FBBF24">4.8</strong> (<span id="course-reviews">312</span> reviews)</div>
           <div style="display:flex;align-items:center;gap:6px">👨‍🏫 Instructor: <strong id="course-instructor">Dr. Wanjiku Kamau</strong></div>
@@ -198,7 +198,7 @@
         <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
         <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
         <div style="display:flex; gap:8px;">
-          <input type="email" placeholder="Your email" style="padding:10px; border-radius:6px; border:none; width:100%;">
+          <input type="email" placeholder="Your email" aria-label="Your email address" style="padding:10px; border-radius:6px; border:none; width:100%;">
           <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
         </div>
       </div>

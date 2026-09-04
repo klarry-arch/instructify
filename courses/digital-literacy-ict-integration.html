@@ -39,7 +39,7 @@
     .manual-subtitle {
       font-size: 18px;
       color: #E2E8F0 !important;
-      max-width: 800px;
+      max-width: 800px; width: 100%;
       margin-bottom: 24px;
     }
     .manual-nav-bar {
@@ -253,8 +253,31 @@
         <a href="../register.html" class="btn btn-outline btn-sm">Sign In</a>
         <a href="../courses.html" class="btn btn-primary btn-sm">Start Learning</a>
       </div>
+    
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+    <div class="nav-mobile-links">
+      <a href="../index.html" class="nav-mobile-link">Home</a>
+      <a href="../about.html" class="nav-mobile-link">About Us</a>
+      <a href="../courses.html" class="nav-mobile-link active">Courses</a>
+      <a href="../podcast.html" class="nav-mobile-link">Podcast</a>
+      <a href="../blog.html" class="nav-mobile-link">Blog</a>
+      <a href="../consultancy.html" class="nav-mobile-link">Consultancy</a>
+      <a href="../resources.html" class="nav-mobile-link">Resources</a>
+      <a href="../schools.html" class="nav-mobile-link">Institutions</a>
+      <a href="../contact.html" class="nav-mobile-link">Contact</a>
+    </div>
+    <div class="nav-mobile-actions">
+      <a href="../register.html" class="btn btn-outline btn-md">Sign In</a>
+      <a href="../courses.html" class="btn btn-primary btn-md">Start Learning</a>
+    </div>
+  </div>
 
   <!-- Header Banner -->
   <header class="manual-header">
@@ -409,7 +432,7 @@
     <section id="section-7" class="manual-section">
       <span class="section-num">Section 07</span>
       <h2 class="section-heading">Course Schedule & Milestone Map</h2>
-      <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+      <div class="table-wrapper"><table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
         <thead>
           <tr style="background: var(--color-primary); color: #FFFFFF; text-align: left;">
             <th style="padding: 12px;">Module & Topic</th>
@@ -469,7 +492,7 @@
             <td style="padding: 12px;">Final Teacher E-Portfolio & 1-Year ICT Action Plan</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </section>
 
     <!-- Section 8: Detailed Modules (All 10 Modules) -->
@@ -758,7 +781,7 @@ Date: ____________ Time: ____________ Duration: 40 Mins  Roll: ____________
       </div>
 
       <h4>Certification Assessment Rubric</h4>
-      <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+      <div class="table-wrapper"><table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
         <thead>
           <tr style="background: var(--color-primary); color: #FFF; text-align: left;">
             <th style="padding: 10px;">Criteria</th>
@@ -787,7 +810,7 @@ Date: ____________ Time: ____________ Duration: 40 Mins  Roll: ____________
             <td style="padding: 10px;">Generic content lacking alignment with local curriculum needs.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="orange-box" style="margin-top: 24px;">
         <strong>Certificate Completion Requirements:</strong>
@@ -813,5 +836,6 @@ Date: ____________ Time: ____________ Duration: 40 Mins  Roll: ____________
     </div>
   </footer>
 
+  <script src="../js/main.js"></script>
 </body>
 </html>

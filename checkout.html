@@ -130,6 +130,19 @@
     /* ── SSL badge ── */
     .ssl-badge { text-align: center; font-size: 0.75rem; color:#CBD5E1; margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
     .installment-badge { background: #E0F5F2; color: #065F46; border: 1px solid rgba(5,150,105,0.2); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 1.25rem; }
+  
+    @media (max-width: 768px) {
+      .checkout-grid { display: flex !important; flex-direction: column !important; }
+      .order-card { position: static !important; order: -1 !important; margin-bottom: 1.5rem !important; padding: 1.5rem 1.25rem !important; }
+      .form-card { padding: 1.5rem 1.25rem !important; }
+      .pay-method-tabs { flex-direction: row !important; }
+      .pay-method-tab { min-height: 52px !important; padding: 12px 8px !important; }
+    }
+    @media (max-width: 480px) {
+      .order-card-total { font-size: 1.65rem !important; }
+      .btn-enroll { min-height: 52px !important; font-size: 0.98rem !important; }
+    }
+  
   </style>
   <link rel="stylesheet" href="css/live-chat.css">
 </head>
@@ -274,7 +287,7 @@
           <div id="panel-mpesa" class="pay-panel active" role="tabpanel">
             <div class="field-group">
               <label class="field-label" for="mpesa-phone-input">Safaricom M-Pesa Number</label>
-              <input type="tel" id="mpesa-phone-input" class="field-input"
+              <input type="tel" id="mpesa-phone-input" class="field-input" inputmode="numeric"
                 placeholder="0712 345 678" maxlength="15" autocomplete="tel"
                 aria-describedby="mpesa-hint">
               <div class="field-hint" id="mpesa-hint">Accepts: 07XX, 01XX, +2547XX, 2547XX formats</div>

@@ -277,7 +277,7 @@
   <div class="container text-center">
     <span class="section-tag teal">GUEST VOICES</span>
     <h2 class="section-title">Voices That Move Us Forward</h2>
-    <p class="section-subtitle" style="max-width:720px; margin:0 auto;">
+    <p class="section-subtitle" style="max-width:720px; width:100%; margin:0 auto;">
       We bring together diverse voices and experiences — educators, industry experts, technology leaders, entrepreneurs, researchers, policy thinkers and innovators — to explore the challenges and opportunities shaping education and society.
     </p>
 
@@ -395,7 +395,7 @@
 <section class="section" style="background:#FFFFFF;">
   <div class="container">
     <div class="card" style="background:linear-gradient(135deg, #091929 0%, #1E3A8A 60%, #2145E6 100%); color:#FFFFFF; border-radius:24px; padding:48px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:32px; box-shadow:0 20px 40px -10px rgba(15, 23, 42, 0.2);">
-      <div style="max-width:680px;">
+      <div style="max-width:680px; width:100%;">
         <span style="background:#FFAD00; color:#0F172A; font-weight:800; font-size:11px; padding:4px 12px; border-radius:999px; text-transform:uppercase; letter-spacing:1px; display:inline-block; margin-bottom:12px;">
           OUR BROADER MISSION
         </span>
@@ -419,7 +419,7 @@
      10. CALL TO ACTION: GUESTS & TOPICS
      ══════════════════════════════════════════════════════════ -->
 <section class="section" style="background:#F8FAFC;">
-  <div class="container text-center" style="max-width:780px;">
+  <div class="container text-center" style="max-width:780px; width:100%;">
     <span class="section-tag amber">JOIN THE CONVERSATION</span>
     <h2 class="section-title">Have a Story, Idea or Perspective Worth Sharing?</h2>
     <p class="section-subtitle">
@@ -444,7 +444,7 @@
      11. SUBSCRIBE SECTION
      ══════════════════════════════════════════════════════════ -->
 <section class="section" style="background:#0F172A; color:#FFFFFF;">
-  <div class="container text-center" style="max-width:680px;">
+  <div class="container text-center" style="max-width:680px; width:100%;">
     <span style="background:rgba(255,255,255,0.12); color:#FFFFFF; font-size:11px; font-weight:800; padding:4px 12px; border-radius:999px; text-transform:uppercase; letter-spacing:1px; display:inline-block; margin-bottom:14px;">
       STAY INFORMED
     </span>
@@ -453,8 +453,8 @@
       Get new episodes, insightful learning resources, and key educational updates from Instructify Kenya delivered straight to your inbox.
     </p>
 
-    <form id="podcast-subscribe-form" style="display:flex; gap:12px; max-width:520px; margin:0 auto 16px; flex-wrap:wrap;">
-      <input type="email" placeholder="Enter your email address" required style="flex-grow:1; min-width:240px; padding:14px 20px; border-radius:10px; border:1px solid #334155; background:#1E293B; color:#FFFFFF; outline:none;">
+    <form id="podcast-subscribe-form" style="display:flex; gap:12px; max-width:520px; width:100%; margin:0 auto 16px; flex-wrap:wrap;">
+      <input type="email" placeholder="Enter your email address" aria-label="Your email address" required style="flex-grow:1; min-width:240px; padding:14px 20px; border-radius:10px; border:1px solid #334155; background:#1E293B; color:#FFFFFF; outline:none;">
       <button type="submit" class="btn btn-blue" style="font-weight:700; padding:14px 24px;">Subscribe for Updates</button>
     </form>
     <p style="font-size:13px; color:#64748B; margin:0;">🔒 We respect your privacy. Unsubscribe anytime.</p>
@@ -475,7 +475,7 @@
     </div>
   </div>
 
-  <div style="flex-grow:1; max-width:540px;">
+  <div style="flex-grow:1; max-width:540px; width:100%;">
     <div class="progress-container" id="sticky-progress-container" style="height:6px; margin:0;">
       <div class="progress-bar-fill" id="sticky-progress-fill"></div>
     </div>
@@ -501,15 +501,15 @@
       <div style="display:flex; flex-direction:column; gap:16px;">
         <div>
           <label style="display:block; font-size:13px; font-weight:700; color:#0F172A; margin-bottom:6px;">Your Full Name *</label>
-          <input type="text" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:14px;">
+          <input type="text" id="proposal-name" aria-label="Your Full Name" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:14px;">
         </div>
         <div>
           <label style="display:block; font-size:13px; font-weight:700; color:#0F172A; margin-bottom:6px;">Email Address *</label>
-          <input type="email" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:14px;">
+          <input type="email" id="proposal-email" aria-label="Your Email Address" required style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:14px;">
         </div>
         <div>
           <label style="display:block; font-size:13px; font-weight:700; color:#0F172A; margin-bottom:6px;">Organization / School / Institution</label>
-          <input type="text" style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:14px;">
+          <input type="text" id="proposal-org" aria-label="Organization or School" style="width:100%; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:14px;">
         </div>
         <div>
           <label style="display:block; font-size:13px; font-weight:700; color:#0F172A; margin-bottom:6px;">Proposed Topic / Summary of Perspective *</label>
@@ -523,13 +523,13 @@
 
 <!-- ── Modal: Share Episode ─────────────────────────────────── -->
 <div class="podcast-modal-overlay" id="share-modal-overlay">
-  <div class="podcast-modal" style="max-width:480px;">
+  <div class="podcast-modal" style="max-width:480px; width:100%;">
     <button class="modal-close-btn" onclick="closeShareModal()" aria-label="Close modal">✕</button>
     <h3 style="font-size:22px; font-weight:800; color:#0F172A; margin-bottom:8px;">Share This Episode</h3>
     <p style="font-size:14px; color:#64748B; margin-bottom:20px;">Copy the link below to share this conversation with colleagues and networks.</p>
     
     <div style="display:flex; gap:8px;">
-      <input type="text" id="share-url-input" readonly style="flex-grow:1; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:13.5px; background:#F8FAFC;">
+      <input type="text" id="share-url-input" aria-label="Share episode URL" readonly style="flex-grow:1; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:13.5px; background:#F8FAFC;">
       <button class="btn btn-primary btn-sm" id="copy-share-btn" onclick="copyShareUrl()">Copy Link</button>
     </div>
   </div>
@@ -573,7 +573,7 @@
         <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
         <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
         <div style="display:flex; gap:8px;">
-          <input type="email" placeholder="Your email" style="padding:10px; border-radius:6px; border:none; width:100%;">
+          <input type="email" placeholder="Your email" aria-label="Your email address" style="padding:10px; border-radius:6px; border:none; width:100%;">
           <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
         </div>
       </div>

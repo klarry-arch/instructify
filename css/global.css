@@ -803,6 +803,11 @@ html, body {
   width: 100%;
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 body.menu-open {
@@ -810,9 +815,44 @@ body.menu-open {
   touch-action: none;
 }
 
-img, video, iframe, canvas {
+/* Universal Responsive Media & Embeds */
+img, video, iframe, canvas, object, embed {
   max-width: 100%;
   height: auto;
+}
+
+/* Prevent inline fixed widths from blowing out small viewports */
+[style*="width:"] {
+  max-width: 100% !important;
+}
+
+/* Word break and overflow safety for text */
+h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Touch target minimum standards (WCAG 2.5.5 / 2.5.8) */
+@media (pointer: coarse), (max-width: 768px) {
+  button, 
+  a.btn, 
+  .btn, 
+  .nav-mobile-link, 
+  .tab-btn, 
+  .role-chip, 
+  .sidebar-link, 
+  .form-input, 
+  .form-select,
+  select, 
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"] {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -820,18 +860,18 @@ img, video, iframe, canvas {
   .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
   h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
-    font-size: clamp(32px, 5vw, 44px) !important;
-    line-height: 1.18 !important;
+    font-size: clamp(30px, 4.8vw, 42px) !important;
+    line-height: 1.2 !important;
   }
 }
 
 @media (max-width: 768px) {
   :root {
-    --font-size-h1: clamp(28px, 6vw, 36px);
-    --font-size-h2: clamp(22px, 5vw, 28px);
+    --font-size-h1: clamp(26px, 5.8vw, 34px);
+    --font-size-h2: clamp(21px, 4.8vw, 26px);
     --font-size-h3: clamp(18px, 4vw, 22px);
-    --font-size-h4: 17px;
-    --font-size-h5: 15px;
+    --font-size-h4: 16px;
+    --font-size-h5: 14.5px;
     --nav-height: 68px;
   }
 
@@ -852,29 +892,29 @@ img, video, iframe, canvas {
   }
 
   .section-header {
-    margin-bottom: 28px !important;
+    margin-bottom: 24px !important;
   }
 
   h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
-    font-size: clamp(28px, 6.5vw, 36px) !important;
+    font-size: clamp(26px, 6vw, 34px) !important;
     line-height: 1.22 !important;
     margin-bottom: 12px !important;
   }
 
   h2, .h2, .section-title, .dashboard-title {
-    font-size: clamp(22px, 5vw, 28px) !important;
+    font-size: clamp(21px, 4.8vw, 26px) !important;
     line-height: 1.28 !important;
     margin-bottom: 10px !important;
   }
 
   h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
-    font-size: clamp(18px, 4.5vw, 22px) !important;
+    font-size: clamp(17px, 4vw, 21px) !important;
     margin-bottom: 8px !important;
   }
 
   p, .lead, .hero-lead, .hero-subtitle, .section-subtitle {
-    font-size: 15.5px !important;
-    line-height: 1.65 !important;
+    font-size: 15px !important;
+    line-height: 1.62 !important;
   }
 
   .hero-ctas, .btn-group {
@@ -887,28 +927,51 @@ img, video, iframe, canvas {
     width: 100% !important;
     justify-content: center !important;
     min-height: 48px !important;
-    font-size: 15.5px !important;
+    font-size: 15px !important;
   }
 }
 
-/* Small Smartphone Optimizations (320px – 390px) */
-@media (max-width: 414px) {
+/* Small Smartphone Optimizations (320px – 430px) */
+@media (max-width: 430px) {
   .container {
     padding-left: 14px !important;
     padding-right: 14px !important;
   }
 
   h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
-    font-size: 26px !important;
+    font-size: clamp(22px, 7vw, 28px) !important;
+    line-height: 1.25 !important;
   }
 
   h2, .h2, .section-title {
-    font-size: 20px !important;
+    font-size: clamp(19px, 5.5vw, 23px) !important;
+  }
+
+  h3, .h3, .card-title {
+    font-size: clamp(16px, 4.5vw, 19px) !important;
   }
 
   .btn {
-    padding: 12px 18px !important;
+    padding: 12px 16px !important;
     font-size: 14.5px !important;
+    letter-spacing: 0;
+  }
+}
+
+/* Micro Smartphone Optimizations (<= 360px, e.g. iPhone SE 1st gen, Galaxy Fold outer screen) */
+@media (max-width: 360px) {
+  .container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  h1, .h1, .hero-title {
+    font-size: 21px !important;
+  }
+
+  .btn {
+    padding: 10px 14px !important;
+    font-size: 13.5px !important;
   }
 }
 
@@ -925,12 +988,12 @@ img, video, iframe, canvas {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   FOCUS ACCESSIBILITY
+   FOCUS ACCESSIBILITY (WCAG 2.4.7 / 2.4.11)
    ══════════════════════════════════════════════════════════════ */
 :focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-  border-radius: var(--radius-xs);
+  outline: 3px solid var(--primary) !important;
+  outline-offset: 2px !important;
+  border-radius: var(--radius-xs, 6px);
 }
 
 /* ══════════════════════════════════════════════════════════════

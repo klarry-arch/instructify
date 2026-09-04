@@ -121,7 +121,7 @@
     <h1 style="font-family:var(--font-heading); font-size:36px; font-weight:800; margin-bottom:8px;">
       Verify Digital Certificate
     </h1>
-    <p style="font-size:16px; opacity:0.9; max-width:640px; margin:0 auto;">
+    <p style="font-size:16px; opacity:0.9; max-width:640px; width:100%; margin:0 auto;">
       Validate authentic CPD credentials, certificates of completion, and professional badges issued by Instructify Kenya.
     </p>
   </div>
@@ -130,7 +130,7 @@
 <div class="container">
   <div class="verify-box">
     <form onsubmit="handleVerificationSubmit(event)" class="verify-input-group">
-      <input type="text" id="cert-search-input" class="form-input" placeholder="Enter Certificate ID (e.g. IK-CPD-2026-8942)" required style="font-family:var(--font-mono); font-size:15px; font-weight:700;">
+      <input type="text" id="cert-search-input" aria-label="Enter Certificate or Badge ID" class="form-input" placeholder="Enter Certificate ID (e.g. IK-CPD-2026-8942)" required style="font-family:var(--font-mono); font-size:15px; font-weight:700;">
       <button type="submit" class="btn btn-blue" style="white-space:nowrap; padding:0 24px;">🔍 Verify Credential</button>
     </form>
 

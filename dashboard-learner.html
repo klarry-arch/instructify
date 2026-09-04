@@ -45,7 +45,35 @@
   </div>
 </nav>
 
+<!-- Mobile Nav Drawer -->
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+  <div class="nav-mobile-links">
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="about.html" class="nav-mobile-link">About Us</a>
+    <a href="courses.html" class="nav-mobile-link">Courses</a>
+    <a href="podcast.html" class="nav-mobile-link">Podcast</a>
+    <a href="blog.html" class="nav-mobile-link">Blog</a>
+    <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
+    <a href="resources.html" class="nav-mobile-link">Resources</a>
+    <a href="schools.html" class="nav-mobile-link">Institutions</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+  </div>
+  <div class="nav-mobile-actions">
+    <a href="dashboard-learner.html" class="btn btn-primary btn-md">My Dashboard</a>
+    <button onclick="logout()" class="btn btn-outline btn-md" style="color:#DC2626 !important; border-color:#DC2626;">Log Out</button>
+  </div>
+</div>
 
+
+
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Dashboard Menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</button>
 <div class="dashboard-layout">
   <!-- Sidebar -->
   <aside class="sidebar">
@@ -115,7 +143,7 @@
 
       <!-- Curious Mind Welcome Banner -->
       <div class="welcome-banner" style="background: linear-gradient(135deg, #2145E6 0%, #0F172A 100%); color: #FFFFFF; border-radius: 16px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15); border-left: 5px solid #FFAD00; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-        <div style="max-width: 650px;">
+        <div style="max-width:650px; width:100%;">
           <h2 style="font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
             Hello, Curious Mind 👋
           </h2>
