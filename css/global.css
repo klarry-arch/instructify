@@ -1210,3 +1210,152 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
+
+
+/* ══════════════════════════════════════════════════════════════
+   EXPLICIT TYPOGRAPHY SYSTEM SPECIFICATION
+   Source: User Specification
+   - Hero heading: Poppins, 700–800 weight
+   - Section headings: Poppins, 600–700 weight
+   - Card headings: Poppins, 600 weight
+   - Navigation and buttons: Poppins, 500–600 weight
+   - Body text: Inter, 400 weight
+   - Card descriptions: Inter, 400 weight
+   - Form labels: Inter, 500 weight
+   - Captions and metadata: Inter, 400–500 weight
+   - Dashboard numbers: Inter, 600–700 weight
+   ══════════════════════════════════════════════════════════════ */
+
+/* 1. Hero Headings: Poppins, 700–800 weight */
+h1, .h1,
+.hero-title,
+.hero-h1,
+.hero-heading,
+.brand-statement-headline,
+header h1 {
+  font-family: var(--font-heading) !important;
+  font-weight: 800 !important;
+}
+
+/* 2. Section Headings: Poppins, 600–700 weight */
+h2, .h2,
+.section-title,
+.dashboard-title,
+.page-title,
+.saas-h2 {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+}
+
+/* 3. Card Headings: Poppins, 600 weight */
+h3, .h3,
+.card-title,
+.card-heading,
+.card h3,
+.course-card-title,
+.pathway-card h3,
+.distinct-card-title,
+.clientele-card h3,
+.clientele-title,
+.learning-step-card h3,
+.learning-step-card .step-title,
+.testimonial-card h4,
+.cert-title,
+.module-title,
+.lesson-title,
+.assignment-title {
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+}
+
+/* 4. Navigation and Buttons: Poppins, 500–600 weight */
+.nav-link,
+.nav-mobile-link,
+.nav-brand-title,
+.btn,
+button.btn,
+a.btn,
+.tab-btn,
+.role-chip,
+.filter-btn,
+input[type="submit"],
+input[type="button"] {
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+}
+
+.nav-link {
+  font-weight: 550 !important;
+}
+
+/* 5. Body Text: Inter, 400 weight */
+body,
+p,
+.body-text,
+.lead,
+.hero-subtitle,
+.section-subtitle,
+.dashboard-subtitle {
+  font-family: var(--font-body) !important;
+  font-weight: 400 !important;
+}
+
+/* 6. Card Descriptions: Inter, 400 weight */
+.card-desc,
+.card-text,
+.card p,
+.course-card-description,
+.pathway-card p,
+.distinct-card-desc,
+.clientele-card p,
+.clientele-desc,
+.learning-step-card p,
+.learning-step-card .step-desc,
+.testimonial-card p,
+.module-desc,
+.lesson-desc,
+.assignment-desc {
+  font-family: var(--font-body) !important;
+  font-weight: 400 !important;
+}
+
+/* 7. Form Labels: Inter, 500 weight */
+label,
+.form-label,
+.form-group label {
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+}
+
+/* 8. Captions and Metadata: Inter, 400–500 weight */
+caption,
+.metadata-text,
+.course-card-category,
+.course-card-stats,
+.sidebar-section-label,
+.footer-copy,
+.section-tag,
+.badge,
+.clientele-badge,
+.step-badge,
+.card-badge,
+.stat-label,
+.impact-stat-label,
+.cert-date,
+.price-original,
+.flagship-badge {
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+}
+
+/* 9. Dashboard Numbers: Inter, 600–700 weight */
+.stat-card-value,
+.stat-number,
+.impact-stat-number,
+.dashboard-stat-value,
+.metric-value,
+.floating-card-value,
+.price-current {
+  font-family: var(--font-body) !important;
+  font-weight: 700 !important;
+}

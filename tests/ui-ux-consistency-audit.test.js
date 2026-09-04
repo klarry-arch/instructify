@@ -33,6 +33,51 @@ assert(
   '--font-heading is standardized to Poppins & Inter'
 );
 assert(
+  globalCss.includes('--font-body:') && globalCss.includes("'Inter'"),
+  '--font-body is standardized to Inter'
+);
+
+// Explicit 9 Typography Rules
+console.log('\n📐 Explicit User Typography Specification:');
+assert(
+  globalCss.includes('h1, .h1') && globalCss.includes('font-weight: 800 !important;'),
+  'Rule 1: Hero heading is Poppins, 700–800 weight'
+);
+assert(
+  globalCss.includes('h2, .h2') && globalCss.includes('font-weight: 700 !important;'),
+  'Rule 2: Section headings are Poppins, 600–700 weight'
+);
+assert(
+  globalCss.includes('.card-title') && globalCss.includes('font-weight: 600 !important;'),
+  'Rule 3: Card headings are Poppins, 600 weight'
+);
+assert(
+  globalCss.includes('.nav-link') && globalCss.includes('.btn') && globalCss.includes('font-weight: 600 !important;'),
+  'Rule 4: Navigation and buttons are Poppins, 500–600 weight'
+);
+assert(
+  globalCss.includes('body,') && globalCss.includes('font-weight: 400 !important;'),
+  'Rule 5: Body text is Inter, 400 weight'
+);
+assert(
+  globalCss.includes('.card-desc') && globalCss.includes('font-weight: 400 !important;'),
+  'Rule 6: Card descriptions are Inter, 400 weight'
+);
+assert(
+  globalCss.includes('.form-label') && globalCss.includes('font-weight: 500 !important;'),
+  'Rule 7: Form labels are Inter, 500 weight'
+);
+assert(
+  globalCss.includes('.metadata-text') && globalCss.includes('font-weight: 500 !important;'),
+  'Rule 8: Captions and metadata are Inter, 400–500 weight'
+);
+assert(
+  globalCss.includes('.stat-card-value') && globalCss.includes('font-weight: 700 !important;'),
+  'Rule 9: Dashboard numbers are Inter, 600–700 weight'
+);
+
+// Fluid type scale checks
+assert(
   globalCss.includes('--font-size-hero:') && globalCss.includes('clamp('),
   'Fluid hero heading typography scale (--font-size-hero clamp) defined'
 );
