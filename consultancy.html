@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consultancy Services | Instructify Kenya</title>
+  <title>Educational Technology &amp; ICT Consultancy | Instructify Kenya</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/consultancy.css">
   <link rel="stylesheet" href="css/live-chat.css">
 </head>
 <body>
@@ -36,7 +37,7 @@
 
     <div class="nav-actions">
       <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
-      <a href="register.html" class="btn btn-primary btn-sm">Get Started →</a>
+      <a href="#book-consultation" class="btn btn-primary btn-sm">Book Consultation →</a>
     </div>
 
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
@@ -45,7 +46,7 @@
   </div>
 </nav>
 
-<!-- Mobile Nav -->
+<!-- Mobile Nav Drawer -->
 <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
   <div class="nav-mobile-links">
     <a href="index.html" class="nav-mobile-link" data-nav="home">Home</a>
@@ -60,153 +61,539 @@
   </div>
   <div class="nav-mobile-actions">
     <a href="register.html" class="btn btn-outline btn-md">Sign In</a>
-    <a href="register.html" class="btn btn-primary btn-md">Get Started →</a>
+    <a href="#book-consultation" class="btn btn-primary btn-md">Book Consultation →</a>
   </div>
 </div>
 
-<!-- Hero Section -->
-<section class="page-hero" style="background:var(--surface-soft, #F8FAFC); padding:calc(var(--nav-height, 72px) + 48px) 0 48px 0; border-bottom:1px solid var(--border, #E2E8F0);">
+<!-- ── 1. HERO SECTION ──────────────────────────────────────── -->
+<section class="consultancy-hero">
   <div class="container text-center">
-    <span class="section-tag blue" style="margin-bottom:12px; display:inline-flex;">💼 EXPERT ADVISORY &amp; STRATEGY</span>
-    <h1 class="hero-heading" style="color:var(--text-main, #0F172A); font-size:var(--text-4xl); margin-bottom:14px;">
-      Educational Consultancy Services
+    <div class="consultancy-hero-badge">
+      <span>💼</span> EXPERT ADVISORY &amp; STRATEGY
+    </div>
+
+    <h1 class="consultancy-hero-title">
+      Transforming Schools Through Technology, Innovation &amp; Digital Learning.
     </h1>
-    <p class="hero-subtitle" style="margin:0 auto; max-width:840px; width:100%; font-size: 1.15rem; line-height: 1.65; color:#334155 !important;">
-      Empowering schools, ministries, and learning organizations through meaningful learning experiences that inspire growth and create lasting transformation. We partner with educational leaders to deliver strategic advisory, CBC alignment, and sustainable institutional growth.
+
+    <p class="consultancy-hero-subtitle">
+      We partner with schools, institutions, and organizations to design, implement, and optimize ICT infrastructure, educational technology solutions, and professional development programs that drive measurable impact.
     </p>
+
+    <div class="consultancy-hero-actions">
+      <a href="#book-consultation" class="btn btn-primary btn-lg">
+        Book a Consultation →
+      </a>
+      <a href="#services" class="btn btn-outline btn-lg">
+        Explore Our Services
+      </a>
+    </div>
+
+    <div class="consultancy-hero-trust-bar">
+      <div class="trust-item">
+        <span class="trust-item-icon">✓</span> CBC &amp; EdTech Curriculum Aligned
+      </div>
+      <div class="trust-item">
+        <span class="trust-item-icon">✓</span> Certified Microsoft &amp; Google Educators
+      </div>
+      <div class="trust-item">
+        <span class="trust-item-icon">✓</span> Certified Network &amp; Cloud Engineers
+      </div>
+      <div class="trust-item">
+        <span class="trust-item-icon">✓</span> 150+ Institutional Transformations
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- Why Us Section -->
-<section class="section">
+<!-- ── 2. IMPACT METRICS SECTION ────────────────────────────── -->
+<section class="consultancy-metrics-section" id="impact-metrics">
   <div class="container">
-    <div class="section-header reveal text-center">
-      <h2 class="section-title">Our Approach</h2>
-    </div>
-    <div class="grid-3 stagger-children">
-      <!-- Feature 1 -->
-      <div class="card reveal text-center" style="padding:var(--space-2xl) var(--space-lg);">
-        <div style="font-size:3rem; margin-bottom:var(--space-md);">📊</div>
-        <h4 class="font-heading text-lg mb-sm">Data-Driven</h4>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary);">We base our recommendations on rigorous research, needs assessments, and evidence-based practices.</p>
+    <div class="consultancy-metrics-grid">
+      <div class="metric-card">
+        <div class="metric-value">
+          <span data-counter="150" data-counter-suffix="+">150+</span>
+        </div>
+        <div class="metric-label">Schools &amp; Learning Institutions Transformed</div>
       </div>
-      <!-- Feature 2 -->
-      <div class="card reveal delay-100 text-center" style="padding:var(--space-2xl) var(--space-lg);">
-        <div style="font-size:3rem; margin-bottom:var(--space-md);">🌍</div>
-        <h4 class="font-heading text-lg mb-sm">Contextualized</h4>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Solutions designed specifically for the Kenyan and African educational landscape, not imported templates.</p>
+      <div class="metric-card">
+        <div class="metric-value">
+          <span data-counter="10000" data-counter-suffix="+">10,000+</span>
+        </div>
+        <div class="metric-label">Educators Certified &amp; Digitally Upskilled</div>
       </div>
-      <!-- Feature 3 -->
-      <div class="card reveal delay-200 text-center" style="padding:var(--space-2xl) var(--space-lg);">
-        <div style="font-size:3rem; margin-bottom:var(--space-md);">🤝</div>
-        <h4 class="font-heading text-lg mb-sm">Collaborative</h4>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary);">We work alongside your team to build internal capacity and ensure sustainable implementation.</p>
+      <div class="metric-card">
+        <div class="metric-value">
+          <span data-counter="99.9" data-counter-suffix="%" data-counter-decimals="1">99.9%</span>
+        </div>
+        <div class="metric-label">Enterprise Campus ICT Infrastructure Uptime</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">
+          <span data-counter="100" data-counter-suffix="%">100%</span>
+        </div>
+        <div class="metric-label">CBC Alignment &amp; Digital Pedagogy Compliance</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Service Areas Section -->
-<section class="section" style="background:var(--bg-light);">
+<!-- ── 3. SERVICES SECTION ──────────────────────────────────── -->
+<section class="consultancy-services-section" id="services">
   <div class="container">
-    <div class="section-header reveal text-center">
-      <h2 class="section-title">Our Areas of Expertise</h2>
-    </div>
-    
-    <!-- Service 2: Technology -->
-    <div class="card reveal mb-xl" style="padding:0; overflow:hidden; border:none; box-shadow:var(--shadow-md);">
-      <div class="grid-2" style="gap:0; align-items:stretch;">
-        <div style="order:2; padding:var(--space-4xl); display:flex; flex-direction:column; justify-content:center;">
-          <div style="font-size:2.5rem; margin-bottom:var(--space-md);">💻</div>
-          <div style="display:inline-block; background:var(--accent-bg, #F3EEFF); color:#CC3E00; font-weight:700; font-size:13px; padding:4px 12px; border-radius:999px; margin-bottom:8px; width:fit-content;">“From Chalk to Click”</div>
-          <h3 class="font-heading text-2xl mb-md">Digital Teaching &amp; Smart Classrooms</h3>
-          <p style="color:var(--text-secondary); margin-bottom:var(--space-lg); line-height:1.6;">
-            Reimagine your classroom with smart boards, ClassVR, and interactive content that brings learning to life. Navigate the complexities of digital integration with hands-on training and infrastructure support.
-          </p>
-          <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:8px;">
-            <li style="display:flex; align-items:center; gap:8px; color:var(--text-secondary);"><span style="color:var(--color-primary);">✓</span> Smart board &amp; ClassVR integration</li>
-            <li style="display:flex; align-items:center; gap:8px; color:var(--text-secondary);"><span style="color:var(--color-primary);">✓</span> Interactive content development</li>
-            <li style="display:flex; align-items:center; gap:8px; color:var(--text-secondary);"><span style="color:var(--color-primary);">✓</span> Digital pedagogy frameworks</li>
-          </ul>
-        </div>
-        <div style="order:1;">
-          <img src="assets/images/course-ict.png" alt="EdTech Transformation" style="width:100%; height:100%; object-fit:cover; min-height:300px;" loading="lazy">
-        </div>
-      </div>
+    <div class="section-header text-center">
+      <span class="section-tag blue">OUR EXPERTISE</span>
+      <h2 class="section-title">Comprehensive Consultancy Offerings</h2>
+      <p class="section-subtitle">
+        Holistic solutions spanning network infrastructure, software deployment, teacher training, and strategic governance.
+      </p>
     </div>
 
-    <!-- Service 3: Capacity Building -->
-    <div class="card reveal" style="padding:0; overflow:hidden; border:none; box-shadow:var(--shadow-md);">
-      <div class="grid-2" style="gap:0; align-items:stretch;">
-        <div style="padding:var(--space-4xl); display:flex; flex-direction:column; justify-content:center;">
-          <div style="font-size:2.5rem; margin-bottom:var(--space-md);">🏢</div>
-          <h3 class="font-heading text-2xl mb-md">Institutional Capacity Building</h3>
-          <p style="color:var(--text-secondary); margin-bottom:var(--space-lg); line-height:1.6;">
-            Empower your team for long-term success through custom professional development programs, leadership retreats, and comprehensive school-wide competency audits.
+    <div class="services-grid-2x2">
+      <!-- Service 1: ICT Infrastructure Development -->
+      <div class="service-card theme-blue">
+        <div class="service-card-body">
+          <div class="service-header-row">
+            <div class="service-icon-box" aria-hidden="true">
+              <!-- Network / Server / Cloud Icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="5" rx="1.5"/>
+                <rect x="2" y="11" width="20" height="5" rx="1.5"/>
+                <rect x="2" y="19" width="20" height="4" rx="1.5"/>
+                <circle cx="6" cy="5.5" r="1" fill="currentColor"/>
+                <circle cx="6" cy="13.5" r="1" fill="currentColor"/>
+                <circle cx="6" cy="21" r="1" fill="currentColor"/>
+                <path d="M18 5.5h.01M18 13.5h.01M18 21h.01"/>
+              </svg>
+            </div>
+            <div class="service-meta-col">
+              <span class="service-tag">INFRASTRUCTURE &amp; HARDWARE</span>
+              <h3 class="service-card-title">1. ICT Infrastructure Development</h3>
+            </div>
+          </div>
+
+          <p class="service-card-desc">
+            We design, implement, and support robust ICT environments that enable schools and organizations to operate efficiently and securely.
           </p>
-          <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:8px;">
-            <li style="display:flex; align-items:center; gap:8px; color:var(--text-secondary);"><span style="color:var(--color-primary);">✓</span> Leadership training</li>
-            <li style="display:flex; align-items:center; gap:8px; color:var(--text-secondary);"><span style="color:var(--color-primary);">✓</span> Staff skills audits</li>
-            <li style="display:flex; align-items:center; gap:8px; color:var(--text-secondary);"><span style="color:var(--color-primary);">✓</span> Change management</li>
+
+          <div class="service-checklist-title">
+            <span>📦</span> Core Deliverables Include:
+          </div>
+          <ul class="service-checklist">
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Network design &amp; implementation</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Structured cabling systems</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Campus-wide WiFi deployment</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Server installation &amp; management</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Internet connectivity solutions</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Data backup &amp; disaster recovery</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Cybersecurity implementation</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> CCTV &amp; access control integration</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Cloud &amp; Microsoft 365 deployment</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> ICT policy &amp; governance</li>
           </ul>
+
+          <div class="service-benefits-wrap">
+            <div class="service-benefits-label">Key Institutional Benefits:</div>
+            <div class="benefit-pills-row">
+              <span class="benefit-pill"><span class="tick">✓</span> Reliable connectivity</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Improved security</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Scalability</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Reduced downtime</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Future-ready infrastructure</span>
+            </div>
+          </div>
         </div>
-        <div>
-          <img src="assets/images/about.png" alt="Institutional Capacity Building" style="width:100%; height:100%; object-fit:cover; min-height:300px;" loading="lazy">
+
+        <div class="service-card-footer">
+          <a href="#book-consultation" class="service-cta-btn">
+            Request Infrastructure Audit <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 2: Software Deployment & Digital Transformation -->
+      <div class="service-card theme-teal">
+        <div class="service-card-body">
+          <div class="service-header-row">
+            <div class="service-icon-box" aria-hidden="true">
+              <!-- Laptop / Cloud Software Icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="12" rx="2"/>
+                <path d="M2 20h20"/>
+                <path d="M7 8h4M7 11h2"/>
+                <circle cx="16" cy="9" r="2"/>
+              </svg>
+            </div>
+            <div class="service-meta-col">
+              <span class="service-tag">SOFTWARE &amp; WORKFLOW AUTOMATION</span>
+              <h3 class="service-card-title">2. Software Deployment &amp; Digital Transformation</h3>
+            </div>
+          </div>
+
+          <p class="service-card-desc">
+            We help institutions adopt, implement, and manage modern software solutions that improve operational efficiency and learning outcomes.
+          </p>
+
+          <div class="service-checklist-title">
+            <span>💻</span> Core Deliverables Include:
+          </div>
+          <ul class="service-checklist">
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Learning Management Systems (LMS)</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> School Management Systems (SMS)</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Microsoft 365 deployment</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Google Workspace implementation</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Student information systems (SIS)</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Digital assessment platforms</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Workflow automation</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Data migration services</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Software training &amp; onboarding</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Technical support &amp; maintenance</li>
+          </ul>
+
+          <div class="service-benefits-wrap">
+            <div class="service-benefits-label">Key Institutional Benefits:</div>
+            <div class="benefit-pills-row">
+              <span class="benefit-pill"><span class="tick">✓</span> Streamlined operations</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Improved collaboration</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Enhanced productivity</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Data-driven decision making</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card-footer">
+          <a href="#book-consultation" class="service-cta-btn">
+            Plan Software Deployment <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 3: EdTech Professional Development -->
+      <div class="service-card theme-orange">
+        <div class="service-card-body">
+          <div class="service-header-row">
+            <div class="service-icon-box" aria-hidden="true">
+              <!-- Teacher / Graduation Cap / Digital Learning Icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+            </div>
+            <div class="service-meta-col">
+              <span class="service-tag">CAPACITY BUILDING &amp; CPD</span>
+              <h3 class="service-card-title">3. EdTech Professional Development</h3>
+            </div>
+          </div>
+
+          <p class="service-card-desc">
+            Empowering educators with the skills, confidence, and strategies required to thrive in modern digital learning environments.
+          </p>
+
+          <div class="service-checklist-title">
+            <span>🎓</span> Core Deliverables Include:
+          </div>
+          <ul class="service-checklist">
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Digital literacy training</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> AI in education workshops</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Microsoft Innovative Educator programs</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Google for Education training</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Blended learning strategies</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> ICT integration in teaching</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Digital assessment methodologies</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Instructional design workshops</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Educational technology coaching</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Leadership training for administrators</li>
+          </ul>
+
+          <div class="service-benefits-wrap">
+            <div class="service-benefits-label">Key Institutional Benefits:</div>
+            <div class="benefit-pills-row">
+              <span class="benefit-pill"><span class="tick">✓</span> Increased technology adoption</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Improved learner engagement</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Enhanced teaching effectiveness</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Sustainable digital transformation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card-footer">
+          <a href="#book-consultation" class="service-cta-btn">
+            Schedule Educator Workshops <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 4: ICT Advisory & Strategic Consulting -->
+      <div class="service-card theme-amber">
+        <div class="service-card-body">
+          <div class="service-header-row">
+            <div class="service-icon-box" aria-hidden="true">
+              <!-- Strategy / Analytics / Compass Icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+              </svg>
+            </div>
+            <div class="service-meta-col">
+              <span class="service-tag">STRATEGY &amp; GOVERNANCE</span>
+              <h3 class="service-card-title">4. ICT Advisory &amp; Strategic Consulting</h3>
+            </div>
+          </div>
+
+          <p class="service-card-desc">
+            We provide expert guidance to help educational institutions align technology investments with strategic goals.
+          </p>
+
+          <div class="service-checklist-title">
+            <span>🧭</span> Core Deliverables Include:
+          </div>
+          <ul class="service-checklist">
+            <li class="service-checklist-item"><span class="check-dot">✓</span> ICT audits and assessments</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Digital transformation roadmaps</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Technology budgeting &amp; planning</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> ICT policy development</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Procurement advisory services</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Compliance &amp; governance reviews</li>
+            <li class="service-checklist-item"><span class="check-dot">✓</span> Technology risk assessments</li>
+          </ul>
+
+          <div class="service-benefits-wrap">
+            <div class="service-benefits-label">Key Institutional Benefits:</div>
+            <div class="benefit-pills-row">
+              <span class="benefit-pill"><span class="tick">✓</span> Optimized technology spend</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Clear strategic roadmap</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Regulatory compliance</span>
+              <span class="benefit-pill"><span class="tick">✓</span> Minimized technological risk</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card-footer">
+          <a href="#book-consultation" class="service-cta-btn">
+            Request Strategic Advisory <span>→</span>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Process Section -->
-<section class="section">
-  <div class="container text-center">
-    <div class="section-header reveal text-center">
-      <h2 class="section-title">How We Work</h2>
+<!-- ── 4. WHY CHOOSE US SECTION ─────────────────────────────── -->
+<section class="consultancy-why-section" id="why-us">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-tag teal">THE INSTRUCTIFY ADVANTAGE</span>
+      <h2 class="section-title">Why Choose Instructify Kenya</h2>
+      <p class="section-subtitle">
+        We bridge the gap between technical engineering and pedagogical excellence, delivering solutions teachers embrace and students thrive on.
+      </p>
     </div>
-    <div class="grid-4 stagger-children" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align:center;">
+
+    <div class="why-grid-6">
+      <!-- 1 -->
+      <div class="why-card">
+        <div class="why-icon-box">📚</div>
+        <h3 class="why-card-title"><span class="check-symbol">✓</span> Education-Focused Expertise</h3>
+        <p class="why-card-desc">Deep understanding of Kenyan classrooms, the Competency-Based Curriculum (CBC), and pedagogical best practices.</p>
+      </div>
+      <!-- 2 -->
+      <div class="why-card">
+        <div class="why-icon-box">🎖️</div>
+        <h3 class="why-card-title"><span class="check-symbol">✓</span> Certified Technology Professionals</h3>
+        <p class="why-card-desc">Accredited Cisco, Microsoft, and Google Certified Education trainers, network architects, and cybersecurity specialists.</p>
+      </div>
+      <!-- 3 -->
+      <div class="why-card">
+        <div class="why-icon-box">⚙️</div>
+        <h3 class="why-card-title"><span class="check-symbol">✓</span> Tailored Institutional Solutions</h3>
+        <p class="why-card-desc">No one-size-fits-all packages. Every deployment is calibrated to your campus scale, student population, and budget.</p>
+      </div>
+      <!-- 4 -->
+      <div class="why-card">
+        <div class="why-icon-box">🤝</div>
+        <h3 class="why-card-title"><span class="check-symbol">✓</span> Ongoing Support &amp; Training</h3>
+        <p class="why-card-desc">Continuous post-implementation support, SLA-backed helpdesks, and periodic teacher upskilling workshops.</p>
+      </div>
+      <!-- 5 -->
+      <div class="why-card">
+        <div class="why-icon-box">🚀</div>
+        <h3 class="why-card-title"><span class="check-symbol">✓</span> Proven Implementation Approach</h3>
+        <p class="why-card-desc">A tested, phased rollout model that minimizes disruption to school operations and ensures fast stakeholder adoption.</p>
+      </div>
+      <!-- 6 -->
+      <div class="why-card">
+        <div class="why-icon-box">📈</div>
+        <h3 class="why-card-title"><span class="check-symbol">✓</span> Scalable &amp; Sustainable Systems</h3>
+        <p class="why-card-desc">Future-proof architecture designed to scale seamlessly as your institution expands in student numbers and digital needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 5. PROCESS SECTION ───────────────────────────────────── -->
+<section class="consultancy-process-section" id="process">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-tag orange">HOW WE WORK</span>
+      <h2 class="section-title">Our Structured 5-Stage Process</h2>
+      <p class="section-subtitle">
+        A reliable, step-by-step roadmap from initial diagnostic to long-term institutional transformation.
+      </p>
+    </div>
+
+    <div class="process-grid-5">
       <!-- Step 1 -->
-      <div class="reveal">
-        <div style="width:64px; height:64px; background:var(--color-primary-glow); color:var(--color-primary); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; font-weight:700; margin:0 auto var(--space-md);">1</div>
-        <h4 class="font-heading text-md mb-sm">Discovery</h4>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary);">We conduct a thorough needs assessment to understand your context.</p>
+      <div class="process-step-card">
+        <div class="step-num-pill">01</div>
+        <h3 class="process-step-title">Discovery &amp; Needs Assessment</h3>
+        <p class="process-step-desc">Comprehensive audit of your current infrastructure, teaching readiness, curriculum requirements, and institutional objectives.</p>
       </div>
       <!-- Step 2 -->
-      <div class="reveal delay-100">
-        <div style="width:64px; height:64px; background:var(--color-primary-glow); color:var(--color-primary); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; font-weight:700; margin:0 auto var(--space-md);">2</div>
-        <h4 class="font-heading text-md mb-sm">Strategy</h4>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary);">We design a customized, evidence-based roadmap for intervention.</p>
+      <div class="process-step-card">
+        <div class="step-num-pill">02</div>
+        <h3 class="process-step-title">Strategy &amp; Solution Design</h3>
+        <p class="process-step-desc">Custom technical architecture, budget planning, hardware/software specifications, and phased rollout roadmaps.</p>
       </div>
       <!-- Step 3 -->
-      <div class="reveal delay-200">
-        <div style="width:64px; height:64px; background:var(--color-primary-glow); color:var(--color-primary); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; font-weight:700; margin:0 auto var(--space-md);">3</div>
-        <h4 class="font-heading text-md mb-sm">Implementation</h4>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary);">We co-execute the solution, providing tools and training.</p>
+      <div class="process-step-card">
+        <div class="step-num-pill">03</div>
+        <h3 class="process-step-title">Implementation &amp; Deployment</h3>
+        <p class="process-step-desc">High-grade network engineering, structured cabling, LMS/SMS configuration, and security system installations.</p>
       </div>
       <!-- Step 4 -->
-      <div class="reveal delay-300">
-        <div style="width:64px; height:64px; background:var(--color-primary-glow); color:var(--color-primary); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; font-weight:700; margin:0 auto var(--space-md);">4</div>
-        <h4 class="font-heading text-md mb-sm">Evaluation</h4>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary);">We measure impact and ensure sustainable integration.</p>
+      <div class="process-step-card">
+        <div class="step-num-pill">04</div>
+        <h3 class="process-step-title">Capacity Building &amp; Training</h3>
+        <p class="process-step-desc">Immersive hands-on workshops for teachers, administrators, and IT staff to ensure confident, sustained digital adoption.</p>
+      </div>
+      <!-- Step 5 -->
+      <div class="process-step-card">
+        <div class="step-num-pill">05</div>
+        <h3 class="process-step-title">Support &amp; Continuous Improvement</h3>
+        <p class="process-step-desc">Ongoing technical support, scheduled system maintenance, KPI tracking, and continuous institutional growth reviews.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA Section -->
-<section class="section text-center" style="background:var(--color-primary-bg); padding:var(--space-4xl) 20px;">
-  <div class="container" style="max-width:800px; width:100%;">
-    <h2 class="font-heading" style="font-size:var(--text-3xl); margin-bottom:12px;">Ready to ignite your curiosity?</h2>
-    <p style="font-size:20px; font-weight:700; color:#FF4D00; margin-bottom:16px; line-height:1.4;">
-      Let’s build a learning revolution—one spark at a time.
-    </p>
-    <p style="font-size:var(--text-lg); color:var(--text-secondary); margin-bottom:var(--space-xl);">
-      Schedule a free discovery call with our senior educational advisors today.
-    </p>
-    <a href="contact.html" class="btn btn-blue btn-xl">Schedule Consultation</a>
+<!-- ── 6. CONSULTATION BOOKING SECTION ──────────────────────── -->
+<section class="consultancy-booking-section" id="book-consultation">
+  <div class="container">
+    <div class="booking-layout-grid">
+      <!-- Left Column: Information & Trust -->
+      <div class="booking-info-col">
+        <span class="section-tag">TAKE THE NEXT STEP</span>
+        <h2 class="booking-info-title">
+          Let’s Build a Future-Ready School Together.
+        </h2>
+        <p class="booking-info-desc">
+          Whether you need a full campus WiFi and server overhaul, a modern Learning Management System, or transformative CPD teacher training, our team is ready to assist.
+        </p>
+
+        <ul class="booking-perks-list">
+          <li class="booking-perk-item">
+            <span class="booking-perk-icon">✓</span> Free 30-Minute Discovery &amp; Needs Assessment
+          </li>
+          <li class="booking-perk-item">
+            <span class="booking-perk-icon">✓</span> Tailored Technical Audit Report &amp; Strategy Roadmap
+          </li>
+          <li class="booking-perk-item">
+            <span class="booking-perk-icon">✓</span> Direct Access to Certified EdTech &amp; ICT Advisors
+          </li>
+          <li class="booking-perk-item">
+            <span class="booking-perk-icon">✓</span> Transparent, Phased Institutional Quotation
+          </li>
+        </ul>
+
+        <div class="direct-contact-box">
+          <div>
+            <div class="direct-contact-label">Need immediate advisory?</div>
+            <a href="tel:+254143024416" class="direct-contact-number">+254 143 024 416</a>
+          </div>
+          <a href="https://wa.me/254143024416?text=Hello%20Instructify%20Kenya,%20I%20would%20like%20to%20book%20an%20institutional%20consultation." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-direct">
+            <span>💬</span> WhatsApp Us Direct
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Consultation Form -->
+      <div class="consultation-form-card">
+        <h3 class="form-title">Book a Consultation Discovery Session</h3>
+        <p class="form-subtitle">Fill in your institutional details below to receive a personalized proposal.</p>
+
+        <form id="consultation-form">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="inst_name" class="form-label">Institution Name *</label>
+              <input type="text" id="inst_name" name="inst_name" class="form-control" placeholder="e.g. St. Peter's Academy" required>
+            </div>
+            <div class="form-group">
+              <label for="inst_type" class="form-label">Institution Type *</label>
+              <select id="inst_type" name="inst_type" class="form-control" required>
+                <option value="Primary School">Primary School / CBC Junior School</option>
+                <option value="Secondary School">Secondary School / Senior School</option>
+                <option value="International School">International / Private Academy</option>
+                <option value="Tertiary / TVET">College / TVET / University</option>
+                <option value="Organization">Education NGO / Ministry / Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="contact_person" class="form-label">Contact Person &amp; Role *</label>
+              <input type="text" id="contact_person" name="contact_person" class="form-control" placeholder="e.g. Jane Doe (Principal / ICT Head)" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Work Email *</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="admin@school.ac.ke" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone / WhatsApp Number *</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+254 7XX XXX XXX" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Services of Interest (Select All That Apply):</label>
+            <div class="services-checkbox-grid">
+              <label class="service-checkbox-item">
+                <input type="checkbox" name="services" value="ICT Infrastructure">
+                <span>ICT Infrastructure &amp; WiFi</span>
+              </label>
+              <label class="service-checkbox-item">
+                <input type="checkbox" name="services" value="Software & LMS">
+                <span>Software, SMS &amp; LMS</span>
+              </label>
+              <label class="service-checkbox-item">
+                <input type="checkbox" name="services" value="Teacher CPD Training">
+                <span>EdTech CPD Training</span>
+              </label>
+              <label class="service-checkbox-item">
+                <input type="checkbox" name="services" value="ICT Strategic Advisory">
+                <span>ICT Strategic Advisory</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes" class="form-label">Brief Overview of Specific Needs or Goals</label>
+            <textarea id="notes" name="notes" class="form-control" placeholder="Tell us about your campus size, current pain points, or timeline..."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit-btn">
+            Request Consultation Discovery Call <span>→</span>
+          </button>
+
+          <div id="form-feedback" class="form-feedback" role="alert"></div>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ── Global Footer ────────────────────────────────────────── -->
 <footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
   <div class="container">
     <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1.5px solid var(--cta-color, #F5812D);">
@@ -215,7 +602,7 @@
         <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
           We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.
         </p>
-                <div class="footer-social-row" style="margin-bottom:20px;">
+        <div class="footer-social-row" style="margin-bottom:20px;">
           <a href="https://www.linkedin.com/company/instructify-kenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg>
           </a>
@@ -235,14 +622,13 @@
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
         </div>
-<a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
+        <a href="#book-consultation" class="btn btn-primary btn-sm">Partner With Us</a>
       </div>
       <div>
         <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
         <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
           <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
           <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
-          
           <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
         </ul>
       </div>
@@ -272,8 +658,8 @@
 </footer>
 
 <script src="js/main.js"></script>
-
-  <script src="js/chat-config.js"></script>
-  <script src="js/live-chat.js"></script>
+<script src="js/consultancy.js"></script>
+<script src="js/chat-config.js"></script>
+<script src="js/live-chat.js"></script>
 </body>
 </html>
