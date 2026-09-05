@@ -35,7 +35,46 @@ function json(status, body = {}) {
   });
 }
 
-export default async function handler(req) {
+export default async function handler(req, res) {
+  // Support Node.js runtime
+  if (res && typeof res.status === 'function') {
+    if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+    let rawBody = '';
+    if (typeof req.body === 'string') {
+      rawBody = req.body;
+    } else if (req.body && typeof req.body === 'object') {
+      rawBody = JSON.stringify(req.body);
+    }
+
+    const signature = req.headers['x-paystack-signature'] || (req.headers.get && req.headers.get('x-paystack-signature')) || '';
+    if (!verifyWebhookSignature(rawBody, signature)) {
+      console.warn('[webhook] Invalid signature — rejecting request');
+      return res.status(401).json({ error: 'Invalid webhook signature' });
+    }
+
+    let event;
+    try {
+      event = (typeof req.body === 'object' && req.body !== null) ? req.body : JSON.parse(rawBody);
+    } catch {
+      return res.status(400).json({ error: 'Invalid JSON payload' });
+    }
+
+    const { event: eventType, data } = event;
+    let result;
+    if (eventType === 'charge.success') {
+      result = await handleChargeSuccess(data);
+    } else if (['charge.failed', 'transfer.reversed', 'charge.dispute.create'].includes(eventType)) {
+      result = await handleChargeFailed(data, eventType);
+    } else {
+      return res.status(200).json({ received: true });
+    }
+
+    const body = await result.json();
+    return res.status(result.status).json(body);
+  }
+
+  // Fallback for Web standard Fetch Request/Response
   if (req.method !== 'POST') return json(405, { error: 'Method not allowed' });
 
   // ── 1. Read raw body for signature verification ───────────
@@ -47,7 +86,7 @@ export default async function handler(req) {
   }
 
   // ── 2. Verify webhook signature ───────────────────────────
-  const signature = req.headers.get('x-paystack-signature') || '';
+  const signature = (req.headers.get ? req.headers.get('x-paystack-signature') : req.headers['x-paystack-signature']) || '';
   if (!verifyWebhookSignature(rawBody, signature)) {
     console.warn('[webhook] Invalid signature — rejecting request');
     return json(401, { error: 'Invalid webhook signature' });
