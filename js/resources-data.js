@@ -131,7 +131,7 @@ window.RESOURCES_DATA = (function() {
       updatedAt: 'Aug 2026',
       rating: 4.9,
       downloads: 1420,
-      image: 'assets/images/course-cbe.png',
+      image: 'assets/images/course_assessment_mastery.jpg',
       description: 'A complete step-by-step master toolkit for crafting learner-centered, competency-focused lesson plans with integrated formative rubrics and CBC strands.',
       fileType: 'ZIP (DOCX + PDF)',
       fileSize: '3.4 MB',
@@ -150,7 +150,7 @@ window.RESOURCES_DATA = (function() {
       updatedAt: 'Aug 2026',
       rating: 4.8,
       downloads: 980,
-      image: 'assets/images/course-digital.png',
+      image: 'assets/images/course_smart_vr_classroom.jpg',
       description: 'Essential hands-on guide covering classroom presentation software, interactive digital whiteboards, safe educational search, and cloud resource storage.',
       fileType: 'PDF Guide',
       fileSize: '2.8 MB',
@@ -169,7 +169,7 @@ window.RESOURCES_DATA = (function() {
       updatedAt: 'Sep 2026',
       rating: 4.9,
       downloads: 740,
-      image: 'assets/images/course-ict.png',
+      image: 'assets/images/consultancy_ict_network.jpg',
       description: 'Institutional audit template to inspect LAN wiring, power backup readiness, device health, cyber hygiene, and classroom multimedia accessibility.',
       fileType: 'XLSX Spreadsheet',
       fileSize: '1.2 MB',
@@ -188,7 +188,7 @@ window.RESOURCES_DATA = (function() {
       updatedAt: 'Aug 2026',
       rating: 5.0,
       downloads: 2150,
-      image: 'assets/images/about.png',
+      image: 'assets/images/home_interactive_teaching.jpg',
       description: 'Over 60 ready-to-use holistic assessment rubrics aligned with core competencies: critical thinking, communication, collaboration, and self-efficacy.',
       fileType: 'DOCX Document',
       fileSize: '4.6 MB',
@@ -207,7 +207,7 @@ window.RESOURCES_DATA = (function() {
       updatedAt: 'Jul 2026',
       rating: 4.7,
       downloads: 890,
-      image: 'assets/images/hero.png',
+      image: 'assets/images/home_teacher_coaching.jpg',
       description: 'Practical handbook for parents to create productive home learning routines, manage screen time constructively, and collaborate with school teachers.',
       fileType: 'PDF Handbook',
       fileSize: '1.9 MB',
@@ -226,7 +226,7 @@ window.RESOURCES_DATA = (function() {
       updatedAt: 'Aug 2026',
       rating: 4.9,
       downloads: 1120,
-      image: 'assets/images/course-digital.png',
+      image: 'assets/images/course_ict_integration.jpg',
       description: 'Institutional guidelines for safe internet usage, data privacy compliance under Kenyan law, reporting protocols, and cyber resilience training.',
       fileType: 'PDF Policy Manual',
       fileSize: '2.5 MB',
@@ -245,7 +245,7 @@ window.RESOURCES_DATA = (function() {
       updatedAt: 'Aug 2026',
       rating: 4.95,
       downloads: 650,
-      image: 'assets/images/course-ai.png',
+      image: 'assets/images/consultancy_smart_boards.jpg',
       description: 'Evidence-based strategies, multisensory activity templates, and individualized learning support plans for neurodiverse classrooms.',
       fileType: 'ZIP (Toolkit + Videos)',
       fileSize: '8.2 MB',
@@ -264,7 +264,7 @@ window.RESOURCES_DATA = (function() {
       updatedAt: 'Sep 2026',
       rating: 4.85,
       downloads: 820,
-      image: 'assets/images/course-ict.png',
+      image: 'assets/images/home_digital_leadership.jpg',
       description: 'Comprehensive presentation deck and roadmap template for institutional boards to plan sustainable 3-year EdTech transitions.',
       fileType: 'PPTX Presentation',
       fileSize: '5.1 MB',
@@ -287,7 +287,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.9,
       downloads: 890,
       language: 'English',
-      image: 'assets/images/course-cbe.png',
+      image: 'assets/images/home_hero_classroom.jpg',
       description: 'Laboratory safety, low-cost experimental setups, and student observation sheets designed for Grade 7, 8, and 9 Integrated Science strands.',
       fileSize: '3.1 MB',
       tags: ['CBC', 'Science', 'Practicals', 'Lab Safety']
@@ -305,7 +305,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.8,
       downloads: 1280,
       language: 'English',
-      image: 'assets/images/course-digital.png',
+      image: 'assets/images/course_assessment_mastery.jpg',
       description: 'Streamlined spreadsheets to track and report learner growth in Communication, Collaboration, Critical Thinking, and Digital Literacy.',
       fileSize: '1.4 MB',
       tags: ['CBC', 'Competencies', 'Evidence', 'Continuous Assessment']
@@ -323,7 +323,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.95,
       downloads: 3410,
       language: 'English',
-      image: 'assets/images/about.png',
+      image: 'assets/images/about_strategy_session.jpg',
       description: 'Officially formatted, editable Term 1, 2, and 3 scheme templates with pre-configured columns for sub-strands, specific learning outcomes, and assessment modes.',
       fileSize: '650 KB',
       tags: ['Schemes of Work', 'Lesson Plans', 'Junior School', 'Templates']
@@ -341,7 +341,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.75,
       downloads: 610,
       language: 'English',
-      image: 'assets/images/hero.png',
+      image: 'assets/images/home_teacher_coaching.jpg',
       description: 'Peer observation rubric and supportive pedagogical feedback guide designed for instructional coaches, heads of departments, and principals.',
       fileSize: '1.1 MB',
       tags: ['Observation', 'Leadership', 'TPAD', 'Teacher Mentorship']
@@ -377,7 +377,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.85,
       downloads: 940,
       language: 'English',
-      image: 'assets/images/course-cbe.png',
+      image: 'assets/images/home_interactive_teaching.jpg',
       description: 'Printable and digital self-assessment portfolio journal where learners record reflections, artifacts, and target goals throughout the term.',
       fileSize: '2.2 MB',
       tags: ['Assessment', 'Portfolios', 'Self-Reflection', 'CBC']
@@ -395,7 +395,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.7,
       downloads: 520,
       language: 'English',
-      image: 'assets/images/course-ict.png',
+      image: 'assets/images/consultancy_ict_network.jpg',
       description: 'Weekly device health checklist, preventive hardware maintenance logbook, thermal monitoring record, and software license tracker.',
       fileSize: '890 KB',
       tags: ['ICT Infrastructure', 'Computer Lab', 'Maintenance', 'Checklists']
@@ -413,7 +413,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.9,
       downloads: 730,
       language: 'English',
-      image: 'assets/images/about.png',
+      image: 'assets/images/about_educator_workshop.jpg',
       description: 'Three-tiered instruction plan accommodating diverse learning paces, visual/auditory preferences, and tailored formative tasks.',
       fileSize: '780 KB',
       tags: ['Special Needs', 'Inclusion', 'Differentiation', 'Lesson Plans']
@@ -431,7 +431,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.95,
       downloads: 1650,
       language: 'English',
-      image: 'assets/images/hero.png',
+      image: 'assets/images/home_stem_collaboration.jpg',
       description: 'A comprehensive roadmap demystifying the three CBC Senior School pathways: Arts & Sports, Social Sciences, and STEM.',
       fileSize: '3.8 MB',
       tags: ['Career Guidance', 'Senior School', 'Pathways', 'STEM']
@@ -449,7 +449,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.8,
       downloads: 1120,
       language: 'English',
-      image: 'assets/images/course-digital.png',
+      image: 'assets/images/home_interactive_teaching.jpg',
       description: 'Printable color flashcards and audio pronunciation links for foundational phonemic awareness in Pre-Primary 1 and 2.',
       fileSize: '5.2 MB',
       tags: ['Early Years', 'Literacy', 'Phonics', 'Flashcards']
@@ -467,7 +467,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.9,
       downloads: 410,
       language: 'English',
-      image: 'assets/images/course-ict.png',
+      image: 'assets/images/home_digital_leadership.jpg',
       description: 'Institutional readiness diagnostic evaluating leadership commitment, teacher digital maturity, infrastructure resilience, and parental support.',
       fileSize: '4.1 MB',
       tags: ['Digital Readiness', 'Leadership', 'Audit', 'Strategic Planning']
@@ -485,7 +485,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.85,
       downloads: 870,
       language: 'English',
-      image: 'assets/images/course-digital.png',
+      image: 'assets/images/course_ict_integration.jpg',
       description: '45-minute interactive lesson plan with roleplays, case studies, and discussion prompts on healthy digital habits and reporting online harassment.',
       fileSize: '950 KB',
       tags: ['Digital Safety', 'Cyberbullying', 'Citizenship', 'Lesson Plans']
@@ -503,7 +503,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.9,
       downloads: 2430,
       language: 'English',
-      image: 'assets/images/about.png',
+      image: 'assets/images/course_assessment_mastery.jpg',
       description: 'Step-by-step documentation manual detailing exact evidence requirements for professional knowledge, time management, and learner progression.',
       fileSize: '2.7 MB',
       tags: ['TPAD', 'TSC', 'Teacher Training', 'Portfolios']
@@ -521,7 +521,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.75,
       downloads: 680,
       language: 'English',
-      image: 'assets/images/hero.png',
+      image: 'assets/images/home_teacher_coaching.jpg',
       description: 'Constructive meeting agendas, parent inquiry follow-up templates, and collaborative student improvement contracts.',
       fileSize: '720 KB',
       tags: ['Parental Engagement', 'Communication', 'Meetings', 'Templates']
@@ -539,7 +539,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.8,
       downloads: 790,
       language: 'English',
-      image: 'assets/images/course-ict.png',
+      image: 'assets/images/consultancy_ict_network.jpg',
       description: 'Comprehensive policy template covering institutional Wi-Fi, staff BYOD (Bring Your Own Device), student tablet rules, and data backups.',
       fileSize: '1.3 MB',
       tags: ['ICT Policy', 'BYOD', 'Acceptable Use', 'Institutions']
@@ -557,7 +557,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.9,
       downloads: 910,
       language: 'English',
-      image: 'assets/images/course-ai.png',
+      image: 'assets/images/course-digital.png',
       description: 'Interactive mini-course with templates on using Google Forms, Kahoot, and Plickers for low-friction, high-insight classroom feedback.',
       fileSize: 'Interactive Online',
       tags: ['Quizzes', 'EdTech', 'Formative Assessment', 'Google Forms']
@@ -575,7 +575,7 @@ window.RESOURCES_DATA = (function() {
       rating: 5.0,
       downloads: 1150,
       language: 'English',
-      image: 'assets/images/course-cbe.png',
+      image: 'assets/images/home_stem_collaboration.jpg',
       description: 'Block-coding challenges with Scratch and offline computational thinking games designed for Kenyan upper primary classes.',
       fileSize: '6.5 MB',
       tags: ['STEM', 'Coding', 'Robotics', 'Computational Thinking']
@@ -593,7 +593,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.8,
       downloads: 640,
       language: 'English',
-      image: 'assets/images/about.png',
+      image: 'assets/images/course-cbe.png',
       description: 'Cartography exercises, local topographical analysis, and community environmental field research guidelines for Grade 8.',
       fileSize: '3.3 MB',
       tags: ['Social Studies', 'Mapwork', 'Fieldwork', 'Junior School']
@@ -611,7 +611,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.95,
       downloads: 850,
       language: 'English',
-      image: 'assets/images/hero.png',
+      image: 'assets/images/about_strategy_session.jpg',
       description: 'Customizable IEP template detailing learner accommodations, sensory goals, behavioral milestones, and multi-disciplinary therapist input.',
       fileSize: '1.2 MB',
       tags: ['SEN', 'IEP', 'Inclusion', 'Special Needs']
@@ -629,7 +629,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.85,
       downloads: 720,
       language: 'English',
-      image: 'assets/images/course-ict.png',
+      image: 'assets/images/home_digital_leadership.jpg',
       description: '32-minute audio briefing for principals on balancing device budgets, overcoming teacher tech resistance, and measuring learning gains.',
       fileSize: '29 MB (Audio)',
       tags: ['Podcast', 'Leadership', 'Change Management', 'EdTech']
@@ -647,7 +647,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.75,
       downloads: 580,
       language: 'English',
-      image: 'assets/images/about.png',
+      image: 'assets/images/home_stem_collaboration.jpg',
       description: 'Personal tracker for job shadowing hours, industry mentorship logs, portfolio projects, and TVET / university admission requirements.',
       fileSize: '950 KB',
       tags: ['Career Guidance', 'Senior School', 'Apprenticeships', 'Portfolios']
@@ -665,7 +665,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.9,
       downloads: 690,
       language: 'English',
-      image: 'assets/images/course-digital.png',
+      image: 'assets/images/consultancy_ict_network.jpg',
       description: 'Procedures for managing student account compromises, ransomware prevention, sensitive student data leaks, and emergency communications.',
       fileSize: '1.8 MB',
       tags: ['Cybersecurity', 'Incident Response', 'Data Protection', 'ICT']
@@ -683,7 +683,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.85,
       downloads: 1340,
       language: 'English',
-      image: 'assets/images/course-cbe.png',
+      image: 'assets/images/course_smart_vr_classroom.jpg',
       description: 'Step-by-step visual models for teaching fractions, decimals, area, and volume using tangible local materials and free virtual simulators.',
       fileSize: '3.6 MB',
       tags: ['Mathematics', 'Primary', 'Manipulatives', 'CBC']
@@ -701,7 +701,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.95,
       downloads: 1040,
       language: 'English',
-      image: 'assets/images/course-ict.png',
+      image: 'assets/images/course_smart_vr_classroom.jpg',
       description: 'Visual walkthrough of connecting VR headsets, synchronizing educational 3D biology and geography experiences, and teacher controls.',
       fileSize: '18 mins (Full HD)',
       tags: ['ClassVR', 'Virtual Reality', 'EdTech', 'Hardware']
@@ -914,7 +914,7 @@ window.RESOURCES_DATA = (function() {
       presenter: 'Dr. Faith M. & Alex Larry',
       date: 'Aug 2026',
       topic: 'CBC & Assessment',
-      thumbnail: 'assets/images/course-cbe.png',
+      thumbnail: 'assets/images/course_assessment_mastery.jpg',
       description: 'A deep-dive recorded workshop detailing practical methods to evaluate critical thinking, collaboration, and learner portfolios without grading overload.',
       views: '3.4k',
       videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // sample embeddable player
@@ -927,7 +927,7 @@ window.RESOURCES_DATA = (function() {
       presenter: 'Eng. Kelvin N., EdTech Lead',
       date: 'Aug 2026',
       topic: 'EdTech Integration',
-      thumbnail: 'assets/images/course-ict.png',
+      thumbnail: 'assets/images/consultancy_smart_boards.jpg',
       description: 'Walkthrough of smart board calibration, wireless casting from teacher laptops, interactive whiteboards, and digital note distribution.',
       views: '2.8k',
       videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
@@ -953,7 +953,7 @@ window.RESOURCES_DATA = (function() {
       presenter: 'Grace O., Lead STEM Coach',
       date: 'Aug 2026',
       topic: 'Teaching Strategies',
-      thumbnail: 'assets/images/course-digital.png',
+      thumbnail: 'assets/images/home_hero_classroom.jpg',
       description: 'Unedited classroom footage demonstrating how to facilitate group investigation, question prompts, and learner-led presentations.',
       views: '1.9k',
       videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
@@ -966,7 +966,7 @@ window.RESOURCES_DATA = (function() {
       presenter: 'Peter K., Senior JSS Instructor',
       date: 'Jul 2026',
       topic: 'CBC Implementation',
-      thumbnail: 'assets/images/about.png',
+      thumbnail: 'assets/images/home_teacher_coaching.jpg',
       description: 'Candid conversation on handling strand pacing, collaborating with peers, and building meaningful student rapport under CBC.',
       views: '2.1k',
       videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
@@ -979,7 +979,7 @@ window.RESOURCES_DATA = (function() {
       presenter: 'Security Advisory Council',
       date: 'Aug 2026',
       topic: 'Digital Safety',
-      thumbnail: 'assets/images/hero.png',
+      thumbnail: 'assets/images/consultancy_ict_network.jpg',
       description: 'Essential webinar on safeguarding institutional passwords, student records, Wi-Fi router isolation, and phishing awareness.',
       views: '1.5k',
       videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
@@ -992,7 +992,7 @@ window.RESOURCES_DATA = (function() {
       presenter: 'Alex Larry, EdTech Specialist',
       date: 'Sep 2026',
       topic: 'EdTech Integration',
-      thumbnail: 'assets/images/course-ict.png',
+      thumbnail: 'assets/images/course_smart_vr_classroom.jpg',
       description: 'How to transport learners to the Great Rift Valley, Egyptian pyramids, and the International Space Station using immersive ClassVR headsets.',
       views: '3.1k',
       videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
@@ -1005,7 +1005,7 @@ window.RESOURCES_DATA = (function() {
       presenter: 'Mercy W., Educational Psychologist',
       date: 'Aug 2026',
       topic: 'Teaching Strategies',
-      thumbnail: 'assets/images/course-cbe.png',
+      thumbnail: 'assets/images/home_digital_leadership.jpg',
       description: 'Concrete examples of actionable verbal and written feedback that foster growth mindsets and reduce student test anxiety.',
       views: '2.5k',
       videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
@@ -1021,7 +1021,7 @@ window.RESOURCES_DATA = (function() {
       author: 'Alex Larry',
       date: 'Sep 2, 2026',
       readTime: '6 min read',
-      image: 'assets/images/course-cbe.png',
+      image: 'assets/images/home_stem_collaboration.jpg',
       summary: 'How secondary school boards and principals can strategically prepare staffing, workshops, and science laboratories for the upcoming Senior School pathways.',
       tags: ['CBC', 'Senior School', 'Education Policy'],
       link: 'blog.html'
@@ -1033,7 +1033,7 @@ window.RESOURCES_DATA = (function() {
       author: 'Instructify Research Team',
       date: 'Aug 28, 2026',
       readTime: '5 min read',
-      image: 'assets/images/course-digital.png',
+      image: 'assets/images/course_smart_vr_classroom.jpg',
       summary: 'Hardware alone does not transform learning. Explore the teacher mindset shifts and active inquiry strategies that turn passive screens into active collaboration.',
       tags: ['EdTech', 'Pedagogy', 'Classrooms'],
       link: 'blog.html'
@@ -1057,7 +1057,7 @@ window.RESOURCES_DATA = (function() {
       author: 'Alex Larry',
       date: 'Aug 17, 2026',
       readTime: '7 min read',
-      image: 'assets/images/course-ict.png',
+      image: 'assets/images/consultancy_ict_network.jpg',
       summary: 'Proven strategies for selecting durable hardware, optimizing power backups with solar inverters, and choosing low-maintenance open-source learning tools.',
       tags: ['Infrastructure', 'Hardware', 'Schools'],
       link: 'consultancy.html'
@@ -1069,7 +1069,7 @@ window.RESOURCES_DATA = (function() {
       author: 'Dr. Faith M.',
       date: 'Aug 10, 2026',
       readTime: '5 min read',
-      image: 'assets/images/about.png',
+      image: 'assets/images/course_assessment_mastery.jpg',
       summary: 'Why ongoing authentic assessment provides truer insights into student potential, creative problem-solving, and socio-emotional readiness than single-day exams.',
       tags: ['Assessment', 'CBC', 'Grit'],
       link: 'blog.html'
@@ -1081,7 +1081,7 @@ window.RESOURCES_DATA = (function() {
       author: 'Grace O.',
       date: 'Aug 3, 2026',
       readTime: '6 min read',
-      image: 'assets/images/hero.png',
+      image: 'assets/images/consultancy_smart_boards.jpg',
       summary: 'How simple smartphone voice-to-text, large print visual aids, and peer tutoring networks can welcome and empower neurodivergent learners.',
       tags: ['Inclusion', 'Special Needs', 'Accessibility'],
       link: 'blog.html'
