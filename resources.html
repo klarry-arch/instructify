@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resource Center | Instructify Kenya</title>
+  <meta name="description" content="Instructify Kenya Educational Resources Hub — Discover practical teaching materials, professional development tools, CBC curriculum resources, downloadable templates, and EdTech guides.">
+  <title>Educational Resources Hub | Instructify Kenya</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/resources.css">
   <link rel="stylesheet" href="css/live-chat.css">
 </head>
 <body>
@@ -27,7 +32,7 @@
       <li><a href="about.html" class="nav-link" data-nav="about">About Us</a></li>
       <li><a href="courses.html" class="nav-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a></li>
       <li><a href="podcast.html" class="nav-link" data-nav="podcast">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></a></li>
-      <li><a href="blog.html" class="nav-link" data-nav="blog">Blog <span class="nav-badge badge-blue">Hub</span></a></li>
+      <li><a href="blog.html" class="nav-link" data-nav="blog">Blog <span class="nav-badge badge-teal">Hub</span></a></li>
       <li><a href="consultancy.html" class="nav-link" data-nav="consultancy">Consultancy</a></li>
       <li><a href="resources.html" class="nav-link active" aria-current="page" data-nav="resources">Resources</a></li>
       <li><a href="schools.html" class="nav-link" data-nav="schools">Institutions</a></li>
@@ -45,14 +50,14 @@
   </div>
 </nav>
 
-<!-- Mobile Nav -->
+<!-- Mobile Nav Drawer -->
 <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
   <div class="nav-mobile-links">
     <a href="index.html" class="nav-mobile-link" data-nav="home">Home</a>
     <a href="about.html" class="nav-mobile-link" data-nav="about">About Us</a>
     <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
     <a href="podcast.html" class="nav-mobile-link" data-nav="podcast">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></a>
-    <a href="blog.html" class="nav-link-blog nav-mobile-link" data-nav="blog">Blog <span class="nav-badge badge-blue">Hub</span></a>
+    <a href="blog.html" class="nav-link-blog nav-mobile-link" data-nav="blog">Blog <span class="nav-badge badge-teal">Hub</span></a>
     <a href="consultancy.html" class="nav-mobile-link" data-nav="consultancy">Consultancy</a>
     <a href="resources.html" class="nav-mobile-link active" data-nav="resources">Resources</a>
     <a href="schools.html" class="nav-mobile-link" data-nav="schools">Institutions</a>
@@ -64,203 +69,431 @@
   </div>
 </div>
 
-<!-- Hero Section -->
-<section class="page-hero" style="background:var(--surface-soft, #F8FAFC); padding:calc(var(--nav-height, 72px) + 48px) 0 48px 0; border-bottom:1px solid var(--border, #E2E8F0);">
-  <div class="container text-center">
-    <span class="section-tag blue" style="margin-bottom:12px; display:inline-flex;">📚 KNOWLEDGE &amp; GUIDES</span>
-    <h1 class="hero-heading" style="color:var(--text-main, #0F172A); font-size:var(--text-4xl); margin-bottom:14px;">
-      Learning Resources
+<!-- ── 1. HERO SECTION ──────────────────────────────────────── -->
+<header class="res-hero">
+  <div class="res-hero-glow res-hero-glow-1"></div>
+  <div class="res-hero-glow res-hero-glow-2"></div>
+  <div class="res-hero-glow res-hero-glow-3"></div>
+
+  <div class="container">
+    <div class="res-hero-badge">
+      <span>📚</span> Practical Educational Resource Hub
+    </div>
+
+    <h1 class="res-hero-title">
+      Resources to Inspire <span class="brand-highlight">Better Teaching and Learning</span>
     </h1>
-    <p class="hero-subtitle" style="margin:0 auto; max-width:800px; width:100%; color:#334155 !important; font-size:17px; line-height:1.65;">
-      Explore practical insights, guides, tools, and articles designed to support teaching, learning, digital transformation, and curriculum innovation.
+
+    <p class="res-hero-desc">
+      Discover practical teaching materials, professional development tools, educational technology guides, curriculum-aligned resources, and downloadable templates designed for educators, school leaders, parents, learners, and institutions.
     </p>
+
+    <!-- Search Box with Autocomplete -->
+    <div class="res-search-container">
+      <div class="res-search-box">
+        <svg class="res-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input 
+          type="text" 
+          id="res-hero-search-input" 
+          class="res-search-input" 
+          placeholder="Search resources, guides, templates, courses and toolkits" 
+          aria-label="Search resources"
+          autocomplete="off"
+        >
+        <button id="res-hero-search-clear" class="res-search-clear" aria-label="Clear search">✕</button>
+        <button id="res-hero-search-btn" class="res-search-btn">Search Library</button>
+      </div>
+
+      <!-- Autocomplete Dropdown -->
+      <div id="res-autocomplete-box" class="res-autocomplete-dropdown" role="listbox" aria-label="Search suggestions"></div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="res-hero-actions">
+      <a href="#resource-library" class="btn-hero-primary">
+        <span>🔍</span> Explore Resources
+      </a>
+      <button id="res-hero-submit-btn" class="btn-hero-secondary">
+        <span>📤</span> Submit a Resource
+      </button>
+    </div>
+
+    <!-- Popular Search Tags -->
+    <div class="res-hero-tags">
+      <span style="font-weight:600; color:var(--res-text-main);">Popular Topics:</span>
+      <button class="res-hero-tag-pill" data-tag="CBC">CBC</button>
+      <button class="res-hero-tag-pill" data-tag="Lesson Plans">Lesson Plans</button>
+      <button class="res-hero-tag-pill" data-tag="Assessment">Assessment</button>
+      <button class="res-hero-tag-pill" data-tag="Teacher Training">Teacher Training</button>
+      <button class="res-hero-tag-pill" data-tag="Digital Learning">Digital Learning</button>
+      <button class="res-hero-tag-pill" data-tag="ICT Infrastructure">ICT Infrastructure</button>
+      <button class="res-hero-tag-pill" data-tag="Parental Engagement">Parental Engagement</button>
+    </div>
+  </div>
+</header>
+
+<!-- ── 2. RESOURCE STATISTICS ───────────────────────────────── -->
+<section class="res-stats-section" id="resources-stats" aria-label="Resource Library Statistics">
+  <div class="container">
+    <div class="res-stats-grid" id="resources-stats-grid">
+      <!-- Generated dynamically by js/resources.js -->
+    </div>
   </div>
 </section>
 
-<!-- Featured Resource Section -->
-<section class="section" style="padding-top:var(--space-2xl);">
+<!-- ── 3. QUICK RESOURCE CATEGORIES ─────────────────────────── -->
+<section class="res-section soft-bg" id="quick-categories">
   <div class="container">
-    <div class="card" style="padding:0; overflow:hidden; display:flex; flex-direction:column; border:none; box-shadow:var(--shadow-lg);">
-      <div style="display:flex; flex-wrap:wrap;">
-        <div style="flex: 1 1 400px;">
-          <img src="assets/images/about.png" alt="Featured Resource" style="width:100%; height:100%; object-fit:cover; min-height:300px;" loading="lazy">
+    <div class="res-section-header">
+      <span class="res-section-tag teal">Curated Collections</span>
+      <h2 class="res-section-title">Browse Resources by Category</h2>
+      <p class="res-section-subtitle">
+        Explore specialized pedagogical tools, CBC curriculum resources, institutional roadmaps, and digital frameworks tailored for Kenyan schools.
+      </p>
+    </div>
+
+    <div class="res-categories-grid" id="res-categories-grid">
+      <!-- Generated dynamically from categories dataset -->
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. FEATURED RESOURCES ────────────────────────────────── -->
+<section class="res-section" id="featured-resources">
+  <div class="container">
+    <div class="res-section-header">
+      <span class="res-section-tag blue">Editor's Choice</span>
+      <h2 class="res-section-title">Featured Resources</h2>
+      <p class="res-section-subtitle">
+        High-impact materials, step-by-step handbooks, and institutional frameworks recommended for immediate classroom and leadership adoption.
+      </p>
+    </div>
+
+    <div class="res-featured-grid" id="res-featured-grid">
+      <!-- Generated dynamically from featured dataset -->
+    </div>
+  </div>
+</section>
+
+<!-- ── 5. COMPREHENSIVE RESOURCE LIBRARY ─────────────────────── -->
+<section class="res-section soft-bg" id="resource-library">
+  <div class="container">
+    <div class="res-section-header">
+      <span class="res-section-tag purple">Explore Our Full Collection</span>
+      <h2 class="res-section-title">Explore the Resource Library</h2>
+      <p class="res-section-subtitle">
+        Use targeted search and multi-facet filters to find materials by category, target audience, education level, format, and access type.
+      </p>
+    </div>
+
+    <div class="res-library-layout">
+      <!-- Filter Sidebar -->
+      <aside class="res-filter-sidebar" id="res-filter-sidebar" aria-label="Resource Library Filters">
+        <div class="res-filter-header">
+          <h3 class="res-filter-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+            Filter Library
+          </h3>
+          <button class="res-clear-all-btn" id="res-clear-sidebar-filters">Reset All</button>
         </div>
-        <div style="flex: 1 1 400px; padding:var(--space-3xl); background:var(--bg-white); display:flex; flex-direction:column; justify-content:center; border:1px solid var(--border-subtle);">
-          <span style="display:inline-block; padding:4px 12px; background:var(--color-primary-glow); color:var(--color-primary-light); border-radius:var(--border-radius-sm); font-size:var(--text-xs); font-weight:700; width:fit-content; margin-bottom:var(--space-sm);">DIGITAL LEARNING</span>
-          <h2 class="font-heading" style="font-size:var(--text-2xl); margin-bottom:var(--space-md); color:var(--text-primary);">The Ultimate Guide to Technology Integration in Teaching</h2>
-          <p style="color:var(--text-secondary); margin-bottom:var(--space-lg); line-height:1.6;">
-            Discover a step-by-step framework for blending EdTech tools seamlessly into your daily lesson plans. This comprehensive guide covers everything from hardware setup to software selection and pedagogical strategies for active engagement.
+
+        <!-- Filter: Category -->
+        <div class="res-filter-group">
+          <label class="res-filter-label" for="lib-filter-category">Resource Category</label>
+          <select id="lib-filter-category" class="res-filter-select">
+            <!-- Options populated dynamically -->
+          </select>
+        </div>
+
+        <!-- Filter: Target Audience -->
+        <div class="res-filter-group">
+          <label class="res-filter-label" for="lib-filter-audience">Target Audience</label>
+          <select id="lib-filter-audience" class="res-filter-select">
+            <option value="all">All Audiences</option>
+            <option value="Teachers">Teachers</option>
+            <option value="School leaders">School Leaders</option>
+            <option value="Parents and guardians">Parents &amp; Guardians</option>
+            <option value="Learners">Learners</option>
+            <option value="ICT coordinators">ICT Coordinators</option>
+            <option value="Education institutions">Education Institutions</option>
+            <option value="Education consultants">Education Consultants</option>
+            <option value="Teacher trainers">Teacher Trainers</option>
+          </select>
+        </div>
+
+        <!-- Filter: Education Level -->
+        <div class="res-filter-group">
+          <label class="res-filter-label" for="lib-filter-level">Education Level</label>
+          <select id="lib-filter-level" class="res-filter-select">
+            <option value="all">All Education Levels</option>
+            <option value="Early Years Education">Early Years Education (PP1–PP2)</option>
+            <option value="Primary School">Primary School (Grades 1–6)</option>
+            <option value="Junior School">Junior School (Grades 7–9)</option>
+            <option value="Senior School">Senior School (Grades 10–12)</option>
+            <option value="Teacher Education">Teacher Education</option>
+            <option value="Professional Development">Professional Development</option>
+          </select>
+        </div>
+
+        <!-- Filter: Resource Format -->
+        <div class="res-filter-group">
+          <label class="res-filter-label" for="lib-filter-format">Resource Format</label>
+          <select id="lib-filter-format" class="res-filter-select">
+            <option value="all">All Formats</option>
+            <option value="PDF">PDF Document</option>
+            <option value="Word">Word Document (DOCX)</option>
+            <option value="Excel">Excel Spreadsheet (XLSX)</option>
+            <option value="PowerPoint">PowerPoint Presentation</option>
+            <option value="Toolkit">Comprehensive Toolkit</option>
+            <option value="Template">Template</option>
+            <option value="Course">Online Course</option>
+            <option value="Video">Video Tutorial</option>
+            <option value="Audio">Audio Podcast</option>
+            <option value="Article">In-Depth Article</option>
+          </select>
+        </div>
+
+        <!-- Filter: Access Type -->
+        <div class="res-filter-group">
+          <label class="res-filter-label">Access Type</label>
+          <div class="res-radio-pill-group">
+            <button class="res-radio-pill active" data-access="all">All</button>
+            <button class="res-radio-pill" data-access="Free">Free</button>
+            <button class="res-radio-pill" data-access="Premium">Premium</button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="res-library-content">
+        <!-- Toolbar -->
+        <div class="res-library-toolbar">
+          <div class="res-results-count" id="res-results-count">
+            Showing <strong>0</strong> resources
+          </div>
+
+          <div class="res-toolbar-right">
+            <!-- Mobile Filter Trigger -->
+            <button class="res-mobile-filter-trigger" id="res-mobile-filter-toggle" aria-label="Toggle mobile filter drawer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+              Filter Resources
+            </button>
+
+            <!-- Sort Dropdown -->
+            <select id="res-sort-select" class="res-sort-select" aria-label="Sort resources">
+              <option value="relevant">Sort: Most Relevant</option>
+              <option value="newest">Sort: Newest First</option>
+              <option value="popular">Sort: Most Popular</option>
+              <option value="downloads">Sort: Most Downloaded</option>
+              <option value="rating">Sort: Highest Rated</option>
+            </select>
+
+            <!-- View Switcher -->
+            <div class="res-view-toggle">
+              <button class="res-view-btn active" id="res-view-grid" title="Grid View" aria-label="Grid view">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </button>
+              <button class="res-view-btn" id="res-view-list" title="List View" aria-label="List view">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filter Chips Row -->
+        <div class="res-active-chips-row" id="res-active-chips-row"></div>
+
+        <!-- Resource Cards Grid -->
+        <div class="res-library-grid" id="res-library-grid">
+          <!-- Populated dynamically by js/resources.js -->
+        </div>
+
+        <!-- Load More Pagination Box -->
+        <div class="res-pagination-box" id="res-load-more-box">
+          <button class="btn-load-more" id="res-load-more-btn">Load More Resources</button>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>
+
+<!-- ── 6. DOWNLOADABLE TEMPLATES & PRACTICAL TOOLKITS ─────────── -->
+<section class="res-section" id="templates-toolkits">
+  <div class="container">
+    <div class="res-section-header">
+      <span class="res-section-tag amber">Ready-to-Use Documents</span>
+      <h2 class="res-section-title">Templates and Practical Toolkits</h2>
+      <p class="res-section-subtitle">
+        Download fully editable daily lesson plans, schemes of work, competency rubrics, ICT lab maintenance logs, and school improvement planning frameworks.
+      </p>
+    </div>
+
+    <div class="res-toolkits-grid" id="res-toolkits-grid">
+      <!-- Generated dynamically from toolkits dataset -->
+    </div>
+  </div>
+</section>
+
+<!-- ── 7. LEARNING MEDIA HUB ─────────────────────────────────── -->
+<section class="res-section soft-bg" id="learning-media">
+  <div class="container">
+    <div class="res-section-header">
+      <span class="res-section-tag teal">Multimedia Learning</span>
+      <h2 class="res-section-title">Watch, Listen and Learn</h2>
+      <p class="res-section-subtitle">
+        Engage with recorded teacher webinars, hands-on classroom demonstrations, ClassVR and smart classroom walkthroughs, and audio podcast discussions.
+      </p>
+    </div>
+
+    <div class="res-media-grid" id="res-media-grid">
+      <!-- Generated dynamically from media dataset -->
+    </div>
+  </div>
+</section>
+
+<!-- ── 8. LATEST ARTICLES & EDUCATION INSIGHTS ───────────────── -->
+<section class="res-section" id="latest-insights">
+  <div class="container">
+    <div class="res-section-header">
+      <span class="res-section-tag purple">Thought Leadership</span>
+      <h2 class="res-section-title">Latest Insights and Articles</h2>
+      <p class="res-section-subtitle">
+        Explore research-grounded analysis on CBC and CBE implementation, EdTech integration shifts, artificial intelligence in education, and cyber safety.
+      </p>
+    </div>
+
+    <div class="res-articles-grid" id="res-articles-grid">
+      <!-- Generated dynamically from articles dataset -->
+    </div>
+  </div>
+</section>
+
+<!-- ── 9. INSTITUTIONAL SUPPORT & CUSTOM RESOURCE BANNER ─────── -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="res-custom-banner">
+      <div class="res-banner-inner">
+        <div class="res-banner-text">
+          <span class="res-banner-badge">🤝 Institutional Advisory &amp; Design</span>
+          <h3 class="res-banner-title">Need Custom Learning Resources for Your School?</h3>
+          <p class="res-banner-desc">
+            Instructify Kenya collaborates directly with primary and secondary schools, county education departments, and institutions to develop bespoke digital curricula, institutional ICT policies, and tailored educator CPD modules.
           </p>
-          <div>
-            <a href="#" class="btn btn-blue btn-lg">Read More</a>
+        </div>
+        <div class="res-banner-actions">
+          <a href="contact.html" class="btn-banner-primary">Request Support →</a>
+          <a href="consultancy.html" class="btn-banner-secondary">Explore Consultancy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 10. INTERACTIVE MODALS ───────────────────────────────── -->
+
+<!-- Resource Quick Preview Modal -->
+<div class="res-modal-backdrop" id="res-preview-modal" role="dialog" aria-modal="true" aria-labelledby="res-preview-modal-title">
+  <div class="res-modal-dialog">
+    <div class="res-modal-header">
+      <h3 class="res-modal-title" id="res-preview-modal-title">Resource Preview</h3>
+      <button class="res-modal-close" id="res-preview-modal-close" aria-label="Close preview modal">&times;</button>
+    </div>
+    <div class="res-modal-body" id="res-preview-modal-body">
+      <!-- Populated dynamically -->
+    </div>
+    <div class="res-modal-footer">
+      <button class="btn btn-outline btn-sm" onclick="document.getElementById('res-preview-modal').classList.remove('active'); document.body.style.overflow='';">Close</button>
+      <button class="btn btn-primary btn-sm" id="res-preview-download-btn">📥 Download Resource</button>
+    </div>
+  </div>
+</div>
+
+<!-- Media Player Modal -->
+<div class="res-modal-backdrop" id="res-media-modal" role="dialog" aria-modal="true" aria-labelledby="res-media-modal-title">
+  <div class="res-modal-dialog" style="max-width:760px;">
+    <div class="res-modal-header">
+      <h3 class="res-modal-title" id="res-media-modal-title">Media Player</h3>
+      <button class="res-modal-close" id="res-media-modal-close" aria-label="Close media player">&times;</button>
+    </div>
+    <div class="res-modal-body" id="res-media-modal-container">
+      <!-- Video player simulation populated dynamically -->
+    </div>
+  </div>
+</div>
+
+<!-- Submit Resource Modal -->
+<div class="res-modal-backdrop" id="res-submit-modal" role="dialog" aria-modal="true" aria-labelledby="res-submit-modal-title">
+  <div class="res-modal-dialog">
+    <div class="res-modal-header">
+      <h3 class="res-modal-title" id="res-submit-modal-title">Submit an Educational Resource</h3>
+      <button class="res-modal-close" id="res-submit-modal-close" aria-label="Close submission modal">&times;</button>
+    </div>
+    <form id="res-submit-resource-form">
+      <div class="res-modal-body">
+        <p style="font-size:13.5px; color:var(--res-text-secondary); margin-bottom:18px;">
+          Share your CBC lesson templates, schemes of work, or EdTech guides with thousands of educators across Kenya. All submissions undergo editorial review before publishing.
+        </p>
+
+        <div class="res-form-group">
+          <label class="res-form-label" for="res-submit-title">Resource Title *</label>
+          <input type="text" id="res-submit-title" class="res-form-input" placeholder="e.g., Grade 8 Agriculture Practical Guide" required>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="res-form-group">
+            <label class="res-form-label" for="res-submit-category">Category *</label>
+            <select id="res-submit-category" class="res-form-select" required>
+              <option value="CBC and CBE Resources">CBC &amp; CBE Resources</option>
+              <option value="Lesson Plans and Schemes of Work">Lesson Plans &amp; Schemes</option>
+              <option value="Assessment and Evaluation Tools">Assessment &amp; Evaluation</option>
+              <option value="Educational Technology Guides">EdTech Guides</option>
+              <option value="Teaching and Learning Materials">Teaching Materials</option>
+              <option value="ICT Infrastructure Resources">ICT Infrastructure</option>
+              <option value="Inclusive Education">Inclusive Education</option>
+            </select>
+          </div>
+
+          <div class="res-form-group">
+            <label class="res-form-label" for="res-submit-format">Format *</label>
+            <select id="res-submit-format" class="res-form-select" required>
+              <option value="PDF">PDF Document</option>
+              <option value="DOCX">Word Document (DOCX)</option>
+              <option value="XLSX">Excel Spreadsheet</option>
+              <option value="PPTX">PowerPoint Deck</option>
+              <option value="Toolkit">Comprehensive Toolkit</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="res-form-group">
+          <label class="res-form-label" for="res-submit-desc">Description &amp; Learning Outcomes *</label>
+          <textarea id="res-submit-desc" class="res-form-textarea" placeholder="Briefly explain what this resource covers and how educators can use it..." required></textarea>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="res-form-group">
+            <label class="res-form-label" for="res-submit-author">Your Name &amp; Institution *</label>
+            <input type="text" id="res-submit-author" class="res-form-input" placeholder="e.g., Jane M., Alliance High" required>
+          </div>
+
+          <div class="res-form-group">
+            <label class="res-form-label" for="res-submit-email">Contact Email *</label>
+            <input type="email" id="res-submit-email" class="res-form-input" placeholder="you@school.ac.ke" required>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-<!-- Workshop Registration CTA Card -->
-<section class="section" style="padding-top:0;">
-  <div class="container">
-    <div class="card" style="background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%); border: 1.5px solid #FDBA74; padding:32px; border-radius:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
-      <div style="max-width:700px; width:100%;">
-        <span class="workshop-caption-badge" style="margin-bottom:10px;">
-          🧪 Hands-On Learning That Sticks
-        </span>
-        <h3 style="font-family:var(--font-heading); font-size:22px; font-weight:800; color:#0F172A; margin-bottom:8px;">
-          Want to experience these strategies in action?
-        </h3>
-        <p style="color:var(--text-muted, #475569); font-size:14.5px; line-height:1.6; margin:0;">
-          Register for our upcoming creative workshops. Perfect for educators, youth leaders, and learners who want to explore teaching, tech, and transformation using local materials and digital tools.
-        </p>
+
+      <div class="res-modal-footer">
+        <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('res-submit-modal').classList.remove('active'); document.body.style.overflow='';">Cancel</button>
+        <button type="submit" class="btn btn-primary btn-sm">📤 Submit for Review</button>
       </div>
-      <div>
-        <a href="workshop-registration.html" class="btn btn-orange btn-lg" style="font-weight:700; white-space:nowrap;">
-          Register For Workshop ↗
-        </a>
-      </div>
-    </div>
+    </form>
   </div>
-</section>
+</div>
 
-<!-- Resource Categories Section -->
-<section class="section" style="padding-top:0;">
-  <div class="container text-center">
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:var(--space-sm);">
-      <button class="filter-chip active">All Resources</button>
-      <button class="filter-chip">Teaching Strategies</button>
-      <button class="filter-chip">Digital Learning</button>
-      <button class="filter-chip">Curriculum Development</button>
-      <button class="filter-chip">Educational Leadership</button>
-      <button class="filter-chip">Learner Engagement</button>
-      <button class="filter-chip">Tools and Templates</button>
-    </div>
-  </div>
-</section>
-
-<!-- Resource Grid Section -->
-<section class="section" style="background:var(--bg-light);">
-  <div class="container">
-    <div class="section-header reveal text-center">
-      <h2 class="section-title">Latest Articles & Insights</h2>
-    </div>
-    <div class="grid-3 stagger-children">
-      <!-- Article 1 -->
-      <article class="card reveal" style="padding:0; overflow:hidden; display:flex; flex-direction:column;">
-        <img src="assets/images/hero.png" alt="Article 1" style="width:100%; height:200px; object-fit:cover;">
-        <div style="padding:var(--space-lg); display:flex; flex-direction:column; flex-grow:1;">
-          <span style="font-size:var(--text-xs); color:var(--color-primary); font-weight:700; margin-bottom:8px; text-transform:uppercase;">Curriculum Development</span>
-          <h3 class="font-heading text-lg mb-sm" style="color:var(--text-primary);">Designing Competency-Based Assessments</h3>
-          <p style="font-size:var(--text-sm); color:var(--text-secondary); flex-grow:1; margin-bottom:var(--space-md);">Practical approaches to building rubrics and evaluating true learner understanding.</p>
-          <a href="#" style="font-weight:600; color:var(--color-primary); text-decoration:none;">Read More ?</a>
-        </div>
-      </article>
-
-      <!-- Article 2 -->
-      <article class="card reveal delay-100" style="padding:0; overflow:hidden; display:flex; flex-direction:column;">
-        <img src="assets/images/course-digital.png" alt="Article 2" style="width:100%; height:200px; object-fit:cover;" loading="lazy">
-        <div style="padding:var(--space-lg); display:flex; flex-direction:column; flex-grow:1;">
-          <span style="font-size:var(--text-xs); color:var(--color-primary); font-weight:700; margin-bottom:8px; text-transform:uppercase;">Learner Engagement</span>
-          <h3 class="font-heading text-lg mb-sm" style="color:var(--text-primary);">Creative Pedagogies for the 21st Century</h3>
-          <p style="font-size:var(--text-sm); color:var(--text-secondary); flex-grow:1; margin-bottom:var(--space-md);">How to capture student attention and inspire curiosity in a distracted world.</p>
-          <a href="#" style="font-weight:600; color:var(--color-primary); text-decoration:none;">Read More ?</a>
-        </div>
-      </article>
-
-      <!-- Article 3 -->
-      <article class="card reveal delay-200" style="padding:0; overflow:hidden; display:flex; flex-direction:column;">
-        <img src="assets/images/course-ai.png" alt="Article 3" style="width:100%; height:200px; object-fit:cover;" loading="lazy">
-        <div style="padding:var(--space-lg); display:flex; flex-direction:column; flex-grow:1;">
-          <span style="font-size:var(--text-xs); color:var(--color-primary); font-weight:700; margin-bottom:8px; text-transform:uppercase;">Teaching Strategies</span>
-          <h3 class="font-heading text-lg mb-sm" style="color:var(--text-primary);">AI in the African Classroom</h3>
-          <p style="font-size:var(--text-sm); color:var(--text-secondary); flex-grow:1; margin-bottom:var(--space-md);">Evaluating the role of artificial intelligence tools for lesson planning and grading.</p>
-          <a href="#" style="font-weight:600; color:var(--color-primary); text-decoration:none;">Read More ?</a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- Downloadable Tools Section -->
-<section class="section">
-  <div class="container">
-    <div class="section-header reveal text-center">
-      <h2 class="section-title">Free Downloadable Tools</h2>
-    </div>
-    <div class="grid-4 stagger-children" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-      <!-- Tool 1 -->
-      <div class="card reveal text-center">
-        <div style="width:52px; height:52px; background:#E8F0F8; border-radius:12px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-sm);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
-        </div>
-        <h4 class="font-heading text-md mb-xs">Lesson Planning Template</h4>
-        <p style="font-size:var(--text-xs); color:var(--text-muted); margin-bottom:var(--space-md);">PDF &bull;&bull; 1.2 MB</p>
-        <button class="btn btn-outline btn-sm w-full" onclick="showToast('Downloading Lesson Planning Template...', 'success')">Download Resource</button>
-      </div>
-
-      <!-- Tool 2 -->
-      <div class="card reveal delay-100 text-center">
-        <div style="width:52px; height:52px; background:#E8F0F8; border-radius:12px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-sm);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
-            <line x1="8" y1="2" x2="8" y2="18"/>
-            <line x1="16" y1="6" x2="16" y2="22"/>
-          </svg>
-        </div>
-        <h4 class="font-heading text-md mb-xs">Curriculum Mapping Guide</h4>
-        <p style="font-size:var(--text-xs); color:var(--text-muted); margin-bottom:var(--space-md);">PDF &bull;&bull; 2.5 MB</p>
-        <button class="btn btn-outline btn-sm w-full" onclick="showToast('Downloading Curriculum Mapping Guide...', 'success')">Download Resource</button>
-      </div>
-
-      <!-- Tool 3 -->
-      <div class="card reveal delay-200 text-center">
-        <div style="width:52px; height:52px; background:#E0F5F2; border-radius:12px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-sm);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 11 12 14 22 4"/>
-            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-          </svg>
-        </div>
-        <h4 class="font-heading text-md mb-xs">Digital Literacy Checklist</h4>
-        <p style="font-size:var(--text-xs); color:var(--text-muted); margin-bottom:var(--space-md);">PDF &bull;&bull; 0.8 MB</p>
-        <button class="btn btn-outline btn-sm w-full" onclick="showToast('Downloading Digital Literacy Checklist...', 'success')">Download Resource</button>
-      </div>
-
-      <!-- Tool 4 -->
-      <div class="card reveal delay-300 text-center">
-        <div style="width:52px; height:52px; background:#E0F5F2; border-radius:12px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-sm);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/>
-            <line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/>
-            <line x1="21" y1="12" x2="23" y2="12"/>
-          </svg>
-        </div>
-        <h4 class="font-heading text-md mb-xs">Classroom Engagement Toolkit</h4>
-        <p style="font-size:var(--text-xs); color:var(--text-muted); margin-bottom:var(--space-md);">PDF &bull;&bull; 3.1 MB</p>
-        <button class="btn btn-outline btn-sm w-full" onclick="showToast('Downloading Classroom Engagement Toolkit...', 'success')">Download Resource</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA Section -->
-<section class="section text-center" style="background:var(--color-primary-bg); padding:var(--space-4xl) 20px;">
-  <div class="container" style="max-width:800px; width:100%;">
-    <h2 class="font-heading" style="font-size:var(--text-3xl); margin-bottom:var(--space-md);">Need a Custom Learning Resource?</h2>
-    <p style="font-size:var(--text-lg); color:var(--text-secondary); margin-bottom:var(--space-xl);">
-      We can help your school or organization create practical tools, training materials, and curriculum resources.
-    </p>
-    <a href="contact.html" class="btn btn-blue btn-xl">Request Support</a>
-  </div>
-</section>
-
+<!-- ── Footer ───────────────────────────────────────────────── -->
 <footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
   <div class="container">
     <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1.5px solid var(--cta-color, #F5812D);">
@@ -269,7 +502,7 @@
         <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
           We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.
         </p>
-                <div class="footer-social-row" style="margin-bottom:20px;">
+        <div class="footer-social-row" style="margin-bottom:20px;">
           <a href="https://www.linkedin.com/company/instructify-kenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg>
           </a>
@@ -289,14 +522,13 @@
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
         </div>
-<a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
       </div>
       <div>
         <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
         <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
           <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
           <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
-          
           <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
         </ul>
       </div>
@@ -325,9 +557,12 @@
   </div>
 </footer>
 
+<!-- ── Core & Feature Scripts ───────────────────────────────── -->
 <script src="js/main.js"></script>
+<script src="js/chat-config.js"></script>
+<script src="js/live-chat.js"></script>
+<script src="js/resources-data.js"></script>
+<script src="js/resources.js"></script>
 
-  <script src="js/chat-config.js"></script>
-  <script src="js/live-chat.js"></script>
 </body>
 </html>
