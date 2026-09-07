@@ -1,86 +1,100 @@
 /**
- * INSTRUCTIFY KENYA PODCAST — DATA ENGINE v1.0
- * Modular, extensible repository of podcast episodes, host details, guest directory,
- * categories, streaming links, transcripts, and course tie-ins.
+ * INSTRUCTIFY KENYA — PODCAST & INSIGHTS DATA ENGINE v2.0
+ * Theme: CONVERSATIONS FOR A SMARTER FUTURE
+ * Mantra: Learn · Connect · Innovate · Transform
+ * 
+ * Comprehensive dataset covering 10 initial episodes, featured episode,
+ * guest profiles, practical classroom action frameworks, transcripts, and filtering.
  */
 
 const PODCAST_INFO = {
   name: "The Instructify Kenya Podcast",
-  tagline: "Conversations for a Smarter Future",
-  alternativeTagline: "Learn. Connect. Innovate. Transform.",
-  description: "Where education, technology, innovation and human potential come together. Discover practical insights, inspiring stories and meaningful conversations shaping the future of learning and work.",
+  mainTitle: "Conversations for a Smarter Future",
+  mantra: "Learn · Connect · Innovate · Transform",
+  heroSubtitle: "Where educators connect, ideas grow, and the future of learning takes shape.",
+  description: "A premium educator-focused media and knowledge platform bridging classroom practice, emerging technology, curriculum leadership, and the future of African education.",
   host: {
     name: "Alex Nderitu",
-    title: "Lead Educator & EdTech Strategist, Instructify Kenya",
-    bio: "Passionate about transforming education across East Africa through digital pedagogical innovations, teacher empowerment, and future-fit competency frameworks. Alex hosts industry leaders, researchers, and grassroot educators to uncover practical solutions for tomorrow's learners.",
+    title: "Lead Educator & EdTech Strategist",
+    organization: "Instructify Kenya",
+    bio: "Passionate about transforming education across East Africa through digital pedagogical innovations, teacher empowerment, and future-fit competency frameworks. Alex hosts senior policymakers, researchers, master teachers, and changemakers to uncover actionable solutions for tomorrow's classrooms.",
     image: "assets/images/founder_alex.jpg",
-    linkedin: "https://www.linkedin.com/",
-    twitter: "https://twitter.com/",
+    linkedin: "https://www.linkedin.com/company/instructify-kenya",
+    twitter: "https://twitter.com/instructifyke",
     email: "podcast@instructify.co.ke"
   },
   streamingLinks: [
-    { name: "Spotify", icon: "spotify", url: "#", badge: "Listen on Spotify" },
-    { name: "Apple Podcasts", icon: "apple", url: "#", badge: "Apple Podcasts" },
-    { name: "YouTube", icon: "youtube", url: "#", badge: "Watch on YouTube" },
-    { name: "Google Podcasts", icon: "google", url: "#", badge: "Google Podcasts" },
-    { name: "Amazon Music", icon: "amazon", url: "#", badge: "Amazon Music" }
+    { name: "Spotify", icon: "spotify", url: "https://open.spotify.com", badge: "Listen on Spotify" },
+    { name: "Apple Podcasts", icon: "apple", url: "https://podcasts.apple.com", badge: "Apple Podcasts" },
+    { name: "YouTube", icon: "youtube", url: "https://www.youtube.com/@instructifykenya", badge: "Watch on YouTube" },
+    { name: "Google Podcasts", icon: "google", url: "https://podcasts.google.com", badge: "Google Podcasts" },
+    { name: "Amazon Music", icon: "amazon", url: "https://music.amazon.com", badge: "Amazon Music" }
   ],
   categories: [
     "All",
-    "Education",
+    "Pedagogy",
     "Technology",
-    "AI & Innovation",
+    "AI",
+    "Curriculum",
     "Leadership",
-    "Digital Skills",
-    "Entrepreneurship",
-    "Career & Future Skills",
-    "CBE & Curriculum",
-    "EdTech"
+    "Innovation",
+    "ICT"
   ]
 };
 
 const PODCAST_EPISODES = [
   {
     id: "ep-01",
-    slug: "ai-in-education-preparing-learners",
+    slug: "is-the-classroom-ready-for-the-future",
     number: "Episode 01",
     episodeNum: 1,
-    title: "AI in Education: Preparing Learners for the Future of Work",
-    subtitle: "How generative AI, ethical adoption, and personalized tutoring are reshaping African classrooms.",
-    description: "In this premiere episode, we sit down with Dr. Angela Mutua to unpack how Artificial Intelligence is moving from tech buzzword to essential classroom tool. We explore practical strategies teachers can use today, data privacy in schools, and the specific skillsets Kenyan learners need to thrive in an AI-powered economy.",
-    category: "AI & Innovation",
-    tags: ["Artificial Intelligence", "Future of Work", "EdTech", "Digital Skills"],
+    title: "Is the Classroom Ready for the Future?",
+    subtitle: "Rethinking physical, psychological, and digital spaces for tomorrow's learners.",
+    description: "In our flagship premiere, Dr. Angela Mutua explores whether our current classroom architecture, pedagogical mindset, and curriculum pacing are genuinely prepared for the accelerating future of work, automation, and global interconnectedness.",
+    category: "Innovation",
+    tags: ["Innovation", "Pedagogy", "Future of Work", "EdTech"],
     date: "August 28, 2026",
     isoDate: "2026-08-28",
-    duration: "42 min",
-    durationSeconds: 2520,
-    audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg", // Sample audio placeholder
+    duration: "44 min",
+    durationSeconds: 2640,
+    audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
+    videoEmbedUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+    videoThumbnail: "assets/images/founder_alex.jpg",
     featured: true,
-    coverColor: "linear-gradient(135deg, #091929 0%, #1E3A8A 60%, #2145E6 100%)",
     themeColor: "#2145E6",
+    coverGradient: "linear-gradient(135deg, #091929 0%, #17326B 50%, #2145E6 100%)",
     guest: {
+      id: "guest-angela-mutua",
       name: "Dr. Angela Mutua",
       title: "Senior AI Researcher & EdTech Advisor",
       organization: "African Institute for Future Intelligence",
-      bio: "Dr. Mutua is a leading voice on ethical AI deployment in emerging markets, advising national education ministries and UNESCO on digital literacy frameworks.",
+      bio: "Leading advisor on digital literacy frameworks to national ministries across East Africa and UNESCO consultant for ethical emerging tech integration.",
       avatarBg: "linear-gradient(135deg, #EEF2FF 0%, #DBEAFE 100%)",
-      initials: "AM"
+      accentColor: "#2145E6",
+      initials: "AM",
+      expertise: ["AI Ethics", "Learning Design", "Curriculum Strategy"],
+      linkedin: "https://linkedin.com",
+      twitter: "https://twitter.com"
     },
     takeaways: [
-      "AI is an amplifier for human teachers, not a replacement — the focus must remain on critical thinking and pedagogical guidance.",
-      "Basic AI literacy is now as crucial as foundational digital literacy for both primary and secondary educators.",
-      "Schools must develop clear ethical AI policies focusing on academic integrity, data privacy, and inclusive access.",
-      "Prompts engineering and problem decomposition are emerging as the most valuable meta-skills for students entering tertiary education."
+      "Future-ready classrooms prioritize self-directed problem-solving over passive content absorption.",
+      "Digital tools must reduce teacher administrative friction to allow more 1-on-1 pedagogical mentorship.",
+      "Competency-based education requires authentic, real-time feedback loops rather than high-stakes term-end assessments.",
+      "Infrastructure constraints can be turned into collaborative strengths through smart asynchronous learning stations."
     ],
+    classroomActions: {
+      tryIt: "Audit your current week's lesson plan: replace 20 minutes of teacher monologue with an inquiry-driven challenge where students formulate three testable questions.",
+      adaptIt: "For low-connectivity schools, use peer discussion circles with role cards (Researcher, Synthesizer, Presenter) before consulting any digital or printed reference.",
+      transformIt: "Form a departmental Future of Learning task force to draft an institutional digital learning manifesto aligned with Competency-Based Curriculum guidelines."
+    },
     transcript: [
-      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Welcome to the very first episode of The Instructify Kenya Podcast. Today we are addressing the elephant in every staff room and boardroom: Artificial Intelligence." },
-      { time: "02:15", timestampSeconds: 135, speaker: "Alex Nderitu (Host)", text: "Dr. Mutua, when educators hear 'AI in education', many worry about cheating or dehumanized learning. What is the reality on the ground?" },
-      { time: "04:30", timestampSeconds: 270, speaker: "Dr. Angela Mutua", text: "Thank you, Alex. The reality is that AI is democratizing access to high-quality explanations and adaptive learning. A student in Machakos can now interact with a tailored tutor at their own pace." },
-      { time: "09:45", timestampSeconds: 585, speaker: "Dr. Angela Mutua", text: "The real risk is not AI replacing teachers, but teachers who leverage AI replacing teachers who do not. We must invest heavily in Teacher Professional Development." },
-      { time: "18:20", timestampSeconds: 1100, speaker: "Alex Nderitu (Host)", text: "Let's talk about the Competency-Based Curriculum (CBC) alignment. Where does AI fit into experiential, hands-on learning?" },
-      { time: "24:10", timestampSeconds: 1450, speaker: "Dr. Angela Mutua", text: "CBC is fundamentally about core competencies like digital literacy, critical thinking, and creativity. Generative AI allows students to prototype concepts rapidly and analyze real-world community challenges." },
-      { time: "35:50", timestampSeconds: 2150, speaker: "Alex Nderitu (Host)", text: "To close out, what is one tangible action a school principal can take this term to prepare their staff?" },
-      { time: "38:15", timestampSeconds: 2295, speaker: "Dr. Angela Mutua", text: "Start with structured staff workshops. Demystify the tools, create a safe sandbox for experimentation, and formulate clear guidelines on transparent AI use." }
+      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Welcome to Conversations for a Smarter Future by Instructify Kenya. Today we ask a fundamental question: Is the classroom ready for the future?" },
+      { time: "03:15", timestampSeconds: 195, speaker: "Dr. Angela Mutua", text: "When we look at modern classrooms, we still see physical layouts and schedules designed during the industrial era. Yet the world outside demands creativity, agility, and continuous unlearning." },
+      { time: "09:40", timestampSeconds: 580, speaker: "Alex Nderitu (Host)", text: "How do teachers make that shift when national exams and syllabi feel rigid?" },
+      { time: "14:20", timestampSeconds: 860, speaker: "Dr. Angela Mutua", text: "It begins with agency. When learners own their inquiries, mastery follows naturally. Technology isn't about replacing the teacher; it's about amplifying authentic human connection." },
+      { time: "25:30", timestampSeconds: 1530, speaker: "Dr. Angela Mutua", text: "Our research shows that schools investing in collaborative problem-solving see a 34% increase in student engagement across STEM and humanities alike." },
+      { time: "38:45", timestampSeconds: 2325, speaker: "Alex Nderitu (Host)", text: "What is your final advice for educators listening across Kenya and East Africa today?" },
+      { time: "41:10", timestampSeconds: 2470, speaker: "Dr. Angela Mutua", text: "Don't wait for a central directive to innovate in your classroom. Start small, experiment with curiosity, and empower your learners to lead." }
     ],
     relatedCourse: {
       title: "AI in Education: Teacher's Masterclass",
@@ -90,253 +104,638 @@ const PODCAST_EPISODES = [
   },
   {
     id: "ep-02",
-    slug: "future-of-competency-based-learning",
+    slug: "from-teacher-to-learning-facilitator",
     number: "Episode 02",
     episodeNum: 2,
-    title: "The Future of Competency-Based Learning in Africa",
-    subtitle: "Transitioning from rote memorization to practical, skill-centered education systems.",
-    description: "Curriculum specialist Michael Otieno breaks down the transformative shift happening across Kenya's schools under the Competency-Based Curriculum (CBC). Discover how authentic assessments, community service learning, and digital portfolios measure real human growth.",
-    category: "CBE & Curriculum",
-    tags: ["CBC", "Curriculum", "Pedagogy", "Education Reform"],
-    date: "August 21, 2026",
-    isoDate: "2026-08-21",
+    title: "From Teacher to Learning Facilitator",
+    subtitle: "Shifting the pedagogical paradigm from 'sage on the stage' to dynamic learning coach.",
+    description: "Curriculum specialist Michael Otieno breaks down how modern educators can gracefully transition from traditional lectures to interactive, student-centered facilitation that sparks active curiosity.",
+    category: "Pedagogy",
+    tags: ["Pedagogy", "Curriculum", "Teacher Professional Development", "CBC"],
+    date: "September 02, 2026",
+    isoDate: "2026-09-02",
     duration: "38 min",
     durationSeconds: 2280,
     audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
-    featured: true,
-    coverColor: "linear-gradient(135deg, #064E3B 0%, #183AD6 60%, #3C3DDC 100%)",
+    videoEmbedUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+    videoThumbnail: "assets/images/founder_alex.jpg",
+    featured: false,
     themeColor: "#183AD6",
+    coverGradient: "linear-gradient(135deg, #091929 0%, #064E3B 50%, #183AD6 100%)",
     guest: {
+      id: "guest-michael-otieno",
       name: "Michael Otieno",
-      title: "Curriculum Innovation Specialist & Former KICD Consultant",
+      title: "Curriculum Innovation Specialist & Master Trainer",
       organization: "Center for Educational Transformation",
-      bio: "Michael has spent 18 years designing learning frameworks, training headteachers, and evaluating instructional materials across Kenya and East Africa.",
+      bio: "Over 18 years preparing senior educators for CBC transition, specializing in student autonomy, questioning techniques, and collaborative rubric design.",
       avatarBg: "linear-gradient(135deg, #CCFBF1 0%, #99F6E4 100%)",
-      initials: "MO"
+      accentColor: "#183AD6",
+      initials: "MO",
+      expertise: ["Facilitation Skills", "CBC Alignment", "Active Learning"],
+      linkedin: "https://linkedin.com",
+      twitter: "https://twitter.com"
     },
     takeaways: [
-      "Competency-based education shifts the measure of success from memorization exams to demonstrable problem-solving capabilities.",
-      "Community Service Learning (CSL) bridges the gap between academic theory and local community development.",
-      "Formative assessment through digital portfolios provides richer longitudinal data on student talents than single summative tests.",
-      "Parental engagement is the cornerstone of sustainable competency-based learning transitions."
+      "Facilitation requires mastering the art of asking provocative questions rather than supplying immediate answers.",
+      "Scaffolding student peer review transforms assessment into a collaborative learning event.",
+      "A learning facilitator designs the environment and sets guardrails, allowing learners to navigate productive struggle."
     ],
+    classroomActions: {
+      tryIt: "Implement 'Think-Pair-Share' with a 3-minute timer during your next introduction to a complex concept.",
+      adaptIt: "In multi-grade or crowded classrooms, assign student squad leads who guide small group discussions.",
+      transformIt: "Institutionalize peer classroom observations focused on facilitator talk time versus student talk time."
+    },
     transcript: [
-      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Welcome back. Today we dive deep into the philosophy and practice of Competency-Based Education with Michael Otieno." },
-      { time: "03:10", timestampSeconds: 190, speaker: "Michael Otieno", text: "The greatest gift of CBC is that it recognizes multiple pathways. Not every child is a pure academic theorist; some are innovators, artists, engineers, and social leaders." },
-      { time: "12:40", timestampSeconds: 760, speaker: "Michael Otieno", text: "Teachers are moving from 'sage on the stage' to 'facilitator on the side'. That requires unlearning decades of traditional teaching habits." }
+      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Today on Conversations for a Smarter Future, we delve into the heart of pedagogical transformation with Michael Otieno." },
+      { time: "05:10", timestampSeconds: 310, speaker: "Michael Otieno", text: "The moment a teacher stops feeling the burden of having all the answers, classroom energy completely transforms." },
+      { time: "18:40", timestampSeconds: 1120, speaker: "Michael Otieno", text: "When you facilitate, you are designing experiences. You become the architect of intellectual discovery." }
     ],
     relatedCourse: {
-      title: "CBC Alignment & Formative Assessment Mastery",
-      category: "Curriculum Design",
+      title: "Pedagogy & Active Learning Strategies",
+      category: "Teaching Mastery",
       link: "courses.html"
     }
   },
   {
     id: "ep-03",
-    slug: "skills-employers-will-need-tomorrow",
+    slug: "ai-in-education-opportunity-or-threat",
     number: "Episode 03",
     episodeNum: 3,
-    title: "From Classroom to Boardroom: The Skills Employers Will Need Tomorrow",
-    subtitle: "Closing the gap between graduate capabilities and high-growth industry demands.",
-    description: "Corporate talent leader Sarah Wanjiku joins us to discuss what top employers, tech startups, and multinationals actually look for in modern recruits. From emotional intelligence to agile problem solving, discover the hybrid skill stack required for modern career longevity.",
-    category: "Career & Future Skills",
-    tags: ["Leadership", "Career", "Workplace Skills", "Talent Development"],
-    date: "August 14, 2026",
-    isoDate: "2026-08-14",
-    duration: "45 min",
-    durationSeconds: 2700,
+    title: "AI in Education: Opportunity or Threat?",
+    subtitle: "Navigating ethics, academic integrity, automated feedback, and genuine student mastery.",
+    description: "Brenda Mwangi dives deep into generative AI tools like ChatGPT, Claude, and specialized tutoring engines, discussing how schools can embrace their power without compromising deep cognitive learning.",
+    category: "AI",
+    tags: ["AI", "Technology", "Ethics", "EdTech"],
+    date: "September 05, 2026",
+    isoDate: "2026-09-05",
+    duration: "47 min",
+    durationSeconds: 2820,
     audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
-    featured: true,
-    coverColor: "linear-gradient(135deg, #3B0764 0%, #CC3E00 60%, #FF4D00 100%)",
+    videoEmbedUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+    videoThumbnail: "assets/images/founder_alex.jpg",
+    featured: false,
     themeColor: "#FF4D00",
+    coverGradient: "linear-gradient(135deg, #091929 0%, #581C87 50%, #FF4D00 100%)",
     guest: {
-      name: "Sarah Wanjiku",
-      title: "Chief People & Talent Officer",
-      organization: "FinTech Horizons Africa",
-      bio: "Sarah oversees talent acquisition and leadership development across Kenya, Nigeria, and South Africa, focusing on emerging tech careers.",
+      id: "guest-brenda-mwangi",
+      name: "Brenda Mwangi",
+      title: "Lead AI Ethics Fellow & Educational Policy Advisor",
+      organization: "Kenya EdTech Alliance",
+      bio: "Pioneering researcher on generative AI adoption across Sub-Saharan Africa and author of guidelines for transparent academic integrity in schools.",
       avatarBg: "linear-gradient(135deg, #F3EEFF 0%, #DDD6FE 100%)",
-      initials: "SW"
+      accentColor: "#FF4D00",
+      initials: "BM",
+      expertise: ["Generative AI", "Academic Integrity", "Algorithmic Equity"],
+      linkedin: "https://linkedin.com",
+      twitter: "https://twitter.com"
     },
     takeaways: [
-      "Technical skills get you in the door; adaptability, emotional intelligence, and cross-functional communication determine leadership trajectory.",
-      "The half-life of technical skills is now under 3 years, making 'learning agility' the number one skill for the modern workforce.",
-      "Collaborative problem-solving in hybrid and remote teams is an indispensable workplace competency.",
-      "Internships and practical project-based learning must begin early in secondary and tertiary schooling."
+      "Banning AI tools is futile; our duty is teaching transparent citation, critical skepticism, and prompt literacy.",
+      "AI provides unprecedented individualized tutoring for concept reinforcement when students study independently.",
+      "Evaluating students on their critique and synthesis of AI-generated responses builds higher-order Bloom's taxonomy skills."
     ],
+    classroomActions: {
+      tryIt: "Have students run an AI prompt on a historical event, print the output, and highlight inaccuracies or missing African perspectives.",
+      adaptIt: "Use offline AI models or mobile SMS-based learning chatbots for students without continuous home internet.",
+      transformIt: "Create a school-wide AI Acceptable Use Policy co-drafted by educators, students, and parent representatives."
+    },
     transcript: [
-      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Today on Instructify Kenya Podcast, we bridge the classroom and the corporate boardroom with Sarah Wanjiku." },
-      { time: "04:00", timestampSeconds: 240, speaker: "Sarah Wanjiku", text: "When we review hundreds of applications, top degrees alone do not differentiate candidates. We look for evidence of self-directed projects and curiosity." }
+      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Is Artificial Intelligence an existential threat to authentic homework or the greatest educational democratizer of our time?" },
+      { time: "04:12", timestampSeconds: 252, speaker: "Brenda Mwangi", text: "If homework can be solved by a single prompt, the assignment was testing memory retrieval, not understanding." },
+      { time: "22:30", timestampSeconds: 1350, speaker: "Brenda Mwangi", text: "We must train students to be editors, evaluators, and creative directors of intelligent systems, not passive consumers." }
     ],
     relatedCourse: {
-      title: "Leadership & Future-Proof Career Capabilities",
-      category: "Executive Learning",
-      link: "consultancy.html"
+      title: "Generative AI for Educators Masterclass",
+      category: "Emerging Tech",
+      link: "courses.html"
     }
   },
   {
     id: "ep-04",
-    slug: "digital-literacy-and-smart-schools",
+    slug: "beyond-the-textbook",
     number: "Episode 04",
     episodeNum: 4,
-    title: "Digital Literacy & Smart Schools: Overcoming the Infrastructure Divide",
-    subtitle: "Practical, cost-effective strategies to build high-impact digital learning environments.",
-    description: "Eng. David Kiprono shares real-world case studies of schools that transformed their learning outcomes with low-cost offline servers, solar-powered labs, and interactive smart displays.",
-    category: "EdTech",
-    tags: ["Smart Classrooms", "Infrastructure", "Digital Inclusion", "Hardware"],
-    date: "August 07, 2026",
-    isoDate: "2026-08-07",
+    title: "Beyond the Textbook",
+    subtitle: "Curating real-world problem sets, open educational resources, and multi-format learning media.",
+    description: "James Kamau shares practical blueprints for decoupling curriculum delivery from static textbooks and grounding daily lessons in rich local case studies, podcasts, community projects, and interactive simulations.",
+    category: "Curriculum",
+    tags: ["Curriculum", "Pedagogy", "Open Education", "Multimedia"],
+    date: "September 08, 2026",
+    isoDate: "2026-09-08",
     duration: "36 min",
     durationSeconds: 2160,
     audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
+    videoEmbedUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+    videoThumbnail: "assets/images/founder_alex.jpg",
     featured: false,
-    coverColor: "linear-gradient(135deg, #78350F 0%, #D97706 60%, #F59E0B 100%)",
     themeColor: "#D97706",
+    coverGradient: "linear-gradient(135deg, #091929 0%, #78350F 50%, #D97706 100%)",
     guest: {
-      name: "Eng. David Kiprono",
-      title: "EdTech Infrastructure Architect & Smart Lab Pioneer",
-      organization: "Digital Schools Africa",
-      bio: "David has spearheaded the deployment of over 120 smart classrooms and localized LMS nodes in rural and urban schools across Kenya.",
+      id: "guest-james-kamau",
+      name: "James Kamau",
+      title: "Head of Instructional Media",
+      organization: "East African Digital Publishers",
+      bio: "Over 15 years modernizing publishing pipelines, spearheading interactive digital science kits and localized storytelling across regional school networks.",
       avatarBg: "linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%)",
-      initials: "DK"
+      accentColor: "#D97706",
+      initials: "JK",
+      expertise: ["Digital Publishing", "OER Design", "Content Localization"],
+      linkedin: "https://linkedin.com",
+      twitter: "https://twitter.com"
     },
     takeaways: [
-      "Hardware without pedagogical training creates expensive paperweights; teacher enablement must receive 60% of EdTech budgets.",
-      "Offline content caching (Kolibri, localized LMS) solves 80% of rural connectivity limitations.",
-      "Interactive displays increase classroom engagement metrics by up to 300% when paired with CBC content."
+      "Textbooks provide structural scope, but community reality provides emotional and cognitive relevance.",
+      "Open Educational Resources (OER) allow teachers to remix high-quality simulations without subscription fees.",
+      "Student-created multimedia artifacts (infographics, short audio summaries) demonstrate far deeper mastery than fill-in-the-blank worksheets."
     ],
+    classroomActions: {
+      tryIt: "Replace one chapter summary with a 2-minute student-recorded voice memo explaining the core lesson to a younger sibling.",
+      adaptIt: "Gather local newspapers and trade publications to extract real Kenyan economic data for mathematics lessons.",
+      transformIt: "Build a shared cloud repository where teachers across your school deposit localized case studies and project briefs."
+    },
     transcript: [
-      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Welcome to Episode 04. Today we discuss pragmatic digital infrastructure in Kenyan schools." },
-      { time: "05:15", timestampSeconds: 315, speaker: "Eng. David Kiprono", text: "You don't need fiber optic internet to run a world-class smart classroom. We are caching thousands of interactive modules on local Raspberry Pi servers." }
+      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Welcome to Episode 04. Today we break through the boundaries of static textbook instruction with James Kamau." },
+      { time: "06:15", timestampSeconds: 375, speaker: "James Kamau", text: "When a child in Nakuru reads a word problem about snow in Vermont, cognitive load is wasted on cultural translation. We need localized relevance." }
     ],
     relatedCourse: {
-      title: "Smart Classroom Deployment & Digital Lab Setup",
-      category: "Institutional Advisory",
-      link: "schools.html"
+      title: "Instructional Design & Content Creation",
+      category: "Content Mastery",
+      link: "courses.html"
     }
   },
   {
     id: "ep-05",
-    slug: "entrepreneurship-technology-and-youth-opportunity",
+    slug: "making-competency-based-learning-work",
     number: "Episode 05",
     episodeNum: 5,
-    title: "Entrepreneurship, Technology and Youth Opportunity in Kenya",
-    subtitle: "Empowering the next generation of builders, problem-solvers, and venture creators.",
-    description: "Startup founder and youth mentor Brenda Achieng discusses why entrepreneurial thinking must be cultivated in secondary schools. Learn how hackathons, student enterprises, and tech incubators ignite lifelong economic resilience.",
-    category: "Entrepreneurship",
-    tags: ["Youth Empowerment", "Startups", "Innovation", "Venture Building"],
-    date: "July 31, 2026",
-    isoDate: "2026-07-31",
-    duration: "40 min",
-    durationSeconds: 2400,
+    title: "Making Competency-Based Learning Work",
+    subtitle: "Operationalizing rubrics, formative feedback, and community service learning in Kenyan schools.",
+    description: "Grace Nyambura offers deep practical clarity on CBC implementation hurdles, assessment portfolios, parental communication, and ensuring that core competencies are genuinely built rather than just checked off on forms.",
+    category: "Curriculum",
+    tags: ["Curriculum", "CBC", "Pedagogy", "Assessment"],
+    date: "September 11, 2026",
+    isoDate: "2026-09-11",
+    duration: "41 min",
+    durationSeconds: 2460,
     audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
+    videoEmbedUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+    videoThumbnail: "assets/images/founder_alex.jpg",
     featured: false,
-    coverColor: "linear-gradient(135deg, #0F172A 0%, #0369A1 60%, #0284C7 100%)",
-    themeColor: "#0284C7",
+    themeColor: "#2563EB",
+    coverGradient: "linear-gradient(135deg, #091929 0%, #1E3A8A 50%, #2563EB 100%)",
     guest: {
-      name: "Brenda Achieng",
-      title: "Founder & Ecosystem Builder",
-      organization: "KaziLab Youth Innovation Hub",
-      bio: "Brenda has mentored over 5,000 young entrepreneurs across Nairobi, Kisumu, and Mombasa, helping youth launch viable digital ventures.",
-      avatarBg: "linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%)",
-      initials: "BA"
+      id: "guest-grace-nyambura",
+      name: "Grace Nyambura",
+      title: "CBC Lead Facilitator & Senior Assessor",
+      organization: "National Institute of Curriculum Excellence",
+      bio: "Architect of teacher professional development modules for junior school transitions across 12 counties with emphasis on holistic competencies.",
+      avatarBg: "linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%)",
+      accentColor: "#2563EB",
+      initials: "GN",
+      expertise: ["CBC Rubrics", "Formative Portfolios", "Parent Engagement"],
+      linkedin: "https://linkedin.com",
+      twitter: "https://twitter.com"
     },
     takeaways: [
-      "Entrepreneurship is not just about starting businesses; it is an attitude of value creation and grit.",
-      "Youth need safe spaces to fail fast, prototype solutions, and receive constructive feedback from industry mentors.",
-      "Combining coding or digital skills with business literacy creates immediate monetization opportunities for youth."
+      "Competency rubrics should be co-constructed with learners so expectations are transparent from day one.",
+      "Community Service Learning (CSL) projects are the gold standard for measuring communication and problem-solving in context.",
+      "Formative feedback must be forward-looking: tell the student what step to take next, not just what score was achieved."
     ],
+    classroomActions: {
+      tryIt: "Display a 4-level rubric on your blackboard before starting a project: Developing, Approaching, Meeting, and Exceeding expectations.",
+      adaptIt: "Translate assessment criteria into student-friendly 'I Can' statements for junior learners.",
+      transformIt: "Shift termly report meetings from teacher-parent conferences to student-led portfolio exhibitions."
+    },
     transcript: [
-      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Welcome to Episode 05 with the remarkable Brenda Achieng, exploring youth entrepreneurship." },
-      { time: "06:30", timestampSeconds: 390, speaker: "Brenda Achieng", text: "When young people realize that community challenges are actually business opportunities in disguise, everything changes." }
+      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "CBC has sparked debates across every living room in Kenya. Grace Nyambura joins us to demystify what makes competency learning truly sing." },
+      { time: "08:30", timestampSeconds: 510, speaker: "Grace Nyambura", text: "CBC is not about expensive materials. It's about mindset. An authentic conversation with a local artisan can teach more physics than a bought kit." }
     ],
     relatedCourse: {
-      title: "Youth Digital Entrepreneurship & Startup Foundations",
-      category: "Innovation Lab",
-      link: "community.html"
+      title: "CBC Assessment & Rubric Mastery",
+      category: "Curriculum Excellence",
+      link: "courses.html"
     }
   },
   {
     id: "ep-06",
-    slug: "what-does-the-classroom-of-tomorrow-look-like",
+    slug: "the-digital-teacher",
     number: "Episode 06",
     episodeNum: 6,
-    title: "What Does the Classroom of Tomorrow Look Like?",
-    subtitle: "VR headsets, AI co-pilots, hybrid spaces, and the human heart of pedagogy.",
-    description: "Prof. Julius Kariuki paints a compelling, practical vision of African learning spaces over the next 15 years. How will immersive virtual realities, global collaborative projects, and automated assessment tools reshape the student journey?",
-    category: "Education",
-    tags: ["Future of Learning", "VR in Education", "Hybrid Pedagogy", "EdTech"],
-    date: "July 24, 2026",
-    isoDate: "2026-07-24",
-    duration: "48 min",
-    durationSeconds: 2880,
+    title: "The Digital Teacher",
+    subtitle: "Everyday productivity hacks, cloud workflows, and digital storytelling for educators.",
+    description: "Emmanuel Kiprop shares his inspiring journey transforming into a digitally empowered educator, demonstrating how simple free cloud suites, screen recorders, and digital flashcards save hours of grading each week.",
+    category: "Technology",
+    tags: ["Technology", "ICT", "Teacher Productivity", "Digital Skills"],
+    date: "September 14, 2026",
+    isoDate: "2026-09-14",
+    duration: "35 min",
+    durationSeconds: 2100,
     audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
+    videoEmbedUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+    videoThumbnail: "assets/images/founder_alex.jpg",
     featured: false,
-    coverColor: "linear-gradient(135deg, #1E1B4B 0%, #4338CA 60%, #2145E6 100%)",
-    themeColor: "#4F46E5",
+    themeColor: "#059669",
+    coverGradient: "linear-gradient(135deg, #091929 0%, #064E3B 50%, #059669 100%)",
     guest: {
-      name: "Prof. Julius Kariuki",
-      title: "Dean of Educational Technology & Future Pedagogy",
-      organization: "East African University of Technology",
-      bio: "Prof. Kariuki is an internationally published author on educational paradigms and the architect of numerous cross-border hybrid learning pilots.",
-      avatarBg: "linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%)",
-      initials: "JK"
+      id: "guest-emmanuel-kiprop",
+      name: "Emmanuel Kiprop",
+      title: "EdTech Teacher Leader & MIE Fellow",
+      organization: "Rift Valley Academy & Kenya Teacher Tech Network",
+      bio: "Trained over 4,000 public school teachers on mobile-first classroom automation, digital grading, and Google Workspace for Education.",
+      avatarBg: "linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%)",
+      accentColor: "#059669",
+      initials: "EK",
+      expertise: ["Cloud Classrooms", "Teacher Productivity", "Mobile Learning"],
+      linkedin: "https://linkedin.com",
+      twitter: "https://twitter.com"
     },
     takeaways: [
-      "Classrooms of the future are collaborative studios rather than lecture halls with fixed forward-facing desks.",
-      "Immersive technologies like ClassVR allow biology and geography students to experience virtual field trips at near zero cost.",
-      "Teachers become chief learning experience designers, orchestrating individualized learning journeys."
+      "A smartphone is a full production studio: voice notes, PDF scanning, and quiz forms streamline 60% of administrative overhead.",
+      "Batching digital quiz feedback saves 5+ hours weekly while delivering immediate insights to students.",
+      "Digital confidence is built through micro-habits, not one-off high-stress IT certificates."
     ],
+    classroomActions: {
+      tryIt: "Create a 5-question Google or Microsoft Form exit ticket for tomorrow's class to instantly diagnose concept grasp.",
+      adaptIt: "Use offline spreadsheets on school desktop terminals to track student competency milestones.",
+      transformIt: "Establish a weekly 30-minute 'Tech Coffee Break' in the staff room where teachers showcase one digital trick they used."
+    },
     transcript: [
-      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Welcome to Episode 06. Today we look forward 10 to 15 years with Prof. Julius Kariuki." },
-      { time: "08:15", timestampSeconds: 495, speaker: "Prof. Julius Kariuki", text: "Technology is not an end in itself. The classroom of tomorrow is hyper-connected digitally, but deeply human and relational at its core." }
+      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "How does a teacher go from tech-anxious to tech-thriving? Emmanuel Kiprop shares his playbook on The Digital Teacher." },
+      { time: "04:50", timestampSeconds: 290, speaker: "Emmanuel Kiprop", text: "When I automated my multiple-choice grading, I gained back my Sunday afternoons. That recharged me to be a far better mentor in the classroom." }
     ],
     relatedCourse: {
-      title: "Interactive Content & ClassVR Pedagogy",
-      category: "Smart Classrooms",
-      link: "schools.html"
+      title: "Digital Productivity for Modern Teachers",
+      category: "Digital Skills",
+      link: "courses.html"
+    }
+  },
+  {
+    id: "ep-07",
+    slug: "teaching-with-technology-when-resources-are-limited",
+    number: "Episode 07",
+    episodeNum: 7,
+    title: "Teaching with Technology When Resources Are Limited",
+    subtitle: "Low-bandwidth solutions, solar power, Raspberry Pi servers, and offline open digital libraries.",
+    description: "Faith Chebet shares ingenious, battle-tested solutions for bringing 21st-century digital learning into rural and under-resourced schools where electricity is intermittent and data is scarce.",
+    category: "ICT",
+    tags: ["ICT", "Innovation", "Equity", "Hardware", "Offline Learning"],
+    date: "September 17, 2026",
+    isoDate: "2026-09-17",
+    duration: "39 min",
+    durationSeconds: 2340,
+    audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
+    videoEmbedUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+    videoThumbnail: "assets/images/founder_alex.jpg",
+    featured: false,
+    themeColor: "#0284C7",
+    coverGradient: "linear-gradient(135deg, #091929 0%, #0C4A6E 50%, #0284C7 100%)",
+    guest: {
+      id: "guest-faith-chebet",
+      name: "Faith Chebet",
+      title: "Founder, Offline Learning Labs",
+      organization: "Rural Schools Digital Access Initiative",
+      bio: "Pioneered deployment of low-power Kolibri offline content servers across 45 off-grid schools in Turkana, Kitui, and Samburu counties.",
+      avatarBg: "linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%)",
+      accentColor: "#0284C7",
+      initials: "FC",
+      expertise: ["Offline EdTech", "Frugal Innovation", "Rural Infrastructure"],
+      linkedin: "https://linkedin.com",
+      twitter: "https://twitter.com"
+    },
+    takeaways: [
+      "Offline server boxes (like Kolibri on Raspberry Pi) deliver Khan Academy, Wikipedia, and simulations with zero ongoing data charges.",
+      "Teacher collaboration models allow one connected device to seed learning across an entire school via local Wi-Fi hotspots.",
+      "Equity in education requires designing for the lowest-spec device in the most remote setting first."
+    ],
+    classroomActions: {
+      tryIt: "Download one offline interactive PhET science simulation to your phone or laptop and run it on a classroom projector or shared screen.",
+      adaptIt: "Print QR codes linking to offline video lectures stored on a local school flash drive or router.",
+      transformIt: "Partner with county education boards and community solar providers to establish a solar-powered offline digital hub in your cluster."
+    },
+    transcript: [
+      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Can technology thrive in a classroom with no internet? Faith Chebet proves that resource limits breed incredible educational ingenuity." },
+      { time: "07:15", timestampSeconds: 435, speaker: "Faith Chebet", text: "We don't need fiber optic cables to give a child in Lodwar access to world-class interactive mathematics. We need thoughtful offline caching." }
+    ],
+    relatedCourse: {
+      title: "Low-Bandwidth & Offline Classroom Tech",
+      category: "EdTech Infrastructure",
+      link: "courses.html"
+    }
+  },
+  {
+    id: "ep-08",
+    slug: "can-robotics-change-how-children-learn",
+    number: "Episode 08",
+    episodeNum: 8,
+    title: "Can Robotics Change How Children Learn?",
+    subtitle: "Hands-on coding, maker spaces, problem formulation, and spatial intelligence through robotics.",
+    description: "Dr. Dennis Omondi discusses how introducing basic robotics kits, microcontrollers, and cardboard prototypes demystifies computational thinking and sparks genuine love for engineering in boys and girls alike.",
+    category: "Technology",
+    tags: ["Technology", "Innovation", "Robotics", "STEM", "Coding"],
+    date: "September 20, 2026",
+    isoDate: "2026-09-20",
+    duration: "43 min",
+    durationSeconds: 2580,
+    audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
+    videoEmbedUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+    videoThumbnail: "assets/images/founder_alex.jpg",
+    featured: false,
+    themeColor: "#EA580C",
+    coverGradient: "linear-gradient(135deg, #091929 0%, #7C2D12 50%, #EA580C 100%)",
+    guest: {
+      id: "guest-dennis-omondi",
+      name: "Dr. Dennis Omondi",
+      title: "Director of STEM Innovation & Robotics Education",
+      organization: "AfroBotics Kenya",
+      bio: "Mechanical engineer and educator who has coached Kenya's national youth robotics teams to international titles, designing affordable kits made from e-waste.",
+      avatarBg: "linear-gradient(135deg, #FFEDD5 0%, #FED7AA 100%)",
+      accentColor: "#EA580C",
+      initials: "DO",
+      expertise: ["Robotics & IoT", "Maker Pedagogy", "Girls in STEM"],
+      linkedin: "https://linkedin.com",
+      twitter: "https://twitter.com"
+    },
+    takeaways: [
+      "Robotics teaches failure resilience: when code fails, students re-examine logic rather than feeling personally judged.",
+      "Cardboard, rubber bands, and $3 micro:bit boards teach fundamental physics better than passive textbook diagrams.",
+      "Early robotics programs close gender divides in STEM when framed around community problem-solving (e.g. automated plant watering)."
+    ],
+    classroomActions: {
+      tryIt: "Introduce a 'paper circuitry' challenge using copper tape and coin cell batteries to light up an LED in student art projects.",
+      adaptIt: "Use block-based Scratch or MakeCode simulators on any web browser before buying physical hardware.",
+      transformIt: "Inaugurate an annual inter-school Maker Fair where students present working physical models solving local community problems."
+    },
+    transcript: [
+      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Robotics in primary and secondary schools is no longer science fiction. Dr. Dennis Omondi joins us to unpack the transformative power of robotics." },
+      { time: "06:40", timestampSeconds: 400, speaker: "Dr. Dennis Omondi", text: "When a 12-year-old programs a tiny motor to rotate when humidity drops, they aren't just learning code. They are learning that they can alter reality." }
+    ],
+    relatedCourse: {
+      title: "Robotics & Computational Thinking in CBC",
+      category: "STEM Innovation",
+      link: "courses.html"
+    }
+  },
+  {
+    id: "ep-09",
+    slug: "assessment-beyond-the-exam",
+    number: "Episode 09",
+    episodeNum: 9,
+    title: "Assessment Beyond the Exam",
+    subtitle: "Authentic evaluation, self-reflection, psychometric tracking, and portfolio-based validation.",
+    description: "Prof. Beatrice Achieng examines why terminal standardized examinations fail to capture human capability and how progressive schools are pioneering continuous, holistic assessment that honors diverse talents.",
+    category: "Leadership",
+    tags: ["Leadership", "Curriculum", "Assessment", "Education Policy"],
+    date: "September 23, 2026",
+    isoDate: "2026-09-23",
+    duration: "40 min",
+    durationSeconds: 2400,
+    audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
+    videoEmbedUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+    videoThumbnail: "assets/images/founder_alex.jpg",
+    featured: false,
+    themeColor: "#7C3AED",
+    coverGradient: "linear-gradient(135deg, #091929 0%, #4C1D95 50%, #7C3AED 100%)",
+    guest: {
+      id: "guest-beatrice-achieng",
+      name: "Prof. Beatrice Achieng",
+      title: "Dean of Educational Measurement",
+      organization: "Strathmore Institute of Education",
+      bio: "Global authority on authentic assessment, psychometric modeling, and alternative credentialing systems for African secondary and tertiary institutions.",
+      avatarBg: "linear-gradient(135deg, #EDE9FE 0%, #DDD6FE 100%)",
+      accentColor: "#7C3AED",
+      initials: "BA",
+      expertise: ["Authentic Assessment", "Psychometrics", "Institutional Leadership"],
+      linkedin: "https://linkedin.com",
+      twitter: "https://twitter.com"
+    },
+    takeaways: [
+      "Standardized exams measure test-taking speed and rote memorization, often obscuring creative and leadership competencies.",
+      "Digital portfolios capture multi-year growth, showing not just finished products but revisions and reflections.",
+      "Educational leadership must align institutional rewards with holistic learner growth rather than single exam mean scores."
+    ],
+    classroomActions: {
+      tryIt: "Dedicate the final 5 minutes of each project to student self-evaluation: 'What was hardest, and how did I overcome it?'",
+      adaptIt: "Use visual progress tracking boards where learners move badges as they master micro-skills.",
+      transformIt: "Implement a digital portfolio requirement for graduation that students present to a community panel."
+    },
+    transcript: [
+      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "What happens when we measure what truly matters instead of just what is easy to grade? Prof. Beatrice Achieng explores Assessment Beyond the Exam." },
+      { time: "11:25", timestampSeconds: 685, speaker: "Prof. Beatrice Achieng", text: "An exam gives you a snapshot. A portfolio gives you a documentary film of intellectual growth. Which would you hire on?" }
+    ],
+    relatedCourse: {
+      title: "Educational Assessment & Leadership",
+      category: "Institutional Advisory",
+      link: "courses.html"
+    }
+  },
+  {
+    id: "ep-10",
+    slug: "what-will-the-teacher-of-2035-look-like",
+    number: "Episode 10",
+    episodeNum: 10,
+    title: "What Will the Teacher of 2035 Look Like?",
+    subtitle: "Synthesizing AI co-pilots, human empathy, continuous micro-credentialing, and lifelong mentorship.",
+    description: "In this visionary capstone conversation, Prof. Julius Kariuki maps out the evolving role of the educator over the next decade—dispelling fear of obsolescence and showcasing why compassionate human educators will be more vital than ever.",
+    category: "Leadership",
+    tags: ["Leadership", "Innovation", "Future of Work", "Pedagogy"],
+    date: "September 26, 2026",
+    isoDate: "2026-09-26",
+    duration: "46 min",
+    durationSeconds: 2760,
+    audioUrl: "https://actions.google.com/sounds/v1/ambiences/rain_heavy.ogg",
+    videoEmbedUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+    videoThumbnail: "assets/images/founder_alex.jpg",
+    featured: false,
+    themeColor: "#E11D48",
+    coverGradient: "linear-gradient(135deg, #091929 0%, #881337 50%, #E11D48 100%)",
+    guest: {
+      id: "guest-julius-kariuki",
+      name: "Prof. Julius Kariuki",
+      title: "Author & Future of Learning Strategist",
+      organization: "African Education Futures Think Tank",
+      bio: "Distinguished researcher and author on 21st-century educational paradigms, advising governments across Africa on long-term human capital roadmaps.",
+      avatarBg: "linear-gradient(135deg, #FFE4E6 0%, #FECDD3 100%)",
+      accentColor: "#E11D48",
+      initials: "JK",
+      expertise: ["Future Foresight", "Teacher Transformation", "Strategic Policy"],
+      linkedin: "https://linkedin.com",
+      twitter: "https://twitter.com"
+    },
+    takeaways: [
+      "The educator of 2035 will be an empathy anchor, community connector, and personal learning curator.",
+      "Routine knowledge delivery will be automated, elevating teachers to ethical guides and meta-cognition mentors.",
+      "Continuous micro-credentialing will replace static one-off degree milestones for teacher career advancement."
+    ],
+    classroomActions: {
+      tryIt: "Spend 10 minutes this Friday doing a one-on-one check-in with two students focused entirely on their passions rather than academic grades.",
+      adaptIt: "Incorporate emotional intelligence and active listening exercises into your regular morning homeroom routines.",
+      transformIt: "Create an institutional learning roadmap investing 5% of your professional development budget in future-readiness foresight."
+    },
+    transcript: [
+      { time: "00:00", timestampSeconds: 0, speaker: "Alex Nderitu (Host)", text: "Welcome to Episode 10 of Conversations for a Smarter Future. We close this series by casting our gaze forward to 2035 with Prof. Julius Kariuki." },
+      { time: "05:40", timestampSeconds: 340, speaker: "Prof. Julius Kariuki", text: "Machines calculate; humans care. The more technology permeates the classroom, the more precious and irreplaceable the teacher's empathy becomes." },
+      { time: "24:15", timestampSeconds: 1455, speaker: "Prof. Julius Kariuki", text: "The teacher of 2035 is not obsolete. They are elevated to the highest calling in society: helping human beings discover who they are." }
+    ],
+    relatedCourse: {
+      title: "Future of Education Strategic Leadership",
+      category: "Executive Strategy",
+      link: "courses.html"
     }
   }
 ];
 
-const PODCAST_VOICES = [
+/**
+ * Guest directory for the "Meet Our Guests" section
+ */
+const PODCAST_GUESTS = [
   {
+    id: "guest-angela-mutua",
     name: "Dr. Angela Mutua",
-    role: "Senior AI Researcher",
-    org: "African Institute for Future Intelligence",
-    tag: "Technology & AI",
+    title: "Senior AI Researcher & EdTech Advisor",
+    organization: "African Institute for Future Intelligence",
+    bio: "Advising national education ministries and UNESCO on ethical AI frameworks and inclusive digital learning design across East Africa.",
     avatarBg: "linear-gradient(135deg, #EEF2FF 0%, #DBEAFE 100%)",
     accentColor: "#2145E6",
     initials: "AM",
-    episodeId: "ep-01"
+    expertise: ["AI Ethics", "Learning Design", "Curriculum Strategy"],
+    featuredEpisodes: ["Episode 01: Is the Classroom Ready for the Future?"],
+    featuredEpisodeId: "ep-01",
+    linkedin: "https://www.linkedin.com",
+    twitter: "https://twitter.com"
   },
   {
+    id: "guest-michael-otieno",
     name: "Michael Otieno",
-    role: "Curriculum Innovation Specialist",
-    org: "Center for Educational Transformation",
-    tag: "CBE & Curriculum",
+    title: "Curriculum Innovation Specialist & Master Trainer",
+    organization: "Center for Educational Transformation",
+    bio: "Over 18 years preparing senior educators for CBC transition, specializing in student autonomy, questioning techniques, and rubric design.",
     avatarBg: "linear-gradient(135deg, #CCFBF1 0%, #99F6E4 100%)",
     accentColor: "#183AD6",
     initials: "MO",
-    episodeId: "ep-02"
+    expertise: ["Facilitation Skills", "CBC Alignment", "Active Learning"],
+    featuredEpisodes: ["Episode 02: From Teacher to Learning Facilitator"],
+    featuredEpisodeId: "ep-02",
+    linkedin: "https://www.linkedin.com",
+    twitter: "https://twitter.com"
   },
   {
-    name: "Sarah Wanjiku",
-    role: "Chief Talent Officer",
-    org: "FinTech Horizons Africa",
-    tag: "Leadership & Skills",
+    id: "guest-brenda-mwangi",
+    name: "Brenda Mwangi",
+    title: "Lead AI Ethics Fellow & Educational Policy Advisor",
+    organization: "Kenya EdTech Alliance",
+    bio: "Pioneering researcher on generative AI adoption and transparent academic integrity standards for primary, secondary, and tertiary institutions.",
     avatarBg: "linear-gradient(135deg, #F3EEFF 0%, #DDD6FE 100%)",
     accentColor: "#FF4D00",
-    initials: "SW",
-    episodeId: "ep-03"
+    initials: "BM",
+    expertise: ["Generative AI", "Academic Integrity", "Algorithmic Equity"],
+    featuredEpisodes: ["Episode 03: AI in Education: Opportunity or Threat?"],
+    featuredEpisodeId: "ep-03",
+    linkedin: "https://www.linkedin.com",
+    twitter: "https://twitter.com"
   },
   {
-    name: "Eng. David Kiprono",
-    role: "Smart Lab Architect",
-    org: "Digital Schools Africa",
-    tag: "EdTech & Infrastructure",
+    id: "guest-james-kamau",
+    name: "James Kamau",
+    title: "Head of Instructional Media",
+    organization: "East African Digital Publishers",
+    bio: "Over 15 years modernizing publishing pipelines, spearheading interactive digital science kits, and localized storytelling across regional school networks.",
     avatarBg: "linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%)",
     accentColor: "#D97706",
-    initials: "DK",
-    episodeId: "ep-04"
+    initials: "JK",
+    expertise: ["Digital Publishing", "OER Design", "Content Localization"],
+    featuredEpisodes: ["Episode 04: Beyond the Textbook"],
+    featuredEpisodeId: "ep-04",
+    linkedin: "https://www.linkedin.com",
+    twitter: "https://twitter.com"
+  },
+  {
+    id: "guest-grace-nyambura",
+    name: "Grace Nyambura",
+    title: "CBC Lead Facilitator & Senior Assessor",
+    organization: "National Institute of Curriculum Excellence",
+    bio: "Architect of teacher professional development modules for junior school transitions across 12 counties with emphasis on holistic competencies.",
+    avatarBg: "linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%)",
+    accentColor: "#2563EB",
+    initials: "GN",
+    expertise: ["CBC Rubrics", "Formative Portfolios", "Parent Engagement"],
+    featuredEpisodes: ["Episode 05: Making Competency-Based Learning Work"],
+    featuredEpisodeId: "ep-05",
+    linkedin: "https://www.linkedin.com",
+    twitter: "https://twitter.com"
+  },
+  {
+    id: "guest-emmanuel-kiprop",
+    name: "Emmanuel Kiprop",
+    title: "EdTech Teacher Leader & MIE Fellow",
+    organization: "Rift Valley Academy & Kenya Teacher Tech Network",
+    bio: "Trained over 4,000 public school teachers on mobile-first classroom automation, digital grading, and Google Workspace for Education.",
+    avatarBg: "linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%)",
+    accentColor: "#059669",
+    initials: "EK",
+    expertise: ["Cloud Classrooms", "Teacher Productivity", "Mobile Learning"],
+    featuredEpisodes: ["Episode 06: The Digital Teacher"],
+    featuredEpisodeId: "ep-06",
+    linkedin: "https://www.linkedin.com",
+    twitter: "https://twitter.com"
+  },
+  {
+    id: "guest-faith-chebet",
+    name: "Faith Chebet",
+    title: "Founder, Offline Learning Labs",
+    organization: "Rural Schools Digital Access Initiative",
+    bio: "Pioneered deployment of low-power Kolibri offline content servers across 45 off-grid schools in Turkana, Kitui, and Samburu counties.",
+    avatarBg: "linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%)",
+    accentColor: "#0284C7",
+    initials: "FC",
+    expertise: ["Offline EdTech", "Frugal Innovation", "Rural Infrastructure"],
+    featuredEpisodes: ["Episode 07: Teaching with Technology When Resources Are Limited"],
+    featuredEpisodeId: "ep-07",
+    linkedin: "https://www.linkedin.com",
+    twitter: "https://twitter.com"
+  },
+  {
+    id: "guest-dennis-omondi",
+    name: "Dr. Dennis Omondi",
+    title: "Director of STEM Innovation & Robotics Education",
+    organization: "AfroBotics Kenya",
+    bio: "Mechanical engineer and educator who has coached Kenya's national youth robotics teams to international titles, designing affordable kits made from e-waste.",
+    avatarBg: "linear-gradient(135deg, #FFEDD5 0%, #FED7AA 100%)",
+    accentColor: "#EA580C",
+    initials: "DO",
+    expertise: ["Robotics & IoT", "Maker Pedagogy", "Girls in STEM"],
+    featuredEpisodes: ["Episode 08: Can Robotics Change How Children Learn?"],
+    featuredEpisodeId: "ep-08",
+    linkedin: "https://www.linkedin.com",
+    twitter: "https://twitter.com"
+  },
+  {
+    id: "guest-beatrice-achieng",
+    name: "Prof. Beatrice Achieng",
+    title: "Dean of Educational Measurement",
+    organization: "Strathmore Institute of Education",
+    bio: "Global authority on authentic assessment, psychometric modeling, and alternative credentialing systems for African secondary and tertiary institutions.",
+    avatarBg: "linear-gradient(135deg, #EDE9FE 0%, #DDD6FE 100%)",
+    accentColor: "#7C3AED",
+    initials: "BA",
+    expertise: ["Authentic Assessment", "Psychometrics", "Institutional Leadership"],
+    featuredEpisodes: ["Episode 09: Assessment Beyond the Exam"],
+    featuredEpisodeId: "ep-09",
+    linkedin: "https://www.linkedin.com",
+    twitter: "https://twitter.com"
+  },
+  {
+    id: "guest-julius-kariuki",
+    name: "Prof. Julius Kariuki",
+    title: "Author & Future of Learning Strategist",
+    organization: "African Education Futures Think Tank",
+    bio: "Distinguished researcher and author on 21st-century educational paradigms, advising governments across Africa on long-term human capital roadmaps.",
+    avatarBg: "linear-gradient(135deg, #FFE4E6 0%, #FECDD3 100%)",
+    accentColor: "#E11D48",
+    initials: "JK",
+    expertise: ["Future Foresight", "Teacher Transformation", "Strategic Policy"],
+    featuredEpisodes: ["Episode 10: What Will the Teacher of 2035 Look Like?"],
+    featuredEpisodeId: "ep-10",
+    linkedin: "https://www.linkedin.com",
+    twitter: "https://twitter.com"
   }
 ];

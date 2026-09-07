@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Listen to in-depth conversations, read full interactive transcripts, and explore key takeaways on The Instructify Kenya Podcast.">
+  <meta name="description" content="Listen to in-depth conversations, watch video highlights, read interactive transcripts, and explore key takeaways on The Instructify Kenya Podcast.">
   <title>Episode Details | The Instructify Kenya Podcast</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
@@ -93,7 +93,7 @@
       How generative AI, ethical adoption, and personalized tutoring are reshaping African classrooms.
     </p>
 
-    <!-- Dedicated Audio Player -->
+    <!-- Dedicated Audio Player Box -->
     <div class="audio-player-box" style="background:rgba(15,23,42,0.65); backdrop-filter:blur(12px); border-color:rgba(255,255,255,0.2); color:#FFFFFF;">
       <div class="player-controls-row">
         <button class="play-btn-main" id="main-play-btn" aria-label="Play audio">
@@ -114,6 +114,10 @@
 
         <div class="player-aux-controls">
           <button class="speed-select-btn" id="speed-btn" style="background:rgba(255,255,255,0.15); color:#FFFFFF; border-color:rgba(255,255,255,0.3);">1x</button>
+          <button class="btn btn-outline btn-sm" id="ep-detail-watch-video-btn" style="color:#FFFFFF !important; border-color:rgba(255,255,255,0.4) !important; display:inline-flex; align-items:center; gap:6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            Watch Video
+          </button>
           <button class="btn btn-outline btn-sm" onclick="openShareModal()" style="color:#FFFFFF !important; border-color:rgba(255,255,255,0.4) !important;">
             Share
           </button>
@@ -137,6 +141,31 @@
       </p>
     </div>
 
+    <!-- Social Sharing Toolbar -->
+    <div class="card" style="background:#FFFFFF; border:1.5px solid #E2E8F0; border-radius:16px; padding:18px 24px; margin-bottom:32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <div style="font-weight:750; color:var(--color-deep-navy); font-size:14px; display:flex; align-items:center; gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Share this conversation:
+      </div>
+      <div class="share-pills-row" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+        <a id="detail-share-wa" href="#" target="_blank" rel="noopener noreferrer" class="social-share-pill pill-whatsapp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg> WhatsApp
+        </a>
+        <a id="detail-share-fb" href="#" target="_blank" rel="noopener noreferrer" class="social-share-pill pill-facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02Z"/></svg> Facebook
+        </a>
+        <a id="detail-share-li" href="#" target="_blank" rel="noopener noreferrer" class="social-share-pill pill-linkedin">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg> LinkedIn
+        </a>
+        <a id="detail-share-tw" href="#" target="_blank" rel="noopener noreferrer" class="social-share-pill pill-x">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X
+        </a>
+        <button id="detail-share-copy" class="social-share-pill pill-copy" style="cursor:pointer; background:#F1F5F9; border:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Link
+        </button>
+      </div>
+    </div>
+
     <!-- Key Takeaways -->
     <div class="takeaways-card">
       <div style="display:flex; align-items:center; gap:10px;">
@@ -150,6 +179,32 @@
       </ul>
     </div>
 
+    <!-- From Conversation to Classroom -->
+    <div class="classroom-actions-section" style="margin-bottom:36px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+        <span class="section-tag blue" style="margin:0;">PRACTICAL IMPLEMENTATION</span>
+        <h2 style="font-size:22px; font-weight:800; color:var(--color-deep-navy); margin:0;">From Conversation to Classroom</h2>
+      </div>
+      <p style="font-size:14.5px; color:#64748B; margin-bottom:20px;">
+        Concrete, high-impact actions designed for immediate educator uptake:
+      </p>
+
+      <div class="action-pillars-grid">
+        <div class="action-card action-try">
+          <div class="action-tag">TRY IT · IMMEDIATE STEP</div>
+          <p class="action-text" id="ep-detail-try-it"></p>
+        </div>
+        <div class="action-card action-adapt">
+          <div class="action-tag">ADAPT IT · INSTITUTIONAL STEP</div>
+          <p class="action-text" id="ep-detail-adapt-it"></p>
+        </div>
+        <div class="action-card action-transform">
+          <div class="action-tag">TRANSFORM IT · SYSTEMIC SHIFT</div>
+          <p class="action-text" id="ep-detail-transform-it"></p>
+        </div>
+      </div>
+    </div>
+
     <!-- Featured Guest Biography -->
     <div class="card" style="background:#FFFFFF; border:1.5px solid #E2E8F0; border-radius:20px; padding:36px; margin-bottom:32px;">
       <h2 style="font-size:22px; font-weight:800; color:var(--color-deep-navy); margin-bottom:20px;">Featured Guest</h2>
@@ -157,12 +212,13 @@
         <div style="width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:20px; color:#0F172A;" id="ep-detail-guest-initials">
           AM
         </div>
-        <div>
+        <div style="flex:1; min-width:260px;">
           <h3 style="font-size:20px; font-weight:800; color:#0F172A; margin:0 0 4px;" id="ep-detail-guest-name">Dr. Angela Mutua</h3>
           <p style="font-size:14px; color:#2145E6; font-weight:600; margin:0 0 8px;" id="ep-detail-guest-title">Senior AI Researcher &amp; EdTech Advisor · African Institute for Future Intelligence</p>
-          <p style="font-size:15px; color:#475569; line-height:1.6; margin:0;" id="ep-detail-guest-bio">
+          <p style="font-size:15px; color:#475569; line-height:1.6; margin:0 0 12px;" id="ep-detail-guest-bio">
             Dr. Mutua is a leading voice on ethical AI deployment in emerging markets, advising national education ministries and UNESCO.
           </p>
+          <div class="guest-expertise-list" id="ep-detail-guest-expertise"></div>
         </div>
       </div>
     </div>
@@ -174,11 +230,18 @@
         <span style="font-size:13px; font-weight:600; color:#64748B;">Click timestamps to jump audio player</span>
       </div>
       <p style="font-size:14.5px; color:#64748B; margin:0 0 20px;">
-        Full interactive transcript with time-indexed navigation for reading and accessible study.
+        Full interactive transcript with speaker names and time-indexed audio navigation for study and accessibility.
       </p>
 
-      <div id="ep-detail-transcript-list">
-        <!-- Injected via JavaScript -->
+      <button class="transcript-toggle-btn" id="transcript-toggle-btn" aria-expanded="false" aria-controls="transcript-body">
+        <span class="toggle-label">Read Full Episode Transcript (Expand)</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+
+      <div class="transcript-body" id="transcript-body">
+        <div id="ep-detail-transcript-list" style="margin-top:20px;">
+          <!-- Injected via JavaScript -->
+        </div>
       </div>
     </div>
 
@@ -240,12 +303,46 @@
   </div>
 </div>
 
-<!-- ── Modal: Share Episode ─────────────────────────────────── -->
+<!-- ── Modal: Video Player ──────────────────────────────────── -->
+<div class="video-modal-overlay" id="video-modal-overlay">
+  <div class="video-modal">
+    <div class="video-modal-header">
+      <div style="font-weight:800; font-size:16px; color:#FFFFFF; display:flex; align-items:center; gap:8px;" id="video-modal-title">
+        Episode Video Player
+      </div>
+      <button class="modal-close-btn" onclick="closeVideoModal()" aria-label="Close video player">✕</button>
+    </div>
+    <div class="video-frame-container">
+      <iframe id="video-modal-iframe" src="" title="Podcast Video Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ── Modal: Share Episode (WhatsApp, Facebook, LinkedIn, X, Copy Link) ── -->
 <div class="podcast-modal-overlay" id="share-modal-overlay">
-  <div class="podcast-modal" style="max-width:480px; width:100%;">
+  <div class="podcast-modal" style="max-width:520px; width:100%;">
     <button class="modal-close-btn" onclick="closeShareModal()" aria-label="Close modal">✕</button>
     <h3 style="font-size:22px; font-weight:800; color:#0F172A; margin-bottom:8px;">Share This Conversation</h3>
-    <p style="font-size:14px; color:#64748B; margin-bottom:20px;">Copy the link below to share this conversation with colleagues and networks.</p>
+    <p style="font-size:14px; color:#64748B; margin-bottom:20px;">Share with fellow teachers, institutional leaders, and education networks:</p>
+    
+    <div class="social-share-toolbar" style="margin-bottom:24px;">
+      <a href="#" id="share-btn-wa" target="_blank" rel="noopener noreferrer" class="share-pill whatsapp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+      <a href="#" id="share-btn-li" target="_blank" rel="noopener noreferrer" class="share-pill linkedin">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg>
+        <span>LinkedIn</span>
+      </a>
+      <a href="#" id="share-btn-tw" target="_blank" rel="noopener noreferrer" class="share-pill x-twitter">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <span>X (Twitter)</span>
+      </a>
+      <a href="#" id="share-btn-fb" target="_blank" rel="noopener noreferrer" class="share-pill facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02Z"/></svg>
+        <span>Facebook</span>
+      </a>
+    </div>
     
     <div style="display:flex; gap:8px;">
       <input type="text" id="share-url-input" aria-label="Share episode URL" readonly style="flex-grow:1; padding:10px 14px; border-radius:8px; border:1px solid #CBD5E1; font-size:13.5px; background:#F8FAFC;">
@@ -261,13 +358,17 @@
   <div class="container">
     <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1.5px solid var(--cta-color, #F5812D);">
       <div>
-        <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-          <span style="color: #FF4D00 !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span>
-        </h3>
+        <div class="footer-brand-lockup" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="footer-brand-logo" style="height:44px;width:auto;object-fit:contain;flex-shrink:0;">
+          <div>
+            <div style="font-family:var(--font-heading); font-size:22px; font-weight:800; color:#FFFFFF; line-height:1.1;">Instructify</div>
+            <div style="font-size:11px; font-weight:800; color:#F5812D; letter-spacing:0.12em; text-transform:uppercase;">KENYA</div>
+          </div>
+        </div>
         <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
           We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.
         </p>
-                <div class="footer-social-row" style="margin-bottom:20px;">
+        <div class="footer-social-row" style="margin-bottom:20px;">
           <a href="https://www.linkedin.com/company/instructify-kenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg>
           </a>
@@ -287,7 +388,7 @@
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
         </div>
-<a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
       </div>
       <div>
         <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
@@ -326,8 +427,7 @@
 <script src="js/podcast-data.js"></script>
 <script src="js/podcast.js"></script>
 <script src="js/main.js"></script>
-
-  <script src="js/chat-config.js"></script>
-  <script src="js/live-chat.js"></script>
+<script src="js/chat-config.js"></script>
+<script src="js/live-chat.js"></script>
 </body>
 </html>

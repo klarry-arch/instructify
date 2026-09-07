@@ -1,13 +1,25 @@
 /**
- * INSTRUCTIFY KENYA PODCAST — CLIENT LOGIC ENGINE v1.0
- * Handles in-browser audio playback, search & category filtering, modal popups,
- * interactive transcripts, and sharing.
+ * INSTRUCTIFY KENYA PODCAST & INSIGHTS — CLIENT LOGIC ENGINE v2.0
+ * Theme: CONVERSATIONS FOR A SMARTER FUTURE
+ * Mantra: Learn · Connect · Innovate · Transform
+ * 
+ * Features:
+ * - HTML5 Audio Engine with responsive progress bar, time sync, and speed toggle (1x-2x)
+ * - Video Playback Modal with 16:9 responsive frame
+ * - Live Category Filtering across 8 categories & keyword search
+ * - 10-Episode Grid Renderer with Listen, Watch Video, and Details actions
+ * - "Meet Our Guests" Directory Renderer
+ * - "From Conversation to Classroom" Action Framework (Try It, Adapt It, Transform It)
+ * - Expandable / Collapsible Interactive Transcripts with timestamp seeking
+ * - "What Should We Talk About Next?" Topic Suggestion engine with confirmation state
+ * - Social Sharing for WhatsApp, Facebook, LinkedIn, X, and Copy Link
+ * - Sticky Bottom Audio Player with smooth scrolling activation
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   // ── Global Audio State ──
   const audio = new Audio();
-  let currentEpisode = PODCAST_EPISODES[0] || null;
+  let currentEpisode = (typeof PODCAST_EPISODES !== 'undefined' && PODCAST_EPISODES.length > 0) ? PODCAST_EPISODES[0] : null;
   let isPlaying = false;
   let currentSpeed = 1;
 
@@ -35,13 +47,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const episodesGrid = document.getElementById('episodes-grid');
   const episodesCountEl = document.getElementById('episodes-count');
 
+  // Guests Directory Reference
+  const guestsDirectoryGrid = document.getElementById('guests-directory-grid');
+
   // Modals References
   const guestModalOverlay = document.getElementById('guest-modal-overlay');
   const shareModalOverlay = document.getElementById('share-modal-overlay');
+  const videoModalOverlay = document.getElementById('video-modal-overlay');
+  const videoModalIframe = document.getElementById('video-modal-iframe');
+  const videoModalTitle = document.getElementById('video-modal-title');
 
-  // ── Format Seconds to MM:SS ──
+  // ── Helper: Format Seconds to MM:SS ──
   function formatTime(seconds) {
-    if (isNaN(seconds)) return "00:00";
+    if (isNaN(seconds) || seconds < 0) return "00:00";
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
@@ -54,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     audio.src = ep.audioUrl;
     audio.playbackRate = currentSpeed;
 
-    // Update Main Player UI if present
+    // Update Main Featured Player UI if present
     const latestTitleEl = document.getElementById('latest-ep-title');
     const latestDescEl = document.getElementById('latest-ep-desc');
     const latestGuestNameEl = document.getElementById('latest-guest-name');
@@ -62,6 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const latestNumBadge = document.getElementById('latest-ep-num');
     const latestDateBadge = document.getElementById('latest-ep-date');
     const latestDurationBadge = document.getElementById('latest-ep-duration');
+    const latestCatBadge = document.getElementById('latest-ep-cat');
+    const latestWatchBtn = document.getElementById('latest-watch-video-btn');
 
     if (latestTitleEl) latestTitleEl.textContent = ep.title;
     if (latestDescEl) latestDescEl.textContent = ep.description;
@@ -70,6 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (latestNumBadge) latestNumBadge.textContent = ep.number;
     if (latestDateBadge) latestDateBadge.textContent = ep.date;
     if (latestDurationBadge) latestDurationBadge.textContent = ep.duration;
+    if (latestCatBadge) latestCatBadge.textContent = ep.category;
+    if (latestWatchBtn) {
+      latestWatchBtn.onclick = () => openVideoModal(ep.id);
+    }
 
     // Update Sticky Bar
     if (stickyTitle) stickyTitle.textContent = ep.title;
@@ -86,8 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       updatePlayIcons(true);
       if (stickyBar) stickyBar.classList.add('active');
     }).catch(err => {
-      console.warn("Audio autoplay blocked or placeholder source:", err);
-      // Fallback visual simulation if real audio file not reachable
+      console.warn("Audio autoplay blocked or placeholder audio source:", err);
       isPlaying = true;
       updatePlayIcons(true);
       if (stickyBar) stickyBar.classList.add('active');
@@ -122,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update any card play buttons
     document.querySelectorAll('.card-play-btn').forEach(btn => {
       const epId = btn.getAttribute('data-ep-id');
-      if (epId === currentEpisode.id) {
+      if (currentEpisode && epId === currentEpisode.id) {
         btn.innerHTML = playing ? pauseSvg : playSvg;
         btn.classList.toggle('playing', playing);
       } else {
@@ -132,10 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Audio Event Listeners ──
+  // ── Audio Engine Event Listeners ──
   audio.addEventListener('timeupdate', () => {
     const current = audio.currentTime;
-    const total = audio.duration || currentEpisode.durationSeconds || 1;
+    const total = audio.duration || (currentEpisode ? currentEpisode.durationSeconds : 2400) || 1;
     const progressPercent = (current / total) * 100;
 
     if (progressFill) progressFill.style.width = `${progressPercent}%`;
@@ -149,11 +172,11 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePlayIcons(false);
   });
 
-  // Progress Bar Seek
+  // Progress Bar Scrubbing
   function seekAudio(e, container) {
     const rect = container.getBoundingClientRect();
-    const pos = (e.clientX - rect.left) / rect.width;
-    const total = audio.duration || currentEpisode.durationSeconds || 2400;
+    const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    const total = audio.duration || (currentEpisode ? currentEpisode.durationSeconds : 2400);
     audio.currentTime = pos * total;
   }
 
@@ -178,13 +201,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Render Category Filter Pills ──
+  // ── Video Modal Logic ──
+  window.openVideoModal = function(epId) {
+    const ep = (typeof PODCAST_EPISODES !== 'undefined')
+      ? PODCAST_EPISODES.find(x => x.id === epId) || currentEpisode
+      : currentEpisode;
+
+    if (!ep || !videoModalOverlay) return;
+
+    if (videoModalTitle) {
+      videoModalTitle.textContent = `${ep.number}: ${ep.title}`;
+    }
+
+    if (videoModalIframe) {
+      // Pause audio if video is opened to avoid conflicting sound
+      if (isPlaying) pauseAudio();
+      videoModalIframe.src = ep.videoEmbedUrl || "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1";
+    }
+
+    videoModalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeVideoModal = function() {
+    if (!videoModalOverlay) return;
+    videoModalOverlay.classList.remove('active');
+    if (videoModalIframe) {
+      videoModalIframe.src = "";
+    }
+    document.body.style.overflow = '';
+  };
+
+  if (videoModalOverlay) {
+    videoModalOverlay.addEventListener('click', (e) => {
+      if (e.target === videoModalOverlay) closeVideoModal();
+    });
+  }
+
+  // ── Category Filter Pills Bar ──
   let activeCategory = "All";
 
   function renderCategoryPills() {
-    if (!categoryPillsContainer) return;
+    if (!categoryPillsContainer || typeof PODCAST_INFO === 'undefined') return;
+
     categoryPillsContainer.innerHTML = PODCAST_INFO.categories.map(cat => `
-      <button class="cat-pill ${cat === activeCategory ? 'active' : ''}" data-cat="${cat}">
+      <button class="cat-pill ${cat === activeCategory ? 'active' : ''}" data-cat="${cat}" aria-label="Filter by ${cat}">
         ${cat}
       </button>
     `).join('');
@@ -199,19 +260,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Render Episode Cards ──
+  // ── Render 10 Episode Cards in Library ──
   function renderEpisodeCards(episodes) {
     if (!episodesGrid) return;
 
     if (episodes.length === 0) {
       episodesGrid.innerHTML = `
-        <div style="grid-column: 1/-1; text-align:center; padding: 60px 20px; background:#F8FAFC; border-radius:20px; border:1px dashed #CBD5E1;">
+        <div style="grid-column: 1/-1; text-align:center; padding: 60px 20px; background:#F8FAFC; border-radius:24px; border:1.5px dashed #CBD5E1;">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.5" style="margin-bottom:12px;">
-            <circle cx="11" cy="11" r="8"/>
-            <path d="M21 21l-4.35-4.35"/>
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
           </svg>
           <h3 style="font-size:20px; font-weight:800; color:#0F172A; margin-bottom:8px;">No conversations found</h3>
-          <p style="font-size:14.5px; color:#64748B; margin:0;">Try searching for different keywords or select "All" categories.</p>
+          <p style="font-size:14.5px; color:#64748B; margin:0;">Try adjusting your search terms or select "All" categories to view the full library.</p>
         </div>
       `;
       if (episodesCountEl) episodesCountEl.textContent = `0 conversations`;
@@ -219,51 +279,79 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (episodesCountEl) {
-      episodesCountEl.textContent = `Showing ${episodes.length} conversation${episodes.length === 1 ? '' : 's'}`;
+      episodesCountEl.textContent = `Showing ${episodes.length} of ${PODCAST_EPISODES.length} conversations`;
     }
 
     episodesGrid.innerHTML = episodes.map(ep => {
-      const isCurPlaying = isPlaying && currentEpisode && currentEpisode.id === ep.id;
       return `
-        <div class="ep-card" style="--ep-accent:${ep.themeColor}; --ep-glow:rgba(33, 69, 230,0.18);">
+        <article class="ep-card" style="--ep-accent:${ep.themeColor}; --ep-glow:rgba(33, 69, 230,0.18);">
           <div>
-            <div class="ep-card-header">
-              <span class="ep-badge blue">${ep.category}</span>
-              <span style="font-size:12px; font-weight:700; color:#64748B;">${ep.duration}</span>
+            <!-- Episode Thumbnail Banner -->
+            <div style="width:100%; aspect-ratio: 16/9; border-radius:14px; background:${ep.coverGradient}; padding:18px; margin-bottom:18px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden; box-shadow:0 8px 18px -4px rgba(15, 23, 42, 0.18);">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span class="ep-badge blue" style="background:rgba(255,255,255,0.92); color:#183AD6; font-size:11px; padding:3px 10px;">
+                  ${ep.category}
+                </span>
+                <span style="font-size:12px; font-weight:700; color:#FFFFFF; background:rgba(0,0,0,0.4); padding:2px 8px; border-radius:6px; backdrop-filter:blur(4px);">
+                  ${ep.duration}
+                </span>
+              </div>
+              <div>
+                <div style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:#93C5FD; margin-bottom:2px;">
+                  ${ep.number}
+                </div>
+                <div style="font-size:14px; font-weight:800; color:#FFFFFF; line-height:1.25; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                  ${ep.title}
+                </div>
+              </div>
             </div>
-            <div style="font-size:12px; font-weight:800; color:${ep.themeColor}; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">
+
+            <div style="font-size:12px; font-weight:700; color:#64748B; margin-bottom:6px;">
               ${ep.number} · ${ep.date}
             </div>
+
             <h3 class="ep-card-title">
               <a href="episode.html?id=${ep.id}" style="color:inherit; text-decoration:none;">${ep.title}</a>
             </h3>
+
             <p class="ep-card-desc">${ep.description}</p>
           </div>
 
           <div>
+            <!-- Guest Row -->
             <div class="ep-guest-row">
-              <div class="guest-avatar" style="background:${ep.guest.avatarBg};">${ep.guest.initials}</div>
+              <div class="guest-avatar" style="background:${ep.guest.avatarBg}; color:${ep.guest.accentColor || '#2145E6'};">
+                ${ep.guest.initials}
+              </div>
               <div class="guest-info">
                 <h4>${ep.guest.name}</h4>
                 <p>${ep.guest.title}</p>
               </div>
             </div>
 
+            <!-- Card Actions -->
             <div class="ep-card-actions">
-              <button class="btn btn-primary btn-sm card-play-btn" data-ep-id="${ep.id}" style="display:inline-flex; align-items:center; gap:6px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                <span>Listen</span>
-              </button>
-              <a href="episode.html?id=${ep.id}" class="btn btn-outline btn-sm" style="font-weight:700;">
+              <div style="display:flex; gap:8px;">
+                <button class="btn btn-primary btn-sm card-play-btn" data-ep-id="${ep.id}" aria-label="Listen to ${ep.title}" style="display:inline-flex; align-items:center; gap:6px; font-weight:700;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  <span>Listen</span>
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="openVideoModal('${ep.id}')" aria-label="Watch video for ${ep.title}" style="font-weight:700; display:inline-flex; align-items:center; gap:5px; border-color:#CBD5E1; color:#334155;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                  <span>Watch</span>
+                </button>
+              </div>
+
+              <a href="episode.html?id=${ep.id}" class="btn btn-outline btn-sm" style="font-weight:700; border-color:#CBD5E1; color:#183AD6;" aria-label="View full episode details for ${ep.title}">
                 Details →
               </a>
             </div>
           </div>
-        </div>
+        </article>
       `;
     }).join('');
 
-    // Attach play handlers on each card
+    // Attach Play Handler on each episode card
     episodesGrid.querySelectorAll('.card-play-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -282,16 +370,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Filter and Search Logic ──
   function filterAndRenderEpisodes() {
+    if (typeof PODCAST_EPISODES === 'undefined') return;
+
     const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
 
     const filtered = PODCAST_EPISODES.filter(ep => {
-      const matchCat = activeCategory === 'All' || ep.category.toLowerCase() === activeCategory.toLowerCase() || ep.tags.some(t => t.toLowerCase() === activeCategory.toLowerCase());
+      const matchCat = activeCategory === 'All' ||
+        ep.category.toLowerCase() === activeCategory.toLowerCase() ||
+        ep.tags.some(t => t.toLowerCase() === activeCategory.toLowerCase());
+
       const matchQuery = !query ||
         ep.title.toLowerCase().includes(query) ||
         ep.description.toLowerCase().includes(query) ||
         ep.guest.name.toLowerCase().includes(query) ||
         ep.guest.title.toLowerCase().includes(query) ||
-        ep.tags.some(t => t.toLowerCase().includes(query));
+        ep.guest.organization.toLowerCase().includes(query) ||
+        ep.tags.some(t => t.toLowerCase() === query);
 
       return matchCat && matchQuery;
     });
@@ -303,36 +397,85 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', filterAndRenderEpisodes);
   }
 
-  // ── Voices Spotlight Grid ──
-  const voicesGrid = document.getElementById('voices-grid');
-  if (voicesGrid && typeof PODCAST_VOICES !== 'undefined') {
-    voicesGrid.innerHTML = PODCAST_VOICES.map(v => `
-      <div class="voice-card">
-        <div class="voice-avatar-lg" style="background:${v.avatarBg}; color:${v.accentColor};">
-          ${v.initials}
+  // ── Render "Meet Our Guests" Directory ──
+  function renderGuestsDirectory() {
+    if (!guestsDirectoryGrid || typeof PODCAST_GUESTS === 'undefined') return;
+
+    guestsDirectoryGrid.innerHTML = PODCAST_GUESTS.map(guest => `
+      <div class="guest-card">
+        <div class="guest-card-avatar" style="background:${guest.avatarBg}; color:${guest.accentColor};">
+          ${guest.initials}
         </div>
-        <div style="font-size:11px; font-weight:800; text-transform:uppercase; color:${v.accentColor}; letter-spacing:0.06em; margin-bottom:4px;">
-          ${v.tag}
+
+        <h3 class="guest-card-name">${guest.name}</h3>
+        <div class="guest-card-title">${guest.title}</div>
+        <div class="guest-card-org">${guest.organization}</div>
+
+        <p class="guest-card-bio">${guest.bio}</p>
+
+        <div class="guest-expertise-list">
+          ${guest.expertise.map(exp => `<span class="guest-expertise-pill">${exp}</span>`).join('')}
         </div>
-        <h3 class="voice-name">${v.name}</h3>
-        <p class="voice-role">${v.role}</p>
-        <p class="voice-org">${v.org}</p>
-        <a href="episode.html?id=${v.episodeId}" class="btn btn-outline btn-sm" style="margin-top:14px; font-size:12px; padding:4px 12px;">
-          Listen to Episode →
-        </a>
+
+        <div style="margin-bottom:14px; width:100%;">
+          <a href="episode.html?id=${guest.featuredEpisodeId}" class="btn btn-outline btn-sm" style="width:100%; font-size:12px; padding:6px 12px; font-weight:700; border-color:#CBD5E1;">
+            🎙️ ${guest.featuredEpisodes[0] || 'Listen to Episode'} →
+          </a>
+        </div>
+
+        <div class="guest-social-links">
+          <a href="${guest.linkedin}" target="_blank" rel="noopener noreferrer" class="guest-social-btn" aria-label="${guest.name} on LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg>
+          </a>
+          <a href="${guest.twitter}" target="_blank" rel="noopener noreferrer" class="guest-social-btn" aria-label="${guest.name} on X">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
       </div>
     `).join('');
   }
 
-  // ── Modal Actions: Become a Guest / Suggest a Topic ──
+  // ── "What Should We Talk About Next?" Form Handler ──
+  const topicForm = document.getElementById('topic-suggestion-form');
+  const topicSuccessBanner = document.getElementById('topic-success-banner');
+
+  if (topicForm) {
+    topicForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submitBtn = topicForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.textContent : 'Submit Topic';
+
+      if (submitBtn) {
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+      }
+
+      setTimeout(() => {
+        if (topicSuccessBanner) {
+          topicSuccessBanner.classList.add('active');
+          topicSuccessBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        topicForm.reset();
+        if (submitBtn) {
+          submitBtn.textContent = 'Submitted!';
+          setTimeout(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          }, 3000);
+        }
+      }, 600);
+    });
+  }
+
+  // ── Modals: Pitch a Guest / Suggest a Topic Modal ──
   window.openGuestModal = function(type = 'guest') {
     if (!guestModalOverlay) return;
     const titleEl = document.getElementById('guest-modal-title');
     const descEl = document.getElementById('guest-modal-desc');
-    if (titleEl) titleEl.textContent = type === 'topic' ? 'Suggest a Podcast Topic' : 'Become a Podcast Guest';
+    if (titleEl) titleEl.textContent = type === 'topic' ? 'Suggest a Podcast Topic' : 'Pitch a Guest for the Podcast';
     if (descEl) descEl.textContent = type === 'topic'
-      ? 'Have an urgent theme, educational challenge, or breakthrough you would like us to discuss? Share your perspective below.'
-      : 'Are you an educator, innovator, researcher, or leader with insights that can inspire others? Let us know about your work.';
+      ? 'Have an urgent theme, educational challenge, or breakthrough you would like us to discuss? Share your thoughts.'
+      : 'Are you an educator, innovator, researcher, or leader with insights that can inspire others? Let us know about your story.';
     guestModalOverlay.classList.add('active');
   };
 
@@ -340,19 +483,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (guestModalOverlay) guestModalOverlay.classList.remove('active');
   };
 
-  window.openShareModal = function(title, url) {
-    if (navigator.share) {
-      navigator.share({
-        title: title || 'The Instructify Kenya Podcast',
-        text: 'Listen to this insightful conversation on The Instructify Kenya Podcast',
-        url: url || window.location.href
-      }).catch(() => {});
-    } else {
-      if (shareModalOverlay) {
-        const urlInput = document.getElementById('share-url-input');
-        if (urlInput) urlInput.value = url || window.location.href;
-        shareModalOverlay.classList.add('active');
-      }
+  // ── Social Sharing Options (WhatsApp, FB, LinkedIn, X, Copy Link) ──
+  window.openShareModal = function(customTitle, customUrl) {
+    const title = customTitle || (currentEpisode ? currentEpisode.title : 'The Instructify Kenya Podcast');
+    const url = customUrl || window.location.href;
+
+    if (shareModalOverlay) {
+      const urlInput = document.getElementById('share-url-input');
+      if (urlInput) urlInput.value = url;
+
+      // Update direct social share links in modal
+      const waBtn = document.getElementById('share-btn-wa');
+      const fbBtn = document.getElementById('share-btn-fb');
+      const liBtn = document.getElementById('share-btn-li');
+      const twBtn = document.getElementById('share-btn-tw');
+
+      const encodedUrl = encodeURIComponent(url);
+      const encodedText = encodeURIComponent(`Check out "${title}" on The Instructify Kenya Podcast: `);
+
+      if (waBtn) waBtn.href = `https://api.whatsapp.com/send?text=${encodedText}${encodedUrl}`;
+      if (fbBtn) fbBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+      if (liBtn) liBtn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+      if (twBtn) twBtn.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
+
+      shareModalOverlay.classList.add('active');
     }
   };
 
@@ -362,14 +516,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.copyShareUrl = function() {
     const urlInput = document.getElementById('share-url-input');
-    if (urlInput) {
-      urlInput.select();
-      navigator.clipboard.writeText(urlInput.value).then(() => {
-        const copyBtn = document.getElementById('copy-share-btn');
-        if (copyBtn) copyBtn.textContent = 'Copied!';
-        setTimeout(() => { if (copyBtn) copyBtn.textContent = 'Copy Link'; }, 2000);
-      });
-    }
+    const url = urlInput ? urlInput.value : window.location.href;
+
+    navigator.clipboard.writeText(url).then(() => {
+      const copyBtn = document.getElementById('copy-share-btn');
+      if (copyBtn) {
+        copyBtn.textContent = 'Copied!';
+        copyBtn.classList.add('btn-success');
+        setTimeout(() => {
+          copyBtn.textContent = 'Copy Link';
+          copyBtn.classList.remove('btn-success');
+        }, 2000);
+      }
+    }).catch(() => {
+      if (urlInput) {
+        urlInput.select();
+        document.execCommand('copy');
+      }
+    });
   };
 
   // Close modals on background click
@@ -384,44 +548,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Handle Form Submissions
-  const guestForm = document.getElementById('guest-form');
-  if (guestForm) {
-    guestForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const submitBtn = guestForm.querySelector('button[type="submit"]');
-      if (submitBtn) submitBtn.textContent = 'Sending...';
-      setTimeout(() => {
-        alert('Thank you for your submission! Our editorial and production team will review your proposal and get in touch.');
-        closeGuestModal();
-        guestForm.reset();
-        if (submitBtn) submitBtn.textContent = 'Submit Proposal';
-      }, 750);
-    });
-  }
+  // Keyboard Escape to close any open modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeVideoModal();
+      closeGuestModal();
+      closeShareModal();
+    }
+  });
 
+  // ── Newsletter / Podcast Subscription Form ──
   const podcastSubscribeForm = document.getElementById('podcast-subscribe-form');
   if (podcastSubscribeForm) {
     podcastSubscribeForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const emailInput = podcastSubscribeForm.querySelector('input[type="email"]');
       if (emailInput && emailInput.value) {
-        alert(`Thank you for subscribing! You'll receive every new episode and show notes directly at ${emailInput.value}.`);
+        alert(`Thank you for subscribing to Conversations for a Smarter Future! We will send you new episodes and show notes directly to ${emailInput.value}.`);
         emailInput.value = '';
       }
     });
   }
 
-  // ── Initialize Page ──
+  // ── Initialize Hub View ──
   renderCategoryPills();
-  renderEpisodeCards(PODCAST_EPISODES);
-  if (PODCAST_EPISODES.length > 0) {
-    loadEpisode(PODCAST_EPISODES[0], false);
+  if (typeof PODCAST_EPISODES !== 'undefined') {
+    renderEpisodeCards(PODCAST_EPISODES);
+    if (PODCAST_EPISODES.length > 0) {
+      loadEpisode(PODCAST_EPISODES[0], false);
+    }
   }
+  renderGuestsDirectory();
 
-  // ── Check if on Episode Detail Page ──
+  // ── Episode Detail Page Specific View ──
   const isEpisodeDetailPage = document.getElementById('episode-detail-root');
-  if (isEpisodeDetailPage) {
+  if (isEpisodeDetailPage && typeof PODCAST_EPISODES !== 'undefined') {
     const urlParams = new URLSearchParams(window.location.search);
     const epId = urlParams.get('id') || 'ep-01';
     const activeEp = PODCAST_EPISODES.find(x => x.id === epId) || PODCAST_EPISODES[0];
@@ -436,12 +597,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const epDetailDuration = document.getElementById('ep-detail-duration');
     const epDetailCategory = document.getElementById('ep-detail-category');
     const epDetailDesc = document.getElementById('ep-detail-desc');
+    const epDetailWatchBtn = document.getElementById('ep-detail-watch-video-btn');
+
+    // Guest Info on Detail Page
     const epDetailGuestName = document.getElementById('ep-detail-guest-name');
     const epDetailGuestTitle = document.getElementById('ep-detail-guest-title');
     const epDetailGuestBio = document.getElementById('ep-detail-guest-bio');
     const epDetailGuestInitials = document.getElementById('ep-detail-guest-initials');
+    const epDetailGuestExpertise = document.getElementById('ep-detail-guest-expertise');
+
+    // Action Framework & Takeaways
     const epDetailTakeawaysList = document.getElementById('ep-detail-takeaways-list');
+    const epDetailTryIt = document.getElementById('ep-detail-try-it');
+    const epDetailAdaptIt = document.getElementById('ep-detail-adapt-it');
+    const epDetailTransformIt = document.getElementById('ep-detail-transform-it');
+
+    // Transcript
     const epDetailTranscriptList = document.getElementById('ep-detail-transcript-list');
+    const transcriptToggleBtn = document.getElementById('transcript-toggle-btn');
+    const transcriptBody = document.getElementById('transcript-body');
+
+    // Related Course
     const epDetailCourseTitle = document.getElementById('ep-detail-course-title');
     const epDetailCourseCategory = document.getElementById('ep-detail-course-category');
     const epDetailCourseLink = document.getElementById('ep-detail-course-link');
@@ -453,6 +629,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (epDetailDuration) epDetailDuration.textContent = activeEp.duration;
     if (epDetailCategory) epDetailCategory.textContent = activeEp.category;
     if (epDetailDesc) epDetailDesc.textContent = activeEp.description;
+    if (epDetailWatchBtn) {
+      epDetailWatchBtn.onclick = () => openVideoModal(activeEp.id);
+    }
+
     if (epDetailGuestName) epDetailGuestName.textContent = activeEp.guest.name;
     if (epDetailGuestTitle) epDetailGuestTitle.textContent = `${activeEp.guest.title} · ${activeEp.guest.organization}`;
     if (epDetailGuestBio) epDetailGuestBio.textContent = activeEp.guest.bio;
@@ -460,52 +640,115 @@ document.addEventListener('DOMContentLoaded', () => {
       epDetailGuestInitials.textContent = activeEp.guest.initials;
       epDetailGuestInitials.style.background = activeEp.guest.avatarBg;
     }
+    if (epDetailGuestExpertise && activeEp.guest.expertise) {
+      epDetailGuestExpertise.innerHTML = activeEp.guest.expertise.map(exp => `
+        <span class="guest-expertise-pill">${exp}</span>
+      `).join('');
+    }
 
-    // Takeaways
+    // Key Takeaways List
     if (epDetailTakeawaysList && activeEp.takeaways) {
-      epDetailTakeawaysList.innerHTML = activeEp.takeaways.map((t, idx) => `
+      epDetailTakeawaysList.innerHTML = activeEp.takeaways.map((item, idx) => `
         <li>
-          <span class="takeaway-dot">${idx + 1}</span>
-          <div>${t}</div>
+          <div class="takeaway-dot">${idx + 1}</div>
+          <div>${item}</div>
         </li>
       `).join('');
     }
 
-    // Transcripts
+    // From Conversation to Classroom (Try It / Adapt It / Transform It)
+    if (activeEp.classroomActions) {
+      if (epDetailTryIt) epDetailTryIt.textContent = activeEp.classroomActions.tryIt;
+      if (epDetailAdaptIt) epDetailAdaptIt.textContent = activeEp.classroomActions.adaptIt;
+      if (epDetailTransformIt) epDetailTransformIt.textContent = activeEp.classroomActions.transformIt;
+    }
+
+    // Expandable Transcript
     if (epDetailTranscriptList && activeEp.transcript) {
-      epDetailTranscriptList.innerHTML = activeEp.transcript.map(tr => `
+      epDetailTranscriptList.innerHTML = activeEp.transcript.map(line => `
         <div class="transcript-entry">
-          <button class="transcript-time-btn" data-time="${tr.timestampSeconds}">
-            ▶ ${tr.time}
+          <button class="transcript-time-btn" data-time="${line.timestampSeconds}" title="Jump to ${line.time}">
+            ▶ ${line.time}
           </button>
           <div>
-            <div class="transcript-speaker">${tr.speaker}</div>
-            <p class="transcript-text">${tr.text}</p>
+            <div class="transcript-speaker">${line.speaker}</div>
+            <p class="transcript-text">${line.text}</p>
           </div>
         </div>
       `).join('');
 
+      // Attach timestamp seeking
       epDetailTranscriptList.querySelectorAll('.transcript-time-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          const targetTime = parseFloat(btn.getAttribute('data-time'));
-          audio.currentTime = targetTime;
-          playAudio();
+          const timeSec = parseFloat(btn.getAttribute('data-time'));
+          if (!isNaN(timeSec)) {
+            audio.currentTime = timeSec;
+            playAudio();
+          }
         });
       });
     }
 
-    // Related Course CTA
+    // Expand / Collapse Transcript Toggle
+    if (transcriptToggleBtn && transcriptBody) {
+      transcriptToggleBtn.addEventListener('click', () => {
+        const isOpen = transcriptBody.classList.contains('open');
+        if (isOpen) {
+          transcriptBody.classList.remove('open');
+          transcriptToggleBtn.classList.remove('open');
+          transcriptToggleBtn.setAttribute('aria-expanded', 'false');
+          const span = transcriptToggleBtn.querySelector('.toggle-label');
+          if (span) span.textContent = 'Read Full Episode Transcript (Expand)';
+        } else {
+          transcriptBody.classList.add('open');
+          transcriptToggleBtn.classList.add('open');
+          transcriptToggleBtn.setAttribute('aria-expanded', 'true');
+          const span = transcriptToggleBtn.querySelector('.toggle-label');
+          if (span) span.textContent = 'Hide Episode Transcript (Collapse)';
+        }
+      });
+    }
+
+    // Related Course
     if (activeEp.relatedCourse) {
       if (epDetailCourseTitle) epDetailCourseTitle.textContent = activeEp.relatedCourse.title;
       if (epDetailCourseCategory) epDetailCourseCategory.textContent = activeEp.relatedCourse.category;
       if (epDetailCourseLink) epDetailCourseLink.href = activeEp.relatedCourse.link;
     }
 
-    // Related Episodes
+    // Setup Inline Social Sharing Toolbar on Detail Page
+    const sharePillWa = document.getElementById('detail-share-wa');
+    const sharePillFb = document.getElementById('detail-share-fb');
+    const sharePillLi = document.getElementById('detail-share-li');
+    const sharePillTw = document.getElementById('detail-share-tw');
+    const sharePillCopy = document.getElementById('detail-share-copy');
+
+    const shareUrl = window.location.href;
+    const shareTitle = activeEp.title;
+    const encodedU = encodeURIComponent(shareUrl);
+    const encodedT = encodeURIComponent(`Listening to "${shareTitle}" on The Instructify Kenya Podcast: `);
+
+    if (sharePillWa) sharePillWa.href = `https://api.whatsapp.com/send?text=${encodedT}${encodedU}`;
+    if (sharePillFb) sharePillFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedU}`;
+    if (sharePillLi) sharePillLi.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedU}`;
+    if (sharePillTw) sharePillTw.href = `https://twitter.com/intent/tweet?text=${encodedT}&url=${encodedU}`;
+    if (sharePillCopy) {
+      sharePillCopy.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          sharePillCopy.textContent = '✓ Copied Link!';
+          setTimeout(() => {
+            sharePillCopy.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Link`;
+          }, 2000);
+        });
+      });
+    }
+
+    // Render 3 Related Episodes
     const relatedGrid = document.getElementById('related-episodes-grid');
     if (relatedGrid) {
-      const related = PODCAST_EPISODES.filter(x => x.id !== activeEp.id).slice(0, 3);
-      relatedGrid.innerHTML = related.map(ep => `
+      const otherEps = PODCAST_EPISODES.filter(x => x.id !== activeEp.id).slice(0, 3);
+      relatedGrid.innerHTML = otherEps.map(ep => `
         <div class="ep-card" style="--ep-accent:${ep.themeColor};">
           <div>
             <div class="ep-card-header">
@@ -517,9 +760,9 @@ document.addEventListener('DOMContentLoaded', () => {
             </h3>
             <p class="ep-card-desc">${ep.description}</p>
           </div>
-          <div style="margin-top:20px;">
-            <a href="episode.html?id=${ep.id}" class="btn btn-outline btn-sm" style="width:100%; text-align:center;">
-              Listen to Episode →
+          <div>
+            <a href="episode.html?id=${ep.id}" class="btn btn-outline btn-sm" style="width:100%; text-align:center; font-weight:700;">
+              Listen &amp; Notes →
             </a>
           </div>
         </div>
