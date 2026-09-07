@@ -28,10 +28,13 @@ This document provides a comprehensive audit, inventory, and governance registry
 
 | Filename | Format | Description & Usage |
 | :--- | :--- | :--- |
-| `instructify-logo.svg` | SVG | Official vector logo (light/dark mode adaptive). |
-| `instructify-logo-dark.svg` | SVG | Dark variant vector logo. |
-| `instructify-icon.svg` | SVG | Vector favicon and mobile bookmark icon. |
-| `logo.png` / `logo_new.png` | PNG | Raster fallback brand logos for header and footer navigation. |
+| `instructify-kenya-logo.png` | PNG | High-resolution official master logo emblem (1024x1024) featuring the Lightbulb with Star of Excellence & Circuitry rising from the Open CBC Book. |
+| `instructify-kenya-logo-transparent.png` | PNG | High-resolution transparent PNG with anti-aliased alpha channel for seamless integration across all light/dark backgrounds. |
+| `logo.png` | PNG | Primary web raster logo asset with transparent background applied across site headers and footers. |
+| `instructify-logo.svg` | SVG | Scalable vector logo wrapper for sharp high-DPI rendering and responsive navigation. |
+| `instructify-icon.svg` | SVG | Official vector favicon and web application bookmark icon. |
+| `instructify-logo-dark.svg` | SVG | Official dark mode variant logo. |
+| `instructify-logo-128.png` / `64.png` / `32.png` | PNG | Multi-resolution downsampled responsive icons and favicons. |
 | `course-ai.png` | PNG | Dedicated brand graphic for *Artificial Intelligence in Education* course and articles. |
 | `course-cbe.png` | PNG | Dedicated brand graphic for *CBE Curriculum Implementation* course. |
 | `course-digital.png` | PNG | Dedicated brand graphic for *Digital Literacy Certification Program* course. |
