@@ -112,20 +112,20 @@ fs.writeFileSync(
 );
 copiedFileCount++;
 
-// 7. Compress into ZIP archive
-console.log('\n🗜️  Compressing into instructify-cpanel-deploy.zip via PowerShell...');
+// 7. Compress into ZIP archive (using standard POSIX forward slashes for Linux/cPanel compatibility)
+console.log('\n🗜️  Compressing into instructify-cpanel-deploy.zip with POSIX forward slashes...');
 if (fs.existsSync(ZIP_PATH)) {
   fs.unlinkSync(ZIP_PATH);
 }
 
 try {
-  const psCommand = `Compress-Archive -Path "${PUBLIC_HTML_DIR}\\*" -DestinationPath "${ZIP_PATH}" -Force`;
-  execSync(`powershell.exe -NoProfile -Command "${psCommand}"`, { stdio: 'inherit' });
+  const psScript = path.join(__dirname, 'create-zip.ps1');
+  execSync(`powershell.exe -NoProfile -ExecutionPolicy Bypass -File "${psScript}" -SourceDir "${PUBLIC_HTML_DIR}" -ZipFile "${ZIP_PATH}"`, { stdio: 'inherit' });
   const zipStats = fs.statSync(ZIP_PATH);
   const zipSizeMb = (zipStats.size / (1024 * 1024)).toFixed(2);
   const uncompressedMb = (totalBytes / (1024 * 1024)).toFixed(2);
 
-  console.log('\n✅ Packaged successfully!');
+  console.log('\n✅ Packaged successfully for Linux / cPanel / DirectAdmin!');
   console.log(`   - Total Files: ${copiedFileCount}`);
   console.log(`   - Uncompressed Size: ${uncompressedMb} MB`);
   console.log(`   - Compressed ZIP Size: ${zipSizeMb} MB`);
