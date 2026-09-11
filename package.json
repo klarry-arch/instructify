@@ -16,7 +16,8 @@
   },
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/.bin/jest --testPathPattern=tests/",
-    "dev": "vercel dev"
+    "dev": "vercel dev",
+    "package:cpanel": "node scripts/package-cpanel.cjs"
   },
   "jest": {
     "testEnvironment": "node",
