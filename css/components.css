@@ -34,9 +34,10 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: var(--max-width, 1280px);
+  max-width: min(100% - 24px, 1440px);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 12px;
+  gap: 8px;
 }
 
 /* ── Brand Logo & Text Lockup ── */
@@ -57,9 +58,9 @@
 }
 
 .nav-brand-logo {
-  height: 48px;
+  height: 42px;
   width: auto;
-  max-width: 52px;
+  max-width: 48px;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
@@ -97,7 +98,7 @@
 .nav-brand-title {
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   color: #0F172A !important;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -124,26 +125,27 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: clamp(2px, 0.35vw, 5px);
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-shrink: 1;
 }
 
 .nav-link {
   font-family: var(--font-heading);
-  font-size: 13.8px;
+  font-size: clamp(12px, 0.85vw, 13.5px);
   font-weight: 650;
   color: #334155 !important;
-  padding: 8px 11px;
-  border-radius: 10px;
+  padding: 6px clamp(5px, 0.55vw, 9px);
+  border-radius: 9px;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   white-space: nowrap;
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 3.5px;
 }
 
 /* Specific Colourful Hover Effects */
@@ -187,16 +189,17 @@
 
 /* ── Catchy Micro-Badges on Nav Items ── */
 .nav-badge {
-  font-size: 9.5px;
+  font-size: 8.5px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 1.5px 6px;
+  letter-spacing: 0.03em;
+  padding: 1px 5px;
   border-radius: 999px;
   line-height: 1.2;
   display: inline-flex;
   align-items: center;
-  gap: 3px;
+  gap: 2.5px;
+  flex-shrink: 0;
 }
 
 .nav-badge.badge-amber {
@@ -239,17 +242,17 @@
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
 .navbar .btn-outline,
 .nav-actions .btn-outline {
   font-family: var(--font-heading);
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 700;
-  padding: 7px 16px;
-  border-radius: 10px;
+  padding: 6px 13px;
+  border-radius: 9px;
   color: #334155 !important;
   background: #F8FAFC;
   border: 1.5px solid #CBD5E1;
@@ -270,10 +273,10 @@
 .navbar .btn-primary,
 .nav-actions .btn-primary {
   font-family: var(--font-heading);
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 750;
-  padding: 8px 18px;
-  border-radius: 10px;
+  padding: 7px 15px;
+  border-radius: 9px;
   color: #FFFFFF !important;
   background: linear-gradient(135deg, #183AD6 0%, #2145E6 50%, #3C3DDC 100%);
   background-size: 200% auto;
@@ -282,7 +285,7 @@
   box-shadow: 0 4px 14px rgba(33, 69, 230, 0.35);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
 }
@@ -1577,15 +1580,66 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   RESPONSIVE NAV BREAKPOINTS
+   RESPONSIVE NAV BREAKPOINTS — Seamless Scaling Across All Devices
    ══════════════════════════════════════════════════════════════ */
-@media (max-width: 1080px) {
-  .nav-links { display: none; }
-  .nav-hamburger { display: flex; }
+@media (max-width: 1280px) {
+  .navbar .container {
+    max-width: 100%;
+    padding: 0 14px;
+    gap: 6px;
+  }
+  .nav-brand-logo {
+    height: 38px;
+    max-width: 42px;
+  }
+  .nav-brand-title {
+    font-size: 1.24rem !important;
+  }
+  .nav-brand-subtitle {
+    font-size: 0.60rem !important;
+    letter-spacing: 2px !important;
+  }
+  .nav-links {
+    gap: 2px;
+  }
+  .nav-link {
+    font-size: 12.2px;
+    padding: 5px 6px;
+    gap: 3px;
+  }
+  .nav-badge {
+    font-size: 8px;
+    padding: 1px 4px;
+  }
+  .nav-actions {
+    gap: 6px;
+  }
+  .navbar .btn-outline,
+  .nav-actions .btn-outline {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  .navbar .btn-primary,
+  .nav-actions .btn-primary {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1140px) {
+  .nav-links { display: none !important; }
+  .nav-hamburger { display: flex !important; }
+  .nav-actions .btn-primary {
+    padding: 7px 14px;
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 768px) {
   .navbar .nav-actions { display: none; }
+  .nav-brand-logo { height: 36px; max-width: 40px; }
+  .nav-brand-title { font-size: 1.15rem !important; }
+  .nav-brand-subtitle { font-size: 0.60rem !important; letter-spacing: 1.8px !important; }
   .btn-lg { padding: 13px 26px; }
   .footer { padding: 48px 0 24px; }
   .table-wrapper,
@@ -1598,16 +1652,10 @@
 }
 
 @media (max-width: 430px) {
-  .nav-brand-logo {
-    height: 40px;
-  }
-  .nav-brand-title {
-    font-size: 1.15rem !important;
-  }
-  .nav-brand-subtitle {
-    font-size: 0.65rem !important;
-    letter-spacing: 1.5px !important;
-  }
+  .navbar .container { padding: 0 12px; }
+  .nav-brand-logo { height: 34px; max-width: 38px; }
+  .nav-brand-title { font-size: 1.08rem !important; }
+  .nav-brand-subtitle { font-size: 0.58rem !important; letter-spacing: 1.2px !important; }
 }
 
 /* ══════════════════════════════════════════════════════════════
