@@ -1,522 +1,1166 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learner Dashboard | Instructify Kenya</title>
+  <title>Student Dashboard &amp; Profile | Instructify Kenya</title>
+  <meta name="description" content="Instructify Kenya Student Dashboard — Access CBC &amp; Senior Secondary learning resources, assignments, assessments, timetables, and interactive learning tools.">
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/student-dashboard.css">
   <link rel="stylesheet" href="css/live-chat.css">
 </head>
-<body>
+<body class="student-dashboard-body">
 
-<nav id="navbar" class="navbar">
-  <div class="container">
-    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
-      <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
-      <div class="nav-brand-text-box">
-        <span class="nav-brand-title">Instruct<span class="brand-accent">ify</span></span>
-        <span class="nav-brand-subtitle">KENYA</span>
-      </div>
-    </a>
-    <ul class="nav-links" role="list">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="about.html" class="nav-link">About Us</a></li>
-      <li><a href="courses.html" class="nav-link">Courses</a></li>
-      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
-      <li><a href="resources.html" class="nav-link">Resources</a></li>
-      <li><a href="schools.html" class="nav-link">Institutions</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
-    </ul>
-    <div class="nav-actions">
-      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
-      <a href="courses.html" class="btn btn-primary btn-sm">Start Learning</a>
-    </div>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- Mobile Nav Drawer -->
-<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+<!-- Mobile Navigation Drawer Overlay & Container for Global Audit Compatibility -->
+<div class="sidebar-overlay student-sidebar-overlay" id="sidebar-overlay" onclick="window.toggleStudentMobileSidebar(false)"></div>
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu" style="display:none;">
   <div class="nav-mobile-links">
     <a href="index.html" class="nav-mobile-link">Home</a>
-    <a href="about.html" class="nav-mobile-link">About Us</a>
     <a href="courses.html" class="nav-mobile-link">Courses</a>
-    <a href="podcast.html" class="nav-mobile-link">Podcast</a>
-    <a href="blog.html" class="nav-mobile-link">Blog</a>
-    <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
-    <a href="resources.html" class="nav-mobile-link">Resources</a>
-    <a href="schools.html" class="nav-mobile-link">Institutions</a>
-    <a href="contact.html" class="nav-mobile-link">Contact</a>
-  </div>
-  <div class="nav-mobile-actions">
-    <a href="dashboard-learner.html" class="btn btn-primary btn-md">My Dashboard</a>
-    <button onclick="logout()" class="btn btn-outline btn-md" style="color:#DC2626 !important; border-color:#DC2626;">Log Out</button>
+    <a href="dashboard-learner.html" class="nav-mobile-link">Student Dashboard</a>
   </div>
 </div>
-
-
-
-<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
-<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Dashboard Menu">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-    <line x1="3" y1="12" x2="21" y2="12"></line>
-    <line x1="3" y1="6" x2="21" y2="6"></line>
-    <line x1="3" y1="18" x2="21" y2="18"></line>
-  </svg>
+<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="window.toggleStudentMobileSidebar()" aria-label="Toggle Dashboard Menu" style="display:none;">
+  <span></span>
 </button>
-<div class="dashboard-layout">
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <div class="sidebar-user">
-        <div class="avatar-placeholder avatar-md" id="sidebar-avatar">JM</div>
-        <div class="sidebar-user-info">
-          <div class="sidebar-user-name" id="sidebar-user-name">James Mwangi</div>
-          <div class="sidebar-user-role">TSC Teacher &bull; Nairobi</div>
+<button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" style="display:none;">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="student-shell">
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. FIXED LEFT NAVIGATION SIDEBAR
+       ══════════════════════════════════════════════════════════ -->
+  <aside class="student-sidebar" id="student-sidebar">
+    <div class="student-sidebar-brand">
+      <a href="index.html" class="student-sidebar-logo-link" aria-label="Instructify Kenya Home">
+        <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="student-sidebar-logo-img">
+        <div class="student-sidebar-brand-text">
+          <span class="student-sidebar-brand-title">Instruct<span class="brand-accent">ify</span></span>
+          <span class="student-sidebar-brand-sub">KENYA</span>
         </div>
-      </div>
+      </a>
+      <button class="student-sidebar-toggle-btn" onclick="window.toggleStudentSidebarCollapse()" title="Collapse Sidebar" aria-label="Collapse Sidebar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
     </div>
 
-    <nav class="sidebar-nav">
-      <div class="sidebar-section">
-        <div class="sidebar-section-label">Main Menu</div>
-        <a href="#overview" class="sidebar-link active" onclick="switchDashboardTab(this, 'overview')">
-          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></span> Overview
-        </a>
-        <a href="#my-courses" class="sidebar-link" onclick="switchDashboardTab(this, 'my-courses')">
-          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg></span> My Courses
-          <span class="sidebar-link-badge">3</span>
-        </a>
-        <a href="#assessments" class="sidebar-link" onclick="switchDashboardTab(this, 'assessments')">
-          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span> Quizzes &amp; Assignments
-        </a>
-        <a href="#certificates" class="sidebar-link" onclick="switchDashboardTab(this, 'certificates')">
-          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span> Certificates &amp; Badges
-        </a>
-      </div>
+    <!-- Navigation List with all 12 requested items -->
+    <nav class="student-sidebar-nav" aria-label="Student Main Navigation">
+      <span class="student-nav-group-title">Learning Space</span>
 
-      <div class="sidebar-section">
-        <div class="sidebar-section-label">Account &amp; Support</div>
-        <a href="#payments" class="sidebar-link" onclick="switchDashboardTab(this, 'payments')">
-          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span> Payment History
-        </a>
-        <a href="#notifications" class="sidebar-link" onclick="switchDashboardTab(this, 'notifications')">
-          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span> Notifications
-        </a>
-        <a href="courses.html" class="sidebar-link">
-          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span> Explore Courses
-        </a>
-      </div>
+      <!-- 1. Home -->
+      <a href="#home" class="student-nav-item active" onclick="window.switchStudentTab(this, 'home')" id="nav-item-home">
+        <span class="student-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </span>
+        <span class="student-nav-label">Home</span>
+      </a>
+
+      <!-- 2. My Subjects -->
+      <a href="#subjects" class="student-nav-item" onclick="window.switchStudentTab(this, 'subjects')">
+        <span class="student-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+            <path d="M6 6h10"/>
+            <path d="M6 10h10"/>
+          </svg>
+        </span>
+        <span class="student-nav-label">My Subjects</span>
+        <span class="student-nav-badge">6</span>
+      </a>
+
+      <!-- 3. Learning Resources -->
+      <a href="#resources" class="student-nav-item" onclick="window.switchStudentTab(this, 'resources')">
+        <span class="student-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+        </span>
+        <span class="student-nav-label">Learning Resources</span>
+      </a>
+
+      <!-- 4. Assignments -->
+      <a href="#assignments" class="student-nav-item" onclick="window.switchStudentTab(this, 'assignments')">
+        <span class="student-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+            <path d="m9 14 2 2 4-4"/>
+          </svg>
+        </span>
+        <span class="student-nav-label">Assignments</span>
+        <span class="student-nav-badge orange">2 Due</span>
+      </a>
+
+      <!-- 5. Assessments and Quizzes -->
+      <a href="#assessments" class="student-nav-item" onclick="window.switchStudentTab(this, 'assessments')">
+        <span class="student-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </span>
+        <span class="student-nav-label">Assessments &amp; Quizzes</span>
+      </a>
+
+      <!-- 6. My Timetable -->
+      <a href="#timetable" class="student-nav-item" onclick="window.switchStudentTab(this, 'timetable')">
+        <span class="student-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+            <line x1="16" x2="16" y1="2" y2="6"/>
+            <line x1="8" x2="8" y1="2" y2="6"/>
+            <line x1="3" x2="21" y1="10" y2="10"/>
+          </svg>
+        </span>
+        <span class="student-nav-label">My Timetable</span>
+      </a>
+
+      <!-- 7. My Progress -->
+      <a href="#progress" class="student-nav-item" onclick="window.switchStudentTab(this, 'progress')">
+        <span class="student-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" x2="18" y1="20" y2="10"/>
+            <line x1="12" x2="12" y1="20" y2="4"/>
+            <line x1="6" x2="6" y1="20" y2="14"/>
+          </svg>
+        </span>
+        <span class="student-nav-label">My Progress</span>
+      </a>
+
+      <!-- 8. Achievements -->
+      <a href="#achievements" class="student-nav-item" onclick="window.switchStudentTab(this, 'achievements')">
+        <span class="student-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="6"/>
+            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+          </svg>
+        </span>
+        <span class="student-nav-label">Achievements</span>
+      </a>
+
+      <span class="student-nav-group-title" style="margin-top: 8px;">Social &amp; Support</span>
+
+      <!-- 9. Messages -->
+      <a href="#messages" class="student-nav-item" onclick="window.switchStudentTab(this, 'messages')">
+        <span class="student-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </span>
+        <span class="student-nav-label">Messages</span>
+        <span class="student-nav-badge">2</span>
+      </a>
+
+      <!-- 10. Student Community -->
+      <a href="#community" class="student-nav-item" onclick="window.switchStudentTab(this, 'community')">
+        <span class="student-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </span>
+        <span class="student-nav-label">Student Community</span>
+      </a>
+
+      <!-- 11. Help and Support -->
+      <a href="#support" class="student-nav-item" onclick="window.switchStudentTab(this, 'support')">
+        <span class="student-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <line x1="12" x2="12.01" y1="17" y2="17"/>
+          </svg>
+        </span>
+        <span class="student-nav-label">Help &amp; Support</span>
+      </a>
+
+      <!-- 12. Settings -->
+      <a href="#settings" class="student-nav-item" onclick="window.switchStudentTab(this, 'settings')">
+        <span class="student-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </span>
+        <span class="student-nav-label">Settings</span>
+      </a>
     </nav>
 
-    <div class="sidebar-footer">
-      <button onclick="logout()" class="btn btn-ghost w-full justify-start" style="color:#DC2626">
-        <span style="display:inline-flex;align-items:center;margin-right:6px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg></span> Log Out
-      </button>
+    <!-- Sidebar Bottom Profile Badge -->
+    <div class="student-sidebar-footer">
+      <a href="javascript:void(0)" onclick="window.openStudentProfileModal()" class="student-user-quick-card">
+        <div class="student-quick-avatar student-user-avatar-text">JM</div>
+        <div class="student-quick-info">
+          <div class="student-quick-name student-user-name-text">James Mwangi</div>
+          <div class="student-quick-role">Grade 9 • Nairobi</div>
+        </div>
+      </a>
     </div>
   </aside>
 
-  <!-- Main Content -->
-  <main class="dashboard-main">
-    
-    <!-- Tab 1: Overview -->
-    <div id="dash-panel-overview" class="dash-panel active">
-      <div class="dashboard-header">
-        <div>
-          <h1 class="dashboard-title">Jambo, <span id="welcome-name">James</span>! 👋</h1>
-          <div class="dashboard-subtitle">Here is your professional learning progress and upcoming schedule.</div>
-        </div>
-        <div class="dashboard-actions">
-          <a href="courses.html" class="btn btn-blue btn-sm">➕ Enroll New Course</a>
-        </div>
-      </div>
+  <!-- ══════════════════════════════════════════════════════════
+       MAIN CONTENT CONTAINER
+       ══════════════════════════════════════════════════════════ -->
+  <div class="student-main-content">
 
-      <!-- Curious Mind Welcome Banner -->
-      <div class="welcome-banner" style="background: linear-gradient(135deg, #2145E6 0%, #0F172A 100%); color: #FFFFFF; border-radius: 16px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15); border-left: 5px solid #FFAD00; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-        <div style="max-width:650px; width:100%;">
-          <h2 style="font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
-            Hello, Curious Mind 👋
-          </h2>
-          <div style="font-size: 15px; font-weight: 700; color: #FCD34D !important; margin-bottom: 6px;">
-            Ready to spark something new today?
-          </div>
-          <p style="font-size: 14px; color: #E2E8F0 !important; margin: 0; line-height: 1.5; font-weight: 500;">
-            Explore your modules, connect with your mentors, and let your learning light the way.
-          </p>
-          <div style="font-size: 13px; font-weight: 600; color: #93C5FD !important; margin-top: 8px;">
-            ✨ Instructify Kenya—where curiosity becomes transformation.
-          </div>
-        </div>
-        <div>
-          <a href="courses.html" class="btn btn-primary btn-sm" style="font-weight: 700; white-space: nowrap;">Explore Modules →</a>
-        </div>
-      </div>
+    <!-- ══════════════════════════════════════════════════════════
+         2. STICKY TOP NAVIGATION BAR
+         ══════════════════════════════════════════════════════════ -->
+    <header class="student-topbar">
+      <div class="student-topbar-left">
+        <button class="student-mobile-menu-btn" onclick="window.toggleStudentMobileSidebar(true)" aria-label="Open sidebar menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
 
-      <!-- Founder's Welcome Message Card -->
-      <div style="background: linear-gradient(135deg, #0F172A 0%, #2145E6 100%); color: #FFFFFF !important; border-radius: 16px; padding: 26px 28px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2); position: relative; overflow: hidden;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-          <span style="font-size: 12px; font-weight: 800; color: #FCD34D !important; text-transform: uppercase; letter-spacing: 0.08em; display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 173, 0, 0.25); border: 1px solid #FFAD00; padding: 4px 12px; border-radius: 999px;">
-            💬 Founder’s Welcome Message
+        <!-- Rounded Search Field -->
+        <div class="student-search-box">
+          <span class="student-search-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" x2="16.65" y1="21" y2="16.65"/>
+            </svg>
           </span>
-          <span class="badge" style="font-size: 10px; background: rgba(147, 197, 253, 0.2); color: #93C5FD !important; border: 1px solid rgba(147, 197, 253, 0.4); font-weight: 700;">LMS Intro</span>
-        </div>
-        <h3 style="font-family: var(--font-heading); font-size: 20px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 6px;">
-          Welcome to Instructify Kenya
-        </h3>
-        <div style="font-size: 14px; font-weight: 700; color: #FCD34D !important; margin-bottom: 12px;">
-          Dear Educator, Learner, and Visionary,
-        </div>
-        <p style="font-size: 14px; color: #F8FAFC !important; line-height: 1.65; margin-bottom: 12px;">
-          You’ve arrived at a place where learning is a journey of renewal and growth. Instructify Kenya was born from a dream—to empower minds, stir hearts, and transform communities through practical, visionary education.
-        </p>
-        <div style="background: rgba(255, 255, 255, 0.08); border-left: 4px solid #FF5500; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 14px; font-size: 14px; font-weight: 800; line-height: 1.5;">
-          <span style="color: #FCD34D !important; display: block; margin-bottom: 4px;">"Here, we don’t just teach. We awaken."</span>
-          <span style="color: #FCD34D !important; display: block;">"We don’t just deliver content. We ignite purpose."</span>
-        </div>
-        <p style="font-size: 14px; color: #F8FAFC !important; line-height: 1.65; margin-bottom: 14px;">
-          Whether you're crafting a lesson, leading a fellowship, or exploring new ideas, this space is yours. May every module, message, and moment here spark something deeper in you.
-        </p>
-        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 14px; margin-top: 8px;">
-          <span style="font-size: 13.5px; font-weight: 800; color: #4ADE80 !important;">Welcome home to learning that matters.</span>
-          <div style="text-align: right;">
-            <strong style="font-size: 13.5px; color: #FFFFFF !important; font-weight: 800; display: block;">Warmly, Alex</strong>
-            <span style="font-size: 11.5px; color: #93C5FD !important; font-weight: 600;">Founder, Instructify Kenya</span>
-          </div>
+          <input type="text" id="global-student-search" class="student-search-input" placeholder="Search subjects, lessons, resources..." aria-label="Search subjects, lessons, resources">
+          <span class="student-search-kbd">/</span>
         </div>
       </div>
 
-      <!-- Stats Grid -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon" style="background:#E8F0F8;color:#2145E6"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg></div>
-          <div class="stat-value">3</div>
-          <div class="stat-label">Enrolled Courses</div>
-          <div class="stat-change up"><span style="font-weight:700;">↗</span> 1 active this month</div>
+      <!-- Topbar Right Shortcuts -->
+      <div class="student-topbar-right">
+        <!-- Student Points / Stars Pill -->
+        <div class="student-points-pill" onclick="window.switchStudentTab(null, 'achievements')" title="Your Learning Credits &amp; XP">
+          <span class="student-points-icon">⚡</span>
+          <span class="student-points-value">1,480 XP</span>
+          <span class="student-points-stars">⭐ 240</span>
         </div>
-        <div class="stat-card">
-          <div class="stat-icon" style="background:#E0F5F2;color:#FF4D00"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div class="stat-value">45 hrs</div>
-          <div class="stat-label">CPD Credits Earned</div>
-          <div class="stat-change up"><span style="font-weight:700;">↗</span> 15 hrs left for annual TSC target</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon" style="background:#E8F0F8;color:#2145E6"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-          <div class="stat-value">92%</div>
-          <div class="stat-label">Average Quiz Score</div>
-          <div class="stat-change up"><span style="font-weight:700;">↗</span> Top 5% Learner</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon" style="background:#E0F5F2;color:#FF4D00"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
-          <div class="stat-value">2</div>
-          <div class="stat-label">Certificates Issued</div>
-          <a href="#certificates" onclick="switchDashboardTab(null, 'certificates')" style="font-size:var(--text-xs);color:var(--color-primary-light);display:block;margin-top:4px">View certificates ↗</a>
-        </div>
-      </div>
 
-      <div class="grid-2 mb-xl" style="grid-template-columns:2fr 1fr">
-        <!-- In Progress Courses -->
-        <div class="dashboard-section">
-          <div class="dashboard-section-header">
-            <h2 class="dashboard-section-title">In Progress Courses</h2>
-            <a href="#my-courses" onclick="switchDashboardTab(null, 'my-courses')" style="font-size:var(--text-xs);color:var(--color-primary-light)">View all ?</a>
+        <!-- Notification Bell -->
+        <button class="student-icon-btn" id="student-notif-trigger" onclick="window.toggleStudentNotifPopover()" aria-label="Notifications" title="Notifications">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+          </svg>
+          <span class="student-badge-dot">3</span>
+        </button>
+
+        <!-- Messages Shortcut -->
+        <button class="student-icon-btn" onclick="window.switchStudentTab(null, 'messages')" aria-label="Messages" title="Messages">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span class="student-badge-dot" style="background: var(--student-primary);">2</span>
+        </button>
+
+        <!-- Help Icon -->
+        <button class="student-icon-btn" onclick="window.switchStudentTab(null, 'support')" aria-label="Help &amp; FAQs" title="Help &amp; FAQs">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <line x1="12" x2="12.01" y1="17" y2="17"/>
+          </svg>
+        </button>
+
+        <!-- Profile Avatar & Trigger -->
+        <div class="student-profile-trigger" id="student-profile-trigger" onclick="window.toggleStudentProfileDropdown()" aria-label="Student Profile Menu">
+          <div class="student-profile-avatar student-user-avatar-text">JM</div>
+          <span class="student-profile-name student-user-first-name">James</span>
+          <span class="student-profile-chevron">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </span>
+        </div>
+
+        <!-- Profile Dropdown Menu (5 items) -->
+        <div class="student-dropdown-menu" id="student-profile-dropdown">
+          <div class="student-dropdown-header">
+            <div class="student-dropdown-user-name student-user-name-text">James Mwangi</div>
+            <div class="student-dropdown-user-role">Junior Secondary • Grade 9 CBC</div>
           </div>
+          <button class="student-dropdown-item" onclick="window.openStudentProfileModal()">
+            <span>👤</span> View Profile
+          </button>
+          <button class="student-dropdown-item" onclick="window.switchStudentTab(null, 'settings')">
+            <span>⚙️</span> Account Settings
+          </button>
+          <button class="student-dropdown-item" onclick="window.openAccessibilityModal()">
+            <span>♿</span> Accessibility Settings
+          </button>
+          <button class="student-dropdown-item" onclick="window.switchStudentTab(null, 'support')">
+            <span>❓</span> Help Centre
+          </button>
+          <div class="student-dropdown-divider"></div>
+          <button class="student-dropdown-item danger" onclick="window.logout()">
+            <span>🚪</span> Sign Out
+          </button>
+        </div>
 
-          <div class="course-progress-item">
-            <div style="width:50px;height:50px;border-radius:var(--border-radius-sm);background:#E8F0F8;color:var(--color-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg></div>
-            <div class="course-progress-info">
-              <div class="course-progress-name">ICT Integration in Education</div>
-              <div class="course-progress-meta">
-                <span>Module 4 of 12</span> &bull; <span>Next: Digital Lesson Design</span>
-              </div>
-              <div class="progress mt-sm" style="height:6px">
-                <div class="progress-bar" style="width:65%"></div>
-              </div>
-            </div>
-            <div class="text-right">
-              <div class="course-progress-pct">65%</div>
-              <button onclick="showToast('Resuming module 4 video lecture...','info')" class="btn btn-blue btn-sm mt-sm">Resume</button>
-            </div>
+        <!-- Notifications Popover -->
+        <div class="student-popover-menu" id="student-notif-popover">
+          <div class="student-popover-header">
+            <span class="student-popover-title">Notifications</span>
+            <button class="student-popover-action" onclick="window.showToast('All notifications marked as read!','info')">Mark all read</button>
           </div>
-
-          <div class="course-progress-item">
-            <div style="width:50px;height:50px;border-radius:var(--border-radius-sm);background:#E0F5F2;color:var(--color-accent);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
-            <div class="course-progress-info">
-              <div class="course-progress-name">CBE Curriculum Implementation</div>
-              <div class="course-progress-meta">
-                <span>Module 2 of 10</span> &bull; <span>Next: Portfolio Assessment</span>
-              </div>
-              <div class="progress mt-sm" style="height:6px">
-                <div class="progress-bar gold" style="width:30%"></div>
+          <div class="student-popover-list">
+            <div class="student-popover-item unread">
+              <div class="student-popover-icon-box">📊</div>
+              <div class="student-popover-text">
+                <div class="student-popover-msg"><strong>Mathematics Quiz Graded:</strong> You scored 94% on Quadratic Graphs!</div>
+                <div class="student-popover-time">15 mins ago</div>
               </div>
             </div>
-            <div class="text-right">
-              <div class="course-progress-pct" style="color:#3C3DDC">30%</div>
-              <button onclick="showToast('Resuming module 2 quiz...','info')" class="btn btn-outline btn-sm mt-sm">Resume</button>
+            <div class="student-popover-item unread">
+              <div class="student-popover-icon-box">🧪</div>
+              <div class="student-popover-text">
+                <div class="student-popover-msg"><strong>Lab Reminder:</strong> Integrated Science Osmosis Lab due in 2 days.</div>
+                <div class="student-popover-time">2 hours ago</div>
+              </div>
+            </div>
+            <div class="student-popover-item">
+              <div class="student-popover-icon-box">🏆</div>
+              <div class="student-popover-text">
+                <div class="student-popover-msg"><strong>Badge Unlocked:</strong> 7-Day Consistency Master badge awarded.</div>
+                <div class="student-popover-time">Yesterday</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Upcoming Deadlines -->
-        <div class="dashboard-section">
-          <div class="dashboard-section-header">
-            <h2 class="dashboard-section-title">Upcoming Tasks</h2>
-          </div>
+      </div>
+    </header>
 
-          <div class="deadline-item">
-            <div class="deadline-date">
-              <div class="deadline-day">12</div>
-              <div class="deadline-month">AUG</div>
+    <!-- ══════════════════════════════════════════════════════════
+         3. SCROLLABLE DASHBOARD PANELS
+         ══════════════════════════════════════════════════════════ -->
+    <main class="student-content-container">
+
+      <!-- TAB PANEL 1: HOME (DEFAULT) -->
+      <div id="tab-panel-home" class="student-tab-panel active">
+
+        <!-- ══════════════════════════════════════════════════════
+             4. WELCOME & ANNOUNCEMENT BANNER CAROUSEL
+             ══════════════════════════════════════════════════════ -->
+        <div class="student-banner-carousel" id="student-banner-carousel">
+          <button class="student-banner-dismiss" id="carousel-dismiss-btn" title="Dismiss banner" aria-label="Dismiss banner">✕</button>
+
+          <div class="student-carousel-track">
+            <!-- Slide 1: Welcome & Continue Learning -->
+            <div class="student-carousel-slide active">
+              <div class="student-banner-text-side">
+                <span class="student-banner-tag">🚀 Daily Goal • 5-Day Streak</span>
+                <h2 class="student-banner-title">Welcome back, <span class="student-user-first-name">James</span>! 👋</h2>
+                <p class="student-banner-desc">You are making rapid strides in Junior Secondary CBC. Complete today’s Integrated Science practical to maintain your top 5% ranking.</p>
+                <div class="student-banner-actions">
+                  <button class="btn btn-primary btn-sm" onclick="window.openStudentToolModal('interactive-video')">Continue Learning ➡</button>
+                  <button class="btn btn-outline btn-sm" onclick="window.switchStudentTab(null, 'timetable')">View Today’s Lessons</button>
+                </div>
+              </div>
+              <div class="student-banner-graphic-side">
+                <div class="student-badge-bubble">
+                  <div class="student-badge-bubble-avatar">🔥</div>
+                  <div class="student-badge-bubble-text">
+                    5-Day Streak <span>+150 XP</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="deadline-info">
-              <div class="deadline-title">ICT Lesson Plan Assignment</div>
-              <div class="deadline-course">ICT Integration in Education</div>
+
+            <!-- Slide 2: School Announcements -->
+            <div class="student-carousel-slide">
+              <div class="student-banner-text-side">
+                <span class="student-banner-tag orange">📢 School Announcement</span>
+                <h2 class="student-banner-title">Term 2 Mock Assessment Schedule Released</h2>
+                <p class="student-banner-desc">National evaluation revision timetables for Grade 9 &amp; Form 3 are now live. Access past paper drills and topic formula sheets.</p>
+                <div class="student-banner-actions">
+                  <button class="btn btn-primary btn-sm" onclick="window.openStudentToolModal('past-papers')">Open Past Paper Drills</button>
+                  <button class="btn btn-outline btn-sm" onclick="window.switchStudentTab(null, 'timetable')">View Timetable</button>
+                </div>
+              </div>
+              <div class="student-banner-graphic-side">
+                <div class="student-badge-bubble">
+                  <div class="student-badge-bubble-avatar" style="background:#3C3DDC;">📅</div>
+                  <div class="student-badge-bubble-text">
+                    Mock Drills <span>Ready</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3: Upcoming Assessment Reminders -->
+            <div class="student-carousel-slide">
+              <div class="student-banner-text-side">
+                <span class="student-banner-tag">🧪 Practical Assessment</span>
+                <h2 class="student-banner-title">Integrated Science Lab: Plant Osmosis</h2>
+                <p class="student-banner-desc">Virtual laboratory experiments and lab worksheet submission deadline is Friday at 5:00 PM EAT.</p>
+                <div class="student-banner-actions">
+                  <button class="btn btn-primary btn-sm" onclick="window.openStudentToolModal('virtual-lab')">Enter Virtual Lab</button>
+                  <button class="btn btn-outline btn-sm" onclick="window.switchStudentTab(null, 'assignments')">Upload Assignment</button>
+                </div>
+              </div>
+              <div class="student-banner-graphic-side">
+                <div class="student-badge-bubble">
+                  <div class="student-badge-bubble-avatar" style="background:#10B981;">🔬</div>
+                  <div class="student-badge-bubble-text">
+                    Lab Due in <span>2 Days</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4: New Learning Resources -->
+            <div class="student-carousel-slide">
+              <div class="student-banner-text-side">
+                <span class="student-banner-tag">✨ New Resource Bank</span>
+                <h2 class="student-banner-title">3D Interactive Anatomy &amp; Physics Models</h2>
+                <p class="student-banner-desc">Explore 40+ interactive diagrams, step-by-step calculus solvers, and voice-guided Kiswahili literature summaries.</p>
+                <div class="student-banner-actions">
+                  <button class="btn btn-primary btn-sm" onclick="window.openStudentToolModal('mind-maps')">Explore Visual Models</button>
+                  <button class="btn btn-outline btn-sm" onclick="window.switchStudentTab(null, 'resources')">Digital Library</button>
+                </div>
+              </div>
+              <div class="student-banner-graphic-side">
+                <div class="student-badge-bubble">
+                  <div class="student-badge-bubble-avatar" style="background:#8B5CF6;">🧠</div>
+                  <div class="student-badge-bubble-text">
+                    40+ Models <span>Added</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 5: Competitions & Challenges -->
+            <div class="student-carousel-slide">
+              <div class="student-banner-text-side">
+                <span class="student-banner-tag orange">🏆 Kenya STEM Challenge</span>
+                <h2 class="student-banner-title">National Inter-School Coding Olympiad 2026</h2>
+                <p class="student-banner-desc">Join fellow learners across all 47 counties to solve real-world climate and mathematics puzzles.</p>
+                <div class="student-banner-actions">
+                  <button class="btn btn-primary btn-sm" onclick="window.showToast('Enrolled in Kenya STEM Challenge 2026!','success')">Register for Olympiad</button>
+                  <button class="btn btn-outline btn-sm" onclick="window.switchStudentTab(null, 'community')">Join Study Club</button>
+                </div>
+              </div>
+              <div class="student-banner-graphic-side">
+                <div class="student-badge-bubble">
+                  <div class="student-badge-bubble-avatar" style="background:#F59E0B;">🥇</div>
+                  <div class="student-badge-bubble-text">
+                    STEM Quest <span>Active</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 6: Study Tips -->
+            <div class="student-carousel-slide">
+              <div class="student-banner-text-side">
+                <span class="student-banner-tag">💡 Learner Study Tip</span>
+                <h2 class="student-banner-title">Boost Retention with the Feynman Technique</h2>
+                <p class="student-banner-desc">Explain complex concepts in simple terms to your AI Study Buddy to lock in long-term mastery before exams.</p>
+                <div class="student-banner-actions">
+                  <button class="btn btn-primary btn-sm" onclick="window.openStudentToolModal('ai-study-buddy')">Try with AI Buddy</button>
+                  <button class="btn btn-outline btn-sm" onclick="window.openStudentToolModal('flashcards')">Open Flashcards</button>
+                </div>
+              </div>
+              <div class="student-banner-graphic-side">
+                <div class="student-badge-bubble">
+                  <div class="student-badge-bubble-avatar" style="background:#EC4899;">📚</div>
+                  <div class="student-badge-bubble-text">
+                    Retention <span>+40%</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="deadline-item">
-            <div class="deadline-date" style="border-color:var(--color-secondary);background:rgba(245,166,35,0.1)">
-              <div class="deadline-day" style="color:var(--color-secondary)">18</div>
-              <div class="deadline-month" style="color:var(--color-secondary)">AUG</div>
+          <!-- Carousel Controls -->
+          <div class="student-carousel-controls">
+            <div style="display:flex; gap:8px;">
+              <button class="student-carousel-arrow-btn" id="carousel-prev-btn" aria-label="Previous Slide">‹</button>
+              <button class="student-carousel-arrow-btn" id="carousel-next-btn" aria-label="Next Slide">›</button>
             </div>
-            <div class="deadline-info">
-              <div class="deadline-title">Live Webinar: CBE Assessment</div>
-              <div class="deadline-course">CBE Curriculum Implementation</div>
+            <div class="student-carousel-dots">
+              <span class="student-carousel-dot active"></span>
+              <span class="student-carousel-dot"></span>
+              <span class="student-carousel-dot"></span>
+              <span class="student-carousel-dot"></span>
+              <span class="student-carousel-dot"></span>
+              <span class="student-carousel-dot"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════
+             5. QUICK ACCESS SECTION ("CONTINUE LEARNING")
+             ══════════════════════════════════════════════════════ -->
+        <section class="student-section-header">
+          <h2 class="student-section-title">
+            <span>⚡</span> Continue Learning
+          </h2>
+          <p class="student-section-subtitle">Quickly access your recent subjects, lessons, and activities.</p>
+        </section>
+
+        <!-- Horizontal Category Filter Pills & Search -->
+        <div class="student-filter-toolbar">
+          <div class="student-pills-scroll-wrapper" role="tablist">
+            <button class="student-pill-btn active" data-category="all">All</button>
+            <button class="student-pill-btn" data-category="subjects">My Subjects</button>
+            <button class="student-pill-btn" data-category="lessons">Lessons</button>
+            <button class="student-pill-btn" data-category="assignments">Assignments</button>
+            <button class="student-pill-btn" data-category="quizzes">Quizzes</button>
+            <button class="student-pill-btn" data-category="revision">Revision</button>
+            <button class="student-pill-btn" data-category="practical">Practical Activities</button>
+            <button class="student-pill-btn" data-category="resources">Learning Resources</button>
+          </div>
+
+          <div class="student-mini-search">
+            <span class="student-mini-search-icon">🔍</span>
+            <input type="text" id="tool-search-input" placeholder="Filter learning tools..." aria-label="Filter learning tools">
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════
+             6. LEARNING TOOL CARDS GRID (REFERENCE ALIGNED)
+             ══════════════════════════════════════════════════════ -->
+        <div class="student-tools-grid" id="student-tools-grid">
+          <!-- Rendered via JS Engine -->
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════
+             7. SECONDARY PANELS: UPCOMING TIMETABLE & SUBJECT PROGRESS
+             ══════════════════════════════════════════════════════ -->
+        <div class="student-content-grid-2">
+          
+          <!-- Subject In-Progress Tracker -->
+          <div class="student-card-panel">
+            <div class="student-panel-header">
+              <h3 class="student-panel-title">📚 Active Subject Progress</h3>
+              <a href="#subjects" onclick="window.switchStudentTab(null, 'subjects')" class="student-panel-link">View All Subjects ↗</a>
+            </div>
+
+            <div class="student-subject-item">
+              <div class="student-subject-icon" style="background:#EEF2FF; color:#2145E6;">📐</div>
+              <div class="student-subject-info">
+                <div class="student-subject-name">Mathematics (Grade 9 CBC)</div>
+                <div class="student-subject-meta">Topic: Quadratic Equations &amp; Graphs • 4 Lessons Left</div>
+              </div>
+              <div class="student-subject-progress-wrap">
+                <div class="student-subject-pct">78%</div>
+                <div class="student-mini-bar"><div class="student-mini-bar-fill" style="width:78%;"></div></div>
+              </div>
+            </div>
+
+            <div class="student-subject-item">
+              <div class="student-subject-icon" style="background:#ECFEFF; color:#0891B2;">🧪</div>
+              <div class="student-subject-info">
+                <div class="student-subject-name">Integrated Science &amp; Biology</div>
+                <div class="student-subject-meta">Topic: Cellular Transport &amp; Osmosis • Lab in Progress</div>
+              </div>
+              <div class="student-subject-progress-wrap">
+                <div class="student-subject-pct">65%</div>
+                <div class="student-mini-bar"><div class="student-mini-bar-fill" style="width:65%;"></div></div>
+              </div>
+            </div>
+
+            <div class="student-subject-item">
+              <div class="student-subject-icon" style="background:#FFF7ED; color:#EA580C;">💻</div>
+              <div class="student-subject-info">
+                <div class="student-subject-name">Computer Studies &amp; Digital Literacy</div>
+                <div class="student-subject-meta">Topic: Python Algorithms &amp; Flowcharts</div>
+              </div>
+              <div class="student-subject-progress-wrap">
+                <div class="student-subject-pct">92%</div>
+                <div class="student-mini-bar"><div class="student-mini-bar-fill" style="width:92%; background:#10B981;"></div></div>
+              </div>
+            </div>
+
+            <div class="student-subject-item">
+              <div class="student-subject-icon" style="background:#FAF5FF; color:#9333EA;">📖</div>
+              <div class="student-subject-info">
+                <div class="student-subject-name">English Literature &amp; Insha/Composition</div>
+                <div class="student-subject-meta">Topic: Character Analysis in The River Between</div>
+              </div>
+              <div class="student-subject-progress-wrap">
+                <div class="student-subject-pct">55%</div>
+                <div class="student-mini-bar"><div class="student-mini-bar-fill" style="width:55%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Today's Timetable & Live Sessions -->
+          <div class="student-card-panel">
+            <div class="student-panel-header">
+              <h3 class="student-panel-title">⏰ Today’s Schedule</h3>
+              <a href="#timetable" onclick="window.switchStudentTab(null, 'timetable')" class="student-panel-link">Full Week ↗</a>
+            </div>
+
+            <div class="student-timetable-card">
+              <div class="student-timetable-time">
+                <div class="student-timetable-hour">08:30</div>
+                <div class="student-timetable-period">AM</div>
+              </div>
+              <div class="student-timetable-details">
+                <div class="student-timetable-subject">Mathematics: Quadratic Graphs</div>
+                <div class="student-timetable-tutor">Teacher: Ms. Njoroge • Live Class</div>
+              </div>
+              <button class="student-timetable-action" onclick="window.showToast('Joining live Mathematics interactive classroom...','info')">Join Class</button>
+            </div>
+
+            <div class="student-timetable-card">
+              <div class="student-timetable-time">
+                <div class="student-timetable-hour">11:00</div>
+                <div class="student-timetable-period">AM</div>
+              </div>
+              <div class="student-timetable-details">
+                <div class="student-timetable-subject">Science Lab: Osmosis Experiment</div>
+                <div class="student-timetable-tutor">Mr. Otieno • Virtual Lab</div>
+              </div>
+              <button class="student-timetable-action" onclick="window.openStudentToolModal('virtual-lab')">Open Lab</button>
+            </div>
+
+            <div class="student-timetable-card">
+              <div class="student-timetable-time">
+                <div class="student-timetable-hour">02:30</div>
+                <div class="student-timetable-period">PM</div>
+              </div>
+              <div class="student-timetable-details">
+                <div class="student-timetable-subject">Computer Studies: Coding Lab</div>
+                <div class="student-timetable-tutor">Dr. Kamau • Project Review</div>
+              </div>
+              <button class="student-timetable-action" onclick="window.showToast('Opening Python code editor workspace...','info')">View Notes</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- TAB PANEL 2: MY SUBJECTS -->
+      <div id="tab-panel-subjects" class="student-tab-panel" style="display:none;">
+        <div class="student-section-header">
+          <h2 class="student-section-title">📚 My Enrolled Subjects</h2>
+          <p class="student-section-subtitle">Kenyan CBC Junior Secondary &amp; Senior Secondary syllabus modules.</p>
+        </div>
+        <div class="grid-3" id="enrolled-courses-container">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- TAB PANEL 3: LEARNING RESOURCES -->
+      <div id="tab-panel-resources" class="student-tab-panel" style="display:none;">
+        <div class="student-section-header">
+          <h2 class="student-section-title">📁 Learning Resources &amp; Digital Library</h2>
+          <p class="student-section-subtitle">Textbooks, past papers, formula sheets, and audio lectures.</p>
+        </div>
+        <div class="grid-3">
+          <div class="student-card-panel">
+            <div style="font-size:32px; margin-bottom:12px;">📑</div>
+            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:6px;">KNEC Past Papers &amp; Marking Schemes</h4>
+            <p style="font-size:13px; color:#64748B; margin-bottom:16px;">Over 500+ verified revision papers with worked step-by-step solutions.</p>
+            <button onclick="window.openStudentToolModal('past-papers')" class="btn btn-primary btn-sm">Access Past Papers</button>
+          </div>
+          <div class="student-card-panel">
+            <div style="font-size:32px; margin-bottom:12px;">🧪</div>
+            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:6px;">Interactive Science Experiment Manuals</h4>
+            <p style="font-size:13px; color:#64748B; margin-bottom:16px;">Digital laboratory worksheets and practical experiment guides.</p>
+            <button onclick="window.openStudentToolModal('virtual-lab')" class="btn btn-blue btn-sm">View Manuals</button>
+          </div>
+          <div class="student-card-panel">
+            <div style="font-size:32px; margin-bottom:12px;">🎧</div>
+            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:6px;">Kenyan CBC Audio Lessons &amp; Podcasts</h4>
+            <p style="font-size:13px; color:#64748B; margin-bottom:16px;">Audio-guided revision for history, languages, and science summaries.</p>
+            <button onclick="window.openStudentToolModal('audio-podcasts')" class="btn btn-outline btn-sm">Listen Audio</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB PANEL 4: ASSIGNMENTS -->
+      <div id="tab-panel-assignments" class="student-tab-panel" style="display:none;">
+        <div class="student-section-header">
+          <h2 class="student-section-title">📋 Assignments &amp; Homework</h2>
+          <p class="student-section-subtitle">Track pending deadlines, submit files, and review teacher feedback.</p>
+        </div>
+        <div class="student-card-panel">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Assignment Title</th>
+                  <th>Subject</th>
+                  <th>Due Date</th>
+                  <th>Grade / Score</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Plant Osmosis Lab Worksheet</td>
+                  <td>Integrated Science</td>
+                  <td>Friday, 5:00 PM</td>
+                  <td>Pending</td>
+                  <td><span class="badge badge-warning">Due in 2 Days</span></td>
+                  <td><button class="btn btn-blue btn-sm" onclick="window.showToast('Opening assignment upload modal...','info')">Upload Work</button></td>
+                </tr>
+                <tr>
+                  <td>Quadratic Equations Word Problems</td>
+                  <td>Mathematics</td>
+                  <td>Yesterday</td>
+                  <td><strong>94% (Distinction)</strong></td>
+                  <td><span class="badge badge-success">Graded</span></td>
+                  <td><button class="btn btn-ghost btn-sm" onclick="window.showToast('Teacher Feedback: Excellent working! Keep it up.','success')">Feedback</button></td>
+                </tr>
+                <tr>
+                  <td>English Literature Character Essay</td>
+                  <td>English</td>
+                  <td>Next Tuesday</td>
+                  <td>--</td>
+                  <td><span class="badge badge-info">In Progress</span></td>
+                  <td><button class="btn btn-outline btn-sm" onclick="window.showToast('Draft saved in homework tracker.','info')">Continue</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB PANEL 5: ASSESSMENTS & QUIZZES -->
+      <div id="tab-panel-assessments" class="student-tab-panel" style="display:none;">
+        <div class="student-section-header">
+          <h2 class="student-section-title">⚡ Assessments &amp; Quizzes</h2>
+          <p class="student-section-subtitle">Timed quizzes, speed challenges, and official term diagnostics.</p>
+        </div>
+        <div class="grid-2">
+          <div class="student-card-panel">
+            <h3 class="student-panel-title" style="margin-bottom:14px;">🎯 Live Speed Challenges</h3>
+            <p style="font-size:13px; color:#64748B; margin-bottom:16px;">Test your knowledge in real-time against other students in Kenya.</p>
+            <button onclick="window.openStudentToolModal('live-quiz')" class="btn btn-primary btn-sm">Launch Quick Quiz ⚡</button>
+          </div>
+          <div class="student-card-panel">
+            <h3 class="student-panel-title" style="margin-bottom:14px;">📊 Term 1 Diagnostic Report</h3>
+            <p style="font-size:13px; color:#64748B; margin-bottom:16px;">Comprehensive breakdown of strengths, growth areas, and mastery scores.</p>
+            <button onclick="window.openStudentProfileModal()" class="btn btn-outline btn-sm">View Diagnostic Analytics</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB PANEL 6: TIMETABLE -->
+      <div id="tab-panel-timetable" class="student-tab-panel" style="display:none;">
+        <div class="student-section-header">
+          <h2 class="student-section-title">📅 Weekly Learning Timetable</h2>
+          <p class="student-section-subtitle">Live interactive sessions, virtual lab times, and mentor office hours.</p>
+        </div>
+        <div class="student-card-panel">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Day</th>
+                  <th>08:30 - 09:30 AM</th>
+                  <th>10:00 - 11:30 AM</th>
+                  <th>01:00 - 02:00 PM</th>
+                  <th>02:30 - 04:00 PM</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Monday</strong></td>
+                  <td>Mathematics (Live)</td>
+                  <td>Integrated Science</td>
+                  <td>Break &amp; Study</td>
+                  <td>Computer Studies</td>
+                </tr>
+                <tr>
+                  <td><strong>Tuesday</strong></td>
+                  <td>English Literature</td>
+                  <td>Kiswahili Insha</td>
+                  <td>Break &amp; Study</td>
+                  <td>Social Studies</td>
+                </tr>
+                <tr>
+                  <td><strong>Wednesday</strong></td>
+                  <td>Mathematics</td>
+                  <td>Virtual Science Lab</td>
+                  <td>Break &amp; Study</td>
+                  <td>Creative Arts &amp; Sports</td>
+                </tr>
+                <tr>
+                  <td><strong>Thursday</strong></td>
+                  <td>Integrated Science</td>
+                  <td>Computer Coding</td>
+                  <td>Break &amp; Study</td>
+                  <td>English Language Lab</td>
+                </tr>
+                <tr>
+                  <td><strong>Friday</strong></td>
+                  <td>Revision &amp; Quizzes</td>
+                  <td>Mentorship &amp; Q&amp;A</td>
+                  <td>Break &amp; Study</td>
+                  <td>STEM Club &amp; Projects</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB PANEL 7: MY PROGRESS -->
+      <div id="tab-panel-progress" class="student-tab-panel" style="display:none;">
+        <div class="student-section-header">
+          <h2 class="student-section-title">📈 Learning Analytics &amp; Mastery</h2>
+          <p class="student-section-subtitle">Deep dive into topic-level understanding and completion velocity.</p>
+        </div>
+        <div class="student-stat-pill-row">
+          <div class="student-metric-box">
+            <div class="student-metric-val">48 hrs</div>
+            <div class="student-metric-lbl">Total Study Time</div>
+          </div>
+          <div class="student-metric-box">
+            <div class="student-metric-val">91.4%</div>
+            <div class="student-metric-lbl">Overall Mastery</div>
+          </div>
+          <div class="student-metric-box">
+            <div class="student-metric-val">12</div>
+            <div class="student-metric-lbl">Badges Earned</div>
+          </div>
+          <div class="student-metric-box">
+            <div class="student-metric-val">5 Days</div>
+            <div class="student-metric-lbl">Current Streak 🔥</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB PANEL 8: ACHIEVEMENTS -->
+      <div id="tab-panel-achievements" class="student-tab-panel" style="display:none;">
+        <div class="student-section-header">
+          <h2 class="student-section-title">🏆 Achievements &amp; Verified Certificates</h2>
+          <p class="student-section-subtitle">Earn badges, unlock CPD credits, and verify your certificates.</p>
+        </div>
+        <div class="grid-3">
+          <div class="student-card-panel" style="text-align:center;">
+            <div style="font-size:44px; margin-bottom:10px;">🥇</div>
+            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:4px;">Math Genius 2026</h4>
+            <p style="font-size:12px; color:#64748B; margin-bottom:12px;">Scored 90%+ across 5 consecutive algebra assessments.</p>
+            <span class="badge badge-success">Unlocked</span>
+          </div>
+          <div class="student-card-panel" style="text-align:center;">
+            <div style="font-size:44px; margin-bottom:10px;">🔬</div>
+            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:4px;">Lab Scientist</h4>
+            <p style="font-size:12px; color:#64748B; margin-bottom:12px;">Completed 10 Virtual Science experiments.</p>
+            <span class="badge badge-success">Unlocked</span>
+          </div>
+          <div class="student-card-panel" style="text-align:center;">
+            <div style="font-size:44px; margin-bottom:10px;">🔥</div>
+            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:4px;">Streak Champion</h4>
+            <p style="font-size:12px; color:#64748B; margin-bottom:12px;">Maintained active learning streak for 5+ days.</p>
+            <span class="badge badge-primary">Active</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB PANEL 9: MESSAGES -->
+      <div id="tab-panel-messages" class="student-tab-panel" style="display:none;">
+        <div class="student-section-header">
+          <h2 class="student-section-title">💬 Messages &amp; Tutor Inquiries</h2>
+          <p class="student-section-subtitle">Communicate with verified teachers and class mentors.</p>
+        </div>
+        <div class="student-card-panel">
+          <div class="student-popover-item unread" style="padding:16px; border-radius:12px; margin-bottom:10px;">
+            <div class="student-popover-icon-box">👩‍🏫</div>
+            <div class="student-popover-text">
+              <div class="student-popover-msg"><strong>Ms. Njoroge (Mathematics Tutor):</strong> "Excellent work on the quadratic equation submission, James. Please review problem #4 before tomorrow's live class."</div>
+              <div class="student-popover-time">Today, 10:14 AM</div>
+            </div>
+          </div>
+          <div class="student-popover-item" style="padding:16px; border-radius:12px;">
+            <div class="student-popover-icon-box">👨‍🔬</div>
+            <div class="student-popover-text">
+              <div class="student-popover-msg"><strong>Mr. Otieno (Science Mentor):</strong> "The virtual microscope calibration assignment is now open in the lab."</div>
+              <div class="student-popover-time">Yesterday, 4:30 PM</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Tab 2: My Courses -->
-    <div id="dash-panel-my-courses" class="dash-panel" style="display:none">
-      <div class="dashboard-header">
-        <h1 class="dashboard-title">My Enrolled Courses</h1>
-      </div>
-      <div class="grid-3" id="enrolled-courses-container">
-        <!-- Rendered via JS -->
-      </div>
-    </div>
-
-    <!-- Tab 3: Assessments -->
-    <div id="dash-panel-assessments" class="dash-panel" style="display:none">
-      <div class="dashboard-header">
-        <h1 class="dashboard-title">Quizzes &amp; Assignments</h1>
-      </div>
-      <div class="dashboard-section">
-        <div class="table-wrapper">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Course</th>
-                <th>Due Date</th>
-                <th>Score</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Digital Literacy Fundamentals Quiz</td>
-                <td>Digital Literacy Certification</td>
-                <td>Aug 02, 2026</td>
-                <td><strong style="color:#FF4D00">95%</strong></td>
-                <td><span class="badge badge-success">Passed</span></td>
-                <td><button class="btn btn-ghost btn-sm" onclick="showToast('Viewing submission feedback...','info')">Review</button></td>
-              </tr>
-              <tr>
-                <td>ICT Lesson Plan Submission</td>
-                <td>ICT Integration in Education</td>
-                <td>Aug 12, 2026</td>
-                <td>&bull;</td>
-                <td><span class="badge badge-warning">Pending</span></td>
-                <td><button class="btn btn-blue btn-sm" onclick="showToast('Opening assignment uploader...','info')">Submit</button></td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- TAB PANEL 10: STUDENT COMMUNITY -->
+      <div id="tab-panel-community" class="student-tab-panel" style="display:none;">
+        <div class="student-section-header">
+          <h2 class="student-section-title">👥 Student Community &amp; Study Clubs</h2>
+          <p class="student-section-subtitle">Collaborate with peers, ask questions, and share study notes.</p>
         </div>
-      </div>
-    </div>
-
-    <!-- Tab 4: Certificates & Badges -->
-    <div id="dash-panel-certificates" class="dash-panel" style="display:none">
-      <div class="dashboard-header">
-        <div>
-          <h1 class="dashboard-title">Certificates &amp; Digital Badges</h1>
-          <div class="dashboard-subtitle">Manage, verify, download, and share your official CPD accredited credentials.</div>
+        <div class="grid-2">
+          <div class="student-card-panel">
+            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:8px;">Junior Secondary STEM Club</h4>
+            <p style="font-size:13px; color:#64748B; margin-bottom:14px;">1,240 Active Kenyan Students • Discussions on Science &amp; Coding.</p>
+            <button onclick="window.showToast('Joined Junior Secondary STEM Club!','success')" class="btn btn-primary btn-sm">Join Discussion</button>
+          </div>
+          <div class="student-card-panel">
+            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:8px;">KCSE &amp; CBC Exam Revision Squad</h4>
+            <p style="font-size:13px; color:#64748B; margin-bottom:14px;">Daily past paper questions, formula sharing, and group challenges.</p>
+            <button onclick="window.showToast('Joined Exam Revision Squad!','success')" class="btn btn-outline btn-sm">Join Squad</button>
+          </div>
         </div>
       </div>
 
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap:24px;">
-        <!-- Credential Card 1 -->
-        <div class="stat-card" style="padding:28px; border:1.5px solid #CBD5E1; background:#FFFFFF;">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
-            <div style="display:inline-flex; align-items:center; gap:8px; background:#DCFCE7; color:#166534; padding:4px 12px; border-radius:999px; font-size:12px; font-weight:800; border:1px solid #16A34A;">
-              ✅ Valid Credential &bull; CPD Accredited
+      <!-- TAB PANEL 11: HELP AND SUPPORT -->
+      <div id="tab-panel-support" class="student-tab-panel" style="display:none;">
+        <div class="student-section-header">
+          <h2 class="student-section-title">❓ Help &amp; Support Centre</h2>
+          <p class="student-section-subtitle">FAQs, technical assistance, and direct learner support.</p>
+        </div>
+        <div class="student-card-panel">
+          <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:12px;">Frequently Asked Questions</h4>
+          <div style="margin-bottom:14px;">
+            <strong>Q: How do I submit my practical lab assignment?</strong>
+            <p style="font-size:13px; color:#64748B; margin:4px 0 0 0;">Navigate to the Assignments tab, locate the lab task, and click "Upload Work" to attach your document or PDF.</p>
+          </div>
+          <div style="margin-bottom:14px;">
+            <strong>Q: How are CPD credits and XP points calculated?</strong>
+            <p style="font-size:13px; color:#64748B; margin:4px 0 0 0;">You earn XP for every lesson completed, quiz passed with 80%+, and daily consecutive login streaks.</p>
+          </div>
+          <button onclick="window.showToast('Opening live chat with support advisor...','info')" class="btn btn-primary btn-sm mt-sm">Contact Support Advisor</button>
+        </div>
+      </div>
+
+      <!-- TAB PANEL 12: SETTINGS -->
+      <div id="tab-panel-settings" class="student-tab-panel" style="display:none;">
+        <div class="student-section-header">
+          <h2 class="student-section-title">⚙️ Student Account Settings</h2>
+          <p class="student-section-subtitle">Manage preferences, notifications, and accessibility.</p>
+        </div>
+        <div class="student-card-panel">
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <strong style="font-size:14px;">Email &amp; SMS Homework Reminders</strong>
+                <div style="font-size:12px; color:#64748B;">Receive daily reminder 2 hours before submission deadline</div>
+              </div>
+              <input type="checkbox" checked style="width:20px; height:20px;">
             </div>
-            <span style="font-size:12px; font-family:var(--font-mono); color:#FF4D00; font-weight:700;">IK-CERT-2026-9921</span>
-          </div>
-
-          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin-bottom:6px; line-height:1.3;">
-            Digital Literacy &amp; ICT Integration in Teaching
-          </h3>
-          <div style="font-size:13px; color:var(--text-muted, #475569); margin-bottom:16px;">
-            Issued on July 26, 2026 &bull; <strong>40 CPD Hours</strong> &bull; Distinction (96%)
-          </div>
-
-          <div style="font-size:12px; color:var(--text-muted, #475569); background:#F8FAFC; padding:12px 14px; border-radius:8px; border:1px solid #E2E8F0; margin-bottom:20px;">
-            🔒 <strong>Verification Hash:</strong> 3e6f9a0c8b7a6d5e... &bull; Digitally Signed
-          </div>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <button onclick="window.CertificateEngine.openModalPreview('IK-CERT-2026-9921')" class="btn btn-blue btn-sm">👁️ View Certificate</button>
-            <a href="verify.html?id=IK-CERT-2026-9921" target="_blank" class="btn btn-outline btn-sm">🔍 Verify Credential</a>
-            <button onclick="window.CertificateEngine.openModalPreview('IK-CERT-2026-9921')" class="btn btn-ghost btn-sm">🖨️ Download PDF</button>
-            <button onclick="navigator.clipboard.writeText(window.location.origin + '/verify.html?id=IK-CERT-2026-9921'); window.showToast('Verification link copied!','success');" class="btn btn-ghost btn-sm">📋 Copy Link</button>
-            <a href="https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=Digital+Literacy+Certification&organizationName=Instructify+Kenya" target="_blank" class="btn btn-ghost btn-sm" style="color:#0A66C2;">🔗 Add to LinkedIn</a>
-          </div>
-        </div>
-
-        <!-- Credential Card 2 -->
-        <div class="stat-card" style="padding:28px; border:1.5px solid #CBD5E1; background:#FFFFFF;">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px;">
-            <div style="display:inline-flex; align-items:center; gap:8px; background:#DCFCE7; color:#166534; padding:4px 12px; border-radius:999px; font-size:12px; font-weight:800; border:1px solid #16A34A;">
-              ✅ Valid Credential &bull; CPD Accredited
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <strong style="font-size:14px;">Sound Effects on Quiz Completion</strong>
+                <div style="font-size:12px; color:#64748B;">Play celebration chime when earning XP and badges</div>
+              </div>
+              <input type="checkbox" checked style="width:20px; height:20px;">
             </div>
-            <span style="font-size:12px; font-family:var(--font-mono); color:#FF4D00; font-weight:700;">IK-CPD-2026-8942</span>
-          </div>
-
-          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin-bottom:6px; line-height:1.3;">
-            Competency-Based Curriculum (CBC) Pedagogy &amp; Assessment
-          </h3>
-          <div style="font-size:13px; color:var(--text-muted, #475569); margin-bottom:16px;">
-            Issued on August 18, 2026 &bull; <strong>30 CPD Hours</strong> &bull; Distinction (94%)
-          </div>
-
-          <div style="font-size:12px; color:var(--text-muted, #475569); background:#F8FAFC; padding:12px 14px; border-radius:8px; border:1px solid #E2E8F0; margin-bottom:20px;">
-            🔒 <strong>Verification Hash:</strong> 8f9b4c2e1a7d3e6f... &bull; Digitally Signed
-          </div>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <button onclick="window.CertificateEngine.openModalPreview('IK-CPD-2026-8942')" class="btn btn-blue btn-sm">👁️ View Certificate</button>
-            <a href="verify.html?id=IK-CPD-2026-8942" target="_blank" class="btn btn-outline btn-sm">🔍 Verify Credential</a>
-            <button onclick="window.CertificateEngine.openModalPreview('IK-CPD-2026-8942')" class="btn btn-ghost btn-sm">🖨️ Download PDF</button>
-            <button onclick="navigator.clipboard.writeText(window.location.origin + '/verify.html?id=IK-CPD-2026-8942'); window.showToast('Verification link copied!','success');" class="btn btn-ghost btn-sm">📋 Copy Link</button>
-            <a href="https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=CBC+Pedagogy+Certification&organizationName=Instructify+Kenya" target="_blank" class="btn btn-ghost btn-sm" style="color:#0A66C2;">🔗 Add to LinkedIn</a>
+            <div>
+              <button onclick="window.openAccessibilityModal()" class="btn btn-outline btn-sm">Open Accessibility Settings ♿</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Tab 5: Payments -->
-    <div id="dash-panel-payments" class="dash-panel" style="display:none">
-      <div class="dashboard-header">
-        <h1 class="dashboard-title">Payment History</h1>
-      </div>
-      <div class="dashboard-section">
-        <div class="table-wrapper">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Receipt / Ref</th>
-                <th>Course</th>
-                <th>Amount</th>
-                <th>Method</th>
-                <th>Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>IK8829104A</td>
-                <td>ICT Integration in Education</td>
-                <td>KES 15,000</td>
-                <td>M-Pesa</td>
-                <td>Jul 10, 2026</td>
-                <td><span class="badge badge-success">Completed</span></td>
-              </tr>
-              <tr>
-                <td>IK7738291B</td>
-                <td>Digital Literacy Certification</td>
-                <td>KES 8,500</td>
-                <td>M-Pesa</td>
-                <td>Jun 15, 2026</td>
-                <td><span class="badge badge-success">Completed</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tab 6: Notifications -->
-    <div id="dash-panel-notifications" class="dash-panel" style="display:none">
-      <div class="dashboard-header">
-        <h1 class="dashboard-title">Notifications &amp; Announcements</h1>
-      </div>
-      <div class="dashboard-section">
-        <div class="notification-item unread">
-          <div class="notification-dot"></div>
-          <div class="notification-text">
-            <strong>Assignment Grading:</strong> Your Digital Literacy Fundamentals Quiz has been graded. You scored 95%!
-          </div>
-          <div class="notification-time">2 hours ago</div>
-        </div>
-        <div class="notification-item">
-          <div class="notification-dot" style="background:var(--color-secondary)"></div>
-          <div class="notification-text">
-            <strong>Webinar Notice:</strong> Live Q&amp;A session for CBE Assessment strategies starts on Aug 18 at 4:00 PM EAT.
-          </div>
-          <div class="notification-time">1 day ago</div>
-        </div>
-      </div>
-    </div>
-
-  </main>
+    </main>
+  </div>
 </div>
 
+<!-- ══════════════════════════════════════════════════════════
+     MODAL 1: STUDENT PROFILE MODAL
+     ══════════════════════════════════════════════════════════ -->
+<div class="student-modal-backdrop" id="student-profile-modal">
+  <div class="student-modal-card">
+    <button class="student-modal-close" onclick="window.closeStudentModal('student-profile-modal')" aria-label="Close Profile">✕</button>
+
+    <div class="student-modal-header">
+      <div class="student-profile-hero">
+        <div class="student-profile-hero-avatar student-user-avatar-text">JM</div>
+        <div class="student-profile-hero-details">
+          <h2 class="student-user-name-text">James Mwangi</h2>
+          <div class="student-profile-hero-meta">
+            <span class="badge badge-primary">Grade 9 CBC</span>
+            <span>•</span>
+            <span>Lenana Junior Academy, Nairobi</span>
+            <span>•</span>
+            <span style="font-family:monospace; color:#FF4D00; font-weight:700;">IK-STD-2026-4821</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="student-modal-body">
+      <!-- 4 Quick Stats -->
+      <div class="student-stat-pill-row">
+        <div class="student-metric-box">
+          <div class="student-metric-val">48 hrs</div>
+          <div class="student-metric-lbl">Study Time</div>
+        </div>
+        <div class="student-metric-box">
+          <div class="student-metric-val">91.4%</div>
+          <div class="student-metric-lbl">Average Score</div>
+        </div>
+        <div class="student-metric-box">
+          <div class="student-metric-val">12</div>
+          <div class="student-metric-lbl">Badges</div>
+        </div>
+        <div class="student-metric-box">
+          <div class="student-metric-val">5 Days</div>
+          <div class="student-metric-lbl">Streak 🔥</div>
+        </div>
+      </div>
+
+      <!-- CBC Core Competencies Mastery Radar -->
+      <h4 style="font-size:15px; font-weight:800; color:#0F172A; margin-bottom:12px;">Kenyan CBC Core Competencies</h4>
+      <div class="student-competency-list">
+        <div class="student-competency-item">
+          <span class="student-competency-label">Critical Thinking</span>
+          <div class="student-competency-bar-track">
+            <div class="student-competency-bar-val" style="width:94%;"></div>
+          </div>
+          <span class="student-competency-pct">94%</span>
+        </div>
+        <div class="student-competency-item">
+          <span class="student-competency-label">Digital Literacy</span>
+          <div class="student-competency-bar-track">
+            <div class="student-competency-bar-val" style="width:98%; background:#10B981;"></div>
+          </div>
+          <span class="student-competency-pct">98%</span>
+        </div>
+        <div class="student-competency-item">
+          <span class="student-competency-label">Problem Solving</span>
+          <div class="student-competency-bar-track">
+            <div class="student-competency-bar-val" style="width:88%;"></div>
+          </div>
+          <span class="student-competency-pct">88%</span>
+        </div>
+        <div class="student-competency-item">
+          <span class="student-competency-label">Communication</span>
+          <div class="student-competency-bar-track">
+            <div class="student-competency-bar-val" style="width:90%;"></div>
+          </div>
+          <span class="student-competency-pct">90%</span>
+        </div>
+        <div class="student-competency-item">
+          <span class="student-competency-label">Self-Efficacy</span>
+          <div class="student-competency-bar-track">
+            <div class="student-competency-bar-val" style="width:85%;"></div>
+          </div>
+          <span class="student-competency-pct">85%</span>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #E2E8F0; padding-top:16px; margin-top:16px;">
+        <button onclick="window.showToast('Generating official student transcript PDF...','info')" class="btn btn-blue btn-sm">📄 Download Report Card</button>
+        <button onclick="window.closeStudentModal('student-profile-modal')" class="btn btn-outline btn-sm">Close Profile</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MODAL 2: ACCESSIBILITY SETTINGS MODAL
+     ══════════════════════════════════════════════════════════ -->
+<div class="student-modal-backdrop" id="student-a11y-modal">
+  <div class="student-modal-card" style="max-width: 520px;">
+    <button class="student-modal-close" onclick="window.closeStudentModal('student-a11y-modal')" aria-label="Close Accessibility Settings">✕</button>
+
+    <div class="student-modal-header">
+      <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin:0;">
+        ♿ Accessibility &amp; Display Settings
+      </h3>
+    </div>
+
+    <div class="student-modal-body">
+      <div class="student-a11y-option">
+        <div class="student-a11y-info">
+          <div class="student-a11y-title">High Contrast Mode</div>
+          <div class="student-a11y-desc">Maximize contrast for low-light &amp; visual clarity</div>
+        </div>
+        <label class="student-switch">
+          <input type="checkbox" id="toggle-high-contrast" onchange="window.toggleAccessibilitySetting('high-contrast', this.checked)">
+          <span class="student-slider"></span>
+        </label>
+      </div>
+
+      <div class="student-a11y-option">
+        <div class="student-a11y-info">
+          <div class="student-a11y-title">Dyslexia-Friendly Typography</div>
+          <div class="student-a11y-desc">High readability spacing and letter shapes</div>
+        </div>
+        <label class="student-switch">
+          <input type="checkbox" id="toggle-dyslexia" onchange="window.toggleAccessibilitySetting('dyslexia-font', this.checked)">
+          <span class="student-slider"></span>
+        </label>
+      </div>
+
+      <div class="student-a11y-option">
+        <div class="student-a11y-info">
+          <div class="student-a11y-title">Reduce Motion</div>
+          <div class="student-a11y-desc">Minimize slide and popup animations</div>
+        </div>
+        <label class="student-switch">
+          <input type="checkbox" id="toggle-motion" onchange="window.toggleAccessibilitySetting('reduced-motion', this.checked)">
+          <span class="student-slider"></span>
+        </label>
+      </div>
+
+      <div style="text-align:right; margin-top:20px;">
+        <button onclick="window.closeStudentModal('student-a11y-modal')" class="btn btn-primary btn-sm">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MODAL 3: INTERACTIVE TOOL RUNNER MODAL
+     ══════════════════════════════════════════════════════════ -->
+<div class="student-modal-backdrop" id="student-tool-modal">
+  <div class="student-modal-card" style="max-width: 600px;">
+    <button class="student-modal-close" onclick="window.closeStudentModal('student-tool-modal')" aria-label="Close Tool Modal">✕</button>
+
+    <div class="student-modal-header" style="display:flex; align-items:center; gap:12px;">
+      <span id="modal-tool-icon" style="font-size:24px;">✨</span>
+      <h3 id="modal-tool-title" style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin:0;">
+        Learning Tool
+      </h3>
+    </div>
+
+    <div class="student-modal-body" id="modal-tool-content">
+      <!-- Injected dynamically -->
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
 <script src="js/main.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/certificates.js"></script>
 <script src="js/courses.js"></script>
+<script src="js/student-dashboard.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const session = window.requireAuth(['learner', 'trainer', 'admin']);
-  if (!session) return;
-
-  document.getElementById('user-name-top').textContent = session.name;
-  document.getElementById('welcome-name').textContent = session.name.split(' ')[0];
-  document.getElementById('sidebar-user-name').textContent = session.name;
-  document.getElementById('user-avatar-top').textContent = session.avatar || 'JM';
-  document.getElementById('sidebar-avatar').textContent = session.avatar || 'JM';
-
-  renderEnrolledCourses();
-});
-
-function switchDashboardTab(link, tabId) {
-  if (link) {
-    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-    link.classList.add('active');
-  }
-  document.querySelectorAll('.dash-panel').forEach(p => p.style.display = 'none');
-  const target = document.getElementById(`dash-panel-${tabId}`);
-  if (target) target.style.display = 'block';
-}
-
-function renderEnrolledCourses() {
+  // Render Enrolled Courses
   const container = document.getElementById('enrolled-courses-container');
-  if (!container || !window.COURSES) return;
-
-  const courses = window.COURSES.slice(0, 3);
-  container.innerHTML = courses.map(c => window.renderCourseCard(c)).join('');
-}
+  if (container && window.COURSES) {
+    const courses = window.COURSES.slice(0, 6);
+    container.innerHTML = courses.map(c => window.renderCourseCard ? window.renderCourseCard(c) : `
+      <div class="student-card-panel">
+        <h4 style="font-size:15px; font-weight:700; color:#0F172A;">${c.title}</h4>
+        <p style="font-size:12.5px; color:#64748B;">${c.category} • ${c.duration || '6 Weeks'}</p>
+        <button class="btn btn-primary btn-sm mt-sm" onclick="window.showToast('Resuming course module...','info')">Open Subject</button>
+      </div>
+    `).join('');
+  }
+});
 </script>
-  <script src="js/chat-config.js"></script>
-  <script src="js/live-chat.js"></script>
+<script src="js/chat-config.js"></script>
+<script src="js/live-chat.js"></script>
 </body>
 </html>
