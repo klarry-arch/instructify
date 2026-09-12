@@ -598,19 +598,54 @@
   const btn = document.getElementById('nav-hamburger');
   const menu = document.getElementById('nav-mobile');
   if (!btn || !menu) return;
+
+  function closeMenu() {
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  function openMenu() {
+    menu.classList.add('open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
   btn.addEventListener('click', function() {
-    const isOpen = menu.classList.toggle('open');
-    btn.classList.toggle('open', isOpen);
-    btn.setAttribute('aria-expanded', String(isOpen));
-  });
-  // Close on outside click
-  document.addEventListener('click', function(e) {
-    if (!btn.contains(e.target) && !menu.contains(e.target)) {
-      menu.classList.remove('open');
-      btn.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
+    if (menu.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
     }
   });
+
+  // Close when any mobile nav link is tapped
+  menu.querySelectorAll('.nav-mobile-link').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      closeMenu();
+      btn.focus();
+    }
+  });
+
+  // Close on outside click / tap
+  document.addEventListener('click', function(e) {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Close menu when viewport exceeds mobile breakpoint (e.g. rotate to landscape)
+  var mq = window.matchMedia('(min-width: 1141px)');
+  function onBreakpoint(e) { if (e.matches) closeMenu(); }
+  if (mq.addEventListener) { mq.addEventListener('change', onBreakpoint); }
+  else if (mq.addListener)  { mq.addListener(onBreakpoint); } // Safari <14
 })();
 
 // ── Scroll Reveal ─────────────────────────────────────────
