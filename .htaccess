@@ -17,6 +17,10 @@
   RewriteCond %{HTTP_HOST} ^www\.instructify\.co\.ke [NC]
   RewriteRule ^(.*)$ https://instructify.co.ke/$1 [L,R=301]
 
+  # ── Jumuishi Hub Clean Aliases ──
+  RewriteRule ^jumuishi/?$ jumuishi-learning-hub.html [L,QSA]
+  RewriteRule ^jumuishi-hub/?$ jumuishi-learning-hub.html [L,QSA]
+
   # ── Clean URLs (serve .html extension automatically) ──
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}\.html -f
