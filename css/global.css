@@ -1036,6 +1036,12 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
     --font-size-h4: 16px;
     --font-size-h5: 14.5px;
     --nav-height: 68px;
+    --space-4xl: 40px;
+    --space-3xl: 32px;
+    --space-2xl: 24px;
+    --space-xl: 20px;
+    --space-lg: 16px;
+    --section-gap: 40px;
   }
 
   .container {
@@ -1105,7 +1111,9 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
   textarea,
   .form-control,
   .form-input,
-  .form-select {
+  .form-select,
+  .field-input,
+  .saas-search-box input {
     font-size: 16px !important;
   }
 
