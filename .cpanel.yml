@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=${DEPLOYPATH:-$HOME/public_html/}
+    - if [ -d "$HOME/domains/instructify.co.ke/public_html/" ]; then DEPLOYPATH="$HOME/domains/instructify.co.ke/public_html/"; fi
+    - /bin/cp -rf * $DEPLOYPATH/
+    - /bin/cp -f .htaccess $DEPLOYPATH/ 2>/dev/null || true
+    - /bin/cp -f robots.txt $DEPLOYPATH/ 2>/dev/null || true
+    - /bin/cp -f sitemap.xml $DEPLOYPATH/ 2>/dev/null || true
