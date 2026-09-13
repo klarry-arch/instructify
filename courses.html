@@ -52,6 +52,34 @@
       .saas-layout { grid-template-columns: 1fr; }
       .filter-panel { position: static; }
     }
+    .featured-masterclass-content { padding: 40px; display: flex; flex-direction: column; justify-content: center; background: #FFFFFF; }
+    
+    @media (max-width: 768px) {
+      .hero-h1 { font-size: clamp(26px, 6vw, 32px); }
+      .featured-masterclass-content { padding: 24px 18px; }
+      .stats-dashboard .grid-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px 16px;
+      }
+      .stat-number { font-size: 26px; }
+    }
+
+    @media (max-width: 640px) {
+      .saas-search-box {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+      }
+      .saas-search-box button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .stats-dashboard .grid-4 {
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
   <link rel="stylesheet" href="css/live-chat.css">
 </head>
@@ -166,16 +194,16 @@
         <div>
           <img src="assets/images/course_smart_vr_classroom.jpg" alt="Smart Classrooms & Digital Teaching Masterclass" style="width:100%; height:100%; object-fit:cover; min-height:280px;" loading="lazy">
         </div>
-        <div style="padding:40px; display:flex; flex-direction:column; justify-content:center; background:#FFFFFF;">
+        <div class="featured-masterclass-content">
           <span style="display:inline-block; padding:4px 12px; background:var(--accent-bg, #F3EEFF); color:#CC3E00; border-radius:999px; font-size:13px; font-weight:600; width:fit-content; margin-bottom:12px;">FEATURED PROGRAM</span>
           <h3 class="course-card-title-custom" style="font-size:24px;">Digital Literacy for Educators Masterclass</h3>
           <p style="font-size:16px; color:var(--saas-text-muted); margin-bottom:20px; line-height:1.6;">
             A comprehensive, hands-on program designed to empower educators with modern digital tools, classroom technology integration, and interactive lesson design strategies.
           </p>
-          <div style="display:flex; gap:16px; align-items:center; margin-bottom:24px;" class="metadata-text">
-            <span>? 4.9 (523 reviews)</span>
-            <span>� 6 Weeks</span>
-            <span>� Beginner to Intermediate</span>
+          <div style="display:flex; gap:16px; align-items:center; margin-bottom:24px; flex-wrap:wrap;" class="metadata-text">
+            <span>⭐ 4.9 (523 reviews)</span>
+            <span>⏱️ 6 Weeks</span>
+            <span>🎯 Beginner to Intermediate</span>
           </div>
           <div>
             <a href="course-detail.html?id=crs_002" class="btn btn-blue">Enroll Now</a>

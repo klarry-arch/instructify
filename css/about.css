@@ -38,7 +38,7 @@
 
 .about-hero-text h1 {
   font-family: inherit;
-  font-size: 3rem;
+  font-size: clamp(1.85rem, 5vw, 3rem);
   margin-bottom: 16px;
   line-height: 1.2;
 }
@@ -295,9 +295,11 @@
 @media (max-width: 992px) {
 
   .about-hero,
+  .about-hero-grid,
   .about-who,
   .about-vision-mission {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .about-services-grid,
@@ -310,6 +312,11 @@
 @media (max-width: 768px) {
   .about-section {
     padding: var(--about-section-padding-mob) 0;
+  }
+
+  .about-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .about-services-grid,

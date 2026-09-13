@@ -125,12 +125,23 @@ try {
   const zipSizeMb = (zipStats.size / (1024 * 1024)).toFixed(2);
   const uncompressedMb = (totalBytes / (1024 * 1024)).toFixed(2);
 
+  // Also copy to root public_html.zip and root public_html folder
+  const rootPublicHtmlZip = path.join(ROOT_DIR, 'public_html.zip');
+  fs.copyFileSync(ZIP_PATH, rootPublicHtmlZip);
+
+  const rootPublicHtmlDir = path.join(ROOT_DIR, 'public_html');
+  if (fs.existsSync(rootPublicHtmlDir)) {
+    copyDirectorySafe(PUBLIC_HTML_DIR, rootPublicHtmlDir);
+  }
+
   console.log('\n✅ Packaged successfully for Linux / cPanel / DirectAdmin!');
   console.log(`   - Total Files: ${copiedFileCount}`);
   console.log(`   - Uncompressed Size: ${uncompressedMb} MB`);
   console.log(`   - Compressed ZIP Size: ${zipSizeMb} MB`);
   console.log(`   - Output ZIP: ${ZIP_PATH}`);
+  console.log(`   - Output Mirror ZIP: ${rootPublicHtmlZip}`);
   console.log(`   - Output Unpacked: ${PUBLIC_HTML_DIR}`);
+  console.log(`   - Root public_html folder updated: ${rootPublicHtmlDir}`);
 } catch (err) {
   console.error('❌ Compression failed:', err);
   process.exit(1);
