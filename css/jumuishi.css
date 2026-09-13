@@ -3387,3 +3387,229 @@ body.jum-high-contrast .jum-course-btn {
   color: #000 !important;
 }
 
+
+
+/* ══════════════════════════════════════════════════════════════
+   SPECIAL NEEDS ADAPTATION TEMPLATES & STUDIO EXTENSIONS
+   ══════════════════════════════════════════════════════════════ */
+.jum-studio-tab-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px clamp(16px, 2.5vw, 40px);
+  background: #F8FAFC;
+  border-bottom: 1.5px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.jum-tab-pills-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.jum-tab-pill {
+  padding: 9px 20px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 13.5px;
+  font-weight: 700;
+  background: #FFFFFF;
+  color: #475569;
+  border: 1.5px solid #CBD5E1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jum-tab-pill:hover:not(.active) {
+  background: #F1F5F9;
+  color: #0F172A;
+  border-color: #94A3B8;
+  transform: translateY(-1px);
+}
+
+.jum-tab-pill.active {
+  background: var(--primary-color);
+  color: #FFFFFF;
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 14px rgba(33, 69, 230, 0.25);
+}
+
+.jum-tab-pill.active-teal {
+  background: #0D9488 !important;
+  border-color: #0D9488 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.25) !important;
+}
+
+.jum-tab-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 7.5px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.08);
+  color: inherit;
+  line-height: 1.2;
+}
+.jum-tab-pill.active .jum-tab-badge,
+.jum-tab-pill.active-teal .jum-tab-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+/* Templates Grid & Cards */
+.jum-template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 24px;
+}
+
+.jum-template-card {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.jum-template-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(13, 148, 136, 0.4);
+  box-shadow: 0 20px 40px rgba(13, 148, 136, 0.10);
+}
+
+.jum-template-banner {
+  padding: 18px 22px;
+  background: linear-gradient(135deg, #091540 0%, #0F5B5C 100%);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.jum-template-banner.aac { background: linear-gradient(135deg, #0D9488 0%, #0284C7 100%); }
+.jum-template-banner.autism { background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%); }
+.jum-template-banner.dyslexia { background: linear-gradient(135deg, #D97706 0%, #F5812D 100%); }
+.jum-template-banner.deaf { background: linear-gradient(135deg, #059669 0%, #0D9488 100%); }
+.jum-template-banner.vision { background: linear-gradient(135deg, #1E293B 0%, #334155 100%); }
+.jum-template-banner.adhd { background: linear-gradient(135deg, #EA580C 0%, #F59E0B 100%); }
+.jum-template-banner.down { background: linear-gradient(135deg, #0284C7 0%, #38BDF8 100%); }
+
+.jum-template-card-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 14px;
+}
+
+.jum-template-title {
+  font-family: var(--font-heading);
+  font-size: 17.5px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.jum-template-aac-box {
+  background: #F0FDFA;
+  border: 1px solid #99F6E4;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #0F766E;
+  line-height: 1.5;
+}
+.jum-template-aac-box strong {
+  color: #042F2E;
+  display: block;
+  margin-bottom: 3px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.jum-template-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.jum-template-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #F1F5F9;
+  color: #334155;
+  border: 1px solid #E2E8F0;
+}
+
+.jum-template-footer {
+  padding: 14px 20px;
+  background: #FAFAFA;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.jum-template-btn {
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  border: 1.5px solid transparent;
+}
+
+.jum-template-btn.primary {
+  background: var(--jum-teal);
+  color: #FFFFFF;
+  border-color: var(--jum-teal);
+}
+.jum-template-btn.primary:hover {
+  background: var(--jum-teal-hover);
+  border-color: var(--jum-teal-hover);
+  transform: translateY(-1px);
+}
+
+.jum-template-btn.secondary {
+  background: #FFFFFF;
+  color: #334155;
+  border-color: #CBD5E1;
+}
+.jum-template-btn.secondary:hover {
+  background: #F1F5F9;
+  color: #0F172A;
+  border-color: #94A3B8;
+}
+
+.jum-template-btn.outline-teal {
+  background: transparent;
+  color: var(--jum-teal);
+  border-color: var(--jum-teal);
+}
+.jum-template-btn.outline-teal:hover {
+  background: var(--jum-teal-bg);
+}

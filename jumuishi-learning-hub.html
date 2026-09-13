@@ -1271,11 +1271,33 @@
             </div>
             <div class="jum-studio-actions">
               <button type="button" class="btn-jum-primary-sm" id="jum-btn-create-course" style="background:#fff;color:var(--primary-color);border-color:#fff;">
-                <span aria-hidden="true">➕</span> Create New Course
+                <span aria-hidden="true">➕</span> Create Course
+              </button>
+              <button type="button" class="btn-jum-primary-sm" id="jum-btn-create-template" style="background:var(--jum-teal);color:#fff;border-color:var(--jum-teal);">
+                <span aria-hidden="true">📋</span> Create Template
               </button>
             </div>
           </div>
 
+          <!-- Studio View Switcher Tab Bar -->
+          <div class="jum-studio-tab-bar" role="tablist" aria-label="Studio Navigation Modes">
+            <div class="jum-tab-pills-group">
+              <button type="button" class="jum-tab-pill active" id="jum-tab-btn-courses" role="tab" aria-selected="true" aria-controls="jum-studio-courses-view">
+                <span>📚 Courses &amp; Lessons</span>
+                <span class="jum-tab-badge" id="jum-tab-count-courses">3</span>
+              </button>
+              <button type="button" class="jum-tab-pill" id="jum-tab-btn-templates" role="tab" aria-selected="false" aria-controls="jum-studio-templates-view">
+                <span>📋 Special Needs Adaptation Templates</span>
+                <span class="jum-tab-badge" id="jum-tab-count-templates" style="background:#0D9488;color:#fff;">7</span>
+              </button>
+            </div>
+            <div style="font-size:12.5px;color:var(--muted-text-color);display:flex;align-items:center;gap:6px;">
+              <span>💡</span> <strong>Teacher Guide:</strong> Select a template to auto-populate AAC tools &amp; UDL tiers
+            </div>
+          </div>
+
+          <!-- Courses View Wrapper -->
+          <div id="jum-studio-courses-view" role="tabpanel" aria-labelledby="jum-tab-btn-courses">
           <!-- Studio Navigation & Search Toolbar -->
           <div class="jum-studio-mode-bar">
             <div class="jum-studio-search-filter">
@@ -1393,6 +1415,80 @@
             </div>
 
           </div>
+          </div><!-- End #jum-studio-courses-view -->
+
+          <!-- ══════════════════════════════════════════════════════
+               TEMPLATES VIEW (Special Needs Adaptation Templates)
+               ══════════════════════════════════════════════════════ -->
+          <div id="jum-studio-templates-view" role="tabpanel" aria-labelledby="jum-tab-btn-templates" style="display:none;">
+            <!-- Templates Filter & Action Bar -->
+            <div class="jum-studio-mode-bar">
+              <div class="jum-studio-search-filter">
+                <div class="jum-search-input-wrap">
+                  <span class="jum-search-icon" aria-hidden="true">🔍</span>
+                  <input type="text" id="jum-template-search" class="jum-studio-search" placeholder="Search special needs templates, AAC methods, support needs..." aria-label="Search templates">
+                </div>
+                <div class="jum-filter-select-wrap">
+                  <select id="jum-template-filter-need" class="jum-studio-select" aria-label="Filter templates by support need">
+                    <option value="all">All Special Needs Categories</option>
+                    <option value="Non-Verbal">🗣️ Non-Verbal &amp; AAC (FAQ #12)</option>
+                    <option value="Autism">🧩 Autism &amp; Neurodiversity</option>
+                    <option value="Dyslexia">📖 Dyslexia &amp; Phonics</option>
+                    <option value="Deaf">🤟 Deaf &amp; Sign Language (KSL)</option>
+                    <option value="Vision">👁️ Low Vision &amp; Tactile</option>
+                    <option value="ADHD">⚡ ADHD &amp; Movement</option>
+                    <option value="Down">🌟 Down Syndrome &amp; Task Analysis</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="jum-studio-actions">
+                <button type="button" class="btn-jum-primary-sm" id="jum-btn-create-template-bar">
+                  <span aria-hidden="true">➕</span> New Template
+                </button>
+                <button type="button" class="btn-jum-outline-sm" id="jum-btn-reset-templates" title="Restore default evidence-based inclusive templates">
+                  <span aria-hidden="true">🔄</span> Reset Templates
+                </button>
+              </div>
+            </div>
+
+            <div class="jum-studio-body">
+              <!-- Templates Informational Header -->
+              <div style="background:linear-gradient(135deg, #F0FDFA 0%, #F8FAFC 100%);border:1.5px solid #99F6E4;border-radius:16px;padding:18px 24px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+                <div>
+                  <h4 style="font-family:var(--font-heading);font-size:16px;font-weight:800;color:#0F766E;margin-bottom:4px;display:flex;align-items:center;gap:6px;">
+                    <span>🌟</span> Evidence-Based Inclusive Lesson Adaptation Templates
+                  </h4>
+                  <p style="font-size:13.5px;color:#334155;margin:0;max-width:760px;line-height:1.5;">
+                    Empowering special education teachers and regular classroom educators across Kenya. Select <strong>"Use in Lesson"</strong> to pre-fill AAC pointing boards, visual schedules, physical sorting trays, and UDL accommodations directly into your courses.
+                  </p>
+                </div>
+                <button type="button" class="btn-jum-outline-sm" id="jum-btn-templates-guide-info" style="border-color:#0D9488;color:#0D9488;">
+                  <span>📖</span> SNE Policy Alignment
+                </button>
+              </div>
+
+              <!-- Templates Grid Container -->
+              <div class="jum-template-grid" id="jum-template-cards-container">
+                <!-- Rendered dynamically by js/jumuishi.js -->
+              </div>
+
+              <!-- Empty State for Templates -->
+              <div class="jum-course-empty-state" id="jum-template-empty-state" style="display:none;">
+                <div class="jum-empty-icon" aria-hidden="true">📋</div>
+                <h3>No Templates Found</h3>
+                <p>No adaptation templates match your search filter. Create your own custom special needs template or reset to default exemplars.</p>
+                <div style="display:flex;justify-content:center;gap:12px;">
+                  <button type="button" class="btn-jum-primary-sm" id="jum-btn-empty-template-create">
+                    <span aria-hidden="true">➕</span> Create Template
+                  </button>
+                  <button type="button" class="btn-jum-outline-sm" id="jum-btn-empty-template-reset">
+                    <span aria-hidden="true">🔄</span> Reset Templates
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div><!-- End #jum-studio-templates-view -->
 
         </div>
 
@@ -2596,6 +2692,159 @@
       </div>
     </section>
 
+  
+  <!-- Modal 4: Create / Edit Special Needs Adaptation Template -->
+  <div class="jum-modal-overlay" id="jum-modal-template" role="dialog" aria-modal="true" aria-labelledby="jum-modal-template-title">
+    <div class="jum-modal">
+      <div class="jum-modal-header" style="background:linear-gradient(135deg, #091540 0%, #0F5B5C 100%);color:#fff;">
+        <h3 class="jum-modal-title" id="jum-modal-template-title" style="color:#fff;">
+          <span aria-hidden="true">📋</span> <span id="jum-modal-template-heading-text">Create Special Needs Adaptation Template</span>
+        </h3>
+        <button type="button" class="jum-modal-close-btn" id="jum-btn-template-modal-close" aria-label="Close modal" style="color:#fff;">&times;</button>
+      </div>
+      <form id="jum-form-template">
+        <input type="hidden" id="jum-input-template-id" value="">
+        <div class="jum-modal-body">
+          
+          <div class="jum-form-group">
+            <label for="jum-input-template-title" class="jum-form-label">
+              Template Title <span class="required" style="color:var(--error-color);">*</span>
+            </label>
+            <input type="text" id="jum-input-template-title" class="jum-form-input" placeholder="e.g. Non-Verbal & AAC Multi-Modal Communication Board Template" required>
+          </div>
+
+          <div class="jum-form-row-2">
+            <div class="jum-form-group">
+              <label for="jum-input-template-category" class="jum-form-label">
+                Primary Special Need Category <span class="required" style="color:var(--error-color);">*</span>
+              </label>
+              <select id="jum-input-template-category" class="jum-form-select" required>
+                <option value="Non-Verbal & AAC">Non-Verbal &amp; AAC (Speech Delay, CP, Non-Verbal)</option>
+                <option value="Autism Spectrum">Autism Spectrum &amp; Neurodiversity</option>
+                <option value="Dyslexia & Reading">Dyslexia &amp; Reading/Writing Barriers</option>
+                <option value="Hearing & Deaf">Hearing &amp; Deaf Education (KSL)</option>
+                <option value="Visual Impairments">Low Vision, Albinism &amp; Blindness</option>
+                <option value="ADHD & Focus">ADHD &amp; Executive Function</option>
+                <option value="Down Syndrome">Down Syndrome &amp; Developmental Delays</option>
+                <option value="Physical & Motor">Physical &amp; Motor Accommodations</option>
+              </select>
+            </div>
+
+            <div class="jum-form-group">
+              <label for="jum-input-template-banner" class="jum-form-label">Banner Theme</label>
+              <select id="jum-input-template-banner" class="jum-form-select">
+                <option value="aac">AAC &amp; Communication (Teal Cyan)</option>
+                <option value="autism">Autism &amp; Sensory (Indigo Purple)</option>
+                <option value="dyslexia">Dyslexia &amp; Phonics (Amber Orange)</option>
+                <option value="deaf">Deaf &amp; KSL (Emerald Forest)</option>
+                <option value="vision">Low Vision (Slate Charcoal)</option>
+                <option value="adhd">ADHD &amp; Movement (Orange Energy)</option>
+                <option value="down">Down Syndrome (Sky Blue)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-template-target" class="jum-form-label">
+              Target Learner Profile &amp; Inclusion Focus
+            </label>
+            <input type="text" id="jum-input-template-target" class="jum-form-input" placeholder="e.g. Non-verbal learners, selective mutism, cerebral palsy, expressive language delay">
+          </div>
+
+          <!-- AAC and Alternative Communication Tools -->
+          <div class="jum-form-group" style="background:#F0FDFA;border:1.5px solid #99F6E4;border-radius:12px;padding:14px 18px;">
+            <label for="jum-input-template-aac" class="jum-form-label" style="color:#0F766E;font-weight:800;font-size:13.5px;">
+              <span>🗣️</span> AAC &amp; Alternative Communication Tools (As Highlighted in FAQ #12)
+            </label>
+            <textarea id="jum-input-template-aac" class="jum-form-textarea" style="min-height:75px;" placeholder="Specify picture symbol cards (PECS), pointing boards, physical sorting trays, peer response partners, zero oral speech penalty..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-template-outcome" class="jum-form-label">
+              Differentiated CBC Learning Outcome
+            </label>
+            <textarea id="jum-input-template-outcome" class="jum-form-textarea" style="min-height:65px;" placeholder="By the end of the lesson, the learner demonstrates mastery using concrete counters or pointing boards without speech barriers..."></textarea>
+          </div>
+
+          <!-- 4-Stage Instructional Pathway -->
+          <h4 style="font-family:var(--font-heading);font-size:14.5px;font-weight:700;color:var(--heading-color);margin:18px 0 10px;border-bottom:1px solid var(--border-color);padding-bottom:6px;">
+            Inclusive 4-Stage Instructional Pathway
+          </h4>
+
+          <div class="jum-form-group">
+            <label for="jum-input-template-intro" class="jum-form-label">1. Introduction &amp; Sensory/AAC Check-in</label>
+            <textarea id="jum-input-template-intro" class="jum-form-textarea" style="min-height:65px;" placeholder="Sensory hook, visual schedule review, introduction of AAC pointing cards or concrete realia..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-template-guided" class="jum-form-label">2. Concrete Guided Inquiry &amp; Peer Collaboration</label>
+            <textarea id="jum-input-template-guided" class="jum-form-textarea" style="min-height:65px;" placeholder="Paired practice with sorting trays, physical counters, peer response buddy, concrete modeling..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-template-activity" class="jum-form-label">3. Differentiated &amp; Multimodal Activity</label>
+            <textarea id="jum-input-template-activity" class="jum-form-textarea" style="min-height:65px;" placeholder="Station tasks: object placement, pointing choice board, picture matching, zero penalty for speech/writing..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-template-wrapup" class="jum-form-label">4. Formative Reflection &amp; Celebration</label>
+            <textarea id="jum-input-template-wrapup" class="jum-form-textarea" style="min-height:60px;" placeholder="Feelings check-in board, choral class clap, transition warning..."></textarea>
+          </div>
+
+          <!-- Multi-Tiered UDL Accommodations -->
+          <h4 style="font-family:var(--font-heading);font-size:14.5px;font-weight:700;color:var(--jum-teal-hover);margin:20px 0 10px;border-bottom:1px solid var(--border-color);padding-bottom:6px;">
+            Multi-Tiered Universal Design for Learning (UDL)
+          </h4>
+
+          <div class="jum-form-group">
+            <label for="jum-input-template-tier1" class="jum-form-label">Tier 1: Universal Design for All Learners</label>
+            <textarea id="jum-input-template-tier1" class="jum-form-textarea" style="min-height:60px;" placeholder="High visual support, visual schedule, low ambient clutter, multisensory presentation..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-template-tier2" class="jum-form-label">Tier 2: Targeted Scaffolding</label>
+            <textarea id="jum-input-template-tier2" class="jum-form-textarea" style="min-height:60px;" placeholder="Laminated pointing cards, physical sorting trays with dividers, color-coded prompts..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-template-tier3" class="jum-form-label">Tier 3: Intensive Support (AAC, Braille, 1-on-1)</label>
+            <textarea id="jum-input-template-tier3" class="jum-form-textarea" style="min-height:60px;" placeholder="Partner-assisted scanning, 1-on-1 peer buddy, sensory weighted calming tools..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-template-materials" class="jum-form-label">Low-Cost Kenyan Realia &amp; Materials</label>
+            <input type="text" id="jum-input-template-materials" class="jum-form-input" placeholder="e.g. Laminated AAC pointing boards, picture cards, bottle tops, sorting trays, tactile items">
+          </div>
+
+        </div>
+        <div class="jum-modal-footer">
+          <button type="button" class="btn-jum-outline-sm" id="jum-btn-template-modal-cancel">Cancel</button>
+          <button type="submit" class="btn-jum-primary-sm" id="jum-btn-template-modal-submit">Save Template</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 5: Printable Template Guide Viewer -->
+  <div class="jum-modal-overlay" id="jum-modal-template-view" role="dialog" aria-modal="true" aria-labelledby="jum-modal-template-view-title">
+    <div class="jum-modal" style="max-width:850px;">
+      <div class="jum-modal-header" style="background:var(--jum-teal);color:#fff;">
+        <h3 class="jum-modal-title" id="jum-modal-template-view-title" style="color:#fff;">
+          <span aria-hidden="true">📖</span> Inclusive Lesson Adaptation Guide
+        </h3>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <button type="button" class="btn-jum-outline-sm" id="jum-btn-print-template-doc" style="background:#fff;color:var(--jum-teal);border-color:#fff;">
+            <span>🖨️</span> Print / Save PDF
+          </button>
+          <button type="button" class="jum-modal-close-btn" id="jum-btn-template-view-close" aria-label="Close modal" style="color:#fff;">&times;</button>
+        </div>
+      </div>
+      <div class="jum-modal-body" id="jum-template-view-content" style="max-height:75vh;overflow-y:auto;padding:28px 36px;">
+        <!-- Rendered dynamically by js/jumuishi.js -->
+      </div>
+    </div>
+  </div>
+
   </main>
 
   <!-- ══════════════════════════════════════════════════════════
@@ -2825,6 +3074,26 @@
         <input type="hidden" id="jum-input-lesson-course-id" value="">
         <input type="hidden" id="jum-input-lesson-id" value="">
         <div class="jum-modal-body">
+
+          <!-- Quick-Load Special Needs Template Banner -->
+          <div class="jum-form-group" style="background:#F0FDFA;border:1.5px solid #99F6E4;border-radius:14px;padding:14px 18px;margin-bottom:18px;">
+            <label for="jum-lesson-template-picker" class="jum-form-label" style="color:#0F766E;font-weight:800;display:flex;align-items:center;gap:6px;font-size:13.5px;margin-bottom:6px;">
+              <span>📋</span> Quick-Load Special Needs Adaptation Template
+            </label>
+            <select id="jum-lesson-template-picker" class="jum-form-select" style="background:#FFFFFF;border-color:#0D9488;font-weight:600;">
+              <option value="">-- Choose a Special Needs Template to Auto-Fill --</option>
+              <option value="tpl-nonverbal-aac">⭐ Non-Verbal &amp; AAC Communication Board (FAQ #12)</option>
+              <option value="tpl-autism-visual">🧩 Autism &amp; Neurodiversity Visual Routine &amp; Sensory</option>
+              <option value="tpl-dyslexia-multi">📖 Dyslexia &amp; Phonics Orton-Gillingham Multisensory</option>
+              <option value="tpl-ksl-deaf">🤟 Deaf &amp; Kenyan Sign Language (KSL) Bilingual</option>
+              <option value="tpl-lowvision-tactile">👁️ Low Vision &amp; Tactile Concrete Realia</option>
+              <option value="tpl-adhd-movement">⚡ ADHD &amp; Executive Function Movement-Integrated</option>
+              <option value="tpl-down-syndrome">🌟 Down Syndrome Step-by-Step Task Analysis</option>
+            </select>
+            <small style="font-size:12px;color:#0D9488;display:block;margin-top:5px;line-height:1.4;">
+              ✨ Automatically populates CBC outcomes, AAC strategies, instructional stages, and UDL accommodations.
+            </small>
+          </div>
           
           <div class="jum-form-group">
             <label for="jum-input-lesson-title" class="jum-form-label">

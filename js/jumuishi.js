@@ -2648,9 +2648,711 @@
     }
   }
 
+
+  /* ══════════════════════════════════════════════════════════════
+     10B. SPECIAL NEEDS ADAPTATION TEMPLATES ENGINE
+     Evidence-based lesson templates for Special Needs Educators (SNE)
+     integrating AAC pointing boards, physical sorting trays, and UDL
+     ══════════════════════════════════════════════════════════════ */
+
+  const TEMPLATES_STORAGE_KEY = 'jumuishi_special_needs_templates_v1';
+  let activeTemplates = [];
+  let currentEditingTemplateId = null;
+
+  function getDefaultSpecialNeedsTemplates() {
+    return [
+      {
+        id: 'tpl-nonverbal-aac',
+        title: 'Non-Verbal & AAC Multi-Modal Communication Board Template',
+        category: 'Non-Verbal & AAC',
+        badge: 'AAC Non-Verbal (FAQ #12)',
+        banner: 'aac',
+        icon: '🗣️',
+        target: 'Non-verbal learners, selective mutism, cerebral palsy, expressive language delay, autism',
+        aacTools: 'Picture Exchange (PECS), 12-cell & 24-cell pointing communication boards, concrete sorting trays, peer partner response cards, yes/no paddles, zero speech penalty rubrics',
+        outcome: 'By the end of the session, the non-verbal learner should be able to demonstrate understanding and mastery of the target CBC concept by pointing to symbol cards, placing concrete counters onto physical sorting trays, or selecting options on an AAC board without oral speech barriers.',
+        competencies: 'Alternative Communication & Collaboration, Critical Thinking, Self-Efficacy',
+        intro: 'Visual schedule orientation with symbol cards. Teacher models target concept simultaneously using spoken words, visual picture cards, and concrete realia (bottle tops/counters). Teacher demonstrates pointing board: "When I show this symbol, it means..."',
+        guided: 'Paired exploration with a peer response buddy. Learners utilize physical cardboard sorting trays with 2 or 3 compartments. Peer partner points to card or presents physical choices; non-verbal learner places token counters or points to select the correct representation. Peer affirms with thumbs-up paddle.',
+        activity: 'Tiered multi-modal communication stations: Station A uses concrete object placement (counters into labeled sorting bowls); Station B uses a 9-symbol pictorial pointing choice board; Station C matches printed tactile icons with partner validation. Zero penalty for oral speech or writing speed.',
+        wrapup: 'Learner points to feelings board (Happy / Proud / Need Rest). Teacher celebrates collaborative success with choral class clapping and physical high-fives.',
+        tier1: 'Every spoken prompt is paired with a clear visual card or concrete object. Clear visual timetable displayed at child eye-level.',
+        tier2: 'Pre-cut 2-inch laminated symbol cards with raised border outlines; dual-option pointing choice board (Yes/No, More/Stop, Options A/B).',
+        tier3: '1-on-1 partner-assisted scanning (teacher or peer holds pointing board and points sequentially until learner blinks, nods, or taps); eye-gaze board option; sensory calming weighted lap pad.',
+        materials: 'Laminated AAC pointing boards, picture symbol cards (PECS), 3-compartment sorting trays, 40 plastic bottle tops/counters, yes/no handheld response paddles'
+      },
+      {
+        id: 'tpl-autism-visual',
+        title: 'Autism Spectrum: Structured Visual Routine & Low-Arousal Sensory Template',
+        category: 'Autism Spectrum',
+        badge: 'Autism & Sensory',
+        banner: 'autism',
+        icon: '🧩',
+        target: 'Autism Spectrum Disorder (ASD), sensory processing sensitivity, executive transitions',
+        aacTools: '4-step visual schedule strip, First-Then reward card, noise-reduction headphones, transition sand timer, non-verbal quiet cards',
+        outcome: 'Learner navigates a 4-step CBC learning progression following a personal visual schedule, engaging in structured hands-on tasks with sensory self-regulation tools.',
+        competencies: 'Self-Regulation, Critical Thinking, Digital & Visual Literacy',
+        intro: 'Review personal First-Then schedule board ("First: Number sorting, Then: Sensory drawing"). Check-in with emotion thermometer. Provide 2-minute chime warning before instruction starts.',
+        guided: 'Structured workstation task: clear left-to-right box system (In-Box -> Work Surface -> Finished Box). Teacher provides concise 1-step directions paired with visual icons.',
+        activity: 'Independent task completion with structured boundaries. Visual timer displayed on desk. Sensory fidgets or noise-muffling earmuffs available.',
+        wrapup: 'Move all task cards to the "Finished" pocket on the visual strip. Transition to designated quiet corner with deep pressure breathing.',
+        tier1: 'Consistent predictable classroom routine, reduced visual background clutter, soft warm ambient lighting.',
+        tier2: 'Personal desk dividers to reduce distractions, textured tactile squeeze balls, color-coded task containers.',
+        tier3: 'Individual visual schedule strip with velcro symbols, choice board with 2 preferred sensory rewards, quiet sensory pod access.',
+        materials: 'Velcro visual schedule strips, First-Then boards, noise-muffling earmuffs, 5-minute visual liquid timer, task finish bins'
+      },
+      {
+        id: 'tpl-dyslexia-multi',
+        title: 'Dyslexia & Phonological Awareness: Orton-Gillingham Multisensory Template',
+        category: 'Dyslexia & Reading',
+        badge: 'Multisensory Phonics',
+        banner: 'dyslexia',
+        icon: '📖',
+        target: 'Dyslexia, dysgraphia, phonological processing difficulties, reading speed differences',
+        aacTools: 'Color-coded syllabication tiles, tactile sand/salt tracing, whisper phones for auditory feedback, text-to-speech visual highlighting',
+        outcome: 'Learner identifies, segments, and blends target phonemes and words through multi-sensory tracing and pictorial association without reading fatigue.',
+        competencies: 'Communication, Creative Thinking, Self-Efficacy',
+        intro: 'Multisensory phoneme introduction: "See it, Say it, Trace it, Feel it." Show target letter card with picture keyword. Trace letter shape in the air with full arm movements.',
+        guided: 'Sensory sand tray tracing: learners repeat the phoneme sound while tracing in fine colored sand using two index fingers. Whisper phone auditory self-monitoring.',
+        activity: 'Word building with textured wooden/plastic letter tiles. Color coding: Blue consonants, Red vowels. Partner word hunt with picture matching.',
+        wrapup: 'Sky-writing chant of the sound. Stamp book reward for active participation.',
+        tier1: 'Dyslexia-friendly high-legibility typeface, increased line and letter spacing, cream/buff background paper instead of harsh white.',
+        tier2: 'Textured sandpaper letters, plastic reading tracking rulers with highlighted guide window.',
+        tier3: 'Speech synthesis / audio narration accompaniment, oral responses accepted in place of written worksheets.',
+        materials: 'Colored sand tracing trays, sandpaper letter cards, whisper phones (PVC elbow pipes), high-contrast reading tracking rulers'
+      },
+      {
+        id: 'tpl-ksl-deaf',
+        title: 'Deaf & Hard-of-Hearing: KSL Bilingual Concept Mapping Template',
+        category: 'Hearing & Deaf',
+        badge: 'KSL Bilingual',
+        banner: 'deaf',
+        icon: '🤟',
+        target: 'Deaf learners, hard of hearing, KSL users, bilingual Kenyan classrooms',
+        aacTools: 'Kenyan Sign Language (KSL) fingerspelling charts, visual video clips, pictorial concept maps, signing peer buddies, vibrating timers',
+        outcome: 'Learner demonstrates and explains target CBC curriculum concepts bilingually using Kenyan Sign Language signs and visual pictorial organizers.',
+        competencies: 'Communication (KSL & Written), Digital Literacy, Social Inclusion',
+        intro: 'Horseshoe classroom seating ensuring unobstructed line of sight. Teacher gains visual attention via light flicker or gentle floor tap. Introduce concept in KSL with expressive facial grammar.',
+        guided: 'Teacher signs concept alongside high-contrast photographic anchor charts. Paired signing practice with peer learning partner.',
+        activity: 'Learners assemble pictorial concept maps with KSL sign diagrams and English/Kiswahili labels. Presentation in small signing groups.',
+        wrapup: 'Signing celebration: class raises hands and twists wrists (KSL visual applause) for all participants.',
+        tier1: 'Unobstructed sightlines, teacher faces class directly when communicating, captioned digital media.',
+        tier2: 'Pre-printed KSL vocabulary guides with finger-spelling charts, bilingual glossaries with color pictures.',
+        tier3: 'Dedicated KSL interpreter / shadow teacher, tactile vibrating cues for lesson transitions, individual visual flashcards.',
+        materials: 'KSL fingerspelling flashcards, bilingual picture charts, printed graphic organizers, visual transition beacon/light'
+      },
+      {
+        id: 'tpl-lowvision-tactile',
+        title: 'Low Vision & Blindness: Raised Tactile Realia & Auditory Description Template',
+        category: 'Visual Impairments',
+        badge: 'Tactile & Auditory',
+        banner: 'vision',
+        icon: '👁️',
+        target: 'Low vision, albinism, total blindness, cortical visual impairment (CVI)',
+        aacTools: 'Tactile raised-line graphics, 3D Kenyan realia, Braille tiles, 24pt bold yellow-on-black cards, descriptive audio narration',
+        outcome: 'Learner explores and masters key mathematical or scientific properties through tactile discrimination, auditory descriptions, and 3D concrete realia.',
+        competencies: 'Spatial Reasoning, Critical Thinking, Tactile-Kinesthetic Literacy',
+        intro: 'Detailed descriptive auditory orientation ("I am holding a real wooden block with 6 smooth square faces"). Allow learners to explore with both hands.',
+        guided: 'Hands-on tactile exploration in pairs. Learners use raised-line mats or tactile number lines with distinct tactile notches every 5 units.',
+        activity: 'Construct shapes or count sets using real Kenyan materials (beans, bottle tops, clay models, carved wooden blocks). Verbal description checks.',
+        wrapup: 'Oral auditory summary and tactile puzzle completion celebration.',
+        tier1: '24pt+ bold fonts, high-contrast yellow text on black background, uncluttered physical table layout.',
+        tier2: 'Handheld illuminated magnifying glasses, tactile boundary trays preventing materials from rolling off tables.',
+        tier3: 'Perkins Braille embossed worksheets, audio recorded instructions with pause buttons, 1-on-1 tactile guiding.',
+        materials: 'Raised-line drawing boards, Braille counters, 24pt high-contrast flashcards, real Kenyan beans/seeds/sticks, hand magnifiers'
+      },
+      {
+        id: 'tpl-adhd-movement',
+        title: 'ADHD & Focus: Chunked 10-Minute Movement & Gamified Station Template',
+        category: 'ADHD & Focus',
+        badge: 'Movement & Focus',
+        banner: 'adhd',
+        icon: '⚡',
+        target: 'ADHD, executive function delays, restlessness, working memory challenges',
+        aacTools: 'Kinesthetic relay stations, tactile fidget grips, visual checklist cards, gamified point tokens, active standing workstations',
+        outcome: 'Learner completes a targeted CBC inquiry through three 10-minute active learning sprints punctuated by brief physical reset intervals.',
+        competencies: 'Self-Regulation, Critical Thinking, Physical Coordination',
+        intro: 'High-energy sensory hook (action rhyme or quick clapping pattern). Reveal the "3-Mission Checklist" for today\'s lesson with clear token rewards.',
+        guided: 'Active Station 1 (Sprint 1, 10 mins): Paired sorting relay where learners walk to select physical items and place them on the team board.',
+        activity: 'Station 2 & 3 (10 mins each): Hands-on puzzle or building task. 2-minute "Brain Gym" cross-lateral stretch interval between sprints.',
+        wrapup: 'Check off all 3 missions on the visual board; celebrate with high-five circle.',
+        tier1: 'Allow standing while working; provide fidget bands on chair legs; clear visual checklist of 3 distinct tasks.',
+        tier2: 'Frequent positive reinforcement every 5 minutes; tactile squeeze stress balls; timers showing countdown.',
+        tier3: 'Designated movement buddy; alternate seating (exercise ball or balance wobble cushion); chunked single-item worksheets.',
+        materials: '3-Mission visual checklists, chair leg resistance bands, wobble balance cushions, handheld tactile fidgets, mission completion stamp'
+      },
+      {
+        id: 'tpl-down-syndrome',
+        title: 'Down Syndrome: Step-by-Step Task Analysis & Multi-Sensory Reinforcement Template',
+        category: 'Down Syndrome',
+        badge: 'Task Analysis',
+        banner: 'down',
+        icon: '🌟',
+        target: 'Down syndrome, intellectual differences, developmental delays, fine-motor challenges',
+        aacTools: 'Bite-sized task analysis photo strips, errorless learning options, thick-grip adapted handles, verbal & gestural positive praise',
+        outcome: 'Learner successfully executes a functional CBC learning task through step-by-step photographic scaffolding and concrete realia with high visual praise.',
+        competencies: 'Self-Efficacy, Daily Living Skills, Collaboration',
+        intro: 'Cheerful greeting with picture name tags. Teacher presents the single concrete outcome using a completed exemplar model that learners can touch.',
+        guided: 'Step 1 demonstrated with "Watch me first." Learner mirrors step immediately with physical hand-over-hand or shadow teacher assist. Enthusiastic verbal praise.',
+        activity: 'Learner completes Steps 2 & 3 using adapted tools (jumbo crayons, thick-knob puzzle pieces, sorting bowls with non-slip bases).',
+        wrapup: 'Showcasing the completed work to peers; celebratory sticker placement on personal achievement chart.',
+        tier1: 'Bite-sized instructions with maximum 1 directive at a time; generous processing wait time (10-15 seconds) before repeating prompts.',
+        tier2: 'Adapted tools with thick silicone grips; photographic step-by-step cards showing each action.',
+        tier3: '1-on-1 peer buddy assistance; errorless learning trays where only correct choices physically fit.',
+        materials: 'Photo sequence cards, thick-grip adapted writing tools, non-slip sorting bowls, visual achievement sticker chart'
+      }
+    ];
+  }
+
+  function loadTemplates() {
+    try {
+      const saved = localStorage.getItem(TEMPLATES_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          activeTemplates = parsed;
+          updateTemplateBadges();
+          return;
+        }
+      }
+    } catch (err) {
+      console.warn('Could not parse saved templates from localStorage', err);
+    }
+    activeTemplates = getDefaultSpecialNeedsTemplates();
+    saveTemplates(activeTemplates);
+  }
+
+  function saveTemplates(templates) {
+    try {
+      localStorage.setItem(TEMPLATES_STORAGE_KEY, JSON.stringify(templates));
+    } catch (err) {
+      console.error('Failed to save templates to localStorage', err);
+    }
+    updateTemplateBadges();
+  }
+
+  function updateTemplateBadges() {
+    const countBadge = document.getElementById('jum-tab-count-templates');
+    if (countBadge) countBadge.textContent = activeTemplates.length;
+
+    // Also populate the template picker inside #jum-modal-lesson
+    populateLessonTemplatePicker();
+  }
+
+  function populateLessonTemplatePicker() {
+    const picker = document.getElementById('jum-lesson-template-picker');
+    if (!picker) return;
+
+    const currentVal = picker.value;
+    picker.innerHTML = '<option value="">-- Choose a Special Needs Template to Auto-Fill --</option>';
+
+    activeTemplates.forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = t.id;
+      opt.textContent = `${t.icon || '📋'} ${t.title}`;
+      picker.appendChild(opt);
+    });
+
+    if (currentVal) picker.value = currentVal;
+  }
+
+  function switchStudioView(view) {
+    const tabCourses = document.getElementById('jum-tab-btn-courses');
+    const tabTemplates = document.getElementById('jum-tab-btn-templates');
+    const viewCourses = document.getElementById('jum-studio-courses-view');
+    const viewTemplates = document.getElementById('jum-studio-templates-view');
+
+    if (view === 'templates') {
+      if (tabCourses) {
+        tabCourses.classList.remove('active');
+        tabCourses.setAttribute('aria-selected', 'false');
+      }
+      if (tabTemplates) {
+        tabTemplates.classList.add('active-teal');
+        tabTemplates.setAttribute('aria-selected', 'true');
+      }
+      if (viewCourses) viewCourses.style.display = 'none';
+      if (viewTemplates) viewTemplates.style.display = 'block';
+      renderTemplatesGrid();
+      announceToScreenReader('Switched to Special Needs Adaptation Templates view.');
+    } else {
+      if (tabTemplates) {
+        tabTemplates.classList.remove('active-teal');
+        tabTemplates.setAttribute('aria-selected', 'false');
+      }
+      if (tabCourses) {
+        tabCourses.classList.add('active');
+        tabCourses.setAttribute('aria-selected', 'true');
+      }
+      if (viewTemplates) viewTemplates.style.display = 'none';
+      if (viewCourses) viewCourses.style.display = 'block';
+      announceToScreenReader('Switched to Courses & Lessons view.');
+    }
+  }
+
+  function renderTemplatesGrid(filterText = '', filterNeed = 'all') {
+    const container = document.getElementById('jum-template-cards-container');
+    const emptyState = document.getElementById('jum-template-empty-state');
+    if (!container) return;
+
+    const query = filterText.toLowerCase().trim();
+
+    const filtered = activeTemplates.filter(t => {
+      // Need/Category filter
+      if (filterNeed !== 'all') {
+        const cat = (t.category || '').toLowerCase();
+        const bdg = (t.badge || '').toLowerCase();
+        const fn = filterNeed.toLowerCase();
+        if (!cat.includes(fn) && !bdg.includes(fn)) return false;
+      }
+      // Text search query
+      if (query) {
+        const matchTitle = (t.title || '').toLowerCase().includes(query);
+        const matchAac = (t.aacTools || '').toLowerCase().includes(query);
+        const matchTarget = (t.target || '').toLowerCase().includes(query);
+        const matchOutcome = (t.outcome || '').toLowerCase().includes(query);
+        const matchCat = (t.category || '').toLowerCase().includes(query);
+        if (!matchTitle && !matchAac && !matchTarget && !matchOutcome && !matchCat) return false;
+      }
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      container.innerHTML = '';
+      if (emptyState) emptyState.style.display = 'block';
+      return;
+    }
+
+    if (emptyState) emptyState.style.display = 'none';
+
+    container.innerHTML = filtered.map(t => {
+      const bannerClass = t.banner || 'aac';
+      const icon = t.icon || '📋';
+      const isCustom = !t.id.startsWith('tpl-');
+
+      return `
+        <article class="jum-template-card" data-template-id="${escapeHtml(t.id)}">
+          <div class="jum-template-banner ${escapeHtml(bannerClass)}">
+            <span style="font-size:24px;" aria-hidden="true">${escapeHtml(icon)}</span>
+            <span class="jum-template-badge" style="background:rgba(255,255,255,0.22);color:#fff;border-color:rgba(255,255,255,0.35);font-size:11.5px;">
+              ${escapeHtml(t.badge || t.category || 'Special Needs')}
+            </span>
+          </div>
+
+          <div class="jum-template-card-body">
+            <h4 class="jum-template-title">${escapeHtml(t.title)}</h4>
+
+            <!-- AAC Highlights Box (FAQ 12) -->
+            <div class="jum-template-aac-box">
+              <strong>🗣️ AAC &amp; Assistive Tools:</strong>
+              ${escapeHtml(t.aacTools || 'Multi-modal pointing board, sorting trays, peer partner support.')}
+            </div>
+
+            <p style="font-size:13.5px;color:#475569;line-height:1.55;margin:0;">
+              <strong>Target Learner:</strong> ${escapeHtml(t.target || 'Diverse educational needs')}
+            </p>
+
+            <div style="font-size:13px;color:#334155;background:#F8FAFC;padding:10px 12px;border-radius:10px;border:1px solid #E2E8F0;">
+              <strong>CBC Goal:</strong> ${escapeHtml(t.outcome ? t.outcome.substring(0, 110) + '...' : 'CBC competency mastery through differentiated concrete realia.')}
+            </div>
+
+            <div class="jum-template-meta-row">
+              <span class="jum-template-badge">📦 Realia: ${escapeHtml(t.materials ? t.materials.split(',')[0] : 'Kenyan Realia')}</span>
+              <span class="jum-template-badge">🎯 4-Stage Pathway</span>
+              <span class="jum-template-badge">🛡️ 3 UDL Tiers</span>
+            </div>
+          </div>
+
+          <div class="jum-template-footer">
+            <div style="display:flex;gap:6px;">
+              <button type="button" class="jum-template-btn primary btn-use-template" data-template-id="${escapeHtml(t.id)}" title="Pre-fill a new lesson with this template">
+                <span>➕</span> Use in Lesson
+              </button>
+              <button type="button" class="jum-template-btn outline-teal btn-preview-template" data-template-id="${escapeHtml(t.id)}" title="Preview full printable adaptation guide">
+                <span>📖</span> Guide
+              </button>
+            </div>
+            <div style="display:flex;gap:4px;">
+              <button type="button" class="jum-template-btn secondary btn-edit-template" data-template-id="${escapeHtml(t.id)}" title="Edit and customize this template">
+                <span>✏️</span>
+              </button>
+              ${isCustom ? `
+                <button type="button" class="jum-template-btn secondary btn-delete-template" data-template-id="${escapeHtml(t.id)}" title="Delete this custom template" style="color:#DC2626;border-color:#FCA5A5;">
+                  <span>🗑️</span>
+                </button>
+              ` : ''}
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    // Attach button events
+    container.querySelectorAll('.btn-use-template').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-template-id');
+        useTemplateInLesson(id);
+      });
+    });
+
+    container.querySelectorAll('.btn-preview-template').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-template-id');
+        previewTemplateGuide(id);
+      });
+    });
+
+    container.querySelectorAll('.btn-edit-template').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-template-id');
+        openTemplateModal(id);
+      });
+    });
+
+    container.querySelectorAll('.btn-delete-template').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-template-id');
+        deleteTemplate(id);
+      });
+    });
+  }
+
+  function openTemplateModal(templateId = null) {
+    currentEditingTemplateId = templateId;
+    const modal = document.getElementById('jum-modal-template');
+    const headingText = document.getElementById('jum-modal-template-heading-text');
+    const inputId = document.getElementById('jum-input-template-id');
+    const inputTitle = document.getElementById('jum-input-template-title');
+    const inputCategory = document.getElementById('jum-input-template-category');
+    const inputBanner = document.getElementById('jum-input-template-banner');
+    const inputTarget = document.getElementById('jum-input-template-target');
+    const inputAac = document.getElementById('jum-input-template-aac');
+    const inputOutcome = document.getElementById('jum-input-template-outcome');
+    const inputIntro = document.getElementById('jum-input-template-intro');
+    const inputGuided = document.getElementById('jum-input-template-guided');
+    const inputActivity = document.getElementById('jum-input-template-activity');
+    const inputWrapup = document.getElementById('jum-input-template-wrapup');
+    const inputTier1 = document.getElementById('jum-input-template-tier1');
+    const inputTier2 = document.getElementById('jum-input-template-tier2');
+    const inputTier3 = document.getElementById('jum-input-template-tier3');
+    const inputMaterials = document.getElementById('jum-input-template-materials');
+
+    if (!modal) return;
+
+    if (templateId) {
+      const t = activeTemplates.find(item => item.id === templateId);
+      if (!t) return;
+
+      if (headingText) headingText.textContent = `Edit Template (${t.title})`;
+      if (inputId) inputId.value = t.id;
+      if (inputTitle) inputTitle.value = t.title || '';
+      if (inputCategory) inputCategory.value = t.category || 'Non-Verbal & AAC';
+      if (inputBanner) inputBanner.value = t.banner || 'aac';
+      if (inputTarget) inputTarget.value = t.target || '';
+      if (inputAac) inputAac.value = t.aacTools || '';
+      if (inputOutcome) inputOutcome.value = t.outcome || '';
+      if (inputIntro) inputIntro.value = t.intro || '';
+      if (inputGuided) inputGuided.value = t.guided || '';
+      if (inputActivity) inputActivity.value = t.activity || '';
+      if (inputWrapup) inputWrapup.value = t.wrapup || '';
+      if (inputTier1) inputTier1.value = t.tier1 || '';
+      if (inputTier2) inputTier2.value = t.tier2 || '';
+      if (inputTier3) inputTier3.value = t.tier3 || '';
+      if (inputMaterials) inputMaterials.value = t.materials || '';
+    } else {
+      if (headingText) headingText.textContent = 'Create Special Needs Adaptation Template';
+      if (inputId) inputId.value = '';
+      if (inputTitle) inputTitle.value = '';
+      if (inputCategory) inputCategory.value = 'Non-Verbal & AAC';
+      if (inputBanner) inputBanner.value = 'aac';
+      if (inputTarget) inputTarget.value = '';
+      if (inputAac) inputAac.value = 'Picture symbol cards (PECS), pointing communication boards, physical sorting trays, peer partner response';
+      if (inputOutcome) inputOutcome.value = '';
+      if (inputIntro) inputIntro.value = '';
+      if (inputGuided) inputGuided.value = '';
+      if (inputActivity) inputActivity.value = '';
+      if (inputWrapup) inputWrapup.value = '';
+      if (inputTier1) inputTier1.value = '';
+      if (inputTier2) inputTier2.value = '';
+      if (inputTier3) inputTier3.value = '';
+      if (inputMaterials) inputMaterials.value = '';
+    }
+
+    modal.classList.add('active');
+  }
+
+  function closeTemplateModal() {
+    const modal = document.getElementById('jum-modal-template');
+    if (modal) modal.classList.remove('active');
+    currentEditingTemplateId = null;
+  }
+
+  function handleTemplateFormSubmit(e) {
+    e.preventDefault();
+    const id = document.getElementById('jum-input-template-id')?.value;
+    const title = document.getElementById('jum-input-template-title')?.value.trim();
+    const category = document.getElementById('jum-input-template-category')?.value;
+    const banner = document.getElementById('jum-input-template-banner')?.value;
+    const target = document.getElementById('jum-input-template-target')?.value.trim();
+    const aacTools = document.getElementById('jum-input-template-aac')?.value.trim();
+    const outcome = document.getElementById('jum-input-template-outcome')?.value.trim();
+    const intro = document.getElementById('jum-input-template-intro')?.value.trim();
+    const guided = document.getElementById('jum-input-template-guided')?.value.trim();
+    const activity = document.getElementById('jum-input-template-activity')?.value.trim();
+    const wrapup = document.getElementById('jum-input-template-wrapup')?.value.trim();
+    const tier1 = document.getElementById('jum-input-template-tier1')?.value.trim();
+    const tier2 = document.getElementById('jum-input-template-tier2')?.value.trim();
+    const tier3 = document.getElementById('jum-input-template-tier3')?.value.trim();
+    const materials = document.getElementById('jum-input-template-materials')?.value.trim();
+
+    if (!title) {
+      showToast('Please enter a template title.', 'error');
+      return;
+    }
+
+    const iconMap = {
+      'Non-Verbal & AAC': '🗣️',
+      'Autism Spectrum': '🧩',
+      'Dyslexia & Reading': '📖',
+      'Hearing & Deaf': '🤟',
+      'Visual Impairments': '👁️',
+      'ADHD & Focus': '⚡',
+      'Down Syndrome': '🌟',
+      'Physical & Motor': '♿'
+    };
+
+    if (id) {
+      // Edit existing
+      const t = activeTemplates.find(item => item.id === id);
+      if (t) {
+        t.title = title;
+        t.category = category;
+        t.badge = category;
+        t.banner = banner;
+        t.icon = iconMap[category] || '📋';
+        t.target = target;
+        t.aacTools = aacTools;
+        t.outcome = outcome;
+        t.intro = intro;
+        t.guided = guided;
+        t.activity = activity;
+        t.wrapup = wrapup;
+        t.tier1 = tier1;
+        t.tier2 = tier2;
+        t.tier3 = tier3;
+        t.materials = materials;
+        showToast(`Template "${title}" updated successfully!`, 'success');
+      }
+    } else {
+      // Create new
+      const newTemplate = {
+        id: `template_${Date.now()}`,
+        title: title,
+        category: category,
+        badge: category,
+        banner: banner,
+        icon: iconMap[category] || '📋',
+        target: target,
+        aacTools: aacTools,
+        outcome: outcome,
+        intro: intro,
+        guided: guided,
+        activity: activity,
+        wrapup: wrapup,
+        tier1: tier1,
+        tier2: tier2,
+        tier3: tier3,
+        materials: materials
+      };
+      activeTemplates.unshift(newTemplate);
+      showToast(`Template "${title}" created successfully!`, 'success');
+    }
+
+    saveTemplates(activeTemplates);
+    renderTemplatesGrid();
+    closeTemplateModal();
+  }
+
+  function deleteTemplate(templateId) {
+    const t = activeTemplates.find(item => item.id === templateId);
+    if (!t) return;
+
+    if (confirm(`Are you sure you want to delete the template "${t.title}"?`)) {
+      activeTemplates = activeTemplates.filter(item => item.id !== templateId);
+      saveTemplates(activeTemplates);
+      renderTemplatesGrid();
+      showToast('Template deleted successfully.', 'info');
+    }
+  }
+
+  function resetTemplatesToDefault() {
+    if (confirm('Reset all adaptation templates back to default evidence-based SNE exemplars? Custom templates will be overwritten.')) {
+      activeTemplates = getDefaultSpecialNeedsTemplates();
+      saveTemplates(activeTemplates);
+      renderTemplatesGrid();
+      showToast('Restored default Special Needs Adaptation Templates!', 'success');
+    }
+  }
+
+  function useTemplateInLesson(templateId) {
+    const t = activeTemplates.find(item => item.id === templateId);
+    if (!t) return;
+
+    // Switch to courses view and open lesson modal
+    switchStudioView('courses');
+
+    // Ensure we have a course
+    if (activeCourses.length === 0) {
+      activeCourses = getDefaultExemplarCourses();
+      saveCourses(activeCourses);
+      renderCoursesGrid();
+    }
+
+    const targetCourseId = currentViewingCourseId || activeCourses[0].id;
+    openLessonModal(targetCourseId, null);
+
+    // Auto-fill all modal inputs from template
+    const inputTitle = document.getElementById('jum-input-lesson-title');
+    const inputOutcome = document.getElementById('jum-input-lesson-outcome');
+    const inputIntro = document.getElementById('jum-input-lesson-intro');
+    const inputGuided = document.getElementById('jum-input-lesson-guided');
+    const inputActivity = document.getElementById('jum-input-lesson-activity');
+    const inputWrapup = document.getElementById('jum-input-lesson-wrapup');
+    const inputTier1 = document.getElementById('jum-input-lesson-tier1');
+    const inputTier2 = document.getElementById('jum-input-lesson-tier2');
+    const inputTier3 = document.getElementById('jum-input-lesson-tier3');
+    const inputMaterials = document.getElementById('jum-input-lesson-materials');
+    const picker = document.getElementById('jum-lesson-template-picker');
+
+    if (picker) picker.value = t.id;
+    if (inputTitle) inputTitle.value = `[Inclusive Lesson] ${t.title.replace(' Template', '')}`;
+    if (inputOutcome) inputOutcome.value = t.outcome || '';
+    if (inputIntro) inputIntro.value = t.intro || '';
+    if (inputGuided) inputGuided.value = t.guided || '';
+    if (inputActivity) inputActivity.value = t.activity || '';
+    if (inputWrapup) inputWrapup.value = t.wrapup || '';
+    if (inputTier1) inputTier1.value = t.tier1 || '';
+    if (inputTier2) inputTier2.value = t.tier2 || '';
+    if (inputTier3) inputTier3.value = t.tier3 || '';
+    if (inputMaterials) inputMaterials.value = t.materials || '';
+
+    showToast(`Loaded "${t.title}" into lesson editor!`, 'success');
+    announceToScreenReader(`Template ${t.title} loaded into lesson editor.`);
+  }
+
+  function previewTemplateGuide(templateId) {
+    const t = activeTemplates.find(item => item.id === templateId);
+    if (!t) return;
+
+    const modal = document.getElementById('jum-modal-template-view');
+    const content = document.getElementById('jum-template-view-content');
+    if (!modal || !content) return;
+
+    content.innerHTML = `
+      <div class="jum-guide-document" style="font-family:var(--font-body);color:#1E293B;line-height:1.65;">
+        
+        <!-- Header Strip -->
+        <div style="border-bottom:2px solid #0D9488;padding-bottom:16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div>
+            <span style="font-size:12px;font-weight:800;color:#0D9488;text-transform:uppercase;letter-spacing:1px;background:#F0FDFA;padding:4px 10px;border-radius:6px;border:1px solid #99F6E4;">
+              Jumuishi SNE Adaptation Guide &bull; Kenya CBC Aligned
+            </span>
+            <h2 style="font-family:var(--font-heading);font-size:24px;font-weight:800;color:#0F172A;margin:10px 0 4px;">
+              ${escapeHtml(t.title)}
+            </h2>
+            <p style="font-size:14px;color:#475569;margin:0;">
+              <strong>Special Need Category:</strong> ${escapeHtml(t.category)} &bull; 
+              <strong>Target Profile:</strong> ${escapeHtml(t.target)}
+            </p>
+          </div>
+          <div style="text-align:right;">
+            <span style="font-size:28px;" aria-hidden="true">${escapeHtml(t.icon || '📋')}</span>
+          </div>
+        </div>
+
+        <!-- AAC & Communication Highlight Box (FAQ 12) -->
+        <div style="background:#F0FDFA;border:1.5px solid #99F6E4;border-radius:14px;padding:18px 22px;margin-bottom:24px;">
+          <h4 style="font-family:var(--font-heading);font-size:16px;font-weight:800;color:#0F766E;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+            <span>🗣️</span> Augmentative &amp; Alternative Communication (AAC) Integration (FAQ #12)
+          </h4>
+          <p style="font-size:14px;color:#134E4A;margin:0;line-height:1.6;">
+            ${escapeHtml(t.aacTools)}
+          </p>
+          <div style="margin-top:10px;padding-top:10px;border-top:1px dashed #99F6E4;font-size:12.5px;color:#0F766E;">
+            <strong>Pedagogical Principle:</strong> In accordance with Kenya Ministry of Education Special Needs Education Policy, learners with speech/language barriers demonstrate competency through pointing, placing physical counters, or picture selection with zero penalty for oral communication speed.
+          </div>
+        </div>
+
+        <!-- CBC Learning Outcome -->
+        <div class="jum-resource-section">
+          <div class="jum-resource-section-title" style="font-size:16px;">
+            <span>🎯</span> Differentiated Competency-Based Learning Outcome
+          </div>
+          <div class="jum-resource-section-body" style="font-size:14px;">
+            <p>${escapeHtml(t.outcome)}</p>
+          </div>
+        </div>
+
+        <!-- 4-Stage Pathway -->
+        <div class="jum-resource-section">
+          <div class="jum-resource-section-title" style="font-size:16px;">
+            <span>🪜</span> 4-Stage Instructional Pathway
+          </div>
+          <div class="jum-resource-section-body" style="font-size:14px;">
+            <div style="margin-bottom:12px;">
+              <strong>Stage 1: Welcoming Sensory &amp; AAC Orientation:</strong><br>
+              ${escapeHtml(t.intro)}
+            </div>
+            <div style="margin-bottom:12px;">
+              <strong>Stage 2: Concrete Guided Exploration &amp; Peer Buddy Inquiry:</strong><br>
+              ${escapeHtml(t.guided)}
+            </div>
+            <div style="margin-bottom:12px;">
+              <strong>Stage 3: Differentiated &amp; Multimodal Independent Activity:</strong><br>
+              ${escapeHtml(t.activity)}
+            </div>
+            <div>
+              <strong>Stage 4: Formative Reflection &amp; De-escalation:</strong><br>
+              ${escapeHtml(t.wrapup)}
+            </div>
+          </div>
+        </div>
+
+        <!-- UDL Multi-Tier Accommodations -->
+        <div class="jum-resource-section">
+          <div class="jum-resource-section-title" style="font-size:16px;">
+            <span>🛡️</span> Multi-Tiered Universal Design for Learning (UDL)
+          </div>
+          <div class="jum-resource-section-body" style="font-size:14px;">
+            <ul>
+              <li><strong>Tier 1 (Universal for Whole Class):</strong> ${escapeHtml(t.tier1)}</li>
+              <li><strong>Tier 2 (Targeted Scaffolding):</strong> ${escapeHtml(t.tier2)}</li>
+              <li><strong>Tier 3 (Intensive Specialized AAC):</strong> ${escapeHtml(t.tier3)}</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Realia & Materials -->
+        <div class="jum-resource-section">
+          <div class="jum-resource-section-title" style="font-size:16px;">
+            <span>📦</span> Low-Cost Kenyan Realia &amp; Assistive Tools
+          </div>
+          <div class="jum-resource-section-body" style="font-size:14px;">
+            <p>${escapeHtml(t.materials)}</p>
+          </div>
+        </div>
+
+      </div>
+    `;
+
+    modal.classList.add('active');
+  }
+
+
   function initCourseStudio() {
     loadCourses();
     renderCoursesGrid();
+    loadTemplates();
 
     // Studio Toolbar buttons
     const btnCreateCourse = document.getElementById('jum-btn-create-course');
@@ -2664,6 +3366,99 @@
     if (btnResetExemplars) btnResetExemplars.addEventListener('click', resetExemplars);
     if (btnEmptyCreate) btnEmptyCreate.addEventListener('click', () => openCourseModal(null));
     if (btnEmptyReset) btnEmptyReset.addEventListener('click', resetExemplars);
+
+    // ── Special Needs Templates View & Event Listeners ──
+    const tabBtnCourses = document.getElementById('jum-tab-btn-courses');
+    const tabBtnTemplates = document.getElementById('jum-tab-btn-templates');
+    if (tabBtnCourses) tabBtnCourses.addEventListener('click', () => switchStudioView('courses'));
+    if (tabBtnTemplates) tabBtnTemplates.addEventListener('click', () => switchStudioView('templates'));
+
+    // Create Template buttons
+    const btnCreateTplHead = document.getElementById('jum-btn-create-template');
+    const btnCreateTplBar = document.getElementById('jum-btn-create-template-bar');
+    const btnEmptyTplCreate = document.getElementById('jum-btn-empty-template-create');
+    if (btnCreateTplHead) btnCreateTplHead.addEventListener('click', () => openTemplateModal(null));
+    if (btnCreateTplBar) btnCreateTplBar.addEventListener('click', () => openTemplateModal(null));
+    if (btnEmptyTplCreate) btnEmptyTplCreate.addEventListener('click', () => openTemplateModal(null));
+
+    // Reset Templates
+    const btnResetTpl = document.getElementById('jum-btn-reset-templates');
+    const btnEmptyTplReset = document.getElementById('jum-btn-empty-template-reset');
+    if (btnResetTpl) btnResetTpl.addEventListener('click', resetTemplatesToDefault);
+    if (btnEmptyTplReset) btnEmptyTplReset.addEventListener('click', resetTemplatesToDefault);
+
+    // SNE Guide info button
+    const btnSneInfo = document.getElementById('jum-btn-templates-guide-info');
+    if (btnSneInfo) {
+      btnSneInfo.addEventListener('click', () => {
+        showToast('Aligned with Ministry of Education Special Needs Education Policy & KICD CBC designs.', 'info');
+      });
+    }
+
+    // Templates search and filter
+    const inputTplSearch = document.getElementById('jum-template-search');
+    const selectTplNeed = document.getElementById('jum-template-filter-need');
+    function applyTemplateFilters() {
+      renderTemplatesGrid(inputTplSearch ? inputTplSearch.value : '', selectTplNeed ? selectTplNeed.value : 'all');
+    }
+    if (inputTplSearch) inputTplSearch.addEventListener('input', applyTemplateFilters);
+    if (selectTplNeed) selectTplNeed.addEventListener('change', applyTemplateFilters);
+
+    // Template Creator Modal Form & Close
+    const formTemplate = document.getElementById('jum-form-template');
+    const btnTemplateClose = document.getElementById('jum-btn-template-modal-close');
+    const btnTemplateCancel = document.getElementById('jum-btn-template-modal-cancel');
+    if (formTemplate) formTemplate.addEventListener('submit', handleTemplateFormSubmit);
+    if (btnTemplateClose) btnTemplateClose.addEventListener('click', closeTemplateModal);
+    if (btnTemplateCancel) btnTemplateCancel.addEventListener('click', closeTemplateModal);
+
+    // Template View Modal Close & Print
+    const btnTplViewClose = document.getElementById('jum-btn-template-view-close');
+    const btnTplViewPrint = document.getElementById('jum-btn-print-template-doc');
+    if (btnTplViewClose) btnTplViewClose.addEventListener('click', () => {
+      const m = document.getElementById('jum-modal-template-view');
+      if (m) m.classList.remove('active');
+    });
+    if (btnTplViewPrint) btnTplViewPrint.addEventListener('click', () => {
+      window.print();
+    });
+
+    // Quick-load template picker inside #jum-modal-lesson
+    const lessonTplPicker = document.getElementById('jum-lesson-template-picker');
+    if (lessonTplPicker) {
+      lessonTplPicker.addEventListener('change', (e) => {
+        const val = e.target.value;
+        if (!val) return;
+        const tpl = activeTemplates.find(t => t.id === val);
+        if (tpl) {
+          const inputTitle = document.getElementById('jum-input-lesson-title');
+          const inputOutcome = document.getElementById('jum-input-lesson-outcome');
+          const inputIntro = document.getElementById('jum-input-lesson-intro');
+          const inputGuided = document.getElementById('jum-input-lesson-guided');
+          const inputActivity = document.getElementById('jum-input-lesson-activity');
+          const inputWrapup = document.getElementById('jum-input-lesson-wrapup');
+          const inputTier1 = document.getElementById('jum-input-lesson-tier1');
+          const inputTier2 = document.getElementById('jum-input-lesson-tier2');
+          const inputTier3 = document.getElementById('jum-input-lesson-tier3');
+          const inputMaterials = document.getElementById('jum-input-lesson-materials');
+
+          if (inputTitle && (!inputTitle.value || inputTitle.value.startsWith('[Inclusive Lesson]'))) {
+            inputTitle.value = `[Inclusive Lesson] ${tpl.title.replace(' Template', '')}`;
+          }
+          if (inputOutcome) inputOutcome.value = tpl.outcome || '';
+          if (inputIntro) inputIntro.value = tpl.intro || '';
+          if (inputGuided) inputGuided.value = tpl.guided || '';
+          if (inputActivity) inputActivity.value = tpl.activity || '';
+          if (inputWrapup) inputWrapup.value = tpl.wrapup || '';
+          if (inputTier1) inputTier1.value = tpl.tier1 || '';
+          if (inputTier2) inputTier2.value = tpl.tier2 || '';
+          if (inputTier3) inputTier3.value = tpl.tier3 || '';
+          if (inputMaterials) inputMaterials.value = tpl.materials || '';
+
+          showToast(`Auto-filled lesson plan with ${tpl.title}!`, 'success');
+        }
+      });
+    }
 
     // Search and filter listeners
     const searchInput = document.getElementById('jum-course-search');
