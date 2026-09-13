@@ -35,11 +35,10 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 clamp(10px, 1.2vw, 24px);
-  gap: clamp(8px, 0.8vw, 14px);
-  overflow: hidden;
+  padding: 0 clamp(12px, 1.6vw, 32px);
+  gap: clamp(8px, 1vw, 20px);
 }
 
 /* ── Brand Logo & Text Lockup ── */
@@ -127,13 +126,13 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: clamp(1px, 0.25vw, 5px);
+  justify-content: center;
+  gap: clamp(2px, 0.45vw, 8px);
   list-style: none;
   margin: 0;
   padding: 0;
   flex: 1 1 auto;
   min-width: 0;
-  justify-content: center;
 }
 
 .nav-link {
@@ -171,25 +170,25 @@
 .nav-link[data-nav="contact"]:hover { background: var(--primary-color-bg); color: var(--primary-color) !important; }
 
 /* Active Menu State */
+/* Modern Active Menu State - Clean Executive Pill */
 .nav-link.active {
   color: var(--primary-color) !important;
-  background: var(--primary-color-bg);
-  border: 1px solid rgba(33, 69, 230, 0.20);
+  background: rgba(33, 69, 230, 0.08) !important;
+  border: none !important;
   font-weight: 750;
-  box-shadow: 0 2px 8px rgba(33, 69, 230, 0.08);
+  box-shadow: none !important;
+  border-radius: 8px;
+}
+
+.nav-link.active[data-nav="jumuishi"],
+a[href*="jumuishi"].nav-link.active {
+  color: #0D9488 !important;
+  background: rgba(13, 148, 136, 0.10) !important;
+  border: none !important;
 }
 
 .nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 18px;
-  height: 3px;
-  background: linear-gradient(90deg, #2145E6, #3C3DDC);
-  border-radius: 999px;
-  box-shadow: 0 0 8px rgba(33, 69, 230, 0.6);
+  display: none !important;
 }
 
 /* ── Catchy Micro-Badges on Nav Items ── */
@@ -1596,49 +1595,73 @@
   .nav-link { font-size: 12.5px; padding: 5px 7px; }
 }
 
-/* ── Medium desktop: compress spacing, hide Get Started ── */
-@media (max-width: 1280px) {
+/* ── Compact desktop (1120px to 1360px): Fit all 10 links + full brand + CTA button cleanly ── */
+@media (max-width: 1360px) {
   .navbar .container {
-    max-width: 100%;
-    padding: 0 14px;
-    gap: 6px;
+    padding: 0 16px;
+    gap: 8px;
   }
-  /* Hide brand text — saves ~110px; logo still shows */
-  .nav-brand-text-box { display: none; }
+  .nav-brand-text-box {
+    display: inline-flex !important;
+  }
+  .nav-brand-title {
+    font-size: 1.18rem !important;
+  }
+  .nav-brand-subtitle {
+    font-size: 0.58rem !important;
+    letter-spacing: 1.8px !important;
+  }
   .nav-brand-logo {
-    height: 38px;
-    max-width: 42px;
+    height: 36px;
+    max-width: 40px;
   }
-  .nav-links { gap: 1px; }
-  .nav-link {
-    font-size: 11.5px;
-    padding: 5px 5px;
+  .nav-links {
     gap: 2px;
   }
-  .nav-badge { font-size: 7.5px; padding: 1px 4px; }
-  .nav-actions { gap: 5px; }
-  /* Hide Get Started CTA — Sign In stays */
-  .nav-actions .btn-primary { display: none; }
+  .nav-link {
+    font-size: 12px;
+    padding: 6px 7px;
+    height: 36px;
+  }
+  /* Hide the text chips on intermediate desktop to save ~160px width so all 10 links fit effortlessly */
+  .nav-badge,
+  .nav-badge-jum {
+    display: none !important;
+  }
+  .nav-actions {
+    gap: 8px;
+  }
+  .nav-actions .btn-primary {
+    display: inline-flex !important;
+    padding: 7px 14px;
+    font-size: 12.5px;
+    min-height: 36px;
+  }
   .navbar .btn-outline,
   .nav-actions .btn-outline {
-    padding: 5px 11px;
+    padding: 6px 12px;
     font-size: 12px;
+    min-height: 36px;
   }
 }
 
-/* ── Small desktop / large tablet: hamburger takes over ── */
-@media (max-width: 1060px) {
+/* ── Tablet & Small Desktop (<= 1120px): Clean Hamburger Transition ── */
+@media (max-width: 1120px) {
   .nav-links { display: none !important; }
   .nav-hamburger { display: flex !important; }
-  /* Restore Get Started in hamburger view — only Sign In + hamburger show */
-  .nav-actions .btn-primary { display: none; }
-  .navbar .btn-outline,
-  .nav-actions .btn-outline { padding: 6px 12px; font-size: 12.5px; }
-  /* Restore brand text for the compact hamburger layout */
-  .nav-brand-text-box { display: inline-flex; }
+  .nav-brand-text-box { display: inline-flex !important; }
   .nav-brand-logo { height: 36px; max-width: 40px; }
   .nav-brand-title { font-size: 1.18rem !important; }
   .nav-brand-subtitle { font-size: 0.60rem !important; letter-spacing: 2px !important; }
+  .nav-actions .btn-primary { display: inline-flex !important; padding: 7px 14px; font-size: 12.5px; }
+  .navbar .btn-outline,
+  .nav-actions .btn-outline { padding: 6px 12px; font-size: 12px; }
+}
+
+@media (min-width: 769px) and (max-width: 1120px) {
+  .nav-hamburger { display: flex !important; }
+  .nav-links { display: none !important; }
+  .navbar .nav-actions { display: flex; }
 }
 
 
