@@ -35,10 +35,11 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: min(100% - 24px, 1440px);
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 12px;
-  gap: 8px;
+  padding: 0 clamp(10px, 1.2vw, 24px);
+  gap: clamp(8px, 0.8vw, 14px);
+  overflow: hidden;
 }
 
 /* ── Brand Logo & Text Lockup ── */
@@ -126,19 +127,21 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: clamp(2px, 0.35vw, 5px);
+  gap: clamp(1px, 0.25vw, 5px);
   list-style: none;
   margin: 0;
   padding: 0;
-  flex-shrink: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+  justify-content: center;
 }
 
 .nav-link {
   font-family: var(--font-heading);
-  font-size: clamp(12px, 0.85vw, 13.5px);
+  font-size: clamp(10.5px, 0.75vw, 13px);
   font-weight: 650;
   color: #334155 !important;
-  padding: 6px clamp(5px, 0.55vw, 9px);
+  padding: 5px clamp(4px, 0.45vw, 8px);
   border-radius: 9px;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
@@ -146,7 +149,8 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 3.5px;
+  gap: 3px;
+  flex-shrink: 0;
 }
 
 /* Specific Colourful Hover Effects */
@@ -243,8 +247,9 @@
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .navbar .btn-outline,
@@ -1581,61 +1586,61 @@
   box-shadow: 0 6px 18px rgba(33, 69, 230, 0.40);
 }
 
-/* ══════════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    RESPONSIVE NAV BREAKPOINTS — Seamless Scaling Across All Devices
-   ══════════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Large desktop: everything visible ── */
+@media (max-width: 1440px) {
+  .navbar .container { gap: 10px; padding: 0 20px; }
+  .nav-link { font-size: 12.5px; padding: 5px 7px; }
+}
+
+/* ── Medium desktop: compress spacing, hide Get Started ── */
 @media (max-width: 1280px) {
   .navbar .container {
     max-width: 100%;
     padding: 0 14px;
     gap: 6px;
   }
+  /* Hide brand text — saves ~110px; logo still shows */
+  .nav-brand-text-box { display: none; }
   .nav-brand-logo {
     height: 38px;
     max-width: 42px;
   }
-  .nav-brand-title {
-    font-size: 1.24rem !important;
-  }
-  .nav-brand-subtitle {
-    font-size: 0.60rem !important;
-    letter-spacing: 2px !important;
-  }
-  .nav-links {
+  .nav-links { gap: 1px; }
+  .nav-link {
+    font-size: 11.5px;
+    padding: 5px 5px;
     gap: 2px;
   }
-  .nav-link {
-    font-size: 12.2px;
-    padding: 5px 6px;
-    gap: 3px;
-  }
-  .nav-badge {
-    font-size: 8px;
-    padding: 1px 4px;
-  }
-  .nav-actions {
-    gap: 6px;
-  }
+  .nav-badge { font-size: 7.5px; padding: 1px 4px; }
+  .nav-actions { gap: 5px; }
+  /* Hide Get Started CTA — Sign In stays */
+  .nav-actions .btn-primary { display: none; }
   .navbar .btn-outline,
   .nav-actions .btn-outline {
-    padding: 5px 10px;
-    font-size: 12px;
-  }
-  .navbar .btn-primary,
-  .nav-actions .btn-primary {
-    padding: 6px 12px;
+    padding: 5px 11px;
     font-size: 12px;
   }
 }
 
-@media (max-width: 1140px) {
+/* ── Small desktop / large tablet: hamburger takes over ── */
+@media (max-width: 1060px) {
   .nav-links { display: none !important; }
   .nav-hamburger { display: flex !important; }
-  .nav-actions .btn-primary {
-    padding: 7px 14px;
-    font-size: 13px;
-  }
+  /* Restore Get Started in hamburger view — only Sign In + hamburger show */
+  .nav-actions .btn-primary { display: none; }
+  .navbar .btn-outline,
+  .nav-actions .btn-outline { padding: 6px 12px; font-size: 12.5px; }
+  /* Restore brand text for the compact hamburger layout */
+  .nav-brand-text-box { display: inline-flex; }
+  .nav-brand-logo { height: 36px; max-width: 40px; }
+  .nav-brand-title { font-size: 1.18rem !important; }
+  .nav-brand-subtitle { font-size: 0.60rem !important; letter-spacing: 2px !important; }
 }
+
 
 @media (max-width: 768px) {
   .navbar {
@@ -1664,11 +1669,10 @@
   }
 }
 
-/* Tablet portrait – ensure hamburger shows for nav-links hidden */
-@media (min-width: 769px) and (max-width: 1140px) {
+/* Tablet portrait – hamburger takes over below 1060px */
+@media (min-width: 769px) and (max-width: 1060px) {
   .nav-hamburger { display: flex !important; }
   .nav-links { display: none !important; }
-  /* Keep nav-actions visible on tablet */
   .navbar .nav-actions { display: flex; }
 }
 
