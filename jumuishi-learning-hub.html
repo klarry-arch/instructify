@@ -195,11 +195,11 @@
               <a href="#content-builder" class="btn-jum-primary">
                 <span aria-hidden="true">✨</span> Launch Content Builder
               </a>
-              <a href="#support-categories" class="btn-jum-secondary">
-                Explore Support Needs
+              <a href="#course-studio" class="btn-jum-secondary" style="border-color:var(--jum-teal);color:var(--jum-teal);">
+                <span aria-hidden="true">📚</span> Educator Course Studio
               </a>
-              <a href="#how-it-works" class="btn-jum-link">
-                How Jumuishi Works &darr;
+              <a href="#support-categories" class="btn-jum-link">
+                Explore Support Needs &darr;
               </a>
             </div>
 
@@ -1179,6 +1179,9 @@
 
                   <!-- Actions -->
                   <div class="jum-output-actions">
+                    <button type="button" class="jum-action-btn" id="jum-btn-save-to-course" style="background:var(--jum-teal-bg);color:var(--jum-teal-hover);border-color:var(--jum-teal-border);" aria-label="Save this generated lesson into an inclusive course">
+                      <span aria-hidden="true">🎓</span> Save to Course Studio
+                    </button>
                     <button type="button" class="jum-action-btn" id="jum-btn-copy-output" aria-label="Copy full resource text">
                       <span aria-hidden="true">📋</span> Copy
                     </button>
@@ -1233,6 +1236,162 @@
                 <span>Continue to Step 2</span> <span aria-hidden="true">&rarr;</span>
               </button>
             </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────────
+         5B. INCLUSIVE COURSE & LESSON STUDIO
+         ────────────────────────────────────────────────────────── -->
+    <section class="jum-section jum-bg-soft" id="course-studio" aria-labelledby="course-studio-heading">
+      <div class="container">
+
+        <div class="jum-section-header">
+          <span class="jum-section-eyebrow teal">Educator Workspace</span>
+          <h2 class="jum-section-title" id="course-studio-heading">
+            Inclusive Course &amp; Lesson Studio
+          </h2>
+          <p class="jum-section-subtitle">
+            Create, upload, organize, and update inclusive courses and lesson plans. Attach teaching materials, configure multi-tiered UDL accommodations, and bridge lesson plans directly from the Content Builder.
+          </p>
+        </div>
+
+        <div class="jum-studio-wrapper">
+
+          <!-- Studio Header Banner -->
+          <div class="jum-studio-header">
+            <div>
+              <h3 class="jum-studio-title">My Inclusive Teaching Curriculum</h3>
+              <p class="jum-studio-desc">
+                Organize full termly units and individualized lesson plans. All course data, lesson notes, and uploaded resources remain 100% private and stored locally in your browser.
+              </p>
+            </div>
+            <div class="jum-studio-actions">
+              <button type="button" class="btn-jum-primary-sm" id="jum-btn-create-course" style="background:#fff;color:var(--primary-color);border-color:#fff;">
+                <span aria-hidden="true">➕</span> Create New Course
+              </button>
+            </div>
+          </div>
+
+          <!-- Studio Navigation & Search Toolbar -->
+          <div class="jum-studio-mode-bar">
+            <div class="jum-studio-search-filter">
+              <div class="jum-search-input-wrap">
+                <span class="jum-search-icon" aria-hidden="true">🔍</span>
+                <input type="text" id="jum-course-search" class="jum-studio-search" placeholder="Search courses, topics, or lessons..." aria-label="Search courses and lessons">
+              </div>
+              <div class="jum-filter-select-wrap">
+                <select id="jum-course-filter-grade" class="jum-studio-select" aria-label="Filter by Grade Level">
+                  <option value="all">All Grade Levels</option>
+                  <option value="Pre-Primary">Pre-Primary (PP1 - PP2)</option>
+                  <option value="Grade 1">Grade 1</option>
+                  <option value="Grade 2">Grade 2</option>
+                  <option value="Grade 3">Grade 3</option>
+                  <option value="Grade 4">Grade 4</option>
+                  <option value="Grade 5">Grade 5</option>
+                  <option value="Grade 6">Grade 6</option>
+                  <option value="Junior Secondary">Junior Secondary (7-9)</option>
+                  <option value="Special Unit">Special Needs Unit</option>
+                </select>
+              </div>
+              <div class="jum-filter-select-wrap">
+                <select id="jum-course-filter-need" class="jum-studio-select" aria-label="Filter by Primary Support Need">
+                  <option value="all">All Support Needs</option>
+                  <option value="Autism">Autism Spectrum</option>
+                  <option value="Dyslexia">Dyslexia &amp; Reading</option>
+                  <option value="ADHD">ADHD &amp; Executive Function</option>
+                  <option value="Hearing">Hearing &amp; Deaf</option>
+                  <option value="Visual">Visual Impairments</option>
+                  <option value="Speech">Speech &amp; Communication</option>
+                  <option value="Physical">Physical &amp; Motor</option>
+                  <option value="Intellectual">Intellectual Differences</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="jum-studio-actions">
+              <button type="button" class="btn-jum-outline-sm" id="jum-btn-export-all" title="Export all courses and lessons as JSON backup">
+                <span aria-hidden="true">💾</span> Backup Data
+              </button>
+              <button type="button" class="btn-jum-outline-sm" id="jum-btn-reset-exemplars" title="Restore default CBC exemplar courses">
+                <span aria-hidden="true">🔄</span> Reset Exemplars
+              </button>
+            </div>
+          </div>
+
+          <!-- Studio Body -->
+          <div class="jum-studio-body">
+
+            <!-- Stats Bar -->
+            <div class="jum-studio-stats">
+              <div class="jum-stat-card">
+                <span class="jum-stat-num" id="jum-stat-courses-count">3</span>
+                <span class="jum-stat-label">Active Courses</span>
+              </div>
+              <div class="jum-stat-card">
+                <span class="jum-stat-num" id="jum-stat-lessons-count">9</span>
+                <span class="jum-stat-label">Inclusive Lessons</span>
+              </div>
+              <div class="jum-stat-card">
+                <span class="jum-stat-num" id="jum-stat-attachments-count">6</span>
+                <span class="jum-stat-label">Teaching Materials Attached</span>
+              </div>
+              <div class="jum-stat-card">
+                <span class="jum-stat-badge">🔒 Private &amp; Offline Ready</span>
+                <span class="jum-stat-label">Zero-PII Local Storage</span>
+              </div>
+            </div>
+
+            <!-- Lessons Drawer / Inline Viewer (Active when a course is opened) -->
+            <div class="jum-course-lessons-viewer" id="jum-course-lessons-viewer">
+              <div class="jum-viewer-header">
+                <div class="jum-viewer-title-box">
+                  <span class="jum-course-grade-badge" id="jum-viewer-course-grade" style="background:var(--primary-color);color:#fff;margin-bottom:6px;display:inline-block;">Grade 3</span>
+                  <h3 id="jum-viewer-course-title">CBC Grade 3: Inclusive Mathematics &amp; Numeracy</h3>
+                  <p id="jum-viewer-course-desc">Foundational numeracy emphasizing concrete manipulatives and multisensory representations.</p>
+                </div>
+                <div class="jum-studio-actions">
+                  <button type="button" class="btn-jum-primary-sm" id="jum-btn-viewer-add-lesson">
+                    <span aria-hidden="true">➕</span> Add New Lesson
+                  </button>
+                  <button type="button" class="btn-jum-outline-sm" id="jum-btn-viewer-edit-course">
+                    <span aria-hidden="true">✏️</span> Edit Course
+                  </button>
+                  <button type="button" class="btn-jum-outline-sm" id="jum-btn-viewer-close" title="Close lessons viewer">
+                    <span aria-hidden="true">✕</span> Close Viewer
+                  </button>
+                </div>
+              </div>
+
+              <!-- Lessons List Container -->
+              <div class="jum-lesson-list" id="jum-viewer-lessons-list">
+                <!-- Rendered dynamically by js/jumuishi.js -->
+              </div>
+            </div>
+
+            <!-- Course Cards Grid -->
+            <div class="jum-course-cards-container" id="jum-course-cards-container">
+              <!-- Rendered dynamically by js/jumuishi.js -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="jum-course-empty-state" id="jum-course-empty-state" style="display:none;">
+              <div class="jum-empty-icon" aria-hidden="true">📚</div>
+              <h3>No Courses Found</h3>
+              <p>No courses match your current search or filter criteria. Create your first course or reset to default exemplars.</p>
+              <div style="display:flex;justify-content:center;gap:12px;">
+                <button type="button" class="btn-jum-primary-sm" id="jum-btn-empty-create">
+                  <span aria-hidden="true">➕</span> Create Course
+                </button>
+                <button type="button" class="btn-jum-outline-sm" id="jum-btn-empty-reset">
+                  <span aria-hidden="true">🔄</span> Load Sample Courses
+                </button>
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -2531,6 +2690,313 @@
 
     </div>
   </footer>
+
+  <!-- ══════════════════════════════════════════════════════════
+       COURSE & LESSON STUDIO MODALS
+       ══════════════════════════════════════════════════════════ -->
+
+  <!-- Modal 1: Create / Edit Course -->
+  <div class="jum-modal-overlay" id="jum-modal-course" role="dialog" aria-modal="true" aria-labelledby="jum-modal-course-title">
+    <div class="jum-modal">
+      <div class="jum-modal-header">
+        <h3 class="jum-modal-title" id="jum-modal-course-title">
+          <span aria-hidden="true">📚</span> <span id="jum-modal-course-heading-text">Create Inclusive Course</span>
+        </h3>
+        <button type="button" class="jum-modal-close-btn" id="jum-btn-course-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <form id="jum-form-course">
+        <input type="hidden" id="jum-input-course-id" value="">
+        <div class="jum-modal-body">
+          
+          <div class="jum-form-group">
+            <label for="jum-input-course-title" class="jum-form-label">
+              Course / Unit Title <span class="required" style="color:var(--error-color);">*</span>
+            </label>
+            <input type="text" id="jum-input-course-title" class="jum-form-input" placeholder="e.g. CBC Grade 3: Inclusive Mathematics & Numeracy" required>
+          </div>
+
+          <div class="jum-form-row-2">
+            <div class="jum-form-group">
+              <label for="jum-input-course-grade" class="jum-form-label">
+                Grade Cohort <span class="required" style="color:var(--error-color);">*</span>
+              </label>
+              <select id="jum-input-course-grade" class="jum-form-select" required>
+                <option value="Pre-Primary">Pre-Primary (PP1 - PP2)</option>
+                <option value="Grade 1">Grade 1</option>
+                <option value="Grade 2">Grade 2</option>
+                <option value="Grade 3" selected>Grade 3</option>
+                <option value="Grade 4">Grade 4</option>
+                <option value="Grade 5">Grade 5</option>
+                <option value="Grade 6">Grade 6</option>
+                <option value="Junior Secondary">Junior Secondary (7-9)</option>
+                <option value="Special Unit">Special Needs Unit</option>
+              </select>
+            </div>
+
+            <div class="jum-form-group">
+              <label for="jum-input-course-subject" class="jum-form-label">
+                Learning Area / Subject <span class="required" style="color:var(--error-color);">*</span>
+              </label>
+              <select id="jum-input-course-subject" class="jum-form-select" required>
+                <option value="Mathematics">Mathematics Activities</option>
+                <option value="English Language">English Language Activities</option>
+                <option value="Kiswahili Language">Kiswahili Lugha na Kusoma</option>
+                <option value="Environmental Activities">Environmental Activities / Science</option>
+                <option value="Creative Arts & Sports">Creative Arts & Sports</option>
+                <option value="Pre-Technical & Digital">Pre-Technical & Digital Literacy</option>
+                <option value="Life Skills">Life Skills & Daily Living</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="jum-form-row-2">
+            <div class="jum-form-group">
+              <label for="jum-input-course-theme" class="jum-form-label">Banner Style / Theme</label>
+              <select id="jum-input-course-theme" class="jum-form-select">
+                <option value="math">Mathematics (Blue Vibrant)</option>
+                <option value="sci">Science & Nature (Emerald Green)</option>
+                <option value="lit">Literacy & Languages (Warm Amber)</option>
+                <option value="arts">Creative Arts & Expression (Rose Violet)</option>
+                <option value="default">Jumuishi Teal Classic</option>
+              </select>
+            </div>
+
+            <div class="jum-form-group">
+              <label for="jum-input-course-icon" class="jum-form-label">Course Icon Emoji</label>
+              <select id="jum-input-course-icon" class="jum-form-select">
+                <option value="🔢">🔢 Mathematics / Numbers</option>
+                <option value="📖">📖 Book / Reading</option>
+                <option value="🌿">🌿 Nature / Science</option>
+                <option value="🎨">🎨 Creative Arts</option>
+                <option value="💡">💡 Life Skills / Thinking</option>
+                <option value="🌍">🌍 Social Studies</option>
+                <option value="💻">💻 Digital Tech</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="jum-form-group">
+            <label class="jum-form-label">Primary Support Focus (Select all that apply)</label>
+            <div class="jum-checkbox-grid" id="jum-course-needs-checkboxes">
+              <label class="jum-checkbox-label"><input type="checkbox" value="Autism" checked> Autism Spectrum</label>
+              <label class="jum-checkbox-label"><input type="checkbox" value="Dyslexia" checked> Dyslexia &amp; Reading</label>
+              <label class="jum-checkbox-label"><input type="checkbox" value="ADHD"> ADHD &amp; Focus</label>
+              <label class="jum-checkbox-label"><input type="checkbox" value="Hearing"> Hearing &amp; Deaf</label>
+              <label class="jum-checkbox-label"><input type="checkbox" value="Visual"> Visual Impairments</label>
+              <label class="jum-checkbox-label"><input type="checkbox" value="Speech"> Speech &amp; AAC</label>
+              <label class="jum-checkbox-label"><input type="checkbox" value="Physical"> Physical &amp; Motor</label>
+              <label class="jum-checkbox-label"><input type="checkbox" value="Intellectual"> Intellectual</label>
+            </div>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-course-desc" class="jum-form-label">
+              Course Description &amp; Inclusion Rationale
+            </label>
+            <textarea id="jum-input-course-desc" class="jum-form-textarea" placeholder="Explain the termly objectives, inclusive classroom setup, and pedagogical rationale..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-course-competencies" class="jum-form-label">
+              CBC Core Competencies Targeted
+            </label>
+            <input type="text" id="jum-input-course-competencies" class="jum-form-input" placeholder="e.g. Critical Thinking, Communication & Collaboration, Digital Literacy">
+          </div>
+
+        </div>
+        <div class="jum-modal-footer">
+          <button type="button" class="btn-jum-outline-sm" id="jum-btn-course-modal-cancel">Cancel</button>
+          <button type="submit" class="btn-jum-primary-sm" id="jum-btn-course-modal-submit">Save Course</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Create / Edit Lesson -->
+  <div class="jum-modal-overlay" id="jum-modal-lesson" role="dialog" aria-modal="true" aria-labelledby="jum-modal-lesson-title">
+    <div class="jum-modal">
+      <div class="jum-modal-header">
+        <h3 class="jum-modal-title" id="jum-modal-lesson-title">
+          <span aria-hidden="true">📝</span> <span id="jum-modal-lesson-heading-text">Add Inclusive Lesson</span>
+        </h3>
+        <button type="button" class="jum-modal-close-btn" id="jum-btn-lesson-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <form id="jum-form-lesson">
+        <input type="hidden" id="jum-input-lesson-course-id" value="">
+        <input type="hidden" id="jum-input-lesson-id" value="">
+        <div class="jum-modal-body">
+          
+          <div class="jum-form-group">
+            <label for="jum-input-lesson-title" class="jum-form-label">
+              Lesson Title <span class="required" style="color:var(--error-color);">*</span>
+            </label>
+            <input type="text" id="jum-input-lesson-title" class="jum-form-input" placeholder="e.g. Concrete Multiplication with Bottle Tops & Number Tracks" required>
+          </div>
+
+          <div class="jum-form-row-2">
+            <div class="jum-form-group">
+              <label for="jum-input-lesson-duration" class="jum-form-label">Estimated Duration</label>
+              <input type="text" id="jum-input-lesson-duration" class="jum-form-input" placeholder="e.g. 35 mins, 40 mins, 2 x 35 mins" value="35 mins">
+            </div>
+
+            <div class="jum-form-group">
+              <label for="jum-input-lesson-competencies" class="jum-form-label">CBC Competencies</label>
+              <input type="text" id="jum-input-lesson-competencies" class="jum-form-input" placeholder="e.g. Critical Thinking, Problem Solving, Collaboration">
+            </div>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-lesson-outcome" class="jum-form-label">
+              Specific Learning Outcome (CBC) <span class="required" style="color:var(--error-color);">*</span>
+            </label>
+            <textarea id="jum-input-lesson-outcome" class="jum-form-textarea" style="min-height:65px;" placeholder="By the end of the lesson, the learner should be able to..." required></textarea>
+          </div>
+
+          <!-- Step-by-Step Instruction Stages -->
+          <h4 style="font-family:var(--font-heading);font-size:14.5px;font-weight:700;color:var(--heading-color);margin:18px 0 10px;border-bottom:1px solid var(--border-color);padding-bottom:6px;">
+            Step-by-Step Instruction Stages
+          </h4>
+
+          <div class="jum-form-group">
+            <label for="jum-input-lesson-intro" class="jum-form-label">1. Introduction &amp; Teacher Modeling (I Do)</label>
+            <textarea id="jum-input-lesson-intro" class="jum-form-textarea" style="min-height:70px;" placeholder="Hook, sensory orientation, explicit modeling with concrete manipulatives..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-lesson-guided" class="jum-form-label">2. Guided Practice &amp; Collaborative Inquiry (We Do)</label>
+            <textarea id="jum-input-lesson-guided" class="jum-form-textarea" style="min-height:70px;" placeholder="Peer pairs, tactile grouping, teacher-facilitated step-by-step checks..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-lesson-activity" class="jum-form-label">3. Differentiated &amp; Independent Activity (You Do)</label>
+            <textarea id="jum-input-lesson-activity" class="jum-form-textarea" style="min-height:70px;" placeholder="Tiered tasks, multimodal expression (drawing, tactile, oral, written)..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-lesson-wrapup" class="jum-form-label">4. Formative Reflection &amp; Sensory De-escalation</label>
+            <textarea id="jum-input-lesson-wrapup" class="jum-form-textarea" style="min-height:65px;" placeholder="Exit ticket, thumbs check, calming transition to next learning area..."></textarea>
+          </div>
+
+          <!-- Multi-Tiered UDL Accommodations -->
+          <h4 style="font-family:var(--font-heading);font-size:14.5px;font-weight:700;color:var(--jum-teal-hover);margin:20px 0 10px;border-bottom:1px solid var(--border-color);padding-bottom:6px;">
+            Multi-Tiered UDL Accommodations
+          </h4>
+
+          <div class="jum-form-group">
+            <label for="jum-input-lesson-tier1" class="jum-form-label">Tier 1: Universal Design for All Learners</label>
+            <textarea id="jum-input-lesson-tier1" class="jum-form-textarea" style="min-height:65px;" placeholder="Visual timetable, high contrast boards, uncluttered workspaces, oral narration..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-lesson-tier2" class="jum-form-label">Tier 2: Targeted Scaffolding (Dyslexia, ADHD, Mild Hearing)</label>
+            <textarea id="jum-input-lesson-tier2" class="jum-form-textarea" style="min-height:65px;" placeholder="Color-coded cards, noise-muffling earmuffs, sensory fidgets, shortened work intervals..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-lesson-tier3" class="jum-form-label">Tier 3: Intensive Specialized Support (Autism, AAC, Braille, Low Vision)</label>
+            <textarea id="jum-input-lesson-tier3" class="jum-form-textarea" style="min-height:65px;" placeholder="PECS cards, 1-on-1 shadow teacher prompts, tactile raised line diagrams, speech-to-text..."></textarea>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-input-lesson-materials" class="jum-form-label">Low-Cost Materials &amp; Assistive Devices</label>
+            <input type="text" id="jum-input-lesson-materials" class="jum-form-input" placeholder="e.g. Bottle tops, egg cartons, tactile flashcards, counting sticks">
+          </div>
+
+          <!-- Drag and Drop File Upload Section -->
+          <div class="jum-form-group">
+            <label class="jum-form-label">
+              Attach Teaching Materials &amp; Worksheets (PDF, Word, Images, Audio)
+            </label>
+            <div class="jum-dropzone" id="jum-dropzone" tabindex="0" role="button" aria-label="Drop files here to attach or click to browse">
+              <div class="jum-dropzone-icon" aria-hidden="true">📤</div>
+              <div class="jum-dropzone-text">Drag &amp; drop files here, or <span style="color:var(--primary-color);text-decoration:underline;">browse files</span></div>
+              <div class="jum-dropzone-sub">Supported: PDF, DOCX, TXT, PNG, JPG, WEBP, MP3 (Stored privately in browser)</div>
+              <input type="file" id="jum-file-input" class="jum-file-input" multiple accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg,.webp,.mp3">
+            </div>
+
+            <!-- Uploaded preview list -->
+            <div class="jum-uploaded-preview-list" id="jum-uploaded-preview-list">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+        </div>
+        <div class="jum-modal-footer">
+          <button type="button" class="btn-jum-outline-sm" id="jum-btn-lesson-modal-cancel">Cancel</button>
+          <button type="submit" class="btn-jum-primary-sm" id="jum-btn-lesson-modal-submit">Save Lesson</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Save Content Builder Plan to Course -->
+  <div class="jum-modal-overlay" id="jum-modal-save-to-course" role="dialog" aria-modal="true" aria-labelledby="jum-modal-save-to-course-title">
+    <div class="jum-modal" style="max-width:540px;">
+      <div class="jum-modal-header">
+        <h3 class="jum-modal-title" id="jum-modal-save-to-course-title">
+          <span aria-hidden="true">📥</span> Save Plan to Course Studio
+        </h3>
+        <button type="button" class="jum-modal-close-btn" id="jum-btn-bridge-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <form id="jum-form-bridge">
+        <div class="jum-modal-body">
+          <p style="font-size:14px;color:var(--muted-text-color);margin-bottom:18px;">
+            Save the differentiated lesson plan you just built directly into an inclusive course in your Studio.
+          </p>
+
+          <div class="jum-form-group">
+            <label for="jum-bridge-select-course" class="jum-form-label">
+              Select Destination Course <span class="required" style="color:var(--error-color);">*</span>
+            </label>
+            <select id="jum-bridge-select-course" class="jum-form-select" required>
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+
+          <div class="jum-form-group">
+            <label for="jum-bridge-lesson-title" class="jum-form-label">
+              Lesson Title <span class="required" style="color:var(--error-color);">*</span>
+            </label>
+            <input type="text" id="jum-bridge-lesson-title" class="jum-form-input" required>
+          </div>
+
+          <div style="background:var(--surface-color-soft);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:14px;font-size:12.5px;color:var(--text-color);">
+            <div style="font-weight:700;margin-bottom:4px;" id="jum-bridge-preview-title">Multiplication as Repeated Addition</div>
+            <div style="color:var(--muted-text-color);" id="jum-bridge-preview-details">Grade 3 &bull; Mathematics Activities &bull; 3 UDL Tiers Included</div>
+          </div>
+
+        </div>
+        <div class="jum-modal-footer">
+          <button type="button" class="btn-jum-outline-sm" id="jum-btn-bridge-cancel">Cancel</button>
+          <button type="submit" class="btn-jum-primary-sm" id="jum-btn-bridge-confirm">Save to Course</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 4: Read-only Lesson Preview & Print -->
+  <div class="jum-modal-overlay" id="jum-modal-lesson-preview" role="dialog" aria-modal="true" aria-labelledby="jum-preview-lesson-modal-title">
+    <div class="jum-modal" style="max-width:760px;">
+      <div class="jum-modal-header">
+        <h3 class="jum-modal-title" id="jum-preview-lesson-modal-title">
+          <span aria-hidden="true">📖</span> Lesson Details
+        </h3>
+        <button type="button" class="jum-modal-close-btn" id="jum-btn-preview-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="jum-modal-body" id="jum-preview-lesson-modal-content">
+        <!-- Rendered dynamically -->
+      </div>
+      <div class="jum-modal-footer">
+        <button type="button" class="btn-jum-outline-sm" id="jum-btn-preview-modal-print">
+          <span aria-hidden="true">🖨️</span> Print Lesson Plan
+        </button>
+        <button type="button" class="btn-jum-primary-sm" id="jum-btn-preview-modal-edit">
+          <span aria-hidden="true">✏️</span> Edit Lesson
+        </button>
+        <button type="button" class="btn-jum-outline-sm" id="jum-btn-preview-modal-done">Done</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="js/main.js"></script>
