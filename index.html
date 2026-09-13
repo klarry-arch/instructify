@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/components.css?v=2.2">
+  <link rel="stylesheet" href="css/components.css?v=2.4">
   <link rel="stylesheet" href="css/homepage.css">
   <link rel="stylesheet" href="css/live-chat.css">
 </head>
@@ -645,7 +645,7 @@
   });
 
   // Close menu when viewport exceeds mobile breakpoint (e.g. rotate to landscape)
-  var mq = window.matchMedia('(min-width: 1141px)');
+  var mq = window.matchMedia('(min-width: 1101px)');
   function onBreakpoint(e) { if (e.matches) closeMenu(); }
   if (mq.addEventListener) { mq.addEventListener('change', onBreakpoint); }
   else if (mq.addListener)  { mq.addListener(onBreakpoint); } // Safari <14

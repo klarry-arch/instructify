@@ -38,6 +38,7 @@
   margin: 0 auto;
   padding: 0 clamp(10px, 1.4vw, 28px);
   gap: clamp(6px, 0.8vw, 16px);
+  overflow: visible !important;
 }
 
 /* ── Brand Logo & Text Lockup ── */
@@ -90,17 +91,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 1px;
+  gap: 1.5px;
   white-space: nowrap;
   line-height: 1;
 }
 
 .nav-brand-title {
   font-family: var(--font-heading);
-  font-weight: 900;
-  font-size: 1.25rem !important;
+  font-weight: 800;
+  font-size: 1.32rem !important;
   color: #0F172A !important;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   line-height: 1;
   display: block;
 }
@@ -112,11 +113,11 @@
 
 .nav-brand-subtitle {
   font-family: var(--font-heading);
-  font-size: 0.60rem !important;
+  font-size: 0.66rem !important;
   font-weight: 850;
   color: var(--accent-color) !important;
   text-transform: uppercase;
-  letter-spacing: 2.2px;
+  letter-spacing: 2.4px;
   line-height: 1;
   display: block;
 }
@@ -126,7 +127,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(1px, 0.35vw, 6px);
+  gap: clamp(2px, 0.4vw, 7px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -136,10 +137,10 @@
 
 .nav-link {
   font-family: var(--font-heading);
-  font-size: clamp(11px, 0.80vw, 13px);
-  font-weight: 650;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
   color: #334155 !important;
-  padding: 5px clamp(4px, 0.45vw, 9px);
+  padding: 5px clamp(4px, 0.45vw, 8px);
   border-radius: 8px;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
@@ -147,9 +148,9 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 3.5px;
+  gap: 4px;
   flex-shrink: 0;
-  height: 34px;
+  height: 35px;
   line-height: 1.2;
 }
 
@@ -173,23 +174,37 @@
 /* Modern Active Menu State - Executive Rounded Pill, NO displaced underline */
 .nav-link.active {
   color: var(--primary-color) !important;
-  background: rgba(33, 69, 230, 0.08) !important;
-  border: none !important;
-  font-weight: 750;
+  background: rgba(33, 69, 230, 0.09) !important;
+  border: 1px solid rgba(33, 69, 230, 0.18) !important;
+  font-weight: 700 !important;
   box-shadow: none !important;
   border-radius: 8px;
+  text-decoration: none !important;
 }
 
 .nav-link.active[data-nav="jumuishi"],
 a[href*="jumuishi"].nav-link.active {
   color: #0D9488 !important;
-  background: rgba(13, 148, 136, 0.10) !important;
-  border: none !important;
+  background: rgba(13, 148, 136, 0.12) !important;
+  border: 1px solid rgba(13, 148, 136, 0.25) !important;
 }
 
+.nav-link::after,
 .nav-link.active::after,
-.nav-link::after {
+.nav-link::before,
+.nav-link.active::before,
+.nav-links li::after,
+.nav-links li::before,
+.nav-links li a::after,
+.nav-links li a::before {
   display: none !important;
+  content: none !important;
+  border: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
 /* ── Catchy Micro-Badges on Nav Items ── */
@@ -261,11 +276,11 @@ a[href*="jumuishi"].nav-link.active {
 
 /* ── Modern Nav Action Buttons ── */
 .nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  flex-shrink: 0;
-  white-space: nowrap;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 
 .navbar .btn-outline,
@@ -280,7 +295,9 @@ a[href*="jumuishi"].nav-link.active {
   border: 1.5px solid #CBD5E1;
   text-decoration: none;
   transition: all 0.25s ease;
-  white-space: nowrap;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  min-width: max-content !important;
 }
 
 .navbar .btn-outline:hover,
@@ -309,7 +326,9 @@ a[href*="jumuishi"].nav-link.active {
   align-items: center;
   gap: 5px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  white-space: nowrap;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  min-width: max-content !important;
 }
 
 .navbar .btn-primary:hover,
@@ -1606,59 +1625,39 @@ a[href*="jumuishi"].nav-link.active {
    RESPONSIVE NAV BREAKPOINTS — Seamless Scaling Across All Devices
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── Standard / Large Desktop: Full brand, all 10 links, both buttons ── */
-@media (max-width: 1440px) {
-  .navbar .container {
-    padding: 0 clamp(8px, 1.2vw, 20px);
-    gap: clamp(5px, 0.7vw, 12px);
-  }
-  .nav-brand-text-box {
-    display: inline-flex !important;
-  }
-  .nav-links {
-    gap: 3px;
-  }
-  .nav-link {
-    font-size: 12px;
-    padding: 5px 6.5px;
-  }
-  .nav-actions .btn-primary {
-    display: inline-flex !important;
-  }
-}
-
-/* ── Compact Desktop (1060px to 1300px): Everything clearly visible, tighter gaps ── */
-@media (max-width: 1300px) {
+/* ── Standard Desktop (1241px to 1360px): Full brand, sleek compact links, both CTA buttons ── */
+@media (max-width: 1360px) and (min-width: 1241px) {
   .navbar .container {
     padding: 0 12px;
-    gap: 6px;
+    gap: 8px;
   }
   .nav-brand-text-box {
     display: inline-flex !important;
   }
-  .nav-brand-logo {
-    height: 35px;
-    max-width: 38px;
-  }
   .nav-brand-title {
-    font-size: 1.16rem !important;
+    font-size: 1.20rem !important;
   }
   .nav-brand-subtitle {
-    font-size: 0.56rem !important;
-    letter-spacing: 1.6px !important;
+    font-size: 0.58rem !important;
+    letter-spacing: 2px !important;
+  }
+  .nav-brand-logo {
+    height: 36px;
+    max-width: 38px;
   }
   .nav-links {
-    gap: 1.5px;
+    gap: 2px;
   }
   .nav-link {
-    font-size: 11.5px;
-    padding: 5px 5.5px;
-    height: 32px;
+    font-size: 12px !important;
+    padding: 5px 6px;
+    height: 33px;
   }
   .nav-badge,
   .nav-badge-jum {
     font-size: 7.5px;
     padding: 1px 4px;
+    display: inline-flex !important;
   }
   .nav-actions {
     gap: 6px;
@@ -1666,34 +1665,84 @@ a[href*="jumuishi"].nav-link.active {
   .nav-actions .btn-primary {
     display: inline-flex !important;
     padding: 6px 12px;
+    font-size: 12px;
+    min-height: 33px;
+  }
+  .navbar .btn-outline,
+  .nav-actions .btn-outline {
+    padding: 5px 10px;
+    font-size: 12px;
+    min-height: 33px;
+  }
+}
+
+/* ── Compact Desktop (1101px to 1240px): Full brand, 10 links, both CTA buttons (badges hidden to guarantee perfect fit) ── */
+@media (max-width: 1240px) and (min-width: 1101px) {
+  .navbar .container {
+    padding: 0 10px;
+    gap: 6px;
+  }
+  .nav-brand-text-box {
+    display: inline-flex !important;
+  }
+  .nav-brand-title {
+    font-size: 1.15rem !important;
+  }
+  .nav-brand-subtitle {
+    font-size: 0.56rem !important;
+    letter-spacing: 1.8px !important;
+  }
+  .nav-brand-logo {
+    height: 35px;
+    max-width: 38px;
+  }
+  .nav-links {
+    gap: 1.5px;
+  }
+  .nav-link {
+    font-size: 11.5px !important;
+    padding: 5px 5px;
+    height: 32px;
+  }
+  /* Hide the text chips on intermediate desktop to save ~170px width so all 10 links + full brand + both buttons fit effortlessly */
+  .nav-badge,
+  .nav-badge-jum {
+    display: none !important;
+  }
+  .nav-actions {
+    gap: 5px;
+  }
+  .nav-actions .btn-primary {
+    display: inline-flex !important;
+    padding: 5px 11px;
     font-size: 11.5px;
     min-height: 32px;
   }
   .navbar .btn-outline,
   .nav-actions .btn-outline {
-    padding: 5px 10px;
+    padding: 5px 9px;
     font-size: 11.5px;
     min-height: 32px;
   }
 }
 
-/* ── Tablet & Small Desktop (<= 1060px): Hamburger Takes Over Cleanly ── */
-@media (max-width: 1060px) {
+/* ── Tablet & Small Desktop (<= 1100px): Clean Hamburger Transition ── */
+@media (max-width: 1100px) {
   .nav-links { display: none !important; }
   .nav-hamburger { display: flex !important; }
   .nav-brand-text-box { display: inline-flex !important; }
-  .nav-brand-logo { height: 35px; max-width: 38px; }
-  .nav-brand-title { font-size: 1.16rem !important; }
-  .nav-brand-subtitle { font-size: 0.56rem !important; letter-spacing: 1.6px !important; }
+  .nav-brand-logo { height: 36px; max-width: 40px; }
+  .nav-brand-title { font-size: 1.20rem !important; }
+  .nav-brand-subtitle { font-size: 0.60rem !important; letter-spacing: 2px !important; }
 }
 
-@media (min-width: 769px) and (max-width: 1060px) {
+@media (min-width: 769px) and (max-width: 1100px) {
   .nav-hamburger { display: flex !important; }
   .nav-links { display: none !important; }
-  .navbar .nav-actions { display: flex; }
-  .nav-actions .btn-primary { display: inline-flex !important; padding: 6px 12px; font-size: 11.5px; }
+  .navbar .nav-actions { display: flex !important; gap: 8px; }
+  .nav-actions .btn-primary { display: inline-flex !important; padding: 6px 12px; font-size: 12px; }
   .navbar .btn-outline,
-  .nav-actions .btn-outline { padding: 5px 10px; font-size: 11.5px; }
+  .nav-actions .btn-outline { padding: 5px 10px; font-size: 12px; }
 }
 
 @media (max-width: 768px) {
@@ -1702,8 +1751,9 @@ a[href*="jumuishi"].nav-link.active {
     min-height: var(--nav-height, 68px);
   }
   .navbar .nav-actions { display: none; }
+  .nav-brand-text-box { display: inline-flex !important; }
   .nav-brand-logo { height: 36px; max-width: 40px; }
-  .nav-brand-title { font-size: 1.15rem !important; }
+  .nav-brand-title { font-size: 1.18rem !important; }
   .nav-brand-subtitle { font-size: 0.60rem !important; letter-spacing: 1.8px !important; }
   /* Hamburger always visible on mobile */
   .nav-hamburger { display: flex !important; }
@@ -1723,18 +1773,12 @@ a[href*="jumuishi"].nav-link.active {
   }
 }
 
-/* Tablet portrait – hamburger takes over below 1060px */
-@media (min-width: 769px) and (max-width: 1060px) {
-  .nav-hamburger { display: flex !important; }
-  .nav-links { display: none !important; }
-  .navbar .nav-actions { display: flex; }
-}
-
 @media (max-width: 430px) {
   .navbar .container { padding: 0 12px; }
+  .nav-brand-text-box { display: inline-flex !important; }
   .nav-brand-logo { height: 34px; max-width: 38px; }
-  .nav-brand-title { font-size: 1.08rem !important; }
-  .nav-brand-subtitle { font-size: 0.58rem !important; letter-spacing: 1.2px !important; }
+  .nav-brand-title { font-size: 1.10rem !important; }
+  .nav-brand-subtitle { font-size: 0.58rem !important; letter-spacing: 1.4px !important; }
 }
 
 /* ══════════════════════════════════════════════════════════════
