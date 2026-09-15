@@ -1463,246 +1463,852 @@
   }
 
   /* ══════════════════════════════════════════════════════════════
-     10. INCLUSIVE COURSE & LESSON STUDIO ENGINE
+  /* ══════════════════════════════════════════════════════════════
+     10. INCLUSIVE COURSE & LESSON STUDIO ENGINE (FULL WORKSPACE)
      ══════════════════════════════════════════════════════════════ */
 
-  const COURSES_STORAGE_KEY = 'jumuishi_educator_courses_v1';
+  const COURSES_STORAGE_KEY = 'jumuishi_educator_courses_v3';
+  const WORKSPACE_TEMPLATES_KEY = 'jumuishi_course_templates_v3';
+  
   let activeCourses = [];
+  let customTemplates = [];
+  let wizardCourse = null;
+  let wizardCurrentStep = 1;
+  let wizardAutoSaveTimer = null;
+  let hasUnsavedChanges = false;
   let currentViewingCourseId = null;
-  let currentEditingCourseId = null;
   let currentEditingLessonId = null;
   let currentLessonAttachments = [];
+  let currentResourceCourseId = null;
+  let confirmCallback = null;
 
+  // ── 10.1 Default Reusable Templates ──
+  function getDefaultCourseTemplates() {
+    return [
+      {
+        id: 'tpl-blank',
+        name: 'Blank Course',
+        sub: 'Clean Slate & Custom Design',
+        desc: 'Design your own inclusive curriculum from scratch with a flexible, hierarchical structure.',
+        icon: '📄',
+        badge: 'Flexible',
+        theme: 'default',
+        grade: 'All Grades',
+        subject: 'General Inclusive',
+        features: ['Clean blank structure', 'Add custom units & lessons', 'Configure UDL tiers from scratch'],
+        curriculum: {
+          framework: 'Custom Inclusive Framework',
+          strands: 'Foundations & Inquiry',
+          subStrands: 'Exploration & Practice',
+          outcomes: 'Learners demonstrate mastery of foundational concepts through personalized multimodal pathways.',
+          inquiryQuestions: 'How do our daily observations connect to our learning?',
+          competencies: ['Critical Thinking', 'Communication & Collaboration', 'Self-Efficacy'],
+          values: ['Respect', 'Unity', 'Responsibility'],
+          pcis: ['Inclusion & Diversity', 'Life Skills'],
+          learningExperiences: 'Multimodal hands-on inquiry, peer buddy collaboration, tactile exploration.',
+          assessmentExpectations: 'Formative observation checklists, learner self-reflection, multimodal portfolios.'
+        },
+        units: [
+          {
+            id: 'unit-b-1',
+            title: 'Unit 1: Foundations & Core Concepts',
+            desc: 'Introduction to primary concepts through multisensory representations.',
+            duration: '3 Weeks',
+            topics: [
+              {
+                id: 'top-b-1-1',
+                title: 'Topic 1.1: Sensory Exploration & Realia',
+                lessons: [
+                  {
+                    id: 'les-b-1-1-1',
+                    lessonNumber: '1',
+                    title: 'Lesson 1: Introduction with Concrete Materials',
+                    duration: '35 mins',
+                    date: '',
+                    outcome: 'Learners identify and categorize concrete items using touch, sight, and discussion.',
+                    intro: 'Sensory hook: Teacher presents tactile objects and introduces lesson goals with visual schedule.',
+                    guided: 'Paired collaboration: Learners explore materials in pairs with guided questions.',
+                    activity: 'Tiered independent task: Sort and represent items using drawing, writing, or pointing.',
+                    wrapup: 'Class reflection circle: Choral response and thumbs check-in.',
+                    tier1: 'Visual schedule on board, oral directions paired with gestures.',
+                    tier2: 'Color-coded cards, tactile counters, noise-reduction earmuffs.',
+                    tier3: '1-on-1 peer buddy, PECS communication cards, physical object placement.',
+                    materials: 'Local Kenyan counters (bottle tops, counting sticks), sorting trays',
+                    reflection: '',
+                    homework: 'Find 3 similar objects at home and share with family.',
+                    contentHtml: '<h3>Lesson 1: Introduction with Concrete Materials</h3><p>Welcome to Lesson 1. In this session, learners engage with sensory realia to build intuitive understanding.</p><div class="jum-editor-callout note"><strong>📌 Teacher Note:</strong><p>Ensure tactile materials are clean and accessible on low tables for all learners.</p></div>',
+                    teacherNotes: 'Ensure tactile materials are clean and accessible on low tables.',
+                    learnerInstructions: 'Look at the items on your table. Group them by color and count each group.',
+                    practicalActivities: 'Sorting bottle tops into cardboard compartments.',
+                    accommodationsNotes: 'Allow pointing responses without penalizing oral speech.'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        resources: []
+      },
+      {
+        id: 'tpl-inclusive',
+        name: 'Inclusive Course Template',
+        sub: 'UDL Tiers 1-3 & AAC Ready',
+        desc: 'Pre-loaded with Universal Design for Learning accommodations, AAC pointing boards, sensory de-escalation, and zero speech penalty rubrics.',
+        icon: '🤝',
+        badge: '⭐ Recommended',
+        theme: 'default',
+        grade: 'Grade 3',
+        subject: 'General Inclusive',
+        features: ['Multi-Tiered UDL built-in', 'AAC board & pointing accommodations', 'Sensory regulation protocols'],
+        curriculum: {
+          framework: 'Kenyan CBC (KICD Aligned)',
+          strands: 'Multisensory Numeracy & Literacy',
+          subStrands: 'Concrete Operations, Expressive Communication',
+          outcomes: 'Learners demonstrate concept mastery through concrete manipulatives, pointing boards, and multimodal expression without speech or motor penalties.',
+          inquiryQuestions: 'How can everyone in our classroom participate fairly regardless of ability?',
+          competencies: ['Communication & Collaboration', 'Critical Thinking', 'Self-Efficacy', 'Digital Literacy'],
+          values: ['Respect', 'Unity', 'Love', 'Responsibility'],
+          pcis: ['Inclusion & Diversity', 'Health & Hygiene', 'Life Skills'],
+          learningExperiences: 'Tactile sorting, buddy reading with sign prompts, AAC choice board selections.',
+          assessmentExpectations: 'Observation checklists with tiered rubrics, portfolio evidence, peer feedback.'
+        },
+        units: [
+          {
+            id: 'unit-inc-1',
+            title: 'Unit 1: Multisensory Foundations & Communication',
+            desc: 'Building foundational confidence through Universal Design for Learning.',
+            duration: '4 Weeks',
+            topics: [
+              {
+                id: 'top-inc-1-1',
+                title: 'Topic 1.1: Concrete Manipulatives & Visual Supports',
+                lessons: [
+                  {
+                    id: 'les-inc-1-1-1',
+                    lessonNumber: '1',
+                    title: 'Lesson 1: Multi-Modal Exploration with AAC Pointing Boards',
+                    duration: '35 mins',
+                    date: '',
+                    outcome: 'Learners express understanding of quantities and categories by pointing to visual cards and sorting physical counters.',
+                    intro: 'Visual timetable review. Teacher models target concept simultaneously with spoken words, visual PECS cards, and physical bottle tops.',
+                    guided: 'Paired inquiry: Peer buddy presents choice card; learner points or places counters in sorting tray.',
+                    activity: 'Station tasks: Station 1 concrete sorting; Station 2 AAC pointing board; Station 3 tactile sand tracing.',
+                    wrapup: 'Feelings check-in board (Happy / Proud / Calm). Class clapping celebration.',
+                    tier1: 'High contrast visual board, oral narration paired with visual symbols.',
+                    tier2: 'Color-coded cards, textured manipulatives, noise-reduction earmuffs.',
+                    tier3: '1-on-1 partner-assisted scanning, eye-gaze selection, sensory weighted lap pad.',
+                    materials: 'AAC pointing boards, bottle tops, egg cartons, visual timetable strip',
+                    reflection: '',
+                    homework: 'Share your visual timetable with a family member.',
+                    contentHtml: '<h3>Multi-Modal Exploration with AAC Pointing Boards</h3><p>Every learner participates equitably. Use visual symbols paired with spoken words.</p><div class="jum-editor-callout note"><strong>📌 Teacher Note:</strong><p>Remember FAQ #12: Zero penalty for oral speech. Pointing and physical placement are full marks.</p></div><div class="jum-editor-callout accommodation"><strong>🤝 Inclusive Accommodation:</strong><p>For non-verbal learners, utilize the 12-cell pointing choice board on desk.</p></div>',
+                    teacherNotes: 'Remember FAQ #12: Zero penalty for speech. Pointing and physical placement count for full marks.',
+                    learnerInstructions: 'Look at the cards on your desk. Point to the card that matches your teacher\'s counter.',
+                    practicalActivities: 'Placing counters in 3 egg carton depressions.',
+                    accommodationsNotes: '12-cell AAC pointing board on desk.'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        resources: [
+          {
+            id: 'res-inc-1',
+            name: 'AAC_Communication_Board_12Cell.pdf',
+            type: 'worksheet',
+            fileFormat: 'PDF',
+            size: '185 KB',
+            dateUploaded: '2026-09-10',
+            unitId: 'unit-inc-1',
+            lessonId: 'les-inc-1-1-1',
+            category: 'Worksheets & Rubrics',
+            tags: ['AAC', 'Non-Verbal', 'UDL'],
+            url: '#'
+          }
+        ]
+      },
+      {
+        id: 'tpl-cbc',
+        name: 'Competency-Based (CBC) Course Template',
+        sub: 'KICD Framework Aligned',
+        desc: 'Structured around Kenyan CBC core competencies (Critical Thinking, Communication, Self-Efficacy), values, and Pertinent & Contemporary Issues (PCIs).',
+        icon: '🇰🇪',
+        badge: 'CBC Aligned',
+        theme: 'math',
+        grade: 'Grade 3',
+        subject: 'Mathematics',
+        features: ['KICD CBC Strands & Sub-strands', '7 Core Competencies mapped', 'PCIs & Values integrated'],
+        curriculum: {
+          framework: 'Kenyan CBC (KICD Aligned)',
+          strands: 'Numbers, Measurement, Geometry, Data Handling',
+          subStrands: 'Number Concept, Addition, Subtraction, Multiplication, Fractions',
+          outcomes: 'Learners apply mathematical concepts to solve real-world problems in their local community using concrete realia.',
+          inquiryQuestions: 'How do numbers and patterns help us in everyday market and home life in Kenya?',
+          competencies: ['Critical Thinking', 'Problem Solving', 'Communication & Collaboration', 'Self-Efficacy', 'Digital Literacy'],
+          values: ['Respect', 'Responsibility', 'Integrity', 'Unity', 'Patriotism'],
+          pcis: ['Financial Literacy', 'Health & Hygiene', 'Environmental Conservation', 'Child Safety'],
+          learningExperiences: 'Simulated market stalls, grouping bottle tops, nature walks to identify shapes and patterns.',
+          assessmentExpectations: 'CBC Rubrics (Exceeding, Meeting, Approaching, Below Expectations), observation schedules.'
+        },
+        units: [
+          {
+            id: 'unit-cbc-1',
+            title: 'Strand 1: Numbers & Operations',
+            desc: 'Foundational place value, addition, and repeated addition using concrete models.',
+            duration: '5 Weeks',
+            topics: [
+              {
+                id: 'top-cbc-1-1',
+                title: 'Sub-strand 1.1: Multiplication as Repeated Addition',
+                lessons: [
+                  {
+                    id: 'les-cbc-1-1-1',
+                    lessonNumber: '1',
+                    title: 'Lesson 1: Equal Groups with Bottle Tops & Number Tracks',
+                    duration: '35 mins',
+                    date: '',
+                    outcome: 'Represent multiplication as equal groups of items using clean bottle tops.',
+                    intro: 'Demonstrate 3 groups of 4 bottle tops using clear plastic cups. Count aloud: 4 + 4 + 4 = 12.',
+                    guided: 'Paired inquiry: Learners create 2 groups of 5 and 4 groups of 3 with partner.',
+                    activity: 'Multimodal task cards: Card A draws groups; Card B groups bottle tops; Card C matches visual cards.',
+                    wrapup: 'Choral chant: "Equal groups make multiplication!" Deep breath transition.',
+                    tier1: 'Clear number track on board, oral instructions paired with gestures.',
+                    tier2: 'Color-coded number tracks, noise-muffling earmuffs for sensory regulation.',
+                    tier3: '1-on-1 peer buddy, PECS cards for "More" and "Finished".',
+                    materials: 'Plastic bottle tops, cardboard trays, visual number strips',
+                    reflection: '',
+                    homework: 'Count 3 groups of spoons at home with a parent.',
+                    contentHtml: '<h3>Equal Groups with Bottle Tops</h3><p>In this lesson, learners discover multiplication through hands-on sensory exploration with everyday bottle tops.</p>',
+                    teacherNotes: 'Keep sensory calming corner ready.',
+                    learnerInstructions: 'Put 4 bottle tops into cup 1, 4 into cup 2, and 4 into cup 3.',
+                    practicalActivities: 'Sorting bottle tops into 3 equal sets.',
+                    accommodationsNotes: 'Offer non-speech pointing cards.'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        resources: []
+      },
+      {
+        id: 'tpl-term',
+        name: 'Term Course Template (10 Weeks)',
+        sub: 'Termly Scope & Sequence',
+        desc: 'A full 10-week instructional schedule with units, weekly lessons, mid-term formative review, and end-of-term summative project rubrics.',
+        icon: '📅',
+        badge: '10 Weeks',
+        theme: 'sci',
+        grade: 'Lower Primary (1-3)',
+        subject: 'Science & Environment',
+        features: ['10-week progressive structure', 'Mid-term formative check-in', 'End-term capstone project'],
+        curriculum: {
+          framework: 'Kenyan CBC (KICD Aligned)',
+          strands: 'Termly Progressive Modules',
+          subStrands: 'Weekly Practical Units',
+          outcomes: 'Learners progressively build core competencies with scheduled formative milestones and self-assessment checks.',
+          inquiryQuestions: 'How do our weekly discoveries connect into a complete termly picture?',
+          competencies: ['Learning to Learn', 'Critical Thinking', 'Communication', 'Creativity'],
+          values: ['Responsibility', 'Peace', 'Respect'],
+          pcis: ['Environmental Care', 'Community Living'],
+          learningExperiences: 'Weekly practical projects, reflective journals, term exhibition of learner work.',
+          assessmentExpectations: 'Continuous Assessment Tests (CATs), weekly checklists, termly portfolio review.'
+        },
+        units: [
+          {
+            id: 'unit-t-1',
+            title: 'Weeks 1-4: Introductory Discoveries',
+            desc: 'Diagnostic check, foundational inquiry, and exploratory activities.',
+            duration: '4 Weeks',
+            topics: [
+              {
+                id: 'top-t-1-1',
+                title: 'Week 1: Orientation & Baseline Diagnostic',
+                lessons: [
+                  {
+                    id: 'les-t-1-1-1',
+                    lessonNumber: '1',
+                    title: 'Week 1 Lesson 1: Baseline Needs Assessment & Strengths Inventory',
+                    duration: '35 mins',
+                    date: '',
+                    outcome: 'Identify learner learning styles, sensory preferences, and foundational readiness.',
+                    intro: 'Welcome circle and strengths-based conversation with visual emotion cards.',
+                    guided: 'Interactive game to observe motor, cognitive, and communicative preferences.',
+                    activity: 'Learners draw or point to what they are excited to learn this term.',
+                    wrapup: 'Group celebration of unique learner strengths.',
+                    tier1: 'Clear visual agenda, multiple means of representation.',
+                    tier2: 'Supportive peer pairing, flexible response format.',
+                    tier3: 'Individualized assistance, sensory breaks as needed.',
+                    materials: 'Visual preference cards, drawing paper, crayons',
+                    reflection: '',
+                    homework: 'Tell someone at home what your favorite school activity is.',
+                    contentHtml: '<h3>Week 1: Baseline Needs Assessment</h3><p>Start the term by understanding each child\'s unique learning profile and strengths.</p>',
+                    teacherNotes: 'Note any sensory triggers or special accommodations needed.',
+                    learnerInstructions: 'Choose the picture card showing how you like to learn best.',
+                    practicalActivities: 'Exploring classroom learning stations.',
+                    accommodationsNotes: 'Allow non-verbal selection of preference cards.'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: 'unit-t-2',
+            title: 'Weeks 5-7: Deep Dive & Mid-Term Milestone',
+            desc: 'Applied skills, collaborative inquiry, and formative milestone review.',
+            duration: '3 Weeks',
+            topics: []
+          },
+          {
+            id: 'unit-t-3',
+            title: 'Weeks 8-10: Synthesis & End-of-Term Showcase',
+            desc: 'Capstone projects, learner portfolios, and community celebration.',
+            duration: '3 Weeks',
+            topics: []
+          }
+        ],
+        resources: []
+      },
+      {
+        id: 'tpl-iep',
+        name: 'Individualized Learning (IEP) Template',
+        sub: 'Stage-Based Special Needs',
+        desc: 'Tailored for Special Needs Units and individualized education plans (IEPs) with task-analyzed step-by-step milestones and diagnostic tracking.',
+        icon: '🎯',
+        badge: 'Special Needs',
+        theme: 'arts',
+        grade: 'Special Needs Unit',
+        subject: 'Life Skills',
+        features: ['Granular task analysis', 'Baseline vs Target tracking', 'Assistive technology integration'],
+        curriculum: {
+          framework: 'Special Needs Education (SNE) Stage-Based',
+          strands: 'Activities of Daily Living, Sensory Integration, Pre-Academic Skills',
+          subStrands: 'Self-Care, Fine Motor Coordination, AAC Communication',
+          outcomes: 'Learner achieves targeted individualized milestones broken down into measurable, task-analyzed steps.',
+          inquiryQuestions: 'How can I accomplish this task independently step-by-step?',
+          competencies: ['Self-Efficacy', 'Communication', 'Motor Coordination'],
+          values: ['Responsibility', 'Integrity', 'Love'],
+          pcis: ['Health & Hygiene', 'Personal Safety', 'Life Skills'],
+          learningExperiences: 'Direct explicit modeling, forward and backward chaining, sensory regulation breaks.',
+          assessmentExpectations: 'Task analysis checklists with prompt levels (Independent, Verbal, Gestural, Physical).'
+        },
+        units: [
+          {
+            id: 'unit-iep-1',
+            title: 'Milestone 1: Sensory Integration & Motor Coordination',
+            desc: 'Developing fine motor grasping, bilateral hand coordination, and sensory focus.',
+            duration: '4 Weeks',
+            topics: [
+              {
+                id: 'top-iep-1-1',
+                title: 'Step 1: Pincer Grasp with Kenyan Beans & Tweezers',
+                lessons: [
+                  {
+                    id: 'les-iep-1-1-1',
+                    lessonNumber: '1',
+                    title: 'Lesson 1: Fine Motor Transfer using Adapted Tweezers',
+                    duration: '25 mins',
+                    date: '',
+                    outcome: 'Learner transfers 10 large beans from bowl A to bowl B using pincer grasp or adapted tweezer with minimal prompting.',
+                    intro: 'Sensory warm-up: Hand squeezing soft dough or foam ball for 2 minutes.',
+                    guided: 'Hand-over-hand modeling of tweezer grip; transfer 3 beans together.',
+                    activity: 'Independent transfer attempts with gestural encouragement; progress tracking.',
+                    wrapup: 'High-five celebration and sensory calming weighted blanket rest.',
+                    tier1: 'Clear uncluttered high-contrast workspace.',
+                    tier2: 'Wider grip tweezers with spring resistance; larger wooden beads.',
+                    tier3: 'Hand-over-hand physical guidance fading to wrist prompt; verbal praise tokens.',
+                    materials: 'Adapted plastic tweezers, large kidney beans, divided bowls',
+                    reflection: '',
+                    homework: 'Practice picking up small buttons with fingertips at home.',
+                    contentHtml: '<h3>Fine Motor Transfer using Adapted Tweezers</h3><p>Task analysis breakdown: 1. Grasp tweezer; 2. Align over bean; 3. Squeeze; 4. Lift; 5. Release into bowl.</p>',
+                    teacherNotes: 'Record prompt level for each trial (Full physical, partial, gestural, independent).',
+                    learnerInstructions: 'Squeeze the tweezer, pick up the bean, and drop it in the green cup.',
+                    practicalActivities: 'Bean transfer challenge.',
+                    accommodationsNotes: 'Use spring-loaded tweezer for reduced hand fatigue.'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        resources: []
+      }
+    ];
+  }
+
+  function loadCustomTemplates() {
+    try {
+      const saved = localStorage.getItem(WORKSPACE_TEMPLATES_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          customTemplates = parsed;
+          return;
+        }
+      }
+    } catch (e) {
+      console.warn('Could not load custom templates', e);
+    }
+    customTemplates = [];
+  }
+
+  function saveCustomTemplates() {
+    try {
+      localStorage.setItem(WORKSPACE_TEMPLATES_KEY, JSON.stringify(customTemplates));
+    } catch (e) {
+      console.error('Failed to save custom templates', e);
+    }
+  }
+
+  // ── 10.2 Exemplar Courses Generator ──
   function getDefaultExemplarCourses() {
     return [
       {
         id: 'course-cbc-g3-math',
         title: 'CBC Grade 3: Inclusive Mathematics & Numeracy',
+        code: 'CBC-MATH-G3-T1',
         grade: 'Grade 3',
         subject: 'Mathematics',
+        term: 'Term 1',
+        academicYear: '2026',
+        duration: '10 Weeks (35 periods)',
+        educatorName: 'Tr. Faith Wambui',
         theme: 'math',
         icon: '🔢',
+        status: 'Published',
+        progress: 85,
         needs: ['Autism', 'Dyslexia', 'ADHD', 'Hearing'],
         desc: 'Foundational numeracy curriculum emphasizing concrete manipulatives, tactile number tracks, visual timetables, and multi-tiered UDL accommodations.',
         competencies: 'Critical Thinking, Problem Solving, Mathematical Communication & Collaboration',
-        lessons: [
+        createdAt: '2026-09-01T08:00:00.000Z',
+        updatedAt: '2026-09-15T07:00:00.000Z',
+        curriculum: {
+          framework: 'Kenyan CBC (KICD Aligned)',
+          strands: 'Numbers & Operations, Measurement, Geometry',
+          subStrands: 'Multiplication as Repeated Addition, Place Value, Fractions',
+          outcomes: 'Represent multiplication as equal groups using concrete bottle tops without speech barriers.',
+          inquiryQuestions: 'How can equal sharing help us solve everyday group problems?',
+          competencies: ['Critical Thinking', 'Communication & Collaboration', 'Self-Efficacy'],
+          values: ['Respect', 'Responsibility', 'Unity'],
+          pcis: ['Health & Hygiene', 'Inclusive Community Living', 'Financial Literacy'],
+          learningExperiences: 'Concrete manipulative exploration with bottle tops, small-group paired discussions.',
+          assessmentExpectations: 'Observation checklists, multimodal expression (pointing, drawing, oral), rubrics.'
+        },
+        units: [
           {
-            id: 'les-g3-m-1',
-            title: 'Multiplication as Repeated Addition with Bottle Tops & Number Tracks',
-            duration: '35 mins',
-            outcome: 'By the end of the lesson, the learner should be able to represent multiplication as repeated equal groups of items using concrete bottle tops.',
-            competencies: 'Critical thinking, peer collaboration, mathematical communication',
-            intro: 'Sensory hook: Teacher displays 3 clear plastic cups containing 4 colorful bottle tops each. Explicit teacher modeling: "3 groups of 4 bottle tops is 4 + 4 + 4 = 12 total tops."',
-            guided: 'Paired inquiry: Learners work in peer pairs with cardboard sorting trays to construct 2 groups of 5 and 4 groups of 3 using clean bottle tops.',
-            activity: 'Tiered task cards: Tier 1 constructs repeated addition on number grids; Tier 2 counts with textured tactile dots; Tier 3 matches visual photo cards to physical quantities.',
-            wrapup: 'Learner thumbs check, choral verbal chant ("Equal groups make multiplication!"), 2-minute calming deep breath transition.',
-            tier1: 'Clear visual sequence on board, high-contrast numerals, oral instructions paired with physical gestures.',
-            tier2: 'Color-coded number tracks, noise-muffling earmuffs for sensory regulation, tactile finger counters.',
-            tier3: '1-on-1 peer buddy support, PECS cards for "More" and "Finished", physical guidance with adapted gripping bowls.',
-            materials: 'Plastic bottle tops, egg carton sorting trays, visual schedule strips',
-            attachments: [
-              { name: 'Grade3_Multiplication_Tactile_Worksheet.pdf', size: '142 KB', type: 'application/pdf', date: '2026-09-10', dataUrl: '' },
-              { name: 'Bottle_Top_Math_Picture_Cards.png', size: '280 KB', type: 'image/png', date: '2026-09-10', dataUrl: '' }
+            id: 'unit-g3-m-1',
+            title: 'Unit 1: Numbers & Operations',
+            desc: 'Concrete numeracy and place value foundations.',
+            duration: '4 Weeks',
+            topics: [
+              {
+                id: 'top-g3-m-1-1',
+                title: 'Topic 1.1: Equal Grouping & Repeated Addition',
+                lessons: [
+                  {
+                    id: 'les-g3-m-1',
+                    lessonNumber: '1',
+                    title: 'Multiplication as Repeated Addition with Bottle Tops & Number Tracks',
+                    duration: '35 mins',
+                    date: '2026-09-16',
+                    outcome: 'By the end of the lesson, the learner should be able to represent multiplication as repeated equal groups of items using concrete bottle tops.',
+                    competencies: 'Critical thinking, peer collaboration, mathematical communication',
+                    intro: 'Sensory hook: Teacher displays 3 clear plastic cups containing 4 colorful bottle tops each. Explicit teacher modeling: "3 groups of 4 bottle tops is 4 + 4 + 4 = 12 total tops."',
+                    guided: 'Paired inquiry: Learners work in peer pairs with cardboard sorting trays to construct 2 groups of 5 and 4 groups of 3 using clean bottle tops.',
+                    activity: 'Tiered task cards: Tier 1 constructs repeated addition on number grids; Tier 2 counts with textured tactile dots; Tier 3 matches visual photo cards to physical quantities.',
+                    wrapup: 'Learner thumbs check, choral verbal chant ("Equal groups make multiplication!"), 2-minute calming deep breath transition.',
+                    tier1: 'Clear visual sequence on board, high-contrast numerals, oral instructions paired with physical gestures.',
+                    tier2: 'Color-coded number tracks, noise-muffling earmuffs for sensory regulation, tactile finger counters.',
+                    tier3: '1-on-1 peer buddy support, PECS cards for "More" and "Finished", physical guidance with adapted gripping bowls.',
+                    materials: 'Plastic bottle tops, egg carton sorting trays, visual schedule strips',
+                    reflection: 'Learners engaged with tactile bottle tops with high enthusiasm.',
+                    homework: 'Count 3 groups of spoons at home with family.',
+                    contentHtml: '<h3>Multiplication as Repeated Addition</h3><p>In this lesson, learners discover multiplication through hands-on sensory exploration with everyday Kenyan bottle tops.</p><div class="jum-editor-callout note"><strong>📌 Teacher Note:</strong><p>Keep sensory calming corner ready. Ensure counters are clean.</p></div><div class="jum-editor-callout instruction"><strong>📋 Learner Instructions:</strong><p>Take 4 bottle tops and place them into cup 1. Repeat for cups 2 and 3.</p></div>',
+                    teacherNotes: 'Keep sensory calming corner ready. Ensure counters are clean.',
+                    learnerInstructions: 'Take 4 bottle tops and place them into cup 1. Repeat for cups 2 and 3.',
+                    practicalActivities: 'Sorting bottle tops into 3 egg carton depressions.',
+                    accommodationsNotes: 'Offer non-speech pointing cards for learners with selective mutism.'
+                  },
+                  {
+                    id: 'les-g3-m-2',
+                    lessonNumber: '2',
+                    title: 'Place Value Tens & Ones with Bundled Twigs & Elastic Bands',
+                    duration: '40 mins',
+                    date: '2026-09-18',
+                    outcome: 'Learners bundle 10 single twigs into 1 ten and count two-digit quantities accurately with concrete understanding.',
+                    competencies: 'Numeracy, fine motor coordination, self-efficacy',
+                    intro: 'Demonstrate bundles of ten twigs tied with colored rubber bands versus single loose twigs. Count aloud with rhythmic clapping.',
+                    guided: 'Small group table activity: Each student receives 25 twigs and creates 2 bundles of ten and 5 singles with peer assistance.',
+                    activity: 'Represent two-digit numbers on tactile place value mats using sand trays, raised numeral cards, or drawing.',
+                    wrapup: 'Place value show-and-tell: learners hold up bundles for the whole class to see and cheer.',
+                    tier1: 'Color coding: Blue for Tens, Orange for Ones across all boards and handouts.',
+                    tier2: 'Pre-bundled sticks with thick elastic bands for learners with fine motor challenges.',
+                    tier3: 'Braille number tiles, large foam counter rods, verbal description of bundle textures.',
+                    materials: 'Smooth twigs, colored rubber bands, sand tracing trays',
+                    reflection: 'Bundling with thick rubber bands assisted motor grip.',
+                    homework: 'Group 20 dry leaves into bundles of ten at home.',
+                    contentHtml: '<h3>Place Value Tens & Ones</h3><p>Counting in concrete groups of ten demystifies two-digit numbers.</p>',
+                    teacherNotes: 'Provide pre-cut rubber bands that stretch easily.',
+                    learnerInstructions: 'Count 10 twigs and wrap an elastic band around them.',
+                    practicalActivities: 'Making twig bundles.',
+                    accommodationsNotes: 'Assisted grip bowls for twig sorting.'
+                  }
+                ]
+              }
             ]
           },
           {
-            id: 'les-g3-m-2',
-            title: 'Place Value Tens & Ones with Bundled Twigs & Elastic Bands',
-            duration: '40 mins',
-            outcome: 'Learners bundle 10 single twigs into 1 ten and count two-digit quantities accurately with concrete understanding.',
-            competencies: 'Numeracy, fine motor coordination, self-efficacy',
-            intro: 'Demonstrate bundles of ten twigs tied with colored rubber bands versus single loose twigs. Count aloud with rhythmic clapping.',
-            guided: 'Small group table activity: Each student receives 25 twigs and creates 2 bundles of ten and 5 singles with peer assistance.',
-            activity: 'Represent two-digit numbers on tactile place value mats using sand trays, raised numeral cards, or drawing.',
-            wrapup: 'Place value show-and-tell: learners hold up bundles for the whole class to see and cheer.',
-            tier1: 'Color coding: Blue for Tens, Orange for Ones across all boards and handouts.',
-            tier2: 'Pre-bundled sticks with thick elastic bands for learners with fine motor challenges.',
-            tier3: 'Braille number tiles, large foam counter rods, verbal description of bundle textures.',
-            materials: 'Smooth twigs, colored rubber bands, sand tracing trays',
-            attachments: [
-              { name: 'Place_Value_Tens_Ones_Template.pdf', size: '95 KB', type: 'application/pdf', date: '2026-09-11', dataUrl: '' }
-            ]
-          },
-          {
-            id: 'les-g3-m-3',
-            title: 'Fractions as Halves & Quarters using Kenyan Fruit Models & Paper Folding',
-            duration: '35 mins',
-            outcome: 'Identify and demonstrate 1/2 and 1/4 using folded paper strips and clay fruit models.',
-            competencies: 'Spatial reasoning, sharing and fairness, communication',
-            intro: 'Story hook: Sharing a ripe orange equally between two friends. Folding paper circles into equal halves.',
-            guided: 'Fold circular paper into 2 and 4 equal parts; color 1 part and label with large tactile print.',
-            activity: 'Learners match fraction cards (1/2, 1/4) to concrete segmented discs.',
-            wrapup: 'Group reflection on fair sharing at home, in the market, and in school.',
-            tier1: 'Clear fold crease guidelines, bright contrasting colors.',
-            tier2: 'Thick cardboard fraction puzzle pieces with grip knobs.',
-            tier3: 'Raised line tactile fraction plates, partner assisted fold guidance.',
-            materials: 'Cardboard circles, safe child scissors, clay fruit models',
-            attachments: [
-              { name: 'Fractions_Half_Quarter_Visual_Cards.pdf', size: '118 KB', type: 'application/pdf', date: '2026-09-12', dataUrl: '' }
+            id: 'unit-g3-m-2',
+            title: 'Unit 2: Fractions & Spatial Reasoning',
+            desc: 'Understanding equal parts with fruit models and paper folding.',
+            duration: '3 Weeks',
+            topics: [
+              {
+                id: 'top-g3-m-2-1',
+                title: 'Topic 2.1: Halves and Quarters',
+                lessons: [
+                  {
+                    id: 'les-g3-m-3',
+                    lessonNumber: '1',
+                    title: 'Fractions as Halves & Quarters using Kenyan Fruit Models & Paper Folding',
+                    duration: '35 mins',
+                    date: '2026-09-23',
+                    outcome: 'Identify and demonstrate 1/2 and 1/4 using folded paper strips and clay fruit models.',
+                    competencies: 'Spatial reasoning, sharing and fairness, communication',
+                    intro: 'Story hook: Sharing a ripe orange equally between two friends. Folding paper circles into equal halves.',
+                    guided: 'Fold circular paper into 2 and 4 equal parts; color 1 part and label with large tactile print.',
+                    activity: 'Learners match fraction cards (1/2, 1/4) to concrete segmented discs.',
+                    wrapup: 'Group reflection on fair sharing at home, in the market, and in school.',
+                    tier1: 'Clear fold crease guidelines, bright contrasting colors.',
+                    tier2: 'Thick cardboard fraction puzzle pieces with grip knobs.',
+                    tier3: 'Raised line tactile fraction plates, partner assisted fold guidance.',
+                    materials: 'Cardboard circles, safe child scissors, clay fruit models',
+                    reflection: 'Hands-on clay fruit models made halves intuitive.',
+                    homework: 'Fold a paper square in half at home.',
+                    contentHtml: '<h3>Fractions as Halves & Quarters</h3><p>Fair sharing is the natural gateway to fraction comprehension.</p>',
+                    teacherNotes: 'Use safe scissors and textured fold guides.',
+                    learnerInstructions: 'Fold your paper circle down the center line.',
+                    practicalActivities: 'Segmenting clay oranges.',
+                    accommodationsNotes: 'Pre-cut wooden fraction discs with velcro.'
+                  }
+                ]
+              }
             ]
           }
-        ]
+        ],
+        resources: [
+          {
+            id: 'res-g3-m-1',
+            name: 'Grade3_Multiplication_Tactile_Worksheet.pdf',
+            type: 'worksheet',
+            fileFormat: 'PDF',
+            size: '142 KB',
+            dateUploaded: '2026-09-10',
+            unitId: 'unit-g3-m-1',
+            lessonId: 'les-g3-m-1',
+            category: 'Worksheets & Rubrics',
+            tags: ['Multiplication', 'Tactile', 'Grade 3'],
+            url: '#'
+          },
+          {
+            id: 'res-g3-m-2',
+            name: 'Bottle_Top_Math_Picture_Cards.png',
+            type: 'image',
+            fileFormat: 'PNG',
+            size: '280 KB',
+            dateUploaded: '2026-09-10',
+            unitId: 'unit-g3-m-1',
+            lessonId: 'les-g3-m-1',
+            category: 'Images & Diagrams',
+            tags: ['Picture Cards', 'AAC'],
+            url: '#'
+          },
+          {
+            id: 'res-g3-m-3',
+            name: 'Place_Value_Tens_Ones_Template.pdf',
+            type: 'document',
+            fileFormat: 'PDF',
+            size: '95 KB',
+            dateUploaded: '2026-09-11',
+            unitId: 'unit-g3-m-1',
+            lessonId: 'les-g3-m-2',
+            category: 'Documents',
+            tags: ['Place Value'],
+            url: '#'
+          }
+        ],
+        // Flat lessons array for backward compatibility with existing viewer
+        lessons: []
       },
       {
         id: 'course-cbc-ey-lit',
         title: 'Early Years Inclusive Literacy: Sounds & Multisensory Storytelling',
+        code: 'CBC-ENG-G1-T1',
         grade: 'Grade 1',
         subject: 'English Language',
+        term: 'Term 1',
+        academicYear: '2026',
+        duration: '10 Weeks',
+        educatorName: 'Tr. Anne Mutua',
         theme: 'lit',
         icon: '📖',
+        status: 'Published',
+        progress: 70,
         needs: ['Dyslexia', 'Speech', 'Hearing', 'Autism'],
         desc: 'Phonics, vocabulary, and expressive communication tailored for early learners using Kenya Sign Language (KSL) fingerspelling, sand tracing, and visual cues.',
         competencies: 'Communication, Self-Efficacy, Digital & Oral Literacy',
-        lessons: [
+        createdAt: '2026-09-02T08:00:00.000Z',
+        updatedAt: '2026-09-14T10:00:00.000Z',
+        curriculum: {
+          framework: 'Kenyan CBC (KICD Aligned)',
+          strands: 'Listening & Speaking, Reading, Writing',
+          subStrands: 'Phonics Sounds, Multisensory Storytelling, Action Words',
+          outcomes: 'Learners recognize sounds and express ideas using speech, sign, or visual cards.',
+          inquiryQuestions: 'How do sounds and signs help us understand stories in our community?',
+          competencies: ['Communication', 'Self-Efficacy', 'Creativity'],
+          values: ['Respect', 'Unity', 'Love'],
+          pcis: ['Inclusion & Diversity', 'Life Skills'],
+          learningExperiences: 'Sand tray tracing, puppet role-play, KSL finger spelling.',
+          assessmentExpectations: 'Observation checklists, multimodal expression portfolios.'
+        },
+        units: [
           {
-            id: 'les-ey-lit-1',
-            title: 'Letter Sound /s/ with Sensory Sand Tracing & Snake Movement',
-            duration: '30 mins',
-            outcome: 'Pronounce, sign, and write the letter sound /s/ while associating it with familiar environmental objects.',
-            competencies: 'Phonemic awareness, motor imitation, KSL fingerspelling',
-            intro: 'Sound song: Sibilant /s/ sound accompanied by arm slithering motion and visual snake card.',
-            guided: 'Trace letter "s" in colored sand trays, feeling the curved path with two fingers.',
-            activity: 'Sort picture cards into "Starts with /s/" (sun, soup, soap) versus other sounds.',
-            wrapup: 'KSL fingerspelling demonstration of "S" by the class.',
-            tier1: 'Multisensory presentation: see it, hear it, trace it, sign it.',
-            tier2: 'Textured sandpaper letters, whisper phones for auditory feedback.',
-            tier3: 'Sign language flashcards, high-contrast black-on-yellow visual cards, non-verbal affirmation stamps.',
-            materials: 'Fine sand trays, sandpaper letter cards, picture sort cards',
-            attachments: [
-              { name: 'Letter_S_Multisensory_Guide.pdf', size: '175 KB', type: 'application/pdf', date: '2026-09-08', dataUrl: '' }
-            ]
-          },
-          {
-            id: 'les-ey-lit-2',
-            title: 'Inclusive Story Circle: "The Brave Hare" with Tactile Story Props',
-            duration: '35 mins',
-            outcome: 'Sequence 3 main events of the story using visual puppets and sensory props.',
-            competencies: 'Listening and comprehension, emotional expression, sequencing',
-            intro: 'Introduce story puppets (Hare, Tortoise, Tree) with expressive voices and sign gestures.',
-            guided: 'Read story with repetitive refrain where all children chime in with sounds or claps.',
-            activity: 'Sequence story cards: Beginning, Middle, End using velcro timeline board.',
-            wrapup: 'Learners choose their favorite character puppet and share how the character felt.',
-            tier1: 'Visual schedule cards, exaggerated facial expressions, rhythm sticks.',
-            tier2: 'Simplified 3-card sequence with color borders (Green=Start, Yellow=Middle, Red=End).',
-            tier3: 'Tactile fabric puppets with distinct textures (furry hare, rough tortoise shell), PECS emotion cards.',
-            materials: 'Sock puppets, velcro story strip, sensory props',
-            attachments: [
-              { name: 'Brave_Hare_Story_Props_Printables.pdf', size: '210 KB', type: 'application/pdf', date: '2026-09-09', dataUrl: '' }
-            ]
-          },
-          {
-            id: 'les-ey-lit-3',
-            title: 'Action Words (Verbs) with Total Physical Response (TPR) & Sign Language',
-            duration: '30 mins',
-            outcome: 'Demonstrate and express 5 everyday action words: Run, Jump, Eat, Read, Sleep.',
-            competencies: 'Body coordination, expressive language, interactive gameplay',
-            intro: 'Simon Says game adapted with bilingual KSL signing and picture prompts.',
-            guided: 'Teacher signs and says action; class acts out the action together.',
-            activity: 'Action Charades: Learners pull an action card and act it out or point to picture.',
-            wrapup: 'Calming slow-motion stretch mimicking "Sleep".',
-            tier1: 'Visual action cards shown alongside every spoken or signed word.',
-            tier2: 'Option to point to picture rather than speak for non-verbal or shy learners.',
-            tier3: 'Wheelchair/seated movement adaptations for physical differences, high contrast borders.',
-            materials: 'Laminated action flashcards, soft foam dice',
-            attachments: [
-              { name: 'Action_Verbs_KSL_Chart.pdf', size: '130 KB', type: 'application/pdf', date: '2026-09-10', dataUrl: '' }
+            id: 'unit-ey-1',
+            title: 'Unit 1: Phonemic Awareness & Sounds',
+            desc: 'Multisensory sound recognition and letter formation.',
+            duration: '4 Weeks',
+            topics: [
+              {
+                id: 'top-ey-1-1',
+                title: 'Topic 1.1: Letter Sound /s/ and Blending',
+                lessons: [
+                  {
+                    id: 'les-ey-lit-1',
+                    lessonNumber: '1',
+                    title: 'Letter Sound /s/ with Sensory Sand Tracing & Snake Movement',
+                    duration: '30 mins',
+                    date: '2026-09-17',
+                    outcome: 'Pronounce, sign, and write the letter sound /s/ while associating it with familiar environmental objects.',
+                    competencies: 'Phonemic awareness, motor imitation, KSL fingerspelling',
+                    intro: 'Sound song: Sibilant /s/ sound accompanied by arm slithering motion and visual snake card.',
+                    guided: 'Trace letter "s" in colored sand trays, feeling the curved path with two fingers.',
+                    activity: 'Sort picture cards into "Starts with /s/" (sun, soup, soap) versus other sounds.',
+                    wrapup: 'KSL fingerspelling demonstration of "S" by the class.',
+                    tier1: 'Multisensory presentation: see it, hear it, trace it, sign it.',
+                    tier2: 'Textured sandpaper letters, whisper phones for auditory feedback.',
+                    tier3: 'Sign language flashcards, high-contrast black-on-yellow visual cards.',
+                    materials: 'Fine sand trays, sandpaper letter cards, picture sort cards',
+                    reflection: 'Tracing in colored sand engaged energetic learners.',
+                    homework: 'Find 2 things at home starting with /s/.',
+                    contentHtml: '<h3>Letter Sound /s/</h3><p>Engage multiple senses: see, hear, feel, and sign.</p>',
+                    teacherNotes: 'Use soft background music during sand tracing.',
+                    learnerInstructions: 'Trace the letter S in your sand tray while making the /s/ sound.',
+                    practicalActivities: 'Sand tray letter tracing.',
+                    accommodationsNotes: 'KSL hand sign for S.'
+                  }
+                ]
+              }
             ]
           }
-        ]
+        ],
+        resources: [
+          {
+            id: 'res-ey-1',
+            name: 'Letter_S_Multisensory_Guide.pdf',
+            type: 'document',
+            fileFormat: 'PDF',
+            size: '175 KB',
+            dateUploaded: '2026-09-08',
+            unitId: 'unit-ey-1',
+            lessonId: 'les-ey-lit-1',
+            category: 'Documents',
+            tags: ['Phonics', 'Dyslexia'],
+            url: '#'
+          }
+        ],
+        lessons: []
       },
       {
         id: 'course-cbc-env-sci',
         title: 'CBC Grade 2: Integrated Environmental Activities & Living Things',
+        code: 'CBC-ENV-G2-T1',
         grade: 'Grade 2',
         subject: 'Environmental Activities',
+        term: 'Term 1',
+        academicYear: '2026',
+        duration: '10 Weeks',
+        educatorName: 'Tr. David Kiprop',
         theme: 'sci',
         icon: '🌿',
+        status: 'Published',
+        progress: 60,
         needs: ['Visual', 'Physical', 'ADHD', 'Intellectual'],
         desc: 'Hands-on inquiry into schoolyard flora and fauna with sensory exploration, tactile leaf rubbing, accessible gardening, and sound walks.',
         competencies: 'Environmental Conservation, Observation, Collaboration',
-        lessons: [
+        createdAt: '2026-09-03T08:00:00.000Z',
+        updatedAt: '2026-09-13T11:00:00.000Z',
+        curriculum: {
+          framework: 'Kenyan CBC (KICD Aligned)',
+          strands: 'Living Things & Environment',
+          subStrands: 'Trees & Bark, Parts of a Plant, Water Conservation',
+          outcomes: 'Learners investigate living plants and practice environmental stewardship through accessible sensory tasks.',
+          inquiryQuestions: 'How do plants help us and how can we take care of them?',
+          competencies: ['Environmental Conservation', 'Critical Thinking', 'Collaboration'],
+          values: ['Responsibility', 'Respect', 'Love'],
+          pcis: ['Environmental Care', 'Safety & Hygiene'],
+          learningExperiences: 'Tree bark rubbing, potting bean seedlings, water guardian checklist.',
+          assessmentExpectations: 'Observation checklists, tactile leaf collages.'
+        },
+        units: [
           {
-            id: 'les-env-sci-1',
-            title: 'Sensory Tree Exploration: Bark Rubbing & Texture Mapping',
-            duration: '40 mins',
-            outcome: 'Compare rough and smooth tree bark and identify two common Kenyan tree types.',
-            competencies: 'Observation, sensory discrimination, fine motor control',
-            intro: 'Sensory mystery box: Learners touch rough bark and smooth leaves without looking and describe what they feel.',
-            guided: 'Outdoor compound walk: Pair work where learners select a tree and place paper on the trunk.',
-            activity: 'Crayon rubbing on sturdy paper to capture bark textures; share with partner.',
-            wrapup: 'Handwashing and collective gallery display of bark rubbings on the class line.',
-            tier1: 'Paved outdoor paths ensuring accessibility for wheelchair and mobility aid users.',
-            tier2: 'Thick triangular crayons easy to grip; clipboard with secure clips.',
-            tier3: 'Descriptive auditory narration of textures, tactile guidance from teacher assistant.',
-            materials: 'Recycled newsprint paper, jumbo wax crayons, outdoor clipboards',
-            attachments: [
-              { name: 'Tree_Bark_Rubbing_Activity_Sheet.pdf', size: '105 KB', type: 'application/pdf', date: '2026-09-07', dataUrl: '' }
-            ]
-          },
-          {
-            id: 'les-env-sci-2',
-            title: 'Parts of a Plant: Roots, Stem, Leaves, Flower with Living Specimens',
-            duration: '35 mins',
-            outcome: 'Identify and name the 4 core parts of a flowering plant using potted bean seedlings.',
-            competencies: 'Scientific curiosity, care for living things, tactile examination',
-            intro: 'Observe real bean seedlings in transparent plastic cups showing roots in soil.',
-            guided: 'Guided plant dissection: gently touching roots, tracing the stem, examining leaf veins.',
-            activity: 'Learners assemble a 3D plant collage using real fallen leaves, yarn for roots, and paper stems.',
-            wrapup: 'Watering seedlings and placing them on the sunny window sill.',
-            tier1: 'Real living specimens instead of 2D blackboard drawings.',
-            tier2: 'Magnifying glasses with LED lights, textured labels for each part.',
-            tier3: 'Braille/embossed plant diagrams, tactile scent exploration of aromatic leaves.',
-            materials: 'Potted bean plants, hand magnifiers, glue sticks, craft paper',
-            attachments: [
-              { name: 'Parts_of_a_Plant_Tactile_Diagram.pdf', size: '160 KB', type: 'application/pdf', date: '2026-09-08', dataUrl: '' }
-            ]
-          },
-          {
-            id: 'les-env-sci-3',
-            title: 'Water Conservation at School & Home: Daily Saving Habits',
-            duration: '35 mins',
-            outcome: 'Demonstrate 3 practical ways to save water during handwashing and school chores.',
-            competencies: 'Citizenship, personal responsibility, practical hygiene',
-            intro: 'Demonstration of a dripping tap vs a tightly closed tap; listening to the drip rate.',
-            guided: 'Tippy-tap handwashing demonstration in the school compound with soap on a string.',
-            activity: 'Create visual reminder stickers ("Turn Off Tap!", "Okoa Maji!") to place near sinks.',
-            wrapup: 'Pledge to be a "Jumuishi Water Guardian".',
-            tier1: 'Picture instructions mounted at child eye-level near washing points.',
-            tier2: 'Adapted push-taps or lever faucets that require minimal hand strength.',
-            tier3: 'Social stories explaining why water conservation matters with symbol cards.',
-            materials: 'Tippy-tap setup, colored stickers, markers, visual cards',
-            attachments: [
-              { name: 'Water_Guardian_Checklist.pdf', size: '90 KB', type: 'application/pdf', date: '2026-09-09', dataUrl: '' }
+            id: 'unit-env-1',
+            title: 'Unit 1: Exploring Living Things',
+            desc: 'Sensory outdoor observation and plant anatomy.',
+            duration: '5 Weeks',
+            topics: [
+              {
+                id: 'top-env-1-1',
+                title: 'Topic 1.1: Trees and Plant Structures',
+                lessons: [
+                  {
+                    id: 'les-env-sci-1',
+                    lessonNumber: '1',
+                    title: 'Sensory Tree Exploration: Bark Rubbing & Texture Mapping',
+                    duration: '40 mins',
+                    date: '2026-09-19',
+                    outcome: 'Compare rough and smooth tree bark and identify two common Kenyan tree types.',
+                    competencies: 'Observation, sensory discrimination, fine motor control',
+                    intro: 'Sensory mystery box: Learners touch rough bark and smooth leaves without looking and describe what they feel.',
+                    guided: 'Outdoor compound walk: Pair work where learners select a tree and place paper on the trunk.',
+                    activity: 'Crayon rubbing on sturdy paper to capture bark textures; share with partner.',
+                    wrapup: 'Handwashing and collective gallery display of bark rubbings on the class line.',
+                    tier1: 'Paved outdoor paths ensuring accessibility for wheelchair and mobility aid users.',
+                    tier2: 'Thick triangular crayons easy to grip; clipboard with secure clips.',
+                    tier3: 'Descriptive auditory narration of textures, tactile guidance from teacher assistant.',
+                    materials: 'Recycled newsprint paper, jumbo wax crayons, outdoor clipboards',
+                    reflection: 'Wheelchair access ramp allowed all learners to participate outdoors.',
+                    homework: 'Touch 2 different tree barks on your way home.',
+                    contentHtml: '<h3>Sensory Tree Exploration</h3><p>Connecting learners directly with living nature through touch, texture, and observation.</p>',
+                    teacherNotes: 'Pre-check schoolyard path for safety and wheelchair accessibility.',
+                    learnerInstructions: 'Hold your paper tight against the tree trunk and rub your crayon gently.',
+                    practicalActivities: 'Outdoor bark rubbing.',
+                    accommodationsNotes: 'Use clipboard clips to hold paper firmly.'
+                  }
+                ]
+              }
             ]
           }
-        ]
+        ],
+        resources: [
+          {
+            id: 'res-env-1',
+            name: 'Tree_Bark_Rubbing_Activity_Sheet.pdf',
+            type: 'worksheet',
+            fileFormat: 'PDF',
+            size: '105 KB',
+            dateUploaded: '2026-09-07',
+            unitId: 'unit-env-1',
+            lessonId: 'les-env-sci-1',
+            category: 'Worksheets & Rubrics',
+            tags: ['Trees', 'Realia'],
+            url: '#'
+          }
+        ],
+        lessons: []
       }
     ];
   }
 
+  // ── Sync flat lessons for any course ──
+  function syncCourseFlatLessons(course) {
+    if (!course) return;
+    const flat = [];
+    if (Array.isArray(course.units)) {
+      course.units.forEach(unit => {
+        if (Array.isArray(unit.topics)) {
+          unit.topics.forEach(topic => {
+            if (Array.isArray(topic.lessons)) {
+              topic.lessons.forEach(lesson => {
+                flat.push(lesson);
+              });
+            }
+          });
+        }
+      });
+    }
+    // If flat has items, update course.lessons
+    if (flat.length > 0) {
+      course.lessons = flat;
+    } else if (!Array.isArray(course.lessons)) {
+      course.lessons = [];
+    }
+  }
+
+  // ── 10.3 Load & Save Courses ──
   function loadCourses() {
     try {
-      const saved = localStorage.getItem(COURSES_STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
+      const savedV3 = localStorage.getItem(COURSES_STORAGE_KEY);
+      if (savedV3) {
+        const parsed = JSON.parse(savedV3);
         if (Array.isArray(parsed) && parsed.length > 0) {
           activeCourses = parsed;
+          activeCourses.forEach(syncCourseFlatLessons);
+          loadCustomTemplates();
+          return;
+        }
+      }
+
+      // Check migration from v1
+      const savedV1 = localStorage.getItem('jumuishi_educator_courses_v1');
+      if (savedV1) {
+        const parsedV1 = JSON.parse(savedV1);
+        if (Array.isArray(parsedV1) && parsedV1.length > 0) {
+          activeCourses = parsedV1.map(c => {
+            if (!c.units || c.units.length === 0) {
+              c.units = [
+                {
+                  id: `unit_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+                  title: 'Unit 1: Core Curriculum Strand',
+                  desc: c.desc || 'Foundational units and inclusive lessons.',
+                  duration: c.duration || '4 Weeks',
+                  topics: [
+                    {
+                      id: `top_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+                      title: 'Topic 1.1: Foundational Concepts',
+                      lessons: c.lessons || []
+                    }
+                  ]
+                }
+              ];
+            }
+            if (!c.resources) c.resources = [];
+            c.status = c.status || 'Published';
+            c.progress = c.progress || 75;
+            syncCourseFlatLessons(c);
+            return c;
+          });
+          saveCourses(activeCourses);
+          loadCustomTemplates();
           return;
         }
       }
     } catch (err) {
-      console.warn('Could not parse saved courses from localStorage', err);
+      console.warn('Could not parse courses from localStorage', err);
     }
+
     activeCourses = getDefaultExemplarCourses();
+    activeCourses.forEach(syncCourseFlatLessons);
     saveCourses(activeCourses);
+    loadCustomTemplates();
   }
 
   function saveCourses(courses) {
     try {
+      courses.forEach(syncCourseFlatLessons);
       localStorage.setItem(COURSES_STORAGE_KEY, JSON.stringify(courses));
     } catch (err) {
       console.error('Failed to save courses to localStorage', err);
-      showToast('Storage limit reached. Try removing some attached files.', 'warning');
+      showToast('Browser storage capacity reached. Consider exporting a backup.', 'warning');
     }
     updateStudioStats();
   }
@@ -1716,13 +2322,12 @@
     let totalAttachments = 0;
 
     activeCourses.forEach(c => {
+      syncCourseFlatLessons(c);
       if (Array.isArray(c.lessons)) {
         totalLessons += c.lessons.length;
-        c.lessons.forEach(l => {
-          if (Array.isArray(l.attachments)) {
-            totalAttachments += l.attachments.length;
-          }
-        });
+      }
+      if (Array.isArray(c.resources)) {
+        totalAttachments += c.resources.length;
       }
     });
 
@@ -1731,6 +2336,7 @@
     if (attachCountEl) attachCountEl.textContent = totalAttachments;
   }
 
+  // ── 10.4 Dashboard Course Cards Grid Rendering ──
   function renderCoursesGrid(filterText = '', filterGrade = 'all', filterNeed = 'all') {
     const container = document.getElementById('jum-course-cards-container');
     const emptyState = document.getElementById('jum-course-empty-state');
@@ -1739,21 +2345,18 @@
     const query = filterText.toLowerCase().trim();
 
     const filtered = activeCourses.filter(course => {
-      // Grade filter
       if (filterGrade !== 'all' && !course.grade.toLowerCase().includes(filterGrade.toLowerCase())) {
         return false;
       }
-      // Need filter
       if (filterNeed !== 'all') {
         const hasNeed = course.needs && course.needs.some(n => n.toLowerCase().includes(filterNeed.toLowerCase()));
         if (!hasNeed) return false;
       }
-      // Search query
       if (query) {
         const inTitle = course.title && course.title.toLowerCase().includes(query);
         const inDesc = course.desc && course.desc.toLowerCase().includes(query);
         const inSub = course.subject && course.subject.toLowerCase().includes(query);
-        const inLessons = course.lessons && course.lessons.some(l => 
+        const inLessons = course.lessons && course.lessons.some(l =>
           (l.title && l.title.toLowerCase().includes(query)) ||
           (l.outcome && l.outcome.toLowerCase().includes(query))
         );
@@ -1772,52 +2375,97 @@
     if (emptyState) emptyState.style.display = 'none';
 
     container.innerHTML = filtered.map(course => {
+      syncCourseFlatLessons(course);
+      const unitsCount = course.units ? course.units.length : 1;
       const lessonsCount = course.lessons ? course.lessons.length : 0;
-      let totalFiles = 0;
-      if (course.lessons) {
-        course.lessons.forEach(l => {
-          if (l.attachments) totalFiles += l.attachments.length;
-        });
-      }
+      const resourcesCount = course.resources ? course.resources.length : 0;
+      const progress = course.progress || (course.status === 'Published' ? 100 : (lessonsCount > 0 ? 65 : 20));
 
-      const tagsHtml = (course.needs || []).map(need => 
-        `<span class="jum-course-tag">${need}</span>`
+      const tagsHtml = (course.needs || []).map(need =>
+        `<span class="jum-course-tag">${escapeHtml(need)}</span>`
       ).join('');
 
       const bannerClass = course.theme ? `jum-course-card-banner ${course.theme}` : 'jum-course-card-banner';
+      
+      const status = course.status || 'Draft';
+      const statusClass = status.toLowerCase().replace(/\s+/g, '-');
+
+      const dateStr = course.updatedAt ? new Date(course.updatedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recently updated';
 
       return `
         <article class="jum-course-card" data-course-id="${course.id}">
           <div class="${bannerClass}">
             <div class="jum-course-badge-row">
-              <span class="jum-course-grade-badge">${course.grade}</span>
-              <span class="jum-course-subject-badge">${course.subject}</span>
+              <span class="jum-course-grade-badge">${escapeHtml(course.grade || 'Grade 3')}</span>
+              <span class="jum-course-subject-badge">${escapeHtml(course.subject || 'Curriculum')}</span>
             </div>
             <span class="jum-course-card-icon" aria-hidden="true">${course.icon || '📚'}</span>
           </div>
           <div class="jum-course-card-content">
-            <h4 class="jum-course-card-title">${course.title}</h4>
-            <p class="jum-course-card-desc">${course.desc || 'Comprehensive inclusive learning curriculum aligned with the Kenyan CBC.'}</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+              <span class="jum-status-badge ${statusClass}">${escapeHtml(status)}</span>
+              <span style="font-size:11.5px;color:var(--muted-text-color);">${escapeHtml(course.term || 'Term 1')}</span>
+            </div>
+            <h4 class="jum-course-card-title">${escapeHtml(course.title)}</h4>
+            <p class="jum-course-card-desc">${escapeHtml(course.desc || 'Comprehensive inclusive learning curriculum aligned with Kenyan CBC.')}</p>
+            
+            <div class="jum-course-progress-wrap">
+              <div class="jum-course-progress-label">
+                <span>Progress</span>
+                <span>${progress}%</span>
+              </div>
+              <div class="jum-course-progress-bar">
+                <div class="jum-course-progress-fill" style="width:${progress}%;"></div>
+              </div>
+            </div>
+
             <div class="jum-course-tags" aria-label="Support focus areas">
               ${tagsHtml}
             </div>
+
             <div class="jum-course-card-meta">
+              <span><span aria-hidden="true">🏛️</span> ${unitsCount} ${unitsCount === 1 ? 'Unit' : 'Units'}</span>
               <span><span aria-hidden="true">📝</span> ${lessonsCount} ${lessonsCount === 1 ? 'Lesson' : 'Lessons'}</span>
-              <span><span aria-hidden="true">📎</span> ${totalFiles} ${totalFiles === 1 ? 'Resource' : 'Resources'}</span>
+              <span><span aria-hidden="true">📎</span> ${resourcesCount} ${resourcesCount === 1 ? 'Resource' : 'Resources'}</span>
             </div>
+            <div style="font-size:11px;color:var(--muted-text-color);margin-bottom:12px;text-align:right;">
+              Updated: ${dateStr}
+            </div>
+
             <div class="jum-course-card-footer">
-              <button type="button" class="jum-course-btn primary" data-action="view-lessons" data-course-id="${course.id}">
-                <span aria-hidden="true">📂</span> View Lessons
-              </button>
-              <button type="button" class="jum-course-btn" data-action="add-lesson" data-course-id="${course.id}">
-                <span aria-hidden="true">➕</span> Add Lesson
-              </button>
-              <button type="button" class="jum-course-btn" data-action="edit-course" data-course-id="${course.id}" title="Edit Course Details">
-                <span aria-hidden="true">✏️</span>
-              </button>
-              <button type="button" class="jum-course-btn" data-action="delete-course" data-course-id="${course.id}" title="Delete Course" style="color:var(--error-color);">
-                <span aria-hidden="true">🗑️</span>
-              </button>
+              <div class="jum-card-actions-row">
+                <button type="button" class="jum-course-btn primary" data-action="view-lessons" data-course-id="${course.id}">
+                  <span aria-hidden="true">📂</span> Open Curriculum
+                </button>
+                <div class="jum-menu-wrap">
+                  <button type="button" class="jum-btn-dots" data-action="toggle-menu" data-course-id="${course.id}" aria-label="More options for ${escapeHtml(course.title)}" title="More Actions">
+                    &#8942;
+                  </button>
+                  <div class="jum-dropdown-menu" id="menu-${course.id}">
+                    <button type="button" class="jum-dropdown-item" data-action="edit-course" data-course-id="${course.id}">
+                      <span>✏️</span> Edit Course
+                    </button>
+                    <button type="button" class="jum-dropdown-item" data-action="preview-course" data-course-id="${course.id}">
+                      <span>👁️</span> Preview as Learner
+                    </button>
+                    <button type="button" class="jum-dropdown-item" data-action="manage-resources" data-course-id="${course.id}">
+                      <span>📎</span> Manage Resources
+                    </button>
+                    <button type="button" class="jum-dropdown-item" data-action="duplicate-course" data-course-id="${course.id}">
+                      <span>📋</span> Duplicate Course
+                    </button>
+                    <button type="button" class="jum-dropdown-item" data-action="save-template" data-course-id="${course.id}">
+                      <span>💾</span> Save as Template
+                    </button>
+                    <button type="button" class="jum-dropdown-item" data-action="archive-course" data-course-id="${course.id}">
+                      <span>📦</span> ${course.status === 'Archived' ? 'Unarchive Course' : 'Archive Course'}
+                    </button>
+                    <button type="button" class="jum-dropdown-item danger" data-action="delete-course" data-course-id="${course.id}">
+                      <span>🗑️</span> Delete Course
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </article>
@@ -1827,26 +2475,1719 @@
     // Attach click listeners to course cards
     container.querySelectorAll('[data-action]').forEach(btn => {
       btn.addEventListener('click', (e) => {
+        e.stopPropagation();
         const action = btn.getAttribute('data-action');
         const courseId = btn.getAttribute('data-course-id');
-        if (action === 'view-lessons') {
+
+        if (action === 'toggle-menu') {
+          // Close other open menus
+          document.querySelectorAll('.jum-dropdown-menu.active').forEach(m => {
+            if (m.id !== `menu-${courseId}`) m.classList.remove('active');
+          });
+          const menu = document.getElementById(`menu-${courseId}`);
+          if (menu) menu.classList.toggle('active');
+        } else if (action === 'view-lessons') {
           openCourseLessonsViewer(courseId);
-        } else if (action === 'add-lesson') {
-          openLessonModal(courseId, null);
         } else if (action === 'edit-course') {
-          openCourseModal(courseId);
+          closeAllDropdownMenus();
+          openCourseWizard(courseId);
+        } else if (action === 'preview-course') {
+          closeAllDropdownMenus();
+          openCoursePreviewModal(courseId);
+        } else if (action === 'manage-resources') {
+          closeAllDropdownMenus();
+          openCourseResourcesModal(courseId);
+        } else if (action === 'duplicate-course') {
+          closeAllDropdownMenus();
+          duplicateCourse(courseId);
+        } else if (action === 'save-template') {
+          closeAllDropdownMenus();
+          openCreateTemplateModal(courseId);
+        } else if (action === 'archive-course') {
+          closeAllDropdownMenus();
+          toggleArchiveCourse(courseId);
         } else if (action === 'delete-course') {
-          deleteCourse(courseId);
+          closeAllDropdownMenus();
+          confirmDeleteCourse(courseId);
         }
       });
     });
   }
 
+  function closeAllDropdownMenus() {
+    document.querySelectorAll('.jum-dropdown-menu.active').forEach(m => m.classList.remove('active'));
+  }
+  document.addEventListener('click', () => closeAllDropdownMenus());
+
+  // ── 10.5 Template Chooser Modal ──
+  function openChooseTemplateModal() {
+    const modal = document.getElementById('jum-modal-choose-template');
+    const defaultGrid = document.getElementById('jum-default-templates-grid');
+    const userGrid = document.getElementById('jum-user-templates-grid');
+    const userSection = document.getElementById('jum-user-templates-section');
+
+    if (!modal || !defaultGrid) return;
+
+    const templates = getDefaultCourseTemplates();
+    defaultGrid.innerHTML = templates.map(tpl => {
+      const featHtml = tpl.features.map(f => `<div>&bull; ${escapeHtml(f)}</div>`).join('');
+      return `
+        <div class="jum-picker-card ${tpl.id === 'tpl-inclusive' ? 'featured' : ''}">
+          <div>
+            <div class="jum-picker-card-header">
+              <span class="jum-picker-icon">${tpl.icon}</span>
+              <span class="jum-picker-badge">${tpl.badge}</span>
+            </div>
+            <h4 class="jum-picker-title">${escapeHtml(tpl.name)}</h4>
+            <span class="jum-picker-sub">${escapeHtml(tpl.sub)}</span>
+            <p class="jum-picker-desc">${escapeHtml(tpl.desc)}</p>
+            <div class="jum-picker-features">
+              ${featHtml}
+            </div>
+          </div>
+          <button type="button" class="btn-jum-primary-sm" style="width:100%;justify-content:center;" data-action="use-template" data-tpl-id="${tpl.id}">
+            ${tpl.id === 'tpl-blank' ? 'Start Blank Course &rarr;' : 'Use Template &rarr;'}
+          </button>
+        </div>
+      `;
+    }).join('');
+
+    // User templates
+    if (customTemplates.length > 0 && userGrid && userSection) {
+      userSection.style.display = 'block';
+      userGrid.innerHTML = customTemplates.map(tpl => `
+        <div class="jum-picker-card">
+          <div>
+            <div class="jum-picker-card-header">
+              <span class="jum-picker-icon">📋</span>
+              <span class="jum-picker-badge" style="background:#4F46E5;">Saved Template</span>
+            </div>
+            <h4 class="jum-picker-title">${escapeHtml(tpl.name)}</h4>
+            <span class="jum-picker-sub">${escapeHtml(tpl.subject || 'Curriculum')} &bull; ${escapeHtml(tpl.grade || 'All Grades')}</span>
+            <p class="jum-picker-desc">${escapeHtml(tpl.desc || 'Custom reusable course structure.')}</p>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <button type="button" class="btn-jum-primary-sm" style="flex:1;justify-content:center;" data-action="use-template" data-tpl-id="${tpl.id}">
+              Use &rarr;
+            </button>
+            <button type="button" class="btn-jum-outline-sm" style="color:var(--error-color);border-color:#FECACA;" data-action="delete-custom-template" data-tpl-id="${tpl.id}" title="Delete template">
+              🗑️
+            </button>
+          </div>
+        </div>
+      `).join('');
+    } else if (userSection) {
+      userSection.style.display = 'none';
+    }
+
+    // Attach listeners
+    modal.querySelectorAll('[data-action]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.getAttribute('data-action');
+        const tplId = btn.getAttribute('data-tpl-id');
+        if (action === 'use-template') {
+          closeChooseTemplateModal();
+          startCourseFromTemplate(tplId);
+        } else if (action === 'delete-custom-template') {
+          deleteCustomTemplate(tplId);
+        }
+      });
+    });
+
+    modal.classList.add('active');
+  }
+
+  function closeChooseTemplateModal() {
+    const modal = document.getElementById('jum-modal-choose-template');
+    if (modal) modal.classList.remove('active');
+  }
+
+  function startCourseFromTemplate(tplId) {
+    let tpl = getDefaultCourseTemplates().find(t => t.id === tplId);
+    if (!tpl) {
+      tpl = customTemplates.find(t => t.id === tplId);
+    }
+    if (!tpl) tpl = getDefaultCourseTemplates()[0]; // fallback to blank
+
+    // Deep clone template into new course
+    const newCourse = JSON.parse(JSON.stringify(tpl));
+    newCourse.id = `course_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`;
+    newCourse.title = tpl.id === 'tpl-blank' ? 'My Inclusive Course' : `${tpl.name} Course`;
+    newCourse.status = 'Draft';
+    newCourse.progress = 25;
+    newCourse.createdAt = new Date().toISOString();
+    newCourse.updatedAt = new Date().toISOString();
+    newCourse.needs = newCourse.needs || ['Autism', 'Dyslexia'];
+
+    // Give unique IDs to units, topics, lessons
+    if (Array.isArray(newCourse.units)) {
+      newCourse.units.forEach((u, uIdx) => {
+        u.id = `unit_${Date.now()}_${uIdx}`;
+        if (Array.isArray(u.topics)) {
+          u.topics.forEach((t, tIdx) => {
+            t.id = `top_${Date.now()}_${uIdx}_${tIdx}`;
+            if (Array.isArray(t.lessons)) {
+              t.lessons.forEach((l, lIdx) => {
+                l.id = `les_${Date.now()}_${uIdx}_${tIdx}_${lIdx}`;
+              });
+            }
+          });
+        }
+      });
+    }
+
+    syncCourseFlatLessons(newCourse);
+    activeCourses.unshift(newCourse);
+    saveCourses(activeCourses);
+    renderCoursesGrid();
+
+    // Open directly in wizard
+    openCourseWizard(newCourse.id);
+    showToast(`Created course draft from ${tpl.name}!`, 'success');
+  }
+
+  // ── 10.6 Course Creation & Management 4-Step Wizard ──
+  function openCourseWizard(courseOrId = null, startStep = 1) {
+    let course = null;
+    if (typeof courseOrId === 'string') {
+      course = activeCourses.find(c => c.id === courseOrId);
+    } else if (courseOrId && typeof courseOrId === 'object') {
+      course = courseOrId;
+    }
+
+    if (!course) {
+      // Default new blank course
+      course = {
+        id: `course_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+        title: 'New Inclusive Course',
+        code: '',
+        grade: 'Grade 3',
+        subject: 'Mathematics',
+        term: 'Term 1',
+        academicYear: '2026',
+        duration: '10 Weeks',
+        educatorName: 'Tr. Educator',
+        status: 'Draft',
+        theme: 'math',
+        icon: '🔢',
+        desc: '',
+        needs: ['Autism', 'Dyslexia'],
+        curriculum: {
+          framework: 'Kenyan CBC (KICD Aligned)',
+          strands: '',
+          subStrands: '',
+          outcomes: '',
+          inquiryQuestions: '',
+          competencies: ['Critical Thinking', 'Communication & Collaboration'],
+          values: ['Respect', 'Unity'],
+          pcis: ['Inclusion & Diversity'],
+          learningExperiences: '',
+          assessmentExpectations: ''
+        },
+        units: [
+          {
+            id: `unit_${Date.now()}_1`,
+            title: 'Unit 1: Foundations',
+            desc: '',
+            duration: '3 Weeks',
+            topics: [
+              {
+                id: `top_${Date.now()}_1`,
+                title: 'Topic 1.1: Core Concepts',
+                lessons: [
+                  {
+                    id: `les_${Date.now()}_1`,
+                    lessonNumber: '1',
+                    title: 'Lesson 1: Introduction',
+                    duration: '35 mins',
+                    outcome: 'Learners engage with foundational concept.',
+                    contentHtml: '<h3>Lesson 1</h3><p>Start with explicit modeling.</p>'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        resources: [],
+        lessons: []
+      };
+      activeCourses.unshift(course);
+      saveCourses(activeCourses);
+    }
+
+    wizardCourse = JSON.parse(JSON.stringify(course));
+    syncCourseFlatLessons(wizardCourse);
+    hasUnsavedChanges = false;
+
+    const modal = document.getElementById('jum-modal-course-wizard');
+    if (!modal) return;
+
+    // Populate Wizard Header
+    const titleText = document.getElementById('jum-wizard-title-text');
+    const titleIcon = document.getElementById('jum-wizard-title-icon');
+    const statusBadge = document.getElementById('jum-wizard-status-badge');
+    if (titleText) titleText.textContent = wizardCourse.title || 'Course Studio';
+    if (titleIcon) titleIcon.textContent = wizardCourse.icon || '📚';
+    if (statusBadge) {
+      statusBadge.textContent = wizardCourse.status || 'Draft';
+      statusBadge.className = `jum-status-badge ${(wizardCourse.status || 'draft').toLowerCase().replace(/\s+/g, '-')}`;
+    }
+
+    updateAutoSaveStatus('saved');
+
+    // Populate Step 1 Inputs
+    populateWizardStep1();
+    // Populate Step 2 Inputs
+    populateWizardStep2();
+    // Populate Step 3 Hierarchy Tree
+    renderHierarchyTree();
+    // Populate Step 4 Rich Editor
+    populateWizardStep4();
+
+    // Navigate to step
+    goToWizardStep(startStep);
+
+    modal.classList.add('active');
+  }
+
+  function closeCourseWizard() {
+    if (hasUnsavedChanges) {
+      if (!confirm('You have unsaved changes. Do you want to save your changes before exiting?')) {
+        const modal = document.getElementById('jum-modal-course-wizard');
+        if (modal) modal.classList.remove('active');
+        wizardCourse = null;
+        hasUnsavedChanges = false;
+        return;
+      }
+      saveWizardCourse(false);
+    }
+    const modal = document.getElementById('jum-modal-course-wizard');
+    if (modal) modal.classList.remove('active');
+    wizardCourse = null;
+    hasUnsavedChanges = false;
+  }
+
+  function updateAutoSaveStatus(state, lastSavedTime = null) {
+    const autosaveEl = document.getElementById('jum-wizard-autosave');
+    const textEl = document.getElementById('jum-wizard-autosave-text');
+    if (!autosaveEl || !textEl) return;
+
+    const dot = autosaveEl.querySelector('.jum-autosave-dot');
+    if (state === 'saving') {
+      if (dot) { dot.className = 'jum-autosave-dot saving'; }
+      textEl.textContent = 'Saving...';
+    } else {
+      if (dot) { dot.className = 'jum-autosave-dot saved'; }
+      const time = lastSavedTime || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      textEl.textContent = `All changes saved (Last: ${time})`;
+    }
+  }
+
+  function triggerWizardAutoSave() {
+    hasUnsavedChanges = true;
+    updateAutoSaveStatus('saving');
+    clearTimeout(wizardAutoSaveTimer);
+    wizardAutoSaveTimer = setTimeout(() => {
+      saveWizardCourse(false);
+    }, 600);
+  }
+
+  function saveWizardCourse(showToastNotice = true) {
+    if (!wizardCourse) return;
+
+    readWizardStep1();
+    readWizardStep2();
+    readWizardStep4();
+
+    wizardCourse.updatedAt = new Date().toISOString();
+    syncCourseFlatLessons(wizardCourse);
+
+    // Update in activeCourses
+    const idx = activeCourses.findIndex(c => c.id === wizardCourse.id);
+    if (idx !== -1) {
+      activeCourses[idx] = JSON.parse(JSON.stringify(wizardCourse));
+    } else {
+      activeCourses.unshift(JSON.parse(JSON.stringify(wizardCourse)));
+    }
+
+    saveCourses(activeCourses);
+    renderCoursesGrid();
+    hasUnsavedChanges = false;
+    updateAutoSaveStatus('saved');
+
+    // Update status badge
+    const statusBadge = document.getElementById('jum-wizard-status-badge');
+    if (statusBadge) {
+      statusBadge.textContent = wizardCourse.status || 'Draft';
+      statusBadge.className = `jum-status-badge ${(wizardCourse.status || 'draft').toLowerCase().replace(/\s+/g, '-')}`;
+    }
+
+    if (showToastNotice) {
+      showToast(`Course "${wizardCourse.title}" saved successfully!`, 'success');
+    }
+  }
+
+  function publishWizardCourse() {
+    if (!wizardCourse) return;
+
+    readWizardStep1();
+    readWizardStep2();
+    readWizardStep4();
+
+    // Validation
+    if (!wizardCourse.title || wizardCourse.title.trim() === '') {
+      showToast('Validation Error: Course Title is required before publishing.', 'error');
+      goToWizardStep(1);
+      return;
+    }
+
+    syncCourseFlatLessons(wizardCourse);
+    if (!wizardCourse.lessons || wizardCourse.lessons.length === 0) {
+      showToast('Validation Error: Please add at least 1 lesson before publishing.', 'warning');
+      goToWizardStep(3);
+      return;
+    }
+
+    wizardCourse.status = 'Published';
+    wizardCourse.progress = 100;
+    saveWizardCourse(false);
+    renderCoursesGrid();
+
+    showToast(`🎉 Course "${wizardCourse.title}" published! It is now active for learners.`, 'success', 5000);
+  }
+
+  // ── Stepper Navigation ──
+  function goToWizardStep(stepNum) {
+    wizardCurrentStep = Math.max(1, Math.min(4, stepNum));
+
+    // Update panels
+    for (let i = 1; i <= 4; i++) {
+      const panel = document.getElementById(`jum-wizard-panel-${i}`);
+      const stepBtn = document.getElementById(`jum-step-btn-${i}`);
+      if (panel) panel.style.display = i === wizardCurrentStep ? 'block' : 'none';
+      if (stepBtn) {
+        if (i === wizardCurrentStep) {
+          stepBtn.classList.add('active');
+          stepBtn.setAttribute('aria-selected', 'true');
+        } else {
+          stepBtn.classList.remove('active');
+          stepBtn.setAttribute('aria-selected', 'false');
+        }
+        if (i < wizardCurrentStep) {
+          stepBtn.classList.add('completed');
+        } else {
+          stepBtn.classList.remove('completed');
+        }
+      }
+    }
+
+    // Counter & Prev/Next buttons
+    const counter = document.getElementById('jum-wizard-step-counter');
+    const prevBtn = document.getElementById('jum-btn-wizard-prev');
+    const nextBtn = document.getElementById('jum-btn-wizard-next');
+
+    if (counter) counter.textContent = `Step ${wizardCurrentStep} of 4`;
+    if (prevBtn) prevBtn.style.display = wizardCurrentStep > 1 ? 'inline-flex' : 'none';
+    if (nextBtn) {
+      nextBtn.innerHTML = wizardCurrentStep === 4 ? 'Preview &amp; Publish &rarr;' : 'Next Step &rarr;';
+    }
+
+    // Sync views when entering steps
+    if (wizardCurrentStep === 3) {
+      renderHierarchyTree();
+    } else if (wizardCurrentStep === 4) {
+      populateWizardStep4();
+    }
+  }
+
+  function nextWizardStep() {
+    if (wizardCurrentStep === 1) {
+      readWizardStep1();
+      if (!wizardCourse.title || wizardCourse.title.trim() === '') {
+        showToast('Please enter a course title to continue.', 'error');
+        return;
+      }
+    } else if (wizardCurrentStep === 2) {
+      readWizardStep2();
+    } else if (wizardCurrentStep === 4) {
+      readWizardStep4();
+      openCoursePreviewModal(wizardCourse.id);
+      return;
+    }
+    goToWizardStep(wizardCurrentStep + 1);
+  }
+
+  function prevWizardStep() {
+    goToWizardStep(wizardCurrentStep - 1);
+  }
+
+  // ── Step 1 Read/Populate ──
+  function populateWizardStep1() {
+    if (!wizardCourse) return;
+    const title = document.getElementById('jum-wiz-title');
+    const code = document.getElementById('jum-wiz-code');
+    const subject = document.getElementById('jum-wiz-subject');
+    const grade = document.getElementById('jum-wiz-grade');
+    const term = document.getElementById('jum-wiz-term');
+    const year = document.getElementById('jum-wiz-year');
+    const duration = document.getElementById('jum-wiz-duration');
+    const educator = document.getElementById('jum-wiz-educator');
+    const status = document.getElementById('jum-wiz-status');
+    const desc = document.getElementById('jum-wiz-desc');
+    const theme = document.getElementById('jum-wiz-theme');
+    const icon = document.getElementById('jum-wiz-icon');
+
+    if (title) title.value = wizardCourse.title || '';
+    if (code) code.value = wizardCourse.code || '';
+    if (subject) subject.value = wizardCourse.subject || 'Mathematics';
+    if (grade) grade.value = wizardCourse.grade || 'Grade 3';
+    if (term) term.value = wizardCourse.term || 'Term 1';
+    if (year) year.value = wizardCourse.academicYear || '2026';
+    if (duration) duration.value = wizardCourse.duration || '10 Weeks';
+    if (educator) educator.value = wizardCourse.educatorName || 'Tr. Educator';
+    if (status) status.value = wizardCourse.status || 'Draft';
+    if (desc) desc.value = wizardCourse.desc || '';
+    if (theme) theme.value = wizardCourse.theme || 'math';
+    if (icon) icon.value = wizardCourse.icon || '🔢';
+
+    const needsBoxes = document.querySelectorAll('#jum-wiz-needs-checkboxes input[type="checkbox"]');
+    needsBoxes.forEach(cb => {
+      cb.checked = wizardCourse.needs && wizardCourse.needs.includes(cb.value);
+    });
+  }
+
+  function readWizardStep1() {
+    if (!wizardCourse) return;
+    const title = document.getElementById('jum-wiz-title')?.value.trim();
+    if (title) {
+      wizardCourse.title = title;
+      const titleText = document.getElementById('jum-wizard-title-text');
+      if (titleText) titleText.textContent = title;
+    }
+    wizardCourse.code = document.getElementById('jum-wiz-code')?.value.trim() || '';
+    wizardCourse.subject = document.getElementById('jum-wiz-subject')?.value || 'Mathematics';
+    wizardCourse.grade = document.getElementById('jum-wiz-grade')?.value || 'Grade 3';
+    wizardCourse.term = document.getElementById('jum-wiz-term')?.value || 'Term 1';
+    wizardCourse.academicYear = document.getElementById('jum-wiz-year')?.value || '2026';
+    wizardCourse.duration = document.getElementById('jum-wiz-duration')?.value || '10 Weeks';
+    wizardCourse.educatorName = document.getElementById('jum-wiz-educator')?.value || '';
+    wizardCourse.status = document.getElementById('jum-wiz-status')?.value || 'Draft';
+    wizardCourse.desc = document.getElementById('jum-wiz-desc')?.value.trim() || '';
+    wizardCourse.theme = document.getElementById('jum-wiz-theme')?.value || 'math';
+    wizardCourse.icon = document.getElementById('jum-wiz-icon')?.value || '🔢';
+
+    const selectedNeeds = [];
+    document.querySelectorAll('#jum-wiz-needs-checkboxes input[type="checkbox"]:checked').forEach(cb => {
+      selectedNeeds.push(cb.value);
+    });
+    wizardCourse.needs = selectedNeeds;
+  }
+
+  // ── Step 2 Read/Populate ──
+  function populateWizardStep2() {
+    if (!wizardCourse) return;
+    const cur = wizardCourse.curriculum || {};
+    const fw = document.getElementById('jum-wiz-framework');
+    const strands = document.getElementById('jum-wiz-strands');
+    const substrands = document.getElementById('jum-wiz-substrands');
+    const outcomes = document.getElementById('jum-wiz-outcomes');
+    const inquiry = document.getElementById('jum-wiz-inquiry');
+    const experiences = document.getElementById('jum-wiz-experiences');
+    const assessments = document.getElementById('jum-wiz-assessments');
+
+    if (fw) fw.value = cur.framework || 'Kenyan CBC (KICD Aligned)';
+    if (strands) strands.value = cur.strands || '';
+    if (substrands) substrands.value = cur.subStrands || '';
+    if (outcomes) outcomes.value = cur.outcomes || '';
+    if (inquiry) inquiry.value = cur.inquiryQuestions || '';
+    if (experiences) experiences.value = cur.learningExperiences || '';
+    if (assessments) assessments.value = cur.assessmentExpectations || '';
+
+    // Competencies
+    document.querySelectorAll('#jum-wiz-competencies-grid input[type="checkbox"]').forEach(cb => {
+      cb.checked = cur.competencies && cur.competencies.includes(cb.value);
+    });
+    // Values
+    document.querySelectorAll('#jum-wiz-values-grid input[type="checkbox"]').forEach(cb => {
+      cb.checked = cur.values && cur.values.includes(cb.value);
+    });
+    // PCIs
+    document.querySelectorAll('#jum-wiz-pcis-grid input[type="checkbox"]').forEach(cb => {
+      cb.checked = cur.pcis && cur.pcis.includes(cb.value);
+    });
+  }
+
+  function readWizardStep2() {
+    if (!wizardCourse) return;
+    if (!wizardCourse.curriculum) wizardCourse.curriculum = {};
+    const cur = wizardCourse.curriculum;
+
+    cur.framework = document.getElementById('jum-wiz-framework')?.value || 'Kenyan CBC (KICD Aligned)';
+    cur.strands = document.getElementById('jum-wiz-strands')?.value.trim() || '';
+    cur.subStrands = document.getElementById('jum-wiz-substrands')?.value.trim() || '';
+    cur.outcomes = document.getElementById('jum-wiz-outcomes')?.value.trim() || '';
+    cur.inquiryQuestions = document.getElementById('jum-wiz-inquiry')?.value.trim() || '';
+    cur.learningExperiences = document.getElementById('jum-wiz-experiences')?.value.trim() || '';
+    cur.assessmentExpectations = document.getElementById('jum-wiz-assessments')?.value.trim() || '';
+
+    const comp = [];
+    document.querySelectorAll('#jum-wiz-competencies-grid input[type="checkbox"]:checked').forEach(cb => comp.push(cb.value));
+    cur.competencies = comp;
+
+    const val = [];
+    document.querySelectorAll('#jum-wiz-values-grid input[type="checkbox"]:checked').forEach(cb => val.push(cb.value));
+    cur.values = val;
+
+    const pcis = [];
+    document.querySelectorAll('#jum-wiz-pcis-grid input[type="checkbox"]:checked').forEach(cb => pcis.push(cb.value));
+    cur.pcis = pcis;
+  }
+
+  // ── Step 3: Hierarchy Tree Operations ──
+  function renderHierarchyTree() {
+    const container = document.getElementById('jum-hierarchy-tree-container');
+    if (!container || !wizardCourse) return;
+
+    if (!Array.isArray(wizardCourse.units) || wizardCourse.units.length === 0) {
+      container.innerHTML = `
+        <div style="text-align:center;padding:36px 20px;background:#F8FAFC;border:1.5px dashed var(--border-color);border-radius:12px;">
+          <div style="font-size:32px;margin-bottom:8px;">🏛️</div>
+          <h4 style="font-size:15px;color:var(--heading-color);margin-bottom:6px;">No Units in Course Hierarchy</h4>
+          <p style="font-size:13px;color:var(--muted-text-color);margin-bottom:14px;">Add your first unit or strand to begin building the curriculum pathway.</p>
+          <button type="button" class="btn-jum-primary-sm" id="jum-btn-empty-add-unit">
+            ➕ Add First Unit
+          </button>
+        </div>
+      `;
+      const btn = document.getElementById('jum-btn-empty-add-unit');
+      if (btn) btn.addEventListener('click', addWizardUnit);
+      return;
+    }
+
+    container.innerHTML = wizardCourse.units.map((unit, uIdx) => {
+      const topics = unit.topics || [];
+
+      const topicsHtml = topics.map((topic, tIdx) => {
+        const lessons = topic.lessons || [];
+
+        const lessonsHtml = lessons.map((lesson, lIdx) => `
+          <div class="jum-tree-lesson-card" data-lesson-id="${lesson.id}">
+            <div class="jum-tree-lesson-info">
+              <span style="font-size:14px;">📝</span>
+              <input type="text" class="jum-form-input" style="padding:4px 8px;font-size:13px;font-weight:600;flex:1;" value="${escapeHtml(lesson.title)}" data-action="rename-lesson" data-lesson-id="${lesson.id}" placeholder="Lesson title">
+              <input type="text" class="jum-form-input" style="width:75px;padding:4px 6px;font-size:11.5px;" value="${escapeHtml(lesson.duration || '35 mins')}" data-action="duration-lesson" data-lesson-id="${lesson.id}" placeholder="35 mins" title="Estimated duration">
+            </div>
+            <div class="jum-tree-actions">
+              <button type="button" class="jum-tree-btn-icon" data-action="move-lesson-up" data-unit-idx="${uIdx}" data-topic-idx="${tIdx}" data-lesson-idx="${lIdx}" title="Move lesson up">▲</button>
+              <button type="button" class="jum-tree-btn-icon" data-action="move-lesson-down" data-unit-idx="${uIdx}" data-topic-idx="${tIdx}" data-lesson-idx="${lIdx}" title="Move lesson down">▼</button>
+              <button type="button" class="jum-tree-btn-icon" data-action="duplicate-lesson" data-lesson-id="${lesson.id}" title="Duplicate lesson">📋</button>
+              <button type="button" class="btn-jum-outline-sm" style="padding:3px 8px;font-size:11.5px;" data-action="edit-lesson-content" data-lesson-id="${lesson.id}" title="Edit rich content in Step 4">
+                ✏️ Edit Content
+              </button>
+              <button type="button" class="jum-tree-btn-icon" style="color:var(--error-color);" data-action="delete-lesson" data-lesson-id="${lesson.id}" title="Delete lesson">🗑️</button>
+            </div>
+          </div>
+        `).join('');
+
+        return `
+          <div class="jum-tree-topic" data-topic-id="${topic.id}">
+            <div class="jum-tree-topic-header">
+              <span style="font-size:13px;font-weight:700;color:var(--jum-teal);">Topic ${uIdx + 1}.${tIdx + 1}</span>
+              <input type="text" class="jum-tree-topic-title-input" value="${escapeHtml(topic.title)}" data-action="rename-topic" data-unit-idx="${uIdx}" data-topic-idx="${tIdx}" placeholder="Topic title">
+              <div class="jum-tree-actions">
+                <button type="button" class="btn-jum-outline-sm" style="padding:3px 8px;font-size:11.5px;background:#fff;" data-action="add-lesson-to-topic" data-unit-idx="${uIdx}" data-topic-idx="${tIdx}">
+                  ➕ Add Lesson
+                </button>
+                <button type="button" class="jum-tree-btn-icon" data-action="move-topic-up" data-unit-idx="${uIdx}" data-topic-idx="${tIdx}" title="Move topic up">▲</button>
+                <button type="button" class="jum-tree-btn-icon" data-action="move-topic-down" data-unit-idx="${uIdx}" data-topic-idx="${tIdx}" title="Move topic down">▼</button>
+                <button type="button" class="jum-tree-btn-icon" style="color:var(--error-color);" data-action="delete-topic" data-unit-idx="${uIdx}" data-topic-idx="${tIdx}" title="Delete topic">🗑️</button>
+              </div>
+            </div>
+            <div class="jum-tree-lessons-container">
+              ${lessonsHtml || '<div style="font-size:12px;color:var(--muted-text-color);padding:6px;">No lessons in this topic yet.</div>'}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <div class="jum-tree-unit" data-unit-id="${unit.id}">
+          <div class="jum-tree-unit-header">
+            <div class="jum-tree-unit-title-box">
+              <button type="button" class="jum-tree-toggle-btn" data-action="toggle-unit" data-unit-idx="${uIdx}" title="Collapse / expand unit">▼</button>
+              <span style="font-weight:800;color:var(--primary-color);font-size:13.5px;">Unit ${uIdx + 1}:</span>
+              <input type="text" class="jum-tree-unit-title-input" value="${escapeHtml(unit.title)}" data-action="rename-unit" data-unit-idx="${uIdx}" placeholder="Unit title">
+              <input type="text" class="jum-form-input" style="width:80px;padding:3px 6px;font-size:11.5px;" value="${escapeHtml(unit.duration || '3 Weeks')}" data-action="duration-unit" data-unit-idx="${uIdx}" placeholder="Duration">
+            </div>
+            <div class="jum-tree-actions">
+              <button type="button" class="btn-jum-primary-sm" style="padding:4px 10px;font-size:12px;" data-action="add-topic-to-unit" data-unit-idx="${uIdx}">
+                ➕ Add Topic
+              </button>
+              <button type="button" class="jum-tree-btn-icon" data-action="move-unit-up" data-unit-idx="${uIdx}" title="Move unit up">▲</button>
+              <button type="button" class="jum-tree-btn-icon" data-action="move-unit-down" data-unit-idx="${uIdx}" title="Move unit down">▼</button>
+              <button type="button" class="jum-tree-btn-icon" data-action="duplicate-unit" data-unit-idx="${uIdx}" title="Duplicate unit">📋</button>
+              <button type="button" class="jum-tree-btn-icon" style="color:var(--error-color);" data-action="delete-unit" data-unit-idx="${uIdx}" title="Delete unit">🗑️</button>
+            </div>
+          </div>
+          <div class="jum-tree-unit-body" id="unit-body-${uIdx}">
+            ${topicsHtml || '<div style="font-size:13px;color:var(--muted-text-color);padding:8px;">No topics yet in this unit. Click "Add Topic" above.</div>'}
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Attach tree event listeners
+    attachHierarchyTreeListeners(container);
+  }
+
+  function attachHierarchyTreeListeners(container) {
+    container.querySelectorAll('[data-action]').forEach(el => {
+      const action = el.getAttribute('data-action');
+
+      if (['rename-unit', 'duration-unit', 'rename-topic', 'rename-lesson', 'duration-lesson'].includes(action)) {
+        el.addEventListener('input', (e) => {
+          handleTreeInputChange(action, el);
+          triggerWizardAutoSave();
+        });
+        return;
+      }
+
+      el.addEventListener('click', () => {
+        handleTreeActionClick(action, el);
+      });
+    });
+  }
+
+  function handleTreeInputChange(action, el) {
+    if (!wizardCourse) return;
+    const val = el.value;
+    if (action === 'rename-unit') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      if (wizardCourse.units[uIdx]) wizardCourse.units[uIdx].title = val;
+    } else if (action === 'duration-unit') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      if (wizardCourse.units[uIdx]) wizardCourse.units[uIdx].duration = val;
+    } else if (action === 'rename-topic') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      const tIdx = parseInt(el.getAttribute('data-topic-idx'), 10);
+      if (wizardCourse.units[uIdx]?.topics[tIdx]) wizardCourse.units[uIdx].topics[tIdx].title = val;
+    } else if (action === 'rename-lesson') {
+      const lessonId = el.getAttribute('data-lesson-id');
+      findAndMutateLesson(lessonId, l => { l.title = val; });
+    } else if (action === 'duration-lesson') {
+      const lessonId = el.getAttribute('data-lesson-id');
+      findAndMutateLesson(lessonId, l => { l.duration = val; });
+    }
+  }
+
+  function handleTreeActionClick(action, el) {
+    if (!wizardCourse) return;
+
+    if (action === 'toggle-unit') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      const body = document.getElementById(`unit-body-${uIdx}`);
+      if (body) {
+        const isHidden = body.style.display === 'none';
+        body.style.display = isHidden ? 'flex' : 'none';
+        el.textContent = isHidden ? '▼' : '▶';
+      }
+    } else if (action === 'add-topic-to-unit') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      if (wizardCourse.units[uIdx]) {
+        if (!wizardCourse.units[uIdx].topics) wizardCourse.units[uIdx].topics = [];
+        const tNum = wizardCourse.units[uIdx].topics.length + 1;
+        wizardCourse.units[uIdx].topics.push({
+          id: `top_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+          title: `Topic ${uIdx + 1}.${tNum}: New Sub-strand`,
+          lessons: []
+        });
+        renderHierarchyTree();
+        triggerWizardAutoSave();
+      }
+    } else if (action === 'add-lesson-to-topic') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      const tIdx = parseInt(el.getAttribute('data-topic-idx'), 10);
+      const topic = wizardCourse.units[uIdx]?.topics[tIdx];
+      if (topic) {
+        if (!topic.lessons) topic.lessons = [];
+        const lNum = topic.lessons.length + 1;
+        topic.lessons.push({
+          id: `les_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+          lessonNumber: String(lNum),
+          title: `Lesson ${lNum}: New Differentiated Lesson`,
+          duration: '35 mins',
+          outcome: '',
+          contentHtml: '<p>Enter lesson instructions here.</p>'
+        });
+        syncCourseFlatLessons(wizardCourse);
+        renderHierarchyTree();
+        triggerWizardAutoSave();
+      }
+    } else if (action === 'move-unit-up') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      if (uIdx > 0) {
+        const temp = wizardCourse.units[uIdx];
+        wizardCourse.units[uIdx] = wizardCourse.units[uIdx - 1];
+        wizardCourse.units[uIdx - 1] = temp;
+        renderHierarchyTree();
+        triggerWizardAutoSave();
+      }
+    } else if (action === 'move-unit-down') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      if (uIdx < wizardCourse.units.length - 1) {
+        const temp = wizardCourse.units[uIdx];
+        wizardCourse.units[uIdx] = wizardCourse.units[uIdx + 1];
+        wizardCourse.units[uIdx + 1] = temp;
+        renderHierarchyTree();
+        triggerWizardAutoSave();
+      }
+    } else if (action === 'duplicate-unit') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      const copy = JSON.parse(JSON.stringify(wizardCourse.units[uIdx]));
+      copy.id = `unit_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`;
+      copy.title = `${copy.title} (Copy)`;
+      wizardCourse.units.splice(uIdx + 1, 0, copy);
+      renderHierarchyTree();
+      triggerWizardAutoSave();
+      showToast('Unit duplicated!', 'info');
+    } else if (action === 'delete-unit') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      showConfirmDialog('Delete Unit', `Are you sure you want to delete "${wizardCourse.units[uIdx]?.title}" and all its lessons?`, () => {
+        wizardCourse.units.splice(uIdx, 1);
+        syncCourseFlatLessons(wizardCourse);
+        renderHierarchyTree();
+        triggerWizardAutoSave();
+        showToast('Unit deleted.', 'info');
+      });
+    } else if (action === 'move-topic-up') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      const tIdx = parseInt(el.getAttribute('data-topic-idx'), 10);
+      const topics = wizardCourse.units[uIdx]?.topics;
+      if (topics && tIdx > 0) {
+        const temp = topics[tIdx];
+        topics[tIdx] = topics[tIdx - 1];
+        topics[tIdx - 1] = temp;
+        renderHierarchyTree();
+        triggerWizardAutoSave();
+      }
+    } else if (action === 'move-topic-down') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      const tIdx = parseInt(el.getAttribute('data-topic-idx'), 10);
+      const topics = wizardCourse.units[uIdx]?.topics;
+      if (topics && tIdx < topics.length - 1) {
+        const temp = topics[tIdx];
+        topics[tIdx] = topics[tIdx + 1];
+        topics[tIdx + 1] = temp;
+        renderHierarchyTree();
+        triggerWizardAutoSave();
+      }
+    } else if (action === 'delete-topic') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      const tIdx = parseInt(el.getAttribute('data-topic-idx'), 10);
+      showConfirmDialog('Delete Topic', 'Are you sure you want to delete this topic and all its lessons?', () => {
+        wizardCourse.units[uIdx].topics.splice(tIdx, 1);
+        syncCourseFlatLessons(wizardCourse);
+        renderHierarchyTree();
+        triggerWizardAutoSave();
+        showToast('Topic deleted.', 'info');
+      });
+    } else if (action === 'move-lesson-up' || action === 'move-lesson-down') {
+      const uIdx = parseInt(el.getAttribute('data-unit-idx'), 10);
+      const tIdx = parseInt(el.getAttribute('data-topic-idx'), 10);
+      const lIdx = parseInt(el.getAttribute('data-lesson-idx'), 10);
+      const lessons = wizardCourse.units[uIdx]?.topics[tIdx]?.lessons;
+      if (lessons) {
+        const targetIdx = action === 'move-lesson-up' ? lIdx - 1 : lIdx + 1;
+        if (targetIdx >= 0 && targetIdx < lessons.length) {
+          const temp = lessons[lIdx];
+          lessons[lIdx] = lessons[targetIdx];
+          lessons[targetIdx] = temp;
+          renderHierarchyTree();
+          triggerWizardAutoSave();
+        }
+      }
+    } else if (action === 'duplicate-lesson') {
+      const lessonId = el.getAttribute('data-lesson-id');
+      duplicateWizardLesson(lessonId);
+    } else if (action === 'edit-lesson-content') {
+      const lessonId = el.getAttribute('data-lesson-id');
+      goToWizardStep(4);
+      loadLessonIntoEditor(lessonId);
+    } else if (action === 'delete-lesson') {
+      const lessonId = el.getAttribute('data-lesson-id');
+      showConfirmDialog('Delete Lesson', 'Are you sure you want to delete this lesson?', () => {
+        removeLessonFromHierarchy(lessonId);
+        syncCourseFlatLessons(wizardCourse);
+        renderHierarchyTree();
+        triggerWizardAutoSave();
+        showToast('Lesson deleted.', 'info');
+      });
+    }
+  }
+
+  function addWizardUnit() {
+    if (!wizardCourse) return;
+    if (!wizardCourse.units) wizardCourse.units = [];
+    const uNum = wizardCourse.units.length + 1;
+    wizardCourse.units.push({
+      id: `unit_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+      title: `Unit ${uNum}: New Strand`,
+      desc: '',
+      duration: '3 Weeks',
+      topics: [
+        {
+          id: `top_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+          title: `Topic ${uNum}.1: New Sub-strand`,
+          lessons: [
+            {
+              id: `les_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+              lessonNumber: '1',
+              title: 'Lesson 1: Introductory Activity',
+              duration: '35 mins',
+              outcome: '',
+              contentHtml: '<p>Type lesson instructions here.</p>'
+            }
+          ]
+        }
+      ]
+    });
+    syncCourseFlatLessons(wizardCourse);
+    renderHierarchyTree();
+    triggerWizardAutoSave();
+  }
+
+  function addWizardLessonQuick() {
+    if (!wizardCourse || !wizardCourse.units || wizardCourse.units.length === 0) {
+      addWizardUnit();
+      return;
+    }
+    const lastUnit = wizardCourse.units[wizardCourse.units.length - 1];
+    if (!lastUnit.topics || lastUnit.topics.length === 0) {
+      lastUnit.topics = [{ id: `top_${Date.now()}`, title: 'Topic 1.1: General Topics', lessons: [] }];
+    }
+    const lastTopic = lastUnit.topics[lastUnit.topics.length - 1];
+    if (!lastTopic.lessons) lastTopic.lessons = [];
+
+    const lNum = lastTopic.lessons.length + 1;
+    lastTopic.lessons.push({
+      id: `les_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+      lessonNumber: String(lNum),
+      title: `Lesson ${lNum}: New Lesson`,
+      duration: '35 mins',
+      outcome: '',
+      contentHtml: '<p>Lesson contents...</p>'
+    });
+    syncCourseFlatLessons(wizardCourse);
+    renderHierarchyTree();
+    triggerWizardAutoSave();
+  }
+
+  function findAndMutateLesson(lessonId, mutateFn) {
+    if (!wizardCourse || !wizardCourse.units) return;
+    for (const u of wizardCourse.units) {
+      if (u.topics) {
+        for (const t of u.topics) {
+          if (t.lessons) {
+            const found = t.lessons.find(l => l.id === lessonId);
+            if (found) {
+              mutateFn(found);
+              return;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  function removeLessonFromHierarchy(lessonId) {
+    if (!wizardCourse || !wizardCourse.units) return;
+    for (const u of wizardCourse.units) {
+      if (u.topics) {
+        for (const t of u.topics) {
+          if (t.lessons) {
+            const idx = t.lessons.findIndex(l => l.id === lessonId);
+            if (idx !== -1) {
+              t.lessons.splice(idx, 1);
+              return;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  function duplicateWizardLesson(lessonId) {
+    if (!wizardCourse || !wizardCourse.units) return;
+    for (const u of wizardCourse.units) {
+      if (u.topics) {
+        for (const t of u.topics) {
+          if (t.lessons) {
+            const idx = t.lessons.findIndex(l => l.id === lessonId);
+            if (idx !== -1) {
+              const copy = JSON.parse(JSON.stringify(t.lessons[idx]));
+              copy.id = `les_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`;
+              copy.title = `${copy.title} (Copy)`;
+              t.lessons.splice(idx + 1, 0, copy);
+              syncCourseFlatLessons(wizardCourse);
+              renderHierarchyTree();
+              triggerWizardAutoSave();
+              showToast('Lesson duplicated!', 'info');
+              return;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  function toggleCollapseAllUnits(collapse) {
+    document.querySelectorAll('.jum-tree-unit-body').forEach(body => {
+      body.style.display = collapse ? 'none' : 'flex';
+    });
+    document.querySelectorAll('.jum-tree-toggle-btn').forEach(btn => {
+      btn.textContent = collapse ? '▶' : '▼';
+    });
+  }
+
+  // ── Step 4: Rich Content Editor & Structured Plan ──
+  let activeEditorLessonId = null;
+
+  function populateWizardStep4() {
+    if (!wizardCourse) return;
+    syncCourseFlatLessons(wizardCourse);
+    const select = document.getElementById('jum-wiz-content-lesson-select');
+    if (!select) return;
+
+    const lessons = wizardCourse.lessons || [];
+    if (lessons.length === 0) {
+      select.innerHTML = '<option value="">No lessons created yet in Step 3</option>';
+      activeEditorLessonId = null;
+      return;
+    }
+
+    select.innerHTML = lessons.map(l => `
+      <option value="${l.id}">${escapeHtml(l.title)} (${escapeHtml(l.duration || '35 mins')})</option>
+    `).join('');
+
+    // If previously selected lesson still exists, keep it; else load first
+    if (!activeEditorLessonId || !lessons.some(l => l.id === activeEditorLessonId)) {
+      activeEditorLessonId = lessons[0].id;
+    }
+    select.value = activeEditorLessonId;
+    loadLessonIntoEditor(activeEditorLessonId);
+  }
+
+  function loadLessonIntoEditor(lessonId) {
+    if (!wizardCourse) return;
+    activeEditorLessonId = lessonId;
+    syncCourseFlatLessons(wizardCourse);
+    const lesson = (wizardCourse.lessons || []).find(l => l.id === lessonId);
+    if (!lesson) return;
+
+    const titleEl = document.getElementById('jum-wiz-cur-lesson-title');
+    const durEl = document.getElementById('jum-wiz-cur-lesson-duration');
+    const dateEl = document.getElementById('jum-wiz-cur-lesson-date');
+    const outcomeEl = document.getElementById('jum-wiz-cur-outcome');
+    const introEl = document.getElementById('jum-wiz-cur-intro');
+    const guidedEl = document.getElementById('jum-wiz-cur-guided');
+    const actEl = document.getElementById('jum-wiz-cur-activity');
+    const wrapupEl = document.getElementById('jum-wiz-cur-wrapup');
+    const t1El = document.getElementById('jum-wiz-cur-tier1');
+    const t2El = document.getElementById('jum-wiz-cur-tier2');
+    const t3El = document.getElementById('jum-wiz-cur-tier3');
+    const matEl = document.getElementById('jum-wiz-cur-materials');
+    const refEl = document.getElementById('jum-wiz-cur-reflection');
+    const hwEl = document.getElementById('jum-wiz-cur-homework');
+    const editor = document.getElementById('jum-rich-editor');
+
+    if (titleEl) titleEl.value = lesson.title || '';
+    if (durEl) durEl.value = lesson.duration || '35 mins';
+    if (dateEl) dateEl.value = lesson.date || '';
+    if (outcomeEl) outcomeEl.value = lesson.outcome || '';
+    if (introEl) introEl.value = lesson.intro || '';
+    if (guidedEl) guidedEl.value = lesson.guided || '';
+    if (actEl) actEl.value = lesson.activity || '';
+    if (wrapupEl) wrapupEl.value = lesson.wrapup || '';
+    if (t1El) t1El.value = lesson.tier1 || '';
+    if (t2El) t2El.value = lesson.tier2 || '';
+    if (t3El) t3El.value = lesson.tier3 || '';
+    if (matEl) matEl.value = lesson.materials || '';
+    if (refEl) refEl.value = lesson.reflection || '';
+    if (hwEl) hwEl.value = lesson.homework || '';
+
+    if (editor) {
+      editor.innerHTML = lesson.contentHtml || `<h3>${escapeHtml(lesson.title)}</h3><p>${escapeHtml(lesson.outcome || 'Type differentiated lesson guidance here...')}</p>`;
+    }
+  }
+
+  function readWizardStep4() {
+    if (!wizardCourse || !activeEditorLessonId) return;
+    const lesson = (wizardCourse.lessons || []).find(l => l.id === activeEditorLessonId);
+    if (!lesson) return;
+
+    lesson.title = document.getElementById('jum-wiz-cur-lesson-title')?.value.trim() || lesson.title;
+    lesson.duration = document.getElementById('jum-wiz-cur-lesson-duration')?.value.trim() || '35 mins';
+    lesson.date = document.getElementById('jum-wiz-cur-lesson-date')?.value || '';
+    lesson.outcome = document.getElementById('jum-wiz-cur-outcome')?.value.trim() || '';
+    lesson.intro = document.getElementById('jum-wiz-cur-intro')?.value.trim() || '';
+    lesson.guided = document.getElementById('jum-wiz-cur-guided')?.value.trim() || '';
+    lesson.activity = document.getElementById('jum-wiz-cur-activity')?.value.trim() || '';
+    lesson.wrapup = document.getElementById('jum-wiz-cur-wrapup')?.value.trim() || '';
+    lesson.tier1 = document.getElementById('jum-wiz-cur-tier1')?.value.trim() || '';
+    lesson.tier2 = document.getElementById('jum-wiz-cur-tier2')?.value.trim() || '';
+    lesson.tier3 = document.getElementById('jum-wiz-cur-tier3')?.value.trim() || '';
+    lesson.materials = document.getElementById('jum-wiz-cur-materials')?.value.trim() || '';
+    lesson.reflection = document.getElementById('jum-wiz-cur-reflection')?.value.trim() || '';
+    lesson.homework = document.getElementById('jum-wiz-cur-homework')?.value.trim() || '';
+
+    const editor = document.getElementById('jum-rich-editor');
+    if (editor) {
+      lesson.contentHtml = editor.innerHTML;
+    }
+
+    // Also update this lesson inside wizardCourse.units
+    findAndMutateLesson(activeEditorLessonId, l => {
+      Object.assign(l, lesson);
+    });
+  }
+
+  // ── Rich Editor Toolbar Commands ──
+  function execEditorCommand(cmd, val = null) {
+    const editor = document.getElementById('jum-rich-editor');
+    if (!editor) return;
+    editor.focus();
+    document.execCommand(cmd, false, val);
+    triggerWizardAutoSave();
+  }
+
+  function insertCalloutIntoEditor(type, title, defaultText) {
+    const editor = document.getElementById('jum-rich-editor');
+    if (!editor) return;
+    editor.focus();
+    const html = `<div class="jum-editor-callout ${type}"><strong>${title}</strong><p>${defaultText}</p></div><p><br></p>`;
+    document.execCommand('insertHTML', false, html);
+    triggerWizardAutoSave();
+  }
+
+  // ── 10.7 In-Course Resource Manager Modal ──
+  function openCourseResourcesModal(courseId) {
+    const course = activeCourses.find(c => c.id === courseId);
+    if (!course) return;
+
+    currentResourceCourseId = courseId;
+    syncCourseFlatLessons(course);
+
+    const modal = document.getElementById('jum-modal-course-resources');
+    const titleEl = document.getElementById('jum-res-modal-course-name');
+    const unitFilter = document.getElementById('jum-res-unit-filter');
+
+    if (!modal) return;
+    if (titleEl) titleEl.textContent = course.title;
+
+    // Populate unit/lesson filter
+    if (unitFilter) {
+      let optionsHtml = '<option value="all">All Units &amp; Lessons</option>';
+      if (course.units) {
+        course.units.forEach((u, uIdx) => {
+          optionsHtml += `<option value="unit:${u.id}">Unit ${uIdx + 1}: ${escapeHtml(u.title)}</option>`;
+          if (u.topics) {
+            u.topics.forEach(t => {
+              if (t.lessons) {
+                t.lessons.forEach(l => {
+                  optionsHtml += `<option value="lesson:${l.id}">&nbsp;&nbsp;&bull; Lesson: ${escapeHtml(l.title)}</option>`;
+                });
+              }
+            });
+          }
+        });
+      }
+      unitFilter.innerHTML = optionsHtml;
+    }
+
+    renderCourseResourcesTable();
+    modal.classList.add('active');
+  }
+
+  function renderCourseResourcesTable() {
+    const course = activeCourses.find(c => c.id === currentResourceCourseId);
+    if (!course) return;
+
+    const tbody = document.getElementById('jum-res-table-body');
+    const emptyState = document.getElementById('jum-res-empty-state');
+    const countEl = document.getElementById('jum-res-total-count');
+    const searchInput = document.getElementById('jum-res-search-input');
+    const catFilter = document.getElementById('jum-res-category-filter');
+    const unitFilter = document.getElementById('jum-res-unit-filter');
+
+    if (!tbody) return;
+
+    const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    const cat = catFilter ? catFilter.value : 'all';
+    const unitVal = unitFilter ? unitFilter.value : 'all';
+
+    const resources = course.resources || [];
+    if (countEl) countEl.textContent = `${resources.length} ${resources.length === 1 ? 'Resource' : 'Resources'}`;
+
+    const filtered = resources.filter(res => {
+      if (cat !== 'all' && res.type !== cat && res.category?.toLowerCase() !== cat.toLowerCase()) {
+        return false;
+      }
+      if (unitVal !== 'all') {
+        if (unitVal.startsWith('unit:') && res.unitId !== unitVal.replace('unit:', '')) return false;
+        if (unitVal.startsWith('lesson:') && res.lessonId !== unitVal.replace('lesson:', '')) return false;
+      }
+      if (q) {
+        const inName = res.name.toLowerCase().includes(q);
+        const inTags = res.tags && res.tags.some(t => t.toLowerCase().includes(q));
+        if (!inName && !inTags) return false;
+      }
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = '';
+      if (emptyState) emptyState.style.display = 'block';
+      return;
+    }
+
+    if (emptyState) emptyState.style.display = 'none';
+
+    tbody.innerHTML = filtered.map(res => {
+      const typeClass = res.fileFormat ? res.fileFormat.toLowerCase() : (res.type || 'file');
+      
+      // Find assigned lesson title
+      let assignedName = 'General Course Material';
+      if (res.lessonId) {
+        const lesson = (course.lessons || []).find(l => l.id === res.lessonId);
+        if (lesson) assignedName = `Lesson: ${lesson.title}`;
+      } else if (res.unitId && course.units) {
+        const unit = course.units.find(u => u.id === res.unitId);
+        if (unit) assignedName = `Unit: ${unit.title}`;
+      }
+
+      return `
+        <tr data-res-id="${res.id}">
+          <td>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="jum-file-badge ${typeClass}">${escapeHtml(res.fileFormat || res.type || 'FILE')}</span>
+              <strong>${escapeHtml(res.name)}</strong>
+            </div>
+          </td>
+          <td>${escapeHtml(res.category || res.type || 'Material')}</td>
+          <td>${escapeHtml(res.size || 'Web Link')}</td>
+          <td>${escapeHtml(res.dateUploaded || 'Recently')}</td>
+          <td style="font-size:12px;color:var(--muted-text-color);">${escapeHtml(assignedName)}</td>
+          <td style="text-align:right;">
+            <div style="display:flex;justify-content:flex-end;gap:6px;">
+              <button type="button" class="jum-tree-btn-icon" data-action="download-res" data-res-id="${res.id}" title="Download or open">📥</button>
+              <button type="button" class="jum-tree-btn-icon" data-action="rename-res" data-res-id="${res.id}" title="Rename resource">✏️</button>
+              <button type="button" class="jum-tree-btn-icon" style="color:var(--error-color);" data-action="delete-res" data-res-id="${res.id}" title="Remove resource">🗑️</button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    // Attach listeners
+    tbody.querySelectorAll('[data-action]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.getAttribute('data-action');
+        const resId = btn.getAttribute('data-res-id');
+        if (action === 'download-res') {
+          downloadResource(course, resId);
+        } else if (action === 'rename-res') {
+          renameResource(course, resId);
+        } else if (action === 'delete-res') {
+          deleteResource(course, resId);
+        }
+      });
+    });
+  }
+
+  function downloadResource(course, resId) {
+    const res = (course.resources || []).find(r => r.id === resId);
+    if (!res) return;
+
+    if (res.dataUrl) {
+      const a = document.createElement('a');
+      a.href = res.dataUrl;
+      a.download = res.name;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast(`Downloaded "${res.name}"`, 'success');
+    } else if (res.url && res.url !== '#') {
+      window.open(res.url, '_blank');
+    } else {
+      // Simulate file download for pre-loaded exemplar resources
+      const blob = new Blob([`=== Instructify Kenya: Jumuishi Inclusive Resource ===\n\nCourse: ${course.title}\nResource Name: ${res.name}\nCategory: ${res.category || res.type}\n\nAll resources are stored securely and locally in your browser offline cache.\n`], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = res.name;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(`Exported "${res.name}"`, 'success');
+    }
+  }
+
+  function renameResource(course, resId) {
+    const res = (course.resources || []).find(r => r.id === resId);
+    if (!res) return;
+    const newName = prompt('Enter new resource name:', res.name);
+    if (newName && newName.trim()) {
+      res.name = newName.trim();
+      saveCourses(activeCourses);
+      renderCourseResourcesTable();
+      showToast('Resource renamed.', 'success');
+    }
+  }
+
+  function deleteResource(course, resId) {
+    showConfirmDialog('Remove Resource', 'Are you sure you want to remove this resource from the course?', () => {
+      course.resources = (course.resources || []).filter(r => r.id !== resId);
+      saveCourses(activeCourses);
+      renderCourseResourcesTable();
+      renderCoursesGrid();
+      showToast('Resource removed.', 'info');
+    });
+  }
+
+  function handleResourceFilesAdded(files) {
+    const course = activeCourses.find(c => c.id === currentResourceCourseId);
+    if (!course || !files || files.length === 0) return;
+
+    if (!course.resources) course.resources = [];
+
+    Array.from(files).forEach(file => {
+      const formattedSize = file.size > 1024 * 1024
+        ? `${(file.size / (1024 * 1024)).toFixed(1)} MB`
+        : `${Math.round(file.size / 1024)} KB`;
+
+      let type = 'document';
+      let fileFormat = 'DOC';
+      const ext = file.name.split('.').pop().toUpperCase();
+      if (['PDF'].includes(ext)) { type = 'document'; fileFormat = 'PDF'; }
+      else if (['DOC', 'DOCX', 'TXT'].includes(ext)) { type = 'document'; fileFormat = 'DOC'; }
+      else if (['PPT', 'PPTX'].includes(ext)) { type = 'presentation'; fileFormat = 'PPT'; }
+      else if (['XLS', 'XLSX', 'CSV'].includes(ext)) { type = 'spreadsheet'; fileFormat = 'XLS'; }
+      else if (['PNG', 'JPG', 'JPEG', 'WEBP', 'SVG'].includes(ext)) { type = 'image'; fileFormat = 'IMG'; }
+      else if (['MP3', 'WAV', 'MP4', 'WEBM'].includes(ext)) { type = 'media'; fileFormat = 'MEDIA'; }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        course.resources.unshift({
+          id: `res_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+          name: file.name,
+          type: type,
+          fileFormat: fileFormat,
+          size: formattedSize,
+          dateUploaded: new Date().toISOString().split('T')[0],
+          category: fileFormat === 'PDF' ? 'Worksheets & Rubrics' : 'Learning Resources',
+          tags: [fileFormat, 'Inclusive Material'],
+          dataUrl: e.target.result,
+          url: '#'
+        });
+        saveCourses(activeCourses);
+        renderCourseResourcesTable();
+        renderCoursesGrid();
+        showToast(`Uploaded "${file.name}"`, 'success');
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ── 10.8 Learner-Facing Course Preview Modal ──
+  function openCoursePreviewModal(courseId) {
+    const course = activeCourses.find(c => c.id === courseId);
+    if (!course) return;
+
+    currentViewingCourseId = courseId;
+    syncCourseFlatLessons(course);
+
+    const modal = document.getElementById('jum-modal-course-preview');
+    const titleEl = document.getElementById('jum-prev-course-title');
+    const bodyEl = document.getElementById('jum-prev-modal-body');
+
+    if (!modal || !bodyEl) return;
+    if (titleEl) titleEl.textContent = course.title;
+
+    const units = course.units || [];
+    const resources = course.resources || [];
+
+    const unitsHtml = units.map((u, uIdx) => {
+      const topics = u.topics || [];
+      const topicsHtml = topics.map(t => {
+        const lessons = t.lessons || [];
+        const lessonsHtml = lessons.map(l => `
+          <div class="jum-prev-lesson-box">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+              <h5 style="font-family:var(--font-heading);font-size:15px;font-weight:700;color:var(--heading-color);margin:0;">
+                📝 ${escapeHtml(l.title)}
+              </h5>
+              <span class="jum-duration-chip">⏱️ ${escapeHtml(l.duration || '35 mins')}</span>
+            </div>
+            <div style="font-size:13.5px;color:var(--text-color);margin-bottom:10px;">
+              <strong>Specific Learning Outcome:</strong> ${escapeHtml(l.outcome || 'Apply foundational concept using concrete realia.')}
+            </div>
+            ${l.contentHtml ? `<div style="background:#fff;border:1px solid var(--border-color);border-radius:8px;padding:14px;font-size:13.5px;margin-bottom:12px;">${l.contentHtml}</div>` : ''}
+            
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:8px;font-size:12px;background:#F1F5F9;padding:10px;border-radius:6px;">
+              <div><strong>Tier 1 (Universal):</strong> ${escapeHtml(l.tier1 || 'Visual timetable & gestures')}</div>
+              <div><strong>Tier 2 (Targeted):</strong> ${escapeHtml(l.tier2 || 'Color-coded cues & earmuffs')}</div>
+              <div><strong>Tier 3 (Intensive):</strong> ${escapeHtml(l.tier3 || 'PECS cards & 1-on-1 buddy')}</div>
+            </div>
+          </div>
+        `).join('');
+
+        return `
+          <div style="margin-top:14px;">
+            <h6 style="font-size:13.5px;font-weight:700;color:var(--jum-teal);margin-bottom:6px;">${escapeHtml(t.title)}</h6>
+            ${lessonsHtml || '<p style="font-size:12.5px;color:var(--muted-text-color);">No lessons in this topic yet.</p>'}
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <div class="jum-prev-unit">
+          <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1.5px solid var(--border-color);padding-bottom:10px;margin-bottom:12px;">
+            <div>
+              <span style="font-size:12px;font-weight:800;color:var(--primary-color);text-transform:uppercase;">Unit ${uIdx + 1}</span>
+              <h4 style="font-family:var(--font-heading);font-size:17px;font-weight:800;color:var(--heading-color);margin:2px 0;">
+                ${escapeHtml(u.title)}
+              </h4>
+            </div>
+            <span style="font-size:12px;color:var(--muted-text-color);font-weight:600;">${escapeHtml(u.duration || '3 Weeks')}</span>
+          </div>
+          <p style="font-size:13.5px;color:var(--muted-text-color);margin-bottom:12px;">${escapeHtml(u.desc || 'Comprehensive syllabus unit.')}</p>
+          ${topicsHtml}
+        </div>
+      `;
+    }).join('');
+
+    const resHtml = resources.length > 0 ? `
+      <div style="margin-top:28px;">
+        <h4 style="font-family:var(--font-heading);font-size:16px;font-weight:800;color:var(--heading-color);margin-bottom:12px;display:flex;align-items:center;gap:6px;">
+          <span>📎</span> Course Learning Materials &amp; Resources (${resources.length})
+        </h4>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:10px;">
+          ${resources.map(r => `
+            <div style="background:#FFFFFF;border:1px solid var(--border-color);border-radius:10px;padding:12px;display:flex;align-items:center;gap:10px;">
+              <span class="jum-file-badge ${(r.fileFormat || 'doc').toLowerCase()}">${escapeHtml(r.fileFormat || 'FILE')}</span>
+              <div style="overflow:hidden;flex:1;">
+                <div style="font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escapeHtml(r.name)}</div>
+                <div style="font-size:11.5px;color:var(--muted-text-color);">${escapeHtml(r.size || 'Web Link')}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    ` : '';
+
+    bodyEl.innerHTML = `
+      <div class="jum-prev-hero">
+        <div class="jum-prev-meta">
+          <span>📚 ${escapeHtml(course.subject)}</span>
+          <span>🎓 ${escapeHtml(course.grade)}</span>
+          <span>⏱️ ${escapeHtml(course.duration || '10 Weeks')}</span>
+          <span>👨‍🏫 ${escapeHtml(course.educatorName || 'Educator')}</span>
+          <span>🏷️ ${escapeHtml(course.term || 'Term 1')}</span>
+        </div>
+        <h2 class="jum-prev-title">${escapeHtml(course.title)}</h2>
+        <p style="font-size:14.5px;color:rgba(255,255,255,0.92);line-height:1.6;margin:0;max-width:850px;">
+          ${escapeHtml(course.desc || 'Inclusive Competency-Based curriculum.')}
+        </p>
+      </div>
+
+      <div style="margin-bottom:24px;">
+        <h4 style="font-family:var(--font-heading);font-size:16px;font-weight:800;color:var(--heading-color);margin-bottom:8px;">
+          Curriculum Framework &amp; Competencies
+        </h4>
+        <div style="background:#F8FAFC;border:1px solid var(--border-color);border-radius:12px;padding:16px;font-size:13px;line-height:1.6;">
+          <div><strong>Framework:</strong> ${escapeHtml(course.curriculum?.framework || 'Kenyan CBC (KICD Aligned)')}</div>
+          <div><strong>Key Inquiry Question:</strong> ${escapeHtml(course.curriculum?.inquiryQuestions || 'How can equal sharing help us solve everyday group problems?')}</div>
+          <div><strong>CBC Competencies:</strong> ${escapeHtml(course.competencies || (course.curriculum?.competencies ? course.curriculum.competencies.join(', ') : 'Critical Thinking, Communication'))}</div>
+        </div>
+      </div>
+
+      <h3 style="font-family:var(--font-heading);font-size:18px;font-weight:800;color:var(--heading-color);margin-bottom:14px;">
+        Course Syllabus &amp; Instructional Units
+      </h3>
+      ${unitsHtml || '<p>No units added yet.</p>'}
+      ${resHtml}
+    `;
+
+    modal.classList.add('active');
+  }
+
+  // ── 10.9 Template Creator Modal Logic ──
+  function openCreateTemplateModal(sourceCourseId = null) {
+    const modal = document.getElementById('jum-modal-create-template');
+    const inputName = document.getElementById('jum-input-tpl-name');
+    const inputSubject = document.getElementById('jum-input-tpl-subject');
+    const inputGrade = document.getElementById('jum-input-tpl-grade');
+    const inputDesc = document.getElementById('jum-input-tpl-desc');
+    const sourceInput = document.getElementById('jum-input-tpl-source-course-id');
+
+    if (!modal) return;
+
+    if (sourceCourseId) {
+      const course = activeCourses.find(c => c.id === sourceCourseId);
+      if (course) {
+        if (sourceInput) sourceInput.value = course.id;
+        if (inputName) inputName.value = `${course.title} Template`;
+        if (inputSubject) inputSubject.value = course.subject || 'General Inclusive';
+        if (inputGrade) inputGrade.value = course.grade || 'All Grades';
+        if (inputDesc) inputDesc.value = course.desc || `Reusable template saved from ${course.title}.`;
+      }
+    } else {
+      if (sourceInput) sourceInput.value = '';
+      if (inputName) inputName.value = '';
+      if (inputSubject) inputSubject.value = 'Mathematics';
+      if (inputGrade) inputGrade.value = 'All Grades';
+      if (inputDesc) inputDesc.value = '';
+    }
+
+    modal.classList.add('active');
+    if (inputName) inputName.focus();
+  }
+
+  function handleCreateTemplateFormSubmit(e) {
+    e.preventDefault();
+    const sourceId = document.getElementById('jum-input-tpl-source-course-id')?.value;
+    const name = document.getElementById('jum-input-tpl-name')?.value.trim();
+    const subject = document.getElementById('jum-input-tpl-subject')?.value;
+    const grade = document.getElementById('jum-input-tpl-grade')?.value;
+    const desc = document.getElementById('jum-input-tpl-desc')?.value.trim();
+
+    if (!name) {
+      showToast('Please enter a template name.', 'error');
+      return;
+    }
+
+    let baseUnits = [];
+    if (sourceId) {
+      const course = activeCourses.find(c => c.id === sourceId);
+      if (course && course.units) {
+        baseUnits = JSON.parse(JSON.stringify(course.units));
+      }
+    } else {
+      baseUnits = [
+        {
+          id: `unit_${Date.now()}_1`,
+          title: 'Unit 1: Core Competencies',
+          desc: desc,
+          duration: '4 Weeks',
+          topics: [
+            {
+              id: `top_${Date.now()}_1`,
+              title: 'Topic 1.1: Foundations',
+              lessons: [
+                {
+                  id: `les_${Date.now()}_1`,
+                  lessonNumber: '1',
+                  title: 'Lesson 1: Introduction with UDL Accommodations',
+                  duration: '35 mins',
+                  outcome: 'Learners demonstrate foundational understanding.',
+                  contentHtml: '<h3>Lesson 1</h3><p>Template lesson content.</p>'
+                }
+              ]
+            }
+          ]
+        }
+      ];
+    }
+
+    const newTpl = {
+      id: `tpl_custom_${Date.now()}`,
+      name: name,
+      sub: `${subject} &bull; ${grade}`,
+      desc: desc || 'Custom reusable course template.',
+      subject: subject,
+      grade: grade,
+      icon: '📋',
+      badge: 'Custom Template',
+      theme: 'default',
+      features: ['Custom structured units', 'Pre-configured UDL tiers', 'CBC competencies'],
+      curriculum: {
+        framework: 'Kenyan CBC (KICD Aligned)',
+        strands: 'Custom Strand',
+        outcomes: 'Differentiated learning mastery'
+      },
+      units: baseUnits,
+      resources: []
+    };
+
+    customTemplates.unshift(newTpl);
+    saveCustomTemplates();
+
+    const modal = document.getElementById('jum-modal-create-template');
+    if (modal) modal.classList.remove('active');
+
+    showToast(`Template "${name}" created and saved! You can now use it in Create Course.`, 'success', 4500);
+  }
+
+  function deleteCustomTemplate(tplId) {
+    showConfirmDialog('Delete Template', 'Are you sure you want to delete this custom template?', () => {
+      customTemplates = customTemplates.filter(t => t.id !== tplId);
+      saveCustomTemplates();
+      openChooseTemplateModal();
+      showToast('Template deleted.', 'info');
+    });
+  }
+
+  // ── 10.10 Course Duplication & Archival ──
+  function duplicateCourse(courseId) {
+    const course = activeCourses.find(c => c.id === courseId);
+    if (!course) return;
+
+    const copy = JSON.parse(JSON.stringify(course));
+    copy.id = `course_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`;
+    copy.title = `${copy.title} (Copy)`;
+    copy.status = 'Draft';
+    copy.createdAt = new Date().toISOString();
+    copy.updatedAt = new Date().toISOString();
+
+    syncCourseFlatLessons(copy);
+    activeCourses.unshift(copy);
+    saveCourses(activeCourses);
+    renderCoursesGrid();
+    showToast(`Duplicated course as "${copy.title}"!`, 'success');
+  }
+
+  function toggleArchiveCourse(courseId) {
+    const course = activeCourses.find(c => c.id === courseId);
+    if (!course) return;
+
+    if (course.status === 'Archived') {
+      course.status = 'Published';
+      showToast(`Course "${course.title}" restored from archive.`, 'success');
+    } else {
+      course.status = 'Archived';
+      showToast(`Course "${course.title}" archived.`, 'info');
+    }
+
+    course.updatedAt = new Date().toISOString();
+    saveCourses(activeCourses);
+    renderCoursesGrid();
+  }
+
+  function confirmDeleteCourse(courseId) {
+    const course = activeCourses.find(c => c.id === courseId);
+    if (!course) return;
+
+    showConfirmDialog('Delete Course', `Are you sure you want to permanently delete "${course.title}" and all its lessons and attached resources? This action cannot be undone.`, () => {
+      activeCourses = activeCourses.filter(c => c.id !== courseId);
+      saveCourses(activeCourses);
+      renderCoursesGrid();
+      if (currentViewingCourseId === courseId) {
+        closeCourseLessonsViewer();
+      }
+      showToast('Course deleted permanently.', 'info');
+    });
+  }
+
+  // ── 10.11 Confirmation Dialog Modal ──
+  function showConfirmDialog(title, message, onConfirm) {
+    const modal = document.getElementById('jum-modal-confirm');
+    const titleEl = document.getElementById('jum-confirm-title');
+    const msgEl = document.getElementById('jum-confirm-message');
+    const acceptBtn = document.getElementById('jum-btn-confirm-accept');
+
+    if (!modal) {
+      if (confirm(`${title}\n\n${message}`)) onConfirm();
+      return;
+    }
+
+    if (titleEl) titleEl.textContent = title;
+    if (msgEl) msgEl.textContent = message;
+    confirmCallback = onConfirm;
+
+    modal.classList.add('active');
+  }
+
+  function closeConfirmDialog() {
+    const modal = document.getElementById('jum-modal-confirm');
+    if (modal) modal.classList.remove('active');
+    confirmCallback = null;
+  }
+
+  // ── 10.12 Backup & Import Engine ──
+  function exportAllCourses() {
+    const backupData = {
+      app: 'Jumuishi Learning Hub',
+      version: '3.0',
+      exportedAt: new Date().toISOString(),
+      courses: activeCourses,
+      templates: customTemplates
+    };
+    const dataStr = JSON.stringify(backupData, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `jumuishi_curriculum_backup_${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('All inclusive courses & templates exported as JSON backup.', 'success');
+  }
+
+  function importBackupData(file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const data = JSON.parse(e.target.result);
+        if (data && Array.isArray(data.courses)) {
+          activeCourses = data.courses;
+          activeCourses.forEach(syncCourseFlatLessons);
+          if (Array.isArray(data.templates)) {
+            customTemplates = data.templates;
+            saveCustomTemplates();
+          }
+          saveCourses(activeCourses);
+          renderCoursesGrid();
+          showToast(`Backup successfully imported! Loaded ${activeCourses.length} courses.`, 'success', 4500);
+        } else if (Array.isArray(data)) {
+          // Direct array of courses
+          activeCourses = data;
+          activeCourses.forEach(syncCourseFlatLessons);
+          saveCourses(activeCourses);
+          renderCoursesGrid();
+          showToast(`Imported ${activeCourses.length} courses!`, 'success', 4500);
+        } else {
+          showToast('Invalid backup file format.', 'error');
+        }
+      } catch (err) {
+        console.error('Failed to parse backup JSON', err);
+        showToast('Error reading backup file. Please ensure it is valid JSON.', 'error');
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  function resetExemplars() {
+    showConfirmDialog('Reset to Exemplars', 'Reset your Course Studio to the default Kenyan CBC exemplar courses? Any custom courses will be restored to defaults.', () => {
+      activeCourses = getDefaultExemplarCourses();
+      activeCourses.forEach(syncCourseFlatLessons);
+      saveCourses(activeCourses);
+      renderCoursesGrid();
+      closeCourseLessonsViewer();
+      showToast('Restored default CBC exemplar courses.', 'success');
+    });
+  }
+
+  // ── 10.13 Lesson Viewer (Active when course opened from dashboard) ──
   function openCourseLessonsViewer(courseId) {
     const course = activeCourses.find(c => c.id === courseId);
     if (!course) return;
 
     currentViewingCourseId = courseId;
+    syncCourseFlatLessons(course);
 
     const viewer = document.getElementById('jum-course-lessons-viewer');
     const gradeEl = document.getElementById('jum-viewer-course-grade');
@@ -1856,7 +4197,7 @@
 
     if (!viewer || !listEl) return;
 
-    if (gradeEl) gradeEl.textContent = `${course.grade} • ${course.subject}`;
+    if (gradeEl) gradeEl.textContent = `${course.grade || 'Grade 3'} • ${course.subject || 'Curriculum'}`;
     if (titleEl) titleEl.textContent = course.title;
     if (descEl) descEl.textContent = course.desc || 'Manage and review lesson plans and adaptations for this course.';
 
@@ -1867,15 +4208,24 @@
         <div style="text-align:center;padding:36px 20px;background:var(--surface-color-soft);border-radius:var(--radius-lg);border:1.5px dashed var(--border-color);">
           <div style="font-size:36px;margin-bottom:8px;" aria-hidden="true">📝</div>
           <h4 style="font-family:var(--font-heading);font-size:16px;font-weight:700;color:var(--heading-color);margin-bottom:6px;">No Lessons Created Yet</h4>
-          <p style="font-size:13.5px;color:var(--muted-text-color);margin-bottom:16px;">Add your first differentiated lesson or import one from the Content Builder.</p>
-          <button type="button" class="btn-jum-primary-sm" data-action="viewer-add-first-lesson">
-            <span aria-hidden="true">➕</span> Add First Lesson
-          </button>
+          <p style="font-size:13.5px;color:var(--muted-text-color);margin-bottom:16px;">Add your first differentiated lesson or customize this course in the Studio Wizard.</p>
+          <div style="display:flex;justify-content:center;gap:10px;">
+            <button type="button" class="btn-jum-primary-sm" data-action="viewer-add-first-lesson">
+              <span aria-hidden="true">➕</span> Add First Lesson
+            </button>
+            <button type="button" class="btn-jum-outline-sm" data-action="viewer-open-wizard">
+              <span aria-hidden="true">✏️</span> Open Course Wizard
+            </button>
+          </div>
         </div>
       `;
       const addFirstBtn = listEl.querySelector('[data-action="viewer-add-first-lesson"]');
       if (addFirstBtn) {
         addFirstBtn.addEventListener('click', () => openLessonModal(courseId, null));
+      }
+      const openWizBtn = listEl.querySelector('[data-action="viewer-open-wizard"]');
+      if (openWizBtn) {
+        openWizBtn.addEventListener('click', () => openCourseWizard(courseId));
       }
     } else {
       listEl.innerHTML = lessons.map((lesson, idx) => {
@@ -1883,7 +4233,7 @@
         
         let filesHtml = '';
         if (fileCount > 0) {
-          const chips = lesson.attachments.map((file, fIdx) => {
+          const chips = lesson.attachments.map(file => {
             let icon = '📄';
             if (file.type && file.type.includes('image')) icon = '🖼️';
             if (file.type && file.type.includes('audio')) icon = '🎵';
@@ -1918,14 +4268,14 @@
               <div class="jum-lesson-left">
                 <div class="jum-lesson-num">${idx + 1}</div>
                 <div>
-                  <div class="jum-lesson-title">${lesson.title}</div>
-                  <div class="jum-lesson-meta">${lesson.competencies || 'Kenyan CBC Core Competencies'}</div>
+                  <div class="jum-lesson-title">${escapeHtml(lesson.title)}</div>
+                  <div class="jum-lesson-meta">${escapeHtml(lesson.competencies || 'Kenyan CBC Core Competencies')}</div>
                 </div>
               </div>
               <div class="jum-lesson-right">
-                <span class="jum-lesson-duration-badge">⏱️ ${lesson.duration || '35 mins'}</span>
+                <span class="jum-lesson-duration-badge">⏱️ ${escapeHtml(lesson.duration || '35 mins')}</span>
                 ${fileCount > 0 ? `<span class="jum-lesson-materials-badge">📎 ${fileCount} files</span>` : ''}
-                <button type="button" class="jum-lesson-expand-btn" aria-label="Toggle lesson details">▼</button>
+                <button type="button" class="jum-lesson-expand-btn" aria-label="Toggle lesson details">&#9662;</button>
               </div>
             </div>
 
@@ -1934,26 +4284,26 @@
                 <strong style="font-family:var(--font-heading);font-size:12.5px;color:var(--primary-color);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:4px;">
                   Specific Learning Outcome (CBC)
                 </strong>
-                <p style="margin:0;font-size:14px;color:var(--heading-color);">${lesson.outcome || 'Not specified.'}</p>
+                <p style="margin:0;font-size:14px;color:var(--heading-color);font-weight:500;">${escapeHtml(lesson.outcome || 'Apply foundational concept using concrete realia.')}</p>
               </div>
 
               <!-- 4 Step Instruction Grid -->
               <div class="jum-lesson-steps-grid">
                 <div class="jum-lesson-step-box">
                   <strong>1. Modeling (I Do)</strong>
-                  <p style="margin:0;font-size:13px;">${lesson.intro || 'Explicit teacher demonstration with concrete materials.'}</p>
+                  <p style="margin:0;font-size:13px;">${escapeHtml(lesson.intro || 'Explicit teacher demonstration with concrete materials.')}</p>
                 </div>
                 <div class="jum-lesson-step-box">
                   <strong>2. Guided Inquiry (We Do)</strong>
-                  <p style="margin:0;font-size:13px;">${lesson.guided || 'Collaborative paired work with concrete manipulatives.'}</p>
+                  <p style="margin:0;font-size:13px;">${escapeHtml(lesson.guided || 'Collaborative paired work with concrete manipulatives.')}</p>
                 </div>
                 <div class="jum-lesson-step-box">
                   <strong>3. Tiered Activity (You Do)</strong>
-                  <p style="margin:0;font-size:13px;">${lesson.activity || 'Differentiated independent activity suited to learner profile.'}</p>
+                  <p style="margin:0;font-size:13px;">${escapeHtml(lesson.activity || 'Differentiated independent activity suited to learner profile.')}</p>
                 </div>
                 <div class="jum-lesson-step-box">
-                  <strong>4. Reflection & Wrap-up</strong>
-                  <p style="margin:0;font-size:13px;">${lesson.wrapup || 'Sensory check, thumbs reflection, and smooth transition.'}</p>
+                  <strong>4. Reflection &amp; Wrap-up</strong>
+                  <p style="margin:0;font-size:13px;">${escapeHtml(lesson.wrapup || 'Sensory check, thumbs reflection, and smooth transition.')}</p>
                 </div>
               </div>
 
@@ -1965,22 +4315,22 @@
                 <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:10px;font-size:12.5px;">
                   <div>
                     <span style="font-weight:700;color:var(--primary-color);">Tier 1 (Universal):</span>
-                    <div>${lesson.tier1 || 'Visual timetables, oral narration, high contrast.'}</div>
+                    <div>${escapeHtml(lesson.tier1 || 'Visual timetables, oral narration, high contrast.')}</div>
                   </div>
                   <div>
                     <span style="font-weight:700;color:var(--jum-gold);">Tier 2 (Targeted):</span>
-                    <div>${lesson.tier2 || 'Color-coded cues, tactile cards, quiet spaces.'}</div>
+                    <div>${escapeHtml(lesson.tier2 || 'Color-coded cues, tactile cards, quiet spaces.')}</div>
                   </div>
                   <div>
                     <span style="font-weight:700;color:var(--error-color);">Tier 3 (Intensive):</span>
-                    <div>${lesson.tier3 || '1-on-1 shadow teacher support, PECS cards, Braille.'}</div>
+                    <div>${escapeHtml(lesson.tier3 || '1-on-1 shadow teacher support, PECS cards, Braille.')}</div>
                   </div>
                 </div>
               </div>
 
               ${lesson.materials ? `
                 <div style="margin-top:12px;font-size:12.5px;color:var(--text-color);">
-                  <strong>Materials &amp; Assistive Devices:</strong> ${lesson.materials}
+                  <strong>Materials &amp; Assistive Devices:</strong> ${escapeHtml(lesson.materials)}
                 </div>
               ` : ''}
 
@@ -1992,13 +4342,12 @@
                   <span aria-hidden="true">📖</span> Full View / Print
                 </button>
                 <button type="button" class="btn-jum-outline-sm" data-action="edit-lesson" data-lesson-id="${lesson.id}">
-                  <span aria-hidden="true">✏️</span> Edit Lesson
+                  <span aria-hidden="true">✏️</span> Edit in Modal
                 </button>
                 <button type="button" class="btn-jum-danger-sm" data-action="delete-lesson" data-lesson-id="${lesson.id}">
                   <span aria-hidden="true">🗑️</span> Delete
                 </button>
               </div>
-
             </div>
           </div>
         `;
@@ -2048,138 +4397,7 @@
     currentViewingCourseId = null;
   }
 
-  function openCourseModal(courseId = null) {
-    currentEditingCourseId = courseId;
-    const modal = document.getElementById('jum-modal-course');
-    const headingText = document.getElementById('jum-modal-course-heading-text');
-    const inputId = document.getElementById('jum-input-course-id');
-    const inputTitle = document.getElementById('jum-input-course-title');
-    const inputGrade = document.getElementById('jum-input-course-grade');
-    const inputSubject = document.getElementById('jum-input-course-subject');
-    const inputTheme = document.getElementById('jum-input-course-theme');
-    const inputIcon = document.getElementById('jum-input-course-icon');
-    const inputDesc = document.getElementById('jum-input-course-desc');
-    const inputComp = document.getElementById('jum-input-course-competencies');
-    const needsBoxes = document.querySelectorAll('#jum-course-needs-checkboxes input[type="checkbox"]');
-
-    if (!modal) return;
-
-    if (courseId) {
-      const course = activeCourses.find(c => c.id === courseId);
-      if (!course) return;
-      if (headingText) headingText.textContent = 'Edit Inclusive Course';
-      if (inputId) inputId.value = course.id;
-      if (inputTitle) inputTitle.value = course.title || '';
-      if (inputGrade) inputGrade.value = course.grade || 'Grade 3';
-      if (inputSubject) inputSubject.value = course.subject || 'Mathematics';
-      if (inputTheme) inputTheme.value = course.theme || 'default';
-      if (inputIcon) inputIcon.value = course.icon || '📚';
-      if (inputDesc) inputDesc.value = course.desc || '';
-      if (inputComp) inputComp.value = course.competencies || '';
-
-      needsBoxes.forEach(cb => {
-        cb.checked = course.needs && course.needs.includes(cb.value);
-      });
-    } else {
-      if (headingText) headingText.textContent = 'Create Inclusive Course';
-      if (inputId) inputId.value = '';
-      if (inputTitle) inputTitle.value = '';
-      if (inputGrade) inputGrade.value = 'Grade 3';
-      if (inputSubject) inputSubject.value = 'Mathematics';
-      if (inputTheme) inputTheme.value = 'math';
-      if (inputIcon) inputIcon.value = '🔢';
-      if (inputDesc) inputDesc.value = '';
-      if (inputComp) inputComp.value = '';
-      needsBoxes.forEach(cb => { cb.checked = ['Autism', 'Dyslexia'].includes(cb.value); });
-    }
-
-    modal.classList.add('active');
-    if (inputTitle) inputTitle.focus();
-  }
-
-  function closeCourseModal() {
-    const modal = document.getElementById('jum-modal-course');
-    if (modal) modal.classList.remove('active');
-    currentEditingCourseId = null;
-  }
-
-  function handleCourseFormSubmit(e) {
-    e.preventDefault();
-    const id = document.getElementById('jum-input-course-id')?.value;
-    const title = document.getElementById('jum-input-course-title')?.value.trim();
-    const grade = document.getElementById('jum-input-course-grade')?.value;
-    const subject = document.getElementById('jum-input-course-subject')?.value;
-    const theme = document.getElementById('jum-input-course-theme')?.value;
-    const icon = document.getElementById('jum-input-course-icon')?.value;
-    const desc = document.getElementById('jum-input-course-desc')?.value.trim();
-    const comp = document.getElementById('jum-input-course-competencies')?.value.trim();
-
-    if (!title) {
-      showToast('Please enter a course title.', 'error');
-      return;
-    }
-
-    const selectedNeeds = [];
-    document.querySelectorAll('#jum-course-needs-checkboxes input[type="checkbox"]:checked').forEach(cb => {
-      selectedNeeds.push(cb.value);
-    });
-
-    if (id) {
-      // Edit existing
-      const course = activeCourses.find(c => c.id === id);
-      if (course) {
-        course.title = title;
-        course.grade = grade;
-        course.subject = subject;
-        course.theme = theme;
-        course.icon = icon;
-        course.desc = desc;
-        course.competencies = comp;
-        course.needs = selectedNeeds;
-        showToast(`Course "${title}" updated successfully!`, 'success');
-      }
-    } else {
-      // Create new
-      const newCourse = {
-        id: `course_${Date.now()}`,
-        title: title,
-        grade: grade,
-        subject: subject,
-        theme: theme,
-        icon: icon,
-        desc: desc,
-        competencies: comp,
-        needs: selectedNeeds,
-        lessons: []
-      };
-      activeCourses.unshift(newCourse);
-      showToast(`Course "${title}" created successfully!`, 'success');
-    }
-
-    saveCourses(activeCourses);
-    renderCoursesGrid();
-    closeCourseModal();
-
-    if (currentViewingCourseId && id === currentViewingCourseId) {
-      openCourseLessonsViewer(id);
-    }
-  }
-
-  function deleteCourse(courseId) {
-    const course = activeCourses.find(c => c.id === courseId);
-    if (!course) return;
-
-    if (confirm(`Are you sure you want to delete "${course.title}" and all its lessons? This action cannot be undone.`)) {
-      activeCourses = activeCourses.filter(c => c.id !== courseId);
-      saveCourses(activeCourses);
-      renderCoursesGrid();
-      if (currentViewingCourseId === courseId) {
-        closeCourseLessonsViewer();
-      }
-      showToast('Course deleted successfully.', 'info');
-    }
-  }
-
+  // ── Quick Add / Edit Lesson Modal ──
   function openLessonModal(courseId, lessonId = null) {
     const course = activeCourses.find(c => c.id === courseId);
     if (!course) return;
@@ -2298,8 +4516,7 @@
 
   function handleFilesSelected(files) {
     if (!files || files.length === 0) return;
-
-    const maxFileSize = 5 * 1024 * 1024; // 5MB per file
+    const maxFileSize = 5 * 1024 * 1024; // 5MB limit
 
     Array.from(files).forEach(file => {
       if (file.size > maxFileSize) {
@@ -2307,12 +4524,12 @@
         return;
       }
 
-      const formattedSize = file.size > 1024 * 1024 
-        ? `${(file.size / (1024 * 1024)).toFixed(1)} MB` 
+      const formattedSize = file.size > 1024 * 1024
+        ? `${(file.size / (1024 * 1024)).toFixed(1)} MB`
         : `${Math.round(file.size / 1024)} KB`;
 
       const reader = new FileReader();
-      reader.onload = function (e) {
+      reader.onload = function(e) {
         currentLessonAttachments.push({
           name: file.name,
           size: formattedSize,
@@ -2350,15 +4567,10 @@
     }
 
     const course = activeCourses.find(c => c.id === courseId);
-    if (!course) {
-      showToast('Error: Target course not found.', 'error');
-      return;
-    }
-
-    if (!course.lessons) course.lessons = [];
+    if (!course) return;
 
     const lessonData = {
-      id: lessonId || `les_${Date.now()}`,
+      id: lessonId || `les_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
       title,
       duration,
       competencies: comp,
@@ -2375,16 +4587,44 @@
     };
 
     if (lessonId) {
-      const idx = course.lessons.findIndex(l => l.id === lessonId);
-      if (idx !== -1) {
-        course.lessons[idx] = lessonData;
-        showToast(`Lesson "${title}" updated!`, 'success');
+      // Update in hierarchy
+      let foundInTree = false;
+      if (course.units) {
+        course.units.forEach(u => {
+          if (u.topics) {
+            u.topics.forEach(t => {
+              if (t.lessons) {
+                const idx = t.lessons.findIndex(l => l.id === lessonId);
+                if (idx !== -1) {
+                  t.lessons[idx] = Object.assign(t.lessons[idx], lessonData);
+                  foundInTree = true;
+                }
+              }
+            });
+          }
+        });
       }
+      if (!foundInTree && course.lessons) {
+        const idx = course.lessons.findIndex(l => l.id === lessonId);
+        if (idx !== -1) course.lessons[idx] = lessonData;
+      }
+      showToast(`Lesson "${title}" updated!`, 'success');
     } else {
-      course.lessons.push(lessonData);
+      // Add to last topic of last unit, or create unit
+      if (!course.units || course.units.length === 0) {
+        course.units = [{ id: `unit_${Date.now()}`, title: 'Unit 1: Core Curriculum', topics: [{ id: `top_${Date.now()}`, title: 'Topic 1.1: General', lessons: [] }] }];
+      }
+      const unit = course.units[course.units.length - 1];
+      if (!unit.topics || unit.topics.length === 0) {
+        unit.topics = [{ id: `top_${Date.now()}`, title: 'Topic 1.1: General', lessons: [] }];
+      }
+      const topic = unit.topics[unit.topics.length - 1];
+      if (!topic.lessons) topic.lessons = [];
+      topic.lessons.push(lessonData);
       showToast(`Lesson "${title}" added to "${course.title}"!`, 'success');
     }
 
+    syncCourseFlatLessons(course);
     saveCourses(activeCourses);
     renderCoursesGrid();
     openCourseLessonsViewer(courseId);
@@ -2393,25 +4633,34 @@
 
   function deleteLesson(courseId, lessonId) {
     const course = activeCourses.find(c => c.id === courseId);
-    if (!course || !course.lessons) return;
+    if (!course) return;
 
-    const lesson = course.lessons.find(l => l.id === lessonId);
-    if (!lesson) return;
-
-    if (confirm(`Are you sure you want to delete lesson "${lesson.title}"?`)) {
-      course.lessons = course.lessons.filter(l => l.id !== lessonId);
+    showConfirmDialog('Delete Lesson', 'Are you sure you want to delete this lesson?', () => {
+      if (course.units) {
+        course.units.forEach(u => {
+          if (u.topics) {
+            u.topics.forEach(t => {
+              if (t.lessons) {
+                t.lessons = t.lessons.filter(l => l.id !== lessonId);
+              }
+            });
+          }
+        });
+      }
+      syncCourseFlatLessons(course);
       saveCourses(activeCourses);
       renderCoursesGrid();
       openCourseLessonsViewer(courseId);
       showToast('Lesson deleted.', 'info');
-    }
+    });
   }
 
   function openLessonPreviewModal(courseId, lessonId) {
     const course = activeCourses.find(c => c.id === courseId);
-    if (!course || !course.lessons) return;
+    if (!course) return;
 
-    const lesson = course.lessons.find(l => l.id === lessonId);
+    syncCourseFlatLessons(course);
+    const lesson = (course.lessons || []).find(l => l.id === lessonId);
     if (!lesson) return;
 
     const modal = document.getElementById('jum-modal-lesson-preview');
@@ -2421,40 +4670,18 @@
 
     if (!modal || !content) return;
 
-    let attachmentsHtml = '';
-    if (lesson.attachments && lesson.attachments.length > 0) {
-      attachmentsHtml = `
-        <div style="margin-top:20px;padding-top:16px;border-top:1.5px solid var(--border-color);">
-          <h4 style="font-family:var(--font-heading);font-size:13.5px;font-weight:700;color:var(--heading-color);margin-bottom:10px;">
-            Attached Teaching Materials (${lesson.attachments.length})
-          </h4>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;">
-            ${lesson.attachments.map(file => {
-              if (file.dataUrl) {
-                return `<a href="${file.dataUrl}" download="${file.name}" class="jum-file-chip">
-                  <span>📥 Download: <strong>${file.name}</strong></span> <small>(${file.size})</small>
-                </a>`;
-              } else {
-                return `<span class="jum-file-chip">📄 ${file.name} <small>(${file.size})</small></span>`;
-              }
-            }).join('')}
-          </div>
-        </div>
-      `;
-    }
-
     content.innerHTML = `
       <div style="border-bottom:2px solid var(--primary-color);padding-bottom:16px;margin-bottom:20px;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-          <span class="jum-course-grade-badge" style="background:var(--primary-color);color:#fff;">${course.grade}</span>
-          <span class="jum-course-subject-badge" style="background:var(--surface-color-soft);color:var(--text-color);border:1px solid var(--border-color);">${course.subject}</span>
-          <span style="margin-left:auto;font-size:12.5px;font-weight:600;color:var(--muted-text-color);">⏱️ ${lesson.duration || '35 mins'}</span>
+          <span class="jum-course-grade-badge" style="background:var(--primary-color);color:#fff;">${escapeHtml(course.grade || 'Grade 3')}</span>
+          <span class="jum-course-subject-badge" style="background:var(--surface-color-soft);color:var(--text-color);border:1px solid var(--border-color);">${escapeHtml(course.subject || 'Curriculum')}</span>
+          <span style="margin-left:auto;font-size:12.5px;font-weight:600;color:var(--muted-text-color);">⏱️ ${escapeHtml(lesson.duration || '35 mins')}</span>
         </div>
         <h2 style="font-family:var(--font-heading);font-size:20px;font-weight:800;color:var(--heading-color);margin:0 0 6px;">
-          ${lesson.title}
+          ${escapeHtml(lesson.title)}
         </h2>
         <div style="font-size:13px;color:var(--muted-text-color);">
-          <strong>Course:</strong> ${course.title} &bull; <strong>CBC Competencies:</strong> ${lesson.competencies || 'Problem Solving, Communication'}
+          <strong>Course:</strong> ${escapeHtml(course.title)} &bull; <strong>CBC Competencies:</strong> ${escapeHtml(lesson.competencies || 'Problem Solving, Communication')}
         </div>
       </div>
 
@@ -2463,7 +4690,7 @@
           Specific Learning Outcome (CBC)
         </strong>
         <p style="margin:0;font-size:14px;color:var(--heading-color);font-weight:500;">
-          ${lesson.outcome}
+          ${escapeHtml(lesson.outcome || 'Apply foundational concept through multimodal tasks.')}
         </p>
       </div>
 
@@ -2472,20 +4699,20 @@
       </h3>
       <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
         <div style="background:#fff;border:1px solid var(--border-color);border-radius:var(--radius-md);padding:12px 16px;">
-          <strong style="color:var(--primary-color);font-size:12px;text-transform:uppercase;">1. Introduction & Teacher Modeling (I Do)</strong>
-          <p style="margin:4px 0 0;font-size:13.5px;line-height:1.6;">${lesson.intro || 'Explicit demonstration.'}</p>
+          <strong style="color:var(--primary-color);font-size:12px;text-transform:uppercase;">1. Introduction &amp; Teacher Modeling (I Do)</strong>
+          <p style="margin:4px 0 0;font-size:13.5px;line-height:1.6;">${escapeHtml(lesson.intro || 'Explicit teacher demonstration with concrete realia.')}</p>
         </div>
         <div style="background:#fff;border:1px solid var(--border-color);border-radius:var(--radius-md);padding:12px 16px;">
-          <strong style="color:var(--primary-color);font-size:12px;text-transform:uppercase;">2. Guided Practice & Collaborative Inquiry (We Do)</strong>
-          <p style="margin:4px 0 0;font-size:13.5px;line-height:1.6;">${lesson.guided || 'Paired tactile practice.'}</p>
+          <strong style="color:var(--primary-color);font-size:12px;text-transform:uppercase;">2. Guided Practice &amp; Collaborative Inquiry (We Do)</strong>
+          <p style="margin:4px 0 0;font-size:13.5px;line-height:1.6;">${escapeHtml(lesson.guided || 'Paired tactile practice with sorting trays.')}</p>
         </div>
         <div style="background:#fff;border:1px solid var(--border-color);border-radius:var(--radius-md);padding:12px 16px;">
-          <strong style="color:var(--primary-color);font-size:12px;text-transform:uppercase;">3. Differentiated & Independent Activity (You Do)</strong>
-          <p style="margin:4px 0 0;font-size:13.5px;line-height:1.6;">${lesson.activity || 'Multimodal task cards.'}</p>
+          <strong style="color:var(--primary-color);font-size:12px;text-transform:uppercase;">3. Differentiated &amp; Independent Activity (You Do)</strong>
+          <p style="margin:4px 0 0;font-size:13.5px;line-height:1.6;">${escapeHtml(lesson.activity || 'Multimodal task cards and hands-on exercises.')}</p>
         </div>
         <div style="background:#fff;border:1px solid var(--border-color);border-radius:var(--radius-md);padding:12px 16px;">
-          <strong style="color:var(--primary-color);font-size:12px;text-transform:uppercase;">4. Formative Reflection & Sensory Transition</strong>
-          <p style="margin:4px 0 0;font-size:13.5px;line-height:1.6;">${lesson.wrapup || 'Exit check and calm transition.'}</p>
+          <strong style="color:var(--primary-color);font-size:12px;text-transform:uppercase;">4. Formative Reflection &amp; Sensory Transition</strong>
+          <p style="margin:4px 0 0;font-size:13.5px;line-height:1.6;">${escapeHtml(lesson.wrapup || 'Exit check and calm transition.')}</p>
         </div>
       </div>
 
@@ -2495,25 +4722,23 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:12px;margin-bottom:20px;">
         <div style="background:var(--surface-color-soft);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:12px 14px;">
           <strong style="color:var(--primary-color);font-size:12px;display:block;margin-bottom:4px;">Tier 1: Universal</strong>
-          <div style="font-size:13px;line-height:1.5;">${lesson.tier1 || 'Universal visual timetable and oral narration.'}</div>
+          <div style="font-size:13px;line-height:1.5;">${escapeHtml(lesson.tier1 || 'Universal visual timetable and oral narration.')}</div>
         </div>
         <div style="background:var(--surface-color-soft);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:12px 14px;">
           <strong style="color:var(--jum-gold);font-size:12px;display:block;margin-bottom:4px;">Tier 2: Targeted</strong>
-          <div style="font-size:13px;line-height:1.5;">${lesson.tier2 || 'Color-coded cues and sensory fidgets.'}</div>
+          <div style="font-size:13px;line-height:1.5;">${escapeHtml(lesson.tier2 || 'Color-coded cues and sensory fidgets.')}</div>
         </div>
         <div style="background:var(--surface-color-soft);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:12px 14px;">
           <strong style="color:var(--error-color);font-size:12px;display:block;margin-bottom:4px;">Tier 3: Intensive</strong>
-          <div style="font-size:13px;line-height:1.5;">${lesson.tier3 || 'PECS communication and 1-on-1 shadow support.'}</div>
+          <div style="font-size:13px;line-height:1.5;">${escapeHtml(lesson.tier3 || 'PECS communication and 1-on-1 shadow support.')}</div>
         </div>
       </div>
 
       ${lesson.materials ? `
         <div style="background:#fff;border:1px solid var(--border-color);border-radius:var(--radius-md);padding:12px 14px;font-size:13px;">
-          <strong>Low-Cost Materials & Assistive Devices:</strong> ${lesson.materials}
+          <strong>Low-Cost Materials &amp; Assistive Devices:</strong> ${escapeHtml(lesson.materials)}
         </div>
       ` : ''}
-
-      ${attachmentsHtml}
     `;
 
     if (editBtn) {
@@ -2522,11 +4747,8 @@
         openLessonModal(courseId, lessonId);
       };
     }
-
     if (printBtn) {
-      printBtn.onclick = () => {
-        window.print();
-      };
+      printBtn.onclick = () => window.print();
     }
 
     modal.classList.add('active');
@@ -2537,7 +4759,7 @@
     if (modal) modal.classList.remove('active');
   }
 
-  /* Bridge: Content Builder to Course Studio */
+  // ── Bridge Modal (Content Builder -> Course Studio) ──
   function openBridgeModal() {
     if (activeCourses.length === 0) {
       showToast('Please create at least one course first in the Course Studio.', 'warning');
@@ -2555,7 +4777,7 @@
     if (!modal || !selectCourse) return;
 
     selectCourse.innerHTML = activeCourses.map(c => `
-      <option value="${c.id}">${c.title} (${c.grade})</option>
+      <option value="${c.id}">${escapeHtml(c.title)} (${escapeHtml(c.grade)})</option>
     `).join('');
 
     const defaultTitle = builderData.topic || 'Multiplication as Repeated Addition';
@@ -2583,23 +4805,18 @@
     const lessonTitle = inputTitle?.value.trim() || 'Inclusive Lesson Plan';
 
     const course = activeCourses.find(c => c.id === courseId);
-    if (!course) {
-      showToast('Selected course not found.', 'error');
-      return;
-    }
-
-    if (!course.lessons) course.lessons = [];
+    if (!course) return;
 
     const newLesson = {
-      id: `les_${Date.now()}`,
+      id: `les_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
       title: lessonTitle,
       duration: '35 mins',
       competencies: builderData.strengths?.join(', ') || 'Critical Thinking, Communication',
       outcome: `By the end of the lesson, the learner should be able to master ${builderData.topic || 'core concept'} using differentiated concrete representations.`,
-      intro: `Sensory hook & explicit teacher modeling aligned with learner profile (${builderData.strengths?.join(', ') || 'visual and hands-on'}).`,
-      guided: `Collaborative inquiry in pairs with concrete manipulatives and visual schedule checkpoints.`,
+      intro: `Sensory hook & explicit modeling aligned with learner profile (${builderData.strengths?.join(', ') || 'visual and hands-on'}).`,
+      guided: 'Collaborative inquiry in pairs with concrete manipulatives and visual schedule checkpoints.',
       activity: `Differentiated learning activity: ${builderData.assessmentStyle || 'Practical demonstration and oral explanation'}.`,
-      wrapup: `Formative thumbs reflection, exit check, and calming 2-minute transition.`,
+      wrapup: 'Formative thumbs reflection, exit check, and calming 2-minute transition.',
       tier1: builderData.visualAdaptations?.join('; ') || 'High contrast visual boards and oral narration.',
       tier2: builderData.readingAdaptations?.join('; ') || 'Tactile flashcards and chunked learning intervals.',
       tier3: builderData.cognitiveAdaptations?.join('; ') || '1-on-1 peer buddy support and physical object prompts.',
@@ -2607,7 +4824,16 @@
       attachments: []
     };
 
-    course.lessons.push(newLesson);
+    if (!course.units || course.units.length === 0) {
+      course.units = [{ id: `unit_${Date.now()}`, title: 'Unit 1: Core Curriculum', topics: [{ id: `top_${Date.now()}`, title: 'Topic 1.1: General', lessons: [] }] }];
+    }
+    const unit = course.units[course.units.length - 1];
+    if (!unit.topics || unit.topics.length === 0) {
+      unit.topics = [{ id: `top_${Date.now()}`, title: 'Topic 1.1: General', lessons: [] }];
+    }
+    unit.topics[unit.topics.length - 1].lessons.push(newLesson);
+
+    syncCourseFlatLessons(course);
     saveCourses(activeCourses);
     renderCoursesGrid();
     closeBridgeModal();
@@ -2615,40 +4841,12 @@
     showToast(`Lesson added to "${course.title}"! Opening in Course Studio...`, 'success', 4500);
 
     const studio = document.getElementById('course-studio');
-    if (studio) {
-      studio.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (studio) studio.scrollIntoView({ behavior: 'smooth' });
 
     setTimeout(() => {
       openCourseLessonsViewer(courseId);
     }, 600);
   }
-
-  function exportAllCourses() {
-    const dataStr = JSON.stringify(activeCourses, null, 2);
-    const blob = new Blob([dataStr], { type: 'application/json;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `jumuishi_inclusive_courses_${new Date().toISOString().split('T')[0]}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    showToast('All inclusive courses exported as JSON backup.', 'success');
-  }
-
-  function resetExemplars() {
-    if (confirm('Reset your Course Studio to the default Kenyan CBC exemplar courses? Any custom courses you created will be restored to defaults.')) {
-      activeCourses = getDefaultExemplarCourses();
-      saveCourses(activeCourses);
-      renderCoursesGrid();
-      closeCourseLessonsViewer();
-      showToast('Restored default CBC exemplar courses.', 'success');
-    }
-  }
-
-
   /* ══════════════════════════════════════════════════════════════
      10B. SPECIAL NEEDS ADAPTATION TEMPLATES ENGINE
      Evidence-based lesson templates for Special Needs Educators (SNE)
@@ -3356,46 +5554,416 @@
 
     // Studio Toolbar buttons
     const btnCreateCourse = document.getElementById('jum-btn-create-course');
+    const btnCreateTemplate = document.getElementById('jum-btn-create-template');
     const btnExportAll = document.getElementById('jum-btn-export-all');
+    const btnImportTrigger = document.getElementById('jum-btn-import-backup-trigger');
+    const inputImport = document.getElementById('jum-input-import-backup');
     const btnResetExemplars = document.getElementById('jum-btn-reset-exemplars');
     const btnEmptyCreate = document.getElementById('jum-btn-empty-create');
+    const btnEmptyBrowse = document.getElementById('jum-btn-empty-browse-templates');
     const btnEmptyReset = document.getElementById('jum-btn-empty-reset');
 
-    if (btnCreateCourse) btnCreateCourse.addEventListener('click', () => openCourseModal(null));
+    if (btnCreateCourse) btnCreateCourse.addEventListener('click', openChooseTemplateModal);
+    if (btnCreateTemplate) btnCreateTemplate.addEventListener('click', () => openCreateTemplateModal(null));
     if (btnExportAll) btnExportAll.addEventListener('click', exportAllCourses);
     if (btnResetExemplars) btnResetExemplars.addEventListener('click', resetExemplars);
-    if (btnEmptyCreate) btnEmptyCreate.addEventListener('click', () => openCourseModal(null));
+    if (btnEmptyCreate) btnEmptyCreate.addEventListener('click', openChooseTemplateModal);
+    if (btnEmptyBrowse) btnEmptyBrowse.addEventListener('click', openChooseTemplateModal);
     if (btnEmptyReset) btnEmptyReset.addEventListener('click', resetExemplars);
 
-    // ── Special Needs Templates View & Event Listeners ──
+    // Import Backup Handler
+    if (btnImportTrigger && inputImport) {
+      btnImportTrigger.addEventListener('click', () => inputImport.click());
+      inputImport.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          importBackupData(e.target.files[0]);
+          inputImport.value = '';
+        }
+      });
+    }
+
+    // Template Chooser Modal
+    const btnChooseTplClose = document.getElementById('jum-btn-choose-template-close');
+    const btnChooseTplCancel = document.getElementById('jum-btn-choose-template-cancel');
+    const btnChooseTplBlank = document.getElementById('jum-btn-choose-template-blank');
+    if (btnChooseTplClose) btnChooseTplClose.addEventListener('click', closeChooseTemplateModal);
+    if (btnChooseTplCancel) btnChooseTplCancel.addEventListener('click', closeChooseTemplateModal);
+    if (btnChooseTplBlank) btnChooseTplBlank.addEventListener('click', () => {
+      closeChooseTemplateModal();
+      startCourseFromTemplate('tpl-blank');
+    });
+
+    // ── 4-Step Wizard Event Listeners ──
+    const btnWizardClose = document.getElementById('jum-btn-wizard-close');
+    const btnWizardCancel = document.getElementById('jum-btn-wizard-cancel');
+    const btnWizardPrev = document.getElementById('jum-btn-wizard-prev');
+    const btnWizardNext = document.getElementById('jum-btn-wizard-next');
+    const btnWizardDraft = document.getElementById('jum-btn-wizard-save-draft');
+    const btnWizardPublish = document.getElementById('jum-btn-wizard-publish');
+    const btnWizardPreview = document.getElementById('jum-btn-wizard-preview');
+
+    if (btnWizardClose) btnWizardClose.addEventListener('click', closeCourseWizard);
+    if (btnWizardCancel) btnWizardCancel.addEventListener('click', closeCourseWizard);
+    if (btnWizardPrev) btnWizardPrev.addEventListener('click', prevWizardStep);
+    if (btnWizardNext) btnWizardNext.addEventListener('click', nextWizardStep);
+    if (btnWizardDraft) btnWizardDraft.addEventListener('click', () => saveWizardCourse(true));
+    if (btnWizardPublish) btnWizardPublish.addEventListener('click', publishWizardCourse);
+    if (btnWizardPreview) btnWizardPreview.addEventListener('click', () => {
+      if (wizardCourse) openCoursePreviewModal(wizardCourse.id);
+    });
+
+    // Stepper header items
+    for (let i = 1; i <= 4; i++) {
+      const stepBtn = document.getElementById(`jum-step-btn-${i}`);
+      if (stepBtn) {
+        stepBtn.addEventListener('click', () => goToWizardStep(i));
+      }
+    }
+
+    // Step 1 Auto-save listeners
+    ['jum-wiz-title', 'jum-wiz-code', 'jum-wiz-subject', 'jum-wiz-grade', 'jum-wiz-term', 'jum-wiz-year', 'jum-wiz-duration', 'jum-wiz-educator', 'jum-wiz-status', 'jum-wiz-desc', 'jum-wiz-theme', 'jum-wiz-icon'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', () => {
+          readWizardStep1();
+          triggerWizardAutoSave();
+        });
+        el.addEventListener('change', () => {
+          readWizardStep1();
+          triggerWizardAutoSave();
+        });
+      }
+    });
+    document.querySelectorAll('#jum-wiz-needs-checkboxes input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        readWizardStep1();
+        triggerWizardAutoSave();
+      });
+    });
+
+    // Step 2 Auto-save listeners
+    ['jum-wiz-framework', 'jum-wiz-strands', 'jum-wiz-substrands', 'jum-wiz-outcomes', 'jum-wiz-inquiry', 'jum-wiz-experiences', 'jum-wiz-assessments'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', () => {
+          readWizardStep2();
+          triggerWizardAutoSave();
+        });
+        el.addEventListener('change', () => {
+          readWizardStep2();
+          triggerWizardAutoSave();
+        });
+      }
+    });
+    document.querySelectorAll('#jum-wiz-competencies-grid input[type="checkbox"], #jum-wiz-values-grid input[type="checkbox"], #jum-wiz-pcis-grid input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        readWizardStep2();
+        triggerWizardAutoSave();
+      });
+    });
+
+    // Step 3 Hierarchy toolbar buttons
+    const btnTreeAddUnit = document.getElementById('jum-btn-tree-add-unit');
+    const btnTreeAddLesson = document.getElementById('jum-btn-tree-add-lesson-quick');
+    const btnTreeCollapse = document.getElementById('jum-btn-tree-collapse-all');
+    const btnTreeExpand = document.getElementById('jum-btn-tree-expand-all');
+
+    if (btnTreeAddUnit) btnTreeAddUnit.addEventListener('click', addWizardUnit);
+    if (btnTreeAddLesson) btnTreeAddLesson.addEventListener('click', addWizardLessonQuick);
+    if (btnTreeCollapse) btnTreeCollapse.addEventListener('click', () => toggleCollapseAllUnits(true));
+    if (btnTreeExpand) btnTreeExpand.addEventListener('click', () => toggleCollapseAllUnits(false));
+
+    // Step 4 Rich Editor Toolbar & Actions
+    const lessonSelect = document.getElementById('jum-wiz-content-lesson-select');
+    if (lessonSelect) {
+      lessonSelect.addEventListener('change', (e) => {
+        readWizardStep4();
+        loadLessonIntoEditor(e.target.value);
+      });
+    }
+
+    // Rich editor content listener
+    const richEditor = document.getElementById('jum-rich-editor');
+    if (richEditor) {
+      richEditor.addEventListener('input', () => {
+        readWizardStep4();
+        triggerWizardAutoSave();
+      });
+    }
+
+    // Step 4 input listeners
+    ['jum-wiz-cur-lesson-title', 'jum-wiz-cur-lesson-duration', 'jum-wiz-cur-lesson-date', 'jum-wiz-cur-outcome', 'jum-wiz-cur-intro', 'jum-wiz-cur-guided', 'jum-wiz-cur-activity', 'jum-wiz-cur-wrapup', 'jum-wiz-cur-tier1', 'jum-wiz-cur-tier2', 'jum-wiz-cur-tier3', 'jum-wiz-cur-materials', 'jum-wiz-cur-reflection', 'jum-wiz-cur-homework'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', () => {
+          readWizardStep4();
+          triggerWizardAutoSave();
+        });
+      }
+    });
+
+    // Formatting Toolbar Buttons
+    document.querySelectorAll('.jum-tb-btn[data-cmd]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cmd = btn.getAttribute('data-cmd');
+        execEditorCommand(cmd);
+      });
+    });
+
+    const formatSelect = document.getElementById('jum-editor-format');
+    if (formatSelect) {
+      formatSelect.addEventListener('change', (e) => {
+        execEditorCommand('formatBlock', `<${e.target.value}>`);
+      });
+    }
+
+    // Insert Table
+    const btnInsTable = document.getElementById('jum-btn-insert-table');
+    if (btnInsTable) {
+      btnInsTable.addEventListener('click', () => {
+        const tableHtml = `
+          <table class="jum-editor-table" border="1" cellpadding="8" style="width:100%;border-collapse:collapse;margin:14px 0;">
+            <thead>
+              <tr style="background:#F1F5F9;">
+                <th>Learning Area / Focus</th>
+                <th>Realia / Counters</th>
+                <th>UDL Adaptation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Concrete Concept</td>
+                <td>Bottle tops &amp; sorting tray</td>
+                <td>Tier 1 Visual + Tier 2 Tactile</td>
+              </tr>
+              <tr>
+                <td>Guided Practice</td>
+                <td>Cardboard number tracks</td>
+                <td>Peer Buddy response</td>
+              </tr>
+            </tbody>
+          </table><p><br></p>
+        `;
+        execEditorCommand('insertHTML', tableHtml);
+      });
+    }
+
+    // Insert Link
+    const btnInsLink = document.getElementById('jum-btn-insert-link');
+    if (btnInsLink) {
+      btnInsLink.addEventListener('click', () => {
+        const url = prompt('Enter website URL (e.g. https://kicd.ac.ke):');
+        if (url) {
+          const text = prompt('Enter link text:', url) || url;
+          execEditorCommand('insertHTML', `<a href="${url}" target="_blank" rel="noopener" style="color:var(--primary-color);text-decoration:underline;">${text}</a>`);
+        }
+      });
+    }
+
+    // Insert Image
+    const btnInsImage = document.getElementById('jum-btn-insert-image');
+    if (btnInsImage) {
+      btnInsImage.addEventListener('click', () => {
+        const url = prompt('Enter image URL or path:');
+        if (url) {
+          const alt = prompt('Enter image description (for accessibility):') || 'Inclusive learning illustration';
+          execEditorCommand('insertHTML', `<img src="${url}" alt="${alt}" style="max-width:100%;border-radius:10px;margin:12px 0;display:block;">`);
+        }
+      });
+    }
+
+    // Insert Media Embed
+    const btnInsMedia = document.getElementById('jum-btn-insert-media');
+    if (btnInsMedia) {
+      btnInsMedia.addEventListener('click', () => {
+        const url = prompt('Enter YouTube video URL or audio link:');
+        if (url) {
+          let embedHtml = '';
+          if (url.includes('youtube.com') || url.includes('youtu.be')) {
+            const vidId = url.includes('youtu.be/') ? url.split('youtu.be/')[1] : url.split('v=')[1]?.split('&')[0];
+            embedHtml = `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:16px 0;border-radius:12px;"><iframe src="https://www.youtube.com/embed/${vidId}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen></iframe></div>`;
+          } else {
+            embedHtml = `<div style="background:#F1F5F9;padding:14px;border-radius:10px;margin:14px 0;"><a href="${url}" target="_blank" rel="noopener" style="color:var(--primary-color);font-weight:700;">🎵 Listen / Open Media Resource &rarr;</a></div>`;
+          }
+          execEditorCommand('insertHTML', embedHtml);
+        }
+      });
+    }
+
+    // Callout Blocks
+    const btnTeacherNote = document.getElementById('jum-btn-insert-teacher-note');
+    if (btnTeacherNote) {
+      btnTeacherNote.addEventListener('click', () => {
+        insertCalloutIntoEditor('note', '📌 Teacher Guidance Note:', 'Keep sensory calming tools accessible and ensure high-contrast materials are ready.');
+      });
+    }
+    const btnLearnerInst = document.getElementById('jum-btn-insert-learner-inst');
+    if (btnLearnerInst) {
+      btnLearnerInst.addEventListener('click', () => {
+        insertCalloutIntoEditor('instruction', '📋 Accessible Learner Instructions:', '1. Take 4 counters. 2. Place them into group 1. 3. Show your partner with a thumbs-up.');
+      });
+    }
+    const btnPracticalAct = document.getElementById('jum-btn-insert-practical-act');
+    if (btnPracticalAct) {
+      btnPracticalAct.addEventListener('click', () => {
+        insertCalloutIntoEditor('activity', '🧪 Practical Concrete Activity:', 'Learners manipulate clean plastic bottle tops on cardboard sorting trays.');
+      });
+    }
+    const btnTierBlock = document.getElementById('jum-btn-insert-tier-block');
+    if (btnTierBlock) {
+      btnTierBlock.addEventListener('click', () => {
+        insertCalloutIntoEditor('tier', '🎯 Differentiated Learning Tier:', 'Tier 2 Scaffolding: Color-coded cards with texture prompts and noise-reduction earmuffs.');
+      });
+    }
+    const btnAccomBlock = document.getElementById('jum-btn-insert-accom-block');
+    if (btnAccomBlock) {
+      btnAccomBlock.addEventListener('click', () => {
+        insertCalloutIntoEditor('accommodation', '🤝 Inclusive Learning Accommodation:', 'Zero oral speech penalty: Non-verbal pointing and physical placement receive full marks.');
+      });
+    }
+
+    // ── In-Course Resource Manager Listeners ──
+    const btnResClose = document.getElementById('jum-btn-res-modal-close');
+    const btnResDone = document.getElementById('jum-btn-res-modal-done');
+    if (btnResClose) btnResClose.addEventListener('click', () => {
+      const m = document.getElementById('jum-modal-course-resources');
+      if (m) m.classList.remove('active');
+    });
+    if (btnResDone) btnResDone.addEventListener('click', () => {
+      const m = document.getElementById('jum-modal-course-resources');
+      if (m) m.classList.remove('active');
+    });
+
+    const resDropzone = document.getElementById('jum-res-dropzone');
+    const resFileInput = document.getElementById('jum-res-file-input');
+    if (resDropzone && resFileInput) {
+      resDropzone.addEventListener('click', () => resFileInput.click());
+      resDropzone.addEventListener('dragover', (e) => { e.preventDefault(); resDropzone.classList.add('dragover'); });
+      resDropzone.addEventListener('dragleave', () => resDropzone.classList.remove('dragover'));
+      resDropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        resDropzone.classList.remove('dragover');
+        if (e.dataTransfer && e.dataTransfer.files) {
+          handleResourceFilesAdded(e.dataTransfer.files);
+        }
+      });
+      resFileInput.addEventListener('change', (e) => {
+        if (e.target.files) handleResourceFilesAdded(e.target.files);
+      });
+    }
+
+    const btnAddResLink = document.getElementById('jum-btn-add-res-link');
+    if (btnAddResLink) {
+      btnAddResLink.addEventListener('click', () => {
+        const urlInput = document.getElementById('jum-input-res-link-url');
+        const titleInput = document.getElementById('jum-input-res-link-title');
+        const catSelect = document.getElementById('jum-select-res-link-cat');
+        const course = activeCourses.find(c => c.id === currentResourceCourseId);
+
+        if (!course || !urlInput || !urlInput.value.trim()) {
+          showToast('Please enter a valid website link URL.', 'error');
+          return;
+        }
+
+        if (!course.resources) course.resources = [];
+        course.resources.unshift({
+          id: `res_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
+          name: titleInput?.value.trim() || urlInput.value.trim(),
+          type: 'link',
+          fileFormat: 'LINK',
+          size: 'Web Link',
+          dateUploaded: new Date().toISOString().split('T')[0],
+          category: catSelect?.value || 'Online Material',
+          tags: ['Web Resource'],
+          url: urlInput.value.trim()
+        });
+
+        urlInput.value = '';
+        if (titleInput) titleInput.value = '';
+
+        saveCourses(activeCourses);
+        renderCourseResourcesTable();
+        renderCoursesGrid();
+        showToast('Online learning resource added!', 'success');
+      });
+    }
+
+    // Resource Filter Listeners
+    ['jum-res-search-input', 'jum-res-category-filter', 'jum-res-unit-filter'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', renderCourseResourcesTable);
+        el.addEventListener('change', renderCourseResourcesTable);
+      }
+    });
+
+    // ── Learner Preview Modal Listeners ──
+    const btnPrevClose = document.getElementById('jum-btn-prev-modal-close');
+    const btnPrevDone = document.getElementById('jum-btn-prev-modal-done');
+    const btnPrevEdit = document.getElementById('jum-btn-prev-modal-edit');
+    const btnPrevPrint = document.getElementById('jum-btn-prev-print');
+
+    if (btnPrevClose) btnPrevClose.addEventListener('click', () => {
+      const m = document.getElementById('jum-modal-course-preview');
+      if (m) m.classList.remove('active');
+    });
+    if (btnPrevDone) btnPrevDone.addEventListener('click', () => {
+      const m = document.getElementById('jum-modal-course-preview');
+      if (m) m.classList.remove('active');
+    });
+    if (btnPrevEdit) btnPrevEdit.addEventListener('click', () => {
+      const m = document.getElementById('jum-modal-course-preview');
+      if (m) m.classList.remove('active');
+      if (currentViewingCourseId) openCourseWizard(currentViewingCourseId);
+    });
+    if (btnPrevPrint) btnPrevPrint.addEventListener('click', () => window.print());
+
+    // ── Create Template Modal Listeners ──
+    const formCreateTpl = document.getElementById('jum-form-create-template');
+    const btnCreateTplClose = document.getElementById('jum-btn-create-tpl-close');
+    const btnCreateTplCancel = document.getElementById('jum-btn-create-tpl-cancel');
+
+    if (formCreateTpl) formCreateTpl.addEventListener('submit', handleCreateTemplateFormSubmit);
+    if (btnCreateTplClose) btnCreateTplClose.addEventListener('click', () => {
+      const m = document.getElementById('jum-modal-create-template');
+      if (m) m.classList.remove('active');
+    });
+    if (btnCreateTplCancel) btnCreateTplCancel.addEventListener('click', () => {
+      const m = document.getElementById('jum-modal-create-template');
+      if (m) m.classList.remove('active');
+    });
+
+    // ── Confirmation Dialog Listeners ──
+    const btnConfirmClose = document.getElementById('jum-btn-confirm-close');
+    const btnConfirmCancel = document.getElementById('jum-btn-confirm-cancel');
+    const btnConfirmAccept = document.getElementById('jum-btn-confirm-accept');
+
+    if (btnConfirmClose) btnConfirmClose.addEventListener('click', closeConfirmDialog);
+    if (btnConfirmCancel) btnConfirmCancel.addEventListener('click', closeConfirmDialog);
+    if (btnConfirmAccept) btnConfirmAccept.addEventListener('click', () => {
+      if (typeof confirmCallback === 'function') {
+        confirmCallback();
+      }
+      closeConfirmDialog();
+    });
+
+    // ── Special Needs Templates Tab Switcher ──
     const tabBtnCourses = document.getElementById('jum-tab-btn-courses');
     const tabBtnTemplates = document.getElementById('jum-tab-btn-templates');
     if (tabBtnCourses) tabBtnCourses.addEventListener('click', () => switchStudioView('courses'));
     if (tabBtnTemplates) tabBtnTemplates.addEventListener('click', () => switchStudioView('templates'));
 
-    // Create Template buttons
-    const btnCreateTplHead = document.getElementById('jum-btn-create-template');
+    // Special Needs SNE tab controls
     const btnCreateTplBar = document.getElementById('jum-btn-create-template-bar');
     const btnEmptyTplCreate = document.getElementById('jum-btn-empty-template-create');
-    if (btnCreateTplHead) btnCreateTplHead.addEventListener('click', () => openTemplateModal(null));
     if (btnCreateTplBar) btnCreateTplBar.addEventListener('click', () => openTemplateModal(null));
     if (btnEmptyTplCreate) btnEmptyTplCreate.addEventListener('click', () => openTemplateModal(null));
 
-    // Reset Templates
     const btnResetTpl = document.getElementById('jum-btn-reset-templates');
     const btnEmptyTplReset = document.getElementById('jum-btn-empty-template-reset');
     if (btnResetTpl) btnResetTpl.addEventListener('click', resetTemplatesToDefault);
     if (btnEmptyTplReset) btnEmptyTplReset.addEventListener('click', resetTemplatesToDefault);
 
-    // SNE Guide info button
-    const btnSneInfo = document.getElementById('jum-btn-templates-guide-info');
-    if (btnSneInfo) {
-      btnSneInfo.addEventListener('click', () => {
-        showToast('Aligned with Ministry of Education Special Needs Education Policy & KICD CBC designs.', 'info');
-      });
-    }
-
-    // Templates search and filter
     const inputTplSearch = document.getElementById('jum-template-search');
     const selectTplNeed = document.getElementById('jum-template-filter-need');
     function applyTemplateFilters() {
@@ -3404,63 +5972,7 @@
     if (inputTplSearch) inputTplSearch.addEventListener('input', applyTemplateFilters);
     if (selectTplNeed) selectTplNeed.addEventListener('change', applyTemplateFilters);
 
-    // Template Creator Modal Form & Close
-    const formTemplate = document.getElementById('jum-form-template');
-    const btnTemplateClose = document.getElementById('jum-btn-template-modal-close');
-    const btnTemplateCancel = document.getElementById('jum-btn-template-modal-cancel');
-    if (formTemplate) formTemplate.addEventListener('submit', handleTemplateFormSubmit);
-    if (btnTemplateClose) btnTemplateClose.addEventListener('click', closeTemplateModal);
-    if (btnTemplateCancel) btnTemplateCancel.addEventListener('click', closeTemplateModal);
-
-    // Template View Modal Close & Print
-    const btnTplViewClose = document.getElementById('jum-btn-template-view-close');
-    const btnTplViewPrint = document.getElementById('jum-btn-print-template-doc');
-    if (btnTplViewClose) btnTplViewClose.addEventListener('click', () => {
-      const m = document.getElementById('jum-modal-template-view');
-      if (m) m.classList.remove('active');
-    });
-    if (btnTplViewPrint) btnTplViewPrint.addEventListener('click', () => {
-      window.print();
-    });
-
-    // Quick-load template picker inside #jum-modal-lesson
-    const lessonTplPicker = document.getElementById('jum-lesson-template-picker');
-    if (lessonTplPicker) {
-      lessonTplPicker.addEventListener('change', (e) => {
-        const val = e.target.value;
-        if (!val) return;
-        const tpl = activeTemplates.find(t => t.id === val);
-        if (tpl) {
-          const inputTitle = document.getElementById('jum-input-lesson-title');
-          const inputOutcome = document.getElementById('jum-input-lesson-outcome');
-          const inputIntro = document.getElementById('jum-input-lesson-intro');
-          const inputGuided = document.getElementById('jum-input-lesson-guided');
-          const inputActivity = document.getElementById('jum-input-lesson-activity');
-          const inputWrapup = document.getElementById('jum-input-lesson-wrapup');
-          const inputTier1 = document.getElementById('jum-input-lesson-tier1');
-          const inputTier2 = document.getElementById('jum-input-lesson-tier2');
-          const inputTier3 = document.getElementById('jum-input-lesson-tier3');
-          const inputMaterials = document.getElementById('jum-input-lesson-materials');
-
-          if (inputTitle && (!inputTitle.value || inputTitle.value.startsWith('[Inclusive Lesson]'))) {
-            inputTitle.value = `[Inclusive Lesson] ${tpl.title.replace(' Template', '')}`;
-          }
-          if (inputOutcome) inputOutcome.value = tpl.outcome || '';
-          if (inputIntro) inputIntro.value = tpl.intro || '';
-          if (inputGuided) inputGuided.value = tpl.guided || '';
-          if (inputActivity) inputActivity.value = tpl.activity || '';
-          if (inputWrapup) inputWrapup.value = tpl.wrapup || '';
-          if (inputTier1) inputTier1.value = tpl.tier1 || '';
-          if (inputTier2) inputTier2.value = tpl.tier2 || '';
-          if (inputTier3) inputTier3.value = tpl.tier3 || '';
-          if (inputMaterials) inputMaterials.value = tpl.materials || '';
-
-          showToast(`Auto-filled lesson plan with ${tpl.title}!`, 'success');
-        }
-      });
-    }
-
-    // Search and filter listeners
+    // Search and filter listeners for courses
     const searchInput = document.getElementById('jum-course-search');
     const gradeSelect = document.getElementById('jum-course-filter-grade');
     const needSelect = document.getElementById('jum-course-filter-need');
@@ -3479,6 +5991,8 @@
     // Course Viewer Header buttons
     const btnViewerAddLesson = document.getElementById('jum-btn-viewer-add-lesson');
     const btnViewerEditCourse = document.getElementById('jum-btn-viewer-edit-course');
+    const btnViewerPreviewCourse = document.getElementById('jum-btn-viewer-preview-course');
+    const btnViewerManageRes = document.getElementById('jum-btn-viewer-manage-resources');
     const btnViewerClose = document.getElementById('jum-btn-viewer-close');
 
     if (btnViewerAddLesson) {
@@ -3488,22 +6002,24 @@
     }
     if (btnViewerEditCourse) {
       btnViewerEditCourse.addEventListener('click', () => {
-        if (currentViewingCourseId) openCourseModal(currentViewingCourseId);
+        if (currentViewingCourseId) openCourseWizard(currentViewingCourseId);
+      });
+    }
+    if (btnViewerPreviewCourse) {
+      btnViewerPreviewCourse.addEventListener('click', () => {
+        if (currentViewingCourseId) openCoursePreviewModal(currentViewingCourseId);
+      });
+    }
+    if (btnViewerManageRes) {
+      btnViewerManageRes.addEventListener('click', () => {
+        if (currentViewingCourseId) openCourseResourcesModal(currentViewingCourseId);
       });
     }
     if (btnViewerClose) {
       btnViewerClose.addEventListener('click', closeCourseLessonsViewer);
     }
 
-    // Course Modal Form & Close
-    const formCourse = document.getElementById('jum-form-course');
-    const btnCourseClose = document.getElementById('jum-btn-course-modal-close');
-    const btnCourseCancel = document.getElementById('jum-btn-course-modal-cancel');
-    if (formCourse) formCourse.addEventListener('submit', handleCourseFormSubmit);
-    if (btnCourseClose) btnCourseClose.addEventListener('click', closeCourseModal);
-    if (btnCourseCancel) btnCourseCancel.addEventListener('click', closeCourseModal);
-
-    // Lesson Modal Form, File Upload & Close
+    // Quick Lesson Modal Form, Dropzone & Close
     const formLesson = document.getElementById('jum-form-lesson');
     const btnLessonClose = document.getElementById('jum-btn-lesson-modal-close');
     const btnLessonCancel = document.getElementById('jum-btn-lesson-modal-cancel');
@@ -3511,37 +6027,37 @@
     if (btnLessonClose) btnLessonClose.addEventListener('click', closeLessonModal);
     if (btnLessonCancel) btnLessonCancel.addEventListener('click', closeLessonModal);
 
-    // Dropzone events
     const dropzone = document.getElementById('jum-dropzone');
     const fileInput = document.getElementById('jum-file-input');
     if (dropzone && fileInput) {
       dropzone.addEventListener('click', () => fileInput.click());
-      dropzone.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          fileInput.click();
-        }
-      });
-      dropzone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropzone.classList.add('dragover');
-      });
-      dropzone.addEventListener('dragleave', () => {
-        dropzone.classList.remove('dragover');
-      });
+      dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
+      dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
       dropzone.addEventListener('drop', (e) => {
         e.preventDefault();
         dropzone.classList.remove('dragover');
-        if (e.dataTransfer && e.dataTransfer.files) {
-          handleFilesSelected(e.dataTransfer.files);
-        }
+        if (e.dataTransfer && e.dataTransfer.files) handleFilesSelected(e.dataTransfer.files);
       });
       fileInput.addEventListener('change', (e) => {
-        if (e.target && e.target.files) {
-          handleFilesSelected(e.target.files);
-        }
+        if (e.target && e.target.files) handleFilesSelected(e.target.files);
       });
     }
+
+    // Template Creator Modal Form & Close (Section 10B SNE)
+    const formTemplate = document.getElementById('jum-form-template');
+    const btnTemplateClose = document.getElementById('jum-btn-template-modal-close');
+    const btnTemplateCancel = document.getElementById('jum-btn-template-modal-cancel');
+    if (formTemplate) formTemplate.addEventListener('submit', handleTemplateFormSubmit);
+    if (btnTemplateClose) btnTemplateClose.addEventListener('click', closeTemplateModal);
+    if (btnTemplateCancel) btnTemplateCancel.addEventListener('click', closeTemplateModal);
+
+    const btnTplViewClose = document.getElementById('jum-btn-template-view-close');
+    const btnTplViewPrint = document.getElementById('jum-btn-print-template-doc');
+    if (btnTplViewClose) btnTplViewClose.addEventListener('click', () => {
+      const m = document.getElementById('jum-modal-template-view');
+      if (m) m.classList.remove('active');
+    });
+    if (btnTplViewPrint) btnTplViewPrint.addEventListener('click', () => window.print());
 
     // Bridge Modal Form & Close
     const formBridge = document.getElementById('jum-form-bridge');
@@ -3571,8 +6087,15 @@
         document.querySelectorAll('.jum-modal-overlay.active').forEach(m => m.classList.remove('active'));
       }
     });
-  }
 
+    // Unsaved changes window protection
+    window.addEventListener('beforeunload', (e) => {
+      if (hasUnsavedChanges) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    });
+  }
   /* ══════════════════════════════════════════════════════════════
      11. INITIALIZATION
      ══════════════════════════════════════════════════════════════ */
