@@ -249,22 +249,28 @@ html.jum-text-sm  { font-size: 14px; }
   position: fixed;
   top: 50%;
   right: 0;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(calc(100% - 32px));
   z-index: 950;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(226, 232, 240, 0.85);
+  border: 1.5px solid rgba(15, 139, 141, 0.30);
   border-right: none;
   border-radius: 20px 0 0 20px;
   box-shadow: -6px 10px 32px rgba(15, 23, 42, 0.12);
   padding: 10px 6px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  transition: transform 0.25s ease;
+  gap: 3px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
   max-height: 88vh;
   overflow-y: auto;
+}
+.jum-a11y-bar:hover,
+.jum-a11y-bar:focus-within,
+.jum-a11y-bar.expanded {
+  transform: translateY(-50%) translateX(0);
+  box-shadow: -10px 14px 44px rgba(15, 23, 42, 0.20);
 }
 .jum-a11y-bar::-webkit-scrollbar { width: 4px; }
 .jum-a11y-bar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 2px; }
@@ -417,23 +423,30 @@ html.jum-text-sm  { font-size: 14px; }
 
 /* Section spacing — generous whitespace */
 .jum-section {
-  padding: 96px 0;
+  padding: clamp(64px, 7vw, 84px) 0;
 }
 .jum-section-sm {
-  padding: 64px 0;
+  padding: clamp(44px, 5vw, 56px) 0;
 }
 .jum-section-lg {
-  padding: 112px 0;
+  padding: clamp(72px, 8vw, 96px) 0;
 }
 
 /* Alternating backgrounds */
 .jum-bg-white  { background: var(--jum-surface, #ffffff); }
 .jum-bg-soft   { background: var(--jum-bg, #F8FAFC); }
+.jum-bg-advisory {
+  background: linear-gradient(135deg, #F0FDF9 0%, #EFF6FF 50%, #F8FAFC 100%);
+  border-top: 1.5px solid rgba(15, 139, 141, 0.12);
+  border-bottom: 1.5px solid rgba(15, 139, 141, 0.12);
+}
 .jum-bg-teal   { background: var(--jum-teal-bg); }
 .jum-bg-primary { background: var(--jum-sky-bg); }
-.jum-bg-dark   {
-  background: linear-gradient(135deg, #0A1435 0%, #0F2847 50%, #0F8B8D 100%);
-  color: #fff;
+.jum-bg-dark {
+  background: linear-gradient(135deg, #F0FDF4 0%, #EFF6FF 50%, #F8FAFC 100%);
+  color: var(--jum-text-primary, #1E293B);
+  border-top: 1px solid rgba(15, 139, 141, 0.10);
+  border-bottom: 1px solid rgba(15, 139, 141, 0.10);
 }
 
 /* Modern Section Header — Refined & Balanced */
@@ -501,22 +514,23 @@ html.jum-text-sm  { font-size: 14px; }
    ══════════════════════════════════════════════════════════════ */
 .jumuishi-hero {
   position: relative;
-  background: linear-gradient(135deg, #091540 0%, #0F2D5C 35%, #0F8B8D 100%);
-  padding: 100px 0 88px;
+  background: linear-gradient(135deg, #F0FDF9 0%, #EFF6FF 35%, #FAF5FF 70%, #FFFBEB 100%);
+  padding: clamp(48px, 5.5vw, 68px) 0 clamp(44px, 4.5vw, 56px);
   overflow: hidden;
   min-height: auto;
   display: flex;
   align-items: center;
+  border-bottom: 1.5px solid rgba(15, 139, 141, 0.12);
 }
 .jumuishi-hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 15% 50%, rgba(249,115,22,0.10) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 25%, rgba(37,99,235,0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 80%, rgba(15,139,141,0.08) 0%, transparent 50%),
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Ccircle cx='30' cy='30' r='2.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    radial-gradient(ellipse at 15% 40%, rgba(15, 139, 141, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 25%, rgba(37, 99, 235, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 85%, rgba(249, 115, 22, 0.06) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f8b8d' fill-opacity='0.035'%3E%3Ccircle cx='30' cy='30' r='2.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   pointer-events: none;
 }
 
@@ -527,18 +541,23 @@ html.jum-text-sm  { font-size: 14px; }
 
 .jumuishi-hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 64px;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 48px;
   align-items: center;
+}
+@media (max-width: 1024px) {
+  .jumuishi-hero-grid {
+    gap: 36px;
+  }
 }
 @media (max-width: 900px) {
   .jumuishi-hero-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
   .jumuishi-hero {
     min-height: auto;
-    padding: 80px 0 64px;
+    padding: 48px 0 44px;
   }
 }
 
@@ -546,18 +565,18 @@ html.jum-text-sm  { font-size: 14px; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255,255,255,0.12);
-  border: 1.5px solid rgba(255,255,255,0.20);
-  color: #fff;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(15, 139, 141, 0.28);
+  color: #0F766E;
   font-family: 'Poppins', var(--font-heading), sans-serif;
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.2px;
+  font-weight: 700;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 8px 20px;
+  padding: 7px 18px;
   border-radius: var(--radius-full);
-  margin-bottom: 28px;
-  backdrop-filter: blur(8px);
+  margin-bottom: 16px;
+  box-shadow: 0 2px 10px rgba(15, 139, 141, 0.08);
 }
 .jum-hero-eyebrow-dot {
   width: 8px;
@@ -574,22 +593,22 @@ html.jum-text-sm  { font-size: 14px; }
 
 .jum-hero-h1 {
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: clamp(56px, 5.5vw, 64px);
+  font-size: clamp(34px, 3.6vw, 46px);
   font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
-  color: #FFFFFF;
-  margin-bottom: 22px;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: #0F172A;
+  margin-bottom: 16px;
 }
 .jum-hero-h1 .highlight-teal {
-  background: linear-gradient(135deg, #5EEAD4 0%, #38BDF8 100%);
+  background: linear-gradient(135deg, #0F8B8D 0%, #0284C7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 800;
 }
 .jum-hero-h1 .highlight-gold {
-  background: linear-gradient(135deg, #FDE68A 0%, #F97316 100%);
+  background: linear-gradient(135deg, #EA580C 0%, #F59E0B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -598,21 +617,24 @@ html.jum-text-sm  { font-size: 14px; }
 
 .jum-hero-subtitle {
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.2vw, 18px);
-  line-height: 1.72;
-  color: rgba(255, 255, 255, 0.95);
-  margin-bottom: 20px;
-  max-width: 580px;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.65;
+  color: #334155;
+  margin-bottom: 16px;
+  max-width: 540px;
 }
 .jum-hero-trust {
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 32px;
+  font-size: 13.5px;
+  color: #475569;
+  margin-bottom: 22px;
   font-style: normal;
-  line-height: 1.6;
-  border-left: 3px solid var(--jum-teal-light, #14B8A6);
-  padding-left: 16px;
+  line-height: 1.55;
+  background: rgba(15, 139, 141, 0.05);
+  border-left: 3.5px solid #0F8B8D;
+  padding: 10px 16px;
+  border-radius: 0 10px 10px 0;
+  max-width: 540px;
 }
 
 .jum-hero-ctas {
@@ -620,21 +642,21 @@ html.jum-text-sm  { font-size: 14px; }
   flex-wrap: wrap;
   gap: 14px;
   align-items: center;
-  margin-bottom: 44px;
+  margin-bottom: 28px;
 }
 @media (max-width: 480px) {
   .jum-hero-ctas { flex-direction: column; align-items: stretch; }
 }
 
 .jum-hero-relationship {
-  background: rgba(255,255,255,0.08);
-  border: 1.5px solid rgba(255,255,255,0.16);
-  border-radius: 16px;
-  padding: 16px 22px;
-  font-size: 14px;
-  color: rgba(255,255,255,0.80);
-  line-height: 1.65;
-  backdrop-filter: blur(10px);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.6;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
   max-width: 540px;
 }
 
@@ -698,12 +720,12 @@ html.jum-text-sm  { font-size: 14px; }
   color: var(--jum-text-primary);
   line-height: 1.2;
 }
-.jum-hero-stat.stat-1 { bottom: -16px; left: -16px; }
-.jum-hero-stat.stat-2 { top: -16px; right: 16px; }
-.jum-hero-stat.stat-3 { bottom: 40%; right: -24px; }
+.jum-hero-stat.stat-1 { bottom: -14px; left: -14px; }
+.jum-hero-stat.stat-2 { top: 14px; right: 14px; }
+.jum-hero-stat.stat-3 { bottom: 14px; left: 16px; }
 @media (max-width: 900px) {
-  .jum-hero-stat.stat-1 { bottom: 12px; left: 12px; }
-  .jum-hero-stat.stat-2 { top: 12px; right: 12px; }
+  .jum-hero-stat.stat-1 { bottom: 10px; left: 10px; }
+  .jum-hero-stat.stat-2 { top: 10px; right: 10px; }
   .jum-hero-stat.stat-3 { display: none; }
 }
 
@@ -743,27 +765,27 @@ html.jum-text-sm  { font-size: 14px; }
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: rgba(255,255,255,0.12);
-  color: #fff;
+  background: #FFFFFF;
+  color: #2563EB;
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: 15.5px;
-  font-weight: 600;
-  padding: 15px 30px;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 28px;
   border-radius: var(--jum-radius-btn, 9999px);
-  border: 2px solid rgba(255,255,255,0.35);
+  border: 1.5px solid #2563EB;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   white-space: nowrap;
-  min-height: 52px;
+  min-height: 50px;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.08);
 }
 .btn-jum-secondary:hover, .btn-jum-secondary:focus-visible {
-  background: rgba(255,255,255,0.22);
-  border-color: rgba(255,255,255,0.65);
-  color: #fff;
+  background: #EFF6FF;
+  border-color: #1D4ED8;
+  color: #1D4ED8;
   transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.16);
 }
 
 .btn-jum-teal {
@@ -2678,14 +2700,14 @@ html.jum-text-sm  { font-size: 14px; }
   background: var(--jum-bg, #F8FAFC);
 }
 .jum-cta-banner {
-  background: linear-gradient(135deg, #091540 0%, #0F2D5C 40%, #0F8B8D 100%);
+  background: linear-gradient(135deg, #0F8B8D 0%, #0284C7 50%, #2563EB 100%);
   border-radius: 32px;
-  padding: 72px 48px;
+  padding: clamp(48px, 6vw, 68px) clamp(24px, 4vw, 48px);
   color: #FFFFFF;
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.20);
+  box-shadow: 0 20px 50px -10px rgba(15, 139, 141, 0.35);
 }
 .jum-cta-banner::before {
   content: '';

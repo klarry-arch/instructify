@@ -329,15 +329,32 @@
       });
     }
 
-    // Mobile a11y bar toggle header
+    // Accessibility bar toggle header (desktop and mobile)
     const a11yHeader = document.querySelector('.jum-a11y-bar-header');
     const a11yBar = document.getElementById('jum-a11y-bar');
     if (a11yHeader && a11yBar) {
-      a11yHeader.addEventListener('click', () => {
+      a11yHeader.setAttribute('role', 'button');
+      a11yHeader.setAttribute('tabindex', '0');
+      a11yHeader.setAttribute('aria-expanded', 'false');
+      
+      const toggleA11y = () => {
         if (window.innerWidth <= 767) {
           a11yBar.classList.toggle('collapsed');
           const isCollapsed = a11yBar.classList.contains('collapsed');
           announceToScreenReader(isCollapsed ? 'Accessibility panel minimized' : 'Accessibility panel expanded');
+        } else {
+          a11yBar.classList.toggle('expanded');
+          const isExpanded = a11yBar.classList.contains('expanded');
+          a11yHeader.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+          announceToScreenReader(isExpanded ? 'Accessibility panel expanded' : 'Accessibility panel collapsed');
+        }
+      };
+
+      a11yHeader.addEventListener('click', toggleA11y);
+      a11yHeader.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleA11y();
         }
       });
     }
