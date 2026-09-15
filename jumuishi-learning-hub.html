@@ -3621,143 +3621,341 @@
             </div>
           </div>
 
-          <!-- Rich-Text Content Editor Component -->
-          <div class="jum-rich-editor-container">
-            <!-- Toolbar -->
-            <div class="jum-rich-toolbar" id="jum-rich-toolbar" role="toolbar" aria-label="Text Formatting">
-              
-              <div class="jum-toolbar-group">
-                <select id="jum-editor-format" class="jum-toolbar-select" title="Text format style" aria-label="Format style">
-                  <option value="p">Paragraph</option>
-                  <option value="h2">Heading 2</option>
-                  <option value="h3">Heading 3</option>
-                  <option value="h4">Heading 4</option>
-                  <option value="blockquote">Quote Block</option>
-                </select>
+          <!-- LMS Lesson Module Navigation -->
+          <div class="jum-lms-module-nav" role="tablist" aria-label="LMS Lesson Components">
+            <button type="button" class="jum-lms-nav-btn active" id="jum-lms-btn-notes" role="tab" aria-selected="true" aria-controls="jum-lms-panel-notes">
+              <span class="jum-lms-nav-icon">📝</span>
+              <span class="jum-lms-nav-label">1. Lesson Notes &amp; Guidance</span>
+            </button>
+            <button type="button" class="jum-lms-nav-btn" id="jum-lms-btn-materials" role="tab" aria-selected="false" aria-controls="jum-lms-panel-materials">
+              <span class="jum-lms-nav-icon">📂</span>
+              <span class="jum-lms-nav-label">2. Learning Materials &amp; Media</span>
+              <span class="jum-lms-count-pill" id="jum-lms-mat-count">0</span>
+            </button>
+            <button type="button" class="jum-lms-nav-btn" id="jum-lms-btn-assignment" role="tab" aria-selected="false" aria-controls="jum-lms-panel-assignment">
+              <span class="jum-lms-nav-icon">✍️</span>
+              <span class="jum-lms-nav-label">3. Activity Assignment</span>
+              <span class="jum-lms-status-pill" id="jum-lms-asg-status">Ready</span>
+            </button>
+            <button type="button" class="jum-lms-nav-btn" id="jum-lms-btn-quiz" role="tab" aria-selected="false" aria-controls="jum-lms-panel-quiz">
+              <span class="jum-lms-nav-icon">❓</span>
+              <span class="jum-lms-nav-label">4. Assessment Quiz</span>
+              <span class="jum-lms-count-pill teal" id="jum-lms-quiz-count">0 Qs</span>
+            </button>
+          </div>
+
+          <!-- MODULE 1: LESSON NOTES & INSTRUCTIONAL GUIDANCE -->
+          <div class="jum-lms-panel active" id="jum-lms-panel-notes" role="tabpanel" aria-labelledby="jum-lms-btn-notes">
+            <!-- Rich-Text Content Editor Component -->
+            <div class="jum-rich-editor-container">
+              <!-- Toolbar -->
+              <div class="jum-rich-toolbar" id="jum-rich-toolbar" role="toolbar" aria-label="Text Formatting">
+                
+                <div class="jum-toolbar-group">
+                  <select id="jum-editor-format" class="jum-toolbar-select" title="Text format style" aria-label="Format style">
+                    <option value="p">Paragraph</option>
+                    <option value="h2">Heading 2</option>
+                    <option value="h3">Heading 3</option>
+                    <option value="h4">Heading 4</option>
+                    <option value="blockquote">Quote Block</option>
+                  </select>
+                </div>
+
+                <div class="jum-toolbar-divider"></div>
+
+                <div class="jum-toolbar-group">
+                  <button type="button" class="jum-tb-btn" data-cmd="bold" title="Bold (Ctrl+B)"><strong>B</strong></button>
+                  <button type="button" class="jum-tb-btn" data-cmd="italic" title="Italic (Ctrl+I)"><em>I</em></button>
+                  <button type="button" class="jum-tb-btn" data-cmd="underline" title="Underline (Ctrl+U)"><u>U</u></button>
+                </div>
+
+                <div class="jum-toolbar-divider"></div>
+
+                <div class="jum-toolbar-group">
+                  <button type="button" class="jum-tb-btn" data-cmd="justifyLeft" title="Align Left"><span>⫷</span></button>
+                  <button type="button" class="jum-tb-btn" data-cmd="justifyCenter" title="Align Center"><span>≡</span></button>
+                  <button type="button" class="jum-tb-btn" data-cmd="justifyRight" title="Align Right"><span>⫸</span></button>
+                </div>
+
+                <div class="jum-toolbar-divider"></div>
+
+                <div class="jum-toolbar-group">
+                  <button type="button" class="jum-tb-btn" data-cmd="insertUnorderedList" title="Bullet List"><span>• List</span></button>
+                  <button type="button" class="jum-tb-btn" data-cmd="insertOrderedList" title="Numbered List"><span>1. List</span></button>
+                </div>
+
+                <div class="jum-toolbar-divider"></div>
+
+                <div class="jum-toolbar-group">
+                  <button type="button" class="jum-tb-btn" id="jum-btn-insert-table" title="Insert Table"><span>▦ Table</span></button>
+                  <button type="button" class="jum-tb-btn" id="jum-btn-insert-link" title="Insert Hyperlink"><span>🔗 Link</span></button>
+                  <button type="button" class="jum-tb-btn" id="jum-btn-insert-image" title="Insert Image"><span>🖼️ Image</span></button>
+                  <button type="button" class="jum-tb-btn" id="jum-btn-insert-media" title="Embed Video / Audio"><span>🎬 Embed</span></button>
+                </div>
+
+                <div class="jum-toolbar-divider"></div>
+
+                <!-- Inclusive Callout Blocks -->
+                <div class="jum-toolbar-group jum-callouts-group">
+                  <button type="button" class="jum-tb-btn callout-note" id="jum-btn-insert-teacher-note" title="Insert Teacher Guidance Note">
+                    <span>📌 Teacher Note</span>
+                  </button>
+                  <button type="button" class="jum-tb-btn callout-inst" id="jum-btn-insert-learner-inst" title="Insert Accessible Learner Instructions">
+                    <span>📋 Instructions</span>
+                  </button>
+                  <button type="button" class="jum-tb-btn callout-activity" id="jum-btn-insert-practical-act" title="Insert Practical Realia Activity">
+                    <span>🧪 Practical Activity</span>
+                  </button>
+                  <button type="button" class="jum-tb-btn callout-tier" id="jum-btn-insert-tier-block" title="Insert Differentiated Tier Block">
+                    <span>🎯 Tier</span>
+                  </button>
+                  <button type="button" class="jum-tb-btn callout-accom" id="jum-btn-insert-accom-block" title="Insert Inclusive Accommodation Block">
+                    <span>🤝 Accommodation</span>
+                  </button>
+                </div>
+
               </div>
 
-              <div class="jum-toolbar-divider"></div>
-
-              <div class="jum-toolbar-group">
-                <button type="button" class="jum-tb-btn" data-cmd="bold" title="Bold (Ctrl+B)"><strong>B</strong></button>
-                <button type="button" class="jum-tb-btn" data-cmd="italic" title="Italic (Ctrl+I)"><em>I</em></button>
-                <button type="button" class="jum-tb-btn" data-cmd="underline" title="Underline (Ctrl+U)"><u>U</u></button>
+              <!-- Content Editable Area -->
+              <div class="jum-rich-editor" id="jum-rich-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Lesson content editor" placeholder="Type lesson instructions, insert headings, teacher notes, tables, and inclusive adaptations...">
               </div>
-
-              <div class="jum-toolbar-divider"></div>
-
-              <div class="jum-toolbar-group">
-                <button type="button" class="jum-tb-btn" data-cmd="justifyLeft" title="Align Left"><span>⫷</span></button>
-                <button type="button" class="jum-tb-btn" data-cmd="justifyCenter" title="Align Center"><span>≡</span></button>
-                <button type="button" class="jum-tb-btn" data-cmd="justifyRight" title="Align Right"><span>⫸</span></button>
-              </div>
-
-              <div class="jum-toolbar-divider"></div>
-
-              <div class="jum-toolbar-group">
-                <button type="button" class="jum-tb-btn" data-cmd="insertUnorderedList" title="Bullet List"><span>• List</span></button>
-                <button type="button" class="jum-tb-btn" data-cmd="insertOrderedList" title="Numbered List"><span>1. List</span></button>
-              </div>
-
-              <div class="jum-toolbar-divider"></div>
-
-              <div class="jum-toolbar-group">
-                <button type="button" class="jum-tb-btn" id="jum-btn-insert-table" title="Insert Table"><span>▦ Table</span></button>
-                <button type="button" class="jum-tb-btn" id="jum-btn-insert-link" title="Insert Hyperlink"><span>🔗 Link</span></button>
-                <button type="button" class="jum-tb-btn" id="jum-btn-insert-image" title="Insert Image"><span>🖼️ Image</span></button>
-                <button type="button" class="jum-tb-btn" id="jum-btn-insert-media" title="Embed Video / Audio"><span>🎬 Embed</span></button>
-              </div>
-
-              <div class="jum-toolbar-divider"></div>
-
-              <!-- Inclusive Callout Blocks -->
-              <div class="jum-toolbar-group jum-callouts-group">
-                <button type="button" class="jum-tb-btn callout-note" id="jum-btn-insert-teacher-note" title="Insert Teacher Guidance Note">
-                  <span>📌 Teacher Note</span>
-                </button>
-                <button type="button" class="jum-tb-btn callout-inst" id="jum-btn-insert-learner-inst" title="Insert Accessible Learner Instructions">
-                  <span>📋 Instructions</span>
-                </button>
-                <button type="button" class="jum-tb-btn callout-activity" id="jum-btn-insert-practical-act" title="Insert Practical Realia Activity">
-                  <span>🧪 Practical Activity</span>
-                </button>
-                <button type="button" class="jum-tb-btn callout-tier" id="jum-btn-insert-tier-block" title="Insert Differentiated Tier Block">
-                  <span>🎯 Tier</span>
-                </button>
-                <button type="button" class="jum-tb-btn callout-accom" id="jum-btn-insert-accom-block" title="Insert Inclusive Accommodation Block">
-                  <span>🤝 Accommodation</span>
-                </button>
-              </div>
-
             </div>
 
-            <!-- Content Editable Area -->
-            <div class="jum-rich-editor" id="jum-rich-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Lesson content editor" placeholder="Type lesson instructions, insert headings, teacher notes, tables, and inclusive adaptations...">
+            <!-- Structured Lesson Plan Breakdown (CBC Aligned) -->
+            <h4 style="font-family:var(--font-heading);font-size:15px;font-weight:700;color:var(--heading-color);margin:24px 0 12px;border-bottom:1.5px solid var(--border-color);padding-bottom:6px;">
+              Structured CBC Instructional Stages
+            </h4>
+
+            <div class="jum-form-group">
+              <label for="jum-wiz-cur-outcome" class="jum-form-label">Specific CBC Learning Outcome</label>
+              <textarea id="jum-wiz-cur-outcome" class="jum-form-textarea" rows="2" placeholder="By the end of the lesson, the learner should be able to..."></textarea>
+            </div>
+
+            <div class="jum-form-grid-2">
+              <div class="jum-form-group">
+                <label for="jum-wiz-cur-intro" class="jum-form-label">1. Introduction &amp; Modeling (I Do)</label>
+                <textarea id="jum-wiz-cur-intro" class="jum-form-textarea" rows="2" placeholder="Hook, sensory orientation, explicit modeling with concrete manipulatives..."></textarea>
+              </div>
+              <div class="jum-form-group">
+                <label for="jum-wiz-cur-guided" class="jum-form-label">2. Guided Practice (We Do)</label>
+                <textarea id="jum-wiz-cur-guided" class="jum-form-textarea" rows="2" placeholder="Peer collaboration, tactile sorting, guided step-by-step checks..."></textarea>
+              </div>
+              <div class="jum-form-group">
+                <label for="jum-wiz-cur-activity" class="jum-form-label">3. Differentiated Activity (You Do)</label>
+                <textarea id="jum-wiz-cur-activity" class="jum-form-textarea" rows="2" placeholder="Tiered tasks, multimodal expression (drawing, tactile, oral, written)..."></textarea>
+              </div>
+              <div class="jum-form-group">
+                <label for="jum-wiz-cur-wrapup" class="jum-form-label">4. Formative Reflection &amp; De-escalation</label>
+                <textarea id="jum-wiz-cur-wrapup" class="jum-form-textarea" rows="2" placeholder="Thumbs check, sensory cooldown, transition to next learning area..."></textarea>
+              </div>
+            </div>
+
+            <!-- Multi-Tiered UDL Accommodations Grid -->
+            <h4 style="font-family:var(--font-heading);font-size:15px;font-weight:700;color:var(--jum-teal);margin:20px 0 12px;border-bottom:1.5px solid #99F6E4;padding-bottom:6px;">
+              Multi-Tiered UDL Accommodations &amp; Assistive Support
+            </h4>
+
+            <div class="jum-form-grid-3">
+              <div class="jum-form-group">
+                <label for="jum-wiz-cur-tier1" class="jum-form-label">Tier 1: Universal for All</label>
+                <textarea id="jum-wiz-cur-tier1" class="jum-form-textarea" rows="2" placeholder="Visual schedule, decluttered board, oral &amp; visual prompts..."></textarea>
+              </div>
+              <div class="jum-form-group">
+                <label for="jum-wiz-cur-tier2" class="jum-form-label">Tier 2: Targeted Scaffolding</label>
+                <textarea id="jum-wiz-cur-tier2" class="jum-form-textarea" rows="2" placeholder="Color-coded cards, sensory earmuffs, concrete counters..."></textarea>
+              </div>
+              <div class="jum-form-group">
+                <label for="jum-wiz-cur-tier3" class="jum-form-label">Tier 3: Intensive Support</label>
+                <textarea id="jum-wiz-cur-tier3" class="jum-form-textarea" rows="2" placeholder="PECS cards, peer buddy, 1-on-1 tactile assistance..."></textarea>
+              </div>
+            </div>
+
+            <div class="jum-form-group">
+              <label for="jum-wiz-cur-materials" class="jum-form-label">Low-Cost Kenyan Realia &amp; Assistive Devices</label>
+              <input type="text" id="jum-wiz-cur-materials" class="jum-form-input" placeholder="e.g. Bottle tops, egg carton trays, number tracks, tactile sandpaper cards">
+            </div>
+
+            <div class="jum-form-grid-2">
+              <div class="jum-form-group">
+                <label for="jum-wiz-cur-reflection" class="jum-form-label">Teacher Reflection &amp; Observation Notes</label>
+                <textarea id="jum-wiz-cur-reflection" class="jum-form-textarea" rows="2" placeholder="Record what worked well and note learners needing extra support..."></textarea>
+              </div>
+              <div class="jum-form-group">
+                <label for="jum-wiz-cur-homework" class="jum-form-label">Extension &amp; Home Follow-up Activity</label>
+                <textarea id="jum-wiz-cur-homework" class="jum-form-textarea" rows="2" placeholder="Everyday home practice (e.g. identifying groups of spoons or fruit with parents)..."></textarea>
+              </div>
             </div>
           </div>
 
-          <!-- Structured Lesson Plan Breakdown (CBC Aligned) -->
-          <h4 style="font-family:var(--font-heading);font-size:15px;font-weight:700;color:var(--heading-color);margin:24px 0 12px;border-bottom:1.5px solid var(--border-color);padding-bottom:6px;">
-            Structured CBC Instructional Stages
-          </h4>
+          <!-- MODULE 2: LEARNING MATERIALS & MULTI-SENSORY RESOURCES -->
+          <div class="jum-lms-panel" id="jum-lms-panel-materials" role="tabpanel" aria-labelledby="jum-lms-btn-materials" style="display:none;">
+            <div class="jum-lms-card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+                <div>
+                  <h4 style="font-family:var(--font-heading);font-size:16px;font-weight:700;color:var(--heading-color);margin:0;">
+                    📂 Attached Learning Materials &amp; Media
+                  </h4>
+                  <p style="font-size:13px;color:var(--muted-text-color);margin:4px 0 0;">
+                    Provide multi-sensory materials for this lesson: PDFs, worksheets, video tutorials, audio narrations, and AAC communication boards.
+                  </p>
+                </div>
+                <button type="button" class="btn-jum-primary-sm" id="jum-lms-btn-add-mat-toggle">
+                  <span aria-hidden="true">➕</span> Attach Material / Resource
+                </button>
+              </div>
 
-          <div class="jum-form-group">
-            <label for="jum-wiz-cur-outcome" class="jum-form-label">Specific CBC Learning Outcome</label>
-            <textarea id="jum-wiz-cur-outcome" class="jum-form-textarea" rows="2" placeholder="By the end of the lesson, the learner should be able to..."></textarea>
+              <!-- Inline Material Quick Adder -->
+              <div class="jum-lms-adder-box" id="jum-lms-mat-adder" style="display:none;">
+                <h5 style="font-size:14px;font-weight:700;margin-bottom:12px;">Attach Material to Current Lesson</h5>
+                <div class="jum-form-grid-3">
+                  <div class="jum-form-group">
+                    <label for="jum-mat-title-input" class="jum-form-label">Material Title</label>
+                    <input type="text" id="jum-mat-title-input" class="jum-form-input" placeholder="e.g. AAC Pointing Board (PDF)">
+                  </div>
+                  <div class="jum-form-group">
+                    <label for="jum-mat-type-select" class="jum-form-label">Material Type</label>
+                    <select id="jum-mat-type-select" class="jum-form-select">
+                      <option value="PDF">PDF Worksheet / Handout</option>
+                      <option value="Video">Video Embed (YouTube / MP4)</option>
+                      <option value="Audio">Audio Narration (MP3)</option>
+                      <option value="Image">Visual Chart / AAC Board</option>
+                      <option value="Word">Word Document (.docx)</option>
+                      <option value="Slides">Presentation Slides (.pptx)</option>
+                      <option value="Link">Web Link / KICD Resource</option>
+                    </select>
+                  </div>
+                  <div class="jum-form-group">
+                    <label for="jum-mat-url-input" class="jum-form-label">File URL or Web Link</label>
+                    <input type="text" id="jum-mat-url-input" class="jum-form-input" placeholder="e.g. assets/docs/worksheet.pdf or https://...">
+                  </div>
+                </div>
+                <div class="jum-form-group">
+                  <label for="jum-mat-desc-input" class="jum-form-label">Short Description / Inclusive Guidance</label>
+                  <input type="text" id="jum-mat-desc-input" class="jum-form-input" placeholder="e.g. High-contrast large print, use tactile bottle tops alongside this sheet.">
+                </div>
+                <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:10px;">
+                  <button type="button" class="btn-jum-outline-sm" id="jum-lms-btn-cancel-mat">Cancel</button>
+                  <button type="button" class="btn-jum-primary-sm" id="jum-lms-btn-save-mat">Add to Lesson</button>
+                </div>
+              </div>
+
+              <!-- Materials Table / List -->
+              <div class="jum-lms-materials-container" id="jum-lms-materials-list-container">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
           </div>
 
-          <div class="jum-form-grid-2">
-            <div class="jum-form-group">
-              <label for="jum-wiz-cur-intro" class="jum-form-label">1. Introduction &amp; Modeling (I Do)</label>
-              <textarea id="jum-wiz-cur-intro" class="jum-form-textarea" rows="2" placeholder="Hook, sensory orientation, explicit modeling with concrete manipulatives..."></textarea>
-            </div>
-            <div class="jum-form-group">
-              <label for="jum-wiz-cur-guided" class="jum-form-label">2. Guided Practice (We Do)</label>
-              <textarea id="jum-wiz-cur-guided" class="jum-form-textarea" rows="2" placeholder="Peer collaboration, tactile sorting, guided step-by-step checks..."></textarea>
-            </div>
-            <div class="jum-form-group">
-              <label for="jum-wiz-cur-activity" class="jum-form-label">3. Differentiated Activity (You Do)</label>
-              <textarea id="jum-wiz-cur-activity" class="jum-form-textarea" rows="2" placeholder="Tiered tasks, multimodal expression (drawing, tactile, oral, written)..."></textarea>
-            </div>
-            <div class="jum-form-group">
-              <label for="jum-wiz-cur-wrapup" class="jum-form-label">4. Formative Reflection &amp; De-escalation</label>
-              <textarea id="jum-wiz-cur-wrapup" class="jum-form-textarea" rows="2" placeholder="Thumbs check, sensory cooldown, transition to next learning area..."></textarea>
+          <!-- MODULE 3: ACTIVITY ASSIGNMENT -->
+          <div class="jum-lms-panel" id="jum-lms-panel-assignment" role="tabpanel" aria-labelledby="jum-lms-btn-assignment" style="display:none;">
+            <div class="jum-lms-card">
+              <div class="jum-panel-intro" style="margin-bottom:18px;">
+                <h4 style="font-family:var(--font-heading);font-size:16px;font-weight:700;color:var(--heading-color);margin:0;">
+                  ✍️ Multi-Modal Activity Assignment
+                </h4>
+                <p style="font-size:13px;color:var(--muted-text-color);margin:4px 0 0;">
+                  Configure authentic tasks allowing learners to express mastery through tactile photos, oral recordings, drawings, or in-person demonstrations.
+                </p>
+              </div>
+
+              <div class="jum-form-grid-2">
+                <div class="jum-form-group">
+                  <label for="jum-asg-title" class="jum-form-label">Assignment Title</label>
+                  <input type="text" id="jum-asg-title" class="jum-form-input" placeholder="e.g. Concrete Counting &amp; Grouping Challenge">
+                </div>
+                <div class="jum-form-grid-2">
+                  <div class="jum-form-group">
+                    <label for="jum-asg-points" class="jum-form-label">Max Points</label>
+                    <input type="number" id="jum-asg-points" class="jum-form-input" placeholder="10" min="1" max="100">
+                  </div>
+                  <div class="jum-form-group">
+                    <label for="jum-asg-due" class="jum-form-label">Due Date</label>
+                    <input type="date" id="jum-asg-due" class="jum-form-input">
+                  </div>
+                </div>
+              </div>
+
+              <div class="jum-form-group">
+                <label for="jum-asg-instructions" class="jum-form-label">Learner-Facing Instructions</label>
+                <textarea id="jum-asg-instructions" class="jum-form-textarea" rows="3" placeholder="Explain the assignment step-by-step using clear, simple sentences..."></textarea>
+              </div>
+
+              <!-- Submission Options Multi-Select -->
+              <div class="jum-form-group">
+                <label class="jum-form-label">Accepted Multi-Modal Submission Types</label>
+                <div class="jum-checkbox-grid" id="jum-asg-submission-grid">
+                  <label class="jum-checkbox-label">
+                    <input type="checkbox" value="photo" checked> 📸 Photo of Concrete / Tactile Work
+                  </label>
+                  <label class="jum-checkbox-label">
+                    <input type="checkbox" value="audio" checked> 🎙️ Voice Audio Recording
+                  </label>
+                  <label class="jum-checkbox-label">
+                    <input type="checkbox" value="text" checked> 📄 Document / Drawing Upload
+                  </label>
+                  <label class="jum-checkbox-label">
+                    <input type="checkbox" value="observation" checked> 🤝 In-Person Peer / Teacher Observation Sign-off
+                  </label>
+                </div>
+              </div>
+
+              <!-- Inclusive Rubric Criteria Builder -->
+              <div style="margin-top:20px;border-top:1.5px solid var(--border-color);padding-top:16px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                  <label class="jum-form-label" style="margin:0;">Inclusive Rubric &amp; Scoring Criteria</label>
+                  <button type="button" class="btn-jum-outline-sm" id="jum-btn-add-rubric-row">
+                    <span aria-hidden="true">➕</span> Add Rubric Criterion
+                  </button>
+                </div>
+                <div id="jum-asg-rubric-table-wrap">
+                  <!-- Dynamically rendered -->
+                </div>
+              </div>
+
+              <div class="jum-form-group" style="margin-top:16px;">
+                <label for="jum-asg-accommodations" class="jum-form-label">Inclusive Accommodations &amp; Zero-Speech Penalty Rule</label>
+                <textarea id="jum-asg-accommodations" class="jum-form-textarea" rows="2" placeholder="e.g. Physical sorting or pointing card selection counts for full marks. No deduction for verbal communication differences."></textarea>
+              </div>
             </div>
           </div>
 
-          <!-- Multi-Tiered UDL Accommodations Grid -->
-          <h4 style="font-family:var(--font-heading);font-size:15px;font-weight:700;color:var(--jum-teal);margin:20px 0 12px;border-bottom:1.5px solid #99F6E4;padding-bottom:6px;">
-            Multi-Tiered UDL Accommodations &amp; Assistive Support
-          </h4>
+          <!-- MODULE 4: ASSESSMENT QUIZ BUILDER -->
+          <div class="jum-lms-panel" id="jum-lms-panel-quiz" role="tabpanel" aria-labelledby="jum-lms-btn-quiz" style="display:none;">
+            <div class="jum-lms-card">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+                <div>
+                  <h4 style="font-family:var(--font-heading);font-size:16px;font-weight:700;color:var(--heading-color);margin:0;">
+                    ❓ Interactive Assessment Quiz Builder
+                  </h4>
+                  <p style="font-size:13px;color:var(--muted-text-color);margin:4px 0 0;">
+                    Build multi-format checks for understanding: multiple choice, visual pointing cards (AAC), and self-confidence checks.
+                  </p>
+                </div>
+                <button type="button" class="btn-jum-primary-sm" id="jum-btn-add-quiz-q">
+                  <span aria-hidden="true">➕</span> Add Question
+                </button>
+              </div>
 
-          <div class="jum-form-grid-3">
-            <div class="jum-form-group">
-              <label for="jum-wiz-cur-tier1" class="jum-form-label">Tier 1: Universal for All</label>
-              <textarea id="jum-wiz-cur-tier1" class="jum-form-textarea" rows="2" placeholder="Visual schedule, decluttered board, oral &amp; visual prompts..."></textarea>
-            </div>
-            <div class="jum-form-group">
-              <label for="jum-wiz-cur-tier2" class="jum-form-label">Tier 2: Targeted Scaffolding</label>
-              <textarea id="jum-wiz-cur-tier2" class="jum-form-textarea" rows="2" placeholder="Color-coded cards, sensory earmuffs, concrete counters..."></textarea>
-            </div>
-            <div class="jum-form-group">
-              <label for="jum-wiz-cur-tier3" class="jum-form-label">Tier 3: Intensive Support</label>
-              <textarea id="jum-wiz-cur-tier3" class="jum-form-textarea" rows="2" placeholder="PECS cards, peer buddy, 1-on-1 tactile assistance..."></textarea>
-            </div>
-          </div>
+              <div class="jum-form-grid-2" style="margin-bottom:16px;">
+                <div class="jum-form-group">
+                  <label for="jum-quiz-title" class="jum-form-label">Quiz Title</label>
+                  <input type="text" id="jum-quiz-title" class="jum-form-input" placeholder="e.g. Concept Check &amp; Understanding Quiz">
+                </div>
+                <div class="jum-form-group">
+                  <label for="jum-quiz-pass-score" class="jum-form-label">Passing Mastery Score (%)</label>
+                  <input type="number" id="jum-quiz-pass-score" class="jum-form-input" placeholder="70" min="10" max="100">
+                </div>
+              </div>
 
-          <div class="jum-form-group">
-            <label for="jum-wiz-cur-materials" class="jum-form-label">Low-Cost Kenyan Realia &amp; Assistive Devices</label>
-            <input type="text" id="jum-wiz-cur-materials" class="jum-form-input" placeholder="e.g. Bottle tops, egg carton trays, number tracks, tactile sandpaper cards">
-          </div>
+              <div class="jum-form-group">
+                <label for="jum-quiz-desc" class="jum-form-label">Student Instructions &amp; Encouragement</label>
+                <input type="text" id="jum-quiz-desc" class="jum-form-input" placeholder="e.g. Take your time! You can click, point, or ask your buddy to read aloud.">
+              </div>
 
-          <div class="jum-form-grid-2">
-            <div class="jum-form-group">
-              <label for="jum-wiz-cur-reflection" class="jum-form-label">Teacher Reflection &amp; Observation Notes</label>
-              <textarea id="jum-wiz-cur-reflection" class="jum-form-textarea" rows="2" placeholder="Record what worked well and note learners needing extra support..."></textarea>
-            </div>
-            <div class="jum-form-group">
-              <label for="jum-wiz-cur-homework" class="jum-form-label">Extension &amp; Home Follow-up Activity</label>
-              <textarea id="jum-wiz-cur-homework" class="jum-form-textarea" rows="2" placeholder="Everyday home practice (e.g. identifying groups of spoons or fruit with parents)..."></textarea>
+              <!-- Questions Builder Container -->
+              <div class="jum-quiz-builder-container" id="jum-quiz-questions-builder">
+                <!-- Dynamically rendered question cards -->
+              </div>
             </div>
           </div>
 
