@@ -4461,6 +4461,310 @@
     </div>
   </div>
 
+  <!-- Modal 7: Course Publishing & Licensing Checkout Paywall -->
+  <div class="jum-modal-overlay" id="jum-modal-course-paywall" role="dialog" aria-modal="true" aria-labelledby="jum-paywall-modal-title">
+    <div class="jum-modal" style="max-width:820px;width:96vw;max-height:92vh;display:flex;flex-direction:column;">
+      
+      <!-- Paywall Header -->
+      <div class="jum-modal-header" style="background:linear-gradient(135deg, #091540 0%, #0F5B5C 50%, #0D9488 100%);color:#FFFFFF;padding:22px 28px;">
+        <div>
+          <span style="font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;font-weight:800;color:#99F6E4;display:inline-flex;align-items:center;gap:6px;margin-bottom:4px;">
+            <span>🚀</span> Jumuishi Educator Licensing
+          </span>
+          <h3 class="jum-modal-title" id="jum-paywall-modal-title" style="color:#FFFFFF;font-size:20px;margin:0;">
+            Publish Your Inclusive Course Online
+          </h3>
+          <p style="margin:4px 0 0;font-size:13px;color:rgba(255,255,255,0.85);line-height:1.4;">
+            Unlock live public hosting on Jumuishi Hub, official CBC &amp; SNE verification, and interactive LMS learner access.
+          </p>
+        </div>
+        <button type="button" class="jum-modal-close-btn" id="jum-btn-paywall-close" aria-label="Close paywall" style="color:#FFFFFF;">&times;</button>
+      </div>
+
+      <div class="jum-modal-body" style="overflow-y:auto;flex:1;padding:24px 28px;">
+        
+        <!-- Course Quick Summary Card -->
+        <div class="jum-paywall-course-strip">
+          <div style="display:flex;align-items:center;gap:14px;flex:1;">
+            <div class="jum-paywall-course-icon" id="jum-pw-course-icon">📚</div>
+            <div>
+              <span class="jum-paywall-badge-code" id="jum-pw-course-code">MATH-G3</span>
+              <h4 class="jum-paywall-course-title" id="jum-pw-course-title">CBC Grade 3 Mathematics: Inclusive Numeracy</h4>
+              <div class="jum-paywall-course-meta" id="jum-pw-course-meta">
+                <span>Subject: Mathematics</span> &bull; <span>Grade 3</span> &bull; <span id="jum-pw-lesson-count">3 Lessons</span>
+              </div>
+            </div>
+          </div>
+          <div class="jum-paywall-status-pill">
+            <span class="jum-pulse-dot-amber"></span> Ready to Publish
+          </div>
+        </div>
+
+        <!-- Two Column Layout: Plan Selection / Value Left, Payment Methods Right -->
+        <div class="jum-paywall-grid">
+          
+          <!-- Left Column: Licensing Plan & Value -->
+          <div class="jum-paywall-left-col">
+            <h5 class="jum-paywall-sec-title">1. Select Publishing License</h5>
+            
+            <!-- Plan Option 1: Single Course License (Selected by default) -->
+            <label class="jum-paywall-plan-option selected" id="jum-pw-plan-single">
+              <input type="radio" name="jum-pw-plan" value="single" checked style="margin-top:2px;">
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+                  <span style="font-weight:800;font-size:14px;color:#0F172A;">Single Course Live License</span>
+                  <span class="jum-paywall-discount-badge">60% OFF GRANT</span>
+                </div>
+                <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;">
+                  <span style="font-size:22px;font-weight:900;color:#0D9488;">KES 999</span>
+                  <span style="font-size:13px;text-decoration:line-through;color:#94A3B8;">KES 2,500</span>
+                  <span style="font-size:11.5px;color:#64748B;">one-time fee</span>
+                </div>
+                <p style="font-size:12px;color:#475569;margin:0;line-height:1.4;">
+                  Lifetime hosting and verified learner access for this specific curriculum course.
+                </p>
+              </div>
+            </label>
+
+            <!-- Plan Option 2: Annual Creator Pass -->
+            <label class="jum-paywall-plan-option" id="jum-pw-plan-annual">
+              <input type="radio" name="jum-pw-plan" value="annual" style="margin-top:2px;">
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+                  <span style="font-weight:800;font-size:14px;color:#0F172A;">Annual Educator Creator Pass</span>
+                  <span style="font-size:10px;font-weight:800;background:#E0E7FF;color:#3730A3;padding:2px 7px;border-radius:999px;">BEST VALUE</span>
+                </div>
+                <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;">
+                  <span style="font-size:22px;font-weight:900;color:#2563EB;">KES 2,999</span>
+                  <span style="font-size:13px;text-decoration:line-through;color:#94A3B8;">KES 7,500</span>
+                  <span style="font-size:11.5px;color:#64748B;">/ full year</span>
+                </div>
+                <p style="font-size:12px;color:#475569;margin:0;line-height:1.4;">
+                  Publish unlimited courses, units, and interactive quizzes across all terms.
+                </p>
+              </div>
+            </label>
+
+            <!-- Value Inclusions List -->
+            <div class="jum-paywall-perks-box">
+              <div style="font-size:12px;font-weight:800;text-transform:uppercase;color:#0F766E;margin-bottom:8px;letter-spacing:0.04em;">
+                ✨ What's Included With Your License:
+              </div>
+              <ul class="jum-paywall-perks-list">
+                <li><span>✅</span> <strong>Live Public Hosting:</strong> Permanent link on Jumuishi Learning Hub</li>
+                <li><span>✅</span> <strong>Verified Creator Seal:</strong> Official CBC &amp; SNE compliance badge</li>
+                <li><span>✅</span> <strong>Interactive LMS Player:</strong> Learners access notes, audio &amp; quizzes</li>
+                <li><span>✅</span> <strong>Self-Marking Quizzes:</strong> Instant automated student grading</li>
+                <li><span>✅</span> <strong>Shareable Access:</strong> Instant WhatsApp &amp; parent portal link</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Column: Payment Gateway Selector -->
+          <div class="jum-paywall-right-col">
+            <h5 class="jum-paywall-sec-title">2. Choose Payment Method</h5>
+
+            <!-- Payment Method Tabs -->
+            <div class="jum-paywall-tabs" role="tablist">
+              <button type="button" class="jum-pw-tab active" id="jum-pw-tab-mpesa" role="tab" aria-selected="true">
+                <span style="color:#00A859;font-weight:900;">M-PESA</span> STK Push
+              </button>
+              <button type="button" class="jum-pw-tab" id="jum-pw-tab-manual" role="tab" aria-selected="false">
+                M-Pesa Paybill / Till
+              </button>
+              <button type="button" class="jum-pw-tab" id="jum-pw-tab-card" role="tab" aria-selected="false">
+                Debit / Credit Card
+              </button>
+            </div>
+
+            <!-- TAB 1: M-Pesa STK Push -->
+            <div class="jum-pw-tab-content active" id="jum-pw-content-mpesa">
+              <div style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:12px;padding:14px 16px;margin-bottom:14px;">
+                <div style="display:flex;align-items:center;gap:8px;color:#166534;font-weight:800;font-size:13.5px;margin-bottom:4px;">
+                  <span>🟢</span> Instant Daraja M-Pesa STK Prompt
+                </div>
+                <p style="font-size:12px;color:#15803D;margin:0;line-height:1.4;">
+                  Enter your Safaricom phone number. A pop-up prompt will appear on your phone asking for your M-Pesa PIN.
+                </p>
+              </div>
+
+              <div class="jum-form-group">
+                <label for="jum-pw-mpesa-phone" class="jum-form-label" style="font-weight:700;">
+                  Safaricom M-Pesa Phone Number <span class="required" style="color:#EF4444;">*</span>
+                </label>
+                <div style="position:relative;">
+                  <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-weight:700;color:#64748B;font-size:13.5px;">+254</span>
+                  <input type="tel" id="jum-pw-mpesa-phone" class="jum-form-input" placeholder="712345678" style="padding-left:54px;font-weight:700;font-size:15px;letter-spacing:0.5px;" maxlength="10">
+                </div>
+                <small style="font-size:11.5px;color:#64748B;display:block;margin-top:4px;">Format: 07XXXXXXXX or 01XXXXXXXX</small>
+              </div>
+
+              <div class="jum-form-group">
+                <label for="jum-pw-educator-email" class="jum-form-label" style="font-weight:700;">
+                  Receipt Email Address
+                </label>
+                <input type="email" id="jum-pw-educator-email" class="jum-form-input" placeholder="teacher@school.ac.ke" style="font-size:13.5px;">
+              </div>
+
+              <!-- STK Prompt Progress Status (Hidden by default) -->
+              <div class="jum-pw-stk-status" id="jum-pw-stk-status" style="display:none;">
+                <div class="jum-pw-spinner"></div>
+                <div style="flex:1;">
+                  <div style="font-weight:800;font-size:13px;color:#166534;" id="jum-pw-stk-status-text">
+                    Prompt sent to phone! Please enter your PIN...
+                  </div>
+                  <div style="font-size:11.5px;color:#15803D;" id="jum-pw-stk-status-sub">
+                    Waiting for M-Pesa confirmation (expires in 60s)
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" class="btn-jum-primary-sm" id="jum-btn-pw-trigger-stk" style="width:100%;height:44px;font-size:14.5px;background:#00A859;border-color:#00A859;margin-top:8px;">
+                <span aria-hidden="true">📱</span> Pay <span class="jum-pw-pay-amount-label">KES 999</span> &amp; Publish Course
+              </button>
+            </div>
+
+            <!-- TAB 2: Manual Paybill / Till -->
+            <div class="jum-pw-tab-content" id="jum-pw-content-manual" style="display:none;">
+              <div style="background:#F8FAFC;border:1.5px solid #CBD5E1;border-radius:12px;padding:14px 16px;margin-bottom:14px;">
+                <div style="font-weight:800;font-size:13px;color:#0F172A;margin-bottom:8px;">
+                  Instructions for Lipa na M-Pesa:
+                </div>
+                <ol style="margin:0;padding-left:18px;font-size:12.5px;color:#334155;line-height:1.6;">
+                  <li>Go to <strong>M-Pesa</strong> &gt; <strong>Lipa na M-Pesa</strong> &gt; <strong>Paybill</strong></li>
+                  <li>Business Number: <strong style="color:#00A859;font-size:14px;">400200</strong></li>
+                  <li>Account Number: <strong style="color:#0D9488;font-size:13.5px;" id="jum-pw-manual-acc">JUM-COURSE</strong></li>
+                  <li>Amount: <strong class="jum-pw-pay-amount-label" style="color:#0F172A;">KES 999</strong></li>
+                  <li>Enter your PIN and press Send</li>
+                </ol>
+              </div>
+
+              <div class="jum-form-group">
+                <label for="jum-pw-manual-code" class="jum-form-label" style="font-weight:700;">
+                  Enter 10-Character M-Pesa Confirmation Code <span class="required" style="color:#EF4444;">*</span>
+                </label>
+                <input type="text" id="jum-pw-manual-code" class="jum-form-input" placeholder="e.g. SLK89XZ90Q" maxlength="12" style="text-transform:uppercase;font-weight:800;font-size:15px;letter-spacing:1px;">
+                <small style="font-size:11.5px;color:#64748B;display:block;margin-top:4px;">Received in your Safaricom SMS receipt</small>
+              </div>
+
+              <button type="button" class="btn-jum-primary-sm" id="jum-btn-pw-verify-manual" style="width:100%;height:44px;font-size:14.5px;margin-top:8px;">
+                <span aria-hidden="true">✓</span> Verify Receipt &amp; Publish Course
+              </button>
+            </div>
+
+            <!-- TAB 3: Credit / Debit Card (Paystack) -->
+            <div class="jum-pw-tab-content" id="jum-pw-content-card" style="display:none;">
+              <div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:12px;padding:14px 16px;margin-bottom:14px;">
+                <div style="display:flex;align-items:center;gap:8px;color:#1E40AF;font-weight:800;font-size:13px;margin-bottom:4px;">
+                  <span>💳</span> Secured by Paystack Card Gateway
+                </div>
+                <p style="font-size:12px;color:#1D4ED8;margin:0;line-height:1.4;">
+                  Pay securely with your Visa, Mastercard, or Bank Debit card with instant activation.
+                </p>
+              </div>
+
+              <div class="jum-form-group">
+                <label for="jum-pw-card-email" class="jum-form-label" style="font-weight:700;">
+                  Cardholder Email Address <span class="required" style="color:#EF4444;">*</span>
+                </label>
+                <input type="email" id="jum-pw-card-email" class="jum-form-input" placeholder="educator@school.com" style="font-size:13.5px;">
+              </div>
+
+              <button type="button" class="btn-jum-primary-sm" id="jum-btn-pw-trigger-card" style="width:100%;height:44px;font-size:14.5px;background:#2563EB;border-color:#2563EB;margin-top:8px;">
+                <span aria-hidden="true">🔒</span> Pay <span class="jum-pw-pay-amount-label">KES 999</span> with Card
+              </button>
+            </div>
+
+            <!-- Security & Guarantee Badge -->
+            <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:14px;font-size:11.5px;color:#64748B;">
+              <span>🔒 256-Bit SSL Encrypted</span>
+              <span>&bull;</span>
+              <span>🛡️ Official Kenyan CBC Verified</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Paywall Footer -->
+      <div class="jum-modal-footer" style="background:#F8FAFC;border-top:1px solid #E2E8F0;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;">
+        <button type="button" class="btn-jum-outline-sm" id="jum-btn-pw-keep-draft">
+          Keep as Draft &amp; Pay Later
+        </button>
+        <span style="font-size:12px;color:#64748B;">
+          Course will remain saved in your drafts until published.
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal 8: Course Published Celebration & Sharing Modal -->
+  <div class="jum-modal-overlay" id="jum-modal-publish-success" role="dialog" aria-modal="true" aria-labelledby="jum-success-modal-title">
+    <div class="jum-modal" style="max-width:560px;text-align:center;padding:0;overflow:hidden;border-radius:18px;">
+      
+      <!-- Luminous Top Celebration Banner -->
+      <div style="background:linear-gradient(135deg, #0F766E 0%, #0D9488 50%, #10B981 100%);color:#FFFFFF;padding:36px 24px 28px;position:relative;">
+        <div style="font-size:52px;line-height:1;margin-bottom:12px;">🎉</div>
+        <span style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:800;color:#CCFBF1;display:inline-block;margin-bottom:6px;">
+          ✓ Verified Inclusive Course
+        </span>
+        <h3 id="jum-success-modal-title" style="color:#FFFFFF;font-size:22px;font-weight:800;margin:0 0 8px;">
+          Your Course is Officially Published!
+        </h3>
+        <p style="font-size:14px;color:rgba(255,255,255,0.92);margin:0;line-height:1.5;">
+          Congratulations! Your curriculum is now live, verified, and accessible to learners and parents on Jumuishi Hub.
+        </p>
+      </div>
+
+      <div style="padding:24px 28px;">
+        
+        <!-- Live Course Details Summary -->
+        <div style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:12px;padding:14px 18px;margin-bottom:20px;text-align:left;">
+          <div style="font-size:11px;font-weight:800;color:#166534;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;">
+            Live Course Listing
+          </div>
+          <div style="font-weight:800;font-size:15px;color:#0F172A;" id="jum-success-course-title">
+            Grade 3 Mathematics: Inclusive Numeracy
+          </div>
+          <div style="font-size:12px;color:#475569;margin-top:2px;" id="jum-success-course-receipt">
+            Receipt: #JUM-PAY-98234 &bull; Lifetime Verified License
+          </div>
+        </div>
+
+        <!-- Shareable Public Link Box -->
+        <div class="jum-form-group" style="text-align:left;margin-bottom:20px;">
+          <label class="jum-form-label" style="font-weight:700;">Shareable Public Course Link</label>
+          <div style="display:flex;gap:8px;">
+            <input type="text" id="jum-success-course-link" class="jum-form-input" readonly style="font-size:13px;background:#F8FAFC;font-family:monospace;color:#0F172A;">
+            <button type="button" class="btn-jum-primary-sm" id="jum-btn-copy-public-link" style="white-space:nowrap;">
+              <span>📋</span> Copy Link
+            </button>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <button type="button" id="jum-btn-success-open-player" class="btn-jum-primary-sm" style="flex:1;min-width:180px;height:42px;display:inline-flex;align-items:center;justify-content:center;gap:6px;">
+            <span>👁️</span> Open in Learner Player
+          </button>
+          <button type="button" class="btn-jum-outline-sm" id="jum-btn-success-share-whatsapp" style="flex:1;min-width:180px;height:42px;background:#25D366;color:#FFFFFF;border-color:#25D366;">
+            <span>💬</span> Share to WhatsApp
+          </button>
+        </div>
+
+        <div style="margin-top:16px;">
+          <button type="button" class="btn-jum-outline-sm" id="jum-btn-success-close" style="width:100%;">
+            Return to Curriculum Workspace
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="js/main.js?v=3.0"></script>
   <script src="js/auth.js"></script>

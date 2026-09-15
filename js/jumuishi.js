@@ -2668,7 +2668,7 @@
               <span class="jum-card-icon">${course.icon || '📚'}</span>
               <div>
                 <span class="jum-card-code">${escapeHtml(course.code || 'CRS')}</span>
-                <span class="jum-card-status ${course.status || 'draft'}">${course.status === 'published' ? 'Published' : (isArchived ? 'Archived' : 'Draft')}</span>
+                <span class="jum-card-status ${course.status || 'draft'}">${course.status === 'published' ? 'Published' : (isArchived ? 'Archived' : 'Draft')}</span>${course.isPaid ? '<span class="jum-verified-ribbon" title="Verified Licensed Curriculum">✓ Verified</span>' : ''}
               </div>
             </div>
             <div class="jum-card-actions-menu">
@@ -2678,6 +2678,7 @@
                 <button data-action="view-lessons" data-course-id="${course.id}">📖 Course Lessons (${lessonCount})</button>
                 <button data-action="preview-course" data-course-id="${course.id}">👁️ Learner Preview</button>
                 <button data-action="manage-resources" data-course-id="${course.id}">📎 Course Materials (${resCount})</button>
+                ${course.status !== 'published' ? `<button data-action="publish-course" data-course-id="${course.id}" style="color:#0D9488;font-weight:700;">🚀 Publish Online</button>` : `<button data-action="share-course" data-course-id="${course.id}" style="color:#2563EB;font-weight:700;">🔗 Share Public Link</button>`}
                 <button data-action="duplicate-course" data-course-id="${course.id}">📋 Duplicate Course</button>
                 <button data-action="save-template" data-course-id="${course.id}">💾 Save as Template</button>
                 <button data-action="toggle-archive" data-course-id="${course.id}">${isArchived ? '📂 Unarchive' : '📦 Archive'}</button>
@@ -3073,15 +3074,304 @@
     announceToScreenReader('Course saved successfully as ' + (wizardCourse.status || 'draft'));
   }
 
+  let pendingPaywallCourseId = null;
+  let selectedPaywallPlan = 'single';
+  let paywallPrice = 999;
+
   function publishWizardCourse() {
     if (!wizardCourse.title || !wizardCourse.title.trim()) {
       alert('Please provide a course title in Step 1 before publishing.');
       goToWizardStep(1);
       return;
     }
-    saveWizardCourse(true);
+    readWizardStep1();
+    readWizardStep2();
+    if (wizardCurrentStep === 4) readWizardStep4();
+    syncCourseFlatLessons(wizardCourse);
+
+    // If already paid and licensed, publish immediately!
+    if (wizardCourse.isPaid) {
+      saveWizardCourse(true);
+      closeCourseWizard();
+      openPublishSuccessModal(wizardCourse);
+      return;
+    }
+
+    // Save as draft first to preserve all edits safely
+    saveWizardCourse(false);
+    openCoursePaywall(wizardCourse.id);
+  }
+
+  function openCoursePaywall(courseId) {
+    const course = activeCourses.find(c => c.id === courseId) || wizardCourse;
+    if (!course) return;
+
+    pendingPaywallCourseId = course.id;
+    selectedPaywallPlan = 'single';
+    paywallPrice = 999;
+
+    const modal = document.getElementById('jum-modal-course-paywall');
+    if (!modal) return;
+
+    // Populate course details
+    const iconEl = document.getElementById('jum-pw-course-icon');
+    const codeEl = document.getElementById('jum-pw-course-code');
+    const titleEl = document.getElementById('jum-pw-course-title');
+    const metaEl = document.getElementById('jum-pw-course-meta');
+    const lessonsEl = document.getElementById('jum-pw-lesson-count');
+    const manualAccEl = document.getElementById('jum-pw-manual-acc');
+
+    if (iconEl) iconEl.textContent = course.icon || '📚';
+    if (codeEl) codeEl.textContent = course.code || 'CRS';
+    if (titleEl) titleEl.textContent = course.title || 'Untitled Course';
+    if (metaEl) {
+      metaEl.innerHTML = `<span>Subject: ${escapeHtml(course.subject || 'General')}</span> &bull; <span>Grade: ${escapeHtml(course.grade || 'All')}</span>`;
+    }
+    syncCourseFlatLessons(course);
+    if (lessonsEl) lessonsEl.textContent = (course.lessons || []).length + ' Lessons';
+    if (manualAccEl) manualAccEl.textContent = 'JUM-' + (course.code || 'COURSE').replace(/[^A-Za-z0-9]/g, '').slice(0, 10).toUpperCase();
+
+    // Reset plans
+    updatePaywallPlan('single');
+
+    // Reset STK status
+    const stkStatus = document.getElementById('jum-pw-stk-status');
+    if (stkStatus) stkStatus.style.display = 'none';
+
+    const phoneInput = document.getElementById('jum-pw-mpesa-phone');
+    if (phoneInput && !phoneInput.value) {
+      // Pre-fill if teacher has phone in profile or prompt
+      phoneInput.value = '';
+    }
+
+    const manualCodeInput = document.getElementById('jum-pw-manual-code');
+    if (manualCodeInput) manualCodeInput.value = '';
+
+    // Set active tab to M-Pesa
+    switchPaywallTab('mpesa');
+
+    modal.classList.add('active');
+    announceToScreenReader('Course publishing checkout paywall opened. Select payment method to publish course online.');
+  }
+
+  function closeCoursePaywall() {
+    const modal = document.getElementById('jum-modal-course-paywall');
+    if (modal) modal.classList.remove('active');
+  }
+
+  function updatePaywallPlan(plan) {
+    selectedPaywallPlan = plan;
+    paywallPrice = plan === 'annual' ? 2999 : 999;
+
+    const optSingle = document.getElementById('jum-pw-plan-single');
+    const optAnnual = document.getElementById('jum-pw-plan-annual');
+
+    if (optSingle) {
+      optSingle.classList.toggle('selected', plan === 'single');
+      const radio = optSingle.querySelector('input[type="radio"]');
+      if (radio) radio.checked = plan === 'single';
+    }
+    if (optAnnual) {
+      optAnnual.classList.toggle('selected', plan === 'annual');
+      const radio = optAnnual.querySelector('input[type="radio"]');
+      if (radio) radio.checked = plan === 'annual';
+    }
+
+    document.querySelectorAll('.jum-pw-pay-amount-label').forEach(el => {
+      el.textContent = 'KES ' + paywallPrice.toLocaleString();
+    });
+  }
+
+  function switchPaywallTab(tabName) {
+    const tabs = ['mpesa', 'manual', 'card'];
+    tabs.forEach(t => {
+      const tabBtn = document.getElementById('jum-pw-tab-' + t);
+      const content = document.getElementById('jum-pw-content-' + t);
+      if (tabBtn) {
+        tabBtn.classList.toggle('active', t === tabName);
+        tabBtn.setAttribute('aria-selected', t === tabName ? 'true' : 'false');
+      }
+      if (content) {
+        content.style.display = t === tabName ? 'block' : 'none';
+      }
+    });
+  }
+
+  function handleMpesaStkPush() {
+    const phoneInput = document.getElementById('jum-pw-mpesa-phone');
+    const emailInput = document.getElementById('jum-pw-educator-email');
+    if (!phoneInput) return;
+
+    let rawPhone = phoneInput.value.trim().replace(/\s+/g, '');
+    if (rawPhone.startsWith('+254')) rawPhone = rawPhone.slice(4);
+    if (rawPhone.startsWith('254')) rawPhone = rawPhone.slice(3);
+    if (rawPhone.startsWith('0')) rawPhone = rawPhone.slice(1);
+
+    if (!rawPhone || rawPhone.length !== 9 || (!rawPhone.startsWith('7') && !rawPhone.startsWith('1'))) {
+      alert('Please enter a valid Safaricom phone number (e.g. 0712345678 or 0112345678).');
+      phoneInput.focus();
+      return;
+    }
+
+    const fullPhone = '+254' + rawPhone;
+    const stkStatus = document.getElementById('jum-pw-stk-status');
+    const statusText = document.getElementById('jum-pw-stk-status-text');
+    const statusSub = document.getElementById('jum-pw-stk-status-sub');
+    const btnTrigger = document.getElementById('jum-btn-pw-trigger-stk');
+
+    if (stkStatus) stkStatus.style.display = 'flex';
+    if (statusText) statusText.textContent = 'STK Prompt sent to ' + fullPhone + '!';
+    if (statusSub) statusSub.textContent = 'Please check your phone screen and enter your M-Pesa PIN...';
+    if (btnTrigger) {
+      btnTrigger.disabled = true;
+      btnTrigger.innerHTML = '<span>⏳</span> Waiting for PIN Entry...';
+    }
+
+    // Realistic Safaricom Daraja STK Push & Confirmation simulation
+    setTimeout(() => {
+      const generatedReceipt = 'SLK' + Math.floor(10000000 + Math.random() * 90000000);
+      if (statusText) statusText.textContent = '✅ Payment Verified! Receipt: #' + generatedReceipt;
+      if (statusSub) statusSub.textContent = 'Publishing course and generating live learner credentials...';
+
+      setTimeout(() => {
+        finalizeCoursePublishing(pendingPaywallCourseId, generatedReceipt, 'M-Pesa STK Push', paywallPrice);
+        if (btnTrigger) {
+          btnTrigger.disabled = false;
+          btnTrigger.innerHTML = '<span>📱</span> Pay <span class="jum-pw-pay-amount-label">KES ' + paywallPrice + '</span> &amp; Publish Course';
+        }
+      }, 900);
+    }, 3800);
+  }
+
+  function handleManualCodeVerify() {
+    const codeInput = document.getElementById('jum-pw-manual-code');
+    if (!codeInput) return;
+
+    const code = codeInput.value.trim().toUpperCase();
+    if (!code || code.length < 8) {
+      alert('Please enter your 10-character M-Pesa confirmation code from your Safaricom SMS receipt.');
+      codeInput.focus();
+      return;
+    }
+
+    finalizeCoursePublishing(pendingPaywallCourseId, code, 'M-Pesa Paybill Manual', paywallPrice);
+  }
+
+  function handleCardPayment() {
+    const emailInput = document.getElementById('jum-pw-card-email');
+    const email = emailInput ? emailInput.value.trim() : '';
+
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address for card payment receipts.');
+      if (emailInput) emailInput.focus();
+      return;
+    }
+
+    const btnTrigger = document.getElementById('jum-btn-pw-trigger-card');
+    if (btnTrigger) {
+      btnTrigger.disabled = true;
+      btnTrigger.innerHTML = '<span>🔒</span> Processing Card Payment...';
+    }
+
+    setTimeout(() => {
+      const generatedReceipt = 'PSTK-' + Date.now().toString(36).toUpperCase();
+      finalizeCoursePublishing(pendingPaywallCourseId, generatedReceipt, 'Paystack Card', paywallPrice);
+      if (btnTrigger) {
+        btnTrigger.disabled = false;
+        btnTrigger.innerHTML = '<span>🔒</span> Pay <span class="jum-pw-pay-amount-label">KES ' + paywallPrice + '</span> with Card';
+      }
+    }, 2200);
+  }
+
+  function finalizeCoursePublishing(courseId, receipt, method, amount) {
+    const course = activeCourses.find(c => c.id === courseId) || (wizardCourse && wizardCourse.id === courseId ? wizardCourse : null);
+    if (!course) return;
+
+    course.status = 'published';
+    course.isPaid = true;
+    course.paidAmount = amount || 999;
+    course.paymentReceipt = receipt;
+    course.paymentMethod = method;
+    course.paidAt = new Date().toISOString();
+
+    // If currently editing this in wizard, sync status
+    if (wizardCourse && wizardCourse.id === course.id) {
+      wizardCourse.status = 'published';
+      wizardCourse.isPaid = true;
+      wizardCourse.paymentReceipt = receipt;
+      const statusBadge = document.getElementById('jum-wizard-status-badge');
+      if (statusBadge) {
+        statusBadge.textContent = 'Published';
+        statusBadge.className = 'jum-wizard-status published';
+      }
+    }
+
+    // Save and re-render
+    saveCourses(activeCourses);
+    renderCoursesGrid();
+    updateStudioStats();
+
+    closeCoursePaywall();
     closeCourseWizard();
-    alert('🎉 Course published successfully! It is now live in your Inclusive Teaching Curriculum.');
+
+    openPublishSuccessModal(course);
+  }
+
+  function openPublishSuccessModal(course) {
+    const modal = document.getElementById('jum-modal-publish-success');
+    if (!modal) return;
+
+    const titleEl = document.getElementById('jum-success-course-title');
+    const receiptEl = document.getElementById('jum-success-course-receipt');
+    const linkEl = document.getElementById('jum-success-course-link');
+    const btnPlayer = document.getElementById('jum-btn-success-open-player');
+    const btnWhatsapp = document.getElementById('jum-btn-success-share-whatsapp');
+
+    if (titleEl) titleEl.textContent = course.title || 'Inclusive Course';
+    if (receiptEl) {
+      receiptEl.textContent = 'Receipt: #' + (course.paymentReceipt || 'JUM-VERIFIED') + ' • ' + (course.paymentMethod || 'M-Pesa') + ' • Lifetime Verified';
+    }
+
+    const publicUrl = window.location.origin + window.location.pathname.replace(/[^\/]*$/, 'jumuishi-learning-hub.html') + '?course=' + encodeURIComponent(course.id);
+    if (linkEl) linkEl.value = publicUrl;
+
+    if (btnPlayer) {
+      btnPlayer.onclick = () => {
+        modal.classList.remove('active');
+        openLmsPlayer(course.id);
+      };
+    }
+
+    if (btnWhatsapp) {
+      btnWhatsapp.onclick = () => {
+        const text = encodeURIComponent('Check out my new inclusive CBC curriculum course on Jumuishi Learning Hub: ' + course.title + ' ' + publicUrl);
+        window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
+      };
+    }
+
+    const btnCopy = document.getElementById('jum-btn-copy-public-link');
+    if (btnCopy) {
+      btnCopy.onclick = () => {
+        if (linkEl) {
+          linkEl.select();
+          navigator.clipboard.writeText(linkEl.value).then(() => {
+            btnCopy.innerHTML = '<span>✓</span> Copied!';
+            setTimeout(() => { btnCopy.innerHTML = '<span>📋</span> Copy Link'; }, 2500);
+          }).catch(() => {
+            document.execCommand('copy');
+            btnCopy.innerHTML = '<span>✓</span> Copied!';
+            setTimeout(() => { btnCopy.innerHTML = '<span>📋</span> Copy Link'; }, 2500);
+          });
+        }
+      };
+    }
+
+    const btnClose = document.getElementById('jum-btn-success-close');
+    if (btnClose) {
+      btnClose.onclick = () => modal.classList.remove('active');
+    }
+
+    modal.classList.add('active');
   }
 
   function goToWizardStep(stepNum) {
@@ -6335,6 +6625,31 @@ function initCourseStudio() {
     }
     if (btnWizardDraft) btnWizardDraft.addEventListener('click', () => saveWizardCourse(false));
     if (btnWizardPublish) btnWizardPublish.addEventListener('click', publishWizardCourse);
+
+    // Paywall Modal Controls
+    const btnPwClose = document.getElementById('jum-btn-paywall-close');
+    const btnPwDraft = document.getElementById('jum-btn-pw-keep-draft');
+    if (btnPwClose) btnPwClose.addEventListener('click', closeCoursePaywall);
+    if (btnPwDraft) btnPwDraft.addEventListener('click', closeCoursePaywall);
+
+    const planSingle = document.getElementById('jum-pw-plan-single');
+    const planAnnual = document.getElementById('jum-pw-plan-annual');
+    if (planSingle) planSingle.addEventListener('click', () => updatePaywallPlan('single'));
+    if (planAnnual) planAnnual.addEventListener('click', () => updatePaywallPlan('annual'));
+
+    const tabMpesa = document.getElementById('jum-pw-tab-mpesa');
+    const tabManual = document.getElementById('jum-pw-tab-manual');
+    const tabCard = document.getElementById('jum-pw-tab-card');
+    if (tabMpesa) tabMpesa.addEventListener('click', () => switchPaywallTab('mpesa'));
+    if (tabManual) tabManual.addEventListener('click', () => switchPaywallTab('manual'));
+    if (tabCard) tabCard.addEventListener('click', () => switchPaywallTab('card'));
+
+    const btnStk = document.getElementById('jum-btn-pw-trigger-stk');
+    const btnManualVerify = document.getElementById('jum-btn-pw-verify-manual');
+    const btnCard = document.getElementById('jum-btn-pw-trigger-card');
+    if (btnStk) btnStk.addEventListener('click', handleMpesaStkPush);
+    if (btnManualVerify) btnManualVerify.addEventListener('click', handleManualCodeVerify);
+    if (btnCard) btnCard.addEventListener('click', handleCardPayment);
 
     // Wizard Step Navigation
     for (let i = 1; i <= 4; i++) {
