@@ -25,13 +25,48 @@
     <ul class="nav-links">
       <li><a href="index.html" class="nav-link">Home</a></li>
       <li><a href="about.html" class="nav-link">About Us</a></li>
-      <li><a href="courses.html" class="nav-link">Courses</a></li>
+      <li class="nav-item-dropdown">
+        <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="courses" aria-haspopup="true" aria-expanded="false">
+          Courses <span class="nav-badge badge-amber">Hot</span>
+          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <ul class="nav-dropdown-menu" role="menu" aria-label="Courses, Podcast and Resources">
+          <li role="none">
+            <a href="courses.html" class="nav-dropdown-item" role="menuitem" data-nav="courses">
+              <span class="nav-dropdown-icon">📚</span>
+              <div class="nav-dropdown-info">
+                <span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span>
+                <span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span>
+              </div>
+            </a>
+          </li>
+          <li role="none">
+            <a href="podcast.html" class="nav-dropdown-item" role="menuitem" data-nav="podcast">
+              <span class="nav-dropdown-icon">🎙️</span>
+              <div class="nav-dropdown-info">
+                <span class="nav-dropdown-title">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></span>
+                <span class="nav-dropdown-desc">Inspiring stories from Kenyan educators</span>
+              </div>
+            </a>
+          </li>
+          <li role="none">
+            <a href="resources.html" class="nav-dropdown-item" role="menuitem" data-nav="resources">
+              <span class="nav-dropdown-icon">📂</span>
+              <div class="nav-dropdown-info">
+                <span class="nav-dropdown-title">Resources</span>
+                <span class="nav-dropdown-desc">Schemes of work, lesson plans &amp; guides</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </li>
       
       <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
-      
-      <li><a href="resources.html" class="nav-link">Resources</a></li>
       <li><a href="schools.html" class="nav-link">Institutions</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
+    
     </ul>
     <div class="nav-actions">
       <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
@@ -49,13 +84,19 @@
   <div class="nav-mobile-links">
     <a href="index.html" class="nav-mobile-link">Home</a>
     <a href="about.html" class="nav-mobile-link">About Us</a>
-    <a href="courses.html" class="nav-mobile-link">Courses</a>
-    <a href="podcast.html" class="nav-mobile-link">Podcast</a>
+    <div class="nav-mobile-dropdown">
+      <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
+      <div class="nav-mobile-sublinks">
+        <a href="courses.html" class="nav-mobile-sublink" data-nav="courses"><span>📚</span> All Courses</a>
+        <a href="podcast.html" class="nav-mobile-sublink" data-nav="podcast"><span>🎙️</span> Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></a>
+        <a href="resources.html" class="nav-mobile-sublink" data-nav="resources"><span>📂</span> Resources</a>
+      </div>
+    </div>
     <a href="blog.html" class="nav-mobile-link">Blog</a>
     <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
-    <a href="resources.html" class="nav-mobile-link">Resources</a>
     <a href="schools.html" class="nav-mobile-link">Institutions</a>
     <a href="contact.html" class="nav-mobile-link">Contact</a>
+  
   </div>
   <div class="nav-mobile-actions">
     <a href="dashboard-admin.html" class="btn btn-primary btn-md">Admin Console</a>

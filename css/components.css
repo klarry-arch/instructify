@@ -207,6 +207,202 @@ a[href*="jumuishi"].nav-link.active {
   visibility: hidden !important;
 }
 
+/* ── Navigation Dropdown Menu (Courses -> Podcast & Resources) ── */
+.nav-item-dropdown {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-link.nav-link-dropdown {
+  padding-right: 7px !important;
+  gap: 4px !important;
+}
+
+.nav-chevron {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  vertical-align: middle;
+  color: #64748B;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.nav-item-dropdown:hover .nav-chevron,
+.nav-item-dropdown:focus-within .nav-chevron,
+.nav-item-dropdown.open .nav-chevron {
+  transform: rotate(180deg);
+  color: var(--primary-color, #2145E6);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: #FFFFFF;
+  border-radius: 14px;
+  box-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.16), 0 0 0 1px rgba(15, 23, 42, 0.08);
+  min-width: 290px;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1100;
+  list-style: none;
+  margin: 0;
+  text-align: left;
+}
+
+/* Invisible hover bridge to prevent mouse cursor slipping */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 14px;
+}
+
+.nav-item-dropdown:hover .nav-dropdown-menu,
+.nav-item-dropdown:focus-within .nav-dropdown-menu,
+.nav-item-dropdown.open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(4px);
+}
+
+.nav-dropdown-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 9px 12px !important;
+  border-radius: 10px !important;
+  text-decoration: none !important;
+  color: #0F172A !important;
+  background: transparent;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: normal !important;
+  border: 1px solid transparent !important;
+  height: auto !important;
+}
+
+.nav-dropdown-item:hover {
+  background: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+  transform: translateX(3px);
+}
+
+.nav-dropdown-item.active {
+  background: rgba(33, 69, 230, 0.07) !important;
+  border-color: rgba(33, 69, 230, 0.18) !important;
+}
+
+.nav-dropdown-item.active .nav-dropdown-title {
+  color: var(--primary-color, #2145E6) !important;
+}
+
+.nav-dropdown-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: #F1F5F9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.nav-dropdown-item:hover .nav-dropdown-icon {
+  transform: scale(1.08);
+}
+
+.nav-dropdown-item[data-nav="courses"]:hover .nav-dropdown-icon {
+  background: #FEF3C7;
+}
+
+.nav-dropdown-item[data-nav="podcast"]:hover .nav-dropdown-icon {
+  background: #FFE4E6;
+}
+
+.nav-dropdown-item[data-nav="resources"]:hover .nav-dropdown-icon {
+  background: #DBEAFE;
+}
+
+.nav-dropdown-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.nav-dropdown-title {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0F172A;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.2;
+}
+
+.nav-dropdown-desc {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 11.5px;
+  color: #64748B;
+  line-height: 1.35;
+}
+
+/* Mobile sublinks styling */
+.nav-mobile-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-mobile-sublinks {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 4px 0 10px 16px;
+  padding-left: 14px;
+  border-left: 2px solid #E2E8F0;
+}
+
+.nav-mobile-sublink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  text-decoration: none;
+  transition: all 0.16s ease;
+}
+
+.nav-mobile-sublink:hover,
+.nav-mobile-sublink:focus {
+  background: #F1F5F9;
+  color: #0F172A;
+}
+
+.nav-mobile-sublink.active {
+  background: rgba(33, 69, 230, 0.08);
+  color: #2145E6;
+  font-weight: 700;
+}
+
 /* ── Catchy Micro-Badges on Nav Items ── */
 .nav-badge {
   font-size: 8px;
@@ -1707,7 +1903,7 @@ a[href*="jumuishi"].nav-link.active {
   /* Hide the text chips on intermediate desktop to save ~170px width so all 10 links + full brand + both buttons fit effortlessly */
   .nav-badge,
   .nav-badge-jum {
-    display: none !important;
+    display: inline-flex !important;
   }
   .nav-actions {
     gap: 5px;
