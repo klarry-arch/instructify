@@ -3595,29 +3595,33 @@
             <p>Select any lesson from your curriculum to compose formatted lesson content, embed media, attach teacher guidance, and detail multi-tiered UDL accommodations.</p>
           </div>
 
-          <!-- Lesson Selector Banner -->
-          <div class="jum-lesson-selector-bar">
-            <label for="jum-wiz-content-lesson-select" style="font-weight:700;font-size:13.5px;color:var(--heading-color);display:flex;align-items:center;gap:6px;">
-              <span>📝</span> Currently Editing Lesson:
-            </label>
-            <select id="jum-wiz-content-lesson-select" class="jum-form-select" style="max-width:520px;font-weight:600;">
-              <!-- Populated dynamically -->
-            </select>
-          </div>
+          <!-- Lesson Selector & Quick Info Banner (Compact & Prominent) -->
+          <div style="background:linear-gradient(135deg, #F0FDF9 0%, #EFF6FF 100%);border:1.5px solid #CBD5E1;border-radius:12px;padding:14px 18px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:10px;">
+              <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:280px;">
+                <label for="jum-wiz-content-lesson-select" style="font-weight:800;font-size:13.5px;color:#0F172A;white-space:nowrap;display:flex;align-items:center;gap:6px;">
+                  <span>📝</span> Select Lesson to Edit:
+                </label>
+                <select id="jum-wiz-content-lesson-select" class="jum-form-select" style="font-weight:700;font-size:13.5px;color:#0F172A;background:#FFFFFF;border:1.5px solid #94A3B8;border-radius:8px;padding:7px 12px;flex:1;">
+                  <!-- Populated dynamically -->
+                </select>
+              </div>
+            </div>
 
-          <!-- Lesson Quick Details Bar -->
-          <div class="jum-form-row-3" style="margin-bottom:16px;">
-            <div class="jum-form-group">
-              <label for="jum-wiz-cur-lesson-title" class="jum-form-label">Lesson Title</label>
-              <input type="text" id="jum-wiz-cur-lesson-title" class="jum-form-input">
-            </div>
-            <div class="jum-form-group">
-              <label for="jum-wiz-cur-lesson-duration" class="jum-form-label">Estimated Duration</label>
-              <input type="text" id="jum-wiz-cur-lesson-duration" class="jum-form-input" placeholder="e.g. 35 mins">
-            </div>
-            <div class="jum-form-group">
-              <label for="jum-wiz-cur-lesson-date" class="jum-form-label">Date Scheduled</label>
-              <input type="date" id="jum-wiz-cur-lesson-date" class="jum-form-input">
+            <!-- Lesson Quick Details Strip -->
+            <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;">
+              <div>
+                <label for="jum-wiz-cur-lesson-title" style="font-size:11.5px;font-weight:700;color:#475569;display:block;margin-bottom:3px;">Lesson Title</label>
+                <input type="text" id="jum-wiz-cur-lesson-title" class="jum-form-input" placeholder="e.g. Lesson 1: Introduction with Concrete Materials" style="font-size:13px;padding:6px 10px;background:#FFFFFF;">
+              </div>
+              <div>
+                <label for="jum-wiz-cur-lesson-duration" style="font-size:11.5px;font-weight:700;color:#475569;display:block;margin-bottom:3px;">Estimated Duration</label>
+                <input type="text" id="jum-wiz-cur-lesson-duration" class="jum-form-input" placeholder="e.g. 35 mins" style="font-size:13px;padding:6px 10px;background:#FFFFFF;">
+              </div>
+              <div>
+                <label for="jum-wiz-cur-lesson-date" style="font-size:11.5px;font-weight:700;color:#475569;display:block;margin-bottom:3px;">Scheduled Date</label>
+                <input type="date" id="jum-wiz-cur-lesson-date" class="jum-form-input" style="font-size:13px;padding:6px 10px;background:#FFFFFF;">
+              </div>
             </div>
           </div>
 

@@ -5254,40 +5254,43 @@ body.jum-high-contrast .jum-course-btn {
 .jum-lms-module-nav {
   display: flex;
   gap: 8px;
-  background: #F1F5F9;
+  background: #FFFFFF;
   padding: 6px;
   border-radius: 12px;
-  border: 1px solid var(--border-color);
+  border: 1.5px solid #CBD5E1;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .jum-lms-nav-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 16px;
-  border-radius: 8px;
-  border: none;
-  background: transparent;
+  padding: 9px 18px;
+  border-radius: 9px;
+  border: 1.5px solid transparent;
+  background: #F8FAFC;
   font-family: var(--font-heading);
   font-size: 13.5px;
   font-weight: 600;
-  color: #475569;
+  color: #334155;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.18s ease;
   white-space: nowrap;
 }
 
 .jum-lms-nav-btn:hover {
-  background: rgba(255, 255, 255, 0.7);
-  color: #0F172A;
+  background: #EFF6FF;
+  border-color: #BFDBFE;
+  color: #1D4ED8;
 }
 
 .jum-lms-nav-btn.active {
-  background: #FFFFFF;
-  color: #2145E6;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  color: #1D4ED8;
+  border-color: #93C5FD;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.14);
   font-weight: 700;
 }
 

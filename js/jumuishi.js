@@ -3120,18 +3120,34 @@
     if (stepNum === 3) renderHierarchyTree();
     if (stepNum === 4) populateWizardStep4();
 
+    // Update Footer Navigation & Step Counter
+    const stepCounter = document.getElementById('jum-wizard-step-counter');
+    if (stepCounter) {
+      stepCounter.textContent = 'Step ' + stepNum + ' of 4';
+    }
+
     const prevBtn = document.getElementById('jum-btn-wizard-prev');
     const nextBtn = document.getElementById('jum-btn-wizard-next');
-    if (prevBtn) prevBtn.disabled = stepNum === 1;
+
+    if (prevBtn) {
+      prevBtn.style.display = stepNum === 1 ? 'none' : 'inline-flex';
+      prevBtn.disabled = stepNum === 1;
+    }
+
     if (nextBtn) {
       if (stepNum === 4) {
-        nextBtn.textContent = 'Save & Finish';
-        nextBtn.className = 'jum-btn-wizard-primary';
+        nextBtn.innerHTML = 'Save Course &amp; Finish &#10003;';
+        nextBtn.className = 'btn-jum-primary-sm';
       } else {
-        nextBtn.textContent = 'Next Step &rarr;';
-        nextBtn.className = 'jum-btn-wizard-primary';
+        const stepLabels = ['Curriculum Details &rarr;', 'Course Organization &rarr;', 'LMS Content &amp; Quizzes &rarr;'];
+        nextBtn.innerHTML = 'Next: ' + stepLabels[stepNum - 1];
+        nextBtn.className = 'btn-jum-primary-sm';
       }
     }
+
+    // Scroll modal body to top when navigating steps
+    const modalBody = document.querySelector('.jum-wizard-body') || document.querySelector('#jum-modal-course-wizard .jum-modal-body');
+    if (modalBody) modalBody.scrollTop = 0;
   }
 
   function nextWizardStep() {
@@ -3556,20 +3572,104 @@
   // ── 10.7 Step 4: Full LMS Course Model Editor Engine ──
   function populateWizardStep4() {
     if (!wizardCourse) return;
+
+    // Safety: ensure wizardCourse has units and at least 1 lesson
+    if (!Array.isArray(wizardCourse.units) || wizardCourse.units.length === 0) {
+      wizardCourse.units = [
+        {
+          id: 'unit-' + Date.now(),
+          title: 'Unit 1: Foundations & Core Concepts',
+          desc: 'Foundational curriculum unit.',
+          duration: '3 Weeks',
+          topics: [
+            {
+              id: 'top-' + Date.now(),
+              title: 'Topic 1.1: Concrete Inquiry & Practice',
+              lessons: []
+            }
+          ]
+        }
+      ];
+    }
+
     syncCourseFlatLessons(wizardCourse);
+    let allLessons = wizardCourse.lessons || [];
+
+    if (allLessons.length === 0) {
+      // Auto-create Lesson 1 so Step 4 is never blank!
+      if (!wizardCourse.units[0].topics || wizardCourse.units[0].topics.length === 0) {
+        wizardCourse.units[0].topics = [
+          {
+            id: 'top-' + Date.now(),
+            title: 'Topic 1.1: Concrete Inquiry & Practice',
+            lessons: []
+          }
+        ];
+      }
+      const initialLesson = {
+        id: 'les-' + Date.now(),
+        lessonNumber: '1',
+        title: 'Lesson 1: Introduction with Concrete Materials',
+        duration: '35 mins',
+        date: new Date().toISOString().split('T')[0],
+        outcome: 'Learners demonstrate concept mastery through concrete representations and multisensory practice.',
+        intro: 'Sensory hook: Teacher presents concrete realia and explains lesson goal with visual timetable.',
+        guided: 'Teacher modeling with concrete materials and interactive peer demonstration.',
+        activity: 'Multimodal hands-on practice in pairs with differentiated tier scaffolds.',
+        wrapup: 'Learner reflection circle with thumbs check-in and pride cards.',
+        tier1: 'Universal visual countdown timer and colorful large-print cards.',
+        tier2: 'Targeted tactile guides, counting mats, and peer buddy collaboration.',
+        tier3: '1-to-1 tactile guidance and AAC visual pointing prompts.',
+        materials: 'Concrete manipulatives, sensory counters, visual schedule cards.',
+        reflection: '',
+        homework: 'Share one practical example of today’s concept with family at home.',
+        contentHtml: '<h3>Lesson 1: Introduction with Concrete Materials</h3><p>Compose formatted lesson notes, instructional guidance, and pedagogical reflections here.</p><div class="jum-editor-callout cbc"><strong>CBC Competency:</strong> Critical Thinking & Problem Solving through concrete manipulation.</div>',
+        notesHtml: '<p>Ensure concrete counters are accessible on low tables. Remind peer buddies to offer 5 seconds wait time.</p>',
+        resources: [
+          { id: 'res-init-1', name: 'Introductory Activity Guide.pdf', fileFormat: 'PDF', size: '1.2 MB', url: '#' }
+        ],
+        assignment: {
+          id: 'asg-init-1',
+          title: 'Practical Hands-on Demonstration',
+          maxPoints: 20,
+          dueDate: '',
+          learnerInstructions: 'Complete the concrete activity and submit evidence of learning via photo of manipulatives, voice note, or observation sign-off.',
+          submissionTypes: ['photo', 'voice', 'observation'],
+          rubric: [
+            { id: 'rc-1', criterion: 'Concrete Accuracy', points: 10, description: 'Demonstrates accurate execution using concrete materials.' },
+            { id: 'rc-2', criterion: 'Effort & Independence', points: 10, description: 'Actively engages with focus and self-regulation.' }
+          ],
+          accommodations: 'Zero speech penalty. Pointing, gesture, or shadow teacher sign-off fully accepted.'
+        },
+        quiz: {
+          id: 'quiz-init-1',
+          title: 'Check for Understanding',
+          description: 'Quick check on foundational concepts learned in this lesson.',
+          passScorePercentage: 70,
+          questions: [
+            {
+              id: 'q-init-1',
+              type: 'multiple-choice',
+              questionText: 'What is the best way to demonstrate our understanding in today’s lesson?',
+              options: ['Using concrete hands-on materials', 'Sitting quietly and guessing', 'Skipping practice', 'Doing nothing'],
+              correctIndex: 0,
+              hint: 'Think about our tactile activity.',
+              explanation: 'Correct! Hands-on practice with concrete materials builds intuitive concept mastery.'
+            }
+          ]
+        }
+      };
+
+      wizardCourse.units[0].topics[0].lessons.push(initialLesson);
+      syncCourseFlatLessons(wizardCourse);
+      allLessons = wizardCourse.lessons;
+    }
 
     const selector = document.getElementById('jum-wiz-content-lesson-select');
     if (!selector) return;
 
-    const allLessons = wizardCourse.lessons || [];
-
-    if (allLessons.length === 0) {
-      selector.innerHTML = '<option value="">No lessons available. Go back to Step 3 to add a lesson.</option>';
-      return;
-    }
-
     selector.innerHTML = allLessons.map(l => `
-      <option value="${l.id}">${escapeHtml(l.unitTitle || '')} &gt; ${escapeHtml(l.title)} (${escapeHtml(l.duration || '35 mins')})</option>
+      <option value="${l.id}">${escapeHtml(l.unitTitle || 'Unit 1')} &gt; ${escapeHtml(l.title)} (${escapeHtml(l.duration || '35 mins')})</option>
     `).join('');
 
     if (!activeEditorLessonId || !allLessons.find(l => l.id === activeEditorLessonId)) {
