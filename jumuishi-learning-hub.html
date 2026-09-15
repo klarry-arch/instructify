@@ -1299,12 +1299,105 @@
               </p>
             </div>
             <div class="jum-studio-actions">
-              <button type="button" class="btn-jum-primary-sm" id="jum-btn-create-course" style="background:#fff;color:var(--primary-color);border-color:#fff;">
-                <span aria-hidden="true">➕</span> Create Course
-              </button>
-              <button type="button" class="btn-jum-primary-sm" id="jum-btn-create-template" style="background:var(--jum-teal);color:#fff;border-color:var(--jum-teal);">
-                <span aria-hidden="true">📋</span> Create Template
-              </button>
+              <!-- Create Course Button Group with Options Dropdown -->
+              <div class="jum-btn-dropdown-wrap" id="jum-wrap-create-course">
+                <button type="button" class="jum-btn-action-main jum-btn-create-course-main" id="jum-btn-create-course" title="Launch Course Creation Environment">
+                  <span aria-hidden="true">➕</span>
+                  <span>Create Course</span>
+                </button>
+                <button type="button" class="jum-btn-split-toggle jum-btn-create-course-toggle" id="jum-btn-create-course-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="jum-menu-create-course" title="Course Creation Options &amp; Templates">
+                  <span aria-hidden="true">▾</span>
+                </button>
+                <div class="jum-btn-dropdown-menu" id="jum-menu-create-course" role="menu" aria-label="Course Creation Options">
+                  <div class="jum-dropdown-header">Create Course Environment</div>
+                  <button type="button" class="jum-dropdown-item" data-action="create-blank" role="menuitem">
+                    <span class="jum-dd-icon">⚡</span>
+                    <div class="jum-dd-text">
+                      <strong>Blank Course Environment</strong>
+                      <span>Start from scratch in the 4-step creation wizard</span>
+                    </div>
+                  </button>
+                  <button type="button" class="jum-dropdown-item" data-action="create-template-inclusive" role="menuitem">
+                    <span class="jum-dd-icon">🌟</span>
+                    <div class="jum-dd-text">
+                      <strong>Inclusive Blueprint Course</strong>
+                      <span>Pre-loaded with UDL Tiers 1–3 &amp; AAC choice boards</span>
+                    </div>
+                  </button>
+                  <button type="button" class="jum-dropdown-item" data-action="create-template-cbc" role="menuitem">
+                    <span class="jum-dd-icon">🇰🇪</span>
+                    <div class="jum-dd-text">
+                      <strong>Competency-Based (CBC) Course</strong>
+                      <span>Pre-aligned with KICD core competencies &amp; PCIs</span>
+                    </div>
+                  </button>
+                  <button type="button" class="jum-dropdown-item" data-action="create-template-term" role="menuitem">
+                    <span class="jum-dd-icon">📅</span>
+                    <div class="jum-dd-text">
+                      <strong>Termly 12-Week Course</strong>
+                      <span>Structured term syllabus with baseline review</span>
+                    </div>
+                  </button>
+                  <button type="button" class="jum-dropdown-item" data-action="create-template-iep" role="menuitem">
+                    <span class="jum-dd-icon">🎯</span>
+                    <div class="jum-dd-text">
+                      <strong>Individualized IEP Pathway</strong>
+                      <span>Specialized milestone-based learner accommodations</span>
+                    </div>
+                  </button>
+                  <div class="jum-dropdown-divider"></div>
+                  <button type="button" class="jum-dropdown-item" data-action="browse-templates-modal" role="menuitem">
+                    <span class="jum-dd-icon">📋</span>
+                    <div class="jum-dd-text">
+                      <strong>Browse All Course Blueprints</strong>
+                      <span>Compare all pre-designed templates in modal gallery</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Templates Button Group with Options Dropdown -->
+              <div class="jum-btn-dropdown-wrap" id="jum-wrap-templates">
+                <button type="button" class="jum-btn-action-main jum-btn-templates-main" id="jum-btn-create-template" title="Link to Special Needs Adaptation Templates">
+                  <span aria-hidden="true">📋</span>
+                  <span>Templates</span>
+                </button>
+                <button type="button" class="jum-btn-split-toggle jum-btn-templates-toggle" id="jum-btn-templates-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="jum-menu-templates" title="Choose Templates Options">
+                  <span aria-hidden="true">▾</span>
+                </button>
+                <div class="jum-btn-dropdown-menu templates-menu" id="jum-menu-templates" role="menu" aria-label="Templates Options">
+                  <div class="jum-dropdown-header">Special Needs Adaptation Templates</div>
+                  <button type="button" class="jum-dropdown-item" data-action="view-sne-templates" role="menuitem">
+                    <span class="jum-dd-icon">📋</span>
+                    <div class="jum-dd-text">
+                      <strong>Browse SNE Templates Workspace</strong>
+                      <span>AAC, Sensory, ADHD, Autism, Low Vision (7+ templates)</span>
+                    </div>
+                  </button>
+                  <button type="button" class="jum-dropdown-item" data-action="create-new-template" role="menuitem">
+                    <span class="jum-dd-icon">➕</span>
+                    <div class="jum-dd-text">
+                      <strong>Create New Custom Template</strong>
+                      <span>Build a reusable blueprint from scratch</span>
+                    </div>
+                  </button>
+                  <button type="button" class="jum-dropdown-item" data-action="browse-course-blueprints" role="menuitem">
+                    <span class="jum-dd-icon">📚</span>
+                    <div class="jum-dd-text">
+                      <strong>Course Blueprints Gallery</strong>
+                      <span>Explore structured course starters</span>
+                    </div>
+                  </button>
+                  <div class="jum-dropdown-divider"></div>
+                  <button type="button" class="jum-dropdown-item" data-action="reset-sne-templates" role="menuitem">
+                    <span class="jum-dd-icon">🔄</span>
+                    <div class="jum-dd-text">
+                      <strong>Reset SNE Evidence Templates</strong>
+                      <span>Restore all 7 default Kenya SNE adaptation templates</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 

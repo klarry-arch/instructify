@@ -5552,9 +5552,138 @@
     renderCoursesGrid();
     loadTemplates();
 
-    // Studio Toolbar buttons
+    // ── Responsive Studio Header Actions & Option Menus ──
     const btnCreateCourse = document.getElementById('jum-btn-create-course');
+    const toggleCreateCourse = document.getElementById('jum-btn-create-course-toggle');
+    const menuCreateCourse = document.getElementById('jum-menu-create-course');
+
     const btnCreateTemplate = document.getElementById('jum-btn-create-template');
+    const toggleTemplates = document.getElementById('jum-btn-templates-toggle');
+    const menuTemplates = document.getElementById('jum-menu-templates');
+
+    // Helper to close header dropdowns
+    function closeHeaderDropdowns() {
+      if (menuCreateCourse) menuCreateCourse.classList.remove('active');
+      if (menuTemplates) menuTemplates.classList.remove('active');
+      if (toggleCreateCourse) toggleCreateCourse.setAttribute('aria-expanded', 'false');
+      if (toggleTemplates) toggleTemplates.setAttribute('aria-expanded', 'false');
+    }
+
+    // 1. Create Course Direct Click -> Launches Course Creation Environment directly
+    if (btnCreateCourse) {
+      btnCreateCourse.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeHeaderDropdowns();
+        switchStudioView('courses');
+        const studioEl = document.getElementById('course-studio') || document.querySelector('.jum-studio-wrapper');
+        if (studioEl) studioEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        openCourseWizard(null);
+        showToast('🚀 Course Creation Environment opened.', 'info');
+      });
+    }
+
+    // Toggle Create Course Options Dropdown
+    if (toggleCreateCourse && menuCreateCourse) {
+      toggleCreateCourse.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = menuCreateCourse.classList.contains('active');
+        closeHeaderDropdowns();
+        if (!isOpen) {
+          menuCreateCourse.classList.add('active');
+          toggleCreateCourse.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
+
+    // Handle Create Course Options Clicks
+    if (menuCreateCourse) {
+      menuCreateCourse.querySelectorAll('.jum-dropdown-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const action = item.getAttribute('data-action');
+          closeHeaderDropdowns();
+          switchStudioView('courses');
+          
+          if (action === 'create-blank') {
+            startCourseFromTemplate('tpl-blank');
+          } else if (action === 'create-template-inclusive') {
+            startCourseFromTemplate('tpl-inclusive');
+          } else if (action === 'create-template-cbc') {
+            startCourseFromTemplate('tpl-cbc');
+          } else if (action === 'create-template-term') {
+            startCourseFromTemplate('tpl-term');
+          } else if (action === 'create-template-iep') {
+            startCourseFromTemplate('tpl-iep');
+          } else if (action === 'browse-templates-modal') {
+            openChooseTemplateModal();
+          }
+        });
+      });
+    }
+
+    // 2. Templates Direct Click -> Links to Special Needs Adaptation Templates Environment
+    if (btnCreateTemplate) {
+      btnCreateTemplate.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeHeaderDropdowns();
+        switchStudioView('templates');
+        const tplSection = document.getElementById('jum-studio-templates-view') || document.getElementById('jum-tab-btn-templates');
+        if (tplSection) {
+          tplSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        showToast('📋 Special Needs Adaptation Templates opened.', 'success');
+      });
+    }
+
+    // Toggle Templates Options Dropdown
+    if (toggleTemplates && menuTemplates) {
+      toggleTemplates.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = menuTemplates.classList.contains('active');
+        closeHeaderDropdowns();
+        if (!isOpen) {
+          menuTemplates.classList.add('active');
+          toggleTemplates.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }
+
+    // Handle Templates Options Clicks
+    if (menuTemplates) {
+      menuTemplates.querySelectorAll('.jum-dropdown-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const action = item.getAttribute('data-action');
+          closeHeaderDropdowns();
+
+          if (action === 'view-sne-templates') {
+            switchStudioView('templates');
+            const tplCards = document.getElementById('jum-template-cards-container');
+            if (tplCards) tplCards.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else if (action === 'create-new-template') {
+            openTemplateModal(null);
+          } else if (action === 'browse-course-blueprints') {
+            switchStudioView('courses');
+            openChooseTemplateModal();
+          } else if (action === 'reset-sne-templates') {
+            resetTemplatesToDefault();
+          }
+        });
+      });
+    }
+
+    // Close header dropdowns on outside click & Escape
+    document.addEventListener('click', () => {
+      closeHeaderDropdowns();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeHeaderDropdowns();
+      }
+    });
+
+    // Toolbar & empty state buttons
     const btnExportAll = document.getElementById('jum-btn-export-all');
     const btnImportTrigger = document.getElementById('jum-btn-import-backup-trigger');
     const inputImport = document.getElementById('jum-input-import-backup');
@@ -5563,11 +5692,9 @@
     const btnEmptyBrowse = document.getElementById('jum-btn-empty-browse-templates');
     const btnEmptyReset = document.getElementById('jum-btn-empty-reset');
 
-    if (btnCreateCourse) btnCreateCourse.addEventListener('click', openChooseTemplateModal);
-    if (btnCreateTemplate) btnCreateTemplate.addEventListener('click', () => openCreateTemplateModal(null));
     if (btnExportAll) btnExportAll.addEventListener('click', exportAllCourses);
     if (btnResetExemplars) btnResetExemplars.addEventListener('click', resetExemplars);
-    if (btnEmptyCreate) btnEmptyCreate.addEventListener('click', openChooseTemplateModal);
+    if (btnEmptyCreate) btnEmptyCreate.addEventListener('click', () => openCourseWizard(null));
     if (btnEmptyBrowse) btnEmptyBrowse.addEventListener('click', openChooseTemplateModal);
     if (btnEmptyReset) btnEmptyReset.addEventListener('click', resetExemplars);
 

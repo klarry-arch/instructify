@@ -3108,9 +3108,220 @@ html.jum-text-sm  { font-size: 14px; }
 .jum-studio-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
 }
+
+/* Responsive Action Button Groups in Studio Header */
+.jum-btn-dropdown-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.jum-btn-dropdown-wrap:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+}
+
+.jum-btn-action-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px 10px 22px;
+  border-radius: 9999px 0 0 9999px;
+  font-family: var(--font-heading);
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: background 0.15s ease, color 0.15s ease, filter 0.15s ease;
+  white-space: nowrap;
+}
+
+.jum-btn-split-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 13px;
+  border-radius: 0 9999px 9999px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+/* Button 1: Create Course Style */
+.jum-btn-create-course-main {
+  background: #FFFFFF;
+  color: #2145E6;
+}
+.jum-btn-create-course-main:hover {
+  background: #F8FAFC;
+  color: #1D3BB8;
+}
+.jum-btn-create-course-toggle {
+  background: #FFFFFF;
+  color: #2145E6;
+  border-left: 1px solid rgba(33, 69, 230, 0.18);
+}
+.jum-btn-create-course-toggle:hover,
+.jum-btn-create-course-toggle[aria-expanded="true"] {
+  background: #EFF6FF;
+  color: #1E40AF;
+}
+
+/* Button 2: Templates Style */
+.jum-btn-templates-main {
+  background: #0D9488;
+  color: #FFFFFF;
+}
+.jum-btn-templates-main:hover {
+  background: #0F766E;
+  color: #FFFFFF;
+}
+.jum-btn-templates-toggle {
+  background: #0D9488;
+  color: #FFFFFF;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+}
+.jum-btn-templates-toggle:hover,
+.jum-btn-templates-toggle[aria-expanded="true"] {
+  background: #0F766E;
+  color: #FFFFFF;
+}
+
+/* Dropdown Menu for Studio Action Buttons */
+.jum-btn-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 320px;
+  max-width: calc(100vw - 32px);
+  background: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.22), 0 6px 16px -2px rgba(15, 23, 42, 0.1);
+  padding: 8px;
+  z-index: 250;
+  display: none;
+  flex-direction: column;
+  animation: jumMenuSlideDown 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes jumMenuSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.jum-btn-dropdown-menu.active {
+  display: flex;
+}
+
+.jum-dropdown-header {
+  padding: 8px 12px 6px;
+  font-family: var(--font-heading);
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748B;
+}
+
+.jum-dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: #1E293B;
+  text-decoration: none;
+}
+
+.jum-dropdown-item:hover,
+.jum-dropdown-item:focus-visible {
+  background: #F1F5F9;
+  transform: translateX(2px);
+}
+
+.jum-dd-icon {
+  font-size: 18px;
+  line-height: 1.2;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.jum-dd-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.jum-dd-text strong {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  color: #0F172A;
+  line-height: 1.3;
+}
+
+.jum-dropdown-item:hover .jum-dd-text strong {
+  color: #2145E6;
+}
+
+.jum-btn-dropdown-menu.templates-menu .jum-dropdown-item:hover .jum-dd-text strong {
+  color: #0D9488;
+}
+
+.jum-dd-text span {
+  font-size: 11.5px;
+  color: #64748B;
+  line-height: 1.35;
+}
+
+.jum-dropdown-divider {
+  height: 1px;
+  background: #E2E8F0;
+  margin: 6px 8px;
+}
+
+@media (max-width: 640px) {
+  .jum-studio-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .jum-btn-dropdown-wrap {
+    width: 100%;
+  }
+  .jum-btn-action-main {
+    flex: 1;
+    justify-content: center;
+  }
+  .jum-btn-dropdown-menu {
+    left: 0;
+    right: auto;
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
 
 /* Studio Toolbar & Filter Bar */
 .jum-studio-toolbar {
