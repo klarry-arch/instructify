@@ -2433,3 +2433,103 @@ textarea:focus {
   box-shadow: 0 0 0 3.5px rgba(33, 69, 230, 0.16) !important;
   outline: none !important;
 }
+
+/* ── Interactive Contact Email Cards ── */
+.contact-email-card {
+  display: block;
+  text-decoration: none;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: inherit;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.contact-email-card:hover {
+  border-color: #2145E6;
+  background: #F8FAFC;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(33, 69, 230, 0.12);
+}
+
+.contact-email-card:focus-visible {
+  border-color: #2145E6;
+  box-shadow: 0 0 0 3.5px rgba(33, 69, 230, 0.25);
+}
+
+.contact-email-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.contact-email-address {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 15.5px;
+  font-weight: 750;
+  color: #183AD6;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-email-badge {
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2.5px 8px;
+  border-radius: 6px;
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border: 1px solid #BFDBFE;
+}
+
+.contact-email-desc {
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.contact-route-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #15803D;
+  font-weight: 600;
+  animation: fadeIn 0.2s ease-in;
+}
+
+.contact-consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: #475569;
+  cursor: pointer;
+  line-height: 1.5;
+  margin-top: 14px;
+}
+
+.contact-consent-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: #2145E6;
+  cursor: pointer;
+}

@@ -21,6 +21,9 @@
   RewriteRule ^jumuishi/?$ jumuishi-learning-hub.html [L,QSA]
   RewriteRule ^jumuishi-hub/?$ jumuishi-learning-hub.html [L,QSA]
 
+  # ── API Routing ──
+  RewriteRule ^api/contact/?$ api/contact.php [L,QSA]
+
   # ── Clean URLs (serve .html extension automatically) ──
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}\.html -f
@@ -87,8 +90,8 @@ ErrorDocument 404 /index.html
   ExpiresByType application/font-woff2 "access plus 1 year"
 </IfModule>
 
-# 7. Protect Sensitive Files & Dotfiles
-<FilesMatch "^\.(env|git|gitignore|htaccess|htpasswd)">
+# 7. Protect Sensitive Files & Data Stores
+<FilesMatch "^(\.env|\.git|\.gitignore|\.htaccess|\.htpasswd|enquiries\.json|rate_limits\.json)">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>

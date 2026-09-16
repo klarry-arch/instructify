@@ -7,7 +7,7 @@ window.INSTRUCTIFY_COMM_CONFIG = {
   brand: {
     name: 'Instructify Kenya',
     tagline: 'Empowering Educators. Transforming Institutions. Driving Digital Learning Excellence.',
-    website: 'https://instructify.ke',
+    website: 'https://instructify.co.ke',
   },
 
   // Verified Contact Channels
@@ -15,8 +15,8 @@ window.INSTRUCTIFY_COMM_CONFIG = {
     whatsappNumber: '254143024416',
     displayPhone: '0143 024 416',
     internationalPhone: '+254 143 024 416',
-    email: 'info@instructify.ke',
-    supportEmail: 'support@instructify.ke',
+    email: 'info@instructify.co.ke',
+    supportEmail: 'support@instructify.co.ke',
     officeLocation: 'Nairobi, Kenya',
     workingHours: 'Mon - Fri: 8:00 AM - 5:00 PM EAT',
   },

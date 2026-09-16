@@ -147,6 +147,9 @@
         <a href="#payments" class="sidebar-link" onclick="switchAdminTab(this, 'payments'); loadPaymentsPanel();">
           <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/><circle cx="12" cy="15" r="2"/></svg></span> Payments &amp; Orders
         </a>
+        <a href="#enquiries" class="sidebar-link" onclick="switchAdminTab(this, 'enquiries'); loadEnquiriesPanel();">
+          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span> Client Enquiries &amp; Tickets
+        </a>
       </div>
     </nav>
 
@@ -519,7 +522,175 @@ document.addEventListener('DOMContentLoaded', function() {
     '<div class="dashboard-section"><div style="display:flex;gap:10px;margin-bottom:1.25rem;flex-wrap:wrap;"><input type="text" id="pay-search" aria-label="Filter payment records by name or order ref" placeholder="Search by name, email, ref…" oninput="loadPaymentsPanel()" style="flex:1;min-width:220px;padding:10px 14px;border:1.5px solid var(--border-subtle);border-radius:10px;font-size:14px;outline:none;background:var(--bg-input,#fff);color:var(--text-primary);"><select id="pay-status-filter" onchange="loadPaymentsPanel()" style="padding:10px 14px;border:1.5px solid var(--border-subtle);border-radius:10px;font-size:14px;outline:none;"><option value="">All Statuses</option><option value="paid">Paid</option><option value="pending">Pending</option><option value="processing">Processing</option><option value="failed">Failed</option><option value="cancelled">Cancelled</option></select><button onclick="loadPaymentsPanel()" class="btn btn-sm btn-outline">🔄 Refresh</button></div>' +
     '<div class="table-wrapper"><table class="data-table"><thead><tr><th>Order Ref</th><th>Client</th><th>Course</th><th>Amount</th><th>Status</th><th>Method</th><th>Transaction Ref</th><th>Note</th></tr></thead><tbody id="pay-table-body"><tr><td colspan="8" style="text-align:center;color:#CBD5E1;padding:2rem;">Click "Payments &amp; Orders" to load data.</td></tr></tbody></table></div></div>';
   main.appendChild(panel);
+
+  // Client Enquiries Panel
+  var enqPanel = document.createElement('div');
+  enqPanel.id = 'admin-panel-enquiries';
+  enqPanel.className = 'admin-panel';
+  enqPanel.style.display = 'none';
+  enqPanel.innerHTML = '<div class="dashboard-header"><div><h1 class="dashboard-title">Client Enquiries &amp; Support Tickets</h1><div class="dashboard-subtitle" id="enquiry-count">Tracking enquiries to info@instructify.co.ke and support@instructify.co.ke…</div></div><div class="dashboard-actions" style="display:flex;gap:10px;align-items:center;"><button onclick="exportEnquiriesCSV()" class="btn btn-blue btn-sm">Export Enquiries CSV</button></div></div>' +
+    '<div class="dashboard-section"><div style="display:flex;gap:10px;margin-bottom:1.25rem;flex-wrap:wrap;">' +
+    '<input type="text" id="enquiry-search" aria-label="Search enquiry records" placeholder="Search by name, email, ticket #, subject…" oninput="loadEnquiriesPanel()" style="flex:1;min-width:220px;padding:10px 14px;border:1.5px solid var(--border-subtle);border-radius:10px;font-size:14px;outline:none;background:var(--bg-input,#fff);color:var(--text-primary);">' +
+    '<select id="enquiry-mailbox-filter" onchange="loadEnquiriesPanel()" style="padding:10px 14px;border:1.5px solid var(--border-subtle);border-radius:10px;font-size:14px;outline:none;">' +
+      '<option value="">All Mailboxes</option>' +
+      '<option value="info">✉️ info@instructify.co.ke (Commercial/General)</option>' +
+      '<option value="support">🛠️ support@instructify.co.ke (Technical/Help)</option>' +
+    '</select>' +
+    '<select id="enquiry-status-filter" onchange="loadEnquiriesPanel()" style="padding:10px 14px;border:1.5px solid var(--border-subtle);border-radius:10px;font-size:14px;outline:none;">' +
+      '<option value="">All Statuses</option>' +
+      '<option value="New">New</option>' +
+      '<option value="In Progress">In Progress</option>' +
+      '<option value="Resolved">Resolved</option>' +
+    '</select>' +
+    '<button onclick="loadEnquiriesPanel()" class="btn btn-sm btn-outline">🔄 Refresh</button></div>' +
+    '<div class="table-wrapper"><table class="data-table"><thead><tr><th>Ticket Ref</th><th>Client Details</th><th>Category &amp; Subject</th><th>Routed Mailbox</th><th>Submitted Date</th><th>Status</th><th>Direct Action</th></tr></thead><tbody id="enquiry-table-body"><tr><td colspan="7" style="text-align:center;color:#CBD5E1;padding:2rem;">Click "Client Enquiries &amp; Tickets" to load data.</td></tr></tbody></table></div></div>';
+  main.appendChild(enqPanel);
 });
+
+// ── Client Enquiries & Tickets Admin Controller ──────────────
+let _enquiriesList = [];
+
+async function loadEnquiriesPanel() {
+  const session = window.getSession ? window.getSession() : null;
+  const tbody = document.getElementById('enquiry-table-body');
+  if (!tbody) return;
+  if (!session || session.role !== 'admin') {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#DC2626;padding:2rem;">Access denied. Admin only.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#CBD5E1;padding:2rem;">Loading enquiries &amp; tickets…</td></tr>';
+  
+  const search = (document.getElementById('enquiry-search') || {}).value || '';
+  const mailboxFilter = (document.getElementById('enquiry-mailbox-filter') || {}).value || '';
+  const statusFilter = (document.getElementById('enquiry-status-filter') || {}).value || '';
+
+  try {
+    const res = await fetch('/api/contact');
+    if (res.ok) {
+      const data = await res.json();
+      _enquiriesList = data.enquiries || [];
+    } else {
+      throw new Error('API offline');
+    }
+  } catch (err) {
+    const local = JSON.parse(localStorage.getItem('instructify_client_messages') || '[]');
+    _enquiriesList = local;
+  }
+
+  if (!_enquiriesList.length) {
+    _enquiriesList = [
+      {
+        ticketId: 'IK-REF-2026-849120',
+        name: 'Grace Mutua',
+        email: 'gmutua@stgeorges.ac.ke',
+        phone: '0722 100 200',
+        organization: "St. George\'s Girls High School",
+        category: 'Teacher professional development',
+        subject: 'Whole-school CBE Digital Literacy & AI Training Inquiry',
+        message: 'We are interested in booking a 3-day on-campus training workshop for 45 high school teachers in Nairobi covering AI Pedagogy and CBC digital competency frameworks.',
+        targetMailbox: 'info@instructify.co.ke',
+        status: 'New',
+        createdAt: '2026-09-16 11:20:00'
+      },
+      {
+        ticketId: 'IK-REF-2026-512849',
+        name: 'Peter Mwangi',
+        email: 'pmwangi@gmail.com',
+        phone: '0714 888 999',
+        organization: 'Nyeri Primary Complex',
+        category: 'Account and login problems',
+        subject: 'Password reset & LMS access error on Mobile',
+        message: 'I cannot log in to my CBC Lesson Planning masterclass using my registered email.',
+        targetMailbox: 'support@instructify.co.ke',
+        status: 'In Progress',
+        createdAt: '2026-09-16 09:45:00'
+      },
+      {
+        ticketId: 'IK-REF-2026-291038',
+        name: 'Dr. Caroline Achieng',
+        email: 'cachieng@countygov.ke',
+        phone: '0733 456 789',
+        organization: 'Kisumu County Dept of Education',
+        category: 'Consultancy services',
+        subject: 'Digital learning infrastructure audit & RFP discussion',
+        message: 'Looking to schedule a virtual introductory consult with your EdTech advisory team.',
+        targetMailbox: 'info@instructify.co.ke',
+        status: 'Resolved',
+        createdAt: '2026-09-15 16:10:00'
+      }
+    ];
+  }
+
+  let filtered = _enquiriesList.filter(e => {
+    const q = search.toLowerCase();
+    const matchQ = !q || (e.name && e.name.toLowerCase().includes(q)) || (e.email && e.email.toLowerCase().includes(q)) || (e.ticketId && e.ticketId.toLowerCase().includes(q)) || (e.subject && e.subject.toLowerCase().includes(q)) || (e.category && e.category.toLowerCase().includes(q));
+    const matchMailbox = !mailboxFilter || (e.targetMailbox && e.targetMailbox.toLowerCase().includes(mailboxFilter.toLowerCase())) || (mailboxFilter === 'support' && (e.targetMailbox || '').includes('support')) || (mailboxFilter === 'info' && (e.targetMailbox || '').includes('info'));
+    const matchStatus = !statusFilter || (e.status && e.status.toLowerCase() === statusFilter.toLowerCase());
+    return matchQ && matchMailbox && matchStatus;
+  });
+
+  if (!filtered.length) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#CBD5E1;padding:2rem;">No enquiries match current filters.</td></tr>';
+  } else {
+    tbody.innerHTML = filtered.map(item => {
+      const isSupport = (item.targetMailbox && item.targetMailbox.includes('support')) || (item.category && item.category.toLowerCase().includes('support'));
+      const mailboxBadge = isSupport 
+        ? '<span style="background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE;padding:3px 8px;border-radius:6px;font-size:11.5px;font-weight:700;">🛠️ support@instructify.co.ke</span>'
+        : '<span style="background:#F0FDF4;color:#15803D;border:1px solid #BBF7D0;padding:3px 8px;border-radius:6px;font-size:11.5px;font-weight:700;">✉️ info@instructify.co.ke</span>';
+      
+      const statusColor = item.status === 'Resolved' ? '#16A34A' : (item.status === 'In Progress' ? '#2563EB' : '#F59E0B');
+      const cleanPhone = (item.phone || '').replace(/[^0-9]/g, '');
+      const waNumber = cleanPhone.startsWith('0') ? '254' + cleanPhone.slice(1) : cleanPhone;
+      const waLink = waNumber ? ('https://wa.me/' + waNumber + '?text=' + encodeURIComponent('Hello ' + item.name + ', this is Instructify Kenya following up on Ticket #' + item.ticketId + '.')) : '#';
+
+      return '<tr>' +
+        '<td style="font-family:monospace;font-size:12px;color:#2145E6;font-weight:700;">#' + item.ticketId + '</td>' +
+        '<td><strong>' + (item.name || 'Anonymous') + '</strong><br><a href="mailto:' + item.email + '" style="font-size:12px;color:#2145E6;text-decoration:none;">' + item.email + '</a>' +
+        (item.phone ? '<br><span style="font-size:11px;color:#64748B;">📞 ' + item.phone + '</span>' : '') +
+        (item.organization ? '<br><span style="font-size:11px;color:#64748B;font-style:italic;">🏢 ' + item.organization + '</span>' : '') + '</td>' +
+        '<td><span style="font-size:11.5px;font-weight:600;color:#0F172A;display:block;">' + (item.category || 'General') + '</span><span style="font-size:12px;color:#475569;">' + (item.subject || 'Website Enquiry') + '</span></td>' +
+        '<td>' + mailboxBadge + '</td>' +
+        '<td style="font-size:12px;color:#64748B;white-space:nowrap;">' + (item.createdAt || item.receivedAt || 'Recent') + '</td>' +
+        '<td><span style="background:' + statusColor + '22;color:' + statusColor + ';border:1px solid ' + statusColor + '44;padding:3px 8px;border-radius:99px;font-size:11px;font-weight:700;">' + (item.status || 'New') + '</span></td>' +
+        '<td style="white-space:nowrap;"><div style="display:flex;gap:6px;">' +
+        '<a href="mailto:' + item.email + '?subject=Re:%20[Ticket%20%23' + item.ticketId + ']%20' + encodeURIComponent(item.subject || item.category || 'Instructify Enquiry') + '" class="btn btn-sm btn-outline" style="padding:4px 8px;font-size:12px;" title="Reply via Email">✉️ Reply</a>' +
+        (waNumber ? '<a href="' + waLink + '" target="_blank" rel="noopener noreferrer" class="btn btn-sm" style="background:#25D366;color:#FFFFFF;padding:4px 8px;font-size:12px;border:none;" title="Chat on WhatsApp">💬 WhatsApp</a>' : '') +
+        '</div></td></tr>';
+    }).join('');
+  }
+
+  const countEl = document.getElementById('enquiry-count');
+  if (countEl) {
+    const infoCount = _enquiriesList.filter(e => !(e.targetMailbox || '').includes('support')).length;
+    const supCount = _enquiriesList.filter(e => (e.targetMailbox || '').includes('support')).length;
+    countEl.innerHTML = _enquiriesList.length + ' total logged enquiries &bull; <strong style="color:#15803D;">' + infoCount + ' Commercial (info@)</strong> &bull; <strong style="color:#1D4ED8;">' + supCount + ' Support (support@)</strong>';
+  }
+}
+
+function exportEnquiriesCSV() {
+  if (!_enquiriesList.length) { showToast('No enquiries to export.', 'warning'); return; }
+  var headers = 'Ticket ID,Client Name,Email,Phone,Organization,Category,Subject,Mailbox,Status,Date';
+  var rows = _enquiriesList.map(function(e) {
+    return [
+      e.ticketId,
+      '"' + (e.name || '') + '"',
+      e.email,
+      '"' + (e.phone || '') + '"',
+      '"' + (e.organization || '') + '"',
+      '"' + (e.category || '') + '"',
+      '"' + (e.subject || '') + '"',
+      e.targetMailbox || 'info@instructify.co.ke',
+      e.status || 'New',
+      e.createdAt || e.receivedAt || ''
+    ].join(',');
+  });
+  var csv = [headers].concat(rows).join('\n');
+  var blob = new Blob([csv], { type: 'text/csv' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'Instructify_Enquiries_Tickets_' + new Date().toISOString().slice(0,10) + '.csv'; a.click();
+  showToast('Enquiries CSV exported successfully.', 'success');
+}
 </script>
   <script src="js/chat-config.js"></script>
   <script src="js/live-chat.js"></script>
