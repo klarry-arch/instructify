@@ -669,7 +669,7 @@ function generateArticleHtml(article) {
   <link rel="stylesheet" href="../css/animations.css">
   <link rel="stylesheet" href="../css/components.css?v=3.1">
   <link rel="stylesheet" href="../css/homepage.css">
-  <link rel="stylesheet" href="../css/blog.css">
+  <link rel="stylesheet" href="../css/blog.css?v=2.0">
   <link rel="stylesheet" href="../css/live-chat.css">
 
   <!-- Schema.org JSON-LD Structured Data: Article & Breadcrumbs (Zero Author Information) -->
