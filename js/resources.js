@@ -802,24 +802,28 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="res-meta-item">📥 ${(res.downloads || 450).toLocaleString()}</span>
           </div>
           <div class="res-card-actions">
-            <button class="btn-card-outline res-preview-btn" data-id="${res.id}" aria-label="View Details for ${res.title}">
-              👁️ View Details
-            </button>
-            ${hasDirectDownload ? `
-              <a href="${downloadHref}" ${downloadAttr} class="btn-card-primary res-download-btn" data-id="${res.id}" data-title="${res.title}" aria-label="Download ${res.title} PDF">
-                📥 Download Free PDF <span class="res-card-filesize">${fileSizeText}</span>
-              </a>
-            ` : `
-              <button class="btn-card-primary res-download-btn" data-id="${res.id}" data-title="${res.title}" aria-label="Download ${res.title}">
-                📥 Download Free PDF
+            <div class="res-card-actions-primary">
+              ${hasDirectDownload ? `
+                <a href="${downloadHref}" ${downloadAttr} class="btn-card-primary res-download-btn" data-id="${res.id}" data-title="${res.title}" aria-label="Download ${res.title} PDF">
+                  📥 Download Free PDF <span class="res-card-filesize">${fileSizeText}</span>
+                </a>
+              ` : `
+                <button class="btn-card-primary res-download-btn" data-id="${res.id}" data-title="${res.title}" aria-label="Download ${res.title}">
+                  📥 Download Free PDF
+                </button>
+              `}
+            </div>
+            <div class="res-card-actions-secondary">
+              <button class="btn-card-outline res-preview-btn" data-id="${res.id}" aria-label="View Details for ${res.title}">
+                👁️ View Details
               </button>
-            `}
-            <button class="btn-icon-control res-bookmark-btn ${isSaved ? 'active' : ''}" data-id="${res.id}" aria-label="Save ${res.title}" title="Save resource">
-              ${getSvgIcon('bookmark')}
-            </button>
-            <button class="btn-icon-control res-share-btn" data-id="${res.id}" data-title="${res.title}" aria-label="Share ${res.title}" title="Share resource">
-              ${getSvgIcon('share')}
-            </button>
+              <button class="btn-icon-control res-bookmark-btn ${isSaved ? 'active' : ''}" data-id="${res.id}" aria-label="Save ${res.title}" title="Save resource">
+                ${getSvgIcon('bookmark')}
+              </button>
+              <button class="btn-icon-control res-share-btn" data-id="${res.id}" data-title="${res.title}" aria-label="Share ${res.title}" title="Share resource">
+                ${getSvgIcon('share')}
+              </button>
+            </div>
           </div>
         </div>
       </div>
