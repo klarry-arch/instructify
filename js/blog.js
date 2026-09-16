@@ -68,32 +68,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     articlesGrid.innerHTML = articles.map(art => {
-      const author = BLOG_INFO.authors[art.authorId] || { name: "Instructify Editorial", title: "Educator", initials: "IE" };
+      const articleUrl = `articles/${art.slug}.html`;
       return `
         <article class="article-card" style="--art-accent:${art.themeColor}; --art-glow:rgba(33, 69, 230,0.18);">
-          <img src="${art.coverImage}" alt="${art.title}" class="article-card-cover" loading="lazy">
+          <a href="${articleUrl}" style="display:block; overflow:hidden;" aria-label="Read ${art.title}">
+            <img src="${art.coverImage}" alt="${art.title}" class="article-card-cover" loading="lazy">
+          </a>
           <div class="article-card-body">
             <div>
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                <span class="ep-badge blue" style="font-size:11px;">${art.category}</span>
-                <span style="font-size:12px; font-weight:600; color:#64748B;">${art.readTime}</span>
+              <div class="article-card-meta-row">
+                <span class="article-card-category">${art.category}</span>
+                <div class="article-card-meta-right">
+                  <span class="article-card-date">${art.publishDate}</span>
+                  <span class="article-card-dot" aria-hidden="true">•</span>
+                  <span class="article-card-readtime">${art.readTime}</span>
+                </div>
               </div>
               <h3 class="article-card-title">
-                <a href="article.html?id=${art.id}">${art.title}</a>
+                <a href="${articleUrl}">${art.title}</a>
               </h3>
               <p class="article-card-excerpt">${art.excerpt}</p>
             </div>
 
-            <div>
-              <div class="article-card-footer">
-                <div style="display:flex; align-items:center; gap:8px;">
-                  <div class="author-avatar" style="width:28px; height:28px; font-size:10px;">${author.initials}</div>
-                  <span style="font-weight:700; color:#0F172A;">${author.name}</span>
-                </div>
-                <a href="article.html?id=${art.id}" style="color:${art.themeColor}; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-                  Read →
-                </a>
-              </div>
+            <div class="article-card-footer">
+              <span style="font-size:12px; font-weight:600; color:#64748B;">Published by Instructify Kenya</span>
+              <a href="${articleUrl}" class="article-card-read-btn" style="color:${art.themeColor};">
+                Read Article →
+              </a>
             </div>
           </div>
         </article>
@@ -106,13 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
 
     const filtered = BLOG_ARTICLES.filter(art => {
-      const author = BLOG_INFO.authors[art.authorId] || { name: "" };
-      const matchCat = activeCategory === 'All' || art.category.toLowerCase() === activeCategory.toLowerCase() || art.tags.some(t => t.toLowerCase() === activeCategory.toLowerCase());
+            const matchCat = activeCategory === 'All' || art.category.toLowerCase() === activeCategory.toLowerCase() || art.tags.some(t => t.toLowerCase() === activeCategory.toLowerCase());
       const matchQuery = !query ||
         art.title.toLowerCase().includes(query) ||
         art.subtitle.toLowerCase().includes(query) ||
         art.excerpt.toLowerCase().includes(query) ||
-        author.name.toLowerCase().includes(query) ||
         art.tags.some(t => t.toLowerCase().includes(query));
 
       return matchCat && matchQuery;
@@ -227,24 +226,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const relatedGrid = document.getElementById('art-related-grid');
     if (relatedGrid) {
       const related = BLOG_ARTICLES.filter(x => x.id !== article.id).slice(0, 3);
-      relatedGrid.innerHTML = related.map(rel => `
+      relatedGrid.innerHTML = related.map(rel => {
+        const relUrl = `articles/${rel.slug}.html`;
+        return `
         <article class="article-card" style="--art-accent:${rel.themeColor};">
-          <img src="${rel.coverImage}" alt="${rel.title}" class="article-card-cover" style="height:170px;" loading="lazy">
+          <a href="${relUrl}" style="display:block; overflow:hidden;" aria-label="Read ${rel.title}">
+            <img src="${rel.coverImage}" alt="${rel.title}" class="article-card-cover" style="height:170px;" loading="lazy">
+          </a>
           <div class="article-card-body" style="padding:20px;">
             <div>
-              <span class="ep-badge blue" style="font-size:11px;">${rel.category}</span>
+              <div class="article-card-meta-row" style="margin-bottom:8px;">
+                <span class="article-card-category" style="font-size:11px;">${rel.category}</span>
+                <span class="article-card-readtime" style="font-size:11.5px;">${rel.readTime}</span>
+              </div>
               <h3 class="article-card-title" style="font-size:17px; margin:8px 0;">
-                <a href="article.html?id=${rel.id}">${rel.title}</a>
+                <a href="${relUrl}">${rel.title}</a>
               </h3>
             </div>
             <div style="margin-top:16px;">
-              <a href="article.html?id=${rel.id}" class="btn btn-outline btn-sm" style="width:100%; text-align:center;">
+              <a href="${relUrl}" class="btn btn-outline btn-sm" style="width:100%; text-align:center; font-weight:700;">
                 Read Article →
               </a>
             </div>
           </div>
         </article>
-      `).join('');
+      `;
+      }).join('');
     }
   }
 

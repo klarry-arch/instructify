@@ -25,6 +25,9 @@
   RewriteRule ^resources/cbc-lesson-planning-strand-alignment-toolkit/?$ resources/cbc-lesson-planning-strand-alignment-toolkit.html [L,QSA]
   RewriteRule ^resources/teacher-digital-skills-smart-classroom-starter-guide/?$ resources/teacher-digital-skills-smart-classroom-starter-guide.html [L,QSA]
 
+  # ── Standalone Knowledge Hub Article Pages ──
+  RewriteRule ^articles/([a-zA-Z0-9_-]+)/?$ articles/$1.html [L,QSA]
+
   # ── API Routing ──
   RewriteRule ^api/contact/?$ api/contact.php [L,QSA]
 
