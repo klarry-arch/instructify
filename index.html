@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/components.css?v=3.0">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
   <link rel="stylesheet" href="css/homepage.css">
   <link rel="stylesheet" href="css/live-chat.css">
 </head>
@@ -619,7 +619,7 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=3.0"></script>
+<script src="js/main.js?v=3.1"></script>
 <script src="js/auth.js"></script>
 <script src="js/courses.js"></script>
 
@@ -637,60 +637,7 @@
   }, { passive: true });
 })();
 
-// ── Mobile hamburger ───────────────────────────────────────
-(function() {
-  const btn = document.getElementById('nav-hamburger');
-  const menu = document.getElementById('nav-mobile');
-  if (!btn || !menu) return;
-
-  function closeMenu() {
-    menu.classList.remove('open');
-    btn.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  function openMenu() {
-    menu.classList.add('open');
-    btn.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-
-  btn.addEventListener('click', function() {
-    if (menu.classList.contains('open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  // Close when any mobile nav link is tapped
-  menu.querySelectorAll('.nav-mobile-link').forEach(function(link) {
-    link.addEventListener('click', closeMenu);
-  });
-
-  // Close on Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && menu.classList.contains('open')) {
-      closeMenu();
-      btn.focus();
-    }
-  });
-
-  // Close on outside click / tap
-  document.addEventListener('click', function(e) {
-    if (!btn.contains(e.target) && !menu.contains(e.target)) {
-      closeMenu();
-    }
-  });
-
-  // Close menu when viewport exceeds mobile breakpoint (e.g. rotate to landscape)
-  var mq = window.matchMedia('(min-width: 1101px)');
-  function onBreakpoint(e) { if (e.matches) closeMenu(); }
-  if (mq.addEventListener) { mq.addEventListener('change', onBreakpoint); }
-  else if (mq.addListener)  { mq.addListener(onBreakpoint); } // Safari <14
-})();
+// Mobile navigation handled centrally by js/main.js?v=3.1
 
 // ── Scroll Reveal ─────────────────────────────────────────
 (function() {

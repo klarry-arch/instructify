@@ -15,7 +15,7 @@
   <!-- Base stylesheets from Instructify Kenya design system -->
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/components.css?v=3.0">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
   <link rel="stylesheet" href="css/homepage.css">
   <link rel="stylesheet" href="css/live-chat.css">
   
@@ -4766,7 +4766,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/main.js?v=3.0"></script>
+  <script src="js/main.js?v=3.1"></script>
   <script src="js/auth.js"></script>
   <script src="js/courses.js"></script>
   
@@ -4784,51 +4784,7 @@
       }, { passive: true });
     })();
 
-    // Mobile navigation hamburger
-    (function() {
-      const btn = document.getElementById('nav-hamburger');
-      const menu = document.getElementById('nav-mobile');
-      if (!btn || !menu) return;
-
-      function closeMenu() {
-        menu.classList.remove('open');
-        btn.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
-
-      function openMenu() {
-        menu.classList.add('open');
-        btn.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-      }
-
-      btn.addEventListener('click', function() {
-        if (menu.classList.contains('open')) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
-
-      menu.querySelectorAll('.nav-mobile-link').forEach(function(link) {
-        link.addEventListener('click', closeMenu);
-      });
-
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && menu.classList.contains('open')) {
-          closeMenu();
-          btn.focus();
-        }
-      });
-
-      document.addEventListener('click', function(e) {
-        if (!btn.contains(e.target) && !menu.contains(e.target)) {
-          closeMenu();
-        }
-      });
-    })();
+    // Mobile navigation handled centrally by js/main.js?v=3.1
 
     // Scroll reveal observer
     (function() {

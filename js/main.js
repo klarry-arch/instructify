@@ -4,7 +4,7 @@
 
 'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
+function bootstrapApp() {
   initNavbar();
   initDashboardSidebar();
   initScrollReveal();
@@ -15,7 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
   markActiveNavLink();
   initWorkshopForm();
   initTrainingForm();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootstrapApp);
+} else {
+  bootstrapApp();
+}
 
 // ── Dashboard Sidebar Toggle & Mobile Handling ─────────────────
 window.toggleSidebar = function() {
@@ -65,6 +71,33 @@ function initDashboardSidebar() {
   });
 }
 
+// ── Global Mobile Navigation API ──────────────────────────────
+window.toggleMobileNav = function(e) {
+  if (e && e.stopPropagation) e.stopPropagation();
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileNav = document.getElementById('nav-mobile');
+  if (!hamburger || !mobileNav) return;
+
+  const willOpen = !hamburger.classList.contains('open');
+  hamburger.classList.toggle('open', willOpen);
+  hamburger.setAttribute('aria-expanded', String(willOpen));
+  mobileNav.classList.toggle('open', willOpen);
+  document.body.classList.toggle('menu-open', willOpen);
+};
+
+window.closeMobileNav = function() {
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileNav = document.getElementById('nav-mobile');
+  if (hamburger) {
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+  if (mobileNav) {
+    mobileNav.classList.remove('open');
+  }
+  document.body.classList.remove('menu-open');
+};
+
 // ── Navbar & Mobile Toggle ──────────────────────────────────────
 function initNavbar() {
   const navbar = document.getElementById('navbar');
@@ -72,6 +105,8 @@ function initNavbar() {
   const mobileNav = document.getElementById('nav-mobile');
 
   if (!navbar) return;
+  if (navbar.dataset.navInitialized === 'true') return;
+  navbar.dataset.navInitialized = 'true';
 
   const handleScroll = () => {
     navbar.classList.toggle('scrolled', window.scrollY > 20);
@@ -126,38 +161,38 @@ function initNavbar() {
   });
 
   if (hamburger && mobileNav) {
-    const closeMenu = () => {
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      mobileNav.classList.remove('open');
-      document.body.classList.remove('menu-open');
-    };
+    hamburger.addEventListener('click', (e) => {
+      window.toggleMobileNav(e);
+    });
 
-    const toggleMenu = (e) => {
-      e.stopPropagation();
-      const isOpen = hamburger.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', String(isOpen));
-      mobileNav.classList.toggle('open', isOpen);
-      document.body.classList.toggle('menu-open', isOpen);
-    };
-
-    hamburger.addEventListener('click', toggleMenu);
-
+    // Close on outside click
     document.addEventListener('click', (e) => {
       if (!navbar.contains(e.target) && !mobileNav.contains(e.target)) {
-        closeMenu();
+        window.closeMobileNav();
       }
     });
 
+    // Close on Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && hamburger.classList.contains('open')) {
-        closeMenu();
+        window.closeMobileNav();
+        hamburger.focus();
       }
     });
 
+    // Close when tapping any mobile navigation link
     mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
+      link.addEventListener('click', () => {
+        window.closeMobileNav();
+      });
     });
+
+    // Close menu when viewport exceeds mobile breakpoint (e.g. rotating tablet/phone)
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1100 && hamburger.classList.contains('open')) {
+        window.closeMobileNav();
+      }
+    }, { passive: true });
   }
 }
 

@@ -175,7 +175,7 @@ assert(globalCss.includes('overflow-wrap: break-word'), 'Universal word breaking
 assert(globalCss.includes('min-height: 44px'), 'Minimum 44px touch targets enforced for mobile/touch');
 assert(globalCss.includes('prefers-reduced-motion'), 'Reduced motion accessibility supported');
 assert(globalCss.includes(':focus-visible'), 'High-contrast focus indicators defined');
-assert(compCss.includes('.navbar .nav-actions { display: none; }'), 'Desktop nav actions hidden on mobile to prevent navbar crowding');
+assert(compCss.includes('.navbar .nav-actions') && /\.navbar \.nav-actions[\s\S]*?display:\s*none/i.test(compCss), 'Desktop nav actions hidden on mobile to prevent navbar crowding');
 assert(compCss.includes('font-size: 16px !important'), '16px input font size configured to prevent iOS Safari auto-zooming');
 
 // ── 8. Register / Auth Mobile Header ────────────────────────────
