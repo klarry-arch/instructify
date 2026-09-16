@@ -98,9 +98,12 @@ const BLOG_ARTICLES = [
       "Institutional leaders need clear, written ethical AI adoption guidelines for staff and learners."
     ],
     downloadableResource: {
-      title: "Institutional AI Adoption Checklist & Policy Framework (PDF)",
-      description: "A comprehensive 12-point guide for school principals and academic directors to implement AI safely and productively.",
-      filename: "Instructify_Kenya_AI_Adoption_Framework_2026.pdf"
+      title: "Teacher Digital Skills & Smart Classroom Starter Guide (PDF)",
+      description: "A comprehensive guide for educators and institutional leaders navigating digital pedagogy, edtech tools, and AI.",
+      filename: "Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileUrl: "downloads/Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileSize: "368 KB",
+      resourcePageUrl: "resources/teacher-digital-skills-smart-classroom-starter-guide.html"
     },
     podcastEpisodeId: "ep-01",
     relatedCourse: {
@@ -170,9 +173,12 @@ const BLOG_ARTICLES = [
       "Formative micro-assessments provide immediate feedback loops that accelerate student mastery."
     ],
     downloadableResource: {
-      title: "Inquiry-Based Lesson Design Template (PDF & DOCX)",
-      description: "A ready-to-use lesson planning template designed for CBC-aligned inquiry sessions.",
-      filename: "Instructify_Inquiry_Lesson_Template.pdf"
+      title: "CBC Lesson Planning & Strand Alignment Toolkit (PDF)",
+      description: "A ready-to-use lesson planning template and strand alignment framework designed for CBC-aligned inquiry sessions.",
+      filename: "CBC_Lesson_Planning_and_Strand_Alignment_Toolkit.pdf",
+      fileUrl: "downloads/CBC_Lesson_Planning_and_Strand_Alignment_Toolkit.pdf",
+      fileSize: "508 KB",
+      resourcePageUrl: "resources/cbc-lesson-planning-strand-alignment-toolkit.html"
     },
     podcastEpisodeId: "ep-06",
     relatedCourse: {
@@ -224,9 +230,12 @@ const BLOG_ARTICLES = [
       "Hybrid communication and asynchronous collaboration are indispensable for global remote employment."
     ],
     downloadableResource: {
-      title: "Digital Skills Career Matrix & Self-Assessment Guide (PDF)",
-      description: "A benchmark rubric mapping digital capabilities to entry-level and leadership roles.",
-      filename: "Instructify_Digital_Skills_Matrix_2026.pdf"
+      title: "Teacher Digital Skills & Smart Classroom Starter Guide (PDF)",
+      description: "A practical roadmap mapping core digital competencies and classroom integration strategies for educators.",
+      filename: "Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileUrl: "downloads/Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileSize: "368 KB",
+      resourcePageUrl: "resources/teacher-digital-skills-smart-classroom-starter-guide.html"
     },
     podcastEpisodeId: "ep-03",
     relatedCourse: {
@@ -275,9 +284,12 @@ const BLOG_ARTICLES = [
       "Parental engagement increases significantly when learning artifacts are shared transparently."
     ],
     downloadableResource: {
-      title: "CBC Formative Assessment Digital Rubric Pack (Excel & PDF)",
-      description: "Standardized rubric templates aligned with national core competencies.",
-      filename: "Instructify_CBC_Digital_Rubrics.xlsx"
+      title: "CBC Lesson Planning & Strand Alignment Toolkit (PDF)",
+      description: "Standardized lesson planning templates, formative rubric frameworks, and strand alignment matrix for CBC educators.",
+      filename: "CBC_Lesson_Planning_and_Strand_Alignment_Toolkit.pdf",
+      fileUrl: "downloads/CBC_Lesson_Planning_and_Strand_Alignment_Toolkit.pdf",
+      fileSize: "508 KB",
+      resourcePageUrl: "resources/cbc-lesson-planning-strand-alignment-toolkit.html"
     },
     podcastEpisodeId: "ep-02",
     relatedCourse: {
@@ -316,9 +328,12 @@ const BLOG_ARTICLES = [
       "Offline content servers ensure rural schools maintain 100% curriculum availability regardless of grid connectivity."
     ],
     downloadableResource: {
-      title: "Smart Classroom Setup & Budgeting Guide (PDF)",
-      description: "Detailed hardware, networking, and software specifications for modern schools.",
-      filename: "Instructify_Smart_Classroom_Guide.pdf"
+      title: "Teacher Digital Skills & Smart Classroom Starter Guide (PDF)",
+      description: "Detailed hardware, software, and classroom workflow specifications for setting up modern interactive learning spaces.",
+      filename: "Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileUrl: "downloads/Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileSize: "368 KB",
+      resourcePageUrl: "resources/teacher-digital-skills-smart-classroom-starter-guide.html"
     },
     podcastEpisodeId: "ep-04",
     relatedCourse: {
@@ -355,9 +370,12 @@ const BLOG_ARTICLES = [
       "Transparent metric dashboards prove EdTech ROI to boards, parents, and donors."
     ],
     downloadableResource: {
-      title: "School Digital Transformation Roadmap & Maturity Audit (PDF)",
-      description: "A self-assessment tool to evaluate your institution's digital readiness.",
-      filename: "Instructify_Digital_Maturity_Audit.pdf"
+      title: "Teacher Digital Skills & Smart Classroom Starter Guide (PDF)",
+      description: "A practical leadership framework and implementation roadmap for school administrators driving digital adoption.",
+      filename: "Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileUrl: "downloads/Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileSize: "368 KB",
+      resourcePageUrl: "resources/teacher-digital-skills-smart-classroom-starter-guide.html"
     },
     podcastEpisodeId: "ep-03",
     relatedCourse: {
@@ -394,9 +412,12 @@ const BLOG_ARTICLES = [
       "Mentorship from active entrepreneurs accelerates student venture viability by 5x."
     ],
     downloadableResource: {
-      title: "School Innovation Sprint & Hackathon Playbook (PDF)",
-      description: "A step-by-step guide to hosting a 2-day student innovation sprint.",
-      filename: "Instructify_Youth_Hackathon_Playbook.pdf"
+      title: "CBC Lesson Planning & Strand Alignment Toolkit (PDF)",
+      description: "Project-based learning, inquiry frameworks, and lesson planning guides for nurturing student innovation.",
+      filename: "CBC_Lesson_Planning_and_Strand_Alignment_Toolkit.pdf",
+      fileUrl: "downloads/CBC_Lesson_Planning_and_Strand_Alignment_Toolkit.pdf",
+      fileSize: "508 KB",
+      resourcePageUrl: "resources/cbc-lesson-planning-strand-alignment-toolkit.html"
     },
     podcastEpisodeId: "ep-05",
     relatedCourse: {
@@ -433,9 +454,12 @@ const BLOG_ARTICLES = [
       "Sync-and-go architectures update school servers periodically via mobile data hotspots."
     ],
     downloadableResource: {
-      title: "Offline Learning Node Blueprint & Architecture Guide (PDF)",
-      description: "Technical schematics and open-source software stack for remote classrooms.",
-      filename: "Instructify_Offline_Node_Blueprint.pdf"
+      title: "Teacher Digital Skills & Smart Classroom Starter Guide (PDF)",
+      description: "Practical guide to smart classroom workflows and digital learning deployments in diverse school environments.",
+      filename: "Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileUrl: "downloads/Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileSize: "368 KB",
+      resourcePageUrl: "resources/teacher-digital-skills-smart-classroom-starter-guide.html"
     },
     podcastEpisodeId: "ep-04",
     relatedCourse: {

@@ -182,9 +182,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const resourceBox = document.getElementById('art-detail-resource-box');
     const resourceTitle = document.getElementById('art-resource-title');
     const resourceDesc = document.getElementById('art-resource-desc');
+    const resourceBtn = document.getElementById('art-resource-download-btn');
+    const resourceViewBtn = document.getElementById('art-resource-view-btn');
     if (article.downloadableResource && resourceBox) {
       if (resourceTitle) resourceTitle.textContent = article.downloadableResource.title;
       if (resourceDesc) resourceDesc.textContent = article.downloadableResource.description;
+      if (resourceBtn && article.downloadableResource.fileUrl) {
+        resourceBtn.href = article.downloadableResource.fileUrl.replace('../', '');
+        resourceBtn.download = article.downloadableResource.filename;
+        if (article.downloadableResource.fileSize) {
+          resourceBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download Free PDF (${article.downloadableResource.fileSize})`;
+        }
+      }
+      if (resourceViewBtn && article.downloadableResource.resourcePageUrl) {
+        resourceViewBtn.href = article.downloadableResource.resourcePageUrl.replace('../', '');
+      }
       resourceBox.style.display = 'flex';
     } else if (resourceBox) {
       resourceBox.style.display = 'none';
@@ -201,16 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (podcastBox) {
       podcastBox.style.display = 'none';
     }
-
-    // Author Profile Box
-    const authorCardName = document.getElementById('art-author-card-name');
-    const authorCardTitle = document.getElementById('art-author-card-title');
-    const authorCardBio = document.getElementById('art-author-card-bio');
-    const authorCardAvatar = document.getElementById('art-author-card-avatar');
-    if (authorCardName) authorCardName.textContent = author.name;
-    if (authorCardTitle) authorCardTitle.textContent = `${author.title} · ${author.organization}`;
-    if (authorCardBio) authorCardBio.textContent = author.bio;
-    if (authorCardAvatar) authorCardAvatar.textContent = author.initials;
 
     // Contextual Course Box
     const courseTitleEl = document.getElementById('art-course-title');
@@ -286,9 +288,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // ── Simulated Download Handler ──
-  window.downloadResource = function() {
-    alert('Preparing your downloadable resource... Download will start automatically.');
+  // ── Genuine Resource Download Handler ──
+  window.downloadResource = function(filename) {
+    const target = filename || 'Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf';
+    const link = document.createElement('a');
+    link.href = 'downloads/' + target;
+    link.download = target;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   // ── Newsletter Form Handler ──

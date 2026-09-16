@@ -66,7 +66,7 @@ EXPECTED_SLUGS.forEach(slug => {
   assert(content.includes('You May Also Like'), `Contains 'You May Also Like' header`);
 
   // Social sharing
-  assert(content.includes('shareArticle(\'whatsapp\')') && content.includes('shareArticle(\'linkedin\')') && content.includes('shareArticle(\'twitter\')') && content.includes('shareArticle(\'copy\')'), `Contains all social share options (WhatsApp, LinkedIn, X, Copy Link)`);
+  assert(content.includes('shareArticle(\'whatsapp\')') && content.includes('shareArticle(\'linkedin\')') && content.includes('shareArticle(\'twitter\')') && content.includes('shareArticle(\'copy\''), `Contains all social share options (WhatsApp, LinkedIn, X, Copy Link)`);
 
   // Semantic elements
   const semanticTags = ['<article', '<header', '<main', '<section', '<nav', '<p', '<ul', '<ol'];
@@ -90,6 +90,18 @@ EXPECTED_SLUGS.forEach(slug => {
   forbiddenAuthorPatterns.forEach(pattern => {
     assert(!content.includes(pattern), `Contains NO "${pattern}"`);
   });
+
+  // Zero simulated alerts & fake download functions
+  assert(!content.includes('alert('), `Contains zero alert() modal calls`);
+  assert(!content.includes('downloadResource('), `Contains zero downloadResource() simulated handlers`);
+
+  // Verify real downloadable resource links
+  const downloadMatch = content.match(/href="(\.\.\/downloads\/[^"]+)"/);
+  if (downloadMatch) {
+    const relDownloadPath = downloadMatch[1].replace('../', '');
+    const absDownloadPath = path.join(ROOT_DIR, relDownloadPath);
+    assert(fs.existsSync(absDownloadPath), `Resource download file exists on disk (${relDownloadPath})`);
+  }
 
   // Schema structured data check
   assert(content.includes('"@type": "BlogPosting"'), `Includes BlogPosting Schema JSON-LD`);

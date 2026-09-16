@@ -44,9 +44,12 @@ const ARTICLES = [
       "Institutional leaders need clear, written ethical AI adoption guidelines for staff and learners."
     ],
     downloadableResource: {
-      title: "Institutional AI Adoption Checklist & Policy Framework (PDF)",
-      description: "A comprehensive 12-point guide for school principals and academic directors to implement AI safely and productively.",
-      filename: "Instructify_Kenya_AI_Adoption_Framework_2026.pdf"
+      title: "Teacher Digital Skills & Smart Classroom Starter Guide (PDF)",
+      description: "A comprehensive guide for educators and institutional leaders navigating digital pedagogy, edtech tools, and AI.",
+      filename: "Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileUrl: "../downloads/Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileSize: "368 KB",
+      resourcePageUrl: "../resources/teacher-digital-skills-smart-classroom-starter-guide.html"
     },
     podcastEpisodeId: "ep-01",
     relatedCourse: {
@@ -111,9 +114,12 @@ const ARTICLES = [
       "Formative micro-assessments provide immediate feedback loops that accelerate student mastery."
     ],
     downloadableResource: {
-      title: "Inquiry-Based Lesson Design Template (PDF & DOCX)",
-      description: "A ready-to-use lesson planning template designed for CBC-aligned inquiry sessions.",
-      filename: "Instructify_Inquiry_Lesson_Template.pdf"
+      title: "CBC Lesson Planning & Strand Alignment Toolkit (PDF)",
+      description: "A ready-to-use lesson planning template and strand alignment framework designed for CBC-aligned inquiry sessions.",
+      filename: "CBC_Lesson_Planning_and_Strand_Alignment_Toolkit.pdf",
+      fileUrl: "../downloads/CBC_Lesson_Planning_and_Strand_Alignment_Toolkit.pdf",
+      fileSize: "508 KB",
+      resourcePageUrl: "../resources/cbc-lesson-planning-strand-alignment-toolkit.html"
     },
     podcastEpisodeId: "ep-06",
     relatedCourse: {
@@ -185,9 +191,12 @@ const ARTICLES = [
       "Hybrid communication and asynchronous collaboration are indispensable for global remote employment."
     ],
     downloadableResource: {
-      title: "Digital Skills Career Matrix & Self-Assessment Guide (PDF)",
-      description: "A benchmark rubric mapping digital capabilities to entry-level and leadership roles.",
-      filename: "Instructify_Digital_Skills_Matrix_2026.pdf"
+      title: "Teacher Digital Skills & Smart Classroom Starter Guide (PDF)",
+      description: "A practical roadmap mapping core digital competencies and classroom integration strategies for educators.",
+      filename: "Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileUrl: "../downloads/Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileSize: "368 KB",
+      resourcePageUrl: "../resources/teacher-digital-skills-smart-classroom-starter-guide.html"
     },
     podcastEpisodeId: "ep-03",
     relatedCourse: {
@@ -244,9 +253,12 @@ const ARTICLES = [
       "Parental engagement increases significantly when learning artifacts are shared transparently."
     ],
     downloadableResource: {
-      title: "CBC Formative Assessment Digital Rubric Pack (Excel & PDF)",
-      description: "Standardized rubric templates aligned with national core competencies.",
-      filename: "Instructify_CBC_Digital_Rubrics.xlsx"
+      title: "CBC Lesson Planning & Strand Alignment Toolkit (PDF)",
+      description: "Standardized lesson planning templates, formative rubric frameworks, and strand alignment matrix for CBC educators.",
+      filename: "CBC_Lesson_Planning_and_Strand_Alignment_Toolkit.pdf",
+      fileUrl: "../downloads/CBC_Lesson_Planning_and_Strand_Alignment_Toolkit.pdf",
+      fileSize: "508 KB",
+      resourcePageUrl: "../resources/cbc-lesson-planning-strand-alignment-toolkit.html"
     },
     podcastEpisodeId: "ep-02",
     relatedCourse: {
@@ -304,9 +316,12 @@ const ARTICLES = [
       "Offline content servers ensure rural schools maintain 100% curriculum availability regardless of grid connectivity."
     ],
     downloadableResource: {
-      title: "Smart Classroom Setup & Budgeting Guide (PDF)",
-      description: "Detailed hardware, networking, and software specifications for modern schools.",
-      filename: "Instructify_Smart_Classroom_Guide.pdf"
+      title: "Teacher Digital Skills & Smart Classroom Starter Guide (PDF)",
+      description: "Detailed hardware, software, and classroom workflow specifications for setting up modern interactive learning spaces.",
+      filename: "Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileUrl: "../downloads/Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileSize: "368 KB",
+      resourcePageUrl: "../resources/teacher-digital-skills-smart-classroom-starter-guide.html"
     },
     podcastEpisodeId: "ep-04",
     relatedCourse: {
@@ -371,9 +386,12 @@ const ARTICLES = [
       "Transparent metric dashboards prove EdTech ROI to boards, parents, and donors."
     ],
     downloadableResource: {
-      title: "School Digital Transformation Roadmap & Maturity Audit (PDF)",
-      description: "A self-assessment tool to evaluate your institution's digital readiness.",
-      filename: "Instructify_Digital_Maturity_Audit.pdf"
+      title: "Teacher Digital Skills & Smart Classroom Starter Guide (PDF)",
+      description: "A practical leadership framework and implementation roadmap for school administrators driving digital adoption.",
+      filename: "Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileUrl: "../downloads/Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileSize: "368 KB",
+      resourcePageUrl: "../resources/teacher-digital-skills-smart-classroom-starter-guide.html"
     },
     podcastEpisodeId: "ep-03",
     relatedCourse: {
@@ -434,9 +452,12 @@ const ARTICLES = [
       "Mentorship from active entrepreneurs accelerates student venture viability by 5x."
     ],
     downloadableResource: {
-      title: "School Innovation Sprint & Hackathon Playbook (PDF)",
-      description: "A step-by-step guide to hosting a 2-day student innovation sprint.",
-      filename: "Instructify_Youth_Hackathon_Playbook.pdf"
+      title: "CBC Lesson Planning & Strand Alignment Toolkit (PDF)",
+      description: "Project-based learning, inquiry frameworks, and lesson planning guides for nurturing student innovation.",
+      filename: "CBC_Lesson_Planning_and_Strand_Alignment_Toolkit.pdf",
+      fileUrl: "../downloads/CBC_Lesson_Planning_and_Strand_Alignment_Toolkit.pdf",
+      fileSize: "508 KB",
+      resourcePageUrl: "../resources/cbc-lesson-planning-strand-alignment-toolkit.html"
     },
     podcastEpisodeId: "ep-05",
     relatedCourse: {
@@ -494,9 +515,12 @@ const ARTICLES = [
       "Sync-and-go architectures update school servers periodically via mobile data hotspots."
     ],
     downloadableResource: {
-      title: "Offline Learning Node Blueprint & Architecture Guide (PDF)",
-      description: "Technical schematics and open-source software stack for remote classrooms.",
-      filename: "Instructify_Offline_Node_Blueprint.pdf"
+      title: "Teacher Digital Skills & Smart Classroom Starter Guide (PDF)",
+      description: "Practical guide to smart classroom workflows and digital learning deployments in diverse school environments.",
+      filename: "Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileUrl: "../downloads/Teacher_Digital_Skills_and_Smart_Classroom_Starter_Guide.pdf",
+      fileSize: "368 KB",
+      resourcePageUrl: "../resources/teacher-digital-skills-smart-classroom-starter-guide.html"
     },
     podcastEpisodeId: "ep-04",
     relatedCourse: {
@@ -593,7 +617,7 @@ function generateArticleHtml(article) {
 
   const resourceHtml = article.downloadableResource ? `
     <div class="article-resource-box">
-      <div style="display:flex; align-items:center; gap:18px;">
+      <div style="display:flex; align-items:center; gap:18px; max-width:640px;">
         <div style="width:52px; height:52px; border-radius:14px; background:#EFF6FF; color:#2145E6; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </div>
@@ -607,10 +631,14 @@ function generateArticleHtml(article) {
           </p>
         </div>
       </div>
-      <div>
-        <button type="button" class="btn btn-primary btn-sm" onclick="downloadResource('${article.downloadableResource.filename}')" style="white-space:nowrap; font-weight:700;">
-          Download Resource (PDF) ↓
-        </button>
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <a href="${article.downloadableResource.fileUrl}" download="${article.downloadableResource.filename}" class="btn btn-primary btn-sm" style="white-space:nowrap; font-weight:700; display:inline-flex; align-items:center; gap:6px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Free PDF (${article.downloadableResource.fileSize})
+        </a>
+        <a href="${article.downloadableResource.resourcePageUrl}" class="btn btn-outline btn-sm" style="white-space:nowrap; font-weight:600; font-size:13px;">
+          View Resource Details →
+        </a>
       </div>
     </div>
   ` : '';
@@ -879,7 +907,7 @@ function generateArticleHtml(article) {
         <button type="button" class="share-btn whatsapp" onclick="shareArticle('whatsapp')" aria-label="Share on WhatsApp">WhatsApp</button>
         <button type="button" class="share-btn linkedin" onclick="shareArticle('linkedin')" aria-label="Share on LinkedIn">LinkedIn</button>
         <button type="button" class="share-btn twitter" onclick="shareArticle('twitter')" aria-label="Share on X">X</button>
-        <button type="button" class="share-btn copy" onclick="shareArticle('copy')" aria-label="Copy link">Copy Link</button>
+        <button type="button" class="share-btn copy" onclick="shareArticle('copy', this)" aria-label="Copy link">Copy Link</button>
       </div>
     </div>
 
@@ -1042,8 +1070,8 @@ function generateArticleHtml(article) {
     }, { passive: true });
   }
 
-  // Social Sharing Handler
-  function shareArticle(platform) {
+  // Social Sharing Handler (zero modal alerts)
+  function shareArticle(platform, btnEl) {
     const title = document.title;
     const url = window.location.href;
     switch (platform) {
@@ -1058,24 +1086,27 @@ function generateArticleHtml(article) {
         break;
       case 'copy':
         navigator.clipboard.writeText(url).then(() => {
-          alert('Article link copied to clipboard!');
-        });
+          const btn = btnEl || document.querySelector('.share-btn.copy');
+          if (btn) {
+            const orig = btn.innerHTML;
+            btn.innerHTML = 'Copied! ✓';
+            btn.style.background = '#15803D';
+            btn.style.color = '#FFFFFF';
+            setTimeout(() => {
+              btn.innerHTML = orig;
+              btn.style.background = '';
+              btn.style.color = '';
+            }, 2000);
+          }
+        }).catch(() => {});
         break;
       default:
         if (navigator.share) {
           navigator.share({ title, url }).catch(() => {});
-        } else {
-          navigator.clipboard.writeText(url).then(() => {
-            alert('Article link copied to clipboard!');
-          });
         }
     }
   }
 
-  // Download Resource Notice
-  function downloadResource(filename) {
-    alert('Preparing "' + filename + '" for download. Download will start automatically.');
-  }
 </script>
 
 </body>
