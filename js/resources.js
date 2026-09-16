@@ -705,45 +705,119 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
   }
 
+  // ── Analytics & Event Tracking Engine ───────────────────────
+  const ANALYTICS_STORAGE_KEY = 'instructify_resource_analytics';
+
+  function recordResourceAnalytics(eventType, resourceData) {
+    try {
+      const payload = {
+        event: eventType,
+        resource_id: resourceData?.id || 'unknown',
+        resource_title: resourceData?.title || 'Unknown Resource',
+        category: resourceData?.category || '',
+        file_size: resourceData?.fileSize || '',
+        timestamp: new Date().toISOString(),
+        url: window.location.href
+      };
+
+      // Persist in localStorage (latest 100 entries)
+      let logs = [];
+      try {
+        const raw = localStorage.getItem(ANALYTICS_STORAGE_KEY);
+        if (raw) logs = JSON.parse(raw);
+      } catch (_) {}
+      logs.push(payload);
+      if (logs.length > 100) logs = logs.slice(-100);
+      localStorage.setItem(ANALYTICS_STORAGE_KEY, JSON.stringify(logs));
+
+      // Console telemetry
+      console.info(`[Instructify Analytics] ${eventType}:`, payload);
+
+      // Forward to Google Analytics / GTM if loaded
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventType, {
+          resource_id: payload.resource_id,
+          resource_title: payload.resource_title,
+          resource_category: payload.category
+        });
+      } else if (Array.isArray(window.dataLayer)) {
+        window.dataLayer.push(payload);
+      }
+    } catch (err) {
+      console.warn('Analytics recording error:', err);
+    }
+  }
+  window.InstructifyAnalytics = { record: recordResourceAnalytics };
+
+  // IntersectionObserver to record card impressions (resource_view)
+  const recordedViews = new Set();
+  const cardViewObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        const resId = card.getAttribute('data-id');
+        if (resId && !recordedViews.has(resId)) {
+          recordedViews.add(resId);
+          const resObj = [...featured, ...library].find(r => r.id === resId);
+          if (resObj) {
+            recordResourceAnalytics('resource_view', resObj);
+          }
+        }
+      }
+    });
+  }, { threshold: 0.35 });
+
   // ── Card Rendering Helper ───────────────────────────────────
   function renderResourceCard(res, isFeatured = false) {
     const isSaved = savedResourceIds.has(res.id);
-    const accessClass = res.access === 'Free' ? 'badge-access-free' : 'badge-access-premium';
-    const accessLabel = res.access === 'Free' ? 'Free Resource' : 'Premium';
+    const isFree = res.access === 'Free' || res.access === 'Free Resource' || res.accessBadge === 'FREE RESOURCE';
+    const accessClass = isFree ? 'badge-access-free' : 'badge-access-premium';
+    const accessLabel = res.accessBadge || (isFree ? 'FREE RESOURCE' : 'PREMIUM');
+    const resourceType = res.resourceType || res.format || 'RESOURCE';
+    const hasDirectDownload = res.downloadUrl && !res.downloadUrl.startsWith('#');
+    const downloadHref = hasDirectDownload ? res.downloadUrl : '#';
+    const downloadAttr = hasDirectDownload ? `download="${res.pdfFileName || ''}"` : '';
+    const fileSizeText = res.fileSize ? `(${res.fileSize})` : '';
 
     return `
       <div class="res-card" data-id="${res.id}">
         <div class="res-card-media">
-          <img src="${res.image || 'assets/images/about.png'}" alt="${res.title}" loading="lazy">
+          <img src="${res.image || 'assets/images/about.png'}" alt="${res.imageAlt || res.title}" loading="lazy">
           <div class="res-card-badges">
-            <span class="badge-format">${res.format || 'Resource'}</span>
+            <span class="badge-format">${resourceType}</span>
             <span class="${accessClass}">${accessLabel}</span>
           </div>
         </div>
         <div class="res-card-body">
           <div class="res-card-cat-row">
             <span class="res-card-category">${res.category}</span>
-            <span class="res-card-readtime">⏱ ${res.readTime || '15 mins'}</span>
+            <span class="res-card-readtime">⏱ ${res.readTime || '20 mins'}</span>
           </div>
           <h3 class="res-card-title">${res.title}</h3>
-          <p class="res-card-desc">${res.description}</p>
+          <p class="res-card-desc">${res.shortDescription || res.description}</p>
           <div class="res-card-meta">
-            <span class="res-meta-item">👥 ${res.audience || 'All Educators'}</span>
+            <span class="res-meta-item">👥 ${res.intendedUsers || res.audience || 'All Educators'}</span>
             ${res.fileSize ? `<span class="res-meta-item">💾 ${res.fileSize}</span>` : ''}
             <span class="res-meta-item">⭐ ${res.rating || 4.9}</span>
             <span class="res-meta-item">📥 ${(res.downloads || 450).toLocaleString()}</span>
           </div>
           <div class="res-card-actions">
-            <button class="btn-card-outline res-preview-btn" data-id="${res.id}">
-              Preview
+            <button class="btn-card-outline res-preview-btn" data-id="${res.id}" aria-label="View Details for ${res.title}">
+              👁️ View Details
             </button>
-            <button class="btn-card-primary res-download-btn" data-id="${res.id}" data-title="${res.title}">
-              📥 Download
-            </button>
-            <button class="btn-icon-control res-bookmark-btn ${isSaved ? 'active' : ''}" data-id="${res.id}" aria-label="Save resource" title="Save resource">
+            ${hasDirectDownload ? `
+              <a href="${downloadHref}" ${downloadAttr} class="btn-card-primary res-download-btn" data-id="${res.id}" data-title="${res.title}" aria-label="Download ${res.title} PDF">
+                📥 Download Free PDF <span class="res-card-filesize">${fileSizeText}</span>
+              </a>
+            ` : `
+              <button class="btn-card-primary res-download-btn" data-id="${res.id}" data-title="${res.title}" aria-label="Download ${res.title}">
+                📥 Download Free PDF
+              </button>
+            `}
+            <button class="btn-icon-control res-bookmark-btn ${isSaved ? 'active' : ''}" data-id="${res.id}" aria-label="Save ${res.title}" title="Save resource">
               ${getSvgIcon('bookmark')}
             </button>
-            <button class="btn-icon-control res-share-btn" data-id="${res.id}" data-title="${res.title}" aria-label="Share resource" title="Share resource">
+            <button class="btn-icon-control res-share-btn" data-id="${res.id}" data-title="${res.title}" aria-label="Share ${res.title}" title="Share resource">
               ${getSvgIcon('share')}
             </button>
           </div>
@@ -755,7 +829,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function attachCardEventListeners(container) {
     if (!container) return;
 
-    // Preview
+    // Observe each card for viewport view telemetry
+    container.querySelectorAll('.res-card').forEach(card => {
+      cardViewObserver.observe(card);
+    });
+
+    // View Details / Preview
     container.querySelectorAll('.res-preview-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -765,12 +844,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Download
+    // Download Button
     container.querySelectorAll('.res-download-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        e.stopPropagation();
+        const id = btn.getAttribute('data-id');
         const title = btn.getAttribute('data-title') || 'Resource';
-        showResourceToast(`Preparing download for "${title}"...`, 'success');
+        const resObj = [...featured, ...library].find(r => r.id === id);
+
+        // Record start of download
+        recordResourceAnalytics('resource_download_start', resObj || { id, title });
+
+        const sizeLabel = resObj?.fileSize ? ` (${resObj.fileSize})` : '';
+        showResourceToast(`Starting download: "${title}"${sizeLabel}...`, 'success');
+
+        // Record completed download after short dispatch delay
+        setTimeout(() => {
+          recordResourceAnalytics('resource_download_complete', resObj || { id, title });
+        }, 1200);
       });
     });
 
@@ -818,40 +908,131 @@ document.addEventListener('DOMContentLoaded', () => {
   const previewTitle = document.getElementById('res-preview-modal-title');
   const previewBody = document.getElementById('res-preview-modal-body');
   const previewClose = document.getElementById('res-preview-modal-close');
-  const previewDownloadBtn = document.getElementById('res-preview-download-btn');
 
   function openResourcePreviewModal(res) {
     if (!previewModal) return;
+
+    // Record details open event
+    recordResourceAnalytics('resource_details_open', res);
+
     if (previewTitle) previewTitle.textContent = res.title;
+
+    const isFree = res.access === 'Free' || res.access === 'Free Resource' || res.accessBadge === 'FREE RESOURCE';
+    const accessClass = isFree ? 'badge-access-free' : 'badge-access-premium';
+    const accessLabel = res.accessBadge || (isFree ? 'FREE RESOURCE' : 'PREMIUM');
+    const resourceType = res.resourceType || res.format || 'RESOURCE';
+    const hasDirectDownload = res.downloadUrl && !res.downloadUrl.startsWith('#');
+    const downloadHref = hasDirectDownload ? res.downloadUrl : '#';
+    const downloadAttr = hasDirectDownload ? `download="${res.pdfFileName || ''}"` : '';
+
     if (previewBody) {
+      // Build Key Content Items checklist if provided
+      let keyContentHtml = '';
+      if (res.keyContent && Array.isArray(res.keyContent) && res.keyContent.length > 0) {
+        keyContentHtml = `
+          <div style="margin: 20px 0 16px;">
+            <h4 style="font-size:14px; font-weight:700; color:var(--res-text-main); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+              <span>📋</span> Key Content &amp; Practical Tools Included:
+            </h4>
+            <ul class="res-key-content-list">
+              ${res.keyContent.map(item => `
+                <li class="res-key-content-item">
+                  <span class="check-icon">✓</span>
+                  <span>${item}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        `;
+      }
+
+      // Build Official Curriculum-Context Notice
+      const noticeText = res.curriculumNotice ||
+        'This independently prepared professional resource supports the implementation of Kenya’s competency-based curriculum. Teachers should verify grade-specific strands, sub-strands and learning outcomes against the latest official KICD curriculum designs.';
+
       previewBody.innerHTML = `
-        <div style="margin-bottom:18px;">
-          <span class="badge-format" style="margin-right:8px;">${res.format || 'Resource'}</span>
-          <span class="${res.access === 'Premium' ? 'badge-access-premium' : 'badge-access-free'}">${res.access || 'Free Resource'}</span>
+        <div style="margin-bottom:18px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span class="badge-format">${resourceType}</span>
+            <span class="${accessClass}">${accessLabel}</span>
+          </div>
+          <span style="font-size:12.5px; color:var(--res-text-muted); font-weight:600;">
+            📅 ${res.version || res.updatedAt || '2026 Edition'}
+          </span>
         </div>
-        <p style="font-size:15px; color:var(--res-text-secondary); line-height:1.65; margin-bottom:16px;">
-          ${res.description}
-        </p>
+
+        <div style="margin-bottom:18px;">
+          <h4 style="font-size:14px; font-weight:700; color:var(--res-text-main); margin-bottom:6px;">Overview &amp; Purpose:</h4>
+          <p style="font-size:14.5px; color:var(--res-text-secondary); line-height:1.65; margin:0;">
+            ${res.expandedDescription || res.description}
+          </p>
+        </div>
+
         <table class="res-meta-table">
           <tbody>
-            <tr><td>Category</td><td>${res.category}</td></tr>
-            <tr><td>Target Audience</td><td>${res.audience || 'Educators'}</td></tr>
-            <tr><td>Education Level</td><td>${res.educationLevel || 'General'}</td></tr>
-            <tr><td>File Size</td><td>${res.fileSize || '2.4 MB'}</td></tr>
-            <tr><td>Estimated Time</td><td>${res.readTime || '20 mins'}</td></tr>
-            <tr><td>User Rating</td><td>⭐ ${res.rating || 4.9} / 5.0 (${(res.downloads || 350).toLocaleString()} downloads)</td></tr>
+            <tr><td>Category</td><td><strong>${res.category}</strong></td></tr>
+            <tr><td>Resource Type</td><td>${resourceType}</td></tr>
+            <tr><td>Access Level</td><td><span style="color:var(--res-green); font-weight:700;">${accessLabel}</span> (Direct, unrestricted download)</td></tr>
+            <tr><td>Target Audience</td><td>👥 ${res.intendedUsers || res.audience || 'All Educators'}</td></tr>
+            <tr><td>Estimated Reading &amp; Use Time</td><td>⏱ ${res.readTime || '25 mins'}</td></tr>
+            <tr><td>File Format &amp; Size</td><td>📄 ${res.fileType || 'PDF Document'} &bull; 💾 <strong>${res.fileSize || 'Standard'}</strong></td></tr>
+            <tr><td>Version / Release</td><td>${res.version || res.updatedAt || '1.0 (2026 Edition)'}</td></tr>
+            <tr><td>User Rating</td><td>⭐ ${res.rating || 4.9} / 5.0 (${(res.downloads || 350).toLocaleString()} educators downloaded)</td></tr>
           </tbody>
         </table>
-        <div style="background:var(--res-blue-soft); border-left:4px solid var(--res-blue); padding:12px 16px; border-radius:4px; font-size:13.5px; color:var(--res-blue-hover);">
-          💡 <strong>Educator Tip:</strong> This resource includes editable student worksheets, assessment checklists, and practical guidance aligned to the Kenyan Competency-Based Curriculum.
+
+        ${keyContentHtml}
+
+        <div class="res-curriculum-notice">
+          <strong>🇰🇪 Official Curriculum-Context Notice:</strong>
+          ${noticeText}
         </div>
       `;
     }
-    if (previewDownloadBtn) {
-      previewDownloadBtn.onclick = () => {
-        showResourceToast(`Downloading "${res.title}"...`, 'success');
-      };
+
+    // Update modal footer with direct download link and close button
+    const modalFooter = previewModal.querySelector('.res-modal-footer');
+    if (modalFooter) {
+      modalFooter.innerHTML = `
+        <button type="button" class="btn btn-outline btn-sm" id="res-preview-close-btn">Close</button>
+        ${res.slug ? `
+          <a href="resources/${res.slug}.html" class="btn btn-outline btn-sm" target="_blank" rel="noopener" aria-label="Open standalone page for ${res.title}">
+            🔗 Standalone Page
+          </a>
+        ` : ''}
+        ${hasDirectDownload ? `
+          <a href="${downloadHref}" ${downloadAttr} class="btn btn-primary btn-sm res-modal-dl-btn" id="res-preview-download-btn" data-id="${res.id}" data-title="${res.title}" aria-label="Download ${res.title} PDF">
+            📥 Download Free PDF (${res.fileSize})
+          </a>
+        ` : `
+          <button type="button" class="btn btn-primary btn-sm" id="res-preview-download-btn" data-id="${res.id}" data-title="${res.title}">
+            📥 Download Free PDF
+          </button>
+        `}
+      `;
+
+      // Attach close button listener
+      const closeBtn = modalFooter.querySelector('#res-preview-close-btn');
+      if (closeBtn) {
+        closeBtn.onclick = () => {
+          previewModal.classList.remove('active');
+          document.body.style.overflow = '';
+        };
+      }
+
+      // Attach modal download button listener for analytics & toast
+      const dlBtn = modalFooter.querySelector('#res-preview-download-btn');
+      if (dlBtn) {
+        dlBtn.onclick = () => {
+          recordResourceAnalytics('resource_download_start', res);
+          showResourceToast(`Starting download: "${res.title}" (${res.fileSize})...`, 'success');
+          setTimeout(() => {
+            recordResourceAnalytics('resource_download_complete', res);
+          }, 1200);
+        };
+      }
     }
+
     previewModal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -1031,6 +1212,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // ── 12. Deep Linking / URL Hash Routing ─────────────────────
+  function handleUrlHashRouting() {
+    const rawHash = window.location.hash.replace(/^#/, '');
+    if (!rawHash) return;
+    const targetKey = rawHash.startsWith('resource-') ? rawHash.replace('resource-', '') : rawHash;
+    const targetRes = [...featured, ...library].find(r => r.id === targetKey || r.slug === targetKey);
+    if (targetRes) {
+      setTimeout(() => {
+        openResourcePreviewModal(targetRes);
+        const card = document.querySelector(`.res-card[data-id="${targetRes.id}"]`);
+        if (card) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          card.style.outline = '3px solid var(--res-blue)';
+          setTimeout(() => { card.style.outline = ''; }, 3000);
+        }
+      }, 350);
+    }
+  }
+
+  window.addEventListener('hashchange', handleUrlHashRouting);
+  handleUrlHashRouting();
+
   // Initial Render of Library
   filterAndRenderLibrary();
 });
+

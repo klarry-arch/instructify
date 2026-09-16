@@ -62,7 +62,7 @@ for (const file of rootFiles) {
 }
 
 // 4. Copy required directories
-const directoriesToCopy = ['css', 'js', 'assets', 'courses', 'lib', 'api', 'docs'];
+const directoriesToCopy = ['css', 'js', 'assets', 'courses', 'lib', 'api', 'docs', 'downloads', 'resources'];
 for (const dir of directoriesToCopy) {
   console.log(`📁 Copying ${dir}/...`);
   copyDirectorySafe(path.join(ROOT_DIR, dir), path.join(PUBLIC_HTML_DIR, dir));

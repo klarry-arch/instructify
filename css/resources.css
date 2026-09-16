@@ -798,11 +798,19 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
+  min-height: 44px;
   transition: all 0.2s ease;
 }
 
 .btn-card-primary:hover {
   background: var(--res-blue-hover);
+}
+
+.res-card-filesize {
+  font-size: 11.5px;
+  font-weight: 500;
+  opacity: 0.92;
+  white-space: nowrap;
 }
 
 .btn-card-outline {
@@ -821,6 +829,7 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
+  min-height: 44px;
   transition: all 0.2s ease;
 }
 
@@ -1739,6 +1748,59 @@
 .res-meta-table td:last-child {
   color: var(--res-text-main);
   font-weight: 500;
+}
+
+/* Modal Key Content Checklist */
+.res-key-content-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.res-key-content-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--res-text-secondary);
+  line-height: 1.55;
+  background: var(--res-surface-soft);
+  padding: 8px 12px;
+  border-radius: var(--res-radius-sm);
+  border: 1px solid var(--res-border);
+}
+
+.res-key-content-item .check-icon {
+  color: var(--res-green);
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* Official Curriculum-Context Notice */
+.res-curriculum-notice {
+  background: linear-gradient(135deg, #F8FAFC 0%, #EFF4FF 100%);
+  border-left: 4px solid var(--res-blue);
+  border-radius: var(--res-radius-sm);
+  padding: 14px 16px;
+  margin-top: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--res-text-secondary);
+  box-shadow: var(--res-shadow-xs);
+}
+
+.res-curriculum-notice strong {
+  display: block;
+  color: var(--res-text-main);
+  font-size: 13.5px;
+  font-family: var(--font-heading);
+  margin-bottom: 4px;
 }
 
 /* Submit Form inside modal */

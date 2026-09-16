@@ -21,6 +21,10 @@
   RewriteRule ^jumuishi/?$ jumuishi-learning-hub.html [L,QSA]
   RewriteRule ^jumuishi-hub/?$ jumuishi-learning-hub.html [L,QSA]
 
+  # ── Standalone Educational Resource Pages ──
+  RewriteRule ^resources/cbc-lesson-planning-strand-alignment-toolkit/?$ resources/cbc-lesson-planning-strand-alignment-toolkit.html [L,QSA]
+  RewriteRule ^resources/teacher-digital-skills-smart-classroom-starter-guide/?$ resources/teacher-digital-skills-smart-classroom-starter-guide.html [L,QSA]
+
   # ── API Routing ──
   RewriteRule ^api/contact/?$ api/contact.php [L,QSA]
 
@@ -53,6 +57,7 @@ ErrorDocument 404 /index.html
   AddType font/woff .woff
   AddType font/woff2 .woff2
   AddType application/xml .xml
+  AddType application/pdf .pdf
 </IfModule>
 
 # 5. Gzip & Deflate Compression
@@ -88,6 +93,9 @@ ErrorDocument 404 /index.html
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType application/font-woff "access plus 1 year"
   ExpiresByType application/font-woff2 "access plus 1 year"
+
+  # PDF Documents
+  ExpiresByType application/pdf "access plus 1 month"
 </IfModule>
 
 # 7. Protect Sensitive Files & Data Stores
