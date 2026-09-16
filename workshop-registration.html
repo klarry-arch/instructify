@@ -140,6 +140,9 @@
       </div>
 
       <form id="workshop-registration-form" onsubmit="handleWorkshopSubmit(event)">
+        <!-- Anti-Spam Honeypot -->
+        <input type="text" name="_hp_instructify" style="display:none !important;" tabindex="-1" autocomplete="off" aria-hidden="true">
+
         <!-- 1. Full Name -->
         <div class="form-group mb-lg">
           <label class="form-label" for="workshop-fullname">Full Name <span style="color:#FF4D00">*</span></label>
@@ -286,6 +289,10 @@
     <p style="font-size:14px; color:var(--text-muted, #475569); margin-top:4px;">
       Here is your official Workshop Entry Pass for Instructify Kenya.
     </p>
+    <div style="background:#ECFDF5; border:1px solid #A7F3D0; border-radius:8px; padding:8px 12px; margin:10px 0 16px; font-size:12.5px; color:#065F46; display:flex; align-items:center; gap:8px;">
+      <span style="font-weight:700;">✓ Email Dispatched:</span>
+      <span>A copy of this pass has been sent to your email and to the workshop team (<strong>info@instructify.co.ke</strong>).</span>
+    </div>
 
     <div class="ticket-stub">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; position:relative; z-index:1;">

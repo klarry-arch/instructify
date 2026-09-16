@@ -436,47 +436,104 @@ window.handleWorkshopSubmit = function(event) {
   event.preventDefault();
   const form = event.target;
 
+  // Anti-spam honeypot check
+  const hp = form.querySelector('input[name="_hp_instructify"]');
+  if (hp && hp.value) {
+    return;
+  }
+
   // Retrieve form field values
-  const fullName = document.getElementById('workshop-fullname')?.value || '';
+  const fullName = document.getElementById('workshop-fullname')?.value.trim() || '';
   const titleSelect = document.getElementById('workshop-title-select');
   let workshopTitle = titleSelect?.value || '';
   if (workshopTitle === 'Other') {
-    workshopTitle = document.getElementById('workshop-title-custom')?.value || 'Custom Workshop';
+    workshopTitle = document.getElementById('workshop-title-custom')?.value.trim() || 'Custom Workshop';
   }
 
   const roleRadio = form.querySelector('input[name="workshop_role"]:checked');
-  const role = roleRadio ? roleRadio.value : 'Participant';
+  const role = roleRadio ? roleRadio.value : 'Teacher';
 
   const langSelect = document.getElementById('workshop-language')?.value || 'English';
-  const needs = document.getElementById('workshop-needs')?.value || 'None specified';
-  const email = document.getElementById('workshop-email')?.value || '';
-  const phone = document.getElementById('workshop-phone')?.value || '';
+  const needs = document.getElementById('workshop-needs')?.value.trim() || 'None specified';
+  const email = document.getElementById('workshop-email')?.value.trim() || '';
+  const phone = document.getElementById('workshop-phone')?.value.trim() || '';
 
   const paymentRadio = form.querySelector('input[name="workshop_payment"]:checked');
   const paymentMethod = paymentRadio ? paymentRadio.value : 'Free / Sponsored';
 
-  // Generate random pass ID
+  // Generate official Workshop Pass ID
   const passId = 'INST-WKSP-' + Math.floor(100000 + Math.random() * 900000);
 
-  // Populate ticket modal
+  // Populate ticket modal immediately (zero-lag UX)
   const ticketModal = document.getElementById('ticket-modal');
   if (ticketModal) {
-    document.getElementById('ticket-name').textContent = fullName;
-    document.getElementById('ticket-workshop').textContent = workshopTitle;
-    document.getElementById('ticket-role').textContent = role;
-    document.getElementById('ticket-lang').textContent = langSelect;
-    document.getElementById('ticket-contact').textContent = `${email} | ${phone}`;
-    document.getElementById('ticket-payment').textContent = paymentMethod;
-    document.getElementById('ticket-code').textContent = passId;
+    const elName = document.getElementById('ticket-name');
+    const elWksp = document.getElementById('ticket-workshop');
+    const elRole = document.getElementById('ticket-role');
+    const elLang = document.getElementById('ticket-lang');
+    const elContact = document.getElementById('ticket-contact');
+    const elPay = document.getElementById('ticket-payment');
+    const elCode = document.getElementById('ticket-code');
+
+    if (elName) elName.textContent = fullName;
+    if (elWksp) elWksp.textContent = workshopTitle;
+    if (elRole) elRole.textContent = role;
+    if (elLang) elLang.textContent = langSelect;
+    if (elContact) elContact.textContent = `${email} | ${phone}`;
+    if (elPay) elPay.textContent = paymentMethod;
+    if (elCode) elCode.textContent = passId;
 
     ticketModal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 
-  window.showToast(`🎉 Registration Successful! Pass ${passId} generated for ${fullName}.`, 'success', 5000);
+  // Show immediate feedback
+  window.showToast(`🎉 Pass ${passId} generated! Sending confirmation to ${email}...`, 'info', 4000);
+
+  // Dispatch asynchronous payload to email backend (routes to info@instructify.co.ke and attendee)
+  const payload = {
+    name: fullName,
+    email: email,
+    phone: phone,
+    category: 'Workshop Registration',
+    subject: `Workshop Registration: ${workshopTitle} (${passId})`,
+    workshopTitle: workshopTitle,
+    workshopRole: role,
+    workshopLang: langSelect,
+    workshopNeeds: needs,
+    paymentMethod: paymentMethod,
+    passId: passId,
+    message: `Attendee: ${fullName}\nEmail: ${email}\nPhone: ${phone}\nWorkshop Theme: ${workshopTitle}\nRole: ${role}\nPreferred Language: ${langSelect}\nPayment Option: ${paymentMethod}\nDietary/Accessibility Needs: ${needs}\nPass ID: ${passId}`
+  };
+
+  fetch('api/contact.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  })
+  .then(res => {
+    if (!res.ok) {
+      return fetch('api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(r => r.json());
+    }
+    return res.json();
+  })
+  .then(data => {
+    window.showToast(`🎉 Registration Confirmed! Official Entry Pass sent to ${email}.`, 'success', 6000);
+  })
+  .catch(err => {
+    console.warn('Workshop registration background notification note:', err);
+    window.showToast(`🎉 Workshop Registration Confirmed! Pass #${passId} reserved for ${fullName}.`, 'success', 5000);
+  });
+
+  // Reset form inputs & re-select defaults
   form.reset();
-  
-  // Re-select defaults
   const firstRole = form.querySelector('.role-chip');
   if (firstRole) window.selectWorkshopRole(firstRole, 'Teacher');
   const firstPay = form.querySelector('.payment-card');

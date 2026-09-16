@@ -22,6 +22,7 @@ const AUTO_REPLIES = {
   'Consultancy': 'Thank you for contacting Instructify Consultancy. We support schools, county education departments, and NGOs with digital infrastructure audits and EdTech implementation.',
   'Curriculum Development': 'Thank you for your curriculum inquiry. Our CBC-certified curriculum design team specializes in digital learning design and teacher competency frameworks.',
   'Partnership': 'Thank you for your partnership interest. Our leadership team welcomes institutional collaborations to transform African digital education.',
+  'Workshop Registration': 'Thank you for registering for our creative workshop! Your official pass has been reserved and routed to info@instructify.co.ke.',
   'General Inquiry': 'Thank you for reaching out to Instructify Kenya! We have received your message and our support desk is on it.',
 };
 
@@ -103,8 +104,18 @@ export default async function handler(req, res) {
     const timestamp = new Date().toISOString();
     const instantReply = AUTO_REPLIES[type] || `Thank you for contacting Instructify Kenya! Your message has been assigned Ticket #${ticketId} and routed to our ${recipientName} (${recipientEmail}). We will review and reply promptly.`;
 
+    const isWorkshop = type === 'Workshop Registration' || Boolean(data.workshopTitle);
+    const passId = data.passId || (isWorkshop ? `INST-WKSP-${Math.floor(100000 + Math.random() * 900000)}` : null);
+
     const enquiryRecord = {
       ticketId,
+      passId,
+      isWorkshop,
+      workshopTitle: data.workshopTitle || null,
+      workshopRole: data.workshopRole || null,
+      workshopLang: data.workshopLang || null,
+      workshopNeeds: data.workshopNeeds || null,
+      paymentMethod: data.paymentMethod || null,
       name: name.trim(),
       email: email.trim(),
       phone: phone ? phone.trim() : 'N/A',
