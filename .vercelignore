@@ -1,0 +1,19 @@
+# Ignore PHP scripts (used for cPanel/Apache on HostAfrica)
+api/*.php
+*.php
+
+# Ignore packaging and archive files
+*.zip
+instructify-cpanel-deploy.zip
+instructify-restore-public_html.zip
+public_html.zip
+
+# Ignore local build outputs and mirrors
+dist/
+public_html/
+scratch/
+
+# Ignore tests from production bundle
+tests/
+.github/
+.cpanel.yml

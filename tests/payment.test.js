@@ -266,3 +266,4 @@ console.log('\n🛑 Cancellation & Timeout Tests');
 }
 
 console.log('\n🎉 ALL TESTS PASSED SUCCESSFULLY! 100% Verified.\n');
+process.exit(0);

@@ -15,7 +15,7 @@
     "node-fetch": "^3.3.2"
   },
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/.bin/jest --testPathPattern=tests/",
+    "test": "node tests/run-all-tests.cjs",
     "dev": "vercel dev",
     "package:cpanel": "node scripts/package-cpanel.cjs"
   },

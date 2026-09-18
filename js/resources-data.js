@@ -265,7 +265,7 @@ window.RESOURCES_DATA = (function() {
       updatedAt: 'Aug 2026',
       rating: 4.9,
       downloads: 1120,
-      image: 'assets/images/course_ict_integration.jpg',
+      image: 'assets/images/home_stem_collaboration.jpg',
       description: 'Institutional guidelines for safe internet usage, data privacy compliance under Kenyan law, reporting protocols, and cyber resilience training.',
       fileType: 'PDF Policy Manual',
       fileSize: '2.5 MB',
