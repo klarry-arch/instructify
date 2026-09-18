@@ -6928,6 +6928,133 @@ function initCourseStudio() {
     renderCoursesGrid();
   }
 
+  /* ══════════════════════════════════════════════════════════════
+     10.16 Responsive Builder Suite Navigation & Dropdown
+     ══════════════════════════════════════════════════════════════ */
+  function initNavBuilderDropdown() {
+    const wrap = document.getElementById('jum-nav-builder-wrap');
+    const toggle = document.getElementById('jum-nav-builder-toggle');
+    const menu = document.getElementById('jum-nav-builder-menu');
+
+    if (!wrap || !toggle) return;
+
+    function openDropdown() {
+      wrap.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeDropdown() {
+      wrap.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleDropdown(e) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const isOpen = wrap.classList.contains('open');
+      if (isOpen) {
+        closeDropdown();
+      } else {
+        openDropdown();
+        if (menu) {
+          const first = menu.querySelector('.jum-builder-menu-item');
+          if (first && e && e.detail === 0) first.focus();
+        }
+      }
+    }
+
+    toggle.addEventListener('click', toggleDropdown);
+
+    // Keyboard navigation
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openDropdown();
+        if (menu) {
+          const first = menu.querySelector('.jum-builder-menu-item');
+          if (first) first.focus();
+        }
+      } else if (e.key === 'Escape') {
+        closeDropdown();
+      }
+    });
+
+    if (menu) {
+      menu.addEventListener('keydown', (e) => {
+        const items = Array.from(menu.querySelectorAll('.jum-builder-menu-item, .jum-builder-quick-launch'));
+        const idx = items.indexOf(document.activeElement);
+
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          closeDropdown();
+          toggle.focus();
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          const next = (idx + 1) % items.length;
+          items[next].focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          const prev = (idx - 1 + items.length) % items.length;
+          items[prev].focus();
+        }
+      });
+    }
+
+    // Dismiss when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!wrap.contains(e.target)) {
+        closeDropdown();
+      }
+    });
+
+    // Handle deep navigation for both desktop dropdown and mobile drawer links
+    function handleBuilderNavClick(e) {
+      const targetLink = e.currentTarget;
+      const targetId = targetLink.getAttribute('data-target') || (targetLink.getAttribute('href') || '').replace(/^#/, '');
+      const action = targetLink.getAttribute('data-action');
+
+      closeDropdown();
+      if (window.closeMobileNav) {
+        window.closeMobileNav();
+      }
+
+      // Handle view switches if navigating to Course Studio tabs
+      if (action === 'templates') {
+        if (typeof switchStudioView === 'function') {
+          switchStudioView('templates');
+        }
+      } else if (action === 'courses') {
+        if (typeof switchStudioView === 'function') {
+          switchStudioView('courses');
+        }
+      }
+
+      if (targetId) {
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const navOffset = 76;
+          const elPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navOffset;
+          window.scrollTo({
+            top: elPos,
+            behavior: 'smooth'
+          });
+          if (history.pushState) {
+            history.pushState(null, null, '#' + targetId);
+          }
+          targetEl.setAttribute('tabindex', '-1');
+          targetEl.focus({ preventScroll: true });
+        }
+      }
+    }
+
+    // Bind event to all builder menu items and mobile drawer builder sublinks
+    document.querySelectorAll('.jum-builder-menu-item, .jum-builder-quick-launch, .jum-mobile-builder-sublink, .jum-mobile-actions-dual a').forEach(item => {
+      item.addEventListener('click', handleBuilderNavClick);
+    });
+  }
 
 /* ══════════════════════════════════════════════════════════════
      11. INITIALIZATION
@@ -6942,6 +7069,7 @@ function initCourseStudio() {
     initForms();
     initExploreSupportButtons();
     initCourseStudio();
+    initNavBuilderDropdown();
   });
 
 })();

@@ -19,8 +19,8 @@
   <link rel="stylesheet" href="css/homepage.css">
   <link rel="stylesheet" href="css/live-chat.css">
   
-  <!-- Jumuishi Hub canonical extension styles — v3.2 Balanced Typography & Radiant Theme -->
-  <link rel="stylesheet" href="css/jumuishi.css?v=3.2">
+  <!-- Jumuishi Hub canonical extension styles — v3.3 Responsive Builder Suite & Deep Linking -->
+  <link rel="stylesheet" href="css/jumuishi.css?v=3.3">
 </head>
 <body>
 
@@ -161,8 +161,98 @@
       
     </ul>
 
-      <div class="nav-actions">
-        <a href="#content-builder" class="btn btn-primary btn-sm" style="background:var(--jum-teal);border-color:var(--jum-teal);">Start Builder ✨</a>
+      <div class="nav-actions jum-nav-actions" id="jum-nav-actions">
+        <div class="jum-nav-builder-wrap" id="jum-nav-builder-wrap">
+          <button type="button" class="btn btn-primary btn-sm jum-nav-builder-btn" id="jum-nav-builder-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="jum-nav-builder-menu">
+            <span class="jum-builder-btn-label">Start Builder</span>
+            <span class="jum-sparkle-icon" aria-hidden="true">✨</span>
+            <svg class="jum-dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <ul class="jum-nav-builder-menu" id="jum-nav-builder-menu" role="menu" aria-labelledby="jum-nav-builder-toggle">
+            <li class="jum-builder-menu-header" role="none">
+              <div class="jum-builder-menu-eyebrow">Builder Suite</div>
+              <div class="jum-builder-menu-subtitle">Inclusive differentiation &amp; authoring tools</div>
+            </li>
+            <li role="none">
+              <a href="#content-builder" class="jum-builder-menu-item" role="menuitem" data-target="content-builder">
+                <span class="jum-builder-menu-icon" style="background:linear-gradient(135deg, rgba(13,148,136,0.18), rgba(20,184,166,0.28));color:#0F766E;">🚀</span>
+                <div class="jum-builder-menu-info">
+                  <div class="jum-builder-menu-title-row">
+                    <span class="jum-builder-menu-title">7-Step Adaptation Wizard</span>
+                    <span class="nav-badge badge-teal">Core</span>
+                  </div>
+                  <span class="jum-builder-menu-desc">Differentiate CBC lessons, IEP rubrics &amp; home guides</span>
+                </div>
+              </a>
+            </li>
+            <li role="none">
+              <a href="#course-studio" class="jum-builder-menu-item" role="menuitem" data-action="courses" data-target="course-studio">
+                <span class="jum-builder-menu-icon" style="background:linear-gradient(135deg, rgba(37,99,235,0.15), rgba(59,130,246,0.25));color:#1D4ED8;">📚</span>
+                <div class="jum-builder-menu-info">
+                  <div class="jum-builder-menu-title-row">
+                    <span class="jum-builder-menu-title">Course Studio &amp; Curricula</span>
+                    <span class="nav-badge badge-blue">Studio</span>
+                  </div>
+                  <span class="jum-builder-menu-desc">Author, manage &amp; publish inclusive modules</span>
+                </div>
+              </a>
+            </li>
+            <li role="none">
+              <a href="#course-studio" class="jum-builder-menu-item" role="menuitem" data-action="templates" data-target="course-studio">
+                <span class="jum-builder-menu-icon" style="background:linear-gradient(135deg, rgba(245,158,11,0.18), rgba(251,191,36,0.28));color:#B45309;">📋</span>
+                <div class="jum-builder-menu-info">
+                  <div class="jum-builder-menu-title-row">
+                    <span class="jum-builder-menu-title">Special Needs Templates</span>
+                    <span class="nav-badge badge-amber">8 Cards</span>
+                  </div>
+                  <span class="jum-builder-menu-desc">Pre-built AAC, autism, ADHD &amp; sensory blueprints</span>
+                </div>
+              </a>
+            </li>
+            <li role="none">
+              <a href="#resource-library" class="jum-builder-menu-item" role="menuitem" data-target="resource-library">
+                <span class="jum-builder-menu-icon" style="background:linear-gradient(135deg, rgba(99,102,241,0.15), rgba(129,140,248,0.25));color:#4338CA;">📂</span>
+                <div class="jum-builder-menu-info">
+                  <div class="jum-builder-menu-title-row">
+                    <span class="jum-builder-menu-title">Resource Library</span>
+                    <span class="nav-badge" style="background:#E0E7FF;color:#3730A3;">8+ Plans</span>
+                  </div>
+                  <span class="jum-builder-menu-desc">Ready-to-adapt CBC plans, rubrics &amp; tactile aids</span>
+                </div>
+              </a>
+            </li>
+            <li role="none">
+              <a href="#sample-resource" class="jum-builder-menu-item" role="menuitem" data-target="sample-resource">
+                <span class="jum-builder-menu-icon" style="background:linear-gradient(135deg, rgba(6,182,212,0.18), rgba(14,165,233,0.28));color:#0284C7;">🔍</span>
+                <div class="jum-builder-menu-info">
+                  <div class="jum-builder-menu-title-row">
+                    <span class="jum-builder-menu-title">Differentiation Demo</span>
+                    <span class="nav-badge" style="background:#E0F2FE;color:#0369A1;">Grade 3</span>
+                  </div>
+                  <span class="jum-builder-menu-desc">Live Grade 3 Maths adaptation walk-through</span>
+                </div>
+              </a>
+            </li>
+            <li role="none">
+              <a href="#consultancy-booking" class="jum-builder-menu-item" role="menuitem" data-target="consultancy-booking">
+                <span class="jum-builder-menu-icon" style="background:linear-gradient(135deg, rgba(124,58,237,0.15), rgba(167,139,250,0.25));color:#6D28D9;">🤝</span>
+                <div class="jum-builder-menu-info">
+                  <div class="jum-builder-menu-title-row">
+                    <span class="jum-builder-menu-title">Campus Inclusion Advisory</span>
+                    <span class="nav-badge badge-rose">Support</span>
+                  </div>
+                  <span class="jum-builder-menu-desc">School accessibility audits &amp; teacher CPD</span>
+                </div>
+              </a>
+            </li>
+            <li class="jum-builder-menu-footer" role="none">
+              <a href="#content-builder" class="jum-builder-quick-launch" data-target="content-builder">
+                <span>⚡ Quick Launch: Step 1 Scope &amp; Grade</span>
+                <span class="jum-launch-arrow">→</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="nav-mobile">
@@ -186,16 +276,27 @@
     </div>
       <a href="blog.html" class="nav-mobile-link" data-nav="blog">Blog <span class="nav-badge badge-blue">Hub</span></a>
       <a href="consultancy.html" class="nav-mobile-link" data-nav="consultancy">Consultancy</a>
-      <!-- Active Jumuishi link in mobile nav -->
-      <a href="jumuishi-learning-hub.html" class="nav-mobile-link active" data-nav="jumuishi" style="color:var(--jum-teal);font-weight:700;">
-        Jumuishi Learning Hub <span class="nav-badge-jum">Inclusive</span>
-      </a>
+      <!-- Active Jumuishi link in mobile nav with expandable builder suite sublinks -->
+      <div class="nav-mobile-dropdown">
+        <a href="jumuishi-learning-hub.html" class="nav-mobile-link active" data-nav="jumuishi" style="color:var(--jum-teal);font-weight:700;">
+          Jumuishi Learning Hub <span class="nav-badge-jum">Inclusive</span>
+        </a>
+        <div class="nav-mobile-sublinks">
+          <a href="#content-builder" class="nav-mobile-sublink jum-mobile-builder-sublink" data-target="content-builder"><span>🚀</span> 7-Step CBC Wizard <span class="nav-badge badge-teal">Core</span></a>
+          <a href="#course-studio" class="nav-mobile-sublink jum-mobile-builder-sublink" data-action="courses" data-target="course-studio"><span>📚</span> Course Studio &amp; Curricula</a>
+          <a href="#course-studio" class="nav-mobile-sublink jum-mobile-builder-sublink" data-action="templates" data-target="course-studio"><span>📋</span> Special Needs Templates <span class="nav-badge badge-amber">8 Cards</span></a>
+          <a href="#resource-library" class="nav-mobile-sublink jum-mobile-builder-sublink" data-target="resource-library"><span>📂</span> Adapted Resource Library</a>
+          <a href="#sample-resource" class="nav-mobile-sublink jum-mobile-builder-sublink" data-target="sample-resource"><span>🔍</span> Differentiation Demo</a>
+          <a href="#consultancy-booking" class="nav-mobile-sublink jum-mobile-builder-sublink" data-target="consultancy-booking"><span>🤝</span> Inclusion Advisory &amp; CPD</a>
+        </div>
+      </div>
       <a href="schools.html" class="nav-mobile-link" data-nav="schools">Institutions</a>
       <a href="contact.html" class="nav-mobile-link" data-nav="contact">Contact</a>
     
   </div>
-    <div class="nav-mobile-actions">
-      <a href="#content-builder" class="btn btn-primary btn-md" style="background:var(--jum-teal);border-color:var(--jum-teal);">Launch Content Builder</a>
+    <div class="nav-mobile-actions jum-mobile-actions-dual">
+      <a href="#content-builder" class="btn btn-primary btn-md jum-mobile-btn-teal" style="background:var(--jum-teal);border-color:var(--jum-teal);" data-target="content-builder">🚀 Launch 7-Step Wizard</a>
+      <a href="#course-studio" class="btn btn-outline btn-md jum-mobile-btn-outline" data-target="course-studio">📚 Course Studio</a>
     </div>
   </div>
 
