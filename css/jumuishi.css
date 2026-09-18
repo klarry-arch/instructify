@@ -17,6 +17,7 @@
   --jum-teal:          #0F8B8D;
   --jum-teal-hover:    #0D7A7C;
   --jum-teal-light:    #14B8A6;
+  --jum-teal-glow:     rgba(15, 139, 141, 0.28);
   --jum-teal-bg:       #F0FDFA;
   --jum-teal-border:   #99F6E4;
 
@@ -32,55 +33,68 @@
   --jum-green-bg:      #F0FDF4;
   --jum-green-border:  #86EFAC;
 
-  /* Warm Coral (CTA / Engagement) */
+  /* Warm Coral & Sunrise (CTA / Engagement) */
   --jum-coral:         #F97316;
   --jum-coral-hover:   #EA580C;
   --jum-coral-bg:      #FFF7ED;
   --jum-coral-border:  #FDBA74;
+  --jum-coral-glow:    rgba(249, 115, 22, 0.32);
 
-  /* Empowerment Purple */
+  /* Empowerment Purple (Neurodiversity) */
   --jum-purple:        #7C3AED;
   --jum-purple-hover:  #6D28D9;
   --jum-purple-bg:     #F5F3FF;
   --jum-purple-border: #C4B5FD;
 
-  /* Accent Gold */
+  /* Accent Gold / Amber */
   --jum-gold:          #F59E0B;
   --jum-gold-hover:    #D97706;
   --jum-gold-bg:       #FFFBEB;
   --jum-gold-border:   #FCD34D;
 
-  /* Neutral Palette */
+  /* Neutral Surface Palette */
   --jum-bg:            #F8FAFC;
   --jum-surface:       #FFFFFF;
+  --jum-surface-soft:  #F8FAFC;
+  --jum-surface-card:  #FFFFFF;
   --jum-border:        #E2E8F0;
-  --jum-text-primary:  #1E293B;
-  --jum-text-secondary:#64748B;
+  --jum-border-strong: #CBD5E1;
+  --jum-text-primary:  #0F172A;
+  --jum-text-secondary:#475569;
+  --jum-text-muted:    #64748B;
 
-  /* Accessible contrast surfaces */
-  --jum-surface-warm:  #FEFDF8;
-  --jum-surface-cool:  #F8FAFF;
+  /* Hero Midnight Oceanic Palette */
+  --jum-hero-bg:         #070F26;
+  --jum-hero-text:       #F8FAFC;
+  --jum-hero-text-muted: #CBD5E1;
+  --jum-hero-glass-bg:   rgba(255, 255, 255, 0.08);
+  --jum-hero-glass-border: rgba(255, 255, 255, 0.14);
 
-  /* Standardized Typography Sizes */
-  --jum-font-hero:     clamp(56px, 5.5vw, 64px);
-  --jum-font-h2:       clamp(32px, 3.5vw, 40px);
-  --jum-font-card:     clamp(20px, 2vw, 24px);
-  --jum-font-body:     clamp(16px, 1.2vw, 18px);
-  --jum-font-meta:     14px;
+  /* Standardized & Balanced Typography Scale */
+  --jum-font-hero:     clamp(38px, 4.4vw, 54px);
+  --jum-font-h1:       clamp(32px, 3.8vw, 44px);
+  --jum-font-h2:       clamp(28px, 3.2vw, 36px);
+  --jum-font-card:     clamp(19px, 2vw, 22px);
+  --jum-font-lead:     clamp(15.5px, 1.18vw, 17.5px);
+  --jum-font-body:     15.5px;
+  --jum-font-meta:     13.5px;
+  --jum-font-xs:       12px;
 
   /* Modern Shadow System */
   --jum-shadow-sm:     0 2px 4px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
-  --jum-shadow-md:     0 4px 6px -1px rgba(15, 23, 42, 0.04), 0 10px 15px -3px rgba(15, 23, 42, 0.06);
-  --jum-shadow-lg:     0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
-  --jum-shadow-hover:  0 20px 30px -4px rgba(15, 139, 141, 0.16), 0 8px 12px -2px rgba(15, 23, 42, 0.05);
+  --jum-shadow-md:     0 4px 12px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+  --jum-shadow-lg:     0 16px 32px -4px rgba(15, 23, 42, 0.08), 0 6px 12px -3px rgba(15, 23, 42, 0.04);
+  --jum-shadow-hover:  0 20px 36px -4px rgba(15, 139, 141, 0.18), 0 6px 12px -2px rgba(15, 23, 42, 0.06);
+  --jum-shadow-hero-card: 0 20px 48px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.12);
 
   /* Modern Radii */
-  --jum-radius-card:   22px;
+  --jum-radius-card:   20px;
   --jum-radius-pill:   9999px;
   --jum-radius-btn:    9999px;
-  --jum-radius-sm:     12px;
-  --jum-radius-md:     16px;
-  --jum-radius-lg:     24px;
+  --jum-radius-sm:     10px;
+  --jum-radius-md:     14px;
+  --jum-radius-lg:     20px;
+  --jum-radius-xl:     26px;
 
   /* Builder */
   --jum-builder-bg:    #F8FAFF;
@@ -452,85 +466,87 @@ html.jum-text-sm  { font-size: 14px; }
 /* Modern Section Header — Refined & Balanced */
 .jum-section-header {
   text-align: center;
-  max-width: 760px;
-  margin: 0 auto 56px;
+  max-width: 780px;
+  margin: 0 auto 52px;
 }
 .jum-section-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   background: var(--jum-teal-bg);
-  color: var(--jum-teal);
-  border: 1.5px solid rgba(15, 139, 141, 0.22);
+  color: #0F766E;
+  border: 1.5px solid rgba(15, 139, 141, 0.25);
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 1.4px;
+  letter-spacing: 1.3px;
   text-transform: uppercase;
   padding: 6px 18px;
-  border-radius: var(--radius-full);
-  margin-bottom: 18px;
+  border-radius: var(--jum-radius-pill);
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(15, 139, 141, 0.06);
 }
 .jum-section-eyebrow.teal {
   background: var(--jum-teal-bg);
-  color: var(--jum-teal);
-  border-color: rgba(15, 139, 141, 0.25);
+  color: #0F766E;
+  border-color: rgba(15, 139, 141, 0.28);
 }
 .jum-section-eyebrow.green {
   background: var(--jum-green-bg);
-  color: var(--jum-green);
-  border-color: rgba(22, 163, 74, 0.25);
+  color: #166534;
+  border-color: rgba(22, 163, 74, 0.28);
 }
 .jum-section-eyebrow.gold {
   background: var(--jum-gold-bg);
-  color: #92400E;
-  border-color: rgba(245, 158, 11, 0.25);
+  color: #B45309;
+  border-color: rgba(245, 158, 11, 0.28);
 }
 .jum-section-eyebrow.purple {
   background: var(--jum-purple-bg);
-  color: var(--jum-purple);
-  border-color: rgba(124, 58, 237, 0.25);
+  color: #6D28D9;
+  border-color: rgba(124, 58, 237, 0.28);
 }
 .jum-section-title {
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: clamp(32px, 3.5vw, 40px);
-  font-weight: 800;
-  line-height: 1.20;
-  letter-spacing: -0.025em;
+  font-size: clamp(28px, 3.2vw, 38px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.022em;
   color: var(--jum-text-primary);
   margin-bottom: 16px;
 }
 .jum-section-subtitle {
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.2vw, 18px);
-  line-height: 1.75;
+  font-size: clamp(15.5px, 1.15vw, 17.5px);
+  line-height: 1.72;
   color: var(--jum-text-secondary);
   margin: 0 auto;
   max-width: 720px;
 }
 
 /* ══════════════════════════════════════════════════════════════
-   HERO SECTION
+   HERO SECTION — Premium Midnight Oceanic Gradient
    ══════════════════════════════════════════════════════════════ */
 .jumuishi-hero {
   position: relative;
-  background: linear-gradient(135deg, #F0FDF9 0%, #EFF6FF 35%, #FAF5FF 70%, #FFFBEB 100%);
-  padding: clamp(48px, 5.5vw, 68px) 0 clamp(44px, 4.5vw, 56px);
+  background:
+    radial-gradient(circle at 12% 25%, rgba(15, 139, 141, 0.28) 0%, transparent 45%),
+    radial-gradient(circle at 88% 20%, rgba(37, 99, 235, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(249, 115, 22, 0.14) 0%, transparent 50%),
+    linear-gradient(140deg, #060E24 0%, #0A1938 35%, #0C284C 70%, #0A213D 100%);
+  padding: clamp(56px, 6.5vw, 80px) 0 clamp(52px, 5.5vw, 68px);
   overflow: hidden;
   min-height: auto;
   display: flex;
   align-items: center;
-  border-bottom: 1.5px solid rgba(15, 139, 141, 0.12);
+  border-bottom: 1px solid rgba(45, 212, 191, 0.18);
 }
 .jumuishi-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 15% 40%, rgba(15, 139, 141, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 85% 25%, rgba(37, 99, 235, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 85%, rgba(249, 115, 22, 0.06) 0%, transparent 50%),
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f8b8d' fill-opacity='0.035'%3E%3Ccircle cx='30' cy='30' r='2.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1.2px, transparent 1.2px);
+  background-size: 32px 32px;
   pointer-events: none;
 }
 
@@ -541,8 +557,8 @@ html.jum-text-sm  { font-size: 14px; }
 
 .jumuishi-hero-grid {
   display: grid;
-  grid-template-columns: 1.12fr 0.88fr;
-  gap: 48px;
+  grid-template-columns: 1.14fr 0.86fr;
+  gap: 52px;
   align-items: center;
 }
 @media (max-width: 1024px) {
@@ -557,7 +573,7 @@ html.jum-text-sm  { font-size: 14px; }
   }
   .jumuishi-hero {
     min-height: auto;
-    padding: 48px 0 44px;
+    padding: 52px 0 48px;
   }
 }
 
@@ -565,23 +581,26 @@ html.jum-text-sm  { font-size: 14px; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #FFFFFF;
-  border: 1.5px solid rgba(15, 139, 141, 0.28);
-  color: #0F766E;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  color: #2DD4BF;
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  padding: 7px 18px;
-  border-radius: var(--radius-full);
-  margin-bottom: 16px;
-  box-shadow: 0 2px 10px rgba(15, 139, 141, 0.08);
+  padding: 6px 16px;
+  border-radius: var(--jum-radius-pill);
+  margin-bottom: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.20);
 }
 .jum-hero-eyebrow-dot {
   width: 8px;
   height: 8px;
   background: var(--jum-coral, #F97316);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
   border-radius: 50%;
   animation: pulse 2s infinite;
   flex-shrink: 0;
@@ -593,48 +612,56 @@ html.jum-text-sm  { font-size: 14px; }
 
 .jum-hero-h1 {
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: clamp(34px, 3.6vw, 46px);
+  font-size: clamp(38px, 4.4vw, 54px);
   font-weight: 800;
-  line-height: 1.18;
-  letter-spacing: -0.025em;
-  color: #0F172A;
-  margin-bottom: 16px;
+  line-height: 1.16;
+  letter-spacing: -0.028em;
+  color: #F8FAFC;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
 }
 .jum-hero-h1 .highlight-teal {
-  background: linear-gradient(135deg, #0F8B8D 0%, #0284C7 100%);
+  background: linear-gradient(135deg, #2DD4BF 0%, #38BDF8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 800;
+  filter: drop-shadow(0 2px 14px rgba(45, 212, 191, 0.35));
 }
 .jum-hero-h1 .highlight-gold {
-  background: linear-gradient(135deg, #EA580C 0%, #F59E0B 100%);
+  background: linear-gradient(135deg, #FB923C 0%, #FBBF24 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 800;
+  filter: drop-shadow(0 2px 14px rgba(251, 146, 60, 0.35));
 }
 
 .jum-hero-subtitle {
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: clamp(15px, 1.15vw, 17px);
-  line-height: 1.65;
-  color: #334155;
-  margin-bottom: 16px;
-  max-width: 540px;
+  font-size: clamp(15.5px, 1.18vw, 17.5px);
+  line-height: 1.72;
+  color: #CBD5E1;
+  margin-bottom: 22px;
+  max-width: 550px;
+  font-weight: 400;
 }
 .jum-hero-trust {
   font-family: 'Inter', var(--font-body), sans-serif;
   font-size: 13.5px;
-  color: #475569;
-  margin-bottom: 22px;
+  color: #CCFBF1;
+  margin-bottom: 26px;
   font-style: normal;
-  line-height: 1.55;
-  background: rgba(15, 139, 141, 0.05);
-  border-left: 3.5px solid #0F8B8D;
-  padding: 10px 16px;
-  border-radius: 0 10px 10px 0;
-  max-width: 540px;
+  line-height: 1.62;
+  background: rgba(15, 139, 141, 0.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(45, 212, 191, 0.28);
+  border-left: 4px solid #2DD4BF;
+  padding: 12px 18px;
+  border-radius: 0 12px 12px 0;
+  max-width: 550px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .jum-hero-ctas {
@@ -649,15 +676,20 @@ html.jum-text-sm  { font-size: 14px; }
 }
 
 .jum-hero-relationship {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
   padding: 14px 18px;
   font-size: 13px;
-  color: #475569;
-  line-height: 1.6;
-  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
-  max-width: 540px;
+  color: #CBD5E1;
+  line-height: 1.62;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.20);
+  max-width: 550px;
+}
+.jum-hero-relationship strong {
+  color: #FFFFFF;
 }
 
 .jum-hero-visual {
@@ -665,8 +697,8 @@ html.jum-text-sm  { font-size: 14px; }
 }
 .jum-hero-img {
   width: 100%;
-  border-radius: 24px;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.30), 0 0 0 1px rgba(255,255,255,0.10);
+  border-radius: 26px;
+  box-shadow: 0 28px 70px -10px rgba(0, 0, 0, 0.60), 0 0 0 1px rgba(255, 255, 255, 0.15);
   display: block;
   aspect-ratio: 16/11;
   object-fit: cover;
@@ -675,32 +707,32 @@ html.jum-text-sm  { font-size: 14px; }
 /* Hero floating stats — glassmorphism */
 .jum-hero-stat {
   position: absolute;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.90);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(255, 255, 255, 0.60);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
   border-radius: 18px;
-  padding: 14px 20px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.04);
+  padding: 12px 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24), 0 2px 6px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   gap: 12px;
-  min-width: 180px;
+  min-width: 175px;
   z-index: 5;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 .jum-hero-stat:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.32);
 }
 .jum-hero-stat-icon {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 20px;
   flex-shrink: 0;
 }
 .jum-hero-stat-icon.teal { background: var(--jum-teal-bg); }
@@ -710,14 +742,14 @@ html.jum-text-sm  { font-size: 14px; }
   font-family: 'Inter', var(--font-body), sans-serif;
   font-size: 11.5px;
   font-weight: 500;
-  color: var(--jum-text-secondary);
+  color: #64748B;
   line-height: 1.3;
 }
 .jum-hero-stat-value {
   font-family: 'Poppins', var(--font-heading), sans-serif;
   font-size: 16px;
-  font-weight: 800;
-  color: var(--jum-text-primary);
+  font-weight: 700;
+  color: #0F172A;
   line-height: 1.2;
 }
 .jum-hero-stat.stat-1 { bottom: -14px; left: -14px; }
@@ -737,27 +769,30 @@ html.jum-text-sm  { font-size: 14px; }
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: var(--jum-coral, #F97316);
+  background: linear-gradient(135deg, #FF6B00 0%, #F5812D 100%);
   color: #fff;
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: 15.5px;
+  font-size: 15px;
   font-weight: 700;
-  padding: 15px 32px;
+  padding: 14px 30px;
   border-radius: var(--jum-radius-btn, 9999px);
   border: 2px solid transparent;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 18px rgba(249,115,22,0.32), 0 1px 3px rgba(0,0,0,0.06);
+  box-shadow: 0 6px 20px rgba(245, 129, 45, 0.36), 0 2px 4px rgba(0, 0, 0, 0.08);
   white-space: nowrap;
-  min-height: 52px;
+  min-height: 50px;
   letter-spacing: 0.01em;
 }
 .btn-jum-primary:hover, .btn-jum-primary:focus-visible {
-  background: var(--jum-coral-hover, #EA580C);
+  background: linear-gradient(135deg, #EA580C 0%, #F5812D 100%);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(249,115,22,0.45), 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 28px rgba(245, 129, 45, 0.50), 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+.btn-jum-primary:active {
+  transform: translateY(0);
 }
 
 .btn-jum-secondary {
@@ -768,24 +803,42 @@ html.jum-text-sm  { font-size: 14px; }
   background: #FFFFFF;
   color: #2563EB;
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 700;
-  padding: 14px 28px;
+  padding: 13px 26px;
   border-radius: var(--jum-radius-btn, 9999px);
   border: 1.5px solid #2563EB;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
-  min-height: 50px;
-  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.08);
+  min-height: 48px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
 }
 .btn-jum-secondary:hover, .btn-jum-secondary:focus-visible {
   background: #EFF6FF;
   border-color: #1D4ED8;
   color: #1D4ED8;
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.16);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
+}
+
+/* Hero specific button styling */
+.jumuishi-hero .btn-jum-secondary {
+  background: rgba(255, 255, 255, 0.10);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.20);
+}
+.jumuishi-hero .btn-jum-secondary:hover,
+.jumuishi-hero .btn-jum-secondary:focus-visible {
+  background: rgba(255, 255, 255, 0.20);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.30);
 }
 
 .btn-jum-teal {
@@ -919,19 +972,19 @@ html.jum-text-sm  { font-size: 14px; }
 .jum-philosophy-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
+  gap: 26px;
 }
 .jum-philosophy-card {
   background: var(--jum-surface, #FFFFFF);
   border: 1.5px solid var(--jum-border, #E2E8F0);
-  border-radius: 22px;
-  padding: 36px 30px 30px;
+  border-radius: var(--jum-radius-card, 20px);
+  padding: 34px 28px 28px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 16px rgba(15, 23, 42, 0.04);
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .jum-philosophy-card::before {
   content: '';
@@ -946,8 +999,8 @@ html.jum-text-sm  { font-size: 14px; }
 .jum-philosophy-card.card-green::before { background: var(--jum-green); }
 
 .jum-philosophy-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.10);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
   border-color: rgba(15, 139, 141, 0.30);
 }
 .jum-philosophy-card:hover::before {
@@ -955,14 +1008,14 @@ html.jum-text-sm  { font-size: 14px; }
 }
 
 .jum-philo-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 16px;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
-  margin-bottom: 22px;
+  font-size: 28px;
+  margin-bottom: 20px;
   flex-shrink: 0;
 }
 .jum-philo-icon.teal   { background: var(--jum-teal-bg); }
@@ -972,67 +1025,65 @@ html.jum-text-sm  { font-size: 14px; }
 
 .jum-philo-title {
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--jum-text-primary);
-  margin-bottom: 12px;
-  line-height: 1.3;
+  margin-bottom: 10px;
+  line-height: 1.32;
+  letter-spacing: -0.015em;
 }
 .jum-philo-desc {
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: 15px;
+  font-size: 14.5px;
   color: var(--jum-text-secondary);
-  line-height: 1.72;
+  line-height: 1.68;
   margin: 0;
 }
 
 /* Highlight callout & Showcase */
 .jum-highlight-callout {
   background: linear-gradient(135deg, #0F8B8D 0%, #2563EB 100%);
-  border-radius: 24px;
-  padding: 40px 48px;
+  border-radius: 22px;
+  padding: 36px 44px;
   color: #fff;
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: clamp(16px, 2vw, 18px);
-  line-height: 1.75;
+  font-size: clamp(16px, 1.8vw, 18px);
+  line-height: 1.72;
   font-style: italic;
   text-align: center;
   max-width: 800px;
-  margin: 56px auto 0;
+  margin: 52px auto 0;
   position: relative;
+  box-shadow: 0 12px 32px rgba(15, 139, 141, 0.25);
 }
 .jum-highlight-callout::before {
   content: '\201C';
   position: absolute;
-  top: -12px;
-  left: 36px;
-  font-size: 80px;
-  color: rgba(255,255,255,0.18);
+  top: -10px;
+  left: 32px;
+  font-size: 76px;
+  color: rgba(255,255,255,0.20);
   font-family: Georgia, serif;
   line-height: 1;
 }
 
 .jum-philosophy-showcase {
-  margin-top: 56px;
-  background: linear-gradient(135deg, #091540 0%, #0F2D5C 45%, #0F8B8D 100%);
-  border-radius: 28px;
-  padding: 40px;
+  margin-top: 52px;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(249, 115, 22, 0.15) 0%, transparent 55%),
+    linear-gradient(140deg, #060E24 0%, #0A1E3C 50%, #0C344D 100%);
+  border: 1px solid rgba(45, 212, 191, 0.22);
+  border-radius: 24px;
+  padding: 38px;
   color: #fff;
-  box-shadow: var(--jum-shadow-lg);
+  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   position: relative;
-}
-.jum-philosophy-showcase::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 85% 15%, rgba(249, 115, 22, 0.14) 0%, transparent 60%);
-  pointer-events: none;
 }
 .jum-philosophy-showcase-grid {
   display: grid;
   grid-template-columns: 1fr 1.25fr;
-  gap: 40px;
+  gap: 36px;
   align-items: center;
   position: relative;
   z-index: 2;
@@ -1045,8 +1096,8 @@ html.jum-text-sm  { font-size: 14px; }
 }
 .jum-philosophy-img-box img {
   width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 16px 36px rgba(0,0,0,0.30);
+  border-radius: 18px;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.35);
   object-fit: cover;
   aspect-ratio: 4/3;
   display: block;
@@ -1055,56 +1106,57 @@ html.jum-text-sm  { font-size: 14px; }
   position: relative;
 }
 .quote-mark {
-  font-size: 64px;
+  font-size: 58px;
   font-family: Georgia, serif;
   line-height: 0.8;
   color: #5EEAD4;
-  opacity: 0.75;
+  opacity: 0.85;
   display: block;
   margin-bottom: 12px;
 }
 .quote-text {
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: clamp(18px, 1.8vw, 22px);
-  line-height: 1.65;
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.62;
   font-style: italic;
-  color: #FFFFFF;
-  margin: 0 0 20px 0;
+  color: #F8FAFC;
+  margin: 0 0 18px 0;
   font-weight: 500;
 }
 .quote-attribution {
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  font-weight: 600;
+  color: #CBD5E1;
   letter-spacing: 0.5px;
 }
 
 /* ══════════════════════════════════════════════════════════════
-   SUPPORT NEEDS CARDS
+   SUPPORT NEEDS CARDS — 9 Individualized Categories
    ══════════════════════════════════════════════════════════════ */
 .jum-support-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 26px;
+  gap: 24px;
 }
 
 .jum-support-card {
   background: var(--jum-surface, #FFFFFF);
   border: 1.5px solid var(--jum-border, #E2E8F0);
-  border-radius: 22px;
-  padding: 32px 28px;
+  border-radius: var(--jum-radius-card, 20px);
+  padding: 30px 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 22px;
-  box-shadow: var(--jum-shadow-md);
+  gap: 20px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
 }
 .jum-support-card:hover,
 .jum-support-card:focus-within {
-  box-shadow: var(--jum-shadow-hover);
+  box-shadow: 0 16px 36px rgba(15, 139, 141, 0.12);
   border-color: rgba(15, 139, 141, 0.35);
   transform: translateY(-5px);
 }
@@ -1116,29 +1168,30 @@ html.jum-text-sm  { font-size: 14px; }
 }
 
 .jum-support-icon {
-  width: 58px;
-  height: 58px;
-  border-radius: 18px;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 26px;
   flex-shrink: 0;
 }
 
 .jum-support-card-name {
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: clamp(20px, 1.8vw, 22px);
+  font-size: clamp(18.5px, 1.6vw, 21px);
   font-weight: 700;
   color: var(--jum-text-primary);
   line-height: 1.3;
-  margin-bottom: 8px;
+  letter-spacing: -0.015em;
+  margin-bottom: 6px;
 }
 .jum-support-card-desc {
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: 14.5px;
+  font-size: 14px;
   color: var(--jum-text-secondary);
-  line-height: 1.68;
+  line-height: 1.65;
   margin: 0;
 }
 
@@ -1149,19 +1202,20 @@ html.jum-text-sm  { font-size: 14px; }
 }
 .jum-adaptation-tag {
   background: var(--jum-bg, #F8FAFC);
-  color: var(--jum-text-primary);
+  color: #334155;
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 500;
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: 9999px;
   border: 1px solid var(--jum-border, #E2E8F0);
   line-height: 1.4;
   transition: all 0.2s ease;
 }
 .jum-support-card:hover .jum-adaptation-tag {
-  background: #FFFFFF;
+  background: #F0FDFA;
   border-color: rgba(15, 139, 141, 0.25);
+  color: #0F766E;
 }
 
 .jum-support-card-footer {
@@ -1173,30 +1227,41 @@ html.jum-text-sm  { font-size: 14px; }
 .jum-support-card[data-category="down-syndrome"] .jum-support-icon { background: #FFF7ED; }
 .jum-support-card[data-category="deaf"] .jum-support-icon { background: var(--jum-teal-bg); }
 .jum-support-card[data-category="communication"] .jum-support-icon { background: var(--jum-sky-bg); }
-.jum-support-card[data-category="vision"] .jum-support-icon { background: #FDF4FF; }
+.jum-support-card[data-category="vision"] .jum-support-icon { background: #FFFBEB; }
 .jum-support-card[data-category="physical"] .jum-support-icon { background: var(--jum-green-bg); }
-.jum-support-card[data-category="autism"] .jum-support-icon { background: var(--jum-gold-bg); }
+.jum-support-card[data-category="autism"] .jum-support-icon { background: var(--jum-purple-bg); }
 .jum-support-card[data-category="adhd"] .jum-support-icon { background: #FFF1F2; }
-.jum-support-card[data-category="multiple"] .jum-support-icon { background: var(--jum-purple-bg, #F5F3FF); }
+.jum-support-card[data-category="multiple"] .jum-support-icon { background: #F1F5F9; }
+
+/* Category specific border transitions on hover */
+.jum-support-card[data-category="dyslexia"]:hover { border-color: #93C5FD; }
+.jum-support-card[data-category="down-syndrome"]:hover { border-color: #FDBA74; }
+.jum-support-card[data-category="deaf"]:hover { border-color: #99F6E4; }
+.jum-support-card[data-category="communication"]:hover { border-color: #A5B4FC; }
+.jum-support-card[data-category="vision"]:hover { border-color: #FDE68A; }
+.jum-support-card[data-category="physical"]:hover { border-color: #86EFAC; }
+.jum-support-card[data-category="autism"]:hover { border-color: #C4B5FD; }
+.jum-support-card[data-category="adhd"]:hover { border-color: #FDA4AF; }
+.jum-support-card[data-category="multiple"]:hover { border-color: #CBD5E1; }
 
 /* Disclaimer notice */
 .jum-disclaimer {
-  background: var(--jum-gold-bg);
-  border: 1.5px solid var(--jum-gold-border);
-  border-left: 5px solid var(--jum-gold);
+  background: #FFFBEB;
+  border: 1.5px solid #FDE68A;
+  border-left: 4px solid #F59E0B;
   border-radius: 14px;
-  padding: 20px 26px;
+  padding: 18px 24px;
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: 14px;
-  line-height: 1.68;
+  font-size: 13.5px;
+  line-height: 1.62;
   color: #92400E;
-  margin-top: 44px;
+  margin-top: 40px;
   display: flex;
   align-items: flex-start;
   gap: 12px;
 }
 .jum-disclaimer-icon {
-  font-size: 22px;
+  font-size: 20px;
   flex-shrink: 0;
   margin-top: 1px;
 }
@@ -1214,47 +1279,48 @@ html.jum-text-sm  { font-size: 14px; }
 .jum-step-card {
   background: var(--jum-surface, #fff);
   border: 1.5px solid var(--jum-border, #E2E8F0);
-  border-radius: 20px;
-  padding: 34px 24px;
+  border-radius: var(--jum-radius-card, 20px);
+  padding: 32px 22px;
   text-align: center;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  box-shadow: var(--jum-shadow-sm);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
 }
 .jum-step-card:hover {
-  box-shadow: var(--jum-shadow-hover);
-  border-color: rgba(15, 139, 141, 0.35);
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.35);
   transform: translateY(-5px);
 }
 
 .jum-step-number {
-  width: 54px;
-  height: 54px;
+  width: 50px;
+  height: 50px;
   background: linear-gradient(135deg, var(--jum-sky, #2563EB) 0%, var(--jum-teal) 100%);
   color: #fff;
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 800;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 18px;
-  box-shadow: 0 8px 18px rgba(37,99,235,0.28);
+  margin: 0 auto 16px;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.28);
 }
 .jum-step-title {
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: 17px;
+  font-size: 16.5px;
   font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--jum-text-primary);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   line-height: 1.35;
 }
 .jum-step-desc {
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--jum-text-secondary);
-  line-height: 1.60;
+  line-height: 1.62;
   margin: 0;
 }
 
@@ -1271,23 +1337,26 @@ html.jum-text-sm  { font-size: 14px; }
 
 /* Builder Header */
 .jum-builder-header {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #0D9488 100%);
-  padding: 28px 40px;
+  background: linear-gradient(135deg, #0F8B8D 0%, #1D4ED8 60%, #2563EB 100%);
+  padding: 30px 40px;
   color: #fff;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.10);
 }
 .jum-builder-title {
-  font-family: var(--font-heading);
-  font-size: 22px;
-  font-weight: 800;
+  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
   margin-bottom: 6px;
   color: #fff;
 }
 .jum-builder-desc {
-  font-size: 14px;
-  opacity: 0.88;
-  line-height: 1.60;
+  font-family: 'Inter', var(--font-body), sans-serif;
+  font-size: 14.5px;
+  opacity: 0.92;
+  line-height: 1.62;
   margin: 0;
-  color: rgba(255,255,255,0.88);
+  color: rgba(255,255,255,0.92);
 }
 
 /* Privacy Notice */
@@ -2700,20 +2769,25 @@ html.jum-text-sm  { font-size: 14px; }
   background: var(--jum-bg, #F8FAFC);
 }
 .jum-cta-banner {
-  background: linear-gradient(135deg, #0F8B8D 0%, #0284C7 50%, #2563EB 100%);
-  border-radius: 32px;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(249, 115, 22, 0.18) 0%, transparent 55%),
+    radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.20) 0%, transparent 55%),
+    linear-gradient(135deg, #07172E 0%, #0C3E52 45%, #0F8B8D 100%);
+  border-radius: 30px;
+  border: 1px solid rgba(45, 212, 191, 0.25);
   padding: clamp(48px, 6vw, 68px) clamp(24px, 4vw, 48px);
   color: #FFFFFF;
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 20px 50px -10px rgba(15, 139, 141, 0.35);
+  box-shadow: 0 24px 60px -10px rgba(15, 23, 42, 0.35);
 }
 .jum-cta-banner::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(249, 115, 22, 0.15) 0%, transparent 60%);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
   pointer-events: none;
 }
 .jum-cta-content {
@@ -2724,26 +2798,42 @@ html.jum-text-sm  { font-size: 14px; }
 }
 .jum-cta-title {
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: clamp(32px, 4vw, 44px);
+  font-size: clamp(28px, 3.5vw, 40px);
   font-weight: 800;
-  line-height: 1.20;
+  line-height: 1.22;
   color: #FFFFFF;
   margin: 20px 0 16px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.024em;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
 }
 .jum-cta-subtitle {
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: clamp(16px, 1.3vw, 18px);
-  line-height: 1.72;
-  color: rgba(255, 255, 255, 0.92);
-  margin-bottom: 36px;
+  font-size: clamp(15.5px, 1.2vw, 17.5px);
+  line-height: 1.70;
+  color: #E2E8F0;
+  margin-bottom: 34px;
 }
 .jum-cta-actions {
   display: flex;
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 36px;
+  margin-bottom: 34px;
+}
+.jum-cta-banner .btn-jum-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.40);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.jum-cta-banner .btn-jum-secondary:hover,
+.jum-cta-banner .btn-jum-secondary:focus-visible {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 .jum-cta-perks {
   display: flex;
@@ -2751,16 +2841,16 @@ html.jum-text-sm  { font-size: 14px; }
   justify-content: center;
   flex-wrap: wrap;
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 13.5px;
+  color: #CBD5E1;
 }
 .jum-cta-perk {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
 }
 .perk-check {
-  color: #5EEAD4;
+  color: #2DD4BF;
   font-weight: 800;
 }
 
@@ -2779,7 +2869,12 @@ html.jum-text-sm  { font-size: 14px; }
   border: 1.5px solid var(--jum-border, #E2E8F0);
   border-radius: 16px;
   overflow: hidden;
-  transition: box-shadow 0.25s, border-color 0.25s;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  transition: all 0.25s ease;
+}
+.jum-faq-item:hover {
+  border-color: rgba(15, 139, 141, 0.35);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
 }
 .jum-faq-item:focus-within { border-color: var(--jum-teal); }
 
@@ -2788,30 +2883,34 @@ html.jum-text-sm  { font-size: 14px; }
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 20px 28px;
+  padding: 18px 24px;
   background: none;
   border: none;
   cursor: pointer;
   font-family: 'Poppins', var(--font-heading), sans-serif;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--jum-text-primary);
   text-align: left;
-  min-height: 60px;
+  min-height: 56px;
   line-height: 1.4;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 .jum-faq-question:hover { background: var(--jum-bg, #F8FAFC); }
-.jum-faq-question[aria-expanded="true"] { background: var(--jum-teal-bg); color: var(--jum-teal); }
+.jum-faq-question[aria-expanded="true"] {
+  background: var(--jum-teal-bg);
+  color: #0F766E;
+}
 
 .jum-faq-q-num {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   background: var(--jum-teal-bg);
-  color: var(--jum-teal);
-  font-size: 13px;
-  font-weight: 800;
+  color: #0F766E;
+  font-size: 12.5px;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2845,15 +2944,15 @@ html.jum-text-sm  { font-size: 14px; }
   max-height: 600px;
 }
 .jum-faq-answer-inner {
-  padding: 0 28px 24px 74px;
+  padding: 0 24px 22px 70px;
   font-family: 'Inter', var(--font-body), sans-serif;
-  font-size: 15px;
-  color: var(--jum-text-primary);
-  line-height: 1.75;
+  font-size: 14.5px;
+  color: #334155;
+  line-height: 1.70;
 }
 @media (max-width: 600px) {
   .jum-faq-answer-inner { padding: 0 16px 16px 16px; }
-  .jum-faq-question { padding: 16px 18px; font-size: 15px; }
+  .jum-faq-question { padding: 16px 18px; font-size: 14.5px; }
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -2864,13 +2963,13 @@ html.jum-text-sm  { font-size: 14px; }
   border: 1.5px solid var(--jum-border, #E2E8F0);
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.08);
   max-width: 800px;
   margin: 0 auto;
 }
 .jum-feedback-header {
-  background: linear-gradient(135deg, #0F8B8D 0%, #2563EB 100%);
-  padding: 36px 44px;
+  background: linear-gradient(135deg, #0F8B8D 0%, #1D4ED8 100%);
+  padding: 34px 40px;
   color: #fff;
 }
 .jum-feedback-body { padding: 40px 44px; }
