@@ -265,5 +265,55 @@ console.log('\n🛑 Cancellation & Timeout Tests');
   console.log('  ✅ 4.1 Safaricom ResultCode 1032 correctly marked order as CANCELLED');
 }
 
+// ─────────────────────────────────────────────────────────────────
+// 5. Option A (Paybill 247247 / 636445) & Option B (0143 024 416) Tests
+// ─────────────────────────────────────────────────────────────────
+console.log('\n💼 5. Paybill (Option A) & Direct M-Pesa (Option B) Tests');
+
+{
+  // 5.1 Option B line validation
+  const validation = validateKenyanPhone('0143 024 416');
+  assert.equal(validation.valid, true, 'FAIL 5.1: 0143 024 416 must be valid');
+  assert.equal(validation.normalised, '254143024416', 'FAIL 5.1: Must normalize to 254143024416');
+  console.log('  ✅ 5.1 Option B line 0143 024 416 successfully validated and normalised');
+}
+
+{
+  // 5.2 Manual Paybill verification test
+  const testRef = 'IK-2026-TESTPAY1';
+  const { req: mReq, res: mRes } = mockNodeReqRes('POST', '/api/verify-payment', {
+    orderReference: testRef,
+    method: 'paybill',
+    receiptNumber: 'TD78KL2901',
+    phone: '0712345678',
+    courseId: 'crs_002',
+    userName: 'Jane Wanjiku',
+    userEmail: 'jane@example.com',
+  });
+
+  await verifyPaymentHandler(mReq, mRes);
+  assert.equal(mRes.statusCode, 200, 'FAIL 5.2: Manual verification status code must be 200');
+  assert.equal(mRes.responseData.success, true, 'FAIL 5.2: Success must be true');
+  assert.equal(mRes.responseData.receiptNumber, 'TD78KL2901', 'FAIL 5.2: Receipt number must match');
+  assert.equal(mRes.responseData.method, 'paybill', 'FAIL 5.2: Method must be paybill');
+  assert.ok(mRes.responseData.whatsappUrl.includes('254143024416'), 'FAIL 5.2: WhatsApp link must point to 254143024416');
+  console.log('  ✅ 5.2 Manual Paybill code TD78KL2901 verified with enrollment confirmed');
+}
+
+{
+  // 5.3 Invalid short code rejection
+  const { req: errReq, res: errRes } = mockNodeReqRes('POST', '/api/verify-payment', {
+    orderReference: 'IK-2026-TESTERR',
+    method: 'paybill',
+    receiptNumber: 'ABC',
+  });
+
+  await verifyPaymentHandler(errReq, errRes);
+  assert.equal(errRes.statusCode, 400, 'FAIL 5.3: Short code must return 400');
+  assert.equal(errRes.responseData.success, false, 'FAIL 5.3: Success must be false');
+  console.log('  ✅ 5.3 Malformed/short M-Pesa receipt correctly rejected');
+}
+
 console.log('\n🎉 ALL TESTS PASSED SUCCESSFULLY! 100% Verified.\n');
 process.exit(0);
+

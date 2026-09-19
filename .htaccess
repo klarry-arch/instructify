@@ -30,6 +30,10 @@
 
   # ── API Routing ──
   RewriteRule ^api/contact/?$ api/contact.php [L,QSA]
+  RewriteRule ^api/create-order/?$ api/payment.php?action=create-order [L,QSA]
+  RewriteRule ^api/initiate-payment/?$ api/payment.php?action=initiate-payment [L,QSA]
+  RewriteRule ^api/verify-payment/?$ api/payment.php?action=verify-payment [L,QSA]
+  RewriteRule ^api/payment/?$ api/payment.php [L,QSA]
 
   # ── Clean URLs (serve .html extension automatically) ──
   RewriteCond %{REQUEST_FILENAME} !-d

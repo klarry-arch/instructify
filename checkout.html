@@ -95,6 +95,14 @@
     .pay-method-tab.active .tab-name { color: #2145E6; }
     .pay-panel { display: none; }
     .pay-panel.active { display: block; }
+    .btn-copy-tag {
+      background: #EEF3FF; color: #2145E6; border: 1px solid #C7D7FE;
+      border-radius: 6px; font-size: 0.72rem; font-weight: 700;
+      padding: 3px 8px; cursor: pointer; transition: all 0.15s ease;
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+    .btn-copy-tag:hover { background: #2145E6; color: #fff; }
+    .btn-copy-tag.copied { background: #16A34A; color: #fff; border-color: #16A34A; }
 
     /* ── Status screens ── */
     .status-screen { text-align: center; padding: 2rem 1rem; }
@@ -315,10 +323,15 @@
           </div>
 
           <div class="pay-method-tabs" role="tablist">
-            <button class="pay-method-tab active" id="tab-mpesa" role="tab" aria-selected="true"
+            <button class="pay-method-tab active" id="tab-paybill" role="tab" aria-selected="true"
+              aria-controls="panel-paybill" onclick="selectPayMethod('paybill')">
+              <span class="tab-icon">🏢</span>
+              <span class="tab-name">Paybill (Option A)</span>
+            </button>
+            <button class="pay-method-tab" id="tab-mpesa" role="tab" aria-selected="false"
               aria-controls="panel-mpesa" onclick="selectPayMethod('mpesa')">
               <span class="tab-icon">📱</span>
-              <span class="tab-name">M-Pesa</span>
+              <span class="tab-name">M-Pesa (Option B)</span>
             </button>
             <button class="pay-method-tab" id="tab-card" role="tab" aria-selected="false"
               aria-controls="panel-card" onclick="selectPayMethod('card')">
@@ -327,22 +340,118 @@
             </button>
           </div>
 
-          <!-- M-Pesa Panel -->
-          <div id="panel-mpesa" class="pay-panel active" role="tabpanel">
-            <div class="field-group">
-              <label class="field-label" for="mpesa-phone-input">Safaricom M-Pesa Number</label>
-              <input type="tel" id="mpesa-phone-input" class="field-input" inputmode="numeric"
-                placeholder="0712 345 678" maxlength="15" autocomplete="tel"
-                aria-describedby="mpesa-hint">
-              <div class="field-hint" id="mpesa-hint">Accepts: 07XX, 01XX, +2547XX, 2547XX formats</div>
-              <div class="field-error" id="mpesa-phone-error">Please enter a valid Safaricom number.</div>
+          <!-- ── Option A: Lipa na M-Pesa Paybill Panel ── -->
+          <div id="panel-paybill" class="pay-panel active" role="tabpanel">
+            <div style="background:#F8FAFC; border:2px solid #E2E8F0; border-radius:14px; padding:1.2rem; margin-bottom:1.25rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:6px;">
+                <span style="font-size:0.75rem; font-weight:700; color:#2145E6; text-transform:uppercase; letter-spacing:0.05em; background:#EEF3FF; padding:4px 10px; border-radius:99px;">
+                  Option A · Equity Paybill
+                </span>
+                <span style="font-size:0.8rem; color:#16A34A; font-weight:700;">● Recommended &bull; Instant</span>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
+                <div style="background:#fff; border:1px solid #E2E8F0; border-radius:10px; padding:10px 12px; position:relative;">
+                  <div style="font-size:0.72rem; color:#64748B; font-weight:600; text-transform:uppercase;">Business Number</div>
+                  <div style="font-size:1.25rem; font-weight:800; color:#0F172A; font-family:monospace; margin-top:2px; letter-spacing:1px;">247247</div>
+                  <button type="button" class="btn-copy-tag" onclick="copyText('247247', this)" aria-label="Copy business number 247247" style="position:absolute; top:8px; right:8px;">Copy</button>
+                </div>
+                <div style="background:#fff; border:1px solid #E2E8F0; border-radius:10px; padding:10px 12px; position:relative;">
+                  <div style="font-size:0.72rem; color:#64748B; font-weight:600; text-transform:uppercase;">Account Number</div>
+                  <div style="font-size:1.25rem; font-weight:800; color:#0F172A; font-family:monospace; margin-top:2px; letter-spacing:1px;">636445</div>
+                  <button type="button" class="btn-copy-tag" onclick="copyText('636445', this)" aria-label="Copy account number 636445" style="position:absolute; top:8px; right:8px;">Copy</button>
+                </div>
+              </div>
+
+              <div style="background:#fff; border:1px solid #E2E8F0; border-radius:10px; padding:10px 14px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.85rem; color:#64748B;">Payable Amount:</span>
+                <strong style="font-size:1.15rem; color:#16A34A; font-weight:800;" id="paybill-amount-display">KES 8,500</strong>
+              </div>
+
+              <div style="font-size:0.82rem; color:#475569; line-height:1.55; border-top:1px solid #E2E8F0; padding-top:10px;">
+                <strong style="color:#0F172A;">How to pay via M-Pesa:</strong>
+                <ol style="margin:6px 0 0 1.2rem; padding:0;">
+                  <li>Go to <strong>M-Pesa</strong> &gt; <strong>Lipa na M-Pesa</strong> &gt; <strong>Pay Bill</strong></li>
+                  <li>Enter Business No: <strong>247247</strong></li>
+                  <li>Enter Account No: <strong>636445</strong></li>
+                  <li>Enter Amount: <strong id="paybill-amount-text">KES 8,500</strong> and enter your M-Pesa PIN</li>
+                  <li>Paste the <strong>10-digit M-Pesa code</strong> (e.g. <code>TD78KL2901</code>) from your SMS receipt below:</li>
+                </ol>
+              </div>
             </div>
-            <button class="btn-enroll" id="btn-pay-mpesa" onclick="submitMpesa()">
-              📱 Pay KES <span id="pay-amount-mpesa">8,500</span> via M-Pesa
+
+            <div class="field-group">
+              <label class="field-label" for="paybill-code-input">M-Pesa Confirmation Code <span style="color:#DC2626;">*</span></label>
+              <input type="text" id="paybill-code-input" class="field-input" placeholder="e.g. TD78KL2901" maxlength="14" style="font-family:monospace; font-weight:700; text-transform:uppercase; letter-spacing:1.5px;" oninput="this.value = this.value.toUpperCase()">
+              <div class="field-hint">Enter the 10-character code from your Safaricom M-Pesa confirmation SMS.</div>
+              <div class="field-error" id="paybill-code-error">Please enter a valid 10-character M-Pesa code (e.g. TD78KL2901).</div>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="paybill-phone-input">Phone Number Used to Pay</label>
+              <input type="tel" id="paybill-phone-input" class="field-input" placeholder="0712 345 678" maxlength="15" autocomplete="tel">
+              <div class="field-hint">Your phone number for transaction audit and receipt matching.</div>
+            </div>
+
+            <button class="btn-enroll" id="btn-verify-paybill" onclick="submitPaybill()">
+              ✅ Verify Paybill Payment &amp; Enroll
             </button>
           </div>
 
-          <!-- Card Panel -->
+          <!-- ── Option B: M-Pesa Express & Direct Phone Panel ── -->
+          <div id="panel-mpesa" class="pay-panel" role="tabpanel">
+            <div style="background:#EEF3FF; border:1.5px solid #CBD5E1; border-radius:14px; padding:1.15rem; margin-bottom:1.25rem;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
+                <span style="font-size:0.75rem; font-weight:700; color:#2145E6; text-transform:uppercase; letter-spacing:0.05em; background:#DBEAFE; padding:4px 10px; border-radius:99px;">
+                  Option B · Instructify Kenya Line
+                </span>
+                <span style="font-size:0.85rem; color:#2145E6; font-weight:800; font-family:monospace;">0143 024 416</span>
+              </div>
+              <p style="font-size:0.84rem; color:#475569; margin:0 0 10px 0; line-height:1.5;">
+                You can trigger an <strong>Instant M-Pesa STK Prompt</strong> on your phone below, or send funds directly to our verified recipient line:
+              </p>
+              <div style="display:flex; gap:10px; align-items:center; background:#fff; border:1px solid #E2E8F0; border-radius:10px; padding:8px 12px; position:relative;">
+                <span style="font-size:1.3rem;">📱</span>
+                <div style="flex:1;">
+                  <div style="font-size:0.72rem; color:#64748B; font-weight:600; text-transform:uppercase;">Official Line / Recipient</div>
+                  <div style="font-size:1.1rem; font-weight:800; color:#0F172A; font-family:monospace;">0143 024 416</div>
+                </div>
+                <button type="button" class="btn-copy-tag" onclick="copyText('0143024416', this)" aria-label="Copy phone number 0143024416">Copy</button>
+              </div>
+            </div>
+
+            <!-- Sub-Option B1: STK Push -->
+            <div class="field-group">
+              <label class="field-label" for="mpesa-phone-input">Your Safaricom M-Pesa Number</label>
+              <input type="tel" id="mpesa-phone-input" class="field-input" inputmode="numeric"
+                placeholder="0712 345 678 or 0143 024 416" maxlength="15" autocomplete="tel"
+                aria-describedby="mpesa-hint">
+              <div class="field-hint" id="mpesa-hint">Accepts: 07XX, 01XX, +254... (Active M-Pesa lines)</div>
+              <div class="field-error" id="mpesa-phone-error">Please enter a valid phone number.</div>
+            </div>
+
+            <button class="btn-enroll" id="btn-pay-mpesa" onclick="submitMpesa()">
+              📱 Send STK Push Prompt (KES <span id="pay-amount-mpesa">8,500</span>)
+            </button>
+
+            <!-- Sub-Option B2: Direct code entry if sent manually to 0143 024 416 -->
+            <div style="margin-top:1.5rem; padding-top:1.2rem; border-top:1px dashed #CBD5E1;">
+              <div style="font-size:0.85rem; font-weight:700; color:#0F172A; margin-bottom:4px;">Already sent money directly to 0143 024 416?</div>
+              <p style="font-size:0.8rem; color:#64748B; margin-bottom:10px; line-height:1.4;">
+                Enter the M-Pesa confirmation code received from Safaricom to complete your enrollment:
+              </p>
+              <div style="display:flex; gap:8px;">
+                <label for="direct-code-input" class="sr-only" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0);">M-Pesa Transaction Code</label>
+                <input type="text" id="direct-code-input" class="field-input" placeholder="e.g. TD78KL2901" maxlength="14" style="font-family:monospace; font-weight:700; text-transform:uppercase;" oninput="this.value = this.value.toUpperCase()">
+                <button type="button" class="btn btn-primary" id="btn-verify-direct" onclick="submitDirectManual()" style="white-space:nowrap; padding:10px 16px; border-radius:10px; font-weight:700;">
+                  Verify &amp; Enroll
+                </button>
+              </div>
+              <div class="field-error" id="direct-code-error">Please enter a valid M-Pesa confirmation code.</div>
+            </div>
+          </div>
+
+          <!-- ── Card Panel ── -->
           <div id="panel-card" class="pay-panel" role="tabpanel">
             <p style="font-size:0.875rem;color:var(--text-muted, #475569);line-height:1.6;margin-bottom:1.25rem;">
               Click the button below to open the secure Paystack payment window.
@@ -394,12 +503,12 @@
         <!-- ── State: success ── -->
         <div id="screen-success" class="status-screen" style="display:none;">
           <div class="status-icon" style="background:#F0FDF4;border:3px solid #16A34A;font-size:2rem;">✅</div>
-          <div class="status-title" style="color:#166534;">Payment Successful!</div>
+          <div class="status-title" style="color:#166534;">Enrollment Confirmed!</div>
           <div class="status-sub" style="margin-bottom:1.25rem;">
-            You are now enrolled in <strong id="success-course-name">the course</strong>. A confirmation and receipt have been registered to your account.
+            You are now enrolled in <strong id="success-course-name">the course</strong>. A confirmation has been registered to your account and dispatched to our academic team.
           </div>
 
-          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:14px;padding:16px 20px;margin-bottom:1.5rem;text-align:left;font-size:13.5px;width:100%;max-width:360px;margin-left:auto;margin-right:auto;">
+          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:14px;padding:16px 20px;margin-bottom:1.5rem;text-align:left;font-size:13.5px;width:100%;max-width:380px;margin-left:auto;margin-right:auto;">
             <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
               <span style="color:#64748B;">Order Reference:</span>
               <strong id="success-ref" style="color:#0F172A;font-family:monospace;">—</strong>
@@ -407,6 +516,10 @@
             <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
               <span style="color:#64748B;">M-Pesa Receipt:</span>
               <strong id="success-receipt" style="color:#2145E6;font-family:monospace;font-weight:700;">—</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="color:#64748B;">Payment Method:</span>
+              <strong id="success-method" style="color:#0F172A;font-weight:600;">—</strong>
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
               <span style="color:#64748B;">Amount Paid:</span>
@@ -418,9 +531,14 @@
             </div>
           </div>
 
-          <a href="dashboard-learner.html" class="btn-enroll" style="text-decoration:none;margin-top:0.5rem;display:inline-block;width:100%;max-width:320px;">
-            🚀 Start Learning
-          </a>
+          <div style="display:flex; flex-direction:column; gap:10px; max-width:340px; margin:0 auto;">
+            <a href="dashboard-learner.html" class="btn-enroll" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;">
+              🚀 Go to Learner Dashboard
+            </a>
+            <a id="btn-whatsapp-receipt" href="https://wa.me/254143024416" target="_blank" rel="noopener" class="btn btn-outline" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-color:#25D366;color:#166534;background:#F0FDF4;font-weight:700;padding:12px;">
+              💬 WhatsApp Confirmation (0143 024 416)
+            </a>
+          </div>
         </div>
 
         <!-- ── State: failed / cancelled / timeout ── -->
@@ -521,6 +639,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('crumb-course').href = `course-detail.html?id=${course.id}`;
     document.getElementById('pay-amount-mpesa').textContent = course.price.toLocaleString();
     document.getElementById('pay-amount-card').textContent = course.price.toLocaleString();
+    const paybillAmtEl = document.getElementById('paybill-amount-display');
+    if (paybillAmtEl) paybillAmtEl.textContent = `KES ${course.price.toLocaleString()}`;
+    const paybillTxtEl = document.getElementById('paybill-amount-text');
+    if (paybillTxtEl) paybillTxtEl.textContent = `KES ${course.price.toLocaleString()}`;
   }
 
   // Pre-fill user details
@@ -614,9 +736,17 @@ function renderState(state) {
     document.getElementById('success-receipt').textContent = state.receiptNumber || 'Confirmed';
     const amountVal = state.payableAmountKes || (course ? course.price : 8500);
     document.getElementById('success-amount').textContent = `KES ${amountVal.toLocaleString()}`;
+    const methodEl = document.getElementById('success-method');
+    if (methodEl) {
+      methodEl.textContent = state.method === 'paybill' ? 'Paybill (247247 / 636445)' : (state.method === 'direct_mpesa' ? 'M-Pesa Direct (0143 024 416)' : 'M-Pesa Express');
+    }
     document.getElementById('success-date').textContent = new Date(state.paidAt || Date.now()).toLocaleDateString('en-KE', {
       day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
     });
+    const waBtn = document.getElementById('btn-whatsapp-receipt');
+    if (waBtn && state.whatsappUrl) {
+      waBtn.href = state.whatsappUrl;
+    }
     return;
   }
 
@@ -665,7 +795,93 @@ function selectPayMethod(method) {
     t.setAttribute('aria-selected', t.id === `tab-${method}`);
   });
   document.querySelectorAll('.pay-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById(`panel-${method}`).classList.add('active');
+  const targetPanel = document.getElementById(`panel-${method}`);
+  if (targetPanel) targetPanel.classList.add('active');
+}
+
+function copyText(text, btnEl) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btnEl.innerHTML;
+      btnEl.innerHTML = '✓ Copied';
+      btnEl.classList.add('copied');
+      setTimeout(() => {
+        btnEl.innerHTML = orig;
+        btnEl.classList.remove('copied');
+      }, 2000);
+    }).catch(() => {
+      prompt('Copy this number:', text);
+    });
+  } else {
+    prompt('Copy this number:', text);
+  }
+}
+
+async function submitPaybill() {
+  const codeInput = document.getElementById('paybill-code-input');
+  const code = (codeInput.value || '').trim().toUpperCase();
+  const phone = document.getElementById('paybill-phone-input').value.trim();
+  const errorEl = document.getElementById('paybill-code-error');
+
+  if (!code || code.length < 6) {
+    errorEl.classList.add('visible');
+    codeInput.classList.add('error');
+    codeInput.focus();
+    return;
+  }
+  errorEl.classList.remove('visible');
+  codeInput.classList.remove('error');
+
+  const btn = document.getElementById('btn-verify-paybill');
+  btn.disabled = true;
+  btn.innerHTML = '⏳ Verifying Payment…';
+
+  try {
+    await CheckoutEngine.verifyManualPayment({
+      method: 'paybill',
+      receiptNumber: code,
+      phone: phone || ''
+    });
+  } catch (err) {
+    if (window.showToast) window.showToast(err.message || 'Verification failed. Please check your code.', 'error');
+    btn.disabled = false;
+    btn.innerHTML = '✅ Verify Paybill Payment & Enroll';
+  }
+}
+
+async function submitDirectManual() {
+  const codeInput = document.getElementById('direct-code-input');
+  const code = (codeInput.value || '').trim().toUpperCase();
+  const errorEl = document.getElementById('direct-code-error');
+
+  if (!code || code.length < 6) {
+    if (errorEl) errorEl.classList.add('visible');
+    codeInput.classList.add('error');
+    codeInput.focus();
+    return;
+  }
+  if (errorEl) errorEl.classList.remove('visible');
+  codeInput.classList.remove('error');
+
+  const btn = document.getElementById('btn-verify-direct');
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '⏳ Verifying…';
+  }
+
+  try {
+    await CheckoutEngine.verifyManualPayment({
+      method: 'direct_mpesa',
+      receiptNumber: code,
+      phone: '0143024416'
+    });
+  } catch (err) {
+    if (window.showToast) window.showToast(err.message || 'Verification failed.', 'error');
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = 'Verify & Enroll';
+    }
+  }
 }
 
 function submitMpesa() {
