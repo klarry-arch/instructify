@@ -25,48 +25,40 @@
       position: relative;
     }
 
-    .cv-header-wrap {
-      max-width: 760px;
-      margin: 0 auto 44px auto;
-      text-align: center;
-    }
-
-    .cv-tag-pill {
-      display: inline-flex;
-      align-items: center;
+    .cv-badge-pill {
+      display: inline-flex !important;
+      align-items: center !important;
       gap: 8px;
-      background: #FFF3E8;
-      color: #CC3E00;
-      font-weight: 800;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 6px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(204, 62, 0, 0.2);
-      margin-bottom: 14px;
+      padding: 6px 18px !important;
+      border-radius: 999px !important;
+      background: #FFF0EB !important;
+      border: 1.5px solid #FFD4C2 !important;
+      color: #E24A00 !important;
+      font-size: 11.5px !important;
+      font-weight: 750 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      margin-bottom: 14px !important;
     }
 
     .cv-main-title {
       font-family: var(--font-heading), 'Poppins', sans-serif !important;
       font-size: 38px !important;
       font-weight: 850 !important;
-      color: #0F172A !important;
-      letter-spacing: -0.02em !important;
-      line-height: 1.2 !important;
+      color: #0B192C !important;
       margin: 0 0 14px 0 !important;
+      letter-spacing: -0.025em !important;
     }
 
-    .cv-title-accent {
-      background: linear-gradient(135deg, #FF4D00 0%, #F5812D 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .cv-main-title span.grad {
+      background: linear-gradient(135deg, #2145E6 0%, #FF4D00 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
     }
 
-    .cv-subtitle {
-      font-size: 17px !important;
-      color: #64748B !important;
-      line-height: 1.6 !important;
+    .cv-main-desc {
+      font-size: 16px !important;
+      color: #475569 !important;
       margin: 0 auto !important;
       max-width: 640px;
       font-weight: 450;
@@ -76,7 +68,7 @@
       display: grid !important;
       grid-template-columns: repeat(4, 1fr) !important;
       gap: 24px !important;
-      text-align: left !important;
+      text-align: center !important;
       margin-top: 10px;
     }
 
@@ -106,6 +98,8 @@
       overflow: hidden !important;
       display: flex !important;
       flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
       justify-content: space-between !important;
       box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02) !important;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -136,7 +130,9 @@
     .cv-card-top-row {
       display: flex !important;
       align-items: center !important;
-      justify-content: space-between !important;
+      justify-content: center !important;
+      position: relative !important;
+      width: 100% !important;
       margin-bottom: 18px !important;
     }
 
@@ -152,6 +148,7 @@
       align-items: center !important;
       justify-content: center !important;
       flex-shrink: 0 !important;
+      margin: 0 auto !important;
       background: var(--val-gradient, linear-gradient(135deg, #3B82F6, #2145E6)) !important;
       box-shadow: 0 8px 18px -4px var(--val-glow, rgba(33, 69, 230, 0.3)) !important;
       transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
@@ -162,42 +159,51 @@
     }
 
     .cv-number-watermark {
+      position: absolute !important;
+      top: -4px !important;
+      right: 0 !important;
       font-family: var(--font-heading), 'Poppins', sans-serif !important;
-      font-size: 26px !important;
+      font-size: 22px !important;
       font-weight: 850 !important;
       color: #E2E8F0 !important;
       line-height: 1 !important;
       user-select: none;
       letter-spacing: -0.04em !important;
       transition: color 0.3s ease;
+      opacity: 0.6 !important;
     }
 
     .cv-card:hover .cv-number-watermark {
       color: var(--val-color, #2145E6) !important;
-      opacity: 0.35;
+      opacity: 0.45 !important;
     }
 
     .cv-card-title {
       font-family: var(--font-heading), 'Poppins', sans-serif !important;
-      font-size: 19px !important;
+      font-size: 20px !important;
       font-weight: 800 !important;
-      color: #0F172A !important;
-      margin: 0 0 8px 0 !important;
+      color: var(--val-color, #0F172A) !important;
+      margin: 0 0 10px 0 !important;
       line-height: 1.25 !important;
       letter-spacing: -0.01em !important;
+      text-align: center !important;
+      width: 100% !important;
     }
 
     .cv-card-desc {
       font-size: 14px !important;
       color: #475569 !important;
       line-height: 1.6 !important;
-      margin: 0 0 16px 0 !important;
+      margin: 0 auto 16px auto !important;
       font-weight: 450 !important;
+      text-align: center !important;
+      width: 100% !important;
     }
 
     .cv-card-bottom-pill {
       display: inline-flex !important;
       align-items: center !important;
+      justify-content: center !important;
       gap: 6px !important;
       font-size: 11.5px !important;
       font-weight: 750 !important;
@@ -205,8 +211,12 @@
       letter-spacing: 0.06em !important;
       color: var(--val-color, #2145E6) !important;
       margin-top: auto !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
       padding-top: 10px;
       border-top: 1px solid #F1F5F9;
+      width: 100%;
+      text-align: center !important;
     }
 
     .cv-card-bottom-pill span.arrow {
@@ -592,76 +602,76 @@
 <!-- 7. Core Values -->
 <section class="section cv-section" id="core-values">
   <div class="container text-center">
-    <div class="cv-header-wrap">
-      <span class="cv-tag-pill">OUR GUIDING PRINCIPLES</span>
-      <h2 class="cv-main-title">Core <span class="cv-title-accent">Values</span></h2>
-      <p class="cv-subtitle">The eight enduring principles that shape everything we build, teach, and stand for across Africa.</p>
+    <div class="cv-header-wrap" style="max-width:760px; margin:0 auto 44px auto; text-align:center;">
+      <span class="cv-badge-pill">OUR GUIDING PRINCIPLES</span>
+      <h2 class="cv-main-title">Core <span class="grad">Values</span></h2>
+      <p class="cv-main-desc">The eight principles that shape everything we build, teach, and stand for.</p>
     </div>
 
     <div class="cv-grid">
 
       <!-- 01 Curiosity -->
-      <div class="cv-card" style="--val-color:#2145E6; --val-gradient:linear-gradient(135deg, #3B82F6 0%, #2145E6 100%); --val-glow:rgba(33,69,230,0.28);">
-        <div class="cv-card-top-row">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #3B82F6 0%, #2145E6 100%); box-shadow:0 8px 18px -4px rgba(33,69,230,0.35);">
+      <div class="cv-card" style="--val-color:#2145E6; --val-gradient:linear-gradient(135deg, #3B82F6 0%, #2145E6 100%); --val-glow:rgba(33,69,230,0.28); text-align:center !important; align-items:center !important;">
+        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
+          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #3B82F6 0%, #2145E6 100%); box-shadow:0 8px 18px -4px rgba(33,69,230,0.35);">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Curiosity" role="img">
               <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
               <path d="M9 18h6"/>
               <path d="M10 22h4"/>
             </svg>
           </div>
-          <span class="cv-number-watermark">01</span>
+          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">01</span>
         </div>
-        <h3 class="cv-card-title">Curiosity</h3>
-        <p class="cv-card-desc">Celebrating bold questions, active discovery, and the lifelong joy of learning.</p>
-        <div class="cv-card-bottom-pill">
+        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#2145E6 !important;">Curiosity</h3>
+        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Celebrating questions, discovery, and the joy of lifelong learning.</p>
+        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
           <span>Inquiry-Driven</span>
           <span class="arrow">→</span>
         </div>
       </div>
 
       <!-- 02 Creativity -->
-      <div class="cv-card" style="--val-color:#FF4D00; --val-gradient:linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); --val-glow:rgba(255,77,0,0.28);">
-        <div class="cv-card-top-row">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); box-shadow:0 8px 18px -4px rgba(255,77,0,0.35);">
+      <div class="cv-card" style="--val-color:#FF4D00; --val-gradient:linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); --val-glow:rgba(255,77,0,0.28); text-align:center !important; align-items:center !important;">
+        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
+          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); box-shadow:0 8px 18px -4px rgba(255,77,0,0.35);">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Creativity" role="img">
               <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/>
             </svg>
           </div>
-          <span class="cv-number-watermark">02</span>
+          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">02</span>
         </div>
-        <h3 class="cv-card-title">Creativity</h3>
-        <p class="cv-card-desc">Designing imaginative, practical, and highly engaging learning experiences.</p>
-        <div class="cv-card-bottom-pill">
+        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#FF4D00 !important;">Creativity</h3>
+        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Designing imaginative, practical, and engaging learning experiences.</p>
+        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
           <span>Innovative Pedagogy</span>
           <span class="arrow">→</span>
         </div>
       </div>
 
       <!-- 03 Relevance -->
-      <div class="cv-card" style="--val-color:#0D9488; --val-gradient:linear-gradient(135deg, #14B8A6 0%, #0D9488 100%); --val-glow:rgba(13,148,136,0.28);">
-        <div class="cv-card-top-row">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #14B8A6 0%, #0D9488 100%); box-shadow:0 8px 18px -4px rgba(13,148,136,0.35);">
+      <div class="cv-card" style="--val-color:#0D9488; --val-gradient:linear-gradient(135deg, #14B8A6 0%, #0D9488 100%); --val-glow:rgba(13,148,136,0.28); text-align:center !important; align-items:center !important;">
+        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
+          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #14B8A6 0%, #0D9488 100%); box-shadow:0 8px 18px -4px rgba(13,148,136,0.35);">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Relevance" role="img">
               <circle cx="12" cy="12" r="10"/>
               <circle cx="12" cy="12" r="6"/>
               <circle cx="12" cy="12" r="2"/>
             </svg>
           </div>
-          <span class="cv-number-watermark">03</span>
+          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">03</span>
         </div>
-        <h3 class="cv-card-title">Relevance</h3>
-        <p class="cv-card-desc">Rooting solutions in African contexts, local materials, and authentic community needs.</p>
-        <div class="cv-card-bottom-pill">
+        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#0D9488 !important;">Relevance</h3>
+        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Rooting solutions in local cultures, materials, and community needs.</p>
+        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
           <span>Contextual Focus</span>
           <span class="arrow">→</span>
         </div>
       </div>
 
       <!-- 04 Collaboration -->
-      <div class="cv-card" style="--val-color:#1D4ED8; --val-gradient:linear-gradient(135deg, #60A5FA 0%, #1D4ED8 100%); --val-glow:rgba(29,78,216,0.28);">
-        <div class="cv-card-top-row">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #60A5FA 0%, #1D4ED8 100%); box-shadow:0 8px 18px -4px rgba(29,78,216,0.35);">
+      <div class="cv-card" style="--val-color:#1D4ED8; --val-gradient:linear-gradient(135deg, #60A5FA 0%, #1D4ED8 100%); --val-glow:rgba(29,78,216,0.28); text-align:center !important; align-items:center !important;">
+        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
+          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #60A5FA 0%, #1D4ED8 100%); box-shadow:0 8px 18px -4px rgba(29,78,216,0.35);">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Collaboration" role="img">
               <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
               <circle cx="9" cy="7" r="4"/>
@@ -669,87 +679,87 @@
               <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
           </div>
-          <span class="cv-number-watermark">04</span>
+          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">04</span>
         </div>
-        <h3 class="cv-card-title">Collaboration</h3>
-        <p class="cv-card-desc">Co-creating meaningful outcomes alongside educators, school boards, and leaders.</p>
-        <div class="cv-card-bottom-pill">
+        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#1D4ED8 !important;">Collaboration</h3>
+        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Co-creating meaningful outcomes alongside educators and leaders.</p>
+        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
           <span>Shared Purpose</span>
           <span class="arrow">→</span>
         </div>
       </div>
 
       <!-- 05 Clarity -->
-      <div class="cv-card" style="--val-color:#7C3AED; --val-gradient:linear-gradient(135deg, #A78BFA 0%, #7C3AED 100%); --val-glow:rgba(124,58,237,0.28);">
-        <div class="cv-card-top-row">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #A78BFA 0%, #7C3AED 100%); box-shadow:0 8px 18px -4px rgba(124,58,237,0.35);">
+      <div class="cv-card" style="--val-color:#7C3AED; --val-gradient:linear-gradient(135deg, #A78BFA 0%, #7C3AED 100%); --val-glow:rgba(124,58,237,0.28); text-align:center !important; align-items:center !important;">
+        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
+          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #A78BFA 0%, #7C3AED 100%); box-shadow:0 8px 18px -4px rgba(124,58,237,0.35);">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Clarity" role="img">
               <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
               <circle cx="12" cy="12" r="3"/>
             </svg>
           </div>
-          <span class="cv-number-watermark">05</span>
+          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">05</span>
         </div>
-        <h3 class="cv-card-title">Clarity</h3>
-        <p class="cv-card-desc">Simplifying complex pedagogy and EdTech into intuitive, learner-friendly formats.</p>
-        <div class="cv-card-bottom-pill">
+        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#7C3AED !important;">Clarity</h3>
+        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Simplifying complex pedagogy and EdTech into intuitive, learner-friendly formats.</p>
+        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
           <span>Intuitive Mastery</span>
           <span class="arrow">→</span>
         </div>
       </div>
 
       <!-- 06 Renewal -->
-      <div class="cv-card" style="--val-color:#059669; --val-gradient:linear-gradient(135deg, #34D399 0%, #059669 100%); --val-glow:rgba(5,150,105,0.28);">
-        <div class="cv-card-top-row">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #34D399 0%, #059669 100%); box-shadow:0 8px 18px -4px rgba(5,150,105,0.35);">
+      <div class="cv-card" style="--val-color:#059669; --val-gradient:linear-gradient(135deg, #34D399 0%, #059669 100%); --val-glow:rgba(5,150,105,0.28); text-align:center !important; align-items:center !important;">
+        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
+          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #34D399 0%, #059669 100%); box-shadow:0 8px 18px -4px rgba(5,150,105,0.35);">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Renewal" role="img">
               <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
               <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
             </svg>
           </div>
-          <span class="cv-number-watermark">06</span>
+          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">06</span>
         </div>
-        <h3 class="cv-card-title">Renewal</h3>
-        <p class="cv-card-desc">Believing every classroom milestone creates fresh opportunity for human growth.</p>
-        <div class="cv-card-bottom-pill">
+        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#059669 !important;">Renewal</h3>
+        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Believing every classroom milestone creates fresh opportunity for human growth.</p>
+        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
           <span>Lifelong Growth</span>
           <span class="arrow">→</span>
         </div>
       </div>
 
       <!-- 07 Integrity -->
-      <div class="cv-card" style="--val-color:#E11D48; --val-gradient:linear-gradient(135deg, #FB7185 0%, #E11D48 100%); --val-glow:rgba(225,29,72,0.28);">
-        <div class="cv-card-top-row">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #FB7185 0%, #E11D48 100%); box-shadow:0 8px 18px -4px rgba(225,29,72,0.35);">
+      <div class="cv-card" style="--val-color:#E11D48; --val-gradient:linear-gradient(135deg, #FB7185 0%, #E11D48 100%); --val-glow:rgba(225,29,72,0.28); text-align:center !important; align-items:center !important;">
+        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
+          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #FB7185 0%, #E11D48 100%); box-shadow:0 8px 18px -4px rgba(225,29,72,0.35);">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Integrity" role="img">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
               <path d="m9 12 2 2 4-4"/>
             </svg>
           </div>
-          <span class="cv-number-watermark">07</span>
+          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">07</span>
         </div>
-        <h3 class="cv-card-title">Integrity</h3>
-        <p class="cv-card-desc">Leading with honesty, humility, transparency, and uncompromised dedication.</p>
-        <div class="cv-card-bottom-pill">
+        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#E11D48 !important;">Integrity</h3>
+        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Leading with honesty, humility, transparency, and uncompromised dedication.</p>
+        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
           <span>Ethical Foundation</span>
           <span class="arrow">→</span>
         </div>
       </div>
 
       <!-- 08 Excellence -->
-      <div class="cv-card" style="--val-color:#D97706; --val-gradient:linear-gradient(135deg, #FBBF24 0%, #D97706 100%); --val-glow:rgba(217,119,6,0.28);">
-        <div class="cv-card-top-row">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #FBBF24 0%, #D97706 100%); box-shadow:0 8px 18px -4px rgba(217,119,6,0.35);">
+      <div class="cv-card" style="--val-color:#D97706; --val-gradient:linear-gradient(135deg, #FBBF24 0%, #D97706 100%); --val-glow:rgba(217,119,6,0.28); text-align:center !important; align-items:center !important;">
+        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
+          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #FBBF24 0%, #D97706 100%); box-shadow:0 8px 18px -4px rgba(217,119,6,0.35);">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Excellence" role="img">
               <circle cx="12" cy="8" r="6"/>
               <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
             </svg>
           </div>
-          <span class="cv-number-watermark">08</span>
+          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">08</span>
         </div>
-        <h3 class="cv-card-title">Excellence</h3>
-        <p class="cv-card-desc">Upholding world-class standards of educational quality across every service.</p>
-        <div class="cv-card-bottom-pill">
+        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#D97706 !important;">Excellence</h3>
+        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Upholding world-class standards of educational quality across every service.</p>
+        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
           <span>Gold Standard</span>
           <span class="arrow">→</span>
         </div>

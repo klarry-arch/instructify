@@ -676,7 +676,7 @@
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 24px !important;
-  text-align: left !important;
+  text-align: center !important;
   margin-top: 10px;
 }
 
@@ -690,6 +690,8 @@
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
   justify-content: space-between !important;
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02) !important;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -720,7 +722,9 @@
 .cv-card-top-row {
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
+  position: relative !important;
+  width: 100% !important;
   margin-bottom: 18px !important;
 }
 
@@ -736,6 +740,7 @@
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
+  margin: 0 auto !important;
   background: var(--val-gradient, linear-gradient(135deg, #3B82F6, #2145E6)) !important;
   box-shadow: 0 8px 18px -4px var(--val-glow, rgba(33, 69, 230, 0.3)) !important;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
@@ -746,42 +751,51 @@
 }
 
 .cv-number-watermark {
+  position: absolute !important;
+  top: -4px !important;
+  right: 0 !important;
   font-family: var(--font-heading), 'Poppins', sans-serif !important;
-  font-size: 26px !important;
+  font-size: 22px !important;
   font-weight: 850 !important;
   color: #E2E8F0 !important;
   line-height: 1 !important;
   user-select: none;
   letter-spacing: -0.04em !important;
   transition: color 0.3s ease;
+  opacity: 0.6 !important;
 }
 
 .cv-card:hover .cv-number-watermark {
   color: var(--val-color, #2145E6) !important;
-  opacity: 0.35;
+  opacity: 0.45 !important;
 }
 
 .cv-card-title {
   font-family: var(--font-heading), 'Poppins', sans-serif !important;
-  font-size: 19px !important;
+  font-size: 20px !important;
   font-weight: 800 !important;
-  color: #0F172A !important;
-  margin: 0 0 8px 0 !important;
+  color: var(--val-color, #0F172A) !important;
+  margin: 0 0 10px 0 !important;
   line-height: 1.25 !important;
   letter-spacing: -0.01em !important;
+  text-align: center !important;
+  width: 100% !important;
 }
 
 .cv-card-desc {
   font-size: 14px !important;
   color: #475569 !important;
   line-height: 1.6 !important;
-  margin: 0 0 16px 0 !important;
+  margin: 0 auto 16px auto !important;
   font-weight: 450 !important;
+  text-align: center !important;
+  width: 100% !important;
 }
 
 .cv-card-bottom-pill {
   display: inline-flex !important;
   align-items: center !important;
+  justify-content: center !important;
   gap: 6px !important;
   font-size: 11.5px !important;
   font-weight: 750 !important;
@@ -789,8 +803,12 @@
   letter-spacing: 0.06em !important;
   color: var(--val-color, #2145E6) !important;
   margin-top: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   padding-top: 10px;
   border-top: 1px solid #F1F5F9;
+  width: 100%;
+  text-align: center !important;
 }
 
 .cv-card-bottom-pill span.arrow {
