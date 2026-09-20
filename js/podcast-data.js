@@ -19,8 +19,8 @@ const PODCAST_INFO = {
     organization: "Instructify Kenya",
     bio: "Passionate about transforming education across East Africa through digital pedagogical innovations, teacher empowerment, and future-fit competency frameworks. Alex hosts senior policymakers, researchers, master teachers, and changemakers to uncover actionable solutions for tomorrow's classrooms.",
     image: "assets/images/founder_alex.jpg",
-    linkedin: "https://www.linkedin.com/company/instructify-kenya",
-    twitter: "https://twitter.com/instructifyke",
+    linkedin: "https://www.linkedin.com/company/instructifykenya",
+    twitter: "https://x.com/instructifykenya",
     email: "podcast@instructify.co.ke"
   },
   streamingLinks: [

@@ -23,10 +23,10 @@ window.INSTRUCTIFY_COMM_CONFIG = {
 
   // Official Social Media Profiles
   social: {
-    linkedin: 'https://www.linkedin.com/company/instructify-kenya',
+    linkedin: 'https://www.linkedin.com/company/instructifykenya',
     youtube: 'https://www.youtube.com/@instructifykenya',
     facebook: 'https://www.facebook.com/instructifykenya',
-    twitter: 'https://twitter.com/instructifyke',
+    twitter: 'https://x.com/instructifykenya',
     instagram: 'https://www.instagram.com/instructifykenya',
     tiktok: 'https://www.tiktok.com/@instructifykenya',
   },
