@@ -3,13 +3,596 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact & Support | Instructify Kenya</title>
+  <title>Contact &amp; Support | Instructify Kenya</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css?v=3.1">
   <link rel="stylesheet" href="css/homepage.css">
   <link rel="stylesheet" href="css/live-chat.css">
+
+  <style>
+    /* ============================================================
+       INSTRUCTIFY KENYA — LUXURY MODERN CONTACT PAGE STYLES
+       ============================================================ */
+    :root {
+      --contact-navy-deep: #091929;
+      --contact-navy-rich: #0B2545;
+      --contact-blue-electric: #2145E6;
+      --contact-blue-bright: #2563EB;
+      --contact-orange: #FF4D00;
+      --contact-orange-bright: #F5812D;
+      --contact-green-wa: #25D366;
+      --contact-surface: #FFFFFF;
+      --contact-surface-soft: #F8FAFC;
+      --contact-border: #E2E8F0;
+    }
+
+    /* ── 1. Hero Section ─────────────────────────────────────── */
+    .contact-hero {
+      position: relative;
+      background: linear-gradient(135deg, #071524 0%, #0F2A4A 45%, #183AD6 85%, #2145E6 100%);
+      color: #FFFFFF;
+      padding: calc(var(--nav-height, 72px) + 40px) 0 70px 0;
+      overflow: hidden;
+      border-bottom: 3px solid var(--contact-orange-bright);
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(245, 129, 45, 0.22) 0%, rgba(33, 69, 230, 0) 70%);
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      animation: floatSlow 8s ease-in-out infinite alternate;
+    }
+
+    .contact-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(33, 69, 230, 0.35) 0%, rgba(7, 21, 36, 0) 70%);
+      border-radius: 50%;
+      filter: blur(50px);
+      pointer-events: none;
+    }
+
+    @keyframes floatSlow {
+      0% { transform: translateY(0px) scale(1); }
+      100% { transform: translateY(25px) scale(1.08); }
+    }
+
+    .contact-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #FFFFFF !important;
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-hero-title {
+      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-size: 40px;
+      font-weight: 850;
+      color: #FFFFFF !important;
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px 0;
+    }
+
+    @media (max-width: 768px) {
+      .contact-hero-title {
+        font-size: 28px;
+      }
+    }
+
+    .contact-hero-subtitle {
+      font-size: 18px;
+      line-height: 1.65;
+      color: #E2E8F0 !important;
+      max-width: 740px;
+      margin: 0 auto 32px auto;
+      font-weight: 450;
+    }
+
+    .contact-trust-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #F1F5F9;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+      transition: all 0.25s ease;
+    }
+
+    .contact-trust-pill:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ── 2. Top Fast-Action Channels Grid ───────────────────── */
+    .contact-channels-section {
+      position: relative;
+      margin-top: -36px;
+      z-index: 10;
+      padding-bottom: 24px;
+    }
+
+    .contact-channels-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .contact-channels-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .contact-channels-section {
+        margin-top: 16px;
+      }
+    }
+
+    .contact-channel-card {
+      background: #FFFFFF;
+      border-radius: 18px;
+      padding: 24px 22px;
+      border: 1.5px solid var(--contact-border);
+      box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-channel-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--channel-accent, var(--contact-blue-electric));
+      transition: height 0.25s ease;
+    }
+
+    .contact-channel-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 35px -6px rgba(15, 23, 42, 0.14);
+      border-color: var(--channel-accent, var(--contact-blue-electric));
+    }
+
+    .contact-channel-card:hover::before {
+      height: 6px;
+    }
+
+    .channel-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .channel-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: var(--channel-icon-bg, #EFF6FF);
+      color: var(--channel-accent, var(--contact-blue-electric));
+    }
+
+    .channel-badge {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--channel-icon-bg, #EFF6FF);
+      color: var(--channel-accent, var(--contact-blue-electric));
+      margin-left: auto;
+    }
+
+    .channel-title {
+      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-size: 17px;
+      font-weight: 750;
+      color: #0F172A;
+      margin: 0;
+    }
+
+    .channel-body {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.55;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .channel-action-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn-channel-action {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 14px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-copy-chip {
+      background: #F1F5F9;
+      color: #334155;
+      border: 1px solid #CBD5E1;
+      padding: 9px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-copy-chip:hover {
+      background: #E2E8F0;
+      color: #0F172A;
+    }
+
+    /* ── 3. Main Form & Advisory Section ────────────────────── */
+    .contact-main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 36px;
+      align-items: flex-start;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-main-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* Left: Advisory Card */
+    .advisory-showcase-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--contact-border);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px -4px rgba(15, 23, 42, 0.06);
+    }
+
+    .advisory-image-wrap {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .advisory-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .advisory-showcase-card:hover .advisory-image-wrap img {
+      transform: scale(1.04);
+    }
+
+    .advisory-image-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #FFFFFF;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .advisory-card-body {
+      padding: 24px;
+    }
+
+    .advisory-highlight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .advisory-highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.5;
+    }
+
+    .advisory-check-icon {
+      color: #16A34A;
+      font-weight: 900;
+      font-size: 15px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    /* Right: Form Card */
+    .contact-form-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--contact-border);
+      border-radius: 22px;
+      padding: 36px 32px;
+      box-shadow: 0 12px 35px -6px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+    }
+
+    @media (max-width: 640px) {
+      .contact-form-card {
+        padding: 24px 18px;
+      }
+    }
+
+    .form-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #EFF6FF;
+      color: var(--contact-blue-electric);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .contact-form-title {
+      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #0F172A;
+      margin: 0 0 6px 0;
+    }
+
+    .contact-form-subtitle {
+      font-size: 14.5px;
+      color: #64748B;
+      margin: 0 0 24px 0;
+      line-height: 1.5;
+    }
+
+    /* ── 4. Capabilities 4-Grid ─────────────────────────────── */
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 1024px) {
+      .capabilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .capabilities-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .capability-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--contact-border);
+      border-radius: 18px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    }
+
+    .capability-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -6px rgba(33, 69, 230, 0.15);
+      border-color: var(--contact-blue-electric);
+    }
+
+    .capability-icon-wrap {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      margin: 0 auto 16px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      background: #EFF6FF;
+      color: var(--contact-blue-electric);
+      box-shadow: 0 6px 14px -2px rgba(33, 69, 230, 0.18);
+    }
+
+    .capability-title {
+      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 750;
+      color: #0F172A;
+      margin: 0 0 8px 0;
+    }
+
+    .capability-desc {
+      font-size: 13.5px;
+      color: #64748B;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ── 5. Quick Client FAQ Accordion/Cards ─────────────────── */
+    .faq-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .faq-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .faq-clean-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--contact-border);
+      border-radius: 16px;
+      padding: 20px 22px;
+      transition: all 0.25s ease;
+    }
+
+    .faq-clean-card:hover {
+      border-color: #CBD5E1;
+      box-shadow: 0 6px 20px -2px rgba(15, 23, 42, 0.06);
+    }
+
+    .faq-q-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .faq-q-icon {
+      color: var(--contact-orange-bright);
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .faq-question {
+      font-size: 15.5px;
+      font-weight: 750;
+      color: #0F172A;
+      margin: 0;
+    }
+
+    .faq-answer {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── 6. Bottom Banner CTA ───────────────────────────────── */
+    .contact-cta-banner {
+      background: linear-gradient(135deg, #091929 0%, #172554 45%, #1D4ED8 100%);
+      border-radius: 24px;
+      padding: 44px 36px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      margin-top: 48px;
+    }
+
+    /* Copy toast */
+    .copy-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      z-index: 99999;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .copy-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
 
@@ -69,7 +652,6 @@
       <li><a href="jumuishi-learning-hub.html" class="nav-link" data-nav="jumuishi" style="color:var(--jum-teal, #0D9488) !important;">Jumuishi Hub <span class="nav-badge" style="background:#0D9488;color:#fff;">Inclusive</span></a></li>
       <li><a href="schools.html" class="nav-link" data-nav="schools">Institutions</a></li>
       <li><a href="contact.html" class="nav-link active" aria-current="page" data-nav="contact">Contact</a></li>
-    
     </ul>
 
     <div class="nav-actions">
@@ -101,7 +683,6 @@
     <a href="jumuishi-learning-hub.html" class="nav-mobile-link" data-nav="jumuishi" style="color:#0D9488;font-weight:700;">Jumuishi Learning Hub <span class="nav-badge" style="background:#0D9488;color:#fff;">Inclusive</span></a>
     <a href="schools.html" class="nav-mobile-link" data-nav="schools">Institutions</a>
     <a href="contact.html" class="nav-mobile-link active" data-nav="contact">Contact</a>
-  
   </div>
   <div class="nav-mobile-actions">
     <a href="register.html" class="btn btn-outline btn-md">Sign In</a>
@@ -109,130 +690,215 @@
   </div>
 </div>
 
-<!-- Hero Section -->
-<section class="page-hero" style="background:var(--surface-soft, #F8FAFC); padding:calc(var(--nav-height, 72px) + 48px) 0 48px 0; border-bottom:1px solid var(--border, #E2E8F0);">
-  <div class="container text-center">
-    <span class="section-tag blue" style="margin-bottom:12px; display:inline-flex;">💬 WE WOULD LOVE TO HEAR FROM YOU</span>
-    <h1 class="hero-heading" style="color:var(--text-main, #0F172A); font-size:var(--text-4xl); margin-bottom:14px;">
-      Contact Instructify Kenya
-    </h1>
-    <p class="hero-subtitle" style="margin:0 auto; max-width:800px; width:100%; color:#334155 !important; font-size:17px; line-height:1.65;">
-      Have a question, partnership idea, training request, or curriculum project? We would love to hear from you.
-    </p>
-  </div>
-</section>
-
-</div>
-
-<!-- Hero Section -->
-<section class="page-hero" style="background:var(--surface-soft, #F8FAFC); padding:calc(var(--nav-height, 72px) + 48px) 0 48px 0; border-bottom:1px solid var(--border, #E2E8F0);">
-  <div class="container text-center">
-    <span class="section-tag blue" style="margin-bottom:12px; display:inline-flex;">💬 WE WOULD LOVE TO HEAR FROM YOU</span>
-    <h1 class="hero-heading" style="color:var(--text-main, #0F172A); font-size:var(--text-4xl); margin-bottom:14px;">
-      Contact Instructify Kenya
-    </h1>
-    <p class="hero-subtitle" style="margin:0 auto; max-width:800px; width:100%; color:#334155 !important; font-size:17px; line-height:1.65;">
-      Have a question, partnership idea, training request, or curriculum project? We would love to hear from you.
-    </p>
-  </div>
-</section>
-
-<!-- Contact Information and Form Section -->
-<section class="section">
+<!-- ── 1. MODERN CATCHY HERO SECTION ──────────────────────── -->
+<section class="contact-hero">
   <div class="container">
-    <div class="grid-2" style="align-items:flex-start;">
-      <!-- Contact Info -->
-      <div class="card reveal-left" style="background:transparent; border:none; box-shadow:none; padding:0;">
-        <h2 class="font-heading text-2xl mb-lg">Get in Touch</h2>
-        <div style="display:flex; flex-direction:column; gap:var(--space-lg); margin-bottom:var(--space-xl);">
-          <div style="display:flex; gap:var(--space-md); align-items:flex-start;">
-            <div style="width:44px; height:44px; border-radius:10px; background:#E8F0F8; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Email" role="img">
+    <div class="contact-hero-content">
+      <div class="contact-badge-pill">
+        <span>💬</span> DIRECT EDUCATION &amp; ADVISORY DESK
+      </div>
+
+      <h1 class="contact-hero-title">
+        Let’s Connect, Collaborate &amp; Transform Learning Together
+      </h1>
+
+      <p class="contact-hero-subtitle">
+        Have questions about educator certifications, school ICT infrastructure, smart classrooms, or custom institutional training? Our dedicated education advisory specialists in Nairobi are ready to assist you.
+      </p>
+
+      <div class="contact-trust-bar">
+        <div class="contact-trust-pill">
+          <span>⚡</span> Average response under 2 hours
+        </div>
+        <div class="contact-trust-pill">
+          <span>📍</span> Upper Hill, Nairobi HQ
+        </div>
+        <div class="contact-trust-pill">
+          <span>📞</span> 0143 024 416 (Direct line)
+        </div>
+        <div class="contact-trust-pill">
+          <span>🔒</span> 100% Confidential Inquiry Handling
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 2. THREE PROMINENT FAST-CONTACT CHANNELS ────────────── -->
+<section class="contact-channels-section">
+  <div class="container">
+    <div class="contact-channels-grid">
+      
+      <!-- Channel 1: WhatsApp & Direct Hotline -->
+      <div class="contact-channel-card" style="--channel-accent:#10B981; --channel-icon-bg:#ECFDF5;">
+        <div>
+          <div class="channel-header">
+            <div class="channel-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="channel-title">WhatsApp &amp; Direct Call</h3>
+              <span style="font-size:12px; color:#10B981; font-weight:700;">● Online &amp; Fast Response</span>
+            </div>
+            <span class="channel-badge" style="background:#D1FAE5; color:#065F46;">Instant</span>
+          </div>
+          <p class="channel-body">
+            Speak directly with an education consultant or send course and institutional inquiries directly to our verified Kenya line.
+          </p>
+        </div>
+        <div class="channel-action-row">
+          <a href="https://wa.me/254143024416?text=Hello%20Instructify%20Kenya,%20I%20would%20like%20to%20enquire%20about%20your%20services." 
+             target="_blank" rel="noopener noreferrer" class="btn-channel-action" style="background:#10B981; color:#FFFFFF;">
+            <span>💬 Chat WhatsApp</span>
+          </a>
+          <button type="button" onclick="copyContactInfo('0143024416', this)" class="btn-copy-chip" title="Copy Phone Number">
+            <span>📋 0143 024 416</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Channel 2: Official Email Desks -->
+      <div class="contact-channel-card" style="--channel-accent:#2563EB; --channel-icon-bg:#EFF6FF;">
+        <div>
+          <div class="channel-header">
+            <div class="channel-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect width="20" height="16" x="2" y="4" rx="2"/>
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
               </svg>
             </div>
-            <div style="flex:1;">
-              <h4 class="font-heading text-md" style="margin-bottom:8px;">Official Email Desks</h4>
-              
-              <!-- info@instructify.co.ke Interactive Card -->
-              <a href="mailto:info@instructify.co.ke?subject=Inquiry%20from%20Instructify%20Kenya%20Website" class="contact-email-card" aria-label="Send email to info@instructify.co.ke">
-                <div class="contact-email-header">
-                  <span class="contact-email-address">info@instructify.co.ke <span style="font-size:13px;">↗</span></span>
-                  <span class="contact-email-badge">General &amp; Commercial</span>
-                </div>
-                <p class="contact-email-desc">For general enquiries, consultancy services, partnerships, training, and EdTech solutions.</p>
-              </a>
-
-              <!-- support@instructify.co.ke Interactive Card -->
-              <a href="mailto:support@instructify.co.ke?subject=Technical%20Support%20Request%20-%20Instructify%20Kenya" class="contact-email-card" aria-label="Send email to support@instructify.co.ke">
-                <div class="contact-email-header">
-                  <span class="contact-email-address" style="color:#0D9488;">support@instructify.co.ke <span style="font-size:13px;">↗</span></span>
-                  <span class="contact-email-badge" style="background:#F0FDFA; color:#0F766E; border-color:#99F6E4;">Technical &amp; Help Desk</span>
-                </div>
-                <p class="contact-email-desc">For technical assistance, account issues, platform access, and service support.</p>
-              </a>
-            </div>
-          </div>
-          <div style="display:flex; gap:var(--space-md);">
-            <div style="width:44px; height:44px; border-radius:10px; background:#E8F0F8; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Phone and WhatsApp" role="img">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-            </div>
             <div>
-              <h4 class="font-heading text-md" style="margin-bottom:4px;">Phone / WhatsApp</h4>
-              <p style="color:var(--text-secondary); font-size:var(--text-sm);">0143 024 416</p>
-              <p style="color:var(--text-secondary); font-size:var(--text-sm);">+254 143 024 416</p>
+              <h3 class="channel-title">Official Email Desks</h3>
+              <span style="font-size:12px; color:#2563EB; font-weight:700;">● Monitored Daily</span>
             </div>
+            <span class="channel-badge" style="background:#DBEAFE; color:#1E40AF;">24/7 Desk</span>
           </div>
-          <div style="display:flex; gap:var(--space-md);">
-            <div style="width:44px; height:44px; border-radius:10px; background:#E8F0F8; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Location" role="img">
+          <p class="channel-body">
+            <strong>Commercial &amp; Advisory:</strong> <a href="mailto:info@instructify.co.ke" style="color:#2563EB; text-decoration:underline;">info@instructify.co.ke</a><br>
+            <strong>Technical &amp; Help Desk:</strong> <a href="mailto:support@instructify.co.ke" style="color:#0D9488; text-decoration:underline;">support@instructify.co.ke</a>
+          </p>
+        </div>
+        <div class="channel-action-row">
+          <a href="mailto:info@instructify.co.ke?subject=Inquiry%20from%20Instructify%20Kenya%20Website" class="btn-channel-action" style="background:#2563EB; color:#FFFFFF;">
+            <span>✉️ Email info@</span>
+          </a>
+          <button type="button" onclick="copyContactInfo('info@instructify.co.ke', this)" class="btn-copy-chip" title="Copy Email">
+            <span>📋 Copy Email</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Channel 3: Nairobi Innovation Lab & Office -->
+      <div class="contact-channel-card" style="--channel-accent:#FF4D00; --channel-icon-bg:#FFF7ED;">
+        <div>
+          <div class="channel-header">
+            <div class="channel-icon-box" style="color:#FF4D00; background:#FFF7ED;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
                 <circle cx="12" cy="10" r="3"/>
               </svg>
             </div>
             <div>
-              <h4 class="font-heading text-md" style="margin-bottom:4px;">Location</h4>
-              <p style="color:var(--text-secondary); font-size:var(--text-sm);">Upper Hill Financial District, Nairobi, Kenya</p>
+              <h3 class="channel-title">Headquarters &amp; Lab</h3>
+              <span style="font-size:12px; color:#FF4D00; font-weight:700;">● Nairobi, Kenya</span>
             </div>
+            <span class="channel-badge" style="background:#FFEDD5; color:#9A3412;">Upper Hill</span>
           </div>
-          <div style="display:flex; gap:var(--space-md);">
-            <div style="width:44px; height:44px; border-radius:10px; background:#E8F0F8; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Business Hours" role="img">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-heading text-md" style="margin-bottom:4px;">Business Hours</h4>
-              <p style="color:var(--text-secondary); font-size:var(--text-sm);">Monday – Friday: 8:00 AM – 6:00 PM EAT</p>
-            </div>
-          </div>
+          <p class="channel-body">
+            Upper Hill Financial District, Nairobi, Kenya.<br>
+            <strong>Working Hours:</strong> Mon – Fri: 8:00 AM – 6:00 PM EAT.<br>
+            <span style="font-size:12.5px; color:#64748B;">Discovery sessions and Smart Classroom demos available by appointment.</span>
+          </p>
         </div>
-        
-        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:18px;">
-          <a href="https://wa.me/254143024416?text=Hello%20Instructify%20Kenya,%20I%20would%20like%20to%20enquire%20about%20your%20services." 
-             target="_blank" rel="noopener noreferrer" class="btn btn-md" style="background:#25D366; color:#FFFFFF !important; border:none; display:flex; align-items:center; justify-content:center; gap:8px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-            <span>Chat on WhatsApp (0143 024 416)</span>
-          </a>
-          <button type="button" onclick="window.InstructifyChat && window.InstructifyChat.open()" class="btn btn-outline btn-md" style="display:flex; align-items:center; justify-content:center; gap:8px;">
-            <span>💬 Launch Live Chat Assistant</span>
+        <div class="channel-action-row">
+          <button type="button" onclick="window.InstructifyChat && window.InstructifyChat.open()" class="btn-channel-action" style="background:#0F172A; color:#FFFFFF;">
+            <span>💬 Live Chat Advisor</span>
           </button>
-        </div>
-<div class="alert" style="background:var(--color-primary-glow); border:1px solid var(--color-primary-light); border-radius:var(--border-radius-md); padding:var(--space-md); display:flex; gap:var(--space-sm);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;" aria-label="Notice" role="img">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-          <span style="color:var(--text-primary); font-size:var(--text-sm);">We typically respond within 24–48 business hours.</span>
+          <a href="#contact-form" class="btn-copy-chip" style="text-decoration:none;">
+            <span>📅 Book Call</span>
+          </a>
         </div>
       </div>
 
-      <!-- Contact Form -->
-      <div class="card reveal-right" style="padding:var(--space-2xl); border:1px solid var(--border-subtle); box-shadow:var(--shadow-md);">
+    </div>
+  </div>
+</section>
+
+<!-- ── 3. MAIN INTERACTIVE FORM & ADVISORY SPOTLIGHT ───────── -->
+<section class="section" style="padding-top:24px;">
+  <div class="container">
+    <div class="contact-main-grid">
+
+      <!-- Left Column: Advisory Showcase Card -->
+      <div class="advisory-showcase-card reveal-left">
+        <div class="advisory-image-wrap">
+          <img src="assets/images/about_strategy_session.jpg" 
+               alt="Instructify Kenya educational advisory team in Nairobi during a strategic planning session" 
+               loading="eager" 
+               width="800" 
+               height="450">
+          <div class="advisory-image-badge">
+            🏢 Nairobi EdTech &amp; Advisory Center
+          </div>
+        </div>
+
+        <div class="advisory-card-body">
+          <span class="form-header-badge" style="background:#F0FDF4; color:#15803D;">Why Partner With Us</span>
+          <h3 style="font-family:var(--font-heading); font-size:22px; font-weight:800; color:#0F172A; margin:8px 0 12px 0;">
+            Strategic Advisory Grounded in Classroom Realities
+          </h3>
+          <p style="font-size:14px; color:#475569; line-height:1.6; margin-bottom:18px;">
+            We don't provide generic software advice. We partner with school leaders, curriculum heads, and educators to design actionable, measurable digital transitions.
+          </p>
+
+          <ul class="advisory-highlight-list">
+            <li class="advisory-highlight-item">
+              <span class="advisory-check-icon">✓</span>
+              <span><strong>Kenyan CBC Aligned:</strong> Practical competency-based digital lesson integration and rubrics.</span>
+            </li>
+            <li class="advisory-highlight-item">
+              <span class="advisory-check-icon">✓</span>
+              <span><strong>Interactive ClassVR Demos:</strong> Hands-on pilot sessions for school boards and teachers.</span>
+            </li>
+            <li class="advisory-highlight-item">
+              <span class="advisory-check-icon">✓</span>
+              <span><strong>Multi-Campus Scalability:</strong> From single academy setups to county-wide teacher upskilling.</span>
+            </li>
+            <li class="advisory-highlight-item">
+              <span class="advisory-check-icon">✓</span>
+              <span><strong>Flexible Payment Options:</strong> Direct M-Pesa Paybill (247247 / 636445) and corporate invoicing.</span>
+            </li>
+          </ul>
+
+          <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:14px; padding:16px; margin-bottom:18px;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+              <span style="font-size:18px;">⏱️</span>
+              <strong style="font-size:14px; color:#0F172A;">Need Instant Guidance?</strong>
+            </div>
+            <p style="font-size:13px; color:#64748B; margin:0 0 12px 0; line-height:1.5;">
+              Our AI &amp; Human Live Chat Assistant is ready to answer questions about course enrollment and certificates right now.
+            </p>
+            <button type="button" onclick="window.InstructifyChat && window.InstructifyChat.open()" class="btn btn-outline btn-sm w-full" style="display:flex; align-items:center; justify-content:center; gap:8px;">
+              <span>💬 Launch Live Chat Assistant</span>
+            </button>
+          </div>
+
+          <div style="text-align:center;">
+            <span style="font-size:12.5px; color:#94A3B8;">Direct inquiries strictly protected under our data privacy framework.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Contact Form Card -->
+      <div class="contact-form-card reveal-right">
+        <span class="form-header-badge">Direct Communication Desk</span>
+        <h2 class="contact-form-title">Send a Detailed Message</h2>
+        <p class="contact-form-subtitle">
+          Fill in your details below and our team will get back to you promptly with tailored insights.
+        </p>
+
         <form id="contact-form" onsubmit="handleContactSubmit(event)">
           <!-- Anti-Spam Honeypot Field -->
           <input type="text" name="_hp_instructify" id="_hp_instructify" style="display:none !important; position:absolute; left:-9999px;" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Do not fill this field">
@@ -255,7 +921,7 @@
             </div>
             <div class="form-group mb-md">
               <label class="form-label" for="contact-org">Organization or School Name</label>
-              <input type="text" id="contact-org" class="form-input" placeholder="e.g. Alliance High School / Ministry of Education">
+              <input type="text" id="contact-org" class="form-input" placeholder="e.g. Horizon Valley Academy / Regional Education Directorate">
             </div>
           </div>
 
@@ -266,28 +932,25 @@
                 <option value="" disabled selected>Select an enquiry category</option>
                 <optgroup label="General &amp; Commercial (routes to info@instructify.co.ke)">
                   <option value="General enquiry">General enquiry</option>
-                  <option value="Consultancy services">Consultancy services</option>
-                  <option value="Teacher professional development">Teacher professional development</option>
-                  <option value="ICT infrastructure">ICT infrastructure &amp; hardware</option>
-                  <option value="Software deployment">Software &amp; LMS deployment</option>
-                  <option value="EdTech solutions">EdTech solutions &amp; innovation</option>
-                  <option value="Course development">Course development</option>
-                  <option value="Partnership opportunity">Partnership opportunity</option>
-                  <option value="Media and corporate communication">Media and corporate communication</option>
+                  <option value="Consultancy services">School Consultancy &amp; Advisory</option>
+                  <option value="Teacher professional development">Teacher CPD &amp; Institutional Training</option>
+                  <option value="ICT infrastructure">Smart Classrooms &amp; Hardware Setup</option>
+                  <option value="Software deployment">Software &amp; LMS Deployment</option>
+                  <option value="EdTech solutions">EdTech Solutions &amp; ClassVR</option>
+                  <option value="Course development">Course Creation &amp; Curriculum Design</option>
+                  <option value="Partnership opportunity">Institutional Partnership</option>
+                  <option value="Media and corporate communication">Media &amp; Communications</option>
                 </optgroup>
                 <optgroup label="Technical &amp; Platform Support (routes to support@instructify.co.ke)">
                   <option value="Technical support">Technical support</option>
-                  <option value="Account and login problems">Account and login problems</option>
-                  <option value="Platform access issues">Platform access issues</option>
-                  <option value="Course creation or editing problems">Course creation or editing problems</option>
-                  <option value="Billing or payment support">Billing or payment support</option>
-                  <option value="Bug reports">Bug reports</option>
-                  <option value="Resource access problems">Resource access problems</option>
-                  <option value="Feedback or complaint">Feedback or complaint</option>
+                  <option value="Account and login problems">Account &amp; login assistance</option>
+                  <option value="Platform access issues">Platform access &amp; course viewing</option>
+                  <option value="Billing or payment support">Billing or M-Pesa payment support</option>
+                  <option value="Resource access problems">Resource &amp; scheme download problems</option>
                   <option value="Other">Other assistance</option>
                 </optgroup>
               </select>
-              <div id="contact-route-indicator" class="contact-route-indicator" style="display:none;">
+              <div id="contact-route-indicator" class="contact-route-indicator" style="display:none; margin-top:8px;">
                 <span id="route-icon">✉️</span>
                 <span id="route-text">Commercial &amp; Advisory Desk → info@instructify.co.ke</span>
               </div>
@@ -296,8 +959,9 @@
             <div class="form-group mb-md">
               <label class="form-label" for="contact-preferred">Preferred Method of Contact</label>
               <select id="contact-preferred" class="form-select">
-                <option value="Email" selected>Email</option>
-                <option value="Phone / WhatsApp">Phone / WhatsApp</option>
+                <option value="WhatsApp" selected>WhatsApp (Fastest)</option>
+                <option value="Email">Official Email</option>
+                <option value="Phone Call">Direct Phone Call</option>
                 <option value="Any">Either Email or WhatsApp</option>
               </select>
             </div>
@@ -310,14 +974,14 @@
           
           <div class="form-group mb-md">
             <label class="form-label" for="contact-message">Message <span style="color:red;">*</span></label>
-            <textarea id="contact-message" class="form-input form-textarea" placeholder="Please provide details about your enquiry, project, or support request..." rows="5" required minlength="15" maxlength="3000"></textarea>
+            <textarea id="contact-message" class="form-input form-textarea" placeholder="Please tell us about your school, project scope, learner numbers, or the specific assistance you require..." rows="5" required minlength="15" maxlength="3000"></textarea>
             <span style="font-size:12px; color:#64748B; display:block; margin-top:4px;">Minimum 15 characters, up to 3,000 characters.</span>
           </div>
 
           <div class="form-group mb-lg">
-            <label class="contact-consent-label" for="contact-consent">
-              <input type="checkbox" id="contact-consent" required>
-              <span>I consent to Instructify Kenya processing my contact information to respond to this enquiry in accordance with the website <a href="contact.html" style="color:#2145E6; text-decoration:underline;">privacy policy</a>.</span>
+            <label class="contact-consent-label" for="contact-consent" style="font-size:13.5px; color:#475569; display:flex; align-items:flex-start; gap:8px; cursor:pointer;">
+              <input type="checkbox" id="contact-consent" required style="margin-top:3px;">
+              <span>I consent to Instructify Kenya processing my information to respond to this enquiry in accordance with the website <a href="contact.html" style="color:#2145E6; text-decoration:underline;">privacy policy</a>.</span>
             </label>
           </div>
 
@@ -326,7 +990,9 @@
             <span id="contact-error-text">We could not send your message at this time. Please try again shortly or contact us directly at info@instructify.co.ke.</span>
           </div>
           
-          <button type="submit" id="contact-submit-btn" class="btn btn-blue btn-lg w-full">Send Message →</button>
+          <button type="submit" id="contact-submit-btn" class="btn btn-blue btn-lg w-full" style="font-size:16px; font-weight:750; padding:14px; box-shadow:0 8px 20px -2px rgba(33, 69, 230, 0.35);">
+            Send Message Now →
+          </button>
         </form>
 
         <!-- Instant Response & Live Message Receipt Card -->
@@ -377,76 +1043,159 @@
             </div>
           </div>
         </div>
+
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- Inquiry Cards Section -->
-<section class="section" style="background:var(--bg-light);">
+<!-- ── 4. INQUIRY CAPABILITIES & SERVICE SPECIALTIES ───────── -->
+<section class="section" style="background:#F8FAFC; border-top:1px solid #E2E8F0; padding:60px 0;">
   <div class="container">
-    <div class="grid-4 stagger-children" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-      <!-- Card 1 -->
-      <div class="card reveal text-center" style="padding:var(--space-xl);">
-        <div style="width:52px; height:52px; border-radius:12px; background:#E8F0F8; display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-sm);">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Course Support" role="img">
-            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
-            <path d="M6 6h10"/>
-            <path d="M6 10h10"/>
-          </svg>
+    <div class="text-center" style="max-width:700px; margin:0 auto 16px auto;">
+      <span class="section-tag blue" style="background:#EEF2FF; color:#183AD6; font-weight:700;">AREAS OF ENGAGEMENT</span>
+      <h2 style="font-family:var(--font-heading); font-size:32px; font-weight:800; color:#0F172A; margin:12px 0 10px 0;">
+        Specialized Solutions for Every Educational Need
+      </h2>
+      <p style="font-size:16px; color:#64748B; line-height:1.6;">
+        Choose the engagement pathway that fits your institutional vision or professional growth goals.
+      </p>
+    </div>
+
+    <div class="capabilities-grid">
+      <!-- 1 -->
+      <div class="capability-card">
+        <div class="capability-icon-wrap">
+          🎓
         </div>
-        <h4 class="font-heading text-md mb-xs">Course Support</h4>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Get help with enrollment, certificates, or platform access.</p>
+        <h3 class="capability-title">School &amp; Institutional Growth</h3>
+        <p class="capability-desc">
+          Strategic capacity building for teaching staff, CBC transitions, and school-wide EdTech implementation programs.
+        </p>
       </div>
-      <!-- Card 2 -->
-      <div class="card reveal delay-100 text-center" style="padding:var(--space-xl);">
-        <div style="width:52px; height:52px; border-radius:12px; background:#E8F0F8; display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-sm);">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Training & Workshops" role="img">
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-          </svg>
+
+      <!-- 2 -->
+      <div class="capability-card">
+        <div class="capability-icon-wrap" style="color:#0D9488; background:#F0FDFA;">
+          🖥️
         </div>
-        <h4 class="font-heading text-md mb-xs">Training & Workshops</h4>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Request customized workshops for your institution.</p>
+        <h3 class="capability-title">Smart Classrooms &amp; ClassVR</h3>
+        <p class="capability-desc">
+          Interactive touch displays, digital lab connectivity, VR immersive curriculum content, and device integration.
+        </p>
       </div>
-      <!-- Card 3 -->
-      <div class="card reveal delay-200 text-center" style="padding:var(--space-xl);">
-        <div style="width:52px; height:52px; border-radius:12px; background:#E0F5F2; display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-sm);">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Consultancy Services" role="img">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-          </svg>
+
+      <!-- 3 -->
+      <div class="capability-card">
+        <div class="capability-icon-wrap" style="color:#FF4D00; background:#FFF7ED;">
+          📜
         </div>
-        <h4 class="font-heading text-md mb-xs">Consultancy Services</h4>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Discuss strategy, evaluation, or institutional transformation.</p>
+        <h3 class="capability-title">Educator CPD &amp; Certifications</h3>
+        <p class="capability-desc">
+          Continuous professional development courses, digital pedagogy credentials, and verifiable certificate management.
+        </p>
       </div>
-      <!-- Card 4 -->
-      <div class="card reveal delay-300 text-center" style="padding:var(--space-xl);">
-        <div style="width:52px; height:52px; border-radius:12px; background:#E0F5F2; display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-sm);">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Curriculum Development" role="img">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-            <polyline points="2 17 12 22 22 17"/>
-            <polyline points="2 12 12 17 22 12"/>
-          </svg>
+
+      <!-- 4 -->
+      <div class="capability-card">
+        <div class="capability-icon-wrap" style="color:#D97706; background:#FEF3C7;">
+          💡
         </div>
-        <h4 class="font-heading text-md mb-xs">Curriculum Development</h4>
-        <p style="font-size:var(--text-sm); color:var(--text-secondary);">Collaborate on designing competency-based frameworks.</p>
+        <h3 class="capability-title">Curriculum &amp; Advisory</h3>
+        <p class="capability-desc">
+          Tailored scheme of work design, assessment rubrics, policy support, and educational program evaluations.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Partnership CTA Section -->
-<section class="section text-center" style="background:var(--color-primary-bg); padding:var(--space-4xl) 20px;">
-  <div class="container" style="max-width:800px; width:100%;">
-    <h2 class="font-heading" style="font-size:var(--text-3xl); margin-bottom:var(--space-md);">Partner With Instructify Kenya</h2>
-    <p style="font-size:var(--text-lg); color:var(--text-secondary); margin-bottom:var(--space-xl);">
-      We collaborate with schools, institutions, ministries, and organizations to design learning experiences that create lasting impact.
-    </p>
-    <a href="#hero" class="btn btn-blue btn-xl">Start a Conversation</a>
+<!-- ── 5. FREQUENTLY ASKED INQUIRIES ───────────────────────── -->
+<section class="section" style="background:#FFFFFF; padding:60px 0; border-top:1px solid #E2E8F0;">
+  <div class="container">
+    <div class="text-center" style="max-width:680px; margin:0 auto 24px auto;">
+      <span class="section-tag teal" style="background:#F0FDFA; color:#0F766E; font-weight:700;">FREQUENTLY ASKED QUESTIONS</span>
+      <h2 style="font-family:var(--font-heading); font-size:30px; font-weight:800; color:#0F172A; margin:10px 0 8px 0;">
+        Quick Answers to Common Questions
+      </h2>
+      <p style="font-size:15.5px; color:#64748B;">
+        Here is what educators, school administrators, and partners typically ask before reaching out.
+      </p>
+    </div>
+
+    <div class="faq-cards-grid">
+      <!-- FAQ 1 -->
+      <div class="faq-clean-card">
+        <div class="faq-q-row">
+          <span class="faq-q-icon">?</span>
+          <h4 class="faq-question">How fast will I receive a response?</h4>
+        </div>
+        <p class="faq-answer">
+          Our team monitors inquiries continuously. Direct WhatsApp messages to <strong>0143 024 416</strong> receive responses within minutes during business hours, while formal form submissions receive replies within <strong>2–4 business hours</strong>.
+        </p>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-clean-card">
+        <div class="faq-q-row">
+          <span class="faq-q-icon">?</span>
+          <h4 class="faq-question">Are initial institutional consultations free?</h4>
+        </div>
+        <p class="faq-answer">
+          Yes! Our introductory 30-minute discovery call and curriculum needs assessment for schools, academies, and learning organisations is 100% complimentary and carries no commitment.
+        </p>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-clean-card">
+        <div class="faq-q-row">
+          <span class="faq-q-icon">?</span>
+          <h4 class="faq-question">Can Instructify train teachers outside Nairobi?</h4>
+        </div>
+        <p class="faq-answer">
+          Absolutely. We conduct on-site professional development workshops in schools across all 47 Kenyan counties, complemented by self-paced digital LMS access for seamless hybrid learning.
+        </p>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-clean-card">
+        <div class="faq-q-row">
+          <span class="faq-q-icon">?</span>
+          <h4 class="faq-question">What payment methods do you accept?</h4>
+        </div>
+        <p class="faq-answer">
+          We accept instant M-Pesa payments via <strong>Paybill Business No: 247247, Account No: 636445</strong>, direct transfers to our official line <strong>0143 024 416</strong>, bank EFT, and corporate purchase orders for institutions.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── 6. CATCHY BOTTOM CTA BANNER ──────────────────────── -->
+    <div class="contact-cta-banner">
+      <div style="max-width:620px;">
+        <span style="background:rgba(255,255,255,0.18); color:#FFFFFF; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:1px; padding:4px 10px; border-radius:999px; display:inline-block; margin-bottom:12px;">READY TO ELEVATE YOUR INSTITUTION?</span>
+        <h3 style="font-family:var(--font-heading); font-size:26px; font-weight:800; color:#FFFFFF !important; line-height:1.25; margin:0 0 8px 0;">
+          Let’s Schedule an In-Depth Discovery Call Today
+        </h3>
+        <p style="font-size:15px; color:#E2E8F0; margin:0; line-height:1.6;">
+          Talk with our Lead EdTech Strategists to explore how Instructify Kenya can empower your educators, modernize your campus, and ignite lifelong learning.
+        </p>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="#contact-form" class="btn btn-orange btn-lg" style="font-weight:750; white-space:nowrap;">
+          Start Your Inquiry →
+        </a>
+        <a href="https://wa.me/254143024416?text=Hello%20Instructify%20Kenya,%20I%20would%20like%20to%20schedule%20a%20discovery%20call." 
+           target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg" style="color:#FFFFFF !important; border-color:rgba(255,255,255,0.6) !important; font-weight:700; white-space:nowrap;">
+          💬 WhatsApp Us
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
+<!-- Footer -->
 <footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
   <div class="container">
     <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1.5px solid var(--cta-color, #F5812D);">
@@ -458,7 +1207,7 @@
         <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
           We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.
         </p>
-                <div class="footer-social-row" style="margin-bottom:20px;">
+        <div class="footer-social-row" style="margin-bottom:20px;">
           <a href="https://www.linkedin.com/company/instructify-kenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg>
           </a>
@@ -478,14 +1227,13 @@
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
         </div>
-<a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
       </div>
       <div>
         <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
         <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
           <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
           <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
-          
           <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
         </ul>
       </div>
@@ -514,8 +1262,33 @@
   </div>
 </footer>
 
+<!-- Copy Feedback Toast Notification -->
+<div id="copy-toast" class="copy-toast">
+  <span style="color:#10B981;">✓</span>
+  <span id="copy-toast-text">Copied to clipboard!</span>
+</div>
+
 <script src="js/main.js?v=3.1"></script>
 <script>
+function copyContactInfo(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    const toast = document.getElementById('copy-toast');
+    const toastText = document.getElementById('copy-toast-text');
+    if (toast && toastText) {
+      toastText.textContent = 'Copied ' + text + ' to clipboard!';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+    if (btn) {
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<span>✓ Copied</span>';
+      setTimeout(() => { btn.innerHTML = orig; }, 2000);
+    }
+  }).catch(() => {
+    prompt('Copy to clipboard:', text);
+  });
+}
+
 function updateRoutingIndicator(category) {
   const indicator = document.getElementById('contact-route-indicator');
   const iconEl = document.getElementById('route-icon');
@@ -531,11 +1304,8 @@ function updateRoutingIndicator(category) {
     'technical support',
     'account and login problems',
     'platform access issues',
-    'course creation or editing problems',
     'billing or payment support',
-    'bug reports',
     'resource access problems',
-    'feedback or complaint',
     'other'
   ];
 
@@ -543,15 +1313,22 @@ function updateRoutingIndicator(category) {
   const isSupport = supportCategories.some(sc => catLower.includes(sc));
 
   indicator.style.display = 'flex';
+  indicator.style.alignItems = 'center';
+  indicator.style.gap = '8px';
+  indicator.style.padding = '8px 12px';
+  indicator.style.borderRadius = '8px';
+  indicator.style.fontSize = '12.5px';
+  indicator.style.fontWeight = '600';
+
   if (isSupport) {
     indicator.style.background = '#EFF6FF';
-    indicator.style.borderColor = '#BFDBFE';
+    indicator.style.border = '1px solid #BFDBFE';
     indicator.style.color = '#1D4ED8';
     iconEl.textContent = '🛠️';
     textEl.innerHTML = 'Platform &amp; Technical Support Desk &rarr; <strong>support@instructify.co.ke</strong>';
   } else {
     indicator.style.background = '#F0FDF4';
-    indicator.style.borderColor = '#BBF7D0';
+    indicator.style.border = '1px solid #BBF7D0';
     indicator.style.color = '#15803D';
     iconEl.textContent = '✉️';
     textEl.innerHTML = 'Commercial, Institutional &amp; Advisory Desk &rarr; <strong>info@instructify.co.ke</strong>';
@@ -561,9 +1338,11 @@ function updateRoutingIndicator(category) {
 async function handleContactSubmit(e) {
   e.preventDefault();
   const btn = document.getElementById('contact-submit-btn');
-  const errBanner = document.getElementById('contact-error-banner');
-  const errText = document.getElementById('contact-error-text');
+  const origText = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = 'Transmitting Enquiry…';
 
+  const errBanner = document.getElementById('contact-error-banner');
   if (errBanner) errBanner.style.display = 'none';
 
   const name = document.getElementById('contact-name').value.trim();
@@ -571,38 +1350,21 @@ async function handleContactSubmit(e) {
   const phone = document.getElementById('contact-phone').value.trim();
   const org = document.getElementById('contact-org').value.trim();
   const category = document.getElementById('contact-inquiry').value;
-  const preferred = document.getElementById('contact-preferred') ? document.getElementById('contact-preferred').value : 'Email';
-  const subject = document.getElementById('contact-subject') ? document.getElementById('contact-subject').value.trim() : '';
+  const preferred = document.getElementById('contact-preferred').value;
+  const subject = document.getElementById('contact-subject').value.trim();
   const message = document.getElementById('contact-message').value.trim();
-  const hp = document.getElementById('_hp_instructify') ? document.getElementById('_hp_instructify').value : '';
-  const consent = document.getElementById('contact-consent') ? document.getElementById('contact-consent').checked : true;
+  const consent = document.getElementById('contact-consent').checked;
+  const hp = document.getElementById('_hp_instructify').value;
 
-  if (!name || !email || !category || !subject || !message) {
-    if (typeof showToast === 'function') showToast('Please complete all required fields (*).', 'error');
-    if (errBanner && errText) {
-      errText.textContent = 'Please complete all required fields marked with an asterisk (*).';
+  if (!name || !email || !category || !subject || !message || !consent) {
+    if (errBanner) {
+      document.getElementById('contact-error-text').textContent = 'Please fill in all required fields and accept the privacy policy.';
       errBanner.style.display = 'block';
     }
+    btn.disabled = false;
+    btn.innerHTML = origText;
     return;
   }
-
-  if (message.length < 15) {
-    if (typeof showToast === 'function') showToast('Your message should be at least 15 characters long.', 'error');
-    if (errBanner && errText) {
-      errText.textContent = 'Please provide a more detailed message (minimum 15 characters).';
-      errBanner.style.display = 'block';
-    }
-    return;
-  }
-
-  if (!consent) {
-    if (typeof showToast === 'function') showToast('Please accept the privacy consent to proceed.', 'error');
-    return;
-  }
-
-  btn.disabled = true;
-  const origText = btn.innerHTML;
-  btn.innerHTML = '<span style="display:inline-block; animation:spin 1s linear infinite; margin-right:8px;">⏳</span> Transmitting Enquiry...';
 
   try {
     const res = await fetch('/api/contact', {
@@ -614,8 +1376,7 @@ async function handleContactSubmit(e) {
         phone,
         organization: org,
         category,
-        inquiryType: category,
-        preferredContact: preferred,
+        preferredMethod: preferred,
         subject,
         message,
         _hp_instructify: hp
