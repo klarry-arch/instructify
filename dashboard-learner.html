@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/components.css?v=3.1">
   <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="css/student-dashboard.css">
+  <link rel="stylesheet" href="css/student-dashboard.css?v=3.2">
   <link rel="stylesheet" href="css/live-chat.css">
 </head>
 <body class="student-dashboard-body">
@@ -711,29 +711,29 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Plant Osmosis Lab Worksheet</td>
+                <tr id="row-osmosis-lab">
+                  <td style="font-weight:600; color:#0F172A;">Plant Osmosis Lab Worksheet</td>
                   <td>Integrated Science</td>
                   <td>Friday, 5:00 PM</td>
-                  <td>Pending</td>
-                  <td><span class="badge badge-warning">Due in 2 Days</span></td>
-                  <td><button class="btn btn-blue btn-sm" onclick="window.showToast('Opening assignment upload modal...','info')">Upload Work</button></td>
+                  <td id="grade-osmosis-lab">Pending</td>
+                  <td><span class="badge badge-warning" id="status-osmosis-lab">Due in 2 Days</span></td>
+                  <td><button class="btn btn-blue btn-sm" id="btn-osmosis-lab" onclick="window.openAssignmentModal('upload', 'osmosis-lab')">Upload Work</button></td>
                 </tr>
-                <tr>
-                  <td>Quadratic Equations Word Problems</td>
+                <tr id="row-quadratic-eq">
+                  <td style="font-weight:600; color:#0F172A;">Quadratic Equations Word Problems</td>
                   <td>Mathematics</td>
                   <td>Yesterday</td>
                   <td><strong>94% (Distinction)</strong></td>
                   <td><span class="badge badge-success">Graded</span></td>
-                  <td><button class="btn btn-ghost btn-sm" onclick="window.showToast('Teacher Feedback: Excellent working! Keep it up.','success')">Feedback</button></td>
+                  <td><button class="btn btn-ghost btn-sm" onclick="window.openAssignmentModal('feedback', 'quadratic-eq')">Feedback</button></td>
                 </tr>
-                <tr>
-                  <td>English Literature Character Essay</td>
+                <tr id="row-literature-essay">
+                  <td style="font-weight:600; color:#0F172A;">English Literature Character Essay</td>
                   <td>English</td>
                   <td>Next Tuesday</td>
-                  <td>--</td>
-                  <td><span class="badge badge-info">In Progress</span></td>
-                  <td><button class="btn btn-outline btn-sm" onclick="window.showToast('Draft saved in homework tracker.','info')">Continue</button></td>
+                  <td id="grade-literature-essay">--</td>
+                  <td><span class="badge badge-info" id="status-literature-essay">In Progress</span></td>
+                  <td><button class="btn btn-outline btn-sm" id="btn-literature-essay" onclick="window.openAssignmentModal('draft', 'literature-essay')">Continue</button></td>
                 </tr>
               </tbody>
             </table>
@@ -1138,12 +1138,223 @@
   </div>
 </div>
 
+<!-- ══════════════════════════════════════════════════════════
+     MODAL 4: UPLOAD ASSIGNMENT WORK
+     ══════════════════════════════════════════════════════════ -->
+<div class="student-modal-backdrop" id="modal-assignment-upload">
+  <div class="student-modal-card" style="max-width: 620px;">
+    <button class="student-modal-close" onclick="window.closeStudentModal('modal-assignment-upload')" aria-label="Close Upload Modal">✕</button>
+
+    <div class="student-modal-header" style="padding: 24px 28px 18px;">
+      <div style="display:flex; gap:8px; align-items:center; margin-bottom:6px;">
+        <span class="badge badge-primary">Integrated Science</span>
+        <span class="badge badge-warning">Due Friday, 5:00 PM</span>
+      </div>
+      <h3 style="font-family:var(--font-heading); font-size:20px; font-weight:800; color:#0F172A; margin:0;">
+        Plant Osmosis Lab Worksheet
+      </h3>
+    </div>
+
+    <div class="student-modal-body" style="padding: 20px 28px 28px;">
+      <p style="font-size:13.5px; color:#64748B; margin:0 0 16px; line-height:1.6;">
+        Submit your completed lab observations, data table, and graph. Supported formats: <strong>PDF, DOCX, PNG, JPG, ZIP</strong> (Max 25MB).
+      </p>
+
+      <!-- Dropzone -->
+      <div class="assignment-dropzone" id="assignment-dropzone" onclick="document.getElementById('assignment-file-input').click()">
+        <input type="file" id="assignment-file-input" aria-label="Upload assignment file" style="display:none;" accept=".pdf,.docx,.doc,.png,.jpg,.jpeg,.zip" onchange="window.handleAssignmentFileSelect(event)">
+        <div style="width:48px; height:48px; border-radius:14px; background:#EEF2FF; color:#2145E6; display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:12px;">
+          📁
+        </div>
+        <div style="font-weight:700; font-size:15px; color:#0F172A; margin-bottom:4px;">
+          Choose file or drag &amp; drop here
+        </div>
+        <div style="font-size:12.5px; color:#64748B;">
+          PDF, Word, or Scanned Images up to 25MB
+        </div>
+      </div>
+
+      <!-- File preview list -->
+      <div id="assignment-file-preview" style="display:none;" class="assignment-file-card">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-size:24px;" id="preview-file-icon">📄</span>
+          <div>
+            <div id="preview-file-name" style="font-weight:700; font-size:13.5px; color:#0F172A;">filename.pdf</div>
+            <div id="preview-file-size" style="font-size:12px; color:#64748B;">2.4 MB • Ready to upload</div>
+          </div>
+        </div>
+        <button type="button" onclick="window.removeAssignmentFile()" style="background:none; border:none; color:#EF4444; font-size:18px; cursor:pointer; padding:4px;" title="Remove file">✕</button>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="upload-progress-container" id="assignment-progress-container">
+        <div class="upload-progress-bar" id="assignment-progress-bar"></div>
+      </div>
+
+      <!-- Student Notes -->
+      <div style="margin-top:16px;">
+        <label for="assignment-notes" style="display:block; font-size:13px; font-weight:700; color:#334155; margin-bottom:6px;">
+          Notes / Comments to Instructor (Optional)
+        </label>
+        <textarea id="assignment-notes" placeholder="e.g. Attached my lab observations from Tuesday's practical test. Step 3 graph is on page 4..." style="width:100%; border:1.5px solid #CBD5E1; border-radius:12px; padding:10px 14px; font-family:inherit; font-size:13.5px; line-height:1.5; color:#0F172A; resize:vertical; min-height:72px; box-sizing:border-box; outline:none;"></textarea>
+      </div>
+
+      <!-- Actions -->
+      <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:20px;">
+        <button type="button" onclick="window.closeStudentModal('modal-assignment-upload')" class="btn btn-outline btn-md">Cancel</button>
+        <button type="button" onclick="window.submitAssignmentUpload('osmosis-lab')" id="btn-submit-upload" class="btn btn-primary btn-md">Submit Assignment 🚀</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MODAL 5: TEACHER FEEDBACK & RUBRIC
+     ══════════════════════════════════════════════════════════ -->
+<div class="student-modal-backdrop" id="modal-assignment-feedback">
+  <div class="student-modal-card" style="max-width: 640px;">
+    <button class="student-modal-close" onclick="window.closeStudentModal('modal-assignment-feedback')" aria-label="Close Feedback Modal">✕</button>
+
+    <div class="student-modal-header" style="padding: 24px 28px 18px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:8px;">
+        <span class="badge badge-success" style="font-size:13px; padding:6px 14px; font-weight:800;">🏆 94% Distinction • Grade A</span>
+        <span style="font-size:12.5px; color:#64748B; font-weight:600;">Reviewed Yesterday, 4:15 PM</span>
+      </div>
+      <h3 style="font-family:var(--font-heading); font-size:20px; font-weight:800; color:#0F172A; margin:0 0 4px 0;">
+        Quadratic Equations Word Problems
+      </h3>
+      <div style="font-size:13px; color:#2145E6; font-weight:600;">
+        Instructor: Mr. Kiprop • Senior Mathematics Faculty
+      </div>
+    </div>
+
+    <div class="student-modal-body" style="padding: 20px 28px 28px;">
+      <!-- Teacher Commentary -->
+      <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:14px; padding:16px; margin-bottom:20px;">
+        <div style="font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:#0F172A; margin-bottom:10px; display:flex; align-items:center; gap:6px;">
+          <span>📝</span> Teacher Remarks &amp; Commentary
+        </div>
+        <p style="font-size:14px; line-height:1.65; color:#334155; margin:0 0 10px 0;">
+          <strong>🌟 Outstanding Work:</strong> Superb algebraic clarity throughout questions 1 to 5. Your step-by-step factorization and substitution into the quadratic formula was textbook-perfect.
+        </p>
+        <p style="font-size:13.5px; line-height:1.6; color:#64748B; margin:0;">
+          <strong>💡 Growth Area:</strong> On Question 4b, be watchful of negative sign propagation during discriminant calculation (b² - 4ac) when c is negative. You corrected it later, but avoid rushing through sign inversions.
+        </p>
+      </div>
+
+      <!-- Rubric Score Breakdown -->
+      <h4 style="font-size:14px; font-weight:800; color:#0F172A; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 10px 0;">
+        Rubric Breakdown
+      </h4>
+      <div class="rubric-score-grid">
+        <div class="rubric-row">
+          <div>
+            <div style="font-weight:700; font-size:13.5px; color:#0F172A;">Problem Setup &amp; Algebraic Modeling</div>
+            <div style="font-size:12px; color:#64748B;">Translating word problems into standard form</div>
+          </div>
+          <span class="rubric-score-pill">25 / 25</span>
+        </div>
+        <div class="rubric-row">
+          <div>
+            <div style="font-weight:700; font-size:13.5px; color:#0F172A;">Computation &amp; Factoring Accuracy</div>
+            <div style="font-size:12px; color:#64748B;">Completing the square &amp; formula execution</div>
+          </div>
+          <span class="rubric-score-pill">24 / 25</span>
+        </div>
+        <div class="rubric-row">
+          <div>
+            <div style="font-weight:700; font-size:13.5px; color:#0F172A;">Graph Presentation &amp; Parabola Vertex</div>
+            <div style="font-size:12px; color:#64748B;">Accurate axis of symmetry &amp; intercepts</div>
+          </div>
+          <span class="rubric-score-pill">25 / 25</span>
+        </div>
+        <div class="rubric-row">
+          <div>
+            <div style="font-weight:700; font-size:13.5px; color:#0F172A;">Working Neatness &amp; Punctuality</div>
+            <div style="font-size:12px; color:#64748B;">On-time turn in and readable notation</div>
+          </div>
+          <span class="rubric-score-pill">20 / 25</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-top:24px; padding-top:16px; border-top:1px solid #E2E8F0;">
+        <button type="button" onclick="window.showToast('📥 Downloading annotated feedback PDF with teacher marks...','info')" class="btn btn-outline btn-sm">
+          <span>📥</span> Download Graded PDF
+        </button>
+        <button type="button" onclick="window.showToast('💬 Feedback message opened with Mr. Kiprop.','success'); window.closeStudentModal('modal-assignment-feedback');" class="btn btn-primary btn-sm">
+          Ask Teacher Follow-up
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MODAL 6: DRAFT & ESSAY WORKSPACE
+     ══════════════════════════════════════════════════════════ -->
+<div class="student-modal-backdrop" id="modal-assignment-draft">
+  <div class="student-modal-card" style="max-width: 680px;">
+    <button class="student-modal-close" onclick="window.closeStudentModal('modal-assignment-draft')" aria-label="Close Draft Modal">✕</button>
+
+    <div class="student-modal-header" style="padding: 24px 28px 18px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:8px;">
+        <span class="badge badge-info">English Literature • Term 1</span>
+        <span class="badge badge-warning" id="draft-autosave-status">💾 Auto-saved</span>
+      </div>
+      <h3 style="font-family:var(--font-heading); font-size:20px; font-weight:800; color:#0F172A; margin:0 0 4px 0;">
+        English Literature Character Essay
+      </h3>
+      <div style="font-size:13px; color:#64748B;">
+        Due: Next Tuesday, 11:59 PM • Target: 800 words
+      </div>
+    </div>
+
+    <div class="student-modal-body" style="padding: 20px 28px 28px;">
+      <!-- Essay Prompt -->
+      <div style="background:#FFFBEB; border:1px solid #FDE68A; border-radius:12px; padding:14px 16px; margin-bottom:14px;">
+        <div style="font-size:12.5px; font-weight:800; color:#B45309; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">
+          Essay Prompt
+        </div>
+        <div style="font-size:13.5px; color:#78350F; line-height:1.6;">
+          "Analyze how Margaret Ogola portrays the resilience of women through the characters of Akoko and Nyabera in <em>The River and the Source</em>. Illustrate with specific textual evidence."
+        </div>
+      </div>
+
+      <!-- Editor -->
+      <div class="draft-editor-wrapper">
+        <div class="draft-editor-header">
+          <span>Writing Workspace</span>
+          <span id="draft-reading-time">⏱ ~2 min read</span>
+        </div>
+        <textarea id="draft-textarea" class="draft-editor-textarea" oninput="window.updateDraftWordCount()" placeholder="Begin drafting your essay here...">In Margaret Ogola's landmark novel, 'The River and the Source', resilience is not portrayed as a mere virtue, but as a vital generational compass that anchors the lineage of Akoko Obanda. From her bold defiance against unjust patriarchal demands in Yimbo to her resolute walk to the colonial DC in Kisumu, Akoko exemplifies agency rooted in quiet dignity.
+
+Her daughter, Nyabera, inherits this mantle of fortitude amidst immense grief. Upon facing the tragic loss of her children, she turns toward spiritual transformation, demonstrating that resilience in African womanhood often entails the courage to embrace new paradigms while preserving core moral values.</textarea>
+        <div class="draft-editor-footer">
+          <span id="draft-word-count" style="font-weight:700; color:#2145E6;">112 / 800 words</span>
+          <span style="font-size:11.5px; color:#94A3B8;">Ctrl+S to save</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-top:20px;">
+        <button type="button" onclick="window.saveAssignmentDraft('literature-essay')" class="btn btn-outline btn-md">
+          Save Draft 💾
+        </button>
+        <button type="button" onclick="window.submitAssignmentDraft('literature-essay')" id="btn-submit-draft" class="btn btn-primary btn-md">
+          Turn in Final Essay 🚀
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- SCRIPTS -->
 <script src="js/main.js?v=3.1"></script>
 <script src="js/auth.js"></script>
 <script src="js/certificates.js"></script>
 <script src="js/courses.js"></script>
-<script src="js/student-dashboard.js"></script>
+<script src="js/student-dashboard.js?v=3.2"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   // Render Enrolled Courses

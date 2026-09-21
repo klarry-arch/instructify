@@ -537,10 +537,260 @@ window.sendStudyBuddyMsg = function() {
   }, 700);
 };
 
+// ── 4B. Assignments & Homework Interactive Modals ───────────────
+window.openAssignmentModal = function(type, id) {
+  let modalId = '';
+  if (type === 'upload') modalId = 'modal-assignment-upload';
+  else if (type === 'feedback') modalId = 'modal-assignment-feedback';
+  else if (type === 'draft') {
+    modalId = 'modal-assignment-draft';
+    setTimeout(() => {
+      if (typeof window.updateDraftWordCount === 'function') {
+        window.updateDraftWordCount();
+      }
+    }, 50);
+  }
+
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Focus close button for accessibility
+    const closeBtn = modal.querySelector('.student-modal-close');
+    if (closeBtn) closeBtn.focus();
+  }
+};
+
 window.closeStudentModal = function(modalId) {
   const modal = document.getElementById(modalId);
-  if (modal) modal.classList.remove('active');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 };
+
+// Handle Assignment File Selection (File Input & Drag/Drop)
+window.handleAssignmentFileSelect = function(e) {
+  const files = e.target && e.target.files ? e.target.files : (e.dataTransfer ? e.dataTransfer.files : null);
+  if (!files || !files.length) return;
+
+  const file = files[0];
+  // Size limit: 25MB
+  if (file.size > 25 * 1024 * 1024) {
+    if (window.showToast) window.showToast('⚠️ File exceeds the 25MB limit. Please upload a smaller file.', 'warning');
+    return;
+  }
+
+  const preview = document.getElementById('assignment-file-preview');
+  const nameEl = document.getElementById('preview-file-name');
+  const sizeEl = document.getElementById('preview-file-size');
+  const iconEl = document.getElementById('preview-file-icon');
+
+  if (preview && nameEl && sizeEl) {
+    nameEl.textContent = file.name;
+    const mbSize = (file.size / (1024 * 1024)).toFixed(1);
+    sizeEl.textContent = `${mbSize} MB • Ready to upload`;
+
+    const ext = file.name.split('.').pop().toLowerCase();
+    if (ext === 'pdf') iconEl.textContent = '📕';
+    else if (['doc', 'docx'].includes(ext)) iconEl.textContent = '📘';
+    else if (['png', 'jpg', 'jpeg'].includes(ext)) iconEl.textContent = '🖼️';
+    else if (ext === 'zip') iconEl.textContent = '🗜️';
+    else iconEl.textContent = '📄';
+
+    preview.style.display = 'flex';
+  }
+};
+
+window.removeAssignmentFile = function() {
+  const fileInput = document.getElementById('assignment-file-input');
+  if (fileInput) fileInput.value = '';
+  const preview = document.getElementById('assignment-file-preview');
+  if (preview) preview.style.display = 'none';
+};
+
+window.submitAssignmentUpload = function(id) {
+  const fileInput = document.getElementById('assignment-file-input');
+  const preview = document.getElementById('assignment-file-preview');
+  const hasFile = (fileInput && fileInput.files && fileInput.files.length) || (preview && preview.style.display !== 'none');
+
+  if (!hasFile) {
+    if (window.showToast) window.showToast('⚠️ Please select or drop a worksheet file to submit.', 'warning');
+    return;
+  }
+
+  const progressContainer = document.getElementById('assignment-progress-container');
+  const progressBar = document.getElementById('assignment-progress-bar');
+  const submitBtn = document.getElementById('btn-submit-upload');
+
+  if (progressContainer && progressBar && submitBtn) {
+    progressContainer.style.display = 'block';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Uploading...';
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 25;
+      progressBar.style.width = progress + '%';
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        setTimeout(() => {
+          if (window.showToast) {
+            window.showToast('🎉 Plant Osmosis Lab Worksheet submitted successfully!', 'success', 5000);
+          }
+
+          // Update table row
+          const statusBadge = document.getElementById('status-osmosis-lab');
+          if (statusBadge) {
+            statusBadge.className = 'badge badge-primary';
+            statusBadge.textContent = 'Submitted (Under Review)';
+          }
+          const gradeCell = document.getElementById('grade-osmosis-lab');
+          if (gradeCell) {
+            gradeCell.textContent = 'Under Review';
+          }
+          const actionBtn = document.getElementById('btn-osmosis-lab');
+          if (actionBtn) {
+            actionBtn.className = 'btn btn-outline btn-sm';
+            actionBtn.innerHTML = 'View Submission 📄';
+            actionBtn.onclick = function() {
+              if (window.showToast) window.showToast('Submission on time. Teacher grading in progress.', 'info');
+            };
+          }
+
+          // Reset modal state
+          progressContainer.style.display = 'none';
+          progressBar.style.width = '0%';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Assignment 🚀';
+          window.removeAssignmentFile();
+          window.closeStudentModal('modal-assignment-upload');
+        }, 400);
+      }
+    }, 150);
+  }
+};
+
+window.updateDraftWordCount = function() {
+  const textarea = document.getElementById('draft-textarea');
+  const countEl = document.getElementById('draft-word-count');
+  const readTimeEl = document.getElementById('draft-reading-time');
+  if (!textarea || !countEl) return;
+
+  const text = textarea.value.trim();
+  const words = text ? text.split(/\s+/).length : 0;
+  countEl.textContent = `${words} / 800 words`;
+
+  if (readTimeEl) {
+    const mins = Math.max(1, Math.ceil(words / 200));
+    readTimeEl.textContent = `⏱ ~${mins} min read`;
+  }
+};
+
+window.saveAssignmentDraft = function(id) {
+  const textarea = document.getElementById('draft-textarea');
+  if (textarea) {
+    try {
+      localStorage.setItem('instructify_draft_' + id, textarea.value);
+    } catch(e) {}
+  }
+  const statusEl = document.getElementById('draft-autosave-status');
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  if (statusEl) {
+    statusEl.textContent = `💾 Saved at ${timeStr}`;
+    statusEl.className = 'badge badge-success';
+  }
+  if (window.showToast) {
+    window.showToast(`💾 Draft saved successfully at ${timeStr}.`, 'success');
+  }
+};
+
+window.submitAssignmentDraft = function(id) {
+  const submitBtn = document.getElementById('btn-submit-draft');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+  }
+
+  setTimeout(() => {
+    if (window.showToast) {
+      window.showToast('🎉 English Literature Character Essay turned in successfully!', 'success', 5000);
+    }
+
+    const statusBadge = document.getElementById('status-literature-essay');
+    if (statusBadge) {
+      statusBadge.className = 'badge badge-primary';
+      statusBadge.textContent = 'Submitted';
+    }
+    const gradeCell = document.getElementById('grade-literature-essay');
+    if (gradeCell) {
+      gradeCell.textContent = 'Under Review';
+    }
+    const actionBtn = document.getElementById('btn-literature-essay');
+    if (actionBtn) {
+      actionBtn.className = 'btn btn-ghost btn-sm';
+      actionBtn.innerHTML = 'Submitted 📄';
+      actionBtn.onclick = function() {
+        if (window.showToast) window.showToast('Essay submitted for grading. Teacher review pending.', 'info');
+      };
+    }
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Turn in Final Essay 🚀';
+    }
+    window.closeStudentModal('modal-assignment-draft');
+  }, 400);
+};
+
+// Setup dropzone and modal keyboard / backdrop listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const dropzone = document.getElementById('assignment-dropzone');
+  if (dropzone) {
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.add('dragover');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.remove('dragover');
+      });
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      window.handleAssignmentFileSelect(e);
+    });
+  }
+
+  // Click outside to close student modal
+  document.querySelectorAll('.student-modal-backdrop').forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        window.closeStudentModal(modal.id);
+      }
+    });
+  });
+
+  // Escape key to close modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const activeModal = document.querySelector('.student-modal-backdrop.active');
+      if (activeModal) {
+        window.closeStudentModal(activeModal.id);
+      }
+    }
+  });
+});
+
 
 // ── 5. Sidebar Navigation & Tab Switcher ─────────────────────────
 window.switchStudentTab = function(linkElem, tabKey) {
