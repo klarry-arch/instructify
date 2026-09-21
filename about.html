@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css?v=3.1">
   <link rel="stylesheet" href="css/homepage.css">
-  <link rel="stylesheet" href="css/about.css?v=3.2">
+  <link rel="stylesheet" href="css/about.css?v=3.5">
   <link rel="stylesheet" href="css/live-chat.css">
 
   <style>
@@ -70,6 +70,7 @@
       gap: 24px !important;
       text-align: center !important;
       margin-top: 10px;
+      align-items: start !important;
     }
 
     @media (max-width: 1100px) {
@@ -82,10 +83,13 @@
     @media (max-width: 640px) {
       .cv-grid {
         grid-template-columns: 1fr !important;
-        gap: 16px !important;
+        gap: 18px !important;
       }
       .cv-main-title {
         font-size: 28px !important;
+      }
+      .cv-card {
+        padding: 24px 20px 20px !important;
       }
     }
 
@@ -100,10 +104,11 @@
       flex-direction: column !important;
       align-items: center !important;
       text-align: center !important;
-      justify-content: space-between !important;
+      justify-content: flex-start !important;
       box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02) !important;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease !important;
       cursor: default;
+      height: auto !important;
     }
 
     .cv-card::before {
@@ -118,12 +123,21 @@
     }
 
     .cv-card:hover {
-      transform: translateY(-7px) !important;
+      transform: translateY(-5px) !important;
       border-color: var(--val-color, #2145E6) !important;
-      box-shadow: 0 18px 36px -8px var(--val-glow, rgba(33, 69, 230, 0.22)), 0 6px 12px -2px rgba(15, 23, 42, 0.04) !important;
+      box-shadow: 0 16px 32px -8px var(--val-glow, rgba(33, 69, 230, 0.22)), 0 4px 10px -2px rgba(15, 23, 42, 0.04) !important;
     }
 
     .cv-card:hover::before {
+      height: 6px;
+    }
+
+    .cv-card.is-expanded {
+      border-color: var(--val-color, #2145E6) !important;
+      box-shadow: 0 14px 30px -6px var(--val-glow, rgba(33, 69, 230, 0.25)), 0 4px 8px -2px rgba(15, 23, 42, 0.04) !important;
+    }
+
+    .cv-card.is-expanded::before {
       height: 6px;
     }
 
@@ -165,17 +179,18 @@
       font-family: var(--font-heading), 'Poppins', sans-serif !important;
       font-size: 22px !important;
       font-weight: 850 !important;
-      color: #E2E8F0 !important;
+      color: #CBD5E1 !important;
       line-height: 1 !important;
       user-select: none;
       letter-spacing: -0.04em !important;
-      transition: color 0.3s ease;
-      opacity: 0.6 !important;
+      transition: color 0.3s ease, opacity 0.3s ease;
+      opacity: 0.75 !important;
     }
 
-    .cv-card:hover .cv-number-watermark {
+    .cv-card:hover .cv-number-watermark,
+    .cv-card.is-expanded .cv-number-watermark {
       color: var(--val-color, #2145E6) !important;
-      opacity: 0.45 !important;
+      opacity: 0.6 !important;
     }
 
     .cv-card-title {
@@ -194,37 +209,126 @@
       font-size: 14px !important;
       color: #475569 !important;
       line-height: 1.6 !important;
-      margin: 0 auto 16px auto !important;
+      margin: 0 auto 18px auto !important;
       font-weight: 450 !important;
       text-align: center !important;
       width: 100% !important;
     }
 
-    .cv-card-bottom-pill {
+    /* Interactive Heading Button */
+    .cv-card-btn {
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: 6px !important;
+      gap: 8px !important;
+      font-family: inherit !important;
       font-size: 11.5px !important;
       font-weight: 750 !important;
       text-transform: uppercase !important;
-      letter-spacing: 0.06em !important;
+      letter-spacing: 0.07em !important;
       color: var(--val-color, #2145E6) !important;
+      background: rgba(var(--val-rgb, 33, 69, 230), 0.04) !important;
+      border: 1px solid rgba(var(--val-rgb, 33, 69, 230), 0.16) !important;
+      border-radius: 10px !important;
+      padding: 11px 16px !important;
+      min-height: 44px !important;
+      width: 100% !important;
       margin-top: auto !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      padding-top: 10px;
-      border-top: 1px solid #F1F5F9;
-      width: 100%;
-      text-align: center !important;
+      cursor: pointer !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      text-decoration: none !important;
+      box-sizing: border-box !important;
+      user-select: none !important;
     }
 
-    .cv-card-bottom-pill span.arrow {
-      transition: transform 0.25s ease;
+    .cv-card-btn:hover {
+      background: rgba(var(--val-rgb, 33, 69, 230), 0.10) !important;
+      border-color: var(--val-color, #2145E6) !important;
+      transform: translateY(-1px) !important;
     }
 
-    .cv-card:hover .cv-card-bottom-pill span.arrow {
-      transform: translateX(4px);
+    .cv-card-btn:focus-visible {
+      outline: 2px solid var(--val-color, #2145E6) !important;
+      outline-offset: 3px !important;
+      box-shadow: 0 0 0 3px rgba(var(--val-rgb, 33, 69, 230), 0.25) !important;
+    }
+
+    .cv-card.is-expanded .cv-card-btn {
+      background: rgba(var(--val-rgb, 33, 69, 230), 0.12) !important;
+      border-color: var(--val-color, #2145E6) !important;
+    }
+
+    /* Arrow inside button */
+    .cv-btn-arrow {
+      width: 14px !important;
+      height: 14px !important;
+      stroke: var(--val-color, #2145E6) !important;
+      stroke-width: 2.5 !important;
+      flex-shrink: 0 !important;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+
+    .cv-card-btn:hover .cv-btn-arrow {
+      transform: translateX(3px);
+    }
+
+    .cv-card.is-expanded .cv-btn-arrow {
+      transform: rotate(90deg) !important;
+    }
+
+    /* Explanation Panel - Smooth grid accordion */
+    .cv-explanation-wrapper {
+      display: grid !important;
+      grid-template-rows: 0fr !important;
+      transition: grid-template-rows 0.38s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      width: 100% !important;
+    }
+
+    .cv-card.is-expanded .cv-explanation-wrapper {
+      grid-template-rows: 1fr !important;
+    }
+
+    .cv-explanation-inner {
+      overflow: hidden !important;
+      min-height: 0 !important;
+    }
+
+    .cv-explanation-box {
+      margin-top: 12px !important;
+      padding: 14px 16px !important;
+      border-radius: 12px !important;
+      background: rgba(var(--val-rgb, 33, 69, 230), 0.04) !important;
+      border: 1px solid rgba(var(--val-rgb, 33, 69, 230), 0.16) !important;
+      border-left: 3.5px solid var(--val-color, #2145E6) !important;
+      text-align: left !important;
+      transition: opacity 0.3s ease, transform 0.3s ease !important;
+      opacity: 0 !important;
+      transform: translateY(-6px) !important;
+    }
+
+    .cv-card.is-expanded .cv-explanation-box {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .cv-explanation-text {
+      font-size: 13.5px !important;
+      line-height: 1.65 !important;
+      color: #334155 !important;
+      margin: 0 !important;
+      font-weight: 500 !important;
+      text-align: left !important;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .cv-card,
+      .cv-card-btn,
+      .cv-btn-arrow,
+      .cv-explanation-wrapper,
+      .cv-explanation-box {
+        transition: none !important;
+      }
     }
   </style>
 </head>
@@ -611,67 +715,97 @@
     <div class="cv-grid">
 
       <!-- 01 Curiosity -->
-      <div class="cv-card" style="--val-color:#2145E6; --val-gradient:linear-gradient(135deg, #3B82F6 0%, #2145E6 100%); --val-glow:rgba(33,69,230,0.28); text-align:center !important; align-items:center !important;">
-        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #3B82F6 0%, #2145E6 100%); box-shadow:0 8px 18px -4px rgba(33,69,230,0.35);">
+      <div class="cv-card" style="--val-color:#2145E6; --val-rgb:33,69,230; --val-gradient:linear-gradient(135deg, #3B82F6 0%, #2145E6 100%); --val-glow:rgba(33,69,230,0.28);">
+        <div class="cv-card-top-row">
+          <div class="cv-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Curiosity" role="img">
               <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
               <path d="M9 18h6"/>
               <path d="M10 22h4"/>
             </svg>
           </div>
-          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">01</span>
+          <span class="cv-number-watermark">01</span>
         </div>
-        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#2145E6 !important;">Curiosity</h3>
-        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Celebrating questions, discovery, and the joy of lifelong learning.</p>
-        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
-          <span>Inquiry-Driven</span>
-          <span class="arrow">→</span>
+        <h3 class="cv-card-title" style="color:#2145E6 !important;">Curiosity</h3>
+        <p class="cv-card-desc">Celebrating questions, discovery, and the joy of lifelong learning.</p>
+        <button type="button" class="cv-card-btn" id="val-btn-1" aria-expanded="false" aria-controls="val-panel-1" aria-label="Learn more about Inquiry-Driven">
+          <span class="cv-btn-text">INQUIRY-DRIVEN</span>
+          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <div id="val-panel-1" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-1">
+          <div class="cv-explanation-inner">
+            <div class="cv-explanation-box">
+              <p class="cv-explanation-text">Learning begins with meaningful questions. We encourage curiosity, investigation, reflection, and discovery so that learners can develop a deeper understanding of ideas.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- 02 Creativity -->
-      <div class="cv-card" style="--val-color:#FF4D00; --val-gradient:linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); --val-glow:rgba(255,77,0,0.28); text-align:center !important; align-items:center !important;">
-        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); box-shadow:0 8px 18px -4px rgba(255,77,0,0.35);">
+      <div class="cv-card" style="--val-color:#FF4D00; --val-rgb:255,77,0; --val-gradient:linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); --val-glow:rgba(255,77,0,0.28);">
+        <div class="cv-card-top-row">
+          <div class="cv-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Creativity" role="img">
               <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/>
             </svg>
           </div>
-          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">02</span>
+          <span class="cv-number-watermark">02</span>
         </div>
-        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#FF4D00 !important;">Creativity</h3>
-        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Designing imaginative, practical, and engaging learning experiences.</p>
-        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
-          <span>Innovative Pedagogy</span>
-          <span class="arrow">→</span>
+        <h3 class="cv-card-title" style="color:#FF4D00 !important;">Creativity</h3>
+        <p class="cv-card-desc">Designing imaginative, practical, and engaging learning experiences.</p>
+        <button type="button" class="cv-card-btn" id="val-btn-2" aria-expanded="false" aria-controls="val-panel-2" aria-label="Learn more about Innovative Pedagogy">
+          <span class="cv-btn-text">INNOVATIVE PEDAGOGY</span>
+          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <div id="val-panel-2" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-2">
+          <div class="cv-explanation-inner">
+            <div class="cv-explanation-box">
+              <p class="cv-explanation-text">We use creative, learner-centred teaching approaches that combine effective educational practices with appropriate technology to make learning practical, engaging, and impactful.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- 03 Relevance -->
-      <div class="cv-card" style="--val-color:#0D9488; --val-gradient:linear-gradient(135deg, #14B8A6 0%, #0D9488 100%); --val-glow:rgba(13,148,136,0.28); text-align:center !important; align-items:center !important;">
-        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #14B8A6 0%, #0D9488 100%); box-shadow:0 8px 18px -4px rgba(13,148,136,0.35);">
+      <div class="cv-card" style="--val-color:#0D9488; --val-rgb:13,148,136; --val-gradient:linear-gradient(135deg, #14B8A6 0%, #0D9488 100%); --val-glow:rgba(13,148,136,0.28);">
+        <div class="cv-card-top-row">
+          <div class="cv-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Relevance" role="img">
               <circle cx="12" cy="12" r="10"/>
               <circle cx="12" cy="12" r="6"/>
               <circle cx="12" cy="12" r="2"/>
             </svg>
           </div>
-          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">03</span>
+          <span class="cv-number-watermark">03</span>
         </div>
-        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#0D9488 !important;">Relevance</h3>
-        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Rooting solutions in local cultures, materials, and community needs.</p>
-        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
-          <span>Contextual Focus</span>
-          <span class="arrow">→</span>
+        <h3 class="cv-card-title" style="color:#0D9488 !important;">Relevance</h3>
+        <p class="cv-card-desc">Rooting solutions in local cultures, materials, and community needs.</p>
+        <button type="button" class="cv-card-btn" id="val-btn-3" aria-expanded="false" aria-controls="val-panel-3" aria-label="Learn more about Contextual Focus">
+          <span class="cv-btn-text">CONTEXTUAL FOCUS</span>
+          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <div id="val-panel-3" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-3">
+          <div class="cv-explanation-inner">
+            <div class="cv-explanation-box">
+              <p class="cv-explanation-text">Learning solutions are designed around the realities, cultures, resources, and needs of the communities they serve, making education more relevant and meaningful.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- 04 Collaboration -->
-      <div class="cv-card" style="--val-color:#1D4ED8; --val-gradient:linear-gradient(135deg, #60A5FA 0%, #1D4ED8 100%); --val-glow:rgba(29,78,216,0.28); text-align:center !important; align-items:center !important;">
-        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #60A5FA 0%, #1D4ED8 100%); box-shadow:0 8px 18px -4px rgba(29,78,216,0.35);">
+      <div class="cv-card" style="--val-color:#1D4ED8; --val-rgb:29,78,216; --val-gradient:linear-gradient(135deg, #60A5FA 0%, #1D4ED8 100%); --val-glow:rgba(29,78,216,0.28);">
+        <div class="cv-card-top-row">
+          <div class="cv-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Collaboration" role="img">
               <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
               <circle cx="9" cy="7" r="4"/>
@@ -679,89 +813,139 @@
               <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
           </div>
-          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">04</span>
+          <span class="cv-number-watermark">04</span>
         </div>
-        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#1D4ED8 !important;">Collaboration</h3>
-        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Co-creating meaningful outcomes alongside educators and leaders.</p>
-        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
-          <span>Shared Purpose</span>
-          <span class="arrow">→</span>
+        <h3 class="cv-card-title" style="color:#1D4ED8 !important;">Collaboration</h3>
+        <p class="cv-card-desc">Co-creating meaningful outcomes alongside educators and leaders.</p>
+        <button type="button" class="cv-card-btn" id="val-btn-4" aria-expanded="false" aria-controls="val-panel-4" aria-label="Learn more about Shared Purpose">
+          <span class="cv-btn-text">SHARED PURPOSE</span>
+          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <div id="val-panel-4" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-4">
+          <div class="cv-explanation-inner">
+            <div class="cv-explanation-box">
+              <p class="cv-explanation-text">Educators, learners, families, leaders, and communities work together towards common educational goals and meaningful, sustainable outcomes.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- 05 Clarity -->
-      <div class="cv-card" style="--val-color:#7C3AED; --val-gradient:linear-gradient(135deg, #A78BFA 0%, #7C3AED 100%); --val-glow:rgba(124,58,237,0.28); text-align:center !important; align-items:center !important;">
-        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #A78BFA 0%, #7C3AED 100%); box-shadow:0 8px 18px -4px rgba(124,58,237,0.35);">
+      <div class="cv-card" style="--val-color:#7C3AED; --val-rgb:124,58,237; --val-gradient:linear-gradient(135deg, #A78BFA 0%, #7C3AED 100%); --val-glow:rgba(124,58,237,0.28);">
+        <div class="cv-card-top-row">
+          <div class="cv-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Clarity" role="img">
               <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
               <circle cx="12" cy="12" r="3"/>
             </svg>
           </div>
-          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">05</span>
+          <span class="cv-number-watermark">05</span>
         </div>
-        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#7C3AED !important;">Clarity</h3>
-        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Simplifying complex pedagogy and EdTech into intuitive, learner-friendly formats.</p>
-        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
-          <span>Intuitive Mastery</span>
-          <span class="arrow">→</span>
+        <h3 class="cv-card-title" style="color:#7C3AED !important;">Clarity</h3>
+        <p class="cv-card-desc">Simplifying complex pedagogy and EdTech into intuitive, learner-friendly formats.</p>
+        <button type="button" class="cv-card-btn" id="val-btn-5" aria-expanded="false" aria-controls="val-panel-5" aria-label="Learn more about Intuitive Mastery">
+          <span class="cv-btn-text">INTUITIVE MASTERY</span>
+          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <div id="val-panel-5" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-5">
+          <div class="cv-explanation-inner">
+            <div class="cv-explanation-box">
+              <p class="cv-explanation-text">Complex ideas and digital tools are presented in clear, simple, and accessible ways, helping users build confidence and achieve mastery naturally.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- 06 Renewal -->
-      <div class="cv-card" style="--val-color:#059669; --val-gradient:linear-gradient(135deg, #34D399 0%, #059669 100%); --val-glow:rgba(5,150,105,0.28); text-align:center !important; align-items:center !important;">
-        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #34D399 0%, #059669 100%); box-shadow:0 8px 18px -4px rgba(5,150,105,0.35);">
+      <div class="cv-card" style="--val-color:#059669; --val-rgb:5,150,105; --val-gradient:linear-gradient(135deg, #34D399 0%, #059669 100%); --val-glow:rgba(5,150,105,0.28);">
+        <div class="cv-card-top-row">
+          <div class="cv-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Renewal" role="img">
               <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
               <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
             </svg>
           </div>
-          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">06</span>
+          <span class="cv-number-watermark">06</span>
         </div>
-        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#059669 !important;">Renewal</h3>
-        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Believing every classroom milestone creates fresh opportunity for human growth.</p>
-        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
-          <span>Lifelong Growth</span>
-          <span class="arrow">→</span>
+        <h3 class="cv-card-title" style="color:#059669 !important;">Renewal</h3>
+        <p class="cv-card-desc">Believing every classroom milestone creates fresh opportunity for human growth.</p>
+        <button type="button" class="cv-card-btn" id="val-btn-6" aria-expanded="false" aria-controls="val-panel-6" aria-label="Learn more about Lifelong Growth">
+          <span class="cv-btn-text">LIFELONG GROWTH</span>
+          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <div id="val-panel-6" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-6">
+          <div class="cv-explanation-inner">
+            <div class="cv-explanation-box">
+              <p class="cv-explanation-text">Learning is a continuous journey. Every experience, challenge, and achievement provides an opportunity to gain knowledge, improve skills, and grow.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- 07 Integrity -->
-      <div class="cv-card" style="--val-color:#E11D48; --val-gradient:linear-gradient(135deg, #FB7185 0%, #E11D48 100%); --val-glow:rgba(225,29,72,0.28); text-align:center !important; align-items:center !important;">
-        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #FB7185 0%, #E11D48 100%); box-shadow:0 8px 18px -4px rgba(225,29,72,0.35);">
+      <div class="cv-card" style="--val-color:#E11D48; --val-rgb:225,29,72; --val-gradient:linear-gradient(135deg, #FB7185 0%, #E11D48 100%); --val-glow:rgba(225,29,72,0.28);">
+        <div class="cv-card-top-row">
+          <div class="cv-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Integrity" role="img">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
               <path d="m9 12 2 2 4-4"/>
             </svg>
           </div>
-          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">07</span>
+          <span class="cv-number-watermark">07</span>
         </div>
-        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#E11D48 !important;">Integrity</h3>
-        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Leading with honesty, humility, transparency, and uncompromised dedication.</p>
-        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
-          <span>Ethical Foundation</span>
-          <span class="arrow">→</span>
+        <h3 class="cv-card-title" style="color:#E11D48 !important;">Integrity</h3>
+        <p class="cv-card-desc">Leading with honesty, humility, transparency, and uncompromised dedication.</p>
+        <button type="button" class="cv-card-btn" id="val-btn-7" aria-expanded="false" aria-controls="val-panel-7" aria-label="Learn more about Ethical Foundation">
+          <span class="cv-btn-text">ETHICAL FOUNDATION</span>
+          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <div id="val-panel-7" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-7">
+          <div class="cv-explanation-inner">
+            <div class="cv-explanation-box">
+              <p class="cv-explanation-text">Every decision and action is guided by honesty, responsibility, fairness, transparency, respect, and the protection of every learner’s dignity.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- 08 Excellence -->
-      <div class="cv-card" style="--val-color:#D97706; --val-gradient:linear-gradient(135deg, #FBBF24 0%, #D97706 100%); --val-glow:rgba(217,119,6,0.28); text-align:center !important; align-items:center !important;">
-        <div class="cv-card-top-row" style="display:flex !important; align-items:center !important; justify-content:center !important; position:relative !important; width:100% !important; margin-bottom:18px !important;">
-          <div class="cv-icon-box" style="width:54px !important; height:54px !important; min-width:54px !important; min-height:54px !important; max-width:54px !important; max-height:54px !important; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; margin:0 auto !important; background:linear-gradient(135deg, #FBBF24 0%, #D97706 100%); box-shadow:0 8px 18px -4px rgba(217,119,6,0.35);">
+      <div class="cv-card" style="--val-color:#D97706; --val-rgb:217,119,6; --val-gradient:linear-gradient(135deg, #FBBF24 0%, #D97706 100%); --val-glow:rgba(217,119,6,0.28);">
+        <div class="cv-card-top-row">
+          <div class="cv-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Excellence" role="img">
               <circle cx="12" cy="8" r="6"/>
               <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
             </svg>
           </div>
-          <span class="cv-number-watermark" style="position:absolute !important; top:-4px !important; right:0 !important;">08</span>
+          <span class="cv-number-watermark">08</span>
         </div>
-        <h3 class="cv-card-title" style="text-align:center !important; width:100% !important; margin:0 0 10px 0 !important; color:#D97706 !important;">Excellence</h3>
-        <p class="cv-card-desc" style="text-align:center !important; width:100% !important; margin:0 auto 16px auto !important;">Upholding world-class standards of educational quality across every service.</p>
-        <div class="cv-card-bottom-pill" style="margin:auto auto 0 auto !important; justify-content:center !important; text-align:center !important; width:100% !important;">
-          <span>Gold Standard</span>
-          <span class="arrow">→</span>
+        <h3 class="cv-card-title" style="color:#D97706 !important;">Excellence</h3>
+        <p class="cv-card-desc">Upholding world-class standards of educational quality across every service.</p>
+        <button type="button" class="cv-card-btn" id="val-btn-8" aria-expanded="false" aria-controls="val-panel-8" aria-label="Learn more about Gold Standard">
+          <span class="cv-btn-text">GOLD STANDARD</span>
+          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <div id="val-panel-8" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-8">
+          <div class="cv-explanation-inner">
+            <div class="cv-explanation-box">
+              <p class="cv-explanation-text">We are committed to exceptional quality, continuous improvement, and educational solutions that meet high professional and global standards.</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -844,7 +1028,9 @@
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
         </div>
-<a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
+        <div style="margin-top:14px;">
+          <a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
+        </div>
       </div>
       <div>
         <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
@@ -880,10 +1066,16 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=3.1"></script>
+<script src="js/main.js?v=3.2"></script>
 
   <script src="js/chat-config.js"></script>
   <script src="js/live-chat.js"></script>
+
+  <script>
+    // Ensure core values expanders are initialized smoothly
+    if (typeof initCoreValuesExpanders === 'function') {
+      initCoreValuesExpanders();
+    }
+  </script>
 </body>
 </html>
-

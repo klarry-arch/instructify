@@ -15,6 +15,7 @@ function bootstrapApp() {
   markActiveNavLink();
   initWorkshopForm();
   initTrainingForm();
+  initCoreValuesExpanders();
 }
 
 if (document.readyState === 'loading') {
@@ -327,6 +328,55 @@ function initTabs() {
           if (panel) panel.classList.add('active');
         }
       });
+    });
+  });
+}
+
+// ── Core Values Interactive Expanders ──────────────────────────
+function initCoreValuesExpanders() {
+  const cards = document.querySelectorAll('.cv-card');
+  if (!cards.length) return;
+
+  cards.forEach(card => {
+    const btn = card.querySelector('.cv-card-btn');
+    const panel = card.querySelector('.cv-explanation-wrapper');
+    if (!btn || !panel) return;
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isExpanded = card.classList.contains('is-expanded');
+      const isDesktop = window.innerWidth > 768;
+
+      // On desktop, allow only one explanation to remain open at a time
+      if (isDesktop && !isExpanded) {
+        cards.forEach(otherCard => {
+          if (otherCard !== card && otherCard.classList.contains('is-expanded')) {
+            otherCard.classList.remove('is-expanded');
+            const otherBtn = otherCard.querySelector('.cv-card-btn');
+            if (otherBtn) {
+              otherBtn.setAttribute('aria-expanded', 'false');
+            }
+          }
+        });
+      }
+
+      // Toggle current card
+      if (isExpanded) {
+        card.classList.remove('is-expanded');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        card.classList.add('is-expanded');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Keyboard accessibility: Escape collapses open card and keeps focus
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && card.classList.contains('is-expanded')) {
+        card.classList.remove('is-expanded');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
     });
   });
 }
