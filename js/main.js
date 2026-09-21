@@ -333,42 +333,62 @@ function initTabs() {
 }
 
 // ── Core Values Interactive Expanders ──────────────────────────
+window.toggleCoreValue = function(btn, e) {
+  if (e) {
+    if (typeof e.preventDefault === 'function') e.preventDefault();
+    if (typeof e.stopPropagation === 'function') e.stopPropagation();
+  }
+  // Guard against duplicate execution within the same interaction tick
+  const now = Date.now();
+  if (btn._lastToggleTime && (now - btn._lastToggleTime < 250)) {
+    return;
+  }
+  btn._lastToggleTime = now;
+
+  const card = btn.closest('.cv-card');
+  if (!card) return;
+
+  const isExpanded = card.classList.contains('is-expanded');
+  const isDesktop = window.innerWidth > 768;
+
+  // On desktop, allow only one explanation to remain open at a time
+  if (isDesktop && !isExpanded) {
+    document.querySelectorAll('.cv-card.is-expanded').forEach(otherCard => {
+      if (otherCard !== card) {
+        otherCard.classList.remove('is-expanded');
+        const otherBtn = otherCard.querySelector('.cv-card-btn');
+        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Toggle current card
+  if (isExpanded) {
+    card.classList.remove('is-expanded');
+    btn.setAttribute('aria-expanded', 'false');
+  } else {
+    card.classList.add('is-expanded');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+};
+
 function initCoreValuesExpanders() {
   const cards = document.querySelectorAll('.cv-card');
   if (!cards.length) return;
 
   cards.forEach(card => {
     const btn = card.querySelector('.cv-card-btn');
-    const panel = card.querySelector('.cv-explanation-wrapper');
-    if (!btn || !panel) return;
+    if (!btn) return;
 
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const isExpanded = card.classList.contains('is-expanded');
-      const isDesktop = window.innerWidth > 768;
+    if (btn.dataset.expanderBound === 'true') return;
+    btn.dataset.expanderBound = 'true';
 
-      // On desktop, allow only one explanation to remain open at a time
-      if (isDesktop && !isExpanded) {
-        cards.forEach(otherCard => {
-          if (otherCard !== card && otherCard.classList.contains('is-expanded')) {
-            otherCard.classList.remove('is-expanded');
-            const otherBtn = otherCard.querySelector('.cv-card-btn');
-            if (otherBtn) {
-              otherBtn.setAttribute('aria-expanded', 'false');
-            }
-          }
-        });
-      }
-
-      // Toggle current card
-      if (isExpanded) {
-        card.classList.remove('is-expanded');
-        btn.setAttribute('aria-expanded', 'false');
-      } else {
-        card.classList.add('is-expanded');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
+    // If button doesn't have inline onclick, bind click listener
+    if (!btn.getAttribute('onclick')) {
+      btn.addEventListener('click', (e) => {
+        window.toggleCoreValue(btn, e);
+      });
+    }
 
     // Keyboard accessibility: Escape collapses open card and keeps focus
     btn.addEventListener('keydown', (e) => {

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css?v=3.1">
   <link rel="stylesheet" href="css/homepage.css">
-  <link rel="stylesheet" href="css/about.css?v=3.5">
+  <link rel="stylesheet" href="css/about.css?v=3.6">
   <link rel="stylesheet" href="css/live-chat.css">
 
   <style>
@@ -728,7 +728,7 @@
         </div>
         <h3 class="cv-card-title" style="color:#2145E6 !important;">Curiosity</h3>
         <p class="cv-card-desc">Celebrating questions, discovery, and the joy of lifelong learning.</p>
-        <button type="button" class="cv-card-btn" id="val-btn-1" aria-expanded="false" aria-controls="val-panel-1" aria-label="Learn more about Inquiry-Driven">
+        <button type="button" class="cv-card-btn" id="val-btn-1" aria-expanded="false" aria-controls="val-panel-1" aria-label="Learn more about Inquiry-Driven" onclick="toggleCoreValue(this, event)">
           <span class="cv-btn-text">INQUIRY-DRIVEN</span>
           <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -756,7 +756,7 @@
         </div>
         <h3 class="cv-card-title" style="color:#FF4D00 !important;">Creativity</h3>
         <p class="cv-card-desc">Designing imaginative, practical, and engaging learning experiences.</p>
-        <button type="button" class="cv-card-btn" id="val-btn-2" aria-expanded="false" aria-controls="val-panel-2" aria-label="Learn more about Innovative Pedagogy">
+        <button type="button" class="cv-card-btn" id="val-btn-2" aria-expanded="false" aria-controls="val-panel-2" aria-label="Learn more about Innovative Pedagogy" onclick="toggleCoreValue(this, event)">
           <span class="cv-btn-text">INNOVATIVE PEDAGOGY</span>
           <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -778,15 +778,15 @@
           <div class="cv-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Relevance" role="img">
               <circle cx="12" cy="12" r="10"/>
-              <circle cx="12" cy="12" r="6"/>
-              <circle cx="12" cy="12" r="2"/>
+              <circle cx="12" cy="6" r="6"/>
+              <circle cx="12" cy="2" r="2"/>
             </svg>
           </div>
           <span class="cv-number-watermark">03</span>
         </div>
         <h3 class="cv-card-title" style="color:#0D9488 !important;">Relevance</h3>
         <p class="cv-card-desc">Rooting solutions in local cultures, materials, and community needs.</p>
-        <button type="button" class="cv-card-btn" id="val-btn-3" aria-expanded="false" aria-controls="val-panel-3" aria-label="Learn more about Contextual Focus">
+        <button type="button" class="cv-card-btn" id="val-btn-3" aria-expanded="false" aria-controls="val-panel-3" aria-label="Learn more about Contextual Focus" onclick="toggleCoreValue(this, event)">
           <span class="cv-btn-text">CONTEXTUAL FOCUS</span>
           <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -817,7 +817,7 @@
         </div>
         <h3 class="cv-card-title" style="color:#1D4ED8 !important;">Collaboration</h3>
         <p class="cv-card-desc">Co-creating meaningful outcomes alongside educators and leaders.</p>
-        <button type="button" class="cv-card-btn" id="val-btn-4" aria-expanded="false" aria-controls="val-panel-4" aria-label="Learn more about Shared Purpose">
+        <button type="button" class="cv-card-btn" id="val-btn-4" aria-expanded="false" aria-controls="val-panel-4" aria-label="Learn more about Shared Purpose" onclick="toggleCoreValue(this, event)">
           <span class="cv-btn-text">SHARED PURPOSE</span>
           <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -846,7 +846,7 @@
         </div>
         <h3 class="cv-card-title" style="color:#7C3AED !important;">Clarity</h3>
         <p class="cv-card-desc">Simplifying complex pedagogy and EdTech into intuitive, learner-friendly formats.</p>
-        <button type="button" class="cv-card-btn" id="val-btn-5" aria-expanded="false" aria-controls="val-panel-5" aria-label="Learn more about Intuitive Mastery">
+        <button type="button" class="cv-card-btn" id="val-btn-5" aria-expanded="false" aria-controls="val-panel-5" aria-label="Learn more about Intuitive Mastery" onclick="toggleCoreValue(this, event)">
           <span class="cv-btn-text">INTUITIVE MASTERY</span>
           <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -875,7 +875,7 @@
         </div>
         <h3 class="cv-card-title" style="color:#059669 !important;">Renewal</h3>
         <p class="cv-card-desc">Believing every classroom milestone creates fresh opportunity for human growth.</p>
-        <button type="button" class="cv-card-btn" id="val-btn-6" aria-expanded="false" aria-controls="val-panel-6" aria-label="Learn more about Lifelong Growth">
+        <button type="button" class="cv-card-btn" id="val-btn-6" aria-expanded="false" aria-controls="val-panel-6" aria-label="Learn more about Lifelong Growth" onclick="toggleCoreValue(this, event)">
           <span class="cv-btn-text">LIFELONG GROWTH</span>
           <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -904,7 +904,7 @@
         </div>
         <h3 class="cv-card-title" style="color:#E11D48 !important;">Integrity</h3>
         <p class="cv-card-desc">Leading with honesty, humility, transparency, and uncompromised dedication.</p>
-        <button type="button" class="cv-card-btn" id="val-btn-7" aria-expanded="false" aria-controls="val-panel-7" aria-label="Learn more about Ethical Foundation">
+        <button type="button" class="cv-card-btn" id="val-btn-7" aria-expanded="false" aria-controls="val-panel-7" aria-label="Learn more about Ethical Foundation" onclick="toggleCoreValue(this, event)">
           <span class="cv-btn-text">ETHICAL FOUNDATION</span>
           <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -933,7 +933,7 @@
         </div>
         <h3 class="cv-card-title" style="color:#D97706 !important;">Excellence</h3>
         <p class="cv-card-desc">Upholding world-class standards of educational quality across every service.</p>
-        <button type="button" class="cv-card-btn" id="val-btn-8" aria-expanded="false" aria-controls="val-panel-8" aria-label="Learn more about Gold Standard">
+        <button type="button" class="cv-card-btn" id="val-btn-8" aria-expanded="false" aria-controls="val-panel-8" aria-label="Learn more about Gold Standard" onclick="toggleCoreValue(this, event)">
           <span class="cv-btn-text">GOLD STANDARD</span>
           <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1066,16 +1066,48 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=3.2"></script>
+<script src="js/main.js?v=3.6"></script>
 
   <script src="js/chat-config.js"></script>
   <script src="js/live-chat.js"></script>
 
   <script>
-    // Ensure core values expanders are initialized smoothly
-    if (typeof initCoreValuesExpanders === 'function') {
-      initCoreValuesExpanders();
-    }
+    // Bulletproof Core Values Expander toggle (inline, zero caching dependency)
+    window.toggleCoreValue = function(btn, e) {
+      if (e) {
+        if (typeof e.preventDefault === 'function') e.preventDefault();
+        if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      }
+      var now = Date.now();
+      if (btn._lastToggleTime && (now - btn._lastToggleTime < 250)) {
+        return;
+      }
+      btn._lastToggleTime = now;
+
+      var card = btn.closest('.cv-card');
+      if (!card) return;
+
+      var isExpanded = card.classList.contains('is-expanded');
+      var isDesktop = window.innerWidth > 768;
+
+      if (isDesktop && !isExpanded) {
+        document.querySelectorAll('.cv-card.is-expanded').forEach(function(c) {
+          if (c !== card) {
+            c.classList.remove('is-expanded');
+            var b = c.querySelector('.cv-card-btn');
+            if (b) b.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      if (isExpanded) {
+        card.classList.remove('is-expanded');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        card.classList.add('is-expanded');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    };
   </script>
 </body>
 </html>
