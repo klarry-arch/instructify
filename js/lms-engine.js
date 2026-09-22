@@ -508,9 +508,17 @@
       return getItem(STORAGE_KEYS.COURSES, []);
     },
 
+    getCourses: function () {
+      return this.getAllCourses();
+    },
+
     getCourseById: function (courseId) {
       const courses = this.getAllCourses();
       return courses.find(c => c.id === courseId) || null;
+    },
+
+    getCourse: function (courseId) {
+      return this.getCourseById(courseId);
     },
 
     saveCourse: function (courseData) {

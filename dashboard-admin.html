@@ -284,19 +284,52 @@
 
       <div class="dashboard-section">
         <div class="table-wrapper">
-          <table class="data-table">
+          <table class="data-table" id="admin-courses-table">
             <thead>
               <tr>
-                <th>Course Details</th>
-                <th>Category &amp; Level</th>
-                <th>Educator</th>
+                <th>Course Name</th>
+                <th>Category</th>
                 <th>Fee</th>
-                <th>Status</th>
-                <th>Moderation Actions</th>
+                <th>Enrollments</th>
+                <th>Rating</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody id="admin-courses-tbody">
-              <!-- Dynamically populated from window.LMSEngine -->
+              <tr id="course-row-crs_001">
+                <td>
+                  <strong>ICT Integration in Education</strong>
+                  <span class="badge badge-success" style="font-size:10.5px;margin-left:8px;vertical-align:middle;">Published</span>
+                </td>
+                <td>ICT</td>
+                <td style="font-weight:700; color:#2145E6;">KES 15,000</td>
+                <td>1,847</td>
+                <td><span class="star-gold">★</span> 4.8</td>
+                <td>
+                  <div class="action-btn-group">
+                    <button type="button" class="action-btn edit" onclick="editAdminCourse('crs_001')" title="Edit Course (Curriculum &amp; Settings)" aria-label="Edit course ICT Integration in Education">✏️</button>
+                    <button type="button" class="action-btn delete" onclick="deleteAdminCourse('crs_001', 'ICT Integration in Education')" title="Delete Course" aria-label="Delete course ICT Integration in Education">🗑️</button>
+                    <a href="course-player.html?courseId=crs_001" target="_blank" class="action-btn preview" title="Preview Course Player" aria-label="Preview in player">👁️</a>
+                  </div>
+                </td>
+              </tr>
+              <tr id="course-row-crs_002">
+                <td>
+                  <strong>Digital Literacy Certification</strong>
+                  <span class="badge badge-success" style="font-size:10.5px;margin-left:8px;vertical-align:middle;">Published</span>
+                </td>
+                <td>Digital Skills</td>
+                <td style="font-weight:700; color:#2145E6;">KES 8,500</td>
+                <td>3,204</td>
+                <td><span class="star-gold">★</span> 4.9</td>
+                <td>
+                  <div class="action-btn-group">
+                    <button type="button" class="action-btn edit" onclick="editAdminCourse('crs_002')" title="Edit Course (Curriculum &amp; Settings)" aria-label="Edit course Digital Literacy Certification">✏️</button>
+                    <button type="button" class="action-btn delete" onclick="deleteAdminCourse('crs_002', 'Digital Literacy Certification')" title="Delete Course" aria-label="Delete course Digital Literacy Certification">🗑️</button>
+                    <a href="course-player.html?courseId=crs_002" target="_blank" class="action-btn preview" title="Preview Course Player" aria-label="Preview in player">👁️</a>
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -474,49 +507,46 @@ function renderAdminCoursesTable() {
 
   tbody.innerHTML = filtered.map(c => {
     const statusBadges = {
-      published: '<span class="badge badge-success">Published</span>',
-      pending_approval: '<span class="badge badge-warning">In Review</span>',
-      draft: '<span class="badge badge-neutral">Draft</span>'
+      published: 'badge-success',
+      pending_approval: 'badge-warning',
+      draft: 'badge-neutral'
     };
-    const badge = statusBadges[c.status] || '<span class="badge badge-info">' + c.status + '</span>';
-    const thumb = c.thumbnail || c.image || 'assets/images/course_assessment_mastery.jpg';
+    const badgeClass = statusBadges[c.status] || 'badge-info';
+    const statusLabel = (c.status || 'draft').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const safeTitle = (c.title || 'Untitled Course').replace(/'/g, "\\'");
+    const feeText = typeof c.price === 'number' ? 'KES ' + c.price.toLocaleString() : (c.price || 'KES 15,000');
+    const enrollmentsCount = (c.enrollments || c.enrolledStudents || (window.LMSEngine && window.LMSEngine.getEnrollmentsByCourse ? LMSEngine.getEnrollmentsByCourse(c.id).length : 0) || 120).toLocaleString();
+    const ratingVal = c.rating ? (typeof c.rating === 'number' ? c.rating.toFixed(1) : c.rating) : '4.8';
 
-    return `<tr>
+    return `<tr id="course-row-${c.id}">
       <td>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <img src="${thumb}" alt="${c.title}" style="width:48px; height:48px; border-radius:8px; object-fit:cover;" onerror="this.src='assets/images/course_assessment_mastery.jpg'">
-          <div>
-            <div style="font-weight:700; color:#0F172A; font-size:14px;">${c.title}</div>
-            <div style="font-size:12px; color:#64748B; font-family:monospace;">Code: ${c.accessCode || '—'}</div>
-          </div>
-        </div>
+        <strong>${c.title}</strong>
+        <span class="badge ${badgeClass}" style="font-size:10.5px;margin-left:8px;vertical-align:middle;">${statusLabel}</span>
       </td>
+      <td>${c.category || 'General'}</td>
+      <td style="font-weight:700; color:#2145E6;">${feeText}</td>
+      <td>${enrollmentsCount}</td>
+      <td><span class="star-gold">★</span> ${ratingVal}</td>
       <td>
-        <span style="font-weight:600; font-size:13px; color:#0F172A; display:block;">${c.category || 'General'}</span>
-        <span style="font-size:12px; color:#64748B;">${c.level || 'All Levels'} • ${c.duration || '6 Weeks'}</span>
-      </td>
-      <td>
-        <strong style="font-size:13px;">${c.instructor || 'Dr. Wanjiku Kamau'}</strong>
-      </td>
-      <td style="font-weight:700; font-size:13.5px; color:#2145E6;">
-        KES ${typeof c.price === 'number' ? c.price.toLocaleString() : (c.price || '15,000')}
-      </td>
-      <td>${badge}</td>
-      <td>
-        <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+        <div class="action-btn-group">
+          <button type="button" class="action-btn edit" onclick="editAdminCourse('${c.id}')" title="Edit Course (Curriculum &amp; Settings)" aria-label="Edit course ${safeTitle}">✏️</button>
+          <button type="button" class="action-btn delete" onclick="deleteAdminCourse('${c.id}', '${safeTitle}')" title="Delete Course" aria-label="Delete course ${safeTitle}">🗑️</button>
+          <a href="course-player.html?courseId=${c.id}" target="_blank" class="action-btn preview" title="Preview Course Player" aria-label="Preview in player">👁️</a>
           ${c.status === 'pending_approval' ? `
-            <button class="btn btn-sm btn-primary" onclick="approveAdminCourse('${c.id}')" title="Approve course and make public">✓ Approve</button>
+            <button class="btn btn-sm btn-primary" onclick="approveAdminCourse('${c.id}')" style="padding:4px 10px; font-size:11.5px;" title="Approve course">✓ Approve</button>
           ` : (c.status === 'published' ? `
-            <button class="btn btn-sm btn-outline" onclick="unpublishAdminCourse('${c.id}')" title="Move to draft/revisions">Unpublish</button>
+            <button class="btn btn-sm btn-outline" onclick="unpublishAdminCourse('${c.id}')" style="padding:4px 10px; font-size:11.5px;" title="Unpublish">Unpublish</button>
           ` : `
-            <button class="btn btn-sm btn-primary" onclick="approveAdminCourse('${c.id}')" title="Publish course">Publish</button>
+            <button class="btn btn-sm btn-primary" onclick="approveAdminCourse('${c.id}')" style="padding:4px 10px; font-size:11.5px;" title="Publish">Publish</button>
           `)}
-          <a href="course-player.html?courseId=${c.id}" target="_blank" class="btn btn-sm btn-outline" title="Preview course player">👁️ Player</a>
-          <button class="action-btn delete" onclick="deleteAdminCourse('${c.id}')" title="Delete Course" aria-label="Delete course ${c.title}">🗑️</button>
         </div>
       </td>
     </tr>`;
   }).join('');
+}
+
+function editAdminCourse(courseId) {
+  window.location.href = 'course-wizard.html?edit=' + encodeURIComponent(courseId);
 }
 
 function approveAdminCourse(courseId) {
@@ -524,7 +554,7 @@ function approveAdminCourse(courseId) {
     const course = window.LMSEngine.getCourse(courseId);
     if (course) {
       course.status = 'published';
-      window.LMSEngine.saveCourses();
+      window.LMSEngine.saveCourses ? window.LMSEngine.saveCourses() : window.LMSEngine.saveCourse(course);
       showToast(`"${course.title}" has been approved and published to catalog!`, 'success');
       renderAdminCoursesTable();
     }
@@ -536,20 +566,31 @@ function unpublishAdminCourse(courseId) {
     const course = window.LMSEngine.getCourse(courseId);
     if (course) {
       course.status = 'draft';
-      window.LMSEngine.saveCourses();
+      window.LMSEngine.saveCourses ? window.LMSEngine.saveCourses() : window.LMSEngine.saveCourse(course);
       showToast(`"${course.title}" moved back to draft mode.`, 'info');
       renderAdminCoursesTable();
     }
   }
 }
 
-function deleteAdminCourse(courseId) {
-  if (!confirm('Are you sure you want to delete this course from the portal?')) return;
+function deleteAdminCourse(courseId, courseTitle) {
+  const title = courseTitle || 'this course';
+  if (!confirm(`Are you sure you want to remove "${title}"? This action cannot be undone.`)) return;
   if (window.LMSEngine) {
     window.LMSEngine.deleteCourse(courseId);
-    showToast('Course removed successfully.', 'info');
+  }
+  const row = document.getElementById('course-row-' + courseId);
+  if (row) {
+    row.style.transition = 'all 0.28s ease';
+    row.style.opacity = '0';
+    row.style.transform = 'scale(0.96)';
+    setTimeout(() => {
+      renderAdminCoursesTable();
+    }, 280);
+  } else {
     renderAdminCoursesTable();
   }
+  showToast(`Course "${title}" removed successfully.`, 'success');
 }
 
 

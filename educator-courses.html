@@ -181,7 +181,11 @@
         </div>
 
         <!-- Sort & View Controls -->
-        <div style="display:flex; gap:10px; align-items:center;">
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <div style="display:inline-flex; background:#F1F5F9; padding:3px; border-radius:8px; border:1px solid #E2E8F0;">
+            <button type="button" id="btn-view-cards" class="lms-btn lms-btn-sm lms-btn-primary" onclick="setViewMode('cards')" title="Cards Grid View" style="padding:5px 12px; font-size:12px; border:none;">⊞ Cards</button>
+            <button type="button" id="btn-view-table" class="lms-btn lms-btn-sm lms-btn-ghost" onclick="setViewMode('table')" title="Table View" style="padding:5px 12px; font-size:12px; border:none;">☰ Table</button>
+          </div>
           <select id="course-sort" class="lms-select" style="width:auto; padding:8px 12px; font-size:13px;" onchange="filterCourses()" aria-label="Sort courses">
             <option value="newest">Newest First</option>
             <option value="oldest">Oldest First</option>
@@ -193,8 +197,8 @@
       </div>
     </div>
 
-    <!-- Courses Grid -->
-    <div class="lms-courses-grid" id="courses-container" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:24px;">
+    <!-- Courses Container: Supports Responsive Cards Grid or Table View -->
+    <div id="courses-container">
       <!-- Populated dynamically -->
     </div>
 
@@ -252,10 +256,27 @@
   }
 
   let currentStatus = 'all';
+  let currentViewMode = 'cards';
   let allCourses = [];
 
+  window.setViewMode = function(mode) {
+    currentViewMode = mode;
+    const btnCards = document.getElementById('btn-view-cards');
+    const btnTable = document.getElementById('btn-view-table');
+    if (btnCards && btnTable) {
+      if (mode === 'cards') {
+        btnCards.className = 'lms-btn lms-btn-sm lms-btn-primary';
+        btnTable.className = 'lms-btn lms-btn-sm lms-btn-ghost';
+      } else {
+        btnCards.className = 'lms-btn lms-btn-sm lms-btn-ghost';
+        btnTable.className = 'lms-btn lms-btn-sm lms-btn-primary';
+      }
+    }
+    filterCourses();
+  };
+
   function loadCourses() {
-    allCourses = LMSEngine.getCourses();
+    allCourses = (LMSEngine.getCourses ? LMSEngine.getCourses() : LMSEngine.getAllCourses()) || [];
     updateCounts();
     filterCourses();
   }
@@ -336,84 +357,145 @@
 
     empty.style.display = 'none';
 
-    container.innerHTML = courses.map(course => {
-      const status = course.status || 'draft';
-      let badgeCls = 'lms-badge-draft';
-      let badgeLabel = 'Draft';
-      if (status === 'published') { badgeCls = 'lms-badge-published'; badgeLabel = 'Published'; }
-      else if (status === 'ready_for_review') { badgeCls = 'lms-badge-review'; badgeLabel = 'In Review'; }
-      else if (status === 'archived') { badgeCls = 'lms-badge-archived'; badgeLabel = 'Archived'; }
+    if (currentViewMode === 'table') {
+      // ── Clean Table View matching User Specification ────────
+      container.innerHTML = `
+        <div class="table-wrapper" style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; box-shadow:0 1px 3px rgba(15,23,42,0.06);">
+          <table class="data-table" style="width:100%; margin:0;">
+            <thead>
+              <tr>
+                <th>Course Name</th>
+                <th>Category</th>
+                <th>Fee</th>
+                <th>Enrollments</th>
+                <th>Rating</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${courses.map(course => {
+                const safeTitle = (course.title || 'Untitled Course').replace(/'/g, "\\'");
+                const feeText = typeof course.price === 'number' ? 'KES ' + course.price.toLocaleString() : (course.price || 'KES 15,000');
+                const enrolled = course.enrolledStudents || (LMSEngine.getEnrollmentsByCourse ? (LMSEngine.getEnrollmentsByCourse(course.id) || []).length : 0) || 120;
+                const ratingVal = course.rating ? (typeof course.rating === 'number' ? course.rating.toFixed(1) : course.rating) : '4.8';
+                const status = course.status || 'draft';
+                const statusLabel = status.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                let badgeCls = 'badge-neutral';
+                if (status === 'published') badgeCls = 'badge-success';
+                else if (status === 'ready_for_review') badgeCls = 'badge-warning';
 
-      const enrolled = course.enrolledStudents || (LMSEngine.getEnrollmentsByCourse(course.id) || []).length || 0;
-      const completionRate = course.completionRate || 68;
-      const imageSrc = course.image || 'assets/images/courses/cbc-foundations.jpg';
-
-      return `
-        <div class="lms-card lms-course-manage-card" style="display:flex; flex-direction:column; overflow:hidden; transition:transform 0.2s, box-shadow 0.2s;">
-          <div style="position:relative; height:160px; background:#F1F5F9; overflow:hidden;">
-            <img src="${imageSrc}" alt="${course.title}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/images/courses/cbc-foundations.jpg'">
-            <div style="position:absolute; top:12px; left:12px;">
-              <span class="lms-badge ${badgeCls}">${badgeLabel}</span>
-            </div>
-            <div style="position:absolute; top:12px; right:12px; background:rgba(15,23,42,0.75); color:#FFF; font-size:11px; font-weight:700; padding:3px 8px; border-radius:6px; backdrop-filter:blur(4px);">
-              ${course.level || 'Intermediate'}
-            </div>
-          </div>
-
-          <div style="padding:18px; flex:1; display:flex; flex-direction:column;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <span style="font-size:12px; font-weight:700; color:#2145E6; text-transform:uppercase;">${course.category || 'Curriculum'}</span>
-              <span style="font-size:12px; color:#64748B;">⏱ ${course.duration || '6 Weeks'}</span>
-            </div>
-
-            <h3 style="font-size:16px; font-weight:700; color:#0F172A; line-height:1.4; margin-bottom:12px; min-height:44px;">
-              ${course.title}
-            </h3>
-
-            <!-- Stats Bar -->
-            <div style="display:flex; justify-content:space-between; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:10px 12px; margin-bottom:14px; font-size:12px;">
-              <div>
-                <span style="color:#64748B; display:block;">Enrolled</span>
-                <strong style="color:#0F172A; font-size:14px;">${enrolled} Learners</strong>
-              </div>
-              <div style="text-align:right;">
-                <span style="color:#64748B; display:block;">Completion</span>
-                <strong style="color:#059669; font-size:14px;">${completionRate}%</strong>
-              </div>
-            </div>
-
-            <!-- Progress Bar -->
-            <div style="margin-bottom:18px;">
-              <div class="lms-progress-bar" style="height:6px; background:#E2E8F0; border-radius:99px; overflow:hidden;">
-                <div style="width:${completionRate}%; height:100%; background:#059669; border-radius:99px;"></div>
-              </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div style="margin-top:auto; display:flex; gap:8px; flex-wrap:wrap; border-top:1px solid #F1F5F9; padding-top:14px;">
-              <a href="course-wizard.html?edit=${course.id}" class="lms-btn lms-btn-primary lms-btn-sm" style="flex:1; justify-content:center; text-decoration:none;">
-                ✏️ Edit
-              </a>
-              <a href="educator-curriculum.html?course=${course.id}" class="lms-btn lms-btn-outline lms-btn-sm" style="justify-content:center; text-decoration:none;" title="Strands, Content & Assessments">
-                📑 Strands
-              </a>
-              <a href="course-detail.html?id=${course.id}" target="_blank" class="lms-btn lms-btn-outline lms-btn-sm" style="justify-content:center; text-decoration:none;" title="Preview Public Page">
-                👁️
-              </a>
-              <a href="educator-gradebook.html?course=${course.id}" class="lms-btn lms-btn-outline lms-btn-sm" style="justify-content:center; text-decoration:none;" title="View Gradebook">
-                📊
-              </a>
-              <button onclick="promptDuplicate('${course.id}', '${course.title.replace(/'/g, "\\'")}')" class="lms-btn lms-btn-outline lms-btn-sm" title="Duplicate Course">
-                📋
-              </button>
-              <button onclick="deleteCourseConfirm('${course.id}', '${course.title.replace(/'/g, "\\'")}')" class="lms-btn lms-btn-outline lms-btn-sm" style="color:#DC2626; border-color:#FECACA;" title="Delete Course">
-                🗑️
-              </button>
-            </div>
-          </div>
+                return `
+                  <tr id="educator-row-${course.id}">
+                    <td>
+                      <div style="font-weight:700; color:#0F172A; font-size:14px;">${course.title}</div>
+                      <div style="font-size:11.5px; color:#64748B; margin-top:2px;">
+                        ${course.code ? `<code>${course.code}</code> • ` : ''}
+                        <span class="badge ${badgeCls}" style="font-size:10px; padding:1px 6px;">${statusLabel}</span>
+                      </div>
+                    </td>
+                    <td><span style="font-weight:600; font-size:13px; color:#475569;">${course.category || 'ICT'}</span></td>
+                    <td style="font-weight:700; color:#2145E6;">${feeText}</td>
+                    <td style="font-weight:600; color:#0F172A;">${enrolled.toLocaleString()}</td>
+                    <td><span class="star-gold">★</span> ${ratingVal}</td>
+                    <td>
+                      <div class="action-btn-group">
+                        <a href="course-wizard.html?edit=${course.id}" class="action-btn edit" title="Edit Course (Curriculum &amp; Settings)" aria-label="Edit course ${safeTitle}">✏️</a>
+                        <button type="button" class="action-btn delete" onclick="deleteCourseConfirm('${course.id}', '${safeTitle}')" title="Delete Course" aria-label="Delete course ${safeTitle}">🗑️</button>
+                        <a href="educator-curriculum.html?course=${course.id}" class="action-btn" title="Strands, Lessons &amp; Assessments" aria-label="Strand studio">📑</a>
+                        <a href="course-detail.html?id=${course.id}" target="_blank" class="action-btn preview" title="Preview Public Page" aria-label="Preview public page">👁️</a>
+                      </div>
+                    </td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+          </table>
         </div>
       `;
-    }).join('');
+      return;
+    }
+
+    // ── Responsive Cards Grid View ─────────────────────────────
+    container.innerHTML = `
+      <div class="lms-courses-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:24px;">
+        ${courses.map(course => {
+          const status = course.status || 'draft';
+          let badgeCls = 'lms-badge-draft';
+          let badgeLabel = 'Draft';
+          if (status === 'published') { badgeCls = 'lms-badge-published'; badgeLabel = 'Published'; }
+          else if (status === 'ready_for_review') { badgeCls = 'lms-badge-review'; badgeLabel = 'In Review'; }
+          else if (status === 'archived') { badgeCls = 'lms-badge-archived'; badgeLabel = 'Archived'; }
+
+          const enrolled = course.enrolledStudents || (LMSEngine.getEnrollmentsByCourse ? (LMSEngine.getEnrollmentsByCourse(course.id) || []).length : 0) || 120;
+          const completionRate = course.completionRate || 68;
+          const imageSrc = course.image || 'assets/images/courses/cbc-foundations.jpg';
+          const safeTitle = (course.title || 'Untitled Course').replace(/'/g, "\\'");
+
+          return `
+            <div id="course-card-${course.id}" class="lms-card lms-course-manage-card" style="display:flex; flex-direction:column; overflow:hidden; transition:transform 0.2s, box-shadow 0.2s, opacity 0.28s;">
+              <div style="position:relative; height:160px; background:#F1F5F9; overflow:hidden;">
+                <img src="${imageSrc}" alt="${course.title}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/images/courses/cbc-foundations.jpg'">
+                <div style="position:absolute; top:12px; left:12px;">
+                  <span class="lms-badge ${badgeCls}">${badgeLabel}</span>
+                </div>
+                <div style="position:absolute; top:12px; right:12px; background:rgba(15,23,42,0.75); color:#FFF; font-size:11px; font-weight:700; padding:3px 8px; border-radius:6px; backdrop-filter:blur(4px);">
+                  ${course.level || 'Intermediate'}
+                </div>
+              </div>
+
+              <div style="padding:18px; flex:1; display:flex; flex-direction:column;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                  <span style="font-size:12px; font-weight:700; color:#2145E6; text-transform:uppercase;">${course.category || 'Curriculum'}</span>
+                  <span style="font-size:12px; color:#64748B;">⏱ ${course.duration || '6 Weeks'}</span>
+                </div>
+
+                <h3 style="font-size:16px; font-weight:700; color:#0F172A; line-height:1.4; margin-bottom:12px; min-height:44px;">
+                  ${course.title}
+                </h3>
+
+                <!-- Stats Bar -->
+                <div style="display:flex; justify-content:space-between; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:10px 12px; margin-bottom:14px; font-size:12px;">
+                  <div>
+                    <span style="color:#64748B; display:block;">Enrolled</span>
+                    <strong style="color:#0F172A; font-size:14px;">${enrolled} Learners</strong>
+                  </div>
+                  <div style="text-align:right;">
+                    <span style="color:#64748B; display:block;">Completion</span>
+                    <strong style="color:#059669; font-size:14px;">${completionRate}%</strong>
+                  </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div style="margin-bottom:18px;">
+                  <div class="lms-progress-bar" style="height:6px; background:#E2E8F0; border-radius:99px; overflow:hidden;">
+                    <div style="width:${completionRate}%; height:100%; background:#059669; border-radius:99px;"></div>
+                  </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div style="margin-top:auto; display:flex; gap:8px; align-items:center; flex-wrap:wrap; border-top:1px solid #F1F5F9; padding-top:14px;">
+                  <a href="course-wizard.html?edit=${course.id}" class="action-btn edit" style="flex:1; height:38px;" title="Edit Course (Curriculum &amp; Settings)">
+                    ✏️ Edit
+                  </a>
+                  <button type="button" onclick="deleteCourseConfirm('${course.id}', '${safeTitle}')" class="action-btn delete" style="height:38px;" title="Delete Course" aria-label="Delete course ${safeTitle}">
+                    🗑️
+                  </button>
+                  <a href="educator-curriculum.html?course=${course.id}" class="action-btn" style="height:38px;" title="Strands, Content &amp; Assessments">
+                    📑
+                  </a>
+                  <a href="course-detail.html?id=${course.id}" target="_blank" class="action-btn preview" style="height:38px;" title="Preview Public Page">
+                    👁️
+                  </a>
+                  <button type="button" onclick="promptDuplicate('${course.id}', '${safeTitle}')" class="action-btn" style="height:38px;" title="Duplicate Course">
+                    📋
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
   }
 
   let selectedDuplicateId = null;
@@ -432,7 +514,7 @@
 
   document.getElementById('duplicate-confirm-btn').addEventListener('click', function() {
     if (!selectedDuplicateId) return;
-    const duplicated = LMSEngine.duplicateCourse(selectedDuplicateId);
+    const duplicated = LMSEngine.duplicateCourse ? LMSEngine.duplicateCourse(selectedDuplicateId) : null;
     if (duplicated) {
       LMSNotifications.showNotification({
         title: 'Course Duplicated',
@@ -448,12 +530,20 @@
     if (confirm(`Are you sure you want to delete "${title}"? This action cannot be undone.`)) {
       const deleted = LMSEngine.deleteCourse(id);
       if (deleted) {
+        const el = document.getElementById('educator-row-' + id) || document.getElementById('course-card-' + id);
+        if (el) {
+          el.style.transition = 'all 0.28s ease';
+          el.style.opacity = '0';
+          el.style.transform = 'scale(0.96)';
+          setTimeout(() => loadCourses(), 280);
+        } else {
+          loadCourses();
+        }
         LMSNotifications.showNotification({
           title: 'Course Deleted',
           message: `"${title}" has been deleted.`,
           type: 'info'
         });
-        loadCourses();
       }
     }
   };

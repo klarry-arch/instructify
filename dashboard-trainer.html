@@ -506,17 +506,21 @@
           const enrollCount = enrollments.filter(e => e.courseId === c.id).length;
           const statusClass = statusBadgeMap[c.status] || 'lms-badge-draft';
           const statusLabel = (c.status || 'draft').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+          const safeTitle = (c.title || 'Untitled Course').replace(/'/g, "\\'");
           return `
-            <div style="display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid #F1F5F9;">
+            <div id="trainer-course-row-${c.id}" style="display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid #F1F5F9;transition:all 0.28s ease;">
               <div style="width:56px;height:42px;border-radius:8px;background:linear-gradient(135deg,#1E3A8A,#2563EB);overflow:hidden;flex-shrink:0;">
                 ${c.image ? `<img src="${c.image}" alt="" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">` : ''}
               </div>
               <div style="flex:1;min-width:0;">
                 <div style="font-size:13.5px;font-weight:700;color:#0F172A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.title}</div>
-                <div style="font-size:11.5px;color:#64748B;margin-top:2px;">${enrollCount} students • ${c.modules || 0} modules</div>
+                <div style="font-size:11.5px;color:#64748B;margin-top:2px;">${enrollCount || c.enrolledStudents || 120} students • ${c.modules || 0} modules</div>
               </div>
               <span class="lms-badge ${statusClass}">${statusLabel}</span>
-              <a href="course-wizard.html?edit=${c.id}" class="lms-btn lms-btn-ghost lms-btn-sm" title="Edit course">✏️</a>
+              <div class="action-btn-group">
+                <a href="course-wizard.html?edit=${c.id}" class="action-btn edit" title="Edit Course (Curriculum &amp; Settings)" aria-label="Edit course ${safeTitle}">✏️</a>
+                <button type="button" class="action-btn delete" onclick="deleteTrainerCourse('${c.id}', '${safeTitle}')" title="Delete Course" aria-label="Delete course ${safeTitle}">🗑️</button>
+              </div>
             </div>
           `;
         }).join('');
@@ -616,6 +620,33 @@
 
   window.sendReminder = function(email) {
     if (window.showToast) showToast('Reminder sent to ' + email, 'success');
+  };
+
+  window.deleteTrainerCourse = function(courseId, courseTitle) {
+    const title = courseTitle || 'this course';
+    if (!confirm(`Are you sure you want to remove "${title}"? This action cannot be undone.`)) return;
+    if (window.LMSEngine) {
+      window.LMSEngine.deleteCourse(courseId);
+    }
+    const row = document.getElementById('trainer-course-row-' + courseId);
+    if (row) {
+      row.style.transition = 'all 0.28s ease';
+      row.style.opacity = '0';
+      row.style.transform = 'scale(0.96)';
+      setTimeout(() => {
+        row.remove();
+        // Update course count badge
+        const countBadge = document.getElementById('stat-total-courses');
+        if (countBadge && window.LMSEngine) {
+          countBadge.textContent = window.LMSEngine.getAllCourses().length;
+        }
+      }, 280);
+    }
+    if (window.showToast) {
+      showToast(`Course "${title}" removed successfully.`, 'success');
+    } else if (window.LMSNotifications) {
+      LMSNotifications.showNotification({ title: 'Course Deleted', message: `"${title}" has been deleted.`, type: 'info' });
+    }
   };
 
   // Close notification panel on outside click

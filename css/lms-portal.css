@@ -1763,3 +1763,100 @@
   cursor: pointer;
 }
 
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE COURSE ACTION BUTTONS & STAR RATINGS (LMS PORTAL)
+   ══════════════════════════════════════════════════════════════ */
+.action-btn-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.action-btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  color: #334155;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.action-btn:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.10);
+}
+
+.action-btn:active {
+  transform: translateY(0) scale(0.95);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.action-btn:focus-visible {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}
+
+.action-btn.edit {
+  background: #F8FAFC;
+  border-color: #E2E8F0;
+  color: #1E293B;
+}
+
+.action-btn.edit:hover {
+  background: #EFF6FF;
+  border-color: #93C5FD;
+  color: #1D4ED8;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.16);
+}
+
+.action-btn.delete {
+  background: #FEF2F2;
+  border-color: #FEE2E2;
+  color: #DC2626;
+}
+
+.action-btn.delete:hover {
+  background: #FEE2E2;
+  border-color: #FCA5A5;
+  color: #B91C1C;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.18);
+}
+
+.action-btn.preview {
+  background: #F8FAFC;
+  border-color: #E2E8F0;
+  color: #475569;
+}
+
+.action-btn.preview:hover {
+  background: #F1F5F9;
+  border-color: #CBD5E1;
+  color: #0F172A;
+}
+
+/* Rating Star Glyphs (Cross-platform reliable, never shows ?) */
+.star-gold {
+  color: #F59E0B;
+  font-size: 15px;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+
