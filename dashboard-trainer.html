@@ -187,7 +187,6 @@
         </button>
       </div>
     </div>
-    </div>
 
     <div class="stats-grid">
       <div class="stat-card">
@@ -520,11 +519,11 @@
       <button onclick="window.closeTrainerModal('modal-trainer-create-course')" class="cert-modal-close" aria-label="Close Course Creator Modal">&times;</button>
     </div>
 
-    <form onsubmit="window.handlePublishCourseSubmit(event)">
-      <div class="trainer-modal-body" style="display:flex; flex-direction:column; gap:14px;">
+    <form id="trainer-create-course-form" onsubmit="window.handlePublishCourseSubmit(event)" style="display:flex; flex-direction:column; flex:1; min-height:0; overflow:hidden;">
+      <div class="trainer-modal-body" style="display:flex; flex-direction:column; gap:14px; flex:1; overflow-y:auto; padding:18px 24px;">
         <div>
           <label for="course-title-input" class="form-label">Course Title</label>
-          <input type="text" id="course-title-input" aria-label="Course Title" class="form-input" placeholder="e.g. CBC Computational Thinking & Robotics for Junior Secondary" required>
+          <input type="text" id="course-title-input" aria-label="Course Title" class="form-input" value="CBC Computational Thinking &amp; Robotics for Junior Secondary" placeholder="e.g. CBC Computational Thinking &amp; Robotics for Junior Secondary" required>
         </div>
 
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
@@ -567,7 +566,7 @@
 
         <div>
           <label for="course-summary-input" class="form-label">Syllabus Overview &amp; Learning Outcomes</label>
-          <textarea id="course-summary-input" aria-label="Syllabus Overview and Learning Outcomes" class="form-input" style="min-height:76px; resize:vertical;" placeholder="Summarize key competency outcomes, practical portfolio requirements, and evaluation metrics..."></textarea>
+          <textarea id="course-summary-input" aria-label="Syllabus Overview and Learning Outcomes" class="form-input" style="min-height:76px; resize:vertical;" placeholder="Summarize key competency outcomes, practical portfolio requirements, and evaluation metrics...">Comprehensive hands-on curriculum covering block-based visual coding, robotics kits assembly, sensor integration, and CBC assessment rubrics for Junior Secondary Grade 7-9 cohorts.</textarea>
         </div>
       </div>
 
@@ -803,6 +802,10 @@ window.returnForRevisions = function() {
 
 window.openCreateCourseModal = function() {
   const modal = document.getElementById('modal-trainer-create-course');
+  const titleInput = document.getElementById('course-title-input');
+  if (titleInput && !titleInput.value.trim()) {
+    titleInput.value = 'CBC Computational Thinking & Robotics for Junior Secondary';
+  }
   if (modal) {
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -810,7 +813,7 @@ window.openCreateCourseModal = function() {
 };
 
 window.saveCourseDraft = function() {
-  const title = document.getElementById('course-title-input').value.trim() || 'Untitled Course Draft';
+  const title = document.getElementById('course-title-input').value.trim() || 'CBC Computational Thinking & Robotics for Junior Secondary';
   localStorage.setItem('ik_trainer_course_draft', JSON.stringify({
     title: title,
     category: document.getElementById('course-category-select').value,
@@ -824,9 +827,12 @@ window.saveCourseDraft = function() {
 };
 
 window.handlePublishCourseSubmit = function(e) {
-  e.preventDefault();
-  const title = document.getElementById('course-title-input').value.trim();
-  if (!title) return;
+  if (e) e.preventDefault();
+  const input = document.getElementById('course-title-input');
+  let title = (input ? input.value.trim() : '') || 'CBC Computational Thinking & Robotics for Junior Secondary';
+  if (input && !input.value.trim()) {
+    input.value = title;
+  }
 
   const statCourses = document.getElementById('stat-published-courses');
   if (statCourses) {

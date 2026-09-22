@@ -735,17 +735,19 @@
   overflow: hidden;
 }
 
-/* Certificate modal overlay used by trainer */
 .cert-modal-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.50);
-  backdrop-filter: blur(4px);
-  z-index: var(--z-modal, 400);
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: var(--z-modal, 10050);
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 24px 16px;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 .cert-modal-overlay.open { display: flex; }
 
@@ -876,12 +878,15 @@
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(6px);
-  z-index: 500;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: var(--z-modal, 10050);
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 24px 16px;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .trainer-modal-overlay.open {
@@ -891,15 +896,26 @@
 .trainer-modal-card {
   background: #FFFFFF;
   border-radius: 20px;
-  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  box-shadow: 0 25px 60px -12px rgba(15, 23, 42, 0.35);
   width: 100%;
   max-width: 680px;
-  max-height: 90vh;
+  max-height: calc(100vh - 48px);
   overflow: hidden;
   border: 1px solid #E2E8F0;
   animation: scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 10051;
+  margin: auto;
+}
+
+.trainer-modal-card form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .trainer-modal-header {
