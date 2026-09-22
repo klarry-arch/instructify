@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum &amp; Strand Studio | Instructify Kenya LMS</title>
+  <meta name="description" content="Add and manage course content by Topic, Sub-topic, Strand and Sub-strand with in-depth pedagogical explanations and tiered assessments on Instructify Kenya.">
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
+  <link rel="stylesheet" href="css/lms-portal.css">
+  <link rel="stylesheet" href="css/live-chat.css">
+</head>
+<body class="lms-page">
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+      <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
+      <div class="nav-brand-text-box" style="display: inline-flex !important; flex-direction: column !important; justify-content: center !important; align-items: flex-start !important; line-height: 1 !important;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-weight: 800 !important; font-size: 1.25rem !important; color: #0F172A !important; letter-spacing: -0.02em !important; line-height: 1 !important; display: block !important;">Instruct<span class="brand-accent" style="color: #F5812D !important; font-weight: 900 !important;">ify</span></span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-size: 0.62rem !important; font-weight: 850 !important; color: #FF4D00 !important; text-transform: uppercase !important; letter-spacing: 2.2px !important; line-height: 1 !important; display: block !important;">KENYA</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li class="nav-item-dropdown">
+        <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="courses" aria-haspopup="true" aria-expanded="false">
+          Courses <span class="nav-badge badge-amber">Hot</span>
+          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <ul class="nav-dropdown-menu" role="menu" aria-label="Courses, Podcast and Resources">
+          <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem" data-nav="courses"><span class="nav-dropdown-icon">📚</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span><span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span></div></a></li>
+          <li role="none"><a href="podcast.html" class="nav-dropdown-item" role="menuitem" data-nav="podcast"><span class="nav-dropdown-icon">🎙️</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></span><span class="nav-dropdown-desc">Inspiring stories from Kenyan educators</span></div></a></li>
+          <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem" data-nav="resources"><span class="nav-dropdown-icon">📂</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">Resources</span><span class="nav-dropdown-desc">Schemes of work, lesson plans &amp; guides</span></div></a></li>
+        </ul>
+      </li>
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions" style="display:flex; align-items:center; gap:12px;">
+      <div id="nav-user-area" style="display:inline-flex; align-items:center; gap:8px; background:#F8FAFC; border:1px solid #E2E8F0; padding:4px 12px 4px 6px; border-radius:999px;">
+        <div id="nav-avatar" class="lms-avatar avatar-sm">WK</div>
+        <span id="nav-user-name" style="font-size:13px; font-weight:700; color:#0F172A;">Dr. Wanjiku</span>
+        <span class="lms-badge lms-badge-published" style="font-size:10px; padding:2px 6px;">Educator</span>
+      </div>
+      <button onclick="logout()" class="btn btn-outline btn-sm" style="color:#DC2626; border-color:#DC2626;" aria-label="Log Out">Log Out</button>
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+  <div class="nav-mobile-links">
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="about.html" class="nav-mobile-link">About Us</a>
+    <div class="nav-mobile-dropdown">
+      <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
+      <div class="nav-mobile-sublinks">
+        <a href="courses.html" class="nav-mobile-sublink" data-nav="courses"><span>📚</span> All Courses</a>
+        <a href="podcast.html" class="nav-mobile-sublink" data-nav="podcast"><span>🎙️</span> Podcast</a>
+        <a href="resources.html" class="nav-mobile-sublink" data-nav="resources"><span>📂</span> Resources</a>
+      </div>
+    </div>
+    <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
+    <a href="schools.html" class="nav-mobile-link">Institutions</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+  </div>
+  <div class="nav-mobile-actions">
+    <a href="dashboard-trainer.html" class="btn btn-primary btn-md">Educator Portal</a>
+    <button onclick="logout()" class="btn btn-outline btn-md" style="color:#DC2626 !important; border-color:#DC2626;">Log Out</button>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Dashboard Menu">☰</button>
+
+<!-- ── Dashboard Layout ── -->
+<div class="lms-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="lms-sidebar" id="educator-sidebar">
+    <div class="lms-sidebar-profile">
+      <div class="lms-avatar" id="sidebar-avatar">WK</div>
+      <div>
+        <div class="lms-sidebar-name" id="sidebar-name">Dr. Wanjiku Kamau</div>
+        <div class="lms-sidebar-role">Educator</div>
+      </div>
+    </div>
+
+    <nav class="lms-sidebar-nav" aria-label="Educator Navigation">
+      <div class="lms-sidebar-section">Main</div>
+      <a href="dashboard-trainer.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Dashboard
+      </a>
+      <a href="educator-courses.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📚</span> My Courses
+      </a>
+      <a href="educator-curriculum.html" class="lms-nav-item active" aria-current="page">
+        <span class="lms-nav-icon">📑</span> Strand &amp; Content Studio
+      </a>
+      <a href="course-wizard.html" class="lms-nav-item">
+        <span class="lms-nav-icon">➕</span> Create Course
+      </a>
+
+      <div class="lms-sidebar-section">Learners</div>
+      <a href="educator-students.html" class="lms-nav-item">
+        <span class="lms-nav-icon">👥</span> Student Management
+      </a>
+      <a href="educator-assessments.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📝</span> Assessments
+      </a>
+      <a href="educator-gradebook.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Gradebook
+      </a>
+
+      <div class="lms-sidebar-section">Communicate</div>
+      <a href="educator-announcements.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📢</span> Announcements
+      </a>
+      <a href="educator-reports.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📈</span> Reports
+      </a>
+    </nav>
+
+    <div class="lms-sidebar-footer">
+      <a href="index.html" class="lms-nav-item" style="color:#94A3B8;">
+        <span class="lms-nav-icon">🌐</span> View Website
+      </a>
+      <a href="#" onclick="logout();return false;" class="lms-nav-item" style="color:#DC2626;">
+        <span class="lms-nav-icon">🚪</span> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── Main Content Area ── -->
+  <main class="lms-main" id="educator-main">
+
+    <!-- Page Header & Action Bar -->
+    <div class="lms-page-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="lms-breadcrumbs">
+          <a href="dashboard-trainer.html">Dashboard</a> <span class="sep">›</span>
+          <a href="educator-courses.html">Courses</a> <span class="sep">›</span>
+          <span class="current">Strand &amp; Content Studio</span>
+        </div>
+        <h1 class="lms-page-title" style="font-size:26px; display:flex; align-items:center; gap:12px;">
+          <span>Curriculum, Strand &amp; Assessment Studio</span>
+        </h1>
+        <p class="lms-page-subtitle">
+          Structure course content by Strand/Topic &amp; Sub-strand, author pedagogical explanations, and attach targeted assessments.
+        </p>
+      </div>
+
+      <!-- Controls: Course Selector & Mode Toggle -->
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <!-- Course Switcher -->
+        <div>
+          <select id="course-select" class="lms-select" style="min-width:260px; font-weight:600;" onchange="switchCourse(this.value)">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+
+        <!-- Terminology Mode Toggle -->
+        <div class="term-switch-group" role="radiogroup" aria-label="Terminology Mode">
+          <button type="button" id="btn-mode-cbc" class="term-switch-btn active" onclick="setTerminologyMode('cbc')">
+            🇰🇪 CBC (Strands)
+          </button>
+          <button type="button" id="btn-mode-standard" class="term-switch-btn" onclick="setTerminologyMode('standard')">
+            🌐 Standard (Topics)
+          </button>
+        </div>
+
+        <!-- Preview & Save Buttons -->
+        <button type="button" class="lms-btn lms-btn-outline" onclick="openLearnerPreview()">
+          👁️ Preview Student View
+        </button>
+        <button type="button" class="lms-btn lms-btn-primary" onclick="saveAllCurriculum()">
+          💾 Save Changes
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Metrics Bar -->
+    <div class="lms-stats-grid" style="grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); margin-bottom:24px;">
+      <div class="lms-stat-card" style="padding:14px 18px;">
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-strands-count">0</div>
+          <div class="lms-stat-label" id="label-stat-strands">Strands / Topics</div>
+        </div>
+      </div>
+      <div class="lms-stat-card" style="padding:14px 18px;">
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-substrands-count">0</div>
+          <div class="lms-stat-label" id="label-stat-substrands">Sub-strands</div>
+        </div>
+      </div>
+      <div class="lms-stat-card" style="padding:14px 18px;">
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-explanations-count">0</div>
+          <div class="lms-stat-label">Detailed Explanations</div>
+        </div>
+      </div>
+      <div class="lms-stat-card" style="padding:14px 18px;">
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-assessments-count" style="color:#2145E6;">0</div>
+          <div class="lms-stat-label">Active Assessments</div>
+        </div>
+      </div>
+      <div class="lms-stat-card" style="padding:14px 18px;">
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-hours-count">0h</div>
+          <div class="lms-stat-label">Total Duration</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Two-Column Studio Layout -->
+    <div class="studio-grid">
+
+      <!-- LEFT COLUMN: Hierarchy & Tree Organizer -->
+      <div class="studio-tree-panel">
+        <div class="studio-tree-header">
+          <div style="font-weight:800; font-size:14px; color:#0F172A;" id="tree-panel-title">
+            📚 Course Strands &amp; Sub-strands
+          </div>
+          <button type="button" class="lms-btn lms-btn-primary lms-btn-sm" onclick="openAddStrandModal()" id="btn-add-strand-tree">
+            + Add Strand
+          </button>
+        </div>
+
+        <div class="studio-tree-body" id="strands-tree-container">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Active Editor Viewport -->
+      <div class="studio-editor-viewport" id="studio-editor-viewport">
+        
+        <!-- Context Header for Current Selection -->
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #E2E8F0;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+              <span class="strand-badge-code" id="active-substrand-badge">SUB-1.1</span>
+              <span style="font-size:12px; font-weight:700; color:#64748B;" id="active-strand-parent-text">Strand 1: Foundations of CBC</span>
+            </div>
+            <h2 style="font-size:20px; font-weight:800; color:#0F172A; margin:0;" id="active-substrand-title">
+              Select or Add a Sub-strand to Begin
+            </h2>
+          </div>
+
+          <div style="display:flex; gap:8px;">
+            <button type="button" class="lms-btn lms-btn-outline lms-btn-sm" onclick="openEditSubstrandModal()" id="btn-edit-substrand-meta">
+              ✏️ Edit Info
+            </button>
+          </div>
+        </div>
+
+        <!-- Editor Tabs: Explanations vs Sub-strand Assessment vs Strand Assessment -->
+        <div class="lms-tabs" style="margin-bottom:20px;">
+          <button type="button" class="lms-tab active" id="tab-btn-explanation" onclick="switchEditorTab('explanation')">
+            📖 Sub-strand Content &amp; Explanations
+          </button>
+          <button type="button" class="lms-tab" id="tab-btn-sub-assessment" onclick="switchEditorTab('sub-assessment')">
+            📝 Sub-strand Assessment <span class="lms-badge lms-badge-draft" id="badge-sub-asm-status" style="font-size:10px; margin-left:6px;">Not Set</span>
+          </button>
+          <button type="button" class="lms-tab" id="tab-btn-strand-assessment" onclick="switchEditorTab('strand-assessment')">
+            🏆 Strand Summative Assessment <span class="lms-badge lms-badge-draft" id="badge-strand-asm-status" style="font-size:10px; margin-left:6px;">Not Set</span>
+          </button>
+        </div>
+
+        <!-- TAB 1: CONTENT & DETAILED EXPLANATIONS -->
+        <div id="editor-panel-explanation" class="lms-tab-panel active">
+          
+          <div class="explanation-card-group">
+            
+            <!-- Section A: Overview & Learning Intent -->
+            <div class="explanation-subcard">
+              <div class="explanation-subcard-title">
+                <span>🎯 Sub-strand Overview &amp; Learning Intent</span>
+                <span style="font-size:11px; font-weight:600; color:#64748B;">Introductory summary for learners</span>
+              </div>
+              <textarea id="field-exp-overview" class="lms-textarea" rows="2" placeholder="Brief summary of what this sub-strand explores and why it matters..."></textarea>
+            </div>
+
+            <!-- Section B: In-Depth Conceptual Breakdown & Explanations -->
+            <div class="explanation-subcard">
+              <div class="explanation-subcard-title">
+                <span>📚 In-Depth Concept Explanations &amp; Pedagogical Notes</span>
+                <span style="font-size:11px; font-weight:600; color:#2145E6;">HTML &amp; Rich Formatting Supported</span>
+              </div>
+              <p style="font-size:12.5px; color:#64748B; margin:0 0 10px;">
+                Provide step-by-step conceptual breakdowns, real-world examples, classroom case studies, and key principles.
+              </p>
+              <textarea id="field-exp-content" class="lms-textarea" rows="10" placeholder="Type detailed explanations, headings (<h3>), bullet points, and practical instructional sequences..."></textarea>
+              <div class="lms-hint" style="margin-top:6px;">
+                💡 Tip: Use &lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;, and &lt;div class="lms-callout lms-callout-tip"&gt; for highlighted pedagogical callouts.
+              </div>
+            </div>
+
+            <!-- Section C: Teacher Facilitation & Implementation Guidance -->
+            <div class="explanation-subcard" style="background:#F0FDF4; border-color:#BBF7D0;">
+              <div class="explanation-subcard-title" style="color:#166534;">
+                <span>👨‍🏫 Teacher Facilitation &amp; Differentiation Strategy</span>
+                <span style="font-size:11px; font-weight:700; color:#059669;">Educator Guide</span>
+              </div>
+              <p style="font-size:12px; color:#166534; margin:0 0 8px;">
+                Practical tips on how educators can facilitate this sub-strand, adapt for low-resource schools, or support learners with special needs.
+              </p>
+              <textarea id="field-exp-teaching-notes" class="lms-textarea" rows="3" style="background:#FFF;" placeholder="e.g. For schools without 1:1 tablets, use station rotation or pair-programming roles..."></textarea>
+            </div>
+
+            <!-- Section D: Key Terminology & Definitions -->
+            <div class="explanation-subcard">
+              <div class="explanation-subcard-title">
+                <span>🔤 Key Terms &amp; Definitions</span>
+                <button type="button" class="lms-btn lms-btn-ghost lms-btn-sm" onclick="addKeyTermRow()">+ Add Term</button>
+              </div>
+              <div id="key-terms-container" style="display:flex; flex-direction:column; gap:8px;">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <!-- Section E: Common Misconceptions & Corrections -->
+            <div class="explanation-subcard">
+              <div class="explanation-subcard-title">
+                <span>⚠️ Common Learner Misconceptions &amp; Clarifications</span>
+                <button type="button" class="lms-btn lms-btn-ghost lms-btn-sm" onclick="addMisconceptionRow()">+ Add Misconception</button>
+              </div>
+              <div id="misconceptions-container" style="display:flex; flex-direction:column; gap:8px;">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <!-- Section F: Media & Supplementary Downloads -->
+            <div class="explanation-subcard">
+              <div class="explanation-subcard-title">
+                <span>🎬 Media &amp; Supplementary Resources</span>
+              </div>
+              <div class="lms-input-group">
+                <div class="lms-form-group">
+                  <label class="lms-label">Video Demonstration URL (YouTube/Vimeo)</label>
+                  <input type="text" id="field-exp-video" class="lms-input" placeholder="https://www.youtube.com/embed/...">
+                </div>
+                <div class="lms-form-group">
+                  <label class="lms-label">Slides / Presentation URL</label>
+                  <input type="text" id="field-exp-slides" class="lms-input" placeholder="downloads/lesson-slides.pdf">
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; margin-top:12px;">
+              <button type="button" class="lms-btn lms-btn-primary" onclick="saveActiveExplanation()">
+                💾 Save Explanations &amp; Content
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TAB 2: SUB-STRAND ASSESSMENT (FORMATIVE) -->
+        <div id="editor-panel-sub-assessment" class="lms-tab-panel">
+          <div class="explanation-subcard">
+            <div class="explanation-subcard-title">
+              <span id="sub-asm-panel-title">📝 Sub-strand Formative Assessment</span>
+              <span class="strand-badge-code" id="sub-asm-badge-code">SUB-1.1</span>
+            </div>
+            <p style="font-size:13px; color:#64748B; margin-bottom:16px;">
+              Formative checks occur directly after completing this sub-strand to evaluate immediate learner comprehension.
+            </p>
+
+            <div class="lms-input-group">
+              <div class="lms-form-group">
+                <label class="lms-label">Assessment Title <span class="required">*</span></label>
+                <input type="text" id="field-sub-asm-title" class="lms-input" placeholder="e.g. Sub-strand 1.1 Formative Quiz">
+              </div>
+              <div class="lms-form-group">
+                <label class="lms-label">Assessment Type</label>
+                <select id="field-sub-asm-type" class="lms-select" onchange="toggleSubAsmType(this.value)">
+                  <option value="quiz">Interactive Knowledge Check Quiz</option>
+                  <option value="assignment">Practical Task / Classroom Activity</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="lms-input-group">
+              <div class="lms-form-group">
+                <label class="lms-label">Pass Mark (%)</label>
+                <input type="number" id="field-sub-asm-passmark" class="lms-input" value="80" min="0" max="100">
+              </div>
+              <div class="lms-form-group">
+                <label class="lms-label">Allowed Attempts</label>
+                <input type="number" id="field-sub-asm-attempts" class="lms-input" value="3" min="1" max="10">
+              </div>
+            </div>
+
+            <div class="lms-form-group">
+              <label class="lms-label">Assessment Instructions</label>
+              <textarea id="field-sub-asm-instructions" class="lms-textarea" rows="2" placeholder="Guidance for learners taking this assessment..."></textarea>
+            </div>
+
+            <!-- Quiz Questions Section -->
+            <div id="sub-asm-questions-section" style="margin-top:20px; border-top:1px solid #E2E8F0; padding-top:16px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <h4 style="font-size:14px; font-weight:800; color:#0F172A; margin:0;">
+                  Quiz Questions &amp; Answer Explanations
+                </h4>
+                <button type="button" class="lms-btn lms-btn-outline lms-btn-sm" onclick="addQuizQuestion('sub')">
+                  + Add Question
+                </button>
+              </div>
+              <div id="sub-quiz-questions-list" style="display:flex; flex-direction:column; gap:16px;">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; border-top:1px solid #E2E8F0; padding-top:16px;">
+              <button type="button" class="lms-btn lms-btn-ghost" style="color:#DC2626;" onclick="removeActiveSubAssessment()">
+                🗑️ Remove Assessment
+              </button>
+              <button type="button" class="lms-btn lms-btn-primary" onclick="saveActiveSubAssessment()">
+                💾 Save Sub-strand Assessment
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: STRAND-LEVEL ASSESSMENT (SUMMATIVE / CAPSTONE) -->
+        <div id="editor-panel-strand-assessment" class="lms-tab-panel">
+          <div class="explanation-subcard">
+            <div class="explanation-subcard-title">
+              <span id="strand-asm-panel-title">🏆 Strand Summative Assessment &amp; Rubric</span>
+              <span class="strand-badge-code" id="strand-asm-badge-code">STR-01</span>
+            </div>
+            <p style="font-size:13px; color:#64748B; margin-bottom:16px;">
+              Summative evaluations measure cumulative competence across all sub-strands in this strand, using 4-tier CBC rubrics or capstone project portfolios.
+            </p>
+
+            <div class="lms-input-group">
+              <div class="lms-form-group">
+                <label class="lms-label">Strand Assessment Title <span class="required">*</span></label>
+                <input type="text" id="field-strand-asm-title" class="lms-input" placeholder="e.g. Strand 1 Capstone: CBC Lesson Facilitation Portfolio">
+              </div>
+              <div class="lms-form-group">
+                <label class="lms-label">Assessment Format</label>
+                <select id="field-strand-asm-type" class="lms-select">
+                  <option value="rubric">4-Tier CBC Competency Rubric Portfolio</option>
+                  <option value="quiz">Comprehensive Strand Examination</option>
+                  <option value="assignment">Practical Project Submission</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="lms-form-group">
+              <label class="lms-label">Instructions &amp; Evidence Guidelines</label>
+              <textarea id="field-strand-asm-instructions" class="lms-textarea" rows="3" placeholder="Explain what evidence, artifacts, or portfolio items learners must submit to demonstrate strand mastery..."></textarea>
+            </div>
+
+            <!-- Rubric Matrix Section -->
+            <div style="margin-top:20px; border-top:1px solid #E2E8F0; padding-top:16px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <div>
+                  <h4 style="font-size:14px; font-weight:800; color:#0F172A; margin:0;">
+                    🇰🇪 4-Level CBC Competency Rubric Matrix
+                  </h4>
+                  <div style="font-size:12px; color:#64748B;">Benchmark learner evidence against national KICD achievement levels.</div>
+                </div>
+                <button type="button" class="lms-btn lms-btn-outline lms-btn-sm" onclick="addRubricCriterionRow()">
+                  + Add Rubric Criterion
+                </button>
+              </div>
+
+              <div id="rubric-matrix-container">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; border-top:1px solid #E2E8F0; padding-top:16px;">
+              <button type="button" class="lms-btn lms-btn-ghost" style="color:#DC2626;" onclick="removeActiveStrandAssessment()">
+                🗑️ Remove Strand Assessment
+              </button>
+              <button type="button" class="lms-btn lms-btn-primary" onclick="saveActiveStrandAssessment()">
+                💾 Save Strand Assessment &amp; Rubric
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<!-- ── MODAL: Add / Edit Strand ── -->
+<div id="modal-strand" class="lms-modal-overlay" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:300; align-items:center; justify-content:center;">
+  <div class="lms-modal-card" style="background:#FFF; width:92%; max-width:540px; border-radius:16px; padding:24px; box-shadow:0 25px 60px rgba(0,0,0,0.2);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+      <h3 id="modal-strand-heading" style="margin:0; font-size:18px; color:#0F172A;">Add New Strand</h3>
+      <button type="button" onclick="closeStrandModal()" style="background:none; border:none; font-size:18px; cursor:pointer;">✕</button>
+    </div>
+    
+    <input type="hidden" id="modal-strand-id">
+
+    <div class="lms-input-group">
+      <div class="lms-form-group" style="flex:1;">
+        <label class="lms-label">Strand Code</label>
+        <input type="text" id="modal-strand-code" class="lms-input" placeholder="STR-01">
+      </div>
+      <div class="lms-form-group" style="flex:2;">
+        <label class="lms-label">Strand / Topic Title <span class="required">*</span></label>
+        <input type="text" id="modal-strand-title" class="lms-input" placeholder="e.g. Foundations of Digital Literacy">
+      </div>
+    </div>
+
+    <div class="lms-form-group">
+      <label class="lms-label">Strand Rationale &amp; Scope</label>
+      <textarea id="modal-strand-rationale" class="lms-textarea" rows="3" placeholder="Why is this strand essential? What overarching competencies does it cultivate?"></textarea>
+    </div>
+
+    <div class="lms-form-group">
+      <label class="lms-label">Core Competencies Targeted</label>
+      <input type="text" id="modal-strand-competencies" class="lms-input" placeholder="Comma-separated: Critical Thinking, Digital Literacy, Communication">
+    </div>
+
+    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:20px;">
+      <button type="button" class="lms-btn lms-btn-outline" onclick="closeStrandModal()">Cancel</button>
+      <button type="button" class="lms-btn lms-btn-primary" onclick="submitStrandModal()">Save Strand</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL: Add / Edit Sub-strand ── -->
+<div id="modal-substrand" class="lms-modal-overlay" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:300; align-items:center; justify-content:center;">
+  <div class="lms-modal-card" style="background:#FFF; width:92%; max-width:540px; border-radius:16px; padding:24px; box-shadow:0 25px 60px rgba(0,0,0,0.2);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+      <h3 id="modal-substrand-heading" style="margin:0; font-size:18px; color:#0F172A;">Add Sub-strand</h3>
+      <button type="button" onclick="closeSubstrandModal()" style="background:none; border:none; font-size:18px; cursor:pointer;">✕</button>
+    </div>
+
+    <input type="hidden" id="modal-substrand-strand-id">
+    <input type="hidden" id="modal-substrand-id">
+
+    <div class="lms-input-group">
+      <div class="lms-form-group" style="flex:1;">
+        <label class="lms-label">Sub-strand Code</label>
+        <input type="text" id="modal-substrand-code" class="lms-input" placeholder="SUB-1.1">
+      </div>
+      <div class="lms-form-group" style="flex:2;">
+        <label class="lms-label">Sub-strand Title <span class="required">*</span></label>
+        <input type="text" id="modal-substrand-title" class="lms-input" placeholder="e.g. Unpacking Specific Learning Outcomes">
+      </div>
+    </div>
+
+    <div class="lms-input-group">
+      <div class="lms-form-group">
+        <label class="lms-label">Estimated Duration</label>
+        <input type="text" id="modal-substrand-duration" class="lms-input" value="35 mins">
+      </div>
+      <div class="lms-form-group">
+        <label class="lms-label">Delivery Format</label>
+        <select id="modal-substrand-delivery" class="lms-select">
+          <option value="Interactive Practical">Interactive Practical</option>
+          <option value="Pedagogical Lab">Pedagogical Lab</option>
+          <option value="Rubric Workshop">Rubric Workshop</option>
+          <option value="Inquiry Lecture">Inquiry Lecture</option>
+          <option value="Independent Reading">Independent Reading</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:20px;">
+      <button type="button" class="lms-btn lms-btn-outline" onclick="closeSubstrandModal()">Cancel</button>
+      <button type="button" class="lms-btn lms-btn-primary" onclick="submitSubstrandModal()">Save Sub-strand</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── MODAL: Student View Live Preview ── -->
+<div id="modal-preview" class="lms-modal-overlay" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.75); z-index:400; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:#FFF; width:100%; max-width:880px; max-height:90vh; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 30px 80px rgba(0,0,0,0.3);">
+    <div style="padding:16px 20px; background:#0F172A; color:#FFF; display:flex; justify-content:space-between; align-items:center;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:18px;">👁️</span>
+        <div>
+          <div style="font-size:14px; font-weight:800;">Learner Course Player Live Preview</div>
+          <div style="font-size:11.5px; color:#94A3B8;">Exact rendering seen by enrolled students on instructify.co.ke</div>
+        </div>
+      </div>
+      <button type="button" onclick="closeLearnerPreview()" style="background:none; border:none; color:#FFF; font-size:18px; cursor:pointer;">✕</button>
+    </div>
+
+    <div id="preview-render-body" style="padding:28px 36px; overflow-y:auto; flex:1; background:#F8FAFC;">
+      <!-- Populated dynamically -->
+    </div>
+  </div>
+</div>
+
+<!-- ── Scripts ── -->
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/lms-auth-guard.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/lms-engine.js"></script>
+<script src="js/lms-curriculum-studio.js"></script>
+<script src="js/lms-notifications.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  // 1. Auth Guard: Trainer or Admin only
+  const session = LMSAuth.guardPage(['trainer', 'admin']);
+  if (!session) return;
+
+  // 2. Initialize Studio
+  const params = new URLSearchParams(window.location.search);
+  const initialCourseId = params.get('course') || (window.courses && window.courses[0] ? window.courses[0].id : 'cbc-foundations');
+  
+  LMSCurriculumStudio.init(initialCourseId);
+
+  // Populate Course Switcher
+  const courseSelect = document.getElementById('course-select');
+  const allCourses = (window.LMSEngine && window.LMSEngine.getAllCourses()) || window.courses || [];
+  courseSelect.innerHTML = allCourses.map(c => `
+    <option value="${c.id}" ${c.id === LMSCurriculumStudio.currentCourseId ? 'selected' : ''}>
+      ${c.title}
+    </option>
+  `).join('');
+
+  // Set Terminology Mode Buttons
+  window.setTerminologyMode = function(mode) {
+    LMSCurriculumStudio.setMode(mode);
+    document.getElementById('btn-mode-cbc').classList.toggle('active', mode === 'cbc');
+    document.getElementById('btn-mode-standard').classList.toggle('active', mode === 'standard');
+    updateTerminologyLabels();
+    renderTree();
+    renderEditorViewport();
+  };
+
+  function updateTerminologyLabels() {
+    const labels = LMSCurriculumStudio.getLabels();
+    document.getElementById('tree-panel-title').textContent = `📚 Course ${labels.strands} & ${labels.substrands}`;
+    document.getElementById('btn-add-strand-tree').textContent = labels.addStrand;
+    document.getElementById('label-stat-strands').textContent = labels.strands;
+    document.getElementById('label-stat-substrands').textContent = labels.substrands;
+    document.getElementById('tab-btn-explanation').textContent = `📖 ${labels.substrand} Content & Explanations`;
+    document.getElementById('tab-btn-sub-assessment').innerHTML = `📝 ${labels.substrand} Assessment <span class="lms-badge lms-badge-draft" id="badge-sub-asm-status" style="font-size:10px; margin-left:6px;">Not Set</span>`;
+    document.getElementById('tab-btn-strand-assessment').innerHTML = `🏆 ${labels.strand} Summative Assessment <span class="lms-badge lms-badge-draft" id="badge-strand-asm-status" style="font-size:10px; margin-left:6px;">Not Set</span>`;
+  }
+
+  window.switchCourse = function(courseId) {
+    LMSCurriculumStudio.init(courseId);
+    renderAll();
+  };
+
+  // 3. Render Tree & Editor
+  function renderAll() {
+    updateTerminologyLabels();
+    renderStats();
+    renderTree();
+    renderEditorViewport();
+  }
+
+  function renderStats() {
+    const stats = LMSCurriculumStudio.getStats();
+    document.getElementById('stat-strands-count').textContent = stats.totalStrands;
+    document.getElementById('stat-substrands-count').textContent = stats.totalSubstrands;
+    document.getElementById('stat-explanations-count').textContent = stats.totalExplanations;
+    document.getElementById('stat-assessments-count').textContent = stats.totalAssessments;
+    document.getElementById('stat-hours-count').textContent = stats.totalHours + 'h';
+  }
+
+  function renderTree() {
+    const container = document.getElementById('strands-tree-container');
+    const strands = LMSCurriculumStudio.strands;
+    const labels = LMSCurriculumStudio.getLabels();
+
+    if (!strands || strands.length === 0) {
+      container.innerHTML = `
+        <div class="lms-empty-state" style="padding:24px 12px;">
+          <div class="icon">📚</div>
+          <div class="title" style="font-size:14px;">No ${labels.strands} yet</div>
+          <div class="message" style="font-size:12px;">Click "+ Add ${labels.strand}" above to build your curriculum hierarchy.</div>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = strands.map((strand, sIdx) => {
+      const isStrandActive = (strand.id === LMSCurriculumStudio.activeStrandId);
+      const substrands = strand.substrands || [];
+      const hasStrandAsm = !!strand.assessment;
+
+      const subHtml = substrands.map(sub => {
+        const isSubActive = (isStrandActive && sub.id === LMSCurriculumStudio.activeSubstrandId);
+        const hasSubAsm = !!sub.assessment;
+        const hasExp = (sub.explanation && sub.explanation.coreContentHtml && sub.explanation.coreContentHtml.length > 20);
+
+        return `
+          <div class="substrand-tree-item ${isSubActive ? 'active' : ''}" onclick="selectSubstrand('${strand.id}', '${sub.id}')">
+            <div style="display:flex; align-items:center; gap:8px; flex:1;">
+              <span class="strand-badge-code" style="font-size:9.5px; padding:2px 5px;">${sub.code}</span>
+              <span class="substrand-tree-title">${sub.title}</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:4px;">
+              ${hasExp ? '<span title="Explanations attached" style="font-size:11px;">📖</span>' : ''}
+              ${hasSubAsm ? '<span title="Assessment attached" style="font-size:11px;">📝</span>' : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <div class="strand-tree-card ${isStrandActive ? 'active' : ''}">
+          <div class="strand-card-header" onclick="selectStrand('${strand.id}')">
+            <span class="strand-badge-code">${strand.code}</span>
+            <div class="strand-card-title">${strand.title}</div>
+            <div class="strand-card-actions">
+              ${hasStrandAsm ? '<span title="Strand Capstone Assessment Attached" style="font-size:13px;">🏆</span>' : ''}
+              <button type="button" class="lms-btn lms-btn-ghost lms-btn-sm" style="padding:2px 6px;" onclick="event.stopPropagation(); openEditStrandModal('${strand.id}')" title="Edit Strand">✏️</button>
+              <button type="button" class="lms-btn lms-btn-ghost lms-btn-sm" style="padding:2px 6px; color:#DC2626;" onclick="event.stopPropagation(); deleteStrandConfirm('${strand.id}')" title="Delete Strand">✕</button>
+            </div>
+          </div>
+
+          <div class="substrand-tree-list">
+            ${subHtml}
+            <button type="button" class="lms-btn lms-btn-ghost lms-btn-sm" style="justify-content:flex-start; font-size:11.5px; color:#2145E6; padding:6px 8px;" onclick="openAddSubstrandModal('${strand.id}')">
+              + Add ${labels.substrand}
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  window.selectStrand = function(strandId) {
+    LMSCurriculumStudio.activeStrandId = strandId;
+    const strand = LMSCurriculumStudio.getStrand(strandId);
+    if (strand && strand.substrands && strand.substrands.length > 0) {
+      LMSCurriculumStudio.activeSubstrandId = strand.substrands[0].id;
+    } else {
+      LMSCurriculumStudio.activeSubstrandId = null;
+    }
+    renderTree();
+    renderEditorViewport();
+  };
+
+  window.selectSubstrand = function(strandId, substrandId) {
+    LMSCurriculumStudio.activeStrandId = strandId;
+    LMSCurriculumStudio.activeSubstrandId = substrandId;
+    renderTree();
+    renderEditorViewport();
+  };
+
+  // 4. Render Active Editor Viewport
+  function renderEditorViewport() {
+    const strand = LMSCurriculumStudio.getActiveStrand();
+    const sub = LMSCurriculumStudio.getActiveSubstrand();
+    const labels = LMSCurriculumStudio.getLabels();
+
+    if (!strand || !sub) {
+      document.getElementById('active-substrand-badge').textContent = '—';
+      document.getElementById('active-strand-parent-text').textContent = 'No selection';
+      document.getElementById('active-substrand-title').textContent = `Add a ${labels.strand} and ${labels.substrand} to begin authoring`;
+      return;
+    }
+
+    // Header context
+    document.getElementById('active-substrand-badge').textContent = sub.code;
+    document.getElementById('active-strand-parent-text').textContent = `${strand.code}: ${strand.title}`;
+    document.getElementById('active-substrand-title').textContent = sub.title;
+
+    // Badges in tabs
+    const subAsmBadge = document.getElementById('badge-sub-asm-status');
+    if (sub.assessment) {
+      subAsmBadge.className = 'lms-badge lms-badge-published';
+      subAsmBadge.textContent = sub.assessment.type === 'quiz' ? 'Quiz Attached' : 'Task Attached';
+    } else {
+      subAsmBadge.className = 'lms-badge lms-badge-draft';
+      subAsmBadge.textContent = 'Not Set';
+    }
+
+    const strandAsmBadge = document.getElementById('badge-strand-asm-status');
+    if (strand.assessment) {
+      strandAsmBadge.className = 'lms-badge lms-badge-published';
+      strandAsmBadge.textContent = 'Capstone Attached';
+    } else {
+      strandAsmBadge.className = 'lms-badge lms-badge-draft';
+      strandAsmBadge.textContent = 'Not Set';
+    }
+
+    // ── TAB 1: Explanations Populating ──
+    const exp = sub.explanation || {};
+    document.getElementById('field-exp-overview').value = exp.overview || '';
+    document.getElementById('field-exp-content').value = exp.coreContentHtml || '';
+    document.getElementById('field-exp-teaching-notes').value = exp.teachingNotes || '';
+    document.getElementById('field-exp-video').value = (exp.media && exp.media.videoUrl) || '';
+    document.getElementById('field-exp-slides').value = (exp.media && exp.media.slidesUrl) || '';
+
+    // Key Terms
+    renderKeyTerms(exp.keyTerms || []);
+    // Misconceptions
+    renderMisconceptions(exp.misconceptions || []);
+
+    // ── TAB 2: Sub-strand Assessment Populating ──
+    const subAsm = sub.assessment || {};
+    document.getElementById('sub-asm-panel-title').textContent = `📝 ${sub.code} Formative Assessment`;
+    document.getElementById('sub-asm-badge-code').textContent = sub.code;
+    document.getElementById('field-sub-asm-title').value = subAsm.title || `${sub.code} Knowledge Check`;
+    document.getElementById('field-sub-asm-type').value = subAsm.type || 'quiz';
+    document.getElementById('field-sub-asm-passmark').value = subAsm.passMark || 80;
+    document.getElementById('field-sub-asm-attempts').value = subAsm.attemptsAllowed || 3;
+    document.getElementById('field-sub-asm-instructions').value = subAsm.instructions || '';
+
+    renderSubQuizQuestions(subAsm.questions || []);
+
+    // ── TAB 3: Strand Assessment Populating ──
+    const strandAsm = strand.assessment || {};
+    document.getElementById('strand-asm-panel-title').textContent = `🏆 ${strand.code} Summative Assessment & Rubric`;
+    document.getElementById('strand-asm-badge-code').textContent = strand.code;
+    document.getElementById('field-strand-asm-title').value = strandAsm.title || `${strand.code} Capstone Assessment`;
+    document.getElementById('field-strand-asm-type').value = strandAsm.type || 'rubric';
+    document.getElementById('field-strand-asm-instructions').value = strandAsm.instructions || '';
+
+    renderRubricMatrix(strandAsm.rubricCriteria || []);
+  }
+
+  // ── Tab Switcher in Editor ──
+  window.switchEditorTab = function(tabName) {
+    document.getElementById('tab-btn-explanation').classList.toggle('active', tabName === 'explanation');
+    document.getElementById('tab-btn-sub-assessment').classList.toggle('active', tabName === 'sub-assessment');
+    document.getElementById('tab-btn-strand-assessment').classList.toggle('active', tabName === 'strand-assessment');
+
+    document.getElementById('editor-panel-explanation').classList.toggle('active', tabName === 'explanation');
+    document.getElementById('editor-panel-sub-assessment').classList.toggle('active', tabName === 'sub-assessment');
+    document.getElementById('editor-panel-strand-assessment').classList.toggle('active', tabName === 'strand-assessment');
+  };
+
+  // ── Key Terms Handler ──
+  function renderKeyTerms(terms) {
+    const container = document.getElementById('key-terms-container');
+    if (!terms.length) {
+      container.innerHTML = '<div style="font-size:12px; color:#94A3B8;">No key terms added yet. Click "+ Add Term" above.</div>';
+      return;
+    }
+    container.innerHTML = terms.map((t, i) => `
+      <div style="display:flex; gap:8px; align-items:center;">
+        <input type="text" class="lms-input term-input" value="${t.term}" placeholder="Term" style="flex:1; font-weight:700;">
+        <input type="text" class="lms-input def-input" value="${t.definition}" placeholder="Definition" style="flex:2;">
+        <button type="button" class="lms-btn lms-btn-ghost lms-btn-sm" onclick="removeKeyTermRow(${i})">✕</button>
+      </div>
+    `).join('');
+  }
+
+  window.addKeyTermRow = function() {
+    const sub = LMSCurriculumStudio.getActiveSubstrand();
+    if (!sub) return;
+    if (!sub.explanation.keyTerms) sub.explanation.keyTerms = [];
+    sub.explanation.keyTerms.push({ term: '', definition: '' });
+    renderKeyTerms(sub.explanation.keyTerms);
+  };
+
+  window.removeKeyTermRow = function(index) {
+    const sub = LMSCurriculumStudio.getActiveSubstrand();
+    if (!sub || !sub.explanation.keyTerms) return;
+    sub.explanation.keyTerms.splice(index, 1);
+    renderKeyTerms(sub.explanation.keyTerms);
+  };
+
+  // ── Misconceptions Handler ──
+  function renderMisconceptions(miscs) {
+    const container = document.getElementById('misconceptions-container');
+    if (!miscs.length) {
+      container.innerHTML = '<div style="font-size:12px; color:#94A3B8;">No misconceptions added yet. Click "+ Add Misconception" above.</div>';
+      return;
+    }
+    container.innerHTML = miscs.map((m, i) => `
+      <div style="display:flex; gap:8px; align-items:center;">
+        <input type="text" class="lms-input misc-input" value="${m.misconception}" placeholder="Misconception (What learners think)" style="flex:1;">
+        <input type="text" class="lms-input corr-input" value="${m.correction}" placeholder="Correction (The actual principle)" style="flex:1;">
+        <button type="button" class="lms-btn lms-btn-ghost lms-btn-sm" onclick="removeMisconceptionRow(${i})">✕</button>
+      </div>
+    `).join('');
+  }
+
+  window.addMisconceptionRow = function() {
+    const sub = LMSCurriculumStudio.getActiveSubstrand();
+    if (!sub) return;
+    if (!sub.explanation.misconceptions) sub.explanation.misconceptions = [];
+    sub.explanation.misconceptions.push({ misconception: '', correction: '' });
+    renderMisconceptions(sub.explanation.misconceptions);
+  };
+
+  window.removeMisconceptionRow = function(index) {
+    const sub = LMSCurriculumStudio.getActiveSubstrand();
+    if (!sub || !sub.explanation.misconceptions) return;
+    sub.explanation.misconceptions.splice(index, 1);
+    renderMisconceptions(sub.explanation.misconceptions);
+  };
+
+  // ── Save Active Explanations ──
+  window.saveActiveExplanation = function() {
+    const strand = LMSCurriculumStudio.getActiveStrand();
+    const sub = LMSCurriculumStudio.getActiveSubstrand();
+    if (!strand || !sub) return;
+
+    // Collect terms
+    const termInputs = document.querySelectorAll('#key-terms-container .term-input');
+    const defInputs = document.querySelectorAll('#key-terms-container .def-input');
+    const keyTerms = [];
+    termInputs.forEach((el, i) => {
+      if (el.value.trim()) keyTerms.push({ term: el.value.trim(), definition: defInputs[i] ? defInputs[i].value.trim() : '' });
+    });
+
+    // Collect misconceptions
+    const miscInputs = document.querySelectorAll('#misconceptions-container .misc-input');
+    const corrInputs = document.querySelectorAll('#misconceptions-container .corr-input');
+    const misconceptions = [];
+    miscInputs.forEach((el, i) => {
+      if (el.value.trim()) misconceptions.push({ misconception: el.value.trim(), correction: corrInputs[i] ? corrInputs[i].value.trim() : '' });
+    });
+
+    LMSCurriculumStudio.saveExplanation(strand.id, sub.id, {
+      overview: document.getElementById('field-exp-overview').value,
+      coreContentHtml: document.getElementById('field-exp-content').value,
+      teachingNotes: document.getElementById('field-exp-teaching-notes').value,
+      keyTerms: keyTerms,
+      misconceptions: misconceptions,
+      media: {
+        videoUrl: document.getElementById('field-exp-video').value,
+        slidesUrl: document.getElementById('field-exp-slides').value
+      }
+    });
+
+    renderStats();
+    renderTree();
+    if (window.showToast) window.showToast('✅ Sub-strand Explanations saved successfully!', 'success');
+  };
+
+  // ── Quiz Questions Builder ──
+  function renderSubQuizQuestions(questions) {
+    const container = document.getElementById('sub-quiz-questions-list');
+    if (!questions.length) {
+      container.innerHTML = '<div style="font-size:12px; color:#94A3B8;">No quiz questions created yet. Click "+ Add Question" above.</div>';
+      return;
+    }
+
+    container.innerHTML = questions.map((q, qIdx) => `
+      <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:14px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+          <strong style="font-size:13px; color:#0F172A;">Question ${qIdx + 1}</strong>
+          <button type="button" class="lms-btn lms-btn-ghost lms-btn-sm" style="color:#DC2626;" onclick="removeQuizQuestion(${qIdx})">Remove</button>
+        </div>
+        <input type="text" class="lms-input q-text-input" value="${q.text}" placeholder="Enter question prompt..." style="margin-bottom:10px;">
+        
+        <div style="font-size:12px; font-weight:700; color:#475569; margin-bottom:6px;">Options (select radio for correct answer):</div>
+        <div class="q-options-container" data-qidx="${qIdx}">
+          ${(q.options || []).map((opt, oIdx) => `
+            <div class="quiz-opt-row">
+              <input type="radio" name="correct_q_${qIdx}" class="quiz-opt-radio" ${q.correctAnswer === oIdx ? 'checked' : ''} value="${oIdx}">
+              <input type="text" class="lms-input opt-text-input" value="${opt}" placeholder="Option ${oIdx + 1}" style="flex:1;">
+            </div>
+          `).join('')}
+        </div>
+
+        <div style="margin-top:10px;">
+          <label class="lms-label" style="font-size:11.5px;">Pedagogical Explanation (shown after student answers):</label>
+          <input type="text" class="lms-input q-explanation-input" value="${q.explanation || ''}" placeholder="Explain why the correct answer is right...">
+        </div>
+      </div>
+    `).join('');
+  }
+
+  window.addQuizQuestion = function() {
+    const sub = LMSCurriculumStudio.getActiveSubstrand();
+    if (!sub) return;
+    if (!sub.assessment) {
+      sub.assessment = {
+        title: `${sub.code} Knowledge Check`,
+        type: 'quiz',
+        passMark: 80,
+        questions: []
+      };
+    }
+    if (!sub.assessment.questions) sub.assessment.questions = [];
+    sub.assessment.questions.push({
+      id: 'q_' + Date.now().toString(36),
+      text: 'What is the primary indicator of competency in this sub-strand?',
+      options: ['Theoretical memorization', 'Demonstrable practical application', 'Exam completion', 'Speed of submission'],
+      correctAnswer: 1,
+      explanation: 'Competency-based learning emphasizes demonstrable application over rote theory.'
+    });
+    renderSubQuizQuestions(sub.assessment.questions);
+  };
+
+  window.removeQuizQuestion = function(idx) {
+    const sub = LMSCurriculumStudio.getActiveSubstrand();
+    if (!sub || !sub.assessment || !sub.assessment.questions) return;
+    sub.assessment.questions.splice(idx, 1);
+    renderSubQuizQuestions(sub.assessment.questions);
+  };
+
+  // ── Save Active Sub-strand Assessment ──
+  window.saveActiveSubAssessment = function() {
+    const strand = LMSCurriculumStudio.getActiveStrand();
+    const sub = LMSCurriculumStudio.getActiveSubstrand();
+    if (!strand || !sub) return;
+
+    // Collect questions
+    const qBoxes = document.querySelectorAll('#sub-quiz-questions-list > div');
+    const questions = [];
+    qBoxes.forEach((box, qIdx) => {
+      const qText = box.querySelector('.q-text-input').value.trim();
+      const optInputs = box.querySelectorAll('.opt-text-input');
+      const radioSelected = box.querySelector(`input[name="correct_q_${qIdx}"]:checked`);
+      const explanation = box.querySelector('.q-explanation-input').value.trim();
+
+      const options = [];
+      optInputs.forEach(opt => options.push(opt.value.trim()));
+
+      if (qText) {
+        questions.push({
+          id: 'q_' + qIdx,
+          text: qText,
+          options: options,
+          correctAnswer: radioSelected ? parseInt(radioSelected.value) : 0,
+          explanation: explanation
+        });
+      }
+    });
+
+    LMSCurriculumStudio.saveAssessment('substrand', sub.id, {
+      title: document.getElementById('field-sub-asm-title').value.trim(),
+      type: document.getElementById('field-sub-asm-type').value,
+      passMark: parseInt(document.getElementById('field-sub-asm-passmark').value) || 80,
+      attemptsAllowed: parseInt(document.getElementById('field-sub-asm-attempts').value) || 3,
+      instructions: document.getElementById('field-sub-asm-instructions').value.trim(),
+      questions: questions
+    });
+
+    renderStats();
+    renderTree();
+    renderEditorViewport();
+    if (window.showToast) window.showToast('✅ Sub-strand Assessment saved!', 'success');
+  };
+
+  window.removeActiveSubAssessment = function() {
+    const sub = LMSCurriculumStudio.getActiveSubstrand();
+    if (!sub) return;
+    if (confirm(`Remove assessment from ${sub.code}?`)) {
+      LMSCurriculumStudio.removeAssessment('substrand', sub.id);
+      renderStats();
+      renderTree();
+      renderEditorViewport();
+      if (window.showToast) window.showToast('Sub-strand assessment removed.', 'info');
+    }
+  };
+
+  // ── Rubric Matrix Builder ──
+  function renderRubricMatrix(criteria) {
+    const container = document.getElementById('rubric-matrix-container');
+    if (!criteria.length) {
+      container.innerHTML = '<div style="font-size:12px; color:#94A3B8;">No rubric criteria defined yet. Click "+ Add Rubric Criterion" above.</div>';
+      return;
+    }
+
+    container.innerHTML = `
+      <div style="overflow-x:auto;">
+        <table class="rubric-matrix-table">
+          <thead>
+            <tr>
+              <th style="width:22%;">Assessment Criterion</th>
+              <th class="level-exceeding" style="width:20%;">🟢 Exceeding (4)</th>
+              <th class="level-meeting" style="width:20%;">🔵 Meeting (3)</th>
+              <th class="level-approaching" style="width:19%;">🟡 Approaching (2)</th>
+              <th class="level-below" style="width:19%;">🔴 Below (1)</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${criteria.map((c, i) => `
+              <tr class="rubric-row" data-ridx="${i}">
+                <td>
+                  <textarea class="lms-textarea rubric-criterion-input" rows="3" placeholder="Criterion title...">${c.criterion}</textarea>
+                  <button type="button" class="lms-btn lms-btn-ghost lms-btn-sm" style="color:#DC2626; padding:2px; font-size:11px; margin-top:4px;" onclick="removeRubricRow(${i})">✕ Delete</button>
+                </td>
+                <td><textarea class="lms-textarea rubric-ee-input" rows="3" placeholder="Level 4 evidence...">${c.exceeding}</textarea></td>
+                <td><textarea class="lms-textarea rubric-me-input" rows="3" placeholder="Level 3 evidence...">${c.meeting}</textarea></td>
+                <td><textarea class="lms-textarea rubric-ae-input" rows="3" placeholder="Level 2 evidence...">${c.approaching}</textarea></td>
+                <td><textarea class="lms-textarea rubric-be-input" rows="3" placeholder="Level 1 evidence...">${c.below}</textarea></td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  window.addRubricCriterionRow = function() {
+    const strand = LMSCurriculumStudio.getActiveStrand();
+    if (!strand) return;
+    if (!strand.assessment) {
+      strand.assessment = {
+        title: `${strand.code} Capstone Assessment`,
+        type: 'rubric',
+        passMark: 75,
+        rubricCriteria: []
+      };
+    }
+    if (!strand.assessment.rubricCriteria) strand.assessment.rubricCriteria = [];
+    strand.assessment.rubricCriteria.push({
+      criterion: 'Mastery of Strand Competencies',
+      exceeding: 'Applies concepts independently with exceptional creativity and peer coaching.',
+      meeting: 'Demonstrates consistent accuracy and accomplishes all prescribed performance tasks.',
+      approaching: 'Demonstrates partial understanding; requires occasional scaffolding.',
+      below: 'Requires direct teacher guidance to attempt the core task.'
+    });
+    renderRubricMatrix(strand.assessment.rubricCriteria);
+  };
+
+  window.removeRubricRow = function(index) {
+    const strand = LMSCurriculumStudio.getActiveStrand();
+    if (!strand || !strand.assessment || !strand.assessment.rubricCriteria) return;
+    strand.assessment.rubricCriteria.splice(index, 1);
+    renderRubricMatrix(strand.assessment.rubricCriteria);
+  };
+
+  // ── Save Strand Assessment ──
+  window.saveActiveStrandAssessment = function() {
+    const strand = LMSCurriculumStudio.getActiveStrand();
+    if (!strand) return;
+
+    // Collect rubric rows
+    const rows = document.querySelectorAll('.rubric-row');
+    const criteria = [];
+    rows.forEach(r => {
+      const crit = r.querySelector('.rubric-criterion-input').value.trim();
+      const ee = r.querySelector('.rubric-ee-input').value.trim();
+      const me = r.querySelector('.rubric-me-input').value.trim();
+      const ae = r.querySelector('.rubric-ae-input').value.trim();
+      const be = r.querySelector('.rubric-be-input').value.trim();
+      if (crit) {
+        criteria.push({
+          criterion: crit,
+          exceeding: ee,
+          meeting: me,
+          approaching: ae,
+          below: be
+        });
+      }
+    });
+
+    LMSCurriculumStudio.saveAssessment('strand', strand.id, {
+      title: document.getElementById('field-strand-asm-title').value.trim(),
+      type: document.getElementById('field-strand-asm-type').value,
+      instructions: document.getElementById('field-strand-asm-instructions').value.trim(),
+      rubricCriteria: criteria
+    });
+
+    renderStats();
+    renderTree();
+    renderEditorViewport();
+    if (window.showToast) window.showToast('🏆 Strand Capstone Assessment saved!', 'success');
+  };
+
+  window.removeActiveStrandAssessment = function() {
+    const strand = LMSCurriculumStudio.getActiveStrand();
+    if (!strand) return;
+    if (confirm(`Remove capstone assessment from ${strand.code}?`)) {
+      LMSCurriculumStudio.removeAssessment('strand', strand.id);
+      renderStats();
+      renderTree();
+      renderEditorViewport();
+      if (window.showToast) window.showToast('Strand assessment removed.', 'info');
+    }
+  };
+
+  // ── Strand Add / Edit Modal ──
+  window.openAddStrandModal = function() {
+    const labels = LMSCurriculumStudio.getLabels();
+    document.getElementById('modal-strand-heading').textContent = labels.addStrand;
+    document.getElementById('modal-strand-id').value = '';
+    document.getElementById('modal-strand-code').value = '';
+    document.getElementById('modal-strand-title').value = '';
+    document.getElementById('modal-strand-rationale').value = '';
+    document.getElementById('modal-strand-competencies').value = '';
+    document.getElementById('modal-strand').style.display = 'flex';
+  };
+
+  window.openEditStrandModal = function(strandId) {
+    const strand = LMSCurriculumStudio.getStrand(strandId);
+    if (!strand) return;
+    const labels = LMSCurriculumStudio.getLabels();
+    document.getElementById('modal-strand-heading').textContent = `Edit ${labels.strand}`;
+    document.getElementById('modal-strand-id').value = strand.id;
+    document.getElementById('modal-strand-code').value = strand.code;
+    document.getElementById('modal-strand-title').value = strand.title;
+    document.getElementById('modal-strand-rationale').value = strand.rationale || '';
+    document.getElementById('modal-strand-competencies').value = (strand.competencies || []).join(', ');
+    document.getElementById('modal-strand').style.display = 'flex';
+  };
+
+  window.closeStrandModal = function() {
+    document.getElementById('modal-strand').style.display = 'none';
+  };
+
+  window.submitStrandModal = function() {
+    const id = document.getElementById('modal-strand-id').value;
+    const code = document.getElementById('modal-strand-code').value.trim();
+    const title = document.getElementById('modal-strand-title').value.trim();
+    const rationale = document.getElementById('modal-strand-rationale').value.trim();
+    const comps = document.getElementById('modal-strand-competencies').value.trim();
+
+    if (!title) {
+      alert('Please enter a title for the strand.');
+      return;
+    }
+
+    if (id) {
+      LMSCurriculumStudio.updateStrand(id, { code, title, rationale, competencies: comps });
+    } else {
+      LMSCurriculumStudio.addStrand({ code, title, rationale, competencies: comps });
+    }
+
+    closeStrandModal();
+    renderAll();
+    if (window.showToast) window.showToast('Strand saved successfully!', 'success');
+  };
+
+  window.deleteStrandConfirm = function(strandId) {
+    const strand = LMSCurriculumStudio.getStrand(strandId);
+    if (!strand) return;
+    if (confirm(`Delete ${strand.code}: "${strand.title}" and all its sub-strands?`)) {
+      LMSCurriculumStudio.deleteStrand(strandId);
+      renderAll();
+      if (window.showToast) window.showToast('Strand deleted.', 'info');
+    }
+  };
+
+  // ── Sub-strand Add / Edit Modal ──
+  window.openAddSubstrandModal = function(strandId) {
+    const labels = LMSCurriculumStudio.getLabels();
+    document.getElementById('modal-substrand-heading').textContent = labels.addSubstrand;
+    document.getElementById('modal-substrand-strand-id').value = strandId;
+    document.getElementById('modal-substrand-id').value = '';
+    document.getElementById('modal-substrand-code').value = '';
+    document.getElementById('modal-substrand-title').value = '';
+    document.getElementById('modal-substrand-duration').value = '35 mins';
+    document.getElementById('modal-substrand-delivery').value = 'Interactive Practical';
+    document.getElementById('modal-substrand').style.display = 'flex';
+  };
+
+  window.openEditSubstrandModal = function() {
+    const strand = LMSCurriculumStudio.getActiveStrand();
+    const sub = LMSCurriculumStudio.getActiveSubstrand();
+    if (!strand || !sub) return;
+    const labels = LMSCurriculumStudio.getLabels();
+    document.getElementById('modal-substrand-heading').textContent = `Edit ${labels.substrand}`;
+    document.getElementById('modal-substrand-strand-id').value = strand.id;
+    document.getElementById('modal-substrand-id').value = sub.id;
+    document.getElementById('modal-substrand-code').value = sub.code;
+    document.getElementById('modal-substrand-title').value = sub.title;
+    document.getElementById('modal-substrand-duration').value = sub.duration || '35 mins';
+    document.getElementById('modal-substrand-delivery').value = sub.deliveryType || 'Interactive Practical';
+    document.getElementById('modal-substrand').style.display = 'flex';
+  };
+
+  window.closeSubstrandModal = function() {
+    document.getElementById('modal-substrand').style.display = 'none';
+  };
+
+  window.submitSubstrandModal = function() {
+    const strandId = document.getElementById('modal-substrand-strand-id').value;
+    const subId = document.getElementById('modal-substrand-id').value;
+    const code = document.getElementById('modal-substrand-code').value.trim();
+    const title = document.getElementById('modal-substrand-title').value.trim();
+    const duration = document.getElementById('modal-substrand-duration').value.trim();
+    const deliveryType = document.getElementById('modal-substrand-delivery').value;
+
+    if (!title) {
+      alert('Please enter a title for the sub-strand.');
+      return;
+    }
+
+    if (subId) {
+      LMSCurriculumStudio.updateSubstrand(strandId, subId, { code, title, duration, deliveryType });
+    } else {
+      LMSCurriculumStudio.addSubstrand(strandId, { code, title, duration, deliveryType });
+    }
+
+    closeSubstrandModal();
+    renderAll();
+    if (window.showToast) window.showToast('Sub-strand saved!', 'success');
+  };
+
+  // ── Global Save Button ──
+  window.saveAllCurriculum = function() {
+    // Save current active tab fields
+    window.saveActiveExplanation();
+    LMSCurriculumStudio.persist();
+    if (window.showToast) window.showToast('🎉 All curriculum changes, explanations, and assessments saved and synced to LMS!', 'success');
+  };
+
+  // ── Student Live Preview Modal ──
+  window.openLearnerPreview = function() {
+    const strand = LMSCurriculumStudio.getActiveStrand();
+    const sub = LMSCurriculumStudio.getActiveSubstrand();
+    if (!strand || !sub) {
+      alert('Select a sub-strand to preview.');
+      return;
+    }
+
+    const exp = sub.explanation || {};
+    const subAsm = sub.assessment;
+    const strandAsm = strand.assessment;
+
+    const renderBox = document.getElementById('preview-render-body');
+    renderBox.innerHTML = `
+      <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; padding:24px 28px; box-shadow:0 4px 14px rgba(15,23,42,0.04);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+          <span style="font-size:12px; font-weight:800; background:#EEF2FF; color:#2145E6; padding:4px 10px; border-radius:6px;">
+            🇰🇪 ${strand.code} › ${sub.code} • ${sub.duration || '30 mins'}
+          </span>
+          <span style="font-size:12px; color:#64748B;">Facilitator: Dr. Wanjiku Kamau</span>
+        </div>
+
+        <h1 style="font-size:24px; font-weight:800; color:#0F172A; margin:0 0 12px; line-height:1.3;">
+          ${sub.title}
+        </h1>
+
+        ${exp.overview ? `<p style="font-size:15px; color:#475569; font-weight:500; line-height:1.6; margin-bottom:20px;">${exp.overview}</p>` : ''}
+
+        <div style="border-top:1px solid #F1F5F9; padding-top:18px; margin-bottom:24px;">
+          ${exp.coreContentHtml || '<p>Comprehensive explanatory guide and learner notes.</p>'}
+        </div>
+
+        ${(exp.keyTerms && exp.keyTerms.length > 0) ? `
+          <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:16px; margin-bottom:20px;">
+            <strong style="font-size:13px; color:#0F172A; display:block; margin-bottom:8px;">🔤 Key Terms in this Sub-strand:</strong>
+            <ul style="margin:0; padding-left:18px; font-size:13px; color:#334155;">
+              ${exp.keyTerms.map(t => `<li><strong>${t.term}:</strong> ${t.definition}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        ${subAsm ? `
+          <div style="background:#EEF2FF; border:1.5px solid #C7D2FE; border-radius:12px; padding:20px; margin-top:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <h3 style="margin:0; font-size:16px; color:#2145E6;">📝 Formative Assessment: ${subAsm.title}</h3>
+              <span class="lms-badge lms-badge-published" style="font-size:11px;">Pass Mark: ${subAsm.passMark}%</span>
+            </div>
+            <p style="font-size:13px; color:#334155; margin-bottom:14px;">${subAsm.instructions || 'Demonstrate competency in this sub-strand.'}</p>
+            ${subAsm.type === 'quiz' ? `
+              <div style="font-size:12.5px; color:#475569; font-weight:600;">📊 Interactive Quiz: ${(subAsm.questions || []).length} Question(s) with Real-Time Feedback</div>
+            ` : `
+              <div style="font-size:12.5px; color:#475569; font-weight:600;">📋 Practical Evidence Submission &amp; Reflection Task</div>
+            `}
+          </div>
+        ` : ''}
+
+        ${strandAsm ? `
+          <div style="background:#ECFDF5; border:1.5px solid #A7F3D0; border-radius:12px; padding:20px; margin-top:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <h3 style="margin:0; font-size:16px; color:#065F46;">🏆 Strand Capstone: ${strandAsm.title}</h3>
+              <span class="lms-badge lms-badge-published" style="font-size:11px; background:#059669; color:#FFF;">Summative Rubric</span>
+            </div>
+            <p style="font-size:13px; color:#065F46; margin-bottom:12px;">${strandAsm.instructions || 'Comprehensive evaluation covering all sub-strands in this strand.'}</p>
+            <div style="font-size:12.5px; color:#047857; font-weight:600;">Evaluated against 4 KICD achievement levels: Exceeding, Meeting, Approaching, and Below Expectations.</div>
+          </div>
+        ` : ''}
+      </div>
+    `;
+
+    document.getElementById('modal-preview').style.display = 'flex';
+  };
+
+  window.closeLearnerPreview = function() {
+    document.getElementById('modal-preview').style.display = 'none';
+  };
+
+  // Initial render
+  renderAll();
+
+})();
+</script>
+</body>
+</html>

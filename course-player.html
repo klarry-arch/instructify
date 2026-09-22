@@ -460,20 +460,50 @@
       }
     }
 
-    function renderAssignmentInterface(assignment, container) {
       let rubricHtml = '';
       if (assignment.rubric && assignment.rubric.length > 0) {
-        rubricHtml = `
-          <h4 style="margin:16px 0 10px; font-size:13px; text-transform:uppercase; color:#475569;">Assessment Criterion Rubric</h4>
-          <table class="data-table" style="margin-bottom:20px;">
-            <thead>
-              <tr><th>Evaluation Criterion</th><th style="width:100px; text-align:right;">Max Points</th></tr>
-            </thead>
-            <tbody>
-              ${assignment.rubric.map(r => `<tr><td>${r.criterion}</td><td style="text-align:right; font-weight:700;">${r.maxPoints} pts</td></tr>`).join('')}
-            </tbody>
-          </table>
-        `;
+        const isCbcTier = assignment.rubric.some(r => r.exceeding || r.meeting);
+        if (isCbcTier) {
+          rubricHtml = `
+            <h4 style="margin:16px 0 10px; font-size:13px; text-transform:uppercase; color:#475569;">🇰🇪 4-Level CBC Competency Evaluation Rubric</h4>
+            <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; margin-bottom:20px; font-size:12.5px; border:1px solid #E2E8F0; border-radius:8px; overflow:hidden;">
+                <thead>
+                  <tr style="background:#F8FAFC;">
+                    <th style="padding:10px; border:1px solid #E2E8F0; text-align:left; width:22%;">Criterion</th>
+                    <th style="padding:10px; border:1px solid #E2E8F0; color:#059669; text-align:left; width:20%;">🟢 Exceeding (4)</th>
+                    <th style="padding:10px; border:1px solid #E2E8F0; color:#2145E6; text-align:left; width:20%;">🔵 Meeting (3)</th>
+                    <th style="padding:10px; border:1px solid #E2E8F0; color:#D97706; text-align:left; width:19%;">🟡 Approaching (2)</th>
+                    <th style="padding:10px; border:1px solid #E2E8F0; color:#DC2626; text-align:left; width:19%;">🔴 Below (1)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${assignment.rubric.map(r => `
+                    <tr>
+                      <td style="padding:10px; border:1px solid #E2E8F0; font-weight:700; background:#FAFAFA;">${r.criterion}</td>
+                      <td style="padding:10px; border:1px solid #E2E8F0;">${r.exceeding || '—'}</td>
+                      <td style="padding:10px; border:1px solid #E2E8F0;">${r.meeting || '—'}</td>
+                      <td style="padding:10px; border:1px solid #E2E8F0;">${r.approaching || '—'}</td>
+                      <td style="padding:10px; border:1px solid #E2E8F0;">${r.below || '—'}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          `;
+        } else {
+          rubricHtml = `
+            <h4 style="margin:16px 0 10px; font-size:13px; text-transform:uppercase; color:#475569;">Assessment Criterion Rubric</h4>
+            <table class="data-table" style="margin-bottom:20px;">
+              <thead>
+                <tr><th>Evaluation Criterion</th><th style="width:100px; text-align:right;">Max Points</th></tr>
+              </thead>
+              <tbody>
+                ${assignment.rubric.map(r => `<tr><td>${r.criterion}</td><td style="text-align:right; font-weight:700;">${r.maxPoints} pts</td></tr>`).join('')}
+              </tbody>
+            </table>
+          `;
+        }
       }
 
       container.innerHTML = `

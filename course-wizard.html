@@ -355,8 +355,15 @@
     }
 
     return `
-      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">📚 Curriculum Builder</h2>
-      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Build your course structure with sections, modules, and lessons.</p>
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+        <div>
+          <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">📚 Curriculum Builder (Strands &amp; Topics)</h2>
+          <p style="font-size:14px;color:#64748B;margin-bottom:0;">Build your course structure with strands/sections, modules, and lessons.</p>
+        </div>
+        <a href="educator-curriculum.html?course=${data.id || ''}" class="lms-btn lms-btn-outline lms-btn-sm" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+          <span>📑 Open in Full Strand Studio →</span>
+        </a>
+      </div>
 
       <div class="lms-curriculum-tree" id="curriculum-tree">
         ${curriculumHtml}
