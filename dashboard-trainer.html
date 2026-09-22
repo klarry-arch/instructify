@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -66,9 +66,13 @@
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     
     </ul>
-    <div class="nav-actions">
-      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
-      <a href="courses.html" class="btn btn-primary btn-sm">Start Learning</a>
+    <div class="nav-actions" style="display:flex; align-items:center; gap:10px;">
+      <div style="display:flex; align-items:center; gap:8px; padding:4px 12px 4px 6px; background:#F1F5F9; border-radius:999px; border:1px solid #E2E8F0;">
+        <div class="avatar-placeholder" style="width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg, #2145E6, #FF4D00); color:#FFF; font-weight:800; font-size:11px; display:flex; align-items:center; justify-content:center;">WK</div>
+        <span style="font-size:13px; font-weight:700; color:#0F172A;">Dr. Wanjiku</span>
+        <span class="badge badge-primary" style="font-size:10px; padding:2px 6px;">Facilitator</span>
+      </div>
+      <button onclick="logout()" class="btn btn-outline btn-sm" style="color:#DC2626 !important; border-color:#CBD5E1;">Log Out</button>
     </div>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -151,26 +155,38 @@
         <div class="dashboard-subtitle">Monitor learner performance, review assignments, and manage your active courses.</div>
       </div>
       <div class="dashboard-actions">
-        <button onclick="showToast('Opening course creator...','info')" class="btn btn-blue btn-sm">➕ Create New Course</button>
+        <button onclick="window.openCreateCourseModal()" class="btn btn-blue btn-sm">➕ Create New Course</button>
       </div>
     </div>
 
-    <!-- Curious Mind Welcome Banner -->
-    <div class="welcome-banner" style="background: linear-gradient(135deg, #2145E6 0%, #0F172A 100%); color: #FFFFFF; border-radius: 16px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15); border-left: 5px solid #FFAD00; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <!-- Trainer Welcome Banner -->
+    <div class="welcome-banner" style="background: linear-gradient(135deg, #2145E6 0%, #0F172A 100%); color: #FFFFFF; border-radius: 16px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15); border-left: 5px solid #FFAD00; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
       <div style="max-width:650px; width:100%;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <span class="badge" style="background:rgba(255,255,255,0.18); color:#FCD34D; font-weight:800; padding:4px 10px; border-radius:8px; font-size:11px; text-transform:uppercase; letter-spacing:0.06em;">Lead ICT Facilitator • CBC Directorate</span>
+        </div>
         <h2 style="font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
-          Hello, Curious Mind 👋
+          Empowering Educators, Transforming Classrooms 🌟
         </h2>
         <div style="font-size: 15px; font-weight: 700; color: #FCD34D !important; margin-bottom: 6px;">
-          Ready to spark something new today?
+          Facilitating CBC Excellence &amp; Digital Competencies Across Kenya
         </div>
-        <p style="font-size: 14px; color: #E2E8F0 !important; margin: 0; line-height: 1.5; font-weight: 500;">
-          Explore your modules, connect with your mentors, and let your learning light the way.
+        <p style="font-size: 13.5px; color: #E2E8F0 !important; margin: 0; line-height: 1.55; font-weight: 500;">
+          Guide your cohorts through hands-on practicals, assess competency-based submissions, and issue official CPD accredited certifications.
         </p>
-        <div style="font-size: 13px; font-weight: 600; color: #93C5FD !important; margin-top: 8px;">
-          ✨ Instructify Kenya—where curiosity becomes transformation.
+        <div style="font-size: 12.5px; font-weight: 600; color: #93C5FD !important; margin-top: 10px;">
+          ✨ Instructify Kenya — Where educator leadership sparks national transformation.
         </div>
       </div>
+      <div style="display:flex; flex-direction:column; gap:10px; min-width:200px;">
+        <button onclick="document.getElementById('grading-section').scrollIntoView({behavior:'smooth'})" class="btn btn-sm" style="background:#FFAD00; color:#0F172A; font-weight:700; text-align:center; box-shadow:0 4px 12px rgba(255,173,0,0.3); border:none; cursor:pointer;">
+          Review 4 Submissions 📝
+        </button>
+        <button onclick="window.openCreateCourseModal()" class="btn btn-outline btn-sm" style="background:rgba(255,255,255,0.12); color:#FFFFFF; border-color:rgba(255,255,255,0.4); text-align:center; cursor:pointer;">
+          ➕ New Course Module
+        </button>
+      </div>
+    </div>
     </div>
 
     <div class="stats-grid">
@@ -182,13 +198,13 @@
       </div>
       <div class="stat-card">
         <div class="stat-icon" style="background:rgba(255, 77, 0, 0.1);color:#FF4D00"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg></div>
-        <div class="stat-value">3</div>
+        <div class="stat-value" id="stat-published-courses">3</div>
         <div class="stat-label">Published Courses</div>
         <div class="stat-change up"><span style="font-weight:700;">✓</span> Active</div>
       </div>
       <div class="stat-card">
         <div class="stat-icon" style="background:rgba(239, 68, 68, 0.1);color:#DC2626"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <div class="stat-value">4</div>
+        <div class="stat-value" id="stat-assignments-to-grade">4</div>
         <div class="stat-label">Assignments to Grade</div>
         <div class="stat-change down"><span style="font-weight:700;">⚠️</span> Action needed</div>
       </div>
@@ -201,9 +217,13 @@
     </div>
 
     <!-- Assignments Review Queue -->
-    <div class="dashboard-section">
+    <div class="dashboard-section" id="grading-section">
       <div class="dashboard-section-header">
-        <h2 class="dashboard-section-title">Assignment Submission Queue</h2>
+        <div>
+          <h2 class="dashboard-section-title">Assignment Submission Queue</h2>
+          <div style="font-size:13px; color:var(--text-muted, #475569);">Review learner practicals, assign criterion-based rubrics, and deliver actionable pedagogical feedback.</div>
+        </div>
+        <span class="badge badge-warning" id="queue-count-badge" style="font-size:12.5px; padding:6px 12px; font-weight:700;">4 Pending Reviews</span>
       </div>
       <div class="table-wrapper">
         <table class="data-table">
@@ -216,24 +236,40 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td><strong>James Mwangi</strong></td>
+          <tbody id="trainer-queue-tbody">
+            <tr id="row-sub-james-mwangi">
+              <td><strong>James Mwangi</strong><br><span style="font-size:11.5px; color:#64748B;">Junior Secondary • Grade 9</span></td>
               <td>ICT Lesson Plan Submission</td>
               <td>Today, 10:15 AM</td>
-              <td><span class="badge badge-warning">Needs Review</span></td>
-              <td><button onclick="showToast('Opening grading modal...','info')" class="btn btn-blue btn-sm">Grade Now</button></td>
+              <td id="status-sub-james-mwangi"><span class="badge badge-warning">Needs Review</span></td>
+              <td id="action-sub-james-mwangi"><button onclick="window.openTrainerGradingModal('sub-james-mwangi')" class="btn btn-blue btn-sm" id="btn-sub-james-mwangi">Grade Now</button></td>
             </tr>
-            <tr>
-              <td><strong>Grace Wanjiku</strong></td>
+            <tr id="row-sub-grace-wanjiku">
+              <td><strong>Grace Wanjiku</strong><br><span style="font-size:11.5px; color:#64748B;">Mathematics Faculty Trainee</span></td>
               <td>CBE Assessment Rubric Design</td>
               <td>Yesterday, 4:30 PM</td>
-              <td><span class="badge badge-warning">Needs Review</span></td>
-              <td><button onclick="showToast('Opening grading modal...','info')" class="btn btn-blue btn-sm">Grade Now</button></td>
+              <td id="status-sub-grace-wanjiku"><span class="badge badge-warning">Needs Review</span></td>
+              <td id="action-sub-grace-wanjiku"><button onclick="window.openTrainerGradingModal('sub-grace-wanjiku')" class="btn btn-blue btn-sm" id="btn-sub-grace-wanjiku">Grade Now</button></td>
+            </tr>
+            <tr id="row-sub-kevin-omondi">
+              <td><strong>Kevin Omondi</strong><br><span style="font-size:11.5px; color:#64748B;">Junior Secondary • Grade 8</span></td>
+              <td>Plant Osmosis Lab Observations</td>
+              <td>Yesterday, 11:20 AM</td>
+              <td id="status-sub-kevin-omondi"><span class="badge badge-warning">Needs Review</span></td>
+              <td id="action-sub-kevin-omondi"><button onclick="window.openTrainerGradingModal('sub-kevin-omondi')" class="btn btn-blue btn-sm" id="btn-sub-kevin-omondi">Grade Now</button></td>
+            </tr>
+            <tr id="row-sub-amina-abdi">
+              <td><strong>Amina Abdi</strong><br><span style="font-size:11.5px; color:#64748B;">EdTech Specialist Cohort</span></td>
+              <td>Digital Literacy &amp; Computational Thinking Portfolio</td>
+              <td>2 Days Ago</td>
+              <td id="status-sub-amina-abdi"><span class="badge badge-warning">Needs Review</span></td>
+              <td id="action-sub-amina-abdi"><button onclick="window.openTrainerGradingModal('sub-amina-abdi')" class="btn btn-blue btn-sm" id="btn-sub-amina-abdi">Grade Now</button></td>
             </tr>
           </tbody>
         </table>
       </div>
+    </div>
+
     <!-- Certificate Management Workflow Section -->
     <div class="dashboard-section" id="cert-management-section">
       <div class="dashboard-section-header">
@@ -338,6 +374,220 @@
 </div>
 
 <!-- Floating Navigation Toggle Button for Mobile / Tablet -->
+
+<!-- ══════════════════════════════════════════════════════════
+     MODAL: TRAINER ASSIGNMENT GRADING & RUBRIC
+     ══════════════════════════════════════════════════════════ -->
+<div id="modal-trainer-grading" class="trainer-modal-overlay">
+  <div class="trainer-modal-card">
+    <div class="trainer-modal-header">
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <span class="badge badge-primary" id="grading-modal-subject">Integrated Science</span>
+          <span class="badge badge-warning" id="grading-modal-status">Needs Review</span>
+        </div>
+        <h3 id="grading-modal-title" style="margin:0 0 2px; font-size:20px; font-weight:800; color:#0F172A;">
+          ICT Lesson Plan Submission
+        </h3>
+        <div style="font-size:13px; color:#64748B;" id="grading-modal-learner">
+          Submitted by: <strong>James Mwangi</strong> (Grade 9) • Today, 10:15 AM
+        </div>
+      </div>
+      <button onclick="window.closeTrainerModal('modal-trainer-grading')" class="cert-modal-close" aria-label="Close Grading Modal">&times;</button>
+    </div>
+
+    <div class="trainer-modal-body">
+      <!-- Attached Student Work -->
+      <div class="trainer-attachment-box">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-size:26px;">📑</span>
+          <div>
+            <div id="grading-modal-filename" style="font-weight:700; font-size:13.5px; color:#0F172A;">lesson_plan_james_mwangi_cbc.pdf</div>
+            <div id="grading-modal-filesize" style="font-size:12px; color:#64748B;">3.2 MB • Student Submission File</div>
+          </div>
+        </div>
+        <button type="button" onclick="window.showToast('📥 Downloading submitted student attachment for inspection...','info')" class="btn btn-outline btn-sm">
+          Inspect File ↗
+        </button>
+      </div>
+
+      <!-- Student Note -->
+      <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:12px 14px; margin-bottom:18px;">
+        <div style="font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:#64748B; margin-bottom:4px;">
+          Learner Submission Notes
+        </div>
+        <p id="grading-modal-notes" style="font-size:13px; color:#334155; margin:0; line-height:1.5;">
+          "Attached my revised 40-minute CBC lesson plan with inquiry-based starter questions and student group activity."
+        </p>
+      </div>
+
+      <!-- Rubric Scoring Section -->
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:#0F172A; margin:0;">
+          Criterion-Based Rubric Assessment
+        </h4>
+        <div style="font-weight:800; font-size:14px; color:#2145E6; background:#EEF2FF; padding:4px 12px; border-radius:999px;" id="grading-total-score-badge">
+          Score: 95 / 100
+        </div>
+      </div>
+
+      <!-- Criterion 1 -->
+      <div class="trainer-rubric-card">
+        <div>
+          <div class="trainer-rubric-title">1. CBC Competency Alignment &amp; Strands</div>
+          <div class="trainer-rubric-desc">Alignment with KICD curriculum designs and targeted core competencies</div>
+        </div>
+        <div class="trainer-rubric-score-box">
+          <input type="number" id="rubric-c1" aria-label="CBC Competency Alignment Score" min="0" max="25" value="24" class="trainer-score-input" oninput="window.calculateRubricTotal()">
+          <span style="font-weight:700; color:#64748B; font-size:13px;">/ 25</span>
+        </div>
+      </div>
+
+      <!-- Criterion 2 -->
+      <div class="trainer-rubric-card">
+        <div>
+          <div class="trainer-rubric-title">2. Pedagogical Depth &amp; Inquiry Structure</div>
+          <div class="trainer-rubric-desc">Thought-provoking starter questions, learner participation, and pacing</div>
+        </div>
+        <div class="trainer-rubric-score-box">
+          <input type="number" id="rubric-c2" aria-label="Pedagogical Depth Score" min="0" max="25" value="24" class="trainer-score-input" oninput="window.calculateRubricTotal()">
+          <span style="font-weight:700; color:#64748B; font-size:13px;">/ 25</span>
+        </div>
+      </div>
+
+      <!-- Criterion 3 -->
+      <div class="trainer-rubric-card">
+        <div>
+          <div class="trainer-rubric-title">3. Practical Classroom Feasibility</div>
+          <div class="trainer-rubric-desc">Practical utility of locally available resources and time management</div>
+        </div>
+        <div class="trainer-rubric-score-box">
+          <input type="number" id="rubric-c3" aria-label="Practical Classroom Feasibility Score" min="0" max="25" value="23" class="trainer-score-input" oninput="window.calculateRubricTotal()">
+          <span style="font-weight:700; color:#64748B; font-size:13px;">/ 25</span>
+        </div>
+      </div>
+
+      <!-- Criterion 4 -->
+      <div class="trainer-rubric-card">
+        <div>
+          <div class="trainer-rubric-title">4. Documentation Clarity &amp; Scheme</div>
+          <div class="trainer-rubric-desc">Neatness, accurate learning outcomes, and assessment rubrics</div>
+        </div>
+        <div class="trainer-rubric-score-box">
+          <input type="number" id="rubric-c4" aria-label="Documentation Clarity Score" min="0" max="25" value="24" class="trainer-score-input" oninput="window.calculateRubricTotal()">
+          <span style="font-weight:700; color:#64748B; font-size:13px;">/ 25</span>
+        </div>
+      </div>
+
+      <!-- Facilitator Remarks -->
+      <div style="margin-top:16px;">
+        <label for="trainer-feedback-text" style="display:block; font-size:13px; font-weight:700; color:#334155; margin-bottom:6px;">
+          Facilitator Remarks &amp; Feedback to Learner
+        </label>
+        <textarea id="trainer-feedback-text" aria-label="Facilitator Remarks and Feedback" style="width:100%; border:1.5px solid #CBD5E1; border-radius:12px; padding:10px 14px; font-family:inherit; font-size:13.5px; line-height:1.5; color:#0F172A; resize:vertical; min-height:80px; box-sizing:border-box; outline:none;" placeholder="Enter positive commendation and concrete growth area...">🌟 Commendation: Excellent breakdown of the introduction stage. The student group activity demonstrates clear CBC learner-centred principles.
+💡 Growth Area: Consider allocating 5 additional minutes for reflective plenary wrap-up so learners can synthesize key takeaways.</textarea>
+      </div>
+    </div>
+
+    <div class="trainer-modal-footer">
+      <button type="button" onclick="window.returnForRevisions()" class="btn btn-outline btn-md" style="color:#D97706; border-color:#FDE68A;">
+        ⚠️ Request Revisions
+      </button>
+      <div style="display:flex; gap:10px;">
+        <button type="button" onclick="window.closeTrainerModal('modal-trainer-grading')" class="btn btn-ghost btn-md">
+          Cancel
+        </button>
+        <button type="button" id="btn-submit-trainer-grade" onclick="window.submitTrainerGrade()" class="btn btn-blue btn-md">
+          Approve &amp; Submit Grade 🚀
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MODAL: COURSE CREATOR / MODULE BUILDER
+     ══════════════════════════════════════════════════════════ -->
+<div id="modal-trainer-create-course" class="trainer-modal-overlay">
+  <div class="trainer-modal-card" style="max-width:620px;">
+    <div class="trainer-modal-header">
+      <div>
+        <span class="badge badge-primary" style="margin-bottom:4px; display:inline-block;">Curriculum Authoring</span>
+        <h3 style="margin:0; font-size:20px; font-weight:800; color:#0F172A;">
+          Create New CBC Course Module
+        </h3>
+      </div>
+      <button onclick="window.closeTrainerModal('modal-trainer-create-course')" class="cert-modal-close" aria-label="Close Course Creator Modal">&times;</button>
+    </div>
+
+    <form onsubmit="window.handlePublishCourseSubmit(event)">
+      <div class="trainer-modal-body" style="display:flex; flex-direction:column; gap:14px;">
+        <div>
+          <label for="course-title-input" class="form-label">Course Title</label>
+          <input type="text" id="course-title-input" aria-label="Course Title" class="form-input" placeholder="e.g. CBC Computational Thinking & Robotics for Junior Secondary" required>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <label for="course-category-select" class="form-label">Learning Strand / Category</label>
+            <select id="course-category-select" aria-label="Learning Strand Category" class="form-input">
+              <option value="CBC Digital Literacy">CBC Digital Literacy</option>
+              <option value="Integrated Science">Integrated Science</option>
+              <option value="Mathematics Education">Mathematics Education</option>
+              <option value="CBC Pedagogy & Assessment">CBC Pedagogy & Assessment</option>
+              <option value="Creative Arts & Tech">Creative Arts & Tech</option>
+            </select>
+          </div>
+          <div>
+            <label for="course-level-select" class="form-label">Target Level</label>
+            <select id="course-level-select" aria-label="Target Grade Level" class="form-input">
+              <option value="Junior Secondary (Grades 7-9)">Junior Secondary (Grades 7-9)</option>
+              <option value="Upper Primary (Grades 4-6)">Upper Primary (Grades 4-6)</option>
+              <option value="Senior School (Grades 10-12)">Senior School (Grades 10-12)</option>
+              <option value="Educator Professional CPD">Educator Professional CPD</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <label for="course-duration-input" class="form-label">Estimated Duration</label>
+            <input type="text" id="course-duration-input" aria-label="Estimated Duration" class="form-input" value="6 Weeks (30 CPD Hours)" required>
+          </div>
+          <div>
+            <label for="course-lessons-input" class="form-label">Number of Modules / Lessons</label>
+            <input type="number" id="course-lessons-input" aria-label="Number of Modules" class="form-input" value="12" min="1" max="50" required>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:8px;">
+          <input type="checkbox" id="course-accredited-check" checked>
+          <label for="course-accredited-check" style="font-size:13px; font-weight:600; color:#0F172A;">Accredited for TSC Career Progression &amp; CPD Claim</label>
+        </div>
+
+        <div>
+          <label for="course-summary-input" class="form-label">Syllabus Overview &amp; Learning Outcomes</label>
+          <textarea id="course-summary-input" aria-label="Syllabus Overview and Learning Outcomes" class="form-input" style="min-height:76px; resize:vertical;" placeholder="Summarize key competency outcomes, practical portfolio requirements, and evaluation metrics..."></textarea>
+        </div>
+      </div>
+
+      <div class="trainer-modal-footer">
+        <button type="button" onclick="window.saveCourseDraft()" class="btn btn-outline btn-md">
+          Save Draft 💾
+        </button>
+        <div style="display:flex; gap:10px;">
+          <button type="button" onclick="window.closeTrainerModal('modal-trainer-create-course')" class="btn btn-ghost btn-md">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-blue btn-md">
+            Publish Course Module 🚀
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
 <button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Navigation">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <line x1="3" y1="12" x2="21" y2="12"/>
@@ -407,6 +657,201 @@ function toggleSidebar() {
 document.addEventListener('DOMContentLoaded', () => {
   window.requireAuth(['trainer', 'admin']);
 });
+
+// ── Trainer Interactive Grading & Course Workflows ──────────
+const TRAINER_SUBMISSIONS = {
+  'sub-james-mwangi': {
+    learner: 'James Mwangi (Grade 9)',
+    title: 'ICT Lesson Plan Submission',
+    subject: 'Integrated Science & Tech',
+    date: 'Today, 10:15 AM',
+    file: 'lesson_plan_james_mwangi_cbc.pdf',
+    fileSize: '3.2 MB',
+    scores: { c1: 24, c2: 24, c3: 23, c4: 24 },
+    notes: 'Attached my revised 40-minute CBC lesson plan with inquiry-based starter questions and student group activity.'
+  },
+  'sub-grace-wanjiku': {
+    learner: 'Grace Wanjiku (Mathematics Trainee)',
+    title: 'CBE Assessment Rubric Design',
+    subject: 'Mathematics Education',
+    date: 'Yesterday, 4:30 PM',
+    file: 'cbe_math_rubric_grace_wanjiku.pdf',
+    fileSize: '1.8 MB',
+    scores: { c1: 23, c2: 25, c3: 24, c4: 22 },
+    notes: 'Includes four levels of performance indicators: Exceeding, Meeting, Approaching, Below Expectation.'
+  },
+  'sub-kevin-omondi': {
+    learner: 'Kevin Omondi (Grade 8)',
+    title: 'Plant Osmosis Lab Observations',
+    subject: 'Integrated Science',
+    date: 'Yesterday, 11:20 AM',
+    file: 'osmosis_lab_observations_kevin.pdf',
+    fileSize: '4.1 MB',
+    scores: { c1: 25, c2: 23, c3: 24, c4: 23 },
+    notes: 'Contains observation log of potato cylinders in hypotonic and hypertonic saline solutions over 48 hours.'
+  },
+  'sub-amina-abdi': {
+    learner: 'Amina Abdi (EdTech Specialist)',
+    title: 'Digital Literacy & Computational Thinking Portfolio',
+    subject: 'Teacher Professional Development',
+    date: '2 Days Ago',
+    file: 'amina_abdi_computational_thinking.zip',
+    fileSize: '12.4 MB',
+    scores: { c1: 25, c2: 25, c3: 24, c4: 25 },
+    notes: 'Includes 5 Scratch visual programming exercises and unplugged algorithmic thinking lesson guides.'
+  }
+};
+
+let currentActiveSubId = 'sub-james-mwangi';
+let pendingReviewsCount = 4;
+
+window.openTrainerGradingModal = function(subId) {
+  const data = TRAINER_SUBMISSIONS[subId];
+  if (!data) return;
+  currentActiveSubId = subId;
+
+  document.getElementById('grading-modal-subject').textContent = data.subject;
+  document.getElementById('grading-modal-title').textContent = data.title;
+  document.getElementById('grading-modal-learner').innerHTML = 'Submitted by: <strong>' + data.learner + '</strong> • ' + data.date;
+  document.getElementById('grading-modal-filename').textContent = data.file;
+  document.getElementById('grading-modal-filesize').textContent = data.fileSize + ' • Student Submission File';
+  document.getElementById('grading-modal-notes').textContent = '"' + data.notes + '"';
+
+  document.getElementById('rubric-c1').value = data.scores.c1;
+  document.getElementById('rubric-c2').value = data.scores.c2;
+  document.getElementById('rubric-c3').value = data.scores.c3;
+  document.getElementById('rubric-c4').value = data.scores.c4;
+
+  window.calculateRubricTotal();
+
+  const modal = document.getElementById('modal-trainer-grading');
+  if (modal) {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeTrainerModal = function(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+};
+
+window.calculateRubricTotal = function() {
+  const c1 = Math.min(25, Math.max(0, parseInt(document.getElementById('rubric-c1').value) || 0));
+  const c2 = Math.min(25, Math.max(0, parseInt(document.getElementById('rubric-c2').value) || 0));
+  const c3 = Math.min(25, Math.max(0, parseInt(document.getElementById('rubric-c3').value) || 0));
+  const c4 = Math.min(25, Math.max(0, parseInt(document.getElementById('rubric-c4').value) || 0));
+  const total = c1 + c2 + c3 + c4;
+  const badge = document.getElementById('grading-total-score-badge');
+  if (badge) {
+    badge.textContent = 'Score: ' + total + ' / 100';
+  }
+  return total;
+};
+
+window.submitTrainerGrade = function() {
+  const total = window.calculateRubricTotal();
+  const subId = currentActiveSubId;
+  const data = TRAINER_SUBMISSIONS[subId];
+  const learnerName = data ? data.learner.split('(')[0].trim() : 'Learner';
+
+  // Update row status
+  const statusCell = document.getElementById('status-' + subId);
+  if (statusCell) {
+    statusCell.innerHTML = '<span class="badge badge-success">Graded (' + total + '%)</span>';
+  }
+
+  // Update row action button
+  const actionCell = document.getElementById('action-' + subId);
+  if (actionCell) {
+    actionCell.innerHTML = '<button onclick="window.openTrainerGradingModal(\'' + subId + '\')" class="btn btn-outline btn-sm">Review Marks 📄</button>';
+  }
+
+  // Decrement counters if not already graded
+  if (data && !data.graded) {
+    data.graded = true;
+    pendingReviewsCount = Math.max(0, pendingReviewsCount - 1);
+    const queueBadge = document.getElementById('queue-count-badge');
+    if (queueBadge) queueBadge.textContent = pendingReviewsCount + ' Pending Reviews';
+
+    const statAssign = document.getElementById('stat-assignments-to-grade');
+    if (statAssign) statAssign.textContent = pendingReviewsCount;
+
+    const navBadge = document.querySelector('.sidebar-link-badge');
+    if (navBadge) navBadge.textContent = pendingReviewsCount;
+  }
+
+  window.closeTrainerModal('modal-trainer-grading');
+  window.showToast('🎉 Grade submitted for ' + learnerName + ' (' + total + '% Distinction)! Learner notified.', 'success');
+};
+
+window.returnForRevisions = function() {
+  const data = TRAINER_SUBMISSIONS[currentActiveSubId];
+  const learnerName = data ? data.learner.split('(')[0].trim() : 'Learner';
+
+  const statusCell = document.getElementById('status-' + currentActiveSubId);
+  if (statusCell) {
+    statusCell.innerHTML = '<span class="badge badge-warning" style="background:#FEF3C7; color:#B45309;">Revision Requested</span>';
+  }
+
+  window.closeTrainerModal('modal-trainer-grading');
+  window.showToast('📝 Feedback & revision request sent to ' + learnerName + '.', 'warning');
+};
+
+window.openCreateCourseModal = function() {
+  const modal = document.getElementById('modal-trainer-create-course');
+  if (modal) {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.saveCourseDraft = function() {
+  const title = document.getElementById('course-title-input').value.trim() || 'Untitled Course Draft';
+  localStorage.setItem('ik_trainer_course_draft', JSON.stringify({
+    title: title,
+    category: document.getElementById('course-category-select').value,
+    level: document.getElementById('course-level-select').value,
+    duration: document.getElementById('course-duration-input').value,
+    lessons: document.getElementById('course-lessons-input').value,
+    savedAt: new Date().toISOString()
+  }));
+  window.closeTrainerModal('modal-trainer-create-course');
+  window.showToast('💾 Course draft "' + title + '" saved to your portfolio.', 'success');
+};
+
+window.handlePublishCourseSubmit = function(e) {
+  e.preventDefault();
+  const title = document.getElementById('course-title-input').value.trim();
+  if (!title) return;
+
+  const statCourses = document.getElementById('stat-published-courses');
+  if (statCourses) {
+    const current = parseInt(statCourses.textContent) || 3;
+    statCourses.textContent = current + 1;
+  }
+
+  window.closeTrainerModal('modal-trainer-create-course');
+  window.showToast('🚀 "' + title + '" published to CBC course catalog review queue!', 'success');
+};
+
+// Close on backdrop click & Escape key
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    window.closeTrainerModal('modal-trainer-grading');
+    window.closeTrainerModal('modal-trainer-create-course');
+  }
+});
+document.addEventListener('click', (e) => {
+  if (e.target.classList && e.target.classList.contains('trainer-modal-overlay')) {
+    e.target.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
 </script>
   <script src="js/chat-config.js"></script>
   <script src="js/live-chat.js"></script>
