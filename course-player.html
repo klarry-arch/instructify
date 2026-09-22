@@ -89,8 +89,9 @@
       <!-- Notes & Lesson Q&A Tabs -->
       <div class="player-tabs-wrapper">
         <div class="player-tabs-header">
-          <button type="button" class="player-tab-trigger active" onclick="switchPlayerTab('notes')">📝 My Personal Notes</button>
-          <button type="button" class="player-tab-trigger" onclick="switchPlayerTab('discussion')">💬 Lesson Discussion &amp; Q&amp;A</button>
+          <button type="button" class="player-tab-trigger active" id="tab-btn-notes" onclick="switchPlayerTab('notes')">📝 My Personal Notes</button>
+          <button type="button" class="player-tab-trigger" id="tab-btn-discussion" onclick="switchPlayerTab('discussion')">💬 Lesson Discussion &amp; Q&amp;A</button>
+          <button type="button" class="player-tab-trigger" id="tab-btn-glossary" onclick="switchPlayerTab('glossary')">🔤 Strand Terms &amp; Competencies</button>
         </div>
 
         <div id="tab-notes" class="player-tab-content active">
@@ -128,6 +129,12 @@
             <button type="button" onclick="postDiscussionMessage()" class="btn btn-blue btn-sm">Post ↗</button>
           </div>
         </div>
+
+        <div id="tab-glossary" class="player-tab-content">
+          <div id="player-glossary-content" style="padding:4px 0;">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
       </div>
 
     </main>
@@ -154,6 +161,7 @@
   <script src="js/courses.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/lms-engine.js"></script>
+  <script src="js/lms-curriculum-studio.js"></script>
   <script src="js/main.js"></script>
   <script>
     // ── Player Controller Logic ────────────────────────────────────
@@ -174,7 +182,12 @@
       const params = new URLSearchParams(window.location.search);
       currentCourseId = params.get('courseId') || params.get('id') || 'crs_001';
 
-      // 3. Load from LMSEngine
+      // 3. Load from LMSEngine & LMSCurriculumStudio
+      if (window.LMSCurriculumStudio) {
+        window.LMSCurriculumStudio.init(currentCourseId);
+        window.LMSCurriculumStudio.syncToLMSEngine();
+      }
+
       currentCourse = window.LMSEngine.getCourseById(currentCourseId);
       if (!currentCourse) {
         currentCourse = window.LMSEngine.getAllCourses()[0] || null;
@@ -232,7 +245,13 @@
 
         const header = document.createElement('div');
         header.className = 'player-section-header';
-        header.innerHTML = `<span>${sec.title}</span> <span>▾</span>`;
+        header.innerHTML = `
+          <div style="display:flex; align-items:center; gap:8px; overflow:hidden;">
+            ${sec.strandCode ? `<span style="font-size:10px; font-weight:800; background:#EEF2FF; color:#2145E6; padding:2px 6px; border-radius:4px; flex-shrink:0;">${sec.strandCode}</span>` : ''}
+            <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${sec.title}</span>
+          </div>
+          <span>▾</span>
+        `;
         group.appendChild(header);
 
         (sec.modules || []).forEach((mod) => {
@@ -247,7 +266,7 @@
             itemEl.href = 'javascript:void(0)';
             itemEl.onclick = () => selectLessonByIndex(itemIdx);
 
-            const typeIcons = { video: '📺', text: '📖', quiz: '❓', assignment: '📑' };
+            const typeIcons = { video: '📺', text: '📖', quiz: '❓', assignment: '📑', rubric: '🏆' };
             const icon = typeIcons[les.type] || '📄';
 
             itemEl.innerHTML = `
@@ -292,7 +311,8 @@
         video: '📺 Video Practical',
         text: '📖 Theoretical & Case Reading',
         quiz: '❓ Formative Knowledge Quiz',
-        assignment: '📑 Practical Assessment Portfolio'
+        assignment: '📑 Practical Assessment Portfolio',
+        rubric: '🏆 4-Tier CBC Summative Rubric'
       };
       document.getElementById('player-lesson-badge').textContent = typeBadges[lesson.type] || '📄 Course Module';
       document.getElementById('player-lesson-title').textContent = lesson.title;
@@ -314,7 +334,7 @@
 
       if (lesson.type === 'quiz') {
         renderQuizInterface(lesson, bodyBox);
-      } else if (lesson.type === 'assignment') {
+      } else if (lesson.type === 'assignment' || lesson.type === 'rubric') {
         renderAssignmentInterface(lesson, bodyBox);
       } else {
         bodyBox.innerHTML = lesson.contentHtml || `
@@ -323,6 +343,42 @@
             <strong>Key Outcome:</strong> Learners apply competency frameworks in interactive instructional sequences.
           </div>
         `;
+      }
+
+      // Populate Glossary / Key Terms Tab for this Strand/Sub-strand
+      const glossaryBox = document.getElementById('player-glossary-content');
+      if (glossaryBox) {
+        let terms = [];
+        let teachingNotes = '';
+        if (window.LMSCurriculumStudio) {
+          const sub = window.LMSCurriculumStudio.getActiveSubstrand();
+          if (sub && sub.explanation) {
+            terms = sub.explanation.keyTerms || [];
+            teachingNotes = sub.explanation.teachingNotes || '';
+          }
+        }
+        if (terms.length > 0 || teachingNotes) {
+          glossaryBox.innerHTML = `
+            ${teachingNotes ? `
+              <div class="lms-callout lms-callout-info" style="margin-bottom:14px;">
+                <strong style="color:#2145E6;">👨‍🏫 Facilitator Pedagogical Notes:</strong>
+                <p style="margin:4px 0 0; font-size:13px; color:#1E293B;">${teachingNotes}</p>
+              </div>
+            ` : ''}
+            ${terms.length > 0 ? `
+              <div style="font-size:13px; font-weight:800; color:#0F172A; margin-bottom:8px;">🔤 Key Competency Terminology:</div>
+              <ul style="margin:0; padding-left:18px; font-size:13px; color:#334155; line-height:1.6;">
+                ${terms.map(t => `<li><strong>${t.term}:</strong> ${t.definition}</li>`).join('')}
+              </ul>
+            ` : ''}
+          `;
+        } else {
+          glossaryBox.innerHTML = `
+            <div style="font-size:13px; color:#64748B;">
+              Key competency terms and pedagogical guidelines for this strand are aligned with KICD curriculum designs.
+            </div>
+          `;
+        }
       }
 
       // Resources
@@ -589,17 +645,20 @@
       document.getElementById('player-progress-text').textContent = pct + '%';
     }
 
-    // ── Notes & Discussion Tabs ────────────────────────────────────
+    // ── Notes, Discussion & Glossary Tabs ──────────────────────────
     function switchPlayerTab(tab) {
       document.querySelectorAll('.player-tab-trigger').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.player-tab-content').forEach(c => c.classList.remove('active'));
 
       if (tab === 'notes') {
-        document.querySelectorAll('.player-tab-trigger')[0].classList.add('active');
+        document.getElementById('tab-btn-notes').classList.add('active');
         document.getElementById('tab-notes').classList.add('active');
-      } else {
-        document.querySelectorAll('.player-tab-trigger')[1].classList.add('active');
+      } else if (tab === 'discussion') {
+        document.getElementById('tab-btn-discussion').classList.add('active');
         document.getElementById('tab-discussion').classList.add('active');
+      } else if (tab === 'glossary') {
+        document.getElementById('tab-btn-glossary').classList.add('active');
+        document.getElementById('tab-glossary').classList.add('active');
       }
     }
 
