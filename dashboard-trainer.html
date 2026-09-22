@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trainer Portal | Instructify Kenya</title>
+  <title>Educator Dashboard | Instructify Kenya LMS</title>
+  <meta name="description" content="Manage your courses, students, assessments, and reports on the Instructify Kenya Educator Portal.">
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/components.css?v=3.1">
-  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/lms-portal.css">
   <link rel="stylesheet" href="css/live-chat.css">
 </head>
-<body>
+<body class="lms-page">
 
+<!-- ── Navigation ───────────────────────────────────────────── -->
 <nav id="navbar" class="navbar">
   <div class="container">
     <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
@@ -27,54 +29,33 @@
       <li class="nav-item-dropdown">
         <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="courses" aria-haspopup="true" aria-expanded="false">
           Courses <span class="nav-badge badge-amber">Hot</span>
-          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <ul class="nav-dropdown-menu" role="menu" aria-label="Courses, Podcast and Resources">
-          <li role="none">
-            <a href="courses.html" class="nav-dropdown-item" role="menuitem" data-nav="courses">
-              <span class="nav-dropdown-icon">📚</span>
-              <div class="nav-dropdown-info">
-                <span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span>
-                <span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span>
-              </div>
-            </a>
-          </li>
-          <li role="none">
-            <a href="podcast.html" class="nav-dropdown-item" role="menuitem" data-nav="podcast">
-              <span class="nav-dropdown-icon">🎙️</span>
-              <div class="nav-dropdown-info">
-                <span class="nav-dropdown-title">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></span>
-                <span class="nav-dropdown-desc">Inspiring stories from Kenyan educators</span>
-              </div>
-            </a>
-          </li>
-          <li role="none">
-            <a href="resources.html" class="nav-dropdown-item" role="menuitem" data-nav="resources">
-              <span class="nav-dropdown-icon">📂</span>
-              <div class="nav-dropdown-info">
-                <span class="nav-dropdown-title">Resources</span>
-                <span class="nav-dropdown-desc">Schemes of work, lesson plans &amp; guides</span>
-              </div>
-            </a>
-          </li>
+          <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem" data-nav="courses"><span class="nav-dropdown-icon">📚</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span><span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span></div></a></li>
+          <li role="none"><a href="podcast.html" class="nav-dropdown-item" role="menuitem" data-nav="podcast"><span class="nav-dropdown-icon">🎙️</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></span><span class="nav-dropdown-desc">Inspiring stories from Kenyan educators</span></div></a></li>
+          <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem" data-nav="resources"><span class="nav-dropdown-icon">📂</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">Resources</span><span class="nav-dropdown-desc">Schemes of work, lesson plans &amp; guides</span></div></a></li>
         </ul>
       </li>
       <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
       <li><a href="schools.html" class="nav-link">Institutions</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
-    
     </ul>
-    <div class="nav-actions" style="display:flex; align-items:center; gap:10px;">
-      <div style="display:flex; align-items:center; gap:8px; padding:4px 12px 4px 6px; background:#F1F5F9; border-radius:999px; border:1px solid #E2E8F0;">
-        <div class="avatar-placeholder" style="width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg, #2145E6, #FF4D00); color:#FFF; font-weight:800; font-size:11px; display:flex; align-items:center; justify-content:center;">WK</div>
-        <span style="font-size:13px; font-weight:700; color:#0F172A;">Dr. Wanjiku</span>
-        <span class="badge badge-primary" style="font-size:10px; padding:2px 6px;">Facilitator</span>
+
+    <div class="nav-actions" style="display:flex; align-items:center; gap:12px;">
+      <div class="lms-notification-bell" onclick="toggleNotificationPanel()" style="cursor:pointer;position:relative;">
+        <span style="font-size:20px;">🔔</span>
+        <span class="lms-notification-count" style="display:none;">0</span>
       </div>
-      <button onclick="logout()" class="btn btn-outline btn-sm" style="color:#DC2626 !important; border-color:#CBD5E1;">Log Out</button>
+      <div id="nav-user-area" style="display:inline-flex; align-items:center; gap:8px; background:#F8FAFC; border:1px solid #E2E8F0; padding:4px 12px 4px 6px; border-radius:999px;">
+        <div id="nav-avatar" class="lms-avatar avatar-sm">WK</div>
+        <span id="nav-user-name" style="font-size:13px; font-weight:700; color:#0F172A;">Dr. Wanjiku</span>
+        <span class="lms-badge lms-badge-published" style="font-size:10px; padding:2px 6px;">Educator</span>
+      </div>
+      <button onclick="logout()" class="btn btn-outline btn-sm" style="color:#DC2626; border-color:#DC2626;" aria-label="Log Out">Log Out</button>
     </div>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -97,769 +78,549 @@
     <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
     <a href="schools.html" class="nav-mobile-link">Institutions</a>
     <a href="contact.html" class="nav-mobile-link">Contact</a>
-  
   </div>
   <div class="nav-mobile-actions">
-    <a href="dashboard-trainer.html" class="btn btn-primary btn-md">Trainer Dashboard</a>
+    <a href="dashboard-trainer.html" class="btn btn-primary btn-md">Educator Portal</a>
     <button onclick="logout()" class="btn btn-outline btn-md" style="color:#DC2626 !important; border-color:#DC2626;">Log Out</button>
   </div>
 </div>
 
-
 <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-<div class="dashboard-layout">
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <div class="sidebar-user">
-        <div class="avatar-placeholder avatar-md" style="background:linear-gradient(135deg, #2145E6, #FF4D00); color: #FFFFFF; font-weight: 800;">WK</div>
-        <div class="sidebar-user-info">
-          <div class="sidebar-user-name">Dr. Wanjiku Kamau</div>
-          <div class="sidebar-user-role">Lead ICT Facilitator</div>
-        </div>
+<!-- ── Notification Panel (hidden) ── -->
+<div id="notification-panel" style="display:none;position:fixed;top:var(--nav-height,72px);right:16px;width:380px;max-height:480px;background:#FFF;border:1px solid #E2E8F0;border-radius:16px;box-shadow:0 20px 50px rgba(15,23,42,0.12);z-index:200;overflow:hidden;">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #E2E8F0;">
+    <span style="font-size:15px;font-weight:800;color:#0F172A;">Notifications</span>
+    <button onclick="markAllNotificationsRead()" class="lms-btn lms-btn-ghost lms-btn-sm">Mark all read</button>
+  </div>
+  <div id="notification-list" style="max-height:380px;overflow-y:auto;padding:8px;"></div>
+</div>
+
+<!-- ── Dashboard Layout ── -->
+<div class="lms-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="lms-sidebar" id="educator-sidebar">
+    <div class="lms-sidebar-profile">
+      <div class="lms-avatar" id="sidebar-avatar">WK</div>
+      <div>
+        <div class="lms-sidebar-name" id="sidebar-name">Dr. Wanjiku Kamau</div>
+        <div class="lms-sidebar-role">Educator</div>
       </div>
     </div>
 
-    <nav class="sidebar-nav">
-      <div class="sidebar-section">
-        <div class="sidebar-section-label">Trainer Menu</div>
-        <a href="#overview" class="sidebar-link active">
-          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg></span> Overview
-        </a>
-        <a href="#my-courses" class="sidebar-link">
-          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg></span> Managed Courses
-        </a>
-        <a href="#students" class="sidebar-link">
-          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> Learners &amp; Attendance
-        </a>
-        <a href="#grading" class="sidebar-link">
-          <span class="sidebar-link-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span> Assignment Review
-          <span class="sidebar-link-badge">4</span>
-        </a>
-      </div>
+    <nav class="lms-sidebar-nav" aria-label="Educator Navigation">
+      <div class="lms-sidebar-section">Main</div>
+      <a href="dashboard-trainer.html" class="lms-nav-item active" aria-current="page">
+        <span class="lms-nav-icon">📊</span> Dashboard
+      </a>
+      <a href="educator-courses.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📚</span> My Courses
+        <span class="lms-nav-badge badge-info" id="nav-course-count">0</span>
+      </a>
+      <a href="course-wizard.html" class="lms-nav-item">
+        <span class="lms-nav-icon">➕</span> Create Course
+      </a>
+
+      <div class="lms-sidebar-section">Learners</div>
+      <a href="educator-students.html" class="lms-nav-item">
+        <span class="lms-nav-icon">👥</span> Student Management
+      </a>
+      <a href="educator-assessments.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📝</span> Assessments
+        <span class="lms-nav-badge" id="nav-grading-count" style="display:none;">0</span>
+      </a>
+      <a href="educator-gradebook.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Gradebook
+      </a>
+
+      <div class="lms-sidebar-section">Communicate</div>
+      <a href="educator-announcements.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📢</span> Announcements
+      </a>
+      <a href="educator-reports.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📈</span> Reports
+      </a>
     </nav>
 
-    <div class="sidebar-footer">
-      <button onclick="logout()" class="btn btn-ghost w-full justify-start" style="color:#DC2626">
-        <span style="display:inline-flex;align-items:center;margin-right:6px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg></span> Log Out
-      </button>
+    <div class="lms-sidebar-footer">
+      <a href="index.html" class="lms-nav-item" style="color:#94A3B8;">
+        <span class="lms-nav-icon">🌐</span> View Website
+      </a>
+      <a href="#" onclick="logout();return false;" class="lms-nav-item" style="color:#DC2626;">
+        <span class="lms-nav-icon">🚪</span> Sign Out
+      </a>
     </div>
   </aside>
 
-  <!-- Main Content -->
-  <main class="dashboard-main">
-    <div class="dashboard-header">
-      <div>
-        <h1 class="dashboard-title">Welcome, Dr. Wanjiku! 👋</h1>
-        <div class="dashboard-subtitle">Monitor learner performance, review assignments, and manage your active courses.</div>
+  <!-- ── Main Content ── -->
+  <main class="lms-main" id="educator-main">
+
+    <!-- Page Header -->
+    <div class="lms-page-header">
+      <div class="lms-breadcrumbs">
+        <a href="index.html">Home</a> <span class="sep">›</span>
+        <span class="current">Educator Dashboard</span>
       </div>
-      <div class="dashboard-actions">
-        <button onclick="window.openCreateCourseModal()" class="btn btn-blue btn-sm">➕ Create New Course</button>
+      <h1 class="lms-page-title" id="greeting-title">Good morning, Dr. Wanjiku 👋</h1>
+      <p class="lms-page-subtitle">Here's an overview of your courses and learner activity.</p>
+    </div>
+
+    <!-- KPI Stats -->
+    <div class="lms-stats-grid" id="stats-grid">
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-primary">📚</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-total-courses">0</div>
+          <div class="lms-stat-label">Total Courses</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-success">✅</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-published">0</div>
+          <div class="lms-stat-label">Published</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-warning">📝</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-drafts">0</div>
+          <div class="lms-stat-label">Drafts</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-info">⏳</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-pending">0</div>
+          <div class="lms-stat-label">Awaiting Approval</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-accent">🎓</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-students">0</div>
+          <div class="lms-stat-label">Enrolled Students</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-success">📈</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-active">0</div>
+          <div class="lms-stat-label">Active Learners</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-primary">🏆</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-completion">0%</div>
+          <div class="lms-stat-label">Completion Rate</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-danger">📋</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-grading">0</div>
+          <div class="lms-stat-label">Awaiting Grading</div>
+        </div>
       </div>
     </div>
 
-    <!-- Trainer Welcome Banner -->
-    <div class="welcome-banner" style="background: linear-gradient(135deg, #2145E6 0%, #0F172A 100%); color: #FFFFFF; border-radius: 16px; padding: 24px 28px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15); border-left: 5px solid #FFAD00; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-      <div style="max-width:650px; width:100%;">
-        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-          <span class="badge" style="background:rgba(255,255,255,0.18); color:#FCD34D; font-weight:800; padding:4px 10px; border-radius:8px; font-size:11px; text-transform:uppercase; letter-spacing:0.06em;">Lead ICT Facilitator • CBC Directorate</span>
-        </div>
-        <h2 style="font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
-          Empowering Educators, Transforming Classrooms 🌟
-        </h2>
-        <div style="font-size: 15px; font-weight: 700; color: #FCD34D !important; margin-bottom: 6px;">
-          Facilitating CBC Excellence &amp; Digital Competencies Across Kenya
-        </div>
-        <p style="font-size: 13.5px; color: #E2E8F0 !important; margin: 0; line-height: 1.55; font-weight: 500;">
-          Guide your cohorts through hands-on practicals, assess competency-based submissions, and issue official CPD accredited certifications.
-        </p>
-        <div style="font-size: 12.5px; font-weight: 600; color: #93C5FD !important; margin-top: 10px;">
-          ✨ Instructify Kenya — Where educator leadership sparks national transformation.
-        </div>
-      </div>
-      <div style="display:flex; flex-direction:column; gap:10px; min-width:200px;">
-        <button onclick="document.getElementById('grading-section').scrollIntoView({behavior:'smooth'})" class="btn btn-sm" style="background:#FFAD00; color:#0F172A; font-weight:700; text-align:center; box-shadow:0 4px 12px rgba(255,173,0,0.3); border:none; cursor:pointer;">
-          Review 4 Submissions 📝
-        </button>
-        <button onclick="window.openCreateCourseModal()" class="btn btn-outline btn-sm" style="background:rgba(255,255,255,0.12); color:#FFFFFF; border-color:rgba(255,255,255,0.4); text-align:center; cursor:pointer;">
-          ➕ New Course Module
-        </button>
-      </div>
+    <!-- Quick Actions -->
+    <h2 style="font-size:18px;font-weight:800;color:#0F172A;margin-bottom:16px;">Quick Actions</h2>
+    <div class="lms-quick-actions">
+      <a href="course-wizard.html" class="lms-quick-btn">
+        <div class="icon">➕</div>
+        <span class="label">Create Course</span>
+      </a>
+      <a href="educator-students.html" class="lms-quick-btn">
+        <div class="icon">👥</div>
+        <span class="label">Add Students</span>
+      </a>
+      <a href="educator-announcements.html" class="lms-quick-btn">
+        <div class="icon">📢</div>
+        <span class="label">Announcement</span>
+      </a>
+      <a href="educator-assessments.html" class="lms-quick-btn">
+        <div class="icon">📝</div>
+        <span class="label">Review Assignments</span>
+      </a>
+      <a href="educator-reports.html" class="lms-quick-btn">
+        <div class="icon">📈</div>
+        <span class="label">View Reports</span>
+      </a>
+      <a href="educator-courses.html" class="lms-quick-btn">
+        <div class="icon">⚙️</div>
+        <span class="label">Manage Courses</span>
+      </a>
     </div>
 
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-icon" style="background:rgba(37, 99, 235,0.1);color:#2563EB"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div class="stat-value">1,847</div>
-        <div class="stat-label">Active Learners</div>
-        <div class="stat-change up"><span style="font-weight:700;">↗</span> Across 3 courses</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon" style="background:rgba(255, 77, 0, 0.1);color:#FF4D00"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg></div>
-        <div class="stat-value" id="stat-published-courses">3</div>
-        <div class="stat-label">Published Courses</div>
-        <div class="stat-change up"><span style="font-weight:700;">✓</span> Active</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon" style="background:rgba(239, 68, 68, 0.1);color:#DC2626"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <div class="stat-value" id="stat-assignments-to-grade">4</div>
-        <div class="stat-label">Assignments to Grade</div>
-        <div class="stat-change down"><span style="font-weight:700;">⚠️</span> Action needed</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon" style="background:rgba(245, 158, 11, 0.12);color:#D97706">⭐</div>
-        <div class="stat-value">4.8 / 5.0</div>
-        <div class="stat-label">Trainer Rating</div>
-        <div class="stat-change up"><span style="font-weight:700;">★</span> 312 Reviews</div>
-      </div>
-    </div>
+    <!-- Two Column Layout: Courses + Activity -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px;">
 
-    <!-- Assignments Review Queue -->
-    <div class="dashboard-section" id="grading-section">
-      <div class="dashboard-section-header">
-        <div>
-          <h2 class="dashboard-section-title">Assignment Submission Queue</h2>
-          <div style="font-size:13px; color:var(--text-muted, #475569);">Review learner practicals, assign criterion-based rubrics, and deliver actionable pedagogical feedback.</div>
+      <!-- My Courses -->
+      <div class="lms-card">
+        <div class="lms-card-header">
+          <h3 class="lms-card-title">My Courses</h3>
+          <a href="educator-courses.html" class="lms-btn lms-btn-ghost lms-btn-sm">View All →</a>
         </div>
-        <span class="badge badge-warning" id="queue-count-badge" style="font-size:12.5px; padding:6px 12px; font-weight:700;">4 Pending Reviews</span>
-      </div>
-      <div class="table-wrapper">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Learner</th>
-              <th>Assignment</th>
-              <th>Submitted Date</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="trainer-queue-tbody">
-            <tr id="row-sub-james-mwangi">
-              <td><strong>James Mwangi</strong><br><span style="font-size:11.5px; color:#64748B;">Junior Secondary • Grade 9</span></td>
-              <td>ICT Lesson Plan Submission</td>
-              <td>Today, 10:15 AM</td>
-              <td id="status-sub-james-mwangi"><span class="badge badge-warning">Needs Review</span></td>
-              <td id="action-sub-james-mwangi"><button onclick="window.openTrainerGradingModal('sub-james-mwangi')" class="btn btn-blue btn-sm" id="btn-sub-james-mwangi">Grade Now</button></td>
-            </tr>
-            <tr id="row-sub-grace-wanjiku">
-              <td><strong>Grace Wanjiku</strong><br><span style="font-size:11.5px; color:#64748B;">Mathematics Faculty Trainee</span></td>
-              <td>CBE Assessment Rubric Design</td>
-              <td>Yesterday, 4:30 PM</td>
-              <td id="status-sub-grace-wanjiku"><span class="badge badge-warning">Needs Review</span></td>
-              <td id="action-sub-grace-wanjiku"><button onclick="window.openTrainerGradingModal('sub-grace-wanjiku')" class="btn btn-blue btn-sm" id="btn-sub-grace-wanjiku">Grade Now</button></td>
-            </tr>
-            <tr id="row-sub-kevin-omondi">
-              <td><strong>Kevin Omondi</strong><br><span style="font-size:11.5px; color:#64748B;">Junior Secondary • Grade 8</span></td>
-              <td>Plant Osmosis Lab Observations</td>
-              <td>Yesterday, 11:20 AM</td>
-              <td id="status-sub-kevin-omondi"><span class="badge badge-warning">Needs Review</span></td>
-              <td id="action-sub-kevin-omondi"><button onclick="window.openTrainerGradingModal('sub-kevin-omondi')" class="btn btn-blue btn-sm" id="btn-sub-kevin-omondi">Grade Now</button></td>
-            </tr>
-            <tr id="row-sub-amina-abdi">
-              <td><strong>Amina Abdi</strong><br><span style="font-size:11.5px; color:#64748B;">EdTech Specialist Cohort</span></td>
-              <td>Digital Literacy &amp; Computational Thinking Portfolio</td>
-              <td>2 Days Ago</td>
-              <td id="status-sub-amina-abdi"><span class="badge badge-warning">Needs Review</span></td>
-              <td id="action-sub-amina-abdi"><button onclick="window.openTrainerGradingModal('sub-amina-abdi')" class="btn btn-blue btn-sm" id="btn-sub-amina-abdi">Grade Now</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Certificate Management Workflow Section -->
-    <div class="dashboard-section" id="cert-management-section">
-      <div class="dashboard-section-header">
-        <div>
-          <h2 class="dashboard-section-title">Certificate Issuance &amp; Credential Management</h2>
-          <div style="font-size:13px; color:var(--text-muted, #475569);">Preview, issue, manage, or revoke official CPD accredited certificates for completing learners.</div>
-        </div>
-        <div style="display:flex; gap:10px;">
-          <button onclick="openIssueCertModal()" class="btn btn-blue btn-sm">🎓 Issue New Certificate</button>
-          <button onclick="exportAuditLogs()" class="btn btn-outline btn-sm">📊 Export Issuance Report</button>
+        <div class="lms-card-body no-pad" id="dashboard-courses-list">
+          <div class="lms-loading-overlay">
+            <div class="lms-spinner"></div>
+            <span>Loading courses...</span>
+          </div>
         </div>
       </div>
 
-      <div class="table-wrapper">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Certificate ID</th>
-              <th>Learner Name</th>
-              <th>Course Title</th>
-              <th>CPD Hours</th>
-              <th>Issue Date</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="cert-management-tbody">
-            <tr>
-              <td><strong style="font-family:var(--font-mono); color:#FF4D00;">IK-CPD-2026-8942</strong></td>
-              <td>James Mwangi</td>
-              <td>CBC Pedagogy &amp; Assessment</td>
-              <td>30 Hours</td>
-              <td>Aug 18, 2026</td>
-              <td><span class="badge badge-success">Valid / Issued</span></td>
-              <td style="display:flex; gap:6px;">
-                <button onclick="window.CertificateEngine.openModalPreview('IK-CPD-2026-8942')" class="btn btn-blue btn-sm">Preview</button>
-                <button onclick="handleRevokeClick('IK-CPD-2026-8942')" class="btn btn-ghost btn-sm" style="color:#DC2626;">Revoke</button>
-              </td>
-            </tr>
-            <tr>
-              <td><strong style="font-family:var(--font-mono); color:#FF4D00;">IK-CERT-2026-9921</strong></td>
-              <td>James Mwangi</td>
-              <td>Digital Literacy &amp; ICT Integration</td>
-              <td>40 Hours</td>
-              <td>Jul 26, 2026</td>
-              <td><span class="badge badge-success">Valid / Issued</span></td>
-              <td style="display:flex; gap:6px;">
-                <button onclick="window.CertificateEngine.openModalPreview('IK-CERT-2026-9921')" class="btn btn-blue btn-sm">Preview</button>
-                <button onclick="handleRevokeClick('IK-CERT-2026-9921')" class="btn btn-ghost btn-sm" style="color:#DC2626;">Revoke</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- Recent Activity -->
+      <div class="lms-card">
+        <div class="lms-card-header">
+          <h3 class="lms-card-title">Recent Activity</h3>
+        </div>
+        <div class="lms-card-body" id="dashboard-activity">
+          <ul class="lms-activity-list">
+            <li class="lms-activity-item">
+              <div class="lms-activity-icon" style="background:#ECFDF5;">🎓</div>
+              <div class="lms-activity-text">
+                <strong>Grace Wanjiku</strong> enrolled in ICT Integration in Education
+              </div>
+              <span class="lms-activity-time">2h ago</span>
+            </li>
+            <li class="lms-activity-item">
+              <div class="lms-activity-icon" style="background:#EEF2FF;">📝</div>
+              <div class="lms-activity-text">
+                <strong>James Mwangi</strong> submitted Assignment 2.1: CBC Lesson Plan
+              </div>
+              <span class="lms-activity-time">3h ago</span>
+            </li>
+            <li class="lms-activity-item">
+              <div class="lms-activity-icon" style="background:#FEF3C7;">📊</div>
+              <div class="lms-activity-text">
+                <strong>Kevin Omondi</strong> completed Quiz 1.1 with a score of 85%
+              </div>
+              <span class="lms-activity-time">5h ago</span>
+            </li>
+            <li class="lms-activity-item">
+              <div class="lms-activity-icon" style="background:#FCE7F3;">⚠️</div>
+              <div class="lms-activity-text">
+                <strong>Brian Kipkorir</strong> has been inactive for 10 days — at risk
+              </div>
+              <span class="lms-activity-time">1d ago</span>
+            </li>
+            <li class="lms-activity-item">
+              <div class="lms-activity-icon" style="background:#ECFDF5;">🏆</div>
+              <div class="lms-activity-text">
+                <strong>Amina Abdi</strong> completed all lessons in Section 1
+              </div>
+              <span class="lms-activity-time">2d ago</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+
+    <!-- Bottom Row: Announcements + Upcoming Deadlines -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;">
+
+      <!-- Recent Announcements -->
+      <div class="lms-card">
+        <div class="lms-card-header">
+          <h3 class="lms-card-title">Recent Announcements</h3>
+          <a href="educator-announcements.html" class="lms-btn lms-btn-ghost lms-btn-sm">Manage →</a>
+        </div>
+        <div class="lms-card-body" id="dashboard-announcements">
+          <div class="lms-empty-state" style="padding:24px;">
+            <div class="icon">📢</div>
+            <div class="title" style="font-size:14px;">No announcements yet</div>
+            <div class="message" style="font-size:12px;">Create your first course announcement</div>
+            <a href="educator-announcements.html" class="lms-btn lms-btn-primary lms-btn-sm" style="margin-top:8px;">Create Announcement</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming Deadlines -->
+      <div class="lms-card">
+        <div class="lms-card-header">
+          <h3 class="lms-card-title">Upcoming Deadlines</h3>
+        </div>
+        <div class="lms-card-body">
+          <ul class="lms-activity-list" id="dashboard-deadlines">
+            <li class="lms-activity-item">
+              <div class="lms-activity-icon" style="background:#FEF3C7;">📅</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#0F172A;">Assignment 2.1: CBC Lesson Plan</div>
+                <div style="font-size:12px;color:#64748B;">ICT Integration in Education</div>
+              </div>
+              <span class="lms-badge lms-badge-review">Due in 3 days</span>
+            </li>
+            <li class="lms-activity-item">
+              <div class="lms-activity-icon" style="background:#EEF2FF;">📅</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#0F172A;">Final Assessment: Rubric Portfolio</div>
+                <div style="font-size:12px;color:#64748B;">ICT Integration in Education</div>
+              </div>
+              <span class="lms-badge lms-badge-scheduled">Due in 1 week</span>
+            </li>
+            <li class="lms-activity-item">
+              <div class="lms-activity-icon" style="background:#ECFDF5;">📅</div>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:#0F172A;">Course Publication</div>
+                <div style="font-size:12px;color:#64748B;">Advanced CBC Assessment Methods</div>
+              </div>
+              <span class="lms-badge lms-badge-draft">Scheduled Oct 1</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- At-Risk Students -->
+    <div class="lms-card" style="margin-top:20px;">
+      <div class="lms-card-header">
+        <h3 class="lms-card-title">🚨 Students At Risk</h3>
+        <a href="educator-reports.html" class="lms-btn lms-btn-ghost lms-btn-sm">Full Report →</a>
+      </div>
+      <div class="lms-card-body no-pad">
+        <div class="lms-table-wrapper">
+          <table class="lms-table" id="at-risk-table">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Course</th>
+                <th>Progress</th>
+                <th>Last Active</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="at-risk-tbody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
   </main>
 </div>
 
-<!-- Issue Certificate Modal -->
-<div id="issue-cert-modal" class="cert-modal-overlay">
-  <div class="cert-modal-container" style="max-width:540px; width:100%;">
-    <div class="cert-modal-header">
-      <h3 style="margin:0; font-size:20px; color:#0F172A;">Issue Official CPD Certificate</h3>
-      <button onclick="document.getElementById('issue-cert-modal').classList.remove('open')" class="cert-modal-close">&times;</button>
-    </div>
-    <form onsubmit="handleIssueFormSubmit(event)" style="display:flex; flex-direction:column; gap:14px;">
-      <div>
-        <label class="form-label">Learner Full Legal Name</label>
-        <input type="text" id="modal-learner-name" aria-label="Learner Full Name" class="form-input" placeholder="e.g. James Mwangi" required>
-      </div>
-      <div>
-        <label class="form-label">Course Title</label>
-        <input type="text" id="modal-course-title" aria-label="Course Title" class="form-input" placeholder="e.g. CBC Pedagogy & Assessment" required>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-        <div>
-          <label class="form-label">CPD Hours</label>
-          <input type="text" id="modal-cpd-hours" aria-label="CPD Hours" class="form-input" value="30 Hours" required>
-        </div>
-        <div>
-          <label class="form-label">Grade / Score</label>
-          <input type="text" id="modal-grade" aria-label="Grade or Percentage Score" class="form-input" value="Distinction (92%)">
-        </div>
-      </div>
-      <div>
-        <label class="form-label">Authorized Signatory</label>
-        <select id="modal-signatory" class="form-input">
-          <option value="Dr. Wanjiku Kamau">Dr. Wanjiku Kamau (Lead ICT Facilitator)</option>
-          <option value="Peter Njuguna">Peter Njuguna (Senior EdTech Specialist)</option>
-        </select>
-      </div>
-      <div style="display:flex; align-items:center; gap:8px;">
-        <input type="checkbox" id="modal-accredited" checked>
-        <label for="modal-accredited" style="font-size:13px; font-weight:600; color:#0F172A;">TSC &amp; KICD Accredited Training Claim</label>
-      </div>
-      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:12px;">
-        <button type="button" onclick="document.getElementById('issue-cert-modal').classList.remove('open')" class="btn btn-ghost">Cancel</button>
-        <button type="submit" class="btn btn-blue">Confirm &amp; Issue Credential</button>
-      </div>
-    </form>
-  </div>
-</div>
+<!-- Sidebar Toggle (Mobile) -->
+<button class="lms-sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
 
-<!-- Floating Navigation Toggle Button for Mobile / Tablet -->
-
-<!-- ══════════════════════════════════════════════════════════
-     MODAL: TRAINER ASSIGNMENT GRADING & RUBRIC
-     ══════════════════════════════════════════════════════════ -->
-<div id="modal-trainer-grading" class="trainer-modal-overlay">
-  <div class="trainer-modal-card">
-    <div class="trainer-modal-header">
-      <div>
-        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-          <span class="badge badge-primary" id="grading-modal-subject">Integrated Science</span>
-          <span class="badge badge-warning" id="grading-modal-status">Needs Review</span>
-        </div>
-        <h3 id="grading-modal-title" style="margin:0 0 2px; font-size:20px; font-weight:800; color:#0F172A;">
-          ICT Lesson Plan Submission
-        </h3>
-        <div style="font-size:13px; color:#64748B;" id="grading-modal-learner">
-          Submitted by: <strong>James Mwangi</strong> (Grade 9) • Today, 10:15 AM
-        </div>
-      </div>
-      <button onclick="window.closeTrainerModal('modal-trainer-grading')" class="cert-modal-close" aria-label="Close Grading Modal">&times;</button>
-    </div>
-
-    <div class="trainer-modal-body">
-      <!-- Attached Student Work -->
-      <div class="trainer-attachment-box">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <span style="font-size:26px;">📑</span>
-          <div>
-            <div id="grading-modal-filename" style="font-weight:700; font-size:13.5px; color:#0F172A;">lesson_plan_james_mwangi_cbc.pdf</div>
-            <div id="grading-modal-filesize" style="font-size:12px; color:#64748B;">3.2 MB • Student Submission File</div>
-          </div>
-        </div>
-        <button type="button" onclick="window.showToast('📥 Downloading submitted student attachment for inspection...','info')" class="btn btn-outline btn-sm">
-          Inspect File ↗
-        </button>
-      </div>
-
-      <!-- Student Note -->
-      <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:12px 14px; margin-bottom:18px;">
-        <div style="font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:#64748B; margin-bottom:4px;">
-          Learner Submission Notes
-        </div>
-        <p id="grading-modal-notes" style="font-size:13px; color:#334155; margin:0; line-height:1.5;">
-          "Attached my revised 40-minute CBC lesson plan with inquiry-based starter questions and student group activity."
-        </p>
-      </div>
-
-      <!-- Rubric Scoring Section -->
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:#0F172A; margin:0;">
-          Criterion-Based Rubric Assessment
-        </h4>
-        <div style="font-weight:800; font-size:14px; color:#2145E6; background:#EEF2FF; padding:4px 12px; border-radius:999px;" id="grading-total-score-badge">
-          Score: 95 / 100
-        </div>
-      </div>
-
-      <!-- Criterion 1 -->
-      <div class="trainer-rubric-card">
-        <div>
-          <div class="trainer-rubric-title">1. CBC Competency Alignment &amp; Strands</div>
-          <div class="trainer-rubric-desc">Alignment with KICD curriculum designs and targeted core competencies</div>
-        </div>
-        <div class="trainer-rubric-score-box">
-          <input type="number" id="rubric-c1" aria-label="CBC Competency Alignment Score" min="0" max="25" value="24" class="trainer-score-input" oninput="window.calculateRubricTotal()">
-          <span style="font-weight:700; color:#64748B; font-size:13px;">/ 25</span>
-        </div>
-      </div>
-
-      <!-- Criterion 2 -->
-      <div class="trainer-rubric-card">
-        <div>
-          <div class="trainer-rubric-title">2. Pedagogical Depth &amp; Inquiry Structure</div>
-          <div class="trainer-rubric-desc">Thought-provoking starter questions, learner participation, and pacing</div>
-        </div>
-        <div class="trainer-rubric-score-box">
-          <input type="number" id="rubric-c2" aria-label="Pedagogical Depth Score" min="0" max="25" value="24" class="trainer-score-input" oninput="window.calculateRubricTotal()">
-          <span style="font-weight:700; color:#64748B; font-size:13px;">/ 25</span>
-        </div>
-      </div>
-
-      <!-- Criterion 3 -->
-      <div class="trainer-rubric-card">
-        <div>
-          <div class="trainer-rubric-title">3. Practical Classroom Feasibility</div>
-          <div class="trainer-rubric-desc">Practical utility of locally available resources and time management</div>
-        </div>
-        <div class="trainer-rubric-score-box">
-          <input type="number" id="rubric-c3" aria-label="Practical Classroom Feasibility Score" min="0" max="25" value="23" class="trainer-score-input" oninput="window.calculateRubricTotal()">
-          <span style="font-weight:700; color:#64748B; font-size:13px;">/ 25</span>
-        </div>
-      </div>
-
-      <!-- Criterion 4 -->
-      <div class="trainer-rubric-card">
-        <div>
-          <div class="trainer-rubric-title">4. Documentation Clarity &amp; Scheme</div>
-          <div class="trainer-rubric-desc">Neatness, accurate learning outcomes, and assessment rubrics</div>
-        </div>
-        <div class="trainer-rubric-score-box">
-          <input type="number" id="rubric-c4" aria-label="Documentation Clarity Score" min="0" max="25" value="24" class="trainer-score-input" oninput="window.calculateRubricTotal()">
-          <span style="font-weight:700; color:#64748B; font-size:13px;">/ 25</span>
-        </div>
-      </div>
-
-      <!-- Facilitator Remarks -->
-      <div style="margin-top:16px;">
-        <label for="trainer-feedback-text" style="display:block; font-size:13px; font-weight:700; color:#334155; margin-bottom:6px;">
-          Facilitator Remarks &amp; Feedback to Learner
-        </label>
-        <textarea id="trainer-feedback-text" aria-label="Facilitator Remarks and Feedback" style="width:100%; border:1.5px solid #CBD5E1; border-radius:12px; padding:10px 14px; font-family:inherit; font-size:13.5px; line-height:1.5; color:#0F172A; resize:vertical; min-height:80px; box-sizing:border-box; outline:none;" placeholder="Enter positive commendation and concrete growth area...">🌟 Commendation: Excellent breakdown of the introduction stage. The student group activity demonstrates clear CBC learner-centred principles.
-💡 Growth Area: Consider allocating 5 additional minutes for reflective plenary wrap-up so learners can synthesize key takeaways.</textarea>
-      </div>
-    </div>
-
-    <div class="trainer-modal-footer">
-      <button type="button" onclick="window.returnForRevisions()" class="btn btn-outline btn-md" style="color:#D97706; border-color:#FDE68A;">
-        ⚠️ Request Revisions
-      </button>
-      <div style="display:flex; gap:10px;">
-        <button type="button" onclick="window.closeTrainerModal('modal-trainer-grading')" class="btn btn-ghost btn-md">
-          Cancel
-        </button>
-        <button type="button" id="btn-submit-trainer-grade" onclick="window.submitTrainerGrade()" class="btn btn-blue btn-md">
-          Approve &amp; Submit Grade 🚀
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════════
-     MODAL: COURSE CREATOR / MODULE BUILDER
-     ══════════════════════════════════════════════════════════ -->
-<div id="modal-trainer-create-course" class="trainer-modal-overlay">
-  <div class="trainer-modal-card" style="max-width:620px;">
-    <div class="trainer-modal-header">
-      <div>
-        <span class="badge badge-primary" style="margin-bottom:4px; display:inline-block;">Curriculum Authoring</span>
-        <h3 style="margin:0; font-size:20px; font-weight:800; color:#0F172A;">
-          Create New CBC Course Module
-        </h3>
-      </div>
-      <button onclick="window.closeTrainerModal('modal-trainer-create-course')" class="cert-modal-close" aria-label="Close Course Creator Modal">&times;</button>
-    </div>
-
-    <form id="trainer-create-course-form" onsubmit="window.handlePublishCourseSubmit(event)" style="display:flex; flex-direction:column; flex:1; min-height:0; overflow:hidden;">
-      <div class="trainer-modal-body" style="display:flex; flex-direction:column; gap:14px; flex:1; overflow-y:auto; padding:18px 24px;">
-        <div>
-          <label for="course-title-input" class="form-label">Course Title</label>
-          <input type="text" id="course-title-input" aria-label="Course Title" class="form-input" value="CBC Computational Thinking &amp; Robotics for Junior Secondary" placeholder="e.g. CBC Computational Thinking &amp; Robotics for Junior Secondary" required>
-        </div>
-
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-          <div>
-            <label for="course-category-select" class="form-label">Learning Strand / Category</label>
-            <select id="course-category-select" aria-label="Learning Strand Category" class="form-input">
-              <option value="CBC Digital Literacy">CBC Digital Literacy</option>
-              <option value="Integrated Science">Integrated Science</option>
-              <option value="Mathematics Education">Mathematics Education</option>
-              <option value="CBC Pedagogy & Assessment">CBC Pedagogy & Assessment</option>
-              <option value="Creative Arts & Tech">Creative Arts & Tech</option>
-            </select>
-          </div>
-          <div>
-            <label for="course-level-select" class="form-label">Target Level</label>
-            <select id="course-level-select" aria-label="Target Grade Level" class="form-input">
-              <option value="Junior Secondary (Grades 7-9)">Junior Secondary (Grades 7-9)</option>
-              <option value="Upper Primary (Grades 4-6)">Upper Primary (Grades 4-6)</option>
-              <option value="Senior School (Grades 10-12)">Senior School (Grades 10-12)</option>
-              <option value="Educator Professional CPD">Educator Professional CPD</option>
-            </select>
-          </div>
-        </div>
-
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-          <div>
-            <label for="course-duration-input" class="form-label">Estimated Duration</label>
-            <input type="text" id="course-duration-input" aria-label="Estimated Duration" class="form-input" value="6 Weeks (30 CPD Hours)" required>
-          </div>
-          <div>
-            <label for="course-lessons-input" class="form-label">Number of Modules / Lessons</label>
-            <input type="number" id="course-lessons-input" aria-label="Number of Modules" class="form-input" value="12" min="1" max="50" required>
-          </div>
-        </div>
-
-        <div style="display:flex; align-items:center; gap:8px;">
-          <input type="checkbox" id="course-accredited-check" checked>
-          <label for="course-accredited-check" style="font-size:13px; font-weight:600; color:#0F172A;">Accredited for TSC Career Progression &amp; CPD Claim</label>
-        </div>
-
-        <div>
-          <label for="course-summary-input" class="form-label">Syllabus Overview &amp; Learning Outcomes</label>
-          <textarea id="course-summary-input" aria-label="Syllabus Overview and Learning Outcomes" class="form-input" style="min-height:76px; resize:vertical;" placeholder="Summarize key competency outcomes, practical portfolio requirements, and evaluation metrics...">Comprehensive hands-on curriculum covering block-based visual coding, robotics kits assembly, sensor integration, and CBC assessment rubrics for Junior Secondary Grade 7-9 cohorts.</textarea>
-        </div>
-      </div>
-
-      <div class="trainer-modal-footer">
-        <button type="button" onclick="window.saveCourseDraft()" class="btn btn-outline btn-md">
-          Save Draft 💾
-        </button>
-        <div style="display:flex; gap:10px;">
-          <button type="button" onclick="window.closeTrainerModal('modal-trainer-create-course')" class="btn btn-ghost btn-md">
-            Cancel
-          </button>
-          <button type="submit" class="btn btn-blue btn-md">
-            Publish Course Module 🚀
-          </button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Navigation">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <line x1="3" y1="12" x2="21" y2="12"/>
-    <line x1="3" y1="6" x2="21" y2="6"/>
-    <line x1="3" y1="18" x2="21" y2="18"/>
-  </svg>
-</button>
-
-<script src="js/main.js?v=3.1"></script>
+<!-- Scripts -->
+<script src="js/main.js"></script>
 <script src="js/auth.js"></script>
-<script src="js/certificates.js"></script>
+<script src="js/lms-auth-guard.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/lms-engine.js"></script>
+<script src="js/lms-notifications.js"></script>
+<script src="js/live-chat.js"></script>
 <script>
-function openIssueCertModal() {
-  document.getElementById('issue-cert-modal').classList.add('open');
-}
+(function() {
+  'use strict';
 
-function handleIssueFormSubmit(e) {
-  e.preventDefault();
-  const name = document.getElementById('modal-learner-name').value;
-  const course = document.getElementById('modal-course-title').value;
-  const hours = document.getElementById('modal-cpd-hours').value;
-  const grade = document.getElementById('modal-grade').value;
-  const instructor = document.getElementById('modal-signatory').value;
-  const accredited = document.getElementById('modal-accredited').checked;
+  // ── Auth Guard ──────────────────────────────────────────────
+  const session = LMSAuth.guardPage(['trainer', 'admin']);
+  if (!session) return;
 
-  const newCert = window.CertificateEngine.issueCertificate({
-    learnerName: name,
-    courseTitle: course,
-    cpdHours: hours,
-    grade: grade,
-    instructor: instructor,
-    accredited: accredited
+  // ── Update User Info ────────────────────────────────────────
+  const setTextById = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+  const firstName = (session.name || '').split(' ')[0];
+  const avatar = session.avatar || firstName.slice(0, 2).toUpperCase();
+
+  setTextById('sidebar-name', session.name);
+  setTextById('nav-user-name', firstName);
+
+  document.querySelectorAll('#sidebar-avatar, #nav-avatar').forEach(el => { el.textContent = avatar; });
+
+  // Greeting based on time
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+  setTextById('greeting-title', `${greeting}, ${firstName} 👋`);
+
+  // ── Load Dashboard Data ─────────────────────────────────────
+  if (window.LMSEngine) {
+    const courses = LMSEngine.getAllCourses();
+    const students = LMSEngine.getAllStudents();
+    const enrollments = LMSEngine.getAllEnrollments();
+
+    // Stats
+    const published = courses.filter(c => c.status === 'published').length;
+    const drafts = courses.filter(c => c.status === 'draft').length;
+    const pending = courses.filter(c => c.status === 'ready_for_review' || c.status === 'pending_approval').length;
+    const activeStudents = students.filter(s => s.status === 'active').length;
+    const totalEnrolled = enrollments.length;
+    const completedEnrollments = enrollments.filter(e => e.status === 'completed').length;
+    const completionRate = totalEnrolled > 0 ? Math.round((completedEnrollments / totalEnrolled) * 100) : 0;
+
+    // Pending grading
+    const pendingGrading = (window.LMSAssessment ? LMSAssessment.getPendingGrading(courses.map(c => c.id)).length : 0);
+
+    setTextById('stat-total-courses', courses.length);
+    setTextById('stat-published', published);
+    setTextById('stat-drafts', drafts);
+    setTextById('stat-pending', pending);
+    setTextById('stat-students', totalEnrolled);
+    setTextById('stat-active', activeStudents);
+    setTextById('stat-completion', completionRate + '%');
+    setTextById('stat-grading', pendingGrading);
+
+    // Nav badges
+    setTextById('nav-course-count', courses.length);
+    const gradingBadge = document.getElementById('nav-grading-count');
+    if (gradingBadge && pendingGrading > 0) {
+      gradingBadge.textContent = pendingGrading;
+      gradingBadge.style.display = '';
+    }
+
+    // ── Render Course Cards ──────────────────────────────────
+    const coursesList = document.getElementById('dashboard-courses-list');
+    if (coursesList) {
+      const statusBadgeMap = {
+        draft: 'lms-badge-draft', published: 'lms-badge-published',
+        ready_for_review: 'lms-badge-review', pending_approval: 'lms-badge-review',
+        approved: 'lms-badge-approved', archived: 'lms-badge-archived',
+        scheduled: 'lms-badge-scheduled', unpublished: 'lms-badge-unpublished',
+        in_progress: 'lms-badge-in-progress', changes_requested: 'lms-badge-changes'
+      };
+
+      const displayCourses = courses.slice(0, 5);
+      if (displayCourses.length === 0) {
+        coursesList.innerHTML = `
+          <div class="lms-empty-state">
+            <div class="icon">📚</div>
+            <div class="title">No courses yet</div>
+            <div class="message">Create your first course to get started!</div>
+            <a href="course-wizard.html" class="lms-btn lms-btn-primary lms-btn-sm" style="margin-top:8px;">Create Course</a>
+          </div>
+        `;
+      } else {
+        coursesList.innerHTML = displayCourses.map(c => {
+          const enrollCount = enrollments.filter(e => e.courseId === c.id).length;
+          const statusClass = statusBadgeMap[c.status] || 'lms-badge-draft';
+          const statusLabel = (c.status || 'draft').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+          return `
+            <div style="display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid #F1F5F9;">
+              <div style="width:56px;height:42px;border-radius:8px;background:linear-gradient(135deg,#1E3A8A,#2563EB);overflow:hidden;flex-shrink:0;">
+                ${c.image ? `<img src="${c.image}" alt="" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">` : ''}
+              </div>
+              <div style="flex:1;min-width:0;">
+                <div style="font-size:13.5px;font-weight:700;color:#0F172A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.title}</div>
+                <div style="font-size:11.5px;color:#64748B;margin-top:2px;">${enrollCount} students • ${c.modules || 0} modules</div>
+              </div>
+              <span class="lms-badge ${statusClass}">${statusLabel}</span>
+              <a href="course-wizard.html?edit=${c.id}" class="lms-btn lms-btn-ghost lms-btn-sm" title="Edit course">✏️</a>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    // ── At-Risk Students ────────────────────────────────────
+    const atRiskTbody = document.getElementById('at-risk-tbody');
+    if (atRiskTbody) {
+      const atRiskStudents = enrollments.filter(e => {
+        const daysSince = Math.round((Date.now() - new Date(e.lastActiveAt).getTime()) / 86400000);
+        return daysSince >= 7 && e.progressPercent < 50 && e.status === 'active';
+      }).slice(0, 5);
+
+      if (atRiskStudents.length === 0) {
+        atRiskTbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:#64748B;font-size:13px;">✅ No at-risk students detected. Great work!</td></tr>';
+      } else {
+        atRiskTbody.innerHTML = atRiskStudents.map(e => {
+          const student = students.find(s => s.id === e.studentId) || { name: 'Unknown', email: '' };
+          const course = courses.find(c => c.id === e.courseId) || { title: 'Unknown Course' };
+          const daysSince = Math.round((Date.now() - new Date(e.lastActiveAt).getTime()) / 86400000);
+          return `
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div class="lms-avatar avatar-xs">${(student.name || '').split(' ').map(n => n[0]).join('').slice(0,2)}</div>
+                  <div>
+                    <div style="font-weight:700;font-size:13px;">${student.name}</div>
+                    <div style="font-size:11px;color:#94A3B8;">${student.email}</div>
+                  </div>
+                </div>
+              </td>
+              <td style="font-size:12.5px;">${course.title}</td>
+              <td>
+                <div class="lms-progress lms-progress-sm" style="width:80px;">
+                  <div class="lms-progress-fill progress-warning" style="width:${e.progressPercent}%;"></div>
+                </div>
+                <span style="font-size:11px;color:#64748B;margin-left:6px;">${e.progressPercent}%</span>
+              </td>
+              <td><span class="lms-badge lms-badge-at-risk">${daysSince}d ago</span></td>
+              <td><span class="lms-badge lms-badge-at-risk">At Risk</span></td>
+              <td><button class="lms-btn lms-btn-outline lms-btn-sm" onclick="sendReminder('${student.email}')">Send Reminder</button></td>
+            </tr>
+          `;
+        }).join('');
+      }
+    }
+
+    // ── Announcements ──────────────────────────────────────
+    const announcementsEl = document.getElementById('dashboard-announcements');
+    if (announcementsEl) {
+      const announcements = LMSEngine.getAnnouncements('all').slice(0, 3);
+      if (announcements.length > 0) {
+        announcementsEl.innerHTML = '<ul class="lms-activity-list">' + announcements.map(a => `
+          <li class="lms-activity-item">
+            <div class="lms-activity-icon" style="background:${a.priority === 'high' ? '#FEF3C7' : '#EEF2FF'};">
+              ${a.priority === 'high' ? '🔴' : '📢'}
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:700;color:#0F172A;">${a.title}</div>
+              <div style="font-size:12px;color:#64748B;margin-top:2px;">${a.cohort} • ${a.date}</div>
+            </div>
+          </li>
+        `).join('') + '</ul>';
+      }
+    }
+  }
+
+  // ── Notifications ───────────────────────────────────────────
+  if (window.LMSNotifications) {
+    LMSNotifications.updateBellCount();
+    LMSNotifications.renderNotificationList('notification-list');
+  }
+
+  // ── Sidebar Toggle ──────────────────────────────────────────
+  window.toggleSidebar = function() {
+    const sidebar = document.getElementById('educator-sidebar');
+    if (sidebar) sidebar.classList.toggle('open');
+  };
+
+  // ── Notification Panel Toggle ───────────────────────────────
+  window.toggleNotificationPanel = function() {
+    const panel = document.getElementById('notification-panel');
+    if (panel) {
+      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    }
+  };
+
+  window.markAllNotificationsRead = function() {
+    if (window.LMSNotifications && session) {
+      LMSNotifications.markAllRead(session.id);
+      LMSNotifications.updateBellCount();
+      LMSNotifications.renderNotificationList('notification-list');
+      if (window.showToast) showToast('All notifications marked as read.', 'success');
+    }
+  };
+
+  window.sendReminder = function(email) {
+    if (window.showToast) showToast('Reminder sent to ' + email, 'success');
+  };
+
+  // Close notification panel on outside click
+  document.addEventListener('click', function(e) {
+    const panel = document.getElementById('notification-panel');
+    const bell = document.querySelector('.lms-notification-bell');
+    if (panel && panel.style.display !== 'none' && !panel.contains(e.target) && !bell.contains(e.target)) {
+      panel.style.display = 'none';
+    }
   });
 
-  document.getElementById('issue-cert-modal').classList.remove('open');
-  window.showToast('Official Certificate issued! ID: ' + newCert.id, 'success');
-
-  window.CertificateEngine.openModalPreview(newCert.id);
-}
-
-function handleRevokeClick(id) {
-  if (confirm('Are you sure you want to REVOKE certificate ID: ' + id + '? This action will be recorded in the audit trail.')) {
-    window.CertificateEngine.revokeCertificate(id, 'Revoked by trainer/admin action');
-    window.showToast('Certificate ' + id + ' has been revoked.', 'warning');
-  }
-}
-
-function exportAuditLogs() {
-  const logs = window.CertificateEngine.getAuditLogs();
-  const csv = 'ID,Action,User,Timestamp,Reason\n' + logs.map(l => `"${l.id}","${l.action}","${l.user}","${l.timestamp}","${l.reason}"`).join('\n');
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'Instructify_Certificate_Audit_Log.csv';
-  a.click();
-  window.showToast('Exported certificate audit trail report.', 'success');
-}
-
-function toggleSidebar() {
-  const sidebar = document.querySelector('.sidebar');
-  const overlay = document.getElementById('sidebar-overlay');
-  if (sidebar) sidebar.classList.toggle('open');
-  if (overlay) overlay.classList.toggle('open');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  window.requireAuth(['trainer', 'admin']);
-});
-
-// ── Trainer Interactive Grading & Course Workflows ──────────
-const TRAINER_SUBMISSIONS = {
-  'sub-james-mwangi': {
-    learner: 'James Mwangi (Grade 9)',
-    title: 'ICT Lesson Plan Submission',
-    subject: 'Integrated Science & Tech',
-    date: 'Today, 10:15 AM',
-    file: 'lesson_plan_james_mwangi_cbc.pdf',
-    fileSize: '3.2 MB',
-    scores: { c1: 24, c2: 24, c3: 23, c4: 24 },
-    notes: 'Attached my revised 40-minute CBC lesson plan with inquiry-based starter questions and student group activity.'
-  },
-  'sub-grace-wanjiku': {
-    learner: 'Grace Wanjiku (Mathematics Trainee)',
-    title: 'CBE Assessment Rubric Design',
-    subject: 'Mathematics Education',
-    date: 'Yesterday, 4:30 PM',
-    file: 'cbe_math_rubric_grace_wanjiku.pdf',
-    fileSize: '1.8 MB',
-    scores: { c1: 23, c2: 25, c3: 24, c4: 22 },
-    notes: 'Includes four levels of performance indicators: Exceeding, Meeting, Approaching, Below Expectation.'
-  },
-  'sub-kevin-omondi': {
-    learner: 'Kevin Omondi (Grade 8)',
-    title: 'Plant Osmosis Lab Observations',
-    subject: 'Integrated Science',
-    date: 'Yesterday, 11:20 AM',
-    file: 'osmosis_lab_observations_kevin.pdf',
-    fileSize: '4.1 MB',
-    scores: { c1: 25, c2: 23, c3: 24, c4: 23 },
-    notes: 'Contains observation log of potato cylinders in hypotonic and hypertonic saline solutions over 48 hours.'
-  },
-  'sub-amina-abdi': {
-    learner: 'Amina Abdi (EdTech Specialist)',
-    title: 'Digital Literacy & Computational Thinking Portfolio',
-    subject: 'Teacher Professional Development',
-    date: '2 Days Ago',
-    file: 'amina_abdi_computational_thinking.zip',
-    fileSize: '12.4 MB',
-    scores: { c1: 25, c2: 25, c3: 24, c4: 25 },
-    notes: 'Includes 5 Scratch visual programming exercises and unplugged algorithmic thinking lesson guides.'
-  }
-};
-
-let currentActiveSubId = 'sub-james-mwangi';
-let pendingReviewsCount = 4;
-
-window.openTrainerGradingModal = function(subId) {
-  const data = TRAINER_SUBMISSIONS[subId];
-  if (!data) return;
-  currentActiveSubId = subId;
-
-  document.getElementById('grading-modal-subject').textContent = data.subject;
-  document.getElementById('grading-modal-title').textContent = data.title;
-  document.getElementById('grading-modal-learner').innerHTML = 'Submitted by: <strong>' + data.learner + '</strong> • ' + data.date;
-  document.getElementById('grading-modal-filename').textContent = data.file;
-  document.getElementById('grading-modal-filesize').textContent = data.fileSize + ' • Student Submission File';
-  document.getElementById('grading-modal-notes').textContent = '"' + data.notes + '"';
-
-  document.getElementById('rubric-c1').value = data.scores.c1;
-  document.getElementById('rubric-c2').value = data.scores.c2;
-  document.getElementById('rubric-c3').value = data.scores.c3;
-  document.getElementById('rubric-c4').value = data.scores.c4;
-
-  window.calculateRubricTotal();
-
-  const modal = document.getElementById('modal-trainer-grading');
-  if (modal) {
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-};
-
-window.closeTrainerModal = function(modalId) {
-  const modal = document.getElementById(modalId);
-  if (modal) {
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-};
-
-window.calculateRubricTotal = function() {
-  const c1 = Math.min(25, Math.max(0, parseInt(document.getElementById('rubric-c1').value) || 0));
-  const c2 = Math.min(25, Math.max(0, parseInt(document.getElementById('rubric-c2').value) || 0));
-  const c3 = Math.min(25, Math.max(0, parseInt(document.getElementById('rubric-c3').value) || 0));
-  const c4 = Math.min(25, Math.max(0, parseInt(document.getElementById('rubric-c4').value) || 0));
-  const total = c1 + c2 + c3 + c4;
-  const badge = document.getElementById('grading-total-score-badge');
-  if (badge) {
-    badge.textContent = 'Score: ' + total + ' / 100';
-  }
-  return total;
-};
-
-window.submitTrainerGrade = function() {
-  const total = window.calculateRubricTotal();
-  const subId = currentActiveSubId;
-  const data = TRAINER_SUBMISSIONS[subId];
-  const learnerName = data ? data.learner.split('(')[0].trim() : 'Learner';
-
-  // Update row status
-  const statusCell = document.getElementById('status-' + subId);
-  if (statusCell) {
-    statusCell.innerHTML = '<span class="badge badge-success">Graded (' + total + '%)</span>';
-  }
-
-  // Update row action button
-  const actionCell = document.getElementById('action-' + subId);
-  if (actionCell) {
-    actionCell.innerHTML = '<button onclick="window.openTrainerGradingModal(\'' + subId + '\')" class="btn btn-outline btn-sm">Review Marks 📄</button>';
-  }
-
-  // Decrement counters if not already graded
-  if (data && !data.graded) {
-    data.graded = true;
-    pendingReviewsCount = Math.max(0, pendingReviewsCount - 1);
-    const queueBadge = document.getElementById('queue-count-badge');
-    if (queueBadge) queueBadge.textContent = pendingReviewsCount + ' Pending Reviews';
-
-    const statAssign = document.getElementById('stat-assignments-to-grade');
-    if (statAssign) statAssign.textContent = pendingReviewsCount;
-
-    const navBadge = document.querySelector('.sidebar-link-badge');
-    if (navBadge) navBadge.textContent = pendingReviewsCount;
-  }
-
-  window.closeTrainerModal('modal-trainer-grading');
-  window.showToast('🎉 Grade submitted for ' + learnerName + ' (' + total + '% Distinction)! Learner notified.', 'success');
-};
-
-window.returnForRevisions = function() {
-  const data = TRAINER_SUBMISSIONS[currentActiveSubId];
-  const learnerName = data ? data.learner.split('(')[0].trim() : 'Learner';
-
-  const statusCell = document.getElementById('status-' + currentActiveSubId);
-  if (statusCell) {
-    statusCell.innerHTML = '<span class="badge badge-warning" style="background:#FEF3C7; color:#B45309;">Revision Requested</span>';
-  }
-
-  window.closeTrainerModal('modal-trainer-grading');
-  window.showToast('📝 Feedback & revision request sent to ' + learnerName + '.', 'warning');
-};
-
-window.openCreateCourseModal = function() {
-  const modal = document.getElementById('modal-trainer-create-course');
-  const titleInput = document.getElementById('course-title-input');
-  if (titleInput && !titleInput.value.trim()) {
-    titleInput.value = 'CBC Computational Thinking & Robotics for Junior Secondary';
-  }
-  if (modal) {
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-};
-
-window.saveCourseDraft = function() {
-  const title = document.getElementById('course-title-input').value.trim() || 'CBC Computational Thinking & Robotics for Junior Secondary';
-  localStorage.setItem('ik_trainer_course_draft', JSON.stringify({
-    title: title,
-    category: document.getElementById('course-category-select').value,
-    level: document.getElementById('course-level-select').value,
-    duration: document.getElementById('course-duration-input').value,
-    lessons: document.getElementById('course-lessons-input').value,
-    savedAt: new Date().toISOString()
-  }));
-  window.closeTrainerModal('modal-trainer-create-course');
-  window.showToast('💾 Course draft "' + title + '" saved to your portfolio.', 'success');
-};
-
-window.handlePublishCourseSubmit = function(e) {
-  if (e) e.preventDefault();
-  const input = document.getElementById('course-title-input');
-  let title = (input ? input.value.trim() : '') || 'CBC Computational Thinking & Robotics for Junior Secondary';
-  if (input && !input.value.trim()) {
-    input.value = title;
-  }
-
-  const statCourses = document.getElementById('stat-published-courses');
-  if (statCourses) {
-    const current = parseInt(statCourses.textContent) || 3;
-    statCourses.textContent = current + 1;
-  }
-
-  window.closeTrainerModal('modal-trainer-create-course');
-  window.showToast('🚀 "' + title + '" published to CBC course catalog review queue!', 'success');
-};
-
-// Close on backdrop click & Escape key
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    window.closeTrainerModal('modal-trainer-grading');
-    window.closeTrainerModal('modal-trainer-create-course');
-  }
-});
-document.addEventListener('click', (e) => {
-  if (e.target.classList && e.target.classList.contains('trainer-modal-overlay')) {
-    e.target.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-});
-
+})();
 </script>
-  <script src="js/chat-config.js"></script>
-  <script src="js/live-chat.js"></script>
 </body>
 </html>

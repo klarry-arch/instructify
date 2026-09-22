@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management | Instructify Kenya LMS</title>
+  <meta name="description" content="Manage learner enrolments, monitor participation, organize cohorts, and import rosters on Instructify Kenya.">
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
+  <link rel="stylesheet" href="css/lms-portal.css">
+  <link rel="stylesheet" href="css/live-chat.css">
+</head>
+<body class="lms-page">
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+      <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
+      <div class="nav-brand-text-box" style="display: inline-flex !important; flex-direction: column !important; justify-content: center !important; align-items: flex-start !important; line-height: 1 !important;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-weight: 800 !important; font-size: 1.25rem !important; color: #0F172A !important; letter-spacing: -0.02em !important; line-height: 1 !important; display: block !important;">Instruct<span class="brand-accent" style="color: #F5812D !important; font-weight: 900 !important;">ify</span></span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-size: 0.62rem !important; font-weight: 850 !important; color: #FF4D00 !important; text-transform: uppercase !important; letter-spacing: 2.2px !important; line-height: 1 !important; display: block !important;">KENYA</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li class="nav-item-dropdown">
+        <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="courses" aria-haspopup="true" aria-expanded="false">
+          Courses <span class="nav-badge badge-amber">Hot</span>
+          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <ul class="nav-dropdown-menu" role="menu" aria-label="Courses, Podcast and Resources">
+          <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem" data-nav="courses"><span class="nav-dropdown-icon">📚</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span><span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span></div></a></li>
+          <li role="none"><a href="podcast.html" class="nav-dropdown-item" role="menuitem" data-nav="podcast"><span class="nav-dropdown-icon">🎙️</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></span><span class="nav-dropdown-desc">Inspiring stories from Kenyan educators</span></div></a></li>
+          <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem" data-nav="resources"><span class="nav-dropdown-info"><span class="nav-dropdown-title">Resources</span><span class="nav-dropdown-desc">Schemes of work, lesson plans &amp; guides</span></div></a></li>
+        </ul>
+      </li>
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions" style="display:flex; align-items:center; gap:12px;">
+      <div id="nav-user-area" style="display:inline-flex; align-items:center; gap:8px; background:#F8FAFC; border:1px solid #E2E8F0; padding:4px 12px 4px 6px; border-radius:999px;">
+        <div id="nav-avatar" class="lms-avatar avatar-sm">WK</div>
+        <span id="nav-user-name" style="font-size:13px; font-weight:700; color:#0F172A;">Dr. Wanjiku</span>
+        <span class="lms-badge lms-badge-published" style="font-size:10px; padding:2px 6px;">Educator</span>
+      </div>
+      <button onclick="logout()" class="btn btn-outline btn-sm" style="color:#DC2626; border-color:#DC2626;" aria-label="Log Out">Log Out</button>
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+  <div class="nav-mobile-links">
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="about.html" class="nav-mobile-link">About Us</a>
+    <div class="nav-mobile-dropdown">
+      <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
+      <div class="nav-mobile-sublinks">
+        <a href="courses.html" class="nav-mobile-sublink" data-nav="courses"><span>📚</span> All Courses</a>
+        <a href="podcast.html" class="nav-mobile-sublink" data-nav="podcast"><span>🎙️</span> Podcast</a>
+        <a href="resources.html" class="nav-mobile-sublink" data-nav="resources"><span>📂</span> Resources</a>
+      </div>
+    </div>
+    <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
+    <a href="schools.html" class="nav-mobile-link">Institutions</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+  </div>
+  <div class="nav-mobile-actions">
+    <a href="dashboard-trainer.html" class="btn btn-primary btn-md">Educator Portal</a>
+    <button onclick="logout()" class="btn btn-outline btn-md" style="color:#DC2626 !important; border-color:#DC2626;">Log Out</button>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Dashboard Menu">☰</button>
+
+<!-- ── Dashboard Layout ── -->
+<div class="lms-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="lms-sidebar" id="educator-sidebar">
+    <div class="lms-sidebar-profile">
+      <div class="lms-avatar" id="sidebar-avatar">WK</div>
+      <div>
+        <div class="lms-sidebar-name" id="sidebar-name">Dr. Wanjiku Kamau</div>
+        <div class="lms-sidebar-role">Educator</div>
+      </div>
+    </div>
+
+    <nav class="lms-sidebar-nav" aria-label="Educator Navigation">
+      <div class="lms-sidebar-section">Main</div>
+      <a href="dashboard-trainer.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Dashboard
+      </a>
+      <a href="educator-courses.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📚</span> My Courses
+      </a>
+      <a href="course-wizard.html" class="lms-nav-item">
+        <span class="lms-nav-icon">➕</span> Create Course
+      </a>
+
+      <div class="lms-sidebar-section">Learners</div>
+      <a href="educator-students.html" class="lms-nav-item active" aria-current="page">
+        <span class="lms-nav-icon">👥</span> Student Management
+        <span class="lms-nav-badge badge-info" id="nav-student-count">0</span>
+      </a>
+      <a href="educator-assessments.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📝</span> Assessments
+      </a>
+      <a href="educator-gradebook.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Gradebook
+      </a>
+
+      <div class="lms-sidebar-section">Communicate</div>
+      <a href="educator-announcements.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📢</span> Announcements
+      </a>
+      <a href="educator-reports.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📈</span> Reports
+      </a>
+    </nav>
+
+    <div class="lms-sidebar-footer">
+      <a href="index.html" class="lms-nav-item" style="color:#94A3B8;">
+        <span class="lms-nav-icon">🌐</span> View Website
+      </a>
+      <a href="#" onclick="logout();return false;" class="lms-nav-item" style="color:#DC2626;">
+        <span class="lms-nav-icon">🚪</span> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── Main Content ── -->
+  <main class="lms-main" id="educator-main">
+
+    <!-- Page Header -->
+    <div class="lms-page-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="lms-breadcrumbs">
+          <a href="index.html">Home</a> <span class="sep">›</span>
+          <a href="dashboard-trainer.html">Educator Portal</a> <span class="sep">›</span>
+          <span class="current">Student Management</span>
+        </div>
+        <h1 class="lms-page-title">Learners & Cohorts</h1>
+        <p class="lms-page-subtitle">Enrol students, track their learning progress, create cohorts, and send invitations.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="lms-btn lms-btn-outline" onclick="openInviteModal()">
+          <span>🔗</span> Invite Link
+        </button>
+        <button class="lms-btn lms-btn-outline" onclick="openCsvModal()">
+          <span>📥</span> Import CSV
+        </button>
+        <button class="lms-btn lms-btn-primary" onclick="openEnrolModal()">
+          <span>➕</span> Enrol Learner
+        </button>
+      </div>
+    </div>
+
+    <!-- Metrics Row -->
+    <div class="lms-stats-grid" style="margin-bottom:24px;">
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-primary">👥</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-total-students">0</div>
+          <div class="lms-stat-label">Total Learners</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-success">⚡</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-active-students">0</div>
+          <div class="lms-stat-label">Active Learners</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-warning">✉️</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-pending-invites">0</div>
+          <div class="lms-stat-label">Pending Invites</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-secondary">📈</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-avg-progress">0%</div>
+          <div class="lms-stat-label">Avg. Course Progress</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="lms-card" style="margin-bottom:20px; padding:16px 20px;">
+      <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:center;">
+        
+        <!-- Search -->
+        <div style="position:relative; flex:1; min-width:220px;">
+          <input type="text" id="student-search-input" class="lms-input" placeholder="Search by name, email, school or cohort..." aria-label="Search students" oninput="filterStudents()">
+          <span style="position:absolute; right:12px; top:50%; transform:translateY(-50%); color:#94A3B8; pointer-events:none;">🔍</span>
+        </div>
+
+        <!-- Filter Course -->
+        <div style="min-width:180px;">
+          <select id="filter-course-select" class="lms-select" onchange="filterStudents()" aria-label="Filter by course">
+            <option value="all">All Courses</option>
+          </select>
+        </div>
+
+        <!-- Filter Cohort -->
+        <div style="min-width:180px;">
+          <select id="filter-cohort-select" class="lms-select" onchange="filterStudents()" aria-label="Filter by cohort">
+            <option value="all">All Cohorts</option>
+          </select>
+        </div>
+
+        <!-- Filter Status -->
+        <div style="min-width:140px;">
+          <select id="filter-status-select" class="lms-select" onchange="filterStudents()" aria-label="Filter by status">
+            <option value="all">All Statuses</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="invited">Invited</option>
+          </select>
+        </div>
+
+        <button onclick="exportStudentsCSV()" class="lms-btn lms-btn-outline" style="gap:6px;" title="Export Roster as CSV">
+          <span>📊</span> Export CSV
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Students Table Wrapper -->
+    <div class="lms-card" style="overflow:hidden; padding:0;">
+      <div class="table-responsive">
+        <table class="lms-table" style="width:100%; border-collapse:collapse;" aria-label="Learner Roster Table">
+          <thead>
+            <tr style="background:#F8FAFC; border-bottom:1px solid #E2E8F0; text-align:left;">
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Learner</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">School / Institution</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Cohort</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Enrolled</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; min-width:140px;">Progress</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Status</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; text-align:right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="students-table-body">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="no-students-message" style="display:none; padding:48px 24px; text-align:center;">
+        <div style="font-size:40px; margin-bottom:12px;">👥</div>
+        <h4 style="font-size:16px; font-weight:700; color:#0F172A; margin-bottom:6px;">No learners found</h4>
+        <p style="color:#64748B; font-size:14px;">Try modifying your search or filter parameters, or enrol a new learner.</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Modal: Enrol Single Learner -->
+<div id="enrol-modal" class="lms-modal-backdrop" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:999; align-items:center; justify-content:center;">
+  <div class="lms-card" style="max-width:520px; width:92%; padding:24px; max-height:90vh; overflow-y:auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+      <h3 style="font-size:18px; font-weight:800; color:#0F172A;">Enrol New Learner</h3>
+      <button onclick="closeEnrolModal()" style="background:none; border:none; font-size:20px; cursor:pointer; color:#94A3B8;">✕</button>
+    </div>
+
+    <form id="enrol-form" onsubmit="handleEnrolSubmit(event)">
+      <div class="lms-form-group" style="margin-bottom:14px;">
+        <label for="enrol-name" class="lms-label">Full Name *</label>
+        <input type="text" id="enrol-name" class="lms-input" placeholder="e.g. Mary Achieng" required>
+      </div>
+
+      <div class="lms-form-group" style="margin-bottom:14px;">
+        <label for="enrol-email" class="lms-label">Email Address *</label>
+        <input type="email" id="enrol-email" class="lms-input" placeholder="e.g. mary.achieng@school.ac.ke" required>
+      </div>
+
+      <div class="lms-form-group" style="margin-bottom:14px;">
+        <label for="enrol-phone" class="lms-label">Phone Number (Safaricom M-Pesa)</label>
+        <input type="tel" id="enrol-phone" class="lms-input" placeholder="+254 7XX XXX XXX">
+      </div>
+
+      <div class="lms-form-group" style="margin-bottom:14px;">
+        <label for="enrol-school" class="lms-label">School / Institution</label>
+        <input type="text" id="enrol-school" class="lms-input" placeholder="e.g. Alliance Girls High School">
+      </div>
+
+      <div class="lms-form-group" style="margin-bottom:14px;">
+        <label for="enrol-course" class="lms-label">Course to Enrol *</label>
+        <select id="enrol-course" class="lms-select" required>
+          <option value="">Select a course...</option>
+        </select>
+      </div>
+
+      <div class="lms-form-group" style="margin-bottom:16px;">
+        <label for="enrol-cohort" class="lms-label">Cohort / Class</label>
+        <input type="text" id="enrol-cohort" class="lms-input" placeholder="e.g. Term 3 CBC Cohort" value="General Cohort">
+      </div>
+
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:20px;">
+        <input type="checkbox" id="enrol-notify" checked style="width:16px; height:16px; accent-color:#2145E6;">
+        <label for="enrol-notify" style="font-size:13px; color:#475569;">Send welcome invitation email with access details</label>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <button type="button" class="lms-btn lms-btn-outline" onclick="closeEnrolModal()">Cancel</button>
+        <button type="submit" class="lms-btn lms-btn-primary">Enrol Learner</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: Bulk CSV Import -->
+<div id="csv-modal" class="lms-modal-backdrop" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:999; align-items:center; justify-content:center;">
+  <div class="lms-card" style="max-width:540px; width:92%; padding:24px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+      <h3 style="font-size:18px; font-weight:800; color:#0F172A;">Bulk CSV Student Import</h3>
+      <button onclick="closeCsvModal()" style="background:none; border:none; font-size:20px; cursor:pointer; color:#94A3B8;">✕</button>
+    </div>
+
+    <p style="font-size:13px; color:#64748B; margin-bottom:16px;">
+      Upload a CSV file containing your student roster. Expected columns: <code>Name, Email, Phone, School, Cohort</code>.
+    </p>
+
+    <div style="background:#F8FAFC; border:2px dashed #CBD5E1; border-radius:12px; padding:32px 20px; text-align:center; margin-bottom:16px; cursor:pointer;" onclick="document.getElementById('csv-file-input').click()">
+      <div style="font-size:36px; margin-bottom:8px;">📄</div>
+      <div style="font-weight:600; color:#0F172A; margin-bottom:4px;">Click to select CSV file</div>
+      <div style="font-size:12px; color:#94A3B8;">UTF-8 encoded CSV up to 10MB</div>
+      <input type="file" id="csv-file-input" accept=".csv" style="display:none;" onchange="handleCsvFile(this)" aria-label="Upload CSV file">
+    </div>
+
+    <div id="csv-preview-area" style="display:none; margin-bottom:16px; background:#FFF; border:1px solid #E2E8F0; border-radius:8px; padding:12px; font-size:13px;">
+      <div style="font-weight:700; color:#0F172A; margin-bottom:6px;" id="csv-file-name">file.csv</div>
+      <div style="color:#64748B;" id="csv-row-count">0 students detected</div>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <button class="lms-btn lms-btn-ghost lms-btn-sm" onclick="downloadSampleCsv()">📥 Download Sample Template</button>
+      <div style="display:flex; gap:10px;">
+        <button class="lms-btn lms-btn-outline" onclick="closeCsvModal()">Cancel</button>
+        <button class="lms-btn lms-btn-primary" id="csv-import-btn" disabled onclick="executeCsvImport()">Import Students</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Invite Link Generator -->
+<div id="invite-modal" class="lms-modal-backdrop" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:999; align-items:center; justify-content:center;">
+  <div class="lms-card" style="max-width:480px; width:92%; padding:24px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+      <h3 style="font-size:18px; font-weight:800; color:#0F172A;">Course Invitation Link</h3>
+      <button onclick="closeInviteModal()" style="background:none; border:none; font-size:20px; cursor:pointer; color:#94A3B8;">✕</button>
+    </div>
+
+    <p style="font-size:13px; color:#64748B; margin-bottom:16px;">
+      Generate a shareable link or an access code for students to self-enrol directly.
+    </p>
+
+    <div class="lms-form-group" style="margin-bottom:14px;">
+      <label for="invite-course-select" class="lms-label">Select Course</label>
+      <select id="invite-course-select" class="lms-select" onchange="generateInviteDetails()">
+      </select>
+    </div>
+
+    <div class="lms-form-group" style="margin-bottom:16px;">
+      <label for="invite-url-input" class="lms-label">Shareable Link</label>
+      <div style="display:flex; gap:8px;">
+        <input type="text" id="invite-url-input" class="lms-input" readonly>
+        <button class="lms-btn lms-btn-outline" onclick="copyInviteLink()">Copy</button>
+      </div>
+    </div>
+
+    <div class="lms-form-group" style="margin-bottom:20px;">
+      <label for="invite-code-input" class="lms-label">6-Digit Access Code</label>
+      <div style="display:flex; gap:8px;">
+        <input type="text" id="invite-code-input" class="lms-input" style="font-family:monospace; font-size:18px; font-weight:700; letter-spacing:3px; text-align:center;" readonly>
+        <button class="lms-btn lms-btn-outline" onclick="copyAccessCode()">Copy</button>
+      </div>
+    </div>
+
+    <div style="display:flex; justify-content:flex-end;">
+      <button class="lms-btn lms-btn-primary" onclick="closeInviteModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/lms-auth-guard.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/lms-engine.js"></script>
+<script src="js/lms-notifications.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  // Auth Guard
+  const session = LMSAuth.guardPage(['trainer', 'admin']);
+  if (!session) return;
+
+  // Profile Header
+  const nameEl = document.getElementById('sidebar-name');
+  const avatarEl = document.getElementById('sidebar-avatar');
+  const navName = document.getElementById('nav-user-name');
+  const navAvatar = document.getElementById('nav-avatar');
+
+  if (session.name) {
+    if (nameEl) nameEl.textContent = session.name;
+    if (navName) navName.textContent = session.name.split(' ')[0];
+    const initials = session.avatar || session.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+    if (avatarEl) avatarEl.textContent = initials;
+    if (navAvatar) navAvatar.textContent = initials;
+  }
+
+  let students = [];
+  let courses = [];
+  let parsedCsvData = [];
+
+  function initData() {
+    students = LMSEngine.getStudents();
+    courses = LMSEngine.getCourses();
+
+    // Populate dropdowns
+    populateCourseDropdowns();
+    populateCohortDropdown();
+    updateStats();
+    filterStudents();
+  }
+
+  function populateCourseDropdowns() {
+    const filterCourse = document.getElementById('filter-course-select');
+    const enrolCourse = document.getElementById('enrol-course');
+    const inviteCourse = document.getElementById('invite-course-select');
+
+    courses.forEach(c => {
+      const opt = `<option value="${c.id}">${c.title}</option>`;
+      filterCourse.innerHTML += opt;
+      enrolCourse.innerHTML += opt;
+      inviteCourse.innerHTML += opt;
+    });
+
+    // Check if URL query param specifies course
+    const params = new URLSearchParams(window.location.search);
+    const selectedCourse = params.get('course');
+    if (selectedCourse) {
+      filterCourse.value = selectedCourse;
+    }
+  }
+
+  function populateCohortDropdown() {
+    const cohorts = new Set();
+    students.forEach(s => {
+      if (s.cohort) cohorts.add(s.cohort);
+    });
+
+    const cohortSelect = document.getElementById('filter-cohort-select');
+    cohorts.forEach(ch => {
+      cohortSelect.innerHTML += `<option value="${ch}">${ch}</option>`;
+    });
+  }
+
+  function updateStats() {
+    const total = students.length;
+    const active = students.filter(s => s.status === 'active').length;
+    const pending = students.filter(s => s.status === 'invited').length;
+
+    document.getElementById('stat-total-students').textContent = total;
+    document.getElementById('stat-active-students').textContent = active;
+    document.getElementById('stat-pending-invites').textContent = pending;
+    document.getElementById('nav-student-count').textContent = total;
+
+    // Calculate avg progress
+    let totalProg = 0;
+    students.forEach(s => {
+      const enrollments = LMSEngine.getEnrollmentsByStudent(s.id) || [];
+      if (enrollments.length) {
+        const sum = enrollments.reduce((acc, curr) => acc + (curr.progressPercent || 0), 0);
+        totalProg += (sum / enrollments.length);
+      } else {
+        totalProg += 45; // default estimate
+      }
+    });
+    const avg = total ? Math.round(totalProg / total) : 0;
+    document.getElementById('stat-avg-progress').textContent = `${avg}%`;
+  }
+
+  window.filterStudents = function() {
+    const query = (document.getElementById('student-search-input').value || '').toLowerCase().trim();
+    const courseFilter = document.getElementById('filter-course-select').value;
+    const cohortFilter = document.getElementById('filter-cohort-select').value;
+    const statusFilter = document.getElementById('filter-status-select').value;
+
+    let filtered = students.filter(s => {
+      const matchQuery = !query || 
+        (s.name && s.name.toLowerCase().includes(query)) ||
+        (s.email && s.email.toLowerCase().includes(query)) ||
+        (s.school && s.school.toLowerCase().includes(query)) ||
+        (s.cohort && s.cohort.toLowerCase().includes(query));
+
+      const matchCourse = courseFilter === 'all' || 
+        (s.enrolledCourses && s.enrolledCourses.includes(courseFilter));
+
+      const matchCohort = cohortFilter === 'all' || s.cohort === cohortFilter;
+      const matchStatus = statusFilter === 'all' || s.status === statusFilter;
+
+      return matchQuery && matchCourse && matchCohort && matchStatus;
+    });
+
+    renderTable(filtered);
+  };
+
+  function renderTable(list) {
+    const tbody = document.getElementById('students-table-body');
+    const emptyMsg = document.getElementById('no-students-message');
+
+    if (!list.length) {
+      tbody.innerHTML = '';
+      emptyMsg.style.display = 'block';
+      return;
+    }
+
+    emptyMsg.style.display = 'none';
+
+    tbody.innerHTML = list.map(s => {
+      const initials = s.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+      const courseCount = (s.enrolledCourses && s.enrolledCourses.length) || 1;
+      
+      // Calculate progress
+      const enrollments = LMSEngine.getEnrollmentsByStudent(s.id) || [];
+      const prog = enrollments.length ? Math.round(enrollments[0].progressPercent || 50) : 40;
+
+      let statusCls = 'lms-badge-published';
+      let statusLabel = 'Active';
+      if (s.status === 'inactive') {
+        statusCls = 'lms-badge-archived';
+        statusLabel = 'Inactive';
+      } else if (s.status === 'invited') {
+        statusCls = 'lms-badge-review';
+        statusLabel = 'Invited';
+      }
+
+      return `
+        <tr style="border-bottom:1px solid #F1F5F9;">
+          <td style="padding:14px 16px;">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div class="lms-avatar avatar-sm" style="background:#2145E6; color:#FFF; font-weight:700;">${initials}</div>
+              <div>
+                <strong style="color:#0F172A; display:block; font-size:14px;">${s.name}</strong>
+                <span style="color:#64748B; font-size:12px;">${s.email}</span>
+              </div>
+            </div>
+          </td>
+          <td style="padding:14px 16px; font-size:13px; color:#334155;">
+            ${s.school || 'Nairobi Central Academy'}
+          </td>
+          <td style="padding:14px 16px;">
+            <span style="background:#EFF6FF; color:#1D4ED8; font-size:11px; font-weight:700; padding:3px 8px; border-radius:6px; white-space:nowrap;">
+              ${s.cohort || 'General Cohort'}
+            </span>
+          </td>
+          <td style="padding:14px 16px; font-size:13px; color:#0F172A; font-weight:600;">
+            ${courseCount} Course${courseCount === 1 ? '' : 's'}
+          </td>
+          <td style="padding:14px 16px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div style="flex:1; height:6px; background:#E2E8F0; border-radius:99px; overflow:hidden;">
+                <div style="width:${prog}%; height:100%; background:${prog > 70 ? '#059669' : prog > 30 ? '#2145E6' : '#F59E0B'}; border-radius:99px;"></div>
+              </div>
+              <span style="font-size:12px; font-weight:700; color:#475569; width:34px; text-align:right;">${prog}%</span>
+            </div>
+          </td>
+          <td style="padding:14px 16px;">
+            <span class="lms-badge ${statusCls}">${statusLabel}</span>
+          </td>
+          <td style="padding:14px 16px; text-align:right;">
+            <div style="display:flex; justify-content:flex-end; gap:6px;">
+              <button onclick="toggleStudentStatus('${s.id}')" class="lms-btn lms-btn-outline lms-btn-sm" title="Toggle Status">
+                ${s.status === 'active' ? '⏸' : '▶'}
+              </button>
+              <button onclick="removeStudentPrompt('${s.id}', '${s.name.replace(/'/g, "\\'")}')" class="lms-btn lms-btn-outline lms-btn-sm" style="color:#DC2626; border-color:#FECACA;" title="Remove Learner">
+                🗑️
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  // Enrol Modal Controls
+  window.openEnrolModal = function() {
+    document.getElementById('enrol-modal').style.display = 'flex';
+  };
+  window.closeEnrolModal = function() {
+    document.getElementById('enrol-modal').style.display = 'none';
+  };
+
+  window.handleEnrolSubmit = function(e) {
+    e.preventDefault();
+    const name = document.getElementById('enrol-name').value.trim();
+    const email = document.getElementById('enrol-email').value.trim();
+    const phone = document.getElementById('enrol-phone').value.trim();
+    const school = document.getElementById('enrol-school').value.trim();
+    const courseId = document.getElementById('enrol-course').value;
+    const cohort = document.getElementById('enrol-cohort').value.trim() || 'General Cohort';
+
+    const newStudent = LMSEngine.addStudent({
+      name, email, phone, school, cohort,
+      enrolledCourses: courseId ? [courseId] : []
+    });
+
+    if (courseId) {
+      LMSEngine.enrollStudent(newStudent.id, courseId, cohort);
+    }
+
+    LMSNotifications.showNotification({
+      title: 'Learner Enrolled',
+      message: `${name} has been enrolled successfully.`,
+      type: 'success'
+    });
+
+    closeEnrolModal();
+    e.target.reset();
+    initData();
+  };
+
+  // CSV Modal Controls
+  window.openCsvModal = function() {
+    document.getElementById('csv-modal').style.display = 'flex';
+  };
+  window.closeCsvModal = function() {
+    document.getElementById('csv-modal').style.display = 'none';
+    parsedCsvData = [];
+    document.getElementById('csv-preview-area').style.display = 'none';
+    document.getElementById('csv-import-btn').disabled = true;
+  };
+
+  window.handleCsvFile = function(input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const text = e.target.result;
+      const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
+      if (lines.length <= 1) {
+        alert('CSV file appears empty or contains only headers.');
+        return;
+      }
+
+      parsedCsvData = [];
+      // Assume headers on row 0
+      for (let i = 1; i < lines.length; i++) {
+        const parts = lines[i].split(',').map(p => p.trim().replace(/^["']|["']$/g, ''));
+        if (parts[0] && parts[1]) {
+          parsedCsvData.push({
+            name: parts[0],
+            email: parts[1],
+            phone: parts[2] || '',
+            school: parts[3] || '',
+            cohort: parts[4] || 'General Cohort'
+          });
+        }
+      }
+
+      document.getElementById('csv-file-name').textContent = file.name;
+      document.getElementById('csv-row-count').textContent = `${parsedCsvData.length} valid learner records detected`;
+      document.getElementById('csv-preview-area').style.display = 'block';
+      document.getElementById('csv-import-btn').disabled = parsedCsvData.length === 0;
+    };
+    reader.readAsText(file);
+  };
+
+  window.executeCsvImport = function() {
+    if (!parsedCsvData.length) return;
+    let count = 0;
+    parsedCsvData.forEach(s => {
+      LMSEngine.addStudent(s);
+      count++;
+    });
+
+    LMSNotifications.showNotification({
+      title: 'Bulk Import Complete',
+      message: `Successfully imported ${count} learners into your roster.`,
+      type: 'success'
+    });
+
+    closeCsvModal();
+    initData();
+  };
+
+  window.downloadSampleCsv = function() {
+    const sample = 'Name,Email,Phone,School,Cohort\nMary Achieng,mary.a@schools.ke,+254711223344,Pangani Girls,CBC Term 3\nPeter Kamau,p.kamau@schools.ke,+254722334455,Lenana School,CBC Term 3\nHalima Yusuf,h.yusuf@schools.ke,+254733445566,Coast Academy,Science Trainees';
+    const blob = new Blob([sample], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'instructify_student_import_sample.csv';
+    link.click();
+  };
+
+  // Invite Modal
+  window.openInviteModal = function() {
+    document.getElementById('invite-modal').style.display = 'flex';
+    generateInviteDetails();
+  };
+  window.closeInviteModal = function() {
+    document.getElementById('invite-modal').style.display = 'none';
+  };
+
+  window.generateInviteDetails = function() {
+    const courseId = document.getElementById('invite-course-select').value || 'crs_001';
+    const baseUrl = window.location.origin + window.location.pathname.replace('educator-students.html', '');
+    const inviteUrl = `${baseUrl}course-detail.html?id=${courseId}&invite=ik_${courseId.slice(-3)}`;
+    const accessCode = `IK-${Math.floor(100000 + Math.random() * 900000)}`;
+
+    document.getElementById('invite-url-input').value = inviteUrl;
+    document.getElementById('invite-code-input').value = accessCode;
+  };
+
+  window.copyInviteLink = function() {
+    const input = document.getElementById('invite-url-input');
+    input.select();
+    navigator.clipboard.writeText(input.value);
+    LMSNotifications.showNotification({ title: 'Copied!', message: 'Invite URL copied to clipboard.', type: 'info' });
+  };
+
+  window.copyAccessCode = function() {
+    const input = document.getElementById('invite-code-input');
+    navigator.clipboard.writeText(input.value);
+    LMSNotifications.showNotification({ title: 'Copied!', message: 'Access code copied to clipboard.', type: 'info' });
+  };
+
+  // Status & Delete
+  window.toggleStudentStatus = function(id) {
+    const st = students.find(s => s.id === id);
+    if (!st) return;
+    const newStatus = st.status === 'active' ? 'inactive' : 'active';
+    LMSEngine.updateStudent(id, { status: newStatus });
+    initData();
+  };
+
+  window.removeStudentPrompt = function(id, name) {
+    if (confirm(`Are you sure you want to remove ${name}? Their enrolment records will be archived.`)) {
+      LMSEngine.deleteStudent(id);
+      LMSNotifications.showNotification({ title: 'Learner Removed', message: `${name} has been removed.`, type: 'info' });
+      initData();
+    }
+  };
+
+  window.exportStudentsCSV = function() {
+    LMSEngine.exportStudentsCSV();
+  };
+
+  initData();
+
+})();
+</script>
+</body>
+</html>

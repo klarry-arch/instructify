@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Player | Instructify Kenya LMS</title>
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
+  <link rel="stylesheet" href="css/course-player.css">
+  <link rel="stylesheet" href="css/live-chat.css">
+</head>
+<body class="player-mode">
+
+  <!-- ── Top Player Header ── -->
+  <header class="player-header">
+    <div class="player-header-left">
+      <a href="dashboard-learner.html" class="player-btn-back" aria-label="Return to Learner Dashboard">
+        <span>←</span> <span>Dashboard</span>
+      </a>
+      <div class="player-course-meta">
+        <div class="player-course-title" id="player-course-title">ICT Integration in Education</div>
+        <div class="player-course-instructor" id="player-course-instructor">Dr. Wanjiku Kamau • Lead Facilitator</div>
+      </div>
+    </div>
+
+    <div class="player-header-right">
+      <div class="player-progress-container">
+        <div class="player-progress-bar-bg" aria-label="Course Progress Track">
+          <div class="player-progress-bar-fill" id="player-progress-bar" style="width: 45%;"></div>
+        </div>
+        <div class="player-progress-text" id="player-progress-text">45%</div>
+      </div>
+      <button type="button" class="btn btn-outline btn-sm" id="btn-toggle-sidebar" onclick="toggleCurriculumSidebar()" aria-label="Toggle Curriculum Sidebar">
+        <span>📑 Curriculum</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Player Main Layout ── -->
+  <div class="player-layout">
+    
+    <!-- Collapsible Curriculum Sidebar -->
+    <aside class="player-sidebar" id="player-sidebar">
+      <div class="player-sidebar-header">
+        <div style="font-size: 13.5px; font-weight: 800; color: #0F172A; text-transform: uppercase; letter-spacing: 0.05em;">
+          Course Curriculum
+        </div>
+        <button type="button" onclick="toggleCurriculumSidebar()" style="background: none; border: none; font-size: 16px; color: #64748B; cursor: pointer;" aria-label="Close Sidebar">✕</button>
+      </div>
+      <div class="player-curriculum-scroll" id="player-curriculum-list">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </aside>
+
+    <!-- Main Lesson Content Viewport -->
+    <main class="player-stage" id="player-stage">
+      
+      <div class="player-content-card">
+        
+        <div class="player-lesson-header">
+          <span class="player-badge-type" id="player-lesson-badge">📺 Video Lesson</span>
+          <h1 class="player-lesson-title" id="player-lesson-title">Lesson 1.1: Core Competencies in the 21st Century Classroom</h1>
+          <div class="player-lesson-meta" id="player-lesson-meta">Estimated Duration: 18 mins • Mandatory CBC Core Requirement</div>
+        </div>
+
+        <!-- Media Stage (Video or Audio) -->
+        <div class="player-stage-media" id="player-media-container">
+          <iframe id="player-video-frame" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Lesson Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <!-- Lesson Body Text & Materials -->
+        <div class="player-reading-body" id="player-reading-body">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Downloadable Attachments -->
+        <div id="player-resources-section" style="margin-top: 24px; border-top: 1px solid #F1F5F9; padding-top: 18px;">
+          <h4 style="font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #475569; margin-bottom: 12px;">
+            Downloadable Lesson Materials
+          </h4>
+          <div id="player-resources-list" style="display: flex; flex-direction: column; gap: 8px;">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Notes & Lesson Q&A Tabs -->
+      <div class="player-tabs-wrapper">
+        <div class="player-tabs-header">
+          <button type="button" class="player-tab-trigger active" onclick="switchPlayerTab('notes')">📝 My Personal Notes</button>
+          <button type="button" class="player-tab-trigger" onclick="switchPlayerTab('discussion')">💬 Lesson Discussion &amp; Q&amp;A</button>
+        </div>
+
+        <div id="tab-notes" class="player-tab-content active">
+          <div style="font-size: 13px; color: #64748B; margin-bottom: 8px;">Notes are automatically saved to your browser session:</div>
+          <textarea id="player-notes-input" aria-label="Personal Notes" style="width: 100%; border: 1.5px solid #CBD5E1; border-radius: 12px; padding: 12px; font-family: inherit; font-size: 13.5px; line-height: 1.5; color: #0F172A; min-height: 100px; resize: vertical; box-sizing: border-box;" placeholder="Type reflective notes, key takeaways, and lesson observations here..."></textarea>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+            <span id="notes-status-text" style="font-size: 12px; color: #10B981; font-weight: 600;">✓ Autosaved</span>
+            <button type="button" onclick="savePersonalNotes()" class="btn btn-outline btn-sm">Save Note 💾</button>
+          </div>
+        </div>
+
+        <div id="tab-discussion" class="player-tab-content">
+          <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:16px;">
+            <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:12px 14px;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                <strong style="font-size:13px; color:#0F172A;">Grace Wanjiku (Colleague)</strong>
+                <span style="font-size:11.5px; color:#64748B;">2 hours ago</span>
+              </div>
+              <p style="font-size:13px; color:#334155; margin:0;">
+                How do we best adapt this inquiry starter for schools with limited tablet devices?
+              </p>
+            </div>
+            <div style="background:#EEF2FF; border:1px solid #C7D2FE; border-radius:12px; padding:12px 14px; margin-left:16px;">
+              <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                <strong style="font-size:13px; color:#2145E6;">Dr. Wanjiku Kamau (Facilitator)</strong>
+                <span style="font-size:11.5px; color:#64748B;">1 hour ago</span>
+              </div>
+              <p style="font-size:13px; color:#1E293B; margin:0;">
+                Great question, Grace! Use "Station Rotation": 1 device shared per group of 4, rotating roles (Researcher, Recorder, Presenter, Checker).
+              </p>
+            </div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="discussion-input" aria-label="Ask Facilitator" class="form-input" placeholder="Ask a question or share pedagogical advice..." style="flex:1;">
+            <button type="button" onclick="postDiscussionMessage()" class="btn btn-blue btn-sm">Post ↗</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ── Player Bottom Navigation Footer ── -->
+  <footer class="player-footer">
+    <div class="player-footer-left">
+      <button type="button" class="btn btn-outline btn-md" id="btn-prev-lesson" onclick="navigateToPreviousLesson()">
+        ← Previous Lesson
+      </button>
+    </div>
+
+    <div class="player-footer-right">
+      <button type="button" class="btn btn-outline btn-md" id="btn-mark-complete" onclick="toggleCurrentLessonCompletion()" style="color:#10B981; border-color:#A7F3D0;">
+        <span id="complete-icon">✓</span> <span id="complete-text">Mark Complete</span>
+      </button>
+      <button type="button" class="btn btn-primary btn-md" id="btn-next-lesson" onclick="navigateToNextLesson()">
+        Next Lesson →
+      </button>
+    </div>
+  </footer>
+
+  <script src="js/courses.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/lms-engine.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // ── Player Controller Logic ────────────────────────────────────
+    let currentCourseId = 'crs_001';
+    let currentCourse = null;
+    let allLessonsFlat = [];
+    let currentLessonIndex = 0;
+    let studentId = 'std_001';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Check Auth
+      const session = window.getSession ? window.getSession() : null;
+      if (session) {
+        studentId = session.id;
+      }
+
+      // 2. Resolve Course ID
+      const params = new URLSearchParams(window.location.search);
+      currentCourseId = params.get('courseId') || params.get('id') || 'crs_001';
+
+      // 3. Load from LMSEngine
+      currentCourse = window.LMSEngine.getCourseById(currentCourseId);
+      if (!currentCourse) {
+        currentCourse = window.LMSEngine.getAllCourses()[0] || null;
+        if (currentCourse) currentCourseId = currentCourse.id;
+      }
+
+      if (!currentCourse) {
+        window.showToast('Course not found.', 'error');
+        setTimeout(() => window.location.href = 'dashboard-learner.html', 1500);
+        return;
+      }
+
+      // 4. Update Header
+      document.getElementById('player-course-title').textContent = currentCourse.title;
+      document.getElementById('player-course-instructor').textContent = `${currentCourse.instructor} • ${currentCourse.instructorTitle || 'Facilitator'}`;
+
+      // 5. Build Flat Lesson List
+      buildCurriculumList();
+
+      // 6. Resume from Bookmark if available
+      const progress = window.LMSEngine.getStudentProgress(studentId, currentCourseId);
+      let resumeLessonId = params.get('lessonId');
+      if (!resumeLessonId && progress && progress.activeLessonId) {
+        resumeLessonId = progress.activeLessonId;
+      }
+
+      if (resumeLessonId) {
+        const foundIdx = allLessonsFlat.findIndex(l => l.id === resumeLessonId);
+        if (foundIdx >= 0) currentLessonIndex = foundIdx;
+      }
+
+      // 7. Render Current Lesson
+      renderCurrentLesson();
+      updateProgressBar();
+      loadPersonalNotes();
+    });
+
+    function toggleCurriculumSidebar() {
+      const sidebar = document.getElementById('player-sidebar');
+      sidebar.classList.toggle('collapsed');
+    }
+
+    function buildCurriculumList() {
+      allLessonsFlat = [];
+      const curriculum = currentCourse.curriculum || [];
+      const container = document.getElementById('player-curriculum-list');
+      container.innerHTML = '';
+
+      const progress = window.LMSEngine.getStudentProgress(studentId, currentCourseId);
+      const completed = (progress && progress.completedLessons) ? progress.completedLessons : [];
+
+      curriculum.forEach((sec, sIdx) => {
+        const group = document.createElement('div');
+        group.className = 'player-section-group';
+
+        const header = document.createElement('div');
+        header.className = 'player-section-header';
+        header.innerHTML = `<span>${sec.title}</span> <span>▾</span>`;
+        group.appendChild(header);
+
+        (sec.modules || []).forEach((mod) => {
+          (mod.lessons || []).forEach((les) => {
+            const itemIdx = allLessonsFlat.length;
+            allLessonsFlat.push(les);
+
+            const isDone = completed.includes(les.id);
+            const itemEl = document.createElement('a');
+            itemEl.className = 'player-lesson-item' + (isDone ? ' completed' : '');
+            itemEl.id = 'curriculum-item-' + les.id;
+            itemEl.href = 'javascript:void(0)';
+            itemEl.onclick = () => selectLessonByIndex(itemIdx);
+
+            const typeIcons = { video: '📺', text: '📖', quiz: '❓', assignment: '📑' };
+            const icon = typeIcons[les.type] || '📄';
+
+            itemEl.innerHTML = `
+              <span class="player-lesson-icon">${icon}</span>
+              <div class="player-lesson-info">
+                <div class="player-lesson-name">${les.title}</div>
+                <div class="player-lesson-duration">${les.duration || '15 mins'}</div>
+              </div>
+              <span class="player-lesson-status-icon" id="status-icon-${les.id}">${isDone ? '✓' : '○'}</span>
+            `;
+            group.appendChild(itemEl);
+          });
+        });
+
+        container.appendChild(group);
+      });
+    }
+
+    function selectLessonByIndex(index) {
+      if (index < 0 || index >= allLessonsFlat.length) return;
+      currentLessonIndex = index;
+      renderCurrentLesson();
+    }
+
+    function renderCurrentLesson() {
+      const lesson = allLessonsFlat[currentLessonIndex];
+      if (!lesson) return;
+
+      // Bookmark progress
+      window.LMSEngine.saveActiveLessonBookmark(studentId, currentCourseId, lesson.id);
+
+      // Active state in sidebar
+      document.querySelectorAll('.player-lesson-item').forEach(el => el.classList.remove('active'));
+      const activeEl = document.getElementById('curriculum-item-' + lesson.id);
+      if (activeEl) {
+        activeEl.classList.add('active');
+        activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+
+      // Title & Badge
+      const typeBadges = {
+        video: '📺 Video Practical',
+        text: '📖 Theoretical & Case Reading',
+        quiz: '❓ Formative Knowledge Quiz',
+        assignment: '📑 Practical Assessment Portfolio'
+      };
+      document.getElementById('player-lesson-badge').textContent = typeBadges[lesson.type] || '📄 Course Module';
+      document.getElementById('player-lesson-title').textContent = lesson.title;
+      document.getElementById('player-lesson-meta').textContent = `Duration: ${lesson.duration || '20 mins'} • Mandatory CBC Unit`;
+
+      // Media Section
+      const mediaBox = document.getElementById('player-media-container');
+      if (lesson.type === 'video' && lesson.videoUrl) {
+        mediaBox.style.display = 'block';
+        document.getElementById('player-video-frame').src = lesson.videoUrl;
+      } else {
+        mediaBox.style.display = 'none';
+        document.getElementById('player-video-frame').src = '';
+      }
+
+      // Body Section
+      const bodyBox = document.getElementById('player-reading-body');
+      bodyBox.innerHTML = '';
+
+      if (lesson.type === 'quiz') {
+        renderQuizInterface(lesson, bodyBox);
+      } else if (lesson.type === 'assignment') {
+        renderAssignmentInterface(lesson, bodyBox);
+      } else {
+        bodyBox.innerHTML = lesson.contentHtml || `
+          <p>Welcome to this module. Complete the reading material and practical activities aligned with KICD standards.</p>
+          <div class="lms-callout lms-callout-tip">
+            <strong>Key Outcome:</strong> Learners apply competency frameworks in interactive instructional sequences.
+          </div>
+        `;
+      }
+
+      // Resources
+      const resSection = document.getElementById('player-resources-section');
+      const resList = document.getElementById('player-resources-list');
+      if (lesson.resources && lesson.resources.length > 0) {
+        resSection.style.display = 'block';
+        resList.innerHTML = lesson.resources.map(r => `
+          <div style="display:flex; justify-content:space-between; align-items:center; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:10px 14px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span>📁</span>
+              <div>
+                <div style="font-weight:700; font-size:13px; color:#0F172A;">${r.name}</div>
+                <div style="font-size:11.5px; color:#64748B;">${r.size} • Resource Document</div>
+              </div>
+            </div>
+            <button type="button" onclick="window.showToast('📥 Downloading ${r.name}...','info')" class="btn btn-outline btn-sm">Download</button>
+          </div>
+        `).join('');
+      } else {
+        resSection.style.display = 'none';
+      }
+
+      // Update Navigation Buttons
+      document.getElementById('btn-prev-lesson').disabled = (currentLessonIndex === 0);
+      document.getElementById('btn-next-lesson').textContent = (currentLessonIndex === allLessonsFlat.length - 1) ? 'Finish Course 🎓' : 'Next Lesson →';
+
+      // Completion Checkmark
+      const progress = window.LMSEngine.getStudentProgress(studentId, currentCourseId);
+      const isDone = (progress && progress.completedLessons && progress.completedLessons.includes(lesson.id));
+      const completeBtn = document.getElementById('btn-mark-complete');
+      if (isDone) {
+        completeBtn.style.background = '#ECFDF5';
+        completeBtn.style.color = '#059669';
+        completeBtn.style.borderColor = '#10B981';
+        document.getElementById('complete-icon').textContent = '✓';
+        document.getElementById('complete-text').textContent = 'Completed';
+      } else {
+        completeBtn.style.background = '#FFFFFF';
+        completeBtn.style.color = '#475569';
+        completeBtn.style.borderColor = '#CBD5E1';
+        document.getElementById('complete-icon').textContent = '○';
+        document.getElementById('complete-text').textContent = 'Mark Complete';
+      }
+
+      // Scroll stage to top
+      document.getElementById('player-stage').scrollTop = 0;
+    }
+
+    function renderQuizInterface(quiz, container) {
+      const questions = quiz.questions || [];
+      let html = `
+        <div class="player-quiz-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+            <h3 style="margin:0; font-size:18px; color:#0F172A;">Knowledge Check: ${quiz.title}</h3>
+            <span class="badge badge-primary">Pass Mark: ${quiz.passMark || 80}%</span>
+          </div>
+          <p style="color:#64748B; font-size:13.5px; margin-bottom:20px;">
+            Answer the questions below to demonstrate strand competency. Instant feedback is provided upon submission.
+          </p>
+      `;
+
+      questions.forEach((q, qIdx) => {
+        html += `
+          <div style="margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid #F1F5F9;">
+            <div class="player-quiz-question">${qIdx + 1}. ${q.text}</div>
+            <div class="player-quiz-options">
+        `;
+        (q.options || []).forEach((opt, oIdx) => {
+          html += `
+            <label class="player-quiz-option" id="opt-label-${q.id}-${oIdx}">
+              <input type="radio" name="quiz_q_${q.id}" value="${oIdx}">
+              <span>${opt}</span>
+            </label>
+          `;
+        });
+        html += `
+            </div>
+            <div id="quiz-feedback-${q.id}" style="display:none; font-size:13px; padding:10px 14px; border-radius:8px; margin-top:10px;"></div>
+          </div>
+        `;
+      });
+
+      html += `
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <button type="button" onclick="submitQuizAnswers('${quiz.id}')" class="btn btn-blue btn-md" id="btn-submit-quiz">
+              Submit Quiz Answers 🚀
+            </button>
+            <div id="quiz-final-score" style="font-weight:800; font-size:15px; color:#2145E6;"></div>
+          </div>
+        </div>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    function submitQuizAnswers(quizId) {
+      const lesson = allLessonsFlat[currentLessonIndex];
+      const questions = lesson.questions || [];
+      let correctCount = 0;
+
+      questions.forEach((q) => {
+        const selected = document.querySelector(`input[name="quiz_q_${q.id}"]:checked`);
+        const feedback = document.getElementById(`quiz-feedback-${q.id}`);
+        feedback.style.display = 'block';
+
+        if (selected && parseInt(selected.value) === q.correctAnswer) {
+          correctCount++;
+          feedback.style.background = '#F0FDF4';
+          feedback.style.color = '#166534';
+          feedback.style.border = '1px solid #BBF7D0';
+          feedback.innerHTML = `<strong>✅ Correct!</strong> ${q.explanation || ''}`;
+        } else {
+          feedback.style.background = '#FEF2F2';
+          feedback.style.color = '#991B1B';
+          feedback.style.border = '1px solid #FECACA';
+          feedback.innerHTML = `<strong>❌ Incorrect.</strong> Correct answer: <em>${q.options[q.correctAnswer]}</em>. ${q.explanation || ''}`;
+        }
+      });
+
+      const scorePercent = Math.round((correctCount / questions.length) * 100);
+      const scoreBox = document.getElementById('quiz-final-score');
+      scoreBox.textContent = `Score: ${scorePercent}% (${correctCount}/${questions.length})`;
+
+      // Save to engine
+      window.LMSEngine.recordQuizScore(studentId, currentCourseId, quizId, scorePercent);
+      updateProgressBar();
+
+      if (scorePercent >= (lesson.passMark || 80)) {
+        window.showToast(`🎉 Great job! You scored ${scorePercent}% and passed the quiz!`, 'success');
+        document.getElementById('complete-icon').textContent = '✓';
+        document.getElementById('complete-text').textContent = 'Completed';
+      } else {
+        window.showToast(`⚠️ You scored ${scorePercent}%. You can review the material and try again.`, 'warning');
+      }
+    }
+
+    function renderAssignmentInterface(assignment, container) {
+      let rubricHtml = '';
+      if (assignment.rubric && assignment.rubric.length > 0) {
+        rubricHtml = `
+          <h4 style="margin:16px 0 10px; font-size:13px; text-transform:uppercase; color:#475569;">Assessment Criterion Rubric</h4>
+          <table class="data-table" style="margin-bottom:20px;">
+            <thead>
+              <tr><th>Evaluation Criterion</th><th style="width:100px; text-align:right;">Max Points</th></tr>
+            </thead>
+            <tbody>
+              ${assignment.rubric.map(r => `<tr><td>${r.criterion}</td><td style="text-align:right; font-weight:700;">${r.maxPoints} pts</td></tr>`).join('')}
+            </tbody>
+          </table>
+        `;
+      }
+
+      container.innerHTML = `
+        <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:16px; padding:24px;">
+          <h3 style="margin-top:0; color:#0F172A;">Assignment Instructions</h3>
+          <p style="font-size:14.5px; line-height:1.6; color:#334155;">
+            ${assignment.instructions || 'Review the curriculum guidelines and upload your completed practical portfolio for facilitator rubric review.'}
+          </p>
+          ${rubricHtml}
+
+          <div style="margin-top:20px; border:2px dashed #CBD5E1; border-radius:14px; padding:28px 20px; text-align:center; background:#FFFFFF;">
+            <div style="font-size:32px; margin-bottom:8px;">📤</div>
+            <div style="font-weight:700; font-size:14.5px; color:#0F172A; margin-bottom:4px;">Drag and drop your assignment submission file</div>
+            <div style="font-size:12.5px; color:#64748B; margin-bottom:14px;">Supported formats: PDF, DOCX, ZIP (Max: 25 MB)</div>
+            <input type="file" id="assignment-file-input" style="display:none;" onchange="handleAssignmentFileSelected(event)">
+            <button type="button" onclick="document.getElementById('assignment-file-input').click()" class="btn btn-outline btn-sm">
+              Browse Files...
+            </button>
+            <div id="assignment-selected-filename" style="margin-top:10px; font-weight:700; color:#2145E6; font-size:13px;"></div>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; margin-top:18px;">
+            <button type="button" onclick="submitStudentAssignment('${assignment.id}')" class="btn btn-blue btn-md" id="btn-submit-assignment">
+              Upload &amp; Submit for Grading 🚀
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function handleAssignmentFileSelected(e) {
+      const file = e.target.files[0];
+      if (file) {
+        document.getElementById('assignment-selected-filename').textContent = `Selected: ${file.name} (${(file.size / (1024*1024)).toFixed(2)} MB)`;
+      }
+    }
+
+    function submitStudentAssignment(assignmentId) {
+      const lesson = allLessonsFlat[currentLessonIndex];
+      window.LMSEngine.markLessonComplete(studentId, currentCourseId, assignmentId);
+      updateProgressBar();
+      window.showToast('✅ Assignment submitted successfully! Sent to Dr. Wanjiku for grading.', 'success');
+      document.getElementById('complete-icon').textContent = '✓';
+      document.getElementById('complete-text').textContent = 'Completed';
+    }
+
+    function toggleCurrentLessonCompletion() {
+      const lesson = allLessonsFlat[currentLessonIndex];
+      if (!lesson) return;
+
+      window.LMSEngine.markLessonComplete(studentId, currentCourseId, lesson.id);
+      updateProgressBar();
+
+      const itemIcon = document.getElementById('status-icon-' + lesson.id);
+      if (itemIcon) itemIcon.textContent = '✓';
+
+      document.getElementById('complete-icon').textContent = '✓';
+      document.getElementById('complete-text').textContent = 'Completed';
+      window.showToast('✅ Lesson marked as completed!', 'success');
+    }
+
+    function navigateToNextLesson() {
+      if (currentLessonIndex < allLessonsFlat.length - 1) {
+        currentLessonIndex++;
+        renderCurrentLesson();
+      } else {
+        window.showToast('🎉 Congratulations! You have reached the end of this course!', 'success');
+        setTimeout(() => window.location.href = 'dashboard-learner.html', 1500);
+      }
+    }
+
+    function navigateToPreviousLesson() {
+      if (currentLessonIndex > 0) {
+        currentLessonIndex--;
+        renderCurrentLesson();
+      }
+    }
+
+    function updateProgressBar() {
+      const progress = window.LMSEngine.getStudentProgress(studentId, currentCourseId);
+      const pct = (progress && progress.progressPercent) ? progress.progressPercent : 0;
+      document.getElementById('player-progress-bar').style.width = pct + '%';
+      document.getElementById('player-progress-text').textContent = pct + '%';
+    }
+
+    // ── Notes & Discussion Tabs ────────────────────────────────────
+    function switchPlayerTab(tab) {
+      document.querySelectorAll('.player-tab-trigger').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.player-tab-content').forEach(c => c.classList.remove('active'));
+
+      if (tab === 'notes') {
+        document.querySelectorAll('.player-tab-trigger')[0].classList.add('active');
+        document.getElementById('tab-notes').classList.add('active');
+      } else {
+        document.querySelectorAll('.player-tab-trigger')[1].classList.add('active');
+        document.getElementById('tab-discussion').classList.add('active');
+      }
+    }
+
+    function loadPersonalNotes() {
+      const key = `ik_note_${currentCourseId}_${studentId}`;
+      const saved = localStorage.getItem(key);
+      if (saved) {
+        document.getElementById('player-notes-input').value = saved;
+      }
+    }
+
+    function savePersonalNotes() {
+      const key = `ik_note_${currentCourseId}_${studentId}`;
+      const val = document.getElementById('player-notes-input').value;
+      localStorage.setItem(key, val);
+      const status = document.getElementById('notes-status-text');
+      status.textContent = '✓ Saved ' + new Date().toLocaleTimeString();
+      window.showToast('💾 Personal notes saved.', 'success');
+    }
+
+    function postDiscussionMessage() {
+      const input = document.getElementById('discussion-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      input.value = '';
+      window.showToast('💬 Your message has been posted to the cohort discussion.', 'success');
+    }
+  </script>
+</body>
+</html>

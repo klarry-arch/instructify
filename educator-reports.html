@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports &amp; Analytics | Instructify Kenya LMS</title>
+  <meta name="description" content="View course analytics, completion trends, at-risk student warnings, and export LMS reports on Instructify Kenya.">
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
+  <link rel="stylesheet" href="css/lms-portal.css">
+  <link rel="stylesheet" href="css/live-chat.css">
+</head>
+<body class="lms-page">
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+      <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
+      <div class="nav-brand-text-box" style="display: inline-flex !important; flex-direction: column !important; justify-content: center !important; align-items: flex-start !important; line-height: 1 !important;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-weight: 800 !important; font-size: 1.25rem !important; color: #0F172A !important; letter-spacing: -0.02em !important; line-height: 1 !important; display: block !important;">Instruct<span class="brand-accent" style="color: #F5812D !important; font-weight: 900 !important;">ify</span></span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-size: 0.62rem !important; font-weight: 850 !important; color: #FF4D00 !important; text-transform: uppercase !important; letter-spacing: 2.2px !important; line-height: 1 !important; display: block !important;">KENYA</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li class="nav-item-dropdown">
+        <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="courses" aria-haspopup="true" aria-expanded="false">
+          Courses <span class="nav-badge badge-amber">Hot</span>
+          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <ul class="nav-dropdown-menu" role="menu" aria-label="Courses, Podcast and Resources">
+          <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem" data-nav="courses"><span class="nav-dropdown-icon">📚</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span><span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span></div></a></li>
+          <li role="none"><a href="podcast.html" class="nav-dropdown-item" role="menuitem" data-nav="podcast"><span class="nav-dropdown-icon">🎙️</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></span><span class="nav-dropdown-desc">Inspiring stories from Kenyan educators</span></div></a></li>
+          <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem" data-nav="resources"><span class="nav-dropdown-info"><span class="nav-dropdown-title">Resources</span><span class="nav-dropdown-desc">Schemes of work, lesson plans &amp; guides</span></div></a></li>
+        </ul>
+      </li>
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions" style="display:flex; align-items:center; gap:12px;">
+      <div id="nav-user-area" style="display:inline-flex; align-items:center; gap:8px; background:#F8FAFC; border:1px solid #E2E8F0; padding:4px 12px 4px 6px; border-radius:999px;">
+        <div id="nav-avatar" class="lms-avatar avatar-sm">WK</div>
+        <span id="nav-user-name" style="font-size:13px; font-weight:700; color:#0F172A;">Dr. Wanjiku</span>
+        <span class="lms-badge lms-badge-published" style="font-size:10px; padding:2px 6px;">Educator</span>
+      </div>
+      <button onclick="logout()" class="btn btn-outline btn-sm" style="color:#DC2626; border-color:#DC2626;" aria-label="Log Out">Log Out</button>
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+  <div class="nav-mobile-links">
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="about.html" class="nav-mobile-link">About Us</a>
+    <div class="nav-mobile-dropdown">
+      <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
+      <div class="nav-mobile-sublinks">
+        <a href="courses.html" class="nav-mobile-sublink" data-nav="courses"><span>📚</span> All Courses</a>
+        <a href="podcast.html" class="nav-mobile-sublink" data-nav="podcast"><span>🎙️</span> Podcast</a>
+        <a href="resources.html" class="nav-mobile-sublink" data-nav="resources"><span>📂</span> Resources</a>
+      </div>
+    </div>
+    <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
+    <a href="schools.html" class="nav-mobile-link">Institutions</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+  </div>
+  <div class="nav-mobile-actions">
+    <a href="dashboard-trainer.html" class="btn btn-primary btn-md">Educator Portal</a>
+    <button onclick="logout()" class="btn btn-outline btn-md" style="color:#DC2626 !important; border-color:#DC2626;">Log Out</button>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Dashboard Menu">☰</button>
+
+<!-- ── Dashboard Layout ── -->
+<div class="lms-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="lms-sidebar" id="educator-sidebar">
+    <div class="lms-sidebar-profile">
+      <div class="lms-avatar" id="sidebar-avatar">WK</div>
+      <div>
+        <div class="lms-sidebar-name" id="sidebar-name">Dr. Wanjiku Kamau</div>
+        <div class="lms-sidebar-role">Educator</div>
+      </div>
+    </div>
+
+    <nav class="lms-sidebar-nav" aria-label="Educator Navigation">
+      <div class="lms-sidebar-section">Main</div>
+      <a href="dashboard-trainer.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Dashboard
+      </a>
+      <a href="educator-courses.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📚</span> My Courses
+      </a>
+      <a href="course-wizard.html" class="lms-nav-item">
+        <span class="lms-nav-icon">➕</span> Create Course
+      </a>
+
+      <div class="lms-sidebar-section">Learners</div>
+      <a href="educator-students.html" class="lms-nav-item">
+        <span class="lms-nav-icon">👥</span> Student Management
+      </a>
+      <a href="educator-assessments.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📝</span> Assessments
+      </a>
+      <a href="educator-gradebook.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Gradebook
+      </a>
+
+      <div class="lms-sidebar-section">Communicate</div>
+      <a href="educator-announcements.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📢</span> Announcements
+      </a>
+      <a href="educator-reports.html" class="lms-nav-item active" aria-current="page">
+        <span class="lms-nav-icon">📈</span> Reports
+      </a>
+    </nav>
+
+    <div class="lms-sidebar-footer">
+      <a href="index.html" class="lms-nav-item" style="color:#94A3B8;">
+        <span class="lms-nav-icon">🌐</span> View Website
+      </a>
+      <a href="#" onclick="logout();return false;" class="lms-nav-item" style="color:#DC2626;">
+        <span class="lms-nav-icon">🚪</span> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── Main Content ── -->
+  <main class="lms-main" id="educator-main">
+
+    <!-- Page Header -->
+    <div class="lms-page-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="lms-breadcrumbs">
+          <a href="index.html">Home</a> <span class="sep">›</span>
+          <a href="dashboard-trainer.html">Educator Portal</a> <span class="sep">›</span>
+          <span class="current">Analytics &amp; Reports</span>
+        </div>
+        <h1 class="lms-page-title">Performance Analytics &amp; Reports</h1>
+        <p class="lms-page-subtitle">Monitor learner engagement, identify drop-off patterns, and download audit reports.</p>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="lms-btn lms-btn-outline" onclick="exportAnalyticsReport()">
+          <span>📊</span> Export Analytics CSV
+        </button>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="lms-card" style="margin-bottom:24px; padding:16px 20px;">
+      <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:center;">
+        <div style="flex:1; min-width:240px;">
+          <label for="report-course-select" class="lms-label" style="font-size:12px; margin-bottom:4px;">Filter Course</label>
+          <select id="report-course-select" class="lms-select" onchange="refreshReports()" aria-label="Filter course for reports">
+            <option value="all">All Active Courses</option>
+          </select>
+        </div>
+        <div style="min-width:200px;">
+          <label for="report-timeframe-select" class="lms-label" style="font-size:12px; margin-bottom:4px;">Timeframe</label>
+          <select id="report-timeframe-select" class="lms-select" onchange="refreshReports()" aria-label="Timeframe">
+            <option value="term">Current Academic Term</option>
+            <option value="30d">Past 30 Days</option>
+            <option value="7d">Past 7 Days</option>
+            <option value="all">All Time</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPI Stats -->
+    <div class="lms-stats-grid" style="margin-bottom:24px;">
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-primary">📈</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="kpi-completion-rate">74.2%</div>
+          <div class="lms-stat-label">Course Completion Rate</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-success">⏱️</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="kpi-hours-spent">1,480 hrs</div>
+          <div class="lms-stat-label">Total Learning Hours</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-warning">⚠️</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="kpi-at-risk-count" style="color:#DC2626;">2</div>
+          <div class="lms-stat-label">At-Risk Learners</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-secondary">🎓</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="kpi-certificates-count">18</div>
+          <div class="lms-stat-label">Certificates Awarded</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Charts Grid -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:24px; margin-bottom:24px;">
+      
+      <!-- Chart Card 1: Module Progression & Completion -->
+      <div class="lms-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+          <div>
+            <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin:0 0 4px 0;">Module Completion &amp; Drop-off</h3>
+            <p style="font-size:12px; color:#64748B; margin:0;">Learner retention across course sequence</p>
+          </div>
+          <span class="lms-badge lms-badge-published">92% Retention</span>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:14px;" id="module-progress-list">
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:6px;">
+              <span style="color:#0F172A;">Module 1: CBC Foundations &amp; Strands</span>
+              <span style="color:#059669;">98% Complete</span>
+            </div>
+            <div style="height:8px; background:#E2E8F0; border-radius:99px; overflow:hidden;">
+              <div style="width:98%; height:100%; background:#059669; border-radius:99px;"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:6px;">
+              <span style="color:#0F172A;">Module 2: Formative Rubric Construction</span>
+              <span style="color:#2145E6;">88% Complete</span>
+            </div>
+            <div style="height:8px; background:#E2E8F0; border-radius:99px; overflow:hidden;">
+              <div style="width:88%; height:100%; background:#2145E6; border-radius:99px;"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:6px;">
+              <span style="color:#0F172A;">Module 3: Peer &amp; Self Assessment Tools</span>
+              <span style="color:#2145E6;">76% Complete</span>
+            </div>
+            <div style="height:8px; background:#E2E8F0; border-radius:99px; overflow:hidden;">
+              <div style="width:76%; height:100%; background:#2145E6; border-radius:99px;"></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:6px;">
+              <span style="color:#0F172A;">Module 4: Capstone Portfolio Submission</span>
+              <span style="color:#F59E0B;">64% In Progress</span>
+            </div>
+            <div style="height:8px; background:#E2E8F0; border-radius:99px; overflow:hidden;">
+              <div style="width:64%; height:100%; background:#F59E0B; border-radius:99px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Card 2: Assessment Grade Distribution -->
+      <div class="lms-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
+          <div>
+            <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin:0 0 4px 0;">Grade Distribution</h3>
+            <p style="font-size:12px; color:#64748B; margin:0;">Learner mastery breakdown across cohorts</p>
+          </div>
+          <span class="lms-badge lms-badge-info">Avg. 78%</span>
+        </div>
+
+        <div style="display:flex; align-items:flex-end; justify-content:space-between; height:180px; padding-top:20px; border-bottom:1px solid #E2E8F0; margin-bottom:14px;">
+          <!-- Bar 1 -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:18%;">
+            <span style="font-size:12px; font-weight:700; color:#059669;">42%</span>
+            <div style="width:100%; height:130px; background:#059669; border-radius:6px 6px 0 0;"></div>
+            <span style="font-size:11px; font-weight:600; color:#64748B;">85-100%</span>
+          </div>
+          <!-- Bar 2 -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:18%;">
+            <span style="font-size:12px; font-weight:700; color:#2145E6;">35%</span>
+            <div style="width:100%; height:105px; background:#2145E6; border-radius:6px 6px 0 0;"></div>
+            <span style="font-size:11px; font-weight:600; color:#64748B;">70-84%</span>
+          </div>
+          <!-- Bar 3 -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:18%;">
+            <span style="font-size:12px; font-weight:700; color:#F59E0B;">15%</span>
+            <div style="width:100%; height:45px; background:#F59E0B; border-radius:6px 6px 0 0;"></div>
+            <span style="font-size:11px; font-weight:600; color:#64748B;">50-69%</span>
+          </div>
+          <!-- Bar 4 -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px; width:18%;">
+            <span style="font-size:12px; font-weight:700; color:#DC2626;">8%</span>
+            <div style="width:100%; height:25px; background:#DC2626; border-radius:6px 6px 0 0;"></div>
+            <span style="font-size:11px; font-weight:600; color:#64748B;">&lt;50%</span>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-around; font-size:12px; color:#475569;">
+          <span>🟢 Exceeds: 42%</span>
+          <span>🔵 Meets: 35%</span>
+          <span>🟠 Approaches: 15%</span>
+          <span>🔴 Needs Support: 8%</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- At-Risk Early Warning Section -->
+    <div class="lms-card" style="margin-bottom:24px; padding:0; overflow:hidden;">
+      <div style="padding:18px 20px; border-bottom:1px solid #E2E8F0; background:#FEF2F2; display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <h3 style="font-size:16px; font-weight:800; color:#991B1B; margin:0 0 2px 0;">🚨 At-Risk Learner Early Warning List</h3>
+          <p style="font-size:12px; color:#B91C1C; margin:0;">Learners flagged due to prolonged inactivity or falling behind the passing threshold.</p>
+        </div>
+        <span class="lms-badge" style="background:#FEE2E2; color:#DC2626; font-weight:700;">Intervention Needed</span>
+      </div>
+
+      <div class="table-responsive">
+        <table class="lms-table" style="width:100%; border-collapse:collapse;" aria-label="At-Risk Learners Table">
+          <thead>
+            <tr style="background:#F8FAFC; border-bottom:1px solid #E2E8F0; text-align:left;">
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Learner</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Enrolled Course</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Inactivity Duration</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Risk Factor</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; text-align:right;">Intervention Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #F1F5F9;">
+              <td style="padding:14px 16px;">
+                <strong style="color:#0F172A; display:block; font-size:13px;">Brian Kipkorir</strong>
+                <span style="color:#64748B; font-size:11px;">brian.kip@eldorethigh.sc.ke</span>
+              </td>
+              <td style="padding:14px 16px; font-size:13px; color:#334155;">
+                CBC Curriculum Foundations
+              </td>
+              <td style="padding:14px 16px; font-size:13px; font-weight:700; color:#DC2626;">
+                16 Days Inactive
+              </td>
+              <td style="padding:14px 16px;">
+                <span style="background:#FEE2E2; color:#DC2626; font-size:11px; font-weight:700; padding:3px 8px; border-radius:6px;">
+                  Missed Module 3 Assignment
+                </span>
+              </td>
+              <td style="padding:14px 16px; text-align:right;">
+                <button onclick="sendNudge('Brian Kipkorir', 'brian.kip@eldorethigh.sc.ke')" class="lms-btn lms-btn-primary lms-btn-sm">
+                  ✉️ Send Nudge Email
+                </button>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #F1F5F9;">
+              <td style="padding:14px 16px;">
+                <strong style="color:#0F172A; display:block; font-size:13px;">Faith Chebet</strong>
+                <span style="color:#64748B; font-size:11px;">faith.chebet@nakuruday.sc.ke</span>
+              </td>
+              <td style="padding:14px 16px; font-size:13px; color:#334155;">
+                Assessment &amp; Rubric Formulation
+              </td>
+              <td style="padding:14px 16px; font-size:13px; font-weight:700; color:#F59E0B;">
+                9 Days Inactive
+              </td>
+              <td style="padding:14px 16px;">
+                <span style="background:#FEF3C7; color:#D97706; font-size:11px; font-weight:700; padding:3px 8px; border-radius:6px;">
+                  Quiz 1 Score Below 60%
+                </span>
+              </td>
+              <td style="padding:14px 16px; text-align:right;">
+                <button onclick="sendNudge('Faith Chebet', 'faith.chebet@nakuruday.sc.ke')" class="lms-btn lms-btn-primary lms-btn-sm">
+                  ✉️ Send Nudge Email
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/lms-auth-guard.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/lms-engine.js"></script>
+<script src="js/lms-notifications.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  const session = LMSAuth.guardPage(['trainer', 'admin']);
+  if (!session) return;
+
+  // Profile Header
+  const nameEl = document.getElementById('sidebar-name');
+  const avatarEl = document.getElementById('sidebar-avatar');
+  const navName = document.getElementById('nav-user-name');
+  const navAvatar = document.getElementById('nav-avatar');
+
+  if (session.name) {
+    if (nameEl) nameEl.textContent = session.name;
+    if (navName) navName.textContent = session.name.split(' ')[0];
+    const initials = session.avatar || session.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+    if (avatarEl) avatarEl.textContent = initials;
+    if (navAvatar) navAvatar.textContent = initials;
+  }
+
+  function initReports() {
+    const courses = LMSEngine.getCourses();
+    const courseSelect = document.getElementById('report-course-select');
+    courses.forEach(c => {
+      courseSelect.innerHTML += `<option value="${c.id}">${c.title}</option>`;
+    });
+  }
+
+  window.refreshReports = function() {
+    LMSNotifications.showNotification({
+      title: 'Analytics Refreshed',
+      message: 'Metrics recalculated for the selected timeframe.',
+      type: 'info'
+    });
+  };
+
+  window.sendNudge = function(name, email) {
+    LMSNotifications.showNotification({
+      title: 'Nudge Sent',
+      message: `Automated check-in reminder and catch-up guide sent to ${name} (${email}).`,
+      type: 'success'
+    });
+  };
+
+  window.exportAnalyticsReport = function() {
+    const csv = 'Metric,Value,Benchmark,Status\nCourse Completion Rate,74.2%,70.0%,Above Target\nTotal Learning Hours,1480,1200,Exceeding\nAt-Risk Learners,2,<5,Controlled\nCertificates Awarded,18,15,On Track\nAverage Quiz Score,78.5%,75.0%,Good\n';
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `instructify_lms_analytics_${new Date().toISOString().slice(0,10)}.csv`;
+    link.click();
+  };
+
+  initReports();
+
+})();
+</script>
+</body>
+</html>

@@ -523,16 +523,19 @@
     <div class="saas-layout">
       <!-- Filter Sidebar -->
       <aside class="filter-panel">
-        <span class="filter-group-title">Filter Courses</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+          <span class="filter-group-title" style="margin:0;">Filter Courses</span>
+          <button type="button" onclick="resetAllFilters()" style="background:none; border:none; color:#2145E6; font-size:12px; font-weight:700; cursor:pointer;">Reset</button>
+        </div>
         
         <div style="margin-bottom:24px;">
           <span class="filter-group-title" style="font-size:12px; color:var(--saas-text-muted);">Category</span>
           <label class="filter-checkbox"><input type="radio" name="cat" checked onclick="setFilter('category','all')"> All Categories</label>
-          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','Digital Skills')"> Digital Literacy</label>
-          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','CPD')"> Teacher CPD</label>
-          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','Curriculum')"> Curriculum Design</label>
+          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','Curriculum')"> CBC Pedagogy &amp; Curriculum</label>
+          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','Digital Skills')"> Digital Literacy &amp; ICT</label>
+          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','STEM')"> STEM, Robotics &amp; Coding</label>
           <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','Leadership')"> Educational Leadership</label>
-          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','AI & Tech')"> Learning Technology</label>
+          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','AI & Tech')"> AI &amp; Learning Technology</label>
         </div>
 
         <div style="margin-bottom:24px;">
@@ -543,22 +546,43 @@
           <label class="filter-checkbox"><input type="radio" name="lvl" onclick="setFilter('level','Advanced')"> Advanced</label>
         </div>
 
+        <div style="margin-bottom:24px;">
+          <span class="filter-group-title" style="font-size:12px; color:var(--saas-text-muted);">Access &amp; Pricing</span>
+          <label class="filter-checkbox"><input type="radio" name="prc" checked onclick="setFilter('access','all')"> All Courses</label>
+          <label class="filter-checkbox"><input type="radio" name="prc" onclick="setFilter('access','paid')"> Paid Certificate Tracks</label>
+          <label class="filter-checkbox"><input type="radio" name="prc" onclick="setFilter('access','free')"> Free / Open Access</label>
+        </div>
+
         <div>
           <span class="filter-group-title" style="font-size:12px; color:var(--saas-text-muted);">Accreditation</span>
-          <label class="filter-checkbox"><input type="checkbox" checked onclick="toggleCPD(this)"> CPD Accredited Only</label>
+          <label class="filter-checkbox"><input type="checkbox" id="cpd-filter-chk" onclick="toggleCPD(this)"> CPD Accredited Only</label>
         </div>
       </aside>
 
-      <!-- Course Cards Catalog Grid -->
+      <!-- Course Cards Catalog Grid / List -->
       <main>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
-          <h2 class="saas-h2" style="margin:0;" id="catalog-count">All Courses</h2>
-          <select class="form-select" onchange="setFilter('sort', this.value)" style="padding:10px 16px; border-radius:8px; border:1px solid var(--saas-border);">
-            <option value="popular">Most Popular</option>
-            <option value="rating">Highest Rated</option>
-            <option value="newest">Newest First</option>
-            <option value="price-low">Price: Low to High</option>
-          </select>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
+          <div>
+            <h2 class="saas-h2" style="margin:0 0 4px;" id="catalog-count">All Courses</h2>
+            <div style="font-size:13px; color:var(--saas-text-muted);">Accredited competency-based curriculum &amp; educator certifications</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <select class="form-select" id="course-sort-select" aria-label="Sort courses by" onchange="setFilter('sort', this.value)" style="padding:10px 16px; border-radius:10px; border:1px solid var(--saas-border); font-size:13.5px; background:#FFF; outline:none;">
+              <option value="popular">Most Popular</option>
+              <option value="rating">Highest Rated</option>
+              <option value="newest">Newest First</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+            <div class="view-toggle-group" style="display:flex; background:#F1F5F9; border-radius:10px; padding:3px; gap:2px;">
+              <button type="button" id="btn-view-grid" onclick="setViewMode('grid')" class="btn-icon-toggle active" aria-label="Switch to Grid View" title="Grid View" style="padding:6px 10px; border:none; background:#FFF; border-radius:8px; cursor:pointer; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </button>
+              <button type="button" id="btn-view-list" onclick="setViewMode('list')" class="btn-icon-toggle" aria-label="Switch to List View" title="List View" style="padding:6px 10px; border:none; background:transparent; border-radius:8px; cursor:pointer; color:#64748B;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
         </div>
 
         <div id="courses-grid" class="courses-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap:24px; width:100%;">
@@ -693,34 +717,150 @@
 
 <script src="js/main.js?v=3.1"></script>
 <script src="js/auth.js"></script>
+<script src="js/lms-engine.js"></script>
 <script src="js/courses.js"></script>
 <script>
-let filters = { query: '', level: 'all', format: 'all', maxPrice: 30000, sort: 'popular', category: 'all', cpd: false };
+let filters = { query: '', level: 'all', access: 'all', sort: 'popular', category: 'all', cpd: false };
+let currentViewMode = 'grid';
 
-// Override the render function to match the new design requirements
-window.renderCourseCard = function(course) {
+function setViewMode(mode) {
+  currentViewMode = mode;
+  const btnGrid = document.getElementById('btn-view-grid');
+  const btnList = document.getElementById('btn-view-list');
+  const grid = document.getElementById('courses-grid');
+
+  if (mode === 'grid') {
+    if (btnGrid) { btnGrid.style.background = '#FFF'; btnGrid.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)'; btnGrid.style.color = '#0F172A'; }
+    if (btnList) { btnList.style.background = 'transparent'; btnList.style.boxShadow = 'none'; btnList.style.color = '#64748B'; }
+    if (grid) {
+      grid.style.display = 'grid';
+      grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))';
+      grid.style.gap = '24px';
+    }
+  } else {
+    if (btnList) { btnList.style.background = '#FFF'; btnList.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)'; btnList.style.color = '#0F172A'; }
+    if (btnGrid) { btnGrid.style.background = 'transparent'; btnGrid.style.boxShadow = 'none'; btnGrid.style.color = '#64748B'; }
+    if (grid) {
+      grid.style.display = 'flex';
+      grid.style.flexDirection = 'column';
+      grid.style.gap = '18px';
+    }
+  }
+  renderCourses();
+}
+
+function resetAllFilters() {
+  filters = { query: '', level: 'all', access: 'all', sort: 'popular', category: 'all', cpd: false };
+  const searchEl = document.getElementById('course-search');
+  if (searchEl) searchEl.value = '';
+  const cpdChk = document.getElementById('cpd-filter-chk');
+  if (cpdChk) cpdChk.checked = false;
+  document.querySelectorAll('input[type="radio"]').forEach(r => {
+    if (r.parentElement.textContent.includes('All')) r.checked = true;
+  });
+  renderCourses();
+}
+
+function getAllCatalogCourses() {
+  const lmsCourses = (window.LMSEngine && window.LMSEngine.getCourses()) || [];
+  const baseCourses = window.COURSES || [];
+
+  // Map to common structure and avoid duplicates
+  const map = new Map();
+  lmsCourses.forEach(c => map.set(c.id, c));
+  baseCourses.forEach(c => {
+    if (!map.has(c.id)) {
+      map.set(c.id, c);
+    }
+  });
+
+  return Array.from(map.values());
+}
+
+window.renderCourseCardGrid = function(c) {
+  const thumb = c.thumbnail || c.image || 'assets/images/course_assessment_mastery.jpg';
+  const priceVal = typeof c.price === 'number' ? c.price : parseInt(String(c.price || '0').replace(/[^0-9]/g, ''), 10);
+  const priceStr = priceVal === 0 ? 'FREE' : 'KES ' + (priceVal ? priceVal.toLocaleString() : '15,000');
+  const rating = c.rating || '4.8';
+  const reviews = c.reviewsCount || c.reviewCount || 120;
+
   return `
     <div class="card course-card reveal" style="padding:0; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; border:1.5px solid var(--border-color-card, #E2E8F0); border-radius:20px; box-shadow:0 4px 20px -2px rgba(15,23,42,0.05); background:#FFFFFF; height:100%;">
       <div>
-        <div style="position:relative; width:100%; height:200px; overflow:hidden;">
-          <img src="${course.image}" alt="${course.title}" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy">
-          <span style="position:absolute; top:12px; left:12px; background:rgba(255,255,255,0.92); color:var(--primary, #2145E6); padding:4px 12px; border-radius:999px; font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; backdrop-filter:blur(4px); box-shadow:0 2px 8px rgba(0,0,0,0.12);">${course.category}</span>
+        <div style="position:relative; width:100%; height:200px; overflow:hidden; background:#0F172A;">
+          <img src="${thumb}" alt="${c.title}" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.src='assets/images/course_assessment_mastery.jpg'" loading="lazy">
+          <span style="position:absolute; top:12px; left:12px; background:rgba(255,255,255,0.95); color:var(--primary, #2145E6); padding:4px 12px; border-radius:999px; font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; backdrop-filter:blur(4px); box-shadow:0 2px 8px rgba(0,0,0,0.12);">${c.category || 'Education'}</span>
+          ${c.cpd ? '<span style="position:absolute; bottom:12px; right:12px; background:rgba(16,185,129,0.92); color:#FFF; padding:3px 9px; border-radius:6px; font-size:10.5px; font-weight:700;">CPD Verified</span>' : ''}
         </div>
         <div style="padding:22px 22px 14px; display:flex; flex-direction:column;">
-          <h3 style="font-family:var(--font-heading); font-size:17.5px; font-weight:750; line-height:1.32; color:var(--text-main, #0F172A); margin-bottom:8px;">${course.title}</h3>
-          <p style="font-size:14px; line-height:1.58; color:var(--text-secondary, #334155); margin-bottom:16px;">${course.description.substring(0, 105)}...</p>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <span style="font-size:12px; color:#F59E0B; font-weight:700;">★ ${rating} <span style="color:#94A3B8; font-weight:500;">(${reviews})</span></span>
+            <span style="font-size:12px; color:#64748B;">${c.duration || '6 Weeks'}</span>
+          </div>
+          <h3 style="font-family:var(--font-heading); font-size:17.5px; font-weight:750; line-height:1.32; color:var(--text-main, #0F172A); margin-bottom:8px;">${c.title}</h3>
+          <p style="font-size:13.5px; line-height:1.58; color:var(--text-secondary, #475569); margin-bottom:16px;">${(c.description || '').substring(0, 105)}...</p>
           
           <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
-            <span style="background:#F1F5F9; color:#475569; padding:4px 10px; border-radius:8px; font-size:11.5px; font-weight:600;">🎯 ${course.level}</span>
-            <span style="background:#F1F5F9; color:#475569; padding:4px 10px; border-radius:8px; font-size:11.5px; font-weight:600;">⏱️ ${course.duration}</span>
-            ${course.cpd ? '<span style="background:#ECFDF5; color:#059669; padding:4px 10px; border-radius:8px; font-size:11.5px; font-weight:700;">✅ CPD Accredited</span>' : ''}
+            <span style="background:#F1F5F9; color:#475569; padding:4px 10px; border-radius:8px; font-size:11.5px; font-weight:600;">🎯 ${c.level || 'All Levels'}</span>
+            <span style="background:#EEF2FF; color:#2145E6; padding:4px 10px; border-radius:8px; font-size:11.5px; font-weight:600;">👨‍🏫 ${c.instructor ? c.instructor.split(' ')[0] + ' ' + (c.instructor.split(' ')[1]||'') : 'Educator'}</span>
           </div>
         </div>
       </div>
       
       <div style="padding:14px 22px 18px; border-top:1px solid #F1F5F9; background:#FAFAFC; display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto;">
-        <span style="font-family:var(--font-heading); font-size:17px; font-weight:800; color:var(--primary, #2145E6);">KES ${typeof course.price === 'number' ? course.price.toLocaleString() : (course.price || '15,000')}</span>
-        <a href="course-detail.html?id=${course.id}" class="btn btn-primary btn-sm" style="text-decoration:none; font-weight:750; white-space:nowrap;">Explore Course &rarr;</a>
+        <span style="font-family:var(--font-heading); font-size:17px; font-weight:800; color:${priceVal === 0 ? '#10B981' : 'var(--primary, #2145E6)'};">${priceStr}</span>
+        <div style="display:flex; gap:6px;">
+          <a href="course-detail.html?id=${c.id}" class="btn btn-primary btn-sm" style="text-decoration:none; font-weight:750; white-space:nowrap;">Explore &rarr;</a>
+        </div>
+      </div>
+    </div>
+  `;
+};
+
+window.renderCourseCardList = function(c) {
+  const thumb = c.thumbnail || c.image || 'assets/images/course_assessment_mastery.jpg';
+  const priceVal = typeof c.price === 'number' ? c.price : parseInt(String(c.price || '0').replace(/[^0-9]/g, ''), 10);
+  const priceStr = priceVal === 0 ? 'FREE' : 'KES ' + (priceVal ? priceVal.toLocaleString() : '15,000');
+  const rating = c.rating || '4.8';
+  const reviews = c.reviewsCount || c.reviewCount || 120;
+
+  return `
+    <div class="card course-card-list reveal" style="padding:0; overflow:hidden; display:flex; flex-direction:row; flex-wrap:wrap; border:1.5px solid #E2E8F0; border-radius:18px; background:#FFFFFF; box-shadow:0 4px 16px rgba(15,23,42,0.04); width:100%;">
+      <div style="width:260px; min-height:180px; position:relative; background:#0F172A; flex-shrink:0;">
+        <img src="${thumb}" alt="${c.title}" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.src='assets/images/course_assessment_mastery.jpg'" loading="lazy">
+        <span style="position:absolute; top:12px; left:12px; background:rgba(255,255,255,0.95); color:var(--primary, #2145E6); padding:3px 10px; border-radius:999px; font-size:10px; font-weight:800; text-transform:uppercase;">${c.category || 'Education'}</span>
+      </div>
+      
+      <div style="padding:20px 24px; flex:1; min-width:280px; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:12.5px; color:#F59E0B; font-weight:700;">★ ${rating} (${reviews} reviews)</span>
+              ${c.cpd ? '<span style="background:#ECFDF5; color:#059669; padding:2px 8px; border-radius:6px; font-size:11px; font-weight:700;">CPD Accredited</span>' : ''}
+            </div>
+            <span style="font-size:12.5px; color:#64748B;">⏱️ ${c.duration || '6 Weeks'}</span>
+          </div>
+          
+          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin:0 0 6px;">${c.title}</h3>
+          <p style="font-size:13.5px; color:#475569; line-height:1.55; margin:0 0 14px;">${c.description || 'Kenyan CBC professional development syllabus curriculum.'}</p>
+          
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <span style="font-size:12.5px; color:#64748B;">Instructor: <strong style="color:#0F172A;">${c.instructor || 'Dr. Wanjiku Kamau'}</strong></span>
+            <span style="font-size:12.5px; color:#CBD5E1;">•</span>
+            <span style="font-size:12.5px; color:#64748B;">Level: <strong style="color:#0F172A;">${c.level || 'All Levels'}</strong></span>
+          </div>
+        </div>
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px; padding-top:14px; border-top:1px solid #F1F5F9;">
+          <div>
+            <div style="font-size:11px; color:#64748B; text-transform:uppercase; font-weight:700;">Course Fee</div>
+            <div style="font-size:19px; font-weight:900; color:${priceVal === 0 ? '#10B981' : 'var(--primary, #2145E6)'};">${priceStr}</div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <a href="course-detail.html?id=${c.id}" class="btn btn-primary btn-sm">Explore Course &rarr;</a>
+            <a href="course-player.html?courseId=${c.id}" class="btn btn-outline btn-sm">Player Preview</a>
+          </div>
+        </div>
       </div>
     </div>
   `;
@@ -728,28 +868,72 @@ window.renderCourseCard = function(course) {
 
 function renderCourses() {
   const grid = document.getElementById('courses-grid');
-  const options = { ...filters };
-  if (filters.level !== 'all') options.level = filters.level;
-  if (filters.category !== 'all') options.category = filters.category;
-  
-  const results = window.filterCourses(options);
-  document.getElementById('catalog-count').textContent = `Showing ${results.length} course${results.length !== 1 ? 's' : ''}`;
-  
-  if (results.length === 0) {
-    grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:var(--space-4xl); color:var(--text-muted);">No courses found matching your criteria.</div>';
-  } else {
-    grid.innerHTML = results.map(c => window.renderCourseCard(c)).join('');
-    initScrollReveal();
-  }
-}
+  if (!grid) return;
 
-function quickFilter(btn, cat) {
-  document.querySelectorAll('[data-quick]').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  if (cat === 'all') { filters.category = 'all'; filters.cpd = false; }
-  else if (cat === 'cpd') { filters.category = 'all'; filters.cpd = true; }
-  else { filters.category = cat; filters.cpd = false; }
-  renderCourses();
+  const allCourses = getAllCatalogCourses();
+
+  let results = allCourses.filter(c => {
+    // Category filter
+    if (filters.category !== 'all') {
+      const cat = (c.category || '').toLowerCase();
+      const target = filters.category.toLowerCase();
+      if (!cat.includes(target) && !(target === 'curriculum' && cat.includes('cbe'))) return false;
+    }
+    // Level filter
+    if (filters.level !== 'all') {
+      const lvl = (c.level || '').toLowerCase();
+      if (!lvl.includes(filters.level.toLowerCase())) return false;
+    }
+    // Access / Price filter
+    if (filters.access !== 'all') {
+      const priceVal = typeof c.price === 'number' ? c.price : parseInt(String(c.price || '0').replace(/[^0-9]/g, ''), 10);
+      if (filters.access === 'free' && priceVal > 0) return false;
+      if (filters.access === 'paid' && priceVal === 0) return false;
+    }
+    // CPD filter
+    if (filters.cpd && !c.cpd) return false;
+    // Query search
+    if (filters.query) {
+      const q = filters.query.toLowerCase();
+      const matchTitle = (c.title || '').toLowerCase().includes(q);
+      const matchDesc = (c.description || '').toLowerCase().includes(q);
+      const matchInst = (c.instructor || '').toLowerCase().includes(q);
+      if (!matchTitle && !matchDesc && !matchInst) return false;
+    }
+    return true;
+  });
+
+  // Sort results
+  if (filters.sort === 'rating') {
+    results.sort((a, b) => (parseFloat(b.rating) || 0) - (parseFloat(a.rating) || 0));
+  } else if (filters.sort === 'price-low') {
+    results.sort((a, b) => (parseFloat(a.price) || 0) - (parseFloat(b.price) || 0));
+  } else if (filters.sort === 'price-high') {
+    results.sort((a, b) => (parseFloat(b.price) || 0) - (parseFloat(a.price) || 0));
+  }
+
+  const countEl = document.getElementById('catalog-count');
+  if (countEl) countEl.textContent = `Showing ${results.length} Course${results.length !== 1 ? 's' : ''}`;
+
+  if (results.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column:1/-1; width:100%; text-align:center; padding:48px 24px; background:#FFFFFF; border:1.5px dashed #CBD5E1; border-radius:18px;">
+        <div style="font-size:36px; margin-bottom:10px;">🔍</div>
+        <h4 style="font-size:17px; font-weight:800; color:#0F172A; margin-bottom:6px;">No courses match your filter criteria</h4>
+        <p style="font-size:14px; color:#64748B; margin-bottom:16px;">Try adjusting your categories, skill level, or search terms.</p>
+        <button onclick="resetAllFilters()" class="btn btn-outline btn-sm">Reset All Filters</button>
+      </div>
+    `;
+    return;
+  }
+
+  if (currentViewMode === 'grid') {
+    grid.innerHTML = results.map(c => window.renderCourseCardGrid(c)).join('');
+  } else {
+    grid.innerHTML = results.map(c => window.renderCourseCardList(c)).join('');
+  }
+
+  if (window.initScrollReveal) window.initScrollReveal();
 }
 
 function setFilter(key, val) {
@@ -768,7 +952,7 @@ const _searchEl = document.getElementById('course-search');
 if (_searchEl) {
   _searchEl.addEventListener('input', (e) => {
     clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => { filters.query = e.target.value; renderCourses(); }, 300);
+    searchTimeout = setTimeout(() => { filters.query = e.target.value; renderCourses(); }, 250);
   });
 }
 

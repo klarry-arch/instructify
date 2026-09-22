@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Courses | Instructify Kenya LMS</title>
+  <meta name="description" content="Manage your courses, review submissions, track enrolment, and edit curriculum on Instructify Kenya.">
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
+  <link rel="stylesheet" href="css/lms-portal.css">
+  <link rel="stylesheet" href="css/live-chat.css">
+</head>
+<body class="lms-page">
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+      <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
+      <div class="nav-brand-text-box" style="display: inline-flex !important; flex-direction: column !important; justify-content: center !important; align-items: flex-start !important; line-height: 1 !important;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-weight: 800 !important; font-size: 1.25rem !important; color: #0F172A !important; letter-spacing: -0.02em !important; line-height: 1 !important; display: block !important;">Instruct<span class="brand-accent" style="color: #F5812D !important; font-weight: 900 !important;">ify</span></span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-size: 0.62rem !important; font-weight: 850 !important; color: #FF4D00 !important; text-transform: uppercase !important; letter-spacing: 2.2px !important; line-height: 1 !important; display: block !important;">KENYA</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li class="nav-item-dropdown">
+        <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="courses" aria-haspopup="true" aria-expanded="false">
+          Courses <span class="nav-badge badge-amber">Hot</span>
+          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <ul class="nav-dropdown-menu" role="menu" aria-label="Courses, Podcast and Resources">
+          <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem" data-nav="courses"><span class="nav-dropdown-icon">📚</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span><span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span></div></a></li>
+          <li role="none"><a href="podcast.html" class="nav-dropdown-item" role="menuitem" data-nav="podcast"><span class="nav-dropdown-icon">🎙️</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></span><span class="nav-dropdown-desc">Inspiring stories from Kenyan educators</span></div></a></li>
+          <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem" data-nav="resources"><span class="nav-dropdown-info"><span class="nav-dropdown-title">Resources</span><span class="nav-dropdown-desc">Schemes of work, lesson plans &amp; guides</span></div></a></li>
+        </ul>
+      </li>
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions" style="display:flex; align-items:center; gap:12px;">
+      <div id="nav-user-area" style="display:inline-flex; align-items:center; gap:8px; background:#F8FAFC; border:1px solid #E2E8F0; padding:4px 12px 4px 6px; border-radius:999px;">
+        <div id="nav-avatar" class="lms-avatar avatar-sm">WK</div>
+        <span id="nav-user-name" style="font-size:13px; font-weight:700; color:#0F172A;">Dr. Wanjiku</span>
+        <span class="lms-badge lms-badge-published" style="font-size:10px; padding:2px 6px;">Educator</span>
+      </div>
+      <button onclick="logout()" class="btn btn-outline btn-sm" style="color:#DC2626; border-color:#DC2626;" aria-label="Log Out">Log Out</button>
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+  <div class="nav-mobile-links">
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="about.html" class="nav-mobile-link">About Us</a>
+    <div class="nav-mobile-dropdown">
+      <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
+      <div class="nav-mobile-sublinks">
+        <a href="courses.html" class="nav-mobile-sublink" data-nav="courses"><span>📚</span> All Courses</a>
+        <a href="podcast.html" class="nav-mobile-sublink" data-nav="podcast"><span>🎙️</span> Podcast</a>
+        <a href="resources.html" class="nav-mobile-sublink" data-nav="resources"><span>📂</span> Resources</a>
+      </div>
+    </div>
+    <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
+    <a href="schools.html" class="nav-mobile-link">Institutions</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+  </div>
+  <div class="nav-mobile-actions">
+    <a href="dashboard-trainer.html" class="btn btn-primary btn-md">Educator Portal</a>
+    <button onclick="logout()" class="btn btn-outline btn-md" style="color:#DC2626 !important; border-color:#DC2626;">Log Out</button>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Dashboard Menu">☰</button>
+
+<!-- ── Dashboard Layout ── -->
+<div class="lms-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="lms-sidebar" id="educator-sidebar">
+    <div class="lms-sidebar-profile">
+      <div class="lms-avatar" id="sidebar-avatar">WK</div>
+      <div>
+        <div class="lms-sidebar-name" id="sidebar-name">Dr. Wanjiku Kamau</div>
+        <div class="lms-sidebar-role">Educator</div>
+      </div>
+    </div>
+
+    <nav class="lms-sidebar-nav" aria-label="Educator Navigation">
+      <div class="lms-sidebar-section">Main</div>
+      <a href="dashboard-trainer.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Dashboard
+      </a>
+      <a href="educator-courses.html" class="lms-nav-item active" aria-current="page">
+        <span class="lms-nav-icon">📚</span> My Courses
+        <span class="lms-nav-badge badge-info" id="nav-course-count">0</span>
+      </a>
+      <a href="course-wizard.html" class="lms-nav-item">
+        <span class="lms-nav-icon">➕</span> Create Course
+      </a>
+
+      <div class="lms-sidebar-section">Learners</div>
+      <a href="educator-students.html" class="lms-nav-item">
+        <span class="lms-nav-icon">👥</span> Student Management
+      </a>
+      <a href="educator-assessments.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📝</span> Assessments
+      </a>
+      <a href="educator-gradebook.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Gradebook
+      </a>
+
+      <div class="lms-sidebar-section">Communicate</div>
+      <a href="educator-announcements.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📢</span> Announcements
+      </a>
+      <a href="educator-reports.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📈</span> Reports
+      </a>
+    </nav>
+
+    <div class="lms-sidebar-footer">
+      <a href="index.html" class="lms-nav-item" style="color:#94A3B8;">
+        <span class="lms-nav-icon">🌐</span> View Website
+      </a>
+      <a href="#" onclick="logout();return false;" class="lms-nav-item" style="color:#DC2626;">
+        <span class="lms-nav-icon">🚪</span> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── Main Content ── -->
+  <main class="lms-main" id="educator-main">
+
+    <!-- Page Header -->
+    <div class="lms-page-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="lms-breadcrumbs">
+          <a href="index.html">Home</a> <span class="sep">›</span>
+          <a href="dashboard-trainer.html">Educator Portal</a> <span class="sep">›</span>
+          <span class="current">My Courses</span>
+        </div>
+        <h1 class="lms-page-title">Course Management</h1>
+        <p class="lms-page-subtitle">Create, organize, and monitor all your courses and curricula in one place.</p>
+      </div>
+      <a href="course-wizard.html" class="lms-btn lms-btn-primary" style="gap:8px;">
+        <span>➕</span> Create New Course
+      </a>
+    </div>
+
+    <!-- Filter & Search Toolbar -->
+    <div class="lms-card" style="margin-bottom:24px; padding:16px 20px;">
+      <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:center;">
+        
+        <!-- Search Input -->
+        <div style="position:relative; flex:1; min-width:240px; max-width:380px;">
+          <input type="text" id="course-search-input" class="lms-input" placeholder="Search courses by title, code or tag..." aria-label="Search courses" oninput="filterCourses()">
+          <span style="position:absolute; right:12px; top:50%; transform:translateY(-50%); color:#94A3B8; pointer-events:none;">🔍</span>
+        </div>
+
+        <!-- Filter Pills -->
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="lms-btn lms-btn-sm lms-btn-primary filter-pill" data-status="all" onclick="setStatusFilter('all', this)">All (<span id="count-all">0</span>)</button>
+          <button class="lms-btn lms-btn-sm lms-btn-outline filter-pill" data-status="published" onclick="setStatusFilter('published', this)">Published (<span id="count-published">0</span>)</button>
+          <button class="lms-btn lms-btn-sm lms-btn-outline filter-pill" data-status="draft" onclick="setStatusFilter('draft', this)">Drafts (<span id="count-draft">0</span>)</button>
+          <button class="lms-btn lms-btn-sm lms-btn-outline filter-pill" data-status="ready_for_review" onclick="setStatusFilter('ready_for_review', this)">In Review (<span id="count-review">0</span>)</button>
+          <button class="lms-btn lms-btn-sm lms-btn-outline filter-pill" data-status="archived" onclick="setStatusFilter('archived', this)">Archived (<span id="count-archived">0</span>)</button>
+        </div>
+
+        <!-- Sort & View Controls -->
+        <div style="display:flex; gap:10px; align-items:center;">
+          <select id="course-sort" class="lms-select" style="width:auto; padding:8px 12px; font-size:13px;" onchange="filterCourses()" aria-label="Sort courses">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="students">Most Students</option>
+            <option value="title">Alphabetical (A-Z)</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Courses Grid -->
+    <div class="lms-courses-grid" id="courses-container" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:24px;">
+      <!-- Populated dynamically -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="lms-empty-state" style="display:none; background:#FFF; border-radius:16px; border:1px dashed #CBD5E1; padding:60px 24px; text-align:center; margin-top:20px;">
+      <div style="font-size:48px; margin-bottom:16px;">📚</div>
+      <h3 style="font-size:18px; font-weight:700; color:#0F172A; margin-bottom:8px;">No courses found</h3>
+      <p style="color:#64748B; font-size:14px; max-width:440px; margin:0 auto 20px;">No courses match the current filters. Clear your filters or launch the 8-step builder to publish a new course.</p>
+      <a href="course-wizard.html" class="lms-btn lms-btn-primary">Create Your First Course</a>
+    </div>
+
+  </main>
+</div>
+
+<!-- Modal: Duplicate Course Confirmation -->
+<div id="duplicate-modal" class="lms-modal-backdrop" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:999; align-items:center; justify-content:center;">
+  <div class="lms-card" style="max-width:420px; width:90%; padding:24px;">
+    <h3 style="font-size:18px; font-weight:700; color:#0F172A; margin-bottom:12px;">Duplicate Course</h3>
+    <p style="font-size:14px; color:#64748B; margin-bottom:20px;" id="duplicate-modal-text">Create a copy of this course? A new draft with all modules, lessons and quizzes will be created.</p>
+    <div style="display:flex; justify-content:flex-end; gap:12px;">
+      <button class="lms-btn lms-btn-outline" onclick="closeDuplicateModal()">Cancel</button>
+      <button class="lms-btn lms-btn-primary" id="duplicate-confirm-btn">Confirm Duplicate</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/lms-auth-guard.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/lms-engine.js"></script>
+<script src="js/lms-notifications.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  // 1. Auth Guard
+  const session = LMSAuth.guardPage(['trainer', 'admin']);
+  if (!session) return;
+
+  // Set Profile info
+  const nameEl = document.getElementById('sidebar-name');
+  const avatarEl = document.getElementById('sidebar-avatar');
+  const navName = document.getElementById('nav-user-name');
+  const navAvatar = document.getElementById('nav-avatar');
+
+  if (session.name) {
+    if (nameEl) nameEl.textContent = session.name;
+    if (navName) navName.textContent = session.name.split(' ')[0];
+    const initials = session.avatar || session.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+    if (avatarEl) avatarEl.textContent = initials;
+    if (navAvatar) navAvatar.textContent = initials;
+  }
+
+  let currentStatus = 'all';
+  let allCourses = [];
+
+  function loadCourses() {
+    allCourses = LMSEngine.getCourses();
+    updateCounts();
+    filterCourses();
+  }
+
+  function updateCounts() {
+    const total = allCourses.length;
+    const published = allCourses.filter(c => c.status === 'published').length;
+    const draft = allCourses.filter(c => c.status === 'draft' || !c.status).length;
+    const review = allCourses.filter(c => c.status === 'ready_for_review').length;
+    const archived = allCourses.filter(c => c.status === 'archived').length;
+
+    document.getElementById('count-all').textContent = total;
+    document.getElementById('count-published').textContent = published;
+    document.getElementById('count-draft').textContent = draft;
+    document.getElementById('count-review').textContent = review;
+    document.getElementById('count-archived').textContent = archived;
+
+    const navBadge = document.getElementById('nav-course-count');
+    if (navBadge) navBadge.textContent = total;
+  }
+
+  window.setStatusFilter = function(status, btn) {
+    currentStatus = status;
+    document.querySelectorAll('.filter-pill').forEach(b => {
+      b.classList.remove('lms-btn-primary');
+      b.classList.add('lms-btn-outline');
+    });
+    btn.classList.remove('lms-btn-outline');
+    btn.classList.add('lms-btn-primary');
+    filterCourses();
+  };
+
+  window.filterCourses = function() {
+    const query = (document.getElementById('course-search-input').value || '').toLowerCase().trim();
+    const sort = document.getElementById('course-sort').value;
+
+    let filtered = allCourses.slice();
+
+    if (currentStatus !== 'all') {
+      if (currentStatus === 'draft') {
+        filtered = filtered.filter(c => c.status === 'draft' || !c.status);
+      } else {
+        filtered = filtered.filter(c => c.status === currentStatus);
+      }
+    }
+
+    if (query) {
+      filtered = filtered.filter(c => 
+        (c.title && c.title.toLowerCase().includes(query)) ||
+        (c.category && c.category.toLowerCase().includes(query)) ||
+        (c.code && c.code.toLowerCase().includes(query)) ||
+        (c.tags && Array.isArray(c.tags) && c.tags.some(t => t.toLowerCase().includes(query)))
+      );
+    }
+
+    if (sort === 'newest') {
+      filtered.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+    } else if (sort === 'oldest') {
+      filtered.sort((a, b) => new Date(a.createdAt || 0) - new Date(b.createdAt || 0));
+    } else if (sort === 'students') {
+      filtered.sort((a, b) => (b.enrolledStudents || 0) - (a.enrolledStudents || 0));
+    } else if (sort === 'title') {
+      filtered.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+    }
+
+    renderCourses(filtered);
+  };
+
+  function renderCourses(courses) {
+    const container = document.getElementById('courses-container');
+    const empty = document.getElementById('empty-state');
+
+    if (!courses.length) {
+      container.innerHTML = '';
+      empty.style.display = 'block';
+      return;
+    }
+
+    empty.style.display = 'none';
+
+    container.innerHTML = courses.map(course => {
+      const status = course.status || 'draft';
+      let badgeCls = 'lms-badge-draft';
+      let badgeLabel = 'Draft';
+      if (status === 'published') { badgeCls = 'lms-badge-published'; badgeLabel = 'Published'; }
+      else if (status === 'ready_for_review') { badgeCls = 'lms-badge-review'; badgeLabel = 'In Review'; }
+      else if (status === 'archived') { badgeCls = 'lms-badge-archived'; badgeLabel = 'Archived'; }
+
+      const enrolled = course.enrolledStudents || (LMSEngine.getEnrollmentsByCourse(course.id) || []).length || 0;
+      const completionRate = course.completionRate || 68;
+      const imageSrc = course.image || 'assets/images/courses/cbc-foundations.jpg';
+
+      return `
+        <div class="lms-card lms-course-manage-card" style="display:flex; flex-direction:column; overflow:hidden; transition:transform 0.2s, box-shadow 0.2s;">
+          <div style="position:relative; height:160px; background:#F1F5F9; overflow:hidden;">
+            <img src="${imageSrc}" alt="${course.title}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/images/courses/cbc-foundations.jpg'">
+            <div style="position:absolute; top:12px; left:12px;">
+              <span class="lms-badge ${badgeCls}">${badgeLabel}</span>
+            </div>
+            <div style="position:absolute; top:12px; right:12px; background:rgba(15,23,42,0.75); color:#FFF; font-size:11px; font-weight:700; padding:3px 8px; border-radius:6px; backdrop-filter:blur(4px);">
+              ${course.level || 'Intermediate'}
+            </div>
+          </div>
+
+          <div style="padding:18px; flex:1; display:flex; flex-direction:column;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:12px; font-weight:700; color:#2145E6; text-transform:uppercase;">${course.category || 'Curriculum'}</span>
+              <span style="font-size:12px; color:#64748B;">⏱ ${course.duration || '6 Weeks'}</span>
+            </div>
+
+            <h3 style="font-size:16px; font-weight:700; color:#0F172A; line-height:1.4; margin-bottom:12px; min-height:44px;">
+              ${course.title}
+            </h3>
+
+            <!-- Stats Bar -->
+            <div style="display:flex; justify-content:space-between; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:10px 12px; margin-bottom:14px; font-size:12px;">
+              <div>
+                <span style="color:#64748B; display:block;">Enrolled</span>
+                <strong style="color:#0F172A; font-size:14px;">${enrolled} Learners</strong>
+              </div>
+              <div style="text-align:right;">
+                <span style="color:#64748B; display:block;">Completion</span>
+                <strong style="color:#059669; font-size:14px;">${completionRate}%</strong>
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div style="margin-bottom:18px;">
+              <div class="lms-progress-bar" style="height:6px; background:#E2E8F0; border-radius:99px; overflow:hidden;">
+                <div style="width:${completionRate}%; height:100%; background:#059669; border-radius:99px;"></div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="margin-top:auto; display:flex; gap:8px; flex-wrap:wrap; border-top:1px solid #F1F5F9; padding-top:14px;">
+              <a href="course-wizard.html?edit=${course.id}" class="lms-btn lms-btn-primary lms-btn-sm" style="flex:1; justify-content:center; text-decoration:none;">
+                ✏️ Edit
+              </a>
+              <a href="course-detail.html?id=${course.id}" target="_blank" class="lms-btn lms-btn-outline lms-btn-sm" style="justify-content:center; text-decoration:none;" title="Preview Public Page">
+                👁️
+              </a>
+              <a href="educator-gradebook.html?course=${course.id}" class="lms-btn lms-btn-outline lms-btn-sm" style="justify-content:center; text-decoration:none;" title="View Gradebook">
+                📊
+              </a>
+              <button onclick="promptDuplicate('${course.id}', '${course.title.replace(/'/g, "\\'")}')" class="lms-btn lms-btn-outline lms-btn-sm" title="Duplicate Course">
+                📋
+              </button>
+              <button onclick="deleteCourseConfirm('${course.id}', '${course.title.replace(/'/g, "\\'")}')" class="lms-btn lms-btn-outline lms-btn-sm" style="color:#DC2626; border-color:#FECACA;" title="Delete Course">
+                🗑️
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  let selectedDuplicateId = null;
+
+  window.promptDuplicate = function(id, title) {
+    selectedDuplicateId = id;
+    const modal = document.getElementById('duplicate-modal');
+    document.getElementById('duplicate-modal-text').textContent = `Create an exact duplicate of "${title}"? A new draft with all sections and lessons will be created.`;
+    modal.style.display = 'flex';
+  };
+
+  window.closeDuplicateModal = function() {
+    selectedDuplicateId = null;
+    document.getElementById('duplicate-modal').style.display = 'none';
+  };
+
+  document.getElementById('duplicate-confirm-btn').addEventListener('click', function() {
+    if (!selectedDuplicateId) return;
+    const duplicated = LMSEngine.duplicateCourse(selectedDuplicateId);
+    if (duplicated) {
+      LMSNotifications.showNotification({
+        title: 'Course Duplicated',
+        message: `Successfully created draft copy: ${duplicated.title}`,
+        type: 'success'
+      });
+      closeDuplicateModal();
+      loadCourses();
+    }
+  });
+
+  window.deleteCourseConfirm = function(id, title) {
+    if (confirm(`Are you sure you want to delete "${title}"? This action cannot be undone.`)) {
+      const deleted = LMSEngine.deleteCourse(id);
+      if (deleted) {
+        LMSNotifications.showNotification({
+          title: 'Course Deleted',
+          message: `"${title}" has been deleted.`,
+          type: 'info'
+        });
+        loadCourses();
+      }
+    }
+  };
+
+  // Close modal on click outside
+  document.getElementById('duplicate-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeDuplicateModal();
+  });
+
+  // Initial load
+  loadCourses();
+
+})();
+</script>
+</body>
+</html>

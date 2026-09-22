@@ -227,8 +227,11 @@
     <!-- Tab 2: Users -->
     <div id="admin-panel-users" class="admin-panel" style="display:none">
       <div class="dashboard-header">
-        <h1 class="dashboard-title">User Management</h1>
-        <button onclick="showToast('Opening user creation modal...','info')" class="btn btn-blue btn-sm">+ Add User</button>
+        <div>
+          <h1 class="dashboard-title">User Management &amp; Educator Verification</h1>
+          <div class="dashboard-subtitle">Manage educators, students, and institutional administrators across Kenya.</div>
+        </div>
+        <button onclick="showToast('Verified educator invitation dispatched!','success')" class="btn btn-blue btn-sm">+ Invite Educator</button>
       </div>
 
       <div class="dashboard-section">
@@ -236,41 +239,16 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th>User</th>
+                <th>User Details</th>
                 <th>Role</th>
                 <th>Email</th>
-                <th>County</th>
+                <th>County / Institution</th>
                 <th>Status</th>
-                <th>Action</th>
+                <th>Moderation Action</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td><strong>James Mwangi</strong></td>
-                <td><span class="badge badge-info">Learner</span></td>
-                <td>learner@instructify.ke</td>
-                <td>Nairobi</td>
-                <td><span class="badge badge-success">Active</span></td>
-                <td>
-                  <div class="action-btn-group">
-                    <button class="action-btn edit" title="Edit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></button>
-                    <button class="action-btn delete" title="Suspend"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Dr. Wanjiku Kamau</strong></td>
-                <td><span class="badge badge-purple">Trainer</span></td>
-                <td>trainer@instructify.ke</td>
-                <td>Kiambu</td>
-                <td><span class="badge badge-success">Active</span></td>
-                <td>
-                  <div class="action-btn-group">
-                    <button class="action-btn edit" title="Edit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></button>
-                    <button class="action-btn delete" title="Suspend"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></button>
-                  </div>
-                </td>
-              </tr>
+            <tbody id="admin-users-tbody">
+              <!-- Dynamically populated via JS -->
             </tbody>
           </table>
         </div>
@@ -280,49 +258,45 @@
     <!-- Tab 3: Courses -->
     <div id="admin-panel-courses" class="admin-panel" style="display:none">
       <div class="dashboard-header">
-        <h1 class="dashboard-title">Course Management</h1>
-        <button onclick="showToast('Opening course editor...','info')" class="btn btn-blue btn-sm">+ Create New Course</button>
+        <div>
+          <h1 class="dashboard-title">Course Moderation &amp; Management</h1>
+          <div class="dashboard-subtitle">Review educator submissions, approve published courses, and monitor quality.</div>
+        </div>
+        <div class="dashboard-actions" style="display:flex; gap:10px; align-items:center;">
+          <a href="dashboard-trainer.html" class="btn btn-blue btn-sm">+ Educator Course Wizard ↗</a>
+        </div>
       </div>
+
+      <!-- Moderation Filter Toolbar -->
+      <div class="dashboard-section" style="padding: 16px 20px; margin-bottom: 20px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-sm btn-primary admin-course-filter-btn active" onclick="filterAdminCourses('all', this)">All Courses (<span id="count-all-courses">0</span>)</button>
+            <button class="btn btn-sm btn-outline admin-course-filter-btn" onclick="filterAdminCourses('pending_approval', this)">In Review (<span id="count-pending-courses">0</span>)</button>
+            <button class="btn btn-sm btn-outline admin-course-filter-btn" onclick="filterAdminCourses('published', this)">Published (<span id="count-published-courses">0</span>)</button>
+            <button class="btn btn-sm btn-outline admin-course-filter-btn" onclick="filterAdminCourses('draft', this)">Drafts (<span id="count-draft-courses">0</span>)</button>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <input type="text" id="admin-course-search" placeholder="Search course by name or educator..." aria-label="Search course by name or educator" oninput="renderAdminCoursesTable()" style="padding:8px 14px; border:1.5px solid var(--border-subtle, #E2E8F0); border-radius:10px; font-size:13.5px; outline:none; min-width:240px;">
+          </div>
+        </div>
+      </div>
+
       <div class="dashboard-section">
         <div class="table-wrapper">
           <table class="data-table">
             <thead>
               <tr>
-                <th>Course Name</th>
-                <th>Category</th>
+                <th>Course Details</th>
+                <th>Category &amp; Level</th>
+                <th>Educator</th>
                 <th>Fee</th>
-                <th>Enrollments</th>
-                <th>Rating</th>
-                <th>Action</th>
+                <th>Status</th>
+                <th>Moderation Actions</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td><strong>ICT Integration in Education</strong></td>
-                <td>ICT</td>
-                <td>KES 15,000</td>
-                <td>1,847</td>
-                <td>? 4.8</td>
-                <td>
-                  <div class="action-btn-group">
-                    <button class="action-btn edit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></button>
-                    <button class="action-btn delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Digital Literacy Certification</strong></td>
-                <td>Digital Skills</td>
-                <td>KES 8,500</td>
-                <td>3,204</td>
-                <td>? 4.9</td>
-                <td>
-                  <div class="action-btn-group">
-                    <button class="action-btn edit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></button>
-                    <button class="action-btn delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg></button>
-                  </div>
-                </td>
-              </tr>
+            <tbody id="admin-courses-tbody">
+              <!-- Dynamically populated from window.LMSEngine -->
             </tbody>
           </table>
         </div>
@@ -384,13 +358,200 @@
 
 <script src="js/main.js?v=3.1"></script>
 <script src="js/auth.js"></script>
+<script src="js/lms-engine.js"></script>
 <script src="js/certificates.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const session = window.requireAuth(['admin']);
   if (!session) return;
   initAdminCharts();
+  renderAdminUsersTable();
+  renderAdminCoursesTable();
 });
+
+// ── Admin User & Course Moderation Controllers ─────────────
+let _adminUsersList = [
+  { name: 'James Mwangi', role: 'Learner', email: 'learner@instructify.ke', county: 'Nairobi', status: 'Active', verified: true },
+  { name: 'Dr. Wanjiku Kamau', role: 'Educator', email: 'trainer@instructify.ke', county: 'Kiambu (Senior Fellow)', status: 'Verified', verified: true },
+  { name: 'Prof. Ochieng Otieno', role: 'Administrator', email: 'admin@instructify.ke', county: 'Nairobi HQ', status: 'Active', verified: true },
+  { name: 'Sharon Koech', role: 'Learner', email: 'sharon.koech@gmail.com', county: 'Uasin Gishu', status: 'Active', verified: true },
+  { name: 'Patrick Mutua', role: 'Educator', email: 'pmutua@stgeorges.ac.ke', county: 'Machakos Academy', status: 'Pending Review', verified: false }
+];
+
+let _adminActiveCourseFilter = 'all';
+
+function renderAdminUsersTable() {
+  const tbody = document.getElementById('admin-users-tbody');
+  if (!tbody) return;
+  tbody.innerHTML = _adminUsersList.map((u, idx) => {
+    const roleBadge = u.role === 'Educator' ? 'badge-purple' : (u.role === 'Administrator' ? 'badge-amber' : 'badge-info');
+    const statusBadge = u.status === 'Verified' || u.status === 'Active' ? 'badge-success' : (u.status === 'Suspended' ? 'badge-danger' : 'badge-warning');
+    return `<tr>
+      <td><strong>${u.name}</strong></td>
+      <td><span class="badge ${roleBadge}">${u.role}</span></td>
+      <td><a href="mailto:${u.email}" style="color:#2145E6;">${u.email}</a></td>
+      <td>${u.county}</td>
+      <td><span class="badge ${statusBadge}">${u.status}</span></td>
+      <td>
+        <div style="display:flex; gap:6px;">
+          ${u.role === 'Educator' ? `
+            <button class="btn btn-sm ${u.verified ? 'btn-outline' : 'btn-primary'}" onclick="toggleAdminEducatorVerify(${idx})">
+              ${u.verified ? 'Suspend' : '✓ Verify'}
+            </button>
+          ` : `
+            <button class="btn btn-sm btn-outline" onclick="toggleAdminEducatorVerify(${idx})">
+              ${u.status === 'Active' ? 'Suspend' : 'Activate'}
+            </button>
+          `}
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function toggleAdminEducatorVerify(idx) {
+  const u = _adminUsersList[idx];
+  if (!u) return;
+  if (u.role === 'Educator') {
+    u.verified = !u.verified;
+    u.status = u.verified ? 'Verified' : 'Suspended';
+    showToast(`Educator ${u.name} status updated to ${u.status}.`, u.verified ? 'success' : 'warning');
+  } else {
+    u.status = u.status === 'Active' ? 'Suspended' : 'Active';
+    showToast(`User ${u.name} is now ${u.status}.`, u.status === 'Active' ? 'success' : 'warning');
+  }
+  renderAdminUsersTable();
+}
+
+function filterAdminCourses(status, btn) {
+  _adminActiveCourseFilter = status;
+  document.querySelectorAll('.admin-course-filter-btn').forEach(b => {
+    b.classList.remove('active');
+    b.classList.remove('btn-primary');
+    b.classList.add('btn-outline');
+  });
+  if (btn) {
+    btn.classList.add('active');
+    btn.classList.add('btn-primary');
+    btn.classList.remove('btn-outline');
+  }
+  renderAdminCoursesTable();
+}
+
+function renderAdminCoursesTable() {
+  const tbody = document.getElementById('admin-courses-tbody');
+  if (!tbody) return;
+
+  const courses = (window.LMSEngine && window.LMSEngine.getCourses()) || [];
+  const searchInput = document.getElementById('admin-course-search');
+  const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+  // Update counts
+  const allCount = courses.length;
+  const pendingCount = courses.filter(c => c.status === 'pending_approval').length;
+  const publishedCount = courses.filter(c => c.status === 'published').length;
+  const draftCount = courses.filter(c => c.status === 'draft').length;
+
+  const elAll = document.getElementById('count-all-courses');
+  const elPending = document.getElementById('count-pending-courses');
+  const elPublished = document.getElementById('count-published-courses');
+  const elDraft = document.getElementById('count-draft-courses');
+  if (elAll) elAll.textContent = allCount;
+  if (elPending) elPending.textContent = pendingCount;
+  if (elPublished) elPublished.textContent = publishedCount;
+  if (elDraft) elDraft.textContent = draftCount;
+
+  let filtered = courses.filter(c => {
+    const matchFilter = _adminActiveCourseFilter === 'all' || c.status === _adminActiveCourseFilter;
+    const matchSearch = !query || c.title.toLowerCase().includes(query) || (c.instructor && c.instructor.toLowerCase().includes(query)) || (c.accessCode && c.accessCode.toLowerCase().includes(query));
+    return matchFilter && matchSearch;
+  });
+
+  if (!filtered.length) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:32px; color:#64748B;">No courses found matching current filter.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(c => {
+    const statusBadges = {
+      published: '<span class="badge badge-success">Published</span>',
+      pending_approval: '<span class="badge badge-warning">In Review</span>',
+      draft: '<span class="badge badge-neutral">Draft</span>'
+    };
+    const badge = statusBadges[c.status] || '<span class="badge badge-info">' + c.status + '</span>';
+    const thumb = c.thumbnail || c.image || 'assets/images/course_assessment_mastery.jpg';
+
+    return `<tr>
+      <td>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <img src="${thumb}" alt="${c.title}" style="width:48px; height:48px; border-radius:8px; object-fit:cover;" onerror="this.src='assets/images/course_assessment_mastery.jpg'">
+          <div>
+            <div style="font-weight:700; color:#0F172A; font-size:14px;">${c.title}</div>
+            <div style="font-size:12px; color:#64748B; font-family:monospace;">Code: ${c.accessCode || '—'}</div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <span style="font-weight:600; font-size:13px; color:#0F172A; display:block;">${c.category || 'General'}</span>
+        <span style="font-size:12px; color:#64748B;">${c.level || 'All Levels'} • ${c.duration || '6 Weeks'}</span>
+      </td>
+      <td>
+        <strong style="font-size:13px;">${c.instructor || 'Dr. Wanjiku Kamau'}</strong>
+      </td>
+      <td style="font-weight:700; font-size:13.5px; color:#2145E6;">
+        KES ${typeof c.price === 'number' ? c.price.toLocaleString() : (c.price || '15,000')}
+      </td>
+      <td>${badge}</td>
+      <td>
+        <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+          ${c.status === 'pending_approval' ? `
+            <button class="btn btn-sm btn-primary" onclick="approveAdminCourse('${c.id}')" title="Approve course and make public">✓ Approve</button>
+          ` : (c.status === 'published' ? `
+            <button class="btn btn-sm btn-outline" onclick="unpublishAdminCourse('${c.id}')" title="Move to draft/revisions">Unpublish</button>
+          ` : `
+            <button class="btn btn-sm btn-primary" onclick="approveAdminCourse('${c.id}')" title="Publish course">Publish</button>
+          `)}
+          <a href="course-player.html?courseId=${c.id}" target="_blank" class="btn btn-sm btn-outline" title="Preview course player">👁️ Player</a>
+          <button class="action-btn delete" onclick="deleteAdminCourse('${c.id}')" title="Delete Course" aria-label="Delete course ${c.title}">🗑️</button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function approveAdminCourse(courseId) {
+  if (window.LMSEngine) {
+    const course = window.LMSEngine.getCourse(courseId);
+    if (course) {
+      course.status = 'published';
+      window.LMSEngine.saveCourses();
+      showToast(`"${course.title}" has been approved and published to catalog!`, 'success');
+      renderAdminCoursesTable();
+    }
+  }
+}
+
+function unpublishAdminCourse(courseId) {
+  if (window.LMSEngine) {
+    const course = window.LMSEngine.getCourse(courseId);
+    if (course) {
+      course.status = 'draft';
+      window.LMSEngine.saveCourses();
+      showToast(`"${course.title}" moved back to draft mode.`, 'info');
+      renderAdminCoursesTable();
+    }
+  }
+}
+
+function deleteAdminCourse(courseId) {
+  if (!confirm('Are you sure you want to delete this course from the portal?')) return;
+  if (window.LMSEngine) {
+    window.LMSEngine.deleteCourse(courseId);
+    showToast('Course removed successfully.', 'info');
+    renderAdminCoursesTable();
+  }
+}
+
 
 function switchAdminTab(link, tabId) {
   if (link) {

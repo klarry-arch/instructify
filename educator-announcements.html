@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Announcements | Instructify Kenya LMS</title>
+  <meta name="description" content="Send announcements and broadcast messages to learners and cohorts on Instructify Kenya.">
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
+  <link rel="stylesheet" href="css/lms-portal.css">
+  <link rel="stylesheet" href="css/live-chat.css">
+</head>
+<body class="lms-page">
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+      <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
+      <div class="nav-brand-text-box" style="display: inline-flex !important; flex-direction: column !important; justify-content: center !important; align-items: flex-start !important; line-height: 1 !important;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-weight: 800 !important; font-size: 1.25rem !important; color: #0F172A !important; letter-spacing: -0.02em !important; line-height: 1 !important; display: block !important;">Instruct<span class="brand-accent" style="color: #F5812D !important; font-weight: 900 !important;">ify</span></span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-size: 0.62rem !important; font-weight: 850 !important; color: #FF4D00 !important; text-transform: uppercase !important; letter-spacing: 2.2px !important; line-height: 1 !important; display: block !important;">KENYA</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li class="nav-item-dropdown">
+        <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="courses" aria-haspopup="true" aria-expanded="false">
+          Courses <span class="nav-badge badge-amber">Hot</span>
+          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <ul class="nav-dropdown-menu" role="menu" aria-label="Courses, Podcast and Resources">
+          <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem" data-nav="courses"><span class="nav-dropdown-icon">📚</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span><span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span></div></a></li>
+          <li role="none"><a href="podcast.html" class="nav-dropdown-item" role="menuitem" data-nav="podcast"><span class="nav-dropdown-icon">🎙️</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></span><span class="nav-dropdown-desc">Inspiring stories from Kenyan educators</span></div></a></li>
+          <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem" data-nav="resources"><span class="nav-dropdown-info"><span class="nav-dropdown-title">Resources</span><span class="nav-dropdown-desc">Schemes of work, lesson plans &amp; guides</span></div></a></li>
+        </ul>
+      </li>
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions" style="display:flex; align-items:center; gap:12px;">
+      <div id="nav-user-area" style="display:inline-flex; align-items:center; gap:8px; background:#F8FAFC; border:1px solid #E2E8F0; padding:4px 12px 4px 6px; border-radius:999px;">
+        <div id="nav-avatar" class="lms-avatar avatar-sm">WK</div>
+        <span id="nav-user-name" style="font-size:13px; font-weight:700; color:#0F172A;">Dr. Wanjiku</span>
+        <span class="lms-badge lms-badge-published" style="font-size:10px; padding:2px 6px;">Educator</span>
+      </div>
+      <button onclick="logout()" class="btn btn-outline btn-sm" style="color:#DC2626; border-color:#DC2626;" aria-label="Log Out">Log Out</button>
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+  <div class="nav-mobile-links">
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="about.html" class="nav-mobile-link">About Us</a>
+    <div class="nav-mobile-dropdown">
+      <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
+      <div class="nav-mobile-sublinks">
+        <a href="courses.html" class="nav-mobile-sublink" data-nav="courses"><span>📚</span> All Courses</a>
+        <a href="podcast.html" class="nav-mobile-sublink" data-nav="podcast"><span>🎙️</span> Podcast</a>
+        <a href="resources.html" class="nav-mobile-sublink" data-nav="resources"><span>📂</span> Resources</a>
+      </div>
+    </div>
+    <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
+    <a href="schools.html" class="nav-mobile-link">Institutions</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+  </div>
+  <div class="nav-mobile-actions">
+    <a href="dashboard-trainer.html" class="btn btn-primary btn-md">Educator Portal</a>
+    <button onclick="logout()" class="btn btn-outline btn-md" style="color:#DC2626 !important; border-color:#DC2626;">Log Out</button>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Dashboard Menu">☰</button>
+
+<!-- ── Dashboard Layout ── -->
+<div class="lms-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="lms-sidebar" id="educator-sidebar">
+    <div class="lms-sidebar-profile">
+      <div class="lms-avatar" id="sidebar-avatar">WK</div>
+      <div>
+        <div class="lms-sidebar-name" id="sidebar-name">Dr. Wanjiku Kamau</div>
+        <div class="lms-sidebar-role">Educator</div>
+      </div>
+    </div>
+
+    <nav class="lms-sidebar-nav" aria-label="Educator Navigation">
+      <div class="lms-sidebar-section">Main</div>
+      <a href="dashboard-trainer.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Dashboard
+      </a>
+      <a href="educator-courses.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📚</span> My Courses
+      </a>
+      <a href="course-wizard.html" class="lms-nav-item">
+        <span class="lms-nav-icon">➕</span> Create Course
+      </a>
+
+      <div class="lms-sidebar-section">Learners</div>
+      <a href="educator-students.html" class="lms-nav-item">
+        <span class="lms-nav-icon">👥</span> Student Management
+      </a>
+      <a href="educator-assessments.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📝</span> Assessments
+      </a>
+      <a href="educator-gradebook.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Gradebook
+      </a>
+
+      <div class="lms-sidebar-section">Communicate</div>
+      <a href="educator-announcements.html" class="lms-nav-item active" aria-current="page">
+        <span class="lms-nav-icon">📢</span> Announcements
+      </a>
+      <a href="educator-reports.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📈</span> Reports
+      </a>
+    </nav>
+
+    <div class="lms-sidebar-footer">
+      <a href="index.html" class="lms-nav-item" style="color:#94A3B8;">
+        <span class="lms-nav-icon">🌐</span> View Website
+      </a>
+      <a href="#" onclick="logout();return false;" class="lms-nav-item" style="color:#DC2626;">
+        <span class="lms-nav-icon">🚪</span> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── Main Content ── -->
+  <main class="lms-main" id="educator-main">
+
+    <!-- Page Header -->
+    <div class="lms-page-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="lms-breadcrumbs">
+          <a href="index.html">Home</a> <span class="sep">›</span>
+          <a href="dashboard-trainer.html">Educator Portal</a> <span class="sep">›</span>
+          <span class="current">Announcements</span>
+        </div>
+        <h1 class="lms-page-title">Broadcasts &amp; Announcements</h1>
+        <p class="lms-page-subtitle">Publish important notices, schedule changes, and reminders to your students.</p>
+      </div>
+      <button class="lms-btn lms-btn-primary" onclick="openNewAnnouncementModal()">
+        <span>📢</span> New Announcement
+      </button>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="lms-card" style="margin-bottom:24px; padding:16px 20px;">
+      <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:center;">
+        <div style="flex:1; min-width:240px;">
+          <input type="text" id="announcement-search" class="lms-input" placeholder="Search announcements..." oninput="filterAnnouncements()" aria-label="Search announcements">
+        </div>
+        <div style="min-width:180px;">
+          <select id="announcement-course-filter" class="lms-select" onchange="filterAnnouncements()" aria-label="Filter announcements by course">
+            <option value="all">All Courses</option>
+          </select>
+        </div>
+        <div style="min-width:140px;">
+          <select id="announcement-priority-filter" class="lms-select" onchange="filterAnnouncements()" aria-label="Filter announcements by priority">
+            <option value="all">All Priorities</option>
+            <option value="urgent">Urgent</option>
+            <option value="important">Important</option>
+            <option value="normal">Normal</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Announcements List -->
+    <div id="announcements-container" style="display:flex; flex-direction:column; gap:16px;">
+      <!-- Populated via JS -->
+    </div>
+
+  </main>
+</div>
+
+<!-- Modal: New Announcement -->
+<div id="announcement-modal" class="lms-modal-backdrop" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:999; align-items:center; justify-content:center;">
+  <div class="lms-card" style="max-width:540px; width:92%; padding:24px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+      <h3 style="font-size:18px; font-weight:800; color:#0F172A;">Create Announcement</h3>
+      <button onclick="closeNewAnnouncementModal()" style="background:none; border:none; font-size:20px; cursor:pointer; color:#94A3B8;">✕</button>
+    </div>
+
+    <form onsubmit="handleCreateAnnouncement(event)">
+      <div class="lms-form-group" style="margin-bottom:14px;">
+        <label for="ann-target-course" class="lms-label">Target Audience / Course *</label>
+        <select id="ann-target-course" class="lms-select" required>
+          <option value="all">All My Active Courses</option>
+        </select>
+      </div>
+
+      <div class="lms-form-group" style="margin-bottom:14px;">
+        <label for="ann-title" class="lms-label">Announcement Title *</label>
+        <input type="text" id="ann-title" class="lms-input" placeholder="e.g. Capstone Submission Deadline Extended" required>
+      </div>
+
+      <div class="lms-form-group" style="margin-bottom:14px;">
+        <label for="ann-priority" class="lms-label">Priority Level</label>
+        <select id="ann-priority" class="lms-select">
+          <option value="normal">Normal</option>
+          <option value="important">Important (Highlighted)</option>
+          <option value="urgent">Urgent (Instant Alert)</option>
+        </select>
+      </div>
+
+      <div class="lms-form-group" style="margin-bottom:16px;">
+        <label for="ann-content" class="lms-label">Message Content *</label>
+        <textarea id="ann-content" class="lms-input" rows="4" placeholder="Type the message for your learners..." required></textarea>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:20px;">
+        <input type="checkbox" id="ann-send-email" checked style="width:16px; height:16px; accent-color:#2145E6;">
+        <label for="ann-send-email" style="font-size:13px; color:#475569;">Send automated email notification to enrolled students</label>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <button type="button" class="lms-btn lms-btn-outline" onclick="closeNewAnnouncementModal()">Cancel</button>
+        <button type="submit" class="lms-btn lms-btn-primary">Publish Broadcast</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/lms-auth-guard.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/lms-engine.js"></script>
+<script src="js/lms-notifications.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  const session = LMSAuth.guardPage(['trainer', 'admin']);
+  if (!session) return;
+
+  // Profile Header
+  const nameEl = document.getElementById('sidebar-name');
+  const avatarEl = document.getElementById('sidebar-avatar');
+  const navName = document.getElementById('nav-user-name');
+  const navAvatar = document.getElementById('nav-avatar');
+
+  if (session.name) {
+    if (nameEl) nameEl.textContent = session.name;
+    if (navName) navName.textContent = session.name.split(' ')[0];
+    const initials = session.avatar || session.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+    if (avatarEl) avatarEl.textContent = initials;
+    if (navAvatar) navAvatar.textContent = initials;
+  }
+
+  let announcements = [];
+  let courses = [];
+
+  function initAnnouncements() {
+    courses = LMSEngine.getCourses();
+    announcements = LMSEngine.getAnnouncements();
+
+    // Populate dropdowns
+    const filterSelect = document.getElementById('announcement-course-filter');
+    const modalSelect = document.getElementById('ann-target-course');
+
+    courses.forEach(c => {
+      filterSelect.innerHTML += `<option value="${c.id}">${c.title}</option>`;
+      modalSelect.innerHTML += `<option value="${c.id}">${c.title}</option>`;
+    });
+
+    filterAnnouncements();
+  }
+
+  window.filterAnnouncements = function() {
+    const search = (document.getElementById('announcement-search').value || '').toLowerCase().trim();
+    const course = document.getElementById('announcement-course-filter').value;
+    const priority = document.getElementById('announcement-priority-filter').value;
+
+    let filtered = announcements.filter(a => {
+      const matchSearch = !search || 
+        (a.title && a.title.toLowerCase().includes(search)) ||
+        (a.content && a.content.toLowerCase().includes(search));
+
+      const matchCourse = course === 'all' || a.courseId === course || a.courseId === 'all';
+      const matchPriority = priority === 'all' || a.priority === priority;
+
+      return matchSearch && matchCourse && matchPriority;
+    });
+
+    renderList(filtered);
+  };
+
+  function renderList(list) {
+    const container = document.getElementById('announcements-container');
+
+    if (!list.length) {
+      container.innerHTML = `
+        <div class="lms-card" style="padding:48px 24px; text-align:center;">
+          <div style="font-size:40px; margin-bottom:10px;">📢</div>
+          <h4 style="font-size:16px; font-weight:700; color:#0F172A;">No announcements found</h4>
+          <p style="color:#64748B; font-size:13px; margin-top:4px;">Publish a new notice or change your filter criteria.</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = list.map(a => {
+      let prioBadge = '<span class="lms-badge lms-badge-info">Normal</span>';
+      let borderCol = '#E2E8F0';
+      if (a.priority === 'urgent') {
+        prioBadge = '<span class="lms-badge" style="background:#FEE2E2; color:#DC2626;">Urgent</span>';
+        borderCol = '#FECACA';
+      } else if (a.priority === 'important') {
+        prioBadge = '<span class="lms-badge" style="background:#FEF3C7; color:#D97706;">Important</span>';
+        borderCol = '#FDE68A';
+      }
+
+      const courseObj = courses.find(c => c.id === a.courseId);
+      const targetLabel = courseObj ? courseObj.title : 'All Active Courses';
+
+      return `
+        <div class="lms-card" style="border-left:4px solid ${borderCol}; padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:18px;">📢</span>
+              <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin:0;">${a.title}</h3>
+              ${prioBadge}
+            </div>
+            <span style="font-size:12px; color:#64748B;">${a.date || 'Recent'}</span>
+          </div>
+
+          <div style="font-size:12px; color:#2145E6; font-weight:600; margin-bottom:10px;">
+            Target: ${targetLabel}
+          </div>
+
+          <p style="color:#334155; font-size:14px; line-height:1.6; margin-bottom:14px; white-space:pre-line;">
+            ${a.content}
+          </p>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #F1F5F9; padding-top:10px; font-size:12px; color:#64748B;">
+            <span>Author: <strong>${a.author || 'Dr. Wanjiku Kamau'}</strong></span>
+            <button onclick="deleteAnnouncementPrompt('${a.id}')" class="lms-btn lms-btn-ghost lms-btn-sm" style="color:#DC2626;">Delete</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  window.openNewAnnouncementModal = function() {
+    document.getElementById('announcement-modal').style.display = 'flex';
+  };
+  window.closeNewAnnouncementModal = function() {
+    document.getElementById('announcement-modal').style.display = 'none';
+  };
+
+  window.handleCreateAnnouncement = function(e) {
+    e.preventDefault();
+    const courseId = document.getElementById('ann-target-course').value;
+    const title = document.getElementById('ann-title').value.trim();
+    const priority = document.getElementById('ann-priority').value;
+    const content = document.getElementById('ann-content').value.trim();
+
+    const created = LMSEngine.createAnnouncement({
+      courseId,
+      title,
+      priority,
+      content,
+      author: session.name || 'Dr. Wanjiku Kamau',
+      date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+    });
+
+    LMSNotifications.showNotification({
+      title: 'Announcement Published',
+      message: `"${title}" has been broadcast to students.`,
+      type: 'success'
+    });
+
+    closeNewAnnouncementModal();
+    e.target.reset();
+    announcements = LMSEngine.getAnnouncements();
+    filterAnnouncements();
+  };
+
+  window.deleteAnnouncementPrompt = function(id) {
+    if (confirm('Delete this announcement?')) {
+      LMSEngine.deleteAnnouncement(id);
+      LMSNotifications.showNotification({ title: 'Deleted', message: 'Announcement removed.', type: 'info' });
+      announcements = LMSEngine.getAnnouncements();
+      filterAnnouncements();
+    }
+  };
+
+  initAnnouncements();
+
+})();
+</script>
+</body>
+</html>

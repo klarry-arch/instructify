@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In | Instructify Kenya LMS</title>
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/live-chat.css">
+  <style>
+    body {
+      background: radial-gradient(120% 120% at 50% 10%, #F8FAFC 0%, #EEF2F6 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .auth-page-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-height, 74px) + 32px) 16px 48px;
+    }
+    .auth-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color, #E2E8F0);
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+      max-width: 480px;
+      width: 100%;
+      padding: 36px 32px;
+      position: relative;
+    }
+    .auth-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .auth-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 6px;
+    }
+    .auth-subtitle {
+      font-size: 14px;
+      color: #64748B;
+      line-height: 1.5;
+    }
+    .role-switcher-banner {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 20px;
+    }
+    .role-switcher-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #475569;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .role-btn-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .role-quick-btn {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 7px 4px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1E293B;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      transition: all 0.15s ease;
+    }
+    .role-quick-btn:hover {
+      border-color: #2145E6;
+      background: #EEF2FF;
+      color: #2145E6;
+    }
+    .role-quick-btn.active {
+      border-color: #2145E6;
+      background: #2145E6;
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+      <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
+      <div class="nav-brand-text-box" style="display: inline-flex !important; flex-direction: column !important; justify-content: center !important; align-items: flex-start !important; line-height: 1 !important;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-weight: 800 !important; font-size: 1.25rem !important; color: #0F172A !important; letter-spacing: -0.02em !important; line-height: 1 !important; display: block !important;">Instruct<span class="brand-accent" style="color: #F5812D !important; font-weight: 900 !important;">ify</span></span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-size: 0.62rem !important; font-weight: 850 !important; color: #FF4D00 !important; text-transform: uppercase !important; letter-spacing: 2.2px !important; line-height: 1 !important; display: block !important;">KENYA</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="courses.html" class="nav-link">Courses</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="register.html" class="btn btn-outline btn-sm">Create Account</a>
+    </div>
+  </div>
+</nav>
+
+<div class="auth-page-wrapper">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div style="display:inline-flex; align-items:center; justify-content:center; width:52px; height:52px; border-radius:16px; background:#EEF2FF; color:#2145E6; font-size:26px; margin-bottom:12px;">
+        🔐
+      </div>
+      <h1 class="auth-title">Welcome Back</h1>
+      <p class="auth-subtitle">Sign in to your Instructify Educator or Student workspace</p>
+    </div>
+
+    <!-- Quick Role Switcher for Seamless Evaluation -->
+    <div class="role-switcher-banner">
+      <div class="role-switcher-title">
+        <span>⚡ 1-Click Role Switcher</span>
+        <span style="font-weight:600; color:#2563EB;">Instant Fill</span>
+      </div>
+      <div class="role-btn-grid">
+        <button type="button" class="role-quick-btn active" id="quick-btn-trainer" onclick="selectRolePreset('trainer')">
+          <span>👩‍🏫 Educator</span>
+          <span style="font-size:10px; opacity:0.8;">Dr. Wanjiku</span>
+        </button>
+        <button type="button" class="role-quick-btn" id="quick-btn-learner" onclick="selectRolePreset('learner')">
+          <span>🎓 Student</span>
+          <span style="font-size:10px; opacity:0.8;">James Mwangi</span>
+        </button>
+        <button type="button" class="role-quick-btn" id="quick-btn-admin" onclick="selectRolePreset('admin')">
+          <span>🛡️ Super Admin</span>
+          <span style="font-size:10px; opacity:0.8;">Prof. Ochieng</span>
+        </button>
+      </div>
+    </div>
+
+    <form id="login-form" onsubmit="handleLoginSubmit(event)" style="display:flex; flex-direction:column; gap:16px;">
+      <div>
+        <label for="login-email" class="form-label">Email Address</label>
+        <input type="email" id="login-email" aria-label="Email Address" class="form-input" value="trainer@instructify.ke" required autocomplete="email">
+      </div>
+
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <label for="login-password" class="form-label" style="margin:0;">Password</label>
+          <a href="forgot-password.html" style="font-size:12.5px; color:#2145E6; font-weight:600; text-decoration:none;">Forgot password?</a>
+        </div>
+        <div style="position:relative;">
+          <input type="password" id="login-password" aria-label="Password" class="form-input" value="Train@2024" required autocomplete="current-password" style="padding-right:40px;">
+          <button type="button" onclick="togglePasswordVisibility()" aria-label="Toggle Password Visibility" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:#64748B; cursor:pointer; font-size:16px;">
+            👁️
+          </button>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#475569; cursor:pointer;">
+          <input type="checkbox" id="login-remember" checked>
+          <span>Remember this browser</span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-full" id="login-submit-btn" style="padding:12px; font-size:15px; font-weight:700; margin-top:4px;">
+        Sign In to Portal →
+      </button>
+    </form>
+
+    <div style="text-align:center; margin-top:20px; font-size:13.5px; color:#64748B;">
+      Don't have an account? <a href="register.html" style="color:#2145E6; font-weight:700; text-decoration:none;">Register for Instructify</a>
+    </div>
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
+<script>
+const PRESETS = {
+  trainer: {
+    email: 'trainer@instructify.ke',
+    pass: 'Train@2024'
+  },
+  learner: {
+    email: 'learner@instructify.ke',
+    pass: 'Learn@2024'
+  },
+  admin: {
+    email: 'admin@instructify.ke',
+    pass: 'Admin@2024'
+  }
+};
+
+function selectRolePreset(role) {
+  document.querySelectorAll('.role-quick-btn').forEach(btn => btn.classList.remove('active'));
+  const activeBtn = document.getElementById('quick-btn-' + role);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  const preset = PRESETS[role];
+  if (preset) {
+    document.getElementById('login-email').value = preset.email;
+    document.getElementById('login-password').value = preset.pass;
+  }
+}
+
+function togglePasswordVisibility() {
+  const input = document.getElementById('login-password');
+  input.type = input.type === 'password' ? 'text' : 'password';
+}
+
+function handleLoginSubmit(e) {
+  e.preventDefault();
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  const btn = document.getElementById('login-submit-btn');
+
+  btn.disabled = true;
+  btn.textContent = 'Verifying credentials...';
+
+  const res = window.attemptLogin(email, password);
+  if (res.success) {
+    window.showToast('✅ Welcome, ' + res.user.name + '! Redirecting...', 'success');
+    setTimeout(() => {
+      const redirectMap = {
+        admin: 'dashboard-admin.html',
+        trainer: 'dashboard-trainer.html',
+        learner: 'dashboard-learner.html'
+      };
+      window.location.href = redirectMap[res.user.role] || 'index.html';
+    }, 800);
+  } else {
+    btn.disabled = false;
+    btn.textContent = 'Sign In to Portal →';
+    window.showToast('❌ ' + res.message, 'error');
+  }
+}
+</script>
+</body>
+</html>

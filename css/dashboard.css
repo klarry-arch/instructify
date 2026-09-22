@@ -1013,3 +1013,184 @@
   margin-bottom: 14px;
 }
 
+/* ══════════════════════════════════════════════════════════════
+   LMS EDUCATOR PORTAL & 8-STEP COURSE WIZARD
+   ══════════════════════════════════════════════════════════════ */
+.wizard-stepper {
+  display: flex;
+  background: #FFFFFF;
+  border: 1px solid var(--border, #E2E8F0);
+  border-radius: 16px;
+  padding: 8px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  gap: 6px;
+  scrollbar-width: thin;
+}
+
+.wizard-step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748B;
+  background: transparent;
+  border: none;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.wizard-step-item:hover {
+  background: #F1F5F9;
+  color: #0F172A;
+}
+
+.wizard-step-item.active {
+  background: #2145E6;
+  color: #FFFFFF;
+}
+
+.wizard-step-item.completed {
+  color: #059669;
+  background: #ECFDF5;
+}
+
+.wizard-step-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.wizard-step-item.active .wizard-step-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+.wizard-pane {
+  display: none;
+  background: #FFFFFF;
+  border: 1px solid var(--border, #E2E8F0);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+  margin-bottom: 24px;
+  animation: fadeIn 0.2s ease;
+}
+
+.wizard-pane.active {
+  display: block;
+}
+
+.wizard-footer-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border, #E2E8F0);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Curriculum Builder UI */
+.curriculum-section-card {
+  border: 1.5px solid #CBD5E1;
+  border-radius: 14px;
+  background: #F8FAFC;
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+
+.curriculum-section-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: #EEF2F6;
+  border-bottom: 1px solid #CBD5E1;
+  font-weight: 700;
+}
+
+.curriculum-module-box {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  margin: 12px 16px;
+  padding: 12px;
+}
+
+.curriculum-lesson-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  gap: 12px;
+}
+
+.curriculum-action-btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.curriculum-icon-btn {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  color: #475569;
+  transition: all 0.15s ease;
+}
+
+.curriculum-icon-btn:hover {
+  border-color: #2145E6;
+  color: #2145E6;
+  background: #EEF2FF;
+}
+
+/* CSV Dropzone */
+.lms-dropzone {
+  border: 2px dashed #94A3B8;
+  border-radius: 16px;
+  padding: 36px 20px;
+  text-align: center;
+  background: #F8FAFC;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lms-dropzone:hover,
+.lms-dropzone.dragover {
+  border-color: #2145E6;
+  background: #EEF2FF;
+}
+
+.lms-csv-preview-table-wrapper {
+  max-height: 260px;
+  overflow-y: auto;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  margin-top: 16px;
+}
+

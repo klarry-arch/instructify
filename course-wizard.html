@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Course | Instructify Kenya LMS</title>
+  <meta name="description" content="Create a new course on Instructify Kenya using the guided 8-step course builder.">
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
+  <link rel="stylesheet" href="css/lms-portal.css">
+</head>
+<body class="lms-page">
+
+<!-- ── Minimal Header ── -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:100;background:#FFF;border-bottom:1px solid #E2E8F0;height:56px;display:flex;align-items:center;padding:0 24px;">
+  <a href="dashboard-trainer.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#64748B;font-size:13px;font-weight:600;">
+    <span>← Back to Dashboard</span>
+  </a>
+  <div style="flex:1;text-align:center;">
+    <span style="font-size:15px;font-weight:800;color:#0F172A;" id="wizard-header-title">Create New Course</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="lms-autosave-indicator" id="autosave-indicator">
+      <div class="lms-autosave-dot"></div>
+      <span>Not saved</span>
+    </div>
+    <button class="lms-btn lms-btn-outline lms-btn-sm" onclick="saveDraftAction()">💾 Save Draft</button>
+  </div>
+</header>
+
+<!-- ── Wizard Container ── -->
+<div style="padding-top:56px;min-height:100vh;display:flex;flex-direction:column;">
+
+  <!-- Step Indicator -->
+  <div class="lms-wizard-stepper" id="wizard-stepper">
+    <!-- Populated by JS -->
+  </div>
+
+  <!-- Wizard Body -->
+  <div style="flex:1;overflow-y:auto;">
+    <div class="lms-wizard-body" id="wizard-body" style="max-width:840px;margin:0 auto;">
+      <!-- Step content rendered by JS -->
+    </div>
+  </div>
+
+  <!-- Wizard Footer Actions -->
+  <div class="lms-wizard-actions" id="wizard-actions">
+    <div class="left-actions">
+      <button class="lms-btn lms-btn-outline" id="btn-prev" onclick="wizardPrev()">← Previous</button>
+    </div>
+    <div class="right-actions">
+      <button class="lms-btn lms-btn-outline" onclick="previewCourse()">👁 Preview</button>
+      <button class="lms-btn lms-btn-primary" id="btn-next" onclick="wizardNext()">Next Step →</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/lms-auth-guard.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/lms-engine.js"></script>
+<script src="js/lms-wizard-engine.js"></script>
+<script src="js/lms-assessment-engine.js"></script>
+<script src="js/lms-notifications.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  // ── Auth Guard ──
+  const session = LMSAuth.guardPage(['trainer', 'admin']);
+  if (!session) return;
+
+  // ── Check for edit mode ──
+  const params = new URLSearchParams(window.location.search);
+  const editId = params.get('edit');
+  const courseData = LMSWizard.initWizard(editId || null);
+
+  if (editId) {
+    document.getElementById('wizard-header-title').textContent = 'Edit Course';
+    document.title = 'Edit Course | Instructify Kenya LMS';
+  }
+
+  // ── Render Stepper ──
+  function renderStepper() {
+    const stepper = document.getElementById('wizard-stepper');
+    if (!stepper) return;
+
+    stepper.innerHTML = LMSWizard.STEPS.map(function(step, i) {
+      const currentStep = LMSWizard.getCurrentStep();
+      let cls = '';
+      if (step.id === currentStep) cls = 'active';
+      else if (step.id < currentStep && LMSWizard.isStepComplete(step.id)) cls = 'completed';
+
+      let html = '';
+      if (i > 0) {
+        const connCls = step.id <= currentStep ? (cls === 'completed' ? 'completed' : 'active') : '';
+        html += '<div class="lms-wizard-connector ' + connCls + '"></div>';
+      }
+      html += `
+        <div class="lms-wizard-step ${cls}" onclick="wizardGoTo(${step.id})" tabindex="0" role="button" aria-label="Step ${step.id}: ${step.label}">
+          <div class="step-num">${cls === 'completed' ? '✓' : step.id}</div>
+          <div class="step-label">${step.label}</div>
+        </div>
+      `;
+      return html;
+    }).join('');
+  }
+
+  // ── Render Step Content ──
+  function renderStep() {
+    const body = document.getElementById('wizard-body');
+    if (!body) return;
+
+    const step = LMSWizard.getCurrentStep();
+    const data = LMSWizard.getCourseData();
+
+    let html = '';
+
+    switch (step) {
+      case 1: html = renderStep1(data); break;
+      case 2: html = renderStep2(data); break;
+      case 3: html = renderStep3(data); break;
+      case 4: html = renderStep4(data); break;
+      case 5: html = renderStep5(data); break;
+      case 6: html = renderStep6(data); break;
+      case 7: html = renderStep7(data); break;
+      case 8: html = renderStep8(data); break;
+    }
+
+    body.innerHTML = html;
+    updateNavButtons();
+    renderStepper();
+  }
+
+  // ── Step 1: Basic Information ──
+  function renderStep1(data) {
+    const catOptions = LMSWizard.CATEGORIES.map(c => `<option value="${c}" ${data.category === c ? 'selected' : ''}>${c}</option>`).join('');
+    const levelOptions = LMSWizard.LEVELS.map(l => `<option value="${l}" ${data.level === l ? 'selected' : ''}>${l}</option>`).join('');
+    const langOptions = LMSWizard.LANGUAGES.map(l => `<option value="${l}" ${data.language === l ? 'selected' : ''}>${l}</option>`).join('');
+
+    return `
+      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">📋 Basic Course Information</h2>
+      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Enter the essential details about your course.</p>
+
+      <div class="lms-form-group">
+        <label class="lms-label">Course Title <span class="required">*</span></label>
+        <input type="text" class="lms-input" id="field-title" value="${data.title || ''}" placeholder="e.g., ICT Integration in CBC Education" onchange="updateWizardField('title', this.value)">
+      </div>
+
+      <div class="lms-form-group">
+        <label class="lms-label">Short Description <span class="required">*</span></label>
+        <textarea class="lms-textarea" id="field-shortDesc" rows="3" placeholder="A brief 1-2 sentence summary of the course..." onchange="updateWizardField('shortDescription', this.value)">${data.shortDescription || ''}</textarea>
+        <div class="lms-hint">This appears on course cards. Keep it concise (max 200 characters).</div>
+      </div>
+
+      <div class="lms-form-group">
+        <label class="lms-label">Full Description</label>
+        <textarea class="lms-textarea" id="field-desc" rows="6" placeholder="Detailed course description covering scope, methodology, and value proposition..." onchange="updateWizardField('description', this.value)">${data.description || ''}</textarea>
+      </div>
+
+      <div class="lms-input-group">
+        <div class="lms-form-group">
+          <label class="lms-label">Category <span class="required">*</span></label>
+          <select class="lms-select" id="field-category" onchange="updateWizardField('category', this.value)">
+            <option value="">Select category...</option>
+            ${catOptions}
+          </select>
+        </div>
+        <div class="lms-form-group">
+          <label class="lms-label">Difficulty Level</label>
+          <select class="lms-select" id="field-level" onchange="updateWizardField('level', this.value)">
+            ${levelOptions}
+          </select>
+        </div>
+      </div>
+
+      <div class="lms-input-group">
+        <div class="lms-form-group">
+          <label class="lms-label">Language</label>
+          <select class="lms-select" id="field-language" onchange="updateWizardField('language', this.value)">
+            ${langOptions}
+          </select>
+        </div>
+        <div class="lms-form-group">
+          <label class="lms-label">Estimated Duration</label>
+          <input type="text" class="lms-input" id="field-duration" value="${data.duration || ''}" placeholder="e.g., 8 weeks" onchange="updateWizardField('duration', this.value)">
+        </div>
+      </div>
+
+      <div class="lms-form-group">
+        <label class="lms-label">Course Tags</label>
+        <input type="text" class="lms-input" id="field-tags" value="${(data.tags || []).join(', ')}" placeholder="Comma-separated tags: ICT, CBC, Digital Literacy" onchange="updateWizardField('tags', this.value.split(',').map(t=>t.trim()).filter(Boolean))">
+        <div class="lms-hint">Separate tags with commas. Helps learners discover your course.</div>
+      </div>
+
+      <div class="lms-form-group">
+        <label class="lms-label">Featured Image URL</label>
+        <input type="text" class="lms-input" id="field-image" value="${data.image || ''}" placeholder="https://... or assets/images/..." onchange="updateWizardField('image', this.value)">
+      </div>
+
+      <div class="lms-form-group">
+        <label class="lms-label">Promotional Video URL</label>
+        <input type="text" class="lms-input" id="field-video" value="${data.promoVideo || ''}" placeholder="YouTube or Vimeo embed URL" onchange="updateWizardField('promoVideo', this.value)">
+      </div>
+
+      <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:16px;margin-top:8px;">
+        <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:12px;">Instructor Details</div>
+        <div class="lms-input-group">
+          <div class="lms-form-group">
+            <label class="lms-label">Instructor Name</label>
+            <input type="text" class="lms-input" value="${data.instructor || ''}" onchange="updateWizardField('instructor', this.value)">
+          </div>
+          <div class="lms-form-group">
+            <label class="lms-label">Title / Role</label>
+            <input type="text" class="lms-input" value="${data.instructorTitle || ''}" placeholder="e.g., ICT Education Specialist" onchange="updateWizardField('instructorTitle', this.value)">
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ── Step 2: Learning Information ──
+  function renderStep2(data) {
+    const formatOptions = LMSWizard.FORMATS.map(f => `<option value="${f}" ${data.deliveryMethod === f ? 'selected' : ''}>${f}</option>`).join('');
+
+    return `
+      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">🎯 Learning Information</h2>
+      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Define what learners will achieve and who this course is for.</p>
+
+      <div class="lms-form-group">
+        <label class="lms-label">Target Audience</label>
+        <textarea class="lms-textarea" rows="3" placeholder="Who is this course designed for? e.g., Primary school teachers, CBC curriculum implementers..." onchange="updateWizardField('targetAudience', this.value)">${data.targetAudience || ''}</textarea>
+      </div>
+
+      <div class="lms-form-group">
+        <label class="lms-label">Entry Requirements</label>
+        <textarea class="lms-textarea" rows="2" placeholder="What should learners know or have before starting?" onchange="updateWizardField('entryRequirements', this.value)">${data.entryRequirements || ''}</textarea>
+      </div>
+
+      <div class="lms-form-group">
+        <label class="lms-label">Learning Outcomes <span class="required">*</span></label>
+        <div id="outcomes-list">
+          ${(data.learningOutcomes || []).map((o, i) => `
+            <div style="display:flex;gap:8px;margin-bottom:6px;">
+              <input type="text" class="lms-input" value="${o}" onchange="updateOutcome(${i}, this.value)" style="flex:1;">
+              <button class="lms-btn lms-btn-ghost lms-btn-sm" onclick="removeOutcome(${i})" title="Remove">✕</button>
+            </div>
+          `).join('')}
+        </div>
+        <button class="lms-add-item-btn" onclick="addOutcome()">+ Add Learning Outcome</button>
+      </div>
+
+      <div class="lms-form-group">
+        <label class="lms-label">Core Competencies</label>
+        <input type="text" class="lms-input" value="${(data.coreCompetencies || []).join(', ')}" placeholder="Comma-separated: Critical Thinking, Communication, Digital Literacy" onchange="updateWizardField('coreCompetencies', this.value.split(',').map(t=>t.trim()).filter(Boolean))">
+      </div>
+
+      <div class="lms-input-group">
+        <div class="lms-form-group">
+          <label class="lms-label">Delivery Method</label>
+          <select class="lms-select" onchange="updateWizardField('deliveryMethod', this.value)">
+            ${formatOptions}
+          </select>
+        </div>
+        <div class="lms-form-group">
+          <label class="lms-label">Weekly Study Time</label>
+          <input type="text" class="lms-input" value="${data.weeklyStudyTime || ''}" placeholder="e.g., 5-7 hours" onchange="updateWizardField('weeklyStudyTime', this.value)">
+        </div>
+      </div>
+
+      <label class="lms-checkbox" style="margin-top:12px;">
+        <input type="checkbox" ${data.cpd ? 'checked' : ''} onchange="updateWizardField('cpd', this.checked)">
+        <span>This is a CPD (Continuous Professional Development) accredited course</span>
+      </label>
+
+      ${data.cpd ? `
+        <div class="lms-form-group" style="margin-top:12px;">
+          <label class="lms-label">CPD Hours</label>
+          <input type="number" class="lms-input" value="${data.cpdHours || ''}" placeholder="e.g., 30" onchange="updateWizardField('cpdHours', parseInt(this.value) || 0)" style="max-width:200px;">
+        </div>
+      ` : ''}
+    `;
+  }
+
+  // ── Step 3: Curriculum Builder ──
+  function renderStep3(data) {
+    const curriculum = data.curriculum || [];
+
+    let curriculumHtml = '';
+    if (curriculum.length === 0) {
+      curriculumHtml = `
+        <div class="lms-empty-state">
+          <div class="icon">📚</div>
+          <div class="title">No curriculum sections yet</div>
+          <div class="message">Add sections, modules, and lessons to build your course structure.</div>
+        </div>
+      `;
+    } else {
+      curriculumHtml = curriculum.map(function(sec, secIdx) {
+        const lessonTypeIcons = { text: '📄', video: '🎬', quiz: '📝', assignment: '📋', download: '📥', discussion: '💬' };
+
+        const modulesHtml = (sec.modules || []).map(function(mod, modIdx) {
+          const lessonsHtml = (mod.lessons || []).map(function(les, lesIdx) {
+            const icon = lessonTypeIcons[les.type] || '📄';
+            return `
+              <div class="lms-lesson-item">
+                <span class="drag-handle" style="color:#CBD5E1;cursor:grab;">⋮⋮</span>
+                <div class="lesson-icon icon-${les.type || 'text'}">${icon}</div>
+                <span class="lesson-title">${les.title}</span>
+                ${les.mandatory ? '<span class="lms-badge lms-badge-mandatory" style="font-size:9px;">Required</span>' : ''}
+                ${les.freePreview ? '<span class="lms-badge lms-badge-free" style="font-size:9px;">Free Preview</span>' : ''}
+                <span class="lesson-duration">${les.duration || ''}</span>
+                <button class="lms-btn lms-btn-ghost lms-btn-sm" onclick="removeWizardItem('lesson','${les.id}')" title="Remove lesson">✕</button>
+              </div>
+            `;
+          }).join('');
+
+          return `
+            <div class="lms-module-block">
+              <div class="lms-module-header">
+                <span style="color:#CBD5E1;cursor:grab;">⋮⋮</span>
+                <span class="module-title">${mod.title}</span>
+                <span style="font-size:11px;color:#94A3B8;">${(mod.lessons || []).length} items</span>
+                <button class="lms-btn lms-btn-ghost lms-btn-sm" onclick="removeWizardItem('module','${mod.id}')" title="Remove module">✕</button>
+              </div>
+              ${lessonsHtml}
+              <button class="lms-add-item-btn" onclick="showAddLessonModal('${sec.id}','${mod.id}')">+ Add Lesson / Quiz / Assignment</button>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="lms-section-block">
+            <div class="lms-section-header">
+              <span class="drag-handle">⋮⋮</span>
+              <span class="section-title">${sec.title}</span>
+              <span style="font-size:11px;color:#94A3B8;">${(sec.modules || []).length} modules</span>
+              <div class="section-actions">
+                <button class="lms-btn lms-btn-ghost lms-btn-sm" onclick="duplicateWizardSection('${sec.id}')" title="Duplicate section">📋</button>
+                <button class="lms-btn lms-btn-ghost lms-btn-sm" onclick="moveWizardItem('section','${sec.id}','up')" title="Move up">↑</button>
+                <button class="lms-btn lms-btn-ghost lms-btn-sm" onclick="moveWizardItem('section','${sec.id}','down')" title="Move down">↓</button>
+                <button class="lms-btn lms-btn-ghost lms-btn-sm" onclick="removeWizardItem('section','${sec.id}')" title="Remove section">✕</button>
+              </div>
+            </div>
+            ${modulesHtml}
+            <div style="padding:8px 16px 12px 32px;">
+              <button class="lms-add-item-btn" onclick="addWizardModule('${sec.id}')">+ Add Module</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    return `
+      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">📚 Curriculum Builder</h2>
+      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Build your course structure with sections, modules, and lessons.</p>
+
+      <div class="lms-curriculum-tree" id="curriculum-tree">
+        ${curriculumHtml}
+      </div>
+
+      <button class="lms-btn lms-btn-outline" onclick="addWizardSection()" style="margin-top:16px;width:100%;">
+        + Add New Section
+      </button>
+    `;
+  }
+
+  // ── Step 4: Lesson Content Editor ──
+  function renderStep4(data) {
+    const allLessons = [];
+    (data.curriculum || []).forEach(function(sec) {
+      (sec.modules || []).forEach(function(mod) {
+        (mod.lessons || []).forEach(function(les) {
+          if (les.type !== 'quiz' && les.type !== 'assignment') {
+            allLessons.push(les);
+          }
+        });
+      });
+    });
+
+    if (allLessons.length === 0) {
+      return `
+        <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">✏️ Lesson Content</h2>
+        <div class="lms-empty-state" style="margin-top:32px;">
+          <div class="icon">✏️</div>
+          <div class="title">No lessons to edit</div>
+          <div class="message">Go back to Step 3 to add lessons to your curriculum first.</div>
+        </div>
+      `;
+    }
+
+    return `
+      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">✏️ Lesson Content Editor</h2>
+      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Add content to each lesson. Select a lesson to edit.</p>
+
+      <div class="lms-tabs" id="lesson-tabs">
+        ${allLessons.map((l, i) => `<button class="lms-tab ${i === 0 ? 'active' : ''}" onclick="switchLessonTab(${i})">${l.title}</button>`).join('')}
+      </div>
+
+      ${allLessons.map((l, i) => `
+        <div class="lms-tab-panel ${i === 0 ? 'active' : ''}" id="lesson-panel-${i}">
+          <div class="lms-card" style="margin-top:16px;">
+            <div class="lms-card-body">
+              <div class="lms-form-group">
+                <label class="lms-label">Lesson Title</label>
+                <input type="text" class="lms-input" value="${l.title}" readonly style="background:#F8FAFC;">
+              </div>
+              <div class="lms-form-group">
+                <label class="lms-label">Content (HTML supported)</label>
+                <textarea class="lms-textarea" rows="10" placeholder="Enter lesson content with HTML formatting..."
+                  onchange="updateLessonContent('${l.id}', this.value)">${l.contentHtml || ''}</textarea>
+                <div class="lms-hint">Supports HTML: &lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;, &lt;strong&gt;, images, and embedded media.</div>
+              </div>
+              ${l.type === 'video' ? `
+                <div class="lms-form-group">
+                  <label class="lms-label">Video URL</label>
+                  <input type="text" class="lms-input" value="${l.videoUrl || ''}" placeholder="YouTube/Vimeo embed URL"
+                    onchange="updateLessonField('${l.id}', 'videoUrl', this.value)">
+                </div>
+              ` : ''}
+              <div class="lms-form-group">
+                <label class="lms-label">Estimated Duration</label>
+                <input type="text" class="lms-input" value="${l.duration || ''}" style="max-width:200px;"
+                  onchange="updateLessonField('${l.id}', 'duration', this.value)">
+              </div>
+              <div class="lms-input-group">
+                <label class="lms-checkbox"><input type="checkbox" ${l.mandatory ? 'checked' : ''} onchange="updateLessonField('${l.id}','mandatory',this.checked)"> <span>Mandatory lesson</span></label>
+                <label class="lms-checkbox"><input type="checkbox" ${l.freePreview ? 'checked' : ''} onchange="updateLessonField('${l.id}','freePreview',this.checked)"> <span>Free preview</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    `;
+  }
+
+  // ── Step 5: Assessment Setup ──
+  function renderStep5(data) {
+    const assessments = [];
+    (data.curriculum || []).forEach(function(sec) {
+      (sec.modules || []).forEach(function(mod) {
+        (mod.lessons || []).forEach(function(les) {
+          if (les.type === 'quiz' || les.type === 'assignment') {
+            assessments.push(les);
+          }
+        });
+      });
+    });
+
+    if (assessments.length === 0) {
+      return `
+        <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">📝 Assessment Setup</h2>
+        <div class="lms-empty-state" style="margin-top:32px;">
+          <div class="icon">📝</div>
+          <div class="title">No assessments yet</div>
+          <div class="message">Add quizzes or assignments in Step 3 (Curriculum Builder), then configure them here.</div>
+        </div>
+      `;
+    }
+
+    return `
+      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">📝 Assessment Setup</h2>
+      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Configure grading, time limits, and question settings for your assessments.</p>
+
+      ${assessments.map(a => `
+        <div class="lms-card" style="margin-bottom:16px;">
+          <div class="lms-card-header">
+            <h3 class="lms-card-title">${a.type === 'quiz' ? '📝' : '📋'} ${a.title}</h3>
+            <span class="lms-badge ${a.type === 'quiz' ? 'lms-badge-review' : 'lms-badge-in-progress'}">${a.type === 'quiz' ? 'Quiz' : 'Assignment'}</span>
+          </div>
+          <div class="lms-card-body">
+            <div class="lms-input-group">
+              <div class="lms-form-group">
+                <label class="lms-label">Pass Mark (%)</label>
+                <input type="number" class="lms-input" value="${a.passMark || 80}" min="0" max="100"
+                  onchange="updateLessonField('${a.id}','passMark',parseInt(this.value))">
+              </div>
+              <div class="lms-form-group">
+                <label class="lms-label">Allowed Attempts</label>
+                <input type="number" class="lms-input" value="${a.attemptsAllowed || 3}" min="1" max="99"
+                  onchange="updateLessonField('${a.id}','attemptsAllowed',parseInt(this.value))">
+              </div>
+              <div class="lms-form-group">
+                <label class="lms-label">Time Limit (minutes)</label>
+                <input type="number" class="lms-input" value="${a.timeLimit || ''}" placeholder="No limit"
+                  onchange="updateLessonField('${a.id}','timeLimit',parseInt(this.value)||null)">
+              </div>
+            </div>
+            ${a.type === 'quiz' ? `<div style="font-size:12px;color:#64748B;margin-top:8px;">📊 ${(a.questions || []).length} question(s) configured</div>` : ''}
+            ${a.type === 'assignment' ? `
+              <div class="lms-form-group" style="margin-top:12px;">
+                <label class="lms-label">Assignment Instructions</label>
+                <textarea class="lms-textarea" rows="4" onchange="updateLessonField('${a.id}','instructions',this.value)">${a.instructions || ''}</textarea>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `).join('')}
+    `;
+  }
+
+  // ── Step 6: Enrolment & Access ──
+  function renderStep6(data) {
+    return `
+      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">👥 Enrolment & Access</h2>
+      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Configure how students can access and enrol in this course.</p>
+
+      <div class="lms-form-group">
+        <label class="lms-label">Access Type <span class="required">*</span></label>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+          ${['open', 'private', 'invite_only', 'code'].map(type => {
+            const labels = { open: 'Open Enrolment', private: 'Private (Manual Only)', invite_only: 'Invitation Only', code: 'Access Code Required' };
+            const icons = { open: '🌐', private: '🔒', invite_only: '✉️', code: '🔑' };
+            const descs = { open: 'Anyone can self-enrol', private: 'Educator assigns students', invite_only: 'Via email invitation link', code: 'Students enter a code' };
+            return `
+              <label class="lms-option ${data.accessType === type ? 'selected' : ''}" onclick="updateWizardField('accessType','${type}');renderStep();" style="flex-direction:column;align-items:flex-start;gap:4px;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <span style="font-size:18px;">${icons[type]}</span>
+                  <span style="font-weight:700;">${labels[type]}</span>
+                </div>
+                <span style="font-size:11px;color:#64748B;">${descs[type]}</span>
+              </label>
+            `;
+          }).join('')}
+        </div>
+      </div>
+
+      ${data.accessType === 'code' ? `
+        <div class="lms-form-group">
+          <label class="lms-label">Course Access Code <span class="required">*</span></label>
+          <input type="text" class="lms-input" value="${data.accessCode || ''}" placeholder="e.g., IK-CBC-2026" onchange="updateWizardField('accessCode', this.value)" style="max-width:300px;font-family:monospace;font-weight:700;letter-spacing:0.1em;">
+        </div>
+      ` : ''}
+
+      <div class="lms-input-group">
+        <div class="lms-form-group">
+          <label class="lms-label">Maximum Capacity</label>
+          <input type="number" class="lms-input" value="${data.maxCapacity || ''}" placeholder="Unlimited" onchange="updateWizardField('maxCapacity', this.value)">
+        </div>
+        <div class="lms-form-group">
+          <label class="lms-label">Enrolment Opens</label>
+          <input type="date" class="lms-input" value="${data.enrollmentOpen || ''}" onchange="updateWizardField('enrollmentOpen', this.value)">
+        </div>
+        <div class="lms-form-group">
+          <label class="lms-label">Enrolment Closes</label>
+          <input type="date" class="lms-input" value="${data.enrollmentClose || ''}" onchange="updateWizardField('enrollmentClose', this.value)">
+        </div>
+      </div>
+
+      <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:16px;margin-top:16px;">
+        <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:12px;">💰 Pricing</div>
+        <div class="lms-input-group">
+          <div class="lms-form-group">
+            <label class="lms-label">Pricing Type</label>
+            <select class="lms-select" onchange="updateWizardField('pricing', this.value)">
+              <option value="free" ${data.pricing === 'free' ? 'selected' : ''}>Free</option>
+              <option value="paid" ${data.pricing === 'paid' ? 'selected' : ''}>Paid</option>
+            </select>
+          </div>
+          ${data.pricing === 'paid' ? `
+            <div class="lms-form-group">
+              <label class="lms-label">Price (KES)</label>
+              <input type="number" class="lms-input" value="${data.price || ''}" onchange="updateWizardField('price', parseInt(this.value))">
+            </div>
+            <div class="lms-form-group">
+              <label class="lms-label">Original Price (KES)</label>
+              <input type="number" class="lms-input" value="${data.originalPrice || ''}" onchange="updateWizardField('originalPrice', parseInt(this.value))">
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  // ── Step 7: Completion & Certification ──
+  function renderStep7(data) {
+    const rules = data.completionRules || {};
+    return `
+      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">🏆 Completion & Certification</h2>
+      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Define what learners must achieve to complete this course.</p>
+
+      <div class="lms-card" style="margin-bottom:20px;">
+        <div class="lms-card-header"><h3 class="lms-card-title">Completion Rules</h3></div>
+        <div class="lms-card-body">
+          <label class="lms-checkbox"><input type="checkbox" ${rules.allLessonsCompleted ? 'checked' : ''} onchange="updateCompletionRule('allLessonsCompleted', this.checked)"><span>All compulsory lessons completed</span></label>
+          <label class="lms-checkbox"><input type="checkbox" ${rules.assignmentApproved ? 'checked' : ''} onchange="updateCompletionRule('assignmentApproved', this.checked)"><span>All assignments approved</span></label>
+          <label class="lms-checkbox"><input type="checkbox" ${rules.finalAssessmentPassed ? 'checked' : ''} onchange="updateCompletionRule('finalAssessmentPassed', this.checked)"><span>Final assessment passed</span></label>
+          <div class="lms-form-group" style="margin-top:12px;">
+            <label class="lms-label">Minimum Quiz Score (%)</label>
+            <input type="number" class="lms-input" value="${rules.minQuizScore || 80}" min="0" max="100" style="max-width:200px;" onchange="updateCompletionRule('minQuizScore', parseInt(this.value))">
+          </div>
+          <div class="lms-form-group">
+            <label class="lms-label">Minimum Overall Progress (%)</label>
+            <input type="number" class="lms-input" value="${rules.minProgressPercent || 100}" min="0" max="100" style="max-width:200px;" onchange="updateCompletionRule('minProgressPercent', parseInt(this.value))">
+          </div>
+        </div>
+      </div>
+
+      <div class="lms-card">
+        <div class="lms-card-header"><h3 class="lms-card-title">🎓 Certificate Settings</h3></div>
+        <div class="lms-card-body">
+          <label class="lms-checkbox"><input type="checkbox" ${data.certificateEnabled ? 'checked' : ''} onchange="updateWizardField('certificateEnabled', this.checked)"><span>Issue certificate upon completion</span></label>
+          ${data.certificateEnabled ? `
+            <div class="lms-form-group" style="margin-top:12px;">
+              <label class="lms-label">Certificate Template</label>
+              <select class="lms-select" onchange="updateWizardField('certificateTemplate', this.value)">
+                <option value="standard_cpd" ${data.certificateTemplate === 'standard_cpd' ? 'selected' : ''}>Standard CPD Certificate</option>
+                <option value="professional" ${data.certificateTemplate === 'professional' ? 'selected' : ''}>Professional Certificate</option>
+                <option value="academic" ${data.certificateTemplate === 'academic' ? 'selected' : ''}>Academic Certificate</option>
+              </select>
+            </div>
+            <label class="lms-checkbox"><input type="checkbox" ${data.cpd ? 'checked' : ''} onchange="updateWizardField('cpd', this.checked)"><span>CPD Accredited</span></label>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  // ── Step 8: Review & Publish ──
+  function renderStep8(data) {
+    const stats = LMSWizard.getCourseStats();
+    const allErrors = LMSWizard.validateStep(8);
+    const isReady = allErrors.length === 0;
+
+    return `
+      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">🚀 Review & Publish</h2>
+      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Review your course details before publishing.</p>
+
+      ${allErrors.length > 0 ? `
+        <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:12px;padding:16px;margin-bottom:20px;">
+          <div style="font-size:14px;font-weight:700;color:#991B1B;margin-bottom:8px;">⚠️ Missing Required Information</div>
+          <ul style="margin:0;padding-left:20px;font-size:13px;color:#991B1B;line-height:1.8;">
+            ${allErrors.map(e => `<li>${e}</li>`).join('')}
+          </ul>
+        </div>
+      ` : `
+        <div style="background:#F0FDF4;border:1px solid #86EFAC;border-radius:12px;padding:16px;margin-bottom:20px;">
+          <div style="font-size:14px;font-weight:700;color:#065F46;">✅ Course is ready to publish!</div>
+        </div>
+      `}
+
+      <!-- Course Summary -->
+      <div class="lms-card" style="margin-bottom:20px;">
+        <div class="lms-card-header"><h3 class="lms-card-title">Course Summary</h3></div>
+        <div class="lms-card-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div><span style="font-size:12px;color:#94A3B8;text-transform:uppercase;">Title</span><div style="font-size:14px;font-weight:700;color:#0F172A;">${data.title || '—'}</div></div>
+            <div><span style="font-size:12px;color:#94A3B8;text-transform:uppercase;">Category</span><div style="font-size:14px;font-weight:600;">${data.category || '—'}</div></div>
+            <div><span style="font-size:12px;color:#94A3B8;text-transform:uppercase;">Level</span><div style="font-size:14px;font-weight:600;">${data.level || '—'}</div></div>
+            <div><span style="font-size:12px;color:#94A3B8;text-transform:uppercase;">Duration</span><div style="font-size:14px;font-weight:600;">${data.duration || '—'}</div></div>
+            <div><span style="font-size:12px;color:#94A3B8;text-transform:uppercase;">Instructor</span><div style="font-size:14px;font-weight:600;">${data.instructor || '—'}</div></div>
+            <div><span style="font-size:12px;color:#94A3B8;text-transform:uppercase;">Access Type</span><div style="font-size:14px;font-weight:600;">${(data.accessType || '—').replace(/_/g, ' ')}</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Curriculum Stats -->
+      <div class="lms-stats-grid" style="margin-bottom:20px;">
+        <div class="lms-stat-card"><div class="lms-stat-icon icon-primary">📑</div><div class="lms-stat-content"><div class="lms-stat-value">${stats.sections}</div><div class="lms-stat-label">Sections</div></div></div>
+        <div class="lms-stat-card"><div class="lms-stat-icon icon-info">📦</div><div class="lms-stat-content"><div class="lms-stat-value">${stats.modules}</div><div class="lms-stat-label">Modules</div></div></div>
+        <div class="lms-stat-card"><div class="lms-stat-icon icon-success">📄</div><div class="lms-stat-content"><div class="lms-stat-value">${stats.lessons}</div><div class="lms-stat-label">Lessons</div></div></div>
+        <div class="lms-stat-card"><div class="lms-stat-icon icon-warning">📝</div><div class="lms-stat-content"><div class="lms-stat-value">${stats.quizzes}</div><div class="lms-stat-label">Quizzes</div></div></div>
+        <div class="lms-stat-card"><div class="lms-stat-icon icon-accent">📋</div><div class="lms-stat-content"><div class="lms-stat-value">${stats.assignments}</div><div class="lms-stat-label">Assignments</div></div></div>
+        <div class="lms-stat-card"><div class="lms-stat-icon icon-info">⏱</div><div class="lms-stat-content"><div class="lms-stat-value">${stats.estimatedDuration}</div><div class="lms-stat-label">Est. Duration</div></div></div>
+      </div>
+
+      <!-- Publish Actions -->
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;padding:16px 0;">
+        <button class="lms-btn lms-btn-outline lms-btn-lg" onclick="saveCourseAction('draft')">💾 Save as Draft</button>
+        <button class="lms-btn lms-btn-outline lms-btn-lg" onclick="previewCourse()">👁 Preview Course</button>
+        <button class="lms-btn lms-btn-primary lms-btn-lg" onclick="saveCourseAction('ready_for_review')" ${isReady ? '' : 'disabled'}>📤 Submit for Approval</button>
+        <button class="lms-btn lms-btn-accent lms-btn-lg" onclick="saveCourseAction('published')" ${isReady ? '' : 'disabled'}>🚀 Publish Course</button>
+      </div>
+    `;
+  }
+
+  // ── Navigation Buttons ──
+  function updateNavButtons() {
+    const step = LMSWizard.getCurrentStep();
+    const prevBtn = document.getElementById('btn-prev');
+    const nextBtn = document.getElementById('btn-next');
+    if (prevBtn) prevBtn.style.visibility = step === 1 ? 'hidden' : 'visible';
+    if (nextBtn) {
+      if (step === 8) {
+        nextBtn.style.display = 'none';
+      } else {
+        nextBtn.style.display = '';
+        nextBtn.textContent = 'Next Step →';
+      }
+    }
+  }
+
+  // ── Global functions ──
+  window.wizardNext = function() {
+    const errors = LMSWizard.validateStep();
+    if (errors.length > 0) {
+      if (window.showToast) showToast(errors[0], 'warning');
+    }
+    LMSWizard.nextStep();
+    renderStep();
+    window.scrollTo(0, 0);
+  };
+
+  window.wizardPrev = function() {
+    LMSWizard.prevStep();
+    renderStep();
+    window.scrollTo(0, 0);
+  };
+
+  window.wizardGoTo = function(stepNum) {
+    LMSWizard.goToStep(stepNum);
+    renderStep();
+    window.scrollTo(0, 0);
+  };
+
+  window.updateWizardField = function(key, value) {
+    LMSWizard.updateField(key, value);
+  };
+
+  window.addOutcome = function() {
+    const data = LMSWizard.getCourseData();
+    if (!data.learningOutcomes) data.learningOutcomes = [];
+    data.learningOutcomes.push('');
+    renderStep();
+  };
+
+  window.updateOutcome = function(idx, value) {
+    const data = LMSWizard.getCourseData();
+    if (data.learningOutcomes) data.learningOutcomes[idx] = value;
+  };
+
+  window.removeOutcome = function(idx) {
+    const data = LMSWizard.getCourseData();
+    if (data.learningOutcomes) data.learningOutcomes.splice(idx, 1);
+    renderStep();
+  };
+
+  window.updateCompletionRule = function(key, value) {
+    const data = LMSWizard.getCourseData();
+    if (!data.completionRules) data.completionRules = {};
+    data.completionRules[key] = value;
+  };
+
+  window.addWizardSection = function() {
+    const title = prompt('Section title:', 'New Section');
+    if (title) { LMSWizard.addSection(title); renderStep(); }
+  };
+
+  window.addWizardModule = function(sectionId) {
+    const title = prompt('Module title:', 'New Module');
+    if (title) { LMSWizard.addModule(sectionId, title); renderStep(); }
+  };
+
+  window.showAddLessonModal = function(sectionId, moduleId) {
+    const title = prompt('Lesson / Item title:', 'New Lesson');
+    if (!title) return;
+    const type = prompt('Type: text, video, quiz, assignment, download, discussion', 'text');
+    LMSWizard.addLesson(sectionId, moduleId, { title: title, type: type || 'text' });
+    renderStep();
+  };
+
+  window.removeWizardItem = function(type, id) {
+    if (confirm('Remove this ' + type + '?')) { LMSWizard.removeItem(type, id); renderStep(); }
+  };
+
+  window.duplicateWizardSection = function(sectionId) {
+    LMSWizard.duplicateSection(sectionId);
+    renderStep();
+    if (window.showToast) showToast('Section duplicated!', 'success');
+  };
+
+  window.moveWizardItem = function(type, id, direction) {
+    LMSWizard.moveItem(type, id, direction);
+    renderStep();
+  };
+
+  window.switchLessonTab = function(idx) {
+    document.querySelectorAll('.lms-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+    document.querySelectorAll('.lms-tab-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+  };
+
+  window.updateLessonContent = function(lessonId, content) {
+    const data = LMSWizard.getCourseData();
+    (data.curriculum || []).forEach(sec => {
+      (sec.modules || []).forEach(mod => {
+        (mod.lessons || []).forEach(les => {
+          if (les.id === lessonId) les.contentHtml = content;
+        });
+      });
+    });
+  };
+
+  window.updateLessonField = function(lessonId, field, value) {
+    const data = LMSWizard.getCourseData();
+    (data.curriculum || []).forEach(sec => {
+      (sec.modules || []).forEach(mod => {
+        (mod.lessons || []).forEach(les => {
+          if (les.id === lessonId) les[field] = value;
+        });
+      });
+    });
+  };
+
+  window.saveDraftAction = function() {
+    LMSWizard.saveCourse('draft');
+    const ind = document.getElementById('autosave-indicator');
+    if (ind) { ind.className = 'lms-autosave-indicator saved'; ind.querySelector('span').textContent = 'Saved'; }
+    if (window.showToast) showToast('Course saved as draft!', 'success');
+  };
+
+  window.saveCourseAction = function(status) {
+    const labels = { draft: 'Draft', ready_for_review: 'Submitted for Review', published: 'Published' };
+    LMSWizard.saveCourse(status);
+    if (window.showToast) showToast('Course ' + (labels[status] || status) + ' successfully!', 'success');
+    setTimeout(function() { window.location.href = 'educator-courses.html'; }, 1500);
+  };
+
+  window.previewCourse = function() {
+    LMSWizard.saveDraft();
+    if (window.showToast) showToast('Preview mode — course saved as draft.', 'info');
+  };
+
+  // ── Autosave listener ──
+  window.addEventListener('lms:autosaved', function() {
+    const ind = document.getElementById('autosave-indicator');
+    if (ind) {
+      ind.className = 'lms-autosave-indicator saved';
+      ind.querySelector('span').textContent = 'Auto-saved';
+      setTimeout(function() {
+        ind.className = 'lms-autosave-indicator';
+        ind.querySelector('span').textContent = 'Editing';
+      }, 3000);
+    }
+  });
+
+  // ── Initial render ──
+  renderStep();
+})();
+</script>
+</body>
+</html>

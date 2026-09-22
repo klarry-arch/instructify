@@ -392,7 +392,7 @@
           <div class="form-group" style="margin-bottom:22px;">
             <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
               <label class="form-label" for="signin-password">Password</label>
-              <button type="button" onclick="showForgotPassword()" style="font-size:13px;color:#FF4D00;background:none;border:none;cursor:pointer;font-weight:700;padding:0;">Forgot password?</button>
+              <a href="forgot-password.html" style="font-size:13px;color:#FF4D00;background:none;border:none;cursor:pointer;font-weight:700;padding:0;text-decoration:none;">Forgot password?</a>
             </div>
             <input type="password" id="signin-password" class="form-input" placeholder="Your password" required autocomplete="current-password">
           </div>
@@ -400,8 +400,8 @@
           <!-- Demo credentials hint -->
           <div style="margin-bottom:20px;font-size:12.5px;background:#EEF4FF;border:1px solid #93C5FD;padding:11px 14px;border-radius:8px;color:#2145E6;line-height:1.6;">
             <strong>Demo accounts:</strong><br>
+            Educator: trainer@instructify.ke / Train@2024<br>
             Learner: learner@instructify.ke / Learn@2024<br>
-            Trainer: trainer@instructify.ke / Train@2024<br>
             Admin: admin@instructify.ke / Admin@2024
           </div>
 
@@ -412,9 +412,10 @@
 
         <div class="divider-text">or continue as</div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px;">
-          <button onclick="quickLogin('learner')" class="btn btn-outline btn-sm">Learner Demo</button>
-          <button onclick="quickLogin('admin')" class="btn btn-outline btn-sm">Admin Demo</button>
+        <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:8px;margin-bottom:22px;">
+          <button type="button" onclick="quickLogin('trainer')" class="btn btn-outline btn-sm" style="font-size:12px;padding:8px 4px;">👩‍🏫 Educator</button>
+          <button type="button" onclick="quickLogin('learner')" class="btn btn-outline btn-sm" style="font-size:12px;padding:8px 4px;">🎓 Learner</button>
+          <button type="button" onclick="quickLogin('admin')" class="btn btn-outline btn-sm" style="font-size:12px;padding:8px 4px;">🛡️ Admin</button>
         </div>
 
         <p style="text-align:center;font-size:13.5px;color:var(--text-muted,#475569);margin:0;">

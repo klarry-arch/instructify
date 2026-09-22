@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessments & Grading | Instructify Kenya LMS</title>
+  <meta name="description" content="Manage assessments, grade assignments with rubrics, and provide feedback on the Instructify Kenya Educator Portal.">
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
+  <link rel="stylesheet" href="css/lms-portal.css">
+  <link rel="stylesheet" href="css/live-chat.css">
+</head>
+<body class="lms-page">
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+      <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
+      <div class="nav-brand-text-box" style="display: inline-flex !important; flex-direction: column !important; justify-content: center !important; align-items: flex-start !important; line-height: 1 !important;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-weight: 800 !important; font-size: 1.25rem !important; color: #0F172A !important; letter-spacing: -0.02em !important; line-height: 1 !important; display: block !important;">Instruct<span class="brand-accent" style="color: #F5812D !important; font-weight: 900 !important;">ify</span></span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-size: 0.62rem !important; font-weight: 850 !important; color: #FF4D00 !important; text-transform: uppercase !important; letter-spacing: 2.2px !important; line-height: 1 !important; display: block !important;">KENYA</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li class="nav-item-dropdown">
+        <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="courses" aria-haspopup="true" aria-expanded="false">
+          Courses <span class="nav-badge badge-amber">Hot</span>
+          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <ul class="nav-dropdown-menu" role="menu" aria-label="Courses, Podcast and Resources">
+          <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem" data-nav="courses"><span class="nav-dropdown-icon">📚</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span><span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span></div></a></li>
+          <li role="none"><a href="podcast.html" class="nav-dropdown-item" role="menuitem" data-nav="podcast"><span class="nav-dropdown-icon">🎙️</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></span><span class="nav-dropdown-desc">Inspiring stories from Kenyan educators</span></div></a></li>
+          <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem" data-nav="resources"><span class="nav-dropdown-info"><span class="nav-dropdown-title">Resources</span><span class="nav-dropdown-desc">Schemes of work, lesson plans &amp; guides</span></div></a></li>
+        </ul>
+      </li>
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions" style="display:flex; align-items:center; gap:12px;">
+      <div id="nav-user-area" style="display:inline-flex; align-items:center; gap:8px; background:#F8FAFC; border:1px solid #E2E8F0; padding:4px 12px 4px 6px; border-radius:999px;">
+        <div id="nav-avatar" class="lms-avatar avatar-sm">WK</div>
+        <span id="nav-user-name" style="font-size:13px; font-weight:700; color:#0F172A;">Dr. Wanjiku</span>
+        <span class="lms-badge lms-badge-published" style="font-size:10px; padding:2px 6px;">Educator</span>
+      </div>
+      <button onclick="logout()" class="btn btn-outline btn-sm" style="color:#DC2626; border-color:#DC2626;" aria-label="Log Out">Log Out</button>
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+  <div class="nav-mobile-links">
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="about.html" class="nav-mobile-link">About Us</a>
+    <div class="nav-mobile-dropdown">
+      <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
+      <div class="nav-mobile-sublinks">
+        <a href="courses.html" class="nav-mobile-sublink" data-nav="courses"><span>📚</span> All Courses</a>
+        <a href="podcast.html" class="nav-mobile-sublink" data-nav="podcast"><span>🎙️</span> Podcast</a>
+        <a href="resources.html" class="nav-mobile-sublink" data-nav="resources"><span>📂</span> Resources</a>
+      </div>
+    </div>
+    <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
+    <a href="schools.html" class="nav-mobile-link">Institutions</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+  </div>
+  <div class="nav-mobile-actions">
+    <a href="dashboard-trainer.html" class="btn btn-primary btn-md">Educator Portal</a>
+    <button onclick="logout()" class="btn btn-outline btn-md" style="color:#DC2626 !important; border-color:#DC2626;">Log Out</button>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Dashboard Menu">☰</button>
+
+<!-- ── Dashboard Layout ── -->
+<div class="lms-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="lms-sidebar" id="educator-sidebar">
+    <div class="lms-sidebar-profile">
+      <div class="lms-avatar" id="sidebar-avatar">WK</div>
+      <div>
+        <div class="lms-sidebar-name" id="sidebar-name">Dr. Wanjiku Kamau</div>
+        <div class="lms-sidebar-role">Educator</div>
+      </div>
+    </div>
+
+    <nav class="lms-sidebar-nav" aria-label="Educator Navigation">
+      <div class="lms-sidebar-section">Main</div>
+      <a href="dashboard-trainer.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Dashboard
+      </a>
+      <a href="educator-courses.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📚</span> My Courses
+      </a>
+      <a href="course-wizard.html" class="lms-nav-item">
+        <span class="lms-nav-icon">➕</span> Create Course
+      </a>
+
+      <div class="lms-sidebar-section">Learners</div>
+      <a href="educator-students.html" class="lms-nav-item">
+        <span class="lms-nav-icon">👥</span> Student Management
+      </a>
+      <a href="educator-assessments.html" class="lms-nav-item active" aria-current="page">
+        <span class="lms-nav-icon">📝</span> Assessments
+        <span class="lms-nav-badge badge-warning" id="nav-pending-badge">2</span>
+      </a>
+      <a href="educator-gradebook.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Gradebook
+      </a>
+
+      <div class="lms-sidebar-section">Communicate</div>
+      <a href="educator-announcements.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📢</span> Announcements
+      </a>
+      <a href="educator-reports.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📈</span> Reports
+      </a>
+    </nav>
+
+    <div class="lms-sidebar-footer">
+      <a href="index.html" class="lms-nav-item" style="color:#94A3B8;">
+        <span class="lms-nav-icon">🌐</span> View Website
+      </a>
+      <a href="#" onclick="logout();return false;" class="lms-nav-item" style="color:#DC2626;">
+        <span class="lms-nav-icon">🚪</span> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── Main Content ── -->
+  <main class="lms-main" id="educator-main">
+
+    <!-- Page Header -->
+    <div class="lms-page-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="lms-breadcrumbs">
+          <a href="index.html">Home</a> <span class="sep">›</span>
+          <a href="dashboard-trainer.html">Educator Portal</a> <span class="sep">›</span>
+          <span class="current">Assessments &amp; Grading</span>
+        </div>
+        <h1 class="lms-page-title">Assessments &amp; Grading Queue</h1>
+        <p class="lms-page-subtitle">Review learner assignment submissions, evaluate rubrics, and configure quizzes.</p>
+      </div>
+      <button class="lms-btn lms-btn-primary" onclick="openCreateAssessmentModal()">
+        <span>➕</span> New Assessment
+      </button>
+    </div>
+
+    <!-- Tab Bar -->
+    <div style="display:flex; gap:12px; border-bottom:1px solid #E2E8F0; margin-bottom:24px;">
+      <button id="tab-btn-queue" class="lms-btn lms-btn-ghost" style="border-bottom:2px solid #2145E6; border-radius:0; color:#2145E6; font-weight:700;" onclick="switchTab('queue')">
+        Pending Submissions Queue <span class="lms-badge lms-badge-review" style="margin-left:6px;" id="badge-queue-count">2</span>
+      </button>
+      <button id="tab-btn-catalog" class="lms-btn lms-btn-ghost" style="border-bottom:2px solid transparent; border-radius:0; color:#64748B; font-weight:600;" onclick="switchTab('catalog')">
+        All Assessments &amp; Quizzes
+      </button>
+    </div>
+
+    <!-- Section 1: Submissions Queue -->
+    <div id="section-queue">
+      <div class="lms-card" style="padding:0; overflow:hidden;">
+        <div class="table-responsive">
+          <table class="lms-table" style="width:100%; border-collapse:collapse;" aria-label="Submissions Queue Table">
+            <thead>
+              <tr style="background:#F8FAFC; border-bottom:1px solid #E2E8F0; text-align:left;">
+                <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Learner</th>
+                <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Course &amp; Assessment</th>
+                <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Submitted</th>
+                <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Submission File</th>
+                <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Status</th>
+                <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; text-align:right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="queue-table-body">
+              <!-- Populated via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: All Assessments Catalog -->
+    <div id="section-catalog" style="display:none;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:20px;" id="catalog-container">
+        <!-- Populated via JS -->
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Modal: Interactive Rubric Grading -->
+<div id="rubric-modal" class="lms-modal-backdrop" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:999; align-items:center; justify-content:center;">
+  <div class="lms-card" style="max-width:580px; width:92%; padding:24px; max-height:90vh; overflow-y:auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+      <h3 style="font-size:18px; font-weight:800; color:#0F172A;">Evaluate Submission with Rubric</h3>
+      <button onclick="closeRubricModal()" style="background:none; border:none; font-size:20px; cursor:pointer; color:#94A3B8;">✕</button>
+    </div>
+
+    <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:14px; margin-bottom:18px;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <strong id="rubric-student-name" style="font-size:15px; color:#0F172A; display:block;">James Mwangi</strong>
+          <span id="rubric-course-title" style="font-size:12px; color:#64748B;">CBC Assessment Strategies — Module 3 Capstone</span>
+        </div>
+        <span class="lms-badge lms-badge-review" id="rubric-file-badge">📄 capstone_portfolio.pdf</span>
+      </div>
+    </div>
+
+    <form id="rubric-form" onsubmit="handleRubricSubmit(event)">
+      <!-- Criterion 1 -->
+      <div style="margin-bottom:16px; background:#FFF; border:1px solid #E2E8F0; border-radius:8px; padding:14px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <strong style="font-size:13px; color:#0F172A;">1. CBC Competency Alignment (Max 35)</strong>
+          <span style="font-weight:700; color:#2145E6;" id="crit-1-val">30 / 35</span>
+        </div>
+        <p style="font-size:12px; color:#64748B; margin-bottom:8px;">Evaluates how accurately the scheme aligns with KICD core competencies and strand expectations.</p>
+        <input type="range" id="crit-1-slider" min="0" max="35" value="30" style="width:100%; accent-color:#2145E6;" oninput="updateRubricTotal()">
+      </div>
+
+      <!-- Criterion 2 -->
+      <div style="margin-bottom:16px; background:#FFF; border:1px solid #E2E8F0; border-radius:8px; padding:14px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <strong style="font-size:13px; color:#0F172A;">2. Formative Assessment Design (Max 35)</strong>
+          <span style="font-weight:700; color:#2145E6;" id="crit-2-val">32 / 35</span>
+        </div>
+        <p style="font-size:12px; color:#64748B; margin-bottom:8px;">Quality of rubrics, peer assessment tools, and learner reflection prompts.</p>
+        <input type="range" id="crit-2-slider" min="0" max="35" value="32" style="width:100%; accent-color:#2145E6;" oninput="updateRubricTotal()">
+      </div>
+
+      <!-- Criterion 3 -->
+      <div style="margin-bottom:18px; background:#FFF; border:1px solid #E2E8F0; border-radius:8px; padding:14px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <strong style="font-size:13px; color:#0F172A;">3. Clarity, Structure &amp; Pedagogy (Max 30)</strong>
+          <span style="font-weight:700; color:#2145E6;" id="crit-3-val">26 / 30</span>
+        </div>
+        <p style="font-size:12px; color:#64748B; margin-bottom:8px;">Clarity of lesson steps, inclusivity, and resource adaptation.</p>
+        <input type="range" id="crit-3-slider" min="0" max="30" value="26" style="width:100%; accent-color:#2145E6;" oninput="updateRubricTotal()">
+      </div>
+
+      <!-- Total Score Display -->
+      <div style="display:flex; justify-content:space-between; align-items:center; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:8px; padding:12px 16px; margin-bottom:18px;">
+        <strong style="color:#1D4ED8; font-size:14px;">Total Calculated Score:</strong>
+        <strong style="color:#1D4ED8; font-size:20px;" id="rubric-total-score">88% (Exceeds Expectations)</strong>
+      </div>
+
+      <!-- Feedback Area -->
+      <div class="lms-form-group" style="margin-bottom:20px;">
+        <label for="rubric-feedback" class="lms-label">Detailed Instructor Feedback *</label>
+        <textarea id="rubric-feedback" class="lms-input" rows="3" required placeholder="Write actionable feedback for the student..."></textarea>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <button type="button" class="lms-btn lms-btn-outline" onclick="closeRubricModal()">Cancel</button>
+        <button type="submit" class="lms-btn lms-btn-primary">Submit Grade &amp; Notify Learner</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: Create Assessment -->
+<div id="create-assessment-modal" class="lms-modal-backdrop" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:999; align-items:center; justify-content:center;">
+  <div class="lms-card" style="max-width:500px; width:92%; padding:24px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+      <h3 style="font-size:18px; font-weight:800; color:#0F172A;">Create New Assessment</h3>
+      <button onclick="closeCreateAssessmentModal()" style="background:none; border:none; font-size:20px; cursor:pointer; color:#94A3B8;">✕</button>
+    </div>
+
+    <form onsubmit="handleCreateAssessment(event)">
+      <div class="lms-form-group" style="margin-bottom:14px;">
+        <label for="new-ass-course" class="lms-label">Target Course *</label>
+        <select id="new-ass-course" class="lms-select" required></select>
+      </div>
+      <div class="lms-form-group" style="margin-bottom:14px;">
+        <label for="new-ass-title" class="lms-label">Assessment Title *</label>
+        <input type="text" id="new-ass-title" class="lms-input" placeholder="e.g. CBC Term 1 Summative Evaluation" required>
+      </div>
+      <div class="lms-form-group" style="margin-bottom:14px;">
+        <label for="new-ass-type" class="lms-label">Assessment Format</label>
+        <select id="new-ass-type" class="lms-select">
+          <option value="quiz">Objective Quiz (MCQ, True/False, Auto-Graded)</option>
+          <option value="assignment">Assignment / Project Upload (Rubric Graded)</option>
+          <option value="capstone">Capstone Portfolio Submission</option>
+        </select>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px;">
+        <div>
+          <label for="new-ass-pass" class="lms-label">Passing Score (%)</label>
+          <input type="number" id="new-ass-pass" class="lms-input" value="70" min="1" max="100">
+        </div>
+        <div>
+          <label for="new-ass-time" class="lms-label">Time Limit (Mins)</label>
+          <input type="number" id="new-ass-time" class="lms-input" value="45" min="5" max="180">
+        </div>
+      </div>
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <button type="button" class="lms-btn lms-btn-outline" onclick="closeCreateAssessmentModal()">Cancel</button>
+        <button type="submit" class="lms-btn lms-btn-primary">Create Assessment</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/lms-auth-guard.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/lms-engine.js"></script>
+<script src="js/lms-assessment-engine.js"></script>
+<script src="js/lms-notifications.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  const session = LMSAuth.guardPage(['trainer', 'admin']);
+  if (!session) return;
+
+  // Profile Header
+  const nameEl = document.getElementById('sidebar-name');
+  const avatarEl = document.getElementById('sidebar-avatar');
+  const navName = document.getElementById('nav-user-name');
+  const navAvatar = document.getElementById('nav-avatar');
+
+  if (session.name) {
+    if (nameEl) nameEl.textContent = session.name;
+    if (navName) navName.textContent = session.name.split(' ')[0];
+    const initials = session.avatar || session.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+    if (avatarEl) avatarEl.textContent = initials;
+    if (navAvatar) navAvatar.textContent = initials;
+  }
+
+  // Queue data
+  let submissions = [
+    {
+      id: 'sub_001',
+      studentId: 'std_001',
+      studentName: 'James Mwangi',
+      courseTitle: 'CBC Curriculum Foundations & Design',
+      assessmentTitle: 'Capstone Lesson Planning Portfolio',
+      submittedDate: '2 hours ago',
+      fileName: 'mwangi_lesson_plan.pdf',
+      status: 'pending'
+    },
+    {
+      id: 'sub_002',
+      studentId: 'std_005',
+      studentName: 'Brian Kipkorir',
+      courseTitle: 'Integrating ICT & Smart Classroom Tools',
+      assessmentTitle: 'Interactive Quiz Authoring Assignment',
+      submittedDate: 'Yesterday',
+      fileName: 'kipkorir_smart_quiz.zip',
+      status: 'pending'
+    },
+    {
+      id: 'sub_003',
+      studentId: 'std_002',
+      studentName: 'Grace Wanjiku',
+      courseTitle: 'Assessment & Rubric Formulation in CBC',
+      assessmentTitle: 'Formative Rubric Formulation Project',
+      submittedDate: '3 days ago',
+      fileName: 'wanjiku_rubric.docx',
+      status: 'graded',
+      grade: 92
+    }
+  ];
+
+  function renderQueue() {
+    const tbody = document.getElementById('queue-table-body');
+    const pending = submissions.filter(s => s.status === 'pending');
+
+    document.getElementById('badge-queue-count').textContent = pending.length;
+    document.getElementById('nav-pending-badge').textContent = pending.length;
+
+    tbody.innerHTML = submissions.map(s => {
+      const isGraded = s.status === 'graded';
+      const badge = isGraded 
+        ? `<span class="lms-badge lms-badge-published">Graded (${s.grade}%)</span>`
+        : '<span class="lms-badge lms-badge-review">Pending Review</span>';
+
+      const actionBtn = isGraded
+        ? `<button onclick="openRubricFor('${s.id}')" class="lms-btn lms-btn-ghost lms-btn-sm">View Feedback</button>`
+        : `<button onclick="openRubricFor('${s.id}')" class="lms-btn lms-btn-primary lms-btn-sm">Evaluate Rubric</button>`;
+
+      return `
+        <tr style="border-bottom:1px solid #F1F5F9;">
+          <td style="padding:14px 16px;">
+            <strong style="color:#0F172A; display:block; font-size:14px;">${s.studentName}</strong>
+            <span style="color:#64748B; font-size:12px;">ID: ${s.studentId}</span>
+          </td>
+          <td style="padding:14px 16px;">
+            <strong style="color:#0F172A; display:block; font-size:13px;">${s.assessmentTitle}</strong>
+            <span style="color:#64748B; font-size:12px;">${s.courseTitle}</span>
+          </td>
+          <td style="padding:14px 16px; font-size:13px; color:#475569;">
+            ${s.submittedDate}
+          </td>
+          <td style="padding:14px 16px;">
+            <span style="font-size:12px; background:#F1F5F9; color:#334155; padding:4px 8px; border-radius:6px; font-family:monospace;">
+              📄 ${s.fileName}
+            </span>
+          </td>
+          <td style="padding:14px 16px;">
+            ${badge}
+          </td>
+          <td style="padding:14px 16px; text-align:right;">
+            ${actionBtn}
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function renderCatalog() {
+    const courses = LMSEngine.getCourses();
+    const container = document.getElementById('catalog-container');
+
+    const assessmentsList = [
+      { title: 'CBC Strand Competency Quiz', type: 'Quiz', questions: 15, duration: '30 Mins', passRate: 86, course: 'CBC Curriculum Foundations' },
+      { title: 'Capstone Lesson Planning Portfolio', type: 'Assignment', questions: 3, duration: 'Take-home', passRate: 91, course: 'CBC Curriculum Foundations' },
+      { title: 'Digital Safety & Ethics Mid-Exam', type: 'Quiz', questions: 20, duration: '45 Mins', passRate: 82, course: 'Integrating ICT Tools' },
+      { title: 'Interactive Lesson Media Project', type: 'Capstone', questions: 1, duration: 'Portfolio', passRate: 95, course: 'Integrating ICT Tools' },
+      { title: 'Formative Assessment Rubrics Exam', type: 'Quiz', questions: 12, duration: '25 Mins', passRate: 88, course: 'Assessment & Rubric Formulation' }
+    ];
+
+    container.innerHTML = assessmentsList.map(a => {
+      return `
+        <div class="lms-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+              <span class="lms-badge ${a.type === 'Quiz' ? 'lms-badge-published' : 'lms-badge-info'}">${a.type}</span>
+              <span style="font-size:12px; color:#64748B;">⏱ ${a.duration}</span>
+            </div>
+            <h3 style="font-size:15px; font-weight:700; color:#0F172A; margin-bottom:6px;">${a.title}</h3>
+            <p style="font-size:12px; color:#64748B; margin-bottom:14px;">Course: ${a.course}</p>
+            <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:8px 12px; font-size:12px; display:flex; justify-content:space-between;">
+              <span>Passing Rate: <strong>${a.passRate}%</strong></span>
+              <span>Questions: <strong>${a.questions}</strong></span>
+            </div>
+          </div>
+          <div style="margin-top:16px; border-top:1px solid #F1F5F9; padding-top:12px; display:flex; gap:8px;">
+            <button class="lms-btn lms-btn-outline lms-btn-sm" style="flex:1;">Preview</button>
+            <button class="lms-btn lms-btn-primary lms-btn-sm" style="flex:1;">Edit Settings</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Tab switching
+  window.switchTab = function(tab) {
+    const qSec = document.getElementById('section-queue');
+    const cSec = document.getElementById('section-catalog');
+    const qBtn = document.getElementById('tab-btn-queue');
+    const cBtn = document.getElementById('tab-btn-catalog');
+
+    if (tab === 'queue') {
+      qSec.style.display = 'block';
+      cSec.style.display = 'none';
+      qBtn.style.borderBottomColor = '#2145E6';
+      qBtn.style.color = '#2145E6';
+      cBtn.style.borderBottomColor = 'transparent';
+      cBtn.style.color = '#64748B';
+    } else {
+      qSec.style.display = 'none';
+      cSec.style.display = 'block';
+      cBtn.style.borderBottomColor = '#2145E6';
+      cBtn.style.color = '#2145E6';
+      qBtn.style.borderBottomColor = 'transparent';
+      qBtn.style.color = '#64748B';
+      renderCatalog();
+    }
+  };
+
+  // Rubric Modal
+  let activeSubId = null;
+
+  window.openRubricFor = function(subId) {
+    const sub = submissions.find(s => s.id === subId);
+    if (!sub) return;
+
+    activeSubId = subId;
+    document.getElementById('rubric-student-name').textContent = sub.studentName;
+    document.getElementById('rubric-course-title').textContent = `${sub.courseTitle} — ${sub.assessmentTitle}`;
+    document.getElementById('rubric-file-badge').textContent = `📄 ${sub.fileName}`;
+
+    if (sub.feedback) {
+      document.getElementById('rubric-feedback').value = sub.feedback;
+    } else {
+      document.getElementById('rubric-feedback').value = 'Commendable alignment with CBC curriculum goals. Thorough documentation provided in the portfolio.';
+    }
+
+    updateRubricTotal();
+    document.getElementById('rubric-modal').style.display = 'flex';
+  };
+
+  window.closeRubricModal = function() {
+    document.getElementById('rubric-modal').style.display = 'none';
+    activeSubId = null;
+  };
+
+  window.updateRubricTotal = function() {
+    const c1 = parseInt(document.getElementById('crit-1-slider').value, 10);
+    const c2 = parseInt(document.getElementById('crit-2-slider').value, 10);
+    const c3 = parseInt(document.getElementById('crit-3-slider').value, 10);
+
+    document.getElementById('crit-1-val').textContent = `${c1} / 35`;
+    document.getElementById('crit-2-val').textContent = `${c2} / 35`;
+    document.getElementById('crit-3-val').textContent = `${c3} / 30`;
+
+    const total = c1 + c2 + c3;
+    let label = 'Approaches Expectation';
+    if (total >= 85) label = 'Exceeds Expectations';
+    else if (total >= 70) label = 'Meets Expectations';
+
+    document.getElementById('rubric-total-score').textContent = `${total}% (${label})`;
+  };
+
+  window.handleRubricSubmit = function(e) {
+    e.preventDefault();
+    if (!activeSubId) return;
+
+    const sub = submissions.find(s => s.id === activeSubId);
+    if (sub) {
+      const c1 = parseInt(document.getElementById('crit-1-slider').value, 10);
+      const c2 = parseInt(document.getElementById('crit-2-slider').value, 10);
+      const c3 = parseInt(document.getElementById('crit-3-slider').value, 10);
+      sub.status = 'graded';
+      sub.grade = c1 + c2 + c3;
+      sub.feedback = document.getElementById('rubric-feedback').value;
+
+      LMSNotifications.showNotification({
+        title: 'Evaluation Submitted',
+        message: `Grade of ${sub.grade}% recorded for ${sub.studentName}.`,
+        type: 'success'
+      });
+    }
+
+    closeRubricModal();
+    renderQueue();
+  };
+
+  // Create Assessment
+  window.openCreateAssessmentModal = function() {
+    const courseSelect = document.getElementById('new-ass-course');
+    const courses = LMSEngine.getCourses();
+    courseSelect.innerHTML = courses.map(c => `<option value="${c.id}">${c.title}</option>`).join('');
+    document.getElementById('create-assessment-modal').style.display = 'flex';
+  };
+
+  window.closeCreateAssessmentModal = function() {
+    document.getElementById('create-assessment-modal').style.display = 'none';
+  };
+
+  window.handleCreateAssessment = function(e) {
+    e.preventDefault();
+    const title = document.getElementById('new-ass-title').value.trim();
+    LMSNotifications.showNotification({
+      title: 'Assessment Created',
+      message: `"${title}" has been created and added to course syllabus.`,
+      type: 'success'
+    });
+    closeCreateAssessmentModal();
+    switchTab('catalog');
+  };
+
+  renderQueue();
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gradebook | Instructify Kenya LMS</title>
+  <meta name="description" content="View and manage learner grades, assessment scores, feedback, and certificate eligibility on Instructify Kenya.">
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
+  <link rel="stylesheet" href="css/lms-portal.css">
+  <link rel="stylesheet" href="css/live-chat.css">
+</head>
+<body class="lms-page">
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+      <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
+      <div class="nav-brand-text-box" style="display: inline-flex !important; flex-direction: column !important; justify-content: center !important; align-items: flex-start !important; line-height: 1 !important;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-weight: 800 !important; font-size: 1.25rem !important; color: #0F172A !important; letter-spacing: -0.02em !important; line-height: 1 !important; display: block !important;">Instruct<span class="brand-accent" style="color: #F5812D !important; font-weight: 900 !important;">ify</span></span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-size: 0.62rem !important; font-weight: 850 !important; color: #FF4D00 !important; text-transform: uppercase !important; letter-spacing: 2.2px !important; line-height: 1 !important; display: block !important;">KENYA</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li class="nav-item-dropdown">
+        <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="courses" aria-haspopup="true" aria-expanded="false">
+          Courses <span class="nav-badge badge-amber">Hot</span>
+          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <ul class="nav-dropdown-menu" role="menu" aria-label="Courses, Podcast and Resources">
+          <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem" data-nav="courses"><span class="nav-dropdown-icon">📚</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span><span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span></div></a></li>
+          <li role="none"><a href="podcast.html" class="nav-dropdown-item" role="menuitem" data-nav="podcast"><span class="nav-dropdown-icon">🎙️</span><div class="nav-dropdown-info"><span class="nav-dropdown-title">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></span><span class="nav-dropdown-desc">Inspiring stories from Kenyan educators</span></div></a></li>
+          <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem" data-nav="resources"><span class="nav-dropdown-info"><span class="nav-dropdown-title">Resources</span><span class="nav-dropdown-desc">Schemes of work, lesson plans &amp; guides</span></div></a></li>
+        </ul>
+      </li>
+      <li><a href="consultancy.html" class="nav-link">Consultancy</a></li>
+      <li><a href="schools.html" class="nav-link">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions" style="display:flex; align-items:center; gap:12px;">
+      <div id="nav-user-area" style="display:inline-flex; align-items:center; gap:8px; background:#F8FAFC; border:1px solid #E2E8F0; padding:4px 12px 4px 6px; border-radius:999px;">
+        <div id="nav-avatar" class="lms-avatar avatar-sm">WK</div>
+        <span id="nav-user-name" style="font-size:13px; font-weight:700; color:#0F172A;">Dr. Wanjiku</span>
+        <span class="lms-badge lms-badge-published" style="font-size:10px; padding:2px 6px;">Educator</span>
+      </div>
+      <button onclick="logout()" class="btn btn-outline btn-sm" style="color:#DC2626; border-color:#DC2626;" aria-label="Log Out">Log Out</button>
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+  <div class="nav-mobile-links">
+    <a href="index.html" class="nav-mobile-link">Home</a>
+    <a href="about.html" class="nav-mobile-link">About Us</a>
+    <div class="nav-mobile-dropdown">
+      <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
+      <div class="nav-mobile-sublinks">
+        <a href="courses.html" class="nav-mobile-sublink" data-nav="courses"><span>📚</span> All Courses</a>
+        <a href="podcast.html" class="nav-mobile-sublink" data-nav="podcast"><span>🎙️</span> Podcast</a>
+        <a href="resources.html" class="nav-mobile-sublink" data-nav="resources"><span>📂</span> Resources</a>
+      </div>
+    </div>
+    <a href="consultancy.html" class="nav-mobile-link">Consultancy</a>
+    <a href="schools.html" class="nav-mobile-link">Institutions</a>
+    <a href="contact.html" class="nav-mobile-link">Contact</a>
+  </div>
+  <div class="nav-mobile-actions">
+    <a href="dashboard-trainer.html" class="btn btn-primary btn-md">Educator Portal</a>
+    <button onclick="logout()" class="btn btn-outline btn-md" style="color:#DC2626 !important; border-color:#DC2626;">Log Out</button>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<button class="sidebar-toggle-btn" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Dashboard Menu">☰</button>
+
+<!-- ── Dashboard Layout ── -->
+<div class="lms-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="lms-sidebar" id="educator-sidebar">
+    <div class="lms-sidebar-profile">
+      <div class="lms-avatar" id="sidebar-avatar">WK</div>
+      <div>
+        <div class="lms-sidebar-name" id="sidebar-name">Dr. Wanjiku Kamau</div>
+        <div class="lms-sidebar-role">Educator</div>
+      </div>
+    </div>
+
+    <nav class="lms-sidebar-nav" aria-label="Educator Navigation">
+      <div class="lms-sidebar-section">Main</div>
+      <a href="dashboard-trainer.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📊</span> Dashboard
+      </a>
+      <a href="educator-courses.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📚</span> My Courses
+      </a>
+      <a href="course-wizard.html" class="lms-nav-item">
+        <span class="lms-nav-icon">➕</span> Create Course
+      </a>
+
+      <div class="lms-sidebar-section">Learners</div>
+      <a href="educator-students.html" class="lms-nav-item">
+        <span class="lms-nav-icon">👥</span> Student Management
+      </a>
+      <a href="educator-assessments.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📝</span> Assessments
+      </a>
+      <a href="educator-gradebook.html" class="lms-nav-item active" aria-current="page">
+        <span class="lms-nav-icon">📊</span> Gradebook
+      </a>
+
+      <div class="lms-sidebar-section">Communicate</div>
+      <a href="educator-announcements.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📢</span> Announcements
+      </a>
+      <a href="educator-reports.html" class="lms-nav-item">
+        <span class="lms-nav-icon">📈</span> Reports
+      </a>
+    </nav>
+
+    <div class="lms-sidebar-footer">
+      <a href="index.html" class="lms-nav-item" style="color:#94A3B8;">
+        <span class="lms-nav-icon">🌐</span> View Website
+      </a>
+      <a href="#" onclick="logout();return false;" class="lms-nav-item" style="color:#DC2626;">
+        <span class="lms-nav-icon">🚪</span> Sign Out
+      </a>
+    </div>
+  </aside>
+
+  <!-- ── Main Content ── -->
+  <main class="lms-main" id="educator-main">
+
+    <!-- Page Header -->
+    <div class="lms-page-header" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div class="lms-breadcrumbs">
+          <a href="index.html">Home</a> <span class="sep">›</span>
+          <a href="dashboard-trainer.html">Educator Portal</a> <span class="sep">›</span>
+          <span class="current">Gradebook</span>
+        </div>
+        <h1 class="lms-page-title">Gradebook Matrix</h1>
+        <p class="lms-page-subtitle">Track individual grades, evaluate assignments, and monitor certificate eligibility.</p>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="lms-btn lms-btn-outline" onclick="exportGradebookCSV()">
+          <span>📊</span> Export CSV
+        </button>
+      </div>
+    </div>
+
+    <!-- Course & Cohort Selector Bar -->
+    <div class="lms-card" style="margin-bottom:24px; padding:16px 20px;">
+      <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:center;">
+        
+        <div style="flex:1; min-width:260px;">
+          <label for="gradebook-course-select" class="lms-label" style="font-size:12px; margin-bottom:4px;">Select Course</label>
+          <select id="gradebook-course-select" class="lms-select" onchange="switchGradebookCourse()" aria-label="Select course for gradebook">
+            <!-- Populated via JS -->
+          </select>
+        </div>
+
+        <div style="min-width:200px;">
+          <label for="gradebook-cohort-select" class="lms-label" style="font-size:12px; margin-bottom:4px;">Filter Cohort</label>
+          <select id="gradebook-cohort-select" class="lms-select" onchange="renderGradebook()" aria-label="Filter by cohort">
+            <option value="all">All Cohorts</option>
+          </select>
+        </div>
+
+        <div style="min-width:200px;">
+          <label for="gradebook-search-input" class="lms-label" style="font-size:12px; margin-bottom:4px;">Search Student</label>
+          <input type="text" id="gradebook-search-input" class="lms-input" placeholder="Search learner..." oninput="renderGradebook()" aria-label="Search student">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="lms-stats-grid" style="margin-bottom:24px;">
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-primary">🎯</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-class-avg">78%</div>
+          <div class="lms-stat-label">Class Average</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-success">🏆</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-pass-rate">88%</div>
+          <div class="lms-stat-label">Passing Rate (>=70%)</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-warning">⏳</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-ungraded">2</div>
+          <div class="lms-stat-label">Submissions to Grade</div>
+        </div>
+      </div>
+      <div class="lms-stat-card">
+        <div class="lms-stat-icon icon-secondary">📜</div>
+        <div class="lms-stat-content">
+          <div class="lms-stat-value" id="stat-certified">3</div>
+          <div class="lms-stat-label">Certificates Issued</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gradebook Matrix -->
+    <div class="lms-card" style="padding:0; overflow:hidden;">
+      <div class="table-responsive">
+        <table class="lms-table" style="width:100%; border-collapse:collapse;" aria-label="Gradebook Table">
+          <thead>
+            <tr style="background:#F8FAFC; border-bottom:1px solid #E2E8F0; text-align:left;">
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; min-width:200px;">Learner</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; text-align:center;">Quiz 1 (10%)</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; text-align:center;">Assignment 1 (25%)</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; text-align:center;">Mid-Exam (25%)</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; text-align:center;">Capstone (40%)</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; text-align:center;">Total Grade</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; text-align:center;">Certificate</th>
+              <th style="padding:14px 16px; font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; text-align:right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="gradebook-body">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Modal: Edit Grade & Feedback -->
+<div id="grade-edit-modal" class="lms-modal-backdrop" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:999; align-items:center; justify-content:center;">
+  <div class="lms-card" style="max-width:480px; width:92%; padding:24px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+      <h3 style="font-size:18px; font-weight:800; color:#0F172A;">Update Assessment Score</h3>
+      <button onclick="closeGradeEditModal()" style="background:none; border:none; font-size:20px; cursor:pointer; color:#94A3B8;">✕</button>
+    </div>
+
+    <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:12px; margin-bottom:16px;">
+      <strong id="modal-student-name" style="display:block; color:#0F172A; font-size:14px;">James Mwangi</strong>
+      <span id="modal-assessment-name" style="color:#64748B; font-size:12px;">Assignment 1 (Weight: 25%)</span>
+    </div>
+
+    <form id="grade-form" onsubmit="handleGradeSave(event)">
+      <div class="lms-form-group" style="margin-bottom:14px;">
+        <label for="modal-grade-score" class="lms-label">Score (0 - 100) *</label>
+        <input type="number" id="modal-grade-score" class="lms-input" min="0" max="100" required>
+      </div>
+
+      <div class="lms-form-group" style="margin-bottom:16px;">
+        <label for="modal-grade-feedback" class="lms-label">Instructor Feedback</label>
+        <textarea id="modal-grade-feedback" class="lms-input" rows="3" placeholder="Provide constructive feedback for the learner..."></textarea>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <button type="button" class="lms-btn lms-btn-outline" onclick="closeGradeEditModal()">Cancel</button>
+        <button type="submit" class="lms-btn lms-btn-primary">Save Grade</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/lms-auth-guard.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/lms-engine.js"></script>
+<script src="js/lms-notifications.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  const session = LMSAuth.guardPage(['trainer', 'admin']);
+  if (!session) return;
+
+  // Profile Header
+  const nameEl = document.getElementById('sidebar-name');
+  const avatarEl = document.getElementById('sidebar-avatar');
+  const navName = document.getElementById('nav-user-name');
+  const navAvatar = document.getElementById('nav-avatar');
+
+  if (session.name) {
+    if (nameEl) nameEl.textContent = session.name;
+    if (navName) navName.textContent = session.name.split(' ')[0];
+    const initials = session.avatar || session.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+    if (avatarEl) avatarEl.textContent = initials;
+    if (navAvatar) navAvatar.textContent = initials;
+  }
+
+  let courses = [];
+  let currentCourse = null;
+  let students = [];
+
+  // Mock gradebook data per student
+  const GRADE_STORAGE_KEY = 'ik_gradebook_data';
+
+  function getGradesStore() {
+    try {
+      const data = localStorage.getItem(GRADE_STORAGE_KEY);
+      if (data) return JSON.parse(data);
+    } catch(e){}
+
+    // Default mock data
+    const defaults = {
+      'std_001': { q1: 85, a1: 92, mid: 78, cap: 88, feedback: 'Excellent grasp of CBC strands.' },
+      'std_002': { q1: 90, a1: 88, mid: 84, cap: 91, feedback: 'Outstanding lesson plan rubric alignment.' },
+      'std_003': { q1: 72, a1: 68, mid: 75, cap: 70, feedback: 'Good progress, ensure all assessment criteria are met.' },
+      'std_004': { q1: 95, a1: 94, mid: 92, cap: 96, feedback: 'Mastery demonstrated across all modules.' },
+      'std_005': { q1: 60, a1: null, mid: 65, cap: null, feedback: 'Incomplete submissions for capstone.' },
+      'std_006': { q1: 80, a1: 82, mid: 79, cap: 85, feedback: 'Strong instructional delivery plan.' }
+    };
+    localStorage.setItem(GRADE_STORAGE_KEY, JSON.stringify(defaults));
+    return defaults;
+  }
+
+  function saveGradesStore(data) {
+    localStorage.setItem(GRADE_STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function initGradebook() {
+    courses = LMSEngine.getCourses();
+    students = LMSEngine.getStudents();
+
+    const courseSelect = document.getElementById('gradebook-course-select');
+    courseSelect.innerHTML = courses.map(c => `<option value="${c.id}">${c.title}</option>`).join('');
+
+    // Check query params
+    const params = new URLSearchParams(window.location.search);
+    const cId = params.get('course');
+    if (cId && courses.some(c => c.id === cId)) {
+      courseSelect.value = cId;
+    }
+
+    // Populate cohorts
+    const cohortSelect = document.getElementById('gradebook-cohort-select');
+    const cohorts = new Set();
+    students.forEach(s => { if (s.cohort) cohorts.add(s.cohort); });
+    cohorts.forEach(ch => {
+      cohortSelect.innerHTML += `<option value="${ch}">${ch}</option>`;
+    });
+
+    renderGradebook();
+  }
+
+  window.switchGradebookCourse = function() {
+    renderGradebook();
+  };
+
+  window.renderGradebook = function() {
+    const courseId = document.getElementById('gradebook-course-select').value;
+    const cohortFilter = document.getElementById('gradebook-cohort-select').value;
+    const search = (document.getElementById('gradebook-search-input').value || '').toLowerCase().trim();
+
+    const grades = getGradesStore();
+
+    let filtered = students.filter(s => {
+      const matchCohort = cohortFilter === 'all' || s.cohort === cohortFilter;
+      const matchSearch = !search || s.name.toLowerCase().includes(search) || s.email.toLowerCase().includes(search);
+      return matchCohort && matchSearch;
+    });
+
+    const tbody = document.getElementById('gradebook-body');
+    let totalScoreSum = 0;
+    let studentWithGrades = 0;
+    let passingCount = 0;
+    let ungradedCount = 0;
+    let certCount = 0;
+
+    tbody.innerHTML = filtered.map(s => {
+      const stGrades = grades[s.id] || { q1: null, a1: null, mid: null, cap: null };
+      
+      const q1 = stGrades.q1;
+      const a1 = stGrades.a1;
+      const mid = stGrades.mid;
+      const cap = stGrades.cap;
+
+      if (a1 === null || cap === null) ungradedCount++;
+
+      // Weighted total: q1*0.1 + a1*0.25 + mid*0.25 + cap*0.4
+      let total = null;
+      if (q1 !== null || a1 !== null || mid !== null || cap !== null) {
+        const parts = [
+          q1 !== null ? q1 * 0.10 : 0,
+          a1 !== null ? a1 * 0.25 : 0,
+          mid !== null ? mid * 0.25 : 0,
+          cap !== null ? cap * 0.40 : 0
+        ];
+        total = Math.round(parts.reduce((a,b)=>a+b, 0));
+        totalScoreSum += total;
+        studentWithGrades++;
+        if (total >= 70) passingCount++;
+        if (total >= 75) certCount++;
+      }
+
+      let gradeBadge = '<span style="color:#94A3B8;">—</span>';
+      if (total !== null) {
+        const color = total >= 80 ? '#059669' : total >= 70 ? '#2145E6' : total >= 50 ? '#F59E0B' : '#DC2626';
+        gradeBadge = `<strong style="color:${color}; font-size:15px;">${total}%</strong>`;
+      }
+
+      let certBadge = '<span class="lms-badge lms-badge-draft">In Progress</span>';
+      if (total !== null && total >= 75) {
+        certBadge = '<span class="lms-badge lms-badge-published">Eligible / Issued</span>';
+      }
+
+      const initials = s.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+
+      return `
+        <tr style="border-bottom:1px solid #F1F5F9;">
+          <td style="padding:14px 16px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <div class="lms-avatar avatar-sm" style="background:#2145E6; color:#FFF; font-size:11px; font-weight:700;">${initials}</div>
+              <div>
+                <strong style="color:#0F172A; display:block; font-size:13px;">${s.name}</strong>
+                <span style="color:#64748B; font-size:11px;">${s.cohort || 'General'}</span>
+              </div>
+            </div>
+          </td>
+          <td style="padding:14px 16px; text-align:center; font-size:13px; font-weight:600; cursor:pointer;" onclick="openGradeModal('${s.id}', 'q1', 'Quiz 1', ${q1 || 0})">
+            ${q1 !== null ? `${q1}%` : '<span style="color:#CBD5E1;">—</span>'}
+          </td>
+          <td style="padding:14px 16px; text-align:center; font-size:13px; font-weight:600; cursor:pointer;" onclick="openGradeModal('${s.id}', 'a1', 'Assignment 1', ${a1 || 0})">
+            ${a1 !== null ? `${a1}%` : '<span style="background:#FEF3C7; color:#D97706; padding:2px 6px; border-radius:4px; font-size:11px;">Pending</span>'}
+          </td>
+          <td style="padding:14px 16px; text-align:center; font-size:13px; font-weight:600; cursor:pointer;" onclick="openGradeModal('${s.id}', 'mid', 'Mid-Term Exam', ${mid || 0})">
+            ${mid !== null ? `${mid}%` : '<span style="color:#CBD5E1;">—</span>'}
+          </td>
+          <td style="padding:14px 16px; text-align:center; font-size:13px; font-weight:600; cursor:pointer;" onclick="openGradeModal('${s.id}', 'cap', 'CBC Capstone', ${cap || 0})">
+            ${cap !== null ? `${cap}%` : '<span style="background:#FEF3C7; color:#D97706; padding:2px 6px; border-radius:4px; font-size:11px;">Pending</span>'}
+          </td>
+          <td style="padding:14px 16px; text-align:center;">
+            ${gradeBadge}
+          </td>
+          <td style="padding:14px 16px; text-align:center;">
+            ${certBadge}
+          </td>
+          <td style="padding:14px 16px; text-align:right;">
+            <button onclick="openGradeModal('${s.id}', 'cap', 'Overall Evaluation', ${cap || 75})" class="lms-btn lms-btn-outline lms-btn-sm" title="Edit Grades & Feedback">
+              ✏️ Grade
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    // Update stats
+    const avg = studentWithGrades ? Math.round(totalScoreSum / studentWithGrades) : 0;
+    const passRate = studentWithGrades ? Math.round((passingCount / studentWithGrades) * 100) : 0;
+
+    document.getElementById('stat-class-avg').textContent = `${avg}%`;
+    document.getElementById('stat-pass-rate').textContent = `${passRate}%`;
+    document.getElementById('stat-ungraded').textContent = ungradedCount;
+    document.getElementById('stat-certified').textContent = certCount;
+  };
+
+  let activeStudentId = null;
+  let activeAssessmentKey = null;
+
+  window.openGradeModal = function(studentId, key, label, currentScore) {
+    const student = students.find(s => s.id === studentId);
+    if (!student) return;
+
+    activeStudentId = studentId;
+    activeAssessmentKey = key;
+
+    document.getElementById('modal-student-name').textContent = student.name;
+    document.getElementById('modal-assessment-name').textContent = label;
+    document.getElementById('modal-grade-score').value = currentScore || 80;
+
+    const grades = getGradesStore();
+    document.getElementById('modal-grade-feedback').value = (grades[studentId] && grades[studentId].feedback) || '';
+
+    document.getElementById('grade-edit-modal').style.display = 'flex';
+  };
+
+  window.closeGradeEditModal = function() {
+    document.getElementById('grade-edit-modal').style.display = 'none';
+    activeStudentId = null;
+    activeAssessmentKey = null;
+  };
+
+  window.handleGradeSave = function(e) {
+    e.preventDefault();
+    if (!activeStudentId || !activeAssessmentKey) return;
+
+    const score = parseInt(document.getElementById('modal-grade-score').value, 10);
+    const feedback = document.getElementById('modal-grade-feedback').value.trim();
+
+    const grades = getGradesStore();
+    if (!grades[activeStudentId]) grades[activeStudentId] = {};
+    grades[activeStudentId][activeAssessmentKey] = score;
+    grades[activeStudentId].feedback = feedback;
+
+    saveGradesStore(grades);
+
+    LMSNotifications.showNotification({
+      title: 'Grade Updated',
+      message: `Score updated to ${score}% with educator feedback.`,
+      type: 'success'
+    });
+
+    closeGradeEditModal();
+    renderGradebook();
+  };
+
+  window.exportGradebookCSV = function() {
+    const grades = getGradesStore();
+    let csv = 'Student ID,Student Name,Cohort,Quiz 1,Assignment 1,Mid-Exam,Capstone,Total Score\n';
+
+    students.forEach(s => {
+      const g = grades[s.id] || {};
+      const q1 = g.q1 !== undefined ? g.q1 : '';
+      const a1 = g.a1 !== undefined ? g.a1 : '';
+      const mid = g.mid !== undefined ? g.mid : '';
+      const cap = g.cap !== undefined ? g.cap : '';
+      const total = (g.q1*0.1 + (g.a1||0)*0.25 + (g.mid||0)*0.25 + (g.cap||0)*0.4) || '';
+
+      csv += `"${s.id}","${s.name}","${s.cohort || ''}","${q1}","${a1}","${mid}","${cap}","${total}"\n`;
+    });
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `instructify_gradebook_${new Date().toISOString().slice(0,10)}.csv`;
+    link.click();
+  };
+
+  initGradebook();
+
+})();
+</script>
+</body>
+</html>

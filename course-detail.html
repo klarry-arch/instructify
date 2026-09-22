@@ -142,6 +142,13 @@
         <button onclick="handleEnrollClick()" class="btn btn-lg w-full mb-md" id="enroll-btn" style="width:100%;background:linear-gradient(135deg,#F5812D 0%,#FF4D00 100%);color:#FFFFFF;font-weight:700;font-size:16px;border-radius:99px;padding:14px 24px;border:none;box-shadow:0 6px 20px rgba(220,46,10,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;transition:all 0.2s">⚡ Enroll Now</button>
         <button onclick="toggleWishlist(this)" id="wishlist-btn" data-course-id="" class="btn btn-sm w-full" style="width:100%;background:#F8FAFC;color:#FF4D00;border:1.5px solid #CBD5E1;font-weight:700;font-size:14px;border-radius:99px;padding:11px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s">🤍 Save to Wishlist</button>
         <div style="color:var(--text-muted, #475569);font-size:13px;font-weight:500;text-align:center;margin-top:18px;display:flex;align-items:center;justify-content:center;gap:6px">🔒 30-Day Guarantee • Flexible Installments</div>
+        <div style="margin-top:16px; padding:14px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px;">
+          <div style="font-size:12px; font-weight:700; color:#334155; margin-bottom:6px;">🔑 Have an Educator Access Code?</div>
+          <div style="display:flex; gap:6px;">
+            <input type="text" id="detail-access-code" placeholder="e.g. CBC-TEACH-2026" aria-label="Course access code" style="text-transform:uppercase; font-family:monospace; font-weight:700; font-size:12px; padding:8px 10px; border:1px solid #CBD5E1; border-radius:8px; width:100%; outline:none; background:#FFF;">
+            <button type="button" onclick="handleDetailAccessCode()" class="btn btn-blue btn-sm" style="white-space:nowrap; padding:8px 12px; font-size:12px;">Unlock</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -171,28 +178,9 @@
           <div class="flex gap-sm items-center text-sm"><span>✅</span> <span>Apply CBC-aligned technology strategies</span></div>
         </div>
 
-        <h3 class="font-heading text-xl mb-lg">Curriculum Modules</h3>
-        <div class="accordion-item open">
-          <button class="accordion-header">
-            <span>Module 1: Introduction to Educational Technology in Kenya</span>
-            <span class="accordion-icon">▼</span>
-          </button>
-          <div class="accordion-body">
-            <div class="accordion-content">
-              Overview of ICT policies, digital literacy frameworks, and foundational tools for modern Kenyan educators.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <button class="accordion-header">
-            <span>Module 2: Competency-Based Digital Lesson Planning</span>
-            <span class="accordion-icon">▼</span>
-          </button>
-          <div class="accordion-body">
-            <div class="accordion-content">
-              Designing interactive digital learning activities aligned with KICD curriculum goals.
-            </div>
-          </div>
+        <h3 class="font-heading text-xl mb-lg">Curriculum Syllabus &amp; Lessons</h3>
+        <div id="curriculum-accordion-container" style="display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+          <!-- Dynamically populated from course curriculum -->
         </div>
       </div>
 
@@ -266,6 +254,30 @@
         <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
         <div style="display:flex; gap:8px;">
           <input type="email" placeholder="Your email" aria-label="Your email address" style="padding:10px; border-radius:6px; border:none; width:100%;">
+<a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
+          <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
+          
+          <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Discover</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="schools.html" style="color:var(--color-white); text-decoration:none;">Institutions</a></li>
+          <li><a href="community.html" style="color:var(--color-white); text-decoration:none;">Community Impact</a></li>
+          <li><a href="resources.html" style="color:var(--color-white); text-decoration:none;">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
+        <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
+        <div style="display:flex; gap:8px;">
+          <input type="email" placeholder="Your email" aria-label="Your email address" style="padding:10px; border-radius:6px; border:none; width:100%;">
           <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
         </div>
       </div>
@@ -279,6 +291,7 @@
 <script src="js/main.js?v=3.1"></script>
 <script src="js/auth.js"></script>
 <script src="js/courses.js"></script>
+<script src="js/lms-engine.js"></script>
 <script src="js/payment.js"></script>
 <script src="js/checkout-engine.js"></script>
 <script>
@@ -287,43 +300,55 @@ let currentCourse = null;
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id') || 'crs_001';
-  currentCourse = window.COURSES.find(c => c.id === id) || window.COURSES[0];
-
-  document.getElementById('course-title').textContent = currentCourse.title;
-  document.getElementById('course-title-breadcrumb').textContent = currentCourse.title;
-  document.getElementById('course-desc').textContent = currentCourse.description;
-  document.getElementById('course-price').textContent = `KES ${currentCourse.price.toLocaleString()}`;
-  document.getElementById('course-orig-price').textContent = `KES ${currentCourse.originalPrice.toLocaleString()}`;
-  document.getElementById('course-rating').textContent = currentCourse.rating;
-  document.getElementById('course-reviews').textContent = currentCourse.reviewCount.toLocaleString();
-  document.getElementById('course-instructor').textContent = currentCourse.instructor;
-  document.getElementById('course-duration').textContent = currentCourse.duration;
-});
-
-function handleEnrollClick() {
-  if (!currentCourse) return;
-  const btn = document.getElementById('enroll-btn');
-
-  // Check if already enrolled locally
-  if (window.isEnrolled && window.isEnrolled(currentCourse.id)) {
-    window.showToast('You are already enrolled in this course!', 'info');
-    setTimeout(() => window.location.href = 'dashboard-learner.html', 1200);
-    return;
+  
+  if (window.LMSEngine && window.LMSEngine.getCourseById) {
+    currentCourse = window.LMSEngine.getCourseById(id);
+  }
+  if (!currentCourse && window.COURSES) {
+    currentCourse = window.COURSES.find(c => c.id === id) || window.COURSES[0];
   }
 
-  // Disable button to prevent duplicate clicks
-  if (btn) { btn.disabled = true; btn.textContent = 'Starting checkout…'; }
+  if (!currentCourse) return;
 
-  // Navigate to the checkout page
-  window.location.href = `checkout.html?id=${encodeURIComponent(currentCourse.id)}`;
-}
+  const titleEl = document.getElementById('course-title');
+  if (titleEl) titleEl.textContent = currentCourse.title;
+  const breadEl = document.getElementById('course-title-breadcrumb');
+  if (breadEl) breadEl.textContent = currentCourse.title;
+  const descEl = document.getElementById('course-desc');
+  if (descEl) descEl.textContent = currentCourse.description;
+  const priceEl = document.getElementById('course-price');
+  if (priceEl) {
+    const pVal = typeof currentCourse.price === 'number' ? currentCourse.price : parseInt(String(currentCourse.price || 0).replace(/[^0-9]/g, ''), 10);
+    priceEl.textContent = pVal === 0 ? 'FREE' : `KES ${(pVal || 15000).toLocaleString()}`;
+  }
+  const origEl = document.getElementById('course-orig-price');
+  if (origEl && currentCourse.originalPrice) {
+    origEl.textContent = `KES ${currentCourse.originalPrice.toLocaleString()}`;
+  }
+  const ratEl = document.getElementById('course-rating');
+  if (ratEl) ratEl.textContent = currentCourse.rating || '4.8';
+  const revEl = document.getElementById('course-reviews');
+  if (revEl) revEl.textContent = (currentCourse.reviewCount || currentCourse.reviewsCount || 124).toLocaleString();
+  const instEl = document.getElementById('course-instructor');
+  if (instEl) instEl.textContent = currentCourse.instructor || 'Dr. Wanjiku Kamau';
+  const durEl = document.getElementById('course-duration');
+  if (durEl) durEl.textContent = currentCourse.duration || '6 Weeks';
 
-document.addEventListener('DOMContentLoaded', () => {
+  // Render Outcomes
+  const outcomesContainer = document.getElementById('course-outcomes');
+  if (outcomesContainer && currentCourse.outcomes && currentCourse.outcomes.length) {
+    outcomesContainer.innerHTML = currentCourse.outcomes.map(out => `
+      <div class="flex gap-sm items-center text-sm"><span>✅</span> <span>${out}</span></div>
+    `).join('');
+  }
+
+  // Render Dynamic Curriculum
+  renderCurriculumAccordion(currentCourse);
+
   // Set data-course-id on wishlist button for toggleWishlist
   const wishlistBtn = document.getElementById('wishlist-btn');
   if (wishlistBtn && currentCourse) {
     wishlistBtn.dataset.courseId = currentCourse.id;
-    // Restore saved wishlist state
     const wishlist = JSON.parse(localStorage.getItem('ik_wishlist') || '[]');
     if (wishlist.includes(currentCourse.id)) {
       wishlistBtn.classList.add('wishlisted');
@@ -331,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Update footer WhatsApp link with the course title for a context-specific pre-fill message
+  // Update footer WhatsApp link
   const footerWaLink = document.getElementById('footer-wa-link');
   if (footerWaLink && currentCourse && currentCourse.title) {
     const waMsg = encodeURIComponent(
@@ -340,8 +365,88 @@ document.addEventListener('DOMContentLoaded', () => {
     footerWaLink.href = `https://wa.me/254143024416?text=${waMsg}`;
   }
 });
+
+function renderCurriculumAccordion(course) {
+  const container = document.getElementById('curriculum-accordion-container');
+  if (!container) return;
+
+  const curriculum = course.curriculum || [
+    {
+      title: 'Section 1: Foundations & Core Frameworks',
+      modules: [
+        {
+          title: 'Module 1.1: Introduction to Competency-Based Learning',
+          lessons: [
+            { id: 'l1', title: 'Lesson 1: Overview of KICD Strands', duration: '15 mins', isFree: true, type: 'video' },
+            { id: 'l2', title: 'Lesson 2: Inquiry-Based Questioning', duration: '20 mins', isFree: false, type: 'text' },
+            { id: 'q1', title: 'Quiz 1: Strand Understanding Check', duration: '15 mins', isFree: false, type: 'quiz' }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Section 2: Practical Instructional Delivery',
+      modules: [
+        {
+          title: 'Module 2.1: Designing Lesson Plans & Activities',
+          lessons: [
+            { id: 'l3', title: 'Lesson 3: Differentiated Instruction in CBC', duration: '25 mins', isFree: true, type: 'video' },
+            { id: 'l4', title: 'Lesson 4: Smart Classroom Tech Integration', duration: '30 mins', isFree: false, type: 'text' },
+            { id: 'a1', title: 'Assignment: Formative Lesson Plan Rubric', duration: '45 mins', isFree: false, type: 'assignment' }
+          ]
+        }
+      ]
+    }
+  ];
+
+  container.innerHTML = curriculum.map((sec) => `
+    <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; overflow:hidden; box-shadow:0 2px 6px rgba(15,23,42,0.03);">
+      <div style="padding:14px 18px; background:#F8FAFC; border-bottom:1px solid #E2E8F0; display:flex; justify-content:space-between; align-items:center;">
+        <strong style="font-size:14.5px; color:#0F172A;">${sec.title}</strong>
+        <span style="font-size:12px; color:#64748B;">${sec.modules ? sec.modules.length : 1} Module(s)</span>
+      </div>
+      <div style="padding:12px 18px;">
+        ${(sec.modules || []).map(mod => `
+          <div style="margin-bottom:12px;">
+            <div style="font-size:13px; font-weight:700; color:#334155; margin-bottom:8px;">${mod.title}</div>
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              ${(mod.lessons || []).map(les => `
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 12px; background:#FAFAFC; border-radius:8px; border:1px solid #F1F5F9; font-size:13px;">
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <span>${les.type === 'video' ? '📺' : les.type === 'quiz' ? '❓' : les.type === 'assignment' ? '📑' : '📖'}</span>
+                    <span style="color:#0F172A; font-weight:600;">${les.title}</span>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    <span style="color:#64748B; font-size:11.5px;">${les.duration || '15 mins'}</span>
+                    ${les.isFree ? `
+                      <a href="course-player.html?courseId=${course.id}&lessonId=${les.id}" class="btn btn-outline btn-sm" style="font-size:11px; padding:3px 8px;">Free Preview</a>
+                    ` : '<span style="font-size:12px; color:#94A3B8;">🔒</span>'}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function handleEnrollClick() {
+  if (!currentCourse) return;
+  const btn = document.getElementById('enroll-btn');
+
+  if (window.isEnrolled && window.isEnrolled(currentCourse.id)) {
+    window.showToast('You are already enrolled in this course!', 'info');
+    setTimeout(() => window.location.href = 'dashboard-learner.html', 1200);
+    return;
+  }
+
+  if (btn) { btn.disabled = true; btn.textContent = 'Starting checkout…'; }
+  window.location.href = `checkout.html?id=${encodeURIComponent(currentCourse.id)}`;
+}
 </script>
-  <script src="js/chat-config.js"></script>
-  <script src="js/live-chat.js"></script>
+<script src="js/chat-config.js"></script>
+<script src="js/live-chat.js"></script>
 </body>
 </html>

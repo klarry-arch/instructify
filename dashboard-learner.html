@@ -370,7 +370,7 @@
                 <h2 class="student-banner-title">Welcome back, <span class="student-user-first-name">James</span>! 👋</h2>
                 <p class="student-banner-desc">You are making rapid strides in Junior Secondary CBC. Complete today’s Integrated Science practical to maintain your top 5% ranking.</p>
                 <div class="student-banner-actions">
-                  <button class="btn btn-primary btn-sm" onclick="window.openStudentToolModal('interactive-video')">Continue Learning ➡</button>
+                  <button class="btn btn-primary btn-sm" onclick="window.continueLatestCourse()">Continue Learning ➡</button>
                   <button class="btn btn-outline btn-sm" onclick="window.switchStudentTab(null, 'timetable')">View Today’s Lessons</button>
                 </div>
               </div>
@@ -517,6 +517,28 @@
           <p class="student-section-subtitle">Quickly access your recent subjects, lessons, and activities.</p>
         </section>
 
+        <!-- Active In-Progress Course Spotlight -->
+        <div class="active-course-spotlight-card" style="background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%); border: 1.5px solid #E2E8F0; border-radius: 18px; padding: 22px 24px; margin-bottom: 24px; box-shadow: 0 4px 16px rgba(15,23,42,0.04); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+          <div style="display: flex; align-items: center; gap: 16px; flex: 1; min-width: 280px;">
+            <div style="width: 54px; height: 54px; border-radius: 14px; background: linear-gradient(135deg, #2145E6, #4338CA); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(33,69,230,0.25);">
+              📖
+            </div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <span class="badge badge-info" style="font-size: 11px;">Current Active Module</span>
+                <span style="font-size: 12px; color: #64748B;">45% Completed</span>
+              </div>
+              <h3 style="font-size: 17px; font-weight: 800; color: #0F172A; margin: 0 0 2px;">Curriculum Design &amp; CBC Pedagogy Mastery</h3>
+              <div style="font-size: 13px; color: #475569;">Up Next: <strong>Lesson 1.2: Constructing Learner-Centered Rubrics</strong> (22 min video + notes)</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <a href="course-player.html?courseId=curriculum-design-cbc" class="btn btn-primary btn-md" style="text-decoration: none; box-shadow: 0 4px 14px rgba(33,69,230,0.3);">
+              Resume Course Player ➡
+            </a>
+          </div>
+        </div>
+
         <!-- Horizontal Category Filter Pills & Search -->
         <div class="student-filter-toolbar">
           <div class="student-pills-scroll-wrapper" role="tablist">
@@ -655,9 +677,22 @@
       <!-- TAB PANEL 2: MY SUBJECTS -->
       <div id="tab-panel-subjects" class="student-tab-panel" style="display:none;">
         <div class="student-section-header">
-          <h2 class="student-section-title">📚 My Enrolled Subjects</h2>
-          <p class="student-section-subtitle">Kenyan CBC Junior Secondary &amp; Senior Secondary syllabus modules.</p>
+          <h2 class="student-section-title">📚 My Enrolled Subjects &amp; Courses</h2>
+          <p class="student-section-subtitle">Kenyan CBC Junior Secondary, Senior Secondary &amp; Educator Certification modules.</p>
         </div>
+
+        <!-- Access Code Redemption Card -->
+        <div class="access-code-card" style="background: linear-gradient(135deg, #EEF2FF, #FAF5FF); border: 1.5px solid #C7D2FE; border-radius: 16px; padding: 20px 24px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <h4 style="margin: 0 0 4px; font-size: 16px; font-weight: 800; color: #1E1B4B;">🔑 Have a Course Access Code from your Educator?</h4>
+            <p style="margin: 0; font-size: 13px; color: #4338CA;">Enter your single-use or school cohort code to unlock your curriculum, syllabus, and assessments immediately.</p>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <input type="text" id="student-access-code-input" placeholder="e.g. CBC-TEACH-2026" aria-label="Course access code" style="text-transform: uppercase; font-family: monospace; font-weight: 700; font-size: 14px; padding: 10px 14px; border: 1.5px solid #A5B4FC; border-radius: 10px; min-width: 180px; background: #FFF;">
+            <button type="button" class="btn btn-primary btn-sm" onclick="window.redeemStudentAccessCode()">Redeem Code</button>
+          </div>
+        </div>
+
         <div class="grid-3" id="enrolled-courses-container">
           <!-- Rendered dynamically -->
         </div>
@@ -952,14 +987,14 @@
                 <strong style="font-size:14px;">Email &amp; SMS Homework Reminders</strong>
                 <div style="font-size:12px; color:#64748B;">Receive daily reminder 2 hours before submission deadline</div>
               </div>
-              <input type="checkbox" checked style="width:20px; height:20px;">
+              <input type="checkbox" checked aria-label="Email and SMS homework reminders" style="width:20px; height:20px;">
             </div>
             <div style="display:flex; justify-content:space-between; align-items:center;">
               <div>
                 <strong style="font-size:14px;">Sound Effects on Quiz Completion</strong>
                 <div style="font-size:12px; color:#64748B;">Play celebration chime when earning XP and badges</div>
               </div>
-              <input type="checkbox" checked style="width:20px; height:20px;">
+              <input type="checkbox" checked aria-label="Sound effects on quiz completion" style="width:20px; height:20px;">
             </div>
             <div>
               <button onclick="window.openAccessibilityModal()" class="btn btn-outline btn-sm">Open Accessibility Settings ♿</button>
@@ -1327,7 +1362,7 @@
           <span>Writing Workspace</span>
           <span id="draft-reading-time">⏱ ~2 min read</span>
         </div>
-        <textarea id="draft-textarea" class="draft-editor-textarea" oninput="window.updateDraftWordCount()" placeholder="Begin drafting your essay here...">In Margaret Ogola's landmark novel, 'The River and the Source', resilience is not portrayed as a mere virtue, but as a vital generational compass that anchors the lineage of Akoko Obanda. From her bold defiance against unjust patriarchal demands in Yimbo to her resolute walk to the colonial DC in Kisumu, Akoko exemplifies agency rooted in quiet dignity.
+        <textarea id="draft-textarea" class="draft-editor-textarea" aria-label="Essay writing workspace" oninput="window.updateDraftWordCount()" placeholder="Begin drafting your essay here...">In Margaret Ogola's landmark novel, 'The River and the Source', resilience is not portrayed as a mere virtue, but as a vital generational compass that anchors the lineage of Akoko Obanda. From her bold defiance against unjust patriarchal demands in Yimbo to her resolute walk to the colonial DC in Kisumu, Akoko exemplifies agency rooted in quiet dignity.
 
 Her daughter, Nyabera, inherits this mantle of fortitude amidst immense grief. Upon facing the tragic loss of her children, she turns toward spiritual transformation, demonstrating that resilience in African womanhood often entails the courage to embrace new paradigms while preserving core moral values.</textarea>
         <div class="draft-editor-footer">
@@ -1352,23 +1387,107 @@ Her daughter, Nyabera, inherits this mantle of fortitude amidst immense grief. U
 <!-- SCRIPTS -->
 <script src="js/main.js?v=3.1"></script>
 <script src="js/auth.js"></script>
+<script src="js/lms-engine.js"></script>
 <script src="js/certificates.js"></script>
 <script src="js/courses.js"></script>
 <script src="js/student-dashboard.js?v=3.2"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Render Enrolled Courses
-  const container = document.getElementById('enrolled-courses-container');
-  if (container && window.COURSES) {
-    const courses = window.COURSES.slice(0, 6);
-    container.innerHTML = courses.map(c => window.renderCourseCard ? window.renderCourseCard(c) : `
-      <div class="student-card-panel">
-        <h4 style="font-size:15px; font-weight:700; color:#0F172A;">${c.title}</h4>
-        <p style="font-size:12.5px; color:#64748B;">${c.category} • ${c.duration || '6 Weeks'}</p>
-        <button class="btn btn-primary btn-sm mt-sm" onclick="window.showToast('Resuming course module...','info')">Open Subject</button>
-      </div>
-    `).join('');
+window.continueLatestCourse = function() {
+  if (window.LMSEngine) {
+    const courses = window.LMSEngine.getCourses();
+    const target = courses.length ? courses[0].id : 'curriculum-design-cbc';
+    window.location.href = `course-player.html?courseId=${target}`;
+  } else {
+    window.location.href = 'course-player.html';
   }
+};
+
+window.redeemStudentAccessCode = function() {
+  const input = document.getElementById('student-access-code-input');
+  const code = input ? input.value.trim() : '';
+  if (!code) {
+    if (window.showToast) window.showToast('Please enter an access code.', 'warning');
+    return;
+  }
+  if (window.LMSEngine) {
+    const user = (window.Auth && window.Auth.getCurrentUser && window.Auth.getCurrentUser()) || { id: 'std-001', name: 'James Mwangi', email: 'learner@instructify.ke' };
+    const res = window.LMSEngine.enrollByAccessCode(code, user);
+    if (res.success) {
+      if (window.showToast) window.showToast(res.message, 'success');
+      if (input) input.value = '';
+      window.renderLearnerCourses();
+    } else {
+      if (window.showToast) window.showToast(res.message, 'error');
+    }
+  }
+};
+
+window.renderLearnerCourses = function() {
+  const container = document.getElementById('enrolled-courses-container');
+  if (!container) return;
+
+  const courses = (window.LMSEngine && window.LMSEngine.getCourses()) || window.COURSES || [];
+  if (!courses.length) {
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; padding: 40px; text-align: center; background: #FFF; border: 1.5px dashed #CBD5E1; border-radius: 16px;">
+        <div style="font-size: 32px; margin-bottom: 10px;">📚</div>
+        <h4 style="font-size: 16px; font-weight: 700; color: #0F172A;">No enrolled courses found</h4>
+        <p style="font-size: 13.5px; color: #64748B; margin-top: 4px;">Explore our catalog or enter an access code from your educator above.</p>
+        <a href="courses.html" class="btn btn-primary btn-sm mt-md">Browse Catalog ↗</a>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = courses.map((c, idx) => {
+    const progress = (c.id === 'curriculum-design-cbc') ? 45 : (idx === 1 ? 80 : (idx === 2 ? 100 : 25));
+    const isCompleted = progress >= 100;
+    const certNumber = isCompleted ? `IK-CPD-2026-${8940 + idx}` : null;
+    const imageSrc = c.thumbnail || c.image || 'assets/images/course_assessment_mastery.jpg';
+
+    return `
+      <div class="student-card-panel" style="display:flex; flex-direction:column; justify-content:space-between; height:100%; border:1.5px solid #E2E8F0; border-radius:18px; overflow:hidden; padding:0; background:#FFF; box-shadow:0 4px 16px rgba(15,23,42,0.04);">
+        <div style="position:relative; width:100%; height:160px; overflow:hidden; background:#1E293B;">
+          <img src="${imageSrc}" alt="${c.title}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/images/course_assessment_mastery.jpg'">
+          <span style="position:absolute; top:12px; left:12px; background:rgba(255,255,255,0.95); color:#2145E6; padding:3px 10px; border-radius:999px; font-size:10.5px; font-weight:800; text-transform:uppercase;">${c.category || 'Education'}</span>
+          <span style="position:absolute; bottom:12px; right:12px; background:rgba(15,23,42,0.85); color:#FFF; padding:3px 8px; border-radius:6px; font-size:11px; font-weight:700;">${c.level || 'All Levels'}</span>
+        </div>
+        <div style="padding:20px; flex:1; display:flex; flex-direction:column;">
+          <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin:0 0 6px; line-height:1.35;">${c.title}</h4>
+          <p style="font-size:13px; color:#64748B; margin:0 0 14px; line-height:1.5;">${c.description ? c.description.slice(0, 85) + '...' : 'Comprehensive CBC syllabus curriculum.'}</p>
+          
+          <div style="margin-top:auto;">
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; margin-bottom:6px;">
+              <span style="font-weight:700; color:#0F172A;">Progress</span>
+              <span style="font-weight:800; color:${isCompleted ? '#10B981' : '#2145E6'};">${progress}% Complete</span>
+            </div>
+            <div style="width:100%; height:8px; background:#F1F5F9; border-radius:999px; overflow:hidden; margin-bottom:16px;">
+              <div style="width:${progress}%; height:100%; background:${isCompleted ? 'linear-gradient(90deg, #10B981, #059669)' : 'linear-gradient(90deg, #2145E6, #6366F1)'}; border-radius:999px; transition:width 0.4s ease;"></div>
+            </div>
+
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a href="course-player.html?courseId=${c.id}" class="btn btn-primary btn-sm" style="flex:1; justify-content:center; text-decoration:none;">
+                ${isCompleted ? 'Review Player ↺' : 'Continue Learning ➡'}
+              </a>
+              ${isCompleted ? `
+                <button type="button" onclick="if(window.CertificateEngine) window.CertificateEngine.openModalPreview('${certNumber}'); else window.showToast('Opening certificate ${certNumber}...','success');" class="btn btn-outline btn-sm" title="Download Verified Certificate">
+                  📜 Certificate
+                </button>
+              ` : `
+                <a href="course-detail.html?id=${c.id}" class="btn btn-outline btn-sm" title="View Course Details & Syllabus">
+                  ℹ️ Syllabus
+                </a>
+              `}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  window.renderLearnerCourses();
 });
 </script>
 <script src="js/chat-config.js"></script>
