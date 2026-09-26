@@ -3,89 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore top-rated online courses, teacher professional development, ICT integration, and CBE curriculum programs on Instructify Kenya.">
-  <title>Course Catalog &amp; Learning Platform | Instructify Kenya</title>
+  <meta name="description" content="Explore accredited online courses, competency-based curriculum development, ICT integration, and educator certifications on the Instructify Kenya LMS Platform.">
+  <title>Course &amp; LMS Learning Platform | Instructify Kenya</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css?v=3.1">
-  <style>
-    :root {
-      --saas-blue: #2563EB;
-      --saas-navy: #0F172A;
-      --saas-bg: #F8FAFC;
-      --saas-card: #FFFFFF;
-      --saas-border: #E2E8F0;
-      --saas-text-dark: #0F172A;
-      --saas-text-muted: #64748B;
-    }
-    body { background-color: var(--saas-bg); color: var(--saas-text-dark); }
-    .catalog-hero { background: var(--saas-bg); padding: calc(var(--nav-height) + 48px) 0 48px; border-bottom: 1px solid var(--saas-border); }
-    .hero-h1 { font-size: 40px; font-weight: 700; color: var(--saas-navy); line-height: 1.2; margin-bottom: 16px; }
-    .hero-lead { font-size: 16px; font-weight: 400; color: var(--saas-text-muted); max-width: 680px; margin: 0 auto 32px; line-height: 1.6; }
-    .saas-search-box { background: var(--saas-card); border: 1px solid var(--saas-border); border-radius: 16px; padding: 8px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); max-width: 720px; margin: 0 auto; }
-    .saas-search-box input { border: none !important; outline: none !important; padding: 12px !important; font-size: 16px !important; width: 100% !important; color: var(--saas-text-dark) !important; background: transparent !important; box-shadow: none !important; }
-    
-    /* Stats Bar */
-    .stats-dashboard { background: var(--saas-card); border-bottom: 1px solid var(--saas-border); padding: 32px 0; }
-    .stat-item { text-align: center; }
-    .stat-number { font-size: 32px; font-weight: 700; color: var(--saas-blue); }
-    .stat-label { font-size: 13px; font-weight: 500; color: var(--saas-text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
-
-    /* Catalog Layout */
-    .saas-layout { display: grid; grid-template-columns: 280px 1fr; gap: 32px; padding: 48px 0; }
-    .filter-panel { background: var(--saas-card); border: 1px solid var(--saas-border); border-radius: 16px; padding: 24px; position: sticky; top: calc(var(--nav-height) + 24px); height: fit-content; }
-    .filter-group-title { font-size: 13px; font-weight: 600; text-transform: uppercase; color: var(--saas-navy); letter-spacing: 0.08em; margin-bottom: 16px; display: block; }
-    .filter-checkbox { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--saas-text-dark); cursor: pointer; padding: 6px 0; transition: color 0.15s ease; }
-    .filter-checkbox:hover { color: var(--saas-blue); }
-    
-    /* Section Heading Rules */
-    .saas-h2 { font-size: 28px; font-weight: 600; color: var(--saas-navy); margin-bottom: 24px; }
-    .course-card-title-custom { font-size: 20px; font-weight: 600; color: var(--saas-navy); margin-bottom: 8px; line-height: 1.3; }
-    .metadata-text { font-size: 13px; font-weight: 500; color: var(--saas-text-muted); }
-    
-    /* Testimonials */
-    .testimonial-card { background: var(--saas-card); border: 1px solid var(--saas-border); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: transform 0.2s ease; }
-    .testimonial-card:hover { transform: translateY(-4px); }
-    
-    @media (max-width: 1024px) {
-      .saas-layout { grid-template-columns: 1fr; }
-      .filter-panel { position: static; }
-    }
-    .featured-masterclass-content { padding: 40px; display: flex; flex-direction: column; justify-content: center; background: #FFFFFF; }
-    
-    @media (max-width: 768px) {
-      .hero-h1 { font-size: clamp(26px, 6vw, 32px); }
-      .featured-masterclass-content { padding: 24px 18px; }
-      .stats-dashboard .grid-4 {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 20px 16px;
-      }
-      .stat-number { font-size: 26px; }
-    }
-
-    @media (max-width: 640px) {
-      .saas-search-box {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 12px;
-      }
-      .saas-search-box button {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .stats-dashboard .grid-4 {
-        grid-template-columns: 1fr !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/lms-course-dashboard.css">
   <link rel="stylesheet" href="css/live-chat.css">
 </head>
-<body>
+<body class="lms-page">
 
-<!-- Navigation -->
 <!-- ── Navigation ───────────────────────────────────────────── -->
 <nav id="navbar" class="navbar">
   <div class="container">
@@ -142,7 +70,6 @@
       <li><a href="jumuishi-learning-hub.html" class="nav-link" data-nav="jumuishi" style="color:var(--jum-teal, #0D9488) !important;">Jumuishi Hub <span class="nav-badge" style="background:#0D9488;color:#fff;">Inclusive</span></a></li>
       <li><a href="schools.html" class="nav-link" data-nav="schools">Institutions</a></li>
       <li><a href="contact.html" class="nav-link" data-nav="contact">Contact</a></li>
-    
     </ul>
 
     <div class="nav-actions">
@@ -174,7 +101,6 @@
     <a href="jumuishi-learning-hub.html" class="nav-mobile-link" data-nav="jumuishi" style="color:#0D9488;font-weight:700;">Jumuishi Learning Hub <span class="nav-badge" style="background:#0D9488;color:#fff;">Inclusive</span></a>
     <a href="schools.html" class="nav-mobile-link" data-nav="schools">Institutions</a>
     <a href="contact.html" class="nav-mobile-link" data-nav="contact">Contact</a>
-  
   </div>
   <div class="nav-mobile-actions">
     <a href="register.html" class="btn btn-outline btn-md">Sign In</a>
@@ -182,147 +108,501 @@
   </div>
 </div>
 
-<!-- Hero Section -->
-<header class="catalog-hero">
-  <div class="container text-center">
-    <h1 class="hero-h1">Hello, Curious Mind 👋</h1>
-    <div style="font-size:20px; font-weight:700; color:#2145E6; margin-bottom:12px;">Ready to spark something new today?</div>
-    <p class="hero-lead" style="margin-bottom:12px;">
-      Explore your modules, connect with your mentors, and let your learning light the way.
-    </p>
-    <div style="font-size:15px; font-weight:700; color:#FF4D00; margin-bottom:24px;">
-      ✨ Instructify Kenya—where curiosity becomes transformation.
+<!-- ══════════════════════════════════════════════════════════
+     1. LMS HORIZONTAL TOP NAVIGATION
+     ══════════════════════════════════════════════════════════ -->
+<div class="lms-subnav-wrapper" role="region" aria-label="Course and LMS Navigation">
+  <div class="lms-subnav-container">
+    <div style="display:flex; align-items:center; gap:16px;">
+      <div style="display:inline-flex; align-items:center; gap:6px; font-family:var(--font-heading); font-size:14px; font-weight:800; color:var(--lms-navy); padding-right:12px; border-right:1px solid #E2E8F0;">
+        <span style="font-size:16px;">🎓</span> LMS Portal
+      </div>
+      <ul class="lms-subnav-menu" role="tablist">
+        <li role="presentation">
+          <button type="button" class="lms-subnav-link active" data-tab="home" onclick="switchLmsNavTab('home')" role="tab" aria-selected="true">
+            <span>🏠</span> Home
+          </button>
+        </li>
+        <li role="presentation">
+          <button type="button" class="lms-subnav-link" data-tab="my-learning" onclick="switchLmsNavTab('my-learning')" role="tab" aria-selected="false">
+            <span>📚</span> My Learning <span class="badge-counter" id="tab-count-enrolled">2</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button type="button" class="lms-subnav-link" data-tab="academies" onclick="switchLmsNavTab('academies')" role="tab" aria-selected="false">
+            <span>🏛️</span> Academies &amp; Categories
+          </button>
+        </li>
+        <li role="presentation">
+          <button type="button" class="lms-subnav-link admin-only" id="lms-nav-admin" data-tab="admin" onclick="switchLmsNavTab('admin')" role="tab" aria-selected="false" style="display:none;">
+            <span>⚡</span> Educator &amp; Admin Studio
+          </button>
+        </li>
+      </ul>
     </div>
 
-    <!-- Search Box -->
-    <div class="saas-search-box">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input type="text" id="course-search" aria-label="Search courses and workshops" placeholder="Search by course title, topic, or instructor...">
-      <button class="btn btn-blue btn-sm" onclick="setFilter('query', document.getElementById('course-search').value)">Search</button>
-    </div>
-  </div>
-</header>
-<!-- Learning Statistics Dashboard -->
-<div class="stats-dashboard">
-  <div class="container">
-    <div class="grid-4 text-center">
-      <div class="stat-item">
-        <div class="stat-number">50,000+</div>
-        <div class="stat-label">Active Learners</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">200+</div>
-        <div class="stat-label">Accredited Courses</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">98%</div>
-        <div class="stat-label">Completion Satisfaction</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">40+</div>
-        <div class="stat-label">CPD Hours Offered</div>
+    <!-- Active User & Role Switcher for Evaluation -->
+    <div class="lms-subnav-actions">
+      <div class="lms-role-switcher" title="Switch role preview">
+        <div class="lms-role-avatar" id="lms-user-avatar">JM</div>
+        <select class="lms-role-select" id="lms-role-select-box" onchange="changeDemoRole(this.value)" aria-label="Switch LMS user role preview">
+          <option value="learner" selected>Learner (James Mwangi)</option>
+          <option value="trainer">Educator (Dr. Wanjiku)</option>
+          <option value="admin">Admin (Prof. Ochieng)</option>
+          <option value="guest">Guest (Logged Out)</option>
+        </select>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Featured Course Section -->
-<section class="section" style="padding: 48px 0 24px 0;">
+<!-- ══════════════════════════════════════════════════════════
+     2. PERSONALISED WELCOME AREA
+     ══════════════════════════════════════════════════════════ -->
+<header class="lms-welcome-hero">
   <div class="container">
-    <h2 class="saas-h2">Featured Masterclass</h2>
-    <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--saas-border); border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+    <div class="lms-welcome-header">
+      <div class="lms-welcome-greeting-box">
+        <div class="lms-welcome-badge">
+          ✨ INSTRUCTIFY LEARNING PLATFORM
+        </div>
+        <h1 class="lms-welcome-h1" id="lms-welcome-heading">
+          Welcome back, <span style="color:var(--lms-primary);">Learner</span> 👋
+        </h1>
+        <p class="lms-welcome-lead" id="lms-welcome-sub">
+          Continue learning, explore new courses, and track your progress.
+        </p>
+
+        <!-- Dynamic User Stats Chips -->
+        <div class="lms-stats-pills-row">
+          <div class="lms-stat-pill" onclick="switchLmsTab('my-learning', 'enrolled')">
+            <span>📚</span> Enrolled: <strong id="welcome-enrolled-count">2</strong>
+          </div>
+          <div class="lms-stat-pill" onclick="switchLmsTab('my-learning', 'in-progress')">
+            <span>⚡</span> In Progress: <strong id="welcome-progress-count">1</strong>
+          </div>
+          <div class="lms-stat-pill" onclick="switchLmsTab('my-learning', 'bookmarked')">
+            <span>🔖</span> Bookmarked: <strong id="welcome-bookmarks-count">2</strong>
+          </div>
+          <div class="lms-stat-pill" onclick="switchLmsTab('my-learning', 'certificates')">
+            <span>🏆</span> Certificates: <strong id="welcome-cert-count">1</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- User Role Display Card -->
+      <div style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; padding:16px 20px; box-shadow:var(--lms-shadow-sm); display:flex; align-items:center; gap:14px; min-width:260px;">
+        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg, #2145E6, #3C3DDC); color:#FFF; display:flex; align-items:center; justify-content:center; font-family:var(--font-heading); font-size:18px; font-weight:800;">
+          🎓
+        </div>
+        <div>
+          <div style="font-size:11px; font-weight:700; text-transform:uppercase; color:#2145E6; letter-spacing:0.06em;" id="lms-user-role-badge">Verified Learner</div>
+          <div style="font-size:14.5px; font-weight:750; color:#0F172A;" id="lms-user-display-name">James Mwangi</div>
+          <div style="font-size:11.5px; color:#64748B;">TSC Accredited CPD Track</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════
+         3. PROMINENT COURSE SEARCH & MULTI-DIMENSIONAL FILTERS
+         ══════════════════════════════════════════════════════════ -->
+    <div class="lms-search-section">
+      <div class="lms-search-box-container">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="course-search" class="lms-search-input-field" placeholder="Search courses, topics, skills, or educators..." aria-label="Search courses, topics, skills, or educators">
+        <button type="button" id="search-clear-btn" class="lms-search-clear-btn" onclick="clearLmsSearch()" style="display:none;" aria-label="Clear search input">✕</button>
+        <button type="button" class="btn btn-primary btn-sm lms-search-btn" onclick="executeSearch()">Search</button>
+      </div>
+
+      <!-- Quick Category Pills -->
+      <div class="lms-filter-strip" role="group" aria-label="Quick Category Filter">
+        <span style="font-size:12px; font-weight:700; color:#64748B; text-transform:uppercase; margin-right:4px;">Browse:</span>
+        <button type="button" class="lms-filter-chip active" data-category="all" onclick="setLmsFilter('category', 'all')">All Programs</button>
+        <button type="button" class="lms-filter-chip" data-category="Curriculum" onclick="setLmsFilter('category', 'Curriculum')">CBC &amp; Curriculum</button>
+        <button type="button" class="lms-filter-chip" data-category="Digital" onclick="setLmsFilter('category', 'Digital')">Digital Literacy &amp; ICT</button>
+        <button type="button" class="lms-filter-chip" data-category="EdTech" onclick="setLmsFilter('category', 'EdTech')">Smart Classrooms &amp; VR</button>
+        <button type="button" class="lms-filter-chip" data-category="AI" onclick="setLmsFilter('category', 'AI')">AI in Education</button>
+        <button type="button" class="lms-filter-chip" data-category="Leadership" onclick="setLmsFilter('category', 'Leadership')">School Leadership</button>
+        <button type="button" class="lms-filter-chip" data-category="Pedagogy" onclick="setLmsFilter('category', 'Pedagogy')">Teacher Coaching</button>
+      </div>
+
+      <!-- Multi-Dimensional Advanced Filters -->
+      <div class="lms-filter-controls-row">
+        <div class="lms-filter-dropdown-group">
+          <!-- Level Filter -->
+          <select id="lms-level-select" class="lms-select-filter" onchange="setLmsFilter('level', this.value)" aria-label="Filter by Course Level">
+            <option value="all">Level: All Levels</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+
+          <!-- Duration Filter -->
+          <select id="lms-duration-select" class="lms-select-filter" onchange="setLmsFilter('duration', this.value)" aria-label="Filter by Duration">
+            <option value="all">Duration: All Durations</option>
+            <option value="short">Short (&le; 4 Weeks)</option>
+            <option value="medium">Medium (4 &ndash; 8 Weeks)</option>
+            <option value="long">Comprehensive (8+ Weeks)</option>
+          </select>
+
+          <!-- Pricing Filter -->
+          <select id="lms-price-select" class="lms-select-filter" onchange="setLmsFilter('pricing', this.value)" aria-label="Filter by Pricing">
+            <option value="all">Access: All Courses</option>
+            <option value="free">Free / Open Access</option>
+            <option value="paid">Paid Certificate Tracks</option>
+          </select>
+
+          <!-- CPD Accreditation Checkbox -->
+          <label style="display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; color:#0F172A; cursor:pointer; padding:6px 10px; background:#F1F5F9; border-radius:8px;">
+            <input type="checkbox" id="cpd-filter-chk" onchange="toggleLmsCPD(this)">
+            <span>TSC &amp; CPD Verified Only</span>
+          </label>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:12px;">
+          <!-- Reset button -->
+          <button type="button" onclick="resetLmsFilters()" style="background:none; border:none; color:#2145E6; font-size:12px; font-weight:700; cursor:pointer;">
+            ↺ Reset Filters
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     EDUCATOR & ADMIN STUDIO QUICK TOOLS (Protected View)
+     ══════════════════════════════════════════════════════════ -->
+<div class="container" id="lms-admin-studio-section" style="display:none; padding-top:28px;">
+  <div class="lms-admin-banner">
+    <div class="lms-admin-header">
+      <div>
+        <span style="font-size:11px; font-weight:800; color:#FCD34D; text-transform:uppercase; letter-spacing:0.08em;">EDUCATOR &amp; CREATOR WORKSPACE</span>
+        <h2 style="font-family:var(--font-heading); font-size:22px; font-weight:800; margin:4px 0 0; color:#FFFFFF;">
+          Educator &amp; Administrator Command Studio
+        </h2>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button type="button" onclick="editFeaturedBanner()" class="btn btn-outline btn-sm" style="color:#FFF; border-color:#FFF;">
+          ✏️ Edit Featured Banner
+        </button>
+        <a href="dashboard-admin.html" class="btn btn-primary btn-sm">Full Admin Portal &rarr;</a>
+      </div>
+    </div>
+
+    <div class="lms-admin-tools-grid">
+      <a href="course-wizard.html" class="lms-admin-tool-item">
+        <span style="font-size:20px;">🪄</span>
+        <div>
+          <div>Course Creator Wizard</div>
+          <div style="font-size:11px; opacity:0.8;">8-step curriculum builder</div>
+        </div>
+      </a>
+      <a href="educator-curriculum.html" class="lms-admin-tool-item">
+        <span style="font-size:20px;">📚</span>
+        <div>
+          <div>Curriculum Studio</div>
+          <div style="font-size:11px; opacity:0.8;">Modules, lessons &amp; media</div>
+        </div>
+      </a>
+      <a href="educator-students.html" class="lms-admin-tool-item">
+        <span style="font-size:20px;">👥</span>
+        <div>
+          <div>Student Roster &amp; Cohorts</div>
+          <div style="font-size:11px; opacity:0.8;">Bulk CSV learner linking</div>
+        </div>
+      </a>
+      <a href="educator-gradebook.html" class="lms-admin-tool-item">
+        <span style="font-size:20px;">📊</span>
+        <div>
+          <div>Gradebook &amp; Progress</div>
+          <div style="font-size:11px; opacity:0.8;">Assessments &amp; rubrics</div>
+        </div>
+      </a>
+      <a href="educator-assessments.html" class="lms-admin-tool-item">
+        <span style="font-size:20px;">📝</span>
+        <div>
+          <div>Assessment Engine</div>
+          <div style="font-size:11px; opacity:0.8;">Quizzes &amp; rubric evaluation</div>
+        </div>
+      </a>
+      <a href="educator-reports.html" class="lms-admin-tool-item">
+        <span style="font-size:20px;">📈</span>
+        <div>
+          <div>Analytics &amp; CSV Export</div>
+          <div style="font-size:11px; opacity:0.8;">Completion &amp; attendance</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MAIN OVERVIEW DASHBOARD SECTION
+     ══════════════════════════════════════════════════════════ -->
+<div class="container" id="lms-overview-section" style="padding-top:32px;">
+  <!-- Split Grid: Quick Action Panel (Left) + Main Featured Banner (Right) -->
+  <div class="lms-dashboard-split-grid">
+
+    <!-- ── 4. LEARNER QUICK-ACTION PANEL ── -->
+    <aside class="lms-quick-panel-card" aria-label="Learner Quick Actions">
+      <div>
+        <div class="lms-quick-panel-header">
+          <span class="lms-quick-panel-title">Learner Quick Actions</span>
+          <span style="font-size:11px; font-weight:700; color:#2145E6; background:#EEF2FF; padding:2px 8px; border-radius:999px;">Dashboard</span>
+        </div>
+
+        <div class="lms-quick-actions-list">
+          <!-- A. In Progress -->
+          <button type="button" class="lms-qa-button" onclick="switchLmsTab('my-learning', 'in-progress')" id="qa-btn-inprogress" aria-label="In Progress courses">
+            <div class="lms-qa-icon-wrap lms-qa-icon-orange">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>
+              </svg>
+            </div>
+            <div class="lms-qa-body">
+              <div class="lms-qa-title-row">
+                <span class="lms-qa-title">In Progress</span>
+                <span class="lms-qa-badge" id="qa-count-inprogress">1</span>
+              </div>
+              <p class="lms-qa-text">Continue where you left off.</p>
+            </div>
+            <span class="lms-qa-arrow">&rarr;</span>
+          </button>
+
+          <!-- B. Explore Courses -->
+          <button type="button" class="lms-qa-button" onclick="scrollToLmsCatalog()" id="qa-btn-explore" aria-label="Explore course catalogue">
+            <div class="lms-qa-icon-wrap lms-qa-icon-blue">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+              </svg>
+            </div>
+            <div class="lms-qa-body">
+              <div class="lms-qa-title-row">
+                <span class="lms-qa-title">Explore Courses</span>
+                <span class="lms-qa-badge" id="qa-count-total">9</span>
+              </div>
+              <p class="lms-qa-text">Discover new learning opportunities.</p>
+            </div>
+            <span class="lms-qa-arrow">&rarr;</span>
+          </button>
+
+          <!-- C. Bookmarked Courses -->
+          <button type="button" class="lms-qa-button" onclick="switchLmsTab('my-learning', 'bookmarked')" id="qa-btn-bookmarked" aria-label="View bookmarked courses">
+            <div class="lms-qa-icon-wrap lms-qa-icon-purple">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+              </svg>
+            </div>
+            <div class="lms-qa-body">
+              <div class="lms-qa-title-row">
+                <span class="lms-qa-title">Bookmarked Courses</span>
+                <span class="lms-qa-badge" id="qa-count-bookmarked">2</span>
+              </div>
+              <p class="lms-qa-text">View your saved courses.</p>
+            </div>
+            <span class="lms-qa-arrow">&rarr;</span>
+          </button>
+
+          <!-- D. Completed Courses -->
+          <button type="button" class="lms-qa-button" onclick="switchLmsTab('my-learning', 'completed')" id="qa-btn-completed" aria-label="Review completed courses">
+            <div class="lms-qa-icon-wrap lms-qa-icon-green">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div class="lms-qa-body">
+              <div class="lms-qa-title-row">
+                <span class="lms-qa-title">Completed Courses</span>
+                <span class="lms-qa-badge" id="qa-count-completed">1</span>
+              </div>
+              <p class="lms-qa-text">Review your achievements.</p>
+            </div>
+            <span class="lms-qa-arrow">&rarr;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Resume Box at bottom of Quick Action Panel -->
+      <div class="lms-quick-resume-box" id="lms-quick-resume-box">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </aside>
+
+    <!-- ── 5. MAIN FEATURED LEARNING BANNER ── -->
+    <section class="lms-featured-card" id="lms-featured-banner-section" aria-label="Featured Learning Banner">
+      <div class="lms-featured-content">
+        <span class="lms-featured-badge">FEATURED LEARNING PROGRAM</span>
+        <h2 class="lms-featured-title" id="featured-banner-title">
+          Welcome to Instructify Learning
+        </h2>
+        <p class="lms-featured-text" id="featured-banner-desc">
+          Build practical skills, access educator-created courses, and learn at your own pace.
+        </p>
+        <div class="lms-featured-meta-row">
+          <span>⭐ 4.9 (410 reviews)</span>
+          <span>⏱️ 6 Weeks</span>
+          <span>🎯 All Levels</span>
+          <span style="color:#059669; font-weight:700;">✓ CPD Accredited</span>
+        </div>
+        <div class="lms-featured-ctas">
+          <button type="button" class="btn btn-primary btn-md" onclick="scrollToLmsCatalog()">Explore Courses</button>
+          <a href="course-player.html?courseId=crs_000" class="btn btn-outline btn-md" id="featured-continue-btn" style="border-color:#2145E6; color:#2145E6; text-decoration:none;">Continue Learning &rarr;</a>
+        </div>
+      </div>
+      <div class="lms-featured-image-box">
+        <img src="assets/images/course_smart_vr_classroom.jpg" alt="Smart Classrooms & Virtual Reality Teaching" id="featured-banner-img" loading="lazy">
+        <span class="lms-featured-overlay-badge">Flagship Masterclass</span>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     7. MY LEARNING DEDICATED SECTION (Tabs: In Progress, Enrolled, Bookmarked, Completed, Certificates)
+     ══════════════════════════════════════════════════════════ -->
+<section class="container" id="lms-mylearning-section" style="display:none; padding-top:20px;">
+  <div class="lms-my-learning-container">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:20px;">
+      <div>
+        <h2 style="font-family:var(--font-heading); font-size:24px; font-weight:800; color:var(--lms-navy); margin:0 0 4px;">
+          My Learning Space
+        </h2>
+        <div style="font-size:14px; color:var(--lms-text-muted);">
+          Manage your enrolled modules, bookmarks, ongoing lessons, and accredited certificates.
+        </div>
+      </div>
+      <button type="button" onclick="switchLmsNavTab('home')" class="btn btn-outline btn-sm">
+        &larr; Back to Catalog Overview
+      </button>
+    </div>
+
+    <!-- My Learning Navigation Tabs -->
+    <div class="lms-mylearning-subtabs" role="tablist" aria-label="My Learning Subtabs">
+      <button type="button" class="lms-ml-tab-btn active" data-subtab="in-progress" onclick="switchMyLearningSubtab('in-progress')" role="tab">
+        <span>⚡</span> In Progress <span class="tab-badge" id="tab-count-inprogress">1</span>
+      </button>
+      <button type="button" class="lms-ml-tab-btn" data-subtab="enrolled" onclick="switchMyLearningSubtab('enrolled')" role="tab">
+        <span>📚</span> Enrolled Courses <span class="tab-badge" id="tab-count-enrolled-sub">2</span>
+      </button>
+      <button type="button" class="lms-ml-tab-btn" data-subtab="bookmarked" onclick="switchMyLearningSubtab('bookmarked')" role="tab">
+        <span>🔖</span> Bookmarked <span class="tab-badge" id="tab-count-bookmarked">2</span>
+      </button>
+      <button type="button" class="lms-ml-tab-btn" data-subtab="completed" onclick="switchMyLearningSubtab('completed')" role="tab">
+        <span>✓</span> Completed <span class="tab-badge" id="tab-count-completed">1</span>
+      </button>
+      <button type="button" class="lms-ml-tab-btn" data-subtab="certificates" onclick="switchMyLearningSubtab('certificates')" role="tab">
+        <span>🏆</span> Certificates <span class="tab-badge" id="tab-count-certificates">1</span>
+      </button>
+    </div>
+
+    <!-- My Learning Cards Grid Viewport -->
+    <div class="lms-ml-cards-grid" id="lms-mylearning-cards">
+      <!-- Rendered dynamically by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     8. ACADEMIES & LEARNING AREAS SECTION
+     ══════════════════════════════════════════════════════════ -->
+<section class="lms-academies-section" id="academies-section" aria-label="Academies and Learning Areas">
+  <div class="container">
+    <div class="lms-section-header text-center">
+      <span class="lms-section-tag blue">LEARNING TRACKS</span>
+      <h2 class="lms-section-h2">Academies &amp; Learning Areas</h2>
+      <p class="lms-section-lead">
+        Structured competency pathways tailored for educators, school administrators, and curriculum teams.
+      </p>
+    </div>
+
+    <div class="lms-academies-grid" id="lms-academies-grid">
+      <!-- 8 Academies rendered dynamically by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     6. BROWSE COURSES SECTION
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="catalog-section" style="padding: 16px 0 64px 0;">
+  <div class="container">
+    <div class="lms-catalog-header">
+      <div>
+        <h2 class="lms-section-h2" style="margin:0 0 4px;" id="catalog-count">All Courses</h2>
+        <div style="font-size:13.5px; color:var(--lms-text-muted);">
+          Accredited competency-based curriculum &amp; educator certifications
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <select class="lms-select-filter" id="course-sort-select" aria-label="Sort courses by" onchange="setLmsFilter('sort', this.value)">
+          <option value="popular">Most Popular</option>
+          <option value="rating">Highest Rated</option>
+          <option value="newest">Newest First</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+        </select>
+
+        <div style="display:flex; background:#F1F5F9; border-radius:10px; padding:3px; gap:2px;">
+          <button type="button" id="btn-view-grid" onclick="setLmsViewMode('grid')" class="btn-icon-toggle active" aria-label="Switch to Grid View" title="Grid View" style="padding:6px 10px; border:none; background:#FFF; border-radius:8px; cursor:pointer; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </button>
+          <button type="button" id="btn-view-list" onclick="setLmsViewMode('list')" class="btn-icon-toggle" aria-label="Switch to List View" title="List View" style="padding:6px 10px; border:none; background:transparent; border-radius:8px; cursor:pointer; color:#64748B;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Course Cards Grid Viewport -->
+    <div id="courses-grid" class="courses-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap:24px; width:100%;">
+      <!-- Course cards rendered dynamically by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     CURRICULUM DEVELOPMENT & ASSESSMENT SHOWCASE
+     (Dedicated Section fulfilling image audit & curriculum depth)
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" style="background:#FFFFFF; border-top:1px solid var(--lms-border); border-bottom:1px solid var(--lms-border); padding: 56px 0;">
+  <div class="container">
+    <div class="card" style="padding:0; overflow:hidden; border:1px solid var(--lms-border); border-radius:20px; box-shadow:0 8px 30px rgba(15,23,42,0.05);">
       <div class="grid-2" style="gap:0; align-items:stretch;">
-        <div>
-          <img src="assets/images/course_smart_vr_classroom.jpg" alt="Smart Classrooms & Digital Teaching Masterclass" style="width:100%; height:100%; object-fit:cover; min-height:280px;" loading="lazy">
-        </div>
-        <div class="featured-masterclass-content">
-          <span style="display:inline-block; padding:4px 12px; background:var(--accent-bg, #F3EEFF); color:#CC3E00; border-radius:999px; font-size:13px; font-weight:600; width:fit-content; margin-bottom:12px;">FEATURED PROGRAM</span>
-          <h3 class="course-card-title-custom" style="font-size:24px;">Digital Literacy for Educators Masterclass</h3>
-          <p style="font-size:16px; color:var(--saas-text-muted); margin-bottom:20px; line-height:1.6;">
-            A comprehensive, hands-on program designed to empower educators with modern digital tools, classroom technology integration, and interactive lesson design strategies.
+        <div style="padding:clamp(28px, 4vw, 44px); display:flex; flex-direction:column; justify-content:center;">
+          <span style="display:inline-block; padding:4px 12px; background:#EEF2FF; color:#2145E6; border-radius:999px; font-size:11.5px; font-weight:700; width:fit-content; margin-bottom:12px; text-transform:uppercase;">ACCREDITED CBC MASTERY</span>
+          <h2 style="font-family:var(--font-heading); font-size:clamp(22px, 2.5vw, 28px); font-weight:800; color:#0F172A; margin:0 0 14px;">
+            Competency-Based Curriculum Development &amp; Assessment
+          </h2>
+          <p style="font-size:14.5px; color:#475569; margin-bottom:20px; line-height:1.65;">
+            Master portfolio evaluation, rubric design, formative assessment criteria, and strand alignment compliant with Kenya Institute of Curriculum Development (KICD) frameworks.
           </p>
-          <div style="display:flex; gap:16px; align-items:center; margin-bottom:24px; flex-wrap:wrap;" class="metadata-text">
-            <span>⭐ 4.9 (523 reviews)</span>
-            <span>⏱️ 6 Weeks</span>
-            <span>🎯 Beginner to Intermediate</span>
-          </div>
+          <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:10px; margin-bottom:24px; font-size:14px; color:#334155;">
+            <li style="display:flex; align-items:center; gap:8px;"><span style="color:#10B981; font-weight:bold;">&check;</span> Authentic assessment rubrics for junior &amp; senior schools</li>
+            <li style="display:flex; align-items:center; gap:8px;"><span style="color:#10B981; font-weight:bold;">&check;</span> KICD strand alignment &amp; competency grading rubrics</li>
+            <li style="display:flex; align-items:center; gap:8px;"><span style="color:#10B981; font-weight:bold;">&check;</span> Hands-on digital portfolio creation tools</li>
+          </ul>
           <div>
-            <a href="course-detail.html?id=crs_002" class="btn btn-blue">Enroll Now</a>
+            <a href="course-detail.html?id=crs_003" class="btn btn-primary btn-md">Explore CBE Masterclass &rarr;</a>
           </div>
+        </div>
+        <div>
+          <img src="assets/images/course_assessment_mastery.jpg" alt="Competency-Based Curriculum Development and Assessment" style="width:100%; height:100%; object-fit:cover; min-height:300px;" loading="lazy">
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Training Programs Grid -->
-<section class="section" style="background:#F8FAFC; border-top:1px solid #E2E8F0; border-bottom:1px solid #E2E8F0;">
-  <div class="container text-center">
-    <span class="section-tag orange" style="background:var(--accent-bg, #F3EEFF); color:#CC3E00; font-weight:700;">CORE TRAINING TRACKS</span>
-    <h2 style="font-size:24px; font-weight:700; color:#0F172A; margin-top:12px; margin-bottom:36px;">
-      Targeted Professional Development Tracks
-    </h2>
-
-    <div class="grid-3" style="gap:28px;">
-      <!-- Track 1: Digital Literacy & ICT -->
-      <div class="distinct-card" style="background:#FFFFFF; border:1.5px solid #E2E8F0; border-radius:20px; padding:38px 28px 32px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:space-between;">
-        <div>
-          <div class="distinct-icon-box distinct-icon-blue" style="width:62px; height:62px; border-radius:18px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px; background:linear-gradient(135deg, #E8F0F8 0%, #E0EDFF 100%); border:1.5px solid rgba(72, 14, 116, 0.14); box-shadow:0 8px 20px rgba(72, 14, 116, 0.10);">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Digital Literacy &amp; ICT Integration" role="img">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-              <line x1="8" y1="21" x2="16" y2="21"/>
-              <line x1="12" y1="17" x2="12" y2="21"/>
-            </svg>
-          </div>
-          <h3 style="font-size:21px; font-weight:700; color:#0F172A; margin-bottom:12px; line-height:1.35;">Digital Literacy &amp; ICT Integration</h3>
-          <p style="font-size:14.5px; color:var(--text-muted, #475569); line-height:1.65; margin-bottom:24px; max-width:320px;">
-            Master classroom multimedia, LMS management, educational apps, and safe internet delivery for modern instruction.
-          </p>
-        </div>
-        <a href="courses.html?category=Digital" class="btn btn-blue btn-sm">View Track &rarr;</a>
-      </div>
-
-      <!-- Track 2: CBE & Competency Pedagogy -->
-      <div class="distinct-card card-orange" style="background:#FFFFFF; border:1.5px solid #E2E8F0; border-radius:20px; padding:38px 28px 32px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:space-between;">
-        <div>
-          <div class="distinct-icon-box distinct-icon-orange" style="width:62px; height:62px; border-radius:18px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px; background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%); border:1.5px solid rgba(37, 99, 235, 0.16); box-shadow:0 8px 20px rgba(37, 99, 235, 0.10);">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="CBE &amp; Competency Pedagogy" role="img">
-              <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-              <polyline points="2 17 12 22 22 17"/>
-              <polyline points="2 12 12 17 22 12"/>
-            </svg>
-          </div>
-          <h3 style="font-size:21px; font-weight:700; color:#0F172A; margin-bottom:12px; line-height:1.35;">CBE &amp; Competency Pedagogy</h3>
-          <p style="font-size:14.5px; color:var(--text-muted, #475569); line-height:1.65; margin-bottom:24px; max-width:320px;">
-            Understand Kenya's Competency-Based Education framework, portfolio assessment, rubrics, and learner engagement strategies.
-          </p>
-        </div>
-        <a href="courses.html?category=Curriculum" class="btn btn-primary btn-sm">View Track &rarr;</a>
-      </div>
-
-      <!-- Track 3: AI Tools for Educators -->
-      <div class="distinct-card" style="background:#FFFFFF; border:1.5px solid #E2E8F0; border-radius:20px; padding:38px 28px 32px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:space-between;">
-        <div>
-          <div class="distinct-icon-box distinct-icon-blue" style="width:62px; height:62px; border-radius:18px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px; background:linear-gradient(135deg, #E8F0F8 0%, #E0EDFF 100%); border:1.5px solid rgba(72, 14, 116, 0.14); box-shadow:0 8px 20px rgba(72, 14, 116, 0.10);">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="AI Tools for Educators" role="img">
-              <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/>
-              <path d="M19 3v4"/>
-              <path d="M21 5h-4"/>
-            </svg>
-          </div>
-          <h3 style="font-size:21px; font-weight:700; color:#0F172A; margin-bottom:12px; line-height:1.35;">AI Tools for Educators</h3>
-          <p style="font-size:14.5px; color:var(--text-muted, #475569); line-height:1.65; margin-bottom:24px; max-width:320px;">
-            Learn to leverage AI for lesson plan generation, automated grading support, personalized student feedback, and interactive content.
-          </p>
-        </div>
-        <a href="courses.html?category=AI" class="btn btn-blue btn-sm">View Track &rarr;</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Training Registration Form Section -->
-<section class="section" id="training-form-section" style="background:#F8FAFC; padding: 60px 0; border-top:1px solid #E2E8F0;">
+<!-- ══════════════════════════════════════════════════════════
+     TRAINING REGISTRATION SECTION
+     (Preserving existing #training-form and ticket modal)
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="training-form-section" style="background:#F8FAFC; padding: 60px 0; border-bottom:1px solid #E2E8F0;">
   <div class="container">
     <div class="training-card" id="training-form">
       <div class="training-caption-badge">
@@ -481,136 +761,26 @@
   </div>
 </div>
 
-<!-- Curriculum Development Service -->
-<section class="section" style="background:var(--color-soft-grey);">
-  <div class="container">
-    <div class="section-header text-center">
-      <span class="section-tag blue">OUR EXPERTISE</span>
-      <h2 class="section-title">Curriculum Development</h2>
-    </div>
-    <!-- Service 1: Curriculum -->
-    <div class="card reveal mb-xl" style="padding:0; overflow:hidden; border:none; box-shadow:var(--shadow-md);">
-      <div class="grid-2" style="gap:0; align-items:stretch;">
-        <div style="padding:var(--space-4xl); display:flex; flex-direction:column; justify-content:center;">
-          <div style="width:56px; height:56px; border-radius:16px; background:#E8F0F8; display:inline-flex; align-items:center; justify-content:center; margin-bottom:var(--space-md);">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Curriculum Development" role="img">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-          </svg>
-        </div>
-          <h3 class="font-heading text-2xl mb-md">Curriculum Development</h3>
-          <p style="color:var(--text-secondary); margin-bottom:var(--space-lg); line-height:1.6;">
-            We design competency-based education (CBE) frameworks, learning outcomes, rubrics, and digital instructional materials tailored to your institution's unique goals and regulatory requirements.
-          </p>
-          <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:8px;">
-            <li style="display:flex; align-items:center; gap:8px; color:var(--text-secondary);"><span style="color:var(--color-primary); font-weight:bold;">&check;</span> Competency mapping</li>
-            <li style="display:flex; align-items:center; gap:8px; color:var(--text-secondary);"><span style="color:var(--color-primary); font-weight:bold;">&check;</span> Assessment rubric design</li>
-            <li style="display:flex; align-items:center; gap:8px; color:var(--text-secondary);"><span style="color:var(--color-primary); font-weight:bold;">&check;</span> Instructional material creation</li>
-          </ul>
-        </div>
-        <div>
-          <img src="assets/images/course_assessment_mastery.jpg" alt="Competency-Based Curriculum Development and Assessment" style="width:100%; height:100%; object-fit:cover; min-height:300px;" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Main Course Catalog with Filter Sidebar -->
-<section class="section" style="padding: 24px 0 64px 0;">
-  <div class="container">
-    <div class="saas-layout">
-      <!-- Filter Sidebar -->
-      <aside class="filter-panel">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-          <span class="filter-group-title" style="margin:0;">Filter Courses</span>
-          <button type="button" onclick="resetAllFilters()" style="background:none; border:none; color:#2145E6; font-size:12px; font-weight:700; cursor:pointer;">Reset</button>
-        </div>
-        
-        <div style="margin-bottom:24px;">
-          <span class="filter-group-title" style="font-size:12px; color:var(--saas-text-muted);">Category</span>
-          <label class="filter-checkbox"><input type="radio" name="cat" checked onclick="setFilter('category','all')"> All Categories</label>
-          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','Curriculum')"> CBC Pedagogy &amp; Curriculum</label>
-          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','Digital Skills')"> Digital Literacy &amp; ICT</label>
-          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','STEM')"> STEM, Robotics &amp; Coding</label>
-          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','Leadership')"> Educational Leadership</label>
-          <label class="filter-checkbox"><input type="radio" name="cat" onclick="setFilter('category','AI & Tech')"> AI &amp; Learning Technology</label>
-        </div>
-
-        <div style="margin-bottom:24px;">
-          <span class="filter-group-title" style="font-size:12px; color:var(--saas-text-muted);">Skill Level</span>
-          <label class="filter-checkbox"><input type="radio" name="lvl" checked onclick="setFilter('level','all')"> All Levels</label>
-          <label class="filter-checkbox"><input type="radio" name="lvl" onclick="setFilter('level','Beginner')"> Beginner</label>
-          <label class="filter-checkbox"><input type="radio" name="lvl" onclick="setFilter('level','Intermediate')"> Intermediate</label>
-          <label class="filter-checkbox"><input type="radio" name="lvl" onclick="setFilter('level','Advanced')"> Advanced</label>
-        </div>
-
-        <div style="margin-bottom:24px;">
-          <span class="filter-group-title" style="font-size:12px; color:var(--saas-text-muted);">Access &amp; Pricing</span>
-          <label class="filter-checkbox"><input type="radio" name="prc" checked onclick="setFilter('access','all')"> All Courses</label>
-          <label class="filter-checkbox"><input type="radio" name="prc" onclick="setFilter('access','paid')"> Paid Certificate Tracks</label>
-          <label class="filter-checkbox"><input type="radio" name="prc" onclick="setFilter('access','free')"> Free / Open Access</label>
-        </div>
-
-        <div>
-          <span class="filter-group-title" style="font-size:12px; color:var(--saas-text-muted);">Accreditation</span>
-          <label class="filter-checkbox"><input type="checkbox" id="cpd-filter-chk" onclick="toggleCPD(this)"> CPD Accredited Only</label>
-        </div>
-      </aside>
-
-      <!-- Course Cards Catalog Grid / List -->
-      <main>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:16px;">
-          <div>
-            <h2 class="saas-h2" style="margin:0 0 4px;" id="catalog-count">All Courses</h2>
-            <div style="font-size:13px; color:var(--saas-text-muted);">Accredited competency-based curriculum &amp; educator certifications</div>
-          </div>
-          <div style="display:flex; align-items:center; gap:12px;">
-            <select class="form-select" id="course-sort-select" aria-label="Sort courses by" onchange="setFilter('sort', this.value)" style="padding:10px 16px; border-radius:10px; border:1px solid var(--saas-border); font-size:13.5px; background:#FFF; outline:none;">
-              <option value="popular">Most Popular</option>
-              <option value="rating">Highest Rated</option>
-              <option value="newest">Newest First</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-            </select>
-            <div class="view-toggle-group" style="display:flex; background:#F1F5F9; border-radius:10px; padding:3px; gap:2px;">
-              <button type="button" id="btn-view-grid" onclick="setViewMode('grid')" class="btn-icon-toggle active" aria-label="Switch to Grid View" title="Grid View" style="padding:6px 10px; border:none; background:#FFF; border-radius:8px; cursor:pointer; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-              </button>
-              <button type="button" id="btn-view-list" onclick="setViewMode('list')" class="btn-icon-toggle" aria-label="Switch to List View" title="List View" style="padding:6px 10px; border:none; background:transparent; border-radius:8px; cursor:pointer; color:#64748B;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div id="courses-grid" class="courses-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap:24px; width:100%;">
-          <!-- Course cards rendered dynamically by JS -->
-        </div>
-      </main>
-    </div>
-  </div>
-</section>
-
-<!-- Student Testimonials Section -->
-<section class="section" style="background:#FFFFFF; border-top:1px solid var(--saas-border); padding:64px 0;">
+<!-- ══════════════════════════════════════════════════════════
+     TESTIMONIALS SECTION
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" style="background:#FFFFFF; border-top:1px solid var(--lms-border); padding:64px 0;">
   <div class="container text-center">
-    <h2 class="saas-h2">Trusted by Educators Across Kenya</h2>
-    <p style="font-size:16px; color:var(--saas-text-muted); max-width:600px; width:100%; margin:0 auto 40px;">
+    <h2 class="saas-h2" style="font-family:var(--font-heading); font-size:26px; font-weight:700; color:#0F172A; margin-bottom:12px;">Trusted by Educators Across Kenya</h2>
+    <p style="font-size:15.5px; color:var(--saas-text-muted); max-width:600px; width:100%; margin:0 auto 40px;">
       Hear how our accredited training programs have transformed classroom delivery and professional growth.
     </p>
 
-    <div class="grid-3" style="text-align:left;">
+    <div class="grid-3" style="text-align:left; gap:24px;">
       <!-- Testimonial 1 -->
       <div class="testimonial-card">
-        <p style="font-size:15px; color:#0F172A; margin-bottom:16px; line-height:1.6;">
+        <p style="font-size:14.5px; color:#0F172A; margin-bottom:16px; line-height:1.6;">
           "The ICT Integration course provided practical tools I could use in my daily lessons immediately. My students are significantly more engaged."
         </p>
         <div style="display:flex; align-items:center; gap:12px;">
-          <div style="width:40px; height:40px; border-radius:50%; background:var(--accent-bg, #F3EEFF); color:#CC3E00; font-weight:700; display:flex; align-items:center; justify-content:center;">JK</div>
+          <div style="width:40px; height:40px; border-radius:50%; background:#FFF1EB; color:#FF4D00; font-weight:700; display:flex; align-items:center; justify-content:center;">JK</div>
           <div>
-            <h4 style="font-size:15px; font-weight:600; margin:0; color:var(--saas-navy);">Jane Korir</h4>
+            <h4 style="font-size:15px; font-weight:600; margin:0; color:#0F172A;">Jane Korir</h4>
             <span class="metadata-text">High School Teacher, Nakuru</span>
           </div>
         </div>
@@ -618,13 +788,13 @@
 
       <!-- Testimonial 2 -->
       <div class="testimonial-card">
-        <p style="font-size:15px; color:#0F172A; margin-bottom:16px; line-height:1.6;">
+        <p style="font-size:14.5px; color:#0F172A; margin-bottom:16px; line-height:1.6;">
           "Clear, structured, and CBC-aligned. The curriculum development masterclass gave our department a unified roadmap for implementation."
         </p>
         <div style="display:flex; align-items:center; gap:12px;">
-          <div style="width:40px; height:40px; border-radius:50%; background:#E0E7FF; color:#183AD6; font-weight:700; display:flex; align-items:center; justify-content:center;">DM</div>
+          <div style="width:40px; height:40px; border-radius:50%; background:#EEF2FF; color:#2145E6; font-weight:700; display:flex; align-items:center; justify-content:center;">DM</div>
           <div>
-            <h4 style="font-size:15px; font-weight:600; margin:0; color:var(--saas-navy);">David Mutua</h4>
+            <h4 style="font-size:15px; font-weight:600; margin:0; color:#0F172A;">David Mutua</h4>
             <span class="metadata-text">Head of Curriculum, Nairobi</span>
           </div>
         </div>
@@ -632,13 +802,13 @@
 
       <!-- Testimonial 3 -->
       <div class="testimonial-card">
-        <p style="font-size:15px; color:#0F172A; margin-bottom:16px; line-height:1.6;">
+        <p style="font-size:14.5px; color:#0F172A; margin-bottom:16px; line-height:1.6;">
           "As an education administrator, the Leadership &amp; Management program equipped me with actionable insights for institutional growth."
         </p>
         <div style="display:flex; align-items:center; gap:12px;">
-          <div style="width:40px; height:40px; border-radius:50%; background:#CCFBF1; color:#183AD6; font-weight:700; display:flex; align-items:center; justify-content:center;">AM</div>
+          <div style="width:40px; height:40px; border-radius:50%; background:#ECFDF5; color:#059669; font-weight:700; display:flex; align-items:center; justify-content:center;">AM</div>
           <div>
-            <h4 style="font-size:15px; font-weight:600; margin:0; color:var(--saas-navy);">Anne Mwangi</h4>
+            <h4 style="font-size:15px; font-weight:600; margin:0; color:#0F172A;">Anne Mwangi</h4>
             <span class="metadata-text">Principal, Mombasa</span>
           </div>
         </div>
@@ -647,7 +817,7 @@
   </div>
 </section>
 
-<!-- Footer -->
+<!-- ── Footer ───────────────────────────────────────────────── -->
 <footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
   <div class="container">
     <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1.5px solid var(--cta-color, #F5812D);">
@@ -659,7 +829,7 @@
         <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
           We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.
         </p>
-                <div class="footer-social-row" style="margin-bottom:20px;">
+        <div class="footer-social-row" style="margin-bottom:20px;">
           <a href="https://www.linkedin.com/company/instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg>
           </a>
@@ -679,14 +849,13 @@
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
         </div>
-<a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
       </div>
       <div>
         <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
         <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
           <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
           <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
-          
           <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
         </ul>
       </div>
@@ -715,251 +884,13 @@
   </div>
 </footer>
 
+<!-- ── Scripts ──────────────────────────────────────────────── -->
 <script src="js/main.js?v=3.1"></script>
 <script src="js/auth.js"></script>
 <script src="js/lms-engine.js"></script>
 <script src="js/courses.js"></script>
-<script>
-let filters = { query: '', level: 'all', access: 'all', sort: 'popular', category: 'all', cpd: false };
-let currentViewMode = 'grid';
-
-function setViewMode(mode) {
-  currentViewMode = mode;
-  const btnGrid = document.getElementById('btn-view-grid');
-  const btnList = document.getElementById('btn-view-list');
-  const grid = document.getElementById('courses-grid');
-
-  if (mode === 'grid') {
-    if (btnGrid) { btnGrid.style.background = '#FFF'; btnGrid.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)'; btnGrid.style.color = '#0F172A'; }
-    if (btnList) { btnList.style.background = 'transparent'; btnList.style.boxShadow = 'none'; btnList.style.color = '#64748B'; }
-    if (grid) {
-      grid.style.display = 'grid';
-      grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))';
-      grid.style.gap = '24px';
-    }
-  } else {
-    if (btnList) { btnList.style.background = '#FFF'; btnList.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)'; btnList.style.color = '#0F172A'; }
-    if (btnGrid) { btnGrid.style.background = 'transparent'; btnGrid.style.boxShadow = 'none'; btnGrid.style.color = '#64748B'; }
-    if (grid) {
-      grid.style.display = 'flex';
-      grid.style.flexDirection = 'column';
-      grid.style.gap = '18px';
-    }
-  }
-  renderCourses();
-}
-
-function resetAllFilters() {
-  filters = { query: '', level: 'all', access: 'all', sort: 'popular', category: 'all', cpd: false };
-  const searchEl = document.getElementById('course-search');
-  if (searchEl) searchEl.value = '';
-  const cpdChk = document.getElementById('cpd-filter-chk');
-  if (cpdChk) cpdChk.checked = false;
-  document.querySelectorAll('input[type="radio"]').forEach(r => {
-    if (r.parentElement.textContent.includes('All')) r.checked = true;
-  });
-  renderCourses();
-}
-
-function getAllCatalogCourses() {
-  const lmsCourses = (window.LMSEngine && window.LMSEngine.getCourses()) || [];
-  const baseCourses = window.COURSES || [];
-
-  // Map to common structure and avoid duplicates
-  const map = new Map();
-  lmsCourses.forEach(c => map.set(c.id, c));
-  baseCourses.forEach(c => {
-    if (!map.has(c.id)) {
-      map.set(c.id, c);
-    }
-  });
-
-  return Array.from(map.values());
-}
-
-window.renderCourseCardGrid = function(c) {
-  const thumb = c.thumbnail || c.image || 'assets/images/course_assessment_mastery.jpg';
-  const priceVal = typeof c.price === 'number' ? c.price : parseInt(String(c.price || '0').replace(/[^0-9]/g, ''), 10);
-  const priceStr = priceVal === 0 ? 'FREE' : 'KES ' + (priceVal ? priceVal.toLocaleString() : '15,000');
-  const rating = c.rating || '4.8';
-  const reviews = c.reviewsCount || c.reviewCount || 120;
-
-  return `
-    <div class="card course-card reveal" style="padding:0; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; border:1.5px solid var(--border-color-card, #E2E8F0); border-radius:20px; box-shadow:0 4px 20px -2px rgba(15,23,42,0.05); background:#FFFFFF; height:100%;">
-      <div>
-        <div style="position:relative; width:100%; height:200px; overflow:hidden; background:#0F172A;">
-          <img src="${thumb}" alt="${c.title}" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.src='assets/images/course_assessment_mastery.jpg'" loading="lazy">
-          <span style="position:absolute; top:12px; left:12px; background:rgba(255,255,255,0.95); color:var(--primary, #2145E6); padding:4px 12px; border-radius:999px; font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; backdrop-filter:blur(4px); box-shadow:0 2px 8px rgba(0,0,0,0.12);">${c.category || 'Education'}</span>
-          ${c.cpd ? '<span style="position:absolute; bottom:12px; right:12px; background:rgba(16,185,129,0.92); color:#FFF; padding:3px 9px; border-radius:6px; font-size:10.5px; font-weight:700;">CPD Verified</span>' : ''}
-        </div>
-        <div style="padding:22px 22px 14px; display:flex; flex-direction:column;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <span style="font-size:12px; color:#F59E0B; font-weight:700;">★ ${rating} <span style="color:#94A3B8; font-weight:500;">(${reviews})</span></span>
-            <span style="font-size:12px; color:#64748B;">${c.duration || '6 Weeks'}</span>
-          </div>
-          <h3 style="font-family:var(--font-heading); font-size:17.5px; font-weight:750; line-height:1.32; color:var(--text-main, #0F172A); margin-bottom:8px;">${c.title}</h3>
-          <p style="font-size:13.5px; line-height:1.58; color:var(--text-secondary, #475569); margin-bottom:16px;">${(c.description || '').substring(0, 105)}...</p>
-          
-          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
-            <span style="background:#F1F5F9; color:#475569; padding:4px 10px; border-radius:8px; font-size:11.5px; font-weight:600;">🎯 ${c.level || 'All Levels'}</span>
-            <span style="background:#EEF2FF; color:#2145E6; padding:4px 10px; border-radius:8px; font-size:11.5px; font-weight:600;">👨‍🏫 ${c.instructor ? c.instructor.split(' ')[0] + ' ' + (c.instructor.split(' ')[1]||'') : 'Educator'}</span>
-          </div>
-        </div>
-      </div>
-      
-      <div style="padding:14px 22px 18px; border-top:1px solid #F1F5F9; background:#FAFAFC; display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto;">
-        <span style="font-family:var(--font-heading); font-size:17px; font-weight:800; color:${priceVal === 0 ? '#10B981' : 'var(--primary, #2145E6)'};">${priceStr}</span>
-        <div style="display:flex; gap:6px;">
-          <a href="course-detail.html?id=${c.id}" class="btn btn-primary btn-sm" style="text-decoration:none; font-weight:750; white-space:nowrap;">Explore &rarr;</a>
-        </div>
-      </div>
-    </div>
-  `;
-};
-
-window.renderCourseCardList = function(c) {
-  const thumb = c.thumbnail || c.image || 'assets/images/course_assessment_mastery.jpg';
-  const priceVal = typeof c.price === 'number' ? c.price : parseInt(String(c.price || '0').replace(/[^0-9]/g, ''), 10);
-  const priceStr = priceVal === 0 ? 'FREE' : 'KES ' + (priceVal ? priceVal.toLocaleString() : '15,000');
-  const rating = c.rating || '4.8';
-  const reviews = c.reviewsCount || c.reviewCount || 120;
-
-  return `
-    <div class="card course-card-list reveal" style="padding:0; overflow:hidden; display:flex; flex-direction:row; flex-wrap:wrap; border:1.5px solid #E2E8F0; border-radius:18px; background:#FFFFFF; box-shadow:0 4px 16px rgba(15,23,42,0.04); width:100%;">
-      <div style="width:260px; min-height:180px; position:relative; background:#0F172A; flex-shrink:0;">
-        <img src="${thumb}" alt="${c.title}" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.src='assets/images/course_assessment_mastery.jpg'" loading="lazy">
-        <span style="position:absolute; top:12px; left:12px; background:rgba(255,255,255,0.95); color:var(--primary, #2145E6); padding:3px 10px; border-radius:999px; font-size:10px; font-weight:800; text-transform:uppercase;">${c.category || 'Education'}</span>
-      </div>
-      
-      <div style="padding:20px 24px; flex:1; min-width:280px; display:flex; flex-direction:column; justify-content:space-between;">
-        <div>
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:8px;">
-            <div style="display:flex; align-items:center; gap:8px;">
-              <span style="font-size:12.5px; color:#F59E0B; font-weight:700;">★ ${rating} (${reviews} reviews)</span>
-              ${c.cpd ? '<span style="background:#ECFDF5; color:#059669; padding:2px 8px; border-radius:6px; font-size:11px; font-weight:700;">CPD Accredited</span>' : ''}
-            </div>
-            <span style="font-size:12.5px; color:#64748B;">⏱️ ${c.duration || '6 Weeks'}</span>
-          </div>
-          
-          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin:0 0 6px;">${c.title}</h3>
-          <p style="font-size:13.5px; color:#475569; line-height:1.55; margin:0 0 14px;">${c.description || 'Kenyan CBC professional development syllabus curriculum.'}</p>
-          
-          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-            <span style="font-size:12.5px; color:#64748B;">Instructor: <strong style="color:#0F172A;">${c.instructor || 'Dr. Wanjiku Kamau'}</strong></span>
-            <span style="font-size:12.5px; color:#CBD5E1;">•</span>
-            <span style="font-size:12.5px; color:#64748B;">Level: <strong style="color:#0F172A;">${c.level || 'All Levels'}</strong></span>
-          </div>
-        </div>
-        
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px; padding-top:14px; border-top:1px solid #F1F5F9;">
-          <div>
-            <div style="font-size:11px; color:#64748B; text-transform:uppercase; font-weight:700;">Course Fee</div>
-            <div style="font-size:19px; font-weight:900; color:${priceVal === 0 ? '#10B981' : 'var(--primary, #2145E6)'};">${priceStr}</div>
-          </div>
-          <div style="display:flex; gap:8px;">
-            <a href="course-detail.html?id=${c.id}" class="btn btn-primary btn-sm">Explore Course &rarr;</a>
-            <a href="course-player.html?courseId=${c.id}" class="btn btn-outline btn-sm">Player Preview</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-};
-
-function renderCourses() {
-  const grid = document.getElementById('courses-grid');
-  if (!grid) return;
-
-  const allCourses = getAllCatalogCourses();
-
-  let results = allCourses.filter(c => {
-    // Category filter
-    if (filters.category !== 'all') {
-      const cat = (c.category || '').toLowerCase();
-      const target = filters.category.toLowerCase();
-      if (!cat.includes(target) && !(target === 'curriculum' && cat.includes('cbe'))) return false;
-    }
-    // Level filter
-    if (filters.level !== 'all') {
-      const lvl = (c.level || '').toLowerCase();
-      if (!lvl.includes(filters.level.toLowerCase())) return false;
-    }
-    // Access / Price filter
-    if (filters.access !== 'all') {
-      const priceVal = typeof c.price === 'number' ? c.price : parseInt(String(c.price || '0').replace(/[^0-9]/g, ''), 10);
-      if (filters.access === 'free' && priceVal > 0) return false;
-      if (filters.access === 'paid' && priceVal === 0) return false;
-    }
-    // CPD filter
-    if (filters.cpd && !c.cpd) return false;
-    // Query search
-    if (filters.query) {
-      const q = filters.query.toLowerCase();
-      const matchTitle = (c.title || '').toLowerCase().includes(q);
-      const matchDesc = (c.description || '').toLowerCase().includes(q);
-      const matchInst = (c.instructor || '').toLowerCase().includes(q);
-      if (!matchTitle && !matchDesc && !matchInst) return false;
-    }
-    return true;
-  });
-
-  // Sort results
-  if (filters.sort === 'rating') {
-    results.sort((a, b) => (parseFloat(b.rating) || 0) - (parseFloat(a.rating) || 0));
-  } else if (filters.sort === 'price-low') {
-    results.sort((a, b) => (parseFloat(a.price) || 0) - (parseFloat(b.price) || 0));
-  } else if (filters.sort === 'price-high') {
-    results.sort((a, b) => (parseFloat(b.price) || 0) - (parseFloat(a.price) || 0));
-  }
-
-  const countEl = document.getElementById('catalog-count');
-  if (countEl) countEl.textContent = `Showing ${results.length} Course${results.length !== 1 ? 's' : ''}`;
-
-  if (results.length === 0) {
-    grid.innerHTML = `
-      <div style="grid-column:1/-1; width:100%; text-align:center; padding:48px 24px; background:#FFFFFF; border:1.5px dashed #CBD5E1; border-radius:18px;">
-        <div style="font-size:36px; margin-bottom:10px;">🔍</div>
-        <h4 style="font-size:17px; font-weight:800; color:#0F172A; margin-bottom:6px;">No courses match your filter criteria</h4>
-        <p style="font-size:14px; color:#64748B; margin-bottom:16px;">Try adjusting your categories, skill level, or search terms.</p>
-        <button onclick="resetAllFilters()" class="btn btn-outline btn-sm">Reset All Filters</button>
-      </div>
-    `;
-    return;
-  }
-
-  if (currentViewMode === 'grid') {
-    grid.innerHTML = results.map(c => window.renderCourseCardGrid(c)).join('');
-  } else {
-    grid.innerHTML = results.map(c => window.renderCourseCardList(c)).join('');
-  }
-
-  if (window.initScrollReveal) window.initScrollReveal();
-}
-
-function setFilter(key, val) {
-  filters[key] = val;
-  renderCourses();
-}
-
-function toggleCPD(checkbox) {
-  filters.cpd = checkbox.checked;
-  renderCourses();
-}
-
-// Search handler
-let searchTimeout;
-const _searchEl = document.getElementById('course-search');
-if (_searchEl) {
-  _searchEl.addEventListener('input', (e) => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => { filters.query = e.target.value; renderCourses(); }, 250);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', renderCourses);
-</script>
-
-  <script src="js/chat-config.js"></script>
-  <script src="js/live-chat.js"></script>
+<script src="js/lms-course-dashboard.js"></script>
+<script src="js/chat-config.js"></script>
+<script src="js/live-chat.js"></script>
 </body>
 </html>
