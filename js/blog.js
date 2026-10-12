@@ -304,9 +304,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if (blogSubscribeForm) {
     blogSubscribeForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (window.FormValidator) {
+        const val = window.FormValidator.validateForm(blogSubscribeForm);
+        if (!val.valid) {
+          if (window.showToast) window.showToast(val.errors[0] || 'Please enter a valid email address.', 'warning');
+          if (val.firstErrorEl) val.firstErrorEl.focus();
+          return;
+        }
+      }
       const emailInput = blogSubscribeForm.querySelector('input[type="email"]');
       if (emailInput && emailInput.value) {
-        alert(`Thank you for subscribing! Practical educational insights will be sent to ${emailInput.value}.`);
+        if (window.showToast) {
+          window.showToast(`Thank you for subscribing! Practical educational insights will be sent to ${emailInput.value}.`, 'success');
+        } else {
+          alert(`Thank you for subscribing! Practical educational insights will be sent to ${emailInput.value}.`);
+        }
         emailInput.value = '';
       }
     });

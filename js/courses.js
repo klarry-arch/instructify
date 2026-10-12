@@ -277,41 +277,71 @@ window.renderCourseCard = function(course) {
   const enrolled = window.isEnrolled ? window.isEnrolled(course.id) : false;
   const badgeText = course.badgeText || course.category;
   const badgeClass = course.badge || 'badge-cpd';
+  const deliveryMode = course.format || 'Online Self-Paced';
+  const durationText = course.duration || '6 weeks';
+  const levelText = course.level || 'All Levels';
+  const cpdInfo = course.cpd ? `CPD Accredited · ${course.cpdHours || 30} hrs` : (course.certificate ? 'Certificate Included' : '');
   
   return `
-    <div class="course-card reveal" data-course-id="${course.id}">
+    <article class="course-card reveal" data-course-id="${course.id}" aria-label="${course.title}">
       <div class="course-card-image">
         <img src="${course.image}" alt="${course.title}" loading="lazy" 
              onerror="this.parentElement.style.background='linear-gradient(135deg,#1E3A8A,#2563EB)';this.style.display='none'">
         <span class="course-card-badge ${badgeClass}">${badgeText}</span>
-        <button class="course-card-wishlist" onclick="toggleWishlist(this)" title="Add to wishlist">🤍</button>
+        <span class="course-card-mode-pill">${deliveryMode}</span>
+        <button class="course-card-wishlist" onclick="toggleWishlist(this)" title="Add to wishlist" aria-label="Add ${course.title} to wishlist">🤍</button>
       </div>
       <div class="course-card-body">
+        <div class="course-card-meta-chips">
+          <span class="course-meta-chip">⏱️ ${durationText}</span>
+          <span class="course-meta-chip">🎯 ${levelText}</span>
+          <span class="course-meta-chip">💻 ${deliveryMode}</span>
+        </div>
         <span class="course-card-category">${course.category}</span>
         <h3 class="course-card-title">${course.title}</h3>
-        ${course.description ? `<p class="course-card-description">${course.description.length > 100 ? course.description.substring(0, 100) + '...' : course.description}</p>` : ''}
+        ${course.description ? `<p class="course-card-description">${course.description.length > 120 ? course.description.substring(0, 120) + '...' : course.description}</p>` : ''}
+        
+        ${cpdInfo ? `
+          <div class="course-card-cert-row">
+            <span class="course-card-cert-badge">📜 ${cpdInfo}</span>
+          </div>
+        ` : ''}
+
         <div class="course-card-instructor">
           <div class="instructor-avatar">${course.instructorAvatar || 'IK'}</div>
-          <span>${course.instructor || 'Instructify Faculty'}</span>
+          <div>
+            <div style="font-weight:700; color:#0F172A; line-height:1.2;">${course.instructor || 'Instructify Faculty'}</div>
+            <div style="font-size:11px; color:#64748B;">${course.instructorTitle || 'Education Specialist'}</div>
+          </div>
         </div>
+
         <div class="course-card-stats">
           <span class="rating">⭐ ${course.rating || '4.8'}</span>
-          <span>(${course.reviewCount ? course.reviewCount.toLocaleString() : '150'})</span>
-          <span>• ${course.duration || '6 weeks'}</span>
-          <span>• ${course.level || 'All Levels'}</span>
+          <span>(${course.reviewCount ? course.reviewCount.toLocaleString() : '150'} reviews)</span>
+          ${course.enrollments ? `<span>• 👥 ${course.enrollments.toLocaleString()} enrolled</span>` : ''}
         </div>
-        ${course.cpd ? `<div style="margin-top:8px"><span class="badge badge-green" style="background:#ECFDF5; color:#059669; padding:4px 8px; border-radius:6px; font-size:11px; font-weight:600;">✅ CPD Accredited · ${course.cpdHours || 30} hrs</span></div>` : ''}
       </div>
       <div class="course-card-footer">
         <div class="course-price">
           <span class="price-current">KES ${typeof course.price === 'number' ? course.price.toLocaleString() : course.price}</span>
           ${course.originalPrice ? `<span class="price-original">KES ${course.originalPrice.toLocaleString()}</span>` : ''}
         </div>
-        <a href="course-detail.html?id=${course.id}" class="btn btn-primary btn-sm" style="font-weight:750;">
-          ${enrolled ? '📚 Continue Learning' : 'Explore Course &rarr;'}
-        </a>
+        ${enrolled ? `
+          <a href="course-player.html?courseId=${course.id}" class="btn btn-primary btn-sm" style="font-weight:750; min-height:44px; display:inline-flex; align-items:center;" aria-label="Continue learning ${course.title}">
+            📚 Continue Learning
+          </a>
+        ` : `
+          <div style="display:flex; gap:8px; align-items:center;">
+            <a href="checkout.html?id=${course.id}" class="btn btn-primary btn-sm" style="font-weight:750; background:linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); border-color:#FF4D00; min-height:44px; padding:8px 14px; display:inline-flex; align-items:center;" aria-label="Enrol now in ${course.title}">
+              ⚡ Enrol Now
+            </a>
+            <a href="course-detail.html?id=${course.id}" class="btn btn-outline btn-sm" style="font-weight:600; min-height:44px; padding:8px 12px; display:inline-flex; align-items:center;" aria-label="View syllabus and details for ${course.title}">
+              Details
+            </a>
+          </div>
+        `}
       </div>
-    </div>
+    </article>
   `;
 };
 

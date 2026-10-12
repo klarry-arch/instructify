@@ -93,7 +93,19 @@ document.addEventListener('DOMContentLoaded', () => {
         checkedServices.push(cb.value);
       });
 
-      if (!institution || !contactPerson || !email || !phone) {
+      if (window.FormValidator) {
+        const valResult = window.FormValidator.validateForm(form);
+        if (!valResult.valid) {
+          if (feedback) {
+            feedback.className = 'form-feedback error';
+            feedback.textContent = valResult.errors[0] || 'Please complete all required fields correctly.';
+            feedback.style.display = 'block';
+          }
+          if (window.showToast) window.showToast(valResult.errors[0] || 'Please correct the highlighted fields.', 'warning');
+          if (valResult.firstErrorEl) valResult.firstErrorEl.focus();
+          return;
+        }
+      } else if (!institution || !contactPerson || !email || !phone) {
         if (feedback) {
           feedback.className = 'form-feedback error';
           feedback.textContent = 'Please fill in all required fields (Institution, Contact Name, Email, and Phone Number).';

@@ -9,7 +9,9 @@ const testSuites = [
   'tests/payment.test.js',
   'tests/verify-article-pages.cjs',
   'tests/verify-workshop-email.cjs',
-  'tests/image-audit.test.cjs'
+  'tests/image-audit.test.cjs',
+  'tests/form-validation.test.cjs',
+  'tests/verify-cpd-registration.cjs'
 ];
 
 console.log('══════════════════════════════════════════════════════════════');

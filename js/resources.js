@@ -1111,6 +1111,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (submitForm) {
     submitForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (window.FormValidator) {
+        const val = window.FormValidator.validateForm(submitForm);
+        if (!val.valid) {
+          showResourceToast(val.errors[0] || 'Please complete all required resource fields correctly.', 'warning');
+          if (val.firstErrorEl) val.firstErrorEl.focus();
+          return;
+        }
+      }
       const title = document.getElementById('res-submit-title')?.value;
       const author = document.getElementById('res-submit-author')?.value;
 

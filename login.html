@@ -132,32 +132,10 @@
       <p class="auth-subtitle">Sign in to your Instructify Educator or Student workspace</p>
     </div>
 
-    <!-- Quick Role Switcher for Seamless Evaluation -->
-    <div class="role-switcher-banner">
-      <div class="role-switcher-title">
-        <span>⚡ 1-Click Role Switcher</span>
-        <span style="font-weight:600; color:#2563EB;">Instant Fill</span>
-      </div>
-      <div class="role-btn-grid">
-        <button type="button" class="role-quick-btn active" id="quick-btn-trainer" onclick="selectRolePreset('trainer')">
-          <span>👩‍🏫 Educator</span>
-          <span style="font-size:10px; opacity:0.8;">Dr. Wanjiku</span>
-        </button>
-        <button type="button" class="role-quick-btn" id="quick-btn-learner" onclick="selectRolePreset('learner')">
-          <span>🎓 Student</span>
-          <span style="font-size:10px; opacity:0.8;">James Mwangi</span>
-        </button>
-        <button type="button" class="role-quick-btn" id="quick-btn-admin" onclick="selectRolePreset('admin')">
-          <span>🛡️ Super Admin</span>
-          <span style="font-size:10px; opacity:0.8;">Prof. Ochieng</span>
-        </button>
-      </div>
-    </div>
-
     <form id="login-form" onsubmit="handleLoginSubmit(event)" style="display:flex; flex-direction:column; gap:16px;">
       <div>
         <label for="login-email" class="form-label">Email Address</label>
-        <input type="email" id="login-email" aria-label="Email Address" class="form-input" value="trainer@instructify.ke" required autocomplete="email">
+        <input type="email" id="login-email" aria-label="Email Address" class="form-input" placeholder="your@email.com" required autocomplete="email">
       </div>
 
       <div>
@@ -166,7 +144,7 @@
           <a href="forgot-password.html" style="font-size:12.5px; color:#2145E6; font-weight:600; text-decoration:none;">Forgot password?</a>
         </div>
         <div style="position:relative;">
-          <input type="password" id="login-password" aria-label="Password" class="form-input" value="Train@2024" required autocomplete="current-password" style="padding-right:40px;">
+          <input type="password" id="login-password" aria-label="Password" class="form-input" placeholder="Your password" required autocomplete="current-password" style="padding-right:40px;">
           <button type="button" onclick="togglePasswordVisibility()" aria-label="Toggle Password Visibility" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:#64748B; cursor:pointer; font-size:16px;">
             👁️
           </button>
@@ -191,35 +169,10 @@
   </div>
 </div>
 
+<script src="js/form-validator.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/main.js"></script>
 <script>
-const PRESETS = {
-  trainer: {
-    email: 'trainer@instructify.ke',
-    pass: 'Train@2024'
-  },
-  learner: {
-    email: 'learner@instructify.ke',
-    pass: 'Learn@2024'
-  },
-  admin: {
-    email: 'admin@instructify.ke',
-    pass: 'Admin@2024'
-  }
-};
-
-function selectRolePreset(role) {
-  document.querySelectorAll('.role-quick-btn').forEach(btn => btn.classList.remove('active'));
-  const activeBtn = document.getElementById('quick-btn-' + role);
-  if (activeBtn) activeBtn.classList.add('active');
-
-  const preset = PRESETS[role];
-  if (preset) {
-    document.getElementById('login-email').value = preset.email;
-    document.getElementById('login-password').value = preset.pass;
-  }
-}
 
 function togglePasswordVisibility() {
   const input = document.getElementById('login-password');
@@ -228,9 +181,23 @@ function togglePasswordVisibility() {
 
 function handleLoginSubmit(e) {
   e.preventDefault();
+  const btn = document.getElementById('login-submit-btn');
+
+  if (window.FormValidator) {
+    const valResult = window.FormValidator.validateForm(document.getElementById('login-form'));
+    if (!valResult.valid) {
+      if (window.showToast) window.showToast(valResult.errors[0] || 'Please enter valid credentials.', 'warning');
+      btn.disabled = false;
+      btn.textContent = 'Sign In to Portal →';
+      if (valResult.firstErrorEl) {
+        valResult.firstErrorEl.focus();
+      }
+      return;
+    }
+  }
+
   const email = document.getElementById('login-email').value.trim();
   const password = document.getElementById('login-password').value;
-  const btn = document.getElementById('login-submit-btn');
 
   btn.disabled = true;
   btn.textContent = 'Verifying credentials...';
@@ -239,6 +206,14 @@ function handleLoginSubmit(e) {
   if (res.success) {
     window.showToast('✅ Welcome, ' + res.user.name + '! Redirecting...', 'success');
     setTimeout(() => {
+      try {
+        const returnTo = JSON.parse(localStorage.getItem('ik_return_to') || 'null');
+        if (returnTo && returnTo.url) {
+          localStorage.removeItem('ik_return_to');
+          window.location.href = returnTo.url;
+          return;
+        }
+      } catch { /* ignore */ }
       const redirectMap = {
         admin: 'dashboard-admin.html',
         trainer: 'dashboard-trainer.html',

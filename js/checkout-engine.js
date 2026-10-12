@@ -45,10 +45,28 @@
     },
 
     /**
-     * Step 1: Start checkout for a course — creates order server-side.
+     * Step 1: Start checkout for a course — creates order server-side with instant UI.
      */
     async startCheckout(courseId) {
-      const session = window.getSession ? window.getSession() : null;
+      let session = window.getSession ? window.getSession() : null;
+      if (!session) {
+        const nameInput = document.getElementById('ck-name')?.value?.trim();
+        const emailInput = document.getElementById('ck-email')?.value?.trim();
+        const phoneInput = document.getElementById('ck-phone')?.value?.trim();
+        if (nameInput && emailInput) {
+          session = {
+            id: 'usr_' + Date.now(),
+            name: nameInput,
+            email: emailInput,
+            phone: phoneInput || '',
+            role: 'learner',
+            avatar: nameInput.split(/\s+/).map((n) => n[0]).join('').slice(0, 2).toUpperCase() || 'LR',
+            verified: true,
+          };
+          if (window.setSession) window.setSession(session);
+        }
+      }
+
       if (!session) {
         localStorage.setItem(
           'ik_return_to',
@@ -74,60 +92,75 @@
         return;
       }
 
-      _setState({ status: 'creating_order', courseId, error: null });
-
       const course = window.COURSES ? window.COURSES.find((c) => c.id === courseId) : null;
       const defaultPriceKes = course ? course.price : 8500;
       const defaultTitle = course ? course.title : 'Professional Certification Course';
 
-      try {
-        const res = await fetch(`${API_BASE}/api/create-order`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            courseId,
-            userId: session.id,
-            userEmail: session.email,
-            userName: session.name,
-          }),
-        });
-
-        const data = await res.json().catch(() => null);
-
-        if (res.status === 409 && data?.error === 'already_enrolled') {
-          _addLocalEnrollment(session.id, courseId, data);
-          if (window.showToast) window.showToast('You are already enrolled in this course!', 'info');
-          setTimeout(() => { window.location.href = 'dashboard-learner.html'; }, 1200);
-          return;
-        }
-
-        if (res.ok && data?.orderReference) {
-          _setState({
-            status: 'awaiting_payment',
-            orderReference: data.orderReference,
-            amount: data.amount || defaultPriceKes * 100,
-            payableAmountKes: data.payableAmountKes || Math.round(Number(data.amount) / 100) || defaultPriceKes,
-            currency: data.currency || 'KES',
-            courseTitle: data.courseTitle || defaultTitle,
-            error: null,
-          });
-          return;
-        }
-      } catch (err) {
-        console.warn('[CheckoutEngine] Remote order creation notice:', err.message);
-      }
-
-      // Resilient fallback order generation (ensures learners can always pay via Paybill or M-Pesa)
-      const fallbackRef = 'IK-2026-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+      // ── Instant Order Initialization (0ms transition to payment screen) ──
+      const initialRef = 'IK-2026-' + Math.random().toString(36).substring(2, 10).toUpperCase();
       _setState({
         status: 'awaiting_payment',
-        orderReference: fallbackRef,
+        courseId,
+        orderReference: initialRef,
         amount: defaultPriceKes * 100,
         payableAmountKes: defaultPriceKes,
         currency: 'KES',
         courseTitle: defaultTitle,
         error: null,
       });
+
+      // Synchronize order with backend asynchronously with fast 2.5s timeout
+      (async () => {
+        try {
+          const ctrl = new AbortController();
+          const timer = setTimeout(() => ctrl.abort(), 2500);
+
+          let res = await fetch(`${API_BASE}/api/create-order`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            signal: ctrl.signal,
+            body: JSON.stringify({
+              courseId,
+              userId: session.id,
+              userEmail: session.email,
+              userName: session.name,
+            }),
+          }).catch(() => null);
+
+          clearTimeout(timer);
+
+          // If Node endpoint times out or returns HTML, seamlessly try PHP controller
+          if (!res || !res.ok || res.headers.get('content-type')?.includes('text/html')) {
+            const phpCtrl = new AbortController();
+            const phpTimer = setTimeout(() => phpCtrl.abort(), 2500);
+            res = await fetch(`${API_BASE}/api/payment.php?action=create-order`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              signal: phpCtrl.signal,
+              body: JSON.stringify({
+                courseId,
+                userId: session.id,
+                userEmail: session.email,
+                userName: session.name,
+              }),
+            }).catch(() => null);
+            clearTimeout(phpTimer);
+          }
+
+          if (res && res.ok) {
+            const data = await res.json().catch(() => null);
+            if (data?.orderReference) {
+              _setState({
+                orderReference: data.orderReference,
+                amount: data.amount || defaultPriceKes * 100,
+                payableAmountKes: data.payableAmountKes || defaultPriceKes,
+              });
+            }
+          }
+        } catch (err) {
+          console.warn('[CheckoutEngine] Asynchronous order sync notice:', err.message);
+        }
+      })();
     },
 
     /**

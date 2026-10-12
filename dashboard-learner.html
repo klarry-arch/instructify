@@ -859,21 +859,66 @@
       <!-- TAB PANEL 7: MY PROGRESS -->
       <div id="tab-panel-progress" class="student-tab-panel" style="display:none;">
         <div class="student-section-header">
-          <h2 class="student-section-title">📈 Learning Analytics &amp; Mastery</h2>
-          <p class="student-section-subtitle">Deep dive into topic-level understanding and completion velocity.</p>
+          <h2 class="student-section-title">📈 Learning Analytics, CPD Hours &amp; Mastery</h2>
+          <p class="student-section-subtitle">Real-time professional development hours, topic-level competency acquisition, and study velocity.</p>
         </div>
+
+        <!-- CPD Accumulator & Target Card -->
+        <div class="student-card-panel" style="margin-bottom:20px; background:linear-gradient(135deg, #091929 0%, #172554 60%, #1D4ED8 100%); color:#FFFFFF; border-radius:18px; padding:26px 28px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; margin-bottom:18px;">
+            <div>
+              <span style="display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.25); color:#FCD34D; font-size:12px; font-weight:800; padding:4px 12px; border-radius:999px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">
+                🇰🇪 2026 TSC CPD Cycle
+              </span>
+              <h3 style="font-family:var(--font-heading); font-size:24px; font-weight:800; color:#FFFFFF; margin:0 0 6px 0;">Annual Teacher CPD Progress: 65 / 100 Hours</h3>
+              <p style="font-size:14px; color:rgba(255,255,255,0.85); margin:0; line-height:1.5;">
+                You are on track to exceed the national professional development requirement before the December cycle close.
+              </p>
+            </div>
+            <div style="text-align:right;">
+              <span style="font-size:32px; font-weight:900; color:#10B981; font-family:var(--font-heading);">65%</span>
+              <span style="display:block; font-size:12px; color:rgba(255,255,255,0.7); font-weight:600;">Completed</span>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div style="width:100%; height:12px; background:rgba(255,255,255,0.18); border-radius:999px; overflow:hidden; margin-bottom:18px;">
+            <div style="width:65%; height:100%; background:linear-gradient(90deg, #F5812D 0%, #10B981 100%); border-radius:999px; transition:width 1s ease;"></div>
+          </div>
+
+          <!-- CPD Competency Breakdown Chips -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.15);">
+            <div style="background:rgba(255,255,255,0.08); padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.12);">
+              <div style="font-size:11.5px; color:rgba(255,255,255,0.7); text-transform:uppercase; font-weight:700;">Digital Pedagogy</div>
+              <div style="font-size:16px; font-weight:800; color:#FFFFFF; margin-top:2px;">25 / 30 Hrs</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.08); padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.12);">
+              <div style="font-size:11.5px; color:rgba(255,255,255,0.7); text-transform:uppercase; font-weight:700;">CBE &amp; Rubric Design</div>
+              <div style="font-size:16px; font-weight:800; color:#FFFFFF; margin-top:2px;">20 / 30 Hrs</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.08); padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.12);">
+              <div style="font-size:11.5px; color:rgba(255,255,255,0.7); text-transform:uppercase; font-weight:700;">AI in Education</div>
+              <div style="font-size:16px; font-weight:800; color:#FFFFFF; margin-top:2px;">20 / 25 Hrs</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.08); padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.12);">
+              <div style="font-size:11.5px; color:rgba(255,255,255,0.7); text-transform:uppercase; font-weight:700;">Inclusive Learning</div>
+              <div style="font-size:16px; font-weight:800; color:#FCD34D; margin-top:2px;">0 / 15 Hrs Due</div>
+            </div>
+          </div>
+        </div>
+
         <div class="student-stat-pill-row">
           <div class="student-metric-box">
-            <div class="student-metric-val">48 hrs</div>
-            <div class="student-metric-lbl">Total Study Time</div>
+            <div class="student-metric-val">65 hrs</div>
+            <div class="student-metric-lbl">Total CPD Hours Logged</div>
           </div>
           <div class="student-metric-box">
             <div class="student-metric-val">91.4%</div>
             <div class="student-metric-lbl">Overall Mastery</div>
           </div>
           <div class="student-metric-box">
-            <div class="student-metric-val">12</div>
-            <div class="student-metric-lbl">Badges Earned</div>
+            <div class="student-metric-val">2</div>
+            <div class="student-metric-lbl">Verified Certificates</div>
           </div>
           <div class="student-metric-box">
             <div class="student-metric-val">5 Days</div>
@@ -886,25 +931,92 @@
       <div id="tab-panel-achievements" class="student-tab-panel" style="display:none;">
         <div class="student-section-header">
           <h2 class="student-section-title">🏆 Achievements &amp; Verified Certificates</h2>
-          <p class="student-section-subtitle">Earn badges, unlock CPD credits, and verify your certificates.</p>
+          <p class="student-section-subtitle">Earn badges, unlock CPD credits, download transcripts, and verify your credentials.</p>
         </div>
+
+        <!-- Verified Certificates Section -->
+        <div style="margin-bottom:28px;">
+          <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+            <span>📜</span> Official Verified Certificates (2)
+          </h3>
+          
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
+            <!-- Certificate 1 -->
+            <div class="student-card-panel" style="border:1.5px solid #CBD5E1; border-radius:18px; padding:22px; position:relative; overflow:hidden; background:#FFFFFF; box-shadow:0 4px 16px rgba(15,23,42,0.04);">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px;">
+                <div style="display:inline-flex; align-items:center; gap:6px; background:#DCFCE7; color:#15803D; font-size:11.5px; font-weight:800; padding:3px 10px; border-radius:999px;">
+                  <span>✓</span> TSC CPD Accredited
+                </div>
+                <span style="font-family:monospace; font-size:11.5px; color:#64748B; font-weight:700;">#IK-CERT-2026-89241</span>
+              </div>
+              <h4 style="font-family:var(--font-heading); font-size:17px; font-weight:800; color:#0F172A; margin:0 0 6px 0; line-height:1.35;">
+                National ICT &amp; Smart Classroom Integration Certification
+              </h4>
+              <p style="font-size:13px; color:#475569; margin:0 0 16px 0; line-height:1.5;">
+                Awarded for completing 30 CPD hours in digital pedagogy, interactive board facilitation, and smart classroom leadership.
+              </p>
+              <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; padding-top:14px; border-top:1px solid #F1F5F9;">
+                <span style="font-size:12px; color:#64748B; font-weight:600;">Issued: 18 Aug 2026</span>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <a href="verify.html?cert=IK-CERT-2026-89241" target="_blank" class="btn btn-outline btn-sm" style="font-size:12px; padding:6px 12px; text-decoration:none;">
+                    Verify Credential ↗
+                  </a>
+                  <button type="button" onclick="window.showToast('Generating official PDF certificate...', 'success')" class="btn btn-primary btn-sm" style="font-size:12px; padding:6px 12px;">
+                    Download PDF ⬇
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certificate 2 -->
+            <div class="student-card-panel" style="border:1.5px solid #CBD5E1; border-radius:18px; padding:22px; position:relative; overflow:hidden; background:#FFFFFF; box-shadow:0 4px 16px rgba(15,23,42,0.04);">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px;">
+                <div style="display:inline-flex; align-items:center; gap:6px; background:#EFF6FF; color:#1D4ED8; font-size:11.5px; font-weight:800; padding:3px 10px; border-radius:999px;">
+                  <span>✓</span> Competency Certified
+                </div>
+                <span style="font-family:monospace; font-size:11.5px; color:#64748B; font-weight:700;">#IK-CERT-2026-44102</span>
+              </div>
+              <h4 style="font-family:var(--font-heading); font-size:17px; font-weight:800; color:#0F172A; margin:0 0 6px 0; line-height:1.35;">
+                AI Tools for CBE Assessment &amp; Rubric Creation
+              </h4>
+              <p style="font-size:13px; color:#475569; margin:0 0 16px 0; line-height:1.5;">
+                Awarded for mastery in generative AI prompting, competency rubric generation, and automated feedback workflows for Kenyan curricula.
+              </p>
+              <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; padding-top:14px; border-top:1px solid #F1F5F9;">
+                <span style="font-size:12px; color:#64748B; font-weight:600;">Issued: 28 Sep 2026</span>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <a href="verify.html?cert=IK-CERT-2026-44102" target="_blank" class="btn btn-outline btn-sm" style="font-size:12px; padding:6px 12px; text-decoration:none;">
+                    Verify Credential ↗
+                  </a>
+                  <button type="button" onclick="window.showToast('Generating official PDF certificate...', 'success')" class="btn btn-primary btn-sm" style="font-size:12px; padding:6px 12px;">
+                    Download PDF ⬇
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:800; color:#0F172A; margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+          <span>🎖️</span> Learning Badges Unlocked
+        </h3>
         <div class="grid-3">
           <div class="student-card-panel" style="text-align:center;">
             <div style="font-size:44px; margin-bottom:10px;">🥇</div>
-            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:4px;">Math Genius 2026</h4>
-            <p style="font-size:12px; color:#64748B; margin-bottom:12px;">Scored 90%+ across 5 consecutive algebra assessments.</p>
+            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:4px;">Smart Class Pioneer</h4>
+            <p style="font-size:12px; color:#64748B; margin-bottom:12px;">Completed first interactive whiteboard &amp; ClassVR masterclass.</p>
             <span class="badge badge-success">Unlocked</span>
           </div>
           <div class="student-card-panel" style="text-align:center;">
             <div style="font-size:44px; margin-bottom:10px;">🔬</div>
-            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:4px;">Lab Scientist</h4>
-            <p style="font-size:12px; color:#64748B; margin-bottom:12px;">Completed 10 Virtual Science experiments.</p>
+            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:4px;">CBE Rubric Master</h4>
+            <p style="font-size:12px; color:#64748B; margin-bottom:12px;">Designed 10 compliant competency assessment rubrics.</p>
             <span class="badge badge-success">Unlocked</span>
           </div>
           <div class="student-card-panel" style="text-align:center;">
             <div style="font-size:44px; margin-bottom:10px;">🔥</div>
-            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:4px;">Streak Champion</h4>
-            <p style="font-size:12px; color:#64748B; margin-bottom:12px;">Maintained active learning streak for 5+ days.</p>
+            <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:4px;">CPD Streak Champion</h4>
+            <p style="font-size:12px; color:#64748B; margin-bottom:12px;">Maintained active daily learning streak for 5+ days.</p>
             <span class="badge badge-primary">Active</span>
           </div>
         </div>
@@ -1426,21 +1538,28 @@ window.renderLearnerCourses = function() {
   const container = document.getElementById('enrolled-courses-container');
   if (!container) return;
 
-  const courses = (window.LMSEngine && window.LMSEngine.getCourses()) || window.COURSES || [];
-  if (!courses.length) {
+  const session = window.getSession ? window.getSession() : null;
+  const enrolledList = (window.getUserEnrolledCourses && window.getUserEnrolledCourses()) || [];
+
+  if (!enrolledList.length) {
     container.innerHTML = `
-      <div style="grid-column: 1 / -1; padding: 40px; text-align: center; background: #FFF; border: 1.5px dashed #CBD5E1; border-radius: 16px;">
-        <div style="font-size: 32px; margin-bottom: 10px;">📚</div>
-        <h4 style="font-size: 16px; font-weight: 700; color: #0F172A;">No enrolled courses found</h4>
-        <p style="font-size: 13.5px; color: #64748B; margin-top: 4px;">Explore our catalog or enter an access code from your educator above.</p>
-        <a href="courses.html" class="btn btn-primary btn-sm mt-md">Browse Catalog ↗</a>
+      <div style="grid-column: 1 / -1; padding: 48px 24px; text-align: center; background: #FFF; border: 1.5px dashed #CBD5E1; border-radius: 18px;">
+        <div style="font-size: 40px; margin-bottom: 12px;">📚</div>
+        <h4 style="font-size: 18px; font-weight: 800; color: #0F172A; margin: 0 0 6px;">No Enrolled Courses Yet</h4>
+        <p style="font-size: 14px; color: #64748B; max-width: 480px; margin: 0 auto 20px; line-height: 1.5;">
+          You haven't enrolled in any courses yet. Choose a course from our accredited catalog and complete payment to unlock full lessons, video practicals, and certified assessments.
+        </p>
+        <a href="courses.html" class="btn btn-primary btn-md" style="text-decoration:none; box-shadow: 0 4px 14px rgba(33,69,230,0.3);">
+          ⚡ Browse Catalog &amp; Enroll &rarr;
+        </a>
       </div>
     `;
     return;
   }
 
-  container.innerHTML = courses.map((c, idx) => {
-    const progress = (c.id === 'curriculum-design-cbc') ? 45 : (idx === 1 ? 80 : (idx === 2 ? 100 : 25));
+  container.innerHTML = enrolledList.map((enr, idx) => {
+    const c = enr.course || (window.COURSES && window.COURSES.find(item => item.id === enr.courseId)) || {};
+    const progress = enr.progressPercent || 0;
     const isCompleted = progress >= 100;
     const certNumber = isCompleted ? `IK-CPD-2026-${8940 + idx}` : null;
     const imageSrc = c.thumbnail || c.image || 'assets/images/course_assessment_mastery.jpg';
@@ -1448,12 +1567,12 @@ window.renderLearnerCourses = function() {
     return `
       <div class="student-card-panel" style="display:flex; flex-direction:column; justify-content:space-between; height:100%; border:1.5px solid #E2E8F0; border-radius:18px; overflow:hidden; padding:0; background:#FFF; box-shadow:0 4px 16px rgba(15,23,42,0.04);">
         <div style="position:relative; width:100%; height:160px; overflow:hidden; background:#1E293B;">
-          <img src="${imageSrc}" alt="${c.title}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/images/course_assessment_mastery.jpg'">
+          <img src="${imageSrc}" alt="${c.title || 'Course'}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/images/course_assessment_mastery.jpg'">
           <span style="position:absolute; top:12px; left:12px; background:rgba(255,255,255,0.95); color:#2145E6; padding:3px 10px; border-radius:999px; font-size:10.5px; font-weight:800; text-transform:uppercase;">${c.category || 'Education'}</span>
           <span style="position:absolute; bottom:12px; right:12px; background:rgba(15,23,42,0.85); color:#FFF; padding:3px 8px; border-radius:6px; font-size:11px; font-weight:700;">${c.level || 'All Levels'}</span>
         </div>
         <div style="padding:20px; flex:1; display:flex; flex-direction:column;">
-          <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin:0 0 6px; line-height:1.35;">${c.title}</h4>
+          <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin:0 0 6px; line-height:1.35;">${c.title || 'Course'}</h4>
           <p style="font-size:13px; color:#64748B; margin:0 0 14px; line-height:1.5;">${c.description ? c.description.slice(0, 85) + '...' : 'Comprehensive CBC syllabus curriculum.'}</p>
           
           <div style="margin-top:auto;">

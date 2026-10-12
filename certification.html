@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -177,12 +177,24 @@
   </div>
 </footer>
 
+<script src="js/form-validator.js"></script>
 <script src="js/main.js?v=3.1"></script>
 <script src="js/certificates.js"></script>
 <script>
 function handleVerificationSubmit(e) {
   if (e) e.preventDefault();
   const input = document.getElementById('cert-id-input');
+  if (window.FormValidator) {
+    const error = window.FormValidator.validate(input, [
+      { rule: 'required', label: 'Certificate ID' },
+      { rule: 'minLength', param: 6, label: 'Certificate ID' }
+    ]);
+    if (error) {
+      if (window.showToast) window.showToast(error, 'warning');
+      input.focus();
+      return;
+    }
+  }
   const query = input.value.trim();
   if (!query) return;
 

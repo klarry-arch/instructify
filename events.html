@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -445,7 +445,26 @@
   </div>
 </footer>
 
+<script src="js/form-validator.js"></script>
 <script src="js/main.js?v=3.1"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.FormValidator) {
+    window.FormValidator.attachLiveValidation('workshop-fullname', [
+      { rule: 'required', label: 'Full Name' },
+      { rule: 'nameFormat', label: 'Full Name' }
+    ]);
+    window.FormValidator.attachLiveValidation('workshop-email', [
+      { rule: 'required', label: 'Email Address' },
+      { rule: 'email', label: 'Email Address' }
+    ]);
+    window.FormValidator.attachLiveValidation('workshop-phone', [
+      { rule: 'required', label: 'Phone Number' },
+      { rule: 'phone', label: 'Phone Number' }
+    ]);
+  }
+});
+</script>
 
   <script src="js/chat-config.js"></script>
   <script src="js/live-chat.js"></script>

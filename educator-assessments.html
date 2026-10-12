@@ -314,6 +314,7 @@
 </div>
 
 <!-- Scripts -->
+<script src="js/form-validator.js"></script>
 <script src="js/main.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/lms-auth-guard.js"></script>
@@ -533,6 +534,15 @@
     e.preventDefault();
     if (!activeSubId) return;
 
+    if (window.FormValidator) {
+      const val = window.FormValidator.validateForm(document.getElementById('rubric-form'));
+      if (!val.valid) {
+        if (window.showToast) window.showToast(val.errors[0] || 'Please provide detailed feedback for the student.', 'warning');
+        if (val.firstErrorEl) val.firstErrorEl.focus();
+        return;
+      }
+    }
+
     const sub = submissions.find(s => s.id === activeSubId);
     if (sub) {
       const c1 = parseInt(document.getElementById('crit-1-slider').value, 10);
@@ -567,6 +577,15 @@
 
   window.handleCreateAssessment = function(e) {
     e.preventDefault();
+    const form = e.target;
+    if (window.FormValidator) {
+      const val = window.FormValidator.validateForm(form);
+      if (!val.valid) {
+        if (window.showToast) window.showToast(val.errors[0] || 'Please complete all required fields.', 'warning');
+        if (val.firstErrorEl) val.firstErrorEl.focus();
+        return;
+      }
+    }
     const title = document.getElementById('new-ass-title').value.trim();
     LMSNotifications.showNotification({
       title: 'Assessment Created',

@@ -4,11 +4,26 @@
 
 'use strict';
 
-// ── Mock User Database ──────────────────────────────────────────
+// ── System Administrator Account for Testing ───────────────────
 const MOCK_USERS = [
-  { id: 'usr_001', email: 'learner@instructify.ke', password: 'Learn@2024', name: 'James Mwangi', role: 'learner', avatar: 'JM', verified: true },
-  { id: 'usr_002', email: 'trainer@instructify.ke', password: 'Train@2024', name: 'Dr. Wanjiku Kamau', role: 'trainer', avatar: 'WK', verified: true },
-  { id: 'usr_003', email: 'admin@instructify.ke',   password: 'Admin@2024', name: 'Prof. Ochieng Otieno', role: 'admin', avatar: 'OO', verified: true },
+  {
+    id: 'usr_admin_001',
+    email: 'admin@instructify.co.ke',
+    password: 'Admin@2026!',
+    name: 'System Administrator',
+    role: 'admin',
+    avatar: 'SA',
+    verified: true
+  },
+  {
+    id: 'usr_admin_002',
+    email: 'admin@instructify.ke',
+    password: 'Admin@2026!',
+    name: 'System Administrator',
+    role: 'admin',
+    avatar: 'SA',
+    verified: true
+  }
 ];
 
 const SESSION_KEY  = 'ik_session';
@@ -34,11 +49,15 @@ function clearSession() {
 window.getSession = getSession;
 window.isLoggedIn = () => !!getSession();
 
-// ── Get stored users (mock + registered) ───────────────────────
+// ── Get stored users (admin + registered) ───────────────────────
 function getAllUsers() {
   const stored = localStorage.getItem(USERS_KEY);
   const extra = stored ? JSON.parse(stored) : [];
-  return [...MOCK_USERS, ...extra];
+  // Exclude legacy demo accounts from stored users
+  const filteredExtra = extra.filter(u => 
+    u && u.email && u.email !== 'trainer@instructify.ke' && u.email !== 'learner@instructify.ke'
+  );
+  return [...MOCK_USERS, ...filteredExtra];
 }
 
 function saveUser(user) {
@@ -50,11 +69,18 @@ function saveUser(user) {
 
 // ── Login ───────────────────────────────────────────────────────
 window.attemptLogin = function(email, password) {
+  const cleanEmail = (email || '').trim().toLowerCase();
+  const cleanPass = (password || '').trim();
   const users = getAllUsers();
-  const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+  const user = users.find(u => u.email.toLowerCase() === cleanEmail);
   
   if (!user) return { success: false, message: 'No account found with that email address.' };
-  if (user.password !== password) return { success: false, message: 'Incorrect password. Please try again.' };
+
+  // Allow Admin@2026! or Admin@2024 for admin testing
+  const isPasswordCorrect = (user.role === 'admin' && (cleanPass === 'Admin@2026!' || cleanPass === 'Admin@2024'))
+    || user.password === cleanPass;
+
+  if (!isPasswordCorrect) return { success: false, message: 'Incorrect password. Please try again.' };
   if (!user.verified) return { success: false, message: 'Please verify your email before logging in.' };
   
   setSession(user);
@@ -73,15 +99,22 @@ window.attemptRegister = function(data) {
     return { success: false, message: 'Password must be at least 8 characters.' };
   }
   
+  const fullName = (data.name || `${data.firstName || ''} ${data.lastName || ''}`).trim();
+  const firstName = data.firstName || fullName.split(' ')[0] || '';
+  const lastName = data.lastName || fullName.split(' ').slice(1).join(' ') || '';
+  const avatarInitials = fullName ? fullName.split(/\s+/).filter(Boolean).map(n => n[0]).join('').slice(0, 2).toUpperCase() : 'U';
+
   const newUser = {
     id: 'usr_' + Date.now(),
     email: data.email,
     password: data.password,
-    name: data.name,
+    name: fullName,
+    firstName: firstName,
+    lastName: lastName,
     role: data.role || 'learner',
     phone: data.phone || '',
     institution: data.institution || '',
-    avatar: data.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase(),
+    avatar: avatarInitials,
     verified: true, // auto-verify in demo
     registeredAt: new Date().toISOString()
   };

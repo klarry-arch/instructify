@@ -437,14 +437,57 @@ function handleEnrollClick() {
   const btn = document.getElementById('enroll-btn');
 
   if (window.isEnrolled && window.isEnrolled(currentCourse.id)) {
-    window.showToast('You are already enrolled in this course!', 'info');
-    setTimeout(() => window.location.href = 'dashboard-learner.html', 1200);
+    // Already enrolled — go to course player
+    window.location.href = `course-player.html?courseId=${encodeURIComponent(currentCourse.id)}`;
+    return;
+  }
+
+  // Not enrolled — require payment
+  const session = window.getSession ? window.getSession() : null;
+  if (!session) {
+    localStorage.setItem('ik_return_to', JSON.stringify({ action: 'enroll', courseId: currentCourse.id, url: `checkout.html?id=${currentCourse.id}` }));
+    window.showToast('Please sign in to enroll.', 'warning');
+    setTimeout(() => window.location.href = 'register.html', 1200);
     return;
   }
 
   if (btn) { btn.disabled = true; btn.textContent = 'Starting checkout…'; }
   window.location.href = `checkout.html?id=${encodeURIComponent(currentCourse.id)}`;
 }
+
+// Update enroll button state on page load
+function updateEnrollButtonState() {
+  if (!currentCourse) return;
+  const btn = document.getElementById('enroll-btn');
+  if (!btn) return;
+
+  if (window.isEnrolled && window.isEnrolled(currentCourse.id)) {
+    // Already enrolled — show "Continue Learning" button
+    btn.innerHTML = '🚀 Continue Learning';
+    btn.style.background = 'linear-gradient(135deg, #10B981 0%, #059669 100%)';
+    btn.style.boxShadow = '0 6px 20px rgba(5, 150, 105, 0.35)';
+    btn.onclick = function() {
+      window.location.href = `course-player.html?courseId=${encodeURIComponent(currentCourse.id)}`;
+    };
+  } else {
+    // Not enrolled — show price in button
+    const price = currentCourse.price || (window.COURSES && window.COURSES.find(c => c.id === currentCourse.id)?.price);
+    const priceText = price ? ` — KES ${price.toLocaleString()}` : '';
+    btn.innerHTML = `⚡ Enroll Now${priceText}`;
+  }
+}
+
+// Hook into the DOMContentLoaded that already sets currentCourse
+(function() {
+  const origDCL = document.readyState === 'loading'
+    ? null
+    : setTimeout(updateEnrollButtonState, 300);
+  if (!origDCL) {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(updateEnrollButtonState, 300);
+    });
+  }
+})();
 </script>
 <script src="js/chat-config.js"></script>
 <script src="js/live-chat.js"></script>

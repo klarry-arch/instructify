@@ -4,6 +4,20 @@
 
 'use strict';
 
+// ── Universal Form Validator Auto-loader ───────────────────────
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+  if (!window.FormValidator) {
+    const fvScript = document.createElement('script');
+    fvScript.src = 'js/form-validator.js';
+    fvScript.onload = function() {
+      if (window.FormValidator && window.FormValidator.autoInit) {
+        window.FormValidator.autoInit();
+      }
+    };
+    document.head.appendChild(fvScript);
+  }
+}
+
 function bootstrapApp() {
   initNavbar();
   initDashboardSidebar();
@@ -16,6 +30,9 @@ function bootstrapApp() {
   initWorkshopForm();
   initTrainingForm();
   initCoreValuesExpanders();
+  if (window.FormValidator && window.FormValidator.autoInit) {
+    window.FormValidator.autoInit();
+  }
 }
 
 if (document.readyState === 'loading') {
@@ -531,6 +548,52 @@ window.handleWorkshopSubmit = function(event) {
   const paymentRadio = form.querySelector('input[name="workshop_payment"]:checked');
   const paymentMethod = paymentRadio ? paymentRadio.value : 'Free / Sponsored';
 
+  // Strict Form Validation
+  if (window.FormValidator) {
+    window.FormValidator.clearErrors(form.id);
+    const val = window.FormValidator.validateGroup([
+      {
+        id: 'workshop-fullname',
+        rules: [
+          { rule: 'required', label: 'Full Name' },
+          { rule: 'nameFormat', label: 'Full Name' }
+        ]
+      },
+      {
+        id: 'workshop-email',
+        rules: [
+          { rule: 'required', label: 'Email Address' },
+          { rule: 'email', label: 'Email Address' }
+        ]
+      },
+      {
+        id: 'workshop-phone',
+        rules: [
+          { rule: 'required', label: 'Phone Number' },
+          { rule: 'phone', label: 'Phone Number' }
+        ]
+      }
+    ]);
+    if (!val.valid) {
+      if (window.showToast) window.showToast(val.errors[0], 'warning');
+      window.FormValidator.focusFirstError(val.firstErrorId);
+      return; // BLOCK submission!
+    }
+  } else {
+    if (!fullName || fullName.trim().split(/\s+/).length < 2) {
+      if (window.showToast) window.showToast('Please enter your full name (first and last name).', 'warning');
+      return;
+    }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (window.showToast) window.showToast('Please enter a valid email address.', 'warning');
+      return;
+    }
+    if (!phone) {
+      if (window.showToast) window.showToast('Please enter a valid phone number.', 'warning');
+      return;
+    }
+  }
+
   // Generate official Workshop Pass ID
   const passId = 'INST-WKSP-' + Math.floor(100000 + Math.random() * 900000);
 
@@ -685,6 +748,59 @@ window.handleTrainingSubmit = function(event) {
 
   const certRadio = form.querySelector('input[name="cert_interest"]:checked');
   const certInterest = certRadio ? certRadio.value : 'Yes';
+
+  // Strict Form Validation
+  if (window.FormValidator) {
+    window.FormValidator.clearErrors(form.id);
+    const val = window.FormValidator.validateGroup([
+      {
+        id: 'training-fullname',
+        rules: [
+          { rule: 'required', label: 'Full Name' },
+          { rule: 'nameFormat', label: 'Full Name' }
+        ]
+      },
+      {
+        id: 'training-institution',
+        rules: [
+          { rule: 'required', label: 'School / Institution' },
+          { rule: 'minLength', param: 3, label: 'School / Institution' }
+        ]
+      },
+      {
+        id: 'training-email',
+        rules: [
+          { rule: 'required', label: 'Email Address' },
+          { rule: 'email', label: 'Email Address' }
+        ]
+      },
+      {
+        id: 'training-phone',
+        rules: [
+          { rule: 'required', label: 'Phone Number' },
+          { rule: 'phone', label: 'Phone Number' }
+        ]
+      }
+    ]);
+    if (!val.valid) {
+      if (window.showToast) window.showToast(val.errors[0], 'warning');
+      window.FormValidator.focusFirstError(val.firstErrorId);
+      return; // BLOCK submission!
+    }
+  } else {
+    if (!fullName || fullName.trim().split(/\s+/).length < 2) {
+      if (window.showToast) window.showToast('Please enter your full name (first and last name).', 'warning');
+      return;
+    }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (window.showToast) window.showToast('Please enter a valid email address.', 'warning');
+      return;
+    }
+    if (!phone) {
+      if (window.showToast) window.showToast('Please enter a valid phone number.', 'warning');
+      return;
+    }
+  }
 
   const regCode = 'INST-TRN-' + Math.floor(100000 + Math.random() * 900000);
 

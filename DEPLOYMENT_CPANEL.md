@@ -47,24 +47,42 @@ In your HostAfrica dashboard:
 
 ---
 
-## Method 2: Enabling the Node.js Backend API (Optional)
+## Method 2: Enabling the Node.js Backend API for Real M-Pesa STK Push
 
-If you wish to run the Node.js API endpoints (`/api/initiate-payment`, M-Pesa Daraja STK Push, Paystack webhooks) on HostAfrica:
+To make real M-Pesa STK push prompts fire onto students' phones:
 
-1. In your HostAfrica dashboard, scroll down to **EXTRA FEATURES**.
-2. Click **Setup Node.js App** (the green hexagon icon).
+### Step 1: Open Node.js App Manager
+1. In your HostAfrica cPanel dashboard, scroll down to **SOFTWARE** or **EXTRA FEATURES**.
+2. Click **Setup Node.js App** (green hexagon icon).
 3. Click **Create Application**.
-4. Configure the settings:
-   - **Node.js version**: Choose `20.x` (or `18.x`).
-   - **Application mode**: `Production`
-   - **Application root**: `public_html`
-   - **Application startup file**: `server.js`
-   - **Application URL**: `instructify.co.ke`
-5. Click **Create**.
-6. Under the application details:
-   - Click **Run NPM Install** to install dependencies (`@vercel/kv`).
-   - In the **Environment Variables** section, add your credentials from `.env.example` (e.g. `MPESA_CONSUMER_KEY`, `MPESA_CONSUMER_SECRET`, `PAYSTACK_SECRET_KEY`).
-7. Click **Restart**.
+
+### Step 2: Configure the Node.js Application
+* **Node.js version**: Choose `20.x` (or `18.x`)
+* **Application mode**: `Production`
+* **Application root**: `public_html`
+* **Application startup file**: `server.js`
+* **Application URL**: `instructify.co.ke` (leave path blank for root domain)
+* Click **Create**.
+
+### Step 3: Add Safaricom Daraja Environment Variables
+In the application details page, scroll down to **Environment Variables** and click **Add Variable** for each:
+
+| Variable Name | Value (Sandbox) | Value (Live / Production) |
+|---|---|---|
+| `APP_BASE_URL` | `https://instructify.co.ke` | `https://instructify.co.ke` |
+| `MPESA_ENVIRONMENT` | `sandbox` | `production` |
+| `MPESA_CONSUMER_KEY` | *(Your Consumer Key from Daraja `instructify` App)* | *(Your Live Consumer Key)* |
+| `MPESA_CONSUMER_SECRET` | *(Your Consumer Secret from Daraja `instructify` App)* | *(Your Live Consumer Secret)* |
+| `MPESA_SHORTCODE` | `174379` | *(Your Real Paybill or Till Number)* |
+| `MPESA_PASSKEY` | `bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919` | *(Your Live Lipa Na M-Pesa Passkey)* |
+| `MPESA_SHORTCODE_TYPE` | `CustomerPayBillOnline` | `CustomerPayBillOnline` (or `CustomerBuyGoodsOnline`) |
+| `MPESA_CALLBACK_URL` | `https://instructify.co.ke/api/webhook/mpesa` | `https://instructify.co.ke/api/webhook/mpesa` |
+
+### Step 4: Run NPM Install & Restart
+1. Click **Run NPM Install** button in the Node.js app dashboard.
+2. Click **Restart**.
+
+> **Important cPanel Note**: Whenever you extract a new zip into `public_html`, always go back to **Setup Node.js App** and click **Restart** to ensure Passenger connects cleanly to the updated files.
 
 ---
 

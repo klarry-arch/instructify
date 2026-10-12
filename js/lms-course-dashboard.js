@@ -258,47 +258,39 @@
   // ── Enrollments & Progress Extraction ────────────────────────
   function getEnrollmentsForActiveUser() {
     if (!state.user) return [];
+
+    // 1. Read real paid enrollments from checkout / M-Pesa verification
+    let paidEnr = [];
+    try {
+      const stored = JSON.parse(localStorage.getItem('ik_enrollments') || '[]');
+      paidEnr = stored.filter(e => e.userId === state.user.id);
+    } catch { /* ignore */ }
+
+    // 2. Read LMSEngine enrollments for this specific user
+    let lmsEnr = [];
     if (window.LMSEngine && typeof window.LMSEngine.getAllEnrollments === 'function') {
       const allEnr = window.LMSEngine.getAllEnrollments();
-      const userEnr = allEnr.filter(e => e.studentId === state.user.id || e.studentId === 'std_001');
-      if (userEnr.length > 0) return userEnr;
+      lmsEnr = allEnr.filter(e => e.studentId === state.user.id);
     }
 
-    // Default mock enrollments for demo experience
-    return [
-      {
-        id: 'enr_001',
-        courseId: 'crs_001',
-        studentId: state.user.id || 'std_001',
-        progressPercent: 45,
-        completedLessons: ['les_001_01'],
-        activeLessonId: 'les_001_02',
-        currentLessonTitle: 'Lesson 1.2: Digital Tools Mapping for Schools',
-        lastActiveAt: new Date(Date.now() - 3600000 * 5).toISOString(),
-        status: 'active'
-      },
-      {
-        id: 'enr_002',
-        courseId: 'crs_000',
-        studentId: state.user.id || 'std_001',
-        progressPercent: 15,
-        completedLessons: ['les_000_01'],
-        activeLessonId: 'les_000_02',
-        currentLessonTitle: 'Module 1: Smart Boards & Interactive Displays',
-        lastActiveAt: new Date(Date.now() - 3600000 * 28).toISOString(),
-        status: 'active'
-      },
-      {
-        id: 'enr_003',
-        courseId: 'crs_002',
-        studentId: state.user.id || 'std_001',
-        progressPercent: 100,
-        completedLessons: ['l1', 'l2', 'l3', 'l4', 'l5', 'l6', 'l7', 'l8'],
-        completedAt: '2026-08-24T10:00:00Z',
-        lastActiveAt: '2026-08-24T10:00:00Z',
-        status: 'completed'
+    const combined = [...paidEnr.map(e => ({
+      id: e.orderReference || ('enr_' + e.courseId),
+      courseId: e.courseId,
+      studentId: state.user.id,
+      progressPercent: e.progressPercent || 0,
+      completedLessons: e.completedLessons || [],
+      activeLessonId: e.activeLessonId || null,
+      status: 'active',
+      enrolledAt: e.enrolledAt || new Date().toISOString()
+    }))];
+
+    lmsEnr.forEach(e => {
+      if (!combined.some(c => c.courseId === e.courseId)) {
+        combined.push(e);
       }
-    ];
+    });
+
+    return combined;
   }
 
   // ── Render Personalised Welcome Section ───────────────────────
@@ -542,11 +534,15 @@
       `;
     }
 
+    const deliveryMode = c.format || 'Online Self-Paced';
+    const cpdInfo = c.cpd ? `CPD Accredited · ${c.cpdHours || 30} hrs` : (c.certificate ? 'Certificate Included' : '');
+
     return `
       <div class="lms-course-card" data-course-id="${c.id}">
         <div class="lms-course-thumb-box">
           <img src="${thumb}" alt="${c.title}" class="lms-course-thumb-img" onerror="this.src='assets/images/course_assessment_mastery.jpg'" loading="lazy">
           <span class="lms-course-category-badge">${c.category || 'Education'}</span>
+          <span class="course-card-mode-pill" style="top:10px; right:46px; font-size:10px;">${deliveryMode}</span>
           ${c.cpd ? '<span class="lms-course-cpd-badge">CPD Verified</span>' : ''}
           <button type="button" class="lms-bookmark-btn ${isSaved ? 'active' : ''}" data-course-id="${c.id}" onclick="toggleLmsBookmark('${c.id}', event)" aria-label="${isSaved ? 'Remove bookmark' : 'Bookmark course'}" title="${isSaved ? 'Remove bookmark' : 'Bookmark course'}">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
@@ -565,6 +561,12 @@
           <h3 class="lms-course-title">${c.title}</h3>
           <p class="lms-course-desc">${c.description || ''}</p>
 
+          ${cpdInfo ? `
+            <div style="margin:4px 0 8px;">
+              <span class="course-card-cert-badge" style="font-size:11px; padding:3px 8px;">📜 ${cpdInfo}</span>
+            </div>
+          ` : ''}
+
           ${isEnrolled ? `
             <div class="lms-card-progress-wrap">
               <div class="lms-card-progress-labels">
@@ -579,6 +581,7 @@
 
           <div class="lms-course-chips-row">
             <span class="lms-course-chip">🎯 ${level}</span>
+            <span class="lms-course-chip">💻 ${deliveryMode}</span>
             <span class="lms-course-chip instructor">👨‍🏫 ${c.instructor ? c.instructor.split(' ')[0] + ' ' + (c.instructor.split(' ')[1] || '') : 'Educator'}</span>
           </div>
         </div>
@@ -588,8 +591,13 @@
             <span class="lms-course-price-label">Fee</span>
             <span class="lms-course-price-value ${priceVal === 0 ? 'free' : ''}">${priceStr}</span>
           </div>
-          <div style="display:flex; gap:6px;">
-            ${actionBtnHtml}
+          <div style="display:flex; gap:6px; align-items:center;">
+            ${isEnrolled ? `
+              <a href="course-player.html?courseId=${c.id}" class="btn btn-primary btn-sm" style="font-weight:750; min-height:40px; display:inline-flex; align-items:center;" aria-label="Continue ${c.title}">Continue &rarr;</a>
+            ` : `
+              <a href="checkout.html?id=${c.id}" class="btn btn-primary btn-sm" style="font-weight:750; background:linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); border-color:#FF4D00; min-height:40px; padding:6px 12px; display:inline-flex; align-items:center;" aria-label="Enrol now in ${c.title}">⚡ Enrol</a>
+              <a href="course-detail.html?id=${c.id}" class="btn btn-outline btn-sm" style="font-weight:600; min-height:40px; padding:6px 10px; display:inline-flex; align-items:center;" aria-label="Details for ${c.title}">Details</a>
+            `}
           </div>
         </div>
       </div>

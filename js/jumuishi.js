@@ -1426,6 +1426,14 @@
     if (consultForm) {
       consultForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (window.FormValidator) {
+          const val = window.FormValidator.validateForm(consultForm);
+          if (!val.valid) {
+            if (typeof showToast === 'function') showToast(val.errors[0] || 'Please complete all required consultation fields correctly.', 'warning');
+            if (val.firstErrorEl) val.firstErrorEl.focus();
+            return;
+          }
+        }
         const btnSubmit = consultForm.querySelector('button[type="submit"]');
 
         if (btnSubmit) {

@@ -38,7 +38,8 @@ const HTML_PAGES = [
   'blog.html',
   'article.html',
   'news.html',
-  'community.html'
+  'community.html',
+  'cpd-registration.html'
 ];
 
 let totalTests = 0;

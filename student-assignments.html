@@ -210,6 +210,7 @@
 </div>
 
 <!-- Scripts -->
+<script src="js/form-validator.js"></script>
 <script src="js/main.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/lms-auth-guard.js"></script>
@@ -257,6 +258,13 @@
 
   window.handleSubmitAssignment = function(e) {
     e.preventDefault();
+    const fileInput = document.getElementById('file-upload-input');
+    const notes = document.getElementById('submit-notes').value.trim();
+    if ((!fileInput.files || !fileInput.files.length) && !notes) {
+      if (window.showToast) window.showToast('Please select a coursework file or enter submission notes.', 'warning');
+      document.getElementById('submit-notes').focus();
+      return;
+    }
     LMSNotifications.showNotification({
       title: 'Assignment Submitted!',
       message: 'Your coursework has been submitted and queued for educator review.',

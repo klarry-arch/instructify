@@ -63,6 +63,7 @@
 <script src="js/courses.js"></script>
 <script src="js/lms-engine.js"></script>
 <script src="js/lms-wizard-engine.js"></script>
+<script src="js/form-validator.js"></script>
 <script src="js/lms-assessment-engine.js"></script>
 <script src="js/lms-notifications.js"></script>
 <script>
@@ -133,6 +134,43 @@
     body.innerHTML = html;
     updateNavButtons();
     renderStepper();
+    attachLiveStepValidation();
+  }
+
+  function attachLiveStepValidation() {
+    if (!window.FormValidator) return;
+    const step = LMSWizard.getCurrentStep();
+    if (step === 1) {
+      ['field-title', 'field-shortDesc', 'field-category', 'field-image', 'field-video'].forEach(function(id) {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('input', function() {
+            syncCurrentStepInputs();
+            if (el.classList.contains('fv-error')) {
+              validateCurrentStepForm(1);
+            }
+          });
+          el.addEventListener('change', function() {
+            syncCurrentStepInputs();
+            if (el.classList.contains('fv-error')) {
+              validateCurrentStepForm(1);
+            }
+          });
+        }
+      });
+    } else if (step === 6) {
+      ['field-accessCode', 'field-price'].forEach(function(id) {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('input', function() {
+            syncCurrentStepInputs();
+            if (el.classList.contains('fv-error')) {
+              validateCurrentStepForm(6);
+            }
+          });
+        }
+      });
+    }
   }
 
   // ── Step 1: Basic Information ──
@@ -211,11 +249,11 @@
         <div class="lms-input-group">
           <div class="lms-form-group">
             <label class="lms-label">Instructor Name</label>
-            <input type="text" class="lms-input" value="${data.instructor || ''}" onchange="updateWizardField('instructor', this.value)">
+            <input type="text" class="lms-input" id="field-instructor" value="${data.instructor || ''}" onchange="updateWizardField('instructor', this.value)">
           </div>
           <div class="lms-form-group">
             <label class="lms-label">Title / Role</label>
-            <input type="text" class="lms-input" value="${data.instructorTitle || ''}" placeholder="e.g., ICT Education Specialist" onchange="updateWizardField('instructorTitle', this.value)">
+            <input type="text" class="lms-input" id="field-instructorTitle" value="${data.instructorTitle || ''}" placeholder="e.g., ICT Education Specialist" onchange="updateWizardField('instructorTitle', this.value)">
           </div>
         </div>
       </div>
@@ -538,22 +576,22 @@
       ${data.accessType === 'code' ? `
         <div class="lms-form-group">
           <label class="lms-label">Course Access Code <span class="required">*</span></label>
-          <input type="text" class="lms-input" value="${data.accessCode || ''}" placeholder="e.g., IK-CBC-2026" onchange="updateWizardField('accessCode', this.value)" style="max-width:300px;font-family:monospace;font-weight:700;letter-spacing:0.1em;">
+          <input type="text" class="lms-input" id="field-accessCode" value="${data.accessCode || ''}" placeholder="e.g., IK-CBC-2026" onchange="updateWizardField('accessCode', this.value)" style="max-width:300px;font-family:monospace;font-weight:700;letter-spacing:0.1em;">
         </div>
       ` : ''}
 
       <div class="lms-input-group">
         <div class="lms-form-group">
           <label class="lms-label">Maximum Capacity</label>
-          <input type="number" class="lms-input" value="${data.maxCapacity || ''}" placeholder="Unlimited" onchange="updateWizardField('maxCapacity', this.value)">
+          <input type="number" class="lms-input" id="field-maxCapacity" value="${data.maxCapacity || ''}" placeholder="Unlimited" onchange="updateWizardField('maxCapacity', this.value)">
         </div>
         <div class="lms-form-group">
           <label class="lms-label">Enrolment Opens</label>
-          <input type="date" class="lms-input" value="${data.enrollmentOpen || ''}" onchange="updateWizardField('enrollmentOpen', this.value)">
+          <input type="date" class="lms-input" id="field-enrollmentOpen" value="${data.enrollmentOpen || ''}" onchange="updateWizardField('enrollmentOpen', this.value)">
         </div>
         <div class="lms-form-group">
           <label class="lms-label">Enrolment Closes</label>
-          <input type="date" class="lms-input" value="${data.enrollmentClose || ''}" onchange="updateWizardField('enrollmentClose', this.value)">
+          <input type="date" class="lms-input" id="field-enrollmentClose" value="${data.enrollmentClose || ''}" onchange="updateWizardField('enrollmentClose', this.value)">
         </div>
       </div>
 
@@ -562,7 +600,7 @@
         <div class="lms-input-group">
           <div class="lms-form-group">
             <label class="lms-label">Pricing Type</label>
-            <select class="lms-select" onchange="updateWizardField('pricing', this.value)">
+            <select class="lms-select" id="field-pricing" onchange="updateWizardField('pricing', this.value)">
               <option value="free" ${data.pricing === 'free' ? 'selected' : ''}>Free</option>
               <option value="paid" ${data.pricing === 'paid' ? 'selected' : ''}>Paid</option>
             </select>
@@ -570,11 +608,11 @@
           ${data.pricing === 'paid' ? `
             <div class="lms-form-group">
               <label class="lms-label">Price (KES)</label>
-              <input type="number" class="lms-input" value="${data.price || ''}" onchange="updateWizardField('price', parseInt(this.value))">
+              <input type="number" class="lms-input" id="field-price" value="${data.price || ''}" onchange="updateWizardField('price', parseInt(this.value))">
             </div>
             <div class="lms-form-group">
               <label class="lms-label">Original Price (KES)</label>
-              <input type="number" class="lms-input" value="${data.originalPrice || ''}" onchange="updateWizardField('originalPrice', parseInt(this.value))">
+              <input type="number" class="lms-input" id="field-originalPrice" value="${data.originalPrice || ''}" onchange="updateWizardField('originalPrice', parseInt(this.value))">
             </div>
           ` : ''}
         </div>
@@ -700,12 +738,138 @@
     }
   }
 
+  // ── Sync input values from DOM to state ──
+  function syncCurrentStepInputs() {
+    const step = LMSWizard.getCurrentStep();
+    if (step === 1) {
+      const title = document.getElementById('field-title');
+      const shortDesc = document.getElementById('field-shortDesc');
+      const desc = document.getElementById('field-desc');
+      const cat = document.getElementById('field-category');
+      const level = document.getElementById('field-level');
+      const lang = document.getElementById('field-language');
+      const duration = document.getElementById('field-duration');
+      const tags = document.getElementById('field-tags');
+      const image = document.getElementById('field-image');
+      const video = document.getElementById('field-video');
+      const instructor = document.getElementById('field-instructor');
+      const instTitle = document.getElementById('field-instructorTitle');
+
+      if (title) LMSWizard.updateField('title', title.value);
+      if (shortDesc) LMSWizard.updateField('shortDescription', shortDesc.value);
+      if (desc) LMSWizard.updateField('description', desc.value);
+      if (cat) LMSWizard.updateField('category', cat.value);
+      if (level) LMSWizard.updateField('level', level.value);
+      if (lang) LMSWizard.updateField('language', lang.value);
+      if (duration) LMSWizard.updateField('duration', duration.value);
+      if (tags) LMSWizard.updateField('tags', tags.value.split(',').map(t => t.trim()).filter(Boolean));
+      if (image) LMSWizard.updateField('image', image.value);
+      if (video) LMSWizard.updateField('promoVideo', video.value);
+      if (instructor) LMSWizard.updateField('instructor', instructor.value);
+      if (instTitle) LMSWizard.updateField('instructorTitle', instTitle.value);
+    } else if (step === 6) {
+      const code = document.getElementById('field-accessCode');
+      const cap = document.getElementById('field-maxCapacity');
+      const open = document.getElementById('field-enrollmentOpen');
+      const close = document.getElementById('field-enrollmentClose');
+      const price = document.getElementById('field-price');
+      const origPrice = document.getElementById('field-originalPrice');
+
+      if (code) LMSWizard.updateField('accessCode', code.value);
+      if (cap) LMSWizard.updateField('maxCapacity', cap.value);
+      if (open) LMSWizard.updateField('enrollmentOpen', open.value);
+      if (close) LMSWizard.updateField('enrollmentClose', close.value);
+      if (price) LMSWizard.updateField('price', parseInt(price.value) || 0);
+      if (origPrice) LMSWizard.updateField('originalPrice', parseInt(origPrice.value) || 0);
+    }
+  }
+
+  // ── Step Form Validation & Error Highlighting ──
+  function validateCurrentStepForm(stepNum) {
+    if (window.FormValidator) {
+      window.FormValidator.clearErrors('wizard-body');
+    }
+    const errors = LMSWizard.validateStep(stepNum);
+    let firstErrorId = null;
+
+    if (stepNum === 1 && window.FormValidator) {
+      const titleEl = document.getElementById('field-title');
+      const shortDescEl = document.getElementById('field-shortDesc');
+      const catEl = document.getElementById('field-category');
+      const imgEl = document.getElementById('field-image');
+      const vidEl = document.getElementById('field-video');
+
+      if (titleEl && (!titleEl.value || titleEl.value.trim().length < 3)) {
+        window.FormValidator.showFieldError('field-title', 'Course title is required (minimum 3 characters).');
+        if (!firstErrorId) firstErrorId = 'field-title';
+      }
+      if (shortDescEl && (!shortDescEl.value || shortDescEl.value.trim().length < 10)) {
+        window.FormValidator.showFieldError('field-shortDesc', 'Short description is required (minimum 10 characters).');
+        if (!firstErrorId) firstErrorId = 'field-shortDesc';
+      } else if (shortDescEl && shortDescEl.value.trim().length > 200) {
+        window.FormValidator.showFieldError('field-shortDesc', 'Short description must be 200 characters or less.');
+        if (!firstErrorId) firstErrorId = 'field-shortDesc';
+      }
+      if (catEl && !catEl.value) {
+        window.FormValidator.showFieldError('field-category', 'Please select a course category.');
+        if (!firstErrorId) firstErrorId = 'field-category';
+      }
+      if (imgEl && imgEl.value.trim()) {
+        const val = imgEl.value.trim();
+        if (!val.startsWith('assets/') && !val.startsWith('/') && !val.startsWith('data:') && !/^https?:\/\//i.test(val)) {
+          window.FormValidator.showFieldError('field-image', 'Enter a valid image URL (e.g. https://... or assets/...).');
+          if (!firstErrorId) firstErrorId = 'field-image';
+        }
+      }
+      if (vidEl && vidEl.value.trim() && !/^https?:\/\//i.test(vidEl.value.trim())) {
+        window.FormValidator.showFieldError('field-video', 'Enter a valid promotional video URL (e.g. https://youtube.com/...).');
+        if (!firstErrorId) firstErrorId = 'field-video';
+      }
+    } else if (stepNum === 6 && window.FormValidator) {
+      const data = LMSWizard.getCourseData();
+      const codeEl = document.getElementById('field-accessCode');
+      if (data.accessType === 'code' && codeEl) {
+        if (!codeEl.value || !codeEl.value.trim()) {
+          window.FormValidator.showFieldError('field-accessCode', 'Access code is required.');
+          if (!firstErrorId) firstErrorId = 'field-accessCode';
+        } else if (!/^[A-Za-z0-9\-_]{3,20}$/.test(codeEl.value.trim())) {
+          window.FormValidator.showFieldError('field-accessCode', 'Access code must be 3–20 characters (letters, numbers, hyphens).');
+          if (!firstErrorId) firstErrorId = 'field-accessCode';
+        }
+      }
+      if (data.pricing === 'paid') {
+        const priceEl = document.getElementById('field-price');
+        if (priceEl && (!priceEl.value || Number(priceEl.value) <= 0)) {
+          window.FormValidator.showFieldError('field-price', 'Please enter a valid price greater than KES 0.');
+          if (!firstErrorId) firstErrorId = 'field-price';
+        }
+      }
+    }
+
+    return {
+      valid: errors.length === 0,
+      errors: errors,
+      firstErrorId: firstErrorId
+    };
+  }
+
   // ── Global functions ──
   window.wizardNext = function() {
-    const errors = LMSWizard.validateStep();
-    if (errors.length > 0) {
-      if (window.showToast) showToast(errors[0], 'warning');
+    syncCurrentStepInputs();
+    const current = LMSWizard.getCurrentStep();
+    const validation = validateCurrentStepForm(current);
+
+    if (!validation.valid) {
+      if (window.showToast) {
+        showToast(validation.errors[0] || 'Please complete required fields before proceeding.', 'warning');
+      }
+      if (validation.firstErrorId && window.FormValidator) {
+        window.FormValidator.focusFirstError(validation.firstErrorId);
+      }
+      // CRITICAL: Block user from advancing!
+      return;
     }
+
     LMSWizard.nextStep();
     renderStep();
     window.scrollTo(0, 0);
@@ -718,6 +882,22 @@
   };
 
   window.wizardGoTo = function(stepNum) {
+    const current = LMSWizard.getCurrentStep();
+    if (stepNum > current) {
+      syncCurrentStepInputs();
+      for (let s = current; s < stepNum; s++) {
+        const v = validateCurrentStepForm(s);
+        if (!v.valid) {
+          if (window.showToast) {
+            showToast(`Please complete Step ${s} before proceeding: ${v.errors[0]}`, 'warning');
+          }
+          if (s === current && v.firstErrorId && window.FormValidator) {
+            window.FormValidator.focusFirstError(v.firstErrorId);
+          }
+          return; // Block skipping ahead past incomplete steps
+        }
+      }
+    }
     LMSWizard.goToStep(stepNum);
     renderStep();
     window.scrollTo(0, 0);

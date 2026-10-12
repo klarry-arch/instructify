@@ -170,25 +170,59 @@
 
     switch (stepNum) {
       case 1: // Basic Info
-        if (!courseData.title || courseData.title.trim().length < 3) errors.push('Course title is required (min 3 characters)');
-        if (!courseData.shortDescription || courseData.shortDescription.trim().length < 10) errors.push('Short description is required (min 10 characters)');
-        if (!courseData.category) errors.push('Please select a course category');
+        if (!courseData.title || courseData.title.trim().length < 3) {
+          errors.push('Course title is required (minimum 3 characters)');
+        }
+        if (!courseData.shortDescription || courseData.shortDescription.trim().length < 10) {
+          errors.push('Short description is required (minimum 10 characters)');
+        } else if (courseData.shortDescription.trim().length > 200) {
+          errors.push('Short description must not exceed 200 characters');
+        }
+        if (!courseData.category) {
+          errors.push('Please select a course category');
+        }
+        if (courseData.image && courseData.image.trim()) {
+          const img = courseData.image.trim();
+          if (!img.startsWith('assets/') && !img.startsWith('/') && !img.startsWith('data:') && !/^https?:\/\//i.test(img)) {
+            errors.push('Featured image must be a valid URL (https://) or local asset path');
+          }
+        }
+        if (courseData.promoVideo && courseData.promoVideo.trim()) {
+          const vid = courseData.promoVideo.trim();
+          if (!/^https?:\/\//i.test(vid)) {
+            errors.push('Promotional video must be a valid URL (https://)');
+          }
+        }
         break;
 
       case 2: // Learning Info
-        if (courseData.learningOutcomes.length === 0) errors.push('Add at least one learning outcome');
+        const validOutcomes = (courseData.learningOutcomes || []).filter(function(o) {
+          return typeof o === 'string' && o.trim().length > 0;
+        });
+        if (validOutcomes.length === 0) {
+          errors.push('Add at least one valid learning outcome');
+        }
         break;
 
       case 3: // Curriculum
-        if (!courseData.curriculum || courseData.curriculum.length === 0) errors.push('Add at least one section to the curriculum');
-        else {
+        if (!courseData.curriculum || courseData.curriculum.length === 0) {
+          errors.push('Add at least one section to the curriculum');
+        } else {
+          let hasEmptySectionTitle = false;
           let hasLessons = false;
+          let hasEmptyLessonTitle = false;
           courseData.curriculum.forEach(function(sec) {
+            if (!sec.title || !sec.title.trim()) hasEmptySectionTitle = true;
             (sec.modules || []).forEach(function(mod) {
-              if ((mod.lessons || []).length > 0) hasLessons = true;
+              (mod.lessons || []).forEach(function(les) {
+                hasLessons = true;
+                if (!les.title || !les.title.trim()) hasEmptyLessonTitle = true;
+              });
             });
           });
+          if (hasEmptySectionTitle) errors.push('Section titles cannot be blank');
           if (!hasLessons) errors.push('Add at least one lesson to the curriculum');
+          if (hasEmptyLessonTitle) errors.push('Lesson titles cannot be blank');
         }
         break;
 
@@ -199,10 +233,41 @@
         break;
 
       case 6: // Enrolment
-        if (courseData.accessType === 'code' && !courseData.accessCode) errors.push('Access code is required for code-based enrolment');
+        if (courseData.accessType === 'code') {
+          if (!courseData.accessCode || !courseData.accessCode.trim()) {
+            errors.push('Access code is required for code-based enrolment');
+          } else if (!/^[A-Za-z0-9\-_]{3,20}$/.test(courseData.accessCode.trim())) {
+            errors.push('Access code must be 3–20 characters (letters, numbers, hyphens)');
+          }
+        }
+        if (courseData.pricing === 'paid') {
+          const price = Number(courseData.price);
+          if (isNaN(price) || price <= 0) {
+            errors.push('Please enter a valid course price greater than 0');
+          }
+        }
+        if (courseData.enrollmentOpen && courseData.enrollmentClose) {
+          const openDate = new Date(courseData.enrollmentOpen);
+          const closeDate = new Date(courseData.enrollmentClose);
+          if (!isNaN(openDate) && !isNaN(closeDate) && closeDate < openDate) {
+            errors.push('Enrolment close date cannot be before enrolment open date');
+          }
+        }
+        if (courseData.maxCapacity !== undefined && courseData.maxCapacity !== null && courseData.maxCapacity !== '') {
+          const cap = Number(courseData.maxCapacity);
+          if (isNaN(cap) || cap < 1) {
+            errors.push('Maximum capacity must be a positive integer');
+          }
+        }
         break;
 
       case 7: // Completion - optional defaults are acceptable
+        if (courseData.completionRules && courseData.completionRules.minQuizScore !== undefined) {
+          const score = Number(courseData.completionRules.minQuizScore);
+          if (isNaN(score) || score < 0 || score > 100) {
+            errors.push('Minimum quiz score must be between 0 and 100');
+          }
+        }
         break;
 
       case 8: // Review - validates all steps

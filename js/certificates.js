@@ -61,6 +61,42 @@
       accredited: true,
       accreditationBody: 'TSC & KICD Accredited CPD Provider',
       hash: '3e6f9a0c8b7a6d5e4f3a2b1c0d9e8f9b4c2e1a7d'
+    },
+    'IK-CERT-2026-89241': {
+      id: 'IK-CERT-2026-89241',
+      learnerName: 'James Mwangi',
+      courseTitle: 'National ICT & Smart Classroom Integration Certification',
+      courseCategory: 'ICT Integration',
+      completionDate: 'August 16, 2026',
+      issueDate: 'August 18, 2026',
+      cpdHours: '30 Hours',
+      grade: 'Distinction (98%)',
+      status: 'valid',
+      instructor: 'Dr. Wanjiku Kamau',
+      instructorTitle: 'Lead ICT Facilitator',
+      official: 'Prof. Collins Otieno',
+      officialTitle: 'Director of Education',
+      accredited: true,
+      accreditationBody: 'TSC & KICD Accredited CPD Provider',
+      hash: '5a1c9e8f9b4c2e1a7d3e6f9a0c8b7a6d5e4f3a2b'
+    },
+    'IK-CERT-2026-44102': {
+      id: 'IK-CERT-2026-44102',
+      learnerName: 'James Mwangi',
+      courseTitle: 'AI Tools for CBE Assessment & Rubric Creation',
+      courseCategory: 'AI in Education',
+      completionDate: 'September 26, 2026',
+      issueDate: 'September 28, 2026',
+      cpdHours: '25 Hours',
+      grade: 'Distinction (95%)',
+      status: 'valid',
+      instructor: 'Dr. Wanjiku Kamau',
+      instructorTitle: 'Lead ICT Facilitator',
+      official: 'Prof. Collins Otieno',
+      officialTitle: 'Director of Education',
+      accredited: true,
+      accreditationBody: 'TSC & KICD Accredited CPD Provider',
+      hash: '7b2d1a7d3e6f9a0c8b7a6d5e4f3a2b1c0d9e8f9b'
     }
   };
 

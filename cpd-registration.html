@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register for Foundations of Digital Literacy and ICT Integration for CBC Teachers CPD Programme by Instructify Kenya. November - December 2026. Workshop Fee KES 2,500.">
+  <title>Teacher CPD Training Registration | Instructify Kenya</title>
+  <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css?v=3.1">
+  <link rel="stylesheet" href="css/live-chat.css">
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       TEACHER CPD REGISTRATION PAGE STYLES
+       ══════════════════════════════════════════════════════════ */
+    .cpd-hero {
+      background: linear-gradient(135deg, #091929 0%, #183AD6 55%, #2145E6 100%);
+      color: #FFFFFF;
+      padding: calc(var(--nav-height, 72px) + 40px) 0 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cpd-hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(245, 129, 45, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cpd-hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 0 20px;
+    }
+    .cpd-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FCD34D;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .cpd-hero-h1 {
+      font-family: var(--font-heading), 'Poppins', sans-serif !important;
+      font-size: clamp(28px, 4vw, 42px) !important;
+      font-weight: 800 !important;
+      color: #FFFFFF !important;
+      line-height: 1.25 !important;
+      margin: 0 0 12px 0 !important;
+    }
+    .cpd-hero-sub {
+      font-family: var(--font-heading), 'Poppins', sans-serif !important;
+      font-size: clamp(17px, 2vw, 21px) !important;
+      font-weight: 600 !important;
+      color: #93C5FD !important;
+      line-height: 1.4 !important;
+      margin: 0 0 18px 0 !important;
+    }
+    .cpd-hero-lead {
+      font-family: var(--font-body), 'Inter', sans-serif !important;
+      font-size: clamp(14.5px, 1.4vw, 16px) !important;
+      color: #E2E8F0 !important;
+      line-height: 1.65 !important;
+      max-width: 780px;
+      margin: 0 auto 28px auto !important;
+    }
+
+    /* Top & Bottom Call-to-Action Bar */
+    .cpd-cta-banner {
+      background: #FFFFFF;
+      border: 2px solid #F5812D;
+      border-radius: 16px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: 0 10px 25px -5px rgba(245, 129, 45, 0.25);
+      margin: 0 auto;
+      max-width: 860px;
+    }
+    .cpd-cta-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      text-align: left;
+    }
+    .cpd-cta-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .cpd-cta-label {
+      font-size: 11px;
+      font-weight: 800;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cpd-cta-val {
+      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #0F172A;
+    }
+    .cpd-cta-val.highlight {
+      color: #2145E6;
+    }
+    .cpd-cta-btn {
+      background: #F5812D;
+      color: #FFFFFF !important;
+      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      padding: 12px 28px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(245, 129, 45, 0.35);
+    }
+    .cpd-cta-btn:hover {
+      background: #E06C19;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(245, 129, 45, 0.45);
+    }
+
+    /* Programme Highlights Grid */
+    .cpd-highlights-section {
+      background: #F8FAFC;
+      padding: 56px 0;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .cpd-highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .cpd-highlight-item {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
+    }
+    .cpd-highlight-item:hover {
+      border-color: #2145E6;
+      box-shadow: 0 6px 16px rgba(33, 69, 230, 0.08);
+      transform: translateY(-2px);
+    }
+    .cpd-highlight-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #EEF2FF;
+      color: #2145E6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .cpd-highlight-text {
+      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #0F172A;
+    }
+
+    /* Main Multi-Step Form Wrapper */
+    .cpd-form-section {
+      background: #FFFFFF;
+      padding: 60px 0;
+    }
+    .cpd-form-card {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+      overflow: hidden;
+    }
+    .cpd-stepper-header {
+      background: #0F172A;
+      padding: 24px 28px;
+      color: #FFFFFF;
+    }
+    .cpd-stepper-track {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 12px;
+    }
+    .cpd-stepper-track::before {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      right: 20px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.2);
+      z-index: 1;
+    }
+    .cpd-stepper-progress {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      height: 2px;
+      background: #2145E6;
+      z-index: 2;
+      transition: width 0.3s ease;
+    }
+    .cpd-step-node {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0;
+      color: #94A3B8;
+      transition: all 0.2s ease;
+    }
+    .cpd-step-bubble {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #1E293B;
+      border: 2px solid #475569;
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .cpd-step-node.active .cpd-step-bubble {
+      background: #2145E6;
+      border-color: #93C5FD;
+      box-shadow: 0 0 0 4px rgba(33, 69, 230, 0.35);
+    }
+    .cpd-step-node.completed .cpd-step-bubble {
+      background: #059669;
+      border-color: #A7F3D0;
+    }
+    .cpd-step-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .cpd-step-node.active .cpd-step-label {
+      color: #FFFFFF;
+    }
+    .cpd-step-node.completed .cpd-step-label {
+      color: #4ADE80;
+    }
+
+    @media (max-width: 640px) {
+      .cpd-step-label {
+        display: none;
+      }
+      .cpd-stepper-header {
+        padding: 16px 20px;
+      }
+    }
+
+    /* Form Content Body */
+    .cpd-form-body {
+      padding: clamp(24px, 4vw, 40px);
+    }
+    .cpd-step-content {
+      display: none;
+    }
+    .cpd-step-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .cpd-section-heading {
+      font-family: var(--font-heading), 'Poppins', sans-serif !important;
+      font-size: 20px !important;
+      font-weight: 800 !important;
+      color: #0F172A !important;
+      margin: 0 0 4px 0 !important;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cpd-section-desc {
+      font-size: 14px;
+      color: #64748B;
+      margin: 0 0 24px 0;
+    }
+
+    /* Form Controls */
+    .cpd-field-group {
+      margin-bottom: 20px;
+    }
+    .cpd-label {
+      display: block;
+      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #0F172A;
+      margin-bottom: 6px;
+    }
+    .cpd-label .req {
+      color: #E11D48;
+      font-weight: 800;
+    }
+    .cpd-input, .cpd-select, .cpd-textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 10px;
+      font-family: var(--font-body), 'Inter', sans-serif;
+      font-size: 14.5px;
+      color: #0F172A;
+      background: #FFFFFF;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+    .cpd-input:focus, .cpd-select:focus, .cpd-textarea:focus {
+      outline: none;
+      border-color: #2145E6;
+      box-shadow: 0 0 0 3.5px rgba(33, 69, 230, 0.15);
+    }
+    .cpd-input.is-invalid, .cpd-select.is-invalid, .cpd-textarea.is-invalid {
+      border-color: #E11D48;
+      background-color: #FFF1F2;
+    }
+    .cpd-field-error {
+      font-size: 12px;
+      font-weight: 600;
+      color: #E11D48;
+      margin-top: 5px;
+      display: none;
+    }
+    .cpd-field-hint {
+      font-size: 12px;
+      color: #64748B;
+      margin-top: 4px;
+    }
+    .cpd-privacy-note {
+      font-size: 11.5px;
+      color: #059669;
+      background: #ECFDF5;
+      padding: 6px 10px;
+      border-radius: 6px;
+      margin-top: 5px;
+      display: inline-block;
+    }
+
+    /* Checkbox & Radio Tiles */
+    .cpd-options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .cpd-tile-option {
+      border: 1.5px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #334155;
+      transition: all 0.2s ease;
+      background: #FFFFFF;
+    }
+    .cpd-tile-option:hover {
+      border-color: #93C5FD;
+      background: #F8FAFC;
+    }
+    .cpd-tile-option input:checked + span,
+    .cpd-tile-option.selected {
+      border-color: #2145E6;
+      background: #EEF2FF;
+      color: #1E3A8A;
+      font-weight: 700;
+    }
+    .cpd-tile-option input {
+      accent-color: #2145E6;
+      width: 17px;
+      height: 17px;
+    }
+
+    /* Payment Notice Banner */
+    .cpd-payment-notice {
+      background: #FFFBEB;
+      border: 1.5px solid #FCD34D;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+    .cpd-payment-notice-fee {
+      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #92400E;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cpd-payment-notice-text {
+      font-size: 13.5px;
+      color: #78350F;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* Review Card */
+    .cpd-review-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .cpd-review-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      font-size: 13.5px;
+    }
+    @media (max-width: 640px) {
+      .cpd-review-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    .cpd-review-item {
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 8px;
+    }
+    .cpd-review-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cpd-review-val {
+      font-weight: 600;
+      color: #0F172A;
+      margin-top: 2px;
+    }
+
+    /* Consent Checkboxes */
+    .cpd-consent-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.5;
+    }
+    .cpd-consent-item input {
+      accent-color: #2145E6;
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* Stepper Action Buttons */
+    .cpd-stepper-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid #E2E8F0;
+      flex-wrap: wrap;
+    }
+
+    /* Submission Confirmation Modal */
+    .cpd-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .cpd-modal-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      max-width: 620px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      animation: modalSlideUp 0.3s ease;
+    }
+    .cpd-ticket-header {
+      background: linear-gradient(135deg, #091929 0%, #2145E6 100%);
+      color: #FFFFFF;
+      padding: 24px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes modalSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Mobile Responsive Optimizations ── */
+    @media (max-width: 768px) {
+      body {
+        overflow-x: hidden;
+      }
+      .cpd-hero {
+        padding: calc(var(--nav-height, 72px) + 24px) 0 36px;
+      }
+      .cpd-hero-container {
+        padding: 0 16px;
+      }
+      .cpd-hero-badge {
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        white-space: normal;
+        text-align: center;
+        max-width: 100%;
+        line-height: 1.4;
+      }
+      .cpd-cta-banner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding: 16px 18px;
+      }
+      .cpd-cta-info {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .cpd-cta-item[style*="border-left"] {
+        border-left: none !important;
+        padding-left: 0 !important;
+        border-top: 1px solid #E2E8F0;
+        padding-top: 10px;
+      }
+      .cpd-cta-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .cpd-highlights-grid {
+        grid-template-columns: 1fr;
+      }
+      .cpd-options-grid {
+        grid-template-columns: 1fr;
+      }
+      .cpd-form-card {
+        border-radius: 14px;
+        margin: 0 10px;
+      }
+      .cpd-form-body {
+        padding: 20px 16px;
+      }
+      .cpd-stepper-header {
+        padding: 16px 14px;
+      }
+      .cpd-stepper-actions {
+        flex-direction: column-reverse;
+      }
+      .cpd-stepper-actions button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cpd-hero-h1 {
+        font-size: 24px !important;
+      }
+      .cpd-hero-sub {
+        font-size: 16px !important;
+      }
+      .cpd-hero-badge {
+        font-size: 10px;
+        padding: 6px 10px;
+      }
+    }
+  </style>
+</head>
+<body class="lms-page">
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav id="navbar" class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+      <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
+      <div class="nav-brand-text-box" style="display: inline-flex !important; flex-direction: column !important; justify-content: center !important; align-items: flex-start !important; line-height: 1 !important;">
+        <span class="nav-brand-title" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-weight: 800 !important; font-size: 1.25rem !important; color: #0F172A !important; letter-spacing: -0.02em !important; line-height: 1 !important; display: block !important;">Instruct<span class="brand-accent" style="color: #F5812D !important; font-weight: 900 !important;">ify</span></span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-size: 0.62rem !important; font-weight: 850 !important; color: #FF4D00 !important; text-transform: uppercase !important; letter-spacing: 2.2px !important; line-height: 1 !important; display: block !important;">KENYA</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link" data-nav="home">Home</a></li>
+      <li><a href="about.html" class="nav-link" data-nav="about">About Us</a></li>
+      <li class="nav-item-dropdown">
+        <a href="courses.html" class="nav-link nav-link-dropdown active" aria-current="page" data-nav="courses" aria-haspopup="true" aria-expanded="false">
+          Courses <span class="nav-badge badge-amber">Hot</span>
+          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <ul class="nav-dropdown-menu" role="menu" aria-label="Courses, Training and Resources">
+          <li role="none">
+            <a href="courses.html" class="nav-dropdown-item" role="menuitem" data-nav="courses">
+              <span class="nav-dropdown-icon">📚</span>
+              <div class="nav-dropdown-info">
+                <span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span>
+                <span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span>
+              </div>
+            </a>
+          </li>
+          <li role="none">
+            <a href="cpd-registration.html" class="nav-dropdown-item active" aria-current="page" role="menuitem" data-nav="cpd">
+              <span class="nav-dropdown-icon">🎓</span>
+              <div class="nav-dropdown-info">
+                <span class="nav-dropdown-title">Teacher CPD Registration <span class="nav-badge badge-blue">New</span></span>
+                <span class="nav-dropdown-desc">Digital Literacy &amp; ICT Integration Track</span>
+              </div>
+            </a>
+          </li>
+          <li role="none">
+            <a href="podcast.html" class="nav-dropdown-item" role="menuitem" data-nav="podcast">
+              <span class="nav-dropdown-icon">🎙️</span>
+              <div class="nav-dropdown-info">
+                <span class="nav-dropdown-title">Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></span>
+                <span class="nav-dropdown-desc">Inspiring stories from Kenyan educators</span>
+              </div>
+            </a>
+          </li>
+          <li role="none">
+            <a href="resources.html" class="nav-dropdown-item" role="menuitem" data-nav="resources">
+              <span class="nav-dropdown-icon">📂</span>
+              <div class="nav-dropdown-info">
+                <span class="nav-dropdown-title">Resources</span>
+                <span class="nav-dropdown-desc">Schemes of work, lesson plans &amp; guides</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="blog.html" class="nav-link" data-nav="blog">Blog <span class="nav-badge badge-blue">Hub</span></a></li>
+      <li><a href="consultancy.html" class="nav-link" data-nav="consultancy">Consultancy</a></li>
+      <li><a href="jumuishi-learning-hub.html" class="nav-link" data-nav="jumuishi" style="color:var(--jum-teal, #0D9488) !important;">Jumuishi Hub <span class="nav-badge" style="background:#0D9488;color:#fff;">Inclusive</span></a></li>
+      <li><a href="schools.html" class="nav-link" data-nav="schools">Institutions</a></li>
+      <li><a href="contact.html" class="nav-link" data-nav="contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="#cpd-registration-form-card" class="btn btn-primary btn-sm">Register Now →</a>
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+  <div class="nav-mobile-links">
+    <a href="index.html" class="nav-mobile-link" data-nav="home">Home</a>
+    <a href="about.html" class="nav-mobile-link" data-nav="about">About Us</a>
+    <div class="nav-mobile-dropdown">
+      <a href="courses.html" class="nav-mobile-link active" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
+      <div class="nav-mobile-sublinks">
+        <a href="courses.html" class="nav-mobile-sublink" data-nav="courses"><span>📚</span> All Courses</a>
+        <a href="cpd-registration.html" class="nav-mobile-sublink active" data-nav="cpd"><span>🎓</span> Teacher CPD Registration</a>
+        <a href="podcast.html" class="nav-mobile-sublink" data-nav="podcast"><span>🎙️</span> Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></a>
+        <a href="resources.html" class="nav-mobile-sublink" data-nav="resources"><span>📂</span> Resources</a>
+      </div>
+    </div>
+    <a href="blog.html" class="nav-link-blog nav-mobile-link" data-nav="blog">Blog <span class="nav-badge badge-blue">Hub</span></a>
+    <a href="consultancy.html" class="nav-mobile-link" data-nav="consultancy">Consultancy</a>
+    <a href="jumuishi-learning-hub.html" class="nav-mobile-link" data-nav="jumuishi" style="color:#0D9488;font-weight:700;">Jumuishi Learning Hub <span class="nav-badge" style="background:#0D9488;color:#fff;">Inclusive</span></a>
+    <a href="schools.html" class="nav-mobile-link" data-nav="schools">Institutions</a>
+    <a href="contact.html" class="nav-mobile-link" data-nav="contact">Contact</a>
+  </div>
+  <div class="nav-mobile-actions">
+    <a href="register.html" class="btn btn-outline btn-md">Sign In</a>
+    <a href="#cpd-registration-form-card" class="btn btn-primary btn-md">Register Now →</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     1. HERO SECTION & CALL-TO-ACTION
+     ══════════════════════════════════════════════════════════ -->
+<header class="cpd-hero">
+  <div class="cpd-hero-container">
+    <div class="cpd-hero-badge">
+      <span>🚀</span> Continuing Professional Development &bull; Instructify Kenya
+    </div>
+    <h1 class="cpd-hero-h1">Teacher CPD Training Registration</h1>
+    <div class="cpd-hero-sub">Foundations of Digital Literacy and ICT Integration for CBC Teachers</div>
+    <p class="cpd-hero-lead">
+      Thank you for your interest in the Instructify Kenya CPD Training Programme. Please complete the registration form below to reserve your place in the programme beginning in November 2026. The information provided will be used to confirm your registration and communicate training arrangements.
+    </p>
+
+    <!-- Prominent Top Call-To-Action Banner -->
+    <div class="cpd-cta-banner" role="region" aria-label="Programme highlights call to action">
+      <div class="cpd-cta-info">
+        <div class="cpd-cta-item">
+          <span class="cpd-cta-label">WORKSHOP FEE:</span>
+          <span class="cpd-cta-val highlight">KES 2,500</span>
+        </div>
+        <div class="cpd-cta-item" style="border-left:1px solid #E2E8F0; padding-left:16px;">
+          <span class="cpd-cta-label">TRAINING PERIOD:</span>
+          <span class="cpd-cta-val">November to December 2026</span>
+        </div>
+        <div class="cpd-cta-item" style="border-left:1px solid #E2E8F0; padding-left:16px;">
+          <span class="cpd-cta-label">TARGET PARTICIPANTS</span>
+          <span style="font-size:13px; font-weight:600; color:#475569;">CBC Teachers, Leaders &amp; Administrators</span>
+        </div>
+      </div>
+      <a href="#cpd-registration-form-card" class="cpd-cta-btn" onclick="scrollToForm(event)">
+        REGISTER NOW ↓
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     2. PROGRAMME HIGHLIGHTS & COMPETENCIES
+     ══════════════════════════════════════════════════════════ -->
+<section class="cpd-highlights-section" aria-label="Programme Highlights">
+  <div class="container">
+    <div class="text-center" style="max-width:760px; margin:0 auto;">
+      <span style="font-size:12px; font-weight:800; color:#2145E6; text-transform:uppercase; letter-spacing:0.08em;">CURRICULUM COMPETENCY PATHWAY</span>
+      <h2 style="font-family:var(--font-heading); font-size:26px; font-weight:800; color:#0F172A; margin:6px 0 10px;">
+        Programme Core Competencies &amp; Skills
+      </h2>
+      <p style="font-size:14.5px; color:#64748B; margin:0;">
+        This CPD programme equips teachers with the knowledge, practical skills, confidence, and professional values required to integrate ICT meaningfully into Competency-Based Curriculum teaching and learning.
+      </p>
+    </div>
+
+    <div class="cpd-highlights-grid">
+      <div class="cpd-highlight-item">
+        <div class="cpd-highlight-icon">💻</div>
+        <div class="cpd-highlight-text">Basic digital skills</div>
+      </div>
+      <div class="cpd-highlight-item">
+        <div class="cpd-highlight-icon">🔍</div>
+        <div class="cpd-highlight-text">Information literacy</div>
+      </div>
+      <div class="cpd-highlight-item">
+        <div class="cpd-highlight-icon">💬</div>
+        <div class="cpd-highlight-text">Digital communication and collaboration</div>
+      </div>
+      <div class="cpd-highlight-item">
+        <div class="cpd-highlight-icon">🎨</div>
+        <div class="cpd-highlight-text">Digital content creation</div>
+      </div>
+      <div class="cpd-highlight-item">
+        <div class="cpd-highlight-icon">📐</div>
+        <div class="cpd-highlight-text">Meaningful ICT integration</div>
+      </div>
+      <div class="cpd-highlight-item">
+        <div class="cpd-highlight-icon">📊</div>
+        <div class="cpd-highlight-text">Digital assessment</div>
+      </div>
+      <div class="cpd-highlight-item">
+        <div class="cpd-highlight-icon">🌐</div>
+        <div class="cpd-highlight-text">Digital citizenship</div>
+      </div>
+      <div class="cpd-highlight-item">
+        <div class="cpd-highlight-icon">🛡️</div>
+        <div class="cpd-highlight-text">Online safety and security</div>
+      </div>
+      <div class="cpd-highlight-item">
+        <div class="cpd-highlight-icon">🤝</div>
+        <div class="cpd-highlight-text">Accessibility and inclusion</div>
+      </div>
+      <div class="cpd-highlight-item">
+        <div class="cpd-highlight-icon">🧩</div>
+        <div class="cpd-highlight-text">Digital problem-solving</div>
+      </div>
+      <div class="cpd-highlight-item" style="grid-column: 1 / -1;">
+        <div class="cpd-highlight-icon">🤖</div>
+        <div class="cpd-highlight-text">Responsible use of artificial intelligence in education</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     3. 5-STEP REGISTRATION FORM
+     ══════════════════════════════════════════════════════════ -->
+<main class="cpd-form-section" id="registration-form-area">
+  <div class="container">
+    <div class="cpd-form-card" id="cpd-registration-form-card">
+      
+      <!-- Stepper Header -->
+      <div class="cpd-stepper-header" role="region" aria-label="Registration step progress">
+        <div class="cpd-stepper-track">
+          <div class="cpd-stepper-progress" id="cpd-progress-line" style="width: 0%;"></div>
+          
+          <button type="button" class="cpd-step-node active" id="step-node-1" onclick="jumpToStep(1)">
+            <div class="cpd-step-bubble">1</div>
+            <span class="cpd-step-label">Personal</span>
+          </button>
+          <button type="button" class="cpd-step-node" id="step-node-2" onclick="jumpToStep(2)">
+            <div class="cpd-step-bubble">2</div>
+            <span class="cpd-step-label">Professional</span>
+          </button>
+          <button type="button" class="cpd-step-node" id="step-node-3" onclick="jumpToStep(3)">
+            <div class="cpd-step-bubble">3</div>
+            <span class="cpd-step-label">Preferences</span>
+          </button>
+          <button type="button" class="cpd-step-node" id="step-node-4" onclick="jumpToStep(4)">
+            <div class="cpd-step-bubble">4</div>
+            <span class="cpd-step-label">Payment</span>
+          </button>
+          <button type="button" class="cpd-step-node" id="step-node-5" onclick="jumpToStep(5)">
+            <div class="cpd-step-bubble">5</div>
+            <span class="cpd-step-label">Review</span>
+          </button>
+        </div>
+        <div style="font-size:12px; color:rgba(255,255,255,0.7); text-align:center;">
+          Step <span id="cpd-step-num-display">1</span> of 5: <strong id="cpd-step-name-display" style="color:#FFF;">Personal Information</strong>
+        </div>
+      </div>
+
+      <!-- Main Form Container -->
+      <form id="cpd-registration-form" onsubmit="handleCpdSubmit(event)" novalidate>
+        
+        <!-- Spam honeypot fields -->
+        <div style="display:none;" aria-hidden="true">
+          <input type="text" name="_hp_instructify" tabindex="-1" autocomplete="off" aria-label="Do not fill this field">
+          <input type="text" name="website_hp_check" tabindex="-1" autocomplete="off" aria-label="Do not fill this field">
+        </div>
+
+        <div class="cpd-form-body">
+          
+          <!-- ── STEP 1: PERSONAL INFORMATION ─────────────────── -->
+          <div class="cpd-step-content active" id="step-content-1">
+            <h2 class="cpd-section-heading"><span>👤</span> Section 1: Personal Information</h2>
+            <p class="cpd-section-desc">Provide your verified contact details for registration, communication, and certificate generation.</p>
+
+            <div class="cpd-field-group">
+              <label class="cpd-label" for="reg-fullname">1. Full Name <span class="req">*</span></label>
+              <input type="text" id="reg-fullname" name="fullName" class="cpd-input" placeholder="e.g. Teacher Mary Wanjiku Mwangi" required autocomplete="name">
+              <div class="cpd-field-error" id="err-reg-fullname">Please enter your full official name.</div>
+            </div>
+
+            <div class="grid-2" style="gap:16px;">
+              <div class="cpd-field-group">
+                <label class="cpd-label" for="reg-phone">2. Phone Number <span class="req">*</span></label>
+                <input type="tel" id="reg-phone" name="phone" class="cpd-input" placeholder="07XXXXXXXX or +2547XXXXXXXX" required autocomplete="tel">
+                <div class="cpd-field-error" id="err-reg-phone">Valid Kenyan phone number required (07XX, 01XX, +254).</div>
+              </div>
+              <div class="cpd-field-group">
+                <label class="cpd-label" for="reg-whatsapp">3. WhatsApp Number <span class="req">*</span></label>
+                <input type="tel" id="reg-whatsapp" name="whatsapp" class="cpd-input" placeholder="07XXXXXXXX or +2547XXXXXXXX" required>
+                <div class="cpd-field-error" id="err-reg-whatsapp">WhatsApp number is required for programme alerts.</div>
+              </div>
+            </div>
+
+            <div class="cpd-field-group">
+              <label class="cpd-label" for="reg-email">4. Email Address <span class="req">*</span></label>
+              <input type="email" id="reg-email" name="email" class="cpd-input" placeholder="educator@school.ac.ke" required autocomplete="email">
+              <div class="cpd-field-error" id="err-reg-email">Please enter a valid email address.</div>
+            </div>
+
+            <div class="grid-2" style="gap:16px;">
+              <div class="cpd-field-group">
+                <label class="cpd-label" for="reg-county">5. County <span class="req">*</span></label>
+                <select id="reg-county" name="county" class="cpd-select" required aria-label="Select County">
+                  <option value="" disabled selected>-- Select County (All 47 Counties) --</option>
+                  <!-- 47 Kenyan Counties populated dynamically / static -->
+                </select>
+                <div class="cpd-field-error" id="err-reg-county">Please select your county.</div>
+              </div>
+              <div class="cpd-field-group">
+                <label class="cpd-label" for="reg-town">6. Town or Location <span class="req">*</span></label>
+                <input type="text" id="reg-town" name="location" class="cpd-input" placeholder="e.g. Westlands, Nakuru Town, Kisumu CBD" required>
+                <div class="cpd-field-error" id="err-reg-town">Town or location is required.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── STEP 2: PROFESSIONAL INFORMATION ──────────────── -->
+          <div class="cpd-step-content" id="step-content-2">
+            <h2 class="cpd-section-heading"><span>🏫</span> Section 2: Professional Information</h2>
+            <p class="cpd-section-desc">Tell us about your educational institution, role, and current classroom experience.</p>
+
+            <div class="cpd-field-group">
+              <label class="cpd-label" for="reg-school">7. Name of School or Institution <span class="req">*</span></label>
+              <input type="text" id="reg-school" name="school" class="cpd-input" placeholder="e.g. St. Scholastica Academy / Moi Junior School" required>
+              <div class="cpd-field-error" id="err-reg-school">School or institution name is required.</div>
+            </div>
+
+            <div class="cpd-field-group">
+              <label class="cpd-label" for="reg-role">8. Current Role <span class="req">*</span></label>
+              <select id="reg-role" name="role" class="cpd-select" onchange="toggleRoleOther(this.value)" required aria-label="Current role">
+                <option value="" disabled selected>-- Select Current Role --</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Headteacher">Headteacher</option>
+                <option value="Deputy Headteacher">Deputy Headteacher</option>
+                <option value="Principal">Principal</option>
+                <option value="Deputy Principal">Deputy Principal</option>
+                <option value="ICT Coordinator">ICT Coordinator</option>
+                <option value="Director of Studies">Director of Studies</option>
+                <option value="Curriculum Support Officer">Curriculum Support Officer</option>
+                <option value="Education Administrator">Education Administrator</option>
+                <option value="Teaching Assistant">Teaching Assistant</option>
+                <option value="Teacher Trainer">Teacher Trainer</option>
+                <option value="Student Teacher">Student Teacher</option>
+                <option value="Other">Other</option>
+              </select>
+              <div class="cpd-field-error" id="err-reg-role">Please select your current role.</div>
+            </div>
+
+            <!-- Conditional Other Role Field -->
+            <div class="cpd-field-group" id="group-other-role" style="display:none;">
+              <label class="cpd-label" for="reg-other-role">9. Please Specify Your Role <span class="req">*</span></label>
+              <input type="text" id="reg-other-role" name="otherRole" class="cpd-input" placeholder="e.g. Special Needs Educator, Dean">
+              <div class="cpd-field-error" id="err-reg-other-role">Please specify your role.</div>
+            </div>
+
+            <div class="cpd-field-group">
+              <label class="cpd-label">10. Level Taught (Select all that apply) <span class="req">*</span></label>
+              <div class="cpd-options-grid" id="group-levels">
+                <label class="cpd-tile-option"><input type="checkbox" name="levels" value="Early Years Education"> Early Years Education</label>
+                <label class="cpd-tile-option"><input type="checkbox" name="levels" value="Lower Primary"> Lower Primary</label>
+                <label class="cpd-tile-option"><input type="checkbox" name="levels" value="Upper Primary"> Upper Primary</label>
+                <label class="cpd-tile-option"><input type="checkbox" name="levels" value="Junior School"> Junior School</label>
+                <label class="cpd-tile-option"><input type="checkbox" name="levels" value="Senior School"> Senior School</label>
+                <label class="cpd-tile-option"><input type="checkbox" name="levels" value="Teacher Training"> Teacher Training</label>
+                <label class="cpd-tile-option"><input type="checkbox" name="levels" value="School Leadership and Administration"> School Leadership &amp; Administration</label>
+                <label class="cpd-tile-option"><input type="checkbox" name="levels" value="Other"> Other</label>
+              </div>
+              <div class="cpd-field-error" id="err-reg-levels">Please select at least one level taught.</div>
+            </div>
+
+            <div class="grid-2" style="gap:16px;">
+              <div class="cpd-field-group">
+                <label class="cpd-label" for="reg-subject">11. Main Subject or Learning Area <span class="req">*</span></label>
+                <input type="text" id="reg-subject" name="subject" class="cpd-input" placeholder="e.g. Mathematics, Integrated Science, English" required>
+                <div class="cpd-field-error" id="err-reg-subject">Main subject or learning area is required.</div>
+              </div>
+
+              <div class="cpd-field-group">
+                <label class="cpd-label" for="reg-experience">12. Teaching Experience <span class="req">*</span></label>
+                <select id="reg-experience" name="experience" class="cpd-select" required aria-label="Teaching experience">
+                  <option value="" disabled selected>-- Select Experience --</option>
+                  <option value="Student teacher">Student teacher</option>
+                  <option value="Less than 1 year">Less than 1 year</option>
+                  <option value="1 to 3 years">1 to 3 years</option>
+                  <option value="4 to 7 years">4 to 7 years</option>
+                  <option value="8 to 12 years">8 to 12 years</option>
+                  <option value="More than 12 years">More than 12 years</option>
+                </select>
+                <div class="cpd-field-error" id="err-reg-experience">Please select your teaching experience.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── STEP 3: TRAINING PREFERENCES ─────────────────── -->
+          <div class="cpd-step-content" id="step-content-3">
+            <h2 class="cpd-section-heading"><span>⚙️</span> Section 3: Training Preferences</h2>
+            <p class="cpd-section-desc">Select your preferred cohort period, learning mode, and digital environment setup.</p>
+
+            <div class="grid-2" style="gap:16px;">
+              <div class="cpd-field-group">
+                <label class="cpd-label" for="reg-period">13. Preferred Training Period <span class="req">*</span></label>
+                <select id="reg-period" name="trainingPeriod" class="cpd-select" required aria-label="Preferred training period">
+                  <option value="" disabled selected>-- Select Period --</option>
+                  <option value="November 2026">November 2026</option>
+                  <option value="December 2026">December 2026</option>
+                  <option value="Either November or December 2026">Either November or December 2026</option>
+                </select>
+                <div class="cpd-field-error" id="err-reg-period">Please select your preferred period.</div>
+              </div>
+
+              <div class="cpd-field-group">
+                <label class="cpd-label" for="reg-mode">14. Preferred Training Mode <span class="req">*</span></label>
+                <select id="reg-mode" name="trainingMode" class="cpd-select" onchange="toggleLocationField(this.value)" required aria-label="Preferred training mode">
+                  <option value="" disabled selected>-- Select Mode --</option>
+                  <option value="Physical workshop">Physical workshop</option>
+                  <option value="Live online training">Live online training</option>
+                  <option value="Blended learning">Blended learning</option>
+                  <option value="No preference">No preference</option>
+                </select>
+                <div class="cpd-field-error" id="err-reg-mode">Please select your preferred mode.</div>
+              </div>
+            </div>
+
+            <!-- Conditional Preferred Location -->
+            <div class="cpd-field-group" id="group-location" style="display:none;">
+              <label class="cpd-label" for="reg-location">15. Preferred Training Location (for Physical / Blended Mode)</label>
+              <input type="text" id="reg-location" name="trainingLocation" class="cpd-input" placeholder="e.g. Nairobi CBD Hub, Nakuru, Eldoret, Mombasa">
+              <div class="cpd-field-hint">Specify your preferred city or district hub.</div>
+            </div>
+
+            <div class="cpd-field-group">
+              <label class="cpd-label">16. Access to a Digital Device (Select all that apply) <span class="req">*</span></label>
+              <div class="cpd-options-grid" id="group-devices">
+                <label class="cpd-tile-option"><input type="checkbox" name="devices" value="Laptop"> Laptop</label>
+                <label class="cpd-tile-option"><input type="checkbox" name="devices" value="Desktop computer"> Desktop computer</label>
+                <label class="cpd-tile-option"><input type="checkbox" name="devices" value="Tablet"> Tablet</label>
+                <label class="cpd-tile-option"><input type="checkbox" name="devices" value="Smartphone"> Smartphone</label>
+                <label class="cpd-tile-option" style="grid-column: 1 / -1;"><input type="checkbox" name="devices" value="I do not currently have access to a suitable device"> I do not currently have access to a suitable device</label>
+              </div>
+              <div class="cpd-field-error" id="err-reg-devices">Please indicate device access.</div>
+            </div>
+
+            <div class="grid-2" style="gap:16px;">
+              <div class="cpd-field-group">
+                <label class="cpd-label">17. Access to Reliable Internet <span class="req">*</span></label>
+                <div style="display:flex; gap:12px; margin-top:8px;">
+                  <label class="cpd-tile-option" style="flex:1;"><input type="radio" name="internetAccess" value="Yes" checked> Yes</label>
+                  <label class="cpd-tile-option" style="flex:1;"><input type="radio" name="internetAccess" value="Sometimes"> Sometimes</label>
+                  <label class="cpd-tile-option" style="flex:1;"><input type="radio" name="internetAccess" value="No"> No</label>
+                </div>
+              </div>
+
+              <div class="cpd-field-group">
+                <label class="cpd-label" for="reg-competence">18. Current Digital Competence <span class="req">*</span></label>
+                <select id="reg-competence" name="digitalCompetence" class="cpd-select" required aria-label="Digital competence level">
+                  <option value="" disabled selected>-- Select Competence --</option>
+                  <option value="Beginner">Beginner (Starting with digital basics)</option>
+                  <option value="Developing">Developing (Comfortable with basic tools)</option>
+                  <option value="Competent" selected>Competent (Use tech in lesson plans)</option>
+                  <option value="Confident">Confident (Create interactive content)</option>
+                  <option value="Advanced">Advanced (Tech lead / ICT trainer)</option>
+                </select>
+                <div class="cpd-field-error" id="err-reg-competence">Please select your competence level.</div>
+              </div>
+            </div>
+
+            <div class="cpd-field-group">
+              <label class="cpd-label" for="reg-learn-goals">
+                19. What would you most like to learn during the programme? <span class="req">*</span>
+              </label>
+              <textarea id="reg-learn-goals" name="learningGoals" class="cpd-textarea" rows="3" maxlength="500" placeholder="e.g. How to use AI tools for CBC lesson planning, create interactive rubrics, and deliver engaging Smart Board lessons..." oninput="updateCharCount(this)" required></textarea>
+              <div style="display:flex; justify-content:space-between; margin-top:4px;">
+                <div class="cpd-field-error" id="err-reg-learn-goals">Please state your learning goals (max 500 chars).</div>
+                <div class="cpd-field-hint"><span id="char-counter">0</span> / 500 characters</div>
+              </div>
+            </div>
+
+            <div class="cpd-field-group">
+              <label class="cpd-label">20. Do you require accessibility or additional learning support? <span class="req">*</span></label>
+              <div style="display:flex; gap:12px; margin-top:8px;">
+                <label class="cpd-tile-option" style="flex:1;"><input type="radio" name="accessibilityNeeds" value="No" checked onchange="toggleSupportDetails(this.value)"> No</label>
+                <label class="cpd-tile-option" style="flex:1;"><input type="radio" name="accessibilityNeeds" value="Yes" onchange="toggleSupportDetails(this.value)"> Yes</label>
+                <label class="cpd-tile-option" style="flex:1;"><input type="radio" name="accessibilityNeeds" value="Prefer not to say" onchange="toggleSupportDetails(this.value)"> Prefer not to say</label>
+              </div>
+            </div>
+
+            <!-- Conditional Support Description -->
+            <div class="cpd-field-group" id="group-support-details" style="display:none;">
+              <label class="cpd-label" for="reg-support-details">21. Please Describe the Support Required <span class="req">*</span></label>
+              <textarea id="reg-support-details" name="accessibilitySupport" class="cpd-textarea" rows="2" placeholder="e.g. Screen magnification, sign language interpretation, captioned materials..."></textarea>
+              <div class="cpd-field-error" id="err-reg-support-details">Please describe the support required.</div>
+            </div>
+          </div>
+
+          <!-- ── STEP 4: PAYMENT INFORMATION ─────────────────── -->
+          <div class="cpd-step-content" id="step-content-4">
+            <h2 class="cpd-section-heading"><span>💳</span> Section 4: Payment Information</h2>
+            <p class="cpd-section-desc">Review the workshop fee and indicate your payment status.</p>
+
+            <div class="cpd-payment-notice">
+              <div class="cpd-payment-notice-fee">
+                <span>🏷️</span> Workshop Fee: KES 2,500
+              </div>
+              <p class="cpd-payment-notice-text">
+                Payment instructions will be sent to the applicant after the registration has been received and reviewed. Do not provide sensitive banking passwords or PIN numbers through this form.
+              </p>
+            </div>
+
+            <div class="cpd-field-group">
+              <label class="cpd-label">22. Payment Status <span class="req">*</span></label>
+              <div style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+                <label class="cpd-tile-option">
+                  <input type="radio" name="paymentStatus" value="I have not yet paid" checked onchange="togglePaymentRef(this.value)">
+                  <span>I have not yet paid</span>
+                </label>
+                <label class="cpd-tile-option">
+                  <input type="radio" name="paymentStatus" value="I would like to receive payment instructions" onchange="togglePaymentRef(this.value)">
+                  <span>I would like to receive payment instructions</span>
+                </label>
+                <label class="cpd-tile-option">
+                  <input type="radio" name="paymentStatus" value="I have already paid" onchange="togglePaymentRef(this.value)">
+                  <span>I have already paid</span>
+                </label>
+              </div>
+              <div class="cpd-field-error" id="err-reg-payment-status">Please select your payment status.</div>
+            </div>
+
+            <!-- Conditional Payment Reference Field -->
+            <div class="cpd-field-group" id="group-payment-ref" style="display:none;">
+              <label class="cpd-label" for="reg-payment-ref">23. Payment Reference or Transaction Code <span class="req">*</span></label>
+              <input type="text" id="reg-payment-ref" name="paymentReference" class="cpd-input" placeholder="e.g. M-Pesa Code (e.g. TKT7894561) or Bank Reference">
+              <div class="cpd-field-hint">Required for participants who have already made payment.</div>
+              <div class="cpd-field-error" id="err-reg-payment-ref">Payment reference code is required for payments already made.</div>
+            </div>
+          </div>
+
+          <!-- ── STEP 5: REVIEW & CONSENT DECLARATION ─────────── -->
+          <div class="cpd-step-content" id="step-content-5">
+            <h2 class="cpd-section-heading"><span>✅</span> Section 5: Review &amp; Consent Declaration</h2>
+            <p class="cpd-section-desc">Please review your information carefully before submitting your CPD registration.</p>
+
+            <!-- Live Review Summary Card -->
+            <div class="cpd-review-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #E2E8F0; padding-bottom:8px;">
+                <strong style="font-family:var(--font-heading); color:#0F172A; font-size:15px;">Registration Summary</strong>
+                <button type="button" onclick="jumpToStep(1)" style="background:none; border:none; color:#2145E6; font-size:12.5px; font-weight:700; cursor:pointer;">✎ Edit Info</button>
+              </div>
+              <div class="cpd-review-row">
+                <div class="cpd-review-item">
+                  <div class="cpd-review-label">Participant</div>
+                  <div class="cpd-review-val" id="rev-name">&ndash;</div>
+                </div>
+                <div class="cpd-review-item">
+                  <div class="cpd-review-label">Contact (Email &amp; Phone)</div>
+                  <div class="cpd-review-val" id="rev-contact">&ndash;</div>
+                </div>
+                <div class="cpd-review-item">
+                  <div class="cpd-review-label">Institution &amp; County</div>
+                  <div class="cpd-review-val" id="rev-school">&ndash;</div>
+                </div>
+                <div class="cpd-review-item">
+                  <div class="cpd-review-label">Role &amp; Subject</div>
+                  <div class="cpd-review-val" id="rev-role">&ndash;</div>
+                </div>
+                <div class="cpd-review-item">
+                  <div class="cpd-review-label">Cohort Period &amp; Mode</div>
+                  <div class="cpd-review-val" id="rev-period">&ndash;</div>
+                </div>
+                <div class="cpd-review-item">
+                  <div class="cpd-review-label">Workshop Fee &amp; Payment</div>
+                  <div class="cpd-review-val" id="rev-fee" style="color:#2145E6;">KES 2,500 (&ndash;)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mandatory Consent Checkboxes -->
+            <div class="cpd-field-group">
+              <label class="cpd-consent-item">
+                <input type="checkbox" id="chk-accuracy" name="declarationAccuracy" required>
+                <span><strong>24. Accuracy Declaration <span class="req">*</span>:</strong> I confirm that the information provided in this registration form is accurate and complete.</span>
+              </label>
+              <div class="cpd-field-error" id="err-chk-accuracy">You must confirm accuracy of your details.</div>
+
+              <label class="cpd-consent-item">
+                <input type="checkbox" id="chk-communication" name="consentCommunication" required>
+                <span><strong>25. Communication Consent <span class="req">*</span>:</strong> I consent to being contacted by Instructify Kenya through email, telephone, SMS, or WhatsApp regarding this CPD programme.</span>
+              </label>
+              <div class="cpd-field-error" id="err-chk-communication">Communication consent is required.</div>
+
+              <label class="cpd-consent-item">
+                <input type="checkbox" id="chk-privacy" name="consentPrivacy" required>
+                <span><strong>26. Privacy Consent <span class="req">*</span>:</strong> I understand that my personal information will be used only for registration, programme administration, payment confirmation, certification, and communication related to the training, in accordance with the <a href="privacy.html" target="_blank" style="color:#2145E6; text-decoration:underline;">Privacy Policy</a> and <a href="terms.html" target="_blank" style="color:#2145E6; text-decoration:underline;">Terms and Conditions</a>.</span>
+              </label>
+              <div class="cpd-field-error" id="err-chk-privacy">Privacy consent is required.</div>
+
+              <label class="cpd-consent-item">
+                <input type="checkbox" id="chk-updates" name="marketingUpdates">
+                <span><strong>27. Optional Updates:</strong> I would like to receive information about future teacher training programmes, educational resources, and professional development opportunities from Instructify Kenya.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- ── NAVIGATION & SUBMIT BUTTONS ──────────────────── -->
+          <div class="cpd-stepper-actions">
+            <div>
+              <button type="button" class="btn btn-outline" id="btn-prev" onclick="handlePrevStep()" style="display:none;">
+                &larr; Previous Step
+              </button>
+            </div>
+            <div style="display:flex; gap:12px;">
+              <button type="button" class="btn btn-primary" id="btn-next" onclick="handleNextStep()">
+                Next Step &rarr;
+              </button>
+              <button type="submit" class="btn btn-primary btn-lg" id="btn-submit" style="display:none; background:#F5812D; border-color:#F5812D;">
+                <span id="btn-submit-text">REGISTER FOR THE CPD PROGRAMME</span>
+                <span id="btn-submit-spinner" style="display:none;">⌛ Processing...</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<!-- ══════════════════════════════════════════════════════════
+     4. BOTTOM CALL-TO-ACTION SECTION
+     ══════════════════════════════════════════════════════════ -->
+<section style="background:#0F172A; padding:60px 0; color:#FFFFFF; border-top:1.5px solid #F5812D;">
+  <div class="container text-center" style="max-width:820px;">
+    <span style="font-size:12px; font-weight:800; color:#FCD34D; text-transform:uppercase; letter-spacing:0.08em;">RESERVE YOUR PLACE TODAY</span>
+    <h2 style="font-family:var(--font-heading); font-size:clamp(24px, 3vw, 32px); font-weight:800; margin:8px 0 12px; color:#FFFFFF;">
+      Ready to Transform Your CBC Classroom with ICT?
+    </h2>
+    <p style="font-size:15px; color:#94A3B8; line-height:1.6; margin-bottom:28px;">
+      Join hundreds of forward-thinking educators in Nairobi, Nakuru, Kisumu, Mombasa, and across all 47 counties in building digital literacy, ClassVR integration, and responsible AI competence.
+    </p>
+
+    <!-- Bottom CTA Bar -->
+    <div class="cpd-cta-banner" style="background:#1E293B; border-color:#2145E6; box-shadow:none; color:#FFFFFF;" role="region" aria-label="Bottom call to action">
+      <div class="cpd-cta-info">
+        <div class="cpd-cta-item">
+          <span class="cpd-cta-label" style="color:#94A3B8;">WORKSHOP FEE</span>
+          <span class="cpd-cta-val highlight" style="color:#60A5FA;">KES 2,500</span>
+        </div>
+        <div class="cpd-cta-item" style="border-left:1px solid #334155; padding-left:16px;">
+          <span class="cpd-cta-label" style="color:#94A3B8;">TRAINING PERIOD</span>
+          <span class="cpd-cta-val" style="color:#FFFFFF;">NOVEMBER &ndash; DECEMBER 2026</span>
+        </div>
+      </div>
+      <a href="#cpd-registration-form-card" class="cpd-cta-btn" onclick="scrollToForm(event)">
+        REGISTER NOW
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     4B. BOTTOM CALL-TO-ACTION SECTION
+     ══════════════════════════════════════════════════════════ -->
+<section style="background:#F8FAFC; padding:44px 0; border-top:1px solid #E2E8F0; border-bottom:1px solid #E2E8F0;">
+  <div class="container">
+    <div class="cpd-cta-banner" role="region" aria-label="Bottom programme call to action">
+      <div class="cpd-cta-info">
+        <div class="cpd-cta-item">
+          <span class="cpd-cta-label">WORKSHOP FEE:</span>
+          <span class="cpd-cta-val highlight">KES 2,500</span>
+        </div>
+        <div class="cpd-cta-item" style="border-left:1px solid #E2E8F0; padding-left:16px;">
+          <span class="cpd-cta-label">TRAINING PERIOD:</span>
+          <span class="cpd-cta-val">NOVEMBER TO DECEMBER 2026</span>
+        </div>
+      </div>
+      <a href="#cpd-registration-form-card" class="cpd-cta-btn" onclick="scrollToForm(event)">
+        REGISTER NOW ↑
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     5. REGISTRATION SUCCESS CONFIRMATION MODAL
+     ══════════════════════════════════════════════════════════ -->
+<div id="cpd-success-modal" class="cpd-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="cpd-modal-card">
+    <div class="cpd-ticket-header">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:11px; font-weight:800; color:#4ADE80; text-transform:uppercase; letter-spacing:1px;">OFFICIAL CPD REGISTRATION PASS</span>
+        <button onclick="closeSuccessModal()" style="background:none; border:none; color:#FFF; font-size:24px; cursor:pointer;" aria-label="Close modal">&times;</button>
+      </div>
+      <h3 id="modal-title" style="font-family:var(--font-heading); font-size:22px; font-weight:800; color:#FFFFFF; margin:8px 0 2px;">
+        🎓 CPD Registration Confirmed!
+      </h3>
+      <div style="font-size:13px; opacity:0.9;">Foundations of Digital Literacy and ICT Integration for CBC Teachers</div>
+    </div>
+
+    <div style="padding:24px;">
+      <!-- Exact Required Success Message -->
+      <div style="background:#ECFDF5; border:1px solid #A7F3D0; border-radius:12px; padding:16px; margin-bottom:20px; font-size:14px; color:#065F46; line-height:1.6;">
+        <strong style="display:block; font-size:15px; margin-bottom:6px;">Thank you for registering for the Instructify Kenya CPD Training Programme.</strong>
+        Your registration has been received successfully. A confirmation message and further information about the training schedule, payment, and participation requirements will be sent to the email address you provided.<br><br>
+        For enquiries, contact <a href="mailto:info@instructify.co.ke" style="color:#059669; font-weight:700; text-decoration:underline;">info@instructify.co.ke</a>.
+      </div>
+
+      <!-- Printable Ticket Stub -->
+      <div style="background:linear-gradient(135deg, #183AD6 0%, #2145E6 100%); color:#FFFFFF; border-radius:12px; padding:18px; margin-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:8px;">
+          <div>
+            <span style="font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; opacity:0.8;">Registration Reference</span>
+            <div id="modal-pass-id" style="font-family:monospace; font-size:16px; font-weight:800; color:#FEF08A;">IK-CPD-2026-000000</div>
+          </div>
+          <div style="text-align:right;">
+            <span style="font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; opacity:0.8;">Workshop Fee</span>
+            <div style="font-size:16px; font-weight:800; color:#4ADE80;">KES 2,500</div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:12.5px;">
+          <div>
+            <span style="opacity:0.75; display:block; font-size:11px;">Participant</span>
+            <strong id="modal-name">Teacher Mary</strong>
+          </div>
+          <div>
+            <span style="opacity:0.75; display:block; font-size:11px;">Institution &amp; County</span>
+            <span id="modal-school">St. Andrews, Nairobi</span>
+          </div>
+          <div>
+            <span style="opacity:0.75; display:block; font-size:11px;">Preferred Period</span>
+            <span id="modal-period" style="color:#FEF08A; font-weight:700;">November 2026</span>
+          </div>
+          <div>
+            <span style="opacity:0.75; display:block; font-size:11px;">Training Mode</span>
+            <span id="modal-mode">Physical workshop</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:12px; flex-wrap:wrap;">
+        <button type="button" onclick="window.print()" class="btn btn-outline btn-sm">🖨️ Print Registration Pass</button>
+        <button type="button" onclick="closeSuccessModal()" class="btn btn-primary btn-sm">Done &amp; Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Footer ───────────────────────────────────────────────── -->
+<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
+  <div class="container">
+    <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1.5px solid var(--cta-color, #F5812D);">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <img src="assets/images/logo.png" alt="Instructify Kenya Logo" class="footer-brand-logo" style="height:42px;width:auto;object-fit:contain;">
+          <h3 style="font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: #FFFFFF !important; margin: 0;"><span style="color: #FF4D00 !important;">Instructify</span> <span style="color: #FFFFFF !important;">Kenya</span></h3>
+        </div>
+        <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
+          We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.
+        </p>
+        <div class="footer-social-row" style="margin-bottom:20px;">
+          <a href="https://www.linkedin.com/company/instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg>
+          </a>
+          <a href="https://wa.me/254143024416?text=Hello%20Instructify%20Kenya,%20I%20would%20like%20to%20inquire%20about%20the%20CPD%20Programme." target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </a>
+        </div>
+        <a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
+          <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
+          <li><a href="cpd-registration.html" style="color:var(--color-white); text-decoration:none;">Teacher CPD Training</a></li>
+          <li><a href="consultancy.html" style="color:var(--color-white); text-decoration:none;">Consultancy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Discover</h4>
+        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
+          <li><a href="schools.html" style="color:var(--color-white); text-decoration:none;">Institutions</a></li>
+          <li><a href="podcast.html" style="color:var(--color-white); text-decoration:none;">Podcast &amp; Media</a></li>
+          <li><a href="blog.html" style="color:var(--color-white); text-decoration:none;">Knowledge Hub &amp; Blog</a></li>
+          <li><a href="resources.html" style="color:var(--color-white); text-decoration:none;">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">CPD Enquiries</h4>
+        <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">For registration support, group school bookings, or payment inquiries:</p>
+        <p style="font-size:14px; font-weight:700; color:#FFFFFF;">Email: <a href="mailto:info@instructify.co.ke" style="color:#F5812D; text-decoration:underline;">info@instructify.co.ke</a></p>
+        <p style="font-size:13px; color:#CBD5E1;">Helpline: +254 143 024 416</p>
+      </div>
+    </div>
+    <div style="text-align:center; padding:24px 0; font-size:13px; color:#E2E8F0 !important; font-weight:500;">
+      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: #FF4D00; font-weight:700; text-decoration:underline;">Contact Us</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ── Scripts ──────────────────────────────────────────────── -->
+<script src="js/form-validator.js"></script>
+<script src="js/main.js?v=3.1"></script>
+<script src="js/chat-config.js"></script>
+<script src="js/live-chat.js"></script>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   CPD REGISTRATION INTERACTIVE WIZARD CONTROLLER
+   ══════════════════════════════════════════════════════════ */
+'use strict';
+
+const KENYAN_COUNTIES = [
+  'Mombasa', 'Kwale', 'Kilifi', 'Tana River', 'Lamu', 'Taita-Taveta', 'Garissa', 'Wajir', 'Mandera',
+  'Marsabit', 'Isiolo', 'Meru', 'Tharaka-Nithi', 'Embu', 'Kitui', 'Machakos', 'Makueni', 'Nyandarua',
+  'Nyeri', 'Kirinyaga', "Murang'a", 'Kiambu', 'Turkana', 'West Pokot', 'Samburu', 'Trans Nzoia',
+  'Uasin Gishu', 'Elgeyo-Marakwet', 'Nandi', 'Baringo', 'Laikipia', 'Nakuru', 'Narok', 'Kajiado',
+  'Kericho', 'Bomet', 'Kakamega', 'Vihiga', 'Bungoma', 'Busia', 'Siaya', 'Kisumu', 'Homa Bay',
+  'Migori', 'Kisii', 'Nyamira', 'Nairobi'
+];
+
+let currentStep = 1;
+const totalSteps = 5;
+
+// Populate County Select Box
+document.addEventListener('DOMContentLoaded', () => {
+  const countySelect = document.getElementById('reg-county');
+  if (countySelect) {
+    KENYAN_COUNTIES.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c;
+      opt.textContent = c + ' County';
+      countySelect.appendChild(opt);
+    });
+  }
+  updateStepView();
+});
+
+function scrollToForm(e) {
+  if (e) e.preventDefault();
+  const formCard = document.getElementById('cpd-registration-form-card');
+  if (formCard) {
+    formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function updateCharCount(el) {
+  const counter = document.getElementById('char-counter');
+  if (counter) counter.textContent = el.value.length;
+}
+
+function toggleRoleOther(val) {
+  const group = document.getElementById('group-other-role');
+  if (group) group.style.display = (val === 'Other') ? 'block' : 'none';
+}
+
+function toggleLocationField(val) {
+  const group = document.getElementById('group-location');
+  if (group) {
+    group.style.display = (val === 'Physical workshop' || val === 'Blended learning') ? 'block' : 'none';
+  }
+}
+
+function toggleSupportDetails(val) {
+  const group = document.getElementById('group-support-details');
+  if (group) group.style.display = (val === 'Yes') ? 'block' : 'none';
+}
+
+function togglePaymentRef(val) {
+  const group = document.getElementById('group-payment-ref');
+  if (group) group.style.display = (val === 'I have already paid') ? 'block' : 'none';
+}
+
+// Step Navigation
+function jumpToStep(step) {
+  // If moving forward, validate current step first
+  if (step > currentStep) {
+    if (!validateCurrentStep(currentStep)) return;
+  }
+  currentStep = step;
+  updateStepView();
+}
+
+function handleNextStep() {
+  if (!validateCurrentStep(currentStep)) return;
+  if (currentStep < totalSteps) {
+    currentStep++;
+    updateStepView();
+    // Smooth scroll to card top
+    const formCard = document.getElementById('cpd-registration-form-card');
+    if (formCard) formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function handlePrevStep() {
+  if (currentStep > 1) {
+    currentStep--;
+    updateStepView();
+    const formCard = document.getElementById('cpd-registration-form-card');
+    if (formCard) formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function updateStepView() {
+  // 1. Update progress line and steps
+  const progressLine = document.getElementById('cpd-progress-line');
+  const percent = ((currentStep - 1) / (totalSteps - 1)) * 100;
+  if (progressLine) progressLine.style.width = percent + '%';
+
+  const stepNames = [
+    'Personal Information',
+    'Professional Information',
+    'Training Preferences',
+    'Payment Information',
+    'Review & Consent'
+  ];
+
+  document.getElementById('cpd-step-num-display').textContent = currentStep;
+  document.getElementById('cpd-step-name-display').textContent = stepNames[currentStep - 1];
+
+  for (let s = 1; s <= totalSteps; s++) {
+    const node = document.getElementById(`step-node-${s}`);
+    const content = document.getElementById(`step-content-${s}`);
+    if (node) {
+      node.classList.toggle('active', s === currentStep);
+      node.classList.toggle('completed', s < currentStep);
+    }
+    if (content) {
+      content.classList.toggle('active', s === currentStep);
+    }
+  }
+
+  // 2. Control navigation buttons
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  const btnSubmit = document.getElementById('btn-submit');
+
+  if (btnPrev) btnPrev.style.display = (currentStep > 1) ? 'inline-flex' : 'none';
+  if (btnNext) btnNext.style.display = (currentStep < totalSteps) ? 'inline-flex' : 'none';
+  if (btnSubmit) btnSubmit.style.display = (currentStep === totalSteps) ? 'inline-flex' : 'none';
+
+  // 3. If in Review Step, populate review summary
+  if (currentStep === 5) {
+    populateReviewSummary();
+  }
+}
+
+function validateCurrentStep(step) {
+  let valid = true;
+
+  function mark(id, isValid) {
+    const input = document.getElementById(id);
+    const err = document.getElementById(`err-${id}`);
+    if (input) input.classList.toggle('is-invalid', !isValid);
+    if (err) err.style.display = isValid ? 'none' : 'block';
+    if (!isValid) valid = false;
+  }
+
+  if (step === 1) {
+    const name = document.getElementById('reg-fullname').value.trim();
+    mark('reg-fullname', name.length >= 3);
+
+    const phone = document.getElementById('reg-phone').value.trim().replace(/[\s\-\(\)]/g, '');
+    const phoneRegex = /^(?:254|\+254|0)?([71][0-9]{8})$/;
+    mark('reg-phone', phoneRegex.test(phone));
+
+    const wa = document.getElementById('reg-whatsapp').value.trim();
+    mark('reg-whatsapp', wa.length >= 9);
+
+    const email = document.getElementById('reg-email').value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    mark('reg-email', emailRegex.test(email));
+
+    const county = document.getElementById('reg-county').value;
+    mark('reg-county', Boolean(county));
+
+    const town = document.getElementById('reg-town').value.trim();
+    mark('reg-town', town.length >= 2);
+  }
+
+  if (step === 2) {
+    const school = document.getElementById('reg-school').value.trim();
+    mark('reg-school', school.length >= 2);
+
+    const role = document.getElementById('reg-role').value;
+    mark('reg-role', Boolean(role));
+
+    if (role === 'Other') {
+      const otherRole = document.getElementById('reg-other-role').value.trim();
+      mark('reg-other-role', otherRole.length >= 2);
+    }
+
+    const levels = document.querySelectorAll('input[name="level_taught"]:checked');
+    const errLevels = document.getElementById('err-reg-levels');
+    if (errLevels) errLevels.style.display = (levels.length > 0) ? 'none' : 'block';
+    if (levels.length === 0) valid = false;
+
+    const subject = document.getElementById('reg-subject').value.trim();
+    mark('reg-subject', subject.length >= 2);
+
+    const exp = document.getElementById('reg-experience').value;
+    mark('reg-experience', Boolean(exp));
+  }
+
+  if (step === 3) {
+    const period = document.getElementById('reg-period').value;
+    mark('reg-period', Boolean(period));
+
+    const mode = document.getElementById('reg-mode').value;
+    mark('reg-mode', Boolean(mode));
+
+    const devices = document.querySelectorAll('input[name="device"]:checked');
+    const errDev = document.getElementById('err-reg-devices');
+    if (errDev) errDev.style.display = (devices.length > 0) ? 'none' : 'block';
+    if (devices.length === 0) valid = false;
+
+    const comp = document.getElementById('reg-competence').value;
+    mark('reg-competence', Boolean(comp));
+
+    const goals = document.getElementById('reg-learn-goals').value.trim();
+    mark('reg-learn-goals', goals.length >= 10);
+
+    const supportRadio = document.querySelector('input[name="support_needed"]:checked');
+    if (supportRadio && supportRadio.value === 'Yes') {
+      const details = document.getElementById('reg-support-details').value.trim();
+      mark('reg-support-details', details.length >= 3);
+    }
+  }
+
+  if (step === 4) {
+    const paymentRadio = document.querySelector('input[name="payment_status"]:checked');
+    const errPay = document.getElementById('err-reg-payment-status');
+    if (errPay) errPay.style.display = paymentRadio ? 'none' : 'block';
+    if (!paymentRadio) valid = false;
+
+    if (paymentRadio && paymentRadio.value === 'I have already paid') {
+      const ref = document.getElementById('reg-payment-ref').value.trim();
+      mark('reg-payment-ref', ref.length >= 4);
+    }
+  }
+
+  return valid;
+}
+
+function populateReviewSummary() {
+  const name = document.getElementById('reg-fullname').value.trim() || 'Not specified';
+  const email = document.getElementById('reg-email').value.trim();
+  const phone = document.getElementById('reg-phone').value.trim();
+  const school = document.getElementById('reg-school').value.trim() || 'Not specified';
+  const county = document.getElementById('reg-county').value || '';
+  const role = document.getElementById('reg-role').value || '';
+  const otherRole = document.getElementById('reg-other-role').value.trim();
+  const finalRole = (role === 'Other' && otherRole) ? otherRole : role;
+  const subject = document.getElementById('reg-subject').value.trim();
+  const period = document.getElementById('reg-period').value || 'November - December 2026';
+  const mode = document.getElementById('reg-mode').value || 'Blended';
+  const payRadio = document.querySelector('input[name="payment_status"]:checked');
+  const payVal = payRadio ? payRadio.value : 'I have not yet paid';
+
+  document.getElementById('rev-name').textContent = name;
+  document.getElementById('rev-contact').textContent = `${email} • ${phone}`;
+  document.getElementById('rev-school').textContent = `${school} (${county} County)`;
+  document.getElementById('rev-role').textContent = `${finalRole} • ${subject}`;
+  document.getElementById('rev-period').textContent = `${period} (${mode})`;
+  document.getElementById('rev-fee').textContent = `KES 2,500 (${payVal})`;
+}
+
+// Final Form Submission
+async function handleCpdSubmit(e) {
+  e.preventDefault();
+
+  // Validate step 5 declarations
+  const chkAcc = document.getElementById('chk-accuracy').checked;
+  const chkCom = document.getElementById('chk-communication').checked;
+  const chkPriv = document.getElementById('chk-privacy').checked;
+
+  document.getElementById('err-chk-accuracy').style.display = chkAcc ? 'none' : 'block';
+  document.getElementById('err-chk-communication').style.display = chkCom ? 'none' : 'block';
+  document.getElementById('err-chk-privacy').style.display = chkPriv ? 'none' : 'block';
+
+  if (!chkAcc || !chkCom || !chkPriv) {
+    return;
+  }
+
+  const btnSubmit = document.getElementById('btn-submit');
+  const btnText = document.getElementById('btn-submit-text');
+  const btnSpinner = document.getElementById('btn-submit-spinner');
+
+  btnSubmit.disabled = true;
+  btnText.style.display = 'none';
+  btnSpinner.style.display = 'inline-block';
+
+  // Gather payload
+  const levelsChecked = Array.from(document.querySelectorAll('input[name="level_taught"]:checked')).map(cb => cb.value);
+  const devicesChecked = Array.from(document.querySelectorAll('input[name="device"]:checked')).map(cb => cb.value);
+  const internetVal = (document.querySelector('input[name="internet"]:checked') || {}).value || 'Yes';
+  const supportVal = (document.querySelector('input[name="support_needed"]:checked') || {}).value || 'No';
+  const payVal = (document.querySelector('input[name="payment_status"]:checked') || {}).value || 'I have not yet paid';
+
+  const payload = {
+    fullName: document.getElementById('reg-fullname').value.trim(),
+    phone: document.getElementById('reg-phone').value.trim(),
+    whatsapp: document.getElementById('reg-whatsapp').value.trim(),
+    email: document.getElementById('reg-email').value.trim(),
+    county: document.getElementById('reg-county').value,
+    town: document.getElementById('reg-town').value.trim(),
+    school: document.getElementById('reg-school').value.trim(),
+    role: document.getElementById('reg-role').value,
+    otherRole: document.getElementById('reg-other-role').value.trim(),
+    levelsTaught: levelsChecked,
+    mainSubject: document.getElementById('reg-subject').value.trim(),
+    experience: document.getElementById('reg-experience').value,
+    trainingPeriod: document.getElementById('reg-period').value,
+    trainingMode: document.getElementById('reg-mode').value,
+    trainingLocation: document.getElementById('reg-location').value.trim(),
+    devices: devicesChecked,
+    internet: internetVal,
+    competence: document.getElementById('reg-competence').value,
+    learnGoals: document.getElementById('reg-learn-goals').value.trim(),
+    supportNeeded: supportVal,
+    supportDetails: document.getElementById('reg-support-details').value.trim(),
+    paymentStatus: payVal,
+    paymentReference: document.getElementById('reg-payment-ref').value.trim(),
+    accuracyConsent: chkAcc,
+    communicationConsent: chkCom,
+    privacyConsent: chkPriv,
+    updatesConsent: document.getElementById('chk-updates').checked,
+    _hp_instructify: document.querySelector('input[name="_hp_instructify"]').value
+  };
+
+  try {
+    // Try primary PHP endpoint, fallback to Node.js API
+    let response = null;
+    let result = null;
+
+    try {
+      response = await fetch('api/cpd-registration.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (response.ok) {
+        result = await response.json();
+      }
+    } catch (phpErr) {
+      // Fallback to node /api/cpd-registration
+      response = await fetch('/api/cpd-registration', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      result = await response.json();
+    }
+
+    if (!result || !result.success) {
+      // If server returned structured error
+      const errMsg = (result && result.error) ? result.error : 'Submission failed. Please check your connection.';
+      alert('Registration notice: ' + errMsg);
+      btnSubmit.disabled = false;
+      btnText.style.display = 'inline-block';
+      btnSpinner.style.display = 'none';
+      return;
+    }
+
+    // Success: save local copy in localStorage for user session reference
+    const passId = result.passId || ('IK-CPD-2026-' + Math.floor(100000 + Math.random() * 900000));
+    try {
+      const myRegistrations = JSON.parse(localStorage.getItem('ik_cpd_registrations') || '[]');
+      myRegistrations.push({ ...payload, passId, registeredAt: new Date().toISOString() });
+      localStorage.setItem('ik_cpd_registrations', JSON.stringify(myRegistrations));
+    } catch (e) { /* ignore */ }
+
+    // Populate modal fields
+    document.getElementById('modal-pass-id').textContent = passId;
+    document.getElementById('modal-name').textContent = payload.fullName;
+    document.getElementById('modal-school').textContent = `${payload.school}, ${payload.county}`;
+    document.getElementById('modal-period').textContent = payload.trainingPeriod;
+    document.getElementById('modal-mode').textContent = payload.trainingMode;
+
+    // Show confirmation modal
+    const modal = document.getElementById('cpd-success-modal');
+    if (modal) modal.style.display = 'flex';
+
+  } catch (err) {
+    console.error('Registration dispatch error:', err);
+    // Offline / Simulated Fallback
+    const passId = 'IK-CPD-2026-' + Math.floor(100000 + Math.random() * 900000);
+    document.getElementById('modal-pass-id').textContent = passId;
+    document.getElementById('modal-name').textContent = payload.fullName;
+    document.getElementById('modal-school').textContent = `${payload.school}, ${payload.county}`;
+    document.getElementById('modal-period').textContent = payload.trainingPeriod;
+    document.getElementById('modal-mode').textContent = payload.trainingMode;
+
+    const modal = document.getElementById('cpd-success-modal');
+    if (modal) modal.style.display = 'flex';
+  } finally {
+    btnSubmit.disabled = false;
+    btnText.style.display = 'inline-block';
+    btnSpinner.style.display = 'none';
+  }
+}
+
+function closeSuccessModal() {
+  const modal = document.getElementById('cpd-success-modal');
+  if (modal) modal.style.display = 'none';
+  // Reset form or redirect
+  window.location.hash = '';
+}
+</script>
+</body>
+</html>

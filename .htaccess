@@ -33,6 +33,8 @@
   RewriteRule ^api/create-order/?$ api/payment.php?action=create-order [L,QSA]
   RewriteRule ^api/initiate-payment/?$ api/payment.php?action=initiate-payment [L,QSA]
   RewriteRule ^api/verify-payment/?$ api/payment.php?action=verify-payment [L,QSA]
+  RewriteRule ^api/check-enrollment/?$ api/payment.php?action=check-enrollment [L,QSA]
+  RewriteRule ^api/webhook/mpesa/?$ api/payment.php?action=webhook-mpesa [L,QSA]
   RewriteRule ^api/payment/?$ api/payment.php [L,QSA]
 
   # ── Clean URLs (serve .html extension automatically) ──

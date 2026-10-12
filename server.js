@@ -30,17 +30,18 @@ function loadEnvFile(filePath) {
 
 loadEnvFile(path.join(__dirname, '.env.local'));
 loadEnvFile(path.join(__dirname, '.env'));
-loadEnvFile(path.join(__dirname, '.env.example'));
 
 // ── Dynamic API Handlers Map ─────────────────────────────────
 const apiHandlers = {
   '/api/create-order': () => import('./api/create-order.js'),
   '/api/initiate-payment': () => import('./api/initiate-payment.js'),
   '/api/verify-payment': () => import('./api/verify-payment.js'),
+  '/api/check-enrollment': () => import('./api/check-enrollment.js'),
   '/api/webhook/mpesa': () => import('./api/webhook/mpesa.js'),
   '/api/webhook/paystack': () => import('./api/webhook/paystack.js'),
   '/api/wishlist': () => import('./api/wishlist.js'),
   '/api/contact': () => import('./api/contact.js'),
+  '/api/cpd-registration': () => import('./api/cpd-registration.js'),
 };
 
 const PORT = process.env.PORT || 8080;
@@ -144,6 +145,12 @@ const server = http.createServer(async (req, res) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Instructify Kenya Server running on http://localhost:${PORT}`);
-});
+// ── Listen (Standard Port or Phusion Passenger) ──────────────
+if (typeof PhusionPassenger !== 'undefined') {
+  server.listen('passenger');
+  console.log('Instructify Kenya Server attached to Phusion Passenger (cPanel)');
+} else {
+  server.listen(process.env.PORT || PORT, () => {
+    console.log(`Instructify Kenya Server running on http://localhost:${process.env.PORT || PORT}`);
+  });
+}

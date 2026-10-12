@@ -396,6 +396,107 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
+   PARTNERS & ACCREDITATION TRUST STRIP
+   ══════════════════════════════════════════════════════════════ */
+.partners-trust-strip {
+  background: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 24px 0;
+}
+
+.partners-trust-label {
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #64748B;
+  margin-bottom: 16px;
+}
+
+.partners-logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px clamp(10px, 1.5vw, 20px);
+}
+
+.partner-trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 999px;
+  font-size: 13px;
+  color: #334155;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.partner-trust-pill:hover {
+  transform: translateY(-2px);
+  border-color: #CBD5E1;
+}
+
+.partner-trust-pill strong {
+  color: #0F172A;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HOMEPAGE FEATURED COURSES SECTION
+   ══════════════════════════════════════════════════════════════ */
+.home-featured-courses-section {
+  padding: clamp(48px, 6vw, 80px) 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.home-courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 28px;
+  align-items: stretch;
+  margin-top: 36px;
+}
+
+.home-category-pills-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 24px auto 0;
+  max-width: 800px;
+}
+
+.home-cat-filter-btn {
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 38px;
+}
+
+.home-cat-filter-btn:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+.home-cat-filter-btn.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+/* ══════════════════════════════════════════════════════════════
    LEARNING MODEL — Step cards
    ══════════════════════════════════════════════════════════════ */
 .learning-step-card {

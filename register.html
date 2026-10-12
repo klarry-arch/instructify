@@ -221,6 +221,17 @@
       border-color: #2145E6;
       box-shadow: 0 0 0 3px rgba(33,69,230,0.15);
     }
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 480px) {
+      .form-row-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
 
     /* Role selector */
     .role-selector { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 18px; }
@@ -397,26 +408,10 @@
             <input type="password" id="signin-password" class="form-input" placeholder="Your password" required autocomplete="current-password">
           </div>
 
-          <!-- Demo credentials hint -->
-          <div style="margin-bottom:20px;font-size:12.5px;background:#EEF4FF;border:1px solid #93C5FD;padding:11px 14px;border-radius:8px;color:#2145E6;line-height:1.6;">
-            <strong>Demo accounts:</strong><br>
-            Educator: trainer@instructify.ke / Train@2024<br>
-            Learner: learner@instructify.ke / Learn@2024<br>
-            Admin: admin@instructify.ke / Admin@2024
-          </div>
-
-          <button type="submit" id="signin-btn" style="width:100%;background:#F5812D;color:#fff;font-family:var(--font-heading,'Poppins',sans-serif);font-size:15px;font-weight:700;padding:13px;border-radius:9px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(245,129,45,0.35);transition:opacity 0.2s;">
+          <button type="submit" id="signin-btn" style="width:100%;background:#F5812D;color:#fff;font-family:var(--font-heading,'Poppins',sans-serif);font-size:15px;font-weight:700;padding:13px;border-radius:9px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(245,129,45,0.35);transition:opacity 0.2s;margin-top:8px;margin-bottom:24px;">
             Sign In to Instructify
           </button>
         </form>
-
-        <div class="divider-text">or continue as</div>
-
-        <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:8px;margin-bottom:22px;">
-          <button type="button" onclick="quickLogin('trainer')" class="btn btn-outline btn-sm" style="font-size:12px;padding:8px 4px;">👩‍🏫 Educator</button>
-          <button type="button" onclick="quickLogin('learner')" class="btn btn-outline btn-sm" style="font-size:12px;padding:8px 4px;">🎓 Learner</button>
-          <button type="button" onclick="quickLogin('admin')" class="btn btn-outline btn-sm" style="font-size:12px;padding:8px 4px;">🛡️ Admin</button>
-        </div>
 
         <p style="text-align:center;font-size:13.5px;color:var(--text-muted,#475569);margin:0;">
           Don't have an account?
@@ -458,25 +453,34 @@
         </div>
 
         <form id="signup-form" onsubmit="handleSignUp(event)">
-          <div class="form-group" style="margin-bottom:13px;">
-            <label class="form-label">Full Name</label>
-            <input type="text" id="signup-name" aria-label="Full Name" class="form-input" placeholder="Your full name" required>
+          <!-- Hidden name field kept synced for compatibility -->
+          <input type="hidden" id="signup-name" name="name" value="">
+
+          <div class="form-row-2">
+            <div class="form-group" style="margin-bottom:13px;">
+              <label class="form-label" for="signup-firstname">First Name</label>
+              <input type="text" id="signup-firstname" name="firstname" aria-label="First Name" class="form-input" placeholder="First name" required autocomplete="given-name">
+            </div>
+            <div class="form-group" style="margin-bottom:13px;">
+              <label class="form-label" for="signup-lastname">Last Name</label>
+              <input type="text" id="signup-lastname" name="lastname" aria-label="Last Name" class="form-input" placeholder="Last name" required autocomplete="family-name">
+            </div>
           </div>
           <div class="form-group" style="margin-bottom:13px;">
-            <label class="form-label">Email Address</label>
-            <input type="email" id="signup-email" aria-label="Email Address" class="form-input" placeholder="your@email.com" required>
+            <label class="form-label" for="signup-email">Email Address</label>
+            <input type="email" id="signup-email" aria-label="Email Address" class="form-input" placeholder="your@email.com" required autocomplete="email">
           </div>
           <div class="form-group" style="margin-bottom:13px;">
-            <label class="form-label">Phone Number (M-Pesa)</label>
-            <input type="tel" id="signup-phone" aria-label="Phone Number" class="form-input" placeholder="07XX XXX XXX">
+            <label class="form-label" for="signup-phone">Phone Number (M-Pesa)</label>
+            <input type="tel" id="signup-phone" aria-label="Phone Number" class="form-input" placeholder="07XX XXX XXX" autocomplete="tel">
           </div>
           <div id="institution-field" style="display:none;margin-bottom:13px;" class="form-group">
-            <label class="form-label">Institution / Organization Name</label>
+            <label class="form-label" for="signup-institution">Institution / Organization Name</label>
             <input type="text" id="signup-institution" aria-label="Institution or School Name" class="form-input" placeholder="School or organization name">
           </div>
           <div class="form-group" style="margin-bottom:20px;">
-            <label class="form-label">Create Password</label>
-            <input type="password" id="signup-password" aria-label="Account Password" class="form-input" placeholder="Min. 8 characters" required minlength="8">
+            <label class="form-label" for="signup-password">Create Password</label>
+            <input type="password" id="signup-password" aria-label="Account Password" class="form-input" placeholder="Min. 8 characters" required minlength="8" autocomplete="new-password">
           </div>
 
           <button type="submit" id="signup-btn" style="width:100%;background:#F5812D;color:#fff;font-family:var(--font-heading,'Poppins',sans-serif);font-size:15px;font-weight:700;padding:13px;border-radius:9px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(245,129,45,0.35);transition:opacity 0.2s;">
@@ -496,6 +500,7 @@
 
 <script src="js/main.js?v=3.1"></script>
 <script src="js/auth.js"></script>
+<script src="js/form-validator.js"></script>
 <script>
 // Redirect if already logged in
 document.addEventListener('DOMContentLoaded', () => {
@@ -507,6 +512,36 @@ document.addEventListener('DOMContentLoaded', () => {
   // Pre-select role from URL param
   const role = new URLSearchParams(window.location.search).get('role');
   if (role === 'trainer') { switchTab('signup'); selectRole(document.getElementById('role-trainer'), 'trainer'); }
+
+  // Attach live real-time validation
+  if (window.FormValidator) {
+    window.FormValidator.attachLiveValidation('signup-firstname', [
+      { rule: 'required', label: 'First Name' },
+      { rule: 'namePart', label: 'First Name' }
+    ]);
+    window.FormValidator.attachLiveValidation('signup-lastname', [
+      { rule: 'required', label: 'Last Name' },
+      { rule: 'namePart', label: 'Last Name' }
+    ]);
+    window.FormValidator.attachLiveValidation('signup-email', [
+      { rule: 'required', label: 'Email Address' },
+      { rule: 'email', label: 'Email Address' }
+    ]);
+    window.FormValidator.attachLiveValidation('signup-phone', [
+      { rule: 'phone', label: 'Phone Number' }
+    ]);
+    window.FormValidator.attachLiveValidation('signup-password', [
+      { rule: 'required', label: 'Password' },
+      { rule: 'password', label: 'Password' }
+    ]);
+    window.FormValidator.attachLiveValidation('signin-email', [
+      { rule: 'required', label: 'Email Address' },
+      { rule: 'email', label: 'Email Address' }
+    ]);
+    window.FormValidator.attachLiveValidation('signin-password', [
+      { rule: 'required', label: 'Password' }
+    ]);
+  }
 });
 
 let selectedRole = 'learner';
@@ -531,6 +566,30 @@ function switchTab(tab) {
 
 function handleSignIn(e) {
   e.preventDefault();
+  if (window.FormValidator) {
+    window.FormValidator.clearErrors('tab-signin');
+    const val = window.FormValidator.validateGroup([
+      {
+        id: 'signin-email',
+        rules: [
+          { rule: 'required', label: 'Email Address' },
+          { rule: 'email', label: 'Email Address' }
+        ]
+      },
+      {
+        id: 'signin-password',
+        rules: [
+          { rule: 'required', label: 'Password' }
+        ]
+      }
+    ]);
+    if (!val.valid) {
+      if (window.showToast) window.showToast(val.errors[0], 'warning');
+      window.FormValidator.focusFirstError(val.firstErrorId);
+      return; // BLOCK!
+    }
+  }
+
   const btn = document.getElementById('signin-btn');
   btn.classList.add('btn-loading');
   btn.textContent = 'Signing in...';
@@ -543,6 +602,14 @@ function handleSignIn(e) {
     if (result.success) {
       window.showToast('Welcome back, ' + result.user.name.split(' ')[0] + '!', 'success');
       setTimeout(() => {
+        try {
+          const returnTo = JSON.parse(localStorage.getItem('ik_return_to') || 'null');
+          if (returnTo && returnTo.url) {
+            localStorage.removeItem('ik_return_to');
+            window.location.href = returnTo.url;
+            return;
+          }
+        } catch { /* ignore */ }
         const map = { admin: 'dashboard-admin.html', trainer: 'dashboard-trainer.html', learner: 'dashboard-learner.html', institution: 'dashboard-learner.html' };
         window.location.href = map[result.user.role] || 'dashboard-learner.html';
       }, 1000);
@@ -556,11 +623,78 @@ function handleSignIn(e) {
 
 function handleSignUp(e) {
   e.preventDefault();
+  const firstNameInput = document.getElementById('signup-firstname');
+  const lastNameInput = document.getElementById('signup-lastname');
+  const firstName = firstNameInput ? firstNameInput.value.trim() : '';
+  const lastName = lastNameInput ? lastNameInput.value.trim() : '';
+  const fullName = `${firstName} ${lastName}`.trim();
+  const hiddenName = document.getElementById('signup-name');
+  if (hiddenName) hiddenName.value = fullName;
+
+  if (window.FormValidator) {
+    window.FormValidator.clearErrors('tab-signup');
+    const fields = [
+      {
+        id: 'signup-firstname',
+        rules: [
+          { rule: 'required', label: 'First Name' },
+          { rule: 'namePart', label: 'First Name' }
+        ]
+      },
+      {
+        id: 'signup-lastname',
+        rules: [
+          { rule: 'required', label: 'Last Name' },
+          { rule: 'namePart', label: 'Last Name' }
+        ]
+      },
+      {
+        id: 'signup-email',
+        rules: [
+          { rule: 'required', label: 'Email Address' },
+          { rule: 'email', label: 'Email Address' }
+        ]
+      },
+      {
+        id: 'signup-phone',
+        rules: [
+          { rule: 'phone', label: 'Phone Number' }
+        ]
+      },
+      {
+        id: 'signup-password',
+        rules: [
+          { rule: 'required', label: 'Password' },
+          { rule: 'password', label: 'Password' }
+        ]
+      }
+    ];
+
+    if (selectedRole === 'institution') {
+      fields.push({
+        id: 'signup-institution',
+        rules: [
+          { rule: 'required', label: 'Institution Name' },
+          { rule: 'minLength', param: 3, label: 'Institution Name' }
+        ]
+      });
+    }
+
+    const val = window.FormValidator.validateGroup(fields);
+    if (!val.valid) {
+      if (window.showToast) window.showToast(val.errors[0], 'warning');
+      window.FormValidator.focusFirstError(val.firstErrorId);
+      return; // BLOCK!
+    }
+  }
+
   const btn = document.getElementById('signup-btn');
   btn.classList.add('btn-loading');
   setTimeout(() => {
     const result = window.attemptRegister({
-      name: document.getElementById('signup-name').value,
+      name: fullName,
+      firstName: firstName,
+      lastName: lastName,
       email: document.getElementById('signup-email').value,
       phone: document.getElementById('signup-phone').value,
       password: document.getElementById('signup-password').value,
@@ -571,6 +705,14 @@ function handleSignUp(e) {
     if (result.success) {
       window.showToast('Account created successfully! Welcome to Instructify Kenya!', 'success');
       setTimeout(() => {
+        try {
+          const returnTo = JSON.parse(localStorage.getItem('ik_return_to') || 'null');
+          if (returnTo && returnTo.url) {
+            localStorage.removeItem('ik_return_to');
+            window.location.href = returnTo.url;
+            return;
+          }
+        } catch { /* ignore */ }
         const map = { admin: 'dashboard-admin.html', trainer: 'dashboard-trainer.html', learner: 'dashboard-learner.html' };
         window.location.href = map[result.user.role] || 'dashboard-learner.html';
       }, 1200);
@@ -582,18 +724,6 @@ function handleSignUp(e) {
   }, 900);
 }
 
-function quickLogin(role) {
-  const creds = {
-    learner: { email: 'learner@instructify.ke', password: 'Learn@2024' },
-    admin:   { email: 'admin@instructify.ke',   password: 'Admin@2024' },
-    trainer: { email: 'trainer@instructify.ke', password: 'Train@2024' }
-  };
-  if (creds[role]) {
-    document.getElementById('signin-email').value = creds[role].email;
-    document.getElementById('signin-password').value = creds[role].password;
-    setTimeout(() => document.getElementById('signin-form').dispatchEvent(new Event('submit')), 200);
-  }
-}
 
 function showForgotPassword() {
   const email = document.getElementById('signin-email').value;

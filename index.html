@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css?v=3.1">
@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="css/live-chat.css">
 </head>
 <body>
+
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
 
 <!-- ── Navigation ───────────────────────────────────────────── -->
 <nav id="navbar" class="navbar">
@@ -45,6 +47,15 @@
               <div class="nav-dropdown-info">
                 <span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span>
                 <span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span>
+              </div>
+            </a>
+          </li>
+          <li role="none">
+            <a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem" data-nav="cpd">
+              <span class="nav-dropdown-icon">🎓</span>
+              <div class="nav-dropdown-info">
+                <span class="nav-dropdown-title">CPD Programmes <span class="nav-badge badge-blue">Nov '26</span></span>
+                <span class="nav-dropdown-desc">Digital Literacy &amp; ICT Integration for CBC</span>
               </div>
             </a>
           </li>
@@ -96,6 +107,7 @@
       <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
       <div class="nav-mobile-sublinks">
         <a href="courses.html" class="nav-mobile-sublink" data-nav="courses"><span>📚</span> All Courses</a>
+        <a href="cpd-registration.html" class="nav-mobile-sublink" data-nav="cpd"><span>🎓</span> Teacher CPD Registration</a>
         <a href="podcast.html" class="nav-mobile-sublink" data-nav="podcast"><span>🎙️</span> Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></a>
         <a href="resources.html" class="nav-mobile-sublink" data-nav="resources"><span>📂</span> Resources</a>
       </div>
@@ -115,6 +127,8 @@
 
 
 
+<main id="main-content">
+
 <!-- ══════════════════════════════════════════════════════════
      1. HERO SECTION
      ══════════════════════════════════════════════════════════ -->
@@ -128,17 +142,17 @@
       <div class="hero-text animate-fade-in-left">
         <div class="hero-badge">
           <span class="hero-badge-dot" aria-hidden="true"></span>
-          Kenya's Premier Education Innovation Platform
+          🇰🇪 Kenya's Leading Educator Professional Development Platform
         </div>
 
         <h1 class="hero-title">
           Empowering Educators.<br>
-          <span class="highlight-accent">Transforming</span> Institutions.<br>
-          Driving Digital Learning Excellence.
+          <span class="highlight-accent">Transforming</span> Kenyan Classrooms.<br>
+          Driving 21st-Century Learning.
         </h1>
 
         <p class="hero-subtitle">
-          Access professional development courses, digital literacy programs, ICT integration training, workshops, certifications, and consultancy solutions designed for educators, schools, institutions, and organizations.
+          Practical, competency-based teacher training and accredited LMS programmes in Competency-Based Education (CBC/CBE), Digital Literacy, ICT Integration, and AI in the Classroom for educators and schools across all 47 counties.
         </p>
 
         <!-- Search Bar -->
@@ -148,37 +162,42 @@
               <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
             </svg>
           </span>
-          <label for="hero-search-input" class="sr-only">Search courses and workshops</label>
-          <input type="search" id="hero-search-input" placeholder="Search courses and workshops..." aria-label="Search courses and workshops" onkeypress="if(event.key==='Enter'){const q=this.value.trim();window.location.href='courses.html'+(q?'?q='+encodeURIComponent(q):'');}">
+          <label for="hero-search-input" class="sr-only">Search courses, workshops, and competencies</label>
+          <input type="search" id="hero-search-input" placeholder="Search courses, workshops, and competencies..." aria-label="Search courses, workshops, and competencies" onkeypress="if(event.key==='Enter'){const q=this.value.trim();window.location.href='courses.html'+(q?'?q='+encodeURIComponent(q):'');}">
           <button class="hero-search-btn" type="button" onclick="const q=document.getElementById('hero-search-input').value.trim();window.location.href='courses.html'+(q?'?q='+encodeURIComponent(q):'');">Search</button>
         </div>
 
         <!-- CTAs -->
         <div class="hero-ctas">
-          <a href="courses.html" class="btn btn-white btn-lg">
+          <a href="courses.html" class="btn btn-white btn-lg" style="font-weight:750;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
-            Explore Courses
+            Explore Courses →
           </a>
-          <a href="workshop-registration.html" class="btn btn-outline-white btn-lg">
+          <a href="workshop-registration.html" class="btn btn-outline-white btn-lg" style="font-weight:700;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
             Book a Workshop
+          </a>
+          <a href="schools.html" class="btn btn-outline-white btn-lg" style="font-weight:700;">
+            🏫 Institutions
           </a>
         </div>
 
         <!-- Trust Indicators -->
         <div class="hero-trust">
-          <div class="trust-item"><span class="trust-check" aria-hidden="true">✓</span> Accredited CPD Training</div>
-          <div class="trust-item"><span class="trust-check" aria-hidden="true">✓</span> CBC-Aligned Programs</div>
-          <div class="trust-item"><span class="trust-check" aria-hidden="true">✓</span> Expert Consultancy</div>
+          <div class="trust-item"><span class="trust-check" aria-hidden="true">✓</span> TSC CPD Aligned</div>
+          <div class="trust-item"><span class="trust-check" aria-hidden="true">✓</span> KICD CBC Framework</div>
+          <div class="trust-item"><span class="trust-check" aria-hidden="true">✓</span> 47 Counties Reached</div>
+          <div class="trust-item"><span class="trust-check" aria-hidden="true">✓</span> Verifiable Certificates</div>
         </div>
 
         <!-- Category Pills -->
         <div class="hero-categories" aria-label="Popular categories">
+          <a href="courses.html?cat=smart" class="hero-category-pill">🎯 Smart Classrooms</a>
           <a href="courses.html?cat=ict" class="hero-category-pill">💻 ICT Integration</a>
           <a href="courses.html?cat=cbc" class="hero-category-pill">📚 CBC Curriculum</a>
           <a href="courses.html?cat=ai" class="hero-category-pill">🤖 AI in Education</a>
-          <a href="courses.html?cat=leadership" class="hero-category-pill">🎓 School Leadership</a>
           <a href="courses.html?cat=digital" class="hero-category-pill">🌐 Digital Literacy</a>
+          <a href="courses.html?cat=leadership" class="hero-category-pill">🎓 School Leadership</a>
         </div>
       </div>
 
@@ -231,6 +250,70 @@
         <div class="impact-stat-number">98%</div>
         <div class="impact-stat-label">Partner Satisfaction</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Accredited Partners & Framework Alignment Strip ── -->
+<section class="partners-trust-strip" aria-label="Accreditation and national curriculum frameworks">
+  <div class="container text-center">
+    <p class="partners-trust-label">Aligned with National Frameworks &amp; Trusted Across 47 Counties</p>
+    <div class="partners-logos-grid">
+      <div class="partner-trust-pill">
+        <span class="partner-icon">🎓</span>
+        <span class="partner-text"><strong>TSC CPD Standards</strong> Aligned Competencies</span>
+      </div>
+      <div class="partner-trust-pill">
+        <span class="partner-icon">🇰🇪</span>
+        <span class="partner-text"><strong>KICD Curriculum</strong> CBE / CBC Framework</span>
+      </div>
+      <div class="partner-trust-pill">
+        <span class="partner-icon">🔬</span>
+        <span class="partner-text"><strong>CEMASTEA</strong> STEM &amp; Digital Pedagogy</span>
+      </div>
+      <div class="partner-trust-pill">
+        <span class="partner-icon">🏛️</span>
+        <span class="partner-text"><strong>47 Kenyan Counties</strong> County Directorates</span>
+      </div>
+      <div class="partner-trust-pill">
+        <span class="partner-icon">🏫</span>
+        <span class="partner-text"><strong>1,200+ Schools</strong> Certified Educators</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FEATURED COURSES & ACCREDITED PROGRAMMES (LMS DISCOVERY)
+     ══════════════════════════════════════════════════════════ -->
+<section class="home-featured-courses-section" id="featured-courses" aria-label="Featured accredited courses">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-tag blue">ACCREDITED PROGRAMMES</span>
+      <h2 class="section-title">Explore Flagship Courses &amp; Certifications</h2>
+      <p class="section-subtitle">
+        High-impact, practical competencies designed for Kenyan teachers, school principals, and educational leaders.
+      </p>
+
+      <!-- Category Filter Pills -->
+      <div class="home-category-pills-filter" role="tablist" aria-label="Filter featured courses by category">
+        <button type="button" class="home-cat-filter-btn active" onclick="filterHomeCourses('all', this)" role="tab" aria-selected="true">All Programmes</button>
+        <button type="button" class="home-cat-filter-btn" onclick="filterHomeCourses('smart', this)" role="tab" aria-selected="false">Smart Classrooms &amp; VR</button>
+        <button type="button" class="home-cat-filter-btn" onclick="filterHomeCourses('ict', this)" role="tab" aria-selected="false">ICT Integration</button>
+        <button type="button" class="home-cat-filter-btn" onclick="filterHomeCourses('cbe', this)" role="tab" aria-selected="false">CBC / CBE Pedagogy</button>
+        <button type="button" class="home-cat-filter-btn" onclick="filterHomeCourses('ai', this)" role="tab" aria-selected="false">AI in Education</button>
+      </div>
+    </div>
+
+    <!-- Live Course Grid -->
+    <div class="home-courses-grid" id="home-featured-grid">
+      <!-- Dynamically hydrated with renderCourseCard -->
+    </div>
+
+    <div class="text-center" style="margin-top: 40px;">
+      <a href="courses.html" class="btn btn-primary btn-lg" style="font-weight: 750;">
+        Explore All Accredited Courses &rarr;
+      </a>
     </div>
   </div>
 </section>
@@ -536,6 +619,8 @@
   </div>
 </section>
 
+</main>
+
 <!-- ══════════════════════════════════════════════════════════
      FOOTER
      ══════════════════════════════════════════════════════════ -->
@@ -630,6 +715,7 @@
   </div>
 </footer>
 
+<script src="js/form-validator.js"></script>
 <script src="js/main.js?v=3.1"></script>
 <script src="js/auth.js"></script>
 <script src="js/courses.js"></script>
@@ -665,12 +751,71 @@
   els.forEach(function(el) { obs.observe(el); });
 })();
 
+// ── Homepage Featured Courses Hydration & Filtering ─────────
+(function() {
+  const container = document.getElementById('home-featured-grid');
+  if (!container) return;
+
+  window.filterHomeCourses = function(category, btn) {
+    if (!window.COURSES || !window.renderCourseCard) return;
+
+    if (btn) {
+      document.querySelectorAll('.home-cat-filter-btn').forEach(function(b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+    }
+
+    let list = window.COURSES;
+    if (category === 'smart') {
+      list = window.COURSES.filter(function(c) {
+        return (c.tags || []).some(function(t) { return t.toLowerCase().includes('smart') || t.toLowerCase().includes('vr'); }) || (c.category || '').toLowerCase().includes('smart');
+      });
+    } else if (category === 'ict') {
+      list = window.COURSES.filter(function(c) {
+        return (c.category || '').toLowerCase().includes('ict') || (c.tags || []).some(function(t) { return t.toLowerCase().includes('ict'); });
+      });
+    } else if (category === 'cbe') {
+      list = window.COURSES.filter(function(c) {
+        return (c.category || '').toLowerCase().includes('curriculum') || (c.tags || []).some(function(t) { return t.toLowerCase().includes('cbe') || t.toLowerCase().includes('cbc'); });
+      });
+    } else if (category === 'ai') {
+      list = window.COURSES.filter(function(c) {
+        return (c.category || '').toLowerCase().includes('ai') || (c.tags || []).some(function(t) { return t.toLowerCase().includes('ai'); });
+      });
+    }
+
+    // Default to top 4 courses
+    const toRender = list.slice(0, 4);
+    container.innerHTML = toRender.map(window.renderCourseCard).join('');
+  };
+
+  // Initial render when DOM is ready
+  if (window.COURSES) {
+    window.filterHomeCourses('all');
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      window.filterHomeCourses('all');
+    });
+  }
+})();
+
 // ── Consultation form ─────────────────────────────────────
 (function() {
   const form = document.getElementById('consultation-form');
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+    if (window.FormValidator) {
+      const val = window.FormValidator.validateForm(form);
+      if (!val.valid) {
+        if (window.showToast) window.showToast(val.errors[0] || 'Please complete the required consultation fields.', 'warning');
+        if (val.firstErrorEl) val.firstErrorEl.focus();
+        return;
+      }
+    }
     const btn = form.querySelector('[type="submit"]');
     btn.classList.add('loading');
     btn.disabled = true;
@@ -679,7 +824,9 @@
       btn.disabled = false;
       btn.textContent = '✓ Request Sent!';
       btn.style.background = 'var(--secondary)';
-    }, 1800);
+      if (window.showToast) window.showToast('Consultation request sent successfully!', 'success');
+      form.reset();
+    }, 1200);
   });
 })();
 
@@ -689,8 +836,18 @@
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+    if (window.FormValidator) {
+      const val = window.FormValidator.validateForm(form);
+      if (!val.valid) {
+        if (window.showToast) window.showToast(val.errors[0] || 'Please enter a valid email address.', 'warning');
+        if (val.firstErrorEl) val.firstErrorEl.focus();
+        return;
+      }
+    }
     const btn = form.querySelector('[type="submit"]');
     btn.textContent = '✓ Done!';
+    if (window.showToast) window.showToast('Thank you for subscribing to our newsletter!', 'success');
+    form.reset();
     setTimeout(function() { btn.textContent = 'Subscribe'; }, 3000);
   });
 })();

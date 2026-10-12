@@ -442,6 +442,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (topicForm) {
     topicForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (window.FormValidator) {
+        const val = window.FormValidator.validateForm(topicForm);
+        if (!val.valid) {
+          if (window.showToast) window.showToast(val.errors[0] || 'Please complete all required topic fields.', 'warning');
+          if (val.firstErrorEl) val.firstErrorEl.focus();
+          return;
+        }
+      }
       const submitBtn = topicForm.querySelector('button[type="submit"]');
       const originalText = submitBtn ? submitBtn.textContent : 'Submit Topic';
 
@@ -464,6 +472,37 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 3000);
         }
       }, 600);
+    });
+  }
+
+  // ── Pitch a Guest Form Handler ──
+  const guestForm = document.getElementById('guest-form');
+  if (guestForm) {
+    guestForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (window.FormValidator) {
+        const val = window.FormValidator.validateForm(guestForm);
+        if (!val.valid) {
+          if (window.showToast) window.showToast(val.errors[0] || 'Please provide your name, valid email, and proposed topic.', 'warning');
+          if (val.firstErrorEl) val.firstErrorEl.focus();
+          return;
+        }
+      }
+      const submitBtn = guestForm.querySelector('button[type="submit"]');
+      const origText = submitBtn ? submitBtn.textContent : 'Submit Proposal';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting Proposal...';
+      }
+      setTimeout(() => {
+        if (window.showToast) window.showToast('🎉 Guest proposal submitted successfully! Our podcast team will review it.', 'success');
+        guestForm.reset();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = origText;
+        }
+        window.closeGuestModal();
+      }, 700);
     });
   }
 

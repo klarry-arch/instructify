@@ -276,15 +276,15 @@
           <div class="step" id="step-3" title="Confirmation"></div>
         </div>
 
-        <!-- ── State: initializing ── -->
-        <div id="screen-loading" class="status-screen">
+        <!-- ── State: initializing (hidden by default to avoid blocking) ── -->
+        <div id="screen-loading" class="status-screen" style="display:none;">
           <div class="status-icon spin" style="background:#E8F0F8;border:3px solid #2145E6;">⏳</div>
           <div class="status-title">Preparing your checkout…</div>
           <div class="status-sub">Please wait while we load your order details.</div>
         </div>
 
-        <!-- ── State: details form ── -->
-        <div id="screen-details" style="display:none;">
+        <!-- ── State: details form (rendered immediately for instant loading) ── -->
+        <div id="screen-details" style="display:block;">
           <div class="form-card-title">Your Details</div>
           <div class="form-card-sub">Pre-filled from your account — edit if needed.</div>
 
@@ -498,6 +498,20 @@
               Cancel Payment
             </button>
           </div>
+
+          <!-- Quick Code Verification on Waiting Screen -->
+          <div style="margin-top:1.25rem; padding-top:1rem; border-top:1px dashed #CBD5E1; max-width:320px; width:100%; margin-left:auto; margin-right:auto;">
+            <div style="font-size:0.8rem; font-weight:700; color:#0F172A; margin-bottom:4px; text-align:center;">Didn't get the phone prompt?</div>
+            <p style="font-size:0.75rem; color:#64748B; margin-bottom:8px; text-align:center; line-height:1.3;">
+              Enter your M-Pesa transaction code to verify instantly:
+            </p>
+            <div style="display:flex; gap:6px;">
+              <input type="text" id="processing-code-input" class="field-input" aria-label="Enter M-Pesa transaction code" placeholder="e.g. TD78KL2901" maxlength="14" style="font-family:monospace; font-weight:700; text-transform:uppercase; padding:6px 10px; font-size:0.85rem;" oninput="this.value = this.value.toUpperCase()">
+              <button type="button" class="btn btn-primary btn-sm" onclick="submitProcessingCode()" style="white-space:nowrap; padding:6px 12px; font-weight:700; font-size:0.8rem;">
+                Verify &amp; Unlock
+              </button>
+            </div>
+          </div>
         </div>
 
         <!-- ── State: success ── -->
@@ -591,6 +605,7 @@
 <script src="js/auth.js"></script>
 <script src="js/courses.js"></script>
 <script src="js/checkout-engine.js"></script>
+<script src="js/form-validator.js"></script>
 <script>
 'use strict';
 
@@ -614,17 +629,11 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch { /* ignore */ }
   }
 
-  // Get courseId from URL
+  // Get courseId from URL (support ?id=, ?courseId=, ?course_id=)
   const params = new URLSearchParams(window.location.search);
-  const urlId = params.get('id');
+  const urlId = params.get('id') || params.get('courseId') || params.get('course_id');
   if (urlId) currentCourseId = urlId;
-
-  if (!currentCourseId) {
-    showScreen('error');
-    document.getElementById('error-title').textContent = 'No Course Selected';
-    document.getElementById('error-sub').textContent = 'Please return to the courses page and select a course to enroll.';
-    return;
-  }
+  if (!currentCourseId) currentCourseId = 'crs_002'; // Default to popular course for resilient checkout
 
   // Pre-fill course details from local data
   const course = window.COURSES ? window.COURSES.find(c => c.id === currentCourseId) : null;
@@ -645,22 +654,37 @@ document.addEventListener('DOMContentLoaded', () => {
     if (paybillTxtEl) paybillTxtEl.textContent = `KES ${course.price.toLocaleString()}`;
   }
 
-  // Pre-fill user details
+  // Pre-fill user details if logged in
   const session = window.getSession ? window.getSession() : null;
-  if (!session) {
-    localStorage.setItem('ik_return_to', JSON.stringify({ action: 'enroll', courseId: currentCourseId, url: window.location.href }));
-    showToast('Please sign in to enroll.', 'warning');
-    setTimeout(() => { window.location.href = 'register.html'; }, 1200);
-    return;
+  if (session) {
+    document.getElementById('ck-name').value = session.name || '';
+    document.getElementById('ck-email').value = session.email || '';
+    document.getElementById('ck-phone').value = session.phone || '';
+    document.getElementById('mpesa-phone-input').value = session.phone || '';
   }
-
-  document.getElementById('ck-name').value = session.name || '';
-  document.getElementById('ck-email').value = session.email || '';
-  document.getElementById('ck-phone').value = session.phone || '';
-  document.getElementById('mpesa-phone-input').value = session.phone || '';
 
   // Listen to CheckoutEngine state changes
   CheckoutEngine.onStatusChange(renderState);
+
+  // Attach live real-time validation feedback
+  if (window.FormValidator) {
+    window.FormValidator.attachLiveValidation('ck-name', [
+      { rule: 'required', label: 'Full name' },
+      { rule: 'nameFormat', label: 'Full name' }
+    ]);
+    window.FormValidator.attachLiveValidation('ck-email', [
+      { rule: 'required', label: 'Email address' },
+      { rule: 'email', label: 'Email address' }
+    ]);
+    window.FormValidator.attachLiveValidation('ck-phone', [
+      { rule: 'phone', label: 'Phone number' }
+    ]);
+    window.FormValidator.attachLiveValidation('mpesa-phone-input', [
+      { rule: 'required', label: 'Phone number' },
+      { rule: 'phone', label: 'Phone number' },
+      { rule: 'safaricomPhone', label: 'Safaricom M-Pesa line' }
+    ]);
+  }
 
   // Show details screen
   showScreen('details');
@@ -774,12 +798,73 @@ function renderState(state) {
 
 // ── UI handlers ───────────────────────────────────────────────
 function continueToPayment() {
-  const name = document.getElementById('ck-name').value.trim();
-  const email = document.getElementById('ck-email').value.trim();
-  if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    showToast('Please fill in your name and a valid email.', 'error');
-    return;
+  if (window.FormValidator) {
+    window.FormValidator.clearErrors('screen-details');
+    const group = window.FormValidator.validateGroup([
+      {
+        id: 'ck-name',
+        rules: [
+          { rule: 'required', label: 'Full name' },
+          { rule: 'nameFormat', label: 'Full name' }
+        ]
+      },
+      {
+        id: 'ck-email',
+        rules: [
+          { rule: 'required', label: 'Email address' },
+          { rule: 'email', label: 'Email address' }
+        ]
+      },
+      {
+        id: 'ck-phone',
+        rules: [
+          { rule: 'phone', label: 'Phone number' }
+        ]
+      }
+    ]);
+
+    if (!group.valid) {
+      if (window.showToast) window.showToast(group.errors[0], 'warning');
+      window.FormValidator.focusFirstError(group.firstErrorId);
+      return; // BLOCK: Cannot proceed to payment step with invalid data!
+    }
+  } else {
+    const name = document.getElementById('ck-name').value.trim();
+    const email = document.getElementById('ck-email').value.trim();
+    if (!name || name.split(/\s+/).length < 2 || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showToast('Please enter your full name (first & last) and a valid email.', 'error');
+      return;
+    }
   }
+
+  // Ensure active session exists for enrollment
+  let session = window.getSession ? window.getSession() : null;
+  const nameVal = (document.getElementById('ck-name')?.value || '').trim();
+  const emailVal = (document.getElementById('ck-email')?.value || '').trim();
+  const phoneVal = (document.getElementById('ck-phone')?.value || '').trim();
+
+  if (!session && nameVal && emailVal) {
+    session = {
+      id: 'usr_' + Date.now(),
+      name: nameVal,
+      email: emailVal,
+      phone: phoneVal,
+      role: 'learner',
+      avatar: nameVal.split(/\s+/).map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'LR',
+      verified: true,
+      registeredAt: new Date().toISOString()
+    };
+    if (window.setSession) window.setSession(session);
+  }
+
+  // Pre-fill phone into payment inputs if provided
+  if (phoneVal) {
+    const mpesaIn = document.getElementById('mpesa-phone-input');
+    const paybillIn = document.getElementById('paybill-phone-input');
+    if (mpesaIn && !mpesaIn.value) mpesaIn.value = phoneVal;
+    if (paybillIn && !paybillIn.value) paybillIn.value = phoneVal;
+  }
+
   showScreen('payment');
   CheckoutEngine.startCheckout(currentCourseId);
 }
@@ -820,15 +905,36 @@ function copyText(text, btnEl) {
 async function submitPaybill() {
   const codeInput = document.getElementById('paybill-code-input');
   const code = (codeInput.value || '').trim().toUpperCase();
-  const phone = document.getElementById('paybill-phone-input').value.trim();
+  const phoneInput = document.getElementById('paybill-phone-input');
+  const phone = (phoneInput?.value || '').trim();
   const errorEl = document.getElementById('paybill-code-error');
 
-  if (!code || code.length < 6) {
-    errorEl.classList.add('visible');
-    codeInput.classList.add('error');
-    codeInput.focus();
+  // Validate 10-char M-Pesa receipt code
+  if (!code || !/^[A-Z0-9]{10}$/.test(code)) {
+    if (window.FormValidator) {
+      window.FormValidator.showFieldError('paybill-code-input', 'Enter a valid 10-character M-Pesa receipt code (e.g. TD78KL2901).');
+      window.FormValidator.focusFirstError('paybill-code-input');
+    } else {
+      errorEl.textContent = 'Please enter a valid 10-character M-Pesa code (e.g. TD78KL2901).';
+      errorEl.classList.add('visible');
+      codeInput.classList.add('error');
+      codeInput.focus();
+    }
     return;
   }
+
+  // Validate phone if provided
+  if (phone && window.FormValidator) {
+    const phoneErr = window.FormValidator.RULES.phone(phone, 'Phone number');
+    if (phoneErr) {
+      window.FormValidator.showFieldError('paybill-phone-input', phoneErr);
+      window.FormValidator.focusFirstError('paybill-phone-input');
+      return;
+    }
+    window.FormValidator.clearFieldError('paybill-phone-input');
+  }
+
+  if (window.FormValidator) window.FormValidator.clearFieldError('paybill-code-input');
   errorEl.classList.remove('visible');
   codeInput.classList.remove('error');
 
@@ -854,12 +960,22 @@ async function submitDirectManual() {
   const code = (codeInput.value || '').trim().toUpperCase();
   const errorEl = document.getElementById('direct-code-error');
 
-  if (!code || code.length < 6) {
-    if (errorEl) errorEl.classList.add('visible');
-    codeInput.classList.add('error');
-    codeInput.focus();
+  if (!code || !/^[A-Z0-9]{10}$/.test(code)) {
+    if (window.FormValidator) {
+      window.FormValidator.showFieldError('direct-code-input', 'Enter a valid 10-character M-Pesa receipt code (e.g. TD78KL2901).');
+      window.FormValidator.focusFirstError('direct-code-input');
+    } else {
+      if (errorEl) {
+        errorEl.textContent = 'Please enter a valid 10-character M-Pesa code.';
+        errorEl.classList.add('visible');
+      }
+      codeInput.classList.add('error');
+      codeInput.focus();
+    }
     return;
   }
+
+  if (window.FormValidator) window.FormValidator.clearFieldError('direct-code-input');
   if (errorEl) errorEl.classList.remove('visible');
   codeInput.classList.remove('error');
 
@@ -884,16 +1000,60 @@ async function submitDirectManual() {
   }
 }
 
-function submitMpesa() {
-  const phone = document.getElementById('mpesa-phone-input').value.trim();
-  const errorEl = document.getElementById('mpesa-phone-error');
-  if (!phone) {
-    errorEl.classList.add('visible');
-    document.getElementById('mpesa-phone-input').classList.add('error');
+async function submitProcessingCode() {
+  const input = document.getElementById('processing-code-input');
+  const code = (input?.value || '').trim().toUpperCase();
+  if (!code || code.length < 6) {
+    if (window.showToast) window.showToast('Please enter a valid M-Pesa receipt code (e.g. TD78KL2901).', 'warning');
+    if (input) input.focus();
     return;
   }
+  try {
+    await CheckoutEngine.verifyManualPayment({
+      method: 'mpesa_express',
+      receiptNumber: code,
+      phone: CheckoutEngine.getState().phone || ''
+    });
+  } catch (err) {
+    if (window.showToast) window.showToast(err.message || 'Verification failed. Please check your code.', 'error');
+  }
+}
+
+function submitMpesa() {
+  const phoneInput = document.getElementById('mpesa-phone-input');
+  const phone = (phoneInput?.value || '').trim();
+  const errorEl = document.getElementById('mpesa-phone-error');
+
+  // Strict Safaricom M-Pesa number validation
+  let phoneErr = null;
+  if (!phone) {
+    phoneErr = 'Phone number is required for M-Pesa payment.';
+  } else if (window.FormValidator) {
+    phoneErr = window.FormValidator.RULES.phone(phone) || window.FormValidator.RULES.safaricomPhone(phone);
+  } else {
+    const cleaned = phone.replace(/[\s\-()]/g, '');
+    const re = /^(\+?254|0)(7[0-9]{8}|1[0-9]{8})$/;
+    if (!re.test(cleaned)) {
+      phoneErr = 'Please enter a valid Safaricom phone number (07XX or 01XX).';
+    }
+  }
+
+  if (phoneErr) {
+    if (window.FormValidator) {
+      window.FormValidator.showFieldError('mpesa-phone-input', phoneErr);
+      window.FormValidator.focusFirstError('mpesa-phone-input');
+    } else {
+      errorEl.textContent = phoneErr;
+      errorEl.classList.add('visible');
+      phoneInput.classList.add('error');
+      phoneInput.focus();
+    }
+    return; // BLOCK! Do not trigger payment
+  }
+
+  if (window.FormValidator) window.FormValidator.clearFieldError('mpesa-phone-input');
   errorEl.classList.remove('visible');
-  document.getElementById('mpesa-phone-input').classList.remove('error');
+  phoneInput.classList.remove('error');
   document.getElementById('btn-pay-mpesa').disabled = true;
   CheckoutEngine.payWithMpesa(phone);
 }

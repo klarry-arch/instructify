@@ -1356,7 +1356,23 @@ async function handleContactSubmit(e) {
   const consent = document.getElementById('contact-consent').checked;
   const hp = document.getElementById('_hp_instructify').value;
 
-  if (!name || !email || !category || !subject || !message || !consent) {
+  if (window.FormValidator) {
+    const valResult = window.FormValidator.validateForm(document.getElementById('contact-form'));
+    if (!valResult.valid) {
+      if (errBanner) {
+        document.getElementById('contact-error-text').textContent = valResult.errors[0] || 'Please fill in all required fields and accept the privacy policy.';
+        errBanner.style.display = 'block';
+      }
+      if (window.showToast) window.showToast(valResult.errors[0] || 'Please correct the highlighted fields.', 'warning');
+      btn.disabled = false;
+      btn.innerHTML = origText;
+      if (valResult.firstErrorEl) {
+        valResult.firstErrorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => valResult.firstErrorEl.focus(), 250);
+      }
+      return;
+    }
+  } else if (!name || !email || !category || !subject || !message || !consent) {
     if (errBanner) {
       document.getElementById('contact-error-text').textContent = 'Please fill in all required fields and accept the privacy policy.';
       errBanner.style.display = 'block';
@@ -1485,6 +1501,8 @@ function openChatWithContact() {
 }
 </script>
 
+  <script src="js/form-validator.js"></script>
+  <script src="js/main.js"></script>
   <script src="js/chat-config.js"></script>
   <script src="js/live-chat.js"></script>
 </body>

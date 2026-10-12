@@ -399,6 +399,7 @@
 </div>
 
 <!-- Scripts -->
+<script src="js/form-validator.js"></script>
 <script src="js/main.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/lms-auth-guard.js"></script>
@@ -613,6 +614,14 @@
 
   window.handleEnrolSubmit = function(e) {
     e.preventDefault();
+    if (window.FormValidator) {
+      const val = window.FormValidator.validateForm(document.getElementById('enrol-form'));
+      if (!val.valid) {
+        if (window.showToast) window.showToast(val.errors[0] || 'Please complete all required fields.', 'warning');
+        if (val.firstErrorEl) val.firstErrorEl.focus();
+        return;
+      }
+    }
     const name = document.getElementById('enrol-name').value.trim();
     const email = document.getElementById('enrol-email').value.trim();
     const phone = document.getElementById('enrol-phone').value.trim();
