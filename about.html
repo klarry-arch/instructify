@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn about Instructify Kenya — empowering educators, learners, and institutions through practical training, strategic consultancy, and curriculum development.">
+  <meta name="description" content="Learn about Instructify Kenya — empowering educators, learners, and institutions through practical training, strategic consultancy, and curriculum development across Kenya.">
   <title>About Us | Instructify Kenya</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css?v=4.1">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css?v=4.1">
   <link rel="stylesheet" href="css/homepage.css">
-  <link rel="stylesheet" href="css/about.css?v=3.6">
+  <link rel="stylesheet" href="css/about.css?v=4.1">
   <link rel="stylesheet" href="css/live-chat.css">
 
   <style>
@@ -19,7 +22,7 @@
        ══════════════════════════════════════════════════════════════ */
     .cv-section {
       background: #F8FAFC !important;
-      padding: 72px 0 !important;
+      padding: 96px 0 !important;
       border-top: 1px solid #E2E8F0;
       border-bottom: 1px solid #E2E8F0;
       position: relative;
@@ -31,73 +34,70 @@
       gap: 8px;
       padding: 6px 18px !important;
       border-radius: 999px !important;
-      background: #FFF0EB !important;
-      border: 1.5px solid #FFD4C2 !important;
-      color: #E24A00 !important;
+      background: #EEF4FF !important;
+      border: 1.5px solid rgba(6, 79, 193, 0.25) !important;
+      color: #064FC1 !important;
       font-size: 11.5px !important;
-      font-weight: 750 !important;
+      font-weight: 800 !important;
       letter-spacing: 0.08em !important;
       text-transform: uppercase !important;
-      margin-bottom: 14px !important;
+      margin-bottom: 16px !important;
     }
 
     .cv-main-title {
       font-family: var(--font-heading), 'Poppins', sans-serif !important;
-      font-size: 38px !important;
+      font-size: clamp(32px, 4vw, 44px) !important;
       font-weight: 850 !important;
-      color: #0B192C !important;
-      margin: 0 0 14px 0 !important;
+      color: #0E1726 !important;
+      margin: 0 0 16px 0 !important;
       letter-spacing: -0.025em !important;
     }
 
     .cv-main-title span.grad {
-      background: linear-gradient(135deg, #2145E6 0%, #FF4D00 100%) !important;
+      background: linear-gradient(135deg, #064FC1 0%, #12B84E 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
     }
 
     .cv-main-desc {
-      font-size: 16px !important;
+      font-size: 16.5px !important;
       color: #475569 !important;
-      margin: 0 auto !important;
-      max-width: 640px;
+      margin: 0 auto 48px auto !important;
+      max-width: 680px;
       font-weight: 450;
+      line-height: 1.65;
     }
 
     .cv-grid {
       display: grid !important;
       grid-template-columns: repeat(4, 1fr) !important;
-      gap: 24px !important;
+      gap: 28px !important;
       text-align: center !important;
-      margin-top: 10px;
       align-items: start !important;
     }
 
     @media (max-width: 1100px) {
       .cv-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 20px !important;
+        gap: 24px !important;
       }
     }
 
     @media (max-width: 640px) {
       .cv-grid {
         grid-template-columns: 1fr !important;
-        gap: 18px !important;
-      }
-      .cv-main-title {
-        font-size: 28px !important;
+        gap: 20px !important;
       }
       .cv-card {
-        padding: 24px 20px 20px !important;
+        padding: 26px 20px 22px !important;
       }
     }
 
     .cv-card {
       background: #FFFFFF !important;
       border: 1.5px solid #E2E8F0 !important;
-      border-radius: 20px !important;
-      padding: 28px 24px 22px !important;
+      border-radius: 22px !important;
+      padding: 32px 26px 26px !important;
       position: relative !important;
       overflow: hidden !important;
       display: flex !important;
@@ -108,7 +108,7 @@
       box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02) !important;
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease !important;
       cursor: default;
-      height: auto !important;
+      height: 100% !important;
     }
 
     .cv-card::before {
@@ -118,14 +118,14 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: var(--val-color, #2145E6);
+      background: var(--val-color, #064FC1);
       transition: height 0.3s ease;
     }
 
     .cv-card:hover {
-      transform: translateY(-5px) !important;
-      border-color: var(--val-color, #2145E6) !important;
-      box-shadow: 0 16px 32px -8px var(--val-glow, rgba(33, 69, 230, 0.22)), 0 4px 10px -2px rgba(15, 23, 42, 0.04) !important;
+      transform: translateY(-6px) !important;
+      border-color: var(--val-color, #064FC1) !important;
+      box-shadow: 0 20px 38px -8px var(--val-glow, rgba(6, 79, 193, 0.22)), 0 6px 14px rgba(15, 23, 42, 0.04) !important;
     }
 
     .cv-card:hover::before {
@@ -133,12 +133,8 @@
     }
 
     .cv-card.is-expanded {
-      border-color: var(--val-color, #2145E6) !important;
-      box-shadow: 0 14px 30px -6px var(--val-glow, rgba(33, 69, 230, 0.25)), 0 4px 8px -2px rgba(15, 23, 42, 0.04) !important;
-    }
-
-    .cv-card.is-expanded::before {
-      height: 6px;
+      border-color: var(--val-color, #064FC1) !important;
+      box-shadow: 0 16px 32px -6px var(--val-glow, rgba(6, 79, 193, 0.25)) !important;
     }
 
     .cv-card-top-row {
@@ -147,24 +143,22 @@
       justify-content: center !important;
       position: relative !important;
       width: 100% !important;
-      margin-bottom: 18px !important;
+      margin-bottom: 20px !important;
     }
 
     .cv-icon-box {
-      width: 54px !important;
-      height: 54px !important;
-      min-width: 54px !important;
-      min-height: 54px !important;
-      max-width: 54px !important;
-      max-height: 54px !important;
-      border-radius: 16px !important;
+      width: 58px !important;
+      height: 58px !important;
+      min-width: 58px !important;
+      min-height: 58px !important;
+      border-radius: 18px !important;
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
       flex-shrink: 0 !important;
       margin: 0 auto !important;
-      background: var(--val-gradient, linear-gradient(135deg, #3B82F6, #2145E6)) !important;
-      box-shadow: 0 8px 18px -4px var(--val-glow, rgba(33, 69, 230, 0.3)) !important;
+      background: var(--val-gradient, linear-gradient(135deg, #064FC1, #053A8B)) !important;
+      box-shadow: 0 8px 18px -4px var(--val-glow, rgba(6, 79, 193, 0.3)) !important;
       transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
     }
 
@@ -174,10 +168,10 @@
 
     .cv-number-watermark {
       position: absolute !important;
-      top: -4px !important;
+      top: -6px !important;
       right: 0 !important;
       font-family: var(--font-heading), 'Poppins', sans-serif !important;
-      font-size: 22px !important;
+      font-size: 24px !important;
       font-weight: 850 !important;
       color: #CBD5E1 !important;
       line-height: 1 !important;
@@ -189,15 +183,15 @@
 
     .cv-card:hover .cv-number-watermark,
     .cv-card.is-expanded .cv-number-watermark {
-      color: var(--val-color, #2145E6) !important;
-      opacity: 0.6 !important;
+      color: var(--val-color, #064FC1) !important;
+      opacity: 0.8 !important;
     }
 
     .cv-card-title {
       font-family: var(--font-heading), 'Poppins', sans-serif !important;
-      font-size: 20px !important;
-      font-weight: 800 !important;
-      color: var(--val-color, #0F172A) !important;
+      font-size: 21px !important;
+      font-weight: 850 !important;
+      color: var(--val-color, #0E1726) !important;
       margin: 0 0 10px 0 !important;
       line-height: 1.25 !important;
       letter-spacing: -0.01em !important;
@@ -206,143 +200,87 @@
     }
 
     .cv-card-desc {
-      font-size: 14px !important;
+      font-size: 14.5px !important;
       color: #475569 !important;
-      line-height: 1.6 !important;
-      margin: 0 auto 18px auto !important;
+      line-height: 1.62 !important;
+      margin: 0 auto 20px auto !important;
       font-weight: 450 !important;
       text-align: center !important;
       width: 100% !important;
+      flex: 1;
     }
 
-    /* Interactive Heading Button */
     .cv-card-btn {
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
       gap: 8px !important;
       font-family: inherit !important;
-      font-size: 11.5px !important;
-      font-weight: 750 !important;
+      font-size: 12px !important;
+      font-weight: 800 !important;
       text-transform: uppercase !important;
       letter-spacing: 0.07em !important;
-      color: var(--val-color, #2145E6) !important;
-      background: rgba(var(--val-rgb, 33, 69, 230), 0.04) !important;
-      border: 1px solid rgba(var(--val-rgb, 33, 69, 230), 0.16) !important;
-      border-radius: 10px !important;
-      padding: 11px 16px !important;
-      min-height: 44px !important;
+      color: var(--val-color, #064FC1) !important;
+      background: rgba(var(--val-rgb, 6, 79, 193), 0.06) !important;
+      border: 1px solid rgba(var(--val-rgb, 6, 79, 193), 0.18) !important;
+      border-radius: 12px !important;
+      padding: 12px 18px !important;
+      min-height: 46px !important;
       width: 100% !important;
       margin-top: auto !important;
       cursor: pointer !important;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
       text-decoration: none !important;
-      box-sizing: border-box !important;
-      user-select: none !important;
     }
 
     .cv-card-btn:hover {
-      background: rgba(var(--val-rgb, 33, 69, 230), 0.10) !important;
-      border-color: var(--val-color, #2145E6) !important;
+      background: rgba(var(--val-rgb, 6, 79, 193), 0.12) !important;
+      border-color: var(--val-color, #064FC1) !important;
       transform: translateY(-1px) !important;
     }
 
-    .cv-card-btn:focus-visible {
-      outline: 2px solid var(--val-color, #2145E6) !important;
-      outline-offset: 3px !important;
-      box-shadow: 0 0 0 3px rgba(var(--val-rgb, 33, 69, 230), 0.25) !important;
-    }
-
-    .cv-card.is-expanded .cv-card-btn {
-      background: rgba(var(--val-rgb, 33, 69, 230), 0.12) !important;
-      border-color: var(--val-color, #2145E6) !important;
-    }
-
-    /* Arrow inside button */
-    .cv-btn-arrow {
-      width: 14px !important;
-      height: 14px !important;
-      stroke: var(--val-color, #2145E6) !important;
-      stroke-width: 2.5 !important;
-      flex-shrink: 0 !important;
-      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-    }
-
-    .cv-card-btn:hover .cv-btn-arrow {
-      transform: translateX(3px);
-    }
-
-    .cv-card.is-expanded .cv-btn-arrow {
-      transform: rotate(90deg) !important;
-    }
-
-    /* Explanation Panel - Smooth grid accordion */
     .cv-explanation-wrapper {
-      display: grid !important;
-      grid-template-rows: 0fr !important;
-      transition: grid-template-rows 0.38s cubic-bezier(0.4, 0, 0.2, 1) !important;
-      width: 100% !important;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      opacity: 0;
+      width: 100%;
     }
 
     .cv-card.is-expanded .cv-explanation-wrapper {
-      grid-template-rows: 1fr !important;
+      max-height: 300px;
+      opacity: 1;
+      margin-top: 14px;
     }
 
     .cv-explanation-inner {
-      overflow: hidden !important;
-      min-height: 0 !important;
-    }
-
-    .cv-explanation-box {
-      margin-top: 12px !important;
-      padding: 14px 16px !important;
-      border-radius: 12px !important;
-      background: rgba(var(--val-rgb, 33, 69, 230), 0.04) !important;
-      border: 1px solid rgba(var(--val-rgb, 33, 69, 230), 0.16) !important;
-      border-left: 3.5px solid var(--val-color, #2145E6) !important;
-      text-align: left !important;
-      transition: opacity 0.3s ease, transform 0.3s ease !important;
-      opacity: 0 !important;
-      transform: translateY(-6px) !important;
-    }
-
-    .cv-card.is-expanded .cv-explanation-box {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
+      padding: 14px 16px;
+      background: #F8FAFC;
+      border-radius: 12px;
+      border: 1px solid #E2E8F0;
+      text-align: left;
     }
 
     .cv-explanation-text {
       font-size: 13.5px !important;
-      line-height: 1.65 !important;
       color: #334155 !important;
+      line-height: 1.6 !important;
       margin: 0 !important;
-      font-weight: 500 !important;
-      text-align: left !important;
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      .cv-card,
-      .cv-card-btn,
-      .cv-btn-arrow,
-      .cv-explanation-wrapper,
-      .cv-explanation-box {
-        transition: none !important;
-      }
     }
   </style>
 </head>
 <body>
 
-<!-- Header Navigation -->
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
 <!-- ── Navigation ───────────────────────────────────────────── -->
 <nav id="navbar" class="navbar">
   <div class="container">
     <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
       <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
       <div class="nav-brand-text-box" style="display: none !important;">
-        <span class="nav-brand-title" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-weight: 800 !important; font-size: 1.25rem !important; color: #0F172A !important; letter-spacing: -0.02em !important; line-height: 1 !important; display: block !important;">Instruct<span class="brand-accent" style="color: #F5812D !important; font-weight: 900 !important;">ify</span></span>
-        <span class="nav-brand-subtitle" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-size: 0.62rem !important; font-weight: 850 !important; color: #FF4D00 !important; text-transform: uppercase !important; letter-spacing: 2.2px !important; line-height: 1 !important; display: block !important;">KENYA</span>
+        <span class="nav-brand-title">Instruct<span class="brand-accent">ify</span></span>
+        <span class="nav-brand-subtitle">KENYA</span>
       </div>
     </a>
 
@@ -363,6 +301,15 @@
               <div class="nav-dropdown-info">
                 <span class="nav-dropdown-title">All Courses <span class="nav-badge badge-amber">Hot</span></span>
                 <span class="nav-dropdown-desc">CBC curricula &amp; educator certifications</span>
+              </div>
+            </a>
+          </li>
+          <li role="none">
+            <a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem" data-nav="cpd">
+              <span class="nav-dropdown-icon">🎓</span>
+              <div class="nav-dropdown-info">
+                <span class="nav-dropdown-title">CPD Programmes <span class="nav-badge badge-blue">Nov '26</span></span>
+                <span class="nav-dropdown-desc">Digital Literacy &amp; ICT Integration for CBC</span>
               </div>
             </a>
           </li>
@@ -391,7 +338,6 @@
       <li><a href="jumuishi-learning-hub.html" class="nav-link" data-nav="jumuishi" style="color:var(--jum-teal, #0D9488) !important;">Jumuishi Hub <span class="nav-badge" style="background:#0D9488;color:#fff;">Inclusive</span></a></li>
       <li><a href="schools.html" class="nav-link" data-nav="schools">Institutions</a></li>
       <li><a href="contact.html" class="nav-link" data-nav="contact">Contact</a></li>
-    
     </ul>
 
     <div class="nav-actions">
@@ -414,6 +360,7 @@
       <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses <span class="nav-badge badge-amber">Hot</span></a>
       <div class="nav-mobile-sublinks">
         <a href="courses.html" class="nav-mobile-sublink" data-nav="courses"><span>📚</span> All Courses</a>
+        <a href="cpd-registration.html" class="nav-mobile-sublink" data-nav="cpd"><span>🎓</span> Teacher CPD Registration</a>
         <a href="podcast.html" class="nav-mobile-sublink" data-nav="podcast"><span>🎙️</span> Podcast <span class="nav-badge badge-rose"><span class="nav-pulse-dot"></span>Listen</span></a>
         <a href="resources.html" class="nav-mobile-sublink" data-nav="resources"><span>📂</span> Resources</a>
       </div>
@@ -423,7 +370,6 @@
     <a href="jumuishi-learning-hub.html" class="nav-mobile-link" data-nav="jumuishi" style="color:#0D9488;font-weight:700;">Jumuishi Learning Hub <span class="nav-badge" style="background:#0D9488;color:#fff;">Inclusive</span></a>
     <a href="schools.html" class="nav-mobile-link" data-nav="schools">Institutions</a>
     <a href="contact.html" class="nav-mobile-link" data-nav="contact">Contact</a>
-  
   </div>
   <div class="nav-mobile-actions">
     <a href="register.html" class="btn btn-outline btn-md">Sign In</a>
@@ -431,38 +377,42 @@
   </div>
 </div>
 
-<!-- 1. Powerful Hero Section -->
+<main id="main-content">
+
+<!-- ══════════════════════════════════════════════════════════
+     1. ABOUT HERO SECTION
+     ══════════════════════════════════════════════════════════ -->
 <section class="about-hero-section">
   <div class="container">
     <div class="about-hero-grid">
       <div class="about-hero-text animate-fade-in-left">
-        <div class="hero-badge" style="background:var(--accent-bg, #F3EEFF); color:#CC3E00; font-weight:600; border-radius:999px; padding:8px 16px; display:inline-block; font-size:14px; margin-bottom:16px;">
-          Ignite Your Curiosity. Transform Your Learning.
+        <div class="hero-badge" style="background:rgba(255,255,255,0.15); color:#FFFFFF; font-weight:750; border-radius:999px; padding:8px 18px; display:inline-flex; align-items:center; gap:8px; font-size:12.5px; margin-bottom:20px; border:1px solid rgba(255,255,255,0.3);">
+          <span>💡</span> Ignite Your Curiosity · Transform Your Learning
         </div>
-        <h1 style="font-size:32px; font-weight:800; line-height:1.2; margin-bottom:20px;">
-          <span style="color:#FF4D00;">Curiosity is the spark that fuels lifelong learning.</span>
+        <h1>
+          <span>Curiosity is the spark</span> that fuels lifelong learning.
         </h1>
-        <p style="font-size:18px; line-height:1.65; color:var(--text-muted, #475569); margin-bottom:32px;">
+        <p>
           Instructify Kenya empowers educators, learners, schools, and institutions to achieve meaningful and sustainable growth through practical training, engaging workshops and seminars, strategic consultancy, and transformative curriculum development. At the heart of our work is the belief that curiosity sparks learning, drives innovation, and nurtures lifelong growth.
         </p>
         <div style="display:flex; gap:16px; flex-wrap:wrap;">
-          <a href="contact.html" class="btn btn-orange btn-lg">Partner With Us</a>
-          <a href="#who-we-are" class="btn btn-outline btn-lg">Discover Our Story</a>
+          <a href="contact.html" class="btn btn-white btn-lg" style="font-weight:750;">Partner With Us</a>
+          <a href="#who-we-are" class="btn btn-outline-white btn-lg" style="font-weight:700;">Discover Our Story</a>
         </div>
       </div>
       <div class="about-hero-image-wrap animate-fade-in-right delay-200">
-        <img src="assets/images/about_strategy_session.jpg" alt="Instructify Kenya leadership and education strategy planning session" style="border-radius:16px; box-shadow:0 20px 40px rgba(0,0,0,0.08); width:100%; object-fit:cover; height:420px;" loading="lazy">
-        <div class="about-image-badge" style="position:absolute; bottom:-16px; right:20px; background:#FFFFFF; border:1px solid #E5E7EB; border-radius:16px; padding:16px 20px; box-shadow:0 10px 30px rgba(0,0,0,0.08); display:flex; align-items:center; gap:12px;">
-          <div style="width:40px; height:40px; border-radius:50%; background:#E8F0F8; color:#0F172A; display:flex; align-items:center; justify-content:center;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Global Insight" role="img">
+        <img src="assets/images/about_strategy_session.jpg" alt="Instructify Kenya leadership and education strategy planning session" loading="lazy">
+        <div class="about-image-badge">
+          <div style="width:44px; height:44px; border-radius:14px; background:#EEF4FF; color:#064FC1; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#064FC1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="10"/>
               <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
               <path d="M2 12h20"/>
             </svg>
           </div>
           <div>
-            <div style="font-weight:700; font-size:15px; color:#0F172A;">Local Relevance</div>
-            <div style="font-size:13px; color:var(--text-muted, #475569);">Blended with Global Insight</div>
+            <div style="font-weight:800; font-size:15px; color:#0E1726;">Local Relevance</div>
+            <div style="font-size:13px; color:#64748B; font-weight:600;">Blended with Global Insight</div>
           </div>
         </div>
       </div>
@@ -470,73 +420,107 @@
   </div>
 </section>
 
-<!-- 2. Who We Are (Introductory Section) -->
-<section id="who-we-are" class="section" style="background:#FFFFFF; border-top:1px solid #E5E7EB;">
+<!-- ── Quick Metrics Strip ── -->
+<section class="impact-strip" aria-label="Organization impact numbers">
   <div class="container">
-    <div class="grid-2" style="align-items:center; gap:48px;">
+    <div class="grid-4 text-center">
       <div>
-        <span class="section-tag orange" style="background:var(--accent-bg, #F3EEFF); color:#CC3E00; border-color:rgba(255,77,0,0.2); font-weight:700;">WHO WE ARE</span>
-        <h2 style="font-size:36px; font-weight:700; color:#0F172A; margin-top:12px; margin-bottom:20px; line-height:1.2;">
+        <div class="impact-stat-number">50,000+</div>
+        <div class="impact-stat-label">Educators &amp; Learners</div>
+      </div>
+      <div>
+        <div class="impact-stat-number">1,200+</div>
+        <div class="impact-stat-label">Schools Supported</div>
+      </div>
+      <div>
+        <div class="impact-stat-number">47</div>
+        <div class="impact-stat-label">Counties Reached</div>
+      </div>
+      <div>
+        <div class="impact-stat-number">100+</div>
+        <div class="impact-stat-label">Accredited Modules</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     2. WHO WE ARE & FOUNDER'S STORY
+     ══════════════════════════════════════════════════════════ -->
+<section id="who-we-are" class="about-story-section">
+  <div class="container">
+    <div class="about-story-grid">
+      <div>
+        <span class="section-tag blue">WHO WE ARE</span>
+        <h2 style="font-family:var(--font-heading); font-size:clamp(30px, 3.8vw, 42px); font-weight:850; color:#0E1726; margin-top:14px; margin-bottom:20px; line-height:1.2; letter-spacing:-0.025em;">
           Connecting Knowledge, Creativity &amp; Real-World Impact
         </h2>
-        <p style="font-size:16px; line-height:1.65; color:var(--text-muted, #475569); margin-bottom:16px;">
+        <p style="font-size:16px; line-height:1.72; color:#475569; margin-bottom:18px;">
           Instructify Kenya is an education and training-focused organization dedicated to bridging the gap between theoretical knowledge and practical classroom application. We work alongside teachers, school directors, institutional leaders, and education ministries to build resilient, learner-centered educational ecosystems.
         </p>
-        <p style="font-size:16px; line-height:1.65; color:var(--text-muted, #475569); margin-bottom:20px;">
+        <p style="font-size:16px; line-height:1.72; color:#475569; margin-bottom:24px;">
           We believe that true learning occurs when content is contextual, engaging, and directly applicable. By blending local African realities with global best practices, we help learning communities unlock their full potential.
         </p>
-        <div style="background: linear-gradient(135deg, #0F172A 0%, #2145E6 100%); color:#FFFFFF !important; border-radius: 16px; padding: 28px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(15,23,42,0.2);">
-          <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(255,173,0,0.25); border:1px solid #FFAD00; color: #FCD34D !important; font-size:12px; font-weight:800; padding:4px 12px; border-radius:999px; margin-bottom:12px;">
+
+        <!-- Founder's Welcome Box -->
+        <div class="founder-welcome-box">
+          <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,210,26,0.20); border:1px solid #FFD21A; color:#FFD21A !important; font-size:11.5px; font-weight:800; padding:5px 14px; border-radius:999px; margin-bottom:14px; text-transform:uppercase; letter-spacing:0.08em;">
             💬 Founder’s Welcome Message
           </div>
-          <h3 style="font-family:var(--font-heading); font-size:22px; font-weight:800; color:#FFFFFF !important; margin-bottom:8px;">Welcome to Instructify Kenya</h3>
-          <p style="font-size:14.5px; font-weight:700; color: #FCD34D !important; margin-bottom:10px;">Dear Educator, Learner, and Visionary,</p>
-          <p style="font-size:14px; line-height:1.65; color:#F8FAFC !important; margin-bottom:12px;">
+          <h3 style="font-family:var(--font-heading); font-size:24px; font-weight:850; color:#FFFFFF !important; margin-bottom:10px;">Welcome to Instructify Kenya</h3>
+          <p style="font-size:15px; font-weight:750; color:#FFD21A !important; margin-bottom:12px;">Dear Educator, Learner, and Visionary,</p>
+          <p style="font-size:14.5px; line-height:1.68; color:#EEF4FF !important; margin-bottom:16px;">
             You’ve arrived at a place where learning is a journey of renewal and growth. Instructify Kenya was born from a dream—to empower minds, stir hearts, and transform communities through practical, visionary education.
           </p>
-          <div style="background: rgba(255, 255, 255, 0.08); border-left: 4px solid #FF5500; padding: 16px 20px; border-radius: 0 12px 12px 0; margin-bottom: 16px;">
-            <div style="font-size: 16px; font-weight: 850; color: #FCD34D !important; margin-bottom: 6px; line-height: 1.35;">
+
+          <div style="background:rgba(255,255,255,0.10); border-left:4px solid #FFD21A; padding:18px 22px; border-radius:0 14px 14px 0; margin-bottom:18px;">
+            <div style="font-size:17px; font-weight:850; color:#FFD21A !important; margin-bottom:6px; line-height:1.35;">
               “We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.”
             </div>
-            <div style="font-size: 13.5px; color: #F1F5F9 !important; line-height: 1.55; font-weight: 500;">
+            <div style="font-size:14px; color:#F1F5F9 !important; line-height:1.55; font-weight:500;">
               Empowering schools, ministries, and learning organizations through meaningful learning experiences that inspire growth and create lasting transformation.
             </div>
           </div>
-          <p style="font-size:14px; line-height:1.65; color:#F8FAFC !important; margin-bottom:14px;">
+
+          <p style="font-size:14.5px; line-height:1.68; color:#EEF4FF !important; margin-bottom:16px;">
             Whether you're crafting a lesson, leading a fellowship, or exploring new ideas, this space is yours. May every module, message, and moment here spark something deeper in you.
           </p>
-          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.2); padding-top:14px; margin-top:14px;">
-            <span style="font-weight:800; color:#4ADE80 !important; font-size:13.5px;">Welcome home to learning that matters.</span>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.22); padding-top:16px; margin-top:16px;">
+            <span style="font-weight:800; color:#12B84E !important; font-size:14px;">Welcome home to learning that matters.</span>
             <div style="text-align:right;">
-              <strong style="display:block; font-size:13.5px; color:#FFFFFF !important; font-weight:800;">Warmly, Alex</strong>
-              <span style="font-size:11.5px; color:#93C5FD !important; font-weight:600;">Founder, Instructify Kenya</span>
+              <strong style="display:block; font-size:14px; color:#FFFFFF !important; font-weight:800;">Warmly, Alex</strong>
+              <span style="font-size:12px; color:#CBD5E1 !important; font-weight:600;">Founder, Instructify Kenya</span>
             </div>
           </div>
         </div>
       </div>
+
       <div>
-        <img src="assets/images/about_educator_workshop.jpg" alt="Kenyan educators actively participating in an interactive training workshop" style="border-radius:20px; box-shadow:0 12px 30px rgba(0,0,0,0.06); width:100%; height:380px; object-fit:cover;">
+        <img src="assets/images/about_educator_workshop.jpg" alt="Kenyan educators actively participating in an interactive training workshop" style="border-radius:24px; box-shadow:0 16px 40px rgba(15,23,42,0.12); width:100%; height:520px; object-fit:cover; border:1.5px solid #E2E8F0;" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
-<!-- 3. What Makes Instructify Kenya Different -->
-<section class="section" style="background:#F8FAFC; border-top:1px solid #E5E7EB; border-bottom:1px solid #E5E7EB;">
+<!-- ══════════════════════════════════════════════════════════
+     3. WHAT MAKES INSTRUCTIFY KENYA DIFFERENT
+     ══════════════════════════════════════════════════════════ -->
+<section class="section about-section-light">
   <div class="container text-center">
-    <span class="section-tag blue" style="background:var(--accent-bg, #F3EEFF); color:#CC3E00; border-color:rgba(30,58,138,0.2); font-weight:700;">OUR DISTINCTIVENESS</span>
-    <h2 style="font-size:36px; font-weight:700; color:#0F172A; margin-top:12px; margin-bottom:16px;">
+    <span class="section-tag blue">OUR DISTINCTIVENESS</span>
+    <h2 style="font-family:var(--font-heading); font-size:clamp(30px, 3.8vw, 42px); font-weight:850; color:#0E1726; margin-top:14px; margin-bottom:16px; letter-spacing:-0.025em;">
       What Makes Us Different
     </h2>
-    <p style="font-size:16px; color:var(--text-muted, #475569); max-width:680px; width:100%; margin:0 auto 48px;">
+    <p style="font-size:16.5px; color:#475569; max-width:680px; width:100%; margin:0 auto 52px; line-height:1.68;">
       We go beyond generic training by co-creating actionable solutions tailored to the unique goals of African educators and institutions.
     </p>
 
-    <div class="grid-3" style="gap:28px;">
+    <div class="grid-3" style="gap:32px;">
       <!-- Distinctiveness Card 1 -->
       <div class="distinct-card">
-        <div class="distinct-icon-box distinct-icon-blue">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Interdisciplinary Approach" role="img">
+        <div class="distinct-icon-box">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#064FC1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Interdisciplinary Approach" role="img">
             <circle cx="12" cy="5" r="3"/>
             <circle cx="5" cy="19" r="3"/>
             <circle cx="19" cy="19" r="3"/>
@@ -550,9 +534,9 @@
       </div>
 
       <!-- Distinctiveness Card 2 -->
-      <div class="distinct-card card-orange">
-        <div class="distinct-icon-box distinct-icon-orange">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Local Relevance &amp; Global Insight" role="img">
+      <div class="distinct-card">
+        <div class="distinct-icon-box" style="background:#EDFBF2; border-color:rgba(18,184,78,0.25);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#12B84E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Local Relevance &amp; Global Insight" role="img">
             <circle cx="12" cy="12" r="10"/>
             <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
             <path d="M2 12h20"/>
@@ -564,8 +548,8 @@
 
       <!-- Distinctiveness Card 3 -->
       <div class="distinct-card">
-        <div class="distinct-icon-box distinct-icon-blue">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Practical &amp; Actionable Tools" role="img">
+        <div class="distinct-icon-box" style="background:#FFFDF0; border-color:rgba(255,210,26,0.35);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Practical &amp; Actionable Tools" role="img">
             <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
           </svg>
         </div>
@@ -576,20 +560,21 @@
   </div>
 </section>
 
-<!-- 4. Three Main Service Pillars -->
-<section class="section" style="background:#FFFFFF;">
+<!-- ══════════════════════════════════════════════════════════
+     4. THREE CORE SERVICE PILLARS
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" style="background:#FFFFFF; padding: 96px 0;">
   <div class="container text-center">
-    <span class="section-tag orange" style="background:var(--accent-bg, #F3EEFF); color:#CC3E00; font-weight:700;">WHAT WE DO</span>
-    <h2 style="font-size:36px; font-weight:700; color:#0F172A; margin-top:12px; margin-bottom:36px;">
+    <span class="section-tag blue">WHAT WE DO</span>
+    <h2 style="font-family:var(--font-heading); font-size:clamp(30px, 3.8vw, 42px); font-weight:850; color:#0E1726; margin-top:14px; margin-bottom:44px; letter-spacing:-0.025em;">
       Our Three Core Service Pillars
     </h2>
 
-    <!-- 3 Pillars Grid -->
-    <div class="grid-3" style="gap:28px;">
+    <div class="grid-3" style="gap:32px;">
       <!-- Pillar 1: Educator Training -->
       <div class="pillar-card">
         <div class="pillar-icon-box pillar-icon-purple">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Educator Training" role="img">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Educator Training" role="img">
             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
             <circle cx="9" cy="7" r="4"/>
             <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
@@ -611,7 +596,7 @@
       <!-- Pillar 2: Education Consultancy (Featured) -->
       <div class="pillar-card featured">
         <div class="pillar-icon-box pillar-icon-green">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF4D00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Education Consultancy" role="img">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Education Consultancy" role="img">
             <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
             <path d="M6 12v5c3 3 9 3 12 0v-5"/>
           </svg>
@@ -621,7 +606,7 @@
           Strategic advisory, school transformation blueprints, EdTech audit, institutional capacity building, and leadership guidance for sustainable growth.
         </p>
         <div class="pillar-card-action">
-          <a href="consultancy.html" class="pillar-cta-link" style="color:#0C7A6B;">Explore Consultancy &rarr;</a>
+          <a href="consultancy.html" class="pillar-cta-link" style="color:#0A8235;">Explore Consultancy &rarr;</a>
           <a href="contact.html" class="pillar-sub-link">
             <span>📅</span> Schedule Strategic Consultation
           </a>
@@ -631,7 +616,7 @@
       <!-- Pillar 3: Curriculum Development -->
       <div class="pillar-card">
         <div class="pillar-icon-box pillar-icon-blue">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Curriculum Development" role="img">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0E1726" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Curriculum Development" role="img">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
           </svg>
@@ -651,20 +636,21 @@
   </div>
 </section>
 
-<!-- 5 & 6. Mission & Vision Statements -->
-<section class="section" style="background: linear-gradient(135deg, #091929 0%, #2145E6 60%, #3C3DDC 100%); color:#FFFFFF; padding:80px 0; position:relative; overflow:hidden;">
+<!-- ══════════════════════════════════════════════════════════
+     5. MISSION & VISION STATEMENTS (Glassmorphic Cards)
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" style="background: linear-gradient(135deg, #053A8B 0%, #064FC1 60%, #085CE0 100%); color:#FFFFFF; padding:96px 0; position:relative; overflow:hidden;">
   <div class="container text-center">
-    <div style="max-width:680px; width:100%; margin: 0 auto 52px auto;">
-      <span class="section-tag" style="background:rgba(255,255,255,0.15); color:#FFFFFF; font-weight:800; padding:6px 18px; border-radius:999px; text-transform:uppercase; letter-spacing:1.5px; font-size:12px; border:1px solid rgba(255,255,255,0.25);">PURPOSE &amp; ASPIRATION</span>
-      <h2 style="font-family:var(--font-heading); font-size:28px; font-weight:800; color:#FFFFFF; letter-spacing:-0.03em; margin-top:16px;">Driven by Purpose. Guided by Vision.</h2>
+    <div style="max-width:720px; width:100%; margin: 0 auto 56px auto;">
+      <span class="section-tag" style="background:rgba(255,255,255,0.18); color:#FFFFFF; font-weight:800; padding:7px 20px; border-radius:999px; text-transform:uppercase; letter-spacing:1.5px; font-size:12px; border:1px solid rgba(255,255,255,0.3);">PURPOSE &amp; ASPIRATION</span>
+      <h2 style="font-family:var(--font-heading); font-size:clamp(30px, 3.8vw, 44px); font-weight:850; color:#FFFFFF; letter-spacing:-0.03em; margin-top:18px;">Driven by Purpose. Guided by Vision.</h2>
     </div>
 
     <div class="grid-2" style="gap:40px; align-items:stretch;">
       <!-- Mission Card -->
-      <div style="background:rgba(255,255,255,0.07); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid rgba(233,216,253,0.22); border-radius:24px; padding:48px 36px; display:flex; flex-direction:column; align-items:center; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,0.25); transition:transform 0.3s ease, border-color 0.3s ease;">
-        <!-- Classy Glowing Mission Icon Badge -->
-        <div style="width:72px; height:72px; border-radius:22px; background: linear-gradient(135deg, #2145E6 0%, #183AD6 100%); display:flex; align-items:center; justify-content:center; margin-bottom:28px; box-shadow:0 10px 28px rgba(37, 99, 235,0.45); border:1px solid rgba(255,255,255,0.3);">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Our Mission" role="img">
+      <div style="background:rgba(255,255,255,0.08); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1.5px solid rgba(255,255,255,0.25); border-radius:26px; padding:52px 40px; display:flex; flex-direction:column; align-items:center; text-align:center; box-shadow:0 24px 60px rgba(0,0,0,0.28);">
+        <div style="width:76px; height:76px; border-radius:22px; background: linear-gradient(135deg, #064FC1 0%, #043FA0 100%); display:flex; align-items:center; justify-content:center; margin-bottom:28px; box-shadow:0 12px 30px rgba(6,79,193,0.45); border:1px solid rgba(255,255,255,0.35);">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Our Mission" role="img">
             <circle cx="12" cy="12" r="10"/>
             <circle cx="12" cy="12" r="6"/>
             <circle cx="12" cy="12" r="2"/>
@@ -674,17 +660,16 @@
             <path d="M19 12h3"/>
           </svg>
         </div>
-        <h3 style="font-family:var(--font-heading); font-size:32px; font-weight:800; color:#FFFFFF !important; letter-spacing:-0.025em; margin-bottom:18px;">Our Mission</h3>
-        <p style="font-family:var(--font-body); font-size:17px; line-height:1.7; color:#E2E8F0 !important; max-width:460px; width:100%; margin:0 auto; font-weight:500;">
+        <h3 style="font-family:var(--font-heading); font-size:32px; font-weight:850; color:#FFFFFF !important; letter-spacing:-0.025em; margin-bottom:18px;">Our Mission</h3>
+        <p style="font-family:var(--font-body); font-size:17.5px; line-height:1.72; color:#EEF4FF !important; max-width:480px; width:100%; margin:0 auto; font-weight:450;">
           To deliver hands-on training, strategic consultancy, and learner-centered curriculum development that blends local relevance with global insight, while inspiring curiosity, competence, creativity, and character.
         </p>
       </div>
 
       <!-- Vision Card -->
-      <div style="background:rgba(255,255,255,0.07); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid rgba(233,216,253,0.22); border-radius:24px; padding:48px 36px; display:flex; flex-direction:column; align-items:center; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,0.25); transition:transform 0.3s ease, border-color 0.3s ease;">
-        <!-- Classy Glowing Vision Icon Badge -->
-        <div style="width:72px; height:72px; border-radius:22px; background:linear-gradient(135deg, #2145E6 0%, #0F172A 100%); display:flex; align-items:center; justify-content:center; margin-bottom:28px; box-shadow:0 10px 28px rgba(30,58,138,0.45); border:1px solid rgba(255,255,255,0.3);">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Our Vision" role="img">
+      <div style="background:rgba(255,255,255,0.08); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1.5px solid rgba(255,255,255,0.25); border-radius:26px; padding:52px 40px; display:flex; flex-direction:column; align-items:center; text-align:center; box-shadow:0 24px 60px rgba(0,0,0,0.28);">
+        <div style="width:76px; height:76px; border-radius:22px; background:linear-gradient(135deg, #12B84E 0%, #0A8235 100%); display:flex; align-items:center; justify-content:center; margin-bottom:28px; box-shadow:0 12px 30px rgba(18,184,78,0.45); border:1px solid rgba(255,255,255,0.35);">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Our Vision" role="img">
             <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
             <circle cx="12" cy="12" r="3.5"/>
             <path d="M12 4V2"/>
@@ -693,8 +678,8 @@
             <path d="M6.34 17.66l-1.41 1.41"/>
           </svg>
         </div>
-        <h3 style="font-family:var(--font-heading); font-size:32px; font-weight:800; color:#FFFFFF !important; letter-spacing:-0.025em; margin-bottom:18px;">Our Vision</h3>
-        <p style="font-family:var(--font-body); font-size:17px; line-height:1.7; color:#E2E8F0 !important; max-width:460px; width:100%; margin:0 auto; font-weight:500;">
+        <h3 style="font-family:var(--font-heading); font-size:32px; font-weight:850; color:#FFFFFF !important; letter-spacing:-0.025em; margin-bottom:18px;">Our Vision</h3>
+        <p style="font-family:var(--font-body); font-size:17.5px; line-height:1.72; color:#EEF4FF !important; max-width:480px; width:100%; margin:0 auto; font-weight:450;">
           To spark curiosity and nurture wisdom by empowering educators, learners, and institutions to transform learning communities across Kenya and Africa.
         </p>
       </div>
@@ -702,11 +687,12 @@
   </div>
 </section>
 
-
-<!-- 7. Core Values -->
+<!-- ══════════════════════════════════════════════════════════
+     6. CORE VALUES (8 PRINCIPLES WITH INTERACTIVE EXPANSION)
+     ══════════════════════════════════════════════════════════ -->
 <section class="section cv-section" id="core-values">
   <div class="container text-center">
-    <div class="cv-header-wrap" style="max-width:760px; margin:0 auto 44px auto; text-align:center;">
+    <div class="cv-header-wrap" style="max-width:760px; margin:0 auto 48px auto; text-align:center;">
       <span class="cv-badge-pill">OUR GUIDING PRINCIPLES</span>
       <h2 class="cv-main-title">Core <span class="grad">Values</span></h2>
       <p class="cv-main-desc">The eight principles that shape everything we build, teach, and stand for.</p>
@@ -715,37 +701,31 @@
     <div class="cv-grid">
 
       <!-- 01 Curiosity -->
-      <div class="cv-card" style="--val-color:#2145E6; --val-rgb:33,69,230; --val-gradient:linear-gradient(135deg, #3B82F6 0%, #2145E6 100%); --val-glow:rgba(33,69,230,0.28);">
+      <div class="cv-card" style="--val-color:#064FC1; --val-rgb:6,79,193; --val-gradient:linear-gradient(135deg, #1C6AF2 0%, #064FC1 100%); --val-glow:rgba(6,79,193,0.28);">
         <div class="cv-card-top-row">
           <div class="cv-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Curiosity" role="img">
               <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
-              <path d="M9 18h6"/>
-              <path d="M10 22h4"/>
+              <path d="M9 18h6"/><path d="M10 22h4"/>
             </svg>
           </div>
           <span class="cv-number-watermark">01</span>
         </div>
-        <h3 class="cv-card-title" style="color:#2145E6 !important;">Curiosity</h3>
+        <h3 class="cv-card-title" style="color:#064FC1 !important;">Curiosity</h3>
         <p class="cv-card-desc">Celebrating questions, discovery, and the joy of lifelong learning.</p>
         <button type="button" class="cv-card-btn" id="val-btn-1" aria-expanded="false" aria-controls="val-panel-1" aria-label="Learn more about Inquiry-Driven" onclick="toggleCoreValue(this, event)">
-          <span class="cv-btn-text">INQUIRY-DRIVEN</span>
-          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+          <span>INQUIRY-DRIVEN</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
         <div id="val-panel-1" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-1">
           <div class="cv-explanation-inner">
-            <div class="cv-explanation-box">
-              <p class="cv-explanation-text">Learning begins with meaningful questions. We encourage curiosity, investigation, reflection, and discovery so that learners can develop a deeper understanding of ideas.</p>
-            </div>
+            <p class="cv-explanation-text">Learning begins with meaningful questions. We encourage curiosity, investigation, reflection, and discovery so that learners can develop a deeper understanding of ideas.</p>
           </div>
         </div>
       </div>
 
       <!-- 02 Creativity -->
-      <div class="cv-card" style="--val-color:#FF4D00; --val-rgb:255,77,0; --val-gradient:linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); --val-glow:rgba(255,77,0,0.28);">
+      <div class="cv-card" style="--val-color:#12B84E; --val-rgb:18,184,78; --val-gradient:linear-gradient(135deg, #2BD468 0%, #12B84E 100%); --val-glow:rgba(18,184,78,0.28);">
         <div class="cv-card-top-row">
           <div class="cv-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Creativity" role="img">
@@ -754,20 +734,15 @@
           </div>
           <span class="cv-number-watermark">02</span>
         </div>
-        <h3 class="cv-card-title" style="color:#FF4D00 !important;">Creativity</h3>
+        <h3 class="cv-card-title" style="color:#12B84E !important;">Creativity</h3>
         <p class="cv-card-desc">Designing imaginative, practical, and engaging learning experiences.</p>
         <button type="button" class="cv-card-btn" id="val-btn-2" aria-expanded="false" aria-controls="val-panel-2" aria-label="Learn more about Innovative Pedagogy" onclick="toggleCoreValue(this, event)">
-          <span class="cv-btn-text">INNOVATIVE PEDAGOGY</span>
-          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+          <span>INNOVATIVE PEDAGOGY</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
         <div id="val-panel-2" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-2">
           <div class="cv-explanation-inner">
-            <div class="cv-explanation-box">
-              <p class="cv-explanation-text">We use creative, learner-centred teaching approaches that combine effective educational practices with appropriate technology to make learning practical, engaging, and impactful.</p>
-            </div>
+            <p class="cv-explanation-text">We use creative, learner-centred teaching approaches that combine effective educational practices with appropriate technology to make learning practical, engaging, and impactful.</p>
           </div>
         </div>
       </div>
@@ -787,23 +762,18 @@
         <h3 class="cv-card-title" style="color:#0D9488 !important;">Relevance</h3>
         <p class="cv-card-desc">Rooting solutions in local cultures, materials, and community needs.</p>
         <button type="button" class="cv-card-btn" id="val-btn-3" aria-expanded="false" aria-controls="val-panel-3" aria-label="Learn more about Contextual Focus" onclick="toggleCoreValue(this, event)">
-          <span class="cv-btn-text">CONTEXTUAL FOCUS</span>
-          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+          <span>CONTEXTUAL FOCUS</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
         <div id="val-panel-3" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-3">
           <div class="cv-explanation-inner">
-            <div class="cv-explanation-box">
-              <p class="cv-explanation-text">Learning solutions are designed around the realities, cultures, resources, and needs of the communities they serve, making education more relevant and meaningful.</p>
-            </div>
+            <p class="cv-explanation-text">Learning solutions are designed around the realities, cultures, resources, and needs of the communities they serve, making education more relevant and meaningful.</p>
           </div>
         </div>
       </div>
 
       <!-- 04 Collaboration -->
-      <div class="cv-card" style="--val-color:#1D4ED8; --val-rgb:29,78,216; --val-gradient:linear-gradient(135deg, #60A5FA 0%, #1D4ED8 100%); --val-glow:rgba(29,78,216,0.28);">
+      <div class="cv-card" style="--val-color:#064FC1; --val-rgb:6,79,193; --val-gradient:linear-gradient(135deg, #3B82F6 0%, #064FC1 100%); --val-glow:rgba(6,79,193,0.28);">
         <div class="cv-card-top-row">
           <div class="cv-icon-box">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Collaboration" role="img">
@@ -815,20 +785,15 @@
           </div>
           <span class="cv-number-watermark">04</span>
         </div>
-        <h3 class="cv-card-title" style="color:#1D4ED8 !important;">Collaboration</h3>
+        <h3 class="cv-card-title" style="color:#064FC1 !important;">Collaboration</h3>
         <p class="cv-card-desc">Co-creating meaningful outcomes alongside educators and leaders.</p>
         <button type="button" class="cv-card-btn" id="val-btn-4" aria-expanded="false" aria-controls="val-panel-4" aria-label="Learn more about Shared Purpose" onclick="toggleCoreValue(this, event)">
-          <span class="cv-btn-text">SHARED PURPOSE</span>
-          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+          <span>SHARED PURPOSE</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
         <div id="val-panel-4" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-4">
           <div class="cv-explanation-inner">
-            <div class="cv-explanation-box">
-              <p class="cv-explanation-text">Educators, learners, families, leaders, and communities work together towards common educational goals and meaningful, sustainable outcomes.</p>
-            </div>
+            <p class="cv-explanation-text">Educators, learners, families, leaders, and communities work together towards common educational goals and meaningful, sustainable outcomes.</p>
           </div>
         </div>
       </div>
@@ -847,17 +812,12 @@
         <h3 class="cv-card-title" style="color:#7C3AED !important;">Clarity</h3>
         <p class="cv-card-desc">Simplifying complex pedagogy and EdTech into intuitive, learner-friendly formats.</p>
         <button type="button" class="cv-card-btn" id="val-btn-5" aria-expanded="false" aria-controls="val-panel-5" aria-label="Learn more about Intuitive Mastery" onclick="toggleCoreValue(this, event)">
-          <span class="cv-btn-text">INTUITIVE MASTERY</span>
-          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+          <span>INTUITIVE MASTERY</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
         <div id="val-panel-5" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-5">
           <div class="cv-explanation-inner">
-            <div class="cv-explanation-box">
-              <p class="cv-explanation-text">Complex ideas and digital tools are presented in clear, simple, and accessible ways, helping users build confidence and achieve mastery naturally.</p>
-            </div>
+            <p class="cv-explanation-text">Complex ideas and digital tools are presented in clear, simple, and accessible ways, helping users build confidence and achieve mastery naturally.</p>
           </div>
         </div>
       </div>
@@ -876,17 +836,12 @@
         <h3 class="cv-card-title" style="color:#059669 !important;">Renewal</h3>
         <p class="cv-card-desc">Believing every classroom milestone creates fresh opportunity for human growth.</p>
         <button type="button" class="cv-card-btn" id="val-btn-6" aria-expanded="false" aria-controls="val-panel-6" aria-label="Learn more about Lifelong Growth" onclick="toggleCoreValue(this, event)">
-          <span class="cv-btn-text">LIFELONG GROWTH</span>
-          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+          <span>LIFELONG GROWTH</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
         <div id="val-panel-6" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-6">
           <div class="cv-explanation-inner">
-            <div class="cv-explanation-box">
-              <p class="cv-explanation-text">Learning is a continuous journey. Every experience, challenge, and achievement provides an opportunity to gain knowledge, improve skills, and grow.</p>
-            </div>
+            <p class="cv-explanation-text">Learning is a continuous journey. Every experience, challenge, and achievement provides an opportunity to gain knowledge, improve skills, and grow.</p>
           </div>
         </div>
       </div>
@@ -905,26 +860,21 @@
         <h3 class="cv-card-title" style="color:#E11D48 !important;">Integrity</h3>
         <p class="cv-card-desc">Leading with honesty, humility, transparency, and uncompromised dedication.</p>
         <button type="button" class="cv-card-btn" id="val-btn-7" aria-expanded="false" aria-controls="val-panel-7" aria-label="Learn more about Ethical Foundation" onclick="toggleCoreValue(this, event)">
-          <span class="cv-btn-text">ETHICAL FOUNDATION</span>
-          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+          <span>ETHICAL FOUNDATION</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
         <div id="val-panel-7" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-7">
           <div class="cv-explanation-inner">
-            <div class="cv-explanation-box">
-              <p class="cv-explanation-text">Every decision and action is guided by honesty, responsibility, fairness, transparency, respect, and the protection of every learner’s dignity.</p>
-            </div>
+            <p class="cv-explanation-text">Every decision and action is guided by honesty, responsibility, fairness, transparency, respect, and the protection of every learner’s dignity.</p>
           </div>
         </div>
       </div>
 
       <!-- 08 Excellence -->
-      <div class="cv-card" style="--val-color:#D97706; --val-rgb:217,119,6; --val-gradient:linear-gradient(135deg, #FBBF24 0%, #D97706 100%); --val-glow:rgba(217,119,6,0.28);">
+      <div class="cv-card" style="--val-color:#D97706; --val-rgb:217,119,6; --val-gradient:linear-gradient(135deg, #FFD21A 0%, #D97706 100%); --val-glow:rgba(217,119,6,0.28);">
         <div class="cv-card-top-row">
           <div class="cv-icon-box">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Excellence" role="img">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E1726" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Excellence" role="img">
               <circle cx="12" cy="8" r="6"/>
               <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
             </svg>
@@ -934,17 +884,12 @@
         <h3 class="cv-card-title" style="color:#D97706 !important;">Excellence</h3>
         <p class="cv-card-desc">Upholding world-class standards of educational quality across every service.</p>
         <button type="button" class="cv-card-btn" id="val-btn-8" aria-expanded="false" aria-controls="val-panel-8" aria-label="Learn more about Gold Standard" onclick="toggleCoreValue(this, event)">
-          <span class="cv-btn-text">GOLD STANDARD</span>
-          <svg class="cv-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
+          <span>GOLD STANDARD</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
         <div id="val-panel-8" class="cv-explanation-wrapper" role="region" aria-labelledby="val-btn-8">
           <div class="cv-explanation-inner">
-            <div class="cv-explanation-box">
-              <p class="cv-explanation-text">We are committed to exceptional quality, continuous improvement, and educational solutions that meet high professional and global standards.</p>
-            </div>
+            <p class="cv-explanation-text">We are committed to exceptional quality, continuous improvement, and educational solutions that meet high professional and global standards.</p>
           </div>
         </div>
       </div>
@@ -952,69 +897,114 @@
     </div>
   </div>
 </section>
-<!-- 8. Founder's Note from Alex -->
-<section class="section" style="background:#FFFFFF;">
-  <div class="container">
-    <div style="background:#E8F0F8; border:1px solid #BFDBFE; border-radius:16px; padding:48px; display:grid; grid-template-columns:120px 1fr; gap:32px; align-items:center;">
-      <div style="width:100px; height:100px; border-radius:50%; background:#2563EB; color:#FFFFFF; font-size:36px; font-weight:700; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(30,58,138,0.2);">
-        AK
+
+<!-- ══════════════════════════════════════════════════════════
+     7. ORGANIZATION STORY & MILESTONES (Engaging Timeline)
+     ══════════════════════════════════════════════════════════ -->
+<section class="timeline-section" aria-label="Our journey and institutional milestones">
+  <div class="container text-center">
+    <span class="section-tag teal">OUR JOURNEY</span>
+    <h2 style="font-family:var(--font-heading); font-size:clamp(30px, 3.8vw, 42px); font-weight:850; color:#0E1726; margin-top:14px; margin-bottom:14px; letter-spacing:-0.025em;">
+      Transforming Education Step by Step
+    </h2>
+    <p style="font-size:16px; color:#475569; max-width:680px; margin:0 auto; line-height:1.68;">
+      From grassroots workshops to a nationwide LMS platform empowering thousands of Kenyan educators.
+    </p>
+
+    <div class="timeline-grid text-left">
+      <div class="timeline-card">
+        <span class="timeline-step-badge">Phase 01 · Inception</span>
+        <h3>Grassroots Training</h3>
+        <p>Launched in-person bootcamps for primary and secondary teachers in Nairobi, focusing on foundational digital literacy and ICT classroom readiness.</p>
       </div>
-      <div>
-        <span style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color: #FF4D00;">A NOTE FROM OUR FOUNDER</span>
-        <h3 style="font-size:26px; font-weight:700; color:#0F172A; margin-top:4px; margin-bottom:16px;">
-          "Curiosity is the spark that transforms classrooms."
-        </h3>
-        <p style="font-size:16px; line-height:1.7; color:var(--text-muted, #475569); margin-bottom:16px;">
-          When we founded Instructify Kenya, our goal was simple yet profound: to empower teachers and institutions with tools that make learning inspiring, practical, and deeply meaningful. We believe that every educator holds the key to unlocking human potential when given the right support, resources, and encouragement.
-        </p>
-        <p style="font-size:16px; line-height:1.7; color:var(--text-muted, #475569); margin-bottom:20px;">
-          We invite you to walk with us as we reimagine education across Kenya and beyond—one spark of curiosity at a time.
-        </p>
-        <div style="font-weight:700; font-size:16px; color:#0F172A;">Alex</div>
-        <div style="font-size:14px; color:var(--text-muted, #475569);">Founder &amp; Lead Educational Designer, Instructify Kenya</div>
+      <div class="timeline-card">
+        <span class="timeline-step-badge" style="background:#EDFBF2; color:#0A8235; border-color:rgba(18,184,78,0.25);">Phase 02 · Alignment</span>
+        <h3>CBC Curriculum Integration</h3>
+        <p>Partnered with education stakeholders to pioneer practical lesson-planning toolkits and assessment rubrics for Kenya's Competency-Based Curriculum.</p>
+      </div>
+      <div class="timeline-card">
+        <span class="timeline-step-badge" style="background:#FFFDF0; color:#B45309; border-color:rgba(255,210,26,0.35);">Phase 03 · Expansion</span>
+        <h3>Digital LMS Platform</h3>
+        <p>Scaled our self-paced accredited courses online, providing teachers in remote and rural counties with on-demand certifications and verifiable digital badges.</p>
+      </div>
+      <div class="timeline-card">
+        <span class="timeline-step-badge" style="background:#EEF4FF; color:#064FC1; border-color:rgba(6,79,193,0.25);">Phase 04 · Innovation</span>
+        <h3>Smart Classrooms &amp; AI</h3>
+        <p>Integrating smart boards, immersive VR learning tools, and AI pedagogy training to equip African learners for the future of work.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 9. Strong Call-to-Action -->
-<section class="section text-center" style="background:linear-gradient(135deg, #091929 0%, #2145E6 60%, #3C3DDC 100%); color:#FFFFFF; padding:56px 20px;">
-  <div class="container" style="max-width:800px; width:100%;">
-    <h2 style="font-size:36px; font-weight:800; color:#FFFFFF !important; margin-bottom:12px; line-height:1.2;">
+<!-- ══════════════════════════════════════════════════════════
+     8. A NOTE FROM OUR FOUNDER
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" style="background:#FFFFFF; padding: 96px 0;">
+  <div class="container">
+    <div class="founder-note-card">
+      <img src="assets/images/founder_alex.jpg" alt="Alex, Founder and Lead Educational Designer of Instructify Kenya" class="founder-img-box" loading="lazy">
+      <div>
+        <span style="font-size:12.5px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #064FC1;">A NOTE FROM OUR FOUNDER</span>
+        <h3 style="font-family:var(--font-heading); font-size:clamp(24px, 2.8vw, 32px); font-weight:850; color:#0E1726; margin-top:8px; margin-bottom:16px; line-height:1.25;">
+          "Curiosity is the spark that transforms classrooms."
+        </h3>
+        <p style="font-size:16px; line-height:1.72; color:#475569; margin-bottom:16px;">
+          When we founded Instructify Kenya, our goal was simple yet profound: to empower teachers and institutions with tools that make learning inspiring, practical, and deeply meaningful. We believe that every educator holds the key to unlocking human potential when given the right support, resources, and encouragement.
+        </p>
+        <p style="font-size:16px; line-height:1.72; color:#475569; margin-bottom:24px;">
+          We invite you to walk with us as we reimagine education across Kenya and beyond—one spark of curiosity at a time.
+        </p>
+        <div style="font-weight:800; font-size:17px; color:#0E1726;">Alex</div>
+        <div style="font-size:14px; color:#64748B; font-weight:600;">Founder &amp; Lead Educational Designer, Instructify Kenya</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     9. CONVERSION-FOCUSED CALL-TO-ACTION
+     ══════════════════════════════════════════════════════════ -->
+<section class="section text-center" style="background: linear-gradient(135deg, #053A8B 0%, #064FC1 60%, #085CE0 100%); color:#FFFFFF; padding:80px 24px; position:relative; overflow:hidden;">
+  <div class="container" style="max-width:840px; width:100%; position:relative; z-index:2;">
+    <h2 style="font-family:var(--font-heading); font-size:clamp(32px, 4vw, 44px); font-weight:850; color:#FFFFFF !important; margin-bottom:14px; line-height:1.2; letter-spacing:-0.025em;">
       Ready to ignite your curiosity?
     </h2>
-    <p style="font-size:20px; font-weight:700; color: #FCD34D !important; margin-bottom:16px; line-height:1.4;">
+    <p style="font-size:20px; font-weight:750; color:#FFD21A !important; margin-bottom:18px; line-height:1.4;">
       Let’s build a learning revolution—one spark at a time.
     </p>
-    <p style="font-size:16px; color:#E2E8F0 !important; margin-bottom:28px; line-height:1.65; font-weight:500;">
+    <p style="font-size:16.5px; color:#EEF4FF !important; margin-bottom:36px; line-height:1.70; font-weight:450;">
       Whether you are a teacher seeking professional growth, a school principal aiming for CBC excellence, or an organization building scalable education programs, Instructify Kenya is your trusted partner.
     </p>
     <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
-      <a href="contact.html" class="btn btn-orange btn-lg" style="font-size:17px; padding:16px 32px;">Partner With Instructify Kenya</a>
-      <a href="courses.html" class="btn btn-outline btn-lg" style="color:#FFFFFF !important; border-color:#FFFFFF !important;">Explore Our Courses</a>
+      <a href="contact.html" class="btn btn-white btn-lg" style="font-weight:800; padding:16px 36px; color:#064FC1 !important;">Partner With Instructify Kenya</a>
+      <a href="courses.html" class="btn btn-outline-white btn-lg" style="font-weight:750; padding:16px 32px;">Explore Our Courses</a>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);">
+</main>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER — Dark Logo & Clean Alignment
+     ══════════════════════════════════════════════════════════ -->
+<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);" role="contentinfo">
   <div class="container">
-    <div class="grid-4" style="gap:32px; padding:40px 0; border-bottom: 1.5px solid var(--cta-color, #F5812D);">
+    <div class="grid-4" style="gap:36px; padding:40px 0 48px; border-bottom: 1.5px solid var(--cta-color, #064FC1);">
       <div>
-                <div class="footer-brand-lockup" style="margin-bottom:20px;">
-          <a href="index.html" aria-label="Instructify Kenya Home" style="display:inline-block;text-decoration:none;">
-            <img src="assets/images/instructify-kenya-logo-dark.png" alt="Instructify Kenya Logo" class="footer-brand-logo" style="height:44px;width:auto;max-width:220px;object-fit:contain;display:block;">
+        <div class="footer-brand-lockup" style="margin-bottom:20px;">
+          <a href="index.html" aria-label="Instructify Kenya Home" style="display:inline-block; text-decoration:none;">
+            <img src="assets/images/instructify-kenya-logo-dark.png" alt="Instructify Kenya Logo" class="footer-brand-logo" style="height:44px; width:auto; max-width:220px; object-fit:contain; display:block;">
           </a>
         </div>
-        <p style="font-size:14.5px; color:#E2E8F0 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
+        <p style="font-size:14.5px; color:#CBD5E1 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
           We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.
         </p>
-                <div class="footer-social-row" style="margin-bottom:20px;">
+        <div class="footer-social-row" style="margin-bottom:20px;">
           <a href="https://www.linkedin.com/company/instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg>
           </a>
           <a href="https://www.youtube.com/@instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="YouTube">
-            <svg viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 22c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 22c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 2c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
           </a>
           <a href="https://wa.me/254143024416?text=Hello%20Instructify%20Kenya,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="WhatsApp">
             <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -1054,61 +1044,60 @@
       </div>
       <div>
         <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
-        <p style="font-size:13.5px; color:#E2E8F0 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
+        <p style="font-size:13.5px; color:#CBD5E1 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
         <div style="display:flex; gap:8px;">
           <input type="email" placeholder="Your email" aria-label="Your email address" style="padding:10px; border-radius:6px; border:none; width:100%;">
           <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
         </div>
       </div>
     </div>
-    <div style="text-align:center; padding:24px 0; font-size:13px; color:#E2E8F0 !important; font-weight:500;">
-      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: #FF4D00; font-weight:700; text-decoration:underline;">Contact Us</a>
+    <div style="text-align:center; padding:24px 0; font-size:13px; color:#CBD5E1 !important; font-weight:500;">
+      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: var(--primary); font-weight:700; text-decoration:underline;">Contact Us</a>
     </div>
   </div>
 </footer>
 
 <script src="js/main.js?v=3.6"></script>
+<script src="js/chat-config.js"></script>
+<script src="js/live-chat.js"></script>
 
-  <script src="js/chat-config.js"></script>
-  <script src="js/live-chat.js"></script>
+<script>
+  // Bulletproof Core Values Expander toggle (inline, zero caching dependency)
+  window.toggleCoreValue = function(btn, e) {
+    if (e) {
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+      if (typeof e.stopPropagation === 'function') e.stopPropagation();
+    }
+    var now = Date.now();
+    if (btn._lastToggleTime && (now - btn._lastToggleTime < 250)) {
+      return;
+    }
+    btn._lastToggleTime = now;
 
-  <script>
-    // Bulletproof Core Values Expander toggle (inline, zero caching dependency)
-    window.toggleCoreValue = function(btn, e) {
-      if (e) {
-        if (typeof e.preventDefault === 'function') e.preventDefault();
-        if (typeof e.stopPropagation === 'function') e.stopPropagation();
-      }
-      var now = Date.now();
-      if (btn._lastToggleTime && (now - btn._lastToggleTime < 250)) {
-        return;
-      }
-      btn._lastToggleTime = now;
+    var card = btn.closest('.cv-card');
+    if (!card) return;
 
-      var card = btn.closest('.cv-card');
-      if (!card) return;
+    var isExpanded = card.classList.contains('is-expanded');
+    var isDesktop = window.innerWidth > 768;
 
-      var isExpanded = card.classList.contains('is-expanded');
-      var isDesktop = window.innerWidth > 768;
+    if (isDesktop && !isExpanded) {
+      document.querySelectorAll('.cv-card.is-expanded').forEach(function(c) {
+        if (c !== card) {
+          c.classList.remove('is-expanded');
+          var b = c.querySelector('.cv-card-btn');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
 
-      if (isDesktop && !isExpanded) {
-        document.querySelectorAll('.cv-card.is-expanded').forEach(function(c) {
-          if (c !== card) {
-            c.classList.remove('is-expanded');
-            var b = c.querySelector('.cv-card-btn');
-            if (b) b.setAttribute('aria-expanded', 'false');
-          }
-        });
-      }
-
-      if (isExpanded) {
-        card.classList.remove('is-expanded');
-        btn.setAttribute('aria-expanded', 'false');
-      } else {
-        card.classList.add('is-expanded');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    };
-  </script>
+    if (isExpanded) {
+      card.classList.remove('is-expanded');
+      btn.setAttribute('aria-expanded', 'false');
+    } else {
+      card.classList.add('is-expanded');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  };
+</script>
 </body>
 </html>

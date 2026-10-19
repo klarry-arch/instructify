@@ -24,8 +24,8 @@ if (Test-Path "C:\instructify\sitemap.xml") {
     [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, "C:\instructify\sitemap.xml", "sitemap.xml", [System.IO.Compression.CompressionLevel]::Optimal)
 }
 
-# Folders to include: css, assets, articles, courses, resources
-$folders = @("css", "assets", "articles", "courses", "resources")
+# Folders to include: css, assets, articles, courses, resources, js, api
+$folders = @("css", "assets", "articles", "courses", "resources", "js", "api")
 foreach ($folder in $folders) {
     $folderPath = "C:\instructify\$folder"
     if (Test-Path $folderPath) {
