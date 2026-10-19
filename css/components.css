@@ -59,41 +59,40 @@
 }
 
 .nav-brand-logo {
-  height: 38px;
+  height: 40px;
   width: auto;
-  max-width: 42px;
+  max-width: 200px;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
 .nav-brand:hover .nav-brand-logo {
-  transform: scale(1.08) rotate(-2deg);
-  filter: drop-shadow(0 4px 12px rgba(245, 129, 45, 0.35));
+  transform: translateY(-1px) scale(1.02);
+  filter: drop-shadow(0 4px 12px rgba(6, 79, 193, 0.22));
 }
 
 .footer-brand-logo {
   height: 44px;
   width: auto;
+  max-width: 220px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
   transition: transform 0.25s ease;
 }
 
 .footer-brand-logo:hover {
-  transform: scale(1.06);
+  transform: scale(1.03);
 }
 
 .nav-brand-text-box {
-  display: inline-flex !important;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1.5px;
-  white-space: nowrap;
-  line-height: 1;
+  display: none !important;
+}
+
+.footer-brand-lockup > div:not(:first-child) {
+  display: none !important;
 }
 
 .nav-brand-title {
@@ -1900,18 +1899,12 @@ a[href*="jumuishi"].nav-link.active {
     gap: 8px;
   }
   .nav-brand-text-box {
-    display: inline-flex !important;
-  }
-  .nav-brand-title {
-    font-size: 1.20rem !important;
-  }
-  .nav-brand-subtitle {
-    font-size: 0.58rem !important;
-    letter-spacing: 2px !important;
+    display: none !important;
   }
   .nav-brand-logo {
-    height: 36px;
-    max-width: 38px;
+    height: 38px;
+    width: auto;
+    max-width: 180px;
   }
   .nav-links {
     gap: 2px;
@@ -1951,18 +1944,12 @@ a[href*="jumuishi"].nav-link.active {
     gap: 6px;
   }
   .nav-brand-text-box {
-    display: inline-flex !important;
-  }
-  .nav-brand-title {
-    font-size: 1.15rem !important;
-  }
-  .nav-brand-subtitle {
-    font-size: 0.56rem !important;
-    letter-spacing: 1.8px !important;
+    display: none !important;
   }
   .nav-brand-logo {
-    height: 35px;
-    max-width: 38px;
+    height: 36px;
+    width: auto;
+    max-width: 175px;
   }
   .nav-links {
     gap: 1.5px;
@@ -1998,10 +1985,8 @@ a[href*="jumuishi"].nav-link.active {
 @media (max-width: 1100px) {
   .nav-links { display: none !important; }
   .nav-hamburger { display: flex !important; flex-shrink: 0 !important; }
-  .nav-brand-text-box { display: inline-flex !important; }
-  .nav-brand-logo { height: 36px; max-width: 40px; }
-  .nav-brand-title { font-size: 1.20rem !important; }
-  .nav-brand-subtitle { font-size: 0.60rem !important; letter-spacing: 2px !important; }
+  .nav-brand-text-box { display: none !important; }
+  .nav-brand-logo { height: 38px; width: auto; max-width: 180px; }
 }
 
 @media (min-width: 769px) and (max-width: 1100px) {
@@ -2040,10 +2025,8 @@ a[href*="jumuishi"].nav-link.active {
   .nav-actions {
     display: none !important;
   }
-  .nav-brand-text-box { display: inline-flex !important; }
-  .nav-brand-logo { height: 36px; max-width: 40px; }
-  .nav-brand-title { font-size: 1.18rem !important; }
-  .nav-brand-subtitle { font-size: 0.60rem !important; letter-spacing: 1.8px !important; }
+  .nav-brand-text-box { display: none !important; }
+  .nav-brand-logo { height: 36px; width: auto; max-width: 170px; }
   /* Hamburger always visible, right-aligned, and unclipped on mobile */
   .nav-hamburger {
     display: flex !important;
@@ -2069,10 +2052,8 @@ a[href*="jumuishi"].nav-link.active {
 
 @media (max-width: 430px) {
   .navbar .container { padding: 0 12px !important; }
-  .nav-brand-text-box { display: inline-flex !important; }
-  .nav-brand-logo { height: 33px !important; max-width: 36px !important; }
-  .nav-brand-title { font-size: 1.10rem !important; }
-  .nav-brand-subtitle { font-size: 0.56rem !important; letter-spacing: 1.4px !important; }
+  .nav-brand-text-box { display: none !important; }
+  .nav-brand-logo { height: 32px !important; width: auto !important; max-width: 150px !important; }
   .nav-hamburger {
     width: 42px !important;
     height: 42px !important;
@@ -2086,9 +2067,8 @@ a[href*="jumuishi"].nav-link.active {
 
 @media (max-width: 360px) {
   .navbar .container { padding: 0 10px !important; }
-  .nav-brand-logo { height: 30px !important; max-width: 32px !important; }
-  .nav-brand-title { font-size: 1.02rem !important; }
-  .nav-brand-subtitle { font-size: 0.52rem !important; letter-spacing: 1.2px !important; }
+  .nav-brand-text-box { display: none !important; }
+  .nav-brand-logo { height: 28px !important; width: auto !important; max-width: 135px !important; }
   .nav-hamburger {
     width: 40px !important;
     height: 40px !important;

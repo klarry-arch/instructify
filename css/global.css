@@ -1,7 +1,7 @@
 /* ============================================================
    INSTRUCTIFY KENYA — CANONICAL BRAND DESIGN SYSTEM
    Source of Truth: https://instructify.co.ke/
-   Brand Colors: #2145E6 (Primary) · #3C3DDC (Secondary) · #FF4D00 (Accent) · #F5812D (CTA)
+   Brand Colors: #064FC1 (Primary Blue) · #12B84E (Brand Green) · #FFD21A (Brand Yellow) · #F20D20 (Brand Red) · #44484F (Dark Grey)
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -10,95 +10,104 @@
    CANONICAL DESIGN TOKENS — Single Source of Truth
    ══════════════════════════════════════════════════════════════ */
 :root {
-  /* ── 1. Canonical Instructify Kenya Brand Colors ── */
-  --primary-color:         #2145E6; /* Instructify Royal Blue (Brand Identity & Navigation) */
-  --primary-color-hover:   #2C33F7; /* Active/Interactive Royal Blue */
-  --primary-color-dark:    #183AD6; /* Deep Header Top Bar Blue */
-  --primary-color-light:   #3C3DDC; /* Cobalt Accent Blue */
-  --primary-color-bg:      #EBEBFB; /* Soft Periwinkle Surface Tint */
-  --primary-color-glow:    rgba(33, 69, 230, 0.20);
+  /* ── 1. Canonical Instructify Kenya Brand Colors (Sampled from Official Logo) ── */
+  --primary-color:         #064FC1; /* Instructify Primary Blue (Dominant Identity, Headings, Navigation & Primary Actions) */
+  --primary-color-hover:   #043FA0; /* Interactive Primary Blue Hover */
+  --primary-color-dark:    #013E99; /* Deep Brand Blue */
+  --primary-color-light:   #1C6AF2; /* Bright Blue Accent */
+  --primary-color-bg:      #EEF4FF; /* Crisp Light Blue Tint */
+  --primary-color-glow:    rgba(6, 79, 193, 0.20);
 
-  --secondary-color:       #3C3DDC; /* Supporting Sections & Visual Hierarchy */
-  --secondary-color-hover: #2C33F7;
-  --secondary-color-dark:  #183AD6;
-  --secondary-color-light: #5B5CE6;
-  --secondary-color-bg:    #EBEBFB;
-  --secondary-color-glow:  rgba(60, 61, 220, 0.18);
+  --secondary-color:       #12B84E; /* Brand Green (Positive Outcomes, Success, Progress, Secondary Actions) */
+  --secondary-color-hover: #0EA243;
+  --secondary-color-dark:  #0A8235;
+  --secondary-color-light: #2BD468;
+  --secondary-color-bg:    #EDFBF2;
+  --secondary-color-glow:  rgba(18, 184, 78, 0.18);
 
-  --accent-color:          #FF4D00; /* Instructify Vibrant Accent Orange (Logo "KENYA" & Badges) */
-  --accent-color-hover:    #E04400;
-  --accent-color-dark:     #CC3E00;
-  --accent-color-light:    #FF6E30;
-  --accent-color-bg:       #FFF2EB;
-  --accent-color-glow:     rgba(255, 77, 0, 0.22);
+  --accent-color:          #FFD21A; /* Brand Yellow (Highlights, Badges, Labels, Active Accents) */
+  --accent-color-hover:    #EBBF10;
+  --accent-color-dark:     #CFA300;
+  --accent-color-light:    #FFE052;
+  --accent-color-bg:       #FFFDF0;
+  --accent-color-glow:     rgba(255, 210, 26, 0.25);
 
-  --cta-color:             #F5812D; /* Instructify Action Orange (Main CTA Buttons & Eyebrows) */
-  --cta-color-hover:       #E06D1B;
-  --cta-color-dark:        #C75D10;
-  --cta-color-light:       #F7974E;
-  --cta-color-bg:          #FFF4EB;
-  --cta-color-glow:        rgba(245, 129, 45, 0.28);
+  --cta-color:             #064FC1; /* Instructify Primary Blue (Main CTA & Eyebrows - Blue Dominant Hierarchy) */
+  --cta-color-hover:       #043FA0;
+  --cta-color-dark:        #013E99;
+  --cta-color-light:       #1C6AF2;
+  --cta-color-bg:          #EEF4FF;
+  --cta-color-glow:        rgba(6, 79, 193, 0.28);
+
+  /* Explicit Brand Palette Tokens */
+  --brand-blue:            #064FC1;
+  --brand-green:           #12B84E;
+  --brand-yellow:          #FFD21A;
+  --brand-red:             #F20D20;
+  --brand-dark-grey:       #44484F;
+  --brand-white:           #FFFFFF;
+  --brand-neutral-bg:      #F5F7FA;
 
   /* ── 2. Backgrounds & Surfaces ── */
   --background-color:      #FFFFFF;
   --surface-color:         #FFFFFF;
-  --surface-color-soft:    #F9F9FB; /* Alternate Section Background */
-  --surface-color-tint:    #EBEBFB; /* Feature Box Periwinkle Tint */
+  --surface-color-soft:    #F5F7FA; /* Official Light Neutral Background */
+  --surface-color-tint:    #EEF4FF; /* Subtle Brand Blue Tint */
   --surface-color-card:    #FFFFFF;
 
   /* ── 3. Typography & Text Hierarchy ── */
-  --heading-color:         #111111; /* Live Headings (High Contrast AAA) */
-  --text-color:            #1C1C1C; /* Main Body Copy */
-  --muted-text-color:      #717171; /* Live Secondary & Muted Meta (#717171 / #787878) */
+  --heading-color:         #0E1726; /* High Contrast Headings */
+  --text-color:            #44484F; /* Official Brand Dark Grey for Body Copy */
+  --muted-text-color:      #6C727F; /* Refined Secondary & Muted Meta */
   --text-color-disabled:   #94A3B8;
   --text-on-primary:       #FFFFFF;
   --text-on-secondary:     #FFFFFF;
-  --text-on-accent:        #FFFFFF;
+  --text-on-accent:        #111111;
   --text-on-cta:           #FFFFFF;
   --text-on-dark:          #FFFFFF;
 
   /* ── 4. Borders & Dividers ── */
-  --border-color:          #F2F2F2; /* Subtle divider */
+  --border-color:          #E5E7EB; /* Subtle divider */
   --border-color-card:     #E2E8F0; /* Card border */
   --border-color-strong:   #CBD5E1;
-  --border-color-focus:    #2145E6;
-  --border-color-focus-glow: rgba(33, 69, 230, 0.22);
+  --border-color-focus:    #064FC1;
+  --border-color-focus-glow: rgba(6, 79, 193, 0.22);
 
   /* ── 5. Status & Functional Colors ── */
-  --success-color:         #0FB36C; /* Live Theme Green */
-  --success-color-hover:   #0C965A;
-  --success-color-bg:      #F0FDF4;
+  --success-color:         #12B84E; /* Official Brand Green */
+  --success-color-hover:   #0EA243;
+  --success-color-bg:      #EDFBF2;
   --success-color-border:  #86EFAC;
 
-  --warning-color:         #FCB900; /* Live Theme Amber / LearnPress #ffb606 */
-  --warning-color-hover:   #E0A500;
-  --warning-color-bg:      #FFFBEB;
-  --warning-color-border:  #FCD34D;
+  --warning-color:         #FFD21A; /* Official Brand Yellow */
+  --warning-color-hover:   #EBBF10;
+  --warning-color-bg:      #FFFDF0;
+  --warning-color-border:  #FEE880;
 
-  --error-color:           #CF2E2E; /* Live Theme Vivid Red */
-  --error-color-hover:     #B52525;
+  --error-color:           #F20D20; /* Official Brand Red (Alerts, Urgency, Errors only) */
+  --error-color-hover:     #D40819;
   --error-color-bg:        #FEF2F2;
   --error-color-border:    #FCA5A5;
 
-  --info-color:            #2145E6;
-  --info-color-bg:         #F0F9FF;
+  --info-color:            #064FC1;
+  --info-color-bg:         #EEF4FF;
   --info-color-border:     #BAE6FD;
 
   /* ── 6. Gradients ── */
-  --gradient-hero:         linear-gradient(135deg, #183AD6 0%, #2145E6 50%, #3C3DDC 100%);
-  --gradient-primary:      linear-gradient(135deg, #183AD6 0%, #2145E6 100%);
-  --gradient-secondary:    linear-gradient(135deg, #2145E6 0%, #3C3DDC 100%);
-  --gradient-accent:       linear-gradient(135deg, #FF4D00 0%, #F5812D 100%);
-  --gradient-cta:          linear-gradient(135deg, #F5812D 0%, #FF4D00 100%);
-  --gradient-dark:         linear-gradient(135deg, #0A1435 0%, #111D4A 100%);
-  --gradient-surface:      linear-gradient(135deg, #FFFFFF 0%, #F9F9FB 100%);
-  --gradient-brand-strip:  linear-gradient(90deg, #183AD6 0%, #2145E6 35%, #3C3DDC 70%, #F5812D 100%);
+  --gradient-hero:         linear-gradient(135deg, #013E99 0%, #064FC1 60%, #0E65E6 100%);
+  --gradient-primary:      linear-gradient(135deg, #013E99 0%, #064FC1 100%);
+  --gradient-secondary:    linear-gradient(135deg, #064FC1 0%, #12B84E 100%);
+  --gradient-accent:       linear-gradient(135deg, #FFD21A 0%, #F5A623 100%);
+  --gradient-cta:          linear-gradient(135deg, #064FC1 0%, #013E99 100%);
+  --gradient-dark:         linear-gradient(135deg, #09152E 0%, #102144 100%);
+  --gradient-surface:      linear-gradient(135deg, #FFFFFF 0%, #F5F7FA 100%);
+  --gradient-brand-strip:  linear-gradient(90deg, #064FC1 0%, #12B84E 35%, #FFD21A 70%, #F20D20 100%);
 
   /* ── 7. Shadows ── */
-  --shadow-primary:        0 8px 24px rgba(33, 69, 230, 0.28);
-  --shadow-secondary:      0 8px 24px rgba(60, 61, 220, 0.24);
-  --shadow-accent:         0 8px 24px rgba(255, 77, 0, 0.28);
-  --shadow-cta:            0 8px 24px rgba(245, 129, 45, 0.32);
+  --shadow-primary:        0 8px 24px rgba(6, 79, 193, 0.24);
+  --shadow-secondary:      0 8px 24px rgba(18, 184, 78, 0.20);
+  --shadow-accent:         0 8px 24px rgba(255, 210, 26, 0.25);
+  --shadow-cta:            0 8px 24px rgba(6, 79, 193, 0.28);
 
   /* ══════════════════════════════════════════════════════════════
      BACKWARD COMPATIBILITY ALIASES

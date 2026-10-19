@@ -78,25 +78,14 @@
     /* BOTTOM: stats strip — always anchored at bottom */
     .auth-left-bottom { flex-shrink: 0; margin-top: 32px; }
 
-    /* Logo */
     .auth-logo-link {
       display: inline-flex;
       align-items: center;
       gap: 12px;
       text-decoration: none;
     }
-    .auth-logo-link img { height: 46px; width: auto; object-fit: contain; }
-    .auth-logo-text { display: flex; flex-direction: column; gap: 1px; line-height: 1; }
-    .auth-logo-name {
-      font-family: var(--font-heading, 'Poppins', sans-serif);
-      font-size: 1.32rem; font-weight: 800;
-      color: #fff; letter-spacing: -0.03em;
-    }
-    .auth-logo-sub {
-      font-family: var(--font-heading, 'Poppins', sans-serif);
-      font-size: 0.70rem; font-weight: 800;
-      color: #FF4D00; text-transform: uppercase; letter-spacing: 2.5px;
-    }
+    .auth-logo-link img { height: 46px; width: auto; max-width: 220px; object-fit: contain; }
+    .auth-logo-text { display: none; }
 
     /* Greeting */
     .auth-greeting-title {
@@ -294,7 +283,7 @@
       <!-- Top: Logo -->
       <div class="auth-left-top">
         <a href="index.html" class="auth-logo-link" aria-label="Instructify Kenya Home">
-          <img src="assets/images/logo.png" alt="Instructify Kenya Logo">
+          <img src="assets/images/instructify-kenya-logo-dark.png" alt="Instructify Kenya Logo">
           <div class="auth-logo-text">
             <span class="auth-logo-name">Instructify</span>
             <span class="auth-logo-sub">KENYA</span>
