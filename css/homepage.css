@@ -922,3 +922,598 @@
     padding: 64px 0;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   INSTITUTIONAL DIGITAL PLATFORM STYLES — Instructify Kenya
+   Services, Consultancy, Infrastructure, Impact & Case Studies
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Section Headers (Institutional Standard) ── */
+.inst-section {
+  padding: 88px 0;
+  position: relative;
+}
+.inst-section.bg-offwhite {
+  background: #F8FAFC;
+}
+.inst-section.bg-white {
+  background: #FFFFFF;
+}
+.inst-section.bg-navy {
+  background: #0B1F3A;
+  color: #FFFFFF;
+}
+.inst-section.bg-light-blue {
+  background: #EEF3F8;
+}
+
+.inst-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.inst-eyebrow.navy {
+  background: #EEF3F8;
+  color: #0B1F3A;
+  border: 1px solid #D9E2EC;
+}
+.inst-eyebrow.blue {
+  background: #EFF6FF;
+  color: #124E96;
+  border: 1px solid #BFDBFE;
+}
+.inst-eyebrow.teal {
+  background: #ECFEFF;
+  color: #0F8B8D;
+  border: 1px solid #A5F3FC;
+}
+.inst-eyebrow.gold {
+  background: #FFFDF0;
+  color: #B45309;
+  border: 1px solid #FDE68A;
+}
+.inst-eyebrow.emerald {
+  background: #ECFDF5;
+  color: #168B72;
+  border: 1px solid #A7F3D0;
+}
+.inst-eyebrow.white {
+  background: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.inst-heading {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 800;
+  color: #0B1F3A;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.inst-heading.text-white {
+  color: #FFFFFF !important;
+}
+
+.inst-subheading {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  color: #475569;
+  line-height: 1.65;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.inst-subheading.text-white {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* ── 3. Core Services Grid (10 Polished Service Cards) ── */
+.services-grid-10 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+@media (min-width: 1300px) {
+  .services-grid-10 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-official-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(11, 31, 58, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+.service-official-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--service-accent, #124E96);
+  opacity: 0.9;
+  transition: height 0.2s ease;
+}
+.service-official-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(11, 31, 58, 0.08);
+  border-color: #CBD5E1;
+}
+.service-official-card:hover::before {
+  height: 6px;
+}
+
+.service-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.service-card-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  background: var(--service-icon-bg, #EEF4FF);
+  color: var(--service-accent, #124E96);
+  border: 1px solid var(--service-icon-border, #BFDBFE);
+  flex-shrink: 0;
+}
+.service-cat-pill {
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #F1F5F9;
+  color: #475569;
+}
+
+.service-card-title {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 19px;
+  font-weight: 750;
+  color: #0F172A;
+  margin-bottom: 10px;
+  line-height: 1.32;
+}
+
+.service-card-desc {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 14.5px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.service-card-audience {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #334155;
+  background: #F8FAFC;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  margin-bottom: 18px;
+}
+.service-card-audience span.label {
+  color: #64748B;
+  font-weight: 500;
+}
+
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 13.5px;
+  font-weight: 750;
+  color: #124E96;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: auto;
+}
+.service-card-link:hover {
+  color: #2454E6;
+  transform: translateX(3px);
+}
+
+/* ── 5. Consultancy Capabilities Grid ── */
+.consultancy-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.consultancy-pillar-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 26px 22px;
+  box-shadow: 0 4px 16px rgba(11, 31, 58, 0.04);
+}
+.consultancy-pillar-card h4 {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 17px;
+  font-weight: 750;
+  color: #0B1F3A;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.consultancy-pillar-card p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.consultancy-flow-banner {
+  background: linear-gradient(135deg, #0B1F3A 0%, #124E96 100%);
+  border-radius: 20px;
+  padding: 36px 32px;
+  color: #FFFFFF;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* ── 6. Dedicated Infrastructure Development Section ── */
+.infra-offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.infra-offering-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 24px 22px;
+  box-shadow: 0 4px 16px rgba(11, 31, 58, 0.04);
+  transition: transform 0.2s ease;
+}
+.infra-offering-card:hover {
+  transform: translateY(-3px);
+  border-color: #0F8B8D;
+}
+.infra-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #ECFEFF;
+  color: #0F8B8D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 14px;
+  border: 1px solid #A5F3FC;
+}
+.infra-offering-card h4 {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 17px;
+  font-weight: 750;
+  color: #0B1F3A;
+  margin-bottom: 8px;
+}
+.infra-offering-card p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* 7-Stage Process Timeline */
+.infra-process-wrap {
+  margin-top: 56px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 36px 32px;
+}
+.infra-process-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.infra-process-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+.infra-stage-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 16px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.2s ease;
+}
+.infra-stage-card:hover {
+  border-color: #124E96;
+  box-shadow: 0 4px 14px rgba(18, 78, 150, 0.08);
+}
+.stage-num-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #EEF4FF;
+  color: #124E96;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  border: 1px solid #BFDBFE;
+}
+.stage-title {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 12.5px;
+  font-weight: 750;
+  color: #0F172A;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+.stage-desc {
+  font-size: 11px;
+  color: #64748B;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.infra-ctas-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+/* ── 7. Why Choose Instructify Section ── */
+.reasons-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.reason-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 26px 22px;
+  box-shadow: 0 4px 16px rgba(11, 31, 58, 0.04);
+}
+.reason-card .reason-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #EEF4FF;
+  color: #124E96;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+.reason-card h4 {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 17px;
+  font-weight: 750;
+  color: #0B1F3A;
+  margin-bottom: 8px;
+}
+.reason-card p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── 9. Case Studies & Outcomes Grid ── */
+.case-studies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 44px;
+}
+.case-study-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 18px;
+  padding: 30px 26px;
+  box-shadow: 0 6px 20px rgba(11, 31, 58, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+.case-study-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.case-client-badge {
+  font-size: 11.5px;
+  font-weight: 750;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #EEF3F8;
+  color: #0B1F3A;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.case-period {
+  font-size: 12px;
+  color: #64748B;
+  font-weight: 600;
+}
+.case-study-title {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 20px;
+  font-weight: 750;
+  color: #0B1F3A;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.case-study-metric-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+.case-metric-val {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 22px;
+  font-weight: 800;
+  color: #168B72;
+}
+.case-metric-label {
+  font-size: 12.5px;
+  color: #475569;
+}
+.case-study-body p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+.case-study-body strong {
+  color: #0F172A;
+}
+
+/* ── 12. Insights & Latest Resources Grid ── */
+.insights-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 44px;
+}
+.insight-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(11, 31, 58, 0.04);
+}
+.insight-tag {
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  align-self: flex-start;
+  margin-bottom: 14px;
+  background: #EEF4FF;
+  color: #124E96;
+}
+.insight-card h4 {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 18px;
+  font-weight: 750;
+  color: #0B1F3A;
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+.insight-card p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  flex: 1;
+}
+.insight-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 13.5px;
+  font-weight: 750;
+  color: #124E96;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: auto;
+}
+.insight-action-link:hover {
+  color: #2454E6;
+  transform: translateX(3px);
+}
+
+/* ── Responsive adjustments for new sections ── */
+@media (max-width: 1100px) {
+  .services-grid-10,
+  .consultancy-pillars-grid,
+  .infra-offerings-grid,
+  .reasons-grid-5,
+  .insights-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .infra-process-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .case-studies-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .services-grid-10,
+  .consultancy-pillars-grid,
+  .infra-offerings-grid,
+  .reasons-grid-5,
+  .insights-grid-3,
+  .infra-process-grid {
+    grid-template-columns: 1fr;
+  }
+  .consultancy-flow-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 20px;
+  }
+  .infra-ctas-row {
+    flex-direction: column;
+  }
+  .infra-ctas-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
