@@ -127,7 +127,10 @@ function initNavbar() {
   navbar.dataset.navInitialized = 'true';
 
   const handleScroll = () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 20);
+    const isScrolled = window.scrollY > 20;
+    navbar.classList.toggle('scrolled', isScrolled);
+    const header = document.getElementById('site-header');
+    if (header) header.classList.toggle('scrolled', isScrolled);
   };
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
