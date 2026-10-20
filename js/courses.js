@@ -11,9 +11,11 @@ window.COURSES = [
     title: 'Digital Teaching & Smart Classrooms',
     subtitle: '“From Chalk to Click”',
     category: 'EdTech & Smart Learning', tag: 'badge-ict',
-    description: 'Reimagine your classroom with smart boards, ClassVR, and interactive content that brings learning to life.',
+    description: 'Reimagine your classroom with smart boards, ClassVR, and interactive content that brings learning to life. Learn practical digital pedagogy, student engagement techniques, and modern classroom technologies.',
     instructor: 'Alex & Dr. Wanjiku', instructorTitle: 'EdTech & Virtual Learning Specialists', instructorAvatar: 'ED',
     duration: '6 weeks', level: 'All Levels', format: 'Online + Hands-On',
+    targetAudience: 'Educators & School Innovators',
+    accreditation: 'TSC & KICD Accredited CPD (35 Hours)',
     price: 16500, originalPrice: 24000,
     rating: 4.9, reviewCount: 410, enrollments: 2150,
     image: 'assets/images/course_smart_vr_classroom.jpg',
@@ -31,6 +33,8 @@ window.COURSES = [
     description: 'Master the art of integrating technology tools into Kenyan classrooms. Learn to use digital devices, educational software, and online resources to enhance teaching and learning outcomes aligned with the CBC framework.',
     instructor: 'Dr. Wanjiku Kamau', instructorTitle: 'ICT Education Specialist', instructorAvatar: 'WK',
     duration: '8 weeks', level: 'Intermediate', format: 'Online + Blended',
+    targetAudience: 'Teachers & Curriculum Implementers',
+    accreditation: 'TSC Accredited CPD (40 Hours)',
     price: 15000, originalPrice: 22000,
     rating: 4.8, reviewCount: 312, enrollments: 1847,
     image: 'assets/images/course_ict_integration.jpg',
@@ -45,15 +49,17 @@ window.COURSES = [
     id: 'crs_002', slug: 'digital-literacy-certification',
     title: 'Digital Literacy Certification Program',
     category: 'Digital Skills', tag: 'badge-cpd',
-    description: 'Comprehensive digital literacy program covering computer fundamentals, internet safety, digital communication, and productive use of digital tools for educators and lifelong learners.',
+    description: 'Comprehensive digital literacy program covering computer fundamentals, internet safety, digital communication, and productive use of modern digital tools for educators, students, and lifelong learners seeking certified foundational competencies.',
     instructor: 'Mr. Kamau Njoroge', instructorTitle: 'Digital Skills Trainer', instructorAvatar: 'KN',
     duration: '6 weeks', level: 'Beginner', format: 'Online',
+    targetAudience: 'Educators, Students & Lifelong Learners',
+    accreditation: 'National Digital Literacy Certification (30 CPD Hours)',
     price: 8500, originalPrice: 14000,
     rating: 4.9, reviewCount: 523, enrollments: 3204,
     image: 'assets/images/course-digital.png',
     badge: 'badge-cpd', badgeText: 'CPD',
     cpd: true, cpdHours: 30,
-    outcomes: ['Navigate internet safely', 'Use productivity tools', 'Manage digital communications', 'Create basic digital content'],
+    outcomes: ['Navigate internet safely & securely', 'Use productivity software & tools', 'Manage digital communications', 'Create basic digital learning media'],
     modules: 8, assignments: 4, quizzes: 3, certificate: true,
     schedule: '2026-09-15', tags: ['Digital Literacy', 'ICT', 'Beginner', 'Certification'],
     featured: true, popular: true
@@ -62,15 +68,17 @@ window.COURSES = [
     id: 'crs_003', slug: 'cbe-curriculum-implementation',
     title: 'CBE Curriculum Implementation',
     category: 'Curriculum', tag: 'badge-cbe',
-    description: 'Deep dive into Kenya\'s Competency-Based Education framework. Understand curriculum design principles, assessment strategies, and implementation techniques aligned with KICD guidelines.',
+    description: 'Deep dive into Kenya\'s Competency-Based Education framework. Master curriculum design principles, rubric creation, formative assessment strategies, and practical implementation techniques aligned with official KICD guidelines and CBC strands.',
     instructor: 'Prof. Achieng Ouma', instructorTitle: 'Curriculum Development Expert', instructorAvatar: 'AO',
     duration: '10 weeks', level: 'Advanced', format: 'Blended',
+    targetAudience: 'School Leaders & Subject Heads',
+    accreditation: 'KICD & TSC Accredited CPD (50 Hours)',
     price: 18500, originalPrice: 28000,
     rating: 4.7, reviewCount: 218, enrollments: 1124,
     image: 'assets/images/course-cbe.png',
     badge: 'badge-cbe', badgeText: 'CBE',
     cpd: true, cpdHours: 50,
-    outcomes: ['Design competency-based lessons', 'Develop learner portfolios', 'Implement formative assessment', 'Align curriculum with CBC framework'],
+    outcomes: ['Design competency-based lessons', 'Develop learner portfolios', 'Implement formative assessment rubrics', 'Align curriculum with CBC framework'],
     modules: 15, assignments: 8, quizzes: 5, certificate: true,
     schedule: '2026-10-01', tags: ['CBE', 'Curriculum', 'KICD', 'Assessment'],
     featured: true, popular: false
@@ -79,15 +87,17 @@ window.COURSES = [
     id: 'crs_004', slug: 'ai-in-education',
     title: 'Artificial Intelligence in Education',
     category: 'AI & Tech', tag: 'badge-ai',
-    description: 'Explore how AI is transforming education globally and in Africa. Learn to leverage AI tools for personalized learning, automated assessment, and intelligent tutoring systems.',
+    description: 'Explore how AI is transforming education globally and in Africa. Learn to leverage AI tools for personalized learning, automated assessment, intelligent tutoring systems, and ethical classroom adoption.',
     instructor: 'Dr. Muthoni Kariuki', instructorTitle: 'AI in Education Researcher', instructorAvatar: 'MK',
     duration: '8 weeks', level: 'Intermediate', format: 'Online',
+    targetAudience: 'Educators, Tech Leads & Administrators',
+    accreditation: 'Advanced AI in Education Certificate (40 CPD Hours)',
     price: 22000, originalPrice: 35000,
     rating: 4.9, reviewCount: 178, enrollments: 896,
     image: 'assets/images/course-ai.png',
     badge: 'badge-ai', badgeText: 'AI',
     cpd: true, cpdHours: 40,
-    outcomes: ['Understand AI fundamentals in education', 'Use AI tools for teaching', 'Design AI-enhanced lesson plans', 'Evaluate AI tools critically'],
+    outcomes: ['Understand AI fundamentals in education', 'Use AI tools for lesson planning', 'Design personalized learning activities', 'Evaluate AI educational tools critically'],
     modules: 10, assignments: 5, quizzes: 4, certificate: true,
     schedule: '2026-09-08', tags: ['AI', 'Technology', 'Innovation', 'Future'],
     featured: true, popular: true, new: true
@@ -96,15 +106,17 @@ window.COURSES = [
     id: 'crs_005', slug: 'online-teaching-methodologies',
     title: 'Online Teaching Methodologies',
     category: 'Pedagogy', tag: 'badge-cpd',
-    description: 'Master effective online teaching strategies, e-learning design principles, and virtual classroom management. Ideal for educators transitioning to or improving digital teaching delivery.',
+    description: 'Master effective online teaching strategies, e-learning design principles, and virtual classroom management. Ideal for educators transitioning to digital teaching delivery, student engagement, and structured remote learning environments.',
     instructor: 'Ms. Grace Wahu', instructorTitle: 'E-Learning Design Specialist', instructorAvatar: 'GW',
     duration: '6 weeks', level: 'Intermediate', format: 'Online',
+    targetAudience: 'Virtual Tutors, Lecturers & Teachers',
+    accreditation: 'E-Learning Pedagogy Certificate (30 CPD Hours)',
     price: 12000, originalPrice: 18000,
     rating: 4.6, reviewCount: 445, enrollments: 2156,
     image: 'assets/images/home_interactive_teaching.jpg',
     badge: 'badge-cpd', badgeText: 'CPD',
     cpd: true, cpdHours: 30,
-    outcomes: ['Design engaging online courses', 'Manage virtual classrooms', 'Use video conferencing tools', 'Apply online assessment techniques'],
+    outcomes: ['Design engaging online courses', 'Manage virtual classrooms effectively', 'Use video conferencing tools', 'Apply online assessment techniques'],
     modules: 9, assignments: 5, quizzes: 3, certificate: true,
     schedule: '2026-09-22', tags: ['Online Teaching', 'E-Learning', 'Virtual', 'Pedagogy'],
     featured: true, popular: false
@@ -113,15 +125,17 @@ window.COURSES = [
     id: 'crs_006', slug: 'educational-leadership-management',
     title: 'Educational Leadership & Management',
     category: 'Leadership', tag: 'badge-cpd',
-    description: 'Develop strategic leadership skills for education administrators. Covers school management, policy development, stakeholder engagement, and educational innovation strategies.',
+    description: 'Develop strategic leadership skills for education administrators. Covers modern school management, education policy development, stakeholder engagement, staff coaching, and institutional digital transformation strategies for forward-thinking school leaders.',
     instructor: 'Prof. Samuel Maina', instructorTitle: 'Educational Leadership Expert', instructorAvatar: 'SM',
     duration: '12 weeks', level: 'Advanced', format: 'Blended',
+    targetAudience: 'Principals, Headteachers & Administrators',
+    accreditation: 'Executive Educational Leadership Diploma (60 CPD Hours)',
     price: 25000, originalPrice: 40000,
     rating: 4.8, reviewCount: 134, enrollments: 678,
     image: 'assets/images/home_digital_leadership.jpg',
     badge: 'badge-cpd', badgeText: 'CPD',
     cpd: true, cpdHours: 60,
-    outcomes: ['Lead educational institutions effectively', 'Develop strategic school plans', 'Manage education policy compliance', 'Build high-performing education teams'],
+    outcomes: ['Lead educational institutions effectively', 'Develop strategic school plans', 'Manage education policy compliance', 'Build high-performing educator teams'],
     modules: 16, assignments: 10, quizzes: 6, certificate: true,
     schedule: '2026-10-15', tags: ['Leadership', 'Management', 'Administration', 'CPD'],
     featured: true, popular: false
@@ -130,15 +144,17 @@ window.COURSES = [
     id: 'crs_007', slug: 'assessment-evaluation-strategies',
     title: 'Assessment & Evaluation Strategies',
     category: 'Assessment', tag: 'badge-cbe',
-    description: 'Master modern assessment techniques aligned with CBE. Learn formative and summative assessment design, rubric creation, portfolio assessment, and data-driven evaluation.',
+    description: 'Master modern assessment techniques aligned with CBE. Learn formative and summative assessment design, competency rubric creation, learner portfolio assessment, and data-driven evaluation to enhance classroom learning outcomes.',
     instructor: 'Dr. Fatuma Hassan', instructorTitle: 'Assessment & Evaluation Expert', instructorAvatar: 'FH',
     duration: '7 weeks', level: 'Intermediate', format: 'Online + Blended',
+    targetAudience: 'Examiners, Assessors & Lead Teachers',
+    accreditation: 'CBE Assessment Specialist Certification (35 CPD Hours)',
     price: 13500, originalPrice: 20000,
     rating: 4.7, reviewCount: 267, enrollments: 1456,
     image: 'assets/images/course_assessment_mastery.jpg',
     badge: 'badge-cbe', badgeText: 'CBE',
     cpd: true, cpdHours: 35,
-    outcomes: ['Design effective assessments', 'Create competency rubrics', 'Analyze learner performance data', 'Implement portfolio assessment'],
+    outcomes: ['Design effective formative assessments', 'Create competency grading rubrics', 'Analyze learner performance data', 'Implement portfolio assessment methods'],
     modules: 11, assignments: 7, quizzes: 4, certificate: true,
     schedule: '2026-09-29', tags: ['Assessment', 'CBE', 'Evaluation', 'Formative'],
     featured: true, popular: true
@@ -147,15 +163,17 @@ window.COURSES = [
     id: 'crs_008', slug: 'teacher-professional-development',
     title: 'Continuous Professional Development for Teachers',
     category: 'CPD', tag: 'badge-cpd',
-    description: 'A structured CPD program helping Kenyan teachers meet professional development requirements. Covers reflective practice, teaching standards, career growth, and professional portfolio development.',
+    description: 'A structured CPD program helping Kenyan teachers meet professional development requirements. Covers reflective practice, teaching standards, career growth, professional portfolio development, and classroom competency enhancement.',
     instructor: 'Mrs. Rahel Tesfaye', instructorTitle: 'CPD Facilitator', instructorAvatar: 'RT',
     duration: '4 weeks', level: 'Beginner', format: 'Online',
+    targetAudience: 'Registered Teachers (TSC CPD Track)',
+    accreditation: 'Official TSC CPD Compliance Certificate (20 Hours)',
     price: 6500, originalPrice: 10000,
     rating: 4.5, reviewCount: 612, enrollments: 4231,
     image: 'assets/images/about_educator_workshop.jpg',
     badge: 'badge-cpd', badgeText: 'CPD',
     cpd: true, cpdHours: 20,
-    outcomes: ['Build professional teaching portfolio', 'Meet TSC CPD requirements', 'Develop reflective teaching practice', 'Plan career development pathway'],
+    outcomes: ['Build professional teaching portfolio', 'Meet TSC CPD compliance requirements', 'Develop reflective teaching practice', 'Plan structured career growth pathway'],
     modules: 6, assignments: 3, quizzes: 2, certificate: true,
     schedule: '2026-09-08', tags: ['CPD', 'TSC', 'Professional', 'Teachers'],
     featured: false, popular: true
@@ -273,73 +291,119 @@ window.filterCourses = function(options = {}) {
 };
 
 // ── Render Course Card ──────────────────────────────────────────
+// ── Render Course Card (Formal, Colourful, Appealing LMS Card) ──
 window.renderCourseCard = function(course) {
   const enrolled = window.isEnrolled ? window.isEnrolled(course.id) : false;
-  const badgeText = course.badgeText || course.category;
-  const badgeClass = course.badge || 'badge-cpd';
   const deliveryMode = course.format || 'Online Self-Paced';
   const durationText = course.duration || '6 weeks';
   const levelText = course.level || 'All Levels';
-  const cpdInfo = course.cpd ? `CPD Accredited · ${course.cpdHours || 30} hrs` : (course.certificate ? 'Certificate Included' : '');
+  const targetAudience = course.targetAudience || 'Educators & Lifelong Learners';
+  const accreditation = course.accreditation || (course.cpd ? `TSC CPD Accredited (${course.cpdHours || 30} Hours)` : 'Accredited Certificate Included');
+  const priceVal = typeof course.price === 'number' ? course.price : parseInt(String(course.price || '0').replace(/[^0-9]/g, ''), 10);
+  const priceStr = priceVal === 0 ? 'FREE ACCESS' : 'KES ' + (priceVal ? priceVal.toLocaleString() : '15,000');
+  const origPriceStr = course.originalPrice ? `KES ${typeof course.originalPrice === 'number' ? course.originalPrice.toLocaleString() : course.originalPrice}` : '';
+
+  const CATEGORY_MAP = {
+    'EdTech & Smart Learning': { theme: 'edtech', color: '#1D4ED8', bg: '#EFF6FF', border: '#BFDBFE', icon: '🎒' },
+    'ICT': { theme: 'ict', color: '#4338CA', bg: '#EEF2FF', border: '#C7D2FE', icon: '💻' },
+    'Digital Skills': { theme: 'digital', color: '#047857', bg: '#ECFDF5', border: '#A7F3D0', icon: '🎓' },
+    'Curriculum': { theme: 'curriculum', color: '#15803D', bg: '#F0FDF4', border: '#BBF7D0', icon: '📗' },
+    'AI & Tech': { theme: 'ai', color: '#6D28D9', bg: '#F5F3FF', border: '#DDD6FE', icon: '🤖' },
+    'Pedagogy': { theme: 'pedagogy', color: '#B45309', bg: '#FFFBEB', border: '#FDE68A', icon: '🌐' },
+    'Leadership': { theme: 'leadership', color: '#0F4C81', bg: '#F0F7FF', border: '#BAE6FD', icon: '🏛️' },
+    'Assessment': { theme: 'assessment', color: '#BE123C', bg: '#FFF1F2', border: '#FECDD3', icon: '🧠' },
+    'CPD': { theme: 'cpd', color: '#0F766E', bg: '#F0FDFA', border: '#99F6E4', icon: '🏆' }
+  };
+
+  const cat = CATEGORY_MAP[course.category] || { theme: 'default', color: '#1D4ED8', bg: '#EFF6FF', border: '#BFDBFE', icon: '📚' };
+  const topics = Array.isArray(course.outcomes) && course.outcomes.length > 0
+    ? course.outcomes.slice(0, 4)
+    : ['Competency-based digital pedagogy', 'Practical classroom implementation', 'Reflective portfolio building'];
+
+  const detailUrl = `course-detail.html?id=${encodeURIComponent(course.id)}`;
+  const syllabusUrl = `course-detail.html?id=${encodeURIComponent(course.id)}#syllabus`;
+  const enrolUrl = `checkout.html?id=${encodeURIComponent(course.id)}`;
+  const playerUrl = `course-player.html?courseId=${encodeURIComponent(course.id)}`;
   
   return `
-    <article class="course-card reveal" data-course-id="${course.id}" aria-label="${course.title}">
-      <div class="course-card-image">
-        <img src="${course.image}" alt="${course.title}" loading="lazy" 
+    <article class="lms-course-card category-${cat.theme} reveal" data-course-id="${course.id}" aria-label="${course.title}">
+      <!-- Top Category Accent Bar -->
+      <div class="lms-card-top-accent" style="background:${cat.color};"></div>
+
+      <!-- Thumbnail Area -->
+      <div class="lms-course-thumb-box">
+        <img src="${course.image}" alt="${course.title}" class="lms-course-thumb-img" loading="lazy" 
              onerror="this.parentElement.style.background='linear-gradient(135deg,#1E3A8A,#2563EB)';this.style.display='none'">
-        <span class="course-card-badge ${badgeClass}">${badgeText}</span>
-        <span class="course-card-mode-pill">${deliveryMode}</span>
-        <button class="course-card-wishlist" onclick="toggleWishlist(this)" title="Add to wishlist" aria-label="Add ${course.title} to wishlist">🤍</button>
+        <span class="lms-course-category-badge" style="color:${cat.color}; background:${cat.bg}; border:1px solid ${cat.border};">
+          ${cat.icon} ${course.category}
+        </span>
+        <span class="lms-course-mode-badge">${deliveryMode}</span>
+        ${course.cpd ? '<span class="lms-course-cpd-badge">✓ CPD Verified</span>' : ''}
+        <button class="lms-bookmark-btn" onclick="toggleWishlist(this)" title="Save to wishlist" aria-label="Save ${course.title} to wishlist">🤍</button>
       </div>
-      <div class="course-card-body">
-        <div class="course-card-meta-chips">
-          <span class="course-meta-chip">⏱️ ${durationText}</span>
-          <span class="course-meta-chip">🎯 ${levelText}</span>
-          <span class="course-meta-chip">💻 ${deliveryMode}</span>
-        </div>
-        <span class="course-card-category">${course.category}</span>
-        <h3 class="course-card-title">${course.title}</h3>
-        ${course.description ? `<p class="course-card-description">${course.description.length > 120 ? course.description.substring(0, 120) + '...' : course.description}</p>` : ''}
-        
-        ${cpdInfo ? `
-          <div class="course-card-cert-row">
-            <span class="course-card-cert-badge">📜 ${cpdInfo}</span>
-          </div>
-        ` : ''}
 
-        <div class="course-card-instructor">
-          <div class="instructor-avatar">${course.instructorAvatar || 'IK'}</div>
-          <div>
-            <div style="font-weight:700; color:#0F172A; line-height:1.2;">${course.instructor || 'Instructify Faculty'}</div>
-            <div style="font-size:11px; color:#64748B;">${course.instructorTitle || 'Education Specialist'}</div>
-          </div>
+      <!-- Card Body -->
+      <div class="lms-course-body">
+        <div class="lms-meta-chips-strip">
+          <span class="lms-meta-badge">⏱️ ${durationText} ${course.cpdHours ? `(${course.cpdHours} Hrs)` : ''}</span>
+          <span class="lms-meta-badge">🎯 ${levelText}</span>
+          <span class="lms-rating-badge">★ ${course.rating || '4.8'} <span class="review-count">(${course.reviewCount ? course.reviewCount.toLocaleString() : '150'})</span></span>
         </div>
 
-        <div class="course-card-stats">
-          <span class="rating">⭐ ${course.rating || '4.8'}</span>
-          <span>(${course.reviewCount ? course.reviewCount.toLocaleString() : '150'} reviews)</span>
-          ${course.enrollments ? `<span>• 👥 ${course.enrollments.toLocaleString()} enrolled</span>` : ''}
+        <h3 class="lms-course-title">
+          <a href="${detailUrl}">${course.title}</a>
+        </h3>
+
+        <div class="lms-audience-tag">
+          <span class="audience-icon">👥</span>
+          <span class="audience-label">Audience:</span>
+          <span class="audience-value">${targetAudience}</span>
         </div>
-      </div>
-      <div class="course-card-footer">
-        <div class="course-price">
-          <span class="price-current">KES ${typeof course.price === 'number' ? course.price.toLocaleString() : course.price}</span>
-          ${course.originalPrice ? `<span class="price-original">KES ${course.originalPrice.toLocaleString()}</span>` : ''}
-        </div>
-        ${enrolled ? `
-          <a href="course-player.html?courseId=${course.id}" class="btn btn-primary btn-sm" style="font-weight:750; min-height:44px; display:inline-flex; align-items:center;" aria-label="Continue learning ${course.title}">
-            📚 Continue Learning
+
+        <p class="lms-course-desc">${course.description || ''}</p>
+
+        <!-- What You Will Learn (Course Outline) -->
+        <div class="lms-outline-block">
+          <div class="lms-outline-header">
+            <span class="outline-icon">📋</span>
+            <span>What You Will Learn:</span>
+          </div>
+          <ul class="lms-outline-list">
+            ${topics.map(t => `<li><span class="bullet-check">✓</span> <span>${t}</span></li>`).join('')}
+          </ul>
+          <a href="${syllabusUrl}" class="lms-outline-link" aria-label="View full course outline for ${course.title}">
+            View Full Outline &rarr;
           </a>
-        ` : `
-          <div style="display:flex; gap:8px; align-items:center;">
-            <a href="checkout.html?id=${course.id}" class="btn btn-primary btn-sm" style="font-weight:750; background:linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); border-color:#FF4D00; min-height:44px; padding:8px 14px; display:inline-flex; align-items:center;" aria-label="Enrol now in ${course.title}">
-              ⚡ Enrol Now
-            </a>
-            <a href="course-detail.html?id=${course.id}" class="btn btn-outline btn-sm" style="font-weight:600; min-height:44px; padding:8px 12px; display:inline-flex; align-items:center;" aria-label="View syllabus and details for ${course.title}">
-              Details
-            </a>
+        </div>
+
+        <div class="lms-accreditation-row">
+          <span class="lms-accreditation-badge">📜 ${accreditation}</span>
+        </div>
+
+        <div class="lms-instructor-row">
+          <div class="lms-inst-avatar">${course.instructorAvatar || 'IK'}</div>
+          <div class="lms-inst-info">
+            <span class="inst-name">${course.instructor || 'Instructify Faculty'}</span>
+            <span class="inst-role">${course.instructorTitle || 'Education Specialist'}</span>
           </div>
-        `}
+        </div>
+      </div>
+
+      <!-- Card Footer -->
+      <div class="lms-course-footer">
+        <div class="lms-course-price-box">
+          <span class="price-label">Tuition / Investment</span>
+          <div class="price-wrap">
+            <span class="price-current ${priceVal === 0 ? 'free' : ''}">${priceStr}</span>
+            ${origPriceStr ? `<span class="price-original">${origPriceStr}</span>` : ''}
+          </div>
+        </div>
+        <div class="lms-card-button-group">
+          <a href="${detailUrl}" class="btn-lms-view" aria-label="View course details for ${course.title}">View Course</a>
+          <a href="${enrolled ? playerUrl : enrolUrl}" class="btn-lms-enrol" aria-label="${enrolled ? `Continue learning ${course.title}` : `Enrol now in ${course.title}`}">
+            ${enrolled ? '▶ Continue Learning' : '⚡ Enrol Now'}
+          </a>
+        </div>
       </div>
     </article>
   `;

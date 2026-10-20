@@ -33,6 +33,7 @@
       category: 'all',
       academy: 'all',
       level: 'all',
+      format: 'all',
       duration: 'all',
       pricing: 'all',
       cpd: false,
@@ -471,7 +472,173 @@
     scrollToLmsCatalog();
   };
 
-  // ── Render Course Card (Grid View) ───────────────────────────
+  // ── Category Configuration (Restrained, Colourful EdTech Accents) ──
+  const CATEGORY_CONFIG = {
+    'EdTech & Smart Learning': {
+      theme: 'edtech',
+      color: '#1D4ED8',
+      bg: '#EFF6FF',
+      border: '#BFDBFE',
+      icon: '🎒'
+    },
+    'ICT': {
+      theme: 'ict',
+      color: '#4338CA',
+      bg: '#EEF2FF',
+      border: '#C7D2FE',
+      icon: '💻'
+    },
+    'Digital Skills': {
+      theme: 'digital',
+      color: '#047857',
+      bg: '#ECFDF5',
+      border: '#A7F3D0',
+      icon: '🎓'
+    },
+    'Curriculum': {
+      theme: 'curriculum',
+      color: '#15803D',
+      bg: '#F0FDF4',
+      border: '#BBF7D0',
+      icon: '📗'
+    },
+    'AI & Tech': {
+      theme: 'ai',
+      color: '#6D28D9',
+      bg: '#F5F3FF',
+      border: '#DDD6FE',
+      icon: '🤖'
+    },
+    'Pedagogy': {
+      theme: 'pedagogy',
+      color: '#B45309',
+      bg: '#FFFBEB',
+      border: '#FDE68A',
+      icon: '🌐'
+    },
+    'Leadership': {
+      theme: 'leadership',
+      color: '#0F4C81',
+      bg: '#F0F7FF',
+      border: '#BAE6FD',
+      icon: '🏛️'
+    },
+    'Assessment': {
+      theme: 'assessment',
+      color: '#BE123C',
+      bg: '#FFF1F2',
+      border: '#FECDD3',
+      icon: '🧠'
+    },
+    'CPD': {
+      theme: 'cpd',
+      color: '#0F766E',
+      bg: '#F0FDFA',
+      border: '#99F6E4',
+      icon: '🏆'
+    }
+  };
+
+  // ── Active Filters Indicators Bar Helper ─────────────────────
+  function renderActiveFilterChips() {
+    const bar = document.getElementById('lms-active-filters-bar');
+    const container = document.getElementById('lms-active-chips-container');
+    if (!bar || !container) return;
+
+    const activeChips = [];
+
+    if (state.filters.query) {
+      activeChips.push({
+        label: `Search: "${state.filters.query}"`,
+        clear: () => clearLmsSearch()
+      });
+    }
+    if (state.filters.category !== 'all') {
+      activeChips.push({
+        label: `Category: ${state.filters.category}`,
+        clear: () => setLmsFilter('category', 'all')
+      });
+    }
+    if (state.filters.level !== 'all') {
+      activeChips.push({
+        label: `Level: ${state.filters.level}`,
+        clear: () => {
+          state.filters.level = 'all';
+          const sel = document.getElementById('lms-level-select');
+          if (sel) sel.value = 'all';
+          renderCatalog();
+        }
+      });
+    }
+    if (state.filters.format !== 'all') {
+      activeChips.push({
+        label: `Mode: ${state.filters.format}`,
+        clear: () => {
+          state.filters.format = 'all';
+          const sel = document.getElementById('lms-format-select');
+          if (sel) sel.value = 'all';
+          renderCatalog();
+        }
+      });
+    }
+    if (state.filters.duration !== 'all') {
+      const labels = { short: 'Short (≤ 4 Wks)', medium: 'Medium (4–8 Wks)', long: 'Comprehensive (8+ Wks)' };
+      activeChips.push({
+        label: `Duration: ${labels[state.filters.duration] || state.filters.duration}`,
+        clear: () => {
+          state.filters.duration = 'all';
+          const sel = document.getElementById('lms-duration-select');
+          if (sel) sel.value = 'all';
+          renderCatalog();
+        }
+      });
+    }
+    if (state.filters.pricing !== 'all') {
+      const labels = { free: 'Free Access', paid: 'Paid Certificate Tracks', under10k: '< KES 10,000', '10k-18k': 'KES 10k–18k', above18k: '> KES 18,000' };
+      activeChips.push({
+        label: `Tuition: ${labels[state.filters.pricing] || state.filters.pricing}`,
+        clear: () => {
+          state.filters.pricing = 'all';
+          const sel = document.getElementById('lms-price-select');
+          if (sel) sel.value = 'all';
+          renderCatalog();
+        }
+      });
+    }
+    if (state.filters.cpd) {
+      activeChips.push({
+        label: `TSC & CPD Only`,
+        clear: () => {
+          state.filters.cpd = false;
+          const chk = document.getElementById('cpd-filter-chk');
+          if (chk) chk.checked = false;
+          renderCatalog();
+        }
+      });
+    }
+
+    if (activeChips.length === 0) {
+      bar.style.display = 'none';
+      container.innerHTML = '';
+    } else {
+      bar.style.display = 'flex';
+      container.innerHTML = activeChips.map((chip, index) => `
+        <span class="lms-active-chip">
+          <span>${chip.label}</span>
+          <button type="button" class="chip-remove-btn" onclick="window.__clearLmsActiveFilter(${index})" aria-label="Remove filter ${chip.label}">✕</button>
+        </span>
+      `).join('');
+      window.__activeFilterCallbacks = activeChips.map(c => c.clear);
+    }
+  }
+
+  window.__clearLmsActiveFilter = function(index) {
+    if (window.__activeFilterCallbacks && window.__activeFilterCallbacks[index]) {
+      window.__activeFilterCallbacks[index]();
+    }
+  };
+
+  // ── Render Course Card (Formal, Colourful, Appealing LMS Card) ──
   function createCourseCardHtml(c, isListView = false) {
     const isSaved = state.bookmarks.includes(c.id);
     const thumb = c.image || c.thumbnail || 'assets/images/course_assessment_mastery.jpg';
@@ -479,8 +646,24 @@
     const reviews = c.reviewCount || c.reviewsCount || 120;
     const duration = c.duration || '6 Weeks';
     const level = c.level || 'All Levels';
+    const deliveryMode = c.format || 'Online Self-Paced';
+    const targetAudience = c.targetAudience || 'Educators & Lifelong Learners';
+    const accreditation = c.accreditation || (c.cpd ? `TSC CPD Accredited (${c.cpdHours || 30} Hours)` : 'Accredited Certificate Included');
     const priceVal = typeof c.price === 'number' ? c.price : parseInt(String(c.price || '0').replace(/[^0-9]/g, ''), 10);
-    const priceStr = priceVal === 0 ? 'FREE' : 'KES ' + (priceVal ? priceVal.toLocaleString() : '15,000');
+    const priceStr = priceVal === 0 ? 'FREE ACCESS' : 'KES ' + (priceVal ? priceVal.toLocaleString() : '15,000');
+    const origPriceStr = c.originalPrice ? `KES ${typeof c.originalPrice === 'number' ? c.originalPrice.toLocaleString() : c.originalPrice}` : '';
+
+    const cat = CATEGORY_CONFIG[c.category] || {
+      theme: 'default',
+      color: '#1D4ED8',
+      bg: '#EFF6FF',
+      border: '#BFDBFE',
+      icon: '📚'
+    };
+
+    const topics = Array.isArray(c.outcomes) && c.outcomes.length > 0
+      ? c.outcomes.slice(0, 4)
+      : ['Competency-based digital pedagogy', 'Practical classroom implementation', 'Reflective portfolio building'];
 
     // Check if enrolled
     const enrollments = getEnrollmentsForActiveUser();
@@ -488,90 +671,159 @@
     const isEnrolled = !!enr;
     const progressPercent = isEnrolled ? (enr.progressPercent || 0) : 0;
 
-    const actionBtnHtml = isEnrolled
-      ? `<a href="course-player.html?courseId=${c.id}" class="btn btn-primary btn-sm" style="white-space:nowrap; font-weight:700;">Continue &rarr;</a>`
-      : `<a href="course-detail.html?id=${c.id}" class="btn btn-primary btn-sm" style="white-space:nowrap; font-weight:700;">Explore &rarr;</a>`;
+    const detailUrl = `course-detail.html?id=${encodeURIComponent(c.id)}`;
+    const syllabusUrl = `course-detail.html?id=${encodeURIComponent(c.id)}#syllabus`;
+    const enrolUrl = `checkout.html?id=${encodeURIComponent(c.id)}`;
+    const playerUrl = `course-player.html?courseId=${encodeURIComponent(c.id)}`;
 
     if (isListView) {
       return `
-        <div class="lms-course-card lms-course-card-list" style="display:flex; flex-direction:row; flex-wrap:wrap; width:100%;">
-          <div style="width:280px; min-height:180px; position:relative; background:#0F172A; flex-shrink:0;">
-            <img src="${thumb}" alt="${c.title}" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='assets/images/course_assessment_mastery.jpg'" loading="lazy">
-            <span class="lms-course-category-badge">${c.category || 'Education'}</span>
-            ${c.cpd ? '<span class="lms-course-cpd-badge">CPD Verified</span>' : ''}
-          </div>
-          <div class="lms-course-body" style="padding:22px 26px; justify-content:space-between; flex:1; min-width:280px;">
-            <div>
-              <div class="lms-course-meta-top">
-                <div style="display:flex; align-items:center; gap:8px;">
-                  <span class="lms-rating-stars">★ ${rating}</span>
-                  <span class="lms-rating-count">(${reviews} reviews)</span>
+        <article class="lms-course-card lms-course-card-list category-${cat.theme}" data-course-id="${c.id}" aria-label="${c.title}">
+          <div class="lms-card-top-accent" style="background:${cat.color};"></div>
+          <div class="lms-card-list-wrapper" style="display:flex; flex-direction:row; flex-wrap:wrap; width:100%;">
+            <div class="lms-course-thumb-box" style="width:300px; min-height:220px; position:relative; flex-shrink:0;">
+              <img src="${thumb}" alt="${c.title}" class="lms-course-thumb-img" onerror="this.src='assets/images/course_assessment_mastery.jpg'" loading="lazy">
+              <span class="lms-course-category-badge" style="color:${cat.color}; background:${cat.bg}; border:1px solid ${cat.border};">
+                ${cat.icon} ${c.category}
+              </span>
+              <span class="lms-course-mode-badge">${deliveryMode}</span>
+              ${c.cpd ? '<span class="lms-course-cpd-badge">✓ CPD Verified</span>' : ''}
+              <button type="button" class="lms-bookmark-btn ${isSaved ? 'active' : ''}" data-course-id="${c.id}" onclick="toggleLmsBookmark('${c.id}', event)" aria-label="${isSaved ? 'Remove from saved' : 'Save course'}" title="${isSaved ? 'Remove from saved' : 'Save course'}">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+              </button>
+            </div>
+            <div class="lms-course-body" style="padding:24px 28px; justify-content:space-between; flex:1; min-width:300px;">
+              <div>
+                <div class="lms-meta-chips-strip">
+                  <span class="lms-meta-badge">⏱️ ${duration} ${c.cpdHours ? `(${c.cpdHours} Hrs)` : ''}</span>
+                  <span class="lms-meta-badge">🎯 ${level}</span>
+                  <span class="lms-meta-badge">💻 ${deliveryMode}</span>
+                  <span class="lms-rating-badge">★ ${rating} <span class="review-count">(${reviews} reviews)</span></span>
                 </div>
-                <span class="lms-duration-tag">⏱️ ${duration}</span>
+                <h3 class="lms-course-title">
+                  <a href="${detailUrl}">${c.title}</a>
+                </h3>
+                <div class="lms-audience-tag">
+                  <span class="audience-icon">👥</span>
+                  <span class="audience-label">Audience:</span>
+                  <span class="audience-value">${targetAudience}</span>
+                </div>
+                <p class="lms-course-desc">${c.description || ''}</p>
+                <div class="lms-outline-block">
+                  <div class="lms-outline-header">
+                    <span class="outline-icon">📋</span>
+                    <span>What You Will Learn:</span>
+                  </div>
+                  <ul class="lms-outline-list">
+                    ${topics.map(t => `<li><span class="bullet-check">✓</span> <span>${t}</span></li>`).join('')}
+                  </ul>
+                  <a href="${syllabusUrl}" class="lms-outline-link" aria-label="View full course outline for ${c.title}">
+                    View Full Outline &rarr;
+                  </a>
+                </div>
+                <div class="lms-accreditation-row">
+                  <span class="lms-accreditation-badge">📜 ${accreditation}</span>
+                </div>
+                ${isEnrolled ? `
+                  <div class="lms-card-progress-wrap">
+                    <div class="lms-card-progress-labels">
+                      <span>Progress</span>
+                      <span>${progressPercent}% Complete</span>
+                    </div>
+                    <div class="lms-card-progress-bar-bg">
+                      <div class="lms-card-progress-bar-fill" style="width: ${progressPercent}%;"></div>
+                    </div>
+                  </div>
+                ` : ''}
               </div>
-              <h3 class="lms-course-title" style="font-size:19px;">${c.title}</h3>
-              <p class="lms-course-desc" style="-webkit-line-clamp:3;">${c.description || ''}</p>
-              <div class="lms-course-chips-row">
-                <span class="lms-course-chip">🎯 ${level}</span>
-                <span class="lms-course-chip instructor">👨‍🏫 ${c.instructor || 'Instructify Faculty'}</span>
-                ${isEnrolled ? `<span class="lms-course-chip" style="background:#ECFDF5; color:#059669; font-weight:700;">✓ Enrolled (${progressPercent}%)</span>` : ''}
-              </div>
-            </div>
-            <div style="display:flex; align-items:center; justify-content:space-between; border-top:1px solid #F1F5F9; padding-top:14px; margin-top:12px;">
-              <div class="lms-course-price-box">
-                <span class="lms-course-price-label">Tuition / Access</span>
-                <span class="lms-course-price-value ${priceVal === 0 ? 'free' : ''}">${priceStr}</span>
-              </div>
-              <div style="display:flex; align-items:center; gap:8px;">
-                <button type="button" class="lms-bookmark-btn ${isSaved ? 'active' : ''}" data-course-id="${c.id}" onclick="toggleLmsBookmark('${c.id}', event)" aria-label="${isSaved ? 'Remove bookmark' : 'Bookmark course'}" title="${isSaved ? 'Remove bookmark' : 'Bookmark course'}" style="position:static;">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
-                </button>
-                ${actionBtnHtml}
+              <div class="lms-course-footer" style="padding:16px 0 0 0; margin-top:16px; border-top:1px solid #E2E8F0; background:transparent;">
+                <div class="lms-course-price-box">
+                  <span class="price-label">Tuition / Investment</span>
+                  <div class="price-wrap">
+                    <span class="price-current ${priceVal === 0 ? 'free' : ''}">${priceStr}</span>
+                    ${origPriceStr ? `<span class="price-original">${origPriceStr}</span>` : ''}
+                  </div>
+                </div>
+                <div class="lms-card-button-group">
+                  <a href="${detailUrl}" class="btn-lms-view" aria-label="View Course ${c.title}">View Course</a>
+                  <a href="${isEnrolled ? playerUrl : enrolUrl}" class="btn-lms-enrol" aria-label="${isEnrolled ? `Continue learning ${c.title}` : `Enrol now in ${c.title}`}">
+                    ${isEnrolled ? '▶ Continue Learning' : '⚡ Enrol Now'}
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </article>
       `;
     }
 
-    const deliveryMode = c.format || 'Online Self-Paced';
-    const cpdInfo = c.cpd ? `CPD Accredited · ${c.cpdHours || 30} hrs` : (c.certificate ? 'Certificate Included' : '');
-
     return `
-      <div class="lms-course-card" data-course-id="${c.id}">
+      <article class="lms-course-card category-${cat.theme}" data-course-id="${c.id}" aria-label="${c.title}">
+        <!-- Top Category Accent Bar -->
+        <div class="lms-card-top-accent" style="background:${cat.color};"></div>
+
+        <!-- Thumbnail Area -->
         <div class="lms-course-thumb-box">
           <img src="${thumb}" alt="${c.title}" class="lms-course-thumb-img" onerror="this.src='assets/images/course_assessment_mastery.jpg'" loading="lazy">
-          <span class="lms-course-category-badge">${c.category || 'Education'}</span>
-          <span class="course-card-mode-pill" style="top:10px; right:46px; font-size:10px;">${deliveryMode}</span>
-          ${c.cpd ? '<span class="lms-course-cpd-badge">CPD Verified</span>' : ''}
-          <button type="button" class="lms-bookmark-btn ${isSaved ? 'active' : ''}" data-course-id="${c.id}" onclick="toggleLmsBookmark('${c.id}', event)" aria-label="${isSaved ? 'Remove bookmark' : 'Bookmark course'}" title="${isSaved ? 'Remove bookmark' : 'Bookmark course'}">
+          <span class="lms-course-category-badge" style="color:${cat.color}; background:${cat.bg}; border:1px solid ${cat.border};">
+            ${cat.icon} ${c.category}
+          </span>
+          <span class="lms-course-mode-badge">${deliveryMode}</span>
+          ${c.cpd ? '<span class="lms-course-cpd-badge">✓ CPD Verified</span>' : ''}
+          <button type="button" class="lms-bookmark-btn ${isSaved ? 'active' : ''}" data-course-id="${c.id}" onclick="toggleLmsBookmark('${c.id}', event)" aria-label="${isSaved ? 'Remove from saved' : 'Save course'}" title="${isSaved ? 'Remove from saved' : 'Save course'}">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
           </button>
         </div>
 
+        <!-- Card Body -->
         <div class="lms-course-body">
-          <div class="lms-course-meta-top">
-            <div>
-              <span class="lms-rating-stars">★ ${rating}</span>
-              <span class="lms-rating-count">(${reviews})</span>
-            </div>
-            <span class="lms-duration-tag">⏱️ ${duration}</span>
+          <!-- Meta Strip -->
+          <div class="lms-meta-chips-strip">
+            <span class="lms-meta-badge">⏱️ ${duration} ${c.cpdHours ? `(${c.cpdHours} Hrs)` : ''}</span>
+            <span class="lms-meta-badge">🎯 ${level}</span>
+            <span class="lms-rating-badge">★ ${rating} <span class="review-count">(${reviews})</span></span>
           </div>
 
-          <h3 class="lms-course-title">${c.title}</h3>
+          <!-- Course Title -->
+          <h3 class="lms-course-title">
+            <a href="${detailUrl}">${c.title}</a>
+          </h3>
+
+          <!-- Target Audience -->
+          <div class="lms-audience-tag">
+            <span class="audience-icon">👥</span>
+            <span class="audience-label">Audience:</span>
+            <span class="audience-value">${targetAudience}</span>
+          </div>
+
+          <!-- Summarised Description (25-40 words) -->
           <p class="lms-course-desc">${c.description || ''}</p>
 
-          ${cpdInfo ? `
-            <div style="margin:4px 0 8px;">
-              <span class="course-card-cert-badge" style="font-size:11px; padding:3px 8px;">📜 ${cpdInfo}</span>
+          <!-- What You Will Learn (Course Outline) -->
+          <div class="lms-outline-block">
+            <div class="lms-outline-header">
+              <span class="outline-icon">📋</span>
+              <span>What You Will Learn:</span>
             </div>
-          ` : ''}
+            <ul class="lms-outline-list">
+              ${topics.map(t => `<li><span class="bullet-check">✓</span> <span>${t}</span></li>`).join('')}
+            </ul>
+            <a href="${syllabusUrl}" class="lms-outline-link" aria-label="View full course outline for ${c.title}">
+              View Full Outline &rarr;
+            </a>
+          </div>
 
+          <!-- Accreditation Status -->
+          <div class="lms-accreditation-row">
+            <span class="lms-accreditation-badge">📜 ${accreditation}</span>
+          </div>
+
+          <!-- Enrolment Progress Bar (if enrolled) -->
           ${isEnrolled ? `
             <div class="lms-card-progress-wrap">
               <div class="lms-card-progress-labels">
                 <span>Progress</span>
-                <span>${progressPercent}%</span>
+                <span>${progressPercent}% Complete</span>
               </div>
               <div class="lms-card-progress-bar-bg">
                 <div class="lms-card-progress-bar-fill" style="width: ${progressPercent}%;"></div>
@@ -579,28 +831,33 @@
             </div>
           ` : ''}
 
-          <div class="lms-course-chips-row">
-            <span class="lms-course-chip">🎯 ${level}</span>
-            <span class="lms-course-chip">💻 ${deliveryMode}</span>
-            <span class="lms-course-chip instructor">👨‍🏫 ${c.instructor ? c.instructor.split(' ')[0] + ' ' + (c.instructor.split(' ')[1] || '') : 'Educator'}</span>
+          <!-- Instructor Attribution -->
+          <div class="lms-instructor-row">
+            <div class="lms-inst-avatar">${c.instructorAvatar || 'IK'}</div>
+            <div class="lms-inst-info">
+              <span class="inst-name">${c.instructor || 'Instructify Faculty'}</span>
+              <span class="inst-role">${c.instructorTitle || 'Education Specialist'}</span>
+            </div>
           </div>
         </div>
 
+        <!-- Card Footer -->
         <div class="lms-course-footer">
           <div class="lms-course-price-box">
-            <span class="lms-course-price-label">Fee</span>
-            <span class="lms-course-price-value ${priceVal === 0 ? 'free' : ''}">${priceStr}</span>
+            <span class="price-label">Tuition / Investment</span>
+            <div class="price-wrap">
+              <span class="price-current ${priceVal === 0 ? 'free' : ''}">${priceStr}</span>
+              ${origPriceStr ? `<span class="price-original">${origPriceStr}</span>` : ''}
+            </div>
           </div>
-          <div style="display:flex; gap:6px; align-items:center;">
-            ${isEnrolled ? `
-              <a href="course-player.html?courseId=${c.id}" class="btn btn-primary btn-sm" style="font-weight:750; min-height:40px; display:inline-flex; align-items:center;" aria-label="Continue ${c.title}">Continue &rarr;</a>
-            ` : `
-              <a href="checkout.html?id=${c.id}" class="btn btn-primary btn-sm" style="font-weight:750; background:linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); border-color:#FF4D00; min-height:40px; padding:6px 12px; display:inline-flex; align-items:center;" aria-label="Enrol now in ${c.title}">⚡ Enrol</a>
-              <a href="course-detail.html?id=${c.id}" class="btn btn-outline btn-sm" style="font-weight:600; min-height:40px; padding:6px 10px; display:inline-flex; align-items:center;" aria-label="Details for ${c.title}">Details</a>
-            `}
+          <div class="lms-card-button-group">
+            <a href="${detailUrl}" class="btn-lms-view" aria-label="View Course ${c.title}">View Course</a>
+            <a href="${isEnrolled ? playerUrl : enrolUrl}" class="btn-lms-enrol" aria-label="${isEnrolled ? `Continue learning ${c.title}` : `Enrol now in ${c.title}`}">
+              ${isEnrolled ? '▶ Continue Learning' : '⚡ Enrol Now'}
+            </a>
           </div>
         </div>
-      </div>
+      </article>
     `;
   }
 
@@ -610,15 +867,17 @@
     if (!grid) return;
 
     let results = state.courses.filter(c => {
-      // Search query
+      // Search query (matches title, description, instructor, category, tags, outcomes, targetAudience)
       if (state.filters.query) {
         const q = state.filters.query.toLowerCase().trim();
         const titleMatch = (c.title || '').toLowerCase().includes(q);
         const descMatch = (c.description || '').toLowerCase().includes(q);
         const instMatch = (c.instructor || '').toLowerCase().includes(q);
         const catMatch = (c.category || '').toLowerCase().includes(q);
+        const audMatch = (c.targetAudience || '').toLowerCase().includes(q);
         const tagsMatch = Array.isArray(c.tags) && c.tags.some(t => t.toLowerCase().includes(q));
-        if (!titleMatch && !descMatch && !instMatch && !catMatch && !tagsMatch) return false;
+        const outcomesMatch = Array.isArray(c.outcomes) && c.outcomes.some(t => t.toLowerCase().includes(q));
+        if (!titleMatch && !descMatch && !instMatch && !catMatch && !audMatch && !tagsMatch && !outcomesMatch) return false;
       }
 
       // Category filter
@@ -626,7 +885,6 @@
         const cat = (c.category || '').toLowerCase();
         const target = state.filters.category.toLowerCase();
         if (!cat.includes(target) && !(target === 'curriculum' && cat.includes('cbe'))) {
-          // Check tags as well
           const tagMatches = Array.isArray(c.tags) && c.tags.some(t => t.toLowerCase().includes(target));
           if (!tagMatches) return false;
         }
@@ -636,6 +894,12 @@
       if (state.filters.level !== 'all') {
         const lvl = (c.level || '').toLowerCase();
         if (!lvl.includes(state.filters.level.toLowerCase())) return false;
+      }
+
+      // Delivery mode filter
+      if (state.filters.format !== 'all') {
+        const fmt = (c.format || '').toLowerCase();
+        if (!fmt.includes(state.filters.format.toLowerCase())) return false;
       }
 
       // Duration filter
@@ -652,6 +916,9 @@
         const priceVal = typeof c.price === 'number' ? c.price : parseInt(String(c.price || '0').replace(/[^0-9]/g, ''), 10);
         if (state.filters.pricing === 'free' && priceVal > 0) return false;
         if (state.filters.pricing === 'paid' && priceVal === 0) return false;
+        if (state.filters.pricing === 'under10k' && (priceVal <= 0 || priceVal >= 10000)) return false;
+        if (state.filters.pricing === '10k-18k' && (priceVal < 10000 || priceVal > 18000)) return false;
+        if (state.filters.pricing === 'above18k' && priceVal <= 18000) return false;
       }
 
       // CPD filter
@@ -667,6 +934,12 @@
       results.sort((a, b) => (parseFloat(a.price) || 0) - (parseFloat(b.price) || 0));
     } else if (state.filters.sort === 'price-high') {
       results.sort((a, b) => (parseFloat(b.price) || 0) - (parseFloat(a.price) || 0));
+    } else if (state.filters.sort === 'duration') {
+      results.sort((a, b) => {
+        const durA = parseInt(String(a.duration || '6').replace(/[^0-9]/g, ''), 10) || 6;
+        const durB = parseInt(String(b.duration || '6').replace(/[^0-9]/g, ''), 10) || 6;
+        return durA - durB;
+      });
     } else if (state.filters.sort === 'newest') {
       results.sort((a, b) => (b.new ? 1 : 0) - (a.new ? 1 : 0));
     } else {
@@ -677,16 +950,19 @@
     // Update count indicator
     const countEl = document.getElementById('catalog-count');
     if (countEl) {
-      countEl.textContent = `Showing ${results.length} Course${results.length !== 1 ? 's' : ''}`;
+      countEl.textContent = `Showing ${results.length} of ${state.courses.length} Accredited Programs`;
     }
+
+    // Render active filter chips
+    renderActiveFilterChips();
 
     if (results.length === 0) {
       grid.innerHTML = `
-        <div class="lms-empty-state-box">
+        <div class="lms-empty-state-box" style="grid-column: 1 / -1;">
           <div class="lms-empty-icon">🔍</div>
           <h4 class="lms-empty-title">No courses match your filter criteria</h4>
-          <p class="lms-empty-desc">Try clearing search terms or selecting "All Categories" to view available learning programs.</p>
-          <button onclick="resetLmsFilters()" class="btn btn-outline btn-sm">Reset All Filters</button>
+          <p class="lms-empty-desc">Try clearing search terms or resetting filters to browse all available educational programs.</p>
+          <button type="button" onclick="resetLmsFilters()" class="btn btn-primary btn-sm">↺ Reset All Filters</button>
         </div>
       `;
       return;
@@ -964,6 +1240,7 @@
       category: 'all',
       academy: 'all',
       level: 'all',
+      format: 'all',
       duration: 'all',
       pricing: 'all',
       cpd: false,
@@ -981,6 +1258,9 @@
 
     const levelSelect = document.getElementById('lms-level-select');
     if (levelSelect) levelSelect.value = 'all';
+
+    const formatSelect = document.getElementById('lms-format-select');
+    if (formatSelect) formatSelect.value = 'all';
 
     const durSelect = document.getElementById('lms-duration-select');
     if (durSelect) durSelect.value = 'all';
