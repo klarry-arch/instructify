@@ -9,12 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=6.1">
-  <link rel="stylesheet" href="css/animations.css?v=6.1">
-  <link rel="stylesheet" href="css/components.css?v=6.1">
-  <link rel="stylesheet" href="css/homepage.css?v=6.1">
-  <link rel="stylesheet" href="css/about.css?v=6.1">
-  <link rel="stylesheet" href="css/live-chat.css?v=6.1">
+  <link rel="stylesheet" href="css/global.css?v=7.0">
+  <link rel="stylesheet" href="css/animations.css?v=7.0">
+  <link rel="stylesheet" href="css/components.css?v=7.0">
+  <link rel="stylesheet" href="css/homepage.css?v=7.0">
+  <link rel="stylesheet" href="css/about.css?v=7.0">
+  <link rel="stylesheet" href="css/docmed-theme.css?v=7.0">
+  <link rel="stylesheet" href="css/live-chat.css?v=7.0">
 
   <style>
     /* ══════════════════════════════════════════════════════════════
@@ -271,7 +272,30 @@
 </head>
 <body>
 
-<a href="#main-content" class="skip-to-content">Skip to main content</a>
+<!-- ── Docmed Top Bar ───────────────────────────────────────── -->
+<div class="docmed-topbar">
+  <div class="container docmed-topbar-inner">
+    <div class="docmed-topbar-left">
+      <span class="docmed-topbar-item">
+        <span>🇰🇪</span> National Educational Transformation &amp; Capacity Partner
+      </span>
+      <span class="docmed-topbar-item">
+        <span>🎓</span> TSC &amp; KICD Framework Aligned
+      </span>
+    </div>
+    <div class="docmed-topbar-right">
+      <a href="tel:+254143024416" class="docmed-topbar-link">
+        <span>📞</span> +254 143 024416
+      </a>
+      <a href="mailto:info@instructify.co.ke" class="docmed-topbar-link">
+        <span>✉️</span> info@instructify.co.ke
+      </a>
+      <span class="docmed-topbar-item">
+        <span>📍</span> Nairobi, Kenya
+      </span>
+    </div>
+  </div>
+</div>
 
 <!-- ── Navigation ───────────────────────────────────────────── -->
 <nav id="navbar" class="navbar">
@@ -508,11 +532,10 @@
      ══════════════════════════════════════════════════════════ -->
 <section class="section about-section-light">
   <div class="container text-center">
-    <span class="section-tag blue">OUR DISTINCTIVENESS</span>
-    <h2 style="font-family:var(--font-heading); font-size:clamp(30px, 3.8vw, 42px); font-weight:850; color:#0E1726; margin-top:14px; margin-bottom:16px; letter-spacing:-0.025em;">
-      What Makes Us Different
-    </h2>
-    <p style="font-size:16.5px; color:#475569; max-width:680px; width:100%; margin:0 auto 52px; line-height:1.68;">
+    <div class="docmed-tag">OUR DISTINCTIVENESS</div>
+    <h2 class="docmed-title">What Makes Us Different</h2>
+    <div class="docmed-bar"></div>
+    <p class="docmed-subtitle" style="margin-bottom:52px;">
       We go beyond generic training by co-creating actionable solutions tailored to the unique goals of African educators and institutions.
     </p>
 
@@ -565,10 +588,12 @@
      ══════════════════════════════════════════════════════════ -->
 <section class="section" style="background:#FFFFFF; padding: 96px 0;">
   <div class="container text-center">
-    <span class="section-tag blue">WHAT WE DO</span>
-    <h2 style="font-family:var(--font-heading); font-size:clamp(30px, 3.8vw, 42px); font-weight:850; color:#0E1726; margin-top:14px; margin-bottom:44px; letter-spacing:-0.025em;">
-      Our Three Core Service Pillars
-    </h2>
+    <div class="docmed-tag">WHAT WE DO</div>
+    <h2 class="docmed-title">Our Three Core Service Pillars</h2>
+    <div class="docmed-bar"></div>
+    <p class="docmed-subtitle" style="margin-bottom:48px;">
+      Integrated pathways delivering holistic institutional impact from classroom pedagogy to strategic governance.
+    </p>
 
     <div class="grid-3" style="gap:32px;">
       <!-- Pillar 1: Educator Training -->
@@ -976,8 +1001,8 @@
       Whether you are a teacher seeking professional growth, a school principal aiming for CBC excellence, or an organization building scalable education programs, Instructify Kenya is your trusted partner.
     </p>
     <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
-      <a href="contact.html" class="btn btn-white btn-lg" style="font-weight:800; padding:16px 36px; color:#064FC1 !important;">Partner With Instructify Kenya</a>
-      <a href="courses.html" class="btn btn-outline-white btn-lg" style="font-weight:750; padding:16px 32px;">Explore Our Courses</a>
+      <a href="contact.html" class="btn btn-white btn-lg" style="font-weight:800; padding:16px 36px; color:#064FC1 !important; border-radius:var(--dm-radius-pill);">Partner With Instructify Kenya</a>
+      <a href="courses.html" class="btn btn-outline-white btn-lg" style="font-weight:750; padding:16px 32px; border-radius:var(--dm-radius-pill);">Explore Our Courses</a>
     </div>
   </div>
 </section>

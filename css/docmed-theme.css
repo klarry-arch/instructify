@@ -1,0 +1,761 @@
+/* ============================================================
+   INSTRUCTIFY KENYA — DOCMED-INSPIRED VISUAL DESIGN SYSTEM
+   Visual Reference: https://colorlibhub.com/docmed-blocks/
+   Adapted for: Professional Development, EdTech, Consultancy & Infrastructure
+   Palette: Deep Navy #0B1F3A · Professional Blue #124E96 · Royal Blue #2454E6
+            Professional Teal #0F8B8D · Soft Gold #D9A928 · Off-White #F8FAFC
+   ============================================================ */
+
+:root {
+  /* Docmed Design Tokens */
+  --dm-navy: #0B1F3A;
+  --dm-prof-blue: #124E96;
+  --dm-royal-blue: #2454E6;
+  --dm-sky-blue: #3A8DDE;
+  --dm-teal: #0F8B8D;
+  --dm-emerald: #168B72;
+  --dm-gold: #D9A928;
+  --dm-surface: #F8FAFC;
+  --dm-light-blue: #EEF3F8;
+  --dm-border: #D9E2EC;
+  --dm-charcoal: #1E293B;
+  --dm-muted: #64748B;
+  --dm-white: #FFFFFF;
+
+  --dm-shadow-sm: 0 2px 8px rgba(11, 31, 58, 0.04);
+  --dm-shadow-card: 0 6px 18px rgba(11, 31, 58, 0.06);
+  --dm-shadow-hover: 0 14px 32px rgba(11, 31, 58, 0.10);
+  --dm-shadow-nav: 0 4px 20px rgba(11, 31, 58, 0.06);
+
+  --dm-radius-sm: 8px;
+  --dm-radius-md: 14px;
+  --dm-radius-lg: 18px;
+  --dm-radius-pill: 9999px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   1. DOCMED TOP BAR (Contact & Framework Alignment Strip)
+   ══════════════════════════════════════════════════════════════ */
+.docmed-topbar {
+  background: var(--dm-surface);
+  border-bottom: 1px solid var(--dm-border);
+  padding: 8px 0;
+  font-size: 13px;
+  color: var(--dm-muted);
+  display: block;
+  position: relative;
+  z-index: 1001;
+}
+.docmed-topbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(10px, 1.4vw, 28px);
+}
+.docmed-topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.docmed-topbar__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 650;
+  color: var(--dm-navy);
+}
+.docmed-topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.docmed-topbar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--dm-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.docmed-topbar__item:hover {
+  color: var(--dm-royal-blue);
+}
+.docmed-topbar__item svg {
+  color: var(--dm-prof-blue);
+}
+@media (max-width: 768px) {
+  .docmed-topbar {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2. DOCMED SECTION HEADERS WITH DECORATIVE BAR
+   ══════════════════════════════════════════════════════════════ */
+.docmed-section-head {
+  margin-bottom: 48px;
+  position: relative;
+}
+.docmed-section-head.text-center {
+  text-align: center;
+}
+.docmed-section-head.text-left {
+  text-align: left;
+}
+.docmed-kicker {
+  display: inline-block;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dm-prof-blue);
+  margin-bottom: 10px;
+}
+.docmed-kicker.on-dark {
+  color: var(--dm-sky-blue);
+}
+.docmed-title {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 800;
+  color: var(--dm-navy);
+  line-height: 1.24;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.docmed-title.on-dark {
+  color: var(--dm-white);
+}
+
+/* Docmed Signature Decorative Bar */
+.docmed-bar {
+  display: block;
+  width: 48px;
+  height: 3.5px;
+  background: var(--dm-royal-blue);
+  border-radius: 2px;
+  margin: 14px auto 16px;
+}
+.docmed-section-head.text-left .docmed-bar {
+  margin: 14px 0 16px;
+}
+.docmed-subtitle {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: clamp(15px, 1.2vw, 17px);
+  color: var(--dm-muted);
+  line-height: 1.68;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.docmed-subtitle.on-dark {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3. DOCMED PROMINENT SERVICE BAND (Hero Direct Connection)
+   ══════════════════════════════════════════════════════════════ */
+.docmed-service-band-wrap {
+  position: relative;
+  z-index: 25;
+  margin-top: -44px;
+}
+.docmed-service-band {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  box-shadow: 0 16px 40px rgba(11, 31, 58, 0.12);
+  border-radius: var(--dm-radius-lg);
+  overflow: hidden;
+}
+.docmed-band-cell {
+  padding: 40px 32px;
+  color: var(--dm-white);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.docmed-band-cell:hover {
+  filter: brightness(1.05);
+}
+.docmed-band-cell.cell-prof-blue {
+  background: #124E96;
+}
+.docmed-band-cell.cell-navy {
+  background: #0B1F3A;
+}
+.docmed-band-cell.cell-teal {
+  background: #0F8B8D;
+}
+.docmed-band-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.docmed-band-title {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 21px;
+  font-weight: 750;
+  color: var(--dm-white);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.docmed-band-desc {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex: 1;
+}
+.docmed-band-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: var(--dm-radius-pill);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  background: transparent;
+  color: var(--dm-white);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: all 0.25s ease;
+}
+.docmed-band-btn:hover {
+  background: var(--dm-white);
+  color: var(--dm-navy);
+  border-color: var(--dm-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+@media (max-width: 992px) {
+  .docmed-service-band {
+    grid-template-columns: 1fr;
+  }
+  .docmed-service-band-wrap {
+    margin-top: 24px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   4. DOCMED WELCOME / STORY SECTION (Overlapping Photos Layout)
+   ══════════════════════════════════════════════════════════════ */
+.docmed-welcome-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: center;
+  padding: 88px 0;
+}
+.docmed-photos-stack {
+  position: relative;
+  min-height: 480px;
+}
+.docmed-photo-main {
+  width: 78%;
+  height: 440px;
+  object-fit: cover;
+  border-radius: var(--dm-radius-lg);
+  box-shadow: var(--dm-shadow-card);
+  border: 4px solid var(--dm-white);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.docmed-photo-overlap {
+  width: 62%;
+  height: 330px;
+  object-fit: cover;
+  border-radius: var(--dm-radius-lg);
+  box-shadow: 0 16px 40px rgba(11, 31, 58, 0.16);
+  border: 6px solid var(--dm-white);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.docmed-welcome-content {
+  display: flex;
+  flex-direction: column;
+}
+.docmed-checks-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.docmed-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--dm-charcoal);
+  line-height: 1.55;
+}
+.docmed-check-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ECFEFF;
+  color: var(--dm-teal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 800;
+  font-size: 12px;
+  margin-top: 2px;
+}
+@media (max-width: 992px) {
+  .docmed-welcome-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 64px 0;
+  }
+  .docmed-photos-stack {
+    min-height: 360px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .docmed-photo-main {
+    height: 320px;
+  }
+  .docmed-photo-overlap {
+    height: 240px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5. DOCMED DEPARTMENTS / CARDS GRID
+   ══════════════════════════════════════════════════════════════ */
+.docmed-cards-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.docmed-card {
+  background: var(--dm-white);
+  border: 1px solid var(--dm-border);
+  border-radius: var(--dm-radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--dm-shadow-card);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.docmed-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--dm-shadow-hover);
+  border-color: #CBD5E1;
+}
+.docmed-card-media {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  background: var(--dm-surface);
+  display: block;
+}
+.docmed-card-body {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.docmed-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: var(--dm-radius-pill);
+  background: #EFF6FF;
+  color: var(--dm-prof-blue);
+  align-self: flex-start;
+  margin-bottom: 12px;
+}
+.docmed-card-title {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 19px;
+  font-weight: 750;
+  color: var(--dm-navy);
+  margin-bottom: 10px;
+  line-height: 1.32;
+}
+.docmed-card-desc {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 14.5px;
+  color: var(--dm-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex: 1;
+}
+.docmed-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 13.5px;
+  font-weight: 750;
+  color: var(--dm-royal-blue);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-top: auto;
+}
+.docmed-card-link:hover {
+  color: var(--dm-prof-blue);
+  transform: translateX(4px);
+}
+@media (max-width: 992px) {
+  .docmed-cards-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .docmed-cards-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   6. DOCMED CONTENT TABS SECTION (Educational Pathways)
+   ══════════════════════════════════════════════════════════════ */
+.docmed-tabs-wrap {
+  background: var(--dm-white);
+  border-radius: var(--dm-radius-lg);
+  border: 1px solid var(--dm-border);
+  box-shadow: var(--dm-shadow-card);
+  overflow: hidden;
+  margin-top: 40px;
+}
+.docmed-tabs-bar {
+  display: flex;
+  background: var(--dm-surface);
+  border-bottom: 1px solid var(--dm-border);
+  padding: 0 16px;
+  overflow-x: auto;
+}
+.docmed-tab-btn {
+  padding: 18px 24px;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dm-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.docmed-tab-btn:hover {
+  color: var(--dm-navy);
+}
+.docmed-tab-btn.active {
+  color: var(--dm-royal-blue);
+  border-bottom-color: var(--dm-royal-blue);
+  background: var(--dm-white);
+}
+.docmed-tab-panel {
+  display: none;
+  padding: 44px 36px;
+}
+.docmed-tab-panel.active {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.docmed-tab-info h3 {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--dm-navy);
+  margin-bottom: 14px;
+}
+.docmed-tab-info p {
+  font-size: 15px;
+  color: var(--dm-muted);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+.docmed-tab-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--dm-radius-md);
+  box-shadow: var(--dm-shadow-sm);
+}
+@media (max-width: 820px) {
+  .docmed-tab-panel.active {
+    grid-template-columns: 1fr;
+    padding: 28px 20px;
+  }
+  .docmed-tab-img {
+    height: 220px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. DOCMED TESTIMONIAL / REVIEWS BANNER (Navy Immersion)
+   ══════════════════════════════════════════════════════════════ */
+.docmed-reviews-banner {
+  background: linear-gradient(135deg, #071526 0%, #0B1F3A 100%);
+  padding: 96px 0;
+  color: var(--dm-white);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+.docmed-reviews-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(36, 84, 230, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.docmed-quote-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 24px;
+  color: var(--dm-royal-blue);
+  opacity: 0.9;
+}
+.docmed-review-text {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 840px;
+  margin: 0 auto 28px;
+  color: rgba(255, 255, 255, 0.95);
+  font-style: italic;
+}
+.docmed-review-author {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 16px;
+  font-weight: 750;
+  color: var(--dm-white);
+}
+.docmed-review-role {
+  font-size: 13px;
+  color: var(--dm-sky-blue);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   8. DOCMED TRAINERS / CONSULTANTS / EXPERTS CAROUSEL & GRID
+   ══════════════════════════════════════════════════════════════ */
+.docmed-trainers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.docmed-trainer-card {
+  background: var(--dm-white);
+  border: 1px solid var(--dm-border);
+  border-radius: var(--dm-radius-md);
+  overflow: hidden;
+  text-align: center;
+  box-shadow: var(--dm-shadow-card);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.docmed-trainer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--dm-shadow-hover);
+}
+.docmed-trainer-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: var(--dm-surface);
+  display: block;
+}
+.docmed-trainer-info {
+  padding: 20px 16px;
+}
+.docmed-trainer-name {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 17px;
+  font-weight: 750;
+  color: var(--dm-navy);
+  margin-bottom: 4px;
+}
+.docmed-trainer-role {
+  font-size: 12px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--dm-prof-blue);
+}
+@media (max-width: 1024px) {
+  .docmed-trainers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .docmed-trainers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   9. DOCMED SPLIT ACTION CALLOUT BANNER (Dual CTAs)
+   ══════════════════════════════════════════════════════════════ */
+.docmed-split-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  box-shadow: var(--dm-shadow-card);
+}
+.docmed-split-half {
+  padding: 56px 48px;
+  color: var(--dm-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.docmed-split-half.navy {
+  background: linear-gradient(135deg, #071526 0%, #0B1F3A 100%);
+}
+.docmed-split-half.blue {
+  background: linear-gradient(135deg, #0B1F3A 0%, #124E96 100%);
+}
+.docmed-split-content h3 {
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 22px;
+  font-weight: 750;
+  color: var(--dm-white);
+  margin-bottom: 6px;
+}
+.docmed-split-content p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+.docmed-split-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: var(--dm-radius-pill);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  color: var(--dm-white);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.docmed-split-btn:hover {
+  background: var(--dm-white);
+  color: var(--dm-navy);
+  border-color: var(--dm-white);
+  transform: translateY(-2px);
+}
+@media (max-width: 900px) {
+  .docmed-split-wrap {
+    grid-template-columns: 1fr;
+  }
+  .docmed-split-half {
+    flex-direction: column;
+    text-align: center;
+    padding: 36px 24px;
+  }
+  .docmed-split-btn {
+    width: 100%;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   10. DOCMED BUTTONS & FORM CONTROLS
+   ══════════════════════════════════════════════════════════════ */
+.btn-docmed-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--dm-radius-pill);
+  background: var(--dm-royal-blue);
+  color: var(--dm-white);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  box-shadow: 0 4px 14px rgba(36, 84, 230, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 44px;
+}
+.btn-docmed-primary:hover {
+  background: var(--dm-prof-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(36, 84, 230, 0.35);
+  color: var(--dm-white);
+}
+
+.btn-docmed-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--dm-radius-pill);
+  background: transparent;
+  color: var(--dm-navy);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1.5px solid var(--dm-border);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 44px;
+}
+.btn-docmed-outline:hover {
+  border-color: var(--dm-royal-blue);
+  color: var(--dm-royal-blue);
+  transform: translateY(-2px);
+  background: var(--dm-surface);
+}
+
+.btn-docmed-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 14.5px;
+  font-weight: 750;
+  color: var(--dm-royal-blue);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.btn-docmed-ghost:hover {
+  color: var(--dm-prof-blue);
+  transform: translateX(4px);
+}
