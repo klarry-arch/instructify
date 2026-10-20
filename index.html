@@ -9,15 +9,65 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=7.0">
-  <link rel="stylesheet" href="css/animations.css?v=7.0">
-  <link rel="stylesheet" href="css/components.css?v=7.0">
-  <link rel="stylesheet" href="css/docmed-theme.css?v=7.0">
-  <link rel="stylesheet" href="css/homepage.css?v=7.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=7.0">
+  <link rel="stylesheet" href="css/global.css?v=8.0">
+  <link rel="stylesheet" href="css/animations.css?v=8.0">
+  <link rel="stylesheet" href="css/components.css?v=8.0">
+  <link rel="stylesheet" href="css/docmed-theme.css?v=8.0">
+  <link rel="stylesheet" href="css/homepage.css?v=8.0">
+  <link rel="stylesheet" href="css/live-chat.css?v=8.0">
 
   <!-- ── Critical Inlined Styles for Institutional Grid & Cards (Zero-Cache Guarantee) ── -->
   <style id="inst-critical-styling">
+    /* Bulletproof Header Structure — Zero-Overlap Guarantee */
+    #site-header.site-header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 1000 !important;
+      background: #FFFFFF !important;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease !important;
+    }
+    #site-header .docmed-topbar {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      height: 40px !important;
+      line-height: 40px !important;
+      display: block !important;
+      z-index: 2 !important;
+      background: #F8FAFC !important;
+      border-bottom: 1px solid #D9E2EC !important;
+      box-sizing: border-box !important;
+      margin: 0 !important;
+    }
+    #site-header .navbar,
+    #site-header #navbar {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      width: 100% !important;
+      height: var(--nav-height, 70px) !important;
+      min-height: var(--nav-height, 70px) !important;
+      z-index: 1 !important;
+      margin: 0 !important;
+      box-sizing: border-box !important;
+    }
+    #site-header.scrolled {
+      transform: translateY(-40px) !important;
+      box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.12) !important;
+    }
+    @media (max-width: 768px) {
+      #site-header .docmed-topbar {
+        display: none !important;
+      }
+      #site-header.scrolled {
+        transform: none !important;
+      }
+    }
     .inst-section { padding: 88px 0; position: relative; }
     .inst-section.bg-offwhite { background: #F8FAFC !important; }
     .inst-section.bg-white { background: #FFFFFF !important; }
@@ -467,9 +517,9 @@
 <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
 <!-- ── Unified Header: Docmed Top Bar + Sticky Navigation ── -->
-<header id="site-header" class="site-header">
+<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#ffffff !important;">
   <!-- ── Docmed Top Bar ──────────────────────────────────────── -->
-  <div class="docmed-topbar" aria-label="Institutional framework and contact information">
+  <div class="docmed-topbar" style="position:relative !important; top:auto !important; left:auto !important; right:auto !important; height:40px !important; line-height:40px !important; display:block !important; z-index:2 !important; margin:0 !important; box-sizing:border-box !important;" aria-label="Institutional framework and contact information">
     <div class="container">
       <div class="docmed-topbar__left">
         <span class="docmed-topbar__badge">
@@ -494,7 +544,7 @@
   </div>
 
   <!-- ── Navigation ───────────────────────────────────────────── -->
-  <nav id="navbar" class="navbar">
+  <nav id="navbar" class="navbar" style="position:relative !important; top:auto !important; left:auto !important; right:auto !important; width:100% !important; z-index:1 !important; margin:0 !important; box-sizing:border-box !important;">
     <div class="container">
       <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
         <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">

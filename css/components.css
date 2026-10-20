@@ -29,6 +29,18 @@
   box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.10);
 }
 
+.site-header .navbar,
+header.site-header .navbar,
+#site-header .navbar,
+#site-header #navbar {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 .navbar .container {
   display: flex;
   align-items: center;
