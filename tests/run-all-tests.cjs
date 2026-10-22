@@ -11,7 +11,8 @@ const testSuites = [
   'tests/verify-workshop-email.cjs',
   'tests/image-audit.test.cjs',
   'tests/form-validation.test.cjs',
-  'tests/verify-cpd-registration.cjs'
+  'tests/verify-cpd-registration.cjs',
+  'tests/contrast-readability-audit.test.cjs'
 ];
 
 console.log('══════════════════════════════════════════════════════════════');

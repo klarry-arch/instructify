@@ -99,11 +99,12 @@
   --surface-color-tint:    #F8FAFC;
   --surface-color-card:    #FFFFFF;
 
-  /* ── 3. Typography & Text Hierarchy ── */
-  --heading-color:         #14213D; /* Midnight Navy */
-  --text-color:            #1F2937; /* Charcoal */
-  --muted-text-color:      #64748B; /* Soft Slate */
-  --text-color-disabled:   #9CA3AF;
+  /* ── 3. Typography & Text Hierarchy (Contrast Standardized) ── */
+  --heading-color:         #1E293B; /* Primary Headings (#1E293B) */
+  --text-color:            #1E293B; /* Preferred Primary Text (#1E293B) */
+  --text-secondary:        #475569; /* Preferred Secondary Text (#475569) */
+  --muted-text-color:      #64748B; /* Preferred Muted Text (#64748B) */
+  --text-color-disabled:   #64748B;
   --text-on-primary:       #FFFFFF;
   --text-on-secondary:     #FFFFFF;
   --text-on-accent:        #FFFFFF;
@@ -197,7 +198,7 @@
   --color-surface-soft:   var(--surface-color-soft);
 
   --text-main:            var(--text-color);
-  --text-secondary:       #333333;
+  --text-secondary:       #475569;
   --text-muted:           var(--muted-text-color);
   --text-disabled:        var(--text-color-disabled);
   --link-default:         var(--primary-color);
@@ -205,7 +206,7 @@
   --border-readable:      var(--border-color-strong);
 
   --color-text-main:      var(--text-color);
-  --color-text-secondary: #333333;
+  --color-text-secondary: #475569;
   --color-text-muted:     var(--muted-text-color);
   --color-heading:        var(--heading-color);
 

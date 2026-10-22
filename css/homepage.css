@@ -280,14 +280,14 @@
   display: inline;
 }
 
-/* Hero Subtitle — 2-3 Lines Max, Concise */
+/* Hero Subtitle — 2-3 Lines Max, Concise (Contrast Standardized) */
 .hero-subtitle {
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: clamp(15.5px, 1.25vw, 17.5px);
   line-height: 1.65;
-  color: var(--ed-text-muted, #64748B) !important;
+  color: #475569 !important;
   margin-bottom: 30px;
-  font-weight: 400;
+  font-weight: 450;
 }
 
 /* Hero Action CTAs */
@@ -513,7 +513,7 @@
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 16px;
   line-height: 1.65;
-  color: var(--ed-text-muted, #64748B);
+  color: #475569;
   margin: 0 auto;
 }
 
@@ -576,7 +576,7 @@
 .feature-card-desc {
   font-size: 14px;
   line-height: 1.6;
-  color: var(--ed-text-muted, #64748B);
+  color: #475569;
   margin-bottom: 22px;
   flex-grow: 1;
 }
@@ -683,7 +683,7 @@
 .programme-summary {
   font-size: 14px;
   line-height: 1.65;
-  color: var(--ed-text-muted, #64748B);
+  color: #475569;
   margin-bottom: 22px;
   flex-grow: 1;
 }
@@ -1030,7 +1030,7 @@
    ══════════════════════════════════════════════════════════════ */
 .site-footer-modern {
   background: #0F172A;
-  color: #94A3B8;
+  color: #E2E8F0;
   padding: 64px 0 32px 0;
   border-top: 1px solid #1E293B;
   font-size: 14px;
@@ -1047,7 +1047,7 @@
   line-height: 1.65;
   margin: 16px 0 20px 0;
   max-width: 320px;
-  color: #94A3B8;
+  color: #E2E8F0;
 }
 
 .footer-social-row {
@@ -1117,7 +1117,7 @@
 }
 
 .footer-nav-list a {
-  color: #94A3B8;
+  color: #CBD5E1;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -1131,11 +1131,11 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 12px;
-  color: #94A3B8;
+  color: #E2E8F0;
 }
 
 .footer-contact-item a {
-  color: #94A3B8;
+  color: #CBD5E1;
   text-decoration: none;
 }
 .footer-contact-item a:hover {
@@ -1151,6 +1151,7 @@
   flex-wrap: wrap;
   gap: 16px;
   font-size: 13px;
+  color: #CBD5E1;
 }
 
 .footer-bottom-links {
@@ -1159,7 +1160,7 @@
 }
 
 .footer-bottom-links a {
-  color: #94A3B8;
+  color: #CBD5E1;
   text-decoration: none;
 }
 .footer-bottom-links a:hover {
