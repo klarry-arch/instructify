@@ -8,14 +8,14 @@
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=9.0">
-  <link rel="stylesheet" href="css/animations.css?v=9.0">
-  <link rel="stylesheet" href="css/components.css?v=9.0">
-  <link rel="stylesheet" href="css/homepage.css?v=9.0">
-  <link rel="stylesheet" href="css/about.css?v=9.0">
-  <link rel="stylesheet" href="css/docmed-theme.css?v=9.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=9.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css?v=10.0">
+  <link rel="stylesheet" href="css/animations.css?v=10.0">
+  <link rel="stylesheet" href="css/components.css?v=10.0">
+  <link rel="stylesheet" href="css/homepage.css?v=10.0">
+  <link rel="stylesheet" href="css/about.css?v=10.0">
+  <link rel="stylesheet" href="css/docmed-theme.css?v=10.0">
+  <link rel="stylesheet" href="css/live-chat.css?v=10.0">
 
   <style id="critical-header-css">
     #site-header.site-header {
@@ -25,8 +25,9 @@
       right: 0 !important;
       width: 100% !important;
       z-index: 1000 !important;
-      background: #12355B !important;
-      box-shadow: 0 4px 20px rgba(18, 53, 91, 0.25) !important;
+      background: #FFFFFF !important;
+      border-bottom: 1px solid #E5E7EB !important;
+      box-shadow: 0 2px 10px rgba(20, 33, 61, 0.04) !important;
     }
     #site-header .docmed-topbar {
       position: relative !important;
@@ -36,9 +37,9 @@
       display: block !important;
       z-index: 2 !important;
       margin: 0 !important;
-      background: #0D2540 !important;
-      color: #DCE3EA !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+      background: #FAFAF7 !important;
+      color: #64748B !important;
+      border-bottom: 1px solid #E5E7EB !important;
     }
     #site-header .navbar,
     #site-header #navbar {
@@ -47,8 +48,8 @@
       width: 100% !important;
       z-index: 1 !important;
       margin: 0 !important;
-      background: #12355B !important;
-      border-bottom: 2px solid #1F7A6E !important;
+      background: #FFFFFF !important;
+      border-bottom: none !important;
     }
     #site-header.scrolled {
       transform: translateY(-40px) !important;
@@ -68,10 +69,10 @@
        CORE VALUES LUXURY CARDS ARCHITECTURE
        ══════════════════════════════════════════════════════════════ */
     .cv-section {
-      background: #F7F9FC !important;
+      background: #FAFAF7 !important;
       padding: 96px 0 !important;
-      border-top: 1px solid #DCE3EA;
-      border-bottom: 1px solid #DCE3EA;
+      border-top: 1px solid #E5E7EB;
+      border-bottom: 1px solid #E5E7EB;
       position: relative;
     }
 
@@ -81,9 +82,9 @@
       gap: 8px;
       padding: 6px 18px !important;
       border-radius: 999px !important;
-      background: #F7F9FC !important;
-      border: 1.5px solid #1F7A6E !important;
-      color: #1F7A6E !important;
+      background: #EEF2FF !important;
+      border: 1.5px solid #4F46E5 !important;
+      color: #4F46E5 !important;
       font-size: 11.5px !important;
       font-weight: 800 !important;
       letter-spacing: 0.08em !important;
@@ -92,24 +93,24 @@
     }
 
     .cv-main-title {
-      font-family: var(--font-heading), 'Merriweather', serif !important;
+      font-family: var(--font-heading), 'Manrope', sans-serif !important;
       font-size: clamp(32px, 4vw, 44px) !important;
-      font-weight: 700 !important;
-      color: #172033 !important;
+      font-weight: 800 !important;
+      color: #14213D !important;
       margin: 0 0 16px 0 !important;
       letter-spacing: -0.025em !important;
     }
 
     .cv-main-title span.grad {
       background: none !important;
-      -webkit-text-fill-color: #1F7A6E !important;
-      color: #1F7A6E !important;
+      -webkit-text-fill-color: #4F46E5 !important;
+      color: #4F46E5 !important;
     }
 
     .cv-main-desc {
       font-family: var(--font-body), 'Inter', sans-serif !important;
       font-size: 16.5px !important;
-      color: #475569 !important;
+      color: #64748B !important;
       margin: 0 auto 48px auto !important;
       max-width: 680px;
       font-weight: 450;
@@ -166,14 +167,14 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: var(--val-color, #1F7A6E);
+      background: var(--val-color, #4F46E5);
       transition: height 0.3s ease;
     }
 
     .cv-card:hover {
       transform: translateY(-6px) !important;
-      border-color: var(--val-color, #1F7A6E) !important;
-      box-shadow: 0 20px 38px -8px rgba(18, 53, 91, 0.22), 0 6px 14px rgba(18, 53, 91, 0.04) !important;
+      border-color: var(--val-color, #4F46E5) !important;
+      box-shadow: 0 20px 38px -8px rgba(20, 33, 61, 0.12), 0 6px 14px rgba(20, 33, 61, 0.04) !important;
     }
 
     .cv-card:hover::before {
@@ -181,8 +182,8 @@
     }
 
     .cv-card.is-expanded {
-      border-color: var(--val-color, #1F7A6E) !important;
-      box-shadow: 0 16px 32px -6px rgba(18, 53, 91, 0.25) !important;
+      border-color: var(--val-color, #4F46E5) !important;
+      box-shadow: 0 16px 32px -6px rgba(20, 33, 61, 0.15) !important;
     }
 
     .cv-card-top-row {
@@ -205,8 +206,8 @@
       justify-content: center !important;
       flex-shrink: 0 !important;
       margin: 0 auto !important;
-      background: var(--val-gradient, linear-gradient(135deg, #12355B, #1F7A6E)) !important;
-      box-shadow: 0 8px 18px -4px rgba(18, 53, 91, 0.3) !important;
+      background: var(--val-gradient, linear-gradient(135deg, #14213D, #4F46E5)) !important;
+      box-shadow: 0 8px 18px -4px rgba(20, 33, 61, 0.3) !important;
       transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
     }
 
@@ -218,10 +219,10 @@
       position: absolute !important;
       top: -6px !important;
       right: 0 !important;
-      font-family: var(--font-heading), 'Merriweather', serif !important;
+      font-family: var(--font-heading), 'Manrope', sans-serif !important;
       font-size: 24px !important;
-      font-weight: 700 !important;
-      color: #DCE3EA !important;
+      font-weight: 800 !important;
+      color: #E5E7EB !important;
       line-height: 1 !important;
       user-select: none;
       letter-spacing: -0.04em !important;
@@ -231,15 +232,15 @@
 
     .cv-card:hover .cv-number-watermark,
     .cv-card.is-expanded .cv-number-watermark {
-      color: var(--val-color, #1F7A6E) !important;
+      color: var(--val-color, #4F46E5) !important;
       opacity: 0.8 !important;
     }
 
     .cv-card-title {
-      font-family: var(--font-heading), 'Merriweather', serif !important;
+      font-family: var(--font-heading), 'Manrope', sans-serif !important;
       font-size: 21px !important;
-      font-weight: 700 !important;
-      color: var(--val-color, #172033) !important;
+      font-weight: 800 !important;
+      color: var(--val-color, #14213D) !important;
       margin: 0 0 10px 0 !important;
       line-height: 1.25 !important;
       letter-spacing: -0.01em !important;
@@ -250,7 +251,7 @@
     .cv-card-desc {
       font-family: var(--font-body), 'Inter', sans-serif !important;
       font-size: 14.5px !important;
-      color: #475569 !important;
+      color: #64748B !important;
       line-height: 1.62 !important;
       margin: 0 auto 20px auto !important;
       font-weight: 450 !important;
@@ -269,9 +270,9 @@
       font-weight: 700 !important;
       text-transform: uppercase !important;
       letter-spacing: 0.07em !important;
-      color: var(--val-color, #12355B) !important;
-      background: rgba(18, 53, 91, 0.06) !important;
-      border: 1px solid rgba(18, 53, 91, 0.18) !important;
+      color: var(--val-color, #14213D) !important;
+      background: rgba(79, 70, 229, 0.08) !important;
+      border: 1px solid rgba(79, 70, 229, 0.22) !important;
       border-radius: 12px !important;
       padding: 12px 18px !important;
       min-height: 46px !important;
@@ -283,8 +284,8 @@
     }
 
     .cv-card-btn:hover {
-      background: rgba(18, 53, 91, 0.12) !important;
-      border-color: var(--val-color, #12355B) !important;
+      background: rgba(79, 70, 229, 0.16) !important;
+      border-color: var(--val-color, #4F46E5) !important;
       transform: translateY(-1px) !important;
     }
 
@@ -322,9 +323,9 @@
 <body>
 
 <!-- ── Unified Header: Docmed Top Bar + Sticky Navigation ── -->
-<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#12355B !important;">
+<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#FFFFFF !important; border-bottom:1px solid #E5E7EB !important; box-shadow:0 2px 10px rgba(20,33,61,0.04) !important;">
 <!-- ── Docmed Top Bar ───────────────────────────────────────── -->
-<div class="docmed-topbar" style="position:relative !important; top:auto !important; height:40px !important; line-height:40px !important; display:block !important; z-index:2 !important; margin:0 !important;">
+<div class="docmed-topbar" style="position:relative !important; top:auto !important; height:40px !important; line-height:40px !important; display:block !important; z-index:2 !important; margin:0 !important; background:#FAFAF7 !important; border-bottom:1px solid #E5E7EB !important; color:#64748B !important;">
   <div class="container docmed-topbar-inner">
     <div class="docmed-topbar-left">
       <span class="docmed-topbar-item">

@@ -25,12 +25,12 @@ const dashboardCss = fs.readFileSync('css/dashboard.css', 'utf8');
 // ── 1. Typography & Font Hierarchy ─────────────────────────
 console.log('🔤 1. Typography System & Font Family Consistency');
 assert(
-  globalCss.includes('family=Merriweather') && globalCss.includes('family=Inter'),
-  'Google Fonts Merriweather & Inter font families imported'
+  globalCss.includes('family=Manrope') && globalCss.includes('family=Inter'),
+  'Google Fonts Manrope & Inter font families imported'
 );
 assert(
-  globalCss.includes('--font-heading:') && globalCss.includes("'Merriweather'"),
-  '--font-heading is standardized to Merriweather'
+  globalCss.includes('--font-heading:') && globalCss.includes("'Manrope'"),
+  '--font-heading is standardized to Manrope'
 );
 assert(
   globalCss.includes('--font-body:') && globalCss.includes("'Inter'"),
@@ -41,11 +41,11 @@ assert(
 console.log('\n📐 Explicit User Typography Specification:');
 assert(
   globalCss.includes('h1, .h1') && (globalCss.includes('font-weight: 700 !important;') || globalCss.includes('font-weight: 800 !important;')),
-  'Rule 1: Hero heading is Merriweather, 700–800 weight'
+  'Rule 1: Hero heading is Manrope, 700–800 weight'
 );
 assert(
-  globalCss.includes('h2, .h2') && globalCss.includes('font-weight: 700 !important;'),
-  'Rule 2: Section headings are Merriweather, 700 weight'
+  globalCss.includes('h2, .h2') && (globalCss.includes('font-weight: 700 !important;') || globalCss.includes('font-weight: 800 !important;')),
+  'Rule 2: Section headings are Manrope, 700–800 weight'
 );
 assert(
   globalCss.includes('.card-title') && (globalCss.includes('font-weight: 600') || globalCss.includes('font-weight: 700')),
@@ -194,12 +194,12 @@ assert(footersCompliant, 'Global footers across all main templates feature the r
 // ── 5. Button & Form UX Controls ─────────────────────────────
 console.log('\n🎛️ 5. Standardized Buttons & Form Controls');
 assert(
-  componentsCss.includes('.btn-primary') && (componentsCss.includes('var(--primary-color') || componentsCss.includes('#12355B')),
-  'Primary action button uses Primary College Navy (#12355B / --primary-color)'
+  componentsCss.includes('.btn-primary') && (componentsCss.includes('var(--cta-color') || componentsCss.includes('var(--secondary-color') || componentsCss.includes('#4F46E5') || componentsCss.includes('var(--primary-color')),
+  'Primary action button uses Royal Indigo (#4F46E5 / --cta-color / --secondary-color)'
 );
 assert(
-  componentsCss.includes('.btn-secondary') && (componentsCss.includes('var(--secondary-color') || componentsCss.includes('#1F7A6E')),
-  'Secondary action button uses Secondary Pine Teal (#1F7A6E / --secondary-color)'
+  componentsCss.includes('.btn-secondary') && (componentsCss.includes('var(--surface-color-soft') || componentsCss.includes('#EEF2FF') || componentsCss.includes('var(--secondary-color')),
+  'Secondary action button uses Soft Lavender surface & Indigo border'
 );
 assert(
   componentsCss.includes('.form-input:focus') && componentsCss.includes('box-shadow: 0 0 0 3.5px'),

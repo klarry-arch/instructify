@@ -4,139 +4,148 @@
    Brand Colors: #064FC1 (Primary Blue) · #12B84E (Brand Green) · #FFD21A (Brand Yellow) · #F20D20 (Brand Red) · #44484F (Dark Grey)
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap');
 
 /* ══════════════════════════════════════════════════════════════
-   CANONICAL DESIGN TOKENS — Single Source of Truth
+   CANONICAL DESIGN TOKENS — Premium EdTech Design System
    Palette:
-   - Primary: #12355B (Header, navigation, footer, primary buttons, branding)
-   - Secondary: #1F7A6E (Icons, section highlights, secondary buttons)
-   - Accent / CTA: #F4B942 (Apply Now, Admissions Open, Download Prospectus)
-   - Main Background: #F7F9FC
-   - Card and Form Background: #FFFFFF
-   - Main Heading: #172033
-   - Body Text: #475569
-   - Border and Divider: #DCE3EA
-   - Success: #2E7D32
-   - Error: #C62828
+   - Midnight Navy: #14213D (Headings, navigation text, brand depth)
+   - Royal Indigo: #4F46E5 (Primary interactive colour, buttons, CTAs)
+   - Soft Lavender: #EEF2FF (Subtle backgrounds, highlighted cards)
+   - Warm Ivory: #FAFAF7 (Main page background)
+   - Pure White: #FFFFFF (Cards, navigation surfaces, forms)
+   - Fresh Teal: #0F9D91 (Secondary accent, innovation, success)
+   - Soft Slate: #64748B (Supporting text, descriptions, labels)
+   - Charcoal: #1F2937 (Body text and high-contrast content)
+   - Soft Border: #E5E7EB (Dividers, card borders, input outlines)
+   - Warm Amber: #F4B942 (Occasional highlights, small badges)
    Typography:
-   - Headings (H1, H2, H3): Merriweather
-   - Body, menus, buttons, forms, labels: Inter
+   - Headings (H1, H2, H3): Manrope (weights 600-800)
+   - Body, menus, buttons, forms: Inter (weights 400-600)
    ══════════════════════════════════════════════════════════════ */
 :root {
-  /* ── 1. Official College Palette Tokens ── */
-  --primary-color:         #12355B; /* Primary Oxford Navy (Header, Navigation, Footer, Primary Buttons, Major Branding) */
-  --primary-color-hover:   #0E2A49;
-  --primary-color-dark:    #0A1D33;
-  --primary-color-light:   #1C4E84;
-  --primary-color-bg:      #EEF4FA;
-  --primary-color-glow:    rgba(18, 53, 91, 0.20);
+  /* ── 1. Core Brand Palette Tokens ── */
+  --primary-color:         #14213D; /* Midnight Navy */
+  --primary-color-hover:   #0D1629;
+  --primary-color-dark:    #0A1222;
+  --primary-color-light:   #1E3056;
+  --primary-color-bg:      #EEF2FF;
+  --primary-color-glow:    rgba(20, 33, 61, 0.16);
 
-  --secondary-color:       #1F7A6E; /* Secondary Pine Teal (Icons, Section Highlights, Secondary Buttons, Supporting Elements) */
-  --secondary-color-hover: #176359;
-  --secondary-color-dark:  #124D45;
-  --secondary-color-light: #2BA091;
-  --secondary-color-bg:    #EBF6F4;
-  --secondary-color-glow:  rgba(31, 122, 110, 0.20);
+  --secondary-color:       #4F46E5; /* Royal Indigo */
+  --secondary-color-hover: #4338CA;
+  --secondary-color-dark:  #3730A3;
+  --secondary-color-light: #6366F1;
+  --secondary-color-bg:    #EEF2FF;
+  --secondary-color-glow:  rgba(79, 70, 229, 0.20);
 
-  --accent-color:          #F4B942; /* Accent Gold (Important CTAs: Apply Now, Admissions Open, Download Prospectus) */
-  --accent-color-hover:    #E5A830;
-  --accent-color-dark:     #C98F1D;
-  --accent-color-light:    #F7CB6E;
-  --accent-color-bg:       #FEF8EC;
-  --accent-color-glow:     rgba(244, 185, 66, 0.28);
+  --accent-color:          #0F9D91; /* Fresh Teal */
+  --accent-color-hover:    #0D857B;
+  --accent-color-dark:     #0A6B63;
+  --accent-color-light:    #14B8A6;
+  --accent-color-bg:       #F0FDFA;
+  --accent-color-glow:     rgba(15, 157, 145, 0.20);
 
-  --cta-color:             #F4B942; /* High-priority CTA Gold */
-  --cta-color-hover:       #E5A830;
-  --cta-color-dark:        #C98F1D;
-  --cta-color-light:       #F7CB6E;
-  --cta-color-bg:          #FEF8EC;
-  --cta-color-glow:        rgba(244, 185, 66, 0.28);
+  --cta-color:             #4F46E5; /* Royal Indigo (Buttons & Primary CTAs) */
+  --cta-color-hover:       #4338CA;
+  --cta-color-dark:        #3730A3;
+  --cta-color-light:       #6366F1;
+  --cta-color-bg:          #EEF2FF;
+  --cta-color-glow:        rgba(79, 70, 229, 0.25);
 
   /* Explicit Brand Palette Tokens */
-  --brand-blue:            #12355B;
-  --brand-green:           #1F7A6E;
-  --brand-yellow:          #F4B942;
-  --brand-red:             #C62828;
-  --brand-dark-grey:       #475569;
+  --brand-navy:            #14213D;
+  --brand-indigo:          #4F46E5;
+  --brand-lavender:        #EEF2FF;
+  --brand-ivory:           #FAFAF7;
+  --brand-teal:            #0F9D91;
+  --brand-slate:           #64748B;
+  --brand-charcoal:        #1F2937;
   --brand-white:           #FFFFFF;
-  --brand-neutral-bg:      #F7F9FC;
+  --brand-amber:           #F4B942;
+  --brand-red:             #DC2626;
 
-  /* ── Official Institutional Color System ── */
-  --deep-navy:             #12355B;
-  --prof-blue:             #12355B;
-  --royal-blue:            #1F7A6E;
-  --prof-teal:             #1F7A6E;
-  --refined-emerald:       #2E7D32;
+  /* Backward Compatibility Aliases */
+  --brand-blue:            #4F46E5;
+  --brand-green:           #0F9D91;
+  --brand-yellow:          #F4B942;
+  --brand-dark-grey:       #64748B;
+  --brand-neutral-bg:      #FAFAF7;
+  --deep-navy:             #14213D;
+  --prof-blue:             #14213D;
+  --royal-blue:            #4F46E5;
+  --prof-teal:             #0F9D91;
+  --refined-emerald:       #0F9D91;
   --soft-gold:             #F4B942;
 
   --neutral-white:         #FFFFFF;
-  --neutral-offwhite:      #F7F9FC;
-  --neutral-light-blue:    #EEF4FA;
-  --neutral-border:        #DCE3EA;
-  --neutral-grey:          #475569;
-  --neutral-charcoal:      #172033;
-  --neutral-deep:          #12355B;
+  --neutral-offwhite:      #FAFAF7;
+  --neutral-light-blue:    #EEF2FF;
+  --neutral-border:        #E5E7EB;
+  --neutral-grey:          #64748B;
+  --neutral-charcoal:      #1F2937;
+  --neutral-deep:          #14213D;
 
-  --gradient-navy-blue:    linear-gradient(135deg, #0A1D33 0%, #12355B 100%);
-  --gradient-blue-royal:   linear-gradient(135deg, #12355B 0%, #1F7A6E 100%);
-  --gradient-navy-teal:    linear-gradient(135deg, #12355B 0%, #1F7A6E 100%);
-  --gradient-soft-white:   linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%);
+  --gradient-navy-indigo:  linear-gradient(135deg, #14213D 0%, #4F46E5 100%);
+  --gradient-indigo-violet:linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  --gradient-soft-surface: linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 100%);
+  --gradient-lavender-tint:linear-gradient(180deg, #EEF2FF 0%, #FAFAF7 100%);
+  --gradient-subtle-glow:  radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.08) 0%, transparent 70%);
 
   /* ── 2. Backgrounds & Surfaces ── */
-  --background-color:      #F7F9FC; /* Main background */
-  --surface-color:         #FFFFFF; /* Card and form background */
-  --surface-color-soft:    #F7F9FC;
-  --surface-color-tint:    #EEF4FA;
+  --background-color:      #FAFAF7; /* Warm Ivory main background */
+  --surface-color:         #FFFFFF; /* Pure White card & form background */
+  --surface-color-soft:    #EEF2FF; /* Soft Lavender highlight */
+  --surface-color-tint:    #F8FAFC;
   --surface-color-card:    #FFFFFF;
 
   /* ── 3. Typography & Text Hierarchy ── */
-  --heading-color:         #172033; /* Main heading colour */
-  --text-color:            #475569; /* Body text colour */
-  --muted-text-color:      #64748B;
-  --text-color-disabled:   #94A3B8;
+  --heading-color:         #14213D; /* Midnight Navy */
+  --text-color:            #1F2937; /* Charcoal */
+  --muted-text-color:      #64748B; /* Soft Slate */
+  --text-color-disabled:   #9CA3AF;
   --text-on-primary:       #FFFFFF;
   --text-on-secondary:     #FFFFFF;
-  --text-on-accent:        #172033;
-  --text-on-cta:           #172033;
+  --text-on-accent:        #FFFFFF;
+  --text-on-cta:           #FFFFFF;
   --text-on-dark:          #FFFFFF;
 
   /* ── 4. Borders & Dividers ── */
-  --border-color:          #DCE3EA; /* Border and divider colour */
-  --border-color-card:     #DCE3EA;
-  --border-color-strong:   #CBD5E1;
-  --border-color-focus:    #1F7A6E;
-  --border-color-focus-glow: rgba(31, 122, 110, 0.25);
+  --border-color:          #E5E7EB; /* Soft Border */
+  --border-color-card:     #E5E7EB;
+  --border-color-strong:   #D1D5DB;
+  --border-color-focus:    #4F46E5;
+  --border-color-focus-glow: rgba(79, 70, 229, 0.16);
 
   /* ── 5. Status & Functional Colors ── */
-  --success-color:         #2E7D32; /* Success colour */
-  --success-color-hover:   #256729;
-  --success-color-bg:      #EDF7ED;
-  --success-color-border:  #A5D6A7;
+  --success-color:         #0F9D91; /* Fresh Teal / Success */
+  --success-color-hover:   #0D857B;
+  --success-color-bg:      #F0FDFA;
+  --success-color-border:  #99F6E4;
 
-  --warning-color:         #F4B942;
+  --warning-color:         #F4B942; /* Warm Amber */
   --warning-color-hover:   #E5A830;
   --warning-color-bg:      #FEF8EC;
   --warning-color-border:  #FCD98B;
 
-  --error-color:           #C62828; /* Error colour */
-  --error-color-hover:     #B71C1C;
-  --error-color-bg:        #FFEBEE;
-  --error-color-border:    #EF9A9A;
+  --error-color:           #DC2626; /* Clean Red */
+  --error-color-hover:     #B91C1C;
+  --error-color-bg:        #FEF2F2;
+  --error-color-border:    #FECACA;
 
-  --info-color:            #12355B;
-  --info-color-bg:         #EEF4FA;
-  --info-color-border:     #B8D0EB;
+  --info-color:            #4F46E5;
+  --info-color-bg:         #EEF2FF;
+  --info-color-border:     #C7D2FE;
 
   /* ── 6. Gradients ── */
-  --gradient-hero:         linear-gradient(135deg, #0A1D33 0%, #12355B 60%, #17426F 100%);
-  --gradient-primary:      linear-gradient(135deg, #0A1D33 0%, #12355B 100%);
-  --gradient-secondary:    linear-gradient(135deg, #1F7A6E 0%, #2BA091 100%);
-  --gradient-accent:       linear-gradient(135deg, #F4B942 0%, #E5A830 100%);
-  --gradient-cta:          linear-gradient(135deg, #F4B942 0%, #E5A830 100%);
-  --gradient-dark:         linear-gradient(135deg, #0A1D33 0%, #12355B 100%);
-  --gradient-surface:      linear-gradient(135deg, #FFFFFF 0%, #F7F9FC 100%);
-  --gradient-brand-strip:  linear-gradient(90deg, #12355B 0%, #1F7A6E 40%, #F4B942 75%, #2E7D32 100%);
+  --gradient-hero:         linear-gradient(180deg, #FAFAF7 0%, #EEF2FF 100%);
+  --gradient-primary:      linear-gradient(135deg, #14213D 0%, #1E3056 100%);
+  --gradient-secondary:    linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+  --gradient-accent:       linear-gradient(135deg, #0F9D91 0%, #14B8A6 100%);
+  --gradient-cta:          linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
+  --gradient-dark:         linear-gradient(135deg, #14213D 0%, #0A1222 100%);
+  --gradient-surface:      linear-gradient(180deg, #FFFFFF 0%, #FAFAF7 100%);
+  --gradient-brand-strip:  linear-gradient(90deg, #14213D 0%, #4F46E5 40%, #0F9D91 75%, #F4B942 100%);
 
   /* ── 7. Shadows ── */
   --shadow-primary:        0 8px 24px rgba(18, 53, 91, 0.24);
@@ -278,10 +287,10 @@
   --border-radius-full:   9999px;
 
   /* ── Typography ── */
-  --font-heading:   'Merriweather', Georgia, serif;
+  --font-heading:   'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-sans:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display:   'Merriweather', Georgia, serif;
+  --font-display:   'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono:      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
   /* ── Unified Fluid Typography Scale ── */
@@ -429,32 +438,32 @@ ul, ol { list-style: none; }
 
 /* Headings */
 h1, .h1 {
-  font-family: var(--font-heading, 'Merriweather', serif) !important;
+  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
   font-size: var(--font-size-h1);
   font-weight: 700 !important;
   line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: var(--heading-color, #172033);
+  letter-spacing: -0.025em;
+  color: var(--heading-color, #14213D);
   margin-bottom: 20px;
 }
 
 h2, .h2 {
-  font-family: var(--font-heading, 'Merriweather', serif) !important;
+  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
   font-size: var(--font-size-h2);
   font-weight: 700 !important;
   line-height: 1.22;
-  letter-spacing: -0.015em;
-  color: var(--heading-color, #172033);
+  letter-spacing: -0.02em;
+  color: var(--heading-color, #14213D);
   margin-bottom: 16px;
 }
 
 h3, .h3 {
-  font-family: var(--font-heading, 'Merriweather', serif) !important;
+  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
   font-size: var(--font-size-h3);
-  font-weight: 700 !important;
+  font-weight: 650 !important;
   line-height: 1.30;
-  letter-spacing: -0.01em;
-  color: var(--heading-color, #172033);
+  letter-spacing: -0.015em;
+  color: var(--heading-color, #14213D);
   margin-bottom: 12px;
 }
 

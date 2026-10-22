@@ -8,13 +8,13 @@
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=9.0">
-  <link rel="stylesheet" href="css/animations.css?v=9.0">
-  <link rel="stylesheet" href="css/components.css?v=9.0">
-  <link rel="stylesheet" href="css/docmed-theme.css?v=9.0">
-  <link rel="stylesheet" href="css/homepage.css?v=9.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=9.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css?v=10.0">
+  <link rel="stylesheet" href="css/animations.css?v=10.0">
+  <link rel="stylesheet" href="css/components.css?v=10.0">
+  <link rel="stylesheet" href="css/docmed-theme.css?v=10.0">
+  <link rel="stylesheet" href="css/homepage.css?v=10.0">
+  <link rel="stylesheet" href="css/live-chat.css?v=10.0">
 
   <!-- ── Critical Inlined Styles for Institutional Grid & Cards (Zero-Cache Guarantee) ── -->
   <style id="inst-critical-styling">
@@ -26,7 +26,9 @@
       right: 0 !important;
       width: 100% !important;
       z-index: 1000 !important;
-      background: #12355B !important;
+      background: #FFFFFF !important;
+      border-bottom: 1px solid #E5E7EB !important;
+      box-shadow: 0 2px 10px rgba(20, 33, 61, 0.04) !important;
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease !important;
     }
     #site-header .docmed-topbar {
@@ -38,9 +40,9 @@
       line-height: 40px !important;
       display: block !important;
       z-index: 2 !important;
-      background: #0D2540 !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
-      color: #DCE3EA !important;
+      background: #FAFAF7 !important;
+      border-bottom: 1px solid #E5E7EB !important;
+      color: #64748B !important;
       box-sizing: border-box !important;
       margin: 0 !important;
     }
@@ -56,12 +58,12 @@
       z-index: 1 !important;
       margin: 0 !important;
       box-sizing: border-box !important;
-      background: #12355B !important;
-      border-bottom: 2px solid #1F7A6E !important;
+      background: #FFFFFF !important;
+      border-bottom: none !important;
     }
     #site-header.scrolled {
       transform: translateY(-40px) !important;
-      box-shadow: 0 10px 30px -4px rgba(18, 53, 91, 0.35) !important;
+      box-shadow: 0 8px 24px rgba(20, 33, 61, 0.06) !important;
     }
     @media (max-width: 768px) {
       #site-header .docmed-topbar {
@@ -72,10 +74,10 @@
       }
     }
     .inst-section { padding: 88px 0; position: relative; }
-    .inst-section.bg-offwhite { background: #F7F9FC !important; }
+    .inst-section.bg-offwhite { background: #FAFAF7 !important; }
     .inst-section.bg-white { background: #FFFFFF !important; }
-    .inst-section.bg-navy { background: #12355B !important; color: #FFFFFF !important; }
-    .inst-section.bg-light-blue { background: #EEF3F8 !important; }
+    .inst-section.bg-navy { background: #14213D !important; color: #FFFFFF !important; }
+    .inst-section.bg-light-blue { background: #EEF2FF !important; }
 
     .inst-eyebrow {
       display: inline-flex;
@@ -90,18 +92,18 @@
       text-transform: uppercase;
       margin-bottom: 14px;
     }
-    .inst-eyebrow.navy { background: #EEF3F8; color: #12355B; border: 1px solid #DCE3EA; }
-    .inst-eyebrow.blue { background: #EEF3F8; color: #12355B; border: 1px solid #DCE3EA; }
-    .inst-eyebrow.teal { background: rgba(31, 122, 110, 0.1); color: #1F7A6E; border: 1px solid rgba(31, 122, 110, 0.25); }
-    .inst-eyebrow.gold { background: rgba(244, 185, 66, 0.15); color: #B45309; border: 1px solid rgba(244, 185, 66, 0.35); }
-    .inst-eyebrow.emerald { background: rgba(46, 125, 50, 0.1); color: #2E7D32; border: 1px solid rgba(46, 125, 50, 0.25); }
+    .inst-eyebrow.navy { background: #EEF2FF; color: #14213D; border: 1px solid #E5E7EB; }
+    .inst-eyebrow.blue { background: #EEF2FF; color: #4F46E5; border: 1px solid #C7D2FE; }
+    .inst-eyebrow.teal { background: #F0FDFA; color: #0F9D91; border: 1px solid #99F6E4; }
+    .inst-eyebrow.gold { background: #FEF8EC; color: #B45309; border: 1px solid #FCD98B; }
+    .inst-eyebrow.emerald { background: #F0FDFA; color: #0F9D91; border: 1px solid #99F6E4; }
     .inst-eyebrow.white { background: rgba(255, 255, 255, 0.14); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.28); }
 
     .inst-heading {
-      font-family: var(--font-heading, 'Merriweather', Georgia, serif);
+      font-family: var(--font-heading, 'Manrope', sans-serif);
       font-size: clamp(28px, 3.2vw, 40px);
       font-weight: 800;
-      color: #172033;
+      color: #14213D;
       line-height: 1.25;
       letter-spacing: -0.01em;
       margin-bottom: 14px;
@@ -111,7 +113,7 @@
     .inst-subheading {
       font-family: var(--font-body, 'Inter', sans-serif);
       font-size: clamp(15px, 1.2vw, 17px);
-      color: #475569;
+      color: #64748B;
       line-height: 1.65;
       max-width: 720px;
       margin: 0 auto;
@@ -140,20 +142,20 @@
       gap: 10px;
       padding: 10px 20px;
       background: #FFFFFF;
-      border: 1px solid #DCE3EA;
+      border: 1px solid #E5E7EB;
       border-radius: 999px;
       font-size: 13.5px;
-      color: #475569;
-      box-shadow: 0 2px 6px rgba(18, 53, 91, 0.04);
+      color: #1F2937;
+      box-shadow: 0 2px 6px rgba(20, 33, 61, 0.04);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .partner-trust-pill:hover {
       transform: translateY(-2px);
-      border-color: #12355B;
-      box-shadow: 0 6px 14px rgba(18, 53, 91, 0.10);
+      border-color: #4F46E5;
+      box-shadow: 0 6px 14px rgba(79, 70, 229, 0.10);
     }
     .partner-trust-pill strong {
-      color: #172033;
+      color: #14213D;
       font-weight: 750;
     }
 
@@ -189,8 +191,8 @@
     }
     .service-official-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(18, 53, 91, 0.08) !important;
-      border-color: #12355B !important;
+      box-shadow: 0 12px 30px rgba(20, 33, 61, 0.08) !important;
+      border-color: #4F46E5 !important;
     }
     .service-official-card:hover::before {
       height: 6px;
@@ -265,13 +267,13 @@
       font-family: var(--font-body, 'Inter', sans-serif) !important;
       font-size: 13.5px !important;
       font-weight: 700 !important;
-      color: #12355B !important;
+      color: #4F46E5 !important;
       text-decoration: none !important;
       transition: all 0.2s ease !important;
       margin-top: auto !important;
     }
     .service-card-link:hover {
-      color: #1F7A6E !important;
+      color: #14213D !important;
       transform: translateX(3px) !important;
     }
 
@@ -290,7 +292,7 @@
       box-shadow: 0 4px 16px rgba(18, 53, 91, 0.04) !important;
     }
     .consultancy-flow-banner {
-      background: linear-gradient(135deg, #12355B 0%, #1F7A6E 100%) !important;
+      background: linear-gradient(135deg, #14213D 0%, #1E293B 100%) !important;
       border-radius: 16px !important;
       padding: 36px 32px !important;
       color: #FFFFFF !important;
@@ -439,23 +441,23 @@
       font-weight: 700 !important;
       padding: 4px 12px !important;
       border-radius: 999px !important;
-      background: #EEF3F8 !important;
-      color: #12355B !important;
+      background: #EEF2FF !important;
+      color: #14213D !important;
       text-transform: uppercase !important;
       letter-spacing: 0.04em !important;
     }
     .case-study-metric-box {
-      background: #F7F9FC !important;
-      border: 1px solid #DCE3EA !important;
+      background: #FAFAF7 !important;
+      border: 1px solid #E5E7EB !important;
       border-radius: 10px !important;
       padding: 14px 16px !important;
       margin-bottom: 16px !important;
     }
     .case-metric-val {
-      font-family: var(--font-heading, 'Merriweather', Georgia, serif) !important;
+      font-family: var(--font-heading, 'Manrope', sans-serif) !important;
       font-size: 22px !important;
       font-weight: 800 !important;
-      color: #1F7A6E !important;
+      color: #0F9D91 !important;
     }
 
     /* Insights Grid */
@@ -521,9 +523,9 @@
 <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
 <!-- ── Unified Header: Docmed Top Bar + Sticky Navigation ── -->
-<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#12355B !important;">
+<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#FFFFFF !important; border-bottom:1px solid #E5E7EB !important; box-shadow:0 2px 10px rgba(20,33,61,0.04) !important;">
   <!-- ── Docmed Top Bar ──────────────────────────────────────── -->
-  <div class="docmed-topbar" style="position:relative !important; top:auto !important; left:auto !important; right:auto !important; height:40px !important; line-height:40px !important; display:block !important; z-index:2 !important; margin:0 !important; box-sizing:border-box !important;" aria-label="Institutional framework and contact information">
+  <div class="docmed-topbar" style="position:relative !important; top:auto !important; left:auto !important; right:auto !important; height:40px !important; line-height:40px !important; display:block !important; z-index:2 !important; margin:0 !important; box-sizing:border-box !important; background:#FAFAF7 !important; border-bottom:1px solid #E5E7EB !important; color:#64748B !important;" aria-label="Institutional framework and contact information">
     <div class="container">
       <div class="docmed-topbar__left">
         <span class="docmed-topbar__badge">
@@ -540,7 +542,7 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <span>+254 143 024416</span>
         </a>
-        <a href="consultancy.html" class="docmed-topbar__item" style="color:var(--dm-royal-blue); font-weight:700;">
+        <a href="consultancy.html" class="docmed-topbar__item" style="color:#4F46E5; font-weight:700;">
           <span>Institutional Support &rarr;</span>
         </a>
       </div>
