@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact &amp; Support | Instructify Kenya</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=8.0">
-  <link rel="stylesheet" href="css/animations.css?v=8.0">
-  <link rel="stylesheet" href="css/components.css?v=8.0">
-  <link rel="stylesheet" href="css/homepage.css?v=8.0">
-  <link rel="stylesheet" href="css/docmed-theme.css?v=8.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=8.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css?v=9.0">
+  <link rel="stylesheet" href="css/animations.css?v=9.0">
+  <link rel="stylesheet" href="css/components.css?v=9.0">
+  <link rel="stylesheet" href="css/homepage.css?v=9.0">
+  <link rel="stylesheet" href="css/docmed-theme.css?v=9.0">
+  <link rel="stylesheet" href="css/live-chat.css?v=9.0">
 
   <style id="critical-header-css">
     #site-header.site-header {
@@ -20,7 +23,8 @@
       right: 0 !important;
       width: 100% !important;
       z-index: 1000 !important;
-      background: #FFFFFF !important;
+      background: #12355B !important;
+      box-shadow: 0 4px 20px rgba(18, 53, 91, 0.25) !important;
     }
     #site-header .docmed-topbar {
       position: relative !important;
@@ -30,6 +34,9 @@
       display: block !important;
       z-index: 2 !important;
       margin: 0 !important;
+      background: #0D2540 !important;
+      color: #DCE3EA !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
     }
     #site-header .navbar,
     #site-header #navbar {
@@ -38,6 +45,8 @@
       width: 100% !important;
       z-index: 1 !important;
       margin: 0 !important;
+      background: #12355B !important;
+      border-bottom: 2px solid #1F7A6E !important;
     }
     #site-header.scrolled {
       transform: translateY(-40px) !important;
@@ -57,26 +66,26 @@
        INSTRUCTIFY KENYA — LUXURY MODERN CONTACT PAGE STYLES
        ============================================================ */
     :root {
-      --contact-navy-deep: #091929;
-      --contact-navy-rich: #0B2545;
-      --contact-blue-electric: #2145E6;
-      --contact-blue-bright: #2563EB;
-      --contact-orange: #FF4D00;
-      --contact-orange-bright: #F5812D;
-      --contact-green-wa: #25D366;
+      --contact-navy-deep: #0D2540;
+      --contact-navy-rich: #12355B;
+      --contact-blue-electric: #1F7A6E;
+      --contact-blue-bright: #12355B;
+      --contact-orange: #F4B942;
+      --contact-orange-bright: #F4B942;
+      --contact-green-wa: #2E7D32;
       --contact-surface: #FFFFFF;
-      --contact-surface-soft: #F8FAFC;
-      --contact-border: #E2E8F0;
+      --contact-surface-soft: #F7F9FC;
+      --contact-border: #DCE3EA;
     }
 
     /* ── 1. Hero Section ─────────────────────────────────────── */
     .contact-hero {
       position: relative;
-      background: linear-gradient(135deg, #071524 0%, #0F2A4A 45%, #183AD6 85%, #2145E6 100%);
+      background: linear-gradient(135deg, #0A1D33 0%, #12355B 50%, #1F7A6E 100%);
       color: #FFFFFF;
       padding: calc(var(--nav-height, 72px) + 40px) 0 70px 0;
       overflow: hidden;
-      border-bottom: 3px solid var(--contact-orange-bright);
+      border-bottom: 3px solid #1F7A6E;
     }
 
     .contact-hero::before {
@@ -86,7 +95,7 @@
       right: -10%;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(245, 129, 45, 0.22) 0%, rgba(33, 69, 230, 0) 70%);
+      background: radial-gradient(circle, rgba(244, 185, 66, 0.22) 0%, rgba(31, 122, 110, 0) 70%);
       border-radius: 50%;
       filter: blur(60px);
       pointer-events: none;
@@ -100,7 +109,7 @@
       left: -10%;
       width: 450px;
       height: 450px;
-      background: radial-gradient(circle, rgba(33, 69, 230, 0.35) 0%, rgba(7, 21, 36, 0) 70%);
+      background: radial-gradient(circle, rgba(18, 53, 91, 0.35) 0%, rgba(10, 29, 51, 0) 70%);
       border-radius: 50%;
       filter: blur(50px);
       pointer-events: none;
@@ -139,9 +148,9 @@
     }
 
     .contact-hero-title {
-      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-family: var(--font-heading), 'Merriweather', serif;
       font-size: 40px;
-      font-weight: 850;
+      font-weight: 700;
       color: #FFFFFF !important;
       line-height: 1.22;
       letter-spacing: -0.02em;
@@ -283,10 +292,10 @@
     }
 
     .channel-title {
-      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-family: var(--font-heading), 'Merriweather', serif;
       font-size: 17px;
-      font-weight: 750;
-      color: #0F172A;
+      font-weight: 700;
+      color: #172033;
       margin: 0;
     }
 
@@ -459,10 +468,10 @@
     }
 
     .contact-form-title {
-      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-family: var(--font-heading), 'Merriweather', serif;
       font-size: 26px;
-      font-weight: 800;
-      color: #0F172A;
+      font-weight: 700;
+      color: #172033;
       margin: 0 0 6px 0;
     }
 
@@ -524,10 +533,10 @@
     }
 
     .capability-title {
-      font-family: var(--font-heading), 'Poppins', sans-serif;
+      font-family: var(--font-heading), 'Merriweather', serif;
       font-size: 16px;
-      font-weight: 750;
-      color: #0F172A;
+      font-weight: 700;
+      color: #172033;
       margin: 0 0 8px 0;
     }
 
@@ -579,9 +588,10 @@
     }
 
     .faq-question {
+      font-family: var(--font-heading), 'Merriweather', serif;
       font-size: 15.5px;
-      font-weight: 750;
-      color: #0F172A;
+      font-weight: 700;
+      color: #172033;
       margin: 0;
     }
 
@@ -594,7 +604,7 @@
 
     /* ── 6. Bottom Banner CTA ───────────────────────────────── */
     .contact-cta-banner {
-      background: linear-gradient(135deg, #091929 0%, #172554 45%, #1D4ED8 100%);
+      background: linear-gradient(135deg, #0A1D33 0%, #12355B 50%, #1F7A6E 100%);
       border-radius: 24px;
       padding: 44px 36px;
       color: #FFFFFF;
@@ -603,7 +613,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 24px;
-      box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.25);
+      box-shadow: 0 20px 40px -10px rgba(18, 53, 91, 0.25);
       border: 1px solid rgba(255, 255, 255, 0.15);
       margin-top: 48px;
     }
@@ -638,7 +648,7 @@
 <body>
 
 <!-- ── Unified Header: Docmed Top Bar + Sticky Navigation ── -->
-<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#ffffff !important;">
+<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#12355B !important;">
 <!-- ── Docmed Top Bar ───────────────────────────────────────── -->
 <div class="docmed-topbar" style="position:relative !important; top:auto !important; height:40px !important; line-height:40px !important; display:block !important; z-index:2 !important; margin:0 !important;">
   <div class="container docmed-topbar-inner">

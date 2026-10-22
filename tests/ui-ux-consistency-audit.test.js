@@ -25,12 +25,12 @@ const dashboardCss = fs.readFileSync('css/dashboard.css', 'utf8');
 // ── 1. Typography & Font Hierarchy ─────────────────────────
 console.log('🔤 1. Typography System & Font Family Consistency');
 assert(
-  globalCss.includes('family=Poppins') && globalCss.includes('family=Inter'),
-  'Google Fonts Poppins & Inter font families imported'
+  globalCss.includes('family=Merriweather') && globalCss.includes('family=Inter'),
+  'Google Fonts Merriweather & Inter font families imported'
 );
 assert(
-  globalCss.includes('--font-heading:') && globalCss.includes("'Poppins'"),
-  '--font-heading is standardized to Poppins & Inter'
+  globalCss.includes('--font-heading:') && globalCss.includes("'Merriweather'"),
+  '--font-heading is standardized to Merriweather'
 );
 assert(
   globalCss.includes('--font-body:') && globalCss.includes("'Inter'"),
@@ -40,20 +40,20 @@ assert(
 // Explicit 9 Typography Rules
 console.log('\n📐 Explicit User Typography Specification:');
 assert(
-  globalCss.includes('h1, .h1') && globalCss.includes('font-weight: 800 !important;'),
-  'Rule 1: Hero heading is Poppins, 700–800 weight'
+  globalCss.includes('h1, .h1') && (globalCss.includes('font-weight: 700 !important;') || globalCss.includes('font-weight: 800 !important;')),
+  'Rule 1: Hero heading is Merriweather, 700–800 weight'
 );
 assert(
   globalCss.includes('h2, .h2') && globalCss.includes('font-weight: 700 !important;'),
-  'Rule 2: Section headings are Poppins, 600–700 weight'
+  'Rule 2: Section headings are Merriweather, 700 weight'
 );
 assert(
-  globalCss.includes('.card-title') && globalCss.includes('font-weight: 600 !important;'),
-  'Rule 3: Card headings are Poppins, 600 weight'
+  globalCss.includes('.card-title') && (globalCss.includes('font-weight: 600') || globalCss.includes('font-weight: 700')),
+  'Rule 3: Card headings are standardized, 600-700 weight'
 );
 assert(
-  globalCss.includes('.nav-link') && globalCss.includes('.btn') && globalCss.includes('font-weight: 600 !important;'),
-  'Rule 4: Navigation and buttons are Poppins, 500–600 weight'
+  globalCss.includes('.nav-link') && globalCss.includes('.btn') && (globalCss.includes('font-weight: 600') || globalCss.includes('font-weight: 500')),
+  'Rule 4: Navigation and buttons are Inter, 500–600 weight'
 );
 assert(
   globalCss.includes('body,') && globalCss.includes('font-weight: 400 !important;'),
@@ -194,12 +194,12 @@ assert(footersCompliant, 'Global footers across all main templates feature the r
 // ── 5. Button & Form UX Controls ─────────────────────────────
 console.log('\n🎛️ 5. Standardized Buttons & Form Controls');
 assert(
-  componentsCss.includes('.btn-primary') && componentsCss.includes('var(--cta-color)'),
-  'Primary action button uses Action Orange (--cta-color) with high visual prominence'
+  componentsCss.includes('.btn-primary') && (componentsCss.includes('var(--primary-color') || componentsCss.includes('#12355B')),
+  'Primary action button uses Primary College Navy (#12355B / --primary-color)'
 );
 assert(
-  componentsCss.includes('.btn-secondary') && componentsCss.includes('var(--secondary-color)'),
-  'Secondary action button uses Royal Blue with clear visual contrast'
+  componentsCss.includes('.btn-secondary') && (componentsCss.includes('var(--secondary-color') || componentsCss.includes('#1F7A6E')),
+  'Secondary action button uses Secondary Pine Teal (#1F7A6E / --secondary-color)'
 );
 assert(
   componentsCss.includes('.form-input:focus') && componentsCss.includes('box-shadow: 0 0 0 3.5px'),

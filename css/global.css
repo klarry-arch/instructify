@@ -4,131 +4,145 @@
    Brand Colors: #064FC1 (Primary Blue) · #12B84E (Brand Green) · #FFD21A (Brand Yellow) · #F20D20 (Brand Red) · #44484F (Dark Grey)
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 /* ══════════════════════════════════════════════════════════════
    CANONICAL DESIGN TOKENS — Single Source of Truth
+   Palette:
+   - Primary: #12355B (Header, navigation, footer, primary buttons, branding)
+   - Secondary: #1F7A6E (Icons, section highlights, secondary buttons)
+   - Accent / CTA: #F4B942 (Apply Now, Admissions Open, Download Prospectus)
+   - Main Background: #F7F9FC
+   - Card and Form Background: #FFFFFF
+   - Main Heading: #172033
+   - Body Text: #475569
+   - Border and Divider: #DCE3EA
+   - Success: #2E7D32
+   - Error: #C62828
+   Typography:
+   - Headings (H1, H2, H3): Merriweather
+   - Body, menus, buttons, forms, labels: Inter
    ══════════════════════════════════════════════════════════════ */
 :root {
-  /* ── 1. Canonical Instructify Kenya Brand Colors (Sampled from Official Logo) ── */
-  --primary-color:         #064FC1; /* Instructify Primary Blue (Dominant Identity, Headings, Navigation & Primary Actions) */
-  --primary-color-hover:   #043FA0; /* Interactive Primary Blue Hover */
-  --primary-color-dark:    #013E99; /* Deep Brand Blue */
-  --primary-color-light:   #1C6AF2; /* Bright Blue Accent */
-  --primary-color-bg:      #EEF4FF; /* Crisp Light Blue Tint */
-  --primary-color-glow:    rgba(6, 79, 193, 0.20);
+  /* ── 1. Official College Palette Tokens ── */
+  --primary-color:         #12355B; /* Primary Oxford Navy (Header, Navigation, Footer, Primary Buttons, Major Branding) */
+  --primary-color-hover:   #0E2A49;
+  --primary-color-dark:    #0A1D33;
+  --primary-color-light:   #1C4E84;
+  --primary-color-bg:      #EEF4FA;
+  --primary-color-glow:    rgba(18, 53, 91, 0.20);
 
-  --secondary-color:       #12B84E; /* Brand Green (Positive Outcomes, Success, Progress, Secondary Actions) */
-  --secondary-color-hover: #0EA243;
-  --secondary-color-dark:  #0A8235;
-  --secondary-color-light: #2BD468;
-  --secondary-color-bg:    #EDFBF2;
-  --secondary-color-glow:  rgba(18, 184, 78, 0.18);
+  --secondary-color:       #1F7A6E; /* Secondary Pine Teal (Icons, Section Highlights, Secondary Buttons, Supporting Elements) */
+  --secondary-color-hover: #176359;
+  --secondary-color-dark:  #124D45;
+  --secondary-color-light: #2BA091;
+  --secondary-color-bg:    #EBF6F4;
+  --secondary-color-glow:  rgba(31, 122, 110, 0.20);
 
-  --accent-color:          #FFD21A; /* Brand Yellow (Highlights, Badges, Labels, Active Accents) */
-  --accent-color-hover:    #EBBF10;
-  --accent-color-dark:     #CFA300;
-  --accent-color-light:    #FFE052;
-  --accent-color-bg:       #FFFDF0;
-  --accent-color-glow:     rgba(255, 210, 26, 0.25);
+  --accent-color:          #F4B942; /* Accent Gold (Important CTAs: Apply Now, Admissions Open, Download Prospectus) */
+  --accent-color-hover:    #E5A830;
+  --accent-color-dark:     #C98F1D;
+  --accent-color-light:    #F7CB6E;
+  --accent-color-bg:       #FEF8EC;
+  --accent-color-glow:     rgba(244, 185, 66, 0.28);
 
-  --cta-color:             #064FC1; /* Instructify Primary Blue (Main CTA & Eyebrows - Blue Dominant Hierarchy) */
-  --cta-color-hover:       #043FA0;
-  --cta-color-dark:        #013E99;
-  --cta-color-light:       #1C6AF2;
-  --cta-color-bg:          #EEF4FF;
-  --cta-color-glow:        rgba(6, 79, 193, 0.28);
+  --cta-color:             #F4B942; /* High-priority CTA Gold */
+  --cta-color-hover:       #E5A830;
+  --cta-color-dark:        #C98F1D;
+  --cta-color-light:       #F7CB6E;
+  --cta-color-bg:          #FEF8EC;
+  --cta-color-glow:        rgba(244, 185, 66, 0.28);
 
   /* Explicit Brand Palette Tokens */
-  --brand-blue:            #064FC1;
-  --brand-green:           #12B84E;
-  --brand-yellow:          #FFD21A;
-  --brand-red:             #F20D20;
-  --brand-dark-grey:       #44484F;
+  --brand-blue:            #12355B;
+  --brand-green:           #1F7A6E;
+  --brand-yellow:          #F4B942;
+  --brand-red:             #C62828;
+  --brand-dark-grey:       #475569;
   --brand-white:           #FFFFFF;
-  --brand-neutral-bg:      #F5F7FA;
+  --brand-neutral-bg:      #F7F9FC;
 
-  /* ── Instructify Kenya Official Institutional Color System ── */
-  --deep-navy:             #0B1F3A; /* Premium backgrounds, footer, important headings, institutional sections */
-  --prof-blue:             #124E96; /* Main brand colour for navigation highlights, headings, icons, key components */
-  --royal-blue:            #2454E6; /* Primary buttons, active states, links, calls to action */
-  --prof-teal:             #0F8B8D; /* Consultancy, innovation, digital transformation, development accents */
-  --refined-emerald:       #168B72; /* Growth, impact, completed programmes, sustainability, successful outcomes */
-  --soft-gold:             #D9A928; /* Premium accents, statistics, recognition, accreditation, highlights */
+  /* ── Official Institutional Color System ── */
+  --deep-navy:             #12355B;
+  --prof-blue:             #12355B;
+  --royal-blue:            #1F7A6E;
+  --prof-teal:             #1F7A6E;
+  --refined-emerald:       #2E7D32;
+  --soft-gold:             #F4B942;
 
   --neutral-white:         #FFFFFF;
-  --neutral-offwhite:      #F8FAFC;
-  --neutral-light-blue:    #EEF3F8;
-  --neutral-border:        #D9E2EC;
-  --neutral-grey:          #64748B;
-  --neutral-charcoal:      #1E293B;
-  --neutral-deep:          #0F172A;
+  --neutral-offwhite:      #F7F9FC;
+  --neutral-light-blue:    #EEF4FA;
+  --neutral-border:        #DCE3EA;
+  --neutral-grey:          #475569;
+  --neutral-charcoal:      #172033;
+  --neutral-deep:          #12355B;
 
-  --gradient-navy-blue:    linear-gradient(135deg, #0B1F3A 0%, #124E96 100%);
-  --gradient-blue-royal:   linear-gradient(135deg, #124E96 0%, #2454E6 100%);
-  --gradient-navy-teal:    linear-gradient(135deg, #0B1F3A 0%, #0F8B8D 100%);
-  --gradient-soft-white:   linear-gradient(135deg, #EEF3F8 0%, #FFFFFF 100%);
+  --gradient-navy-blue:    linear-gradient(135deg, #0A1D33 0%, #12355B 100%);
+  --gradient-blue-royal:   linear-gradient(135deg, #12355B 0%, #1F7A6E 100%);
+  --gradient-navy-teal:    linear-gradient(135deg, #12355B 0%, #1F7A6E 100%);
+  --gradient-soft-white:   linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%);
 
   /* ── 2. Backgrounds & Surfaces ── */
-  --background-color:      #FFFFFF;
-  --surface-color:         #FFFFFF;
-  --surface-color-soft:    #F5F7FA; /* Official Light Neutral Background */
-  --surface-color-tint:    #EEF4FF; /* Subtle Brand Blue Tint */
+  --background-color:      #F7F9FC; /* Main background */
+  --surface-color:         #FFFFFF; /* Card and form background */
+  --surface-color-soft:    #F7F9FC;
+  --surface-color-tint:    #EEF4FA;
   --surface-color-card:    #FFFFFF;
 
   /* ── 3. Typography & Text Hierarchy ── */
-  --heading-color:         #0E1726; /* High Contrast Headings */
-  --text-color:            #44484F; /* Official Brand Dark Grey for Body Copy */
-  --muted-text-color:      #6C727F; /* Refined Secondary & Muted Meta */
+  --heading-color:         #172033; /* Main heading colour */
+  --text-color:            #475569; /* Body text colour */
+  --muted-text-color:      #64748B;
   --text-color-disabled:   #94A3B8;
   --text-on-primary:       #FFFFFF;
   --text-on-secondary:     #FFFFFF;
-  --text-on-accent:        #111111;
-  --text-on-cta:           #FFFFFF;
+  --text-on-accent:        #172033;
+  --text-on-cta:           #172033;
   --text-on-dark:          #FFFFFF;
 
   /* ── 4. Borders & Dividers ── */
-  --border-color:          #E5E7EB; /* Subtle divider */
-  --border-color-card:     #E2E8F0; /* Card border */
+  --border-color:          #DCE3EA; /* Border and divider colour */
+  --border-color-card:     #DCE3EA;
   --border-color-strong:   #CBD5E1;
-  --border-color-focus:    #064FC1;
-  --border-color-focus-glow: rgba(6, 79, 193, 0.22);
+  --border-color-focus:    #1F7A6E;
+  --border-color-focus-glow: rgba(31, 122, 110, 0.25);
 
   /* ── 5. Status & Functional Colors ── */
-  --success-color:         #12B84E; /* Official Brand Green */
-  --success-color-hover:   #0EA243;
-  --success-color-bg:      #EDFBF2;
-  --success-color-border:  #86EFAC;
+  --success-color:         #2E7D32; /* Success colour */
+  --success-color-hover:   #256729;
+  --success-color-bg:      #EDF7ED;
+  --success-color-border:  #A5D6A7;
 
-  --warning-color:         #FFD21A; /* Official Brand Yellow */
-  --warning-color-hover:   #EBBF10;
-  --warning-color-bg:      #FFFDF0;
-  --warning-color-border:  #FEE880;
+  --warning-color:         #F4B942;
+  --warning-color-hover:   #E5A830;
+  --warning-color-bg:      #FEF8EC;
+  --warning-color-border:  #FCD98B;
 
-  --error-color:           #F20D20; /* Official Brand Red (Alerts, Urgency, Errors only) */
-  --error-color-hover:     #D40819;
-  --error-color-bg:        #FEF2F2;
-  --error-color-border:    #FCA5A5;
+  --error-color:           #C62828; /* Error colour */
+  --error-color-hover:     #B71C1C;
+  --error-color-bg:        #FFEBEE;
+  --error-color-border:    #EF9A9A;
 
-  --info-color:            #064FC1;
-  --info-color-bg:         #EEF4FF;
-  --info-color-border:     #BAE6FD;
+  --info-color:            #12355B;
+  --info-color-bg:         #EEF4FA;
+  --info-color-border:     #B8D0EB;
 
   /* ── 6. Gradients ── */
-  --gradient-hero:         linear-gradient(135deg, #013E99 0%, #064FC1 60%, #0E65E6 100%);
-  --gradient-primary:      linear-gradient(135deg, #013E99 0%, #064FC1 100%);
-  --gradient-secondary:    linear-gradient(135deg, #064FC1 0%, #12B84E 100%);
-  --gradient-accent:       linear-gradient(135deg, #FFD21A 0%, #F5A623 100%);
-  --gradient-cta:          linear-gradient(135deg, #064FC1 0%, #013E99 100%);
-  --gradient-dark:         linear-gradient(135deg, #09152E 0%, #102144 100%);
-  --gradient-surface:      linear-gradient(135deg, #FFFFFF 0%, #F5F7FA 100%);
-  --gradient-brand-strip:  linear-gradient(90deg, #064FC1 0%, #12B84E 35%, #FFD21A 70%, #F20D20 100%);
+  --gradient-hero:         linear-gradient(135deg, #0A1D33 0%, #12355B 60%, #17426F 100%);
+  --gradient-primary:      linear-gradient(135deg, #0A1D33 0%, #12355B 100%);
+  --gradient-secondary:    linear-gradient(135deg, #1F7A6E 0%, #2BA091 100%);
+  --gradient-accent:       linear-gradient(135deg, #F4B942 0%, #E5A830 100%);
+  --gradient-cta:          linear-gradient(135deg, #F4B942 0%, #E5A830 100%);
+  --gradient-dark:         linear-gradient(135deg, #0A1D33 0%, #12355B 100%);
+  --gradient-surface:      linear-gradient(135deg, #FFFFFF 0%, #F7F9FC 100%);
+  --gradient-brand-strip:  linear-gradient(90deg, #12355B 0%, #1F7A6E 40%, #F4B942 75%, #2E7D32 100%);
 
   /* ── 7. Shadows ── */
-  --shadow-primary:        0 8px 24px rgba(6, 79, 193, 0.24);
-  --shadow-secondary:      0 8px 24px rgba(18, 184, 78, 0.20);
-  --shadow-accent:         0 8px 24px rgba(255, 210, 26, 0.25);
-  --shadow-cta:            0 8px 24px rgba(6, 79, 193, 0.28);
+  --shadow-primary:        0 8px 24px rgba(18, 53, 91, 0.24);
+  --shadow-secondary:      0 8px 24px rgba(31, 122, 110, 0.20);
+  --shadow-accent:         0 8px 24px rgba(244, 185, 66, 0.28);
+  --shadow-cta:            0 8px 24px rgba(244, 185, 66, 0.28);
 
   /* ══════════════════════════════════════════════════════════════
      BACKWARD COMPATIBILITY ALIASES
@@ -264,10 +278,10 @@
   --border-radius-full:   9999px;
 
   /* ── Typography ── */
-  --font-heading:   'Plus Jakarta Sans', 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-body:      'Inter', 'Plus Jakarta Sans', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-sans:      'Inter', 'Plus Jakarta Sans', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-display:   'Plus Jakarta Sans', 'Poppins', sans-serif;
+  --font-heading:   'Merriweather', Georgia, serif;
+  --font-body:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display:   'Merriweather', Georgia, serif;
   --font-mono:      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
   /* ── Unified Fluid Typography Scale ── */
@@ -415,67 +429,67 @@ ul, ol { list-style: none; }
 
 /* Headings */
 h1, .h1 {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, 'Merriweather', serif) !important;
   font-size: var(--font-size-h1);
-  font-weight: 800;
-  line-height: 1.10;
-  letter-spacing: -0.03em;
-  color: var(--text-main);
+  font-weight: 700 !important;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--heading-color, #172033);
   margin-bottom: 20px;
 }
 
 h2, .h2 {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, 'Merriweather', serif) !important;
   font-size: var(--font-size-h2);
-  font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.025em;
-  color: var(--text-main);
+  font-weight: 700 !important;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: var(--heading-color, #172033);
   margin-bottom: 16px;
 }
 
 h3, .h3 {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading, 'Merriweather', serif) !important;
   font-size: var(--font-size-h3);
-  font-weight: 700;
-  line-height: 1.28;
-  letter-spacing: -0.015em;
-  color: var(--text-main);
+  font-weight: 700 !important;
+  line-height: 1.30;
+  letter-spacing: -0.01em;
+  color: var(--heading-color, #172033);
   margin-bottom: 12px;
 }
 
 h4, .h4 {
-  font-family: var(--font-heading);
+  font-family: var(--font-body, 'Inter', sans-serif);
   font-size: var(--font-size-h4);
   font-weight: 600;
   line-height: 1.35;
-  letter-spacing: -0.01em;
-  color: var(--text-main);
+  color: var(--heading-color, #172033);
   margin-bottom: 10px;
 }
 
 h5, .h5 {
-  font-family: var(--font-heading);
+  font-family: var(--font-body, 'Inter', sans-serif);
   font-size: var(--font-size-h5);
   font-weight: 600;
   line-height: 1.40;
-  color: var(--text-main);
+  color: var(--heading-color, #172033);
   margin-bottom: 8px;
 }
 
 h6, .h6 {
-  font-family: var(--font-heading);
+  font-family: var(--font-body, 'Inter', sans-serif);
   font-size: var(--font-size-h6);
   font-weight: 600;
   line-height: 1.45;
-  color: var(--text-main);
+  color: var(--heading-color, #172033);
   margin-bottom: 6px;
 }
 
 p {
+  font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 15px;
   line-height: var(--line-height-body);
-  color: var(--text-secondary);
+  color: var(--text-color, #475569);
   margin-bottom: 16px;
 }
 p:last-child { margin-bottom: 0; }
@@ -1327,40 +1341,35 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
 
 /* ══════════════════════════════════════════════════════════════
    EXPLICIT TYPOGRAPHY SYSTEM SPECIFICATION
-   Source: User Specification
-   - Hero heading: Poppins, 700–800 weight
-   - Section headings: Poppins, 600–700 weight
-   - Card headings: Poppins, 600 weight
-   - Navigation and buttons: Poppins, 500–600 weight
-   - Body text: Inter, 400 weight
-   - Card descriptions: Inter, 400 weight
-   - Form labels: Inter, 500 weight
-   - Captions and metadata: Inter, 400–500 weight
-   - Dashboard numbers: Inter, 600–700 weight
+   - Headings (H1, H2, H3): Merriweather, 700–800 weight
+   - Body text, menus, buttons, forms, labels: Inter, 400–700 weight
+   - Cards and interface elements: Inter, 400–700 weight
    ══════════════════════════════════════════════════════════════ */
 
-/* 1. Hero Headings: Poppins, 700–800 weight */
+/* 1. Hero Headings: Merriweather, 700–800 weight */
 h1, .h1,
 .hero-title,
 .hero-h1,
 .hero-heading,
 .brand-statement-headline,
 header h1 {
-  font-family: var(--font-heading) !important;
-  font-weight: 800 !important;
+  font-family: var(--font-heading, 'Merriweather', serif) !important;
+  font-weight: 700 !important;
+  color: var(--heading-color, #172033);
 }
 
-/* 2. Section Headings: Poppins, 600–700 weight */
+/* 2. Section Headings: Merriweather, 700 weight */
 h2, .h2,
 .section-title,
 .dashboard-title,
 .page-title,
 .saas-h2 {
-  font-family: var(--font-heading) !important;
+  font-family: var(--font-heading, 'Merriweather', serif) !important;
   font-weight: 700 !important;
+  color: var(--heading-color, #172033);
 }
 
-/* 3. Card Headings: Poppins, 600 weight */
+/* 3. Card Headings: Merriweather, 700 weight */
 h3, .h3,
 .card-title,
 .card-heading,
@@ -1377,11 +1386,12 @@ h3, .h3,
 .module-title,
 .lesson-title,
 .assignment-title {
-  font-family: var(--font-heading) !important;
-  font-weight: 600 !important;
+  font-family: var(--font-heading, 'Merriweather', serif) !important;
+  font-weight: 700 !important;
+  color: var(--heading-color, #172033);
 }
 
-/* 4. Navigation and Buttons: Poppins, 500–600 weight */
+/* 4. Navigation and Buttons: Inter, 500–600 weight */
 .nav-link,
 .nav-mobile-link,
 .nav-brand-title,
@@ -1393,12 +1403,12 @@ a.btn,
 .filter-btn,
 input[type="submit"],
 input[type="button"] {
-  font-family: var(--font-heading) !important;
+  font-family: var(--font-body, 'Inter', sans-serif) !important;
   font-weight: 600 !important;
 }
 
 .nav-link {
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 }
 
 /* 5. Body Text: Inter, 400 weight */

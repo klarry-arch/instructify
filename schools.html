@@ -6,17 +6,62 @@
   <meta name="description" content="Institutional Education Solutions for Schools, Ministries, NGOs & Faith-Based Organizations in Kenya. Transform your school with Instructify Kenya.">
   <title>Schools &amp; Institutions | Instructify Kenya</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=4.1">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/components.css?v=4.1">
-  <link rel="stylesheet" href="css/homepage.css">
-  <link rel="stylesheet" href="css/docmed-theme.css?v=7.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=7.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css?v=9.0">
+  <link rel="stylesheet" href="css/animations.css?v=9.0">
+  <link rel="stylesheet" href="css/components.css?v=9.0">
+  <link rel="stylesheet" href="css/homepage.css?v=9.0">
+  <link rel="stylesheet" href="css/docmed-theme.css?v=9.0">
+  <link rel="stylesheet" href="css/live-chat.css?v=9.0">
+
+  <style id="critical-header-css">
+    #site-header.site-header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 1000 !important;
+      background: #12355B !important;
+      box-shadow: 0 4px 20px rgba(18, 53, 91, 0.25) !important;
+    }
+    #site-header .docmed-topbar {
+      position: relative !important;
+      top: auto !important;
+      height: 40px !important;
+      line-height: 40px !important;
+      display: block !important;
+      z-index: 2 !important;
+      margin: 0 !important;
+      background: #0D2540 !important;
+      color: #DCE3EA !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    }
+    #site-header .navbar,
+    #site-header #navbar {
+      position: relative !important;
+      top: auto !important;
+      width: 100% !important;
+      z-index: 1 !important;
+      margin: 0 !important;
+      background: #12355B !important;
+      border-bottom: 2px solid #1F7A6E !important;
+    }
+    #site-header.scrolled {
+      transform: translateY(-40px) !important;
+    }
+    @media (max-width: 768px) {
+      #site-header .docmed-topbar { display: none !important; }
+      #site-header.scrolled { transform: none !important; }
+    }
+  </style>
 </head>
 <body>
 
 <!-- ── Unified Header: Docmed Top Bar + Sticky Navigation ── -->
-<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#ffffff !important;">
+<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#12355B !important;">
 <!-- ── Docmed Top Bar ───────────────────────────────────────── -->
 <div class="docmed-topbar" style="position:relative !important; top:auto !important; height:40px !important; line-height:40px !important; display:block !important; z-index:2 !important; margin:0 !important;">
   <div class="container docmed-topbar-inner">
@@ -140,10 +185,10 @@
   </div>
 </div>
 
-<header class="section" style="background:linear-gradient(135deg, #091929 0%, #2145E6 60%, #3C3DDC 100%); color:#FFFFFF; padding:calc(var(--nav-height) + 48px) 0 80px 0;">
+<header class="section" style="background:linear-gradient(135deg, #0A1D33 0%, #12355B 50%, #1F7A6E 100%); color:#FFFFFF; padding:calc(var(--nav-height) + 48px) 0 80px 0;">
   <div class="container text-center" style="max-width:840px; width:100%;">
     <span class="section-tag" style="background:rgba(255,255,255,0.15); color:#FFFFFF !important; border:1px solid rgba(255,255,255,0.3); font-weight:700;">INSTITUTIONAL PARTNERSHIPS</span>
-    <h1 style="font-size:24px; font-weight:800; color:#FFFFFF !important; line-height:1.2; margin-top:16px; margin-bottom:20px;">
+    <h1 style="font-family: var(--font-heading), 'Merriweather', serif !important; font-size:clamp(26px, 3.2vw, 38px); font-weight:700; color:#FFFFFF !important; line-height:1.25; margin-top:16px; margin-bottom:20px;">
       We Don’t Just Deliver Content.<br>
       We Transform. We Awaken. We Ignite Purpose.
     </h1>
@@ -186,7 +231,7 @@
   .clientele-card {
     position: relative;
     background: #FFFFFF;
-    border: 1.5px solid #E2E8F0;
+    border: 1.5px solid #DCE3EA;
     border-radius: 20px;
     padding: 36px 24px 32px;
     text-align: center;
@@ -250,15 +295,17 @@
   }
 
   .clientele-title {
+    font-family: var(--font-heading), 'Merriweather', serif !important;
     font-size: 20px;
-    font-weight: 800;
-    color: #0F172A;
+    font-weight: 700;
+    color: #172033;
     margin-bottom: 12px;
     line-height: 1.3;
     text-align: center;
   }
 
   .clientele-desc {
+    font-family: var(--font-body), 'Inter', sans-serif !important;
     font-size: 14.5px;
     color: #475569;
     line-height: 1.65;

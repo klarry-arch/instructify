@@ -8,13 +8,13 @@
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=8.0">
-  <link rel="stylesheet" href="css/animations.css?v=8.0">
-  <link rel="stylesheet" href="css/components.css?v=8.0">
-  <link rel="stylesheet" href="css/docmed-theme.css?v=8.0">
-  <link rel="stylesheet" href="css/homepage.css?v=8.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=8.0">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css?v=9.0">
+  <link rel="stylesheet" href="css/animations.css?v=9.0">
+  <link rel="stylesheet" href="css/components.css?v=9.0">
+  <link rel="stylesheet" href="css/docmed-theme.css?v=9.0">
+  <link rel="stylesheet" href="css/homepage.css?v=9.0">
+  <link rel="stylesheet" href="css/live-chat.css?v=9.0">
 
   <!-- ── Critical Inlined Styles for Institutional Grid & Cards (Zero-Cache Guarantee) ── -->
   <style id="inst-critical-styling">
@@ -26,7 +26,7 @@
       right: 0 !important;
       width: 100% !important;
       z-index: 1000 !important;
-      background: #FFFFFF !important;
+      background: #12355B !important;
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease !important;
     }
     #site-header .docmed-topbar {
@@ -38,8 +38,9 @@
       line-height: 40px !important;
       display: block !important;
       z-index: 2 !important;
-      background: #F8FAFC !important;
-      border-bottom: 1px solid #D9E2EC !important;
+      background: #0D2540 !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+      color: #DCE3EA !important;
       box-sizing: border-box !important;
       margin: 0 !important;
     }
@@ -55,10 +56,12 @@
       z-index: 1 !important;
       margin: 0 !important;
       box-sizing: border-box !important;
+      background: #12355B !important;
+      border-bottom: 2px solid #1F7A6E !important;
     }
     #site-header.scrolled {
       transform: translateY(-40px) !important;
-      box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.12) !important;
+      box-shadow: 0 10px 30px -4px rgba(18, 53, 91, 0.35) !important;
     }
     @media (max-width: 768px) {
       #site-header .docmed-topbar {
@@ -69,9 +72,9 @@
       }
     }
     .inst-section { padding: 88px 0; position: relative; }
-    .inst-section.bg-offwhite { background: #F8FAFC !important; }
+    .inst-section.bg-offwhite { background: #F7F9FC !important; }
     .inst-section.bg-white { background: #FFFFFF !important; }
-    .inst-section.bg-navy { background: #0B1F3A !important; color: #FFFFFF !important; }
+    .inst-section.bg-navy { background: #12355B !important; color: #FFFFFF !important; }
     .inst-section.bg-light-blue { background: #EEF3F8 !important; }
 
     .inst-eyebrow {
@@ -80,27 +83,27 @@
       gap: 8px;
       padding: 6px 14px;
       border-radius: 999px;
-      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-family: var(--font-body, 'Inter', sans-serif);
       font-size: 12px;
-      font-weight: 750;
+      font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       margin-bottom: 14px;
     }
-    .inst-eyebrow.navy { background: #EEF3F8; color: #0B1F3A; border: 1px solid #D9E2EC; }
-    .inst-eyebrow.blue { background: #EFF6FF; color: #124E96; border: 1px solid #BFDBFE; }
-    .inst-eyebrow.teal { background: #ECFEFF; color: #0F8B8D; border: 1px solid #A5F3FC; }
-    .inst-eyebrow.gold { background: #FFFDF0; color: #B45309; border: 1px solid #FDE68A; }
-    .inst-eyebrow.emerald { background: #ECFDF5; color: #168B72; border: 1px solid #A7F3D0; }
+    .inst-eyebrow.navy { background: #EEF3F8; color: #12355B; border: 1px solid #DCE3EA; }
+    .inst-eyebrow.blue { background: #EEF3F8; color: #12355B; border: 1px solid #DCE3EA; }
+    .inst-eyebrow.teal { background: rgba(31, 122, 110, 0.1); color: #1F7A6E; border: 1px solid rgba(31, 122, 110, 0.25); }
+    .inst-eyebrow.gold { background: rgba(244, 185, 66, 0.15); color: #B45309; border: 1px solid rgba(244, 185, 66, 0.35); }
+    .inst-eyebrow.emerald { background: rgba(46, 125, 50, 0.1); color: #2E7D32; border: 1px solid rgba(46, 125, 50, 0.25); }
     .inst-eyebrow.white { background: rgba(255, 255, 255, 0.14); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.28); }
 
     .inst-heading {
-      font-family: var(--font-heading, 'Poppins', sans-serif);
+      font-family: var(--font-heading, 'Merriweather', Georgia, serif);
       font-size: clamp(28px, 3.2vw, 40px);
       font-weight: 800;
-      color: #0B1F3A;
-      line-height: 1.22;
-      letter-spacing: -0.02em;
+      color: #172033;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
       margin-bottom: 14px;
     }
     .inst-heading.text-white { color: #FFFFFF !important; }
@@ -113,7 +116,7 @@
       max-width: 720px;
       margin: 0 auto;
     }
-    .inst-subheading.text-white { color: rgba(255, 255, 255, 0.88) !important; }
+    .inst-subheading.text-white { color: rgba(255, 255, 255, 0.90) !important; }
 
     /* Partner Trust Strip */
     .partners-trust-label {
@@ -137,20 +140,20 @@
       gap: 10px;
       padding: 10px 20px;
       background: #FFFFFF;
-      border: 1px solid #E2E8F0;
+      border: 1px solid #DCE3EA;
       border-radius: 999px;
       font-size: 13.5px;
-      color: #334155;
-      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+      color: #475569;
+      box-shadow: 0 2px 6px rgba(18, 53, 91, 0.04);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .partner-trust-pill:hover {
       transform: translateY(-2px);
-      border-color: #064FC1;
-      box-shadow: 0 6px 14px rgba(6, 79, 193, 0.10);
+      border-color: #12355B;
+      box-shadow: 0 6px 14px rgba(18, 53, 91, 0.10);
     }
     .partner-trust-pill strong {
-      color: #0E1726;
+      color: #172033;
       font-weight: 750;
     }
 
@@ -163,13 +166,13 @@
     }
     .service-official-card {
       background: #FFFFFF !important;
-      border: 1px solid #E2E8F0 !important;
-      border-radius: 16px !important;
+      border: 1px solid #DCE3EA !important;
+      border-radius: 12px !important;
       padding: 28px 24px !important;
       display: flex !important;
       flex-direction: column !important;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 16px rgba(11, 31, 58, 0.04) !important;
+      box-shadow: 0 4px 16px rgba(18, 53, 91, 0.04) !important;
       position: relative !important;
       overflow: hidden !important;
     }
@@ -180,14 +183,14 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: var(--service-accent, #124E96);
+      background: var(--service-accent, #1F7A6E);
       opacity: 0.9;
       transition: height 0.2s ease;
     }
     .service-official-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(11, 31, 58, 0.08) !important;
-      border-color: #CBD5E1 !important;
+      box-shadow: 0 12px 30px rgba(18, 53, 91, 0.08) !important;
+      border-color: #12355B !important;
     }
     .service-official-card:hover::before {
       height: 6px;
@@ -206,28 +209,29 @@
       align-items: center !important;
       justify-content: center !important;
       font-size: 22px !important;
-      background: var(--service-icon-bg, #EEF4FF) !important;
-      color: var(--service-accent, #124E96) !important;
-      border: 1px solid var(--service-icon-border, #BFDBFE) !important;
+      background: var(--service-icon-bg, rgba(31, 122, 110, 0.08)) !important;
+      color: var(--service-accent, #1F7A6E) !important;
+      border: 1px solid var(--service-icon-border, rgba(31, 122, 110, 0.22)) !important;
       flex-shrink: 0 !important;
     }
     .service-cat-pill {
       font-size: 11px !important;
-      font-weight: 750 !important;
+      font-weight: 700 !important;
       text-transform: uppercase !important;
       letter-spacing: 0.04em !important;
       padding: 4px 10px !important;
       border-radius: 999px !important;
-      background: #F1F5F9 !important;
+      background: #F7F9FC !important;
       color: #475569 !important;
+      border: 1px solid #DCE3EA !important;
     }
     .service-card-title {
-      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
-      font-size: 19px !important;
-      font-weight: 750 !important;
-      color: #0F172A !important;
+      font-family: var(--font-heading, 'Merriweather', Georgia, serif) !important;
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      color: #172033 !important;
       margin-bottom: 10px !important;
-      line-height: 1.32 !important;
+      line-height: 1.35 !important;
     }
     .service-card-desc {
       font-family: var(--font-body, 'Inter', sans-serif) !important;
@@ -243,11 +247,11 @@
       gap: 6px !important;
       font-size: 12.5px !important;
       font-weight: 600 !important;
-      color: #334155 !important;
-      background: #F8FAFC !important;
+      color: #475569 !important;
+      background: #F7F9FC !important;
       padding: 8px 12px !important;
       border-radius: 8px !important;
-      border: 1px solid #E2E8F0 !important;
+      border: 1px solid #DCE3EA !important;
       margin-bottom: 18px !important;
     }
     .service-card-audience span.label {
@@ -258,16 +262,16 @@
       display: inline-flex !important;
       align-items: center !important;
       gap: 6px !important;
-      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
       font-size: 13.5px !important;
-      font-weight: 750 !important;
-      color: #124E96 !important;
+      font-weight: 700 !important;
+      color: #12355B !important;
       text-decoration: none !important;
       transition: all 0.2s ease !important;
       margin-top: auto !important;
     }
     .service-card-link:hover {
-      color: #2454E6 !important;
+      color: #1F7A6E !important;
       transform: translateX(3px) !important;
     }
 
@@ -280,14 +284,14 @@
     }
     .consultancy-pillar-card {
       background: #FFFFFF !important;
-      border: 1px solid #E2E8F0 !important;
-      border-radius: 16px !important;
+      border: 1px solid #DCE3EA !important;
+      border-radius: 14px !important;
       padding: 26px 22px !important;
-      box-shadow: 0 4px 16px rgba(11, 31, 58, 0.04) !important;
+      box-shadow: 0 4px 16px rgba(18, 53, 91, 0.04) !important;
     }
     .consultancy-flow-banner {
-      background: linear-gradient(135deg, #0B1F3A 0%, #124E96 100%) !important;
-      border-radius: 20px !important;
+      background: linear-gradient(135deg, #12355B 0%, #1F7A6E 100%) !important;
+      border-radius: 16px !important;
       padding: 36px 32px !important;
       color: #FFFFFF !important;
       margin-top: 40px !important;
@@ -307,34 +311,34 @@
     }
     .infra-offering-card {
       background: #FFFFFF !important;
-      border: 1px solid #E2E8F0 !important;
-      border-radius: 16px !important;
+      border: 1px solid #DCE3EA !important;
+      border-radius: 14px !important;
       padding: 24px 22px !important;
-      box-shadow: 0 4px 16px rgba(11, 31, 58, 0.04) !important;
+      box-shadow: 0 4px 16px rgba(18, 53, 91, 0.04) !important;
       transition: transform 0.2s ease !important;
     }
     .infra-offering-card:hover {
       transform: translateY(-3px) !important;
-      border-color: #0F8B8D !important;
+      border-color: #1F7A6E !important;
     }
     .infra-icon-wrap {
       width: 44px !important;
       height: 44px !important;
       border-radius: 10px !important;
-      background: #ECFEFF !important;
-      color: #0F8B8D !important;
+      background: rgba(31, 122, 110, 0.1) !important;
+      color: #1F7A6E !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       font-size: 20px !important;
       margin-bottom: 14px !important;
-      border: 1px solid #A5F3FC !important;
+      border: 1px solid rgba(31, 122, 110, 0.25) !important;
     }
     .infra-process-wrap {
       margin-top: 56px !important;
-      background: #F8FAFC !important;
-      border: 1px solid #E2E8F0 !important;
-      border-radius: 20px !important;
+      background: #F7F9FC !important;
+      border: 1px solid #DCE3EA !important;
+      border-radius: 16px !important;
       padding: 36px 32px !important;
     }
     .infra-process-header {
@@ -348,8 +352,8 @@
     }
     .infra-stage-card {
       background: #FFFFFF !important;
-      border: 1px solid #E2E8F0 !important;
-      border-radius: 12px !important;
+      border: 1px solid #DCE3EA !important;
+      border-radius: 10px !important;
       padding: 16px 12px !important;
       text-align: center !important;
       display: flex !important;
@@ -360,16 +364,16 @@
       width: 28px !important;
       height: 28px !important;
       border-radius: 50% !important;
-      background: #EEF4FF !important;
-      color: #124E96 !important;
-      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+      background: rgba(31, 122, 110, 0.1) !important;
+      color: #1F7A6E !important;
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
       font-size: 12px !important;
       font-weight: 800 !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       margin: 0 auto 10px !important;
-      border: 1px solid #BFDBFE !important;
+      border: 1px solid rgba(31, 122, 110, 0.25) !important;
     }
     .infra-ctas-row {
       display: flex !important;
@@ -388,17 +392,17 @@
     }
     .reason-card {
       background: #FFFFFF !important;
-      border: 1px solid #E2E8F0 !important;
-      border-radius: 16px !important;
+      border: 1px solid #DCE3EA !important;
+      border-radius: 14px !important;
       padding: 26px 22px !important;
-      box-shadow: 0 4px 16px rgba(11, 31, 58, 0.04) !important;
+      box-shadow: 0 4px 16px rgba(18, 53, 91, 0.04) !important;
     }
     .reason-card .reason-icon {
       width: 44px !important;
       height: 44px !important;
       border-radius: 10px !important;
-      background: #EEF4FF !important;
-      color: #124E96 !important;
+      background: rgba(31, 122, 110, 0.1) !important;
+      color: #1F7A6E !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
@@ -415,10 +419,10 @@
     }
     .case-study-card {
       background: #FFFFFF !important;
-      border: 1px solid #E2E8F0 !important;
-      border-radius: 18px !important;
+      border: 1px solid #DCE3EA !important;
+      border-radius: 14px !important;
       padding: 30px 26px !important;
-      box-shadow: 0 6px 20px rgba(11, 31, 58, 0.05) !important;
+      box-shadow: 0 6px 20px rgba(18, 53, 91, 0.05) !important;
       display: flex !important;
       flex-direction: column !important;
     }
@@ -432,26 +436,26 @@
     }
     .case-client-badge {
       font-size: 11.5px !important;
-      font-weight: 750 !important;
+      font-weight: 700 !important;
       padding: 4px 12px !important;
       border-radius: 999px !important;
       background: #EEF3F8 !important;
-      color: #0B1F3A !important;
+      color: #12355B !important;
       text-transform: uppercase !important;
       letter-spacing: 0.04em !important;
     }
     .case-study-metric-box {
-      background: #F8FAFC !important;
-      border: 1px solid #E2E8F0 !important;
-      border-radius: 12px !important;
+      background: #F7F9FC !important;
+      border: 1px solid #DCE3EA !important;
+      border-radius: 10px !important;
       padding: 14px 16px !important;
       margin-bottom: 16px !important;
     }
     .case-metric-val {
-      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+      font-family: var(--font-heading, 'Merriweather', Georgia, serif) !important;
       font-size: 22px !important;
       font-weight: 800 !important;
-      color: #168B72 !important;
+      color: #1F7A6E !important;
     }
 
     /* Insights Grid */
@@ -463,12 +467,12 @@
     }
     .insight-card {
       background: #FFFFFF !important;
-      border: 1px solid #E2E8F0 !important;
-      border-radius: 16px !important;
+      border: 1px solid #DCE3EA !important;
+      border-radius: 14px !important;
       padding: 26px 22px !important;
       display: flex !important;
       flex-direction: column !important;
-      box-shadow: 0 4px 16px rgba(11, 31, 58, 0.04) !important;
+      box-shadow: 0 4px 16px rgba(18, 53, 91, 0.04) !important;
     }
 
     /* Responsive Rules */
@@ -517,7 +521,7 @@
 <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
 <!-- ── Unified Header: Docmed Top Bar + Sticky Navigation ── -->
-<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#ffffff !important;">
+<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#12355B !important;">
   <!-- ── Docmed Top Bar ──────────────────────────────────────── -->
   <div class="docmed-topbar" style="position:relative !important; top:auto !important; left:auto !important; right:auto !important; height:40px !important; line-height:40px !important; display:block !important; z-index:2 !important; margin:0 !important; box-sizing:border-box !important;" aria-label="Institutional framework and contact information">
     <div class="container">

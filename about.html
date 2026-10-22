@@ -8,14 +8,14 @@
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=8.0">
-  <link rel="stylesheet" href="css/animations.css?v=8.0">
-  <link rel="stylesheet" href="css/components.css?v=8.0">
-  <link rel="stylesheet" href="css/homepage.css?v=8.0">
-  <link rel="stylesheet" href="css/about.css?v=8.0">
-  <link rel="stylesheet" href="css/docmed-theme.css?v=8.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=8.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css?v=9.0">
+  <link rel="stylesheet" href="css/animations.css?v=9.0">
+  <link rel="stylesheet" href="css/components.css?v=9.0">
+  <link rel="stylesheet" href="css/homepage.css?v=9.0">
+  <link rel="stylesheet" href="css/about.css?v=9.0">
+  <link rel="stylesheet" href="css/docmed-theme.css?v=9.0">
+  <link rel="stylesheet" href="css/live-chat.css?v=9.0">
 
   <style id="critical-header-css">
     #site-header.site-header {
@@ -25,7 +25,8 @@
       right: 0 !important;
       width: 100% !important;
       z-index: 1000 !important;
-      background: #FFFFFF !important;
+      background: #12355B !important;
+      box-shadow: 0 4px 20px rgba(18, 53, 91, 0.25) !important;
     }
     #site-header .docmed-topbar {
       position: relative !important;
@@ -35,6 +36,9 @@
       display: block !important;
       z-index: 2 !important;
       margin: 0 !important;
+      background: #0D2540 !important;
+      color: #DCE3EA !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
     }
     #site-header .navbar,
     #site-header #navbar {
@@ -43,6 +47,8 @@
       width: 100% !important;
       z-index: 1 !important;
       margin: 0 !important;
+      background: #12355B !important;
+      border-bottom: 2px solid #1F7A6E !important;
     }
     #site-header.scrolled {
       transform: translateY(-40px) !important;
@@ -62,10 +68,10 @@
        CORE VALUES LUXURY CARDS ARCHITECTURE
        ══════════════════════════════════════════════════════════════ */
     .cv-section {
-      background: #F8FAFC !important;
+      background: #F7F9FC !important;
       padding: 96px 0 !important;
-      border-top: 1px solid #E2E8F0;
-      border-bottom: 1px solid #E2E8F0;
+      border-top: 1px solid #DCE3EA;
+      border-bottom: 1px solid #DCE3EA;
       position: relative;
     }
 
@@ -75,9 +81,9 @@
       gap: 8px;
       padding: 6px 18px !important;
       border-radius: 999px !important;
-      background: #EEF4FF !important;
-      border: 1.5px solid rgba(6, 79, 193, 0.25) !important;
-      color: #064FC1 !important;
+      background: #F7F9FC !important;
+      border: 1.5px solid #1F7A6E !important;
+      color: #1F7A6E !important;
       font-size: 11.5px !important;
       font-weight: 800 !important;
       letter-spacing: 0.08em !important;
@@ -86,21 +92,22 @@
     }
 
     .cv-main-title {
-      font-family: var(--font-heading), 'Poppins', sans-serif !important;
+      font-family: var(--font-heading), 'Merriweather', serif !important;
       font-size: clamp(32px, 4vw, 44px) !important;
-      font-weight: 850 !important;
-      color: #0E1726 !important;
+      font-weight: 700 !important;
+      color: #172033 !important;
       margin: 0 0 16px 0 !important;
       letter-spacing: -0.025em !important;
     }
 
     .cv-main-title span.grad {
-      background: linear-gradient(135deg, #064FC1 0%, #12B84E 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
+      background: none !important;
+      -webkit-text-fill-color: #1F7A6E !important;
+      color: #1F7A6E !important;
     }
 
     .cv-main-desc {
+      font-family: var(--font-body), 'Inter', sans-serif !important;
       font-size: 16.5px !important;
       color: #475569 !important;
       margin: 0 auto 48px auto !important;
@@ -136,7 +143,7 @@
 
     .cv-card {
       background: #FFFFFF !important;
-      border: 1.5px solid #E2E8F0 !important;
+      border: 1.5px solid #DCE3EA !important;
       border-radius: 22px !important;
       padding: 32px 26px 26px !important;
       position: relative !important;
@@ -146,7 +153,7 @@
       align-items: center !important;
       text-align: center !important;
       justify-content: flex-start !important;
-      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02) !important;
+      box-shadow: 0 4px 20px -2px rgba(18, 53, 91, 0.05), 0 2px 6px -1px rgba(18, 53, 91, 0.02) !important;
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease !important;
       cursor: default;
       height: 100% !important;
@@ -159,14 +166,14 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: var(--val-color, #064FC1);
+      background: var(--val-color, #1F7A6E);
       transition: height 0.3s ease;
     }
 
     .cv-card:hover {
       transform: translateY(-6px) !important;
-      border-color: var(--val-color, #064FC1) !important;
-      box-shadow: 0 20px 38px -8px var(--val-glow, rgba(6, 79, 193, 0.22)), 0 6px 14px rgba(15, 23, 42, 0.04) !important;
+      border-color: var(--val-color, #1F7A6E) !important;
+      box-shadow: 0 20px 38px -8px rgba(18, 53, 91, 0.22), 0 6px 14px rgba(18, 53, 91, 0.04) !important;
     }
 
     .cv-card:hover::before {
@@ -174,8 +181,8 @@
     }
 
     .cv-card.is-expanded {
-      border-color: var(--val-color, #064FC1) !important;
-      box-shadow: 0 16px 32px -6px var(--val-glow, rgba(6, 79, 193, 0.25)) !important;
+      border-color: var(--val-color, #1F7A6E) !important;
+      box-shadow: 0 16px 32px -6px rgba(18, 53, 91, 0.25) !important;
     }
 
     .cv-card-top-row {
@@ -198,8 +205,8 @@
       justify-content: center !important;
       flex-shrink: 0 !important;
       margin: 0 auto !important;
-      background: var(--val-gradient, linear-gradient(135deg, #064FC1, #053A8B)) !important;
-      box-shadow: 0 8px 18px -4px var(--val-glow, rgba(6, 79, 193, 0.3)) !important;
+      background: var(--val-gradient, linear-gradient(135deg, #12355B, #1F7A6E)) !important;
+      box-shadow: 0 8px 18px -4px rgba(18, 53, 91, 0.3) !important;
       transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
     }
 
@@ -211,10 +218,10 @@
       position: absolute !important;
       top: -6px !important;
       right: 0 !important;
-      font-family: var(--font-heading), 'Poppins', sans-serif !important;
+      font-family: var(--font-heading), 'Merriweather', serif !important;
       font-size: 24px !important;
-      font-weight: 850 !important;
-      color: #CBD5E1 !important;
+      font-weight: 700 !important;
+      color: #DCE3EA !important;
       line-height: 1 !important;
       user-select: none;
       letter-spacing: -0.04em !important;
@@ -224,15 +231,15 @@
 
     .cv-card:hover .cv-number-watermark,
     .cv-card.is-expanded .cv-number-watermark {
-      color: var(--val-color, #064FC1) !important;
+      color: var(--val-color, #1F7A6E) !important;
       opacity: 0.8 !important;
     }
 
     .cv-card-title {
-      font-family: var(--font-heading), 'Poppins', sans-serif !important;
+      font-family: var(--font-heading), 'Merriweather', serif !important;
       font-size: 21px !important;
-      font-weight: 850 !important;
-      color: var(--val-color, #0E1726) !important;
+      font-weight: 700 !important;
+      color: var(--val-color, #172033) !important;
       margin: 0 0 10px 0 !important;
       line-height: 1.25 !important;
       letter-spacing: -0.01em !important;
@@ -241,6 +248,7 @@
     }
 
     .cv-card-desc {
+      font-family: var(--font-body), 'Inter', sans-serif !important;
       font-size: 14.5px !important;
       color: #475569 !important;
       line-height: 1.62 !important;
@@ -256,14 +264,14 @@
       align-items: center !important;
       justify-content: center !important;
       gap: 8px !important;
-      font-family: inherit !important;
+      font-family: var(--font-body), 'Inter', sans-serif !important;
       font-size: 12px !important;
-      font-weight: 800 !important;
+      font-weight: 700 !important;
       text-transform: uppercase !important;
       letter-spacing: 0.07em !important;
-      color: var(--val-color, #064FC1) !important;
-      background: rgba(var(--val-rgb, 6, 79, 193), 0.06) !important;
-      border: 1px solid rgba(var(--val-rgb, 6, 79, 193), 0.18) !important;
+      color: var(--val-color, #12355B) !important;
+      background: rgba(18, 53, 91, 0.06) !important;
+      border: 1px solid rgba(18, 53, 91, 0.18) !important;
       border-radius: 12px !important;
       padding: 12px 18px !important;
       min-height: 46px !important;
@@ -275,8 +283,8 @@
     }
 
     .cv-card-btn:hover {
-      background: rgba(var(--val-rgb, 6, 79, 193), 0.12) !important;
-      border-color: var(--val-color, #064FC1) !important;
+      background: rgba(18, 53, 91, 0.12) !important;
+      border-color: var(--val-color, #12355B) !important;
       transform: translateY(-1px) !important;
     }
 
@@ -296,15 +304,16 @@
 
     .cv-explanation-inner {
       padding: 14px 16px;
-      background: #F8FAFC;
+      background: #F7F9FC;
       border-radius: 12px;
-      border: 1px solid #E2E8F0;
+      border: 1px solid #DCE3EA;
       text-align: left;
     }
 
     .cv-explanation-text {
+      font-family: var(--font-body), 'Inter', sans-serif !important;
       font-size: 13.5px !important;
-      color: #334155 !important;
+      color: #475569 !important;
       line-height: 1.6 !important;
       margin: 0 !important;
     }
@@ -313,7 +322,7 @@
 <body>
 
 <!-- ── Unified Header: Docmed Top Bar + Sticky Navigation ── -->
-<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#ffffff !important;">
+<header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#12355B !important;">
 <!-- ── Docmed Top Bar ───────────────────────────────────────── -->
 <div class="docmed-topbar" style="position:relative !important; top:auto !important; height:40px !important; line-height:40px !important; display:block !important; z-index:2 !important; margin:0 !important;">
   <div class="container docmed-topbar-inner">
