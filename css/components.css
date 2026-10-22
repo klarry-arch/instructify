@@ -71,22 +71,24 @@ header.site-header .navbar,
 }
 
 .nav-brand-logo {
-  height: 40px;
+  height: 42px;
   width: auto;
-  max-width: 200px;
+  max-width: 210px;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
-  background: #FFFFFF;
-  border-radius: 8px;
-  padding: 4px 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.20);
-  transition: transform 0.25s ease, filter 0.25s ease;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .nav-brand:hover .nav-brand-logo {
-  transform: translateY(-1px) scale(1.02);
-  filter: drop-shadow(0 4px 12px rgba(244, 185, 66, 0.35));
+  transform: translateY(-1px);
+  filter: none !important;
+  opacity: 0.92;
 }
 
 .footer-brand-logo {
@@ -180,39 +182,56 @@ header.site-header .navbar,
 /* Clear, High-Contrast Hover on White Header */
 .nav-link:hover {
   color: #4F46E5 !important;
-  background: #EEF2FF !important;
-  transform: translateY(-1px);
+  background: rgba(79, 70, 229, 0.05) !important;
+  border-radius: 6px;
 }
 
 .nav-link[data-nav]:hover {
   color: #4F46E5 !important;
 }
 
-/* Modern Active Menu State - Soft Lavender Indicator */
+/* Modern Understated Active Menu State - Sleek Bottom Accent Bar, No Bulbous Pill */
 .nav-link.active {
   color: #4F46E5 !important;
-  background: #EEF2FF !important;
-  border: 1px solid #C7D2FE !important;
-  font-weight: 600 !important;
+  background: transparent !important;
+  border: none !important;
+  font-weight: 700 !important;
   box-shadow: none !important;
-  border-radius: 8px;
+  border-radius: 0 !important;
   text-decoration: none !important;
+  position: relative !important;
+}
+
+.nav-link.active::after {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  bottom: 0px !important;
+  left: 8px !important;
+  right: 8px !important;
+  height: 2.5px !important;
+  background: #4F46E5 !important;
+  border-radius: 3px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  width: auto !important;
 }
 
 .nav-link.active[data-nav="jumuishi"],
 a[href*="jumuishi"].nav-link.active {
   color: #0F9D91 !important;
-  background: #F0FDFA !important;
-  border: 1px solid #99F6E4 !important;
+  background: transparent !important;
+  border: none !important;
 }
 
-.nav-link::after,
-.nav-link.active::after,
+.nav-link.active[data-nav="jumuishi"]::after,
+a[href*="jumuishi"].nav-link.active::after {
+  background: #0F9D91 !important;
+}
+
 .nav-link::before,
-.nav-link.active::before,
 .nav-links li::after,
 .nav-links li::before,
-.nav-links li a::after,
 .nav-links li a::before {
   display: none !important;
   content: none !important;
@@ -424,41 +443,29 @@ a[href*="jumuishi"].nav-link.active {
   font-weight: 700;
 }
 
-/* ── Catchy Micro-Badges on Nav Items ── */
-.nav-badge {
-  font-size: 8px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  padding: 1.5px 5px;
-  border-radius: 999px;
-  line-height: 1.15;
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  flex-shrink: 0;
-}
-
+/* ── Restrained, Unified Micro-Badges on Nav Items ── */
+.nav-badge,
 .nav-badge-jum {
-  font-size: 8px;
-  font-weight: 800;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 8.5px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  padding: 1.5px 5.5px;
-  border-radius: 999px;
-  background: #0D9488;
-  color: #FFFFFF;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 4px;
   line-height: 1.15;
   display: inline-flex;
   align-items: center;
+  gap: 3px;
   flex-shrink: 0;
-  margin-left: 2px;
+  vertical-align: middle;
+  margin-left: 3px;
 }
 
 .nav-badge.badge-amber {
-  background: #FEF8EC;
-  color: #B45309;
-  border: 1px solid #FCD98B;
+  background: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #FDE68A;
 }
 
 .nav-badge.badge-rose,
@@ -471,9 +478,16 @@ a[href*="jumuishi"].nav-link.active {
 .nav-badge.badge-teal,
 .nav-badge.badge-blue,
 .nav-badge.badge-primary {
-  background: #F0FDFA;
-  color: #0F9D91;
-  border: 1px solid #99F6E4;
+  background: #EEF2FF;
+  color: #4F46E5;
+  border: 1px solid #C7D2FE;
+}
+
+.nav-badge.badge-inclusive,
+.nav-badge-jum {
+  background: #ECFDF5 !important;
+  color: #065F46 !important;
+  border: 1px solid #A7F3D0 !important;
 }
 
 .nav-pulse-dot {
