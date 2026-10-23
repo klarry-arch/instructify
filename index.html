@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="css/homepage.css?v=14.0">
   <link rel="stylesheet" href="css/live-chat.css?v=14.0">
 
-  <!-- Critical Header Alignment & Mobile First Protection -->
+  <!-- Critical Header Alignment & Navigation Protection -->
   <style id="inst-critical-styling">
     #site-header.site-header {
       position: fixed !important;
@@ -51,106 +51,87 @@
 <body class="home-page">
 
 <!-- ══════════════════════════════════════════════════════════════
-     HEADER & NAVIGATION (Sticky, Clean & Professional)
+     A. UTILITY ANNOUNCEMENT BAR
      ══════════════════════════════════════════════════════════════ -->
+<aside class="utility-announcement-bar" role="complementary" aria-label="Important Announcement">
+  <div class="container utility-announcement-content">
+    <span class="utility-badge">Intake Open</span>
+    <span class="utility-text">2026/2027 Teacher CPD &amp; Institutional Training Intake is Open. Verified TSC CPD and CBC-aligned programmes.</span>
+    <a href="cpd-registration.html" class="utility-link">Enroll Now →</a>
+  </div>
+</aside>
+
 <!-- ══════════════════════════════════════════════════════════════
-     SECTION 1: HEADER & NAVIGATION (Accessible, Responsive & Clean)
+     B. MAIN HEADER & NAVIGATION (12 Architectural Structure Items)
      ══════════════════════════════════════════════════════════════ -->
 <header id="site-header" class="site-header">
-
-  <!-- Main Navigation -->
   <nav id="navbar" class="navbar" role="navigation" aria-label="Primary site navigation">
     <div class="container">
       <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
         <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
       </a>
 
-      <!-- Menu Links -->
+      <!-- 12 Main Navigation Items & Mega Menus -->
       <ul class="nav-links" role="list">
         <li><a href="index.html" class="nav-link active" aria-current="page" data-nav="home">Home</a></li>
-        <li><a href="about.html" class="nav-link" data-nav="about">About Us</a></li>
+        <li><a href="courses.html" class="nav-link" data-nav="courses">Courses</a></li>
         
-        <!-- Courses Dropdown -->
+        <!-- 3. Learning Solutions (Dropdown) -->
         <li class="nav-item-dropdown">
-          <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="courses" aria-haspopup="true" aria-expanded="false">
-            Courses
+          <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="learning-solutions" aria-haspopup="true" aria-expanded="false">
+            Learning Solutions
             <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
               <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <ul class="nav-dropdown-menu" role="menu" aria-label="Courses">
-            <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem"><span>📚</span> Browse All Courses</a></li>
-            <li role="none"><a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem"><span>🎓</span> Educator CPD Programmes</a></li>
-            <li role="none"><a href="courses.html#students" class="nav-dropdown-item" role="menuitem"><span>🚀</span> Student Programmes</a></li>
-            <li role="none"><a href="courses.html#digital" class="nav-dropdown-item" role="menuitem"><span>💻</span> Digital Skills</a></li>
-            <li role="none"><a href="jumuishi-learning-hub.html" class="nav-dropdown-item" role="menuitem"><span>♿</span> Inclusive Learning</a></li>
-            <li role="none"><a href="courses.html#free" class="nav-dropdown-item" role="menuitem"><span>🎁</span> Free Courses</a></li>
+          <ul class="nav-dropdown-menu" role="menu" aria-label="Learning Solutions">
+            <li role="none"><a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem"><span>🎓</span> Teacher Professional Development</a></li>
+            <li role="none"><a href="courses.html#cbc" class="nav-dropdown-item" role="menuitem"><span>📖</span> CBC/CBE Pedagogy Mastery</a></li>
+            <li role="none"><a href="courses/digital-literacy-ict-integration.html" class="nav-dropdown-item" role="menuitem"><span>💻</span> Digital Literacy &amp; ICT Integration</a></li>
+            <li role="none"><a href="courses.html#ai" class="nav-dropdown-item" role="menuitem"><span>🤖</span> AI in Education &amp; Modern Tools</a></li>
+            <li role="none"><a href="courses.html#leadership" class="nav-dropdown-item" role="menuitem"><span>🏛️</span> School Leadership &amp; Administration</a></li>
+            <li role="none"><a href="courses.html#vr" class="nav-dropdown-item" role="menuitem"><span>👓</span> Smart Classrooms &amp; Virtual Reality</a></li>
+            <li role="none"><a href="courses.html#coding" class="nav-dropdown-item" role="menuitem"><span>⚡</span> Coding &amp; Digital Skills</a></li>
+            <li role="none"><a href="jumuishi-learning-hub.html" class="nav-dropdown-item" role="menuitem"><span>♿</span> Inclusive Learning &amp; Assistive Tech</a></li>
+            <li role="none"><a href="courses.html#safety" class="nav-dropdown-item" role="menuitem"><span>🛡️</span> Online Safety &amp; Data Ethics</a></li>
           </ul>
         </li>
 
-        <!-- For Educators Dropdown -->
-        <li class="nav-item-dropdown">
-          <a href="educator-studio.html" class="nav-link nav-link-dropdown" data-nav="educators" aria-haspopup="true" aria-expanded="false">
-            For Educators
-            <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-          <ul class="nav-dropdown-menu" role="menu" aria-label="For Educators">
-            <li role="none"><a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem"><span>📜</span> Professional Development</a></li>
-            <li role="none"><a href="register.html?role=educator" class="nav-dropdown-item" role="menuitem"><span>✨</span> Become a Course Creator</a></li>
-            <li role="none"><a href="educator-studio.html" class="nav-dropdown-item" role="menuitem"><span>🛠️</span> Educator Studio</a></li>
-            <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem"><span>📁</span> Teaching Resources</a></li>
-            <li role="none"><a href="educator-studio.html#guidelines" class="nav-dropdown-item" role="menuitem"><span>📋</span> Creator Guidelines</a></li>
-          </ul>
-        </li>
-
-        <!-- For Institutions Dropdown -->
+        <!-- 4. Institutions (Dropdown) -->
         <li class="nav-item-dropdown">
           <a href="schools.html" class="nav-link nav-link-dropdown" data-nav="institutions" aria-haspopup="true" aria-expanded="false">
-            For Institutions
+            Institutions
             <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
               <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <ul class="nav-dropdown-menu" role="menu" aria-label="For Institutions">
-            <li role="none"><a href="schools.html#training" class="nav-dropdown-item" role="menuitem"><span>🏫</span> Institutional Training</a></li>
-            <li role="none"><a href="consultancy.html#digital-transformation" class="nav-dropdown-item" role="menuitem"><span>🔄</span> Digital Transformation</a></li>
-            <li role="none"><a href="consultancy.html#infrastructure" class="nav-dropdown-item" role="menuitem"><span>📡</span> ICT Infrastructure</a></li>
-            <li role="none"><a href="consultancy.html#smart-classrooms" class="nav-dropdown-item" role="menuitem"><span>🖥️</span> Smart Classrooms</a></li>
-            <li role="none"><a href="institution-dashboard.html" class="nav-dropdown-item" role="menuitem"><span>📊</span> Curriculum &amp; LMS Solutions</a></li>
-            <li role="none"><a href="consultancy.html#assessment-form" class="nav-dropdown-item" role="menuitem"><span>📝</span> Request an Assessment</a></li>
+          <ul class="nav-dropdown-menu" role="menu" aria-label="Institutions">
+            <li role="none"><a href="schools.html#training" class="nav-dropdown-item" role="menuitem"><span>👥</span> Staff Training &amp; Capacity Building</a></li>
+            <li role="none"><a href="consultancy.html#digital-transformation" class="nav-dropdown-item" role="menuitem"><span>🔄</span> Digital Transformation &amp; Strategy</a></li>
+            <li role="none"><a href="consultancy.html#curriculum" class="nav-dropdown-item" role="menuitem"><span>📑</span> Curriculum &amp; Assessment Development</a></li>
+            <li role="none"><a href="institution-dashboard.html" class="nav-dropdown-item" role="menuitem"><span>📊</span> Turnkey LMS Deployment &amp; Management</a></li>
+            <li role="none"><a href="consultancy.html#technology" class="nav-dropdown-item" role="menuitem"><span>⚙️</span> Technology &amp; Systems Integration</a></li>
+            <li role="none"><a href="consultancy.html#infrastructure" class="nav-dropdown-item" role="menuitem"><span>📡</span> Infrastructure &amp; Smart Classrooms</a></li>
+            <li role="none"><a href="schools.html#support" class="nav-dropdown-item" role="menuitem"><span>🤝</span> Institutional Technical Support</a></li>
+            <li role="none"><a href="consultancy.html#evaluation" class="nav-dropdown-item" role="menuitem"><span>🔍</span> Research, Evaluation &amp; Impact Audits</a></li>
           </ul>
         </li>
 
+        <li><a href="schools.html#corporate" class="nav-link" data-nav="corporate">Corporate Training</a></li>
         <li><a href="consultancy.html" class="nav-link" data-nav="consultancy">Consultancy</a></li>
-
-        <!-- Resources Dropdown -->
-        <li class="nav-item-dropdown">
-          <a href="resources.html" class="nav-link nav-link-dropdown" data-nav="resources" aria-haspopup="true" aria-expanded="false">
-            Resources
-            <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-          <ul class="nav-dropdown-menu" role="menu" aria-label="Resources">
-            <li role="none"><a href="blog.html" class="nav-dropdown-item" role="menuitem"><span>📰</span> Articles &amp; Insights</a></li>
-            <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem"><span>📂</span> Teaching Resources</a></li>
-            <li role="none"><a href="resources.html#templates" class="nav-dropdown-item" role="menuitem"><span>📑</span> Templates &amp; Guides</a></li>
-            <li role="none"><a href="events.html" class="nav-dropdown-item" role="menuitem"><span>📅</span> Events and Webinars</a></li>
-            <li role="none"><a href="accessibility.html" class="nav-dropdown-item" role="menuitem"><span>♿</span> Accessibility Support</a></li>
-            <li role="none"><a href="contact.html" class="nav-dropdown-item" role="menuitem"><span>❓</span> Help Centre</a></li>
-          </ul>
-        </li>
+        <li><a href="workshop-registration.html" class="nav-link" data-nav="workshops">Workshops &amp; Boot Camps</a></li>
+        <li><a href="about.html" class="nav-link" data-nav="about">About Us</a></li>
+        <li><a href="resources.html" class="nav-link" data-nav="resources">Resources</a></li>
+        <li><a href="contact.html" class="nav-link" data-nav="contact">Contact</a></li>
       </ul>
 
-      <!-- Action CTAs: Secondary Sign In + Distinct Get Started Button -->
+      <!-- Action CTAs: Secondary Sign In + Primary Get Started -->
       <div class="nav-actions">
-        <a href="register.html" class="btn btn-outline btn-sm">Sign In</a>
+        <a href="login.html" class="btn btn-outline btn-sm">Sign In</a>
         <a href="register.html" class="btn btn-primary btn-sm btn-level-1">Get Started →</a>
       </div>
 
-      <!-- Mobile Hamburger -->
+      <!-- Mobile Hamburger Button -->
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
         <span></span><span></span><span></span>
       </button>
@@ -159,52 +140,47 @@
 </header>
 
 <!-- Mobile Navigation Drawer -->
-<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile menu">
+<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation menu">
   <div class="nav-mobile-links">
     <a href="index.html" class="nav-mobile-link active" data-nav="home">Home</a>
+    <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses</a>
+    
     <div class="nav-mobile-dropdown">
-      <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses</a>
+      <a href="courses.html" class="nav-mobile-link" data-nav="learning-solutions">Learning Solutions</a>
       <div class="nav-mobile-sublinks">
-        <a href="courses.html" class="nav-mobile-sublink" data-nav="courses"><span>📚</span> Browse All Courses</a>
-        <a href="cpd-registration.html" class="nav-mobile-sublink" data-nav="cpd"><span>🎓</span> Educator CPD Programmes</a>
-        <a href="courses.html#students" class="nav-mobile-sublink" data-nav="courses"><span>🚀</span> Student Programmes</a>
-        <a href="courses.html#digital" class="nav-mobile-sublink" data-nav="courses"><span>💻</span> Digital Skills</a>
-        <a href="jumuishi-learning-hub.html" class="nav-mobile-sublink" data-nav="jumuishi"><span>♿</span> Inclusive Learning</a>
-        <a href="courses.html#free" class="nav-mobile-sublink" data-nav="courses"><span>🎁</span> Free Courses</a>
+        <a href="cpd-registration.html" class="nav-mobile-sublink"><span>🎓</span> Teacher CPD Programmes</a>
+        <a href="courses.html#cbc" class="nav-mobile-sublink"><span>📖</span> CBC/CBE Pedagogy</a>
+        <a href="courses/digital-literacy-ict-integration.html" class="nav-mobile-sublink"><span>💻</span> Digital Literacy &amp; ICT</a>
+        <a href="courses.html#ai" class="nav-mobile-sublink"><span>🤖</span> AI in Education</a>
+        <a href="jumuishi-learning-hub.html" class="nav-mobile-sublink"><span>♿</span> Inclusive Learning Hub</a>
       </div>
     </div>
+
     <div class="nav-mobile-dropdown">
-      <a href="educator-studio.html" class="nav-mobile-link" data-nav="educators">For Educators</a>
+      <a href="schools.html" class="nav-mobile-link" data-nav="institutions">Institutions</a>
       <div class="nav-mobile-sublinks">
-        <a href="cpd-registration.html" class="nav-mobile-sublink"><span>📜</span> Professional Development</a>
-        <a href="register.html?role=educator" class="nav-mobile-sublink"><span>✨</span> Become a Course Creator</a>
-        <a href="educator-studio.html" class="nav-mobile-sublink"><span>🛠️</span> Educator Studio</a>
-        <a href="resources.html" class="nav-mobile-sublink"><span>📁</span> Teaching Resources</a>
-      </div>
-    </div>
-    <div class="nav-mobile-dropdown">
-      <a href="schools.html" class="nav-mobile-link" data-nav="institutions">For Institutions</a>
-      <div class="nav-mobile-sublinks">
-        <a href="schools.html#training" class="nav-mobile-sublink"><span>🏫</span> Institutional Training</a>
+        <a href="schools.html#training" class="nav-mobile-sublink"><span>👥</span> Staff Training</a>
         <a href="consultancy.html#digital-transformation" class="nav-mobile-sublink"><span>🔄</span> Digital Transformation</a>
         <a href="consultancy.html#infrastructure" class="nav-mobile-sublink"><span>📡</span> ICT Infrastructure</a>
-        <a href="institution-dashboard.html" class="nav-mobile-sublink"><span>📊</span> Curriculum &amp; LMS Solutions</a>
+        <a href="institution-dashboard.html" class="nav-mobile-sublink"><span>📊</span> Turnkey LMS Solutions</a>
       </div>
     </div>
+
+    <a href="schools.html#corporate" class="nav-mobile-link" data-nav="corporate">Corporate Training</a>
     <a href="consultancy.html" class="nav-mobile-link" data-nav="consultancy">Consultancy</a>
+    <a href="workshop-registration.html" class="nav-mobile-link" data-nav="workshops">Workshops &amp; Boot Camps</a>
+    <a href="about.html" class="nav-mobile-link" data-nav="about">About Us</a>
     <a href="resources.html" class="nav-mobile-link" data-nav="resources">Resources</a>
-    <a href="accessibility.html" class="nav-mobile-link" data-nav="accessibility">Accessibility</a>
-    <a href="about.html" class="nav-mobile-link" data-nav="about">About</a>
     <a href="contact.html" class="nav-mobile-link" data-nav="contact">Contact</a>
   </div>
   <div class="nav-mobile-actions">
-    <a href="register.html" class="btn btn-outline btn-md" style="width:100%; justify-content:center;">Sign In</a>
+    <a href="login.html" class="btn btn-outline btn-md" style="width:100%; justify-content:center;">Sign In</a>
     <a href="register.html" class="btn btn-primary btn-md btn-level-1" style="width:100%; justify-content:center;">Get Started →</a>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════════════════════════════
-     SECTION 2: HERO
+     C. HERO SECTION (Concise, Compelling, Measurable Transformation)
      ══════════════════════════════════════════════════════════════ -->
 <section class="hero-section" aria-label="Hero Introduction">
   <div class="container">
@@ -213,30 +189,30 @@
       <div class="hero-text animate-fade-in-left">
         <div class="hero-badge">
           <span class="hero-badge-dot" aria-hidden="true"></span>
-          <span>Educator Development &amp; Education Transformation</span>
+          <span>Education Technology &amp; Professional Development</span>
         </div>
 
         <h1 class="hero-title">
-          Professional Learning and Digital Transformation for Education
+          Practical learning for educators, learners and institutions.
         </h1>
 
         <p class="hero-subtitle">
-          Access practical courses, create inclusive online learning experiences, and transform your institution through professional training, educational consultancy and technology support.
+          Instructify Kenya delivers professional development, digital skills training, educational consultancy, and technology-enabled learning solutions across Kenya.
         </p>
 
-        <!-- CTA Buttons: Dominant Primary CTA + Secondary CTA -->
+        <!-- CTA Buttons: Primary, Secondary, Tertiary -->
         <div class="hero-ctas">
           <a href="courses.html" class="btn btn-primary btn-level-1">
             Explore Courses →
           </a>
           <a href="schools.html" class="btn btn-secondary btn-level-2">
-            Solutions for Institutions
+            Request Institutional Training
           </a>
         </div>
 
-        <div class="hero-creator-link">
-          <a href="educator-studio.html" class="creator-quick-link">
-            <span>✨</span> Teach or publish on Instructify? <strong>Become a Course Creator →</strong>
+        <div class="hero-creator-link" style="margin-top:14px;">
+          <a href="workshop-registration.html" class="creator-quick-link">
+            <span>📅</span> Upcoming interactive boot camps: <strong>Book a Workshop →</strong>
           </a>
         </div>
 
@@ -254,7 +230,7 @@
         </div>
       </div>
 
-      <!-- Right Column: Visual with Alt Text & Floating Badges -->
+      <!-- Right Column: Visual with Alt Text -->
       <div class="hero-visual-card animate-fade-in-right">
         <img 
           src="assets/images/home_hero_classroom.jpg" 
@@ -263,20 +239,10 @@
           loading="eager"
         >
 
-        <!-- Floating Trust Badges (cleanly docked, leaving bottom-right clear for chat widget) -->
-        <div class="trust-badge-pill top-left">
-          <span class="badge-check">✓</span>
-          <span>TSC &amp; KICD Aligned</span>
-        </div>
-
+        <!-- Verified Single Trust Pill -->
         <div class="trust-badge-pill top-right">
           <span class="badge-check">✓</span>
-          <span>National Education Partner</span>
-        </div>
-
-        <div class="trust-badge-pill bottom-left">
-          <span class="badge-check">✓</span>
-          <span>Consultancy &amp; Advisory</span>
+          <span>Verified CPD &amp; LMS Platform</span>
         </div>
       </div>
     </div>
@@ -284,7 +250,7 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════
-     SECTION 3: AUDIENCE PATHWAYS
+     D. AUDIENCE PATHWAYS (Role-Based Clear Entry Points)
      ══════════════════════════════════════════════════════════════ -->
 <section id="pathways" class="section-spacious bg-light-slate" aria-labelledby="pathways-title">
   <div class="container">
@@ -297,63 +263,63 @@
     </div>
 
     <div class="audience-pathways-grid">
-      <!-- Pathway 1: Educator -->
+      <!-- Pathway 1: Educators -->
       <div class="audience-pathway-card">
         <img src="assets/images/home_teacher_coaching.jpg" alt="Educator in pedagogical coaching session" class="audience-card-thumb" loading="lazy">
         <div class="audience-card-icon" aria-hidden="true">🎓</div>
-        <h3 class="audience-card-title">I am an Educator</h3>
+        <h3 class="audience-card-title">Educators</h3>
         <ul class="audience-card-list">
-          <li>Build professional skills</li>
-          <li>Access educator CPD</li>
-          <li>Create and deliver courses</li>
+          <li>Master CBC &amp; CBE pedagogical rubrics</li>
+          <li>Accredited teacher professional development</li>
+          <li>Build 21st-century digital classroom skills</li>
         </ul>
-        <a href="courses.html#cpd" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">
-          Explore Educator Opportunities →
+        <a href="cpd-registration.html" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">
+          Explore Educator CPD →
         </a>
       </div>
 
-      <!-- Pathway 2: Learner -->
+      <!-- Pathway 2: Learners -->
       <div class="audience-pathway-card">
         <img src="assets/images/home_digital_leadership.jpg" alt="Student learner progressing through digital modules" class="audience-card-thumb" loading="lazy">
         <div class="audience-card-icon" aria-hidden="true">📖</div>
-        <h3 class="audience-card-title">I am a Learner</h3>
+        <h3 class="audience-card-title">Learners</h3>
         <ul class="audience-card-list">
-          <li>Discover accessible courses</li>
-          <li>Track learning progress</li>
-          <li>Learn at an appropriate pace</li>
+          <li>Discover practical digital skills courses</li>
+          <li>Track personal learning progress</li>
+          <li>Learn at your own pace with verified certificates</li>
         </ul>
         <a href="courses.html" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">
-          Browse Courses →
+          Browse All Courses →
         </a>
       </div>
 
-      <!-- Pathway 3: Institution -->
+      <!-- Pathway 3: Schools & Institutions -->
       <div class="audience-pathway-card">
         <img src="assets/images/home_stem_collaboration.jpg" alt="Educational leaders collaborating on campus infrastructure" class="audience-card-thumb" loading="lazy">
         <div class="audience-card-icon" aria-hidden="true">🏛️</div>
-        <h3 class="audience-card-title">I Represent an Institution</h3>
+        <h3 class="audience-card-title">Schools &amp; Institutions</h3>
         <ul class="audience-card-list">
-          <li>Train staff</li>
-          <li>Plan digital transformation</li>
-          <li>Improve ICT infrastructure</li>
+          <li>Institutional staff capacity building</li>
+          <li>Turnkey LMS deployment and management</li>
+          <li>Smart classrooms &amp; ICT infrastructure setup</li>
         </ul>
         <a href="schools.html" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">
-          View Institutional Solutions →
+          Institutional Solutions →
         </a>
       </div>
 
-      <!-- Pathway 4: Teach Online -->
+      <!-- Pathway 4: Corporate Teams -->
       <div class="audience-pathway-card">
-        <img src="assets/images/course_smart_vr_classroom.jpg" alt="Teacher building interactive online course content" class="audience-card-thumb" loading="lazy">
-        <div class="audience-card-icon" aria-hidden="true">✨</div>
-        <h3 class="audience-card-title">I Want to Teach Online</h3>
+        <img src="assets/images/course_smart_vr_classroom.jpg" alt="Corporate professionals in digital skills training" class="audience-card-thumb" loading="lazy">
+        <div class="audience-card-icon" aria-hidden="true">💼</div>
+        <h3 class="audience-card-title">Corporate Teams</h3>
         <ul class="audience-card-list">
-          <li>Build online courses</li>
-          <li>Upload lessons and resources</li>
-          <li>Manage learners and assessment</li>
+          <li>Executive digital transformation coaching</li>
+          <li>Tailored compliance &amp; technology training</li>
+          <li>Analytics dashboards for organizational learning</li>
         </ul>
-        <a href="educator-studio.html" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">
-          Apply to Become a Creator →
+        <a href="schools.html#corporate" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">
+          Corporate Programmes →
         </a>
       </div>
     </div>
@@ -361,87 +327,221 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════
-     SECTION 4: THREE CORE PILLARS (LEARN · TEACH · TRANSFORM)
+     E. PLATFORM AND SERVICE CAPABILITIES (3 TalentLMS-Style Chapters)
      ══════════════════════════════════════════════════════════════ -->
-<section id="pillars" class="section-spacious" aria-labelledby="pillars-title">
+<section id="platform-capabilities" class="capability-chapter-section" aria-labelledby="capabilities-main-title">
   <div class="container">
-    <div class="section-header-centered">
-      <span class="section-tag-pill blue">CORE ECOSYSTEM</span>
-      <h2 id="pillars-title" class="section-main-title">Our Three Core Pillars</h2>
+    <div class="section-header-centered" style="margin-bottom: 56px;">
+      <span class="section-tag-pill blue">MODERN LMS PLATFORM</span>
+      <h2 id="capabilities-main-title" class="section-main-title">A Complete Platform for Scalable Education</h2>
       <p class="section-description">
-        Instructify Kenya operates as one integrated education ecosystem structured around three clear pillars of action.
+        Inspired by modern learning management architecture, Instructify Kenya organizes your entire learning ecosystem into three intuitive, outcome-driven stages.
       </p>
     </div>
 
-    <div class="pillars-3-grid">
-      <!-- Pillar 1: LEARN -->
-      <div class="pillar-card">
-        <div class="pillar-card-header">
-          <div class="audience-card-icon" style="margin-bottom:0;" aria-hidden="true">📚</div>
-          <span class="pillar-badge">Pillar 1</span>
-        </div>
-        <h3 class="pillar-title">LEARN</h3>
-        <p class="pillar-desc">
-          Structured professional and personal development pathways delivering verified competency growth.
+    <!-- Chapter 1: Get your learning and training up and running -->
+    <div class="capability-split-grid">
+      <div class="capability-text-col">
+        <span class="chapter-pill">STAGE 1 · SETUP &amp; ONBOARDING</span>
+        <h3 class="chapter-title">Get your learning and training up and running</h3>
+        <p class="chapter-lead">
+          Launch tailored courses and structured institutional programmes without complicated setup cycles.
         </p>
-        <ul class="pillar-list">
-          <li>CPD programmes for educators</li>
-          <li>Professional and student skills courses</li>
-          <li>Inclusive learning with assistive technology</li>
-          <li>Verified certificates of completion</li>
-        </ul>
-        <a href="courses.html" class="btn btn-primary btn-sm" style="margin-top:auto; justify-content:center; background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">
-          Explore Learning Pathways →
-        </a>
+
+        <div class="capability-items-stack">
+          <div class="capability-item">
+            <div class="capability-item-icon">🏛️</div>
+            <div class="capability-item-content">
+              <h4>Prepare your dedicated training space</h4>
+              <p>Deploy branded portals, configure learner roles, and organize cohorts in days, not months.</p>
+            </div>
+          </div>
+          <div class="capability-item">
+            <div class="capability-item-icon">📚</div>
+            <div class="capability-item-content">
+              <h4>Build or select the right programmes</h4>
+              <p>Access ready-to-run CBC pedagogy modules, digital literacy curricula, or upload custom institutional materials.</p>
+            </div>
+          </div>
+          <div class="capability-item">
+            <div class="capability-item-icon">⚡</div>
+            <div class="capability-item-content">
+              <h4>Keep learning moving forward</h4>
+              <p>Automate enrollment schedules, deadline notifications, and progress reminders to ensure high engagement.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Pillar 2: TEACH -->
-      <div class="pillar-card">
-        <div class="pillar-card-header">
-          <div class="audience-card-icon" style="margin-bottom:0;" aria-hidden="true">👩‍🏫</div>
-          <span class="pillar-badge">Pillar 2</span>
+      <div class="capability-visual-col">
+        <div class="capability-mockup-card">
+          <div class="mockup-header-bar">
+            <span class="mockup-dot red"></span>
+            <span class="mockup-dot yellow"></span>
+            <span class="mockup-dot green"></span>
+            <span class="mockup-title">Institutional Portal Setup · Nairobi Cohort</span>
+          </div>
+          <div class="mockup-inner-body">
+            <div class="mockup-stat-row">
+              <div class="mockup-stat-box">
+                <span class="mockup-stat-label">Active Programmes</span>
+                <span class="mockup-stat-val">12 Active</span>
+              </div>
+              <div class="mockup-stat-box">
+                <span class="mockup-stat-label">Completion Target</span>
+                <span class="mockup-stat-val">94.8%</span>
+              </div>
+            </div>
+            <div class="mockup-progress-item">
+              <div class="mockup-progress-label">
+                <span>Teacher CPD &amp; CBC Mastery</span>
+                <span>88% enrolled</span>
+              </div>
+              <div class="mockup-bar-track"><div class="mockup-bar-fill" style="width: 88%;"></div></div>
+            </div>
+            <div class="mockup-progress-item">
+              <div class="mockup-progress-label">
+                <span>Digital Literacy &amp; ICT Integration</span>
+                <span>100% ready</span>
+              </div>
+              <div class="mockup-bar-track"><div class="mockup-bar-fill" style="width: 100%; background: #10B981;"></div></div>
+            </div>
+            <div class="mockup-progress-item">
+              <div class="mockup-progress-label">
+                <span>Universal Design for Learning (UDL)</span>
+                <span>76% in progress</span>
+              </div>
+              <div class="mockup-bar-track"><div class="mockup-bar-fill" style="width: 76%; background: #F59E0B;"></div></div>
+            </div>
+          </div>
         </div>
-        <h3 class="pillar-title">TEACH</h3>
-        <p class="pillar-desc">
-          A full-featured educator studio and quality framework enabling approved experts to publish high-impact courses.
-        </p>
-        <ul class="pillar-list">
-          <li>8-step accessible course authoring builder</li>
-          <li>Lesson, video, transcript and resource uploads</li>
-          <li>Cohort management, rubrics and gradebooks</li>
-          <li>Rigorous academic &amp; accessibility review</li>
-        </ul>
-        <a href="educator-studio.html" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center; color:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">
-          Enter Educator Studio →
-        </a>
+      </div>
+    </div>
+
+    <!-- Chapter 2: Deliver learning that develops people (Reversed Split) -->
+    <div class="capability-split-grid reverse" style="margin-top: 80px;">
+      <div class="capability-visual-col">
+        <div class="capability-mockup-card">
+          <div class="mockup-header-bar">
+            <span class="mockup-dot red"></span>
+            <span class="mockup-dot yellow"></span>
+            <span class="mockup-dot green"></span>
+            <span class="mockup-title">Interactive Learning Experience</span>
+          </div>
+          <div class="mockup-inner-body">
+            <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:16px; margin-bottom:14px;">
+              <div style="font-size:12px; font-weight:700; color:#2563EB; text-transform:uppercase;">Module 3 · Formative Assessment</div>
+              <div style="font-size:15px; font-weight:700; color:#0F172A; margin:4px 0 8px;">Designing CBC 4-Tier Rubrics for Junior Secondary</div>
+              <div style="display:flex; gap:8px; font-size:12px; color:#64748B;">
+                <span>⏱️ 45 mins</span>
+                <span>•</span>
+                <span>📝 1 Practical Task</span>
+                <span>•</span>
+                <span>♿ WCAG 2.2 AA</span>
+              </div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center; background:#ECFDF5; border:1px solid #A7F3D0; border-radius:10px; padding:12px;">
+              <span style="font-size:20px;">✓</span>
+              <div style="font-size:13px; color:#065F46;">
+                <strong>Competency Benchmark Met:</strong> Practical rubric validated against national standards.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Pillar 3: TRANSFORM -->
-      <div class="pillar-card">
-        <div class="pillar-card-header">
-          <div class="audience-card-icon" style="margin-bottom:0;" aria-hidden="true">🏛️</div>
-          <span class="pillar-badge">Pillar 3</span>
-        </div>
-        <h3 class="pillar-title">TRANSFORM</h3>
-        <p class="pillar-desc">
-          Practical institutional advisory, capacity building, and digital infrastructure implementation for education leaders.
+      <div class="capability-text-col">
+        <span class="chapter-pill">STAGE 2 · ENGAGEMENT &amp; DELIVERY</span>
+        <h3 class="chapter-title">Deliver learning that develops people</h3>
+        <p class="chapter-lead">
+          Keep educators and learners engaged through interactive formats, bite-sized modules, and authentic evaluations.
         </p>
-        <ul class="pillar-list">
-          <li>Digital readiness audits and 3-year roadmaps</li>
-          <li>Staff institutional training and coaching</li>
-          <li>Smart classrooms &amp; turnkey LMS deployment</li>
-          <li>Continuous ICT technical maintenance and support</li>
-        </ul>
-        <a href="consultancy.html" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center; color:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">
-          View Institutional Solutions →
-        </a>
+
+        <div class="capability-items-stack">
+          <div class="capability-item">
+            <div class="capability-item-icon">⏱️</div>
+            <div class="capability-item-content">
+              <h4>Learn at your own pace or via live workshops</h4>
+              <p>Access high-definition video lessons, downloadable guides, or attend interactive cohort boot camps.</p>
+            </div>
+          </div>
+          <div class="capability-item">
+            <div class="capability-item-icon">💬</div>
+            <div class="capability-item-content">
+              <h4>Keep people involved and collaborating</h4>
+              <p>Practical lesson assignments, educator discussions, and peer review cultivate meaningful professional growth.</p>
+            </div>
+          </div>
+          <div class="capability-item">
+            <div class="capability-item-icon">🎯</div>
+            <div class="capability-item-content">
+              <h4>Check what is sticking</h4>
+              <p>Formative quizzes, competency rubrics, and diagnostic assessments identify areas needing support.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 3: Scale training without outgrowing your platform -->
+    <div class="capability-split-grid" style="margin-top: 80px;">
+      <div class="capability-text-col">
+        <span class="chapter-pill">STAGE 3 · SCALE &amp; CERTIFICATION</span>
+        <h3 class="chapter-title">Scale training without outgrowing your platform</h3>
+        <p class="chapter-lead">
+          From a single school department to county-wide teacher training networks, Instructify scales seamlessly.
+        </p>
+
+        <div class="capability-items-stack">
+          <div class="capability-item">
+            <div class="capability-item-icon">📈</div>
+            <div class="capability-item-content">
+              <h4>Expand without rebuilding</h4>
+              <p>Add new cohorts, campuses, or corporate departments without performance loss or configuration friction.</p>
+            </div>
+          </div>
+          <div class="capability-item">
+            <div class="capability-item-icon">📊</div>
+            <div class="capability-item-content">
+              <h4>Keep growing operations under control</h4>
+              <p>Supervise multiple schools from central dashboards, export compliance records, and manage access privileges.</p>
+            </div>
+          </div>
+          <div class="capability-item">
+            <div class="capability-item-icon">🔍</div>
+            <div class="capability-item-content">
+              <h4>Certify achievement with tamper-proof records</h4>
+              <p>Every graduate receives a cryptographically verifiable certificate with a real-time public verification URL.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="capability-visual-col">
+        <div class="capability-mockup-card">
+          <div class="mockup-header-bar">
+            <span class="mockup-dot red"></span>
+            <span class="mockup-dot yellow"></span>
+            <span class="mockup-dot green"></span>
+            <span class="mockup-title">Verifiable Credential &amp; Multi-Tier Oversight</span>
+          </div>
+          <div class="mockup-inner-body" style="text-align:center; padding:24px 16px;">
+            <div style="font-size:36px; margin-bottom:10px;">📜</div>
+            <div style="font-family:var(--font-heading); font-size:16px; font-weight:750; color:#0F172A;">Certificate of Competency</div>
+            <div style="font-size:13px; color:#64748B; margin:4px 0 16px;">Awarded in Digital Literacy &amp; ICT Classroom Integration</div>
+            <div style="background:#F1F5F9; border-radius:8px; padding:10px; font-size:12px; font-family:monospace; color:#334155; margin-bottom:16px;">
+              ID: INST-2026-CPD-78942 · STATUS: VERIFIED ✓
+            </div>
+            <a href="verify.html" class="btn btn-secondary btn-sm" style="justify-content:center; width:100%;">Test Certificate Verification →</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════
-     SECTION 5: FEATURED COURSES (Max 4, Full Metadata, Zero Fake Stars)
+     F. FEATURED COURSES (Verified Programmes, Real Prices, Clear CTAs)
      ══════════════════════════════════════════════════════════════ -->
 <section id="courses" class="section-spacious bg-light-slate" aria-labelledby="featured-title">
   <div class="container">
@@ -476,7 +576,7 @@
           </div>
           <div class="course-card-footer">
             <div class="course-price-tag">KES 2,500 <span style="font-size:12px; font-weight:400; color:#64748B;">/ term</span></div>
-            <a href="cpd-registration.html" class="btn btn-primary btn-sm" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">View Details →</a>
+            <a href="cpd-registration.html" class="btn btn-primary btn-sm" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">View Course →</a>
           </div>
         </div>
       </div>
@@ -503,7 +603,7 @@
           </div>
           <div class="course-card-footer">
             <div class="course-price-tag">KES 3,000</div>
-            <a href="courses/digital-literacy-ict-integration.html" class="btn btn-primary btn-sm" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">View Details →</a>
+            <a href="courses/digital-literacy-ict-integration.html" class="btn btn-primary btn-sm" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">View Course →</a>
           </div>
         </div>
       </div>
@@ -530,7 +630,7 @@
           </div>
           <div class="course-card-footer">
             <div class="course-price-tag" style="color:var(--success-green, #16794B);">Free Access</div>
-            <a href="jumuishi-learning-hub.html" class="btn btn-primary btn-sm" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">View Details →</a>
+            <a href="jumuishi-learning-hub.html" class="btn btn-primary btn-sm" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">View Course →</a>
           </div>
         </div>
       </div>
@@ -557,7 +657,7 @@
           </div>
           <div class="course-card-footer">
             <div class="course-price-tag">KES 4,500</div>
-            <a href="consultancy.html" class="btn btn-primary btn-sm" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">View Details →</a>
+            <a href="consultancy.html" class="btn btn-primary btn-sm" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">View Course →</a>
           </div>
         </div>
       </div>
@@ -566,61 +666,126 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════
-     SECTION 6: INSTITUTIONAL SOLUTIONS & CONSULTATION
+     G. HOW INSTRUCTIFY WORKS (Simple 3-Step Journey)
      ══════════════════════════════════════════════════════════════ -->
-<section id="institutional-solutions" class="section-spacious" aria-labelledby="solutions-title">
+<section id="how-it-works" class="section-spacious" aria-labelledby="how-it-works-title">
+  <div class="container">
+    <div class="section-header-centered">
+      <span class="section-tag-pill blue">SIMPLE THREE-STEP PROCESS</span>
+      <h2 id="how-it-works-title" class="section-main-title">How Instructify Works</h2>
+      <p class="section-description">
+        A seamless journey from registration to competency demonstration and recognized certification.
+      </p>
+    </div>
+
+    <div class="how-it-works-grid">
+      <!-- Step 1 -->
+      <div class="step-card">
+        <div class="step-number-badge">1</div>
+        <h3 class="step-card-title">Choose a Course or Solution</h3>
+        <p class="step-card-desc">
+          Browse verified educator CPD programmes, digital skills courses, or select an institutional capacity package tailored to your curriculum requirements.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card">
+        <div class="step-number-badge">2</div>
+        <h3 class="step-card-title">Learn Online, Live or In Person</h3>
+        <p class="step-card-desc">
+          Engage with bite-sized multimedia modules at your own pace, join interactive live webinars, or participate in on-site school workshops.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card">
+        <div class="step-number-badge">3</div>
+        <h3 class="step-card-title">Demonstrate Competency &amp; Get Certified</h3>
+        <p class="step-card-desc">
+          Complete practical pedagogical tasks, track your progress on personalized dashboards, and receive cryptographically verifiable certificates.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     H. INSTITUTIONAL SOLUTIONS (8 Cards + Working Consultation Form)
+     ══════════════════════════════════════════════════════════════ -->
+<section id="institutional-solutions" class="section-spacious bg-light-slate" aria-labelledby="solutions-title">
   <div class="container">
     <div class="section-header-centered">
       <span class="section-tag-pill coral">TRANSFORMATION SERVICES</span>
       <h2 id="solutions-title" class="section-main-title">Institutional Solutions</h2>
       <p class="section-description">
-        Solving concrete educational challenges for schools, colleges, NGOs, and education ministries.
+        Comprehensive educational transformation services for schools, colleges, educational networks, and corporate organizations across Kenya.
       </p>
     </div>
 
-    <div class="solutions-4-grid">
-      <!-- Solution 1: Digital Transformation -->
-      <div class="solution-card-redesign">
-        <div class="solution-icon-box" aria-hidden="true">🔄</div>
-        <h3 class="solution-card-title">Digital Transformation</h3>
-        <div class="solution-block-label">Client Problem</div>
-        <p class="solution-problem-text">Fragmented software, underutilized hardware, and lack of coherent digital integration roadmap.</p>
-        <div class="solution-block-label">Expected Outcome</div>
-        <p class="solution-outcome-text">Unified LMS architecture, phased 3-year digital strategy, and measurable educator proficiency metrics.</p>
-        <a href="consultancy.html#digital-transformation" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">Learn More →</a>
+    <!-- 8 Concise Capability Cards -->
+    <div class="solutions-8-grid">
+      <!-- 1. Staff Training -->
+      <div class="solution-card-compact">
+        <div class="solution-compact-icon">👥</div>
+        <h3 class="solution-compact-title">Staff Training &amp; Capacity</h3>
+        <p class="solution-compact-desc">Continuous professional development workshops equipping educators with modern pedagogical and digital competencies.</p>
+        <a href="schools.html#training" class="btn-level-3">Learn More →</a>
       </div>
 
-      <!-- Solution 2: Training and Capacity Building -->
-      <div class="solution-card-redesign">
-        <div class="solution-icon-box" aria-hidden="true">👥</div>
-        <h3 class="solution-card-title">Training &amp; Capacity Building</h3>
-        <div class="solution-block-label">Client Problem</div>
-        <p class="solution-problem-text">Teaching staff unprepared for CBC digital rubrics, learner tracking, and 21st-century instructional design.</p>
-        <div class="solution-block-label">Expected Outcome</div>
-        <p class="solution-outcome-text">Standardized staff competency, practical lesson plan templates, and increased student engagement.</p>
-        <a href="schools.html#training" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">Learn More →</a>
+      <!-- 2. Digital Transformation -->
+      <div class="solution-card-compact">
+        <div class="solution-compact-icon">🔄</div>
+        <h3 class="solution-compact-title">Digital Transformation</h3>
+        <p class="solution-compact-desc">Strategic roadmaps, digital readiness audits, and phased institutional technology adoption plans.</p>
+        <a href="consultancy.html#digital-transformation" class="btn-level-3">Learn More →</a>
       </div>
 
-      <!-- Solution 3: ICT Infrastructure & Smart Classrooms -->
-      <div class="solution-card-redesign">
-        <div class="solution-icon-box" aria-hidden="true">🖥️</div>
-        <h3 class="solution-card-title">ICT Infrastructure &amp; Smart Classrooms</h3>
-        <div class="solution-block-label">Client Problem</div>
-        <p class="solution-problem-text">Weak campus networking, fragile power setups, and unreliable interactive displays causing lesson downtime.</p>
-        <div class="solution-block-label">Expected Outcome</div>
-        <p class="solution-outcome-text">Turnkey interactive classroom deployments, offline caching servers, and scheduled hardware maintenance.</p>
-        <a href="consultancy.html#infrastructure" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">Learn More →</a>
+      <!-- 3. Educational Consultancy -->
+      <div class="solution-card-compact">
+        <div class="solution-compact-icon">💼</div>
+        <h3 class="solution-compact-title">Educational Consultancy</h3>
+        <p class="solution-compact-desc">Independent advisory on school policies, learning frameworks, EdTech procurement, and quality assurance.</p>
+        <a href="consultancy.html" class="btn-level-3">Learn More →</a>
       </div>
 
-      <!-- Solution 4: Accessible Learning & LMS Implementation -->
-      <div class="solution-card-redesign">
-        <div class="solution-icon-box" aria-hidden="true">♿</div>
-        <h3 class="solution-card-title">Accessible Learning &amp; LMS Implementation</h3>
-        <div class="solution-block-label">Client Problem</div>
-        <p class="solution-problem-text">Learners with visual, motor, or hearing disabilities excluded by non-compliant commercial portals.</p>
-        <div class="solution-block-label">Expected Outcome</div>
-        <p class="solution-outcome-text">WCAG 2.2 Level AA compliant LMS, assistive technology integrations, and universal design learning assets.</p>
-        <a href="institution-dashboard.html" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">Learn More →</a>
+      <!-- 4. Curriculum Development -->
+      <div class="solution-card-compact">
+        <div class="solution-compact-icon">📑</div>
+        <h3 class="solution-compact-title">Curriculum Development</h3>
+        <p class="solution-compact-desc">CBC and CBE strand alignment, formative assessment rubrics, and inclusive learning material design.</p>
+        <a href="consultancy.html#curriculum" class="btn-level-3">Learn More →</a>
+      </div>
+
+      <!-- 5. Technology Integration -->
+      <div class="solution-card-compact">
+        <div class="solution-compact-icon">⚙️</div>
+        <h3 class="solution-compact-title">Technology Integration</h3>
+        <p class="solution-compact-desc">Connecting interactive display systems, student information tools, and digital classroom applications.</p>
+        <a href="consultancy.html#technology" class="btn-level-3">Learn More →</a>
+      </div>
+
+      <!-- 6. LMS Deployment -->
+      <div class="solution-card-compact">
+        <div class="solution-compact-icon">📊</div>
+        <h3 class="solution-compact-title">Turnkey LMS Deployment</h3>
+        <p class="solution-compact-desc">Branded, low-bandwidth, WCAG 2.2 AA compliant online learning platforms for schools and colleges.</p>
+        <a href="institution-dashboard.html" class="btn-level-3">Learn More →</a>
+      </div>
+
+      <!-- 7. Infrastructure Support -->
+      <div class="solution-card-compact">
+        <div class="solution-compact-icon">📡</div>
+        <h3 class="solution-compact-title">Infrastructure Support</h3>
+        <p class="solution-compact-desc">Smart classroom installation, local caching servers, reliable campus networking, and hardware support.</p>
+        <a href="consultancy.html#infrastructure" class="btn-level-3">Learn More →</a>
+      </div>
+
+      <!-- 8. Research & Evaluation -->
+      <div class="solution-card-compact">
+        <div class="solution-compact-icon">🔍</div>
+        <h3 class="solution-compact-title">Research &amp; Evaluation</h3>
+        <p class="solution-compact-desc">Independent learning impact audits, educator proficiency baselines, and data-driven programme reviews.</p>
+        <a href="consultancy.html#evaluation" class="btn-level-3">Learn More →</a>
       </div>
     </div>
 
@@ -663,10 +828,10 @@
         </div>
       </div>
 
-      <!-- Right Form: consultation-form -->
+      <!-- Right Form: consultation-form (Preserved FormValidator handler) -->
       <div class="consultation-form-card">
         <h3 style="font-family:var(--font-heading); font-size:20px; font-weight:700; color:#1E293B; margin-bottom:18px;">
-          Request a Digital Readiness Assessment
+          Request an Institutional Assessment
         </h3>
 
         <form id="consultation-form" novalidate>
@@ -707,246 +872,170 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════
-     SECTION 7: INCLUSIVE LEARNING (Major Homepage Feature)
+     I. LEARNING EXPERIENCE & LMS CAPABILITIES
      ══════════════════════════════════════════════════════════════ -->
-<section id="inclusive-learning" class="section-spacious bg-light-slate" aria-labelledby="inclusive-title">
+<section id="lms-experience" class="section-spacious" aria-labelledby="experience-title">
   <div class="container">
     <div class="section-header-centered">
-      <span class="section-tag-pill" style="background:#F3EEFF; color:var(--accessible-purple, #6542A6);">ACCESSIBILITY AS A PRODUCT STANDARD</span>
-      <h2 id="inclusive-title" class="section-main-title">Learning Designed for Different Abilities</h2>
+      <span class="section-tag-pill teal">LMS CAPABILITIES</span>
+      <h2 id="experience-title" class="section-main-title">A Modern, Purpose-Built Learning Experience</h2>
       <p class="section-description">
-        Instructify Kenya is engineered from the ground up to support learners with visual, hearing, motor, cognitive, and learning disabilities. In full alignment with Article 54 of the Constitution of Kenya and WCAG 2.2 Level AA guidelines.
+        Designed to remove barriers, track real progress, and deliver measurable outcomes on any device or connection.
       </p>
     </div>
 
-    <div class="inclusive-features-grid">
+    <div class="lms-experience-grid">
+      <!-- 1. Online Course Access -->
+      <div class="lms-card">
+        <div class="lms-card-icon" aria-hidden="true">📱</div>
+        <h3 class="lms-card-title">Structured Modular Access</h3>
+        <p class="lms-card-desc">Bite-sized units, downloadable lesson summaries, and responsive video players optimized for computers, tablets, and phones.</p>
+      </div>
+
+      <!-- 2. Assessments & Rubrics -->
+      <div class="lms-card">
+        <div class="lms-card-icon" aria-hidden="true">📝</div>
+        <h3 class="lms-card-title">Authentic Assessments</h3>
+        <p class="lms-card-desc">Competency-based formative quizzes, practical classroom assignments, and structured 4-tier grading rubrics.</p>
+      </div>
+
+      <!-- 3. Progress Tracking -->
+      <div class="lms-card">
+        <div class="lms-card-icon" aria-hidden="true">📊</div>
+        <h3 class="lms-card-title">Real-Time Progress Tracking</h3>
+        <p class="lms-card-desc">Visual milestone indicators, completion percentages, and automated reminders keep learners focused on their goals.</p>
+      </div>
+
+      <!-- 4. Verifiable Certificates -->
+      <div class="lms-card">
+        <div class="lms-card-icon" aria-hidden="true">📜</div>
+        <h3 class="lms-card-title">Verifiable Credentials</h3>
+        <p class="lms-card-desc">Instant issuance of tamper-proof, cryptographic digital certificates that employers and headteachers can verify publicly.</p>
+      </div>
+
+      <!-- 5. Role Dashboards -->
+      <div class="lms-card">
+        <div class="lms-card-icon" aria-hidden="true">👥</div>
+        <h3 class="lms-card-title">Role-Specific Dashboards</h3>
+        <p class="lms-card-desc">Tailored workspaces for learners, instructors, school administrators, and corporate managers with granular permissions.</p>
+      </div>
+
+      <!-- 6. Accessibility Standard -->
+      <div class="lms-card">
+        <div class="lms-card-icon" aria-hidden="true">♿</div>
+        <h3 class="lms-card-title">Accessibility &amp; Low Bandwidth</h3>
+        <p class="lms-card-desc">Built to WCAG 2.2 AA standards with full keyboard navigation, screen-reader markup, and low-data modes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     J. INTEGRATIONS AND PAYMENTS (Verified Integrations)
+     ══════════════════════════════════════════════════════════════ -->
+<section id="integrations" class="section-spacious bg-light-slate" aria-labelledby="integrations-title">
+  <div class="container">
+    <div class="section-header-centered">
+      <span class="section-tag-pill green">VERIFIED INTEGRATIONS</span>
+      <h2 id="integrations-title" class="section-main-title">Connected, Frictionless Infrastructure</h2>
+      <p class="section-description">
+        Seamlessly integrated with trusted national payment gateways, digital identities, and educational cloud services.
+      </p>
+    </div>
+
+    <div class="integrations-grid">
+      <!-- M-Pesa -->
+      <div class="integration-card">
+        <div class="integration-icon">📱</div>
+        <h3 class="integration-name">M-Pesa (Daraja API)</h3>
+        <p class="integration-desc">Instant STK Push and Paybill automated reconciliation for course fees and workshop registrations.</p>
+      </div>
+
+      <!-- Paystack -->
+      <div class="integration-card">
+        <div class="integration-icon">💳</div>
+        <h3 class="integration-name">Card &amp; Bank Payments</h3>
+        <p class="integration-desc">Secure PCI-DSS compliant debit/credit card processing via Paystack for local and international transactions.</p>
+      </div>
+
+      <!-- LMS Student Portal -->
+      <div class="integration-card">
+        <div class="integration-icon">🔐</div>
+        <h3 class="integration-name">Student &amp; School Portals</h3>
+        <p class="integration-desc">Single Sign-On (SSO), automated enrollment provisioning, and gradebook exports for institutional networks.</p>
+      </div>
+
+      <!-- Cloud Video & Media -->
+      <div class="integration-card">
+        <div class="integration-icon">☁️</div>
+        <h3 class="integration-name">Optimized Cloud Media</h3>
+        <p class="integration-desc">Adaptive bitrate video streaming, CDN-cached lesson downloads, and encrypted document delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     K. EVIDENCE AND TRUST (Transparent, Grounded in Real Capabilities)
+     ══════════════════════════════════════════════════════════════ -->
+<section id="evidence-trust" class="section-spacious" aria-labelledby="trust-main-title">
+  <div class="container">
+    <div class="section-header-centered">
+      <span class="section-tag-pill blue">WHY WORK WITH US</span>
+      <h2 id="trust-main-title" class="section-main-title">Anchored in Documented Educational Standards</h2>
+      <p class="section-description">
+        We do not rely on unverifiable claims or fictional personas. Every course, workshop, and institutional roadmap is anchored in verifiable national frameworks.
+      </p>
+    </div>
+
+    <div class="trust-capability-grid">
       <!-- 1 -->
-      <div class="inclusive-feature-box">
-        <div class="inclusive-feature-icon" aria-hidden="true">🔊</div>
-        <div>
-          <h4 class="inclusive-feature-title">Screen-Reader Compatible</h4>
-          <p class="inclusive-feature-desc">Semantic HTML5 landmarks, ARIA labels, and structured heading hierarchies.</p>
-        </div>
+      <div class="trust-capability-card">
+        <div class="trust-capability-icon">📜</div>
+        <h3 class="trust-capability-title">TSC CPD Alignment</h3>
+        <p class="trust-capability-desc">Our teacher professional development modules are designed strictly around Teachers Service Commission competency standards.</p>
       </div>
 
       <!-- 2 -->
-      <div class="inclusive-feature-box">
-        <div class="inclusive-feature-icon" aria-hidden="true">⌨️</div>
-        <div>
-          <h4 class="inclusive-feature-title">Full Keyboard Navigation</h4>
-          <p class="inclusive-feature-desc">All interactive buttons, menus, tabs, and forms are fully keyboard reachable with zero traps.</p>
-        </div>
+      <div class="trust-capability-card">
+        <div class="trust-capability-icon">🇰🇪</div>
+        <h3 class="trust-capability-title">KICD CBC Framework</h3>
+        <p class="trust-capability-desc">Course rubrics, formative assessment strands, and pedagogical strategies built on Kenya Institute of Curriculum Development guidelines.</p>
       </div>
 
       <!-- 3 -->
-      <div class="inclusive-feature-box">
-        <div class="inclusive-feature-icon" aria-hidden="true">💬</div>
-        <div>
-          <h4 class="inclusive-feature-title">Captions and Transcripts</h4>
-          <p class="inclusive-feature-desc">Synchronized closed captions and complete downloadable text transcripts for video/audio lessons.</p>
-        </div>
+      <div class="trust-capability-card">
+        <div class="trust-capability-icon">⚖️</div>
+        <h3 class="trust-capability-title">Constitution Art. 54</h3>
+        <p class="trust-capability-desc">Our Jumuishi inclusive hub and digital platforms fulfill Kenya's constitutional mandate for accessible learning for persons with disabilities.</p>
       </div>
 
       <!-- 4 -->
-      <div class="inclusive-feature-box">
-        <div class="inclusive-feature-icon" aria-hidden="true">🖼️</div>
-        <div>
-          <h4 class="inclusive-feature-title">Alternative Text for Images</h4>
-          <p class="inclusive-feature-desc">Meaningful descriptions for all diagrams, graphs, and educational illustrations.</p>
-        </div>
-      </div>
-
-      <!-- 5 -->
-      <div class="inclusive-feature-box">
-        <div class="inclusive-feature-icon" aria-hidden="true">🔍</div>
-        <div>
-          <h4 class="inclusive-feature-title">Adjustable Text Size</h4>
-          <p class="inclusive-feature-desc">Zoom up to 200% without loss of content, functionality, or horizontal scrolling.</p>
-        </div>
-      </div>
-
-      <!-- 6 -->
-      <div class="inclusive-feature-box">
-        <div class="inclusive-feature-icon" aria-hidden="true">🎯</div>
-        <div>
-          <h4 class="inclusive-feature-title">Clear Focus Indicators</h4>
-          <p class="inclusive-feature-desc">High-contrast, 3.5px visual focus outlines on every actionable element.</p>
-        </div>
-      </div>
-
-      <!-- 7 -->
-      <div class="inclusive-feature-box">
-        <div class="inclusive-feature-icon" aria-hidden="true">📄</div>
-        <div>
-          <h4 class="inclusive-feature-title">Accessible Documents</h4>
-          <p class="inclusive-feature-desc">Downloadable PDFs with tagged structures, machine-readable text, and bookmarks.</p>
-        </div>
-      </div>
-
-      <!-- 8 -->
-      <div class="inclusive-feature-box">
-        <div class="inclusive-feature-icon" aria-hidden="true">📝</div>
-        <div>
-          <h4 class="inclusive-feature-title">Alternative Assessments</h4>
-          <p class="inclusive-feature-desc">Flexible submission modes including text, audio responses, and untimed options.</p>
-        </div>
-      </div>
-
-      <!-- 9 -->
-      <div class="inclusive-feature-box">
-        <div class="inclusive-feature-icon" aria-hidden="true">📶</div>
-        <div>
-          <h4 class="inclusive-feature-title">Low-Bandwidth Optimized</h4>
-          <p class="inclusive-feature-desc">Lightweight asset delivery, compressed payloads, and downloadable offline lesson packs.</p>
-        </div>
-      </div>
-
-      <!-- 10 -->
-      <div class="inclusive-feature-box">
-        <div class="inclusive-feature-icon" aria-hidden="true">🤝</div>
-        <div>
-          <h4 class="inclusive-feature-title">Accommodation Requests</h4>
-          <p class="inclusive-feature-desc">A transparent, direct process to request personalized learning adjustments within 48 hours.</p>
-        </div>
-      </div>
-    </div>
-
-    <div style="text-align:center; margin-top:36px;">
-      <a href="accessibility.html" class="btn btn-primary btn-md" style="background:var(--accessible-purple, #6542A6); border-color:var(--accessible-purple, #6542A6); color:#FFFFFF;">
-        Explore Our Accessibility Commitment →
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════
-     SECTION 8: EVIDENCE AND TRUST SIGNALS
-     ══════════════════════════════════════════════════════════════ -->
-<section id="trust-evidence" class="section-spacious" aria-labelledby="trust-title">
-  <div class="container">
-    <div class="section-header-centered">
-      <span class="section-tag-pill blue">VERIFIABLE STANDARDS</span>
-      <h2 id="trust-title" class="section-main-title">Rigorous Standards &amp; Credible Verification</h2>
-      <p class="section-description">
-        We do not rely on unsubstantiated claims. Every programme, module, and institutional engagement is anchored in documented frameworks.
-      </p>
-    </div>
-
-    <div class="features-4-grid">
-      <!-- Trust Signal 1 -->
-      <div class="feature-card-clean">
-        <div class="feature-icon-box blue" aria-hidden="true">📜</div>
-        <h3 class="feature-card-title">TSC CPD Framework</h3>
-        <p class="feature-card-desc">
-          Professional development modules designed around the Teachers Service Commission competency standards.
-        </p>
-        <a href="cpd-registration.html" class="btn-level-3">View Framework Details →</a>
-      </div>
-
-      <!-- Trust Signal 2 -->
-      <div class="feature-card-clean">
-        <div class="feature-icon-box emerald" aria-hidden="true">🇰🇪</div>
-        <h3 class="feature-card-title">KICD CBC Alignment</h3>
-        <p class="feature-card-desc">
-          Curriculum schemes of work, strand assessment rubrics, and pedagogy built on KICD competency guidelines.
-        </p>
-        <a href="resources.html" class="btn-level-3 btn-emerald">View CBC Alignment →</a>
-      </div>
-
-      <!-- Trust Signal 3 -->
-      <div class="feature-card-clean">
-        <div class="feature-icon-box purple" aria-hidden="true">⚖️</div>
-        <h3 class="feature-card-title">Constitution Art. 54</h3>
-        <p class="feature-card-desc">
-          Inclusive platform architecture and Jumuishi Learning Hub aligned with Kenya's constitutional rights for persons with disabilities.
-        </p>
-        <a href="accessibility.html" class="btn-level-3 btn-purple">Read Legal Framework →</a>
-      </div>
-
-      <!-- Trust Signal 4 -->
-      <div class="feature-card-clean">
-        <div class="feature-icon-box coral" aria-hidden="true">🔍</div>
-        <h3 class="feature-card-title">Instant Verification</h3>
-        <p class="feature-card-desc">
-          Every certificate issued by Instructify carries a unique cryptographic ID verifiable in real-time by employers and schools.
-        </p>
-        <a href="verify.html" class="btn-level-3 btn-coral">Verify a Certificate →</a>
+      <div class="trust-capability-card">
+        <div class="trust-capability-icon">🛡️</div>
+        <h3 class="trust-capability-title">Cryptographic Verification</h3>
+        <p class="trust-capability-desc">Every certificate carries a unique cryptographic identifier that headteachers and employers can verify publicly in seconds.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════
-     SECTION 9: RESOURCES (Guides, Checklists, Templates)
-     ══════════════════════════════════════════════════════════════ -->
-<section id="resources" class="section-spacious bg-light-slate" aria-labelledby="resources-title">
-  <div class="container">
-    <div class="section-header-centered">
-      <span class="section-tag-pill teal">PRACTICAL TOOLS</span>
-      <h2 id="resources-title" class="section-main-title">Teaching &amp; Institutional Resources</h2>
-      <p class="section-description">
-        Curated pedagogical guides, digital readiness checklists, and curriculum templates free to download.
-      </p>
-    </div>
-
-    <div class="resources-4-grid">
-      <!-- Resource 1 -->
-      <div class="resource-card-clean">
-        <span class="resource-type-pill">Curriculum Guide</span>
-        <h3 class="resource-title">CBC Competency Rubric Design Guide</h3>
-        <p class="resource-desc">A structured walkthrough for designing 4-tier formative assessment rubrics for junior secondary strands.</p>
-        <a href="resources.html" class="btn btn-secondary btn-sm" style="margin-top:auto;">Download Guide (PDF) →</a>
-      </div>
-
-      <!-- Resource 2 -->
-      <div class="resource-card-clean">
-        <span class="resource-type-pill">Checklist</span>
-        <h3 class="resource-title">Campus ICT Readiness Audit Checklist</h3>
-        <p class="resource-desc">A 24-point evaluation tool for headteachers and board members assessing hardware, power, and bandwidth readiness.</p>
-        <a href="resources.html#templates" class="btn btn-secondary btn-sm" style="margin-top:auto;">Download Checklist (PDF) →</a>
-      </div>
-
-      <!-- Resource 3 -->
-      <div class="resource-card-clean">
-        <span class="resource-type-pill">Handbook</span>
-        <h3 class="resource-title">Accessible Learning Material Creation</h3>
-        <p class="resource-desc">Practical guide on authoring screen-reader friendly handouts, video subtitles, and high-contrast presentations.</p>
-        <a href="accessibility.html" class="btn btn-secondary btn-sm" style="margin-top:auto;">Download Handbook (PDF) →</a>
-      </div>
-
-      <!-- Resource 4 -->
-      <div class="resource-card-clean">
-        <span class="resource-type-pill">Template</span>
-        <h3 class="resource-title">Blended Lesson Planning Matrix</h3>
-        <p class="resource-desc">Editable lesson plan template incorporating digital tools, student collaboration, and differentiated assessment.</p>
-        <a href="resources.html#templates" class="btn btn-secondary btn-sm" style="margin-top:auto;">Download Template (DOCX) →</a>
-      </div>
-    </div>
-
-    <div style="text-align:center; margin-top:36px;">
-      <a href="resources.html" class="btn btn-primary btn-md" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">
-        Explore Free Resources →
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════
-     SECTION 10: FINAL CALL TO ACTION
+     L. FINAL CALL TO ACTION (Focused Two Choices)
      ══════════════════════════════════════════════════════════════ -->
 <section class="final-cta-section" aria-label="Final Call to Action" style="background:var(--royal-blue, #123C8C);">
   <div class="container">
     <div class="final-cta-content">
       <h2 class="final-cta-headline" style="color:#FFFFFF;">Ready to Learn, Teach or Transform?</h2>
       <p class="final-cta-description" style="color:var(--soft-blue, #EAF2FF); max-width:680px; margin:0 auto 28px;">
-        Join educators advancing their professional skills, approved creators publishing courses, and institutions modernizing their digital learning infrastructure.
+        Join educators advancing their pedagogical skills, approved experts creating courses, and institutions modernizing their digital learning infrastructure.
       </p>
       <div class="final-cta-buttons" style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
         <a href="courses.html" class="btn btn-level-1" style="background:var(--gold-yellow, #F4B400); color:var(--primary-text-black, #151515); font-weight:700; border-color:var(--gold-yellow, #F4B400);">
-          Explore Courses →
+          Start Learning →
         </a>
-        <a href="consultancy.html" class="btn btn-outline" style="color:#FFFFFF; border-color:#FFFFFF; background:transparent;">
-          Book a Consultation
+        <a href="schools.html" class="btn btn-outline" style="color:#FFFFFF; border-color:#FFFFFF; background:transparent;">
+          Request Training for Your Institution →
         </a>
       </div>
     </div>
@@ -954,7 +1043,7 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════
-     SECTION 11: FOOTER (Brand Integrity, Legal & Accessibility)
+     M. FOOTER (Brand Integrity, Legal & Accessibility)
      ══════════════════════════════════════════════════════════════ -->
 <section class="brand-statement-section" aria-label="Brand Philosophy Statement">
   <div class="container">
@@ -1000,37 +1089,49 @@
         </div>
       </div>
 
-      <!-- Col 2: Navigation Links -->
+      <!-- Col 2: Learning -->
       <div>
-        <h4 class="footer-heading">Navigation</h4>
+        <h4 class="footer-heading">Learning</h4>
         <ul class="footer-nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="educator-studio.html">For Educators</a></li>
-          <li><a href="schools.html">For Institutions</a></li>
-          <li><a href="consultancy.html">Consultancy</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="register.html">Sign In</a></li>
+          <li><a href="courses.html">Browse All Courses</a></li>
+          <li><a href="cpd-registration.html">Teacher CPD Registration</a></li>
+          <li><a href="courses.html#students">Student Programmes</a></li>
+          <li><a href="courses/digital-literacy-ict-integration.html">Digital Skills Training</a></li>
+          <li><a href="jumuishi-learning-hub.html">Inclusive Learning Hub</a></li>
+          <li><a href="verify.html">Verify Certificate</a></li>
         </ul>
       </div>
 
-      <!-- Col 3: Programmes & Institutions -->
+      <!-- Col 3: Institutional Solutions -->
       <div>
-        <h4 class="footer-heading">Programmes</h4>
+        <h4 class="footer-heading">Institutional Solutions</h4>
         <ul class="footer-nav-list">
-          <li><a href="cpd-registration.html">Teacher CPD Registration</a></li>
-          <li><a href="courses.html#digital">Digital Skills Training</a></li>
-          <li><a href="jumuishi-learning-hub.html">Inclusive Learning Hub</a></li>
+          <li><a href="schools.html#training">Staff Training &amp; Capacity</a></li>
+          <li><a href="consultancy.html#digital-transformation">Digital Transformation</a></li>
           <li><a href="consultancy.html#infrastructure">ICT Infrastructure</a></li>
           <li><a href="consultancy.html#smart-classrooms">Smart Classrooms</a></li>
-          <li><a href="verify.html">Certificate Verification</a></li>
-          <li><a href="accessibility.html">Accessibility Statement</a></li>
-          <li><a href="accessibility.html#accommodation">Accommodation Request</a></li>
+          <li><a href="institution-dashboard.html">Turnkey LMS Solutions</a></li>
+          <li><a href="schools.html#corporate">Corporate Training</a></li>
+          <li><a href="consultancy.html">Educational Consultancy</a></li>
         </ul>
       </div>
 
-      <!-- Col 4: Stay Informed & Contact -->
+      <!-- Col 4: Company & Resources -->
+      <div>
+        <h4 class="footer-heading">Company &amp; Support</h4>
+        <ul class="footer-nav-list">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="resources.html">Teaching Resources</a></li>
+          <li><a href="blog.html">Articles &amp; Insights</a></li>
+          <li><a href="workshop-registration.html">Workshops &amp; Boot Camps</a></li>
+          <li><a href="accessibility.html">Accessibility Statement</a></li>
+          <li><a href="contact.html">Contact &amp; Help Centre</a></li>
+          <li><a href="login.html">Sign In</a></li>
+          <li><a href="register.html">Get Started</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Stay Informed & Contact -->
       <div>
         <h4 class="footer-heading">Stay Informed</h4>
         <p style="font-size:13.5px; line-height:1.6; margin-bottom:14px; color:#E2E8F0;">
@@ -1078,43 +1179,6 @@
 <script src="js/courses.js"></script>
 
 <script>
-// ── Interactive Counter Animation on Scroll ──────────────────
-(function() {
-  const counters = document.querySelectorAll('.impact-number');
-  let started = false;
-
-  function countUp(el) {
-    const target = parseInt(el.getAttribute('data-target'), 10);
-    if (isNaN(target)) return;
-    const duration = 2000;
-    const step = 20;
-    const increment = target / (duration / step);
-    let current = 0;
-
-    const timer = setInterval(function() {
-      current += increment;
-      if (current >= target) {
-        clearInterval(timer);
-        el.textContent = target.toLocaleString() + '+';
-      } else {
-        el.textContent = Math.floor(current).toLocaleString() + '+';
-      }
-    }, step);
-  }
-
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting && !started) {
-        started = true;
-        counters.forEach(countUp);
-      }
-    });
-  }, { threshold: 0.25 });
-
-  const impactSec = document.getElementById('impact');
-  if (impactSec) observer.observe(impactSec);
-})();
-
 // ── Consultation Form Validation Handler ────────────────────
 (function() {
   const form = document.getElementById('consultation-form');
@@ -1140,7 +1204,7 @@
       if (window.showToast) window.showToast('Consultation request sent successfully! Our team will contact you shortly.', 'success');
       form.reset();
       setTimeout(function() {
-        btn.textContent = 'Request Consultation →';
+        btn.textContent = 'Request Assessment →';
         btn.style.background = '';
         btn.style.borderColor = '';
       }, 4000);
