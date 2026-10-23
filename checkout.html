@@ -489,7 +489,7 @@
             We are confirming your payment. Please do not refresh or close this page.
           </div>
           <div class="status-ref" style="margin-bottom:1.25rem;">
-            Order: <strong id="processing-ref">—</strong> &nbsp;·&nbsp; Amount: <strong id="processing-amount">KES 8,500</strong>
+            Order: <strong id="processing-ref">—</strong> &nbsp;·&nbsp; Phone: <strong id="processing-phone-masked">—</strong> &nbsp;·&nbsp; Amount: <strong id="processing-amount">KES 8,500</strong>
           </div>
           <div style="width:100%;background:#E2E8F0;border-radius:99px;height:4px;overflow:hidden;max-width:320px;margin:0 auto 1.75rem;">
             <div id="progress-bar" style="height:100%;background:var(--primary, #2145E6);border-radius:99px;width:0;transition:width 90s linear;"></div>
@@ -769,7 +769,8 @@ function renderState(state) {
     } else {
       document.getElementById('processing-title').textContent = 'Payment request sent. Check your phone and enter your M-Pesa PIN to complete the payment.';
       const masked = state.maskedPhone || 'your phone';
-      document.getElementById('processing-phone-masked').textContent = masked;
+      const maskedEl = document.getElementById('processing-phone-masked');
+      if (maskedEl) maskedEl.textContent = masked;
       document.getElementById('processing-sub').innerHTML =
         `We are confirming your payment. Please do not refresh or close this page.<br><small style="color:#64748B;display:block;margin-top:6px;">Prompt sent to <strong>${masked}</strong></small>`;
     }

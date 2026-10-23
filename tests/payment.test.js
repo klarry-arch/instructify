@@ -319,6 +319,38 @@ console.log('\n💼 5. Paybill (Option A) & Direct M-Pesa (Option B) Tests');
   console.log('  ✅ 5.3 Malformed/short M-Pesa receipt correctly rejected');
 }
 
+{
+  // 5.4 Duplicate receipt redemption prevention
+  const { req: dupReq, res: dupRes } = mockNodeReqRes('POST', '/api/verify-payment', {
+    orderReference: 'IK-2026-TESTDUP',
+    method: 'paybill',
+    receiptNumber: 'TD78KL2901', // Already used in 5.2 above
+    userName: 'Impostor Learner',
+  });
+
+  await verifyPaymentHandler(dupReq, dupRes);
+  assert.equal(dupRes.statusCode, 400, 'FAIL 5.4: Duplicate receipt code must be rejected with 400');
+  assert.equal(dupRes.responseData.success, false, 'FAIL 5.4: Success must be false on duplicate code');
+  assert.ok(dupRes.responseData.error.includes('already been used'), 'FAIL 5.4: Error message must explain code is already used');
+  console.log('  ✅ 5.4 Duplicate M-Pesa receipt code correctly detected and rejected');
+}
+
+{
+  // 5.5 crs_000 Digital Teaching & Smart Classrooms catalog order test
+  const { req: crs0Req, res: crs0Res } = mockNodeReqRes('POST', '/api/create-order', {
+    courseId: 'crs_000',
+    userId: 'usr_smart_1',
+    userEmail: 'smart_educator@school.ke',
+    userName: 'Alex Mutiso',
+  });
+
+  await createOrderHandler(crs0Req, crs0Res);
+  assert.equal(crs0Res.statusCode, 200, 'FAIL 5.5: crs_000 must be found and created');
+  assert.equal(crs0Res.responseData.courseTitle, 'Digital Teaching & Smart Classrooms', 'FAIL 5.5: Title must match crs_000');
+  assert.equal(crs0Res.responseData.amount, 1650000, 'FAIL 5.5: Amount must be 1650000 (KES 16,500)');
+  console.log('  ✅ 5.5 crs_000 (Digital Teaching & Smart Classrooms) verified at KES 16,500');
+}
+
 console.log('\n🎉 ALL TESTS PASSED SUCCESSFULLY! 100% Verified.\n');
 process.exit(0);
 

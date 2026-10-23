@@ -203,7 +203,7 @@ header.site-header .navbar,
 
 .nav-link {
   font-family: var(--font-body, 'Inter', sans-serif) !important;
-  font-size: 13.5px !important;
+  font-size: var(--font-size-nav, 15px) !important;
   font-weight: 500 !important;
   color: #14213D !important;
   padding: 6px clamp(6px, 0.6vw, 10px);
@@ -216,7 +216,7 @@ header.site-header .navbar,
   align-items: center;
   gap: 4px;
   flex-shrink: 0;
-  height: 36px;
+  height: 38px;
   line-height: 1.2;
 }
 
@@ -464,7 +464,7 @@ a[href*="jumuishi"].nav-link.active::after {
   gap: 8px;
   padding: 8px 12px;
   border-radius: 8px;
-  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-family: var(--font-heading, 'Manrope', sans-serif);
   font-size: 14px;
   font-weight: 600;
   color: #475569;
@@ -757,8 +757,8 @@ a[href*="jumuishi"].nav-link.active::after {
   padding: 11px 24px;
   border-radius: 8px;
   font-family: var(--font-body, 'Inter', sans-serif) !important;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: var(--font-size-btn, clamp(0.9375rem, 0.89rem + 0.2vw, 1.0625rem)) !important;
+  font-weight: 600 !important;
   letter-spacing: 0.01em;
   cursor: pointer;
   border: 1.5px solid transparent;
@@ -1019,17 +1019,18 @@ a[href*="jumuishi"].nav-link.active::after {
 
 /* ── Button Sizes ── */
 .btn-sm {
-  padding: 7px 16px;
-  font-size: 13px;
+  padding: 8px 16px;
+  font-size: 14px !important;
   border-radius: 8px;
 }
 .btn-md {
   padding: 11px 24px;
-  font-size: 15px;
+  font-size: var(--font-size-btn, 16px) !important;
+  font-weight: 600 !important;
 }
 .btn-lg {
   padding: 14px 32px;
-  font-size: 16px;
+  font-size: 17px !important;
   font-weight: 700;
   border-radius: 12px;
 }
@@ -1071,7 +1072,7 @@ a[href*="jumuishi"].nav-link.active::after {
 
 .footer h1, .footer h2, .footer h3, .footer h4, .footer h5, .footer h6 {
   color: #FFFFFF !important;
-  font-family: var(--font-heading, 'Merriweather', serif) !important;
+  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
 }
 
 .footer h3 span { color: var(--accent-color, #F4B942) !important; }
@@ -1094,7 +1095,7 @@ a[href*="jumuishi"].nav-link.active::after {
 }
 
 .footer-brand-title {
-  font-family: var(--font-heading, 'Merriweather', serif) !important;
+  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
   font-size: 1.35rem;
   font-weight: 700;
   color: #FFFFFF !important;
@@ -2330,7 +2331,7 @@ body {
 }
 
 .connect-title {
-  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-family: var(--font-heading, 'Manrope', sans-serif);
   font-size: 24px !important;
   font-weight: 800;
   color: #FFFFFF !important;
@@ -2584,11 +2585,11 @@ input[type="search"],
 select,
 textarea {
   font-family: var(--font-body, 'Inter', sans-serif) !important;
-  font-size: 15px !important;
+  font-size: 16px !important; /* Minimum 16px to prevent iOS Safari auto-zoom */
   border-radius: 8px !important;
   border: 1.5px solid #DCE3EA !important;
   background-color: #FFFFFF !important;
-  color: #172033 !important;
+  color: #151515 !important;
   padding: 11px 16px !important;
   transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
@@ -2641,7 +2642,7 @@ textarea:focus {
 }
 
 .contact-email-address {
-  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-family: var(--font-heading, 'Manrope', sans-serif);
   font-size: 15.5px;
   font-weight: 750;
   color: #183AD6;
@@ -2652,11 +2653,11 @@ textarea:focus {
 }
 
 .contact-email-badge {
-  font-size: 11px;
+  font-size: 14px !important;
   font-weight: 750;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: 2.5px 8px;
+  padding: 3px 8px;
   border-radius: 6px;
   background: #EFF6FF;
   color: #1D4ED8;
@@ -2664,7 +2665,7 @@ textarea:focus {
 }
 
 .contact-email-desc {
-  font-size: 13.5px;
+  font-size: 14.5px !important;
   color: #475569;
   line-height: 1.45;
   margin: 0;
@@ -2679,7 +2680,7 @@ textarea:focus {
   border-radius: 8px;
   padding: 8px 12px;
   margin-top: 8px;
-  font-size: 13px;
+  font-size: 14px !important;
   color: #15803D;
   font-weight: 600;
   animation: fadeIn 0.2s ease-in;
@@ -2689,7 +2690,7 @@ textarea:focus {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 13.5px;
+  font-size: 15px !important;
   color: #475569;
   cursor: pointer;
   line-height: 1.5;
@@ -2713,7 +2714,7 @@ textarea:focus {
   margin-top: 14px;
   padding: 14px 18px;
   border-radius: 12px;
-  font-size: 13.5px;
+  font-size: 14.5px !important;
   line-height: 1.55;
   display: none;
   animation: fadeIn 0.25s ease-out;
@@ -2745,7 +2746,7 @@ textarea:focus {
 }
 
 .form-help-text {
-  font-size: 12.5px;
+  font-size: 14px !important;
   color: #64748B;
   margin-top: 5px;
   line-height: 1.4;
@@ -2798,7 +2799,7 @@ textarea:focus {
   padding: 6px 14px;
   border-radius: 999px;
   font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 12px;
+  font-size: 14px !important;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -3090,7 +3091,7 @@ textarea:focus {
   border: 1px solid rgba(31, 122, 110, 0.22);
 }
 .infra-offering-card h4 {
-  font-family: var(--font-heading, 'Merriweather', Georgia, serif);
+  font-family: var(--font-heading, 'Manrope', sans-serif);
   font-size: 17px;
   font-weight: 700;
   color: #172033;
@@ -3200,7 +3201,7 @@ textarea:focus {
   margin-bottom: 14px;
 }
 .reason-card h4 {
-  font-family: var(--font-heading, 'Merriweather', Georgia, serif);
+  font-family: var(--font-heading, 'Manrope', sans-serif);
   font-size: 17px;
   font-weight: 700;
   color: #172033;

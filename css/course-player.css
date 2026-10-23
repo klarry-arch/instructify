@@ -53,9 +53,9 @@ body.player-mode {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #475569;
+  color: #334155;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   padding: 8px 14px;
   border-radius: 999px;
@@ -65,7 +65,7 @@ body.player-mode {
 
 .player-btn-back:hover {
   background: #E2E8F0;
-  color: #0F172A;
+  color: #09275F;
 }
 
 .player-course-meta {
@@ -74,15 +74,15 @@ body.player-mode {
 }
 
 .player-course-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
-  color: #0F172A;
+  color: #09275F;
   line-height: 1.25;
 }
 
 .player-course-instructor {
-  font-size: 12px;
-  color: #64748B;
+  font-size: 14px;
+  color: #475569;
 }
 
 .player-header-right {
@@ -107,15 +107,15 @@ body.player-mode {
 
 .player-progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #2145E6, #10B981);
+  background: linear-gradient(90deg, #123C8C, #10B981);
   border-radius: 999px;
   transition: width 0.3s ease;
 }
 
 .player-progress-text {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
-  color: #0F172A;
+  color: #09275F;
   min-width: 44px;
 }
 
@@ -172,9 +172,9 @@ body.player-mode {
 .player-section-header {
   padding: 12px 14px;
   background: #F1F5F9;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
-  color: #1E293B;
+  color: #09275F;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -195,18 +195,18 @@ body.player-mode {
   cursor: pointer;
   transition: all 0.15s ease;
   text-decoration: none;
-  color: #334155;
+  color: #151515;
 }
 
 .player-lesson-item:hover {
   background: #F8FAFC;
-  color: #2145E6;
+  color: #123C8C;
 }
 
 .player-lesson-item.active {
   background: #EEF2FF;
-  color: #2145E6;
-  border-left: 4px solid #2145E6;
+  color: #123C8C;
+  border-left: 4px solid #123C8C;
   padding-left: 10px;
   font-weight: 700;
 }
@@ -226,15 +226,15 @@ body.player-mode {
 }
 
 .player-lesson-name {
-  font-size: 13px;
+  font-size: 14.5px;
   line-height: 1.35;
   white-space: normal;
   word-break: break-word;
 }
 
 .player-lesson-duration {
-  font-size: 11.5px;
-  color: #64748B;
+  font-size: 14px;
+  color: #475569;
   margin-top: 3px;
 }
 
@@ -293,37 +293,39 @@ body.player-mode {
   gap: 4px;
   padding: 4px 10px;
   border-radius: 999px;
-  font-size: 11px;
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   background: #EEF2FF;
-  color: #2145E6;
+  color: #123C8C;
   margin-bottom: 8px;
 }
 
 .player-lesson-title {
-  font-size: 24px;
-  font-weight: 800;
-  color: #0F172A;
+  font-size: var(--font-size-h4, clamp(1.3125rem, 1.23rem + 0.36vw, 1.5rem));
+  font-weight: 700;
+  line-height: var(--line-height-h4, 1.3);
+  color: #09275F;
   margin-bottom: 6px;
 }
 
 .player-lesson-meta {
-  font-size: 13px;
-  color: #64748B;
+  font-size: 14px;
+  color: #475569;
 }
 
 .player-reading-body {
-  font-size: 15px;
+  font-size: var(--font-size-body, clamp(1rem, 0.95rem + 0.24vw, 1.125rem));
   line-height: 1.7;
-  color: #334155;
+  color: #151515;
 }
 
 .player-reading-body h3 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #0F172A;
+  font-size: var(--font-size-h5, clamp(1.125rem, 1.07rem + 0.24vw, 1.25rem));
+  font-weight: 600;
+  line-height: var(--line-height-h5, 1.4);
+  color: #123C8C;
   margin: 22px 0 10px;
 }
 
@@ -345,7 +347,7 @@ body.player-mode {
   padding: 14px 18px;
   border-radius: 12px;
   margin: 18px 0;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
 }
 
@@ -371,9 +373,9 @@ body.player-mode {
 }
 
 .player-quiz-question {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
-  color: #0F172A;
+  color: #09275F;
   margin-bottom: 16px;
 }
 
@@ -393,17 +395,17 @@ body.player-mode {
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.15s ease;
-  font-size: 14px;
-  color: #1E293B;
+  font-size: 15px;
+  color: #151515;
 }
 
 .player-quiz-option:hover {
-  border-color: #2145E6;
+  border-color: #123C8C;
   background: #F8FAFC;
 }
 
 .player-quiz-option.selected {
-  border-color: #2145E6;
+  border-color: #123C8C;
   background: #EEF2FF;
   font-weight: 600;
 }
@@ -425,9 +427,9 @@ body.player-mode {
 
 .player-tab-trigger {
   padding: 12px 20px;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
-  color: #64748B;
+  color: #475569;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -436,8 +438,8 @@ body.player-mode {
 }
 
 .player-tab-trigger.active {
-  color: #2145E6;
-  border-bottom-color: #2145E6;
+  color: #123C8C;
+  border-bottom-color: #123C8C;
   background: #FFFFFF;
 }
 

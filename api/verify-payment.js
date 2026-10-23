@@ -79,6 +79,18 @@ async function handleManualVerification(body) {
     return { status: 400, body: { success: false, error: 'Please enter a valid M-Pesa confirmation code (e.g. TD78KL2901).' } };
   }
 
+  // Anti-fraud check: Prevent duplicate redemption of the same receipt code
+  const existingReceiptOrder = await storeGet(`receipt:${cleanCode}`);
+  if (existingReceiptOrder && existingReceiptOrder !== orderReference) {
+    return {
+      status: 400,
+      body: {
+        success: false,
+        error: `This M-Pesa confirmation code (${cleanCode}) has already been used for another order. Please check your SMS or contact support.`,
+      },
+    };
+  }
+
   const now = new Date().toISOString();
   let order = orderReference ? await storeGet(`order:ref:${orderReference}`) : null;
 
@@ -107,6 +119,8 @@ async function handleManualVerification(body) {
   order.paymentId = paymentId;
   order.paidAt = now;
   order.updatedAt = now;
+
+  await storeSet(`receipt:${cleanCode}`, order.orderReference);
 
   await storeSet(`order:ref:${order.orderReference}`, order);
   if (order.id) await storeSet(`order:id:${order.id}`, order);

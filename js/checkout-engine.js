@@ -180,7 +180,7 @@
       });
 
       try {
-        const res = await fetch(`${API_BASE}/api/initiate-payment`, {
+        let res = await fetch(`${API_BASE}/api/initiate-payment`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -188,12 +188,28 @@
             method: 'mpesa',
             phone,
             forceResend,
+            courseId: _state.courseId,
           }),
-        });
+        }).catch(() => null);
 
-        const data = await res.json().catch(() => null);
+        // Fallback to PHP direct endpoint if rewrite not active or returns non-JSON/404
+        if (!res || !res.ok || res.headers.get('content-type')?.includes('text/html')) {
+          res = await fetch(`${API_BASE}/api/payment.php?action=initiate-payment`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              orderReference: _state.orderReference,
+              method: 'mpesa',
+              phone,
+              forceResend,
+              courseId: _state.courseId,
+            }),
+          }).catch(() => null);
+        }
 
-        if (res.ok && data) {
+        const data = res ? await res.json().catch(() => null) : null;
+
+        if (res && res.ok && data) {
           _setState({
             status: 'processing',
             checkoutRequestId: data.checkoutRequestId || null,
@@ -250,27 +266,47 @@
         method,
       };
 
+      const payload = {
+        orderReference: orderRef,
+        method,
+        receiptNumber: cleanCode,
+        phone: phone || _state.phone || '',
+        courseId: _state.courseId,
+        userName: session ? session.name : '',
+        userEmail: session ? session.email : '',
+      };
+
       try {
-        const res = await fetch(`${API_BASE}/api/verify-payment`, {
+        let res = await fetch(`${API_BASE}/api/verify-payment`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            orderReference: orderRef,
-            method,
-            receiptNumber: cleanCode,
-            phone: phone || _state.phone || '',
-            courseId: _state.courseId,
-            userName: session ? session.name : '',
-            userEmail: session ? session.email : '',
-          }),
-        });
+          body: JSON.stringify(payload),
+        }).catch(() => null);
 
-        if (res.ok) {
+        // Fallback to PHP direct endpoint if rewrite not active or returns non-JSON/404
+        if (!res || !res.ok || res.headers.get('content-type')?.includes('text/html')) {
+          const phpRes = await fetch(`${API_BASE}/api/payment.php?action=verify-payment`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          }).catch(() => null);
+          if (phpRes) res = phpRes;
+        }
+
+        if (res) {
           const data = await res.json().catch(() => null);
+          if (!res.ok) {
+            const serverErrMsg = data?.error || 'Verification failed. Please check your M-Pesa receipt code.';
+            throw new Error(serverErrMsg);
+          }
           if (data) verifiedData = { ...verifiedData, ...data };
         }
       } catch (err) {
         console.warn('[CheckoutEngine] Remote verification notice:', err.message);
+        if (err.message && !err.message.includes('fetch')) {
+          _setState({ status: 'awaiting_payment', error: err.message });
+          throw err;
+        }
       }
 
       // Record in local enrollment store immediately
@@ -431,11 +467,20 @@
     }
 
     try {
-      const res = await fetch(
+      let res = await fetch(
         `${API_BASE}/api/verify-payment?ref=${encodeURIComponent(_state.orderReference)}`
-      );
-      const data = await res.json();
-      if (!res.ok) return;
+      ).catch(() => null);
+
+      // Fallback to direct PHP endpoint
+      if (!res || !res.ok || res.headers.get('content-type')?.includes('text/html')) {
+        res = await fetch(
+          `${API_BASE}/api/payment.php?action=verify-payment&ref=${encodeURIComponent(_state.orderReference)}`
+        ).catch(() => null);
+      }
+
+      if (!res || !res.ok) return;
+      const data = await res.json().catch(() => null);
+      if (!data) return;
 
       if (data.status === 'paid') {
         _stopPolling();

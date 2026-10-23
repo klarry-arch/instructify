@@ -4,7 +4,7 @@
    Brand Colors: #064FC1 (Primary Blue) · #12B84E (Brand Green) · #FFD21A (Brand Yellow) · #F20D20 (Brand Red) · #44484F (Dark Grey)
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@500;600;700;800&family=Montserrat:wght@500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Manrope:wght@500;600;700;800&family=Montserrat:wght@500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
 
 /* ══════════════════════════════════════════════════════════════
    CANONICAL DESIGN TOKENS — Premium EdTech Design System
@@ -308,26 +308,80 @@
   --border-radius-2xl:    24px;
   --border-radius-full:   9999px;
 
-  /* ── Typography ── */
-  --font-heading:   'Poppins', 'Montserrat', 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* ── Typography & Font Stacks ── */
+  --font-primary:   'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading:   'Manrope', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-sans:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display:   'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display:   'Manrope', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono:      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
-  /* ── Unified Fluid Typography Scale ── */
-  --font-size-hero:    clamp(32px, 5.2vw, 48px);
-  --font-size-page:    clamp(26px, 3.8vw, 38px);
-  --font-size-h1:      clamp(28px, 4.5vw, 44px);
-  --font-size-h2:      clamp(22px, 3.2vw, 32px);
-  --font-size-h3:      clamp(18px, 2.2vw, 24px);
-  --font-size-h4:      clamp(16px, 1.8vw, 20px);
-  --font-size-h5:      clamp(14.5px, 1.4vw, 17px);
-  --font-size-h6:      14px;
-  --font-size-lead:    clamp(16px, 1.8vw, 18px);
-  --font-size-body:    clamp(14.5px, 1.5vw, 15.5px);
-  --font-size-sm:      13.5px;
-  --font-size-xs:      12px;
+  /* ── Desktop & Mobile Heading Scale (Fluid Responsive Clamped) ── */
+  /* H1: Desktop 48px, line-height 1.1, weight 700; Mobile 36px */
+  --font-size-h1:      clamp(2.25rem, 1.91rem + 1.45vw, 3rem);
+  --line-height-h1:    1.10;
+
+  /* H2: Desktop 38px, line-height 1.2, weight 700; Mobile 30px */
+  --font-size-h2:      clamp(1.875rem, 1.65rem + 0.97vw, 2.375rem);
+  --line-height-h2:    1.20;
+
+  /* H3: Desktop 30px, line-height 1.25, weight 700; Mobile 25px */
+  --font-size-h3:      clamp(1.5625rem, 1.42rem + 0.6vw, 1.875rem);
+  --line-height-h3:    1.25;
+
+  /* H4: Desktop 24px, line-height 1.3, weight 600; Mobile 21px */
+  --font-size-h4:      clamp(1.3125rem, 1.23rem + 0.36vw, 1.5rem);
+  --line-height-h4:    1.30;
+
+  /* H5: Desktop 20px, line-height 1.4, weight 600; Mobile 18px */
+  --font-size-h5:      clamp(1.125rem, 1.07rem + 0.24vw, 1.25rem);
+  --line-height-h5:    1.40;
+
+  /* H6: Desktop 17px, line-height 1.4, weight 600; Mobile 16px */
+  --font-size-h6:      clamp(1rem, 0.97rem + 0.12vw, 1.0625rem);
+  --line-height-h6:    1.40;
+
+  /* ── Supporting Typography Scale (Fluid Clamped) ── */
+  /* Introductory text: 18–20px */
+  --font-size-intro:    clamp(1.125rem, 1.07rem + 0.24vw, 1.25rem);
+  --font-size-lead:     clamp(1.125rem, 1.07rem + 0.24vw, 1.25rem);
+
+  /* Body text: 16–18px (Mobile body minimum 16px) */
+  --font-size-body:     clamp(1rem, 0.95rem + 0.24vw, 1.125rem);
+
+  /* Card descriptions: 15–16px */
+  --font-size-card-desc:clamp(0.9375rem, 0.91rem + 0.12vw, 1rem);
+
+  /* Navigation: 15–16px */
+  --font-size-nav:      clamp(0.9375rem, 0.91rem + 0.12vw, 1rem);
+
+  /* Buttons: 15–17px, semibold */
+  --font-size-btn:      clamp(0.9375rem, 0.89rem + 0.2vw, 1.0625rem);
+
+  /* Form labels and input text: minimum 16px */
+  --font-size-input:    16px;
+  --font-size-label:    clamp(1rem, 0.98rem + 0.1vw, 1.0625rem);
+
+  /* Supporting text: 14–15px (Universal minimum 14px for meaningful text) */
+  --font-size-supporting:clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
+  --font-size-sm:       clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
+  --font-size-xs:       14px;
+
+  /* ── Compact Dashboard Typography Scale ── */
+  /* Dashboard page title: 30–36px */
+  --font-size-dash-title:   clamp(1.875rem, 1.7rem + 0.72vw, 2.25rem);
+  /* Dashboard section heading: 22–26px */
+  --font-size-dash-section: clamp(1.375rem, 1.28rem + 0.48vw, 1.625rem);
+  /* Card heading: 17–20px */
+  --font-size-dash-card:    clamp(1.0625rem, 1rem + 0.36vw, 1.25rem);
+  /* Primary statistic: 28–36px */
+  --font-size-dash-stat:    clamp(1.75rem, 1.55rem + 0.96vw, 2.25rem);
+  /* Dashboard body text: 14–16px */
+  --font-size-dash-body:    clamp(0.875rem, 0.85rem + 0.2vw, 1rem);
+
+  /* Legacy & compatibility aliases */
+  --font-size-hero:    var(--font-size-h1);
+  --font-size-page:    var(--font-size-h2);
 
   /* ── Line Heights ── */
   --line-height-tight:    1.10;
@@ -409,10 +463,10 @@ html {
 body {
   font-family: var(--font-body);
   font-size: var(--font-size-body);
-  font-weight: var(--font-weight-normal);
+  font-weight: 400 !important;
   background-color: var(--background);
-  color: var(--text-main);
-  line-height: var(--line-height-body);
+  color: var(--primary-text-black, #151515);
+  line-height: var(--line-height-body, 1.65);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -455,72 +509,85 @@ input, textarea, select { font-family: inherit; color: var(--text-main); }
 ul, ol { list-style: none; }
 
 /* ══════════════════════════════════════════════════════════════
-   TYPOGRAPHY SYSTEM
+   CANONICAL TYPOGRAPHY SYSTEM
+   Primary Font: Inter
+   Fallbacks: Source Sans 3, Segoe UI, Arial, sans-serif
+   Desktop / Mobile Fluid Clamping, Accessible Scale, No <14px
    ══════════════════════════════════════════════════════════════ */
 
-/* Headings */
+/* Headings (Desktop & Mobile Standardized) */
 h1, .h1 {
-  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+  font-family: var(--font-heading) !important;
   font-size: var(--font-size-h1);
   font-weight: 700 !important;
-  line-height: 1.15;
+  line-height: var(--line-height-h1, 1.10);
   letter-spacing: -0.025em;
-  color: var(--heading-color, #14213D);
+  color: var(--dark-royal-blue, #09275F) !important;
   margin-bottom: 20px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 h2, .h2 {
-  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+  font-family: var(--font-heading) !important;
   font-size: var(--font-size-h2);
   font-weight: 700 !important;
-  line-height: 1.22;
+  line-height: var(--line-height-h2, 1.20);
   letter-spacing: -0.02em;
-  color: var(--heading-color, #14213D);
+  color: var(--royal-blue, #123C8C) !important;
   margin-bottom: 16px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 h3, .h3 {
-  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+  font-family: var(--font-heading) !important;
   font-size: var(--font-size-h3);
-  font-weight: 650 !important;
-  line-height: 1.30;
+  font-weight: 700 !important;
+  line-height: var(--line-height-h3, 1.25);
   letter-spacing: -0.015em;
-  color: var(--heading-color, #14213D);
+  color: var(--royal-blue, #123C8C) !important;
   margin-bottom: 12px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 h4, .h4 {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-heading);
   font-size: var(--font-size-h4);
   font-weight: 600;
-  line-height: 1.35;
-  color: var(--heading-color, #172033);
+  line-height: var(--line-height-h4, 1.30);
+  color: var(--dark-royal-blue, #09275F);
   margin-bottom: 10px;
+  overflow-wrap: break-word;
 }
 
 h5, .h5 {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-heading);
   font-size: var(--font-size-h5);
   font-weight: 600;
-  line-height: 1.40;
-  color: var(--heading-color, #172033);
+  line-height: var(--line-height-h5, 1.40);
+  color: var(--royal-blue, #123C8C);
   margin-bottom: 8px;
+  overflow-wrap: break-word;
 }
 
 h6, .h6 {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-heading);
   font-size: var(--font-size-h6);
   font-weight: 600;
-  line-height: 1.45;
-  color: var(--heading-color, #172033);
+  line-height: var(--line-height-h6, 1.40);
+  color: var(--royal-blue, #123C8C);
   margin-bottom: 6px;
+  overflow-wrap: break-word;
 }
 
+/* Paragraphs & Body Typography (Minimum 16px on mobile, #151515 body color) */
 p {
-  font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 15px;
-  line-height: var(--line-height-body);
-  color: var(--text-color, #475569);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body, 1.65);
+  color: var(--primary-text-black, #151515);
   margin-bottom: 16px;
 }
 p:last-child { margin-bottom: 0; }
@@ -529,58 +596,192 @@ p:last-child { margin-bottom: 0; }
 .hero-title, .page-title, .hero-heading, .hero-h1 {
   font-family: var(--font-heading);
   font-size: var(--font-size-h1);
-  font-weight: 800;
-  line-height: 1.10;
-  letter-spacing: -0.03em;
+  font-weight: 700;
+  line-height: var(--line-height-h1, 1.10);
+  letter-spacing: -0.025em;
+  color: var(--dark-royal-blue, #09275F);
 }
 
-.section-title, .dashboard-title {
+.section-title {
   font-family: var(--font-heading);
-  font-size: 32px;
+  font-size: var(--font-size-h2);
   font-weight: 700;
-  line-height: 1.20;
-  letter-spacing: -0.025em;
-  color: var(--text-main);
+  line-height: var(--line-height-h2, 1.20);
+  letter-spacing: -0.02em;
+  color: var(--royal-blue, #123C8C);
   margin-bottom: 14px;
 }
 
 .section-subtitle {
-  font-size: 17px;
-  line-height: 1.65;
-  color: var(--text-muted);
-  max-width: 660px;
+  font-family: var(--font-body);
+  font-size: var(--font-size-intro);
+  line-height: 1.60;
+  color: #475569;
+  max-width: 680px;
   margin: 0 auto;
 }
 
+.lead, .hero-desc, .hero-lead, .hero-subtitle, .section-intro, .page-intro {
+  font-family: var(--font-body);
+  font-size: var(--font-size-intro) !important;
+  line-height: 1.60 !important;
+  color: #475569;
+  font-weight: 400;
+}
+
+/* Card Typography */
+.card-title, .course-card-title-custom, .course-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--dark-royal-blue, #09275F);
+  margin-bottom: 8px;
+}
+
+.card-desc, .card-description, .course-card-desc, .programme-summary, .feature-card-desc {
+  font-family: var(--font-body);
+  font-size: var(--font-size-card-desc) !important;
+  line-height: 1.55 !important;
+  font-weight: 400 !important;
+  color: #475569;
+}
+
+/* Navigation Links */
+.nav-link, .nav-links a {
+  font-family: var(--font-body);
+  font-size: var(--font-size-nav) !important;
+  font-weight: 500 !important;
+  line-height: 1.50;
+}
+
+/* Buttons */
+.btn, button.btn, a.btn {
+  font-family: var(--font-body);
+  font-size: var(--font-size-btn) !important;
+  font-weight: 600 !important;
+  line-height: 1.40;
+}
+
+/* Form Labels & Inputs (Never below 16px to prevent iOS auto-zoom) */
+label, .form-label {
+  font-family: var(--font-body);
+  font-size: var(--font-size-label) !important;
+  font-weight: 500 !important;
+  line-height: 1.45;
+  color: var(--primary-text-black, #151515);
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+input, textarea, select, .form-control, .form-input, .form-select {
+  font-family: var(--font-body) !important;
+  font-size: var(--font-size-input, 16px) !important;
+  line-height: 1.50 !important;
+  color: var(--primary-text-black, #151515);
+}
+
+/* Supporting, Metadata & Small Text (Minimum 14px rule enforced) */
+.supporting-text, .form-text, .help-text, .metadata-text, .card-meta, small {
+  font-family: var(--font-body);
+  font-size: var(--font-size-supporting) !important;
+  line-height: 1.50;
+  color: #64748B;
+}
+
+/* Universal Accessibility: Never allow meaningful text below 14px */
+small, .badge, .tag, .meta, .caption, .hint, .status-pill, .pill,
+.breadcrumbs, .breadcrumb, .breadcrumb-item, .inst-eyebrow,
+.lesson-duration, .duration, .author-title, .comment-date,
+.timestamp, .post-meta, .article-meta, .course-meta, .card-meta,
+.footer-link, .copyright, .disclaimer, .form-help-text, .form-feedback,
+.toc-link, .timeline-date, .category-badge, .filter-label,
+.tab-label, .table th, .table td, .stat-label, .order-card-label,
+.badge-counter, .lms-role-switcher, .lms-role-select, .student-metric-lbl,
+.student-pill-btn, .lms-subnav-link {
+  font-size: max(14px, 0.875rem) !important;
+}
+
+/* Eliminate sub-14px font size across all elements carrying readable content */
+[style*="font-size: 8px"], [style*="font-size: 9px"], [style*="font-size: 10px"],
+[style*="font-size: 11px"], [style*="font-size: 12px"], [style*="font-size: 13px"],
+[style*="font-size:8px"], [style*="font-size:9px"], [style*="font-size:10px"],
+[style*="font-size:11px"], [style*="font-size:12px"], [style*="font-size:13px"],
+[style*="font-size: 10.5px"], [style*="font-size: 11.5px"], [style*="font-size: 12.5px"], [style*="font-size: 13.5px"],
+[style*="font-size:10.5px"], [style*="font-size:11.5px"], [style*="font-size:12.5px"], [style*="font-size:13.5px"] {
+  font-size: max(14px, 0.875rem) !important;
+}
+
+/* Prevent heading truncation, clipping or fixed-height containers */
+h1, h2, h3, h4, h5, h6, .hero-title, .page-title, .section-title, .card-title {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: normal !important;
+  -webkit-line-clamp: unset !important;
+}
+
+/* Compact Dashboard Typography Scale */
+.dashboard-title, .dash-page-title, .portal-page-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-dash-title) !important;
+  font-weight: 700 !important;
+  line-height: 1.20 !important;
+  color: var(--dark-royal-blue, #09275F) !important;
+  margin-bottom: 8px;
+}
+
+.dashboard-section-title, .dash-section-title, .section-heading-dash {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-dash-section) !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  color: var(--royal-blue, #123C8C) !important;
+  margin-bottom: 12px;
+}
+
+.dashboard-card-title, .stat-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-dash-card) !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  color: var(--dark-royal-blue, #09275F);
+}
+
+.stat-value, .stat-number, .stat-card-value, .dashboard-stat-primary, .metric-value {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-dash-stat) !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  color: var(--royal-blue, #123C8C) !important;
+}
+
+.dashboard-page, .dashboard-container, .student-dashboard, .lms-portal, .educator-studio-container, .institution-dashboard-container {
+  font-size: var(--font-size-dash-body);
+}
+
+.dashboard-page p, .dashboard-container p, .student-dashboard p, .lms-portal p {
+  font-size: var(--font-size-dash-body) !important;
+}
+
 .dashboard-subtitle {
-  font-size: 14px;
+  font-size: var(--font-size-supporting);
   line-height: 1.55;
   color: var(--text-muted);
   margin-top: 4px;
 }
 
-.lead, .hero-lead, .hero-subtitle {
-  font-size: var(--font-size-lead);
-  line-height: 1.65;
-  color: var(--text-secondary);
-  font-weight: 400;
-}
-
-.course-card-title-custom, .course-title {
-  font-family: var(--font-heading);
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--text-main);
-  margin-bottom: 8px;
-}
-
 /* Dark/Hero Section Text Overrides */
-.dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4,
+.dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4, .dark-section h5, .dark-section h6,
 .blue-section h1, .blue-section h2, .blue-section h3, .blue-section h4,
 .hero-dark h1, .hero-dark h2, .hero-dark h3,
-.courses-hero h1, .courses-hero h2, .courses-hero h3 {
-  color: #FFFFFF;
+.courses-hero h1, .courses-hero h2, .courses-hero h3,
+.site-footer-modern h1, .site-footer-modern h2, .site-footer-modern h3, .site-footer-modern h4 {
+  color: #FFFFFF !important;
+}
+.dark-section p, .blue-section p, .hero-dark p, .courses-hero p {
+  color: rgba(255, 255, 255, 0.92) !important;
 }
 .dark-section p, .blue-section p, .hero-dark p, .courses-hero p { color: rgba(255,255,255,0.90); }
 
@@ -1377,30 +1578,30 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
    - Cards and interface elements: Inter, 400–700 weight
    ══════════════════════════════════════════════════════════════ */
 
-/* 1. Hero Headings: Merriweather, 700–800 weight */
+/* 1. Hero Headings: Manrope, 700–800 weight */
 h1, .h1,
 .hero-title,
 .hero-h1,
 .hero-heading,
 .brand-statement-headline,
 header h1 {
-  font-family: var(--font-heading, 'Merriweather', serif) !important;
+  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
   font-weight: 700 !important;
   color: var(--heading-color, #172033);
 }
 
-/* 2. Section Headings: Merriweather, 700 weight */
+/* 2. Section Headings: Manrope, 700 weight */
 h2, .h2,
 .section-title,
 .dashboard-title,
 .page-title,
 .saas-h2 {
-  font-family: var(--font-heading, 'Merriweather', serif) !important;
+  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
   font-weight: 700 !important;
   color: var(--heading-color, #172033);
 }
 
-/* 3. Card Headings: Merriweather, 700 weight */
+/* 3. Card Headings: Manrope, 700 weight */
 h3, .h3,
 .card-title,
 .card-heading,
@@ -1417,7 +1618,7 @@ h3, .h3,
 .module-title,
 .lesson-title,
 .assignment-title {
-  font-family: var(--font-heading, 'Merriweather', serif) !important;
+  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
   font-weight: 700 !important;
   color: var(--heading-color, #172033);
 }

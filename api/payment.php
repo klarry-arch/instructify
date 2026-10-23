@@ -67,14 +67,15 @@ const ENROLLMENTS_EMAIL   = 'enrollments@instructify.co.ke';
 
 // Authoritative Course Catalogue (KES × 100 minor units)
 const COURSE_CATALOGUE = [
+    'crs_000' => ['id' => 'crs_000', 'title' => 'Digital Teaching & Smart Classrooms', 'amount' => 1650000, 'active' => true],
     'crs_001' => ['id' => 'crs_001', 'title' => 'ICT Integration in Education', 'amount' => 1500000, 'active' => true],
     'crs_002' => ['id' => 'crs_002', 'title' => 'Digital Literacy Certification Program', 'amount' => 850000, 'active' => true],
     'crs_003' => ['id' => 'crs_003', 'title' => 'CBE Curriculum Implementation', 'amount' => 1850000, 'active' => true],
     'crs_004' => ['id' => 'crs_004', 'title' => 'Artificial Intelligence in Education', 'amount' => 2200000, 'active' => true],
     'crs_005' => ['id' => 'crs_005', 'title' => 'Online Teaching Methodologies', 'amount' => 1200000, 'active' => true],
     'crs_006' => ['id' => 'crs_006', 'title' => 'Educational Leadership & Management', 'amount' => 2500000, 'active' => true],
-    'crs_007' => ['id' => 'crs_007', 'title' => 'Special Needs Education Technologies', 'amount' => 1400000, 'active' => true],
-    'crs_008' => ['id' => 'crs_008', 'title' => 'STEM & Robotics Curriculum for Schools', 'amount' => 2000000, 'active' => true],
+    'crs_007' => ['id' => 'crs_007', 'title' => 'Assessment & Evaluation Strategies', 'amount' => 1350000, 'active' => true],
+    'crs_008' => ['id' => 'crs_008', 'title' => 'Continuous Professional Development for Teachers', 'amount' => 650000, 'active' => true],
     'crs_009' => ['id' => 'crs_009', 'title' => 'Early Childhood Development Digital Tools', 'amount' => 1100000, 'active' => true],
     'crs_010' => ['id' => 'crs_010', 'title' => 'School Data Management & MIS', 'amount' => 1600000, 'active' => true],
 ];
@@ -445,13 +446,24 @@ if ($action === 'create-order') {
     }
 
     if (!array_key_exists($courseId, COURSE_CATALOGUE)) {
-        http_response_code(404);
-        echo json_encode(['error' => 'Course not found or is no longer available.']);
-        exit;
+        // Support dynamic, workshop or custom course purchases if valid amount provided
+        if (!empty($body['amount']) && is_numeric($body['amount']) && (int)$body['amount'] > 0) {
+            $amountMinor = (int)$body['amount'];
+            $course = [
+                'id' => $courseId,
+                'title' => trim((string)($body['courseTitle'] ?? 'Professional Training Course')),
+                'amount' => $amountMinor,
+                'active' => true,
+            ];
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'Course not found or is no longer available.']);
+            exit;
+        }
+    } else {
+        $course = COURSE_CATALOGUE[$courseId];
+        $amountMinor = $course['amount'];
     }
-
-    $course = COURSE_CATALOGUE[$courseId];
-    $amountMinor = $course['amount'];
     $payableKes = (int)round($amountMinor / 100);
     $orderRef = generateOrderReference();
     $orderId = 'ord_' . date('Ymd') . '_' . bin2hex(random_bytes(4));
@@ -624,9 +636,29 @@ if ($action === 'verify-payment') {
             $config = getDarajaConfig();
             if ($config['isConfigured']) {
                 $queryRes = queryDarajaStkStatus($order['checkoutRequestId']);
-                if (!empty($queryRes['success'])) {
+                $qCode = (string)($queryRes['resultCode'] ?? '');
+                if (!empty($queryRes['success']) || $qCode === '0') {
                     $order['status'] = 'paid';
+                    $order['paymentState'] = 'successful';
                     $order['paidAt'] = date('c');
+                    $orders[$ref] = $order;
+                    saveJsonStore('orders.json', $orders);
+                } elseif ($qCode === '1032') {
+                    $order['status'] = 'cancelled';
+                    $order['paymentState'] = 'cancelled';
+                    $order['failureReason'] = 'Payment request was cancelled on the phone.';
+                    $orders[$ref] = $order;
+                    saveJsonStore('orders.json', $orders);
+                } elseif ($qCode === '1037' || $qCode === '2001') {
+                    $order['status'] = 'timed_out';
+                    $order['paymentState'] = 'timed_out';
+                    $order['failureReason'] = 'M-Pesa payment prompt timed out without PIN entry.';
+                    $orders[$ref] = $order;
+                    saveJsonStore('orders.json', $orders);
+                } elseif ($qCode !== '' && $qCode !== '1' && $qCode !== '499') {
+                    $order['status'] = 'failed';
+                    $order['paymentState'] = 'failed';
+                    $order['failureReason'] = $queryRes['resultDesc'] ?: 'Payment could not be completed.';
                     $orders[$ref] = $order;
                     saveJsonStore('orders.json', $orders);
                 }
@@ -713,6 +745,17 @@ if ($action === 'verify-payment') {
     ];
 
     $payments = loadJsonStore('payments.json');
+
+    // Anti-fraud check: Prevent duplicate redemption of the same receipt code
+    if (isset($payments[$cleanCode]) && ($payments[$cleanCode]['orderReference'] ?? '') !== $order['orderReference']) {
+        http_response_code(400);
+        echo json_encode([
+            'success' => false,
+            'error' => "This M-Pesa confirmation code ({$cleanCode}) has already been used for another order. Please check your SMS or contact support.",
+        ]);
+        exit;
+    }
+
     $payments[$cleanCode] = $paymentRecord;
     saveJsonStore('payments.json', $payments);
 
