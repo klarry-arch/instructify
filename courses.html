@@ -9,12 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=13.0">
-  <link rel="stylesheet" href="css/animations.css?v=13.0">
-  <link rel="stylesheet" href="css/components.css?v=13.0">
-  <link rel="stylesheet" href="css/lms-course-dashboard.css?v=13.0">
-  <link rel="stylesheet" href="css/docmed-theme.css?v=13.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=13.0">
+  <link rel="stylesheet" href="css/global.css?v=14.0">
+  <link rel="stylesheet" href="css/animations.css?v=14.0">
+  <link rel="stylesheet" href="css/components.css?v=14.0">
+  <link rel="stylesheet" href="css/lms-course-dashboard.css?v=14.0">
+  <link rel="stylesheet" href="css/docmed-theme.css?v=14.0">
+  <link rel="stylesheet" href="css/live-chat.css?v=14.0">
 
   <style id="critical-header-css">
     #site-header.site-header {
@@ -28,37 +28,33 @@
       border-bottom: 1px solid #DCE2EA !important;
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
     }
-    #site-header .docmed-topbar {
-      position: relative !important;
-      top: auto !important;
-      height: 40px !important;
-      line-height: 40px !important;
-      display: block !important;
-      z-index: 2 !important;
-      margin: 0 !important;
-      background: #FAFAF7 !important;
-      color: #64748B !important;
-      border-bottom: 1px solid #DCE2EA !important;
+    #site-header .docmed-topbar,
+    .docmed-topbar {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
     }
     #site-header .navbar,
     #site-header #navbar {
       position: relative !important;
-      top: auto !important;
+      top: 0 !important;
       width: 100% !important;
+      height: var(--nav-height, 74px) !important;
+      min-height: var(--nav-height, 74px) !important;
       z-index: 1 !important;
       margin: 0 !important;
       background: #FFFFFF !important;
       border-bottom: none !important;
     }
     #site-header.scrolled {
-      transform: translateY(-40px) !important;
+      transform: none !important;
+      box-shadow: 0 8px 24px rgba(30, 41, 59, 0.08) !important;
     }
     body.lms-page {
-      padding-top: 110px !important;
+      padding-top: var(--nav-height, 74px) !important;
     }
     @media (max-width: 768px) {
-      #site-header .docmed-topbar { display: none !important; }
-      #site-header.scrolled { transform: none !important; }
       body.lms-page { padding-top: var(--nav-height, 70px) !important; }
     }
   </style>
@@ -412,42 +408,8 @@
 </head>
 <body class="lms-page">
 
-<!-- ── Unified Header: Docmed Top Bar + Sticky Navigation ── -->
+<!-- ── Unified Header: Sticky Navigation ── -->
 <header id="site-header" class="site-header" style="position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:1000 !important; background:#FFFFFF !important; border-bottom:1px solid #DCE2EA !important; box-shadow:0 1px 3px rgba(15,23,42,0.04) !important;">
-<!-- ── Docmed Top Bar ───────────────────────────────────────── -->
-<div class="docmed-topbar" style="position:relative !important; top:auto !important; height:40px !important; line-height:40px !important; display:block !important; z-index:2 !important; margin:0 !important; background:#FAFAF7 !important; border-bottom:1px solid #DCE2EA !important; color:#64748B !important;">
-  <div class="container docmed-topbar-inner">
-    <div class="docmed-topbar-left">
-      <span class="docmed-topbar-item" style="display:inline-flex; align-items:center; gap:6px;">
-        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" class="docmed-topbar__flag" aria-hidden="true" style="border-radius:2px; box-shadow:0 0 0 1px rgba(0,0,0,0.12); flex-shrink:0;">
-          <rect width="18" height="12" fill="#000000"/>
-          <rect y="4" width="18" height="4" fill="#BB0000"/>
-          <rect y="8" width="18" height="4" fill="#006600"/>
-          <rect y="3.6" width="18" height="0.8" fill="#FFFFFF"/>
-          <rect y="7.6" width="18" height="0.8" fill="#FFFFFF"/>
-          <ellipse cx="9" cy="6" rx="2" ry="3.2" fill="#BB0000"/>
-          <ellipse cx="9" cy="6" rx="1.6" ry="3" stroke="#FFFFFF" stroke-width="0.5" fill="none"/>
-        </svg>
-        <span>National Educational Transformation &amp; Capacity Partner</span>
-      </span>
-      <span class="docmed-topbar-item">
-        <span>🎓</span> TSC &amp; KICD Framework Aligned
-      </span>
-    </div>
-    <div class="docmed-topbar-right">
-      <a href="tel:+254143024416" class="docmed-topbar-link">
-        <span>📞</span> +254 143 024416
-      </a>
-      <a href="mailto:info@instructify.co.ke" class="docmed-topbar-link">
-        <span>✉️</span> info@instructify.co.ke
-      </a>
-      <span class="docmed-topbar-item">
-        <span>📍</span> Nairobi, Kenya
-      </span>
-    </div>
-  </div>
-</div>
-
 <!-- ── Navigation ───────────────────────────────────────────── -->
 <nav id="navbar" class="navbar" style="position:relative !important; top:auto !important; width:100% !important; z-index:1 !important; margin:0 !important;">
   <div class="container">

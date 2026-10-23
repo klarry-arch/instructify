@@ -50,17 +50,17 @@
 }
 
 .docmed-topbar {
-  background: #FAFAF7 !important;
-  border-bottom: 1px solid #DCE2EA !important;
-  height: 40px;
-  line-height: 40px;
-  padding: 0;
-  font-size: 13px;
-  color: #64748B !important;
-  display: block;
-  position: relative;
-  z-index: 2;
-  box-sizing: border-box;
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  line-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
 }
 .docmed-topbar .container {
   display: flex;
@@ -127,9 +127,9 @@
   box-shadow: 0 8px 24px rgba(20, 33, 61, 0.06) !important;
 }
 
-/* Universal fallback for any page where .docmed-topbar is sibling directly before .navbar */
+/* Universal fallback for any page where .docmed-topbar was sibling directly before .navbar */
 .docmed-topbar + .navbar {
-  top: 40px !important;
+  top: 0 !important;
 }
 
 .docmed-topbar + .navbar.scrolled {
@@ -140,7 +140,7 @@
 .about-hero-section,
 .consultancy-hero,
 .contact-hero {
-  padding-top: calc(var(--nav-height, 70px) + 36px) !important;
+  padding-top: calc(var(--nav-height, 74px) + 36px) !important;
 }
 
 body.lms-page {
