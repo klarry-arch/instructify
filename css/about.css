@@ -818,320 +818,376 @@
   border-bottom: 1px solid #E5E7EB;
 }
 
-.leadership-card {
-  background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
-  border-radius: 24px;
-  padding: 36px;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
-  max-width: 980px;
-  margin: 0 auto 36px auto;
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 36px;
-  align-items: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.leadership-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-}
-
-.leadership-img-col {
-  position: relative;
-}
-
-.leadership-img-col img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 18px;
-  border: 2px solid #E2E8F0;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-  display: block;
-}
-
-.leadership-img-badge {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #FFFFFF;
-  border: 1.5px solid #CBD5E1;
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 11.5px;
-  font-weight: 750;
-  color: #0F172A;
-  white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.10);
-}
-
-.leadership-role-tag {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #1D4ED8;
-  background: #EFF6FF;
-  border: 1px solid #BFDBFE;
-  padding: 5px 12px;
-  border-radius: 6px;
-  display: inline-block;
-  margin-bottom: 10px;
-}
-
-.leadership-name {
-  font-family: var(--font-heading, 'Manrope', sans-serif);
-  font-size: 26px;
-  font-weight: 850;
-  color: #0F172A;
-  margin: 0 0 6px 0;
-  letter-spacing: -0.02em;
-}
-
-.leadership-credentials {
-  font-size: 14px;
-  font-weight: 600;
-  color: #475569;
-  margin-bottom: 14px;
-  line-height: 1.5;
-}
-
-.leadership-bio {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #475569;
-  margin-bottom: 20px;
-}
-
-.leadership-actions {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-/* Founder Message Executive Luxury Box */
+/* Unified Executive Leadership & Founder Showcase Card */
+.founder-showcase-card,
+.leadership-card,
 .founder-welcome-box {
-  background: radial-gradient(ellipse at 88% 12%, rgba(245, 158, 11, 0.16) 0%, transparent 48%),
-              radial-gradient(circle at 10% 90%, rgba(99, 102, 241, 0.18) 0%, transparent 45%),
-              linear-gradient(145deg, #0A192F 0%, #0F2548 55%, #15325E 100%) !important;
-  color: #FFFFFF !important;
-  border-radius: 26px !important;
+  background: #FFFFFF !important;
+  background-image: none !important;
+  color: #0F172A !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-top: 4px solid #1D4ED8 !important;
+  border-radius: 24px !important;
   padding: 44px 42px !important;
-  box-shadow: 0 25px 60px -10px rgba(10, 25, 47, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
-  border: 1.5px solid rgba(245, 158, 11, 0.35) !important;
-  max-width: 980px !important;
+  box-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+  max-width: 1040px !important;
   margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: 310px 1fr !important;
+  gap: 44px !important;
+  align-items: start !important;
   position: relative !important;
+  box-sizing: border-box !important;
   overflow: hidden !important;
+  transform: none !important;
 }
 
-.founder-watermark-quote {
-  position: absolute !important;
-  right: 28px !important;
-  top: 24px !important;
-  opacity: 0.07 !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
-}
-
-.founder-card-topbar {
+/* Left Column: Portrait & Identity */
+.founder-portrait-col,
+.leadership-img-col {
   display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  flex-wrap: wrap !important;
-  gap: 14px !important;
-  margin-bottom: 24px !important;
+  flex-direction: column !important;
   position: relative !important;
-  z-index: 1 !important;
 }
 
-.founder-badge-pill {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  padding: 6px 16px !important;
-  border-radius: 999px !important;
-  background: rgba(245, 158, 11, 0.15) !important;
-  border: 1.2px solid rgba(245, 158, 11, 0.45) !important;
-  color: #FDE68A !important;
-  font-size: 11.5px !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-}
-
-.founder-sparkle-icon {
-  color: #FBBF24 !important;
-  font-size: 14px !important;
-}
-
-.founder-verified-pill {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-  padding: 5px 14px !important;
-  border-radius: 999px !important;
-  background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  color: #CBD5E1 !important;
-  font-size: 12px !important;
-  font-weight: 600 !important;
-}
-
-.founder-statement-box {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.10) !important;
-  border-left: 4.5px solid #F59E0B !important;
-  border-radius: 0 16px 16px 0 !important;
-  padding: 22px 26px !important;
-  margin-bottom: 24px !important;
+.founder-portrait-frame {
   position: relative !important;
-  z-index: 1 !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  margin-bottom: 18px !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.10) !important;
+  border: 1.5px solid #E2E8F0 !important;
+  background: #F1F5F9 !important;
 }
 
-.founder-statement-quote {
-  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
-  font-size: clamp(20px, 2.5vw, 27px) !important;
-  font-weight: 850 !important;
-  line-height: 1.34 !important;
-  background: linear-gradient(135deg, #FFFFFF 0%, #FEF3C7 35%, #FBBF24 85%, #F59E0B 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  letter-spacing: -0.015em !important;
-  margin: 0 !important;
-}
-
-.founder-narrative {
-  font-family: var(--font-body, 'Inter', sans-serif) !important;
-  font-size: 15.5px !important;
-  line-height: 1.78 !important;
-  color: #E2E8F0 !important;
-  margin-bottom: 30px !important;
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-.founder-narrative p {
-  margin: 0 0 14px 0 !important;
-}
-
-.founder-narrative p:last-child {
-  margin-bottom: 0 !important;
-}
-
-.founder-signoff-bar {
-  border-top: 1px solid rgba(255, 255, 255, 0.16) !important;
-  padding-top: 24px !important;
-  margin-top: 10px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  flex-wrap: wrap !important;
-  gap: 20px !important;
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-.founder-signoff-author {
-  display: flex !important;
-  align-items: center !important;
-  gap: 16px !important;
-}
-
-.founder-signoff-avatar-frame {
-  position: relative !important;
-  width: 64px !important;
-  height: 64px !important;
-  flex-shrink: 0 !important;
-}
-
-.founder-signoff-avatar {
-  width: 64px !important;
-  height: 64px !important;
-  border-radius: 50% !important;
+.founder-portrait-photo,
+.leadership-img-col img {
+  width: 100% !important;
+  height: 330px !important;
   object-fit: cover !important;
-  border: 2.5px solid #F59E0B !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+  object-position: center top !important;
   display: block !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: transform 0.3s ease !important;
 }
 
-.founder-signoff-badge {
+.founder-portrait-frame:hover .founder-portrait-photo {
+  transform: scale(1.02) !important;
+}
+
+.founder-portrait-badge,
+.leadership-img-badge {
   position: absolute !important;
-  bottom: -2px !important;
-  right: -2px !important;
-  width: 20px !important;
-  height: 20px !important;
-  background: #10B981 !important;
-  color: #FFFFFF !important;
-  border-radius: 50% !important;
-  display: flex !important;
+  bottom: 12px !important;
+  left: 12px !important;
+  transform: none !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  padding: 5px 12px !important;
+  border-radius: 999px !important;
+  font-size: 11.5px !important;
+  font-weight: 750 !important;
+  color: #0F172A !important;
+  display: inline-flex !important;
   align-items: center !important;
-  justify-content: center !important;
-  font-size: 11px !important;
-  font-weight: 800 !important;
-  border: 2px solid #0A192F !important;
+  gap: 6px !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.10) !important;
+  white-space: nowrap !important;
 }
 
-.founder-signoff-meta {
+.founder-portrait-meta {
   display: flex !important;
   flex-direction: column !important;
 }
 
-.founder-signoff-name {
+.founder-portrait-name,
+.leadership-name {
   font-family: var(--font-heading, 'Manrope', sans-serif) !important;
-  font-size: 19px !important;
+  font-size: 24px !important;
   font-weight: 850 !important;
-  color: #FFFFFF !important;
-  letter-spacing: -0.01em !important;
-  line-height: 1.2 !important;
-  margin-bottom: 3px !important;
+  color: #0F172A !important;
+  margin: 0 0 4px 0 !important;
+  letter-spacing: -0.02em !important;
 }
 
-.founder-signoff-title {
-  font-size: 13.5px !important;
-  font-weight: 650 !important;
-  color: #FCD34D !important;
-  line-height: 1.3 !important;
-  margin-bottom: 4px !important;
+.founder-portrait-role,
+.leadership-role-tag {
+  font-size: 11.5px !important;
+  font-weight: 800 !important;
+  color: #1D4ED8 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 12px !important;
+  background: #EFF6FF !important;
+  border: 1px solid #BFDBFE !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  display: inline-block !important;
+  align-self: flex-start !important;
 }
 
-.founder-signoff-creds {
+.founder-degree-list,
+.leadership-credentials {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  margin-bottom: 14px !important;
+}
+
+.founder-degree-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+  font-size: 13px !important;
+  color: #475569 !important;
+  line-height: 1.4 !important;
+}
+
+.founder-deg-icon {
+  font-size: 14px !important;
+  flex-shrink: 0 !important;
+}
+
+.founder-tenure-tag {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
   font-size: 12px !important;
-  color: #94A3B8 !important;
-  line-height: 1.3 !important;
+  font-weight: 650 !important;
+  color: #334155 !important;
+  margin-bottom: 16px !important;
 }
 
-.founder-signoff-aside {
+.founder-linkedin-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 9px 16px !important;
+  border-radius: 10px !important;
+  background: #EFF6FF !important;
+  border: 1.5px solid #BFDBFE !important;
+  color: #1D4ED8 !important;
+  font-size: 13px !important;
+  font-weight: 750 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.founder-linkedin-link:hover {
+  background: #1D4ED8 !important;
+  color: #FFFFFF !important;
+  border-color: #1D4ED8 !important;
+}
+
+/* Right Column: Letter & Vision */
+.founder-letter-col,
+.leadership-content-col {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.founder-letter-header {
   display: flex !important;
   align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  margin-bottom: 16px !important;
+}
+
+.founder-pill-vision {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  background: #EEF2FF !important;
+  border: 1.5px solid #C7D2FE !important;
+  color: #4338CA !important;
+  font-size: 11.5px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  padding: 5px 14px !important;
+  border-radius: 999px !important;
+}
+
+.sparkle-gold {
+  color: #D97706 !important;
+}
+
+.founder-pill-location {
+  font-size: 12.5px !important;
+  font-weight: 650 !important;
+  color: #64748B !important;
+}
+
+.founder-headline-quote {
+  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+  font-size: clamp(23px, 2.7vw, 30px) !important;
+  font-weight: 850 !important;
+  color: #0F172A !important;
+  line-height: 1.32 !important;
+  letter-spacing: -0.02em !important;
+  margin: 0 0 20px 0 !important;
+  padding-left: 18px !important;
+  border-left: 4px solid #F59E0B !important;
+}
+
+.founder-narrative-paragraphs,
+.leadership-bio {
+  font-family: var(--font-body, 'Inter', sans-serif) !important;
+  margin-bottom: 24px !important;
+}
+
+.founder-narrative-paragraphs p,
+.leadership-bio p {
+  font-size: 15.5px !important;
+  line-height: 1.8 !important;
+  color: #334155 !important;
+  margin: 0 0 16px 0 !important;
+  font-weight: 450 !important;
+}
+
+.founder-narrative-paragraphs p:last-child,
+.leadership-bio p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.founder-badges-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-bottom: 26px !important;
+  padding-top: 6px !important;
+}
+
+.founder-check-chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 14px !important;
+  border-radius: 8px !important;
+  background: #F0FDF4 !important;
+  border: 1px solid #BBF7D0 !important;
+  color: #166534 !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+}
+
+.check-dot {
+  color: #15803D !important;
+  font-weight: 800 !important;
+}
+
+.founder-signature-section {
+  border-top: 1.5px solid #F1F5F9 !important;
+  padding-top: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
   gap: 16px !important;
 }
 
-.founder-cursive-wrap {
-  text-align: right !important;
+.founder-signature-left {
+  display: flex !important;
+  flex-direction: column !important;
 }
 
-.founder-cursive-sig {
+.founder-signature-art {
   font-family: 'Caveat', cursive, sans-serif !important;
-  font-size: 36px !important;
+  font-size: 42px !important;
   font-weight: 700 !important;
-  color: #FDE68A !important;
+  color: #1E3A8A !important;
   line-height: 1 !important;
-  margin-bottom: 2px !important;
   letter-spacing: 0.02em !important;
 }
 
-.founder-cursive-label {
+.founder-signature-note {
   font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
   color: #94A3B8 !important;
+  margin-top: 2px !important;
+}
+
+.founder-signature-byline {
+  display: flex !important;
+  flex-direction: column !important;
+  text-align: right !important;
+}
+
+.founder-signature-byline strong {
+  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #0F172A !important;
+}
+
+.founder-signature-byline span {
+  font-size: 12px !important;
+  color: #64748B !important;
+}
+
+@media (max-width: 960px) {
+  .founder-showcase-card,
+  .leadership-card,
+  .founder-welcome-box {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    padding: 32px 24px !important;
+  }
+  .founder-portrait-frame {
+    max-width: 320px !important;
+    margin: 0 auto 18px auto !important;
+  }
+  .founder-portrait-meta {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .founder-degree-list {
+    align-items: center !important;
+  }
+  .founder-letter-header {
+    justify-content: center !important;
+  }
+  .founder-headline-quote {
+    text-align: left !important;
+  }
+  .founder-badges-row {
+    justify-content: center !important;
+  }
+  .founder-signature-section {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .founder-signature-byline {
+    text-align: left !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .founder-showcase-card,
+  .leadership-card,
+  .founder-welcome-box {
+    padding: 24px 18px !important;
+  }
+  .founder-portrait-photo {
+    height: 280px !important;
+  }
+  .founder-headline-quote {
+    font-size: 21px !important;
+    padding-left: 14px !important;
+  }
+  .founder-badges-row {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
 }
 
 .milestones-grid {
