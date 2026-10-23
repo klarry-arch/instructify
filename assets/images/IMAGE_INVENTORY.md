@@ -20,7 +20,7 @@ This document provides a comprehensive audit, inventory, and governance registry
 | `course_assessment_mastery.jpg` | JPEG | 16:9 | `courses.html` (Banner), `js/courses.js` (`crs_007`), `js/blog-data.js` (Article 4), `js/resources-data.js` (`feat-1`, `res-2`, `res-13`, `media-1`, `art-5`) | Kenyan teacher evaluating student assignment portfolios and CBC rubric score sheets in a bright classroom. | *"Competency-Based Curriculum Development and Assessment"* |
 | `course_smart_vr_classroom.jpg` | JPEG | 16:9 | `courses.html` (Featured Masterclass), `js/courses.js` (`crs_000`), `js/blog-data.js` (Article 5), `js/resources-data.js` (`feat-2`, `res-23`, `res-24`, `media-7`, `art-2`) | Kenyan junior secondary learners exploring human anatomy via ClassVR headsets and touch smart boards. | *"Smart Classrooms and ClassVR Virtual Reality instruction"* |
 | `course_ict_integration.jpg` | JPEG | 16:9 | `js/courses.js` (`crs_001`), `js/blog-data.js` (Article 3), `js/resources-data.js` (`feat-6`, `res-12`) | Male Kenyan ICT teacher guiding secondary school students in modern computer lab with simulation software. | *"ICT Integration and educational software instruction in Kenyan computer lab"* |
-| `founder_alex.jpg` | JPEG | 1:1 | `js/blog-data.js`, `js/podcast-data.js`, `about.html` | Profile portrait of Alex Nderitu, Founder and Lead Educator of Instructify Kenya. | *"Alex Nderitu, Founder of Instructify Kenya"* |
+| `founder_alex.jpg` | JPEG | 1:1 | `js/blog-data.js`, `js/podcast-data.js`, `about.html` | Profile portrait of Alex Kayeli, Founder and Lead Educational Designer of Instructify Kenya. | *"Alex Kayeli, Founder of Instructify Kenya"* |
 
 ---
 

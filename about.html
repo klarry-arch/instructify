@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/global.css?v=14.0">
   <link rel="stylesheet" href="css/animations.css?v=14.0">
   <link rel="stylesheet" href="css/components.css?v=14.0">
@@ -360,10 +360,330 @@
     @media (max-width: 992px) {
       .mv-cards-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
     }
+    /* ══════════════════════════════════════════════════════════════
+       FOUNDER'S MESSAGE & LEADERSHIP LUXURY CARDS
+       ══════════════════════════════════════════════════════════════ */
+    .leadership-card {
+      background: #FFFFFF !important;
+      border: 1.5px solid #E2E8F0 !important;
+      border-radius: 24px !important;
+      padding: 36px !important;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+      max-width: 980px !important;
+      margin: 0 auto 36px auto !important;
+      display: grid !important;
+      grid-template-columns: 220px 1fr !important;
+      gap: 36px !important;
+      align-items: center !important;
+      transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+    }
+    .leadership-card:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08) !important;
+    }
+    .leadership-img-col {
+      position: relative !important;
+    }
+    .leadership-img-col img {
+      width: 100% !important;
+      height: 220px !important;
+      object-fit: cover !important;
+      border-radius: 18px !important;
+      border: 2px solid #E2E8F0 !important;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08) !important;
+      display: block !important;
+    }
+    .leadership-img-badge {
+      position: absolute !important;
+      bottom: -10px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      background: #FFFFFF !important;
+      border: 1.5px solid #CBD5E1 !important;
+      padding: 4px 12px !important;
+      border-radius: 999px !important;
+      font-size: 11.5px !important;
+      font-weight: 750 !important;
+      color: #0F172A !important;
+      white-space: nowrap !important;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.10) !important;
+    }
+    .leadership-role-tag {
+      font-size: 11px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      color: #1D4ED8 !important;
+      background: #EFF6FF !important;
+      border: 1px solid #BFDBFE !important;
+      padding: 5px 12px !important;
+      border-radius: 6px !important;
+      display: inline-block !important;
+      margin-bottom: 10px !important;
+    }
+    .leadership-name {
+      font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+      font-size: 26px !important;
+      font-weight: 850 !important;
+      color: #0F172A !important;
+      margin: 0 0 6px 0 !important;
+      letter-spacing: -0.02em !important;
+    }
+    .leadership-credentials {
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      color: #475569 !important;
+      margin-bottom: 14px !important;
+      line-height: 1.5 !important;
+    }
+    .leadership-bio {
+      font-size: 15px !important;
+      line-height: 1.7 !important;
+      color: #475569 !important;
+      margin-bottom: 20px !important;
+    }
+    .leadership-actions {
+      display: flex !important;
+      gap: 16px !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+    }
+
+    /* Founder Message Executive Luxury Box */
+    .founder-welcome-box {
+      background: radial-gradient(ellipse at 88% 12%, rgba(245, 158, 11, 0.16) 0%, transparent 48%),
+                  radial-gradient(circle at 10% 90%, rgba(99, 102, 241, 0.18) 0%, transparent 45%),
+                  linear-gradient(145deg, #0A192F 0%, #0F2548 55%, #15325E 100%) !important;
+      color: #FFFFFF !important;
+      border-radius: 26px !important;
+      padding: 44px 42px !important;
+      box-shadow: 0 25px 60px -10px rgba(10, 25, 47, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+      border: 1.5px solid rgba(245, 158, 11, 0.35) !important;
+      max-width: 980px !important;
+      margin: 0 auto !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    .founder-watermark-quote {
+      position: absolute !important;
+      right: 28px !important;
+      top: 24px !important;
+      opacity: 0.07 !important;
+      pointer-events: none !important;
+      z-index: 0 !important;
+    }
+    .founder-card-topbar {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      flex-wrap: wrap !important;
+      gap: 14px !important;
+      margin-bottom: 24px !important;
+      position: relative !important;
+      z-index: 1 !important;
+    }
+    .founder-badge-pill {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 6px 16px !important;
+      border-radius: 999px !important;
+      background: rgba(245, 158, 11, 0.15) !important;
+      border: 1.2px solid rgba(245, 158, 11, 0.45) !important;
+      color: #FDE68A !important;
+      font-size: 11.5px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+    }
+    .founder-sparkle-icon {
+      color: #FBBF24 !important;
+      font-size: 14px !important;
+    }
+    .founder-verified-pill {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 5px 14px !important;
+      border-radius: 999px !important;
+      background: rgba(255, 255, 255, 0.06) !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      color: #CBD5E1 !important;
+      font-size: 12px !important;
+      font-weight: 600 !important;
+    }
+    .founder-statement-box {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.10) !important;
+      border-left: 4.5px solid #F59E0B !important;
+      border-radius: 0 16px 16px 0 !important;
+      padding: 22px 26px !important;
+      margin-bottom: 24px !important;
+      position: relative !important;
+      z-index: 1 !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    }
+    .founder-statement-quote {
+      font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+      font-size: clamp(20px, 2.5vw, 27px) !important;
+      font-weight: 850 !important;
+      line-height: 1.34 !important;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FEF3C7 35%, #FBBF24 85%, #F59E0B 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      letter-spacing: -0.015em !important;
+      margin: 0 !important;
+    }
+    .founder-narrative {
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 15.5px !important;
+      line-height: 1.78 !important;
+      color: #E2E8F0 !important;
+      margin-bottom: 30px !important;
+      position: relative !important;
+      z-index: 1 !important;
+    }
+    .founder-narrative p {
+      margin: 0 0 14px 0 !important;
+    }
+    .founder-narrative p:last-child {
+      margin-bottom: 0 !important;
+    }
+    .founder-signoff-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.16) !important;
+      padding-top: 24px !important;
+      margin-top: 10px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      flex-wrap: wrap !important;
+      gap: 20px !important;
+      position: relative !important;
+      z-index: 1 !important;
+    }
+    .founder-signoff-author {
+      display: flex !important;
+      align-items: center !important;
+      gap: 16px !important;
+    }
+    .founder-signoff-avatar-frame {
+      position: relative !important;
+      width: 64px !important;
+      height: 64px !important;
+      flex-shrink: 0 !important;
+    }
+    .founder-signoff-avatar {
+      width: 64px !important;
+      height: 64px !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      border: 2.5px solid #F59E0B !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+      display: block !important;
+    }
+    .founder-signoff-badge {
+      position: absolute !important;
+      bottom: -2px !important;
+      right: -2px !important;
+      width: 20px !important;
+      height: 20px !important;
+      background: #10B981 !important;
+      color: #FFFFFF !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 11px !important;
+      font-weight: 800 !important;
+      border: 2px solid #0A192F !important;
+    }
+    .founder-signoff-meta {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .founder-signoff-name {
+      font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+      font-size: 19px !important;
+      font-weight: 850 !important;
+      color: #FFFFFF !important;
+      letter-spacing: -0.01em !important;
+      line-height: 1.2 !important;
+      margin-bottom: 3px !important;
+    }
+    .founder-signoff-title {
+      font-size: 13.5px !important;
+      font-weight: 650 !important;
+      color: #FCD34D !important;
+      line-height: 1.3 !important;
+      margin-bottom: 4px !important;
+    }
+    .founder-signoff-creds {
+      font-size: 12px !important;
+      color: #94A3B8 !important;
+      line-height: 1.3 !important;
+    }
+    .founder-signoff-aside {
+      display: flex !important;
+      align-items: center !important;
+      gap: 16px !important;
+    }
+    .founder-cursive-wrap {
+      text-align: right !important;
+    }
+    .founder-cursive-sig {
+      font-family: 'Caveat', cursive, sans-serif !important;
+      font-size: 36px !important;
+      font-weight: 700 !important;
+      color: #FDE68A !important;
+      line-height: 1 !important;
+      margin-bottom: 2px !important;
+      letter-spacing: 0.02em !important;
+    }
+    .founder-cursive-label {
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      color: #94A3B8 !important;
+    }
+
+    @media (max-width: 860px) {
+      .leadership-card {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        padding: 28px 24px !important;
+      }
+      .leadership-img-col img {
+        margin: 0 auto !important;
+        max-width: 200px !important;
+      }
+      .leadership-actions {
+        justify-content: center !important;
+      }
+      .founder-card-topbar {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+      }
+      .founder-signoff-bar {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+        padding-bottom: 12px !important;
+      }
+      .founder-cursive-wrap {
+        text-align: left !important;
+      }
+    }
     @media (max-width: 640px) {
       .cv-grid { grid-template-columns: 1fr !important; }
       .mv-card { padding: 28px 22px !important; }
       .about-mvv-section { padding: 56px 0 !important; }
+      .founder-welcome-box {
+        padding: 30px 22px !important;
+      }
+      .founder-statement-box {
+        padding: 18px 20px !important;
+      }
     }
   </style>
 </head>
@@ -1149,43 +1469,89 @@
 
     <!-- Verified Founder Card -->
     <div class="leadership-card">
-      <div>
-        <img src="assets/images/founder_alex.jpg" alt="Alex Kariuki, Founder and Lead Educational Designer" loading="lazy" width="220" height="220">
+      <div class="leadership-img-col">
+        <img src="assets/images/founder_alex.jpg" alt="Alex Kayeli, Founder and Lead Educational Designer" loading="lazy" width="220" height="220">
+        <div class="leadership-img-badge">
+          <span>🛡️ Verified Founder</span>
+        </div>
       </div>
-      <div>
-        <span style="font-size:11.5px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--royal-blue, #123C8C); background:#EEF4FF; padding:4px 10px; border-radius:6px; display:inline-block; margin-bottom:8px;">FOUNDER &amp; LEAD EDUCATIONAL DESIGNER</span>
-        <h3 style="font-family:var(--font-heading); font-size:24px; font-weight:800; color:#14213D; margin:0 0 6px 0;">Alex Kariuki</h3>
-        <div style="font-size:13.5px; font-weight:600; color:#475569; margin-bottom:14px;">M.Ed (Curriculum Studies &amp; Educational Technology, University of Nairobi) · B.Ed (Science)</div>
-        <p style="font-size:14.5px; line-height:1.65; color:#52606D; margin-bottom:18px;">
-          Over 12 years of leadership in teacher professional development, CBC curriculum adaptation, and classroom digital integration. Alex advises schools, colleges, and educational non-profits across East Africa on educational technology strategy.
+      <div class="leadership-content-col">
+        <span class="leadership-role-tag">FOUNDER &amp; LEAD EDUCATIONAL DESIGNER</span>
+        <h3 class="leadership-name">Alex Kayeli</h3>
+        <div class="leadership-credentials">M.Ed (Curriculum Studies &amp; Educational Technology, University of Nairobi) · B.Ed (Science)</div>
+        <p class="leadership-bio">
+          Over 12 years of leadership in teacher professional development, CBC curriculum adaptation, and classroom digital integration. Alex advises schools, colleges, and educational non-profits across East Africa on evidence-based pedagogy, institutional technology adoption, and impactful learning design.
         </p>
-        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-          <a href="https://www.linkedin.com/company/instructifykenya" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="color:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C); font-weight:700;">
+        <div class="leadership-actions">
+          <a href="https://www.linkedin.com/company/instructifykenya" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="color:#1E3A8A; border-color:#93C5FD; font-weight:700; background:#EFF6FF;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="margin-right:4px;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
             View Professional Profile →
           </a>
+          <span style="font-size:12.5px; color:#64748B; font-weight:600; display:inline-flex; align-items:center; gap:6px;">
+            <span>📍</span> Nairobi, Kenya · Working Pan-Africa
+          </span>
         </div>
       </div>
     </div>
 
-    <!-- Founder's Message Box -->
+    <!-- Founder's Message Executive Card -->
     <div class="founder-welcome-box">
-      <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(244,180,0,0.20); border:1px solid #F4B400; color:#F4B400 !important; font-size:11.5px; font-weight:800; padding:5px 14px; border-radius:999px; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.08em;">
-        💬 Founder’s Message
-      </div>
-      
-      <div style="background:rgba(255,255,255,0.08); border-left:4px solid #F4B400; padding:16px 20px; border-radius:0 12px 12px 0; margin-bottom:16px;">
-        <div style="font-size:18px; font-weight:800; color:#F4B400 !important; line-height:1.35;">
-          “We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.”
+      <!-- Watermark Quote -->
+      <svg class="founder-watermark-quote" width="160" height="130" viewBox="0 0 140 110" fill="none" aria-hidden="true">
+        <path d="M38.5 0C17.2 0 0 17.2 0 38.5C0 59.8 17.2 77 38.5 77C38.5 95.2 23.8 110 5.6 110V110H0C0 110 14 110 24.5 106.5C45.5 99.5 59.5 80.5 59.5 56V0H38.5ZM119 0C97.7 0 80.5 17.2 80.5 38.5C80.5 59.8 97.7 77 119 77C119 95.2 104.3 110 86.1 110V110H80.5C80.5 110 94.5 110 105 106.5C126 99.5 140 80.5 140 56V0H119Z" fill="#F59E0B"/>
+      </svg>
+
+      <!-- Card Top Header -->
+      <div class="founder-card-topbar">
+        <div class="founder-badge-pill">
+          <span class="founder-sparkle-icon">✦</span>
+          <span>Founder’s Vision &amp; Purpose</span>
+        </div>
+        <div class="founder-verified-pill">
+          <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor" style="color:#10B981;" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>Official Founder Statement · Nairobi, Kenya</span>
         </div>
       </div>
 
-      <p style="font-size:14.5px; line-height:1.7; color:#EAF2FF !important; margin-bottom:14px;">
-        Instructify Kenya was established to bridge the gap between educational theory and real-world impact across African classrooms. We empower educators, schools, and institutional leaders with practical, competency-based tools, inclusive learning architectures, and strategic technology support. When educators are equipped with relevant pedagogy and digital mastery, entire communities thrive. Whether you are building 21st-century teaching skills, authoring accredited courses, or guiding an institution through digital transformation, you are warmly welcome to an ecosystem built for meaningful growth.
-      </p>
+      <!-- Inspirational Statement Callout -->
+      <div class="founder-statement-box">
+        <blockquote class="founder-statement-quote">
+          “We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.”
+        </blockquote>
+      </div>
 
-      <div style="text-align:right; border-top:1px solid rgba(255,255,255,0.18); padding-top:12px; margin-top:12px;">
-        <strong style="color:#FFFFFF !important; font-size:14px;">Alex Kariuki</strong>
-        <span style="display:block; font-size:12px; color:#CBD5E1 !important;">Founder &amp; Lead Educational Designer</span>
+      <!-- Message Narrative -->
+      <div class="founder-narrative">
+        <p>
+          Instructify Kenya was established to bridge the critical gap between educational theory and real-world impact across African classrooms. We empower educators, schools, and institutional leaders with practical, competency-based tools, inclusive learning architectures, and strategic technology support.
+        </p>
+        <p>
+          When educators are equipped with relevant pedagogy and digital mastery, entire communities thrive. Whether you are building 21st-century teaching skills, authoring accredited courses, or guiding an institution through digital transformation, you are warmly welcome to an ecosystem built for meaningful, enduring growth.
+        </p>
+      </div>
+
+      <!-- Executive Sign-Off Bar -->
+      <div class="founder-signoff-bar">
+        <div class="founder-signoff-author">
+          <div class="founder-signoff-avatar-frame">
+            <img src="assets/images/founder_alex.jpg" alt="Alex Kayeli, Founder and Lead Educational Designer" class="founder-signoff-avatar" width="64" height="64" loading="lazy">
+            <span class="founder-signoff-badge" title="Verified Founder">✓</span>
+          </div>
+          <div class="founder-signoff-meta">
+            <div class="founder-signoff-name">Alex Kayeli</div>
+            <div class="founder-signoff-title">Founder &amp; Lead Educational Designer</div>
+            <div class="founder-signoff-creds">M.Ed (Curriculum Studies &amp; Educational Technology) · B.Ed (Science)</div>
+          </div>
+        </div>
+
+        <div class="founder-signoff-aside">
+          <div class="founder-cursive-wrap">
+            <div class="founder-cursive-sig">Alex Kayeli</div>
+            <div class="founder-cursive-label">Executive Signature · Instructify Kenya</div>
+          </div>
+        </div>
       </div>
     </div>
 
