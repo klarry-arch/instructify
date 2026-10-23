@@ -9,13 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=12.0">
-  <link rel="stylesheet" href="css/animations.css?v=12.0">
-  <link rel="stylesheet" href="css/components.css?v=12.0">
-  <link rel="stylesheet" href="css/homepage.css?v=12.0">
-  <link rel="stylesheet" href="css/about.css?v=12.0">
-  <link rel="stylesheet" href="css/docmed-theme.css?v=12.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=12.0">
+  <link rel="stylesheet" href="css/global.css?v=13.0">
+  <link rel="stylesheet" href="css/animations.css?v=13.0">
+  <link rel="stylesheet" href="css/components.css?v=13.0">
+  <link rel="stylesheet" href="css/homepage.css?v=13.0">
+  <link rel="stylesheet" href="css/about.css?v=13.0">
+  <link rel="stylesheet" href="css/docmed-theme.css?v=13.0">
+  <link rel="stylesheet" href="css/live-chat.css?v=13.0">
 
   <style id="critical-header-css">
     #site-header.site-header {
@@ -61,6 +61,312 @@
       #site-header .docmed-topbar { display: none !important; }
       #site-header.scrolled { transform: none !important; }
       .about-hero-section { padding-top: calc(var(--nav-height, 74px) + 24px) !important; }
+    }
+  </style>
+
+  <style id="about-luxury-cards-css">
+    /* ══════════════════════════════════════════════════════════════
+       CATCHY & APPEALING MISSION, VISION & VALUES CARDS
+       ══════════════════════════════════════════════════════════════ */
+    .about-mvv-section {
+      background: #F8FAFC !important;
+      padding: 96px 0 !important;
+      border-top: 1px solid #E2E8F0 !important;
+      border-bottom: 1px solid #E2E8F0 !important;
+      position: relative !important;
+    }
+
+    .mvv-header-center {
+      text-align: center !important;
+      max-width: 740px !important;
+      margin: 0 auto 52px auto !important;
+    }
+
+    .mvv-pill-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 7px 18px !important;
+      border-radius: 999px !important;
+      background: #EEF2FF !important;
+      border: 1.5px solid #C7D2FE !important;
+      color: #4F46E5 !important;
+      font-size: 11.5px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      margin-bottom: 16px !important;
+    }
+
+    .mvv-main-heading {
+      font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+      font-size: clamp(30px, 4vw, 42px) !important;
+      font-weight: 800 !important;
+      color: #0F172A !important;
+      margin: 0 0 14px 0 !important;
+      letter-spacing: -0.025em !important;
+      line-height: 1.25 !important;
+    }
+
+    .mvv-main-heading span.grad-accent {
+      background: linear-gradient(135deg, #1D4ED8 0%, #4F46E5 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+
+    .mvv-sub-text {
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 16.5px !important;
+      color: #475569 !important;
+      line-height: 1.68 !important;
+      margin: 0 auto !important;
+    }
+
+    /* Mission & Vision Grid */
+    .mv-cards-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 32px !important;
+      margin-bottom: 64px !important;
+      align-items: stretch !important;
+    }
+
+    .mv-card {
+      background: #FFFFFF !important;
+      border: 2px solid #E2E8F0 !important;
+      border-radius: 24px !important;
+      padding: 40px 36px 34px !important;
+      box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.03) !important;
+      position: relative !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease !important;
+    }
+
+    .mv-card::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 5px !important;
+    }
+
+    .mv-card-mission {
+      border-color: #DBEAFE !important;
+    }
+    .mv-card-mission::before {
+      background: linear-gradient(90deg, #1D4ED8, #3B82F6, #60A5FA) !important;
+    }
+    .mv-card-mission:hover {
+      transform: translateY(-8px) !important;
+      border-color: #2563EB !important;
+      box-shadow: 0 24px 48px -10px rgba(37, 99, 235, 0.20), 0 6px 16px rgba(37, 99, 235, 0.06) !important;
+    }
+
+    .mv-card-vision {
+      border-color: #DCFCE7 !important;
+    }
+    .mv-card-vision::before {
+      background: linear-gradient(90deg, #047857, #10B981, #34D399) !important;
+    }
+    .mv-card-vision:hover {
+      transform: translateY(-8px) !important;
+      border-color: #059669 !important;
+      box-shadow: 0 24px 48px -10px rgba(5, 150, 105, 0.20), 0 6px 16px rgba(5, 150, 105, 0.06) !important;
+    }
+
+    .mv-card-top {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      margin-bottom: 22px !important;
+    }
+
+    .mv-icon-box-lg {
+      width: 64px !important;
+      height: 64px !important;
+      border-radius: 18px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+    }
+
+    .mv-tag-pill {
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 11.5px !important;
+      font-weight: 800 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.07em !important;
+      padding: 5px 12px !important;
+      border-radius: 999px !important;
+    }
+
+    .mv-card-title {
+      font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+      font-size: 26px !important;
+      font-weight: 800 !important;
+      color: #0F172A !important;
+      margin: 0 0 14px 0 !important;
+      letter-spacing: -0.02em !important;
+      line-height: 1.25 !important;
+    }
+
+    .mv-card-text {
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 16px !important;
+      line-height: 1.72 !important;
+      color: #334155 !important;
+      margin: 0 0 24px 0 !important;
+      flex: 1 !important;
+      font-weight: 450 !important;
+    }
+
+    .mv-takeaways-list {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      padding-top: 18px !important;
+      border-top: 1px solid #F1F5F9 !important;
+      list-style: none !important;
+      padding-left: 0 !important;
+      margin: 0 !important;
+    }
+
+    .mv-takeaway-item {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      color: #1E293B !important;
+    }
+
+    .mv-takeaway-item span.check {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 20px !important;
+      height: 20px !important;
+      border-radius: 50% !important;
+      font-size: 11px !important;
+      font-weight: 800 !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* Core Values 8-Card Grid */
+    .cv-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 24px !important;
+    }
+
+    .cv-card {
+      background: #FFFFFF !important;
+      border: 1.5px solid #E2E8F0 !important;
+      border-radius: 20px !important;
+      padding: 30px 24px 26px !important;
+      position: relative !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      box-shadow: 0 6px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02) !important;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease !important;
+      height: 100% !important;
+    }
+
+    .cv-card::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 4px !important;
+      background: var(--val-color, #4F46E5) !important;
+      transition: height 0.25s ease !important;
+    }
+
+    .cv-card:hover {
+      transform: translateY(-8px) !important;
+      border-color: var(--val-color, #4F46E5) !important;
+      box-shadow: 0 20px 40px -8px var(--val-glow, rgba(79, 70, 229, 0.20)) !important;
+    }
+
+    .cv-card:hover::before {
+      height: 6px !important;
+    }
+
+    .cv-index-watermark {
+      position: absolute !important;
+      top: 14px !important;
+      right: 18px !important;
+      font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+      font-size: 15px !important;
+      font-weight: 800 !important;
+      color: #CBD5E1 !important;
+      opacity: 0.8 !important;
+      letter-spacing: -0.02em !important;
+    }
+
+    .cv-icon-ring {
+      width: 58px !important;
+      height: 58px !important;
+      border-radius: 18px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin-bottom: 18px !important;
+      box-shadow: 0 10px 22px -4px var(--val-glow, rgba(79, 70, 229, 0.35)) !important;
+      flex-shrink: 0 !important;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+
+    .cv-card:hover .cv-icon-ring {
+      transform: scale(1.10) rotate(-3deg) !important;
+    }
+
+    .cv-card-title {
+      font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+      font-size: 20px !important;
+      font-weight: 800 !important;
+      color: var(--val-color, #0F172A) !important;
+      margin: 0 0 10px 0 !important;
+      line-height: 1.25 !important;
+      letter-spacing: -0.01em !important;
+    }
+
+    .cv-card-desc {
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 14px !important;
+      color: #475569 !important;
+      line-height: 1.62 !important;
+      margin: 0 0 16px 0 !important;
+      flex: 1 !important;
+      font-weight: 450 !important;
+    }
+
+    .cv-card-bar {
+      height: 3px !important;
+      width: 44px !important;
+      border-radius: 999px !important;
+      margin-top: auto !important;
+      background: var(--val-bar-grad, var(--val-color, #4F46E5)) !important;
+    }
+
+    @media (max-width: 1100px) {
+      .cv-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 992px) {
+      .mv-cards-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+    }
+    @media (max-width: 640px) {
+      .cv-grid { grid-template-columns: 1fr !important; }
+      .mv-card { padding: 28px 22px !important; }
+      .about-mvv-section { padding: 56px 0 !important; }
     }
   </style>
 </head>
@@ -332,16 +638,19 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════
-     3. MISSION, VISION & CORE VALUES: CONSISTENT LUXURY CARDS
+     3. MISSION, VISION & CORE VALUES: CATCHY LUXURY CARDS
      ══════════════════════════════════════════════════════════ -->
 <section class="about-mvv-section" aria-labelledby="mvv-heading">
   <div class="about-container">
-    <div class="cv-header-center">
-      <span class="about-section-badge badge-purple">PURPOSE &amp; GUIDING PRINCIPLES</span>
-      <h2 id="mvv-heading" class="about-heading-lg" style="margin-bottom:12px;">
-        Our Mission, Vision &amp; Core Values
+    <div class="mvv-header-center">
+      <div class="mvv-pill-badge">
+        <span class="mvv-pill-sparkle">✨</span>
+        <span>PURPOSE &amp; GUIDING PRINCIPLES</span>
+      </div>
+      <h2 id="mvv-heading" class="mvv-main-heading">
+        Our <span class="grad-accent">Mission, Vision</span> &amp; Core Values
       </h2>
-      <p style="font-size:16px; color:#475569; line-height:1.65; margin:0 auto;">
+      <p class="mvv-sub-text">
         The foundational principles and aspirations steering every learning experience, consultancy engagement, and digital solution we deliver.
       </p>
     </div>
@@ -349,10 +658,10 @@
     <!-- Mission & Vision Cards -->
     <div class="mv-cards-grid">
       <!-- Mission Card -->
-      <div class="mv-card" style="--mv-accent:#123C8C; --mv-bg:#EEF4FF;">
-        <div class="mv-card-header">
-          <div class="mv-icon-box">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Our Mission" role="img">
+      <div class="mv-card mv-card-mission">
+        <div class="mv-card-top">
+          <div class="mv-icon-box-lg" style="background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%); box-shadow: 0 10px 24px -4px rgba(37, 99, 235, 0.38);">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Our Mission" role="img">
               <circle cx="12" cy="12" r="10"/>
               <circle cx="12" cy="12" r="6"/>
               <circle cx="12" cy="12" r="2"/>
@@ -362,150 +671,189 @@
               <path d="M19 12h3"/>
             </svg>
           </div>
-          <h3 class="mv-card-title">Our Mission</h3>
+          <span class="mv-tag-pill" style="background:#EFF6FF; color:#1D4ED8; border:1px solid #BFDBFE;">🎯 Action &amp; Execution</span>
         </div>
+        <h3 class="mv-card-title">Our Mission</h3>
         <p class="mv-card-text">
           To deliver hands-on training, strategic consultancy, and learner-centered curriculum development that blends local relevance with global insight, while inspiring curiosity, competence, creativity, and character.
         </p>
+        <ul class="mv-takeaways-list">
+          <li class="mv-takeaway-item">
+            <span class="check" style="background:#DBEAFE; color:#1D4ED8;">✓</span>
+            <span>Hands-on teacher training and scheme planning</span>
+          </li>
+          <li class="mv-takeaway-item">
+            <span class="check" style="background:#DBEAFE; color:#1D4ED8;">✓</span>
+            <span>Contextualised CBC pedagogy tailored for Kenyan classrooms</span>
+          </li>
+          <li class="mv-takeaway-item">
+            <span class="check" style="background:#DBEAFE; color:#1D4ED8;">✓</span>
+            <span>Measurable competence, character, and institutional impact</span>
+          </li>
+        </ul>
       </div>
 
       <!-- Vision Card -->
-      <div class="mv-card" style="--mv-accent:#059669; --mv-bg:#EDFBF2;">
-        <div class="mv-card-header">
-          <div class="mv-icon-box">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Our Vision" role="img">
+      <div class="mv-card mv-card-vision">
+        <div class="mv-card-top">
+          <div class="mv-icon-box-lg" style="background: linear-gradient(135deg, #047857 0%, #10B981 100%); box-shadow: 0 10px 24px -4px rgba(16, 185, 129, 0.38);">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Our Vision" role="img">
               <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-              <circle cx="12" cy="3.5" r="3.5"/>
+              <circle cx="12" cy="12" r="3.5"/>
               <path d="M12 4V2"/>
               <path d="M12 22v-2"/>
               <path d="M19.07 4.93l-1.41 1.41"/>
               <path d="M6.34 17.66l-1.41 1.41"/>
             </svg>
           </div>
-          <h3 class="mv-card-title">Our Vision</h3>
+          <span class="mv-tag-pill" style="background:#ECFDF5; color:#047857; border:1px solid #BBF7D0;">✨ Future &amp; Aspiration</span>
         </div>
+        <h3 class="mv-card-title">Our Vision</h3>
         <p class="mv-card-text">
           To spark curiosity and nurture wisdom by empowering educators, learners, and institutions to transform learning communities across Kenya and Africa.
         </p>
+        <ul class="mv-takeaways-list">
+          <li class="mv-takeaway-item">
+            <span class="check" style="background:#DCFCE7; color:#047857;">✓</span>
+            <span>Spark lifelong curiosity and nurture wisdom</span>
+          </li>
+          <li class="mv-takeaway-item">
+            <span class="check" style="background:#DCFCE7; color:#047857;">✓</span>
+            <span>Empower educators and institutional leaders across Africa</span>
+          </li>
+          <li class="mv-takeaway-item">
+            <span class="check" style="background:#DCFCE7; color:#047857;">✓</span>
+            <span>Transforming learning communities through inclusive access</span>
+          </li>
+        </ul>
       </div>
     </div>
 
     <!-- Core Values 8-Card Grid -->
-    <div class="cv-header-center" style="margin-bottom:28px;">
-      <h3 style="font-family:var(--font-heading); font-size:22px; font-weight:800; color:#14213D; margin-bottom:8px;">
-        Eight Core Principles That Guide Our Work
+    <div class="cv-header-center">
+      <span class="mv-tag-pill" style="background:#F5F3FF; color:#7C3AED; border:1px solid #DDD6FE; margin-bottom:12px; display:inline-block;">GUIDING ETHOS</span>
+      <h3 style="font-family:var(--font-heading); font-size:24px; font-weight:800; color:#0F172A; margin:0 0 10px 0;">
+        Eight Core Principles That Define Our Culture
       </h3>
-      <p style="font-size:14.5px; color:#64748B; margin:0;">
-        These authentic values define how we collaborate with teachers, advise institutions, and design instructional programs.
+      <p style="font-size:15px; color:#475569; margin:0;">
+        These authentic values shape every workshop we facilitate, course we author, and school partnership we undertake.
       </p>
     </div>
 
     <div class="cv-grid">
       <!-- 1 Curiosity -->
-      <div class="cv-card" style="--val-color:#4F46E5;">
-        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #6366F1, #4F46E5);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Curiosity" role="img">
+      <div class="cv-card" style="--val-color:#4F46E5; --val-glow:rgba(79, 70, 229, 0.22); --val-bar-grad:linear-gradient(90deg, #4F46E5, #818CF8);">
+        <span class="cv-index-watermark">01</span>
+        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #4338CA, #6366F1);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Curiosity" role="img">
             <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
             <path d="M9 18h6"/>
             <path d="M10 22h4"/>
           </svg>
         </div>
-        <h4 class="cv-card-title" style="color:#4F46E5;">Curiosity</h4>
+        <h4 class="cv-card-title">Curiosity</h4>
         <p class="cv-card-desc">Celebrating questions, discovery, and the joy of lifelong learning.</p>
-        <div class="cv-card-bar" style="background:linear-gradient(90deg,#6366F1,#818CF8);"></div>
+        <div class="cv-card-bar"></div>
       </div>
 
       <!-- 2 Creativity -->
-      <div class="cv-card" style="--val-color:#E05D00;">
-        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #F5812D, #FF4D00);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Creativity" role="img">
+      <div class="cv-card" style="--val-color:#EA580C; --val-glow:rgba(234, 88, 12, 0.22); --val-bar-grad:linear-gradient(90deg, #EA580C, #FB923C);">
+        <span class="cv-index-watermark">02</span>
+        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #C2410C, #F97316);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Creativity" role="img">
             <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/>
           </svg>
         </div>
-        <h4 class="cv-card-title" style="color:#E05D00;">Creativity</h4>
+        <h4 class="cv-card-title">Creativity</h4>
         <p class="cv-card-desc">Designing imaginative, practical, and engaging learning experiences.</p>
-        <div class="cv-card-bar" style="background:linear-gradient(90deg,#F5812D,#FF4D00);"></div>
+        <div class="cv-card-bar"></div>
       </div>
 
       <!-- 3 Relevance -->
-      <div class="cv-card" style="--val-color:#0D9488;">
-        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #14B8A6, #0D9488);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Relevance" role="img">
+      <div class="cv-card" style="--val-color:#0D9488; --val-glow:rgba(13, 148, 136, 0.22); --val-bar-grad:linear-gradient(90deg, #0D9488, #2DD4BF);">
+        <span class="cv-index-watermark">03</span>
+        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #0F766E, #14B8A6);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Relevance" role="img">
             <circle cx="12" cy="12" r="10"/>
             <circle cx="12" cy="12" r="6"/>
             <circle cx="12" cy="12" r="2"/>
           </svg>
         </div>
-        <h4 class="cv-card-title" style="color:#0D9488;">Relevance</h4>
+        <h4 class="cv-card-title">Relevance</h4>
         <p class="cv-card-desc">Rooting solutions in local cultures, materials, and community needs.</p>
-        <div class="cv-card-bar" style="background:linear-gradient(90deg,#14B8A6,#0D9488);"></div>
+        <div class="cv-card-bar"></div>
       </div>
 
       <!-- 4 Collaboration -->
-      <div class="cv-card" style="--val-color:#2145E6;">
-        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #3B82F6, #2145E6);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Collaboration" role="img">
+      <div class="cv-card" style="--val-color:#2563EB; --val-glow:rgba(37, 99, 235, 0.22); --val-bar-grad:linear-gradient(90deg, #2563EB, #60A5FA);">
+        <span class="cv-index-watermark">04</span>
+        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #1D4ED8, #3B82F6);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Collaboration" role="img">
             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
             <circle cx="9" cy="7" r="4"/>
             <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
           </svg>
         </div>
-        <h4 class="cv-card-title" style="color:#2145E6;">Collaboration</h4>
+        <h4 class="cv-card-title">Collaboration</h4>
         <p class="cv-card-desc">Co-creating meaningful outcomes alongside educators and leaders.</p>
-        <div class="cv-card-bar" style="background:linear-gradient(90deg,#3B82F6,#2145E6);"></div>
+        <div class="cv-card-bar"></div>
       </div>
 
       <!-- 5 Clarity -->
-      <div class="cv-card" style="--val-color:#7C3AED;">
-        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #8B5CF6, #7C3AED);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Clarity" role="img">
+      <div class="cv-card" style="--val-color:#7C3AED; --val-glow:rgba(124, 58, 237, 0.22); --val-bar-grad:linear-gradient(90deg, #7C3AED, #A78BFA);">
+        <span class="cv-index-watermark">05</span>
+        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #6D28D9, #8B5CF6);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Clarity" role="img">
             <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
             <circle cx="12" cy="12" r="3"/>
           </svg>
         </div>
-        <h4 class="cv-card-title" style="color:#7C3AED;">Clarity</h4>
+        <h4 class="cv-card-title">Clarity</h4>
         <p class="cv-card-desc">Simplifying complex concepts into clear, learner-friendly formats.</p>
-        <div class="cv-card-bar" style="background:linear-gradient(90deg,#8B5CF6,#7C3AED);"></div>
+        <div class="cv-card-bar"></div>
       </div>
 
       <!-- 6 Renewal -->
-      <div class="cv-card" style="--val-color:#059669;">
-        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #10B981, #059669);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Renewal" role="img">
+      <div class="cv-card" style="--val-color:#059669; --val-glow:rgba(5, 150, 105, 0.22); --val-bar-grad:linear-gradient(90deg, #059669, #34D399);">
+        <span class="cv-index-watermark">06</span>
+        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #047857, #10B981);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Renewal" role="img">
             <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
             <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
           </svg>
         </div>
-        <h4 class="cv-card-title" style="color:#059669;">Renewal</h4>
+        <h4 class="cv-card-title">Renewal</h4>
         <p class="cv-card-desc">Believing every learning milestone creates room for growth.</p>
-        <div class="cv-card-bar" style="background:linear-gradient(90deg,#10B981,#059669);"></div>
+        <div class="cv-card-bar"></div>
       </div>
 
       <!-- 7 Integrity -->
-      <div class="cv-card" style="--val-color:#E11D48;">
-        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #F43F5E, #E11D48);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Integrity" role="img">
+      <div class="cv-card" style="--val-color:#E11D48; --val-glow:rgba(225, 29, 72, 0.22); --val-bar-grad:linear-gradient(90deg, #E11D48, #FB7185);">
+        <span class="cv-index-watermark">07</span>
+        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #BE123C, #F43F5E);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Integrity" role="img">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             <path d="m9 12 2 2 4-4"/>
           </svg>
         </div>
-        <h4 class="cv-card-title" style="color:#E11D48;">Integrity</h4>
+        <h4 class="cv-card-title">Integrity</h4>
         <p class="cv-card-desc">Leading with honesty, humility, and professional commitment.</p>
-        <div class="cv-card-bar" style="background:linear-gradient(90deg,#F43F5E,#E11D48);"></div>
+        <div class="cv-card-bar"></div>
       </div>
 
       <!-- 8 Excellence -->
-      <div class="cv-card" style="--val-color:#B45309;">
-        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #F59E0B, #D97706);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Excellence" role="img">
+      <div class="cv-card" style="--val-color:#B45309; --val-glow:rgba(180, 83, 9, 0.22); --val-bar-grad:linear-gradient(90deg, #B45309, #FBBF24);">
+        <span class="cv-index-watermark">08</span>
+        <div class="cv-icon-ring" style="background:linear-gradient(135deg, #92400E, #D97706);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Excellence" role="img">
             <circle cx="12" cy="8" r="6"/>
             <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
           </svg>
         </div>
-        <h4 class="cv-card-title" style="color:#B45309;">Excellence</h4>
+        <h4 class="cv-card-title">Excellence</h4>
         <p class="cv-card-desc">Upholding high standards of educational quality across all services.</p>
-        <div class="cv-card-bar" style="background:linear-gradient(90deg,#F59E0B,#D97706);"></div>
+        <div class="cv-card-bar"></div>
       </div>
     </div>
   </div>

@@ -26,7 +26,7 @@ for (const f of htmlFiles) {
   let content = fs.readFileSync(f, 'utf8');
   let original = content;
 
-  content = content.replace(/(href="css\/[^"]+\.css)(?:\?v=[0-9.]+|)(?=")/g, '$1?v=12.0');
+  content = content.replace(/(href="css\/[^"]+\.css)(?:\?v=[0-9.]+|)(?=")/g, '$1?v=13.0');
   content = content.replace(/src="(js\/[^"]+\.js)\?v=[0-9.]+"/g, 'src="$1"');
 
   if (content !== original) {
@@ -35,4 +35,4 @@ for (const f of htmlFiles) {
   }
 }
 
-console.log(`Bumped CSS cache-busters to v=12.0 in ${count} HTML files.`);
+console.log(`Bumped CSS cache-busters to v=13.0 in ${count} HTML files.`);
