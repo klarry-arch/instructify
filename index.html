@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/live-chat.css?v=14.0">
 
   <!-- Critical Header Alignment & Navigation Protection -->
+  <!-- Critical Header Alignment & Navigation Protection -->
   <style id="inst-critical-styling">
     #site-header.site-header {
       position: fixed !important;
@@ -30,13 +31,53 @@
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease !important;
     }
+    .utility-announcement-bar {
+      background: #0F172A !important;
+      color: #CBD5E1 !important;
+      padding: 7px 16px !important;
+      font-size: 13px !important;
+      line-height: 1.4 !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+      text-align: center !important;
+    }
+    .utility-announcement-content {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      max-width: 1400px !important;
+      margin: 0 auto !important;
+    }
+    .utility-badge {
+      background: #2563EB !important;
+      color: #FFFFFF !important;
+      font-size: 11px !important;
+      font-weight: 750 !important;
+      padding: 2px 8px !important;
+      border-radius: 999px !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.04em !important;
+    }
+    .utility-text {
+      color: #E2E8F0 !important;
+    }
+    .utility-link {
+      color: #F59E0B !important;
+      font-weight: 700 !important;
+      text-decoration: none !important;
+      margin-left: 4px !important;
+    }
+    .utility-link:hover {
+      color: #FBBF24 !important;
+      text-decoration: underline !important;
+    }
     #site-header .navbar,
     #site-header #navbar {
       position: relative !important;
       top: auto !important;
       width: 100% !important;
-      height: var(--nav-height, 70px) !important;
-      min-height: var(--nav-height, 70px) !important;
+      height: var(--nav-height, 68px) !important;
+      min-height: var(--nav-height, 68px) !important;
       z-index: 1 !important;
       margin: 0 !important;
       background: #FFFFFF !important;
@@ -46,37 +87,90 @@
       transform: none !important;
       box-shadow: 0 8px 24px rgba(30, 41, 59, 0.08) !important;
     }
+    .home-page {
+      padding-top: 104px !important;
+    }
+    @media (max-width: 768px) {
+      .home-page {
+        padding-top: 114px !important;
+      }
+    }
+    .hero-section {
+      padding-top: 28px !important;
+      padding-bottom: 56px !important;
+    }
+    @media (min-width: 1181px) {
+      .navbar .container {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 12px !important;
+        max-width: 1400px !important;
+        padding: 0 20px !important;
+      }
+      .nav-brand {
+        flex-shrink: 0 !important;
+        margin-right: 8px !important;
+      }
+      .nav-links {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+      }
+      .nav-link {
+        font-size: 13.5px !important;
+        padding: 6px 9px !important;
+        white-space: nowrap !important;
+      }
+      .nav-actions {
+        flex-shrink: 0 !important;
+        margin-left: 8px !important;
+      }
+      .nav-hamburger {
+        display: none !important;
+      }
+    }
+    @media (max-width: 1180px) {
+      .nav-links {
+        display: none !important;
+      }
+      .nav-hamburger {
+        display: flex !important;
+      }
+    }
   </style>
 </head>
 <body class="home-page">
 
 <!-- ══════════════════════════════════════════════════════════════
-     A. UTILITY ANNOUNCEMENT BAR
-     ══════════════════════════════════════════════════════════════ -->
-<aside class="utility-announcement-bar" role="complementary" aria-label="Important Announcement">
-  <div class="container utility-announcement-content">
-    <span class="utility-badge">Intake Open</span>
-    <span class="utility-text">2026/2027 Teacher CPD &amp; Institutional Training Intake is Open. Verified TSC CPD and CBC-aligned programmes.</span>
-    <a href="cpd-registration.html" class="utility-link">Enroll Now →</a>
-  </div>
-</aside>
-
-<!-- ══════════════════════════════════════════════════════════════
-     B. MAIN HEADER & NAVIGATION (12 Architectural Structure Items)
+     HEADER & NAVIGATION (Sticky, Integrated Announcement Bar & Clean Nav)
      ══════════════════════════════════════════════════════════════ -->
 <header id="site-header" class="site-header">
+  <!-- A. UTILITY ANNOUNCEMENT BAR -->
+  <aside class="utility-announcement-bar" role="complementary" aria-label="Important Announcement">
+    <div class="container utility-announcement-content">
+      <span class="utility-badge">Intake Open</span>
+      <span class="utility-text">2026/2027 Teacher CPD &amp; Institutional Training Intake is Open. Verified TSC CPD and CBC-aligned programmes.</span>
+      <a href="cpd-registration.html" class="utility-link">Enroll Now →</a>
+    </div>
+  </aside>
+
+  <!-- B. MAIN NAVIGATION -->
   <nav id="navbar" class="navbar" role="navigation" aria-label="Primary site navigation">
     <div class="container">
       <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
         <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
       </a>
 
-      <!-- 12 Main Navigation Items & Mega Menus -->
+      <!-- Streamlined Desktop Navigation Links -->
       <ul class="nav-links" role="list">
         <li><a href="index.html" class="nav-link active" aria-current="page" data-nav="home">Home</a></li>
         <li><a href="courses.html" class="nav-link" data-nav="courses">Courses</a></li>
         
-        <!-- 3. Learning Solutions (Dropdown) -->
+        <!-- Learning Solutions Dropdown -->
         <li class="nav-item-dropdown">
           <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="learning-solutions" aria-haspopup="true" aria-expanded="false">
             Learning Solutions
@@ -89,6 +183,7 @@
             <li role="none"><a href="courses.html#cbc" class="nav-dropdown-item" role="menuitem"><span>📖</span> CBC/CBE Pedagogy Mastery</a></li>
             <li role="none"><a href="courses/digital-literacy-ict-integration.html" class="nav-dropdown-item" role="menuitem"><span>💻</span> Digital Literacy &amp; ICT Integration</a></li>
             <li role="none"><a href="courses.html#ai" class="nav-dropdown-item" role="menuitem"><span>🤖</span> AI in Education &amp; Modern Tools</a></li>
+            <li role="none"><a href="workshop-registration.html" class="nav-dropdown-item" role="menuitem"><span>📅</span> Workshops &amp; Boot Camps</a></li>
             <li role="none"><a href="courses.html#leadership" class="nav-dropdown-item" role="menuitem"><span>🏛️</span> School Leadership &amp; Administration</a></li>
             <li role="none"><a href="courses.html#vr" class="nav-dropdown-item" role="menuitem"><span>👓</span> Smart Classrooms &amp; Virtual Reality</a></li>
             <li role="none"><a href="courses.html#coding" class="nav-dropdown-item" role="menuitem"><span>⚡</span> Coding &amp; Digital Skills</a></li>
@@ -97,7 +192,7 @@
           </ul>
         </li>
 
-        <!-- 4. Institutions (Dropdown) -->
+        <!-- Institutions Dropdown -->
         <li class="nav-item-dropdown">
           <a href="schools.html" class="nav-link nav-link-dropdown" data-nav="institutions" aria-haspopup="true" aria-expanded="false">
             Institutions
@@ -107,21 +202,35 @@
           </a>
           <ul class="nav-dropdown-menu" role="menu" aria-label="Institutions">
             <li role="none"><a href="schools.html#training" class="nav-dropdown-item" role="menuitem"><span>👥</span> Staff Training &amp; Capacity Building</a></li>
+            <li role="none"><a href="schools.html#corporate" class="nav-dropdown-item" role="menuitem"><span>💼</span> Corporate Training &amp; Executive Skills</a></li>
+            <li role="none"><a href="consultancy.html" class="nav-dropdown-item" role="menuitem"><span>📑</span> Educational Consultancy &amp; Advisory</a></li>
             <li role="none"><a href="consultancy.html#digital-transformation" class="nav-dropdown-item" role="menuitem"><span>🔄</span> Digital Transformation &amp; Strategy</a></li>
-            <li role="none"><a href="consultancy.html#curriculum" class="nav-dropdown-item" role="menuitem"><span>📑</span> Curriculum &amp; Assessment Development</a></li>
             <li role="none"><a href="institution-dashboard.html" class="nav-dropdown-item" role="menuitem"><span>📊</span> Turnkey LMS Deployment &amp; Management</a></li>
+            <li role="none"><a href="consultancy.html#curriculum" class="nav-dropdown-item" role="menuitem"><span>📝</span> Curriculum &amp; Assessment Development</a></li>
             <li role="none"><a href="consultancy.html#technology" class="nav-dropdown-item" role="menuitem"><span>⚙️</span> Technology &amp; Systems Integration</a></li>
             <li role="none"><a href="consultancy.html#infrastructure" class="nav-dropdown-item" role="menuitem"><span>📡</span> Infrastructure &amp; Smart Classrooms</a></li>
-            <li role="none"><a href="schools.html#support" class="nav-dropdown-item" role="menuitem"><span>🤝</span> Institutional Technical Support</a></li>
             <li role="none"><a href="consultancy.html#evaluation" class="nav-dropdown-item" role="menuitem"><span>🔍</span> Research, Evaluation &amp; Impact Audits</a></li>
           </ul>
         </li>
 
-        <li><a href="schools.html#corporate" class="nav-link" data-nav="corporate">Corporate Training</a></li>
-        <li><a href="consultancy.html" class="nav-link" data-nav="consultancy">Consultancy</a></li>
-        <li><a href="workshop-registration.html" class="nav-link" data-nav="workshops">Workshops &amp; Boot Camps</a></li>
+        <!-- Resources Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="resources.html" class="nav-link nav-link-dropdown" data-nav="resources" aria-haspopup="true" aria-expanded="false">
+            Resources
+            <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <ul class="nav-dropdown-menu" role="menu" aria-label="Resources">
+            <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem"><span>📁</span> Teaching Toolkits &amp; Rubrics</a></li>
+            <li role="none"><a href="resources.html#templates" class="nav-dropdown-item" role="menuitem"><span>📑</span> Templates &amp; Guides</a></li>
+            <li role="none"><a href="blog.html" class="nav-dropdown-item" role="menuitem"><span>📰</span> Articles &amp; Insights</a></li>
+            <li role="none"><a href="events.html" class="nav-dropdown-item" role="menuitem"><span>📅</span> Events &amp; Webinars</a></li>
+            <li role="none"><a href="accessibility.html" class="nav-dropdown-item" role="menuitem"><span>♿</span> Accessibility Commitment</a></li>
+          </ul>
+        </li>
+
         <li><a href="about.html" class="nav-link" data-nav="about">About Us</a></li>
-        <li><a href="resources.html" class="nav-link" data-nav="resources">Resources</a></li>
         <li><a href="contact.html" class="nav-link" data-nav="contact">Contact</a></li>
       </ul>
 
@@ -149,9 +258,10 @@
       <a href="courses.html" class="nav-mobile-link" data-nav="learning-solutions">Learning Solutions</a>
       <div class="nav-mobile-sublinks">
         <a href="cpd-registration.html" class="nav-mobile-sublink"><span>🎓</span> Teacher CPD Programmes</a>
-        <a href="courses.html#cbc" class="nav-mobile-sublink"><span>📖</span> CBC/CBE Pedagogy</a>
+        <a href="courses.html#cbc" class="nav-mobile-sublink"><span>📖</span> CBC/CBE Pedagogy Mastery</a>
         <a href="courses/digital-literacy-ict-integration.html" class="nav-mobile-sublink"><span>💻</span> Digital Literacy &amp; ICT</a>
-        <a href="courses.html#ai" class="nav-mobile-sublink"><span>🤖</span> AI in Education</a>
+        <a href="courses.html#ai" class="nav-mobile-sublink"><span>🤖</span> AI in Education &amp; Modern Tools</a>
+        <a href="workshop-registration.html" class="nav-mobile-sublink"><span>📅</span> Workshops &amp; Boot Camps</a>
         <a href="jumuishi-learning-hub.html" class="nav-mobile-sublink"><span>♿</span> Inclusive Learning Hub</a>
       </div>
     </div>
@@ -159,18 +269,26 @@
     <div class="nav-mobile-dropdown">
       <a href="schools.html" class="nav-mobile-link" data-nav="institutions">Institutions</a>
       <div class="nav-mobile-sublinks">
-        <a href="schools.html#training" class="nav-mobile-sublink"><span>👥</span> Staff Training</a>
+        <a href="schools.html#training" class="nav-mobile-sublink"><span>👥</span> Staff Training &amp; Capacity</a>
+        <a href="schools.html#corporate" class="nav-mobile-sublink"><span>💼</span> Corporate Training</a>
+        <a href="consultancy.html" class="nav-mobile-sublink"><span>📑</span> Educational Consultancy</a>
         <a href="consultancy.html#digital-transformation" class="nav-mobile-sublink"><span>🔄</span> Digital Transformation</a>
         <a href="consultancy.html#infrastructure" class="nav-mobile-sublink"><span>📡</span> ICT Infrastructure</a>
         <a href="institution-dashboard.html" class="nav-mobile-sublink"><span>📊</span> Turnkey LMS Solutions</a>
       </div>
     </div>
 
-    <a href="schools.html#corporate" class="nav-mobile-link" data-nav="corporate">Corporate Training</a>
-    <a href="consultancy.html" class="nav-mobile-link" data-nav="consultancy">Consultancy</a>
-    <a href="workshop-registration.html" class="nav-mobile-link" data-nav="workshops">Workshops &amp; Boot Camps</a>
+    <div class="nav-mobile-dropdown">
+      <a href="resources.html" class="nav-mobile-link" data-nav="resources">Resources</a>
+      <div class="nav-mobile-sublinks">
+        <a href="resources.html" class="nav-mobile-sublink"><span>📁</span> Teaching Toolkits</a>
+        <a href="resources.html#templates" class="nav-mobile-sublink"><span>📑</span> Templates &amp; Guides</a>
+        <a href="blog.html" class="nav-mobile-sublink"><span>📰</span> Articles &amp; Insights</a>
+        <a href="events.html" class="nav-mobile-sublink"><span>📅</span> Events &amp; Webinars</a>
+      </div>
+    </div>
+
     <a href="about.html" class="nav-mobile-link" data-nav="about">About Us</a>
-    <a href="resources.html" class="nav-mobile-link" data-nav="resources">Resources</a>
     <a href="contact.html" class="nav-mobile-link" data-nav="contact">Contact</a>
   </div>
   <div class="nav-mobile-actions">
