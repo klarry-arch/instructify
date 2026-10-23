@@ -1437,3 +1437,26 @@ a:focus-visible, button:focus-visible, .btn:focus-visible,
   .about-cta-btn { width: 100%; }
 }
 .footer { padding-bottom: 96px; }
+
+
+/* 11. Challenges & Steps sections */
+.about-sec-head { max-width: 740px; margin: 0 auto 40px; text-align: center; }
+.about-sec-head p { font-size: 16px; line-height: 1.65; color: #475569; margin: 12px auto 0; }
+.about-challenges-section { padding: 72px 0; background: #F5F8FF; }
+.about-steps-section { padding: 72px 0; background: #FFFFFF; }
+.challenge-grid, .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.challenge-card, .step-card {
+  background: #FFFFFF; border: 1px solid #DBE4F5; border-radius: 16px; padding: 28px 24px;
+  box-shadow: 0 6px 18px -8px rgba(20, 33, 61, .14); text-decoration: none; color: inherit;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+.challenge-card { border-top: 4px solid #4F46E5; }
+.challenge-card:nth-child(2) { border-top-color: #1D4ED8; }
+.challenge-card:nth-child(3) { border-top-color: #0EA5E9; }
+.step-card:hover, .challenge-card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -10px rgba(29, 78, 216, .28); border-color: #93B4F5; }
+.challenge-icon { display: inline-flex; width: 48px; height: 48px; align-items: center; justify-content: center; font-size: 24px; background: #EEF2FF; border-radius: 12px; margin-bottom: 14px; }
+.challenge-card h3, .step-card h3 { font-size: 19px; font-weight: 750; color: #14213D; margin: 0 0 8px; }
+.challenge-card p, .step-card p { font-size: 15px; line-height: 1.65; color: #475569; margin: 0; }
+.step-card { display: block; background: #F5F8FF; }
+.step-num { display: inline-flex; width: 38px; height: 38px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, #1D4ED8, #5B3FD9); color: #FFFFFF; font-weight: 800; margin-bottom: 14px; }
+@media (max-width: 900px) { .challenge-grid, .steps-grid { grid-template-columns: 1fr; } .about-challenges-section, .about-steps-section { padding: 48px 0; } }
