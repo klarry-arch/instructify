@@ -121,9 +121,9 @@
   border-bottom: none !important;
 }
 
-/* When scrolled down: smoothly tuck away the 40px topbar, keeping navbar docked at top: 0 */
+/* When scrolled down: dock header smoothly at top with elevation */
 .site-header.scrolled {
-  transform: translateY(-40px);
+  transform: none !important;
   box-shadow: 0 8px 24px rgba(20, 33, 61, 0.06) !important;
 }
 
@@ -136,12 +136,11 @@
   top: 0 !important;
 }
 
-/* Hero Section & Page top padding adjustments for the combined 110px header */
-.hero-section,
+/* Page top padding adjustments for sticky header */
 .about-hero-section,
 .consultancy-hero,
 .contact-hero {
-  padding-top: calc(var(--nav-height, 74px) + 72px) !important;
+  padding-top: calc(var(--nav-height, 70px) + 36px) !important;
 }
 
 body.lms-page {

@@ -1315,12 +1315,13 @@
   box-shadow: 0 12px 28px rgba(18, 60, 140, 0.10);
 }
 .audience-card-thumb {
-  width: 100%;
-  height: 140px;
-  border-radius: 10px;
-  object-fit: cover;
-  margin-bottom: 16px;
-  display: block;
+  width: 100% !important;
+  height: 140px !important;
+  max-height: 140px !important;
+  border-radius: 10px !important;
+  object-fit: cover !important;
+  margin-bottom: 16px !important;
+  display: block !important;
 }
 .audience-card-icon {
   width: 44px;
