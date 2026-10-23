@@ -9,15 +9,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@500;600;700;800&family=Montserrat:wght@500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=14.0">
-  <link rel="stylesheet" href="css/animations.css?v=14.0">
-  <link rel="stylesheet" href="css/components.css?v=14.0">
-  <link rel="stylesheet" href="css/docmed-theme.css?v=14.0">
-  <link rel="stylesheet" href="css/homepage.css?v=14.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=14.0">
+  <link rel="stylesheet" href="css/global.css?v=15.1">
+  <link rel="stylesheet" href="css/animations.css?v=15.1">
+  <link rel="stylesheet" href="css/components.css?v=15.1">
+  <link rel="stylesheet" href="css/docmed-theme.css?v=15.1">
+  <link rel="stylesheet" href="css/homepage.css?v=15.1">
+  <link rel="stylesheet" href="css/live-chat.css?v=15.1">
 
-  <!-- Critical Header Alignment & Navigation Protection -->
-  <!-- Critical Header Alignment & Navigation Protection -->
+  <!-- Critical Header Alignment, Platform Cards & Navigation Protection -->
   <style id="inst-critical-styling">
     #site-header.site-header {
       position: fixed !important;
@@ -101,6 +100,242 @@
     }
     .nav-brand, .nav-actions { flex-shrink: 0 !important; }
     .nav-links { flex: 1 1 auto !important; min-width: 0 !important; }
+
+    /* Platform Capabilities: Card & Button System */
+    .capability-chapter-section {
+      padding: 80px 0 !important;
+      border-bottom: 1px solid #E2E8F0 !important;
+      background: #FFFFFF !important;
+    }
+    .capability-split-grid {
+      display: grid !important;
+      grid-template-columns: 1.1fr 0.9fr !important;
+      gap: 52px !important;
+      align-items: center !important;
+    }
+    .capability-split-grid.reverse,
+    .capability-split-grid.reversed {
+      grid-template-columns: 0.9fr 1.1fr !important;
+    }
+    .capability-text-col {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .chapter-pill {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      width: fit-content !important;
+      padding: 6px 14px !important;
+      border-radius: 999px !important;
+      background: rgba(33, 69, 230, 0.08) !important;
+      border: 1px solid rgba(33, 69, 230, 0.20) !important;
+      color: #2145E6 !important;
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 12px !important;
+      font-weight: 800 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.08em !important;
+      margin-bottom: 14px !important;
+    }
+    .chapter-pill::before {
+      content: "" !important;
+      display: inline-block !important;
+      width: 6px !important;
+      height: 6px !important;
+      border-radius: 50% !important;
+      background: #2145E6 !important;
+    }
+    .chapter-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+      font-size: clamp(26px, 2.6vw, 36px) !important;
+      font-weight: 850 !important;
+      color: #0F172A !important;
+      line-height: 1.25 !important;
+      letter-spacing: -0.02em !important;
+      margin: 0 0 12px 0 !important;
+    }
+    .chapter-lead {
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 16px !important;
+      line-height: 1.62 !important;
+      color: #475569 !important;
+      margin: 0 0 24px 0 !important;
+      max-width: 64ch !important;
+    }
+    .capability-items-stack {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+      margin-bottom: 28px !important;
+    }
+    .capability-item {
+      background: #FFFFFF !important;
+      border: 1.5px solid #E2E8F0 !important;
+      border-radius: 14px !important;
+      padding: 16px 18px !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 16px !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03) !important;
+      transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .capability-item:hover {
+      border-color: #2145E6 !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 10px 24px rgba(33, 69, 230, 0.08) !important;
+      background: #FAFCFF !important;
+    }
+    .capability-item-icon {
+      width: 44px !important;
+      height: 44px !important;
+      min-width: 44px !important;
+      border-radius: 12px !important;
+      background: #EEF3FF !important;
+      color: #2145E6 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 20px !important;
+      flex-shrink: 0 !important;
+      border: 1px solid rgba(33, 69, 230, 0.12) !important;
+    }
+    .capability-item-content {
+      flex: 1 1 auto !important;
+      min-width: 0 !important;
+    }
+    .capability-item-content h4 {
+      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+      font-size: 16px !important;
+      font-weight: 750 !important;
+      color: #0F172A !important;
+      margin: 0 0 4px 0 !important;
+      line-height: 1.35 !important;
+    }
+    .capability-item-content p {
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 13.5px !important;
+      color: #475569 !important;
+      line-height: 1.55 !important;
+      margin: 0 !important;
+    }
+    .chapter-actions {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      flex-wrap: wrap !important;
+    }
+    .capability-visual-col {
+      position: relative !important;
+    }
+    .capability-mockup-card {
+      background: #FFFFFF !important;
+      border: 1.5px solid #CBD5E1 !important;
+      border-radius: 20px !important;
+      box-shadow: 0 20px 48px -12px rgba(15, 23, 42, 0.12), 0 4px 16px rgba(15, 23, 42, 0.04) !important;
+      overflow: hidden !important;
+      transition: transform 0.28s ease, box-shadow 0.28s ease !important;
+    }
+    .capability-mockup-card:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 24px 54px -12px rgba(33, 69, 230, 0.15), 0 6px 20px rgba(15, 23, 42, 0.05) !important;
+    }
+    .mockup-header-bar {
+      background: #0F172A !important;
+      padding: 12px 18px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    .mockup-dot {
+      width: 10px !important;
+      height: 10px !important;
+      border-radius: 50% !important;
+      display: inline-block !important;
+    }
+    .mockup-dot.red { background: #EF4444 !important; }
+    .mockup-dot.yellow { background: #F59E0B !important; }
+    .mockup-dot.green { background: #10B981 !important; }
+    .mockup-title {
+      color: #F8FAFC !important;
+      font-size: 12.5px !important;
+      font-weight: 600 !important;
+      font-family: var(--font-body, 'Inter', monospace) !important;
+      margin-left: 8px !important;
+    }
+    .mockup-inner-body {
+      padding: 24px !important;
+      background: #FFFFFF !important;
+    }
+    .mockup-stat-row {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 12px !important;
+      margin-bottom: 20px !important;
+    }
+    .mockup-stat-box {
+      background: #F8FAFC !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 12px !important;
+      padding: 12px 14px !important;
+    }
+    .mockup-stat-label {
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      color: #64748B !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.05em !important;
+      display: block !important;
+      margin-bottom: 4px !important;
+    }
+    .mockup-stat-val {
+      font-size: 20px !important;
+      font-weight: 800 !important;
+      color: #0F172A !important;
+      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+    }
+    .mockup-progress-item {
+      margin-bottom: 14px !important;
+    }
+    .mockup-progress-item:last-child {
+      margin-bottom: 0 !important;
+    }
+    .mockup-progress-label {
+      display: flex !important;
+      justify-content: space-between !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      color: #334155 !important;
+      margin-bottom: 6px !important;
+    }
+    .mockup-bar-track {
+      height: 8px !important;
+      background: #E2E8F0 !important;
+      border-radius: 999px !important;
+      overflow: hidden !important;
+    }
+    .mockup-bar-fill {
+      height: 100% !important;
+      border-radius: 999px !important;
+      background: linear-gradient(90deg, #2145E6, #4F46E5) !important;
+    }
+    @media (max-width: 991px) {
+      .capability-split-grid,
+      .capability-split-grid.reverse,
+      .capability-split-grid.reversed {
+        grid-template-columns: 1fr !important;
+        gap: 36px !important;
+      }
+      .capability-split-grid.reverse .capability-visual-col,
+      .capability-split-grid.reversed .capability-visual-col {
+        order: 2 !important;
+      }
+      .capability-split-grid.reverse .capability-text-col,
+      .capability-split-grid.reversed .capability-text-col {
+        order: 1 !important;
+      }
+    }
   </style>
 </head>
 <body class="home-page">
