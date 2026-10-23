@@ -1795,95 +1795,275 @@
 .capability-chapter-section {
   padding: 88px 0;
   border-bottom: 1px solid #E2E8F0;
+  background: #FFFFFF;
 }
 .capability-chapter-section:nth-of-type(even) {
   background: #F8FAFC;
 }
-.capability-chapter-section:nth-of-type(odd) {
-  background: #FFFFFF;
-}
 
 .capability-split-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 52px;
   align-items: center;
 }
-
-.capability-visual-col {
-  position: relative;
-}
-.capability-img-frame {
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.10);
-  border: 1.5px solid #E2E8F0;
-  background: #FFFFFF;
-}
-.capability-img-frame img {
-  width: 100%;
-  height: 380px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.35s ease;
-}
-.capability-img-frame:hover img {
-  transform: scale(1.02);
+.capability-split-grid.reverse,
+.capability-split-grid.reversed {
+  grid-template-columns: 0.9fr 1.1fr;
 }
 
+.capability-text-col,
 .capability-content-col {
   display: flex;
   flex-direction: column;
 }
+
+/* Chapter Eyebrow Pill */
+.chapter-pill,
 .capability-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(33, 69, 230, 0.08);
+  border: 1px solid rgba(33, 69, 230, 0.18);
+  color: #2145E6;
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #1D4ED8;
-  margin-bottom: 12px;
-  display: inline-block;
+  margin-bottom: 14px;
 }
+.chapter-pill::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2145E6;
+}
+
+/* Chapter Title & Lead */
+.chapter-title,
 .capability-chapter-title {
-  font-family: var(--font-heading, 'Manrope', sans-serif);
-  font-size: clamp(26px, 3vw, 36px);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: clamp(26px, 2.6vw, 36px);
   font-weight: 850;
   color: #0F172A;
   line-height: 1.25;
   letter-spacing: -0.02em;
-  margin: 0 0 28px 0;
+  margin: 0 0 12px 0;
+}
+.chapter-lead {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 16px;
+  line-height: 1.62;
+  color: #475569;
+  margin: 0 0 24px 0;
+  max-width: 64ch;
 }
 
+/* Capability Cards Stack */
 .capability-items-stack {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 14px;
+  margin-bottom: 28px;
 }
+
+/* Beautiful Card Items */
 .capability-item {
-  border-bottom: 1px solid #E2E8F0;
-  padding-bottom: 20px;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.capability-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+.capability-item:hover {
+  border-color: #2145E6;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(33, 69, 230, 0.08);
+  background: #FAFCFF;
 }
+
+/* Icon Squircle */
+.capability-item-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 12px;
+  background: #EEF3FF;
+  color: #2145E6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  border: 1px solid rgba(33, 69, 230, 0.12);
+  transition: transform 0.2s ease;
+}
+.capability-item:hover .capability-item-icon {
+  transform: scale(1.08);
+}
+
+/* Card Content */
+.capability-item-content {
+  flex: 1;
+  min-width: 0;
+}
+.capability-item-content h4,
 .capability-item-title {
-  font-family: var(--font-heading, 'Manrope', sans-serif);
-  font-size: 18px;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 16px;
   font-weight: 750;
   color: #0F172A;
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
+  line-height: 1.35;
+}
+.capability-item-content p,
+.capability-item-desc {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Chapter Action Buttons */
+.chapter-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Visual Column & Mockup Cards */
+.capability-visual-col {
+  position: relative;
+}
+.capability-mockup-card {
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 20px;
+  box-shadow: 0 20px 48px -12px rgba(15, 23, 42, 0.12), 0 4px 16px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+.capability-mockup-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 54px -12px rgba(33, 69, 230, 0.15), 0 6px 20px rgba(15, 23, 42, 0.05);
+}
+
+.mockup-header-bar {
+  background: #0F172A;
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-.capability-item-desc {
-  font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 15px;
-  line-height: 1.68;
-  color: #475569;
-  margin: 0;
+.mockup-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.mockup-dot.red { background: #EF4444; }
+.mockup-dot.yellow { background: #F59E0B; }
+.mockup-dot.green { background: #10B981; }
+
+.mockup-title {
+  color: #F8FAFC;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: var(--font-body, 'Inter', monospace);
+  margin-left: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mockup-inner-body {
+  padding: 24px;
+  background: #FFFFFF;
+}
+
+.mockup-stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.mockup-stat-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.mockup-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 4px;
+}
+.mockup-stat-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0F172A;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+}
+
+.mockup-progress-item {
+  margin-bottom: 14px;
+}
+.mockup-progress-item:last-child {
+  margin-bottom: 0;
+}
+.mockup-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+.mockup-bar-track {
+  height: 8px;
+  background: #E2E8F0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.mockup-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2145E6, #4F46E5);
+}
+
+@media (max-width: 991px) {
+  .capability-split-grid,
+  .capability-split-grid.reverse,
+  .capability-split-grid.reversed {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+  .capability-split-grid.reverse .capability-visual-col,
+  .capability-split-grid.reversed .capability-visual-col {
+    order: 2 !important;
+  }
+  .capability-split-grid.reverse .capability-text-col,
+  .capability-split-grid.reversed .capability-content-col {
+    order: 1 !important;
+  }
 }
 
 /* G. How Instructify Works (3 Step Cards) */
