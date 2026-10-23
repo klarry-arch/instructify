@@ -24,46 +24,67 @@
    - Body, menus, buttons, forms: Inter (weights 400-600)
    ══════════════════════════════════════════════════════════════ */
 :root {
-  /* ── 1. Core Brand Palette Tokens ── */
-  --primary-color:         #14213D; /* Midnight Navy */
-  --primary-color-hover:   #0D1629;
-  --primary-color-dark:    #0A1222;
-  --primary-color-light:   #1E3056;
-  --primary-color-bg:      #EEF2FF;
-  --primary-color-glow:    rgba(20, 33, 61, 0.16);
+  /* ── 1. Instructify Kenya Official Brand Style Guide Tokens ── */
+  --royal-blue:            #123C8C; /* Primary Royal Blue */
+  --dark-royal-blue:       #09275F; /* Dark Royal Blue */
+  --gold-yellow:           #F4B400; /* Gold Yellow (High-attention CTAs & highlights) */
+  --pure-white:            #FFFFFF; /* Pure White */
+  --primary-text-black:    #151515; /* Primary Text Black */
+  --soft-blue:             #EAF2FF; /* Soft Blue */
+  --light-gold:            #FFF4CC; /* Light Gold */
+  --surface-grey:          #F5F7FA; /* Surface Grey */
+  --border-grey:           #DCE2EA; /* Border Grey */
+  --muted-text:            #52606D; /* Muted Text */
+  --success-green:         #16794B; /* Success Green */
+  --info-teal:             #087E8B; /* Information Teal */
+  --accessible-purple:     #6542A6; /* Accessible Purple */
+  --error-red:             #B42318; /* Error Red */
 
-  --secondary-color:       #4F46E5; /* Royal Indigo */
-  --secondary-color-hover: #4338CA;
-  --secondary-color-dark:  #3730A3;
-  --secondary-color-light: #6366F1;
-  --secondary-color-bg:    #EEF2FF;
-  --secondary-color-glow:  rgba(79, 70, 229, 0.20);
+  /* Functional Mappings */
+  --primary-color:         #123C8C; /* Royal Blue */
+  --primary-color-hover:   #09275F; /* Dark Royal Blue */
+  --primary-color-dark:    #09275F;
+  --primary-color-light:   #EAF2FF;
+  --primary-color-bg:      #EAF2FF;
+  --primary-color-glow:    rgba(18, 60, 140, 0.20);
 
-  --accent-color:          #0F9D91; /* Fresh Teal */
-  --accent-color-hover:    #0D857B;
-  --accent-color-dark:     #0A6B63;
+  --secondary-color:       #123C8C; /* Royal Blue */
+  --secondary-color-hover: #09275F;
+  --secondary-color-dark:  #09275F;
+  --secondary-color-light: #EAF2FF;
+  --secondary-color-bg:    #EAF2FF;
+  --secondary-color-glow:  rgba(18, 60, 140, 0.20);
+
+  --accent-color:          #087E8B; /* Information Teal */
+  --accent-color-hover:    #06646F;
+  --accent-color-dark:     #044B53;
   --accent-color-light:    #14B8A6;
   --accent-color-bg:       #F0FDFA;
-  --accent-color-glow:     rgba(15, 157, 145, 0.20);
+  --accent-color-glow:     rgba(8, 126, 139, 0.20);
 
-  --cta-color:             #4F46E5; /* Royal Indigo (Buttons & Primary CTAs) */
-  --cta-color-hover:       #4338CA;
-  --cta-color-dark:        #3730A3;
-  --cta-color-light:       #6366F1;
-  --cta-color-bg:          #EEF2FF;
-  --cta-color-glow:        rgba(79, 70, 229, 0.25);
+  --cta-color:             #123C8C; /* Royal Blue for Primary Actions */
+  --cta-color-hover:       #09275F;
+  --cta-color-dark:        #09275F;
+  --cta-color-light:       #EAF2FF;
+  --cta-color-bg:          #EAF2FF;
+  --cta-color-glow:        rgba(18, 60, 140, 0.25);
+
+  --cta-gold:              #F4B400; /* Gold Yellow for High-Attention CTAs */
+  --cta-gold-hover:        #D99B00;
+  --warning-color:         #F4B400; /* Gold Yellow */
+  --warning-color-hover:   #D99B00;
 
   /* Explicit Brand Palette Tokens */
-  --brand-navy:            #14213D;
-  --brand-indigo:          #4F46E5;
-  --brand-lavender:        #EEF2FF;
+  --brand-navy:            #09275F;
+  --brand-indigo:          #123C8C;
+  --brand-lavender:        #EAF2FF;
   --brand-ivory:           #FAFAF7;
-  --brand-teal:            #0F9D91;
+  --brand-teal:            #087E8B;
   --brand-slate:           #64748B;
-  --brand-charcoal:        #1F2937;
+  --brand-charcoal:        #151515;
   --brand-white:           #FFFFFF;
-  --brand-amber:           #F4B942;
-  --brand-red:             #DC2626;
+  --brand-amber:           #F4B400;
+  --brand-red:             #B42318;
 
   /* Backward Compatibility Aliases */
   --brand-blue:            #4F46E5;

@@ -17,6 +17,10 @@
   RewriteCond %{HTTP_HOST} ^www\.instructify\.co\.ke [NC]
   RewriteRule ^(.*)$ https://instructify.co.ke/$1 [L,R=301]
 
+  # ── Obsolete & Deprecated URL Redirects (Permanent 301) ──
+  RewriteRule ^services(\.html)?$ /consultancy.html [L,R=301]
+  RewriteRule ^accessibility-statement(\.html)?$ /accessibility.html [L,R=301]
+
   # ── Jumuishi Hub Clean Aliases ──
   RewriteRule ^jumuishi/?$ jumuishi-learning-hub.html [L,QSA]
   RewriteRule ^jumuishi-hub/?$ jumuishi-learning-hub.html [L,QSA]

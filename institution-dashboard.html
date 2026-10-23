@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Institution Dashboard — Staff Training &amp; Progress Analytics | Instructify Kenya</title>
+  <meta name="description" content="Instructify Kenya Institution Dashboard: Institutional staff training management, cohort progress reporting, departmental analytics, and CSV/PDF export.">
+  <link rel="canonical" href="https://instructify.co.ke/institution-dashboard.html">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/lms-portal.css">
+
+  <style>
+    :root {
+      --inst-sidebar-w: 260px;
+    }
+    body {
+      background: #F8FAFC;
+      color: #1E293B;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      margin: 0;
+      padding: 0;
+    }
+    .inst-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    .inst-sidebar {
+      width: var(--inst-sidebar-w);
+      background: #0F172A;
+      color: #FFFFFF;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      z-index: 100;
+    }
+    .inst-brand-box {
+      padding: 22px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .inst-brand-box img {
+      height: 32px;
+      width: auto;
+    }
+    .inst-nav-list {
+      list-style: none;
+      padding: 16px 12px;
+      margin: 0;
+      flex: 1;
+    }
+    .inst-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      color: #CBD5E1;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      border-radius: 8px;
+      margin-bottom: 4px;
+      transition: all 0.2s ease;
+    }
+    .inst-nav-item:hover,
+    .inst-nav-item.active {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+    .inst-nav-item.active {
+      background: #123C8C;
+      border-left: 3px solid #F4B400;
+    }
+    .inst-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      background: #F8FAFC;
+    }
+    .inst-topbar {
+      height: 70px;
+      background: #FFFFFF;
+      border-bottom: 1px solid #DCE2EA;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+    .inst-content {
+      padding: 32px;
+      max-width: 1280px;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0 auto;
+    }
+    .metrics-6grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 1200px) {
+      .metrics-6grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .metrics-6grid { grid-template-columns: repeat(2, 1fr); }
+      .inst-layout { flex-direction: column; }
+      .inst-sidebar { width: 100%; height: auto; position: static; }
+      .inst-content { padding: 18px; }
+      .inst-topbar { padding: 0 18px; }
+    }
+    .stat-card-inst {
+      background: #FFFFFF;
+      border: 1.5px solid #DCE2EA;
+      border-radius: 12px;
+      padding: 18px 16px;
+      box-shadow: 0 2px 10px rgba(18, 60, 140, 0.04);
+    }
+    .stat-card-label {
+      font-size: 12px;
+      color: #64748B;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+    .stat-card-num {
+      font-size: 26px;
+      font-weight: 800;
+      color: #123C8C;
+      font-family: var(--font-heading, 'Manrope', sans-serif);
+      margin-bottom: 2px;
+    }
+    .report-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      text-align: left;
+    }
+    .report-table th {
+      background: #F1F5F9;
+      color: #1E293B;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-bottom: 1px solid #DCE2EA;
+    }
+    .report-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #E2E8F0;
+      color: #334155;
+    }
+    .report-table tr:hover td {
+      background: #F8FAFC;
+    }
+    .progress-bar-wrap {
+      width: 100px;
+      height: 7px;
+      background: #E2E8F0;
+      border-radius: 999px;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: #123C8C;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="inst-layout">
+  <!-- SIDEBAR -->
+  <aside class="inst-sidebar" aria-label="Institution Dashboard Navigation">
+    <div class="inst-brand-box">
+      <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya">
+      <span style="font-size: 11px; font-weight: 800; background: #EAF2FF; color: #123C8C; padding: 2px 8px; border-radius: 6px; text-transform: uppercase;">Institutions</span>
+    </div>
+
+    <ul class="inst-nav-list">
+      <li><a href="institution-dashboard.html" class="inst-nav-item active"><span>🏛️</span> Organisation Overview</a></li>
+      <li><a href="#learners-staff" class="inst-nav-item"><span>👥</span> Learners &amp; Staff</a></li>
+      <li><a href="#assigned-training" class="inst-nav-item"><span>📋</span> Assigned Training</a></li>
+      <li><a href="courses.html" class="inst-nav-item"><span>📚</span> Courses Catalogue</a></li>
+      <li><a href="#reports" class="inst-nav-item"><span>📊</span> Reports &amp; Exports</a></li>
+      <li><a href="verify.html" class="inst-nav-item"><span>📜</span> Certificates</a></li>
+      <li><a href="#departments" class="inst-nav-item"><span>🏢</span> Departments &amp; Cohorts</a></li>
+      <li><a href="#billing" class="inst-nav-item"><span>💳</span> Billing &amp; Invoices</a></li>
+      <li><a href="#settings" class="inst-nav-item"><span>⚙️</span> LMS Settings</a></li>
+      <li><a href="contact.html#help" class="inst-nav-item"><span>❓</span> Dedicated Support</a></li>
+      <li style="margin-top:20px; border-top:1px solid rgba(255,255,255,0.12); padding-top:12px;">
+        <a href="index.html" class="inst-nav-item" style="color:#CBD5E1;"><span>←</span> Back to Public Site</a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="inst-main">
+    <header class="inst-topbar">
+      <div>
+        <h1 style="font-size: 20px; font-weight: 750; color: #123C8C; margin: 0;">Institutional Management Dashboard</h1>
+      </div>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <button class="btn btn-gold btn-sm" onclick="exportReport('csv')">Export CSV</button>
+        <button class="btn btn-primary btn-sm" onclick="exportReport('pdf')">Export PDF</button>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="width:36px; height:36px; border-radius:8px; background:#123C8C; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px;">
+            ST
+          </div>
+          <span style="font-size:13px; font-weight:600; color:#1E293B;">St. Teresa Academy</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="inst-content">
+      <!-- Welcome Strip -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:28px;">
+        <div>
+          <h2 style="font-size: 24px; font-weight: 800; color: #1E293B; margin: 0 0 6px 0;">St. Teresa Educational Group — Staff Training Center</h2>
+          <p style="font-size: 14.5px; color: #475569; margin: 0;">
+            Track institutional progress, assign curriculum cohorts, and monitor CBC competency development.
+          </p>
+        </div>
+        <a href="consultancy.html#booking-form" class="btn btn-secondary btn-sm">Request Advisory Assessment</a>
+      </div>
+
+      <!-- 6 Metrics Overview Cards -->
+      <div class="metrics-6grid">
+        <div class="stat-card-inst">
+          <div class="stat-card-label">Total Active Users</div>
+          <div class="stat-card-num">120</div>
+          <div style="font-size:11.5px; color:#16794B; font-weight:600;">Faculty &amp; Admin</div>
+        </div>
+        <div class="stat-card-inst">
+          <div class="stat-card-label">Training Completion</div>
+          <div class="stat-card-num">87.4%</div>
+          <div style="font-size:11.5px; color:#16794B; font-weight:600;">Above Benchmark</div>
+        </div>
+        <div class="stat-card-inst">
+          <div class="stat-card-label">Total Enrolments</div>
+          <div class="stat-card-num">348</div>
+          <div style="font-size:11.5px; color:#123C8C; font-weight:600;">Across 4 Programmes</div>
+        </div>
+        <div class="stat-card-inst">
+          <div class="stat-card-label">Certificates Issued</div>
+          <div class="stat-card-num">104</div>
+          <div style="font-size:11.5px; color:#123C8C; font-weight:600;">Verified on Portal</div>
+        </div>
+        <div class="stat-card-inst">
+          <div class="stat-card-label">Overdue Activities</div>
+          <div class="stat-card-num" style="color:#B42318;">6</div>
+          <div style="font-size:11.5px; color:#B42318; font-weight:600;">Follow-up required</div>
+        </div>
+        <div class="stat-card-inst">
+          <div class="stat-card-label">Assigned Programmes</div>
+          <div class="stat-card-num">4</div>
+          <div style="font-size:11.5px; color:#087E8B; font-weight:600;">Active Cohorts</div>
+        </div>
+      </div>
+
+      <!-- Filter Controls & Reporting Section -->
+      <div id="reports" style="background:#FFFFFF; border:1.5px solid #DCE2EA; border-radius:16px; padding:24px; margin-bottom:32px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:20px;">
+          <div>
+            <h3 style="font-size: 18px; font-weight: 800; color: #123C8C; margin: 0 0 4px 0;">
+              Staff Learning &amp; Cohort Progress Report
+            </h3>
+            <p style="font-size: 13.5px; color: #475569; margin: 0;">
+              Confidential, privacy-compliant institutional progress monitoring.
+            </p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <select id="filter-dept" style="height:38px; padding:0 12px; border:1px solid #DCE2EA; border-radius:8px; font-size:13px; background:#fff;">
+              <option value="all">All Departments</option>
+              <option value="science">STEM &amp; Science</option>
+              <option value="humanities">Humanities &amp; Languages</option>
+              <option value="primary">Primary School CBC</option>
+              <option value="leadership">School Leadership</option>
+            </select>
+            <select id="filter-cohort" style="height:38px; padding:0 12px; border:1px solid #DCE2EA; border-radius:8px; font-size:13px; background:#fff;">
+              <option value="all">All Cohorts (2026)</option>
+              <option value="cohort-a">Cohort 1 (Term 1)</option>
+              <option value="cohort-b">Cohort 2 (Term 2)</option>
+            </select>
+            <select id="filter-status" style="height:38px; padding:0 12px; border:1px solid #DCE2EA; border-radius:8px; font-size:13px; background:#fff;">
+              <option value="all">All Statuses</option>
+              <option value="completed">Completed</option>
+              <option value="in-progress">In Progress</option>
+              <option value="overdue">Overdue</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="report-table">
+            <thead>
+              <tr>
+                <th>Staff ID</th>
+                <th>Department</th>
+                <th>Assigned Programme</th>
+                <th>Progress</th>
+                <th>Assessment Score</th>
+                <th>Certificate Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ST-041</strong> · Teacher Lead</td>
+                <td>STEM &amp; Science</td>
+                <td>CBC Digital Classroom Integration</td>
+                <td>
+                  <span class="progress-bar-wrap"><span class="progress-bar-fill" style="width:100%;"></span></span> 100%
+                </td>
+                <td><strong>96%</strong> (Distinction)</td>
+                <td><span style="color:#16794B; font-weight:700;">Issued (Verified)</span></td>
+                <td><a href="verify.html" class="btn btn-outline btn-sm">Verify Certificate</a></td>
+              </tr>
+              <tr>
+                <td><strong>ST-088</strong> · Educator</td>
+                <td>Primary School CBC</td>
+                <td>CBC Assessment Rubrics &amp; Strands</td>
+                <td>
+                  <span class="progress-bar-wrap"><span class="progress-bar-fill" style="width:75%;"></span></span> 75%
+                </td>
+                <td><strong>88%</strong> (Pass)</td>
+                <td><span style="color:#F4B400; font-weight:700;">Module 4 of 5</span></td>
+                <td><button class="btn btn-secondary btn-sm" onclick="sendReminder('ST-088')">Send Reminder</button></td>
+              </tr>
+              <tr>
+                <td><strong>ST-112</strong> · Instructor</td>
+                <td>Humanities &amp; Languages</td>
+                <td>Inclusive Pedagogy &amp; Accommodations</td>
+                <td>
+                  <span class="progress-bar-wrap"><span class="progress-bar-fill" style="width:90%;"></span></span> 90%
+                </td>
+                <td><strong>91%</strong> (Distinction)</td>
+                <td><span style="color:#123C8C; font-weight:700;">Final Quiz Pending</span></td>
+                <td><button class="btn btn-secondary btn-sm" onclick="sendReminder('ST-112')">Send Reminder</button></td>
+              </tr>
+              <tr>
+                <td><strong>ST-023</strong> · Deputy Head</td>
+                <td>School Leadership</td>
+                <td>Institutional Digital Transformation</td>
+                <td>
+                  <span class="progress-bar-wrap"><span class="progress-bar-fill" style="width:100%;"></span></span> 100%
+                </td>
+                <td><strong>98%</strong> (Distinction)</td>
+                <td><span style="color:#16794B; font-weight:700;">Issued (Verified)</span></td>
+                <td><a href="verify.html" class="btn btn-outline btn-sm">Verify Certificate</a></td>
+              </tr>
+              <tr>
+                <td><strong>ST-095</strong> · Assistant Teacher</td>
+                <td>Primary School CBC</td>
+                <td>CBC Assessment Rubrics &amp; Strands</td>
+                <td>
+                  <span class="progress-bar-wrap"><span class="progress-bar-fill" style="width:40%; background:#B42318;"></span></span> 40%
+                </td>
+                <td><strong>--</strong></td>
+                <td><span style="color:#B42318; font-weight:700;">Overdue (Module 2)</span></td>
+                <td><button class="btn btn-secondary btn-sm" onclick="sendReminder('ST-095')">Notify Staff</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Assign New Training to Cohort -->
+      <div id="assigned-training" style="background:#FFFFFF; border:1.5px solid #DCE2EA; border-radius:16px; padding:28px;">
+        <h3 style="font-size: 19px; font-weight: 800; color: #1E293B; margin: 0 0 8px 0;">
+          Assign Course or CPD Programme to Group
+        </h3>
+        <p style="font-size: 14px; color: #475569; margin: 0 0 20px 0;">
+          Select a verified Instructify training curriculum and assign it to a target department with a set target completion deadline.
+        </p>
+
+        <form onsubmit="handleAssignCourse(event)" style="display:grid; grid-template-columns: 1.5fr 1fr 1fr auto; gap:16px; align-items:flex-end;">
+          <div>
+            <label class="form-label" style="font-size:13px; font-weight:600; color:#1E293B; margin-bottom:6px; display:block;">Select Programme</label>
+            <select class="form-input" style="width:100%; height:42px; border:1px solid #DCE2EA; border-radius:8px; padding:0 12px; background:#fff;" required>
+              <option value="">Choose accredited training course...</option>
+              <option value="cpd-1">Teacher CPD: Competency-Based Assessment &amp; Lesson Planning</option>
+              <option value="cpd-2">Smart Classroom Technologies &amp; EdTech Integration</option>
+              <option value="cpd-3">Inclusive Learning Design &amp; Differentiated Pedagogy</option>
+              <option value="cpd-4">Educational Leadership &amp; Digital Transformation Strategy</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:13px; font-weight:600; color:#1E293B; margin-bottom:6px; display:block;">Target Department</label>
+            <select class="form-input" style="width:100%; height:42px; border:1px solid #DCE2EA; border-radius:8px; padding:0 12px; background:#fff;" required>
+              <option value="all">Entire Teaching Faculty</option>
+              <option value="stem">STEM Faculty</option>
+              <option value="humanities">Humanities Faculty</option>
+              <option value="primary">CBC Junior School Staff</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" style="font-size:13px; font-weight:600; color:#1E293B; margin-bottom:6px; display:block;">Target Deadline</label>
+            <input type="date" class="form-input" style="width:100%; height:42px; border:1px solid #DCE2EA; border-radius:8px; padding:0 12px;" required>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary btn-md" style="height:42px; white-space:nowrap;">
+              Assign to Cohort →
+            </button>
+          </div>
+        </form>
+        <div id="assign-feedback" style="display:none; padding:12px; border-radius:8px; margin-top:16px; font-size:13.5px; background:#ECFDF5; color:#065F46; border:1px solid #A7F3D0;"></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+  function exportReport(format) {
+    alert('Generating accessible ' + format.toUpperCase() + ' report for St. Teresa Educational Group. The download will start automatically.');
+  }
+  function sendReminder(staffId) {
+    alert('Automated reminder notification sent to ' + staffId + ' via email and SMS.');
+  }
+  function handleAssignCourse(e) {
+    e.preventDefault();
+    const fb = document.getElementById('assign-feedback');
+    fb.style.display = 'block';
+    fb.innerHTML = '<strong>Programme Assigned.</strong> Enrolment invitations and course access links dispatched to faculty members.';
+  }
+</script>
+</body>
+</html>

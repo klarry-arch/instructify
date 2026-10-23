@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility Statement &amp; Accommodation Request | Instructify Kenya</title>
+  <meta name="description" content="Instructify Kenya's commitment to digital accessibility, inclusive learning, WCAG 2.2 Level AA standards, accommodation requests, and barrier reporting.">
+  <link rel="canonical" href="https://instructify.co.ke/accessibility.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Google Fonts: Manrope & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <style>
+    .access-hero {
+      background: linear-gradient(135deg, #123C8C 0%, #09275F 100%);
+      color: #FFFFFF;
+      padding: calc(var(--nav-height, 72px) + 40px) 0 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .access-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      padding: 6px 18px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+    }
+    .access-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+    }
+    @media (max-width: 900px) {
+      .access-grid { grid-template-columns: 1fr; }
+    }
+    .access-card {
+      background: #FFFFFF;
+      border: 1.5px solid #DCE2EA;
+      border-radius: 16px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 16px rgba(18, 60, 140, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .access-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(18, 60, 140, 0.10);
+      border-color: #123C8C;
+    }
+    .access-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #EAF2FF;
+      color: #123C8C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+    .form-card-container {
+      background: #FFFFFF;
+      border: 1.5px solid #DCE2EA;
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: 0 8px 30px rgba(18, 60, 140, 0.06);
+      margin-top: 24px;
+    }
+    @media (max-width: 640px) {
+      .form-card-container { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="docmed-topbar" aria-label="Institutional framework and contact information">
+    <div class="container">
+      <div class="docmed-topbar__left">
+        <span class="docmed-topbar__badge" style="display:inline-flex; align-items:center; gap:8px;">
+          <svg width="18" height="12" viewBox="0 0 18 12" fill="none" class="docmed-topbar__flag" aria-hidden="true" style="border-radius:2px; box-shadow:0 0 0 1px rgba(0,0,0,0.12); flex-shrink:0;">
+            <rect width="18" height="12" fill="#000000"/>
+            <rect y="4" width="18" height="4" fill="#BB0000"/>
+            <rect y="8" width="18" height="4" fill="#006600"/>
+            <rect y="3.6" width="18" height="0.8" fill="#FFFFFF"/>
+            <rect y="7.6" width="18" height="0.8" fill="#FFFFFF"/>
+            <ellipse cx="9" cy="6" rx="2" ry="3.2" fill="#BB0000"/>
+            <ellipse cx="9" cy="6" rx="1.6" ry="3" stroke="#FFFFFF" stroke-width="0.5" fill="none"/>
+          </svg>
+          <span>Aligned with National Teaching Standards · TSC CPD &amp; KICD CBC Frameworks</span>
+        </span>
+      </div>
+      <div class="docmed-topbar__right">
+        <a href="mailto:accessibility@instructify.co.ke" class="docmed-topbar__item" aria-label="Email Accessibility Team">
+          <span>✉️</span> accessibility@instructify.co.ke
+        </a>
+        <a href="tel:+254143024416" class="docmed-topbar__item" aria-label="Call Accessibility Support">
+          <span>📞</span> +254 143 024416
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header id="site-header" class="site-header">
+    <nav id="navbar" class="navbar" role="navigation" aria-label="Primary site navigation">
+      <div class="container">
+        <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
+          <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
+        </a>
+
+        <!-- Simplified Nav Links -->
+        <ul class="nav-links" role="list">
+          <li><a href="index.html" class="nav-link" data-nav="home">Home</a></li>
+          <li class="nav-item-dropdown">
+            <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="courses" aria-haspopup="true" aria-expanded="false">
+              Courses
+              <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <ul class="nav-dropdown-menu" role="menu">
+              <li><a href="courses.html" class="nav-dropdown-item">Browse All Courses</a></li>
+              <li><a href="cpd-registration.html" class="nav-dropdown-item">Educator CPD</a></li>
+              <li><a href="courses.html?cat=student" class="nav-dropdown-item">Student Programmes</a></li>
+              <li><a href="courses.html?cat=digital-skills" class="nav-dropdown-item">Digital Skills</a></li>
+              <li><a href="jumuishi-learning-hub.html" class="nav-dropdown-item">Inclusive Learning</a></li>
+              <li><a href="courses.html?price=free" class="nav-dropdown-item">Free Courses</a></li>
+            </ul>
+          </li>
+          <li class="nav-item-dropdown">
+            <a href="educator-studio.html" class="nav-link nav-link-dropdown" data-nav="educators" aria-haspopup="true" aria-expanded="false">
+              For Educators
+              <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <ul class="nav-dropdown-menu" role="menu">
+              <li><a href="cpd-registration.html" class="nav-dropdown-item">Professional Development</a></li>
+              <li><a href="register.html?role=educator" class="nav-dropdown-item">Become a Course Creator</a></li>
+              <li><a href="educator-studio.html" class="nav-dropdown-item">Educator Studio</a></li>
+              <li><a href="resources.html" class="nav-dropdown-item">Teaching Resources</a></li>
+              <li><a href="educator-studio.html#guidelines" class="nav-dropdown-item">Creator Guidelines</a></li>
+            </ul>
+          </li>
+          <li class="nav-item-dropdown">
+            <a href="schools.html" class="nav-link nav-link-dropdown" data-nav="institutions" aria-haspopup="true" aria-expanded="false">
+              For Institutions
+              <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <ul class="nav-dropdown-menu" role="menu">
+              <li><a href="schools.html" class="nav-dropdown-item">Institutional Training</a></li>
+              <li><a href="consultancy.html#digital-transformation" class="nav-dropdown-item">Digital Transformation</a></li>
+              <li><a href="consultancy.html#ict-infrastructure" class="nav-dropdown-item">ICT Infrastructure</a></li>
+              <li><a href="consultancy.html#smart-classrooms" class="nav-dropdown-item">Smart Classrooms</a></li>
+              <li><a href="consultancy.html#lms-solutions" class="nav-dropdown-item">Curriculum &amp; LMS Solutions</a></li>
+              <li><a href="consultancy.html#booking-form" class="nav-dropdown-item">Request an Assessment</a></li>
+            </ul>
+          </li>
+          <li><a href="consultancy.html" class="nav-link" data-nav="consultancy">Consultancy</a></li>
+          <li class="nav-item-dropdown">
+            <a href="resources.html" class="nav-link nav-link-dropdown" data-nav="resources" aria-haspopup="true" aria-expanded="false">
+              Resources
+              <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <ul class="nav-dropdown-menu" role="menu">
+              <li><a href="blog.html" class="nav-dropdown-item">Articles &amp; Insights</a></li>
+              <li><a href="resources.html" class="nav-dropdown-item">Teaching Resources</a></li>
+              <li><a href="resources.html?cat=templates" class="nav-dropdown-item">Curriculum Templates</a></li>
+              <li><a href="podcast.html" class="nav-dropdown-item">Events &amp; Webinars</a></li>
+              <li><a href="accessibility.html" class="nav-dropdown-item">Accessibility Support</a></li>
+              <li><a href="contact.html#help" class="nav-dropdown-item">Help Centre</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html" class="nav-link" data-nav="about">About</a></li>
+        </ul>
+
+        <!-- Action CTAs -->
+        <div class="nav-actions">
+          <a href="login.html" class="btn btn-outline btn-sm">Sign In</a>
+          <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation">
+    <div class="nav-mobile-links">
+      <a href="index.html" class="nav-mobile-link" data-nav="home">Home</a>
+      <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses</a>
+      <a href="educator-studio.html" class="nav-mobile-link" data-nav="educators">For Educators</a>
+      <a href="schools.html" class="nav-mobile-link" data-nav="institutions">For Institutions</a>
+      <a href="consultancy.html" class="nav-mobile-link" data-nav="consultancy">Consultancy</a>
+      <a href="resources.html" class="nav-mobile-link" data-nav="resources">Resources</a>
+      <a href="about.html" class="nav-mobile-link" data-nav="about">About</a>
+      <a href="accessibility.html" class="nav-mobile-link active" data-nav="accessibility">Accessibility Statement</a>
+    </div>
+    <div class="nav-mobile-actions">
+      <a href="login.html" class="btn btn-outline btn-md" style="width:100%; justify-content:center;">Sign In</a>
+      <a href="register.html" class="btn btn-primary btn-md" style="width:100%; justify-content:center;">Get Started</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="access-hero" aria-label="Accessibility Hero">
+    <div class="container text-center">
+      <div class="access-badge">
+        <span>♿</span> WCAG 2.2 Level AA Standard Commitment
+      </div>
+      <h1 style="font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: #FFFFFF; line-height: 1.2; margin-bottom: 16px;">
+        Accessibility Statement &amp; Accommodations
+      </h1>
+      <p style="font-size: clamp(16px, 1.4vw, 18px); color: #E2E8F0; max-width: 780px; margin: 0 auto 28px; line-height: 1.68;">
+        Instructify Kenya is dedicated to ensuring that digital education, training materials, and learning management systems are accessible and barrier-free for learners and educators of all abilities.
+      </p>
+      <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+        <a href="#request-accommodation" class="btn btn-gold btn-md">Request an Accommodation</a>
+        <a href="#report-barrier" class="btn btn-secondary btn-md">Report an Accessibility Barrier</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Commitment & Standards -->
+  <section class="section" style="background:#FFFFFF; padding: 72px 0;">
+    <div class="container">
+      <div style="max-width: 860px; margin: 0 auto;">
+        <h2 style="font-size: 28px; font-weight: 800; color: #123C8C; margin-bottom: 16px;">
+          Our Accessibility Commitment
+        </h2>
+        <p style="font-size: 16px; color: #475569; line-height: 1.72; margin-bottom: 24px;">
+          At Instructify Kenya, we believe that education must be universally accessible. In accordance with the <em>Constitution of Kenya (Article 54)</em>, the <em>Persons with Disabilities Act</em>, and international accessibility standards, our platform adheres to the <strong>Web Content Accessibility Guidelines (WCAG) 2.2 Level AA</strong>.
+        </p>
+        <p style="font-size: 16px; color: #475569; line-height: 1.72; margin-bottom: 32px;">
+          We continually test and update our web pages, LMS interfaces, course player, and downloadable documents to remove digital barriers and provide equal access for people with visual, hearing, motor, cognitive, and learning disabilities.
+        </p>
+
+        <!-- Feature Grid -->
+        <h3 style="font-size: 22px; font-weight: 700; color: #1E293B; margin-bottom: 20px;">
+          Implemented Accessibility Features
+        </h3>
+
+        <div class="access-grid">
+          <div class="access-card">
+            <div class="access-icon-box">⌨️</div>
+            <h4 style="font-size: 17px; font-weight: 700; color: #1E293B; margin-bottom: 8px;">Full Keyboard Navigation</h4>
+            <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
+              Every button, link, form control, and modal can be navigated and activated entirely via keyboard without keyboard traps.
+            </p>
+          </div>
+
+          <div class="access-card">
+            <div class="access-icon-box">🔊</div>
+            <h4 style="font-size: 17px; font-weight: 700; color: #1E293B; margin-bottom: 8px;">Screen Reader Compatibility</h4>
+            <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
+              Semantic HTML5 structures, ARIA landmark roles, and descriptive alternative text for informative instructional imagery.
+            </p>
+          </div>
+
+          <div class="access-card">
+            <div class="access-icon-box">🎨</div>
+            <h4 style="font-size: 17px; font-weight: 700; color: #1E293B; margin-bottom: 8px;">High-Contrast Palette</h4>
+            <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
+              All text meets or exceeds WCAG AA contrast ratios (minimum 4.5:1 for normal body text and 7:1 for headers).
+            </p>
+          </div>
+
+          <div class="access-card">
+            <div class="access-icon-box">📝</div>
+            <h4 style="font-size: 17px; font-weight: 700; color: #1E293B; margin-bottom: 8px;">Captions &amp; Transcripts</h4>
+            <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
+              Instructional video content includes closed captioning and downloadable text transcripts for auditory accessibility.
+            </p>
+          </div>
+
+          <div class="access-card">
+            <div class="access-icon-box">🔍</div>
+            <h4 style="font-size: 17px; font-weight: 700; color: #1E293B; margin-bottom: 8px;">200% Text Resizing</h4>
+            <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
+              Text can be magnified up to 200% without loss of content, clipped text, or requiring horizontal window scrolling.
+            </p>
+          </div>
+
+          <div class="access-card">
+            <div class="access-icon-box">📡</div>
+            <h4 style="font-size: 17px; font-weight: 700; color: #1E293B; margin-bottom: 8px;">Low-Bandwidth Optimized</h4>
+            <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
+              Compressed assets, audio-first options, and downloadable offline course guides designed for low-connectivity regions.
+            </p>
+          </div>
+        </div>
+
+        <!-- Known Limitations & Roadmap -->
+        <div style="background:#F5F7FA; border:1px solid #DCE2EA; border-radius:14px; padding:24px 28px; margin-top:40px;">
+          <h3 style="font-size: 19px; font-weight: 700; color: #1E293B; margin-bottom: 10px;">
+            Known Limitations &amp; Ongoing Improvements
+          </h3>
+          <p style="font-size: 14.5px; color: #475569; line-height: 1.65; margin-bottom: 12px;">
+            While we strive for comprehensive accessibility, some older PDF reference archives and third-party webinar recordings may not yet feature synchronized sign-language interpretation or structured tagged tables.
+          </p>
+          <p style="font-size: 14.5px; color: #475569; line-height: 1.65; margin: 0;">
+            Our dedicated accessibility team is actively retrofitting existing media and works with educators in our <strong>Educator Studio</strong> to ensure every newly authored course undergoes a mandatory accessibility checklist prior to publication.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Accommodation Request Form -->
+  <section id="request-accommodation" class="section" style="background:#F5F7FA; padding: 72px 0; border-top:1px solid #DCE2EA;">
+    <div class="container" style="max-width: 860px;">
+      <div class="text-center" style="margin-bottom: 32px;">
+        <span class="section-badge" style="background:#EAF2FF; color:#123C8C; font-weight:700; padding:4px 14px; border-radius:999px; font-size:12px; text-transform:uppercase;">Learner Support</span>
+        <h2 style="font-size: 30px; font-weight: 800; color: #123C8C; margin: 12px 0 8px;">
+          Request an Accommodation
+        </h2>
+        <p style="font-size: 15.5px; color: #475569; max-width: 620px; margin: 0 auto;">
+          Enrolled or prospective learners who require specialized learning accommodations, alternative formats, or individualized support may submit this confidential request.
+        </p>
+      </div>
+
+      <div class="form-card-container">
+        <form id="accommodation-form" onsubmit="handleAccommodationSubmit(event)">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div>
+              <label class="form-label" for="acc-fullname" style="font-weight:600; font-size:13.5px; color:#1E293B; display:block; margin-bottom:6px;">Full Name *</label>
+              <input type="text" id="acc-fullname" class="form-input" style="width:100%; height:44px; padding:8px 14px; border:1.5px solid #DCE2EA; border-radius:8px;" placeholder="e.g. Jane Wanjiku" required>
+            </div>
+            <div>
+              <label class="form-label" for="acc-email" style="font-weight:600; font-size:13.5px; color:#1E293B; display:block; margin-bottom:6px;">Email Address *</label>
+              <input type="email" id="acc-email" class="form-input" style="width:100%; height:44px; padding:8px 14px; border:1.5px solid #DCE2EA; border-radius:8px;" placeholder="jane@example.com" required>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div>
+              <label class="form-label" for="acc-phone" style="font-weight:600; font-size:13.5px; color:#1E293B; display:block; margin-bottom:6px;">Phone / WhatsApp *</label>
+              <input type="tel" id="acc-phone" class="form-input" style="width:100%; height:44px; padding:8px 14px; border:1.5px solid #DCE2EA; border-radius:8px;" placeholder="07XX XXX XXX" required>
+            </div>
+            <div>
+              <label class="form-label" for="acc-programme" style="font-weight:600; font-size:13.5px; color:#1E293B; display:block; margin-bottom:6px;">Course or Programme *</label>
+              <input type="text" id="acc-programme" class="form-input" style="width:100%; height:44px; padding:8px 14px; border:1.5px solid #DCE2EA; border-radius:8px;" placeholder="e.g. Teacher CPD Competency Training" required>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label class="form-label" for="acc-type" style="font-weight:600; font-size:13.5px; color:#1E293B; display:block; margin-bottom:6px;">Primary Accessibility Requirement *</label>
+            <select id="acc-type" class="form-input" style="width:100%; height:44px; padding:8px 14px; border:1.5px solid #DCE2EA; border-radius:8px; background:#fff;" required>
+              <option value="" disabled selected>Select an accessibility area...</option>
+              <option value="visual">Visual Accommodation (Screen reader, high contrast, large text)</option>
+              <option value="hearing">Hearing Accommodation (Captions, full transcripts, audio descriptions)</option>
+              <option value="motor">Motor / Mobility Accommodation (Keyboard-only access, extended assessment time)</option>
+              <option value="cognitive">Cognitive / Neurodiverse Accommodation (Distraction-free layout, pacing options)</option>
+              <option value="low-bandwidth">Connectivity / Low-Bandwidth Accommodation (Offline download packages)</option>
+              <option value="other">Other specialized requirement</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 24px;">
+            <label class="form-label" for="acc-details" style="font-weight:600; font-size:13.5px; color:#1E293B; display:block; margin-bottom:6px;">Specific Accommodation Needed *</label>
+            <textarea id="acc-details" rows="4" class="form-input" style="width:100%; padding:10px 14px; border:1.5px solid #DCE2EA; border-radius:8px; resize:vertical;" placeholder="Please describe how we can best support your learning experience..." required></textarea>
+          </div>
+
+          <button type="submit" id="acc-submit-btn" class="btn btn-primary btn-md" style="width:100%; justify-content:center;">
+            Submit Accommodation Request
+          </button>
+          <div id="acc-feedback" style="display:none; padding:14px; border-radius:8px; margin-top:16px; font-size:14px;"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Barrier Reporting Form -->
+  <section id="report-barrier" class="section" style="background:#FFFFFF; padding: 72px 0;">
+    <div class="container" style="max-width: 860px;">
+      <div class="text-center" style="margin-bottom: 32px;">
+        <span class="section-badge" style="background:#FFF4CC; color:#B45309; font-weight:700; padding:4px 14px; border-radius:999px; font-size:12px; text-transform:uppercase;">Continuous Improvement</span>
+        <h2 style="font-size: 30px; font-weight: 800; color: #123C8C; margin: 12px 0 8px;">
+          Report an Accessibility Barrier
+        </h2>
+        <p style="font-size: 15.5px; color: #475569; max-width: 620px; margin: 0 auto;">
+          If you encounter any difficulty accessing content or using interactive features on our platform, please let us know so we can fix it promptly.
+        </p>
+      </div>
+
+      <div class="form-card-container">
+        <form id="barrier-form" onsubmit="handleBarrierSubmit(event)">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div>
+              <label class="form-label" for="bar-name" style="font-weight:600; font-size:13.5px; color:#1E293B; display:block; margin-bottom:6px;">Your Name (Optional)</label>
+              <input type="text" id="bar-name" class="form-input" style="width:100%; height:44px; padding:8px 14px; border:1.5px solid #DCE2EA; border-radius:8px;" placeholder="Optional">
+            </div>
+            <div>
+              <label class="form-label" for="bar-email" style="font-weight:600; font-size:13.5px; color:#1E293B; display:block; margin-bottom:6px;">Your Email (for updates) *</label>
+              <input type="email" id="bar-email" class="form-input" style="width:100%; height:44px; padding:8px 14px; border:1.5px solid #DCE2EA; border-radius:8px;" placeholder="you@example.com" required>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label class="form-label" for="bar-url" style="font-weight:600; font-size:13.5px; color:#1E293B; display:block; margin-bottom:6px;">Page URL or Feature Where Barrier Occurred *</label>
+            <input type="text" id="bar-url" class="form-input" style="width:100%; height:44px; padding:8px 14px; border:1.5px solid #DCE2EA; border-radius:8px;" placeholder="e.g. https://instructify.co.ke/courses.html" required>
+          </div>
+
+          <div style="margin-bottom: 24px;">
+            <label class="form-label" for="bar-desc" style="font-weight:600; font-size:13.5px; color:#1E293B; display:block; margin-bottom:6px;">Description of the Issue *</label>
+            <textarea id="bar-desc" rows="4" class="form-input" style="width:100%; padding:10px 14px; border:1.5px solid #DCE2EA; border-radius:8px; resize:vertical;" placeholder="Please describe what happened, your assistive technology (e.g. NVDA, VoiceOver, JAWS, keyboard-only), and any error messages..." required></textarea>
+          </div>
+
+          <button type="submit" id="bar-submit-btn" class="btn btn-secondary btn-md" style="width:100%; justify-content:center;">
+            Submit Accessibility Barrier Report
+          </button>
+          <div id="bar-feedback" style="display:none; padding:14px; border-radius:8px; margin-top:16px; font-size:14px;"></div>
+        </form>
+      </div>
+
+      <!-- Formal Contact & Review Date -->
+      <div style="text-align:center; margin-top: 48px; padding-top: 32px; border-top: 1px solid #DCE2EA; color: #64748B; font-size: 14px;">
+        <p style="margin-bottom: 8px;"><strong>Accessibility Officer Contact:</strong> <a href="mailto:accessibility@instructify.co.ke" style="color:#123C8C; font-weight:600;">accessibility@instructify.co.ke</a> | 📞 +254 143 024416</p>
+        <p style="margin: 0;">Formal Statement Review Date: <strong>October 2026</strong> | Compliant with WCAG 2.2 Level AA</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Footer -->
+  <footer class="footer" style="background:#0F172A; color:#E2E8F0; padding: 64px 0 28px 0;">
+    <div class="container">
+      <!-- Purpose Statement Banner -->
+      <div class="footer-brand-statement" style="background: rgba(255,255,255,0.06); border-radius: 14px; padding: 24px 28px; margin-bottom: 48px; border: 1px solid rgba(255,255,255,0.12);">
+        <p class="brand-statement-headline" style="font-family:var(--font-heading), 'Manrope', sans-serif; font-size: 19px; font-weight: 750; color:#FFFFFF; margin:0 0 6px 0;">
+          We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.
+        </p>
+        <p style="font-size: 14px; color:#CBD5E1; margin:0; line-height:1.6;">
+          Empowering schools, ministries, and learning organizations through meaningful learning experiences, practical teacher CPD, and inclusive digital education solutions across Kenya.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 48px;">
+        <div>
+          <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" style="height: 38px; width: auto; margin-bottom: 16px;">
+          <p style="font-size: 14px; color: #CBD5E1; line-height: 1.65; max-width: 320px;">
+            A professional learning and education-transformation platform where educators develop skills, approved experts create courses, learners access inclusive opportunities, and institutions receive practical digital support.
+          </p>
+          <div class="footer-social-row" style="display:flex; gap:10px; margin-top:18px;">
+            <a href="https://www.linkedin.com/company/instructify-kenya" class="footer-social-btn linkedin" aria-label="Instructify Kenya on LinkedIn" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24"/></svg></a>
+            <a href="https://www.facebook.com/instructifykenya" class="footer-social-btn facebook" aria-label="Instructify Kenya on Facebook" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg></a>
+            <a href="https://twitter.com/instructifyke" class="footer-social-btn twitter" aria-label="Instructify Kenya on Twitter" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://www.youtube.com/@instructifykenya" class="footer-social-btn youtube" aria-label="Instructify Kenya on YouTube" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="https://wa.me/254143024416" class="footer-social-btn whatsapp" aria-label="Chat with Instructify Kenya on WhatsApp" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24"/></svg></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="font-size:15px; font-weight:700; color:#FFFFFF; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Programmes</h4>
+          <ul style="list-style:none; padding:0; margin:0;">
+            <li style="margin-bottom:10px;"><a href="courses.html" style="color:#CBD5E1; text-decoration:none;">All Courses</a></li>
+            <li style="margin-bottom:10px;"><a href="cpd-registration.html" style="color:#CBD5E1; text-decoration:none;">Teacher CPD Training</a></li>
+            <li style="margin-bottom:10px;"><a href="jumuishi-learning-hub.html" style="color:#CBD5E1; text-decoration:none;">Inclusive Learning Hub</a></li>
+            <li style="margin-bottom:10px;"><a href="verify.html" style="color:#CBD5E1; text-decoration:none;">Certificate Verification</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size:15px; font-weight:700; color:#FFFFFF; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Institutions</h4>
+          <ul style="list-style:none; padding:0; margin:0;">
+            <li style="margin-bottom:10px;"><a href="consultancy.html" style="color:#CBD5E1; text-decoration:none;">Educational Consultancy</a></li>
+            <li style="margin-bottom:10px;"><a href="schools.html" style="color:#CBD5E1; text-decoration:none;">School Transformation</a></li>
+            <li style="margin-bottom:10px;"><a href="consultancy.html#booking-form" style="color:#CBD5E1; text-decoration:none;">Digital Readiness Audit</a></li>
+            <li style="margin-bottom:10px;"><a href="accessibility.html" style="color:#CBD5E1; text-decoration:none;">Accessibility Commitment</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size:15px; font-weight:700; color:#FFFFFF; margin-bottom:18px; text-transform:uppercase; letter-spacing:0.04em;">Legal &amp; Support</h4>
+          <ul style="list-style:none; padding:0; margin:0;">
+            <li style="margin-bottom:10px;"><a href="accessibility.html" style="color:#F4B400; text-decoration:none; font-weight:700;">Accessibility Statement</a></li>
+            <li style="margin-bottom:10px;"><a href="accessibility.html#request-accommodation" style="color:#CBD5E1; text-decoration:none;">Accommodation Request</a></li>
+            <li style="margin-bottom:10px;"><a href="contact.html" style="color:#CBD5E1; text-decoration:none;">Contact &amp; Help Centre</a></li>
+            <li style="margin-bottom:10px;"><a href="about.html" style="color:#CBD5E1; text-decoration:none;">About Instructify</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="padding-top:24px; border-top:1px solid #1E293B; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-size:13px; color:#CBD5E1;">
+        <div>&copy; 2026 Instructify Kenya. All rights reserved. Registered Educational Provider in Kenya.</div>
+        <div style="display:flex; gap:18px;">
+          <a href="accessibility.html" style="color:#CBD5E1; text-decoration:none;">Accessibility</a>
+          <a href="contact.html" style="color:#CBD5E1; text-decoration:none;">Privacy Policy</a>
+          <a href="contact.html" style="color:#CBD5E1; text-decoration:none;">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handleAccommodationSubmit(e) {
+      e.preventDefault();
+      const fb = document.getElementById('acc-feedback');
+      const btn = document.getElementById('acc-submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting Request...';
+      setTimeout(() => {
+        fb.style.display = 'block';
+        fb.style.background = '#ECFDF5';
+        fb.style.color = '#065F46';
+        fb.style.border = '1px solid #A7F3D0';
+        fb.innerHTML = '<strong>Request Received Successfully.</strong> Our Accessibility Support Team has logged your accommodation request and will contact you via email/phone within 24 business hours.';
+        btn.textContent = 'Request Submitted ✓';
+        document.getElementById('accommodation-form').reset();
+      }, 700);
+    }
+
+    function handleBarrierSubmit(e) {
+      e.preventDefault();
+      const fb = document.getElementById('bar-feedback');
+      const btn = document.getElementById('bar-submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting Report...';
+      setTimeout(() => {
+        fb.style.display = 'block';
+        fb.style.background = '#ECFDF5';
+        fb.style.color = '#065F46';
+        fb.style.border = '1px solid #A7F3D0';
+        fb.innerHTML = '<strong>Thank you for reporting.</strong> Our engineering and accessibility team has received the report and is reviewing the specified feature for immediate remediation.';
+        btn.textContent = 'Report Submitted ✓';
+        document.getElementById('barrier-form').reset();
+      }, 700);
+    }
+  </script>
+</body>
+</html>

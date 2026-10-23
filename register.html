@@ -424,8 +424,8 @@
             </div>
             <div class="role-card" onclick="selectRole(this,'trainer')" id="role-trainer">
               <div class="role-card-icon">👨‍🏫</div>
-              <div class="role-card-name">Trainer</div>
-              <div class="role-card-desc">Facilitator / Expert</div>
+              <div class="role-card-name">Educator</div>
+              <div class="role-card-desc">Course Creator</div>
             </div>
             <div class="role-card" onclick="selectRole(this,'institution')" id="role-institution">
               <div class="role-card-icon">🏫</div>
@@ -434,6 +434,17 @@
             </div>
           </div>
           <input type="hidden" id="selected-role" value="learner">
+
+          <!-- Role Guidance Notices -->
+          <div id="role-notice-learner" class="role-notice" style="margin-top:12px; padding:10px 14px; background:#F0FDF4; border:1px solid #BBF7D0; border-radius:8px; font-size:12.5px; color:#166534; display:block; line-height:1.5;">
+            <span>ℹ️</span> <strong>Learner Account:</strong> Browse and enrol in CPD programmes, self-paced skills courses, and earn verifiable certificates.
+          </div>
+          <div id="role-notice-trainer" class="role-notice" style="margin-top:12px; padding:10px 14px; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:8px; font-size:12.5px; color:#1E40AF; display:none; line-height:1.5;">
+            <span>🛡️</span> <strong>Educator Approval Notice:</strong> Course creation and publishing access is subject to pedagogical review and verification. You can draft courses in the <a href="educator-studio.html" style="color:#1D4ED8; font-weight:700; text-decoration:underline;">Educator Studio</a> while your credentials are authenticated.
+          </div>
+          <div id="role-notice-institution" class="role-notice" style="margin-top:12px; padding:10px 14px; background:#FFFBEB; border:1px solid #FDE68A; border-radius:8px; font-size:12.5px; color:#92400E; display:none; line-height:1.5;">
+            <span>🏫</span> <strong>Institution Portal:</strong> For institutional staff training, cohort progress, or ICT transformation: you can register here or <a href="contact.html#consultation-form" style="color:#B45309; font-weight:700; text-decoration:underline;">book an institutional consultation directly →</a>
+          </div>
         </div>
 
         <div id="signup-error" class="alert alert-danger" style="display:none;margin-bottom:20px;">
@@ -500,7 +511,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   // Pre-select role from URL param
   const role = new URLSearchParams(window.location.search).get('role');
-  if (role === 'trainer') { switchTab('signup'); selectRole(document.getElementById('role-trainer'), 'trainer'); }
+  if (role === 'trainer' || role === 'educator') { switchTab('signup'); selectRole(document.getElementById('role-trainer'), 'trainer'); }
+  if (role === 'institution') { switchTab('signup'); selectRole(document.getElementById('role-institution'), 'institution'); }
 
   // Attach live real-time validation
   if (window.FormValidator) {
@@ -536,11 +548,18 @@ document.addEventListener('DOMContentLoaded', () => {
 let selectedRole = 'learner';
 
 function selectRole(el, role) {
+  if (!el) return;
   document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
   selectedRole = role;
   document.getElementById('selected-role').value = role;
-  document.getElementById('institution-field').style.display = (role === 'institution') ? 'block' : 'none';
+  const instField = document.getElementById('institution-field');
+  if (instField) instField.style.display = (role === 'institution') ? 'block' : 'none';
+
+  // Toggle role notices
+  document.querySelectorAll('.role-notice').forEach(n => n.style.display = 'none');
+  const notice = document.getElementById('role-notice-' + role);
+  if (notice) notice.style.display = 'block';
 }
 
 function switchTab(tab) {

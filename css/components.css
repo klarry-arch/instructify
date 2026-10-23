@@ -738,26 +738,28 @@ a[href*="jumuishi"].nav-link.active::after {
   outline-offset: 2px;
 }
 
-/* ── Primary — Royal Indigo (#4F46E5) ── */
+/* ── Primary — Royal Blue (#123C8C) ── */
 .btn-primary,
 .btn-main {
-  background: var(--cta-color, #4F46E5);
+  background: var(--cta-color, #123C8C);
   color: #FFFFFF !important;
-  border-color: var(--cta-color, #4F46E5);
+  border-color: var(--cta-color, #123C8C);
   border-radius: 8px;
-  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.28);
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(18, 60, 140, 0.28);
 }
 .btn-primary:hover,
 .btn-main:hover {
-  background: var(--cta-color-hover, #4338CA);
-  border-color: var(--cta-color-hover, #4338CA);
+  background: var(--cta-color-hover, #09275F);
+  border-color: var(--cta-color-hover, #09275F);
   color: #FFFFFF !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.40);
+  box-shadow: 0 6px 20px rgba(18, 60, 140, 0.38);
 }
 .btn-primary:disabled,
 .btn-blue:disabled,
 .btn-orange:disabled,
+.btn-gold:disabled,
 .btn:disabled {
   background: var(--border, #E5E7EB) !important;
   border-color: var(--border-strong, #D1D5DB) !important;
@@ -768,65 +770,71 @@ a[href*="jumuishi"].nav-link.active::after {
   opacity: 0.90;
 }
 
-/* ── Secondary — Soft Lavender with Royal Indigo Accent ── */
+/* ── Secondary — White with Royal Blue border / Soft Blue Accent ── */
 .btn-secondary,
 .btn-blue,
 .btn-indigo {
-  background: var(--surface-color-soft, #EEF2FF);
-  color: var(--secondary-color, #4F46E5) !important;
-  border: 1.5px solid #C7D2FE;
+  background: #FFFFFF;
+  color: var(--primary-color, #123C8C) !important;
+  border: 1.5px solid var(--primary-color, #123C8C);
   border-radius: 8px;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.08);
+  box-shadow: 0 2px 8px rgba(18, 60, 140, 0.08);
 }
 .btn-secondary:hover,
 .btn-blue:hover,
 .btn-indigo:hover {
-  background: #E0E7FF;
-  border-color: #A5B4FC;
-  color: #3730A3 !important;
+  background: var(--soft-blue, #EAF2FF);
+  border-color: var(--primary-color-hover, #09275F);
+  color: var(--primary-color-hover, #09275F) !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.16);
+  box-shadow: 0 4px 14px rgba(18, 60, 140, 0.16);
 }
 
 .btn-teal {
-  background: var(--accent-color, #0F9D91);
+  background: var(--accent-color, #087E8B);
   color: #FFFFFF !important;
-  border: 1.5px solid var(--accent-color, #0F9D91);
+  border: 1.5px solid var(--accent-color, #087E8B);
   border-radius: 8px;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(15, 157, 145, 0.16);
+  box-shadow: 0 2px 8px rgba(8, 126, 139, 0.16);
 }
 .btn-teal:hover {
-  background: var(--accent-color-hover, #0D857B);
-  border-color: var(--accent-color-hover, #0D857B);
+  background: var(--accent-color-hover, #06646F);
+  border-color: var(--accent-color-hover, #06646F);
   color: #FFFFFF !important;
   transform: translateY(-2px);
 }
 
-/* ── Accent CTA — Warm Amber (#F4B942) for occasional highlights ── */
+/* ── High-Attention CTA — Gold Yellow (#F4B400) for Special Actions ── */
+.btn-gold,
+.btn-cta-gold,
+.btn-high-attention,
 .btn-accent,
 .btn-cta,
 .btn-orange,
 .btn-amber,
 .btn-accent-purple {
-  background: var(--warning-color, #F4B942);
-  color: #14213D !important;
-  border-color: var(--warning-color, #F4B942);
+  background: var(--warning-color, #F4B400);
+  color: #151515 !important;
+  border: 1.5px solid var(--warning-color, #F4B400);
   border-radius: 8px;
   font-weight: 700;
-  box-shadow: 0 2px 10px rgba(244, 185, 66, 0.30);
+  box-shadow: 0 4px 14px rgba(244, 180, 0, 0.32);
 }
+.btn-gold:hover,
+.btn-cta-gold:hover,
+.btn-high-attention:hover,
 .btn-accent:hover,
 .btn-cta:hover,
 .btn-orange:hover,
 .btn-amber:hover,
 .btn-accent-purple:hover {
-  background: var(--warning-color-hover, #E5A830);
-  border-color: var(--warning-color-hover, #E5A830);
-  color: #14213D !important;
+  background: var(--warning-color-hover, #D99B00);
+  border-color: var(--warning-color-hover, #D99B00);
+  color: #151515 !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(244, 185, 66, 0.40);
+  box-shadow: 0 6px 18px rgba(244, 180, 0, 0.45);
 }
 
 /* ── Outline Buttons ── */
