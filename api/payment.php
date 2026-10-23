@@ -454,8 +454,11 @@ if ($action === 'create-order') {
     $amountMinor = $course['amount'];
     $payableKes = (int)round($amountMinor / 100);
     $orderRef = generateOrderReference();
+    $orderId = 'ord_' . date('Ymd') . '_' . bin2hex(random_bytes(4));
 
     $orderData = [
+        'id' => $orderId,
+        'orderId' => $orderId,
         'orderReference' => $orderRef,
         'courseId' => $courseId,
         'courseTitle' => $course['title'],
@@ -466,6 +469,9 @@ if ($action === 'create-order') {
         'userEmail' => $userEmail,
         'userName' => $userName,
         'status' => 'pending',
+        'paymentState' => 'initiated',
+        'paymentId' => null,
+        'providerReference' => null,
         'createdAt' => date('c'),
     ];
 
@@ -476,7 +482,9 @@ if ($action === 'create-order') {
     http_response_code(200);
     echo json_encode([
         'success' => true,
+        'orderId' => $orderId,
         'orderReference' => $orderRef,
+        'paymentState' => 'initiated',
         'courseId' => $courseId,
         'courseTitle' => $course['title'],
         'amount' => $amountMinor,
@@ -551,7 +559,11 @@ if ($action === 'initiate-payment') {
     }
 
     $checkoutId = $stkResult['checkoutRequestId'];
+    $paymentId = 'pay_' . date('Ymd') . '_' . bin2hex(random_bytes(4));
     $order['status'] = 'processing';
+    $order['paymentState'] = 'awaiting_customer_action';
+    $order['paymentId'] = $paymentId;
+    $order['providerReference'] = $checkoutId;
     $order['checkoutRequestId'] = $checkoutId;
     $order['merchantRequestId'] = $stkResult['merchantRequestId'] ?? null;
     $order['phone'] = $normalisedPhone;
@@ -565,9 +577,13 @@ if ($action === 'initiate-payment') {
     http_response_code(200);
     echo json_encode([
         'status' => 'pending',
+        'paymentState' => 'awaiting_customer_action',
         'success' => true,
-        'message' => $stkResult['customerMessage'] ?? "An M-Pesa payment prompt of KES {$payableKes} has been sent to {$maskedPhone}.",
+        'message' => 'Payment request sent. Check your phone and enter your M-Pesa PIN to complete the payment.',
+        'orderId' => $order['orderId'] ?? $orderReference,
         'orderReference' => $orderReference,
+        'paymentId' => $paymentId,
+        'providerReference' => $checkoutId,
         'checkoutRequestId' => $checkoutId,
         'phone' => $normalisedPhone,
         'maskedPhone' => $maskedPhone,
@@ -618,13 +634,20 @@ if ($action === 'verify-payment') {
         }
 
         http_response_code(200);
+        $isPaid = (($order['status'] ?? '') === 'paid');
         echo json_encode([
             'status' => $order['status'] ?? 'pending',
+            'paymentState' => $order['paymentState'] ?? ($isPaid ? 'successful' : 'awaiting_customer_action'),
+            'enrolled' => $isPaid,
+            'orderId' => $order['orderId'] ?? $ref,
             'orderReference' => $ref,
+            'paymentId' => $order['paymentId'] ?? ('pay_' . md5($ref)),
+            'providerReference' => $order['providerReference'] ?? $order['receiptNumber'] ?? $order['checkoutRequestId'] ?? null,
             'receiptNumber' => $order['receiptNumber'] ?? null,
             'payableAmountKes' => $order['payableAmountKes'] ?? (int)round(($order['amount'] ?? 0) / 100),
             'paidAt' => $order['paidAt'] ?? null,
             'courseTitle' => $order['courseTitle'] ?? '',
+            'message' => $isPaid ? 'Payment confirmed. You have been enrolled successfully.' : 'We are confirming your payment. Please do not refresh or close this page.',
         ]);
         exit;
     }
@@ -693,7 +716,11 @@ if ($action === 'verify-payment') {
     $payments[$cleanCode] = $paymentRecord;
     saveJsonStore('payments.json', $payments);
 
+    $paymentId = $order['paymentId'] ?? ('pay_' . date('Ymd') . '_' . bin2hex(random_bytes(4)));
     $order['status'] = 'paid';
+    $order['paymentState'] = 'successful';
+    $order['paymentId'] = $paymentId;
+    $order['providerReference'] = $cleanCode;
     $order['receiptNumber'] = $cleanCode;
     $order['paidAt'] = date('c');
     $orders[$order['orderReference']] = $order;
@@ -739,14 +766,20 @@ if ($action === 'verify-payment') {
     echo json_encode([
         'success' => true,
         'verified' => true,
+        'status' => 'paid',
+        'paymentState' => 'successful',
+        'enrolled' => true,
+        'orderId' => $order['orderId'] ?? $order['orderReference'],
         'orderReference' => $order['orderReference'],
+        'paymentId' => $paymentId,
+        'providerReference' => $cleanCode,
         'receiptNumber' => $cleanCode,
         'courseId' => $order['courseId'],
         'courseTitle' => $courseTitle,
         'amountKes' => $amountKes,
         'method' => $method,
         'whatsappUrl' => $whatsappUrl,
-        'message' => 'Payment recorded successfully! Your course enrollment is confirmed.',
+        'message' => 'Payment confirmed. You have been enrolled successfully.',
     ]);
     exit;
 }
@@ -807,7 +840,11 @@ if ($action === 'webhook-mpesa') {
         $phone = (string)($metaMap['PhoneNumber'] ?? $order['phone'] ?? '');
 
         if ($receiptNumber) {
+            $paymentId = $order['paymentId'] ?? ('pay_' . date('Ymd') . '_' . bin2hex(random_bytes(4)));
             $order['status'] = 'paid';
+            $order['paymentState'] = 'successful';
+            $order['paymentId'] = $paymentId;
+            $order['providerReference'] = $receiptNumber;
             $order['receiptNumber'] = $receiptNumber;
             $order['paidAt'] = date('c');
             $order['method'] = 'daraja_stk';
@@ -817,6 +854,8 @@ if ($action === 'webhook-mpesa') {
             $payments = loadJsonStore('payments.json');
             $payments[$receiptNumber] = [
                 'orderReference' => $orderRef,
+                'paymentId' => $paymentId,
+                'providerReference' => $receiptNumber,
                 'receiptNumber' => $receiptNumber,
                 'method' => 'daraja_stk',
                 'amountKes' => $paidAmount,
@@ -851,7 +890,18 @@ if ($action === 'webhook-mpesa') {
             @mail(ENROLLMENTS_EMAIL, $emailSubject, $adminBody, $headers);
         }
     } else {
-        $order['status'] = 'failed';
+        $status = 'failed';
+        $paymentState = 'failed';
+        if ($resultCode === 1032) {
+            $status = 'cancelled';
+            $paymentState = 'cancelled';
+        } elseif ($resultCode === 1037 || $resultCode === 2001) {
+            $status = 'timed_out';
+            $paymentState = 'timed_out';
+        }
+        $order['status'] = $status;
+        $order['paymentState'] = $paymentState;
+        $order['providerReference'] = $checkoutRequestId;
         $order['failureReason'] = $resultDesc;
         $order['failedAt'] = date('c');
         $orders[$orderRef] = $order;

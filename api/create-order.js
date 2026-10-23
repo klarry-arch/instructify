@@ -87,6 +87,7 @@ export default async function handler(req, res) {
 
     const order = {
       id: orderId,
+      orderId,
       orderReference,
       userId,
       userEmail,
@@ -96,6 +97,9 @@ export default async function handler(req, res) {
       amount: course.amount,
       currency: course.currency,
       status: 'pending',
+      paymentState: 'initiated',
+      paymentId: null,
+      providerReference: null,
       paymentMethod: null,
       createdAt: now,
       updatedAt: now,
@@ -103,10 +107,14 @@ export default async function handler(req, res) {
 
     await storeSet(`order:ref:${orderReference}`, order);
     await storeSet(`order:id:${orderId}`, order);
-    await storeSet(pendingKey, { orderReference }, 300);
+    await storeSet(pendingKey, { orderReference, orderId }, 300);
 
     return res.status(200).json({
+      orderId,
       orderReference,
+      paymentState: 'initiated',
+      paymentId: null,
+      providerReference: null,
       courseId: course.id,
       courseTitle: course.title,
       amount: course.amount,
@@ -180,6 +188,7 @@ export default async function handler(req, res) {
 
   const order = {
     id: orderId,
+    orderId,
     orderReference,
     userId,
     userEmail,
@@ -189,6 +198,9 @@ export default async function handler(req, res) {
     amount: course.amount,         // authoritative — from server config
     currency: course.currency,
     status: 'pending',
+    paymentState: 'initiated',
+    paymentId: null,
+    providerReference: null,
     paymentMethod: null,
     createdAt: now,
     updatedAt: now,
@@ -198,10 +210,14 @@ export default async function handler(req, res) {
   await storeSet(`order:ref:${orderReference}`, order);
   await storeSet(`order:id:${orderId}`, order);
   // Store pending marker with 5-minute TTL
-  await storeSet(pendingKey, { orderReference }, 300);
+  await storeSet(pendingKey, { orderReference, orderId }, 300);
 
   return json(200, {
+    orderId,
     orderReference,
+    paymentState: 'initiated',
+    paymentId: null,
+    providerReference: null,
     courseId: course.id,
     courseTitle: course.title,
     amount: course.amount,

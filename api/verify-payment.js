@@ -96,11 +96,15 @@ async function handleManualVerification(body) {
     };
   }
 
+  const paymentId = order.paymentId || generateId('pay');
   order.status = 'paid';
+  order.paymentState = 'successful';
   order.orderStatus = 'completed';
   order.paymentMethod = method || 'paybill';
   order.receiptNumber = cleanCode;
+  order.providerReference = cleanCode;
   order.transactionReference = cleanCode;
+  order.paymentId = paymentId;
   order.paidAt = now;
   order.updatedAt = now;
 
@@ -131,14 +135,20 @@ async function handleManualVerification(body) {
     body: {
       success: true,
       verified: true,
+      status: 'paid',
+      paymentState: 'successful',
+      enrolled: true,
+      orderId: order.orderId || order.id || order.orderReference,
       orderReference: order.orderReference,
+      paymentId,
+      providerReference: cleanCode,
       courseId: order.courseId,
       courseTitle: order.courseTitle,
       receiptNumber: cleanCode,
       payableAmountKes,
       method: method || 'paybill',
       whatsappUrl: `https://wa.me/254143024416?text=${encodeURIComponent(`Hello Instructify Kenya, I have completed payment for ${order.courseTitle}.\n• Order: ${order.orderReference}\n• M-Pesa Code: ${cleanCode}`)}`,
-      message: 'Payment recorded successfully! Your course enrollment is confirmed.',
+      message: 'Payment confirmed. You have been enrolled successfully.',
     },
   };
 }
@@ -230,16 +240,35 @@ async function handleVerify(ref) {
 
   const payableAmountKes = Math.round((Number(order.amount) || 0) / 100);
 
+  let paymentState = order.paymentState || 'not_started';
+  if (order.status === 'paid') paymentState = 'successful';
+  else if (order.status === 'processing' || order.status === 'pending') paymentState = 'awaiting_customer_action';
+  else if (order.status === 'cancelled') paymentState = 'cancelled';
+  else if (order.status === 'timed_out') paymentState = 'timed_out';
+  else if (order.status === 'failed') paymentState = 'failed';
+
+  const isPaid = order.status === 'paid';
+  const confirmationMessage = isPaid
+    ? 'Payment confirmed. You have been enrolled successfully.'
+    : (order.status === 'processing'
+        ? 'We are confirming your payment. Please do not refresh or close this page.'
+        : 'Payment pending.');
+
   return {
     status: 200,
     body: {
+      orderId: order.orderId || order.id || order.orderReference,
       orderReference: order.orderReference,
+      paymentId: order.paymentId || null,
+      providerReference: order.providerReference || order.receiptNumber || order.checkoutRequestId || null,
       courseId: order.courseId,
       courseTitle: order.courseTitle,
       amount: order.amount,
       payableAmountKes,
       currency: order.currency || 'KES',
       status: order.status,
+      paymentState,
+      message: confirmationMessage,
       paymentMethod: order.paymentMethod,
       maskedPhone: order.maskedPhone || null,
       receiptNumber: order.receiptNumber || order.transactionReference || null,

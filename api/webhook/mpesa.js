@@ -162,14 +162,19 @@ async function handleCallback(body) {
     }
 
     // ── Update Order to Completed & Paid ──
+    const paymentId = order.paymentId || generateId('pay');
+    const finalReceipt = receiptNumber || `MP-${Date.now()}`;
     const completedOrder = {
       ...order,
       status: 'paid',
+      paymentState: 'successful',
       orderStatus: 'completed',
       paymentMethod: 'mpesa',
       paymentProvider: 'M-Pesa',
-      receiptNumber: receiptNumber || `MP-${Date.now()}`,
-      transactionReference: receiptNumber || `MP-${Date.now()}`,
+      paymentId,
+      providerReference: finalReceipt,
+      receiptNumber: finalReceipt,
+      transactionReference: finalReceipt,
       paidAmount: order.amount,
       paidAmountKes: paidAmount || expectedKes,
       paymentPhone: phone || order.paymentPhone,
@@ -222,22 +227,28 @@ async function handleCallback(body) {
 
   // ── 4. Handle Failed / Cancelled STK Push ──────────────────
   let internalStatus = 'failed';
+  let paymentState = 'failed';
   let friendlyReason = ResultDesc || 'Payment was not completed.';
 
   if (Number(ResultCode) === 1032) {
     internalStatus = 'cancelled';
+    paymentState = 'cancelled';
     friendlyReason = 'The M-Pesa payment prompt was cancelled on the phone.';
   } else if (Number(ResultCode) === 1037) {
     internalStatus = 'timed_out';
+    paymentState = 'timed_out';
     friendlyReason = 'The payment prompt timed out. Please ensure your phone is unlocked and try again.';
   } else if (Number(ResultCode) === 1 || Number(ResultCode) === 2001) {
     internalStatus = 'failed';
+    paymentState = 'failed';
     friendlyReason = 'The M-Pesa transaction could not be completed due to insufficient balance.';
   }
 
   const failedOrder = {
     ...order,
     status: internalStatus,
+    paymentState,
+    providerReference: CheckoutRequestID,
     failureCode: ResultCode,
     failureReason: friendlyReason,
     updatedAt: now,
@@ -246,6 +257,6 @@ async function handleCallback(body) {
   await storeSet(`order:ref:${orderReference}`, failedOrder);
   await storeSet(`order:id:${order.id}`, failedOrder);
 
-  console.log(`[webhook/mpesa] Order ${orderReference} updated to ${internalStatus}: ${friendlyReason}`);
+  console.log(`[webhook/mpesa] Order ${orderReference} updated to ${internalStatus} (${paymentState}): ${friendlyReason}`);
   return { status: 200, body: { ResultCode: 0, ResultDesc: 'Accepted' } };
 }

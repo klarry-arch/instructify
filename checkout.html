@@ -426,13 +426,27 @@
               <input type="tel" id="mpesa-phone-input" class="field-input" inputmode="numeric"
                 placeholder="0712 345 678 or 0143 024 416" maxlength="15" autocomplete="tel"
                 aria-describedby="mpesa-hint">
-              <div class="field-hint" id="mpesa-hint">Accepts: 07XX, 01XX, +254... (Active M-Pesa lines)</div>
+              <div class="field-hint" id="mpesa-hint">Accepts: 07XX, 01XX, +254... (Active Safaricom M-Pesa lines)</div>
               <div class="field-error" id="mpesa-phone-error">Please enter a valid phone number.</div>
             </div>
 
+            <!-- Terms & Refund Policy Acknowledgement -->
+            <div style="margin: 12px 0 16px; font-size: 0.8rem; color: #475569; display: flex; align-items: flex-start; gap: 8px;">
+              <input type="checkbox" id="ck-terms-agree" checked style="margin-top: 3px; accent-color: #123C8C; cursor: pointer;">
+              <label for="ck-terms-agree" style="cursor: pointer; line-height: 1.45;">
+                I agree to the <a href="contact.html" target="_blank" style="color: #123C8C; font-weight: 650; text-decoration: underline;">Terms of Service</a> and acknowledge the 30-day course enrollment refund policy.
+              </label>
+            </div>
+
             <button class="btn-enroll" id="btn-pay-mpesa" onclick="submitMpesa()">
-              📱 Send STK Push Prompt (KES <span id="pay-amount-mpesa">8,500</span>)
+              🔒 Pay Securely with M-Pesa (KES <span id="pay-amount-mpesa">8,500</span>)
             </button>
+
+            <!-- PIN Safety Guarantee -->
+            <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 8px; padding: 10px 12px; margin-top: 12px; font-size: 0.78rem; color: #166534; display: flex; align-items: center; gap: 8px; line-height: 1.4;">
+              <span style="font-size: 1.1rem; flex-shrink: 0;">🛡️</span>
+              <span><strong>Security Notice:</strong> Never enter your M-Pesa PIN on any website. You will enter your PIN only on the official prompt on your phone.</span>
+            </div>
 
             <!-- Sub-Option B2: Direct code entry if sent manually to 0143 024 416 -->
             <div style="margin-top:1.5rem; padding-top:1.2rem; border-top:1px dashed #CBD5E1;">
@@ -470,9 +484,9 @@
         <!-- ── State: processing / polling ── -->
         <div id="screen-processing" class="status-screen" style="display:none;">
           <div class="status-icon spin" style="background:var(--primary-bg, #EEF3FF);border:3px solid var(--primary, #2145E6);font-size:2rem;">⏳</div>
-          <div class="status-title" id="processing-title">Check your phone to complete payment</div>
+          <div class="status-title" id="processing-title">Payment request sent. Check your phone and enter your M-Pesa PIN to complete the payment.</div>
           <div class="status-sub" id="processing-sub">
-            An M-Pesa payment request has been sent to <strong id="processing-phone-masked">your phone</strong>. Enter your M-Pesa PIN on your phone to authorize the payment. Do not close this page.
+            We are confirming your payment. Please do not refresh or close this page.
           </div>
           <div class="status-ref" style="margin-bottom:1.25rem;">
             Order: <strong id="processing-ref">—</strong> &nbsp;·&nbsp; Amount: <strong id="processing-amount">KES 8,500</strong>
@@ -517,8 +531,8 @@
         <!-- ── State: success ── -->
         <div id="screen-success" class="status-screen" style="display:none;">
           <div class="status-icon" style="background:#F0FDF4;border:3px solid #16A34A;font-size:2rem;">✅</div>
-          <div class="status-title" style="color:#166534;">Enrollment Confirmed!</div>
-          <div class="status-sub" style="margin-bottom:1.25rem;">
+          <div class="status-title" id="success-title" style="color:#166534;">Payment confirmed. You have been enrolled successfully.</div>
+          <div class="status-sub" id="success-sub" style="margin-bottom:1.25rem;">
             You are now enrolled in <strong id="success-course-name">the course</strong>. A confirmation has been registered to your account and dispatched to our academic team.
           </div>
 
@@ -558,9 +572,9 @@
         <!-- ── State: failed / cancelled / timeout ── -->
         <div id="screen-error" class="status-screen" style="display:none;">
           <div class="status-icon" style="background:#FEF2F2;border:3px solid #DC2626;font-size:2rem;">❌</div>
-          <div class="status-title" style="color:#DC2626;" id="error-title">Payment Failed</div>
+          <div class="status-title" style="color:#DC2626;" id="error-title">Payment Unsuccessful</div>
           <div class="status-sub" id="error-sub">
-            Your payment could not be completed. No charges were made.
+            We could not confirm the payment. No enrolment has been activated. Please try again or select another payment method.
           </div>
           <div class="status-ref" id="error-ref" style="display:none;margin-bottom:1.25rem;">Order: <strong></strong></div>
           <button class="btn-enroll" onclick="retryCheckout()" style="margin-top:0.5rem;max-width:320px;width:100%;">Try Again</button>
@@ -574,11 +588,35 @@
 
       <!-- ══ RIGHT: Order Summary ══════════════════════════════ -->
       <div class="order-card" id="order-summary">
-        <div class="order-card-label">Course Fee</div>
+        <div class="order-card-label">Total Payable</div>
         <div class="order-card-total" id="summary-price">KES 8,500</div>
         <div class="order-card-original" id="summary-original">KES 14,000</div>
         <hr class="order-card-divider">
         <div class="order-card-title" id="summary-title">Loading course…</div>
+        <p id="summary-desc" style="font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-bottom: 1rem; line-height: 1.45;">
+          Accredited Continuing Professional Development programme aligned with CBC guidelines.
+        </p>
+
+        <!-- Itemized Cost Breakdown -->
+        <div style="background: rgba(0,0,0,0.18); border-radius: 10px; padding: 12px 14px; margin-bottom: 1.25rem; font-size: 0.82rem;">
+          <div style="display:flex; justify-content:space-between; margin-bottom: 6px; color: rgba(255,255,255,0.85);">
+            <span>Regular Course Fee:</span>
+            <span id="summary-breakdown-regular">KES 14,000</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom: 6px; color: #86EFAC;">
+            <span>Early Enrollment Discount:</span>
+            <span id="summary-breakdown-discount">- KES 5,500</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom: 6px; color: rgba(255,255,255,0.7);">
+            <span>Taxes &amp; Regulatory Fees:</span>
+            <span>Included (KES 0)</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 6px; font-weight: 700; color: #fff;">
+            <span>Final Amount:</span>
+            <span id="summary-breakdown-total" style="color: #FCD34D;">KES 8,500</span>
+          </div>
+        </div>
+
         <div class="order-card-row">
           <span>Duration</span><span id="summary-duration">—</span>
         </div>
@@ -586,14 +624,14 @@
           <span>Level</span><span id="summary-level">—</span>
         </div>
         <div class="order-card-row">
-          <span>Certificate</span><span>✅ Included</span>
+          <span>Certificate</span><span>✅ Verifiable Credential</span>
         </div>
         <div class="order-card-row">
           <span>CPD Hours</span><span id="summary-cpd">—</span>
         </div>
         <div class="order-guarantee">
           🔒 30-Day Money-Back Guarantee
-          · <a href="contact.html" style="color:rgba(255,255,255,0.6);text-decoration:underline;">Refund Policy</a>
+          · <a href="contact.html" style="color:rgba(255,255,255,0.8);text-decoration:underline;">Refund Policy</a>
         </div>
       </div>
 
@@ -729,11 +767,11 @@ function renderState(state) {
       document.getElementById('processing-title').textContent = 'Awaiting Card Payment…';
       document.getElementById('processing-sub').textContent = 'Complete the payment in the secure payment window.';
     } else {
-      document.getElementById('processing-title').textContent = 'Check your phone to complete payment';
+      document.getElementById('processing-title').textContent = 'Payment request sent. Check your phone and enter your M-Pesa PIN to complete the payment.';
       const masked = state.maskedPhone || 'your phone';
       document.getElementById('processing-phone-masked').textContent = masked;
       document.getElementById('processing-sub').innerHTML =
-        `An M-Pesa payment request has been sent to <strong>${masked}</strong>. Enter your M-Pesa PIN on your phone to authorize the payment. Do not close this page.`;
+        `We are confirming your payment. Please do not refresh or close this page.<br><small style="color:#64748B;display:block;margin-top:6px;">Prompt sent to <strong>${masked}</strong></small>`;
     }
 
     // Cooldown button handling
@@ -752,8 +790,10 @@ function renderState(state) {
     return;
   }
 
-  if (state.status === 'paid') {
+  if (state.status === 'paid' || state.status === 'successful') {
     showScreen('success');
+    const successTitleEl = document.getElementById('success-title');
+    if (successTitleEl) successTitleEl.textContent = 'Payment confirmed. You have been enrolled successfully.';
     const course = window.COURSES ? window.COURSES.find(c => c.id === currentCourseId) : null;
     document.getElementById('success-course-name').textContent = state.courseTitle || (course ? course.title : 'your course');
     document.getElementById('success-ref').textContent = state.orderReference || '—';
@@ -774,17 +814,18 @@ function renderState(state) {
     return;
   }
 
-  if (['failed', 'cancelled', 'timed_out', 'amount_mismatch'].includes(state.status)) {
+  if (['failed', 'cancelled', 'timed_out', 'amount_mismatch', 'unsuccessful'].includes(state.status)) {
     showScreen('error');
     const titles = {
-      failed: 'Payment Failed',
+      failed: 'Payment Unsuccessful',
       cancelled: 'Payment Cancelled',
       timed_out: 'Payment Timed Out',
-      amount_mismatch: 'Payment Amount Mismatch'
+      amount_mismatch: 'Payment Amount Mismatch',
+      unsuccessful: 'Payment Unsuccessful'
     };
-    document.getElementById('error-title').textContent = titles[state.status] || 'Payment Error';
+    document.getElementById('error-title').textContent = titles[state.status] || 'Payment Unsuccessful';
     document.getElementById('error-sub').textContent =
-      state.error || 'Your payment could not be completed. No charges were made.';
+      state.error || 'We could not confirm the payment. No enrolment has been activated. Please try again or select another payment method.';
     if (state.orderReference) {
       const refBox = document.getElementById('error-ref');
       refBox.style.display = '';

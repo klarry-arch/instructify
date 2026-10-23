@@ -133,9 +133,10 @@ let testCheckoutRequestId = null;
   await createOrderHandler(req, res);
   assert.equal(res.statusCode, 200, 'FAIL 3.1: Order creation status');
   assert.ok(res.responseData.orderReference, 'FAIL 3.1: Order reference generated');
+  assert.equal(res.responseData.paymentState, 'initiated', 'FAIL 3.1: paymentState must be initiated');
   assert.equal(res.responseData.amount, 850000, 'FAIL 3.1: Course price must be KES 8,500 (850000 minor units)');
   testOrderRef = res.responseData.orderReference;
-  console.log(`  ✅ 3.1 Order created: ${testOrderRef} (KES 8,500)`);
+  console.log(`  ✅ 3.1 Order created: ${testOrderRef} (KES 8,500, state: initiated)`);
 }
 
 // Test 3.2: Initiate M-Pesa STK Push
@@ -149,12 +150,13 @@ let testCheckoutRequestId = null;
   await initiatePaymentHandler(req, res);
   assert.equal(res.statusCode, 200, 'FAIL 3.2: STK Push initiate status');
   assert.equal(res.responseData.status, 'pending', 'FAIL 3.2: Payment status should be pending');
+  assert.equal(res.responseData.paymentState, 'awaiting_customer_action', 'FAIL 3.2: paymentState should be awaiting_customer_action');
   assert.equal(res.responseData.maskedPhone, '2547***678', 'FAIL 3.2: Masked phone');
   assert.equal(res.responseData.payableAmountKes, 8500, 'FAIL 3.2: Payable amount in KES');
   assert.equal(res.responseData.cooldownSeconds, 30, 'FAIL 3.2: Cooldown seconds');
   assert.ok(res.responseData.checkoutRequestId, 'FAIL 3.2: CheckoutRequestID present');
   testCheckoutRequestId = res.responseData.checkoutRequestId;
-  console.log(`  ✅ 3.2 STK Push prompt initiated to ${res.responseData.maskedPhone} (CheckoutRequestID: ${testCheckoutRequestId})`);
+  console.log(`  ✅ 3.2 STK Push prompt initiated to ${res.responseData.maskedPhone} (State: awaiting_customer_action, CheckoutRequestID: ${testCheckoutRequestId})`);
 }
 
 // Test 3.3: Verify Payment Polling (Pending State)
@@ -201,9 +203,10 @@ let testCheckoutRequestId = null;
   await verifyPaymentHandler(req, res);
   assert.equal(res.statusCode, 200, 'FAIL 3.5: Verify endpoint status');
   assert.equal(res.responseData.status, 'paid', 'FAIL 3.5: Order status is paid');
+  assert.equal(res.responseData.paymentState, 'successful', 'FAIL 3.5: paymentState is successful');
   assert.equal(res.responseData.enrolled, true, 'FAIL 3.5: Learner is enrolled');
   assert.ok(res.responseData.receiptNumber, 'FAIL 3.5: Receipt number present');
-  console.log(`  ✅ 3.5 Status verified: PAID, Enrolled: YES, Receipt: ${res.responseData.receiptNumber}`);
+  console.log(`  ✅ 3.5 Status verified: PAID (state: successful), Enrolled: YES, Receipt: ${res.responseData.receiptNumber}`);
 }
 
 // Test 3.6: Idempotent Webhook Callback Processing
@@ -262,7 +265,8 @@ console.log('\n🛑 Cancellation & Timeout Tests');
   const { req: vReq, res: vRes } = mockNodeReqRes('GET', `/api/verify-payment?ref=${cancelOrderRef}`);
   await verifyPaymentHandler(vReq, vRes);
   assert.equal(vRes.responseData.status, 'cancelled', 'FAIL 4.1: Status must be cancelled');
-  console.log('  ✅ 4.1 Safaricom ResultCode 1032 correctly marked order as CANCELLED');
+  assert.equal(vRes.responseData.paymentState, 'cancelled', 'FAIL 4.1: paymentState must be cancelled');
+  console.log('  ✅ 4.1 Safaricom ResultCode 1032 correctly marked order as CANCELLED (state: cancelled)');
 }
 
 // ─────────────────────────────────────────────────────────────────
@@ -294,10 +298,11 @@ console.log('\n💼 5. Paybill (Option A) & Direct M-Pesa (Option B) Tests');
   await verifyPaymentHandler(mReq, mRes);
   assert.equal(mRes.statusCode, 200, 'FAIL 5.2: Manual verification status code must be 200');
   assert.equal(mRes.responseData.success, true, 'FAIL 5.2: Success must be true');
+  assert.equal(mRes.responseData.paymentState, 'successful', 'FAIL 5.2: paymentState must be successful');
   assert.equal(mRes.responseData.receiptNumber, 'TD78KL2901', 'FAIL 5.2: Receipt number must match');
   assert.equal(mRes.responseData.method, 'paybill', 'FAIL 5.2: Method must be paybill');
   assert.ok(mRes.responseData.whatsappUrl.includes('254143024416'), 'FAIL 5.2: WhatsApp link must point to 254143024416');
-  console.log('  ✅ 5.2 Manual Paybill code TD78KL2901 verified with enrollment confirmed');
+  console.log('  ✅ 5.2 Manual Paybill code TD78KL2901 verified with enrollment confirmed (state: successful)');
 }
 
 {
