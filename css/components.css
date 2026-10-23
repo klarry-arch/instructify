@@ -2026,56 +2026,100 @@ a[href*="jumuishi"].nav-link.active::after {
    RESPONSIVE NAV BREAKPOINTS — Seamless Scaling Across All Devices
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── Standard Desktop (1241px to 1360px): Full brand, sleek compact links, both CTA buttons ── */
-@media (max-width: 1360px) and (min-width: 1241px) {
+/* ── Standard & Large Desktop (1241px and above): Full brand, sleek links, both CTA buttons ── */
+@media (min-width: 1241px) {
+  .nav-links {
+    display: flex !important;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .nav-link {
+    font-size: 13.5px !important;
+    padding: 6px 9px;
+    height: 36px;
+    white-space: nowrap;
+  }
+  .nav-hamburger {
+    display: none !important;
+  }
+  .nav-actions {
+    display: flex !important;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .nav-brand-logo {
+    height: 40px;
+    width: auto;
+    max-width: 180px;
+  }
+}
+
+/* ── Standard Laptops & Compact Desktop (992px to 1240px): Full desktop navigation fits effortlessly ── */
+@media (max-width: 1240px) and (min-width: 992px) {
   .navbar .container {
-    padding: 0 12px;
+    padding: 0 14px;
     gap: 8px;
   }
   .nav-brand-text-box {
     display: none !important;
   }
   .nav-brand-logo {
-    height: 38px;
+    height: 34px;
     width: auto;
-    max-width: 180px;
+    max-width: 145px;
   }
   .nav-links {
+    display: flex !important;
     gap: 2px;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 0;
   }
   .nav-link {
-    font-size: 12px !important;
+    font-size: 12.5px !important;
     padding: 5px 6px;
     height: 33px;
+    white-space: nowrap;
   }
   .nav-badge,
   .nav-badge-jum {
-    font-size: 7.5px;
-    padding: 1px 4px;
-    display: inline-flex !important;
+    display: none !important;
   }
   .nav-actions {
+    display: flex !important;
     gap: 6px;
+    flex-shrink: 0;
   }
   .nav-actions .btn-primary {
     display: inline-flex !important;
-    padding: 6px 12px;
+    padding: 5px 11px;
     font-size: 12px;
-    min-height: 33px;
+    min-height: 32px;
   }
   .navbar .btn-outline,
   .nav-actions .btn-outline {
-    padding: 5px 10px;
+    padding: 5px 9px;
     font-size: 12px;
-    min-height: 33px;
+    min-height: 32px;
+  }
+  .nav-hamburger {
+    display: none !important;
   }
 }
 
-/* ── Compact Desktop (1101px to 1240px): Full brand, 10 links, both CTA buttons (badges hidden to guarantee perfect fit) ── */
-@media (max-width: 1240px) and (min-width: 1101px) {
-  .navbar .container {
-    padding: 0 10px;
-    gap: 6px;
+/* ── Tablet Viewport (769px to 991px): Clean Hamburger Transition ── */
+@media (max-width: 991px) and (min-width: 769px) {
+  .nav-links {
+    display: none !important;
+  }
+  .nav-hamburger {
+    display: flex !important;
+    flex-shrink: 0 !important;
+    margin-left: 8px;
   }
   .nav-brand-text-box {
     display: none !important;
@@ -2083,52 +2127,7 @@ a[href*="jumuishi"].nav-link.active::after {
   .nav-brand-logo {
     height: 36px;
     width: auto;
-    max-width: 175px;
-  }
-  .nav-links {
-    gap: 1.5px;
-  }
-  .nav-link {
-    font-size: 11.5px !important;
-    padding: 5px 5px;
-    height: 32px;
-  }
-  /* Hide the text chips on intermediate desktop to save ~170px width so all 10 links + full brand + both buttons fit effortlessly */
-  .nav-badge,
-  .nav-badge-jum {
-    display: inline-flex !important;
-  }
-  .nav-actions {
-    gap: 5px;
-  }
-  .nav-actions .btn-primary {
-    display: inline-flex !important;
-    padding: 5px 11px;
-    font-size: 11.5px;
-    min-height: 32px;
-  }
-  .navbar .btn-outline,
-  .nav-actions .btn-outline {
-    padding: 5px 9px;
-    font-size: 11.5px;
-    min-height: 32px;
-  }
-}
-
-/* ── Tablet & Small Desktop (<= 1100px): Clean Hamburger Transition ── */
-@media (max-width: 1100px) {
-  .nav-links { display: none !important; }
-  .nav-hamburger { display: flex !important; flex-shrink: 0 !important; }
-  .nav-brand-text-box { display: none !important; }
-  .nav-brand-logo { height: 38px; width: auto; max-width: 180px; }
-}
-
-@media (min-width: 769px) and (max-width: 1100px) {
-  .nav-links { display: none !important; }
-  .nav-hamburger {
-    display: flex !important;
-    flex-shrink: 0 !important;
-    margin-left: 8px;
+    max-width: 160px;
   }
   .navbar .nav-actions,
   .nav-actions {
@@ -2136,9 +2135,26 @@ a[href*="jumuishi"].nav-link.active::after {
     gap: 8px;
     margin-left: auto;
   }
-  .nav-actions .btn-primary { display: inline-flex !important; padding: 6px 12px; font-size: 12px; }
+  .nav-actions .btn-primary {
+    display: inline-flex !important;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
   .navbar .btn-outline,
-  .nav-actions .btn-outline { padding: 5px 10px; font-size: 12px; }
+  .nav-actions .btn-outline {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 991px) {
+  .nav-links {
+    display: none !important;
+  }
+  .nav-hamburger {
+    display: flex !important;
+    flex-shrink: 0 !important;
+  }
 }
 
 @media (max-width: 768px) {

@@ -548,13 +548,34 @@
   text-decoration: underline;
 }
 
+.instructify-chat-launcher:focus-visible {
+  outline: 3px solid #FFFFFF;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px #4F46E5;
+}
+
 /* ── 3. Mobile Responsive Adaptations ── */
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .instructify-chat-launcher {
-    bottom: 20px;
-    right: 16px;
-    padding: 10px 16px 10px 14px;
-    font-size: 13.5px;
+    bottom: max(18px, env(safe-area-inset-bottom));
+    right: max(16px, env(safe-area-inset-right));
+    padding: 0 !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 16px rgba(20, 33, 61, 0.35);
+  }
+  .instructify-chat-launcher .chat-launcher-text {
+    display: none !important;
+  }
+  .instructify-chat-launcher .chat-launcher-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .instructify-chat-launcher .chat-launcher-icon svg {
+    width: 20px;
+    height: 20px;
   }
 
   .instructify-chat-window {

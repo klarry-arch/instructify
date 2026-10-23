@@ -1730,3 +1730,38 @@ caption,
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   SITE-WIDE DESIGN SYSTEM — Standardized Containers & Clearances
+   ══════════════════════════════════════════════════════════════ */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+}
+
+/* Enforce readable text measure on descriptive paragraphs across all pages */
+.section-description,
+.hero-subtitle,
+.about-body-text,
+.card-desc,
+.readable-measure {
+  max-width: 72ch;
+}
+
+/* Consistent footer chat clearance across all public pages */
+footer,
+.footer,
+#site-footer,
+.site-footer-modern {
+  padding-bottom: 96px !important;
+}
+
+@media (max-width: 640px) {
+  footer,
+  .footer,
+  #site-footer,
+  .site-footer-modern {
+    padding-bottom: 84px !important;
+  }
+}
+

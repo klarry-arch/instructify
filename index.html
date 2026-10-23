@@ -99,48 +99,8 @@
       padding-top: 28px !important;
       padding-bottom: 56px !important;
     }
-    @media (min-width: 1181px) {
-      .navbar .container {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 12px !important;
-        max-width: 1400px !important;
-        padding: 0 20px !important;
-      }
-      .nav-brand {
-        flex-shrink: 0 !important;
-        margin-right: 8px !important;
-      }
-      .nav-links {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 6px !important;
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-      }
-      .nav-link {
-        font-size: 13.5px !important;
-        padding: 6px 9px !important;
-        white-space: nowrap !important;
-      }
-      .nav-actions {
-        flex-shrink: 0 !important;
-        margin-left: 8px !important;
-      }
-      .nav-hamburger {
-        display: none !important;
-      }
-    }
-    @media (max-width: 1180px) {
-      .nav-links {
-        display: none !important;
-      }
-      .nav-hamburger {
-        display: flex !important;
-      }
-    }
+    .nav-brand, .nav-actions { flex-shrink: 0 !important; }
+    .nav-links { flex: 1 1 auto !important; min-width: 0 !important; }
   </style>
 </head>
 <body class="home-page">
@@ -153,8 +113,8 @@
   <aside class="utility-announcement-bar" role="complementary" aria-label="Important Announcement">
     <div class="container utility-announcement-content">
       <span class="utility-badge">Intake Open</span>
-      <span class="utility-text">2026/2027 Teacher CPD &amp; Institutional Training Intake is Open. Verified TSC CPD and CBC-aligned programmes.</span>
-      <a href="cpd-registration.html" class="utility-link">Enroll Now →</a>
+      <span class="utility-text">2026/2027 Teacher CPD &amp; Institutional Training Intake is Open. Programmes designed around CBC and TSC frameworks.</span>
+      <a href="cpd-registration.html" class="utility-link">Enrol Now →</a>
     </div>
   </aside>
 
@@ -162,56 +122,66 @@
   <nav id="navbar" class="navbar" role="navigation" aria-label="Primary site navigation">
     <div class="container">
       <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
-        <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
+        <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo" width="180" height="42">
       </a>
 
       <!-- Streamlined Desktop Navigation Links -->
       <ul class="nav-links" role="list">
         <li><a href="index.html" class="nav-link active" aria-current="page" data-nav="home">Home</a></li>
-        <li><a href="courses.html" class="nav-link" data-nav="courses">Courses</a></li>
         
-        <!-- Learning Solutions Dropdown -->
+        <!-- Courses Dropdown -->
         <li class="nav-item-dropdown">
-          <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="learning-solutions" aria-haspopup="true" aria-expanded="false">
-            Learning Solutions
+          <a href="courses.html" class="nav-link nav-link-dropdown" data-nav="courses" aria-haspopup="true" aria-expanded="false">
+            Courses
             <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
               <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <ul class="nav-dropdown-menu" role="menu" aria-label="Learning Solutions">
-            <li role="none"><a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem"><span>🎓</span> Teacher Professional Development</a></li>
-            <li role="none"><a href="courses.html#cbc" class="nav-dropdown-item" role="menuitem"><span>📖</span> CBC/CBE Pedagogy Mastery</a></li>
+          <ul class="nav-dropdown-menu" role="menu" aria-label="Courses">
+            <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem"><span>📚</span> Browse All Courses</a></li>
+            <li role="none"><a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem"><span>🎓</span> Teacher CPD Programmes</a></li>
             <li role="none"><a href="courses/digital-literacy-ict-integration.html" class="nav-dropdown-item" role="menuitem"><span>💻</span> Digital Literacy &amp; ICT Integration</a></li>
-            <li role="none"><a href="courses.html#ai" class="nav-dropdown-item" role="menuitem"><span>🤖</span> AI in Education &amp; Modern Tools</a></li>
-            <li role="none"><a href="workshop-registration.html" class="nav-dropdown-item" role="menuitem"><span>📅</span> Workshops &amp; Boot Camps</a></li>
-            <li role="none"><a href="courses.html#leadership" class="nav-dropdown-item" role="menuitem"><span>🏛️</span> School Leadership &amp; Administration</a></li>
-            <li role="none"><a href="courses.html#vr" class="nav-dropdown-item" role="menuitem"><span>👓</span> Smart Classrooms &amp; Virtual Reality</a></li>
-            <li role="none"><a href="courses.html#coding" class="nav-dropdown-item" role="menuitem"><span>⚡</span> Coding &amp; Digital Skills</a></li>
             <li role="none"><a href="jumuishi-learning-hub.html" class="nav-dropdown-item" role="menuitem"><span>♿</span> Inclusive Learning &amp; Assistive Tech</a></li>
-            <li role="none"><a href="courses.html#safety" class="nav-dropdown-item" role="menuitem"><span>🛡️</span> Online Safety &amp; Data Ethics</a></li>
+            <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem"><span>🚀</span> Student &amp; Youth Programmes</a></li>
+            <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem"><span>🎁</span> Free Community Courses</a></li>
           </ul>
         </li>
 
-        <!-- Institutions Dropdown -->
+        <!-- For Educators Dropdown -->
         <li class="nav-item-dropdown">
-          <a href="schools.html" class="nav-link nav-link-dropdown" data-nav="institutions" aria-haspopup="true" aria-expanded="false">
-            Institutions
+          <a href="cpd-registration.html" class="nav-link nav-link-dropdown" data-nav="educators" aria-haspopup="true" aria-expanded="false">
+            For Educators
             <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
               <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <ul class="nav-dropdown-menu" role="menu" aria-label="Institutions">
-            <li role="none"><a href="schools.html#training" class="nav-dropdown-item" role="menuitem"><span>👥</span> Staff Training &amp; Capacity Building</a></li>
-            <li role="none"><a href="schools.html#corporate" class="nav-dropdown-item" role="menuitem"><span>💼</span> Corporate Training &amp; Executive Skills</a></li>
-            <li role="none"><a href="consultancy.html" class="nav-dropdown-item" role="menuitem"><span>📑</span> Educational Consultancy &amp; Advisory</a></li>
-            <li role="none"><a href="consultancy.html#digital-transformation" class="nav-dropdown-item" role="menuitem"><span>🔄</span> Digital Transformation &amp; Strategy</a></li>
-            <li role="none"><a href="institution-dashboard.html" class="nav-dropdown-item" role="menuitem"><span>📊</span> Turnkey LMS Deployment &amp; Management</a></li>
-            <li role="none"><a href="consultancy.html#curriculum" class="nav-dropdown-item" role="menuitem"><span>📝</span> Curriculum &amp; Assessment Development</a></li>
-            <li role="none"><a href="consultancy.html#technology" class="nav-dropdown-item" role="menuitem"><span>⚙️</span> Technology &amp; Systems Integration</a></li>
-            <li role="none"><a href="consultancy.html#infrastructure" class="nav-dropdown-item" role="menuitem"><span>📡</span> Infrastructure &amp; Smart Classrooms</a></li>
-            <li role="none"><a href="consultancy.html#evaluation" class="nav-dropdown-item" role="menuitem"><span>🔍</span> Research, Evaluation &amp; Impact Audits</a></li>
+          <ul class="nav-dropdown-menu" role="menu" aria-label="For Educators">
+            <li role="none"><a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem"><span>📜</span> Teacher Professional Development</a></li>
+            <li role="none"><a href="workshop-registration.html" class="nav-dropdown-item" role="menuitem"><span>📅</span> Workshops &amp; Boot Camps</a></li>
+            <li role="none"><a href="educator-studio.html" class="nav-dropdown-item" role="menuitem"><span>🛠️</span> Educator Studio</a></li>
+            <li role="none"><a href="register.html?role=educator" class="nav-dropdown-item" role="menuitem"><span>✨</span> Become a Course Creator</a></li>
+            <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem"><span>📁</span> Teaching Toolkits &amp; Rubrics</a></li>
           </ul>
         </li>
+
+        <!-- For Institutions Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="schools.html" class="nav-link nav-link-dropdown" data-nav="institutions" aria-haspopup="true" aria-expanded="false">
+            For Institutions
+            <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <ul class="nav-dropdown-menu" role="menu" aria-label="For Institutions">
+            <li role="none"><a href="schools.html" class="nav-dropdown-item" role="menuitem"><span>🏫</span> Institutional &amp; Staff Training</a></li>
+            <li role="none"><a href="schools.html" class="nav-dropdown-item" role="menuitem"><span>💼</span> Corporate &amp; Executive Skills</a></li>
+            <li role="none"><a href="consultancy.html" class="nav-dropdown-item" role="menuitem"><span>📑</span> Educational Consultancy &amp; Advisory</a></li>
+            <li role="none"><a href="consultancy.html" class="nav-dropdown-item" role="menuitem"><span>🔄</span> Digital Transformation &amp; Strategy</a></li>
+            <li role="none"><a href="institution-dashboard.html" class="nav-dropdown-item" role="menuitem"><span>📊</span> Turnkey LMS Deployment</a></li>
+          </ul>
+        </li>
+
+        <li><a href="consultancy.html" class="nav-link" data-nav="consultancy">Consultancy</a></li>
 
         <!-- Resources Dropdown -->
         <li class="nav-item-dropdown">
@@ -223,15 +193,15 @@
           </a>
           <ul class="nav-dropdown-menu" role="menu" aria-label="Resources">
             <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem"><span>📁</span> Teaching Toolkits &amp; Rubrics</a></li>
-            <li role="none"><a href="resources.html#templates" class="nav-dropdown-item" role="menuitem"><span>📑</span> Templates &amp; Guides</a></li>
             <li role="none"><a href="blog.html" class="nav-dropdown-item" role="menuitem"><span>📰</span> Articles &amp; Insights</a></li>
             <li role="none"><a href="events.html" class="nav-dropdown-item" role="menuitem"><span>📅</span> Events &amp; Webinars</a></li>
+            <li role="none"><a href="podcast.html" class="nav-dropdown-item" role="menuitem"><span>🎙️</span> Podcast &amp; Media</a></li>
+            <li role="none"><a href="verify.html" class="nav-dropdown-item" role="menuitem"><span>🔒</span> Verify Certificate</a></li>
             <li role="none"><a href="accessibility.html" class="nav-dropdown-item" role="menuitem"><span>♿</span> Accessibility Commitment</a></li>
           </ul>
         </li>
 
-        <li><a href="about.html" class="nav-link" data-nav="about">About Us</a></li>
-        <li><a href="contact.html" class="nav-link" data-nav="contact">Contact</a></li>
+        <li><a href="about.html" class="nav-link" data-nav="about">About</a></li>
       </ul>
 
       <!-- Action CTAs: Secondary Sign In + Primary Get Started -->
@@ -249,53 +219,56 @@
 </header>
 
 <!-- Mobile Navigation Drawer -->
-<div class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation menu">
-  <div class="nav-mobile-links">
-    <a href="index.html" class="nav-mobile-link active" data-nav="home">Home</a>
-    <a href="courses.html" class="nav-mobile-link" data-nav="courses">Courses</a>
-    
-    <div class="nav-mobile-dropdown">
-      <a href="courses.html" class="nav-mobile-link" data-nav="learning-solutions">Learning Solutions</a>
-      <div class="nav-mobile-sublinks">
-        <a href="cpd-registration.html" class="nav-mobile-sublink"><span>🎓</span> Teacher CPD Programmes</a>
-        <a href="courses.html#cbc" class="nav-mobile-sublink"><span>📖</span> CBC/CBE Pedagogy Mastery</a>
-        <a href="courses/digital-literacy-ict-integration.html" class="nav-mobile-sublink"><span>💻</span> Digital Literacy &amp; ICT</a>
-        <a href="courses.html#ai" class="nav-mobile-sublink"><span>🤖</span> AI in Education &amp; Modern Tools</a>
-        <a href="workshop-registration.html" class="nav-mobile-sublink"><span>📅</span> Workshops &amp; Boot Camps</a>
-        <a href="jumuishi-learning-hub.html" class="nav-mobile-sublink"><span>♿</span> Inclusive Learning Hub</a>
+<nav class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation menu">
+  <div class="nav-mobile-inner" style="padding: 20px 16px; display: flex; flex-direction: column; gap: 16px;">
+    <div class="nav-mobile-links">
+      <a href="index.html" class="nav-mobile-link active" data-nav="home">Home</a>
+      
+      <div class="nav-mobile-group" style="margin-top: 10px;">
+        <div style="font-size: 11px; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 0;">Courses</div>
+        <a href="courses.html" class="nav-mobile-sublink" data-nav="courses">Browse All Courses</a>
+        <a href="cpd-registration.html" class="nav-mobile-sublink" data-nav="cpd">Teacher CPD Programmes</a>
+        <a href="courses/digital-literacy-ict-integration.html" class="nav-mobile-sublink">Digital Literacy &amp; ICT</a>
+        <a href="jumuishi-learning-hub.html" class="nav-mobile-sublink" data-nav="jumuishi">Inclusive Learning Hub</a>
       </div>
+
+      <div class="nav-mobile-group" style="margin-top: 10px;">
+        <div style="font-size: 11px; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 0;">For Educators</div>
+        <a href="cpd-registration.html" class="nav-mobile-sublink">Professional Development</a>
+        <a href="workshop-registration.html" class="nav-mobile-sublink">Workshops &amp; Boot Camps</a>
+        <a href="educator-studio.html" class="nav-mobile-sublink">Educator Studio</a>
+        <a href="register.html?role=educator" class="nav-mobile-sublink">Become a Course Creator</a>
+      </div>
+
+      <div class="nav-mobile-group" style="margin-top: 10px;">
+        <div style="font-size: 11px; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 0;">For Institutions</div>
+        <a href="schools.html" class="nav-mobile-sublink" data-nav="institutions">Institutional Training</a>
+        <a href="consultancy.html" class="nav-mobile-sublink">Consultancy &amp; Advisory</a>
+        <a href="institution-dashboard.html" class="nav-mobile-sublink">Turnkey LMS Solutions</a>
+      </div>
+
+      <a href="consultancy.html" class="nav-mobile-link" data-nav="consultancy" style="margin-top: 10px;">Consultancy</a>
+
+      <div class="nav-mobile-group" style="margin-top: 10px;">
+        <div style="font-size: 11px; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 0;">Resources</div>
+        <a href="resources.html" class="nav-mobile-sublink" data-nav="resources">Teaching Toolkits</a>
+        <a href="blog.html" class="nav-mobile-sublink" data-nav="blog">Articles &amp; Insights</a>
+        <a href="events.html" class="nav-mobile-sublink">Events &amp; Webinars</a>
+        <a href="podcast.html" class="nav-mobile-sublink">Podcast &amp; Media</a>
+        <a href="verify.html" class="nav-mobile-sublink">Verify Certificate</a>
+        <a href="accessibility.html" class="nav-mobile-sublink">Accessibility</a>
+      </div>
+
+      <a href="about.html" class="nav-mobile-link" data-nav="about" style="margin-top: 10px;">About</a>
+      <a href="contact.html" class="nav-mobile-link" data-nav="contact">Contact</a>
     </div>
 
-    <div class="nav-mobile-dropdown">
-      <a href="schools.html" class="nav-mobile-link" data-nav="institutions">Institutions</a>
-      <div class="nav-mobile-sublinks">
-        <a href="schools.html#training" class="nav-mobile-sublink"><span>👥</span> Staff Training &amp; Capacity</a>
-        <a href="schools.html#corporate" class="nav-mobile-sublink"><span>💼</span> Corporate Training</a>
-        <a href="consultancy.html" class="nav-mobile-sublink"><span>📑</span> Educational Consultancy</a>
-        <a href="consultancy.html#digital-transformation" class="nav-mobile-sublink"><span>🔄</span> Digital Transformation</a>
-        <a href="consultancy.html#infrastructure" class="nav-mobile-sublink"><span>📡</span> ICT Infrastructure</a>
-        <a href="institution-dashboard.html" class="nav-mobile-sublink"><span>📊</span> Turnkey LMS Solutions</a>
-      </div>
+    <div class="nav-mobile-actions" style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #E2E8F0;">
+      <a href="login.html" class="btn btn-outline btn-md" style="width:100%; justify-content:center;">Sign In</a>
+      <a href="register.html" class="btn btn-primary btn-md btn-level-1" style="width:100%; justify-content:center;">Get Started →</a>
     </div>
-
-    <div class="nav-mobile-dropdown">
-      <a href="resources.html" class="nav-mobile-link" data-nav="resources">Resources</a>
-      <div class="nav-mobile-sublinks">
-        <a href="resources.html" class="nav-mobile-sublink"><span>📁</span> Teaching Toolkits</a>
-        <a href="resources.html#templates" class="nav-mobile-sublink"><span>📑</span> Templates &amp; Guides</a>
-        <a href="blog.html" class="nav-mobile-sublink"><span>📰</span> Articles &amp; Insights</a>
-        <a href="events.html" class="nav-mobile-sublink"><span>📅</span> Events &amp; Webinars</a>
-      </div>
-    </div>
-
-    <a href="about.html" class="nav-mobile-link" data-nav="about">About Us</a>
-    <a href="contact.html" class="nav-mobile-link" data-nav="contact">Contact</a>
   </div>
-  <div class="nav-mobile-actions">
-    <a href="login.html" class="btn btn-outline btn-md" style="width:100%; justify-content:center;">Sign In</a>
-    <a href="register.html" class="btn btn-primary btn-md btn-level-1" style="width:100%; justify-content:center;">Get Started →</a>
-  </div>
-</div>
+</nav>
 
 <!-- ══════════════════════════════════════════════════════════════
      C. HERO SECTION (Concise, Compelling, Measurable Transformation)

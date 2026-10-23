@@ -210,7 +210,7 @@ function initNavbar() {
 
     // Close menu when viewport exceeds mobile breakpoint (e.g. rotating tablet/phone)
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 1100 && hamburger.classList.contains('open')) {
+      if (window.innerWidth > 992 && hamburger.classList.contains('open')) {
         window.closeMobileNav();
       }
     }, { passive: true });
