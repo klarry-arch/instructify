@@ -8,12 +8,12 @@
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=14.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css?v=16.0">
   <link rel="stylesheet" href="css/animations.css?v=14.0">
-  <link rel="stylesheet" href="css/components.css?v=14.0">
-  <link rel="stylesheet" href="css/homepage.css?v=14.0">
-  <link rel="stylesheet" href="css/about.css?v=14.0">
+  <link rel="stylesheet" href="css/components.css?v=15.3">
+  <link rel="stylesheet" href="css/homepage.css?v=16.5">
+  <link rel="stylesheet" href="css/about.css?v=15.0">
   <link rel="stylesheet" href="css/docmed-theme.css?v=14.0">
   <link rel="stylesheet" href="css/live-chat.css?v=14.0">
 
@@ -26,7 +26,7 @@
       width: 100% !important;
       z-index: 1000 !important;
       background: #FFFFFF !important;
-      border-bottom: 1px solid #DCE2EA !important;
+      border-bottom: 3px solid #123C8C !important; box-shadow: 0 4px 20px rgba(18, 60, 140, 0.12) !important;
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease !important;
     }
@@ -119,139 +119,242 @@
       margin: 0 auto !important;
     }
 
-    /* Mission & Vision Grid */
-    .mv-cards-grid {
-      display: grid !important;
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 32px !important;
-      margin-bottom: 64px !important;
-      align-items: stretch !important;
-    }
+    /* ══════════════════════════════════════════════════════════════
+   MISSION & VISION CATCHY LUXURY CARD SYSTEM (CENTRED & BEAUTIFIED)
+   ══════════════════════════════════════════════════════════════ */
+.mv-cards-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 36px !important;
+  margin-bottom: 64px !important;
+  align-items: stretch !important;
+}
+@media (max-width: 900px) {
+  .mv-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+}
 
-    .mv-card {
-      background: #FFFFFF !important;
-      border: 2px solid #E2E8F0 !important;
-      border-radius: 24px !important;
-      padding: 40px 36px 34px !important;
-      box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.03) !important;
-      position: relative !important;
-      overflow: hidden !important;
-      display: flex !important;
-      flex-direction: column !important;
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease !important;
-    }
+.mv-card {
+  position: relative !important;
+  background: #FFFFFF !important;
+  border-radius: 26px !important;
+  padding: 44px 36px 38px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  overflow: hidden !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
 
-    .mv-card::before {
-      content: '' !important;
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      height: 5px !important;
-    }
+/* 5px Top Gradient Stripe */
+.mv-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 5px !important;
+  z-index: 3 !important;
+}
 
-    .mv-card-mission {
-      border-color: #DBEAFE !important;
-    }
-    .mv-card-mission::before {
-      background: linear-gradient(90deg, #1D4ED8, #3B82F6, #60A5FA) !important;
-    }
-    .mv-card-mission:hover {
-      transform: translateY(-8px) !important;
-      border-color: #2563EB !important;
-      box-shadow: 0 24px 48px -10px rgba(37, 99, 235, 0.20), 0 6px 16px rgba(37, 99, 235, 0.06) !important;
-    }
+/* Mission Card: Royal Blue Sapphire */
+.mv-card-mission {
+  border: 1.5px solid rgba(37, 99, 235, 0.25) !important;
+  background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.05) 0%, #FFFFFF 65%) !important;
+  box-shadow: 0 10px 30px -4px rgba(37, 99, 235, 0.08), 0 4px 12px rgba(15, 23, 42, 0.03) !important;
+}
+.mv-card-mission::before {
+  background: linear-gradient(90deg, #123C8C, #2563EB, #60A5FA) !important;
+}
+.mv-card-mission:hover {
+  transform: translateY(-8px) !important;
+  border-color: #2563EB !important;
+  box-shadow: 0 24px 50px -10px rgba(37, 99, 235, 0.25), 0 0 0 1px rgba(37, 99, 235, 0.20) !important;
+}
 
-    .mv-card-vision {
-      border-color: #DCFCE7 !important;
-    }
-    .mv-card-vision::before {
-      background: linear-gradient(90deg, #047857, #10B981, #34D399) !important;
-    }
-    .mv-card-vision:hover {
-      transform: translateY(-8px) !important;
-      border-color: #059669 !important;
-      box-shadow: 0 24px 48px -10px rgba(5, 150, 105, 0.20), 0 6px 16px rgba(5, 150, 105, 0.06) !important;
-    }
+/* Vision Card: Radiant Emerald Jade */
+.mv-card-vision {
+  border: 1.5px solid rgba(5, 150, 105, 0.25) !important;
+  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.05) 0%, #FFFFFF 65%) !important;
+  box-shadow: 0 10px 30px -4px rgba(5, 150, 105, 0.08), 0 4px 12px rgba(15, 23, 42, 0.03) !important;
+}
+.mv-card-vision::before {
+  background: linear-gradient(90deg, #065F46, #059669, #34D399) !important;
+}
+.mv-card-vision:hover {
+  transform: translateY(-8px) !important;
+  border-color: #059669 !important;
+  box-shadow: 0 24px 50px -10px rgba(5, 150, 105, 0.25), 0 0 0 1px rgba(5, 150, 105, 0.20) !important;
+}
 
-    .mv-card-top {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      margin-bottom: 22px !important;
-    }
+/* Centred Tag Pill Badge */
+.mv-badge-wrapper {
+  margin: 0 auto 18px auto !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+.mv-tag-pill {
+  font-family: var(--font-body, 'Poppins', sans-serif) !important;
+  font-size: 11.5px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  padding: 6px 16px !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+.mv-tag-pill-mission {
+  background: #EFF6FF !important;
+  color: #1D4ED8 !important;
+  border: 1px solid #BFDBFE !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12) !important;
+}
+.mv-tag-pill-vision {
+  background: #ECFDF5 !important;
+  color: #047857 !important;
+  border: 1px solid #BBF7D0 !important;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.12) !important;
+}
 
-    .mv-icon-box-lg {
-      width: 64px !important;
-      height: 64px !important;
-      border-radius: 18px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      flex-shrink: 0 !important;
-    }
+/* Centred 76px Icon Box */
+.mv-icon-box-lg {
+  align-self: center !important;
+  margin: 0 auto 20px auto !important;
+  width: 76px !important;
+  height: 76px !important;
+  min-width: 76px !important;
+  min-height: 76px !important;
+  border-radius: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  border: 4px solid #FFFFFF !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease !important;
+}
+.mv-icon-box-mission {
+  background: linear-gradient(135deg, #123C8C 0%, #1D4ED8 50%, #2563EB 100%) !important;
+  box-shadow: 0 14px 32px -4px rgba(37, 99, 235, 0.45), 0 0 0 6px #EFF6FF !important;
+}
+.mv-icon-box-vision {
+  background: linear-gradient(135deg, #065F46 0%, #047857 50%, #059669 100%) !important;
+  box-shadow: 0 14px 32px -4px rgba(16, 185, 129, 0.45), 0 0 0 6px #ECFDF5 !important;
+}
+.mv-card-mission:hover .mv-icon-box-lg {
+  transform: translateY(-5px) scale(1.10) rotate(4deg) !important;
+  box-shadow: 0 18px 40px -4px rgba(37, 99, 235, 0.60), 0 0 0 8px #DBEAFE !important;
+}
+.mv-card-vision:hover .mv-icon-box-lg {
+  transform: translateY(-5px) scale(1.10) rotate(4deg) !important;
+  box-shadow: 0 18px 40px -4px rgba(16, 185, 129, 0.60), 0 0 0 8px #D1FAE5 !important;
+}
 
-    .mv-tag-pill {
-      font-family: var(--font-body, 'Inter', sans-serif) !important;
-      font-size: 11.5px !important;
-      font-weight: 800 !important;
-      text-transform: uppercase !important;
-      letter-spacing: 0.07em !important;
-      padding: 5px 12px !important;
-      border-radius: 999px !important;
-    }
+/* Centred Headings with Catchy Beautiful Colours */
+.mv-card-title {
+  align-self: center !important;
+  font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+  font-size: clamp(26px, 2.5vw, 32px) !important;
+  font-weight: 850 !important;
+  margin: 0 auto 16px auto !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+.mv-title-mission {
+  color: #123C8C !important;
+  background: linear-gradient(135deg, #123C8C 0%, #1D4ED8 45%, #2563EB 80%, #38BDF8 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block !important;
+}
+.mv-title-vision {
+  color: #047857 !important;
+  background: linear-gradient(135deg, #065F46 0%, #047857 45%, #059669 80%, #10B981 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block !important;
+}
 
-    .mv-card-title {
-      font-family: var(--font-heading, 'Manrope', sans-serif) !important;
-      font-size: 26px !important;
-      font-weight: 800 !important;
-      color: #0F172A !important;
-      margin: 0 0 14px 0 !important;
-      letter-spacing: -0.02em !important;
-      line-height: 1.25 !important;
-    }
+/* Centred Card Description Text */
+.mv-card-text {
+  align-self: center !important;
+  font-family: var(--font-body, 'Poppins', sans-serif) !important;
+  font-size: 16px !important;
+  line-height: 1.75 !important;
+  color: #475569 !important;
+  margin: 0 auto 26px auto !important;
+  max-width: 520px !important;
+  text-align: center !important;
+  font-weight: 450 !important;
+}
 
-    .mv-card-text {
-      font-family: var(--font-body, 'Inter', sans-serif) !important;
-      font-size: 16px !important;
-      line-height: 1.72 !important;
-      color: #334155 !important;
-      margin: 0 0 24px 0 !important;
-      flex: 1 !important;
-      font-weight: 450 !important;
-    }
-
-    .mv-takeaways-list {
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 10px !important;
-      padding-top: 18px !important;
-      border-top: 1px solid #F1F5F9 !important;
-      list-style: none !important;
-      padding-left: 0 !important;
-      margin: 0 !important;
-    }
-
-    .mv-takeaway-item {
-      display: flex !important;
-      align-items: center !important;
-      gap: 10px !important;
-      font-size: 13.5px !important;
-      font-weight: 600 !important;
-      color: #1E293B !important;
-    }
-
-    .mv-takeaway-item span.check {
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 20px !important;
-      height: 20px !important;
-      border-radius: 50% !important;
-      font-size: 11px !important;
-      font-weight: 800 !important;
-      flex-shrink: 0 !important;
-    }
+/* Key Takeaways Interactive Stack */
+.mv-takeaways-list {
+  align-self: center !important;
+  width: 100% !important;
+  max-width: 520px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  padding-top: 22px !important;
+  border-top: 1px solid #E2E8F0 !important;
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: auto auto 0 auto !important;
+}
+.mv-takeaway-item {
+  background: #F8FAFC !important;
+  border: 1.5px solid #F1F5F9 !important;
+  border-radius: 14px !important;
+  padding: 12px 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  text-align: left !important;
+  gap: 12px !important;
+  font-family: var(--font-body, 'Poppins', sans-serif) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #1E293B !important;
+  transition: all 0.22s ease !important;
+}
+.mv-card-mission .mv-takeaway-item:hover {
+  background: #FFFFFF !important;
+  border-color: #BFDBFE !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px -4px rgba(37, 99, 235, 0.15) !important;
+}
+.mv-card-vision .mv-takeaway-item:hover {
+  background: #FFFFFF !important;
+  border-color: #BBF7D0 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px -4px rgba(5, 150, 105, 0.15) !important;
+}
+.mv-takeaway-item span.check {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  border-radius: 50% !important;
+  font-size: 13px !important;
+  font-weight: 850 !important;
+  flex-shrink: 0 !important;
+}
+.check-mission {
+  background: #DBEAFE !important;
+  color: #1D4ED8 !important;
+}
+.check-vision {
+  background: #DCFCE7 !important;
+  color: #047857 !important;
+}
 
     /* Core Values 8-Card Grid */
     .cv-grid {
@@ -946,39 +1049,40 @@
       </p>
     </div>
 
-    <!-- Mission & Vision Cards -->
+    <!-- ══════════════════════════════════════════════════════════
+         MISSION & VISION CARDS (CENTRED, CATCHY & BEAUTIFUL)
+         ══════════════════════════════════════════════════════════ -->
     <div class="mv-cards-grid">
       <!-- Mission Card -->
       <div class="mv-card mv-card-mission">
-        <div class="mv-card-top">
-          <div class="mv-icon-box-lg" style="background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%); box-shadow: 0 10px 24px -4px rgba(37, 99, 235, 0.38);">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Our Mission" role="img">
-              <circle cx="12" cy="12" r="10"/>
-              <circle cx="12" cy="12" r="6"/>
-              <circle cx="12" cy="12" r="2"/>
-              <path d="M12 2v3"/>
-              <path d="M12 19v3"/>
-              <path d="M2 12h3"/>
-              <path d="M19 12h3"/>
-            </svg>
-          </div>
-          <span class="mv-tag-pill" style="background:#EFF6FF; color:#1D4ED8; border:1px solid #BFDBFE;">🎯 Action &amp; Execution</span>
+        <div class="mv-badge-wrapper">
+          <span class="mv-tag-pill mv-tag-pill-mission">🎯 Action &amp; Execution</span>
         </div>
-        <h3 class="mv-card-title">Our Mission</h3>
+        <div class="mv-icon-box-lg mv-icon-box-mission" role="img" aria-label="Our Mission Icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="9.5" stroke="#FFFFFF" stroke-width="1.8" stroke-dasharray="2 3"/>
+            <circle cx="12" cy="12" r="6.2" stroke="#FFFFFF" stroke-width="2"/>
+            <circle cx="12" cy="12" r="2.4" fill="#FFFFFF"/>
+            <path d="M19 5L12 12" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M14.5 5H19V9.5" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 19L7.8 16.2" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="mv-card-title mv-title-mission">Our Mission</h3>
         <p class="mv-card-text">
           To deliver hands-on training, strategic consultancy, and learner-centered curriculum development that blends local relevance with global insight, while inspiring curiosity, competence, creativity, and character.
         </p>
         <ul class="mv-takeaways-list">
           <li class="mv-takeaway-item">
-            <span class="check" style="background:#DBEAFE; color:#1D4ED8;">✓</span>
+            <span class="check check-mission">✓</span>
             <span>Hands-on teacher training and scheme planning</span>
           </li>
           <li class="mv-takeaway-item">
-            <span class="check" style="background:#DBEAFE; color:#1D4ED8;">✓</span>
+            <span class="check check-mission">✓</span>
             <span>Contextualised CBC pedagogy tailored for Kenyan classrooms</span>
           </li>
           <li class="mv-takeaway-item">
-            <span class="check" style="background:#DBEAFE; color:#1D4ED8;">✓</span>
+            <span class="check check-mission">✓</span>
             <span>Measurable competence, character, and institutional impact</span>
           </li>
         </ul>
@@ -986,34 +1090,35 @@
 
       <!-- Vision Card -->
       <div class="mv-card mv-card-vision">
-        <div class="mv-card-top">
-          <div class="mv-icon-box-lg" style="background: linear-gradient(135deg, #047857 0%, #10B981 100%); box-shadow: 0 10px 24px -4px rgba(16, 185, 129, 0.38);">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-label="Our Vision" role="img">
-              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
-              <circle cx="12" cy="12" r="3.5"/>
-              <path d="M12 4V2"/>
-              <path d="M12 22v-2"/>
-              <path d="M19.07 4.93l-1.41 1.41"/>
-              <path d="M6.34 17.66l-1.41 1.41"/>
-            </svg>
-          </div>
-          <span class="mv-tag-pill" style="background:#ECFDF5; color:#047857; border:1px solid #BBF7D0;">✨ Future &amp; Aspiration</span>
+        <div class="mv-badge-wrapper">
+          <span class="mv-tag-pill mv-tag-pill-vision">✨ Future &amp; Aspiration</span>
         </div>
-        <h3 class="mv-card-title">Our Vision</h3>
+        <div class="mv-icon-box-lg mv-icon-box-vision" role="img" aria-label="Our Vision Icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 12C3.8 7.5 7.5 4.5 12 4.5C16.5 4.5 20.2 7.5 22 12C20.2 16.5 16.5 19.5 12 19.5C7.5 19.5 3.8 16.5 2 12Z" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="4.2" stroke="#FFFFFF" stroke-width="1.8" fill="rgba(255,255,255,0.22)"/>
+            <polygon points="12,9.2 12.8,11.2 14.8,12 12.8,12.8 12,14.8 11.2,12.8 9.2,12 11.2,11.2" fill="#FFFFFF"/>
+            <path d="M12 1.5V3" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 21V22.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M19.5 4.5L18.4 5.6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <path d="M5.6 18.4L4.5 19.5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="mv-card-title mv-title-vision">Our Vision</h3>
         <p class="mv-card-text">
           To spark curiosity and nurture wisdom by empowering educators, learners, and institutions to transform learning communities across Kenya and Africa.
         </p>
         <ul class="mv-takeaways-list">
           <li class="mv-takeaway-item">
-            <span class="check" style="background:#DCFCE7; color:#047857;">✓</span>
+            <span class="check check-vision">✓</span>
             <span>Spark lifelong curiosity and nurture wisdom</span>
           </li>
           <li class="mv-takeaway-item">
-            <span class="check" style="background:#DCFCE7; color:#047857;">✓</span>
+            <span class="check check-vision">✓</span>
             <span>Empower educators and institutional leaders across Africa</span>
           </li>
           <li class="mv-takeaway-item">
-            <span class="check" style="background:#DCFCE7; color:#047857;">✓</span>
+            <span class="check check-vision">✓</span>
             <span>Transforming learning communities through inclusive access</span>
           </li>
         </ul>
