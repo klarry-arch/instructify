@@ -8,12 +8,12 @@
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@500;600;700;800&family=Montserrat:wght@500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=15.1">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css?v=16.0">
   <link rel="stylesheet" href="css/animations.css?v=15.1">
   <link rel="stylesheet" href="css/components.css?v=15.1">
   <link rel="stylesheet" href="css/docmed-theme.css?v=15.1">
-  <link rel="stylesheet" href="css/homepage.css?v=16.2">
+  <link rel="stylesheet" href="css/homepage.css?v=16.3">
   <link rel="stylesheet" href="css/live-chat.css?v=15.1">
 
   <!-- Critical Header Alignment, Platform Cards & Navigation Protection -->
@@ -914,6 +914,424 @@
       box-shadow: 0 6px 18px rgba(11, 37, 89, 0.40) !important;
       color: #FFFFFF !important;
     }
+
+    /* ══════════════════════════════════════════════════════════
+       CARD CLAMOUR & INSPIRING VISUAL POLISH (Moi Edu Centre Benchmark)
+       ══════════════════════════════════════════════════════════ */
+    /* Universal Poppins Font Family & Typographic Harmony */
+    body, h1, h2, h3, h4, h5, h6, p, a, span, button, input, select, textarea,
+    .nav-link, .chapter-title, .chapter-lead, .section-main-title, .section-description {
+      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+    }
+
+    /* Section Rhythm & Balanced Margins */
+    .section-spacious {
+      padding: 80px 0 !important;
+    }
+    .capability-chapter-section {
+      padding: 80px 0 !important;
+    }
+    @media (max-width: 768px) {
+      .section-spacious,
+      .capability-chapter-section {
+        padding: 56px 0 !important;
+      }
+    }
+    .section-header-centered {
+      text-align: center !important;
+      max-width: 760px !important;
+      margin: 0 auto 44px auto !important;
+    }
+    .section-main-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+      font-size: clamp(26px, 2.7vw, 38px) !important;
+      font-weight: 800 !important;
+      color: #0F172A !important;
+      line-height: 1.25 !important;
+      letter-spacing: -0.02em !important;
+      margin: 0 0 12px 0 !important;
+    }
+    .section-description {
+      font-family: var(--font-body, 'Poppins', sans-serif) !important;
+      font-size: clamp(15px, 1.1vw, 16.5px) !important;
+      line-height: 1.65 !important;
+      color: #475569 !important;
+      margin: 0 auto !important;
+    }
+
+    /* 1. Audience Pathway Cards: Dynamic Colors & Clamour */
+    .audience-pathways-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 24px !important;
+      margin-top: 36px !important;
+    }
+    @media (max-width: 1140px) {
+      .audience-pathways-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 22px !important;
+      }
+    }
+    @media (max-width: 600px) {
+      .audience-pathways-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+    }
+
+    .audience-pathway-card {
+      position: relative !important;
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 20px !important;
+      padding: 0 0 24px 0 !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04), 0 12px 28px -10px rgba(15, 23, 42, 0.08) !important;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .audience-pathway-card::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 4px !important;
+      z-index: 3 !important;
+    }
+
+    .audience-pathway-card:nth-child(1) {
+      --c: #2563EB;
+      --c-rgb: 37, 99, 235;
+      --c-soft: #EFF6FF;
+    }
+    .audience-pathway-card:nth-child(1)::before {
+      background: linear-gradient(90deg, #2563EB, #60A5FA) !important;
+    }
+    .audience-pathway-card:nth-child(2) {
+      --c: #7C3AED;
+      --c-rgb: 124, 58, 237;
+      --c-soft: #F5F3FF;
+    }
+    .audience-pathway-card:nth-child(2)::before {
+      background: linear-gradient(90deg, #7C3AED, #C084FC) !important;
+    }
+    .audience-pathway-card:nth-child(3) {
+      --c: #059669;
+      --c-rgb: 5, 150, 105;
+      --c-soft: #ECFDF5;
+    }
+    .audience-pathway-card:nth-child(3)::before {
+      background: linear-gradient(90deg, #059669, #34D399) !important;
+    }
+    .audience-pathway-card:nth-child(4) {
+      --c: #D97706;
+      --c-rgb: 217, 119, 6;
+      --c-soft: #FFFBEB;
+    }
+    .audience-pathway-card:nth-child(4)::before {
+      background: linear-gradient(90deg, #D97706, #FBBF24) !important;
+    }
+
+    .audience-pathway-card:hover {
+      transform: translateY(-8px) !important;
+      border-color: rgba(var(--c-rgb), 0.45) !important;
+      box-shadow: 0 24px 48px -12px rgba(var(--c-rgb), 0.25), 0 0 0 1px rgba(var(--c-rgb), 0.20) !important;
+    }
+    .audience-pathway-card .audience-card-thumb {
+      height: 165px !important;
+      max-height: 165px !important;
+      width: 100% !important;
+      object-fit: cover !important;
+      border-radius: 0 !important;
+      margin-bottom: 0 !important;
+      display: block !important;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .audience-pathway-card:hover .audience-card-thumb {
+      transform: scale(1.06) !important;
+    }
+    .audience-pathway-card .audience-card-icon {
+      position: relative !important;
+      z-index: 2 !important;
+      width: 58px !important;
+      height: 58px !important;
+      min-width: 58px !important;
+      margin: -29px auto 12px auto !important;
+      border-radius: 18px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 26px !important;
+      background: var(--c-soft, #EFF6FF) !important;
+      border: 3.5px solid #FFFFFF !important;
+      box-shadow: 0 10px 24px -6px rgba(var(--c-rgb), 0.45) !important;
+      transition: transform 0.25s ease !important;
+    }
+    .audience-pathway-card:hover .audience-card-icon {
+      transform: translateY(-2px) scale(1.1) !important;
+    }
+    .audience-pathway-card .audience-card-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+      font-size: 19px !important;
+      font-weight: 750 !important;
+      color: #0F172A !important;
+      text-align: center !important;
+      margin: 0 0 12px 0 !important;
+      padding: 0 20px !important;
+    }
+    .audience-pathway-card .audience-card-list {
+      list-style: none !important;
+      padding: 0 24px !important;
+      margin: 0 0 20px 0 !important;
+      flex-grow: 1 !important;
+    }
+    .audience-pathway-card .audience-card-list li {
+      position: relative !important;
+      font-family: var(--font-body, 'Poppins', sans-serif) !important;
+      font-size: 13.5px !important;
+      line-height: 1.55 !important;
+      color: #475569 !important;
+      padding-left: 22px !important;
+      margin-bottom: 8px !important;
+    }
+    .audience-pathway-card .audience-card-list li::before {
+      content: '✓' !important;
+      position: absolute !important;
+      left: 0 !important;
+      top: 1px !important;
+      font-weight: 800 !important;
+      font-size: 13px !important;
+      color: var(--c, #2563EB) !important;
+    }
+
+    .audience-pathway-card .btn-pathway-pill {
+      margin-top: auto !important;
+      margin-left: 20px !important;
+      margin-right: 20px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-family: var(--font-body, 'Poppins', sans-serif) !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      padding: 10px 18px !important;
+      min-height: 40px !important;
+      border-radius: 999px !important;
+      background: var(--c, #2563EB) !important;
+      border: 1.5px solid var(--c, #2563EB) !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 14px rgba(var(--c-rgb), 0.32) !important;
+      text-decoration: none !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      cursor: pointer !important;
+    }
+    .audience-pathway-card .btn-pathway-pill:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 22px rgba(var(--c-rgb), 0.45) !important;
+      filter: brightness(0.92) !important;
+      color: #FFFFFF !important;
+    }
+
+    /* 2. Featured Course Cards: Colour Accents & Clamour */
+    .featured-courses-grid .course-card-redesign:nth-child(1) { --c-card: #2563EB; --c-card-rgb: 37, 99, 235; }
+    .featured-courses-grid .course-card-redesign:nth-child(2) { --c-card: #7C3AED; --c-card-rgb: 124, 58, 237; }
+    .featured-courses-grid .course-card-redesign:nth-child(3) { --c-card: #059669; --c-card-rgb: 5, 150, 105; }
+    .featured-courses-grid .course-card-redesign:nth-child(4) { --c-card: #0284C7; --c-card-rgb: 2, 132, 199; }
+
+    .course-card-redesign:hover {
+      transform: translateY(-8px) !important;
+      border-color: rgba(var(--c-card-rgb, 37, 99, 235), 0.45) !important;
+      box-shadow: 0 24px 48px -14px rgba(var(--c-card-rgb, 37, 99, 235), 0.25), 0 0 0 1px rgba(var(--c-card-rgb, 37, 99, 235), 0.18) !important;
+    }
+    .featured-courses-grid .course-card-redesign:nth-child(1) .course-category-badge {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(29, 78, 216, 0.95)) !important;
+    }
+    .featured-courses-grid .course-card-redesign:nth-child(2) .course-category-badge {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.95), rgba(109, 40, 217, 0.95)) !important;
+    }
+    .featured-courses-grid .course-card-redesign:nth-child(3) .course-category-badge {
+      background: linear-gradient(135deg, rgba(5, 150, 105, 0.95), rgba(4, 120, 87, 0.95)) !important;
+    }
+    .featured-courses-grid .course-card-redesign:nth-child(4) .course-category-badge {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.95), rgba(3, 105, 161, 0.95)) !important;
+    }
+
+    /* 3. Step Cards: Vibrant Gradient Numbers */
+    .how-it-works-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 26px !important;
+      margin-top: 36px !important;
+    }
+    @media (max-width: 900px) {
+      .how-it-works-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+    }
+    .how-it-works-grid .step-card {
+      position: relative !important;
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 20px !important;
+      padding: 36px 28px !important;
+      text-align: center !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04) !important;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .how-it-works-grid .step-card:hover {
+      transform: translateY(-6px) !important;
+      border-color: #2563EB !important;
+      box-shadow: 0 20px 42px -12px rgba(37, 99, 235, 0.18) !important;
+    }
+    .how-it-works-grid .step-card .step-number-badge {
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+      font-size: 18px !important;
+      font-weight: 800 !important;
+      color: #FFFFFF !important;
+      margin-bottom: 20px !important;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.16) !important;
+    }
+    .how-it-works-grid .step-card:nth-child(1) .step-number-badge {
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%) !important;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35) !important;
+    }
+    .how-it-works-grid .step-card:nth-child(2) .step-number-badge {
+      background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%) !important;
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.35) !important;
+    }
+    .how-it-works-grid .step-card:nth-child(3) .step-number-badge {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+      box-shadow: 0 8px 20px rgba(5, 150, 105, 0.35) !important;
+    }
+    .how-it-works-grid .step-card-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+      font-size: 18.5px !important;
+      font-weight: 750 !important;
+      color: #0F172A !important;
+      margin-bottom: 12px !important;
+    }
+    .how-it-works-grid .step-card-desc {
+      font-family: var(--font-body, 'Poppins', sans-serif) !important;
+      font-size: 14px !important;
+      line-height: 1.6 !important;
+      color: #64748B !important;
+      margin: 0 !important;
+    }
+
+    /* 4. Solutions Cards (8 Grid): Vivid Accents */
+    .solutions-8-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 22px !important;
+      margin-top: 36px !important;
+    }
+    @media (max-width: 1100px) {
+      .solutions-8-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+      }
+    }
+    @media (max-width: 600px) {
+      .solutions-8-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    .solution-card-compact {
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 18px !important;
+      padding: 28px 22px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04) !important;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      position: relative !important;
+    }
+    .solution-card-compact:nth-child(1) { --c: #2563EB; --c-rgb: 37, 99, 235; --c-soft: #EFF6FF; }
+    .solution-card-compact:nth-child(2) { --c: #7C3AED; --c-rgb: 124, 58, 237; --c-soft: #F5F3FF; }
+    .solution-card-compact:nth-child(3) { --c: #059669; --c-rgb: 5, 150, 105; --c-soft: #ECFDF5; }
+    .solution-card-compact:nth-child(4) { --c: #D97706; --c-rgb: 217, 119, 6; --c-soft: #FFFBEB; }
+    .solution-card-compact:nth-child(5) { --c: #0284C7; --c-rgb: 2, 132, 199; --c-soft: #F0F9FF; }
+    .solution-card-compact:nth-child(6) { --c: #4F46E5; --c-rgb: 79, 70, 229; --c-soft: #EEF2FF; }
+    .solution-card-compact:nth-child(7) { --c: #0D9488; --c-rgb: 13, 148, 136; --c-soft: #F0FDFA; }
+    .solution-card-compact:nth-child(8) { --c: #EA580C; --c-rgb: 234, 88, 12; --c-soft: #FFF7ED; }
+
+    .solution-card-compact::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 4px !important;
+      border-radius: 18px 18px 0 0 !important;
+      background: linear-gradient(90deg, var(--c, #2563EB), rgba(var(--c-rgb, 37, 99, 235), 0.35)) !important;
+    }
+    .solution-card-compact:hover {
+      transform: translateY(-6px) !important;
+      border-color: rgba(var(--c-rgb, 37, 99, 235), 0.45) !important;
+      box-shadow: 0 20px 40px -12px rgba(var(--c-rgb, 37, 99, 235), 0.22) !important;
+    }
+    .solution-compact-icon {
+      width: 54px !important;
+      height: 54px !important;
+      min-width: 54px !important;
+      border-radius: 16px !important;
+      background: var(--c-soft, #EFF6FF) !important;
+      border: 1px solid rgba(var(--c-rgb, 37, 99, 235), 0.22) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 24px !important;
+      margin: 0 auto 16px auto !important;
+      transition: transform 0.25s ease !important;
+    }
+    .solution-card-compact:hover .solution-compact-icon {
+      transform: scale(1.1) !important;
+    }
+    .solution-compact-title {
+      font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+      font-size: 17px !important;
+      font-weight: 750 !important;
+      color: #0F172A !important;
+      margin-bottom: 10px !important;
+    }
+    .solution-compact-desc {
+      font-family: var(--font-body, 'Poppins', sans-serif) !important;
+      font-size: 13.5px !important;
+      line-height: 1.55 !important;
+      color: #64748B !important;
+      margin-bottom: 16px !important;
+      flex-grow: 1 !important;
+    }
+    .solution-card-compact .btn-level-3 {
+      font-family: var(--font-body, 'Poppins', sans-serif) !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      color: var(--c, #2563EB) !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      transition: all 0.2s ease !important;
+    }
+    .solution-card-compact .btn-level-3:hover {
+      filter: brightness(0.85) !important;
+      transform: translateX(3px) !important;
+    }
   </style>
 </head>
 <body class="home-page">
@@ -1185,7 +1603,7 @@
           <li>Accredited teacher professional development</li>
           <li>Build 21st-century digital classroom skills</li>
         </ul>
-        <a href="cpd-registration.html" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">
+        <a href="cpd-registration.html" class="btn btn-pathway-pill">
           Explore Educator CPD →
         </a>
       </div>
@@ -1200,7 +1618,7 @@
           <li>Track personal learning progress</li>
           <li>Learn at your own pace with verified certificates</li>
         </ul>
-        <a href="courses.html" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">
+        <a href="courses.html" class="btn btn-pathway-pill">
           Browse All Courses →
         </a>
       </div>
@@ -1215,7 +1633,7 @@
           <li>Turnkey LMS deployment and management</li>
           <li>Smart classrooms &amp; ICT infrastructure setup</li>
         </ul>
-        <a href="schools.html" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">
+        <a href="schools.html" class="btn btn-pathway-pill">
           Institutional Solutions →
         </a>
       </div>
@@ -1230,7 +1648,7 @@
           <li>Tailored compliance &amp; technology training</li>
           <li>Analytics dashboards for organizational learning</li>
         </ul>
-        <a href="schools.html#corporate" class="btn btn-secondary btn-sm" style="margin-top:auto; justify-content:center;">
+        <a href="schools.html#corporate" class="btn btn-pathway-pill">
           Corporate Programmes →
         </a>
       </div>
