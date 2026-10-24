@@ -3405,3 +3405,48 @@ textarea:focus {
 }
 
 
+
+
+/* ══════════════════════════════════════════════════════════════
+   UNIVERSAL CARD BEAUTY & CENTRED ICONS SYSTEM
+   ══════════════════════════════════════════════════════════════ */
+.service-card,
+.service-official-card,
+.consultancy-pillar-card,
+.infra-offering-card,
+.infra-stage-card,
+.reason-card,
+.case-study-card,
+.insight-card,
+.earned-cert-card,
+.pathway-card,
+.testimonial-card,
+.clientele-card,
+.learning-step-card {
+  border-radius: 22px !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+}
+
+.service-card:hover,
+.service-official-card:hover,
+.consultancy-pillar-card:hover,
+.infra-offering-card:hover,
+.reason-card:hover,
+.case-study-card:hover,
+.insight-card:hover,
+.clientele-card:hover {
+  transform: translateY(-7px) !important;
+  box-shadow: 0 20px 42px -10px rgba(18, 60, 140, 0.18) !important;
+}
+
+.service-card-icon-wrap,
+.pillar-icon-wrap,
+.service-icon,
+.pathway-icon {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
