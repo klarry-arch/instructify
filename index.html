@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/animations.css?v=15.1">
   <link rel="stylesheet" href="css/components.css?v=15.1">
   <link rel="stylesheet" href="css/docmed-theme.css?v=15.1">
-  <link rel="stylesheet" href="css/homepage.css?v=16.0">
+  <link rel="stylesheet" href="css/homepage.css?v=16.1">
   <link rel="stylesheet" href="css/live-chat.css?v=15.1">
 
   <!-- Critical Header Alignment, Platform Cards & Navigation Protection -->
@@ -81,16 +81,16 @@
       pointer-events: auto !important;
       position: relative !important;
       top: auto !important;
-      width: calc(100% - 48px) !important;
-      max-width: 1380px !important;
-      margin: 12px auto 0 auto !important;
-      height: 64px !important;
-      min-height: 64px !important;
+      width: calc(100% - 36px) !important;
+      max-width: 1360px !important;
+      margin: 10px auto 0 auto !important;
+      height: 58px !important;
+      min-height: 58px !important;
       background: #FFFFFF !important;
       border-radius: 999px !important;
-      border: 1px solid rgba(226, 232, 240, 0.9) !important;
-      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
-      padding: 6px 16px 6px 22px !important;
+      border: 1px solid rgba(226, 232, 240, 0.95) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+      padding: 5px 12px 5px 18px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
@@ -113,7 +113,8 @@
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      gap: 12px !important;
+      gap: 10px !important;
+      box-sizing: border-box !important;
     }
     .home-page {
       padding-top: 0 !important;
@@ -122,37 +123,45 @@
     .nav-brand {
       display: inline-flex !important;
       align-items: center !important;
-      gap: 8px !important;
+      gap: 6px !important;
       text-decoration: none !important;
+      flex: 0 0 auto !important;
       flex-shrink: 0 !important;
+      z-index: 2 !important;
     }
     .nav-brand-logo {
-      height: 38px !important;
+      height: 32px !important;
       width: auto !important;
-      max-width: 175px !important;
+      max-width: 135px !important;
       object-fit: contain !important;
+      display: block !important;
     }
     .nav-links {
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: clamp(4px, 0.6vw, 12px) !important;
+      gap: clamp(1px, 0.25vw, 4px) !important;
       list-style: none !important;
       margin: 0 !important;
       padding: 0 !important;
-      flex: 1 1 auto !important;
+      flex: 0 1 auto !important;
       min-width: 0 !important;
+      white-space: nowrap !important;
     }
     .nav-links .nav-link {
       font-family: var(--font-body, 'Inter', sans-serif) !important;
-      font-size: 14.5px !important;
+      font-size: 13px !important;
       font-weight: 600 !important;
       color: #1E293B !important;
-      padding: 6px 10px !important;
+      padding: 5px 7px !important;
       border-radius: 999px !important;
       text-decoration: none !important;
       white-space: nowrap !important;
       transition: all 0.2s ease !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 3px !important;
+      line-height: 1 !important;
     }
     .nav-links .nav-link:hover {
       color: #123C8C !important;
@@ -167,12 +176,15 @@
     .concept-nav-actions {
       display: flex !important;
       align-items: center !important;
-      gap: 8px !important;
+      gap: 6px !important;
+      flex: 0 0 auto !important;
       flex-shrink: 0 !important;
+      z-index: 2 !important;
     }
     .nav-icon-btn {
-      width: 36px !important;
-      height: 36px !important;
+      width: 32px !important;
+      height: 32px !important;
+      min-width: 32px !important;
       border-radius: 50% !important;
       display: inline-flex !important;
       align-items: center !important;
@@ -181,6 +193,7 @@
       border: none !important;
       color: #334155 !important;
       cursor: pointer !important;
+      padding: 0 !important;
       transition: all 0.2s ease !important;
     }
     .nav-icon-btn:hover {
@@ -191,16 +204,17 @@
     .nav-lang-selector {
       display: inline-flex !important;
       align-items: center !important;
-      gap: 5px !important;
-      padding: 5px 10px !important;
+      gap: 4px !important;
+      padding: 4px 8px !important;
       border-radius: 999px !important;
       background: #F8FAFC !important;
       border: 1px solid #E2E8F0 !important;
-      font-size: 12px !important;
+      font-size: 11.5px !important;
       font-weight: 700 !important;
       color: #334155 !important;
       cursor: pointer !important;
       transition: all 0.2s ease !important;
+      white-space: nowrap !important;
     }
     .nav-lang-selector:hover {
       background: #F1F5F9 !important;
@@ -208,12 +222,13 @@
     }
     .nav-signin-link {
       font-family: var(--font-body, 'Inter', sans-serif) !important;
-      font-size: 14px !important;
+      font-size: 13px !important;
       font-weight: 650 !important;
       color: #1E293B !important;
       text-decoration: none !important;
-      padding: 6px 10px !important;
+      padding: 5px 8px !important;
       border-radius: 999px !important;
+      white-space: nowrap !important;
       transition: color 0.2s ease !important;
     }
     .nav-signin-link:hover {
@@ -227,10 +242,10 @@
       background: #0B2559 !important;
       color: #FFFFFF !important;
       font-family: var(--font-body, 'Inter', sans-serif) !important;
-      font-size: 14px !important;
+      font-size: 13px !important;
       font-weight: 700 !important;
-      padding: 10px 24px !important;
-      min-height: 42px !important;
+      padding: 7px 18px !important;
+      min-height: 36px !important;
       border-radius: 999px !important;
       border: none !important;
       text-decoration: none !important;
@@ -244,6 +259,33 @@
       transform: translateY(-1px) !important;
       box-shadow: 0 8px 20px rgba(11, 37, 89, 0.45) !important;
       color: #FFFFFF !important;
+    }
+
+    /* Progressive responsive scaling for laptop and tablet viewports */
+    @media (max-width: 1220px) {
+      .concept-nav-actions .nav-lang-selector,
+      .concept-nav-actions #nav-theme-toggle {
+        display: none !important;
+      }
+      .nav-links .nav-link {
+        font-size: 12.5px !important;
+        padding: 4px 6px !important;
+      }
+    }
+
+    @media (max-width: 1060px) {
+      .nav-links {
+        display: none !important;
+      }
+      .nav-hamburger {
+        display: flex !important;
+        flex-shrink: 0 !important;
+      }
+      .concept-nav-actions .nav-signin-link,
+      .concept-nav-actions .nav-lang-selector,
+      .concept-nav-actions .nav-icon-btn {
+        display: none !important;
+      }
     }
 
     /* ══════════════════════════════════════════════════════════
@@ -800,15 +842,15 @@
           </ul>
         </li>
 
-        <!-- For Educators Dropdown -->
+        <!-- Educators Dropdown -->
         <li class="nav-item-dropdown">
           <a href="cpd-registration.html" class="nav-link nav-link-dropdown" data-nav="educators" aria-haspopup="true" aria-expanded="false">
-            For Educators
+            Educators
             <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
               <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <ul class="nav-dropdown-menu" role="menu" aria-label="For Educators">
+          <ul class="nav-dropdown-menu" role="menu" aria-label="Educators">
             <li role="none"><a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem"><span>📜</span> Teacher Professional Development</a></li>
             <li role="none"><a href="workshop-registration.html" class="nav-dropdown-item" role="menuitem"><span>📅</span> Workshops &amp; Boot Camps</a></li>
             <li role="none"><a href="educator-studio.html" class="nav-dropdown-item" role="menuitem"><span>🛠️</span> Educator Studio</a></li>
@@ -817,15 +859,15 @@
           </ul>
         </li>
 
-        <!-- For Institutions Dropdown -->
+        <!-- Institutions Dropdown -->
         <li class="nav-item-dropdown">
           <a href="schools.html" class="nav-link nav-link-dropdown" data-nav="institutions" aria-haspopup="true" aria-expanded="false">
-            For Institutions
+            Institutions
             <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
               <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <ul class="nav-dropdown-menu" role="menu" aria-label="For Institutions">
+          <ul class="nav-dropdown-menu" role="menu" aria-label="Institutions">
             <li role="none"><a href="schools.html" class="nav-dropdown-item" role="menuitem"><span>🏫</span> Institutional &amp; Staff Training</a></li>
             <li role="none"><a href="schools.html" class="nav-dropdown-item" role="menuitem"><span>💼</span> Corporate &amp; Executive Skills</a></li>
             <li role="none"><a href="consultancy.html" class="nav-dropdown-item" role="menuitem"><span>📑</span> Educational Consultancy &amp; Advisory</a></li>
