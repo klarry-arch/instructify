@@ -616,7 +616,8 @@ html.jum-text-sm  { font-size: 14px; }
   font-weight: 800;
   line-height: 1.16;
   letter-spacing: -0.028em;
-  color: #F8FAFC;
+  /* !important required: global.css forces `h1 { color: #09275F !important }` */
+  color: #F8FAFC !important;
   margin-bottom: 20px;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
 }

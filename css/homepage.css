@@ -2304,3 +2304,345 @@
   color: #475569;
   margin: 0;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   PREMIUM REFINEMENT LAYER — spacing, hero framing, centred icons
+   & professional card system (appended; overrides earlier rules)
+   ══════════════════════════════════════════════════════════════ */
+
+/* ---- 1. Section rhythm & margins ---------------------------------- */
+.section-spacious { padding: 72px 0; }
+.section-header-centered { margin: 0 auto 44px auto; }
+.section-header-centered .section-main-title { margin-bottom: 12px; }
+.section-description { max-width: 640px; }
+
+/* Header already provides bottom spacing — avoid doubled gaps */
+.audience-pathways-grid,
+.featured-courses-grid,
+.solutions-8-grid,
+.solutions-4-grid,
+.lms-experience-grid,
+.integrations-grid,
+.trust-capability-grid,
+.how-it-works-grid,
+.resources-4-grid,
+.pillars-3-grid { margin-top: 0; }
+
+.audience-pathways-grid,
+.featured-courses-grid,
+.solutions-8-grid,
+.lms-experience-grid,
+.integrations-grid,
+.trust-capability-grid,
+.how-it-works-grid { gap: 28px; }
+
+/* Extra section-tag colours that were used but never defined */
+.section-tag-pill.teal    { background: #F0FDFA; color: #0F766E; border: 1px solid #99F6E4; }
+.section-tag-pill.green   { background: var(--ed-success-light, #ECFDF5); color: #047857; border: 1px solid #A7F3D0; }
+
+/* ---- 2. Hero: balanced columns, better image framing -------------- */
+.hero-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+}
+.hero-visual-card { isolation: isolate; }
+.hero-visual-card::before {
+  content: '';
+  position: absolute;
+  inset: 22px -14px -14px 22px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.20), rgba(124, 58, 237, 0.20));
+  z-index: -1;
+}
+.hero-main-img {
+  position: relative;
+  height: auto;
+  aspect-ratio: 5 / 4;
+  max-height: 520px;
+  object-fit: cover;
+  object-position: 72% 38%;   /* keeps teacher + smart board in frame */
+  border-radius: 24px;
+  border: 6px solid #FFFFFF;
+  box-shadow: 0 28px 56px -16px rgba(18, 60, 140, 0.28), 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+.trust-badge-pill.top-right { top: 24px; right: 24px; }
+
+/* ---- 3. Shared accent palette per card (cycles every 4) ----------- */
+.audience-pathways-grid > :nth-child(4n+1),
+.solutions-8-grid > :nth-child(4n+1),
+.lms-experience-grid > :nth-child(4n+1),
+.trust-capability-grid > :nth-child(4n+1),
+.integrations-grid > :nth-child(4n+1),
+.how-it-works-grid > :nth-child(4n+1) { --c: #2563EB; --c-soft: #EFF6FF; --c-rgb: 37, 99, 235; }
+
+.audience-pathways-grid > :nth-child(4n+2),
+.solutions-8-grid > :nth-child(4n+2),
+.lms-experience-grid > :nth-child(4n+2),
+.trust-capability-grid > :nth-child(4n+2),
+.integrations-grid > :nth-child(4n+2),
+.how-it-works-grid > :nth-child(4n+2) { --c: #7C3AED; --c-soft: #F5F3FF; --c-rgb: 124, 58, 237; }
+
+.audience-pathways-grid > :nth-child(4n+3),
+.solutions-8-grid > :nth-child(4n+3),
+.lms-experience-grid > :nth-child(4n+3),
+.trust-capability-grid > :nth-child(4n+3),
+.integrations-grid > :nth-child(4n+3),
+.how-it-works-grid > :nth-child(4n+3) { --c: #F97316; --c-soft: #FFF7ED; --c-rgb: 249, 115, 22; }
+
+.audience-pathways-grid > :nth-child(4n+4),
+.solutions-8-grid > :nth-child(4n+4),
+.lms-experience-grid > :nth-child(4n+4),
+.trust-capability-grid > :nth-child(4n+4),
+.integrations-grid > :nth-child(4n+4),
+.how-it-works-grid > :nth-child(4n+4) { --c: #10B981; --c-soft: #ECFDF5; --c-rgb: 16, 185, 129; }
+
+/* ---- 4. Unified card shell ---------------------------------------- */
+.audience-pathway-card,
+.solution-card-compact,
+.lms-card,
+.trust-capability-card,
+.integration-card,
+.step-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.10);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Icon-led cards: everything centred */
+.solution-card-compact,
+.lms-card,
+.trust-capability-card,
+.integration-card,
+.step-card {
+  padding: 34px 26px 28px;
+  align-items: center;
+  text-align: center;
+}
+
+/* thin accent bar along the top edge */
+.solution-card-compact::before,
+.lms-card::before,
+.trust-capability-card::before,
+.integration-card::before,
+.step-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 20px 20px 0 0;
+  background: linear-gradient(90deg, var(--c, #2563EB), rgba(var(--c-rgb, 37, 99, 235), 0.35));
+}
+
+.audience-pathway-card:hover,
+.solution-card-compact:hover,
+.lms-card:hover,
+.trust-capability-card:hover,
+.integration-card:hover,
+.step-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(var(--c-rgb, 37, 99, 235), 0.40);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04), 0 22px 44px -16px rgba(var(--c-rgb, 37, 99, 235), 0.35);
+}
+
+/* ---- 5. Centred, polished icon badges ----------------------------- */
+.audience-card-icon,
+.solution-compact-icon,
+.lms-card-icon,
+.trust-capability-icon,
+.integration-icon {
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+  text-align: center;
+  margin: 0 auto 18px auto;
+  flex-shrink: 0;
+  color: var(--c, #2563EB);
+  background: linear-gradient(145deg, var(--c-soft, #EFF6FF) 0%, #FFFFFF 140%);
+  border: 1px solid rgba(var(--c-rgb, 37, 99, 235), 0.20);
+  box-shadow: 0 10px 22px -10px rgba(var(--c-rgb, 37, 99, 235), 0.55), inset 0 1px 0 #FFFFFF;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.audience-pathway-card:hover .audience-card-icon,
+.solution-card-compact:hover .solution-compact-icon,
+.lms-card:hover .lms-card-icon,
+.trust-capability-card:hover .trust-capability-icon,
+.integration-card:hover .integration-icon {
+  transform: translateY(-3px) scale(1.07);
+  box-shadow: 0 16px 28px -10px rgba(var(--c-rgb, 37, 99, 235), 0.65), inset 0 1px 0 #FFFFFF;
+}
+
+/* ---- 6. Card typography (centred, consistent rhythm) -------------- */
+.solution-compact-title,
+.lms-card-title,
+.trust-capability-title,
+.integration-name {
+  font-size: 18px;
+  font-weight: 750;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+.solution-compact-desc,
+.lms-card-desc,
+.trust-capability-desc,
+.integration-desc {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #475569;
+  text-align: center;
+  margin: 0;
+}
+.solution-compact-desc { margin-bottom: 20px; }
+
+.solution-card-compact .btn-level-3,
+.solution-card-compact .btn-level-3:hover {
+  margin-top: auto;
+  align-self: center;
+}
+.solution-card-compact .btn-level-3 {
+  background: rgba(var(--c-rgb, 37, 99, 235), 0.08) !important;
+  color: var(--c, #2563EB) !important;
+  border-color: rgba(var(--c-rgb, 37, 99, 235), 0.22) !important;
+}
+.solution-card-compact .btn-level-3:hover {
+  background: rgba(var(--c-rgb, 37, 99, 235), 0.16) !important;
+}
+
+/* ---- 7. Audience pathway cards: image header + overlapping icon --- */
+.audience-pathway-card {
+  padding: 0 0 26px 0;
+  overflow: hidden;
+}
+.audience-pathway-card::before { display: none; }
+
+.audience-card-thumb {
+  height: 170px !important;
+  max-height: 170px !important;
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
+  transition: transform 0.5s ease;
+}
+.audience-pathway-card:hover .audience-card-thumb { transform: scale(1.05); }
+
+.audience-card-icon {
+  position: relative;
+  z-index: 2;
+  margin: -34px auto 14px auto;          /* centred, straddling the photo edge */
+  background: #FFFFFF;
+  border: 4px solid #FFFFFF;
+  box-shadow: 0 10px 24px -8px rgba(var(--c-rgb, 37, 99, 235), 0.55), 0 0 0 1px rgba(var(--c-rgb, 37, 99, 235), 0.18);
+}
+.audience-card-icon::after {          /* soft tinted fill under the emoji */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: var(--c-soft, #EFF6FF);
+  z-index: -1;
+}
+.audience-card-title {
+  text-align: center;
+  padding: 0 24px;
+  margin-bottom: 14px;
+}
+.audience-card-list { padding: 0 26px; margin: 0 0 22px 0; }
+.audience-card-list li::before { color: var(--c, #2563EB); }
+.audience-card-list li { padding-left: 24px; }
+.audience-pathway-card > .btn {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+/* ---- 8. How-it-works: centred numbered steps with connectors ------ */
+.step-card .step-number-badge {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+  font-size: 22px;
+  background: linear-gradient(135deg, var(--c, #2563EB), rgba(var(--c-rgb, 37, 99, 235), 0.75));
+  box-shadow: 0 12px 24px -10px rgba(var(--c-rgb, 37, 99, 235), 0.6), 0 0 0 6px var(--c-soft, #EFF6FF);
+}
+.step-card-title,
+.step-card .step-title {
+  font-family: var(--font-heading, 'Manrope', sans-serif);
+  font-size: 20px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0 0 10px 0;
+  line-height: 1.3;
+  text-align: center;
+}
+.step-card-desc,
+.step-card .step-desc {
+  font-family: var(--font-body, 'Inter', sans-serif);
+  font-size: 15px;
+  line-height: 1.65;
+  color: #475569;
+  margin: 0;
+  text-align: center;
+}
+.how-it-works-grid > .step-card:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 64px;
+  right: -29px;
+  width: 28px;
+  border-top: 2px dashed #CBD5E1;
+}
+
+/* ---- 9. Capability rows: icon vertically centred ------------------ */
+.capability-item { align-items: center; }
+.capability-item-icon { align-self: center; line-height: 1; }
+
+/* ---- 10. Featured course cards ------------------------------------ */
+.course-card-redesign {
+  border-radius: 20px;
+  border-color: #E2E8F0;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.10);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.course-card-redesign:hover {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.40);
+  box-shadow: 0 22px 44px -16px rgba(37, 99, 235, 0.32);
+}
+.course-card-img-wrap { height: 180px; }
+.course-card-img-wrap img { transition: transform 0.5s ease; }
+.course-card-redesign:hover .course-card-img-wrap img { transform: scale(1.06); }
+.course-card-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 55%;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.28), transparent);
+  pointer-events: none;
+}
+.course-category-badge { z-index: 2; }
+.course-card-body { padding: 22px; }
+.course-meta-pill { border-radius: 999px; padding: 3px 10px; }
+.accessibility-tag { border-radius: 999px; padding: 2px 9px; }
+
+/* ---- 11. Responsive tweaks for the refinement layer --------------- */
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+  .hero-main-img { aspect-ratio: 16 / 10; object-position: 60% 40%; }
+  .hero-visual-card::before { inset: 16px -8px -10px 16px; }
+  .how-it-works-grid > .step-card::after { display: none; }
+}
+@media (max-width: 640px) {
+  .section-spacious { padding: 56px 0; }
+  .section-header-centered { margin-bottom: 32px; }
+  .hero-main-img { aspect-ratio: 4 / 3; border-width: 4px; }
+  .audience-card-thumb { height: 150px !important; }
+}
