@@ -1444,8 +1444,22 @@
 .featured-courses-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 22px;
   margin-top: 36px;
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 1240px) {
+  .featured-courses-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+  }
+}
+@media (max-width: 680px) {
+  .featured-courses-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
 }
 .course-card-redesign {
   background: #FFFFFF;
@@ -1542,18 +1556,76 @@
   border-radius: 4px;
 }
 .course-card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 14px;
-  border-top: 1px solid var(--border-grey, #DCE2EA);
-  margin-top: auto;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  padding: 14px 0 0 0 !important;
+  border-top: 1px solid var(--border-grey, #DCE2EA) !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin-top: auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 .course-price-tag {
-  font-family: var(--font-heading, 'Manrope', sans-serif);
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--royal-blue, #123C8C);
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  line-height: 1.15 !important;
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
+}
+.course-price-tag .price-amount {
+  font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: var(--royal-blue, #123C8C) !important;
+  white-space: nowrap !important;
+  letter-spacing: -0.01em !important;
+}
+.course-price-tag .price-amount.price-free {
+  color: var(--success-green, #16794B) !important;
+}
+.course-price-tag .price-unit {
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: #64748B !important;
+  white-space: nowrap !important;
+  margin-top: 2px !important;
+}
+.btn-course-cta,
+.course-card-footer .btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  background: #0B2559 !important;
+  color: #FFFFFF !important;
+  font-family: var(--font-body, 'Inter', sans-serif) !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  padding: 8px 16px !important;
+  min-height: 36px !important;
+  height: 36px !important;
+  border-radius: 999px !important;
+  border: 1.5px solid #0B2559 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+  box-shadow: 0 4px 12px rgba(11, 37, 89, 0.25) !important;
+  transition: all 0.22s ease !important;
+  cursor: pointer !important;
+}
+.btn-course-cta:hover,
+.course-card-footer .btn:hover {
+  background: #07193D !important;
+  border-color: #07193D !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(11, 37, 89, 0.40) !important;
+  color: #FFFFFF !important;
 }
 
 /* Institutional Solutions Cards */

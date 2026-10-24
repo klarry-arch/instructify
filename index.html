@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/animations.css?v=15.1">
   <link rel="stylesheet" href="css/components.css?v=15.1">
   <link rel="stylesheet" href="css/docmed-theme.css?v=15.1">
-  <link rel="stylesheet" href="css/homepage.css?v=16.1">
+  <link rel="stylesheet" href="css/homepage.css?v=16.2">
   <link rel="stylesheet" href="css/live-chat.css?v=15.1">
 
   <!-- Critical Header Alignment, Platform Cards & Navigation Protection -->
@@ -796,6 +796,124 @@
         order: 1 !important;
       }
     }
+
+    /* ══════════════════════════════════════════════════════════
+       FEATURED COURSES: NON-OVERLAPPING CARD FOOTER & GRID
+       ══════════════════════════════════════════════════════════ */
+    .featured-courses-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 22px !important;
+      margin-top: 36px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    @media (max-width: 1240px) {
+      .featured-courses-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+      }
+    }
+    @media (max-width: 680px) {
+      .featured-courses-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+    }
+
+    .course-card-redesign {
+      background: #FFFFFF !important;
+      border: 1px solid #E2E8F0 !important;
+      border-radius: 18px !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .course-card-redesign:hover {
+      transform: translateY(-5px) !important;
+      border-color: #2563EB !important;
+      box-shadow: 0 16px 36px rgba(37, 99, 235, 0.14) !important;
+    }
+    .course-card-redesign .course-card-body {
+      padding: 20px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      flex: 1 1 auto !important;
+    }
+    .course-card-redesign .course-card-footer {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 10px !important;
+      margin-top: auto !important;
+      padding: 14px 0 0 0 !important;
+      border-top: 1px solid #E2E8F0 !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .course-card-redesign .course-price-tag {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      justify-content: center !important;
+      line-height: 1.15 !important;
+      flex: 0 0 auto !important;
+      min-width: 0 !important;
+    }
+    .course-card-redesign .price-amount {
+      font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+      font-size: 16px !important;
+      font-weight: 800 !important;
+      color: #0B2559 !important;
+      white-space: nowrap !important;
+      letter-spacing: -0.01em !important;
+    }
+    .course-card-redesign .price-amount.price-free {
+      color: #16794B !important;
+    }
+    .course-card-redesign .price-unit {
+      font-size: 11px !important;
+      font-weight: 500 !important;
+      color: #64748B !important;
+      white-space: nowrap !important;
+      margin-top: 2px !important;
+    }
+    .course-card-redesign .btn-course-cta,
+    .course-card-redesign .course-card-footer .btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      background: #0B2559 !important;
+      color: #FFFFFF !important;
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 12.5px !important;
+      font-weight: 700 !important;
+      padding: 8px 16px !important;
+      min-height: 36px !important;
+      height: 36px !important;
+      border-radius: 999px !important;
+      border: 1.5px solid #0B2559 !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      flex: 0 0 auto !important;
+      box-shadow: 0 4px 12px rgba(11, 37, 89, 0.25) !important;
+      transition: all 0.22s ease !important;
+      cursor: pointer !important;
+    }
+    .course-card-redesign .btn-course-cta:hover,
+    .course-card-redesign .course-card-footer .btn:hover {
+      background: #07193D !important;
+      border-color: #07193D !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 18px rgba(11, 37, 89, 0.40) !important;
+      color: #FFFFFF !important;
+    }
   </style>
 </head>
 <body class="home-page">
@@ -1388,8 +1506,11 @@
             <span class="accessibility-tag">Captions &amp; Transcripts</span>
           </div>
           <div class="course-card-footer">
-            <div class="course-price-tag">KES 2,500 <span style="font-size:12px; font-weight:400; color:#64748B;">/ term</span></div>
-            <a href="cpd-registration.html" class="btn btn-primary btn-sm" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">View Course →</a>
+            <div class="course-price-tag">
+              <span class="price-amount">KES 2,500</span>
+              <span class="price-unit">per term</span>
+            </div>
+            <a href="cpd-registration.html" class="btn btn-primary btn-sm btn-course-cta">View Course →</a>
           </div>
         </div>
       </div>
@@ -1415,8 +1536,11 @@
             <span class="accessibility-tag">High-Contrast Text</span>
           </div>
           <div class="course-card-footer">
-            <div class="course-price-tag">KES 3,000</div>
-            <a href="courses/digital-literacy-ict-integration.html" class="btn btn-primary btn-sm" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">View Course →</a>
+            <div class="course-price-tag">
+              <span class="price-amount">KES 3,000</span>
+              <span class="price-unit">full course</span>
+            </div>
+            <a href="courses/digital-literacy-ict-integration.html" class="btn btn-primary btn-sm btn-course-cta">View Course →</a>
           </div>
         </div>
       </div>
@@ -1442,8 +1566,11 @@
             <span class="accessibility-tag">Audio Transcripts</span>
           </div>
           <div class="course-card-footer">
-            <div class="course-price-tag" style="color:var(--success-green, #16794B);">Free Access</div>
-            <a href="jumuishi-learning-hub.html" class="btn btn-primary btn-sm" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">View Course →</a>
+            <div class="course-price-tag">
+              <span class="price-amount price-free">Free Access</span>
+              <span class="price-unit">community</span>
+            </div>
+            <a href="jumuishi-learning-hub.html" class="btn btn-primary btn-sm btn-course-cta">View Course →</a>
           </div>
         </div>
       </div>
@@ -1469,8 +1596,11 @@
             <span class="accessibility-tag">Low-Bandwidth Mode</span>
           </div>
           <div class="course-card-footer">
-            <div class="course-price-tag">KES 4,500</div>
-            <a href="consultancy.html" class="btn btn-primary btn-sm" style="background:var(--royal-blue, #123C8C); border-color:var(--royal-blue, #123C8C);">View Course →</a>
+            <div class="course-price-tag">
+              <span class="price-amount">KES 4,500</span>
+              <span class="price-unit">institutional</span>
+            </div>
+            <a href="consultancy.html" class="btn btn-primary btn-sm btn-course-cta">View Course →</a>
           </div>
         </div>
       </div>
