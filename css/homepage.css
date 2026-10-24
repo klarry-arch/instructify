@@ -2646,3 +2646,89 @@
   .hero-main-img { aspect-ratio: 4 / 3; border-width: 4px; }
   .audience-card-thumb { height: 150px !important; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   CONCEPT STRUCTURE EXTENSION (Moi Educational Centre Concept)
+   Floating Pill Navbar & Full-Bleed Dark Photographic Hero
+   ══════════════════════════════════════════════════════════════ */
+.hero-section.hero-concept-fullbleed {
+  position: relative !important;
+  background: 
+    linear-gradient(180deg, rgba(8, 18, 42, 0.78) 0%, rgba(8, 18, 42, 0.58) 45%, rgba(8, 18, 42, 0.94) 100%),
+    url('../assets/images/home_hero_classroom.jpg') center 35% / cover no-repeat !important;
+  min-height: 90vh !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-top: 175px !important;
+  padding-bottom: 90px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+  color: #FFFFFF !important;
+  overflow: hidden !important;
+}
+
+.hero-concept-title {
+  font-family: var(--font-heading, 'Manrope', 'Poppins', sans-serif) !important;
+  font-size: clamp(38px, 5.2vw, 64px) !important;
+  font-weight: 850 !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.03em !important;
+  color: #FFFFFF !important;
+  margin: 0 0 20px 0 !important;
+  text-wrap: balance !important;
+}
+
+.hero-concept-highlight {
+  background: linear-gradient(135deg, #F3E8FF 0%, #C084FC 45%, #9333EA 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline !important;
+  font-weight: 900 !important;
+}
+
+.btn-hero-primary-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  background: #0B2559 !important;
+  color: #FFFFFF !important;
+  border-radius: 999px !important;
+  padding: 14px 32px !important;
+  font-size: 15.5px !important;
+  font-weight: 700 !important;
+  border: 1.5px solid #1D4ED8 !important;
+  box-shadow: 0 10px 28px rgba(11, 37, 89, 0.5) !important;
+  text-decoration: none !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.btn-hero-primary-pill:hover {
+  background: #07193D !important;
+  border-color: #2563EB !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 34px rgba(11, 37, 89, 0.65) !important;
+  color: #FFFFFF !important;
+}
+
+.btn-hero-glass-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: #FFFFFF !important;
+  border-radius: 999px !important;
+  padding: 14px 28px !important;
+  font-size: 15.5px !important;
+  font-weight: 650 !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+}
+.btn-hero-glass-pill:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.65) !important;
+  transform: translateY(-2px) !important;
+  color: #FFFFFF !important;
+}

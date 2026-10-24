@@ -13,10 +13,11 @@
   <link rel="stylesheet" href="css/animations.css?v=15.1">
   <link rel="stylesheet" href="css/components.css?v=15.1">
   <link rel="stylesheet" href="css/docmed-theme.css?v=15.1">
-  <link rel="stylesheet" href="css/homepage.css?v=15.2">
+  <link rel="stylesheet" href="css/homepage.css?v=16.0">
   <link rel="stylesheet" href="css/live-chat.css?v=15.1">
 
   <!-- Critical Header Alignment, Platform Cards & Navigation Protection -->
+  <!-- Critical Header Alignment, Floating Capsule Navbar & Concept Hero Styles -->
   <style id="inst-critical-styling">
     #site-header.site-header {
       position: fixed !important;
@@ -25,19 +26,24 @@
       right: 0 !important;
       width: 100% !important;
       z-index: 1000 !important;
-      background: #FFFFFF !important;
-      border-bottom: 1px solid #DCE2EA !important;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
-      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease !important;
+      background: transparent !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+      pointer-events: none !important;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
     .utility-announcement-bar {
-      background: #0F172A !important;
+      pointer-events: auto !important;
+      background: rgba(15, 23, 42, 0.94) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
       color: #CBD5E1 !important;
-      padding: 7px 16px !important;
-      font-size: 13px !important;
+      padding: 6px 16px !important;
+      font-size: 12.5px !important;
       line-height: 1.4 !important;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
       text-align: center !important;
+      transition: all 0.25s ease !important;
     }
     .utility-announcement-content {
       display: flex !important;
@@ -57,9 +63,7 @@
       text-transform: uppercase !important;
       letter-spacing: 0.04em !important;
     }
-    .utility-text {
-      color: #E2E8F0 !important;
-    }
+    .utility-text { color: #E2E8F0 !important; }
     .utility-link {
       color: #F59E0B !important;
       font-weight: 700 !important;
@@ -70,36 +74,450 @@
       color: #FBBF24 !important;
       text-decoration: underline !important;
     }
-    #site-header .navbar,
-    #site-header #navbar {
+
+    /* Floating Capsule / Pill Navbar (Concept Structure) */
+    #site-header #navbar,
+    #site-header .navbar {
+      pointer-events: auto !important;
       position: relative !important;
       top: auto !important;
-      width: 100% !important;
-      height: var(--nav-height, 68px) !important;
-      min-height: var(--nav-height, 68px) !important;
-      z-index: 1 !important;
-      margin: 0 !important;
+      width: calc(100% - 48px) !important;
+      max-width: 1380px !important;
+      margin: 12px auto 0 auto !important;
+      height: 64px !important;
+      min-height: 64px !important;
       background: #FFFFFF !important;
-      border-bottom: none !important;
+      border-radius: 999px !important;
+      border: 1px solid rgba(226, 232, 240, 0.9) !important;
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+      padding: 6px 16px 6px 22px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      box-sizing: border-box !important;
     }
-    #site-header.scrolled {
-      transform: none !important;
-      box-shadow: 0 8px 24px rgba(30, 41, 59, 0.08) !important;
+    #site-header.scrolled #navbar {
+      background: rgba(255, 255, 255, 0.98) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      box-shadow: 0 14px 38px rgba(15, 23, 42, 0.18), 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+      border-color: rgba(203, 213, 225, 0.95) !important;
+    }
+    #site-header .navbar .container,
+    #site-header #navbar .container {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
     }
     .home-page {
-      padding-top: 104px !important;
+      padding-top: 0 !important;
     }
-    @media (max-width: 768px) {
-      .home-page {
-        padding-top: 114px !important;
+
+    .nav-brand {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      text-decoration: none !important;
+      flex-shrink: 0 !important;
+    }
+    .nav-brand-logo {
+      height: 38px !important;
+      width: auto !important;
+      max-width: 175px !important;
+      object-fit: contain !important;
+    }
+    .nav-links {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: clamp(4px, 0.6vw, 12px) !important;
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      flex: 1 1 auto !important;
+      min-width: 0 !important;
+    }
+    .nav-links .nav-link {
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 14.5px !important;
+      font-weight: 600 !important;
+      color: #1E293B !important;
+      padding: 6px 10px !important;
+      border-radius: 999px !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      transition: all 0.2s ease !important;
+    }
+    .nav-links .nav-link:hover {
+      color: #123C8C !important;
+      background: rgba(18, 60, 140, 0.06) !important;
+    }
+    .nav-links .nav-link.active {
+      color: #123C8C !important;
+      font-weight: 750 !important;
+    }
+
+    /* Concept Navbar Actions (Search, Lang, Moon, Apply Now) */
+    .concept-nav-actions {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      flex-shrink: 0 !important;
+    }
+    .nav-icon-btn {
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 50% !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background: transparent !important;
+      border: none !important;
+      color: #334155 !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .nav-icon-btn:hover {
+      background: #F1F5F9 !important;
+      color: #0F172A !important;
+      transform: scale(1.05) !important;
+    }
+    .nav-lang-selector {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      padding: 5px 10px !important;
+      border-radius: 999px !important;
+      background: #F8FAFC !important;
+      border: 1px solid #E2E8F0 !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      color: #334155 !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .nav-lang-selector:hover {
+      background: #F1F5F9 !important;
+      border-color: #CBD5E1 !important;
+    }
+    .nav-signin-link {
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 14px !important;
+      font-weight: 650 !important;
+      color: #1E293B !important;
+      text-decoration: none !important;
+      padding: 6px 10px !important;
+      border-radius: 999px !important;
+      transition: color 0.2s ease !important;
+    }
+    .nav-signin-link:hover {
+      color: #123C8C !important;
+    }
+    .btn-concept-apply {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      background: #0B2559 !important;
+      color: #FFFFFF !important;
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      padding: 10px 24px !important;
+      min-height: 42px !important;
+      border-radius: 999px !important;
+      border: none !important;
+      text-decoration: none !important;
+      box-shadow: 0 4px 14px rgba(11, 37, 89, 0.35) !important;
+      transition: all 0.22s ease !important;
+      white-space: nowrap !important;
+      cursor: pointer !important;
+    }
+    .btn-concept-apply:hover {
+      background: #07193D !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 8px 20px rgba(11, 37, 89, 0.45) !important;
+      color: #FFFFFF !important;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       FULL-BLEED PHOTOGRAPHIC HERO (Concept Structure)
+       ══════════════════════════════════════════════════════════ */
+    .hero-section.hero-concept-fullbleed {
+      position: relative !important;
+      background: 
+        linear-gradient(180deg, rgba(8, 18, 42, 0.78) 0%, rgba(8, 18, 42, 0.58) 45%, rgba(8, 18, 42, 0.94) 100%),
+        url('assets/images/home_hero_classroom.jpg') center 35% / cover no-repeat !important;
+      min-height: 90vh !important;
+      display: flex !important;
+      align-items: center !important;
+      padding-top: 175px !important;
+      padding-bottom: 90px !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+      color: #FFFFFF !important;
+      overflow: hidden !important;
+    }
+    .hero-concept-container {
+      position: relative !important;
+      z-index: 2 !important;
+      max-width: 1240px !important;
+      margin: 0 auto !important;
+      width: 100% !important;
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    }
+    .hero-concept-content {
+      max-width: 820px !important;
+      text-align: left !important;
+    }
+    .hero-concept-eyebrow {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 6px 14px !important;
+      border-radius: 999px !important;
+      background: rgba(255, 255, 255, 0.12) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.22) !important;
+      color: #E2E8F0 !important;
+      font-size: 11.5px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      margin-bottom: 22px !important;
+    }
+    .hero-concept-eyebrow .hero-badge-dot {
+      width: 7px !important;
+      height: 7px !important;
+      border-radius: 50% !important;
+      background: #38BDF8 !important;
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.8) !important;
+      animation: pulse 2s ease-in-out infinite !important;
+    }
+    .hero-concept-title {
+      font-family: var(--font-heading, 'Manrope', 'Poppins', sans-serif) !important;
+      font-size: clamp(38px, 5.2vw, 64px) !important;
+      font-weight: 850 !important;
+      line-height: 1.12 !important;
+      letter-spacing: -0.03em !important;
+      color: #FFFFFF !important;
+      margin: 0 0 20px 0 !important;
+      text-wrap: balance !important;
+    }
+    .hero-concept-highlight {
+      background: linear-gradient(135deg, #F3E8FF 0%, #C084FC 45%, #9333EA 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      display: inline !important;
+      font-weight: 900 !important;
+    }
+    .hero-concept-subtitle {
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: clamp(16px, 1.3vw, 19px) !important;
+      line-height: 1.68 !important;
+      color: rgba(255, 255, 255, 0.90) !important;
+      margin: 0 0 34px 0 !important;
+      max-width: 660px !important;
+      font-weight: 400 !important;
+    }
+    .hero-concept-actions {
+      display: flex !important;
+      align-items: center !important;
+      gap: 16px !important;
+      flex-wrap: wrap !important;
+      margin-bottom: 28px !important;
+    }
+    .btn-hero-primary-pill {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      background: #0B2559 !important;
+      color: #FFFFFF !important;
+      border-radius: 999px !important;
+      padding: 14px 32px !important;
+      font-size: 15.5px !important;
+      font-weight: 700 !important;
+      border: 1.5px solid #1D4ED8 !important;
+      box-shadow: 0 10px 28px rgba(11, 37, 89, 0.5) !important;
+      text-decoration: none !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .btn-hero-primary-pill:hover {
+      background: #07193D !important;
+      border-color: #2563EB !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 14px 34px rgba(11, 37, 89, 0.65) !important;
+      color: #FFFFFF !important;
+    }
+    .btn-hero-glass-pill {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      background: rgba(255, 255, 255, 0.12) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      color: #FFFFFF !important;
+      border-radius: 999px !important;
+      padding: 14px 28px !important;
+      font-size: 15.5px !important;
+      font-weight: 650 !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+      text-decoration: none !important;
+      transition: all 0.25s ease !important;
+    }
+    .btn-hero-glass-pill:hover {
+      background: rgba(255, 255, 255, 0.22) !important;
+      border-color: rgba(255, 255, 255, 0.65) !important;
+      transform: translateY(-2px) !important;
+      color: #FFFFFF !important;
+    }
+    .hero-ghost-link {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      color: #FFFFFF !important;
+      font-size: 15px !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      padding: 10px 14px !important;
+      transition: all 0.2s ease !important;
+      opacity: 0.95 !important;
+    }
+    .hero-ghost-link:hover {
+      opacity: 1 !important;
+      text-decoration: underline !important;
+      transform: translateX(3px) !important;
+    }
+    .hero-concept-trust {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 18px !important;
+      flex-wrap: wrap !important;
+      padding: 8px 20px !important;
+      border-radius: 999px !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    }
+    .concept-trust-item {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 7px !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      color: #F1F5F9 !important;
+    }
+    .concept-trust-item .trust-check {
+      color: #34D399 !important;
+      font-weight: 800 !important;
+      font-size: 13px !important;
+    }
+
+    /* Concept Dual Floating Circular Action Badges (Bottom Right) */
+    .concept-floating-widgets {
+      position: fixed !important;
+      bottom: 24px !important;
+      right: 24px !important;
+      z-index: 9995 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 12px !important;
+    }
+    .floating-circle-btn {
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 50% !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-decoration: none !important;
+      border: none !important;
+      cursor: pointer !important;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.30), 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      position: relative !important;
+      padding: 0 !important;
+    }
+    .floating-circle-btn:hover {
+      transform: translateY(-4px) scale(1.08) !important;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.40) !important;
+    }
+    .floating-whatsapp-pill {
+      background: #0B2559 !important;
+      color: #FFFFFF !important;
+    }
+    .floating-whatsapp-pill:hover {
+      background: #25D366 !important;
+      color: #FFFFFF !important;
+    }
+    .floating-assistant-pill {
+      background: linear-gradient(135deg, #4338CA 0%, #1E1B4B 100%) !important;
+      color: #FFFFFF !important;
+    }
+    .floating-assistant-pill:hover {
+      background: linear-gradient(135deg, #4F46E5 0%, #312E81 100%) !important;
+    }
+    .floating-pill-dot {
+      position: absolute !important;
+      top: 4px !important;
+      right: 4px !important;
+      width: 12px !important;
+      height: 12px !important;
+      border-radius: 50% !important;
+      background: #38BDF8 !important;
+      border: 2px solid #1E1B4B !important;
+      animation: pulse 2s infinite !important;
+    }
+
+    /* Hide standard horizontal live chat button since concept uses floating circle */
+    #instructify-chat-launcher {
+      display: none !important;
+    }
+
+    /* Mobile Responsive Rules */
+    @media (max-width: 991px) {
+      #site-header #navbar,
+      #site-header .navbar {
+        width: calc(100% - 24px) !important;
+        margin-top: 8px !important;
+        padding: 6px 14px !important;
+        height: 58px !important;
+        min-height: 58px !important;
+      }
+      .concept-nav-actions .nav-lang-selector,
+      .concept-nav-actions .nav-icon-btn,
+      .concept-nav-actions .nav-signin-link {
+        display: none !important;
+      }
+      .hero-section.hero-concept-fullbleed {
+        padding-top: 140px !important;
+        padding-bottom: 60px !important;
+        min-height: 82vh !important;
+      }
+      .hero-concept-title {
+        font-size: clamp(32px, 7.5vw, 44px) !important;
+      }
+      .concept-floating-widgets {
+        bottom: 16px !important;
+        right: 16px !important;
+        gap: 10px !important;
+      }
+      .floating-circle-btn {
+        width: 48px !important;
+        height: 48px !important;
       }
     }
-    .hero-section {
-      padding-top: 28px !important;
-      padding-bottom: 56px !important;
-    }
-    .nav-brand, .nav-actions { flex-shrink: 0 !important; }
-    .nav-links { flex: 1 1 auto !important; min-width: 0 !important; }
 
     /* Platform Capabilities: Card & Button System */
     .capability-chapter-section {
@@ -439,10 +857,31 @@
         <li><a href="about.html" class="nav-link" data-nav="about">About</a></li>
       </ul>
 
-      <!-- Action CTAs: Secondary Sign In + Primary Get Started -->
-      <div class="nav-actions">
-        <a href="login.html" class="btn btn-outline btn-sm">Sign In</a>
-        <a href="register.html" class="btn btn-primary btn-sm btn-level-1">Get Started →</a>
+      <!-- Concept Navigation Actions: Search, Language Pill, Theme Moon Toggle, Sign In, Apply Now -->
+      <div class="nav-actions concept-nav-actions">
+        <button class="nav-icon-btn" id="nav-search-trigger" aria-label="Search" title="Search Courses &amp; Resources">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <div class="nav-lang-selector" title="Curriculum &amp; Region: Kenya (CBC &amp; TSC)">
+          <span aria-hidden="true">🇰🇪</span>
+          <span>EN</span>
+          <svg width="8" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <button class="nav-icon-btn" id="nav-theme-toggle" aria-label="Toggle Theme Mode" title="Theme Mode">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <a href="login.html" class="nav-signin-link">Sign In</a>
+        <a href="register.html" class="btn-concept-apply">Apply Now</a>
       </div>
 
       <!-- Mobile Hamburger Button -->
@@ -506,69 +945,56 @@
 </nav>
 
 <!-- ══════════════════════════════════════════════════════════════
-     C. HERO SECTION (Concise, Compelling, Measurable Transformation)
+     C. HERO SECTION (Full-Bleed Photographic Concept Structure)
      ══════════════════════════════════════════════════════════════ -->
-<section class="hero-section" aria-label="Hero Introduction">
-  <div class="container">
-    <div class="hero-grid">
-      <!-- Left Column: Copy & Actions -->
-      <div class="hero-text animate-fade-in-left">
-        <div class="hero-badge">
-          <span class="hero-badge-dot" aria-hidden="true"></span>
-          <span>Education Technology &amp; Professional Development</span>
-        </div>
-
-        <h1 class="hero-title">
-          Practical learning for educators, learners and institutions.
-        </h1>
-
-        <p class="hero-subtitle">
-          Instructify Kenya delivers professional development, digital skills training, educational consultancy, and technology-enabled learning solutions across Kenya.
-        </p>
-
-        <!-- CTA Buttons: Primary, Secondary, Tertiary -->
-        <div class="hero-ctas">
-          <a href="courses.html" class="btn btn-primary btn-level-1">
-            Explore Courses →
-          </a>
-          <a href="schools.html" class="btn btn-secondary btn-level-2">
-            Request Institutional Training
-          </a>
-        </div>
-
-        <div class="hero-creator-link" style="margin-top:14px;">
-          <a href="workshop-registration.html" class="creator-quick-link">
-            <span>📅</span> Upcoming interactive boot camps: <strong>Book a Workshop →</strong>
-          </a>
-        </div>
-
-        <!-- Verified Framework Strip -->
-        <div class="hero-quick-trust">
-          <div class="quick-trust-item">
-            <span class="quick-trust-check">✓</span> TSC CPD Aligned
-          </div>
-          <div class="quick-trust-item">
-            <span class="quick-trust-check">✓</span> KICD CBC Framework
-          </div>
-          <div class="quick-trust-item">
-            <span class="quick-trust-check">✓</span> WCAG 2.2 Inclusive
-          </div>
-        </div>
+<section class="hero-section hero-concept-fullbleed" aria-label="Hero Introduction">
+  <div class="container hero-concept-container">
+    <div class="hero-concept-content animate-fade-in-left">
+      <div class="hero-concept-eyebrow">
+        <span class="hero-badge-dot" aria-hidden="true"></span>
+        <span>Education Technology &amp; Professional Development</span>
       </div>
 
-      <!-- Right Column: Visual with Alt Text -->
-      <div class="hero-visual-card animate-fade-in-right">
-        <img 
-          src="assets/images/home_hero_classroom.jpg" 
-          alt="Kenyan modern classroom with interactive digital board and engaged students" 
-          class="hero-main-img"
-          loading="eager"
-        >
+      <h1 class="hero-concept-title">
+        Where <span class="hero-concept-highlight">Excellence</span> in Learning Begins Every Day.
+      </h1>
 
-        <!-- Verified Single Trust Pill -->
-        <div class="trust-badge-pill top-right">
-          <span class="badge-check">✓</span>
-          <span>Verified CPD &amp; LMS Platform</span>
+      <p class="hero-concept-subtitle">
+        Instructify Kenya delivers professional development, digital skills training, educational consultancy, and technology-enabled learning solutions across Kenya.
+      </p>
+
+      <!-- Concept 3-Action Cluster -->
+      <div class="hero-concept-actions">
+        <a href="courses.html" class="btn-hero-primary-pill">
+          Explore Courses →
+        </a>
+        <a href="schools.html" class="btn-hero-glass-pill">
+          Request Institutional Training
+        </a>
+        <a href="cpd-registration.html" class="hero-ghost-link">
+          Explore Programmes
+        </a>
+      </div>
+
+      <div class="hero-creator-link" style="margin-bottom: 22px;">
+        <a href="workshop-registration.html" class="hero-ghost-link" style="font-size: 14px; opacity: 0.9; padding-left: 0;">
+          <span>📅</span> Upcoming interactive boot camps: <strong style="text-decoration: underline; margin-left: 4px;">Book a Workshop →</strong>
+        </a>
+      </div>
+
+      <!-- Verified Framework Trust Badges -->
+      <div class="hero-concept-trust">
+        <div class="concept-trust-item">
+          <span class="trust-check">✓</span> TSC CPD Aligned
+        </div>
+        <div class="concept-trust-item">
+          <span class="trust-check">✓</span> KICD CBC Framework
+        </div>
+        <div class="concept-trust-item">
+          <span class="trust-check">✓</span> WCAG 2.2 Inclusive
+        </div>
+        <div class="concept-trust-item">
+          <span class="trust-check">✓</span> Verified LMS Platform
         </div>
       </div>
     </div>
@@ -1593,5 +2019,67 @@
 
 <script src="js/chat-config.js"></script>
 <script src="js/live-chat.js"></script>
+
+<!-- Concept Dual Floating Circular Action Badges (Bottom Right) -->
+<div class="concept-floating-widgets" aria-label="Quick Communication">
+  <!-- WhatsApp Floating Circle Button -->
+  <a href="https://wa.me/254143024416?text=Hello%20Instructify%20Kenya,%20I%20would%20like%20to%20connect." 
+     class="floating-circle-btn floating-whatsapp-pill" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     aria-label="Chat on WhatsApp" 
+     title="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+  </a>
+
+  <!-- Student / LMS Assistant Floating Circle with Active Status Dot -->
+  <button id="concept-assistant-btn" 
+          class="floating-circle-btn floating-assistant-pill" 
+          aria-label="Open Student Assistant &amp; Live Chat" 
+          title="Instructify Assistant &amp; LMS Help">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
+      <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+    </svg>
+    <span class="floating-pill-dot" aria-label="Online"></span>
+  </button>
+</div>
+
+<script>
+// Concept interactions: search trigger, theme toggle, and floating assistant
+(function() {
+  const searchBtn = document.getElementById('nav-search-trigger');
+  if (searchBtn) {
+    searchBtn.addEventListener('click', function() {
+      window.location.href = 'courses.html#search';
+    });
+  }
+
+  const themeBtn = document.getElementById('nav-theme-toggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+      if (window.showToast) {
+        const isDark = document.body.classList.contains('dark-mode');
+        window.showToast(isDark ? 'Dark theme enabled' : 'Light theme enabled', 'info');
+      }
+    });
+  }
+
+  const assistantBtn = document.getElementById('concept-assistant-btn');
+  if (assistantBtn) {
+    assistantBtn.addEventListener('click', function() {
+      const existing = document.getElementById('instructify-chat-launcher');
+      if (existing) {
+        existing.click();
+      } else {
+        const win = document.getElementById('instructify-chat-window');
+        if (win) win.classList.toggle('open');
+      }
+    });
+  }
+})();
+</script>
 </body>
 </html>
