@@ -218,14 +218,14 @@
     <div class="grid-2" style="grid-template-columns:2fr 1fr">
       <div>
                 <!-- Official Teacher Training Manual Highlight Banner -->
-        <div style="background: linear-gradient(135deg, #2145E6 0%, #183AD6 100%); border-left: 5px solid #FF4D00; border-radius: 12px; padding: 24px; color: #FFFFFF; margin-bottom: 32px; box-shadow: 0 4px 16px rgba(30, 58, 138, 0.15);">
+        <div id="course-manual-banner" style="background: linear-gradient(135deg, #2145E6 0%, #183AD6 100%); border-left: 5px solid #FF4D00; border-radius: 12px; padding: 24px; color: #FFFFFF; margin-bottom: 32px; box-shadow: 0 4px 16px rgba(30, 58, 138, 0.15);">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
             <div>
               <span style="background: #FF4D00; color: #0F172A; padding: 4px 12px; border-radius: 999px; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Instructify Kenya Official Publication</span>
-              <h4 style="color: #FFFFFF !important; font-size: 20px; font-weight: 800; margin-top: 10px; margin-bottom: 6px;">Complete Professional Teacher Training Manual</h4>
-              <p style="color: #CBD5E1 !important; font-size: 14.5px; margin: 0;">Access the full 15-section CBC-aligned manual complete with 10 detailed modules, lesson plan templates, digital safety guides, assessment rubrics, and trainer facilitation notes.</p>
+              <h4 id="manual-banner-title" style="color: #FFFFFF !important; font-size: 20px; font-weight: 800; margin-top: 10px; margin-bottom: 6px;">Complete Professional Teacher Training Manual</h4>
+              <p id="manual-banner-desc" style="color: #CBD5E1 !important; font-size: 14.5px; margin: 0;">Access the full 15-section CBC-aligned manual complete with 10 detailed modules, lesson plan templates, digital safety guides, assessment rubrics, and trainer facilitation notes.</p>
             </div>
-            <a href="courses/digital-literacy-ict-integration.html" class="btn" style="background: #FF4D00 !important; color: #FFFFFF !important; font-weight: 700; white-space: nowrap; padding: 12px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);">Open Full Manual</a>
+            <a id="manual-banner-link" href="courses/digital-literacy-ict-integration.html" class="btn" style="background: #FF4D00 !important; color: #FFFFFF !important; font-weight: 700; white-space: nowrap; padding: 12px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);">Open Full Manual</a>
           </div>
         </div>
 
@@ -394,6 +394,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const durEl = document.getElementById('course-duration');
   if (durEl) durEl.textContent = currentCourse.duration || '6 Weeks';
 
+    // Link to dedicated course manual / interactive syllabus if available
+  const manualLink = document.getElementById('manual-banner-link');
+  const manualTitle = document.getElementById('manual-banner-title');
+  const manualDesc = document.getElementById('manual-banner-desc');
+  if (currentCourse && (currentCourse.id === 'crs_009' || currentCourse.slug === 'digital-integration-cbc-curriculum')) {
+    if (manualLink) manualLink.href = 'courses/digital-integration-cbc-curriculum.html';
+    if (manualTitle) manualTitle.textContent = 'Complete CBC Digital Integration & Practical Application Manual';
+    if (manualDesc) manualDesc.textContent = 'Explore the complete 6-section CBC manual covering pedagogical frameworks, terminologies, and step-by-step Word, Excel & PowerPoint activities with rubrics.';
+  }
+
   // Render Outcomes
   const outcomesContainer = document.getElementById('course-outcomes');
   if (outcomesContainer && currentCourse.outcomes && currentCourse.outcomes.length) {
@@ -478,7 +488,7 @@ function renderCurriculumAccordion(course) {
                   </div>
                   <div style="display:flex; align-items:center; gap:10px;">
                     <span style="color:#64748B; font-size:11.5px;">${les.duration || '15 mins'}</span>
-                    ${les.isFree ? `
+                    ${(les.isFree || les.freePreview) ? `
                       <a href="course-player.html?courseId=${course.id}&lessonId=${les.id}" class="btn btn-outline btn-sm" style="font-size:11px; padding:3px 8px;">Free Preview</a>
                     ` : '<span style="font-size:12px; color:#94A3B8;">🔒</span>'}
                   </div>
