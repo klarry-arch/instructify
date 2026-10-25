@@ -9,12 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=16.0">
-  <link rel="stylesheet" href="css/animations.css?v=15.1">
-  <link rel="stylesheet" href="css/components.css?v=15.3">
-  <link rel="stylesheet" href="css/docmed-theme.css?v=15.1">
-  <link rel="stylesheet" href="css/homepage.css?v=16.5">
-  <link rel="stylesheet" href="css/live-chat.css?v=15.1">
+  <link rel="stylesheet" href="css/global.css?v=17.0">
+  <link rel="stylesheet" href="css/animations.css?v=17.0">
+  <link rel="stylesheet" href="css/components.css?v=17.0">
+  <link rel="stylesheet" href="css/docmed-theme.css?v=17.0">
+  <link rel="stylesheet" href="css/homepage.css?v=17.0">
+  <link rel="stylesheet" href="css/live-chat.css?v=17.0">
 
   <!-- Critical Header Alignment, Platform Cards & Navigation Protection -->
   <!-- Critical Header Alignment, Floating Capsule Navbar & Concept Hero Styles -->
@@ -62,6 +62,8 @@
       border-radius: 999px !important;
       text-transform: uppercase !important;
       letter-spacing: 0.04em !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
     }
     .utility-text { color: #E2E8F0 !important; }
     .utility-link {
@@ -69,10 +71,47 @@
       font-weight: 700 !important;
       text-decoration: none !important;
       margin-left: 4px !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
     }
     .utility-link:hover {
       color: #FBBF24 !important;
       text-decoration: underline !important;
+    }
+
+    @media (max-width: 768px) {
+      .utility-announcement-bar {
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+        line-height: 1.45 !important;
+      }
+      .utility-announcement-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        text-align: center !important;
+      }
+      .utility-badge {
+        display: inline-flex !important;
+        font-size: 10px !important;
+        padding: 2px 9px !important;
+        letter-spacing: 0.05em !important;
+      }
+      .utility-text {
+        display: block !important;
+        font-size: 11.5px !important;
+        line-height: 1.45 !important;
+        text-align: center !important;
+      }
+      .utility-link {
+        display: inline-flex !important;
+        align-items: center !important;
+        font-size: 12px !important;
+        margin-left: 0 !important;
+        margin-top: 2px !important;
+      }
     }
 
     /* Floating Capsule / Pill Navbar (Concept Structure) with Royal Blue Accent Border */
@@ -563,27 +602,35 @@
 
     @media (max-width: 640px) {
       .hero-section.hero-concept-fullbleed {
-        padding-top: 120px !important;
-        padding-bottom: 48px !important;
+        padding-top: 130px !important;
+        padding-bottom: 60px !important;
       }
       .hero-concept-container {
         padding-left: 16px !important;
         padding-right: 16px !important;
       }
+      .hero-concept-content {
+        text-align: center !important;
+        margin: 0 auto !important;
+      }
       .hero-concept-eyebrow {
         font-size: 10.5px !important;
         padding: 5px 12px !important;
         margin-bottom: 14px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
       }
       .hero-concept-title {
-        font-size: clamp(24px, 7.5vw, 34px) !important;
+        font-size: clamp(25px, 7.5vw, 34px) !important;
         line-height: 1.22 !important;
         margin-bottom: 14px !important;
+        text-align: center !important;
       }
       .hero-concept-subtitle {
         font-size: 14px !important;
         line-height: 1.6 !important;
         margin-bottom: 22px !important;
+        text-align: center !important;
       }
       .hero-concept-actions {
         flex-direction: column !important;
@@ -603,15 +650,35 @@
         text-align: center !important;
         width: 100% !important;
       }
+      .hero-creator-link {
+        text-align: center !important;
+        margin: 8px auto 20px auto !important;
+        width: 100% !important;
+      }
+      .hero-creator-link a {
+        justify-content: center !important;
+        text-align: center !important;
+        display: inline-flex !important;
+        flex-wrap: wrap !important;
+        font-size: 13px !important;
+        padding: 4px 8px !important;
+      }
       .hero-concept-trust {
         justify-content: center !important;
         text-align: center !important;
         gap: 8px 12px !important;
-        padding: 6px 14px !important;
+        padding: 8px 14px !important;
         border-radius: 16px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
       }
       .concept-trust-item {
         font-size: 12px !important;
+      }
+      .concept-floating-widgets {
+        bottom: 14px !important;
+        right: 12px !important;
+        gap: 8px !important;
       }
       .floating-circle-btn {
         width: 44px !important;
@@ -2970,9 +3037,9 @@
 <!-- ══════════════════════════════════════════════════════════════
      SCRIPTS & FUNCTIONALITY
      ══════════════════════════════════════════════════════════════ -->
-<script src="js/form-validator.js"></script>
-<script src="js/main.js"></script>
-<script src="js/courses.js"></script>
+<script src="js/form-validator.js?v=17.0"></script>
+<script src="js/main.js?v=17.0"></script>
+<script src="js/courses.js?v=17.0"></script>
 
 <script>
 // ── Consultation Form Validation Handler ────────────────────
@@ -3037,8 +3104,8 @@
 })();
 </script>
 
-<script src="js/chat-config.js"></script>
-<script src="js/live-chat.js"></script>
+<script src="js/chat-config.js?v=17.0"></script>
+<script src="js/live-chat.js?v=17.0"></script>
 
 <!-- Concept Dual Floating Circular Action Badges (Bottom Right) -->
 <div class="concept-floating-widgets" aria-label="Quick Communication">
