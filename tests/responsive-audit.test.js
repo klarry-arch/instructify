@@ -18,6 +18,7 @@ const HTML_PAGES = [
   'courses.html',
   'course-detail.html',
   'courses/digital-literacy-ict-integration.html',
+  'courses/digital-integration-cbc-curriculum.html',
   'checkout.html',
   'payment-success.html',
   'dashboard-learner.html',

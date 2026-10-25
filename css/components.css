@@ -829,6 +829,13 @@ a[href*="jumuishi"].nav-link.active::after {
   .nav-actions .btn-outline {
     display: none !important;
   }
+  /* Desktop nav actions hidden on mobile to prevent navbar crowding */
+  .navbar .nav-actions {
+    display: none;
+  }
+  .navbar .nav-actions.concept-nav-actions {
+    display: flex !important;
+  }
 }
 
 /* Tablet Viewports (768px - 1060px) */

@@ -178,6 +178,32 @@ window.COURSES = [
     schedule: '2026-09-08', tags: ['CPD', 'TSC', 'Professional', 'Teachers'],
     featured: false, popular: true
   },
+  {
+    id: 'crs_009', slug: 'digital-integration-cbc-curriculum',
+    title: 'Digital Integration Across CBC/CBE: Practical Word, Excel & PowerPoint',
+    subtitle: '“Infusing Productivity Tools into All Learning Areas”',
+    category: 'EdTech & Smart Learning', tag: 'badge-ict',
+    description: 'Master digital integration aligned with Kenya’s Competency-Based Curriculum (CBC/CBE) across all learning areas. Learn core concepts, key terminologies, and execute hands-on practical activities and authentic assessments using Microsoft Word, Excel, and PowerPoint.',
+    instructor: 'Dr. Wanjiku Kamau & Alex Kipchirchir', instructorTitle: 'CBC Curriculum & EdTech Integration Specialists', instructorAvatar: 'WK',
+    duration: '8 weeks', level: 'All Levels', format: 'Online + Hands-On',
+    targetAudience: 'Pre-Primary, Primary, Junior & Senior Secondary Educators Across All Disciplines',
+    accreditation: 'KICD & TSC Accredited CPD (45 Hours)',
+    price: 14500, originalPrice: 22000,
+    rating: 4.95, reviewCount: 388, enrollments: 1940,
+    image: 'assets/images/home_stem_collaboration.jpg',
+    badge: 'badge-ict', badgeText: 'CBC DIGITAL',
+    cpd: true, cpdHours: 45,
+    outcomes: [
+      'Master CBC digital integration concepts & pedagogical frameworks (SAMR & TPACK)',
+      'Design interactive CBC lesson plans, student worksheets & descriptive rubrics in Microsoft Word',
+      'Build automated continuous assessment gradebooks & scientific data models in Microsoft Excel',
+      'Create dynamic, non-linear multimedia learning presentations & formative quiz games in Microsoft PowerPoint',
+      'Apply authentic cross-curricular digital integration across STEM, Languages, Humanities & Creative Arts'
+    ],
+    modules: 6, assignments: 5, quizzes: 5, certificate: true,
+    schedule: '2026-09-12', tags: ['CBC', 'CBE', 'Digital Integration', 'Word', 'Excel', 'PowerPoint', 'Pedagogy', 'Assessment'],
+    featured: true, popular: true, new: true
+  },
 ];
 
 // ── Enrollment State ────────────────────────────────────────────
