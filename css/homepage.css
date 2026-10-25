@@ -2780,22 +2780,23 @@
 }
 
 .hero-concept-title {
-  font-family: var(--font-heading, 'Poppins', 'Poppins', sans-serif) !important;
-  font-size: clamp(38px, 5.2vw, 64px) !important;
+  font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+  font-size: clamp(32px, 4.2vw, 52px) !important;
   font-weight: 850 !important;
-  line-height: 1.12 !important;
-  letter-spacing: -0.03em !important;
+  line-height: 1.16 !important;
+  letter-spacing: -0.025em !important;
   color: #FFFFFF !important;
-  margin: 0 0 20px 0 !important;
+  margin: 0 0 18px 0 !important;
   text-wrap: balance !important;
 }
 
 .hero-concept-highlight {
-  background: linear-gradient(135deg, #F3E8FF 0%, #C084FC 45%, #9333EA 100%) !important;
+  background: linear-gradient(135deg, #BAE6FD 0%, #38BDF8 45%, #60A5FA 90%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   display: inline !important;
-  font-weight: 900 !important;
+  font-weight: 850 !important;
+  filter: drop-shadow(0 2px 14px rgba(56, 189, 248, 0.40)) !important;
 }
 
 .btn-hero-primary-pill {
