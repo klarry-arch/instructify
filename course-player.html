@@ -158,11 +158,11 @@
     </div>
   </footer>
 
-  <script src="js/courses.js?v=19.0"></script>
-  <script src="js/auth.js?v=19.0"></script>
-  <script src="js/lms-engine.js?v=19.0"></script>
-  <script src="js/lms-curriculum-studio.js?v=19.0"></script>
-  <script src="js/main.js?v=19.0"></script>
+  <script src="js/courses.js?v=20.0"></script>
+  <script src="js/auth.js?v=20.0"></script>
+  <script src="js/lms-engine.js?v=20.0"></script>
+  <script src="js/lms-curriculum-studio.js?v=20.0"></script>
+  <script src="js/main.js?v=20.0"></script>
   <script>
     // ── Player Controller Logic ────────────────────────────────────
     let currentCourseId = 'crs_001';
@@ -183,19 +183,11 @@
       currentCourseId = params.get('courseId') || params.get('id') || 'crs_001';
 
       // ── ENROLLMENT GATE ─────────────────────────────────────────
-      // Users must pay before accessing course content.
-      // Allow access if: (a) user is enrolled locally, (b) URL has a
-      // free preview lessonId, or (c) user has trainer/admin role.
+      // Users can preview the curriculum and lesson 1 without restriction.
+      // Subsequent lessons require enrollment or admin/trainer privileges.
       const requestedLessonId = params.get('lessonId');
-      const isFreePreview = requestedLessonId && requestedLessonId.length > 0;
       const hasAdminAccess = session && (session.role === 'admin' || session.role === 'trainer');
       const isLocallyEnrolled = session && window.isEnrolled && window.isEnrolled(currentCourseId);
-
-      if (!hasAdminAccess && !isLocallyEnrolled && !isFreePreview) {
-        // Not enrolled — show paywall gate
-        showEnrollmentGate(session);
-        return;
-      }
 
       // If enrolled locally, also verify server-side in background (non-blocking)
       if (isLocallyEnrolled && session) {
@@ -207,42 +199,63 @@
     });
 
     function showEnrollmentGate(session) {
-      // Load course info for display
-      if (window.LMSCurriculumStudio) {
-        window.LMSCurriculumStudio.init(currentCourseId);
-        window.LMSCurriculumStudio.syncToLMSEngine();
-      }
+      // Load course info for display safely
+      try {
+        const studioStore = JSON.parse(localStorage.getItem('instructify_curriculum_studio_v1') || '{}');
+        if (window.LMSCurriculumStudio && studioStore[currentCourseId]) {
+          window.LMSCurriculumStudio.init(currentCourseId);
+          window.LMSCurriculumStudio.syncToLMSEngine();
+        }
+      } catch (e) {}
+
       currentCourse = window.LMSEngine.getCourseById(currentCourseId);
       if (!currentCourse) {
-        currentCourse = window.LMSEngine.getAllCourses()[0] || null;
+        currentCourse = (window.COURSES && window.COURSES.find(c => c.id === currentCourseId)) || window.LMSEngine.getAllCourses()[0] || null;
       }
 
       const courseTitle = currentCourse ? currentCourse.title : 'this course';
-      const courseObj = window.COURSES ? window.COURSES.find(c => c.id === currentCourseId) : null;
-      const priceDisplay = courseObj ? `KES ${courseObj.price.toLocaleString()}` : '';
+      const courseObj = (window.COURSES && window.COURSES.find(c => c.id === currentCourseId)) || currentCourse;
+      const priceDisplay = courseObj && courseObj.price ? `KES ${courseObj.price.toLocaleString()}` : 'KES 14,500';
+
+      // Update header
+      if (currentCourse) {
+        const titleEl = document.getElementById('player-course-title');
+        if (titleEl) titleEl.textContent = currentCourse.title;
+        const instEl = document.getElementById('player-course-instructor');
+        if (instEl) instEl.textContent = `${currentCourse.instructor || 'Dr. Wanjiku Kamau'} • ${currentCourse.instructorTitle || 'Lead Facilitator'}`;
+      }
+
+      // Build curriculum sidebar so prospective learner can explore the syllabus
+      if (allLessonsFlat.length === 0) {
+        buildCurriculumList();
+      }
 
       // Replace the main player stage with a paywall overlay
       const stage = document.getElementById('player-stage');
       if (stage) {
         stage.innerHTML = `
           <div style="display:flex;align-items:center;justify-content:center;min-height:60vh;padding:32px;">
-            <div style="max-width:480px;width:100%;text-align:center;background:#FFF;border:2px solid #E2E8F0;border-radius:20px;padding:40px 32px;box-shadow:0 8px 32px rgba(15,23,42,0.08);">
+            <div style="max-width:520px;width:100%;text-align:center;background:#FFF;border:2px solid #E2E8F0;border-radius:20px;padding:40px 32px;box-shadow:0 8px 32px rgba(15,23,42,0.08);">
               <div style="font-size:48px;margin-bottom:16px;">🔒</div>
               <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:8px;">Enrollment Required</h2>
               <p style="font-size:15px;color:#475569;line-height:1.6;margin-bottom:6px;">
-                You need to pay for <strong>${courseTitle}</strong> before you can access the course content.
+                You need to enroll in <strong>${courseTitle}</strong> before you can access this lesson and receive your accredited CPD certificate.
               </p>
-              ${priceDisplay ? `<div style="font-size:28px;font-weight:900;color:#F5812D;margin:16px 0;">${priceDisplay}</div>` : ''}
+              ${priceDisplay ? `<div style="font-size:30px;font-weight:900;color:#F5812D;margin:16px 0;">${priceDisplay}</div>` : ''}
               <p style="font-size:13px;color:#94A3B8;margin-bottom:24px;">
-                Secure payment via M-Pesa, Paybill, or Card. Certificate included.
+                Secure payment via M-Pesa, Paybill, or Card. Includes lifetime access, verifiable digital badge, and facilitator grading.
               </p>
               <a href="checkout.html?id=${encodeURIComponent(currentCourseId)}"
                  style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#F5812D 0%,#FF4D00 100%);color:#FFF;font-weight:700;font-size:16px;padding:14px 32px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px rgba(220,46,10,0.35);transition:transform 0.2s;">
                 ⚡ Enroll & Pay Now
               </a>
-              <div style="margin-top:16px;">
-                <a href="course-detail.html?id=${encodeURIComponent(currentCourseId)}" style="color:#2145E6;font-weight:600;font-size:14px;text-decoration:none;">
-                  ← View Course Details
+              <div style="margin-top:16px; display:flex; justify-content:center; gap:16px; font-size:14px;">
+                <a href="courses/digital-integration-cbc-curriculum.html" style="color:#2145E6;font-weight:600;text-decoration:none;">
+                  📖 View CBC Syllabus
+                </a>
+                <span style="color:#CBD5E1;">•</span>
+                <a href="course-detail.html?id=${encodeURIComponent(currentCourseId)}" style="color:#2145E6;font-weight:600;text-decoration:none;">
+                  ← Course Overview
                 </a>
               </div>
               ${!session ? `
@@ -255,53 +268,44 @@
         `;
       }
 
-      // Hide the curriculum sidebar and footer controls
-      const sidebar = document.getElementById('player-sidebar');
-      if (sidebar) sidebar.style.display = 'none';
+      // Hide only footer controls
       const footer = document.querySelector('.player-footer');
       if (footer) footer.style.display = 'none';
-
-      // Update header title
-      if (currentCourse) {
-        document.getElementById('player-course-title').textContent = currentCourse.title;
-      }
     }
 
     async function verifyEnrollmentServerSide(userId, courseId) {
       // Background server-side enrollment verification
-      // If the server confirms user is NOT enrolled, invalidate local enrollment
       try {
         const res = await fetch(`/api/check-enrollment?userId=${encodeURIComponent(userId)}&courseId=${encodeURIComponent(courseId)}`);
         if (res.ok) {
           const data = await res.json();
           if (data.enrolled === false) {
-            // Server says not enrolled — remove spoofed localStorage entry
             try {
               const enrollments = JSON.parse(localStorage.getItem('ik_enrollments') || '[]');
               const filtered = enrollments.filter(e => !(e.courseId === courseId && e.userId === userId));
               localStorage.setItem('ik_enrollments', JSON.stringify(filtered));
             } catch { /* non-critical */ }
-            // Show the paywall gate
             showEnrollmentGate(window.getSession ? window.getSession() : null);
           }
         }
-        // If the endpoint returns an error (e.g. server down, in-memory store reset),
-        // we don't invalidate — allow localStorage enrollment to stand as fallback.
       } catch {
         // Network error — non-fatal, allow localStorage enrollment to stand
       }
     }
 
     function initializePlayer(params) {
-      // 3. Load from LMSEngine & LMSCurriculumStudio
-      if (window.LMSCurriculumStudio) {
-        window.LMSCurriculumStudio.init(currentCourseId);
-        window.LMSCurriculumStudio.syncToLMSEngine();
-      }
+      // 3. Load from LMSEngine & LMSCurriculumStudio safely
+      try {
+        const studioStore = JSON.parse(localStorage.getItem('instructify_curriculum_studio_v1') || '{}');
+        if (window.LMSCurriculumStudio && studioStore[currentCourseId]) {
+          window.LMSCurriculumStudio.init(currentCourseId);
+          window.LMSCurriculumStudio.syncToLMSEngine();
+        }
+      } catch (e) {}
 
       currentCourse = window.LMSEngine.getCourseById(currentCourseId);
       if (!currentCourse) {
-        currentCourse = window.LMSEngine.getAllCourses()[0] || null;
+        currentCourse = (window.COURSES && window.COURSES.find(c => c.id === currentCourseId)) || window.LMSEngine.getAllCourses()[0] || null;
         if (currentCourse) currentCourseId = currentCourse.id;
       }
 
@@ -313,12 +317,16 @@
 
       // 4. Update Header
       document.getElementById('player-course-title').textContent = currentCourse.title;
-      document.getElementById('player-course-instructor').textContent = `${currentCourse.instructor} • ${currentCourse.instructorTitle || 'Facilitator'}`;
+      document.getElementById('player-course-instructor').textContent = `${currentCourse.instructor || 'Dr. Wanjiku Kamau'} • ${currentCourse.instructorTitle || 'Lead Facilitator'}`;
 
       // 5. Build Flat Lesson List
       buildCurriculumList();
 
-      // 6. Resume from Bookmark if available
+      // 6. Resume from Bookmark or check requested lesson
+      const session = window.getSession ? window.getSession() : null;
+      const hasAdminAccess = session && (session.role === 'admin' || session.role === 'trainer');
+      const isLocallyEnrolled = session && window.isEnrolled && window.isEnrolled(currentCourseId);
+
       const progress = window.LMSEngine.getStudentProgress(studentId, currentCourseId);
       let resumeLessonId = params.get('lessonId');
       if (!resumeLessonId && progress && progress.activeLessonId) {
@@ -327,7 +335,13 @@
 
       if (resumeLessonId) {
         const foundIdx = allLessonsFlat.findIndex(l => l.id === resumeLessonId);
-        if (foundIdx >= 0) currentLessonIndex = foundIdx;
+        if (foundIdx >= 0) {
+          if (!hasAdminAccess && !isLocallyEnrolled && foundIdx > 0 && !allLessonsFlat[foundIdx].freePreview) {
+            showEnrollmentGate(session);
+            return;
+          }
+          currentLessonIndex = foundIdx;
+        }
       }
 
       // 7. Render Current Lesson
@@ -346,6 +360,10 @@
       const curriculum = currentCourse.curriculum || [];
       const container = document.getElementById('player-curriculum-list');
       container.innerHTML = '';
+
+      const session = window.getSession ? window.getSession() : null;
+      const hasAdminAccess = session && (session.role === 'admin' || session.role === 'trainer');
+      const isLocallyEnrolled = session && window.isEnrolled && window.isEnrolled(currentCourseId);
 
       const progress = window.LMSEngine.getStudentProgress(studentId, currentCourseId);
       const completed = (progress && progress.completedLessons) ? progress.completedLessons : [];
@@ -371,22 +389,23 @@
             allLessonsFlat.push(les);
 
             const isDone = completed.includes(les.id);
+            const isLocked = !hasAdminAccess && !isLocallyEnrolled && itemIdx > 0 && !les.freePreview;
             const itemEl = document.createElement('a');
-            itemEl.className = 'player-lesson-item' + (isDone ? ' completed' : '');
+            itemEl.className = 'player-lesson-item' + (isDone ? ' completed' : '') + (isLocked ? ' locked' : '');
             itemEl.id = 'curriculum-item-' + les.id;
             itemEl.href = 'javascript:void(0)';
             itemEl.onclick = () => selectLessonByIndex(itemIdx);
 
             const typeIcons = { video: '📺', text: '📖', quiz: '❓', assignment: '📑', rubric: '🏆' };
-            const icon = typeIcons[les.type] || '📄';
+            const icon = isLocked ? '🔒' : (typeIcons[les.type] || '📄');
 
             itemEl.innerHTML = `
               <span class="player-lesson-icon">${icon}</span>
               <div class="player-lesson-info">
                 <div class="player-lesson-name">${les.title}</div>
-                <div class="player-lesson-duration">${les.duration || '15 mins'}</div>
+                <div class="player-lesson-duration">${les.duration || '15 mins'}${les.freePreview || itemIdx === 0 ? ' • <span style="color:#059669; font-weight:700;">Free Preview</span>' : ''}</div>
               </div>
-              <span class="player-lesson-status-icon" id="status-icon-${les.id}">${isDone ? '✓' : '○'}</span>
+              <span class="player-lesson-status-icon" id="status-icon-${les.id}">${isDone ? '✓' : (isLocked ? '🔒' : '○')}</span>
             `;
             group.appendChild(itemEl);
           });
@@ -402,7 +421,7 @@
       const hasAdminAccess = session && (session.role === 'admin' || session.role === 'trainer');
       const isLocallyEnrolled = session && window.isEnrolled && window.isEnrolled(currentCourseId);
 
-      if (!hasAdminAccess && !isLocallyEnrolled && index > 0) {
+      if (!hasAdminAccess && !isLocallyEnrolled && index > 0 && !allLessonsFlat[index].freePreview) {
         showEnrollmentGate(session);
         return;
       }
@@ -636,6 +655,7 @@
       }
     }
 
+    function renderAssignmentInterface(assignment, container) {
       let rubricHtml = '';
       if (assignment.rubric && assignment.rubric.length > 0) {
         const isCbcTier = assignment.rubric.some(r => r.exceeding || r.meeting);

@@ -1058,7 +1058,7 @@
             updatedAt: '2026-09-20T12:00:00.000Z'
           });
           syncUpdated = true;
-        } else if (DEFAULT_CURRICULUM[c.id] && (!storedCourses[existingIdx].curriculum || storedCourses[existingIdx].curriculum.length === 0)) {
+        } else if (DEFAULT_CURRICULUM[c.id] && (!storedCourses[existingIdx].curriculum || storedCourses[existingIdx].curriculum.length === 0 || storedCourses[existingIdx].curriculum.length !== DEFAULT_CURRICULUM[c.id].length)) {
           storedCourses[existingIdx].curriculum = DEFAULT_CURRICULUM[c.id];
           syncUpdated = true;
         }
