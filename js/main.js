@@ -101,6 +101,23 @@ window.toggleMobileNav = function(e) {
   hamburger.setAttribute('aria-expanded', String(willOpen));
   mobileNav.classList.toggle('open', willOpen);
   document.body.classList.toggle('menu-open', willOpen);
+
+  let backdrop = document.getElementById('nav-mobile-backdrop');
+  if (willOpen) {
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.id = 'nav-mobile-backdrop';
+      backdrop.className = 'nav-mobile-backdrop';
+      backdrop.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(backdrop);
+      backdrop.addEventListener('click', () => {
+        window.closeMobileNav();
+      });
+    }
+    backdrop.classList.add('open');
+  } else if (backdrop) {
+    backdrop.classList.remove('open');
+  }
 };
 
 window.closeMobileNav = function() {
@@ -112,6 +129,10 @@ window.closeMobileNav = function() {
   }
   if (mobileNav) {
     mobileNav.classList.remove('open');
+  }
+  const backdrop = document.getElementById('nav-mobile-backdrop');
+  if (backdrop) {
+    backdrop.classList.remove('open');
   }
   document.body.classList.remove('menu-open');
 };
@@ -210,7 +231,7 @@ function initNavbar() {
 
     // Close menu when viewport exceeds mobile breakpoint (e.g. rotating tablet/phone)
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 992 && hamburger.classList.contains('open')) {
+      if (window.innerWidth > 1060 && hamburger.classList.contains('open')) {
         window.closeMobileNav();
       }
     }, { passive: true });

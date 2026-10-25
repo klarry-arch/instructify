@@ -323,6 +323,33 @@
     gap: 28px !important;
   }
 }
+@media (max-width: 640px) {
+  .mv-card {
+    padding: 30px 18px 26px !important;
+    border-radius: 20px !important;
+  }
+  .mv-icon-box-lg {
+    width: 66px !important;
+    height: 66px !important;
+    min-width: 66px !important;
+    font-size: 28px !important;
+    margin-bottom: 14px !important;
+  }
+  .mv-card-title {
+    font-size: 23px !important;
+    margin-bottom: 12px !important;
+  }
+  .mv-card-text {
+    font-size: 14.5px !important;
+    line-height: 1.62 !important;
+    margin-bottom: 20px !important;
+  }
+  .mv-takeaway-item {
+    font-size: 13px !important;
+    padding: 10px 14px !important;
+    gap: 10px !important;
+  }
+}
 
 .mv-card {
   position: relative !important;
@@ -556,6 +583,18 @@
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 24px !important;
+}
+@media (max-width: 1100px) {
+  .cv-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+@media (max-width: 600px) {
+  .cv-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
 }
 
 .cv-card {

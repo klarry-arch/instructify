@@ -857,6 +857,20 @@ h1, h2, h3, h4, h5, h6, .hero-title, .page-title, .section-title, .card-title {
   padding-right: 24px;
 }
 
+@media (max-width: 640px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
 .section, section {
   padding: 72px 0;
   margin: 0;
@@ -884,6 +898,27 @@ h1, h2, h3, h4, h5, h6, .hero-title, .page-title, .section-title, .card-title {
 .grid-2   { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .grid-3   { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .grid-4   { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+@media (max-width: 600px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
 
 /* ── Flex Utilities ─────────────────────────────────────── */
 .flex            { display: flex; }

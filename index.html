@@ -285,10 +285,14 @@
       .nav-hamburger {
         display: flex !important;
         flex-shrink: 0 !important;
+        margin-left: 0 !important;
+      }
+      .concept-nav-actions {
+        margin-left: auto !important;
+        gap: 8px !important;
       }
       .concept-nav-actions .nav-signin-link,
-      .concept-nav-actions .nav-lang-selector,
-      .concept-nav-actions .nav-icon-btn {
+      .concept-nav-actions .nav-lang-selector {
         display: none !important;
       }
     }
@@ -532,28 +536,19 @@
       display: none !important;
     }
 
-    /* Mobile Responsive Rules */
+    /* Mobile & Tablet Responsive Rules for Hero & Concept Elements */
     @media (max-width: 991px) {
-      #site-header #navbar,
-      #site-header .navbar {
-        width: calc(100% - 24px) !important;
-        margin-top: 8px !important;
-        padding: 6px 14px !important;
-        height: 58px !important;
-        min-height: 58px !important;
-      }
-      .concept-nav-actions .nav-lang-selector,
-      .concept-nav-actions .nav-icon-btn,
-      .concept-nav-actions .nav-signin-link {
-        display: none !important;
-      }
       .hero-section.hero-concept-fullbleed {
-        padding-top: 140px !important;
-        padding-bottom: 60px !important;
-        min-height: 82vh !important;
+        padding-top: 135px !important;
+        padding-bottom: 55px !important;
+        min-height: auto !important;
       }
       .hero-concept-title {
-        font-size: clamp(32px, 7.5vw, 44px) !important;
+        font-size: clamp(30px, 6.5vw, 42px) !important;
+      }
+      .hero-concept-subtitle {
+        font-size: 15.5px !important;
+        line-height: 1.62 !important;
       }
       .concept-floating-widgets {
         bottom: 16px !important;
@@ -563,6 +558,64 @@
       .floating-circle-btn {
         width: 48px !important;
         height: 48px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-section.hero-concept-fullbleed {
+        padding-top: 120px !important;
+        padding-bottom: 48px !important;
+      }
+      .hero-concept-container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+      .hero-concept-eyebrow {
+        font-size: 10.5px !important;
+        padding: 5px 12px !important;
+        margin-bottom: 14px !important;
+      }
+      .hero-concept-title {
+        font-size: clamp(24px, 7.5vw, 34px) !important;
+        line-height: 1.22 !important;
+        margin-bottom: 14px !important;
+      }
+      .hero-concept-subtitle {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 22px !important;
+      }
+      .hero-concept-actions {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+      }
+      .btn-hero-primary-pill,
+      .btn-hero-glass-pill {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 13px 18px !important;
+        font-size: 14.5px !important;
+      }
+      .hero-ghost-link {
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+      }
+      .hero-concept-trust {
+        justify-content: center !important;
+        text-align: center !important;
+        gap: 8px 12px !important;
+        padding: 6px 14px !important;
+        border-radius: 16px !important;
+      }
+      .concept-trust-item {
+        font-size: 12px !important;
+      }
+      .floating-circle-btn {
+        width: 44px !important;
+        height: 44px !important;
       }
     }
 
