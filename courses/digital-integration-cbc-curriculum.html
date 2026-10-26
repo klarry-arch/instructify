@@ -219,6 +219,342 @@
       overflow-x: auto;
       margin: 12px 0;
     }
+
+    /* ══════════════════════════════════════════════════════════════
+       AUDIENCE-SPECIFIC DUAL PATHWAY SYSTEM (EDUCATORS vs STUDENTS)
+       ══════════════════════════════════════════════════════════════ */
+    .audience-switcher-wrap {
+      display: inline-flex;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      padding: 5px;
+      gap: 6px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+    .audience-mode-btn {
+      background: transparent;
+      border: none;
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .audience-mode-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .audience-mode-btn.active {
+      background: #FFFFFF;
+      color: #0F172A;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+    .audience-mode-btn.active.mode-educator {
+      background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
+      color: #FFFFFF;
+      box-shadow: 0 4px 18px rgba(37, 99, 235, 0.45);
+    }
+    .audience-mode-btn.active.mode-student {
+      background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+      color: #FFFFFF;
+      box-shadow: 0 4px 18px rgba(16, 185, 129, 0.45);
+    }
+
+    /* Pathway Comparison Cards (Educator vs Student) */
+    .pathway-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+      margin: 32px 0 44px 0;
+    }
+    @media (max-width: 860px) {
+      .pathway-cards-grid { grid-template-columns: 1fr; }
+    }
+    .pathway-card {
+      background: #FFFFFF;
+      border: 2px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+    }
+    .pathway-card-educator {
+      border-top: 6px solid #2563EB;
+      background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 15%);
+    }
+    .pathway-card-student {
+      border-top: 6px solid #059669;
+      background: linear-gradient(180deg, #F0FDF4 0%, #FFFFFF 15%);
+    }
+    .pathway-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 42px rgba(15, 23, 42, 0.12);
+    }
+    .pathway-card-educator:hover {
+      border-color: #2563EB;
+    }
+    .pathway-card-student:hover {
+      border-color: #059669;
+    }
+    .pathway-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pathway-tag {
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 5px 14px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .tag-educator {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+    }
+    .tag-student {
+      background: #ECFDF5;
+      color: #047857;
+      border: 1px solid #A7F3D0;
+    }
+    .pathway-title {
+      font-size: 23px;
+      font-weight: 850;
+      color: #0F172A;
+      margin: 0 0 10px 0;
+      line-height: 1.3;
+    }
+    .pathway-desc {
+      font-size: 14.5px;
+      color: #475569;
+      line-height: 1.62;
+      margin-bottom: 20px;
+    }
+    .pathway-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pathway-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.5;
+    }
+    .pathway-feature-item .icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .pathway-price-box {
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px dashed #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .pathway-price-val {
+      font-size: 24px;
+      font-weight: 900;
+      color: #0F172A;
+    }
+    .pathway-price-sub {
+      font-size: 12px;
+      color: #64748B;
+      font-weight: 600;
+    }
+
+    /* Role Badges for Section Elements */
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .role-badge-educator {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+    }
+    .role-badge-student {
+      background: #ECFDF5;
+      color: #047857;
+      border: 1px solid #A7F3D0;
+    }
+    .role-badge-shared {
+      background: #F5F3FF;
+      color: #6D28D9;
+      border: 1px solid #DDD6FE;
+    }
+
+    /* Role Differentiated Activity Cards */
+    .activity-card-educator {
+      border-left: 5px solid #2563EB !important;
+      background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%) !important;
+    }
+    .activity-card-student {
+      border-left: 5px solid #059669 !important;
+      background: linear-gradient(135deg, #FFFFFF 0%, #F0FDF4 100%) !important;
+    }
+
+    /* Student Practice Checklist */
+    .student-checklist {
+      background: #F8FAFC;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-top: 16px;
+    }
+    .checklist-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #0F172A;
+      margin: 0 0 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: #334155;
+      padding: 5px 0;
+    }
+    .checklist-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: #059669;
+      cursor: pointer;
+    }
+
+    /* Keyboard Shortcuts Table for Students */
+    .shortcuts-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+    .shortcuts-table th {
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 700;
+    }
+    .shortcuts-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #E2E8F0;
+      color: #334155;
+    }
+    .shortcuts-table tr:nth-child(even) td {
+      background: #F8FAFC;
+    }
+    .key-badge {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 5px;
+      background: #E2E8F0;
+      color: #0F172A;
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 11.5px;
+      border: 1px solid #CBD5E1;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    }
+
+    /* Download Resource Cards */
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+    .download-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    .download-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+      border-color: #2563EB;
+    }
+    .download-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .download-icon-word { background: #EFF6FF; color: #2563EB; }
+    .download-icon-excel { background: #ECFDF5; color: #059669; }
+    .download-icon-ppt { background: #FFFBEB; color: #D97706; }
+    .download-icon-pdf { background: #FFF1F2; color: #E11D48; }
+
+    /* Interactive Audience Filtering Controls */
+    body.mode-filter-educator .role-target-student {
+      opacity: 0.55;
+      transition: opacity 0.3s ease;
+    }
+    body.mode-filter-educator .role-target-student:hover {
+      opacity: 1;
+    }
+    body.mode-filter-student .role-target-educator {
+      opacity: 0.55;
+      transition: opacity 0.3s ease;
+    }
+    body.mode-filter-student .role-target-educator:hover {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -306,31 +642,52 @@
 </nav>
 
 <!-- ── Course Hero Banner ────────────────────────────────────── -->
-<section class="manual-header">
+<section class="manual-header" id="course-hero">
   <div class="container">
-    <div class="manual-badge-row">
-      <span class="manual-badge">🇰🇪 Kenyan CBC / CBE Curriculum</span>
-      <span class="manual-badge">Universal Across All Learning Areas</span>
-      <span class="manual-badge manual-badge-orange">TSC &amp; KICD Accredited (45 CPD Hours)</span>
+    
+    <!-- Audience Track Segmented Control -->
+    <div class="audience-switcher-wrap" role="tablist" aria-label="Select Target Audience Perspective">
+      <button type="button" class="audience-mode-btn active" id="btn-mode-all" onclick="switchAudienceMode('all')" role="tab" aria-selected="true">
+        <span>🌐</span> All Pathways View
+      </button>
+      <button type="button" class="audience-mode-btn mode-educator" id="btn-mode-educator" onclick="switchAudienceMode('educator')" role="tab" aria-selected="false">
+        <span>🎓</span> For Teachers &amp; Educators (CPD &amp; Pedagogy)
+      </button>
+      <button type="button" class="audience-mode-btn mode-student" id="btn-mode-student" onclick="switchAudienceMode('student')" role="tab" aria-selected="false">
+        <span>🎒</span> For Students &amp; Learners (Skills &amp; Practice)
+      </button>
+    </div>
+
+    <div class="manual-badge-row" id="hero-badge-row">
+      <span class="manual-badge" id="badge-track-primary">🇰🇪 Kenyan CBC / CBE Curriculum</span>
+      <span class="manual-badge" id="badge-track-secondary">Universal Across All Learning Areas</span>
+      <span class="manual-badge manual-badge-orange" id="badge-track-tertiary">TSC &amp; KICD Accredited (45 CPD Hours)</span>
     </div>
 
     <h1 class="manual-title">
       Digital Integration Across CBC/CBE: <span class="manual-title-highlight">Practical Word, Excel &amp; PowerPoint</span>
     </h1>
 
-    <p class="manual-subtitle">
-      A comprehensive professional guide and syllabus designed for Kenyan teachers from Pre-Primary through Senior School. Master competency-based digital pedagogies, key curriculum terminologies, and real-world practical activities and assessments using Microsoft Word, Excel, and PowerPoint.
+    <p class="manual-subtitle" id="hero-subtitle">
+      A dual-track professional course tailored distinctly for <strong>Educators</strong> (pedagogical frameworks, lesson plan integration, descriptive rubrics, and continuous assessment gradebooks) and <strong>Students</strong> (practical office software skills, guided project activities, real-world data modeling, and verifiable digital competence).
     </p>
 
-    <div class="manual-action-bar">
-      <a href="../checkout.html?id=crs_009" class="btn btn-lg" style="background: linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); color: #FFF; font-weight: 700; border-radius: 99px; padding: 14px 28px; text-decoration: none; box-shadow: 0 6px 20px rgba(220, 46, 10, 0.35);">
-        ⚡ Enroll for Certification (KES 14,500)
+    <div class="manual-action-bar" id="hero-action-bar">
+      <!-- Educator Enroll CTA -->
+      <a href="../checkout.html?id=crs_009" class="btn btn-lg cta-educator-btn" id="hero-cta-educator" style="background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%); color: #FFF; font-weight: 700; border-radius: 99px; padding: 14px 26px; text-decoration: none; box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); display: inline-flex; align-items: center; gap: 8px;">
+        🎓 Educator Track: KES 14,500 <span style="font-size:12px;opacity:0.9;font-weight:600;">(45 CPD Hrs)</span>
       </a>
-      <a href="../course-player.html?courseId=crs_009&lessonId=les_009_01" class="btn btn-lg" style="background: #FFFFFF; color: #0F172A; font-weight: 700; border-radius: 99px; padding: 14px 24px; text-decoration: none;">
+
+      <!-- Student Enroll CTA -->
+      <a href="../checkout.html?id=crs_009&track=student" class="btn btn-lg cta-student-btn" id="hero-cta-student" style="background: linear-gradient(135deg, #059669 0%, #10B981 100%); color: #FFF; font-weight: 700; border-radius: 99px; padding: 14px 24px; text-decoration: none; box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35); display: inline-flex; align-items: center; gap: 8px;">
+        🚀 Student Track: KES 8,500 <span style="font-size:12px;opacity:0.9;font-weight:600;">(Hands-On Skills)</span>
+      </a>
+
+      <a href="../course-player.html?courseId=crs_009&lessonId=les_009_01" class="btn btn-lg" style="background: #FFFFFF; color: #0F172A; font-weight: 700; border-radius: 99px; padding: 14px 22px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
         ▶ Free Course Preview
       </a>
-      <a href="../course-detail.html?id=crs_009" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.4); color: #FFF; border-radius: 99px; padding: 14px 22px; text-decoration: none;">
-        📋 Course Detail Overview
+      <a href="#downloads" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.4); color: #FFF; border-radius: 99px; padding: 14px 22px; text-decoration: none;">
+        📥 Download Toolkits
       </a>
     </div>
   </div>
@@ -340,13 +697,15 @@
 <div class="manual-nav-bar" id="manual-nav-bar">
   <div class="container">
     <div class="manual-nav-links">
-      <a href="#concepts" class="manual-nav-link active">💡 Concepts &amp; Pedagogy</a>
-      <a href="#learning-areas" class="manual-nav-link">🌐 All Learning Areas Matrix</a>
-      <a href="#glossary" class="manual-nav-link">📖 Definition of Terms</a>
-      <a href="#word-practical" class="manual-nav-link">📝 Microsoft Word Practical</a>
-      <a href="#excel-practical" class="manual-nav-link">📊 Microsoft Excel Practical</a>
+      <a href="#pathways" class="manual-nav-link active">🧭 Dual Pathways</a>
+      <a href="#concepts" class="manual-nav-link">💡 Concepts &amp; Pedagogy</a>
+      <a href="#learning-areas" class="manual-nav-link">🌐 Learning Areas Matrix</a>
+      <a href="#glossary" class="manual-nav-link">📖 Terms &amp; Shortcuts</a>
+      <a href="#word-practical" class="manual-nav-link">📝 Word Practical</a>
+      <a href="#excel-practical" class="manual-nav-link">📊 Excel Practical</a>
       <a href="#powerpoint-practical" class="manual-nav-link">📽️ PowerPoint Practical</a>
-      <a href="#assessments" class="manual-nav-link">🎯 Formative Rubrics &amp; Capstone</a>
+      <a href="#assessments" class="manual-nav-link">🎯 Capstones &amp; Rubrics</a>
+      <a href="#downloads" class="manual-nav-link">📥 Resource Toolkits</a>
     </div>
   </div>
 </div>
@@ -354,45 +713,183 @@
 <!-- ── Main Course Content Container ────────────────────────── -->
 <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
 
+  <!-- SECTION 0: TAILORED LEARNING PATHWAYS (EDUCATORS vs STUDENTS) -->
+  <section id="pathways" class="manual-section" style="border-color: #CBD5E1; background: #FFFFFF;">
+    <div style="text-align: center; max-width: 760px; margin: 0 auto 28px auto;">
+      <span class="role-badge role-badge-shared">🎯 TWO TAILORED LEARNING EXPERIENCES</span>
+      <h2 style="font-size: clamp(24px, 3vw, 34px); font-weight: 850; color: #0F172A; margin: 0 0 10px 0; letter-spacing: -0.02em;">
+        Engineered for Teachers &amp; Learners Differently
+      </h2>
+      <p style="font-size: 15.5px; color: #475569; line-height: 1.65; margin: 0;">
+        Whether you are a classroom teacher leading CBC curriculum strands or a student building real-world practical competencies, this course provides specialized pathways tailored to your specific goals:
+      </p>
+    </div>
+
+    <div class="pathway-cards-grid">
+      <!-- Educator Track Card -->
+      <div class="pathway-card pathway-card-educator role-target-educator">
+        <div class="pathway-header">
+          <span class="pathway-tag tag-educator">🎓 For Teachers &amp; Educators</span>
+          <span style="font-size: 12px; font-weight: 800; color: #1D4ED8; background: #EFF6FF; padding: 4px 10px; border-radius: 6px;">45 CPD HOURS</span>
+        </div>
+        <h3 class="pathway-title">Pedagogy, CBC Lesson Planning &amp; Formative Rubrics</h3>
+        <p class="pathway-desc">
+          Designed for Pre-Primary, Primary, Junior and Senior School educators across all learning areas seeking mastery in competency-based digital teaching and assessment.
+        </p>
+        <ul class="pathway-features-list">
+          <li class="pathway-feature-item">
+            <span class="icon">📘</span>
+            <span><strong>TPACK &amp; SAMR Frameworks:</strong> Seamlessly integrate digital tools into everyday lesson planning and delivery.</span>
+          </li>
+          <li class="pathway-feature-item">
+            <span class="icon">📝</span>
+            <span><strong>CBC Lesson Planning in Word:</strong> Create standardized 40-minute plans with outcomes, competencies, and accommodations.</span>
+          </li>
+          <li class="pathway-feature-item">
+            <span class="icon">📊</span>
+            <span><strong>Formative Rubric Design:</strong> Build 4-tier qualitative evaluation rubrics (Exceeding, Meeting, Approaching, Below).</span>
+          </li>
+          <li class="pathway-feature-item">
+            <span class="icon">📈</span>
+            <span><strong>Continuous Assessment Gradebooks:</strong> Automate cohort marks, averages, and KICD descriptive reports in Excel.</span>
+          </li>
+          <li class="pathway-feature-item">
+            <span class="icon">📜</span>
+            <span><strong>Accreditation:</strong> Official certificate verified for 45 TSC/KICD-compliant CPD learning hours.</span>
+          </li>
+        </ul>
+        <div class="pathway-price-box">
+          <div>
+            <div class="pathway-price-val" style="color: #1D4ED8;">KES 14,500</div>
+            <div class="pathway-price-sub">Teacher CPD Certification &amp; Toolkit</div>
+          </div>
+          <a href="../checkout.html?id=crs_009" class="btn btn-primary" style="background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%); border-radius: 999px; padding: 11px 22px; font-weight: 700; text-decoration: none;">
+            Enroll Educator Track →
+          </a>
+        </div>
+      </div>
+
+      <!-- Student Track Card -->
+      <div class="pathway-card pathway-card-student role-target-student">
+        <div class="pathway-header">
+          <span class="pathway-tag tag-student">🎒 For Students &amp; Learners</span>
+          <span style="font-size: 12px; font-weight: 800; color: #047857; background: #ECFDF5; padding: 4px 10px; border-radius: 6px;">PRACTICAL SKILLS</span>
+        </div>
+        <h3 class="pathway-title">Hands-On Office Software Mastery &amp; School Projects</h3>
+        <p class="pathway-desc">
+          Created for Upper Primary, Junior School, Senior Secondary, and College learners who want practical, real-world mastery of Word, Excel, and PowerPoint.
+        </p>
+        <ul class="pathway-features-list">
+          <li class="pathway-feature-item">
+            <span class="icon">💻</span>
+            <span><strong>Professional Document Formatting:</strong> Typeset essays, science lab reports, and assignments with auto-tables and citations.</span>
+          </li>
+          <li class="pathway-feature-item">
+            <span class="icon">📊</span>
+            <span><strong>Real-World Excel Calculations:</strong> Model student budgets, scientific experiment data, and create beautiful charts.</span>
+          </li>
+          <li class="pathway-feature-item">
+            <span class="icon">📽️</span>
+            <span><strong>Dynamic Slide Show Design:</strong> Author interactive school project presentations with animations, audio, and quiz decks.</span>
+          </li>
+          <li class="pathway-feature-item">
+            <span class="icon">📁</span>
+            <span><strong>Downloadable Starter Files:</strong> Get pre-built project workbooks, templates, and guided practice assignments.</span>
+          </li>
+          <li class="pathway-feature-item">
+            <span class="icon">🏆</span>
+            <span><strong>Student Credential:</strong> Earn a verifiable Digital Productivity Skills Certificate for your academic portfolio.</span>
+          </li>
+        </ul>
+        <div class="pathway-price-box">
+          <div>
+            <div class="pathway-price-val" style="color: #047857;">KES 8,500</div>
+            <div class="pathway-price-sub">Student Rate • Lifetime Project Access</div>
+          </div>
+          <a href="../checkout.html?id=crs_009&track=student" class="btn btn-primary" style="background: linear-gradient(135deg, #059669 0%, #10B981 100%); border-radius: 999px; padding: 11px 22px; font-weight: 700; text-decoration: none;">
+            Enroll Student Track →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SECTION 1: CONCEPTS & PEDAGOGICAL FRAMEWORKS -->
   <section id="concepts" class="manual-section">
-    <span class="section-num">📘 Section 1 • Pedagogical Foundations</span>
-    <h2 class="section-heading">CBC / CBE Digital Integration Concepts &amp; Pedagogical Frameworks</h2>
+    <span class="section-num">📘 Section 1 • Pedagogical &amp; Digital Foundations</span>
+    <h2 class="section-heading">Foundations for Educators &amp; Learners</h2>
 
     <p style="font-size: 15.5px; line-height: 1.7; color: #334155;">
       In Kenya’s <strong>Competency-Based Curriculum (CBC)</strong> and <strong>Competency-Based Education (CBE)</strong>, technology is not treated as an isolated computer-lab subject. Instead, it serves as an inquiry accelerator and cognitive scaffold integrated across all subjects. The educator transitions from a dispenser of memorized notes into a facilitator who orchestrates collaborative discovery, problem-solving, and digital creation.
     </p>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 24px 0;">
-      <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 22px;">
-        <h4 style="color: #1D4ED8; font-size: 17px; margin: 0 0 10px 0;">🎯 The 7 Core Competencies Infusion</h4>
-        <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
-          Digital integration directly fosters all 7 KICD Core Competencies:
-          <strong>Communication &amp; Collaboration</strong> (co-authoring Word/PowerPoint projects),
-          <strong>Critical Thinking &amp; Problem Solving</strong> (formulating Excel equations),
-          <strong>Creativity &amp; Imagination</strong> (digital storytelling and interactive multimedia),
-          <strong>Citizenship</strong> (civic presentations),
-          <strong>Learning to Learn</strong> (navigating self-paced slide decks),
-          <strong>Self-Efficacy</strong> (digital portfolio mastery), and
-          <strong>Digital Literacy</strong> (ethical software operation).
-        </p>
+    <!-- Educator Pedagogical Foundations -->
+    <div class="role-target-educator" style="margin-top: 24px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-educator">🎓 EDUCATOR PEDAGOGICAL FOUNDATIONS</span>
+        <span style="font-size: 13px; color: #1D4ED8; font-weight: 700;">Curriculum Delivery &amp; Assessment Standards</span>
       </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 24px;">
+        <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 22px;">
+          <h4 style="color: #1D4ED8; font-size: 17px; margin: 0 0 10px 0;">🎯 The 7 Core Competencies Infusion</h4>
+          <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
+            Digital integration directly fosters all 7 KICD Core Competencies:
+            <strong>Communication &amp; Collaboration</strong> (co-authoring Word/PowerPoint projects),
+            <strong>Critical Thinking &amp; Problem Solving</strong> (formulating Excel equations),
+            <strong>Creativity &amp; Imagination</strong> (digital storytelling and interactive multimedia),
+            <strong>Citizenship</strong> (civic presentations),
+            <strong>Learning to Learn</strong> (navigating self-paced slide decks),
+            <strong>Self-Efficacy</strong> (digital portfolio mastery), and
+            <strong>Digital Literacy</strong> (ethical software operation).
+          </p>
+        </div>
 
-      <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 22px;">
-        <h4 style="color: #047857; font-size: 17px; margin: 0 0 10px 0;">📈 The SAMR Model in Kenyan Classrooms</h4>
-        <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
-          <strong>Substitution:</strong> Typing a handwritten essay into Word.<br>
-          <strong>Augmentation:</strong> Adding spelling tools and hyperlinked research citations.<br>
-          <strong>Modification:</strong> Using Excel to model variables and graph experimental predictions.<br>
-          <strong>Redefinition:</strong> Designing a branching, multimedia presentation in PowerPoint with audio narration shared with peer schools nationwide.
-        </p>
+        <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 22px;">
+          <h4 style="color: #047857; font-size: 17px; margin: 0 0 10px 0;">📈 The SAMR Model in Kenyan Classrooms</h4>
+          <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
+            <strong>Substitution:</strong> Typing a handwritten essay into Word.<br>
+            <strong>Augmentation:</strong> Adding spelling tools and hyperlinked research citations.<br>
+            <strong>Modification:</strong> Using Excel to model variables and graph experimental predictions.<br>
+            <strong>Redefinition:</strong> Designing a branching, multimedia presentation in PowerPoint with audio narration shared with peer schools nationwide.
+          </p>
+        </div>
+
+        <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 22px;">
+          <h4 style="color: #6D28D9; font-size: 17px; margin: 0 0 10px 0;">🧠 The TPACK Framework</h4>
+          <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
+            Effective digital integration occurs at the sweet spot of <strong>Technological Knowledge (TK)</strong>, <strong>Pedagogical Knowledge (PK)</strong>, and <strong>Content Knowledge (CK)</strong>. A teacher does not just teach "how to use Excel"; they use Excel to deepen a learner's conceptual understanding of Mathematical probability or Agricultural yield calculations.
+          </p>
+        </div>
       </div>
+    </div>
 
-      <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 14px; padding: 22px;">
-        <h4 style="color: #6D28D9; font-size: 17px; margin: 0 0 10px 0;">🧠 The TPACK Framework</h4>
-        <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">
-          Effective digital integration occurs at the sweet spot of <strong>Technological Knowledge (TK)</strong>, <strong>Pedagogical Knowledge (PK)</strong>, and <strong>Content Knowledge (CK)</strong>. A teacher does not just teach "how to use Excel"; they use Excel to deepen a learner's conceptual understanding of Mathematical probability or Agricultural yield calculations.
-        </p>
+    <!-- Student Practical Foundations -->
+    <div class="role-target-student" style="margin-top: 12px; padding-top: 24px; border-top: 1px dashed #CBD5E1;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-student">🎒 STUDENT DIGITAL MASTERY &amp; HYGIENE</span>
+        <span style="font-size: 13px; color: #047857; font-weight: 700;">21st-Century Study Skills &amp; Portfolio Creation</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        <div style="background: #F0FDF4; border: 1.5px solid #BBF7D0; border-radius: 14px; padding: 22px;">
+          <h4 style="color: #047857; font-size: 17px; margin: 0 0 10px 0;">🛡️ Digital Hygiene &amp; File Safety</h4>
+          <p style="font-size: 14px; color: #334155; line-height: 1.6; margin: 0;">
+            Master proper cloud folder hierarchy (Google Drive / OneDrive), consistent file nomenclature (e.g., <code>Bio_Term1_SeedlingGrowth_v2.xlsx</code>), automated version backup, and ethical digital research practices with anti-plagiarism awareness.
+          </p>
+        </div>
+
+        <div style="background: #F0FDF4; border: 1.5px solid #BBF7D0; border-radius: 14px; padding: 22px;">
+          <h4 style="color: #0F766E; font-size: 17px; margin: 0 0 10px 0;">💡 Cognitive Software as a Thinking Tool</h4>
+          <p style="font-size: 14px; color: #334155; line-height: 1.6; margin: 0;">
+            Transition from passive computer consumer to active creator: structure complex arguments with Word heading styles, model real-life science questions with dynamic Excel equations, and pitch innovative community solutions in PowerPoint.
+          </p>
+        </div>
+
+        <div style="background: #F0FDF4; border: 1.5px solid #BBF7D0; border-radius: 14px; padding: 22px;">
+          <h4 style="color: #15803D; font-size: 17px; margin: 0 0 10px 0;">📁 The Student Digital Portfolio</h4>
+          <p style="font-size: 14px; color: #334155; line-height: 1.6; margin: 0;">
+            Curate an authentic academic showcase across all 3 terms: preserve your investigation papers, dynamic calculation workbooks, and slide presentations as evidence of continuous growth and digital competency for high school and university admissions.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -472,96 +969,231 @@
 
   <!-- SECTION 3: DEFINITION OF TERMS -->
   <section id="glossary" class="manual-section">
-    <span class="section-num">📖 Section 3 • Authoritative Glossary</span>
-    <h2 class="section-heading">Definition of Terms: CBC/CBE &amp; Productivity Software</h2>
+    <span class="section-num">📖 Section 3 • Authoritative Glossary &amp; Shortcuts</span>
+    <h2 class="section-heading">Definition of Terms &amp; Student Hotkeys</h2>
 
     <p style="font-size: 15.5px; line-height: 1.7; color: #334155;">
-      To teach and evaluate accurately, educators must share a precise, standardized understanding of both curriculum terms and technical application software concepts:
+      To teach, evaluate, and learn accurately, both educators and students must share a precise, standardized understanding of curriculum terms, software architecture, and speed workflows:
     </p>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0;">
-      <!-- CBC Terms Column -->
-      <div>
-        <h3 style="font-size: 18px; color: #1E3A8A; border-bottom: 2px solid #BFDBFE; padding-bottom: 8px; margin-bottom: 16px;">
-          🇰🇪 Kenyan CBC / CBE Curriculum Terms
-        </h3>
-
-        <div class="step-card" style="border-left-color: #1D4ED8;">
-          <h5>Strand &amp; Sub-strand</h5>
-          <p><strong>Strand:</strong> A broad thematic focus area in curriculum design (e.g., <em>Numbers</em> in Mathematics, <em>Living Things</em> in Science).<br>
-          <strong>Sub-strand:</strong> A specific sub-topic or modular unit within a strand (e.g., <em>Fractions</em> or <em>The Human Skeleton</em>).</p>
-        </div>
-
-        <div class="step-card" style="border-left-color: #047857;">
-          <h5>Specific Learning Outcomes (SLOs)</h5>
-          <p>Observable, measurable statements describing the knowledge, skills, and values a learner must demonstrate by the end of a lesson, written using action verbs.</p>
-        </div>
-
-        <div class="step-card" style="border-left-color: #B45309;">
-          <h5>Pertinent and Contemporary Issues (PCIs)</h5>
-          <p>Cross-cutting societal issues integrated into lessons, including environmental awareness, financial literacy, peace education, health, and child rights.</p>
-        </div>
-
-        <div class="step-card" style="border-left-color: #BE123C;">
-          <h5>Formative vs. Summative Assessment</h5>
-          <p><strong>Formative (Assessment FOR Learning):</strong> Ongoing diagnostic checks and worksheets during lessons to adjust teaching.<br>
-          <strong>Summative (Assessment OF Learning):</strong> Evaluation at the end of a term or level to gauge standard attainment.</p>
-        </div>
-
-        <div class="step-card" style="border-left-color: #6D28D9;">
-          <h5>4-Level Competency Descriptors</h5>
-          <p>
-            • <strong>Exceeding Expectations (EE):</strong> Surpasses requirements with autonomy and depth.<br>
-            • <strong>Meeting Expectations (ME):</strong> Consistently satisfies all outcome criteria.<br>
-            • <strong>Approaching Expectations (AE):</strong> Demonstrates fundamental criteria with occasional help.<br>
-            • <strong>Below Expectations (BE):</strong> Requires intensive, guided remediation.
-          </p>
-        </div>
-
-        <div class="step-card" style="border-left-color: #0F766E;">
-          <h5>Digital Learning Artefact &amp; Portfolio</h5>
-          <p><strong>Artefact:</strong> Any tangible digital product created by the learner (e.g., spreadsheet model, Word report, presentation).<br>
-          <strong>Portfolio:</strong> A structured repository documenting learner progress and competency growth over time.</p>
-        </div>
+    <!-- Educator Terms Grid -->
+    <div class="role-target-educator" style="margin-top: 20px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-educator">🎓 EDUCATOR &amp; CBC CURRICULUM GLOSSARY</span>
+        <span style="font-size: 13px; color: #1D4ED8; font-weight: 700;">Standardized KICD Framework Terminology</span>
       </div>
 
-      <!-- Application Software Terms Column -->
-      <div>
-        <h3 style="font-size: 18px; color: #047857; border-bottom: 2px solid #BBF7D0; padding-bottom: 8px; margin-bottom: 16px;">
-          💻 Productivity Applications Terms
-        </h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+        <!-- CBC Terms Column -->
+        <div>
+          <h3 style="font-size: 17px; color: #1E3A8A; border-bottom: 2px solid #BFDBFE; padding-bottom: 8px; margin-bottom: 16px;">
+            🇰🇪 Kenyan CBC / CBE Curriculum Terms
+          </h3>
 
-        <div class="step-card" style="border-left-color: #2563EB;">
-          <h5>Microsoft Word: Document Hierarchy &amp; Styles</h5>
-          <p>Structuring text using Heading 1, Heading 2, and Body text styles to ensure readability, accessible screen reading, and automatic Table of Contents generation.</p>
+          <div class="step-card" style="border-left-color: #1D4ED8;">
+            <h5>Strand &amp; Sub-strand</h5>
+            <p><strong>Strand:</strong> A broad thematic focus area in curriculum design (e.g., <em>Numbers</em> in Mathematics, <em>Living Things</em> in Science).<br>
+            <strong>Sub-strand:</strong> A specific sub-topic or modular unit within a strand (e.g., <em>Fractions</em> or <em>The Human Skeleton</em>).</p>
+          </div>
+
+          <div class="step-card" style="border-left-color: #047857;">
+            <h5>Specific Learning Outcomes (SLOs)</h5>
+            <p>Observable, measurable statements describing the knowledge, skills, and values a learner must demonstrate by the end of a lesson, written using action verbs.</p>
+          </div>
+
+          <div class="step-card" style="border-left-color: #B45309;">
+            <h5>Pertinent and Contemporary Issues (PCIs)</h5>
+            <p>Cross-cutting societal issues integrated into lessons, including environmental awareness, financial literacy, peace education, health, and child rights.</p>
+          </div>
+
+          <div class="step-card" style="border-left-color: #BE123C;">
+            <h5>Formative vs. Summative Assessment</h5>
+            <p><strong>Formative (Assessment FOR Learning):</strong> Ongoing diagnostic checks and worksheets during lessons to adjust teaching.<br>
+            <strong>Summative (Assessment OF Learning):</strong> Evaluation at the end of a term or level to gauge standard attainment.</p>
+          </div>
+
+          <div class="step-card" style="border-left-color: #6D28D9;">
+            <h5>4-Level Competency Descriptors</h5>
+            <p>
+              • <strong>Exceeding Expectations (EE):</strong> Surpasses requirements with autonomy and depth.<br>
+              • <strong>Meeting Expectations (ME):</strong> Consistently satisfies all outcome criteria.<br>
+              • <strong>Approaching Expectations (AE):</strong> Demonstrates fundamental criteria with occasional help.<br>
+              • <strong>Below Expectations (BE):</strong> Requires intensive, guided remediation.
+            </p>
+          </div>
+
+          <div class="step-card" style="border-left-color: #0F766E;">
+            <h5>Digital Learning Artefact &amp; Portfolio</h5>
+            <p><strong>Artefact:</strong> Any tangible digital product created by the learner (e.g., spreadsheet model, Word report, presentation).<br>
+            <strong>Portfolio:</strong> A structured repository documenting learner progress and competency growth over time.</p>
+          </div>
         </div>
 
-        <div class="step-card" style="border-left-color: #2563EB;">
-          <h5>Microsoft Word: Section Breaks &amp; Tables</h5>
-          <p>Dividing a document to allow independent page orientations (e.g., landscape rubric inside portrait lesson plan) and structured data cell formatting.</p>
+        <!-- Application Software Terms Column -->
+        <div>
+          <h3 style="font-size: 17px; color: #047857; border-bottom: 2px solid #BBF7D0; padding-bottom: 8px; margin-bottom: 16px;">
+            💻 Productivity Applications Architecture
+          </h3>
+
+          <div class="step-card" style="border-left-color: #2563EB;">
+            <h5>Microsoft Word: Document Hierarchy &amp; Styles</h5>
+            <p>Structuring text using Heading 1, Heading 2, and Body text styles to ensure readability, accessible screen reading, and automatic Table of Contents generation.</p>
+          </div>
+
+          <div class="step-card" style="border-left-color: #2563EB;">
+            <h5>Microsoft Word: Section Breaks &amp; Tables</h5>
+            <p>Dividing a document to allow independent page orientations (e.g., landscape rubric inside portrait lesson plan) and structured data cell formatting.</p>
+          </div>
+
+          <div class="step-card" style="border-left-color: #15803D;">
+            <h5>Microsoft Excel: Relative vs. Absolute Cell Referencing</h5>
+            <p><strong>Relative (<code>A1</code>):</strong> Shifts coordinates when copied.<br>
+            <strong>Absolute (<code>$A$1</code>):</strong> Locks row and column coordinates, essential when calculating weighted percentages or referencing constant values.</p>
+          </div>
+
+          <div class="step-card" style="border-left-color: #15803D;">
+            <h5>Microsoft Excel: Conditional Formatting &amp; Formulas</h5>
+            <p><strong>Formula:</strong> A calculation expression (e.g., <code>=SUM(B2:B20)</code>, <code>=AVERAGE(C2:G2)</code>).<br>
+            <strong>Conditional Formatting:</strong> Automated styling rules that color cells dynamically based on criteria (e.g., Green for EE, Red for BE).</p>
+          </div>
+
+          <div class="step-card" style="border-left-color: #D97706;">
+            <h5>Microsoft PowerPoint: Slide Master</h5>
+            <p>The master design blueprint controlling fonts, logos, backgrounds, and universal layout placeholders across all slides in a presentation.</p>
+          </div>
+
+          <div class="step-card" style="border-left-color: #D97706;">
+            <h5>Microsoft PowerPoint: Trigger Animations &amp; Non-Linear Navigation</h5>
+            <p><strong>Trigger Animation:</strong> An effect that only plays when a learner clicks a specific designated shape/button (enables gamified quizzes).<br>
+            <strong>Non-Linear Navigation:</strong> Using action buttons to jump to specific slides based on user choice rather than chronological order.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Shortcuts & Speed Keys -->
+    <div class="role-target-student" style="margin-top: 16px; padding-top: 24px; border-top: 1px dashed #CBD5E1;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-student">🎒 STUDENT PRODUCTIVITY CHEAT SHEET: ESSENTIAL SHORTCUTS</span>
+        <span style="font-size: 13px; color: #047857; font-weight: 700;">Speed Workflows for Word, Excel &amp; PowerPoint</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px;">
+        <!-- Word Shortcuts -->
+        <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 18px;">
+          <h4 style="color: #2563EB; font-size: 15px; margin: 0 0 10px 0; display: flex; align-items: center; gap: 6px;">
+            <span>📝</span> Microsoft Word Speed Keys
+          </h4>
+          <div class="table-responsive" style="overflow-x: auto;">
+          <table class="shortcuts-table">
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>Shortcut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Apply Heading 1 / 2</td>
+                <td><span class="key-badge">Ctrl</span> + <span class="key-badge">Alt</span> + <span class="key-badge">1 / 2</span></td>
+              </tr>
+              <tr>
+                <td>Insert Page Break</td>
+                <td><span class="key-badge">Ctrl</span> + <span class="key-badge">Enter</span></td>
+              </tr>
+              <tr>
+                <td>Find &amp; Replace</td>
+                <td><span class="key-badge">Ctrl</span> + <span class="key-badge">H</span></td>
+              </tr>
+              <tr>
+                <td>Insert Hyperlink</td>
+                <td><span class="key-badge">Ctrl</span> + <span class="key-badge">K</span></td>
+              </tr>
+              <tr>
+                <td>Align Center / Justify</td>
+                <td><span class="key-badge">Ctrl</span> + <span class="key-badge">E</span> / <span class="key-badge">J</span></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
         </div>
 
-        <div class="step-card" style="border-left-color: #15803D;">
-          <h5>Microsoft Excel: Relative vs. Absolute Cell Referencing</h5>
-          <p><strong>Relative (<code>A1</code>):</strong> Shifts coordinates when copied.<br>
-          <strong>Absolute (<code>$A$1</code>):</strong> Locks row and column coordinates, essential when calculating weighted percentages or referencing constant values.</p>
+        <!-- Excel Shortcuts -->
+        <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 18px;">
+          <h4 style="color: #059669; font-size: 15px; margin: 0 0 10px 0; display: flex; align-items: center; gap: 6px;">
+            <span>📊</span> Microsoft Excel Speed Keys
+          </h4>
+          <div class="table-responsive" style="overflow-x: auto;">
+          <table class="shortcuts-table">
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>Shortcut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AutoSum Selected Cells</td>
+                <td><span class="key-badge">Alt</span> + <span class="key-badge">=</span></td>
+              </tr>
+              <tr>
+                <td>Toggle Absolute Lock ($)</td>
+                <td><span class="key-badge">F4</span> (in formula bar)</td>
+              </tr>
+              <tr>
+                <td>Format as Currency / %</td>
+                <td><span class="key-badge">Ctrl</span> + <span class="key-badge">Shift</span> + <span class="key-badge">$ / %</span></td>
+              </tr>
+              <tr>
+                <td>Create Instant Chart</td>
+                <td><span class="key-badge">Alt</span> + <span class="key-badge">F1</span></td>
+              </tr>
+              <tr>
+                <td>Flash Fill Pattern</td>
+                <td><span class="key-badge">Ctrl</span> + <span class="key-badge">E</span></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
         </div>
 
-        <div class="step-card" style="border-left-color: #15803D;">
-          <h5>Microsoft Excel: Conditional Formatting &amp; Formulas</h5>
-          <p><strong>Formula:</strong> A calculation expression (e.g., <code>=SUM(B2:B20)</code>, <code>=AVERAGE(C2:G2)</code>).<br>
-          <strong>Conditional Formatting:</strong> Automated styling rules that color cells dynamically based on criteria (e.g., Green for EE, Red for BE).</p>
-        </div>
-
-        <div class="step-card" style="border-left-color: #D97706;">
-          <h5>Microsoft PowerPoint: Slide Master</h5>
-          <p>The master design blueprint controlling fonts, logos, backgrounds, and universal layout placeholders across all slides in a presentation.</p>
-        </div>
-
-        <div class="step-card" style="border-left-color: #D97706;">
-          <h5>Microsoft PowerPoint: Trigger Animations &amp; Non-Linear Navigation</h5>
-          <p><strong>Trigger Animation:</strong> An effect that only plays when a learner clicks a specific designated shape/button (enables gamified quizzes).<br>
-          <strong>Non-Linear Navigation:</strong> Using action buttons to jump to specific slides based on user choice rather than chronological order.</p>
+        <!-- PowerPoint Shortcuts -->
+        <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 18px;">
+          <h4 style="color: #D97706; font-size: 15px; margin: 0 0 10px 0; display: flex; align-items: center; gap: 6px;">
+            <span>📽️</span> Microsoft PowerPoint Speed Keys
+          </h4>
+          <div class="table-responsive" style="overflow-x: auto;">
+          <table class="shortcuts-table">
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>Shortcut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Start Slide Show from Beg.</td>
+                <td><span class="key-badge">F5</span></td>
+              </tr>
+              <tr>
+                <td>Start from Current Slide</td>
+                <td><span class="key-badge">Shift</span> + <span class="key-badge">F5</span></td>
+              </tr>
+              <tr>
+                <td>Duplicate Slide or Shape</td>
+                <td><span class="key-badge">Ctrl</span> + <span class="key-badge">D</span></td>
+              </tr>
+              <tr>
+                <td>Group / Ungroup Shapes</td>
+                <td><span class="key-badge">Ctrl</span> + <span class="key-badge">G</span> / <span class="key-badge">Shift+G</span></td>
+              </tr>
+              <tr>
+                <td>Black / White Screen Pause</td>
+                <td><span class="key-badge">B</span> / <span class="key-badge">W</span> (during presentation)</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
         </div>
       </div>
     </div>
@@ -576,205 +1208,408 @@
       In this section, educators learn to leverage Microsoft Word not simply as a digital typewriter, but as a dynamic design environment for standardized lesson plans, differentiated learner worksheets, and descriptive 4-level competency rubrics.
     </p>
 
-    <!-- Activity 1: Lesson Plan Template -->
-    <div class="tool-tab-box">
-      <div class="tool-tab-header">
-        <span style="font-size: 18px;">📄</span>
-        <span>Practical Activity 4.1: Authoring a Standard 40-Minute CBC Lesson Plan</span>
-      </div>
-      <div class="tool-tab-body">
-        <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
-          Follow these practical steps to design a standardized CBC lesson plan template in Microsoft Word:
-        </p>
-        <ol style="font-size: 14px; color: #334155; line-height: 1.7; padding-left: 20px;">
-          <li><strong>Page Configuration:</strong> Set Margins to <em>Normal (1 inch / 2.54 cm)</em>. Apply <code>Heading 1</code> (18pt Bold, Royal Blue) for the Institution and Subject Name.</li>
-          <li><strong>Administrative Header Grid:</strong> Insert a 4-column × 4-row table with light grey borders containing: Grade, Learning Area, Strand, Sub-strand, Date, and Duration (40 Minutes).</li>
-          <li><strong>Specific Learning Outcomes (SLOs):</strong> Write 3 distinct outcomes (Knowledge, Skills, Values) using observable verbs: <em>"By the end of the lesson, the learner should be able to..."</em></li>
-          <li><strong>Core Competency &amp; PCI Callout Box:</strong> Insert a 1-cell shaded table with an icon to map targeted core competencies and contemporary issues.</li>
-          <li><strong>3-Stage Instructional Sequence Table:</strong> Insert a 3-column table (<em>Time | Facilitator Activities | Learner Activities &amp; Digital Tool Usage</em>):
-            <ul>
-              <li><strong>Introduction (5-8 mins):</strong> Provocation or essential driving question.</li>
-              <li><strong>Lesson Development (25 mins):</strong> Collaborative inquiry, hands-on tasks, peer discussion.</li>
-              <li><strong>Conclusion &amp; Reflection (7 mins):</strong> Plenary summary, formative self-assessment.</li>
-            </ul>
-          </li>
-          <li><strong>Differentiated Support Section:</strong> Add a dedicated sub-section specifying accommodations for learners needing extra scaffolding or extension tasks.</li>
-        </ol>
-      </div>
-    </div>
+  <!-- SECTION 4: MICROSOFT WORD PRACTICAL ACTIVITIES -->
+  <section id="word-practical" class="manual-section">
+    <span class="section-num">📝 Section 4 • Microsoft Word Practical</span>
+    <h2 class="section-heading">Microsoft Word in Action: Lesson Planning, Reports &amp; Rubrics</h2>
 
-    <!-- Activity 2: Descriptive Rubrics -->
-    <div class="tool-tab-box">
-      <div class="tool-tab-header">
-        <span style="font-size: 18px;">📊</span>
-        <span>Practical Activity 4.2: Constructing 4-Level Competency Rubrics in Word Tables</span>
+    <p style="font-size: 15.5px; line-height: 1.7; color: #334155;">
+      In this section, educators learn to design standardized lesson plans and descriptive rubrics, while students master typesetting high-scoring academic project reports with automated tables of contents and citations:
+    </p>
+
+    <!-- Educator Word Track -->
+    <div class="role-target-educator" style="margin-top: 20px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-educator">🎓 EDUCATOR TRACK: LESSON PLANS &amp; FORMATIVE RUBRICS</span>
+        <span style="font-size: 13px; color: #1D4ED8; font-weight: 700;">Curriculum Preparation &amp; Assessment Design</span>
       </div>
-      <div class="tool-tab-body">
-        <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
-          CBC assessment requires qualitative descriptors across 4 levels. Here is the architectural blueprint to construct in Word:
-        </p>
-        <div class="table-responsive" style="overflow-x: auto;">
-        <table class="rubric-preview-table">
-          <thead>
-            <tr>
-              <th style="width: 20%;">Assessment Criteria</th>
-              <th style="width: 20%;">Exceeding Expectations (4)</th>
-              <th style="width: 20%;">Meeting Expectations (3)</th>
-              <th style="width: 20%;">Approaching Expectations (2)</th>
-              <th style="width: 20%;">Below Expectations (1)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Inquiry Execution &amp; Investigation</strong></td>
-              <td>Autonomously formulates original hypotheses, executes steps flawlessly, and evaluates experimental anomalies with high depth.</td>
-              <td>Accurately conducts all required steps of the investigation and records valid empirical observations.</td>
-              <td>Follows basic steps with occasional guidance; observations lack full consistency.</td>
-              <td>Unable to follow inquiry protocol without continuous one-on-one intervention.</td>
-            </tr>
-            <tr>
-              <td><strong>Application of Digital Tools</strong></td>
-              <td>Creatively selects advanced formatting, styles, and tools to present data in an original, engaging format.</td>
-              <td>Correctly uses all required digital tools to format and present findings cleanly.</td>
-              <td>Uses basic software features with minor formatting errors or omissions.</td>
-              <td>Struggles to navigate software; requires frequent technical assistance.</td>
-            </tr>
-          </tbody>
-        </table>
+
+      <!-- Activity 4.1: Lesson Plan Template -->
+      <div class="tool-tab-box activity-card-educator">
+        <div class="tool-tab-header">
+          <span style="font-size: 18px;">📄</span>
+          <span>Practical Activity 4.1: Authoring a Standard 40-Minute CBC Lesson Plan</span>
+        </div>
+        <div class="tool-tab-body">
+          <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
+            Follow these practical steps to design a standardized CBC lesson plan template in Microsoft Word:
+          </p>
+          <ol style="font-size: 14px; color: #334155; line-height: 1.7; padding-left: 20px;">
+            <li><strong>Page Configuration:</strong> Set Margins to <em>Normal (1 inch / 2.54 cm)</em>. Apply <code>Heading 1</code> (18pt Bold, Royal Blue) for the Institution and Subject Name.</li>
+            <li><strong>Administrative Header Grid:</strong> Insert a 4-column × 4-row table with light grey borders containing: Grade, Learning Area, Strand, Sub-strand, Date, and Duration (40 Minutes).</li>
+            <li><strong>Specific Learning Outcomes (SLOs):</strong> Write 3 distinct outcomes (Knowledge, Skills, Values) using observable verbs: <em>"By the end of the lesson, the learner should be able to..."</em></li>
+            <li><strong>Core Competency &amp; PCI Callout Box:</strong> Insert a 1-cell shaded table with an icon to map targeted core competencies and contemporary issues.</li>
+            <li><strong>3-Stage Instructional Sequence Table:</strong> Insert a 3-column table (<em>Time | Facilitator Activities | Learner Activities &amp; Digital Tool Usage</em>):
+              <ul>
+                <li><strong>Introduction (5-8 mins):</strong> Provocation or essential driving question.</li>
+                <li><strong>Lesson Development (25 mins):</strong> Collaborative inquiry, hands-on tasks, peer discussion.</li>
+                <li><strong>Conclusion &amp; Reflection (7 mins):</strong> Plenary summary, formative self-assessment.</li>
+              </ul>
+            </li>
+            <li><strong>Differentiated Support Section:</strong> Add a dedicated sub-section specifying accommodations for learners needing extra scaffolding or extension tasks.</li>
+          </ol>
         </div>
       </div>
+
+      <!-- Activity 4.2: Descriptive Rubrics -->
+      <div class="tool-tab-box activity-card-educator" style="margin-top: 20px;">
+        <div class="tool-tab-header">
+          <span style="font-size: 18px;">📊</span>
+          <span>Practical Activity 4.2: Constructing 4-Level Competency Rubrics in Word Tables</span>
+        </div>
+        <div class="tool-tab-body">
+          <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
+            CBC assessment requires qualitative descriptors across 4 levels. Here is the architectural blueprint to construct in Word:
+          </p>
+          <div class="table-responsive" style="overflow-x: auto;">
+          <table class="rubric-preview-table">
+            <thead>
+              <tr>
+                <th style="width: 20%;">Assessment Criteria</th>
+                <th style="width: 20%;">Exceeding Expectations (4)</th>
+                <th style="width: 20%;">Meeting Expectations (3)</th>
+                <th style="width: 20%;">Approaching Expectations (2)</th>
+                <th style="width: 20%;">Below Expectations (1)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Inquiry Execution &amp; Investigation</strong></td>
+                <td>Autonomously formulates original hypotheses, executes steps flawlessly, and evaluates experimental anomalies with high depth.</td>
+                <td>Accurately conducts all required steps of the investigation and records valid empirical observations.</td>
+                <td>Follows basic steps with occasional guidance; observations lack full consistency.</td>
+                <td>Unable to follow inquiry protocol without continuous one-on-one intervention.</td>
+              </tr>
+              <tr>
+                <td><strong>Application of Digital Tools</strong></td>
+                <td>Creatively selects advanced formatting, styles, and tools to present data in an original, engaging format.</td>
+                <td>Correctly uses all required digital tools to format and present findings cleanly.</td>
+                <td>Uses basic software features with minor formatting errors or omissions.</td>
+                <td>Struggles to navigate software; requires frequent technical assistance.</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #EFF6FF; border: 1.5px solid #BFDBFE; border-radius: 12px; padding: 18px 24px; margin-top: 20px;">
+        <h4 style="color: #1D4ED8; margin: 0 0 6px 0; font-size: 16px;">🎯 Educator Practical Word Deliverable</h4>
+        <p style="margin: 0; font-size: 14px; color: #1E3A8A; line-height: 1.6;">
+          Submit a complete, professionally formatted 40-minute CBC Lesson Plan in Microsoft Word (.docx or .pdf) including an administrative header, specific learning outcomes, a 3-stage instructional sequence, and a 4-level descriptive competency assessment rubric for your subject area.
+        </p>
+      </div>
     </div>
 
-    <div style="background: #EFF6FF; border: 1.5px solid #BFDBFE; border-radius: 12px; padding: 18px 24px; margin-top: 20px;">
-      <h4 style="color: #1D4ED8; margin: 0 0 6px 0; font-size: 16px;">🎯 Practical Word Assessment Deliverable</h4>
-      <p style="margin: 0; font-size: 14px; color: #1E3A8A; line-height: 1.6;">
-        Submit a complete, professionally formatted 40-minute CBC Lesson Plan in Microsoft Word (.docx or .pdf) including an administrative header, specific learning outcomes, a 3-stage instructional sequence, and a 4-level descriptive competency assessment rubric for your subject area.
-      </p>
+    <!-- Student Word Track -->
+    <div class="role-target-student" style="margin-top: 24px; padding-top: 24px; border-top: 1px dashed #CBD5E1;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-student">🎒 STUDENT TRACK: ACADEMIC PROJECT REPORTS &amp; FORMATTING</span>
+        <span style="font-size: 13px; color: #047857; font-weight: 700;">Hands-On Typesetting &amp; Self-Check</span>
+      </div>
+
+      <!-- Activity 4.3: Student Academic Project Report -->
+      <div class="tool-tab-box activity-card-student">
+        <div class="tool-tab-header" style="background: linear-gradient(135deg, #047857 0%, #059669 100%);">
+          <span style="font-size: 18px;">📝</span>
+          <span>Practical Activity 4.3 (For Students): Formatting an Academic Project Report in Word</span>
+        </div>
+        <div class="tool-tab-body">
+          <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
+            Learn how to turn a plain text document into a publication-grade school project or lab investigation report:
+          </p>
+          <ol style="font-size: 14px; color: #334155; line-height: 1.7; padding-left: 20px;">
+            <li><strong>Title Page &amp; Layout:</strong> Set Page Size to <em>A4</em> with 1-inch margins. Type a bold project title (24pt), subtitle, your name, grade, school name, and date. Insert a Page Break (<span class="key-badge">Ctrl+Enter</span>).</li>
+            <li><strong>Heading Hierarchy:</strong> Apply <code>Heading 1</code> (16pt Bold) to main chapters (e.g., <em>1. Introduction, 2. Methodology, 3. Findings, 4. Conclusion</em>) and <code>Heading 2</code> (13pt SemiBold) to sub-topics.</li>
+            <li><strong>Automated Table of Contents:</strong> On Page 2, click <strong>References &rarr; Table of Contents &rarr; Automatic Table 1</strong>. Notice Word builds page numbers automatically!</li>
+            <li><strong>Structured Data Tables &amp; Captions:</strong> Click <strong>Insert &rarr; Table (4×5)</strong>. Shade the top header row in dark slate. Right-click the table &rarr; select <strong>Insert Caption &rarr; Table 1: Field Investigation Data</strong>.</li>
+            <li><strong>Citations &amp; Footnotes:</strong> At the end of a cited fact, click <strong>References &rarr; Insert Footnote</strong> to credit your textbook or educational source.</li>
+          </ol>
+
+          <!-- Student Self-Check Verification Checklist -->
+          <div class="student-checklist">
+            <h5 class="checklist-title">
+              <span>✅</span> Student Project Self-Check Checklist:
+            </h5>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-word-1">
+              <label for="chk-word-1">Title page includes project title, author name, grade, subject, and date.</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-word-2">
+              <label for="chk-word-2">Heading 1 and Heading 2 styles are applied consistently throughout.</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-word-3">
+              <label for="chk-word-3">Automated Table of Contents updates correctly with working page numbers.</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-word-4">
+              <label for="chk-word-4">All tables and diagrams have clear, numbered caption titles.</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-word-5">
+              <label for="chk-word-5">Spelling and grammar checked with zero red squiggly underlines.</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #ECFDF5; border: 1.5px solid #A7F3D0; border-radius: 12px; padding: 18px 24px; margin-top: 20px;">
+        <h4 style="color: #047857; margin: 0 0 6px 0; font-size: 16px;">🎯 Student Practical Word Deliverable</h4>
+        <p style="margin: 0; font-size: 14px; color: #065F46; line-height: 1.6;">
+          Format and submit a 3-page Academic Project or Lab Report in Microsoft Word (.docx or .pdf) containing a cover page, automated table of contents, at least one styled table with caption, and reference footnotes.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- SECTION 5: MICROSOFT EXCEL PRACTICAL ACTIVITIES -->
   <section id="excel-practical" class="manual-section">
     <span class="section-num">📊 Section 5 • Microsoft Excel Practical</span>
-    <h2 class="section-heading">Microsoft Excel in Action: Assessment Trackers, Scientific Data &amp; Charting</h2>
+    <h2 class="section-heading">Microsoft Excel in Action: Trackers, Modeling &amp; Charting</h2>
 
     <p style="font-size: 15.5px; line-height: 1.7; color: #334155;">
-      Spreadsheets provide Kenyan educators with powerful computational tools for continuous assessment tracking and enable students across STEM, Agriculture, and Social Studies to analyze real-world data and draw evidence-based conclusions.
+      Spreadsheets provide computational power for educators to automate continuous assessment grading, and empower students to build financial models and plot scientific data:
     </p>
 
-    <!-- Activity 1: Continuous Assessment Gradebook -->
-    <div class="tool-tab-box">
-      <div class="tool-tab-header">
-        <span style="font-size: 18px;">📑</span>
-        <span>Practical Activity 5.1: Building an Automated CBC Formative Assessment Tracker</span>
+    <!-- Educator Excel Track -->
+    <div class="role-target-educator" style="margin-top: 20px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-educator">🎓 EDUCATOR TRACK: AUTOMATED CBC GRADEBOOKS</span>
+        <span style="font-size: 13px; color: #1D4ED8; font-weight: 700;">Continuous Assessment &amp; KICD Reporting</span>
       </div>
-      <div class="tool-tab-body">
-        <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
-          Build an automated continuous assessment tracker that converts numeric marks into KICD qualitative descriptors (EE, ME, AE, BE) and color-codes results:
+
+      <!-- Activity 5.1: Continuous Assessment Gradebook -->
+      <div class="tool-tab-box activity-card-educator">
+        <div class="tool-tab-header">
+          <span style="font-size: 18px;">📑</span>
+          <span>Practical Activity 5.1: Building an Automated CBC Formative Assessment Tracker</span>
+        </div>
+        <div class="tool-tab-body">
+          <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
+            Build an automated continuous assessment tracker that converts numeric marks into KICD qualitative descriptors (EE, ME, AE, BE) and color-codes results:
+          </p>
+
+          <h5 style="margin: 12px 0 6px 0; color: #0F172A; font-size: 14px;">1. Calculating Student Averages:</h5>
+          <div class="code-snippet-box">=AVERAGE(D5:H5)</div>
+          <p style="font-size: 13.5px; color: #64748B; margin-top: -6px;">Calculates the average score across 5 formative tasks for learner in row 5.</p>
+
+          <h5 style="margin: 14px 0 6px 0; color: #0F172A; font-size: 14px;">2. Nested IF Function for KICD Competency Level:</h5>
+          <div class="code-snippet-box">=IF(I5>=3.5, "EE", IF(I5>=2.5, "ME", IF(I5>=1.5, "AE", "BE")))</div>
+          <p style="font-size: 13.5px; color: #64748B; margin-top: -6px;">Automatically assigns performance ratings: EE (3.5+), ME (2.5 - 3.4), AE (1.5 - 2.4), and BE (below 1.5).</p>
+
+          <h5 style="margin: 14px 0 6px 0; color: #0F172A; font-size: 14px;">3. Class Performance Distribution (COUNTIF):</h5>
+          <div class="code-snippet-box">=COUNTIF($J$5:$J$44, "EE")</div>
+          <p style="font-size: 13.5px; color: #64748B; margin-top: -6px;">Counts how many students in the 40-learner cohort attained "EE" for reporting.</p>
+
+          <h5 style="margin: 14px 0 6px 0; color: #0F172A; font-size: 14px;">4. Conditional Formatting Rules:</h5>
+          <ul style="font-size: 13.5px; color: #334155; line-height: 1.6;">
+            <li>Highlight Cell Rules &rarr; Equal To <code>"EE"</code> &rarr; Light Green Fill with Dark Green Text.</li>
+            <li>Highlight Cell Rules &rarr; Equal To <code>"ME"</code> &rarr; Light Blue Fill with Dark Blue Text.</li>
+            <li>Highlight Cell Rules &rarr; Equal To <code>"AE"</code> &rarr; Light Yellow Fill with Dark Yellow Text.</li>
+            <li>Highlight Cell Rules &rarr; Equal To <code>"BE"</code> &rarr; Light Red Fill with Dark Red Text (Immediate visual indicator for remediation).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background: #EFF6FF; border: 1.5px solid #BFDBFE; border-radius: 12px; padding: 18px 24px; margin-top: 20px;">
+        <h4 style="color: #1D4ED8; margin: 0 0 6px 0; font-size: 16px;">🎯 Educator Practical Excel Deliverable</h4>
+        <p style="margin: 0; font-size: 14px; color: #1E3A8A; line-height: 1.6;">
+          Build and submit a 40-student CBC Formative Assessment spreadsheet (.xlsx) with at least 5 assessment columns. Include automated calculation formulas (AVERAGE, IF, COUNTIF), 4-color conditional formatting for competency levels, and an embedded summary chart showing classroom competency distribution.
         </p>
-
-        <h5 style="margin: 12px 0 6px 0; color: #0F172A; font-size: 14px;">1. Calculating Student Averages:</h5>
-        <div class="code-snippet-box">=AVERAGE(D5:H5)</div>
-        <p style="font-size: 13.5px; color: #64748B; margin-top: -6px;">Calculates the average score across 5 formative tasks for learner in row 5.</p>
-
-        <h5 style="margin: 14px 0 6px 0; color: #0F172A; font-size: 14px;">2. Nested IF Function for KICD Competency Level:</h5>
-        <div class="code-snippet-box">=IF(I5>=3.5, "EE", IF(I5>=2.5, "ME", IF(I5>=1.5, "AE", "BE")))</div>
-        <p style="font-size: 13.5px; color: #64748B; margin-top: -6px;">Automatically assigns performance ratings: EE (3.5+), ME (2.5 - 3.4), AE (1.5 - 2.4), and BE (below 1.5).</p>
-
-        <h5 style="margin: 14px 0 6px 0; color: #0F172A; font-size: 14px;">3. Class Performance Distribution (COUNTIF):</h5>
-        <div class="code-snippet-box">=COUNTIF($J$5:$J$44, "EE")</div>
-        <p style="font-size: 13.5px; color: #64748B; margin-top: -6px;">Counts how many students in the 40-learner cohort attained "EE" for reporting.</p>
-
-        <h5 style="margin: 14px 0 6px 0; color: #0F172A; font-size: 14px;">4. Conditional Formatting Rules:</h5>
-        <ul style="font-size: 13.5px; color: #334155; line-height: 1.6;">
-          <li>Highlight Cell Rules &rarr; Equal To <code>"EE"</code> &rarr; Light Green Fill with Dark Green Text.</li>
-          <li>Highlight Cell Rules &rarr; Equal To <code>"ME"</code> &rarr; Light Blue Fill with Dark Blue Text.</li>
-          <li>Highlight Cell Rules &rarr; Equal To <code>"AE"</code> &rarr; Light Yellow Fill with Dark Yellow Text.</li>
-          <li>Highlight Cell Rules &rarr; Equal To <code>"BE"</code> &rarr; Light Red Fill with Dark Red Text (Immediate visual indicator for remediation).</li>
-        </ul>
       </div>
     </div>
 
-    <!-- Activity 2: Data Logging & Charting -->
-    <div class="tool-tab-box">
-      <div class="tool-tab-header">
-        <span style="font-size: 18px;">📈</span>
-        <span>Practical Activity 5.2: Scientific Data Modeling &amp; Chart Generation</span>
+    <!-- Student Excel Track -->
+    <div class="role-target-student" style="margin-top: 24px; padding-top: 24px; border-top: 1px dashed #CBD5E1;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-student">🎒 STUDENT TRACK: BUDGETING &amp; SCIENCE DATA MODELING</span>
+        <span style="font-size: 13px; color: #047857; font-weight: 700;">Hands-On Calculations &amp; Chart Generation</span>
       </div>
-      <div class="tool-tab-body">
-        <p style="font-size: 14.5px; color: #475569; margin-bottom: 12px;">
-          Engage students in hands-on data collection and chart plotting across subject areas:
-        </p>
-        <ul style="font-size: 14px; color: #334155; line-height: 1.7;">
-          <li><strong>Integrated Science:</strong> Record daily seedling growth (cm) over 14 days under differing light conditions. Insert a <em>Line with Markers</em> chart with clear axis labels and a legend.</li>
-          <li><strong>Agriculture:</strong> Track weekly egg production or broiler feed weights. Generate a <em>Clustered Column Chart</em> showing variance between control and test batches.</li>
-          <li><strong>Social Studies:</strong> Log county rainfall data across months. Generate a <em>Combination Chart</em> (Rainfall as columns, Temperature as a line curve).</li>
-        </ul>
-      </div>
-    </div>
 
-    <div style="background: #F0FDF4; border: 1.5px solid #BBF7D0; border-radius: 12px; padding: 18px 24px; margin-top: 20px;">
-      <h4 style="color: #15803D; margin: 0 0 6px 0; font-size: 16px;">🎯 Practical Excel Assessment Deliverable</h4>
-      <p style="margin: 0; font-size: 14px; color: #166534; line-height: 1.6;">
-        Build and submit a 40-student CBC Formative Assessment spreadsheet (.xlsx) with at least 5 assessment columns. Include automated calculation formulas (AVERAGE, IF, COUNTIF), 4-color conditional formatting for competency levels, and an embedded summary chart showing classroom competency distribution.
-      </p>
+      <!-- Activity 5.3: Student Practical Excel Activity -->
+      <div class="tool-tab-box activity-card-student">
+        <div class="tool-tab-header" style="background: linear-gradient(135deg, #047857 0%, #059669 100%);">
+          <span style="font-size: 18px;">📊</span>
+          <span>Practical Activity 5.3 (For Students): Building a Student Budget &amp; Science Growth Model</span>
+        </div>
+        <div class="tool-tab-body">
+          <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
+            Follow these practical steps to build a 2-sheet real-world workbook in Microsoft Excel:
+          </p>
+
+          <h5 style="margin: 12px 0 6px 0; color: #0F172A; font-size: 14px;">Sheet 1: Weekly Student Budget Planner</h5>
+          <ol style="font-size: 14px; color: #334155; line-height: 1.7; padding-left: 20px;">
+            <li>In cell <code>A1</code>, title the sheet: <em>"My Weekly School Term Budget"</em>. Format in 16pt Bold with light green shading.</li>
+            <li>In cells <code>A4:B7</code>, list your income sources (e.g. Pocket money, Chores, Academic award). Sum total income using: <div class="code-snippet-box">=SUM(B4:B7)</div></li>
+            <li>In cells <code>D4:E10</code>, list your anticipated expenses (e.g. Exercise books, Transport, Snacks, Art supplies). Sum total expenses using: <div class="code-snippet-box">=SUM(E4:E10)</div></li>
+            <li>In cell <code>E12</code>, compute your net savings surplus: <div class="code-snippet-box">=B8 - E11</div></li>
+            <li>Select your expense items &rarr; click <strong>Insert &rarr; Pie Chart / 2-D Donut</strong> to see where your money goes!</li>
+          </ol>
+
+          <h5 style="margin: 16px 0 6px 0; color: #0F172A; font-size: 14px;">Sheet 2: Biology Seedling Growth Rate Tracker</h5>
+          <ol style="font-size: 14px; color: #334155; line-height: 1.7; padding-left: 20px;">
+            <li>Create a table with columns: <em>Day (1-14) | Plant A - Sunlight (cm) | Plant B - Shade (cm)</em>.</li>
+            <li>Enter empirical daily heights. Compute the Average Growth using: <div class="code-snippet-box">=AVERAGE(B4:B17)</div></li>
+            <li>Find the maximum height reached using: <div class="code-snippet-box">=MAX(B4:B17)</div></li>
+            <li>Highlight cells <code>A3:C17</code> &rarr; click <strong>Insert &rarr; Line Chart with Markers</strong>. Add chart title, axis labels, and a visible legend.</li>
+          </ol>
+
+          <!-- Student Self-Check Verification Checklist -->
+          <div class="student-checklist">
+            <h5 class="checklist-title">
+              <span>✅</span> Student Excel Self-Check Checklist:
+            </h5>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-excel-1">
+              <label for="chk-excel-1">Formulas use proper uppercase syntax (=SUM, =AVERAGE, =MAX) with zero #REF! or #VALUE! errors.</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-excel-2">
+              <label for="chk-excel-2">Currency figures formatted with KES symbol and numbers aligned right.</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-excel-3">
+              <label for="chk-excel-3">Charts include descriptive title (e.g., "Seedling Growth Comparison: Sun vs. Shade").</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-excel-4">
+              <label for="chk-excel-4">Both worksheets renamed cleanly to "WeeklyBudget" and "ScienceExperiment".</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #ECFDF5; border: 1.5px solid #A7F3D0; border-radius: 12px; padding: 18px 24px; margin-top: 20px;">
+        <h4 style="color: #047857; margin: 0 0 6px 0; font-size: 16px;">🎯 Student Practical Excel Deliverable</h4>
+        <p style="margin: 0; font-size: 14px; color: #065F46; line-height: 1.6;">
+          Build and submit a 2-sheet Excel Workbook (.xlsx) featuring your Personal Student Budget with automated totals and donut chart, and a Science Experiment table with mathematical averages and a comparative line chart.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- SECTION 6: MICROSOFT POWERPOINT PRACTICAL ACTIVITIES -->
   <section id="powerpoint-practical" class="manual-section">
     <span class="section-num">📽️ Section 6 • Microsoft PowerPoint Practical</span>
-    <h2 class="section-heading">Microsoft PowerPoint in Action: Interactive Multimedia &amp; Formative Games</h2>
+    <h2 class="section-heading">Microsoft PowerPoint in Action: Lessons, Games &amp; Pitch Decks</h2>
 
     <p style="font-size: 15.5px; line-height: 1.7; color: #334155;">
-      Move beyond passive lecture slide decks. Learn how to transform PowerPoint into an interactive multimedia inquiry tool featuring non-linear student navigation, animated scientific process models, and gamified quiz decks with instant diagnostic feedback.
+      Move beyond passive slide shows. Educators discover how to transform slides into interactive inquiry games, while students learn to build compelling, multimedia school project pitch decks:
     </p>
 
-    <!-- Activity 1: Non-Linear Presentations -->
-    <div class="tool-tab-box">
-      <div class="tool-tab-header">
-        <span style="font-size: 18px;">🗺️</span>
-        <span>Practical Activity 6.1: Authoring Non-Linear Branching Presentations</span>
+    <!-- Educator PowerPoint Track -->
+    <div class="role-target-educator" style="margin-top: 20px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-educator">🎓 EDUCATOR TRACK: BRANCHING LESSONS &amp; FORMATIVE GAMES</span>
+        <span style="font-size: 13px; color: #1D4ED8; font-weight: 700;">Interactive Inquiry &amp; Animation Triggers</span>
       </div>
-      <div class="tool-tab-body">
-        <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
-          Non-linear slide decks empower learners to explore content at their own pace based on interest and inquiry:
+
+      <!-- Activity 6.1: Non-Linear Presentations -->
+      <div class="tool-tab-box activity-card-educator">
+        <div class="tool-tab-header">
+          <span style="font-size: 18px;">🗺️</span>
+          <span>Practical Activity 6.1: Authoring Non-Linear Branching Presentations</span>
+        </div>
+        <div class="tool-tab-body">
+          <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
+            Non-linear slide decks empower learners to explore content at their own pace based on interest and inquiry:
+          </p>
+          <ol style="font-size: 14px; color: #334155; line-height: 1.7; padding-left: 20px;">
+            <li><strong>Master Navigation Template:</strong> In <em>View &rarr; Slide Master</em>, create persistent buttons for <em>"Home"</em>, <em>"Strand Index"</em>, and <em>"Glossary"</em> so navigation remains uniform across all slides.</li>
+            <li><strong>Interactive Home Dashboard Slide:</strong> Insert visual icon tiles representing Sub-strands (e.g. In Geography: <em>Rift Valley Lakes | Highlands | Coastal Plains</em>).</li>
+            <li><strong>Hyperlink Binding:</strong> Right-click each shape &rarr; select <strong>Hyperlink / Action &rarr; Place in This Document</strong> &rarr; link to the corresponding content slide.</li>
+            <li><strong>Branching Remediation &amp; Challenge:</strong> Create an exploration question slide. If a student chooses an incorrect answer, hyperlink them to an explanation review slide; if correct, branch to an advanced extension challenge!</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Activity 6.2: Trigger-Based Gamified Quizzes -->
+      <div class="tool-tab-box activity-card-educator" style="margin-top: 20px;">
+        <div class="tool-tab-header">
+          <span style="font-size: 18px;">🎮</span>
+          <span>Practical Activity 6.2: Designing Gamified Trigger-Based Quiz Decks</span>
+        </div>
+        <div class="tool-tab-body">
+          <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
+            Transform formative assessment checks into engaging classroom games using PowerPoint Animation Triggers:
+          </p>
+          <ol style="font-size: 14px; color: #334155; line-height: 1.7; padding-left: 20px;">
+            <li>Create a question slide with 4 clickable answer option shapes (Option A, B, C, D).</li>
+            <li>Insert two feedback text banners: a green banner stating <em>"Correct! Excellent CBC reasoning"</em> and a red banner stating <em>"Try Again! Review the concept"</em>.</li>
+            <li>Open the <strong>Animation Pane</strong>. Apply an <em>Entrance Animation (e.g., Zoom or Fade)</em> to the green banner.</li>
+            <li>Select the animation &rarr; click <strong>Timing &rarr; Trigger &rarr; Start effect on click of...</strong> &rarr; select the correct answer button!</li>
+            <li>Repeat trigger configuration for the wrong answer buttons to display the remedial banner.</li>
+            <li>Test in Slide Show mode: learners receive instant interactive feedback when tapping answers on an interactive board or classroom computer.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div style="background: #EFF6FF; border: 1.5px solid #BFDBFE; border-radius: 12px; padding: 18px 24px; margin-top: 20px;">
+        <h4 style="color: #1D4ED8; margin: 0 0 6px 0; font-size: 16px;">🎯 Educator Practical PowerPoint Deliverable</h4>
+        <p style="margin: 0; font-size: 14px; color: #1E3A8A; line-height: 1.6;">
+          Author and submit an interactive 10-slide PowerPoint presentation (.pptx) aligned with a specific CBC sub-strand. The deck must include a Slide Master navigation menu, non-linear hyperlinked action buttons, multimedia visual assets, and at least one trigger-based gamified quiz slide.
         </p>
-        <ol style="font-size: 14px; color: #334155; line-height: 1.7; padding-left: 20px;">
-          <li><strong>Master Navigation Template:</strong> In <em>View &rarr; Slide Master</em>, create persistent buttons for <em>"Home"</em>, <em>"Strand Index"</em>, and <em>"Glossary"</em> so navigation remains uniform across all slides.</li>
-          <li><strong>Interactive Home Dashboard Slide:</strong> Insert visual icon tiles representing Sub-strands (e.g. In Geography: <em>Rift Valley Lakes | Highlands | Coastal Plains</em>).</li>
-          <li><strong>Hyperlink Binding:</strong> Right-click each shape &rarr; select <strong>Hyperlink / Action &rarr; Place in This Document</strong> &rarr; link to the corresponding content slide.</li>
-          <li><strong>Branching Remediation &amp; Challenge:</strong> Create an exploration question slide. If a student chooses an incorrect answer, hyperlink them to an explanation review slide; if correct, branch to an advanced extension challenge!</li>
-        </ol>
       </div>
     </div>
 
-    <!-- Activity 2: Trigger-Based Gamified Quizzes -->
-    <div class="tool-tab-box">
-      <div class="tool-tab-header">
-        <span style="font-size: 18px;">🎮</span>
-        <span>Practical Activity 6.2: Designing Gamified Trigger-Based Quiz Decks</span>
+    <!-- Student PowerPoint Track -->
+    <div class="role-target-student" style="margin-top: 24px; padding-top: 24px; border-top: 1px dashed #CBD5E1;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-student">🎒 STUDENT TRACK: INTERACTIVE SCHOOL PROJECT PITCH DECKS</span>
+        <span style="font-size: 13px; color: #047857; font-weight: 700;">Storytelling, Media Embedding &amp; Presentation Skills</span>
       </div>
-      <div class="tool-tab-body">
-        <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
-          Transform formative assessment checks into engaging classroom games using PowerPoint Animation Triggers:
-        </p>
-        <ol style="font-size: 14px; color: #334155; line-height: 1.7; padding-left: 20px;">
-          <li>Create a question slide with 4 clickable answer option shapes (Option A, B, C, D).</li>
-          <li>Insert two feedback text banners: a green banner stating <em>"Correct! Excellent CBC reasoning"</em> and a red banner stating <em>"Try Again! Review the concept"</em>.</li>
-          <li>Open the <strong>Animation Pane</strong>. Apply an <em>Entrance Animation (e.g., Zoom or Fade)</em> to the green banner.</li>
-          <li>Select the animation &rarr; click <strong>Timing &rarr; Trigger &rarr; Start effect on click of...</strong> &rarr; select the correct answer button!</li>
-          <li>Repeat trigger configuration for the wrong answer buttons to display the remedial banner.</li>
-          <li>Test in Slide Show mode: learners receive instant interactive feedback when tapping answers on an interactive board or classroom computer.</li>
-        </ol>
-      </div>
-    </div>
 
-    <div style="background: #FFFBEB; border: 1.5px solid #FDE68A; border-radius: 12px; padding: 18px 24px; margin-top: 20px;">
-      <h4 style="color: #B45309; margin: 0 0 6px 0; font-size: 16px;">🎯 Practical PowerPoint Assessment Deliverable</h4>
-      <p style="margin: 0; font-size: 14px; color: #92400E; line-height: 1.6;">
-        Author and submit an interactive 10-slide PowerPoint presentation (.pptx) aligned with a specific CBC sub-strand. The deck must include a Slide Master navigation menu, non-linear hyperlinked action buttons, multimedia visual assets, and at least one trigger-based gamified quiz slide.
-      </p>
+      <!-- Activity 6.3: Student Presentation Activity -->
+      <div class="tool-tab-box activity-card-student">
+        <div class="tool-tab-header" style="background: linear-gradient(135deg, #047857 0%, #059669 100%);">
+          <span style="font-size: 18px;">📽️</span>
+          <span>Practical Activity 6.3 (For Students): Designing an Interactive Project Pitch Deck</span>
+        </div>
+        <div class="tool-tab-body">
+          <p style="font-size: 14.5px; color: #475569; margin-bottom: 14px;">
+            Follow these practical steps to design a captivating 8-to-10 slide presentation for your school science fair or social studies project:
+          </p>
+          <ol style="font-size: 14px; color: #334155; line-height: 1.7; padding-left: 20px;">
+            <li><strong>Widescreen Theme &amp; Title:</strong> Set Slide Size to <em>Widescreen (16:9)</em>. Choose a crisp, high-contrast theme (dark blue or deep forest green background with white text). Include project title, team members, and a striking high-resolution hero photo.</li>
+            <li><strong>Interactive Agenda Slide:</strong> Build an interactive table-of-contents slide using 4 rounded rectangle tiles (<em>1. The Challenge, 2. Field Data, 3. Our Solution, 4. Action Steps</em>). Hyperlink each button directly to its target slide.</li>
+            <li><strong>Embedding Live Data Charts:</strong> Copy your comparative growth chart from Excel &rarr; Paste into Slide 4 choosing <strong>Keep Source Formatting &amp; Link Data</strong>. Notice how updates in Excel refresh in your deck!</li>
+            <li><strong>Adding Voiceover Narration:</strong> Click <strong>Insert &rarr; Audio &rarr; Record Audio</strong>. Record a 30-second summary introducing your solution to simulate a live conference pitch.</li>
+            <li><strong>Interactive Audience Question:</strong> Create an end-of-deck Q&amp;A slide with clickable multiple-choice buttons that flash green when your classmates tap the right answer.</li>
+          </ol>
+
+          <!-- Student Self-Check Verification Checklist -->
+          <div class="student-checklist">
+            <h5 class="checklist-title">
+              <span>✅</span> Student PowerPoint Self-Check Checklist:
+            </h5>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-ppt-1">
+              <label for="chk-ppt-1">Title slide has high-contrast typography legible from 5 meters away.</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-ppt-2">
+              <label for="chk-ppt-2">All hyperlink action buttons tested in Slide Show mode (<span class="key-badge">F5</span>) and jump smoothly.</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-ppt-3">
+              <label for="chk-ppt-3">Chart and images have clear source attributions and contrast borders.</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-ppt-4">
+              <label for="chk-ppt-4">Slide transitions are set to subtle 'Fade' or 'Push' with consistent 0.5s duration.</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #ECFDF5; border: 1.5px solid #A7F3D0; border-radius: 12px; padding: 18px 24px; margin-top: 20px;">
+        <h4 style="color: #047857; margin: 0 0 6px 0; font-size: 16px;">🎯 Student Practical PowerPoint Deliverable</h4>
+        <p style="margin: 0; font-size: 14px; color: #065F46; line-height: 1.6;">
+          Design and submit an 8-to-10 slide Interactive Project Pitch Deck (.pptx) with an interactive table of contents, linked Excel chart, embedded photos, voice narration clip, and an interactive audience check slide.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -819,68 +1654,221 @@
       </div>
     </div>
 
-    <h3 style="font-size: 17px; font-weight: 800; color: #0F172A; margin: 24px 0 12px 0;">
-      Master 100-Point Capstone Assessment Rubric:
-    </h3>
+    <!-- Educator Capstone Rubric -->
+    <div class="role-target-educator" style="margin-top: 24px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-educator">🎓 EDUCATOR CAPSTONE EVALUATION RUBRIC</span>
+        <span style="font-size: 13px; color: #1D4ED8; font-weight: 700;">100-Point Integrated CBC Teaching Unit</span>
+      </div>
 
-    <div class="table-responsive" style="overflow-x: auto;">
-      <table class="rubric-preview-table" style="min-width: 700px;">
-        <thead>
-          <tr>
-            <th>Core Criterion</th>
-            <th>Max Points</th>
-            <th>Exceeding Expectations (EE)</th>
-            <th>Meeting Expectations (ME)</th>
-            <th>Approaching / Below (AE/BE)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>CBC / CBE Curriculum Alignment</strong></td>
-            <td>25 Pts</td>
-            <td>Clear, explicit mapping to KICD Strands, SLOs, Core Competencies, and PCIs with differentiated extension activities.</td>
-            <td>Valid alignment with standard KICD outcomes and targeted competencies.</td>
-            <td>Vague outcome definitions or incomplete curriculum strand referencing.</td>
-          </tr>
-          <tr>
-            <td><strong>Microsoft Word Instructional Artefact</strong></td>
-            <td>25 Pts</td>
-            <td>Professional document hierarchy, custom tables, equation formatting, and complete 4-level descriptive assessment rubric.</td>
-            <td>Clean, well-structured lesson plan and worksheet with descriptive rubric.</td>
-            <td>Cluttered layout, missing descriptive rubric criteria, or unformatted text blocks.</td>
-          </tr>
-          <tr>
-            <td><strong>Microsoft Excel Computational Model</strong></td>
-            <td>25 Pts</td>
-            <td>Flawless formulas (AVERAGE, nested IF, COUNTIF), 4-color conditional formatting, and clear graphical data visualizations.</td>
-            <td>Working formulas, correct qualitative descriptors, and basic chart generation.</td>
-            <td>Formula syntax errors, missing conditional formatting, or inappropriate chart selection.</td>
-          </tr>
-          <tr>
-            <td><strong>Microsoft PowerPoint Interactive Deck</strong></td>
-            <td>25 Pts</td>
-            <td>Seamless Slide Master, non-linear action buttons, trigger-based quiz interactivity, and cognitive multimedia styling.</td>
-            <td>Structured slide layout with working hyperlinks and functional formative review slide.</td>
-            <td>Linear text-heavy slides without interactive navigation or multimedia triggers.</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive" style="overflow-x: auto;">
+        <table class="rubric-preview-table" style="min-width: 700px;">
+          <thead>
+            <tr>
+              <th>Core Criterion</th>
+              <th>Max Points</th>
+              <th>Exceeding Expectations (EE)</th>
+              <th>Meeting Expectations (ME)</th>
+              <th>Approaching / Below (AE/BE)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CBC / CBE Curriculum Alignment</strong></td>
+              <td>25 Pts</td>
+              <td>Clear, explicit mapping to KICD Strands, SLOs, Core Competencies, and PCIs with differentiated extension activities.</td>
+              <td>Valid alignment with standard KICD outcomes and targeted competencies.</td>
+              <td>Vague outcome definitions or incomplete curriculum strand referencing.</td>
+            </tr>
+            <tr>
+              <td><strong>Microsoft Word Instructional Artefact</strong></td>
+              <td>25 Pts</td>
+              <td>Professional document hierarchy, custom tables, equation formatting, and complete 4-level descriptive assessment rubric.</td>
+              <td>Clean, well-structured lesson plan and worksheet with descriptive rubric.</td>
+              <td>Cluttered layout, missing descriptive rubric criteria, or unformatted text blocks.</td>
+            </tr>
+            <tr>
+              <td><strong>Microsoft Excel Computational Model</strong></td>
+              <td>25 Pts</td>
+              <td>Flawless formulas (AVERAGE, nested IF, COUNTIF), 4-color conditional formatting, and clear graphical data visualizations.</td>
+              <td>Working formulas, correct qualitative descriptors, and basic chart generation.</td>
+              <td>Formula syntax errors, missing conditional formatting, or inappropriate chart selection.</td>
+            </tr>
+            <tr>
+              <td><strong>Microsoft PowerPoint Interactive Deck</strong></td>
+              <td>25 Pts</td>
+              <td>Seamless Slide Master, non-linear action buttons, trigger-based quiz interactivity, and cognitive multimedia styling.</td>
+              <td>Structured slide layout with working hyperlinks and functional formative review slide.</td>
+              <td>Linear text-heavy slides without interactive navigation or multimedia triggers.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <!-- Final Call to Action -->
-    <div style="background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%); color: #FFFFFF; border-radius: 16px; padding: 32px; text-align: center; margin-top: 36px;">
-      <h3 style="color: #FFFFFF !important; font-size: 24px; font-weight: 800; margin: 0 0 10px 0;">
-        Ready to Master Digital Integration in Your Classroom?
+    <!-- Student Capstone Rubric -->
+    <div class="role-target-student" style="margin-top: 28px; padding-top: 24px; border-top: 1px dashed #CBD5E1;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-student">🎒 STUDENT CAPSTONE EVALUATION RUBRIC</span>
+        <span style="font-size: 13px; color: #047857; font-weight: 700;">100-Point Real-World Project Portfolio</span>
+      </div>
+
+      <div class="table-responsive" style="overflow-x: auto;">
+        <table class="rubric-preview-table" style="min-width: 700px;">
+          <thead>
+            <tr>
+              <th>Evaluation Pillar</th>
+              <th>Max Points</th>
+              <th>Exceeding Expectations (EE)</th>
+              <th>Meeting Expectations (ME)</th>
+              <th>Approaching / Below (AE/BE)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Word Investigation Report</strong></td>
+              <td>25 Pts</td>
+              <td>Exemplary cover page, automated table of contents, structured tables with captions, accurate citations, and zero spelling flaws.</td>
+              <td>Well-organized report with heading styles, clean table, and bibliography.</td>
+              <td>Missing table of contents, erratic fonts, or missing reference citations.</td>
+            </tr>
+            <tr>
+              <td><strong>Excel Computational Model</strong></td>
+              <td>25 Pts</td>
+              <td>Dynamic formulas (=SUM, =AVERAGE, =MAX), clear data sorting, currency formatting, and properly labeled comparison charts.</td>
+              <td>Working formulas, clean rows and columns, and basic functional chart.</td>
+              <td>Formula syntax errors, unformatted raw numbers, or absent chart labels.</td>
+            </tr>
+            <tr>
+              <td><strong>PowerPoint Pitch Deck</strong></td>
+              <td>25 Pts</td>
+              <td>High-contrast 16:9 widescreen layout, interactive menu hyperlinks, live linked Excel chart, and embedded voice narration.</td>
+              <td>Clear slide design with readable text, relevant images, and linked agenda.</td>
+              <td>Cluttered walls of text, broken hyperlinks, or low-resolution uncredited graphics.</td>
+            </tr>
+            <tr>
+              <td><strong>Reflection &amp; Problem Solving</strong></td>
+              <td>25 Pts</td>
+              <td>Thoughtful articulation of project impact, self-assessment checklist complete, and insightful recommendations for community action.</td>
+              <td>Valid project reflections and complete self-check submission.</td>
+              <td>Incomplete self-check or superficial project conclusion.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Dual Action CTA Box -->
+    <div style="background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%); color: #FFFFFF; border-radius: 18px; padding: clamp(24px, 4vw, 36px); text-align: center; margin-top: 36px; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.2);">
+      <h3 style="color: #FFFFFF !important; font-size: clamp(22px, 2.5vw, 28px); font-weight: 850; margin: 0 0 10px 0;">
+        Ready to Begin Your Tailored Learning Journey?
       </h3>
-      <p style="color: #E2E8F0 !important; font-size: 15px; max-width: 650px; margin: 0 auto 24px auto; line-height: 1.6;">
-        Enroll now in the accredited course on the Instructify Kenya LMS. Access interactive video lessons, downloadable starter templates, guided practical assignments, and earn your official 45-Hour TSC/KICD-compliant CPD certificate.
+      <p style="color: #E2E8F0 !important; font-size: 15px; max-width: 680px; margin: 0 auto 24px auto; line-height: 1.65;">
+        Choose your specialized track today on the Instructify Kenya LMS. Gain immediate access to interactive video tutorials, pre-built downloadable templates, tutor guidance, and accredited certification.
       </p>
       <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
-        <a href="../checkout.html?id=crs_009" class="btn btn-lg" style="background: linear-gradient(135deg, #F5812D 0%, #FF4D00 100%); color: #FFF; font-weight: 700; border-radius: 99px; padding: 14px 32px; text-decoration: none;">
-          ⚡ Enroll &amp; Get Certified (KES 14,500)
+        <a href="../checkout.html?id=crs_009" class="btn btn-lg" style="background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%); color: #FFF; font-weight: 700; border-radius: 99px; padding: 14px 28px; text-decoration: none; box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);">
+          🎓 Enroll Educator Track (KES 14,500)
         </a>
-        <a href="../course-player.html?courseId=crs_009&lessonId=les_009_01" class="btn btn-lg" style="background: #FFFFFF; color: #0F172A; font-weight: 700; border-radius: 99px; padding: 14px 26px; text-decoration: none;">
-          ▶ Launch Free Preview
+        <a href="../checkout.html?id=crs_009&track=student" class="btn btn-lg" style="background: linear-gradient(135deg, #059669 0%, #10B981 100%); color: #FFF; font-weight: 700; border-radius: 99px; padding: 14px 28px; text-decoration: none; box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);">
+          🚀 Enroll Student Track (KES 8,500)
+        </a>
+        <a href="../course-player.html?courseId=crs_009&lessonId=les_009_01" class="btn btn-lg" style="background: #FFFFFF; color: #0F172A; font-weight: 700; border-radius: 99px; padding: 14px 24px; text-decoration: none;">
+          ▶ Free Preview
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: DOWNLOADABLE RESOURCE TOOLKITS -->
+  <section id="downloads" class="manual-section" style="border-color: #CBD5E1;">
+    <span class="section-num">📥 Section 8 • Resource Downloads</span>
+    <h2 class="section-heading">Downloadable Toolkits &amp; Starter Files</h2>
+
+    <p style="font-size: 15.5px; line-height: 1.7; color: #334155;">
+      Accelerate your workflow with ready-to-use, professionally formatted files engineered specifically for teachers and learners:
+    </p>
+
+    <!-- Educator Downloads -->
+    <div class="role-target-educator" style="margin-top: 20px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-educator">🎓 TEACHER &amp; EDUCATOR TOOLKIT</span>
+        <span style="font-size: 13px; color: #1D4ED8; font-weight: 700;">Editable Templates for Classroom Delivery</span>
+      </div>
+
+      <div class="download-grid">
+        <a href="../checkout.html?id=crs_009" class="download-card">
+          <div class="download-icon download-icon-word">📄</div>
+          <div>
+            <div style="font-weight: 800; font-size: 14px; color: #0F172A;">CBC 40-Min Lesson Plan Schema</div>
+            <div style="font-size: 12px; color: #64748B;">Microsoft Word • .docx (45 KB)</div>
+          </div>
+        </a>
+
+        <a href="../checkout.html?id=crs_009" class="download-card">
+          <div class="download-icon download-icon-excel">📊</div>
+          <div>
+            <div style="font-weight: 800; font-size: 14px; color: #0F172A;">Automated Assessment Gradebook</div>
+            <div style="font-size: 12px; color: #64748B;">Microsoft Excel • .xlsx (82 KB)</div>
+          </div>
+        </a>
+
+        <a href="../checkout.html?id=crs_009" class="download-card">
+          <div class="download-icon download-icon-pdf">🎯</div>
+          <div>
+            <div style="font-weight: 800; font-size: 14px; color: #0F172A;">4-Level Qualitative Rubric Matrix</div>
+            <div style="font-size: 12px; color: #64748B;">Printable Reference • .pdf (120 KB)</div>
+          </div>
+        </a>
+
+        <a href="../checkout.html?id=crs_009" class="download-card">
+          <div class="download-icon download-icon-ppt">📽️</div>
+          <div>
+            <div style="font-weight: 800; font-size: 14px; color: #0F172A;">Branching Lesson Slide Master</div>
+            <div style="font-size: 12px; color: #64748B;">Microsoft PowerPoint • .pptx (1.4 MB)</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Student Downloads -->
+    <div class="role-target-student" style="margin-top: 24px; padding-top: 24px; border-top: 1px dashed #CBD5E1;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+        <span class="role-badge role-badge-student">🎒 STUDENT &amp; LEARNER STARTER TOOLKIT</span>
+        <span style="font-size: 13px; color: #047857; font-weight: 700;">Guided Project Files &amp; Printable Speed Cards</span>
+      </div>
+
+      <div class="download-grid">
+        <a href="../checkout.html?id=crs_009&track=student" class="download-card">
+          <div class="download-icon download-icon-word">📝</div>
+          <div>
+            <div style="font-weight: 800; font-size: 14px; color: #0F172A;">Academic Report Starter Template</div>
+            <div style="font-size: 12px; color: #64748B;">Pre-formatted Headings • .docx (40 KB)</div>
+          </div>
+        </a>
+
+        <a href="../checkout.html?id=crs_009&track=student" class="download-card">
+          <div class="download-icon download-icon-excel">📈</div>
+          <div>
+            <div style="font-weight: 800; font-size: 14px; color: #0F172A;">Student Budget &amp; Science Tracker</div>
+            <div style="font-size: 12px; color: #64748B;">Pre-built Formulas • .xlsx (68 KB)</div>
+          </div>
+        </a>
+
+        <a href="../checkout.html?id=crs_009&track=student" class="download-card">
+          <div class="download-icon download-icon-ppt">📽️</div>
+          <div>
+            <div style="font-weight: 800; font-size: 14px; color: #0F172A;">Project Pitch Deck Master Deck</div>
+            <div style="font-size: 12px; color: #64748B;">16:9 Widescreen Layout • .pptx (1.1 MB)</div>
+          </div>
+        </a>
+
+        <a href="../checkout.html?id=crs_009&track=student" class="download-card">
+          <div class="download-icon download-icon-pdf">⚡</div>
+          <div>
+            <div style="font-weight: 800; font-size: 14px; color: #0F172A;">Keyboard Shortcuts Desk Card</div>
+            <div style="font-size: 12px; color: #64748B;">Printable Cheat Sheet • .pdf (85 KB)</div>
+          </div>
         </a>
       </div>
     </div>
@@ -918,8 +1906,84 @@
 <script src="../js/live-chat.js?v=19.0"></script>
 
 <script>
-// Active nav link highlight on scroll
+// Audience Track Interactive Switcher
+function switchAudienceMode(mode) {
+  const btnAll = document.getElementById('btn-mode-all');
+  const btnEducator = document.getElementById('btn-mode-educator');
+  const btnStudent = document.getElementById('btn-mode-student');
+  const subtitle = document.getElementById('hero-subtitle');
+  const ctaEducator = document.getElementById('hero-cta-educator');
+  const ctaStudent = document.getElementById('hero-cta-student');
+  const badgeTertiary = document.getElementById('badge-track-tertiary');
+
+  // Reset active classes
+  [btnAll, btnEducator, btnStudent].forEach(btn => {
+    if (btn) {
+      btn.classList.remove('active');
+      btn.setAttribute('aria-selected', 'false');
+    }
+  });
+
+  document.body.classList.remove('mode-filter-educator', 'mode-filter-student');
+
+  if (mode === 'educator') {
+    if (btnEducator) {
+      btnEducator.classList.add('active');
+      btnEducator.setAttribute('aria-selected', 'true');
+    }
+    document.body.classList.add('mode-filter-educator');
+    if (subtitle) {
+      subtitle.innerHTML = 'Specialized <strong>Educator Track</strong>: Master TPACK and SAMR pedagogical frameworks, design standardized CBC lesson plans in Word, build automated continuous assessment gradebooks in Excel, author interactive formative trigger games in PowerPoint, and earn <strong>45 accredited TSC/KICD CPD hours</strong>.';
+    }
+    if (badgeTertiary) {
+      badgeTertiary.textContent = 'TSC & KICD Accredited (45 CPD Hours)';
+    }
+    if (ctaEducator) ctaEducator.style.boxShadow = '0 0 0 3px #FFFFFF, 0 6px 20px rgba(37,99,235,0.6)';
+    if (ctaStudent) ctaStudent.style.boxShadow = 'none';
+  } else if (mode === 'student') {
+    if (btnStudent) {
+      btnStudent.classList.add('active');
+      btnStudent.setAttribute('aria-selected', 'true');
+    }
+    document.body.classList.add('mode-filter-student');
+    if (subtitle) {
+      subtitle.innerHTML = 'Specialized <strong>Student &amp; Learner Track</strong>: Build hands-on, real-world productivity skills in Microsoft Word, Excel, and PowerPoint. Format academic investigation papers, model personal budgets and scientific lab data, pitch innovative community ideas, and earn a <strong>Verifiable Digital Productivity Skills Credential</strong>.';
+    }
+    if (badgeTertiary) {
+      badgeTertiary.textContent = 'Student Digital Skills Credential';
+    }
+    if (ctaStudent) ctaStudent.style.boxShadow = '0 0 0 3px #FFFFFF, 0 6px 20px rgba(16,185,129,0.6)';
+    if (ctaEducator) ctaEducator.style.boxShadow = 'none';
+  } else {
+    if (btnAll) {
+      btnAll.classList.add('active');
+      btnAll.setAttribute('aria-selected', 'true');
+    }
+    if (subtitle) {
+      subtitle.innerHTML = 'A dual-track professional course tailored distinctly for <strong>Educators</strong> (pedagogical frameworks, lesson plan integration, descriptive rubrics, and continuous assessment gradebooks) and <strong>Students</strong> (practical office software skills, guided project activities, real-world data modeling, and verifiable digital competence).';
+    }
+    if (badgeTertiary) {
+      badgeTertiary.textContent = 'TSC & KICD Accredited (45 CPD Hours)';
+    }
+    if (ctaEducator) ctaEducator.style.boxShadow = '0 6px 20px rgba(37, 99, 235, 0.4)';
+    if (ctaStudent) ctaStudent.style.boxShadow = '0 6px 20px rgba(16, 185, 129, 0.35)';
+  }
+
+  try {
+    localStorage.setItem('ik_course_mode', mode);
+  } catch (e) {}
+}
+
+// Initialize mode from URL parameter or localStorage
 document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const modeParam = urlParams.get('mode') || urlParams.get('track');
+  const savedMode = modeParam || localStorage.getItem('ik_course_mode') || 'all';
+  if (savedMode && ['all', 'educator', 'student'].includes(savedMode)) {
+    switchAudienceMode(savedMode);
+  }
+
+  // Active nav link highlight on scroll
   const links = document.querySelectorAll('.manual-nav-link');
   const sections = document.querySelectorAll('.manual-section');
 

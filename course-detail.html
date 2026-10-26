@@ -180,6 +180,18 @@
       <span id="course-title-breadcrumb" style="color:#FFFFFF;font-weight:600">Course Detail</span>
     </div>
 
+    <!-- Dual Track Pathway Selector -->
+    <div style="margin-bottom: 22px;">
+      <div style="display: inline-flex; background: rgba(15, 23, 42, 0.45); padding: 5px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); flex-wrap: wrap; gap: 4px;">
+        <button type="button" id="track-btn-educator" onclick="setDetailTrack('educator')" style="border: none; background: #FFFFFF; color: #0F172A; font-weight: 800; font-size: 13px; padding: 8px 18px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+          <span>🎓</span> For Teachers &amp; Educators
+        </button>
+        <button type="button" id="track-btn-student" onclick="setDetailTrack('student')" style="border: none; background: transparent; color: #E2E8F0; font-weight: 700; font-size: 13px; padding: 8px 18px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease;">
+          <span>🎒</span> For Students &amp; Learners
+        </button>
+      </div>
+    </div>
+
     <div class="grid-2 items-center" style="grid-template-columns:2fr 1fr;gap:var(--space-2xl)">
       <div>
         <span class="badge mb-md" id="course-badge" style="background:rgba(16,185,129,0.18);color:#2DC3B0;border:1px solid rgba(52,211,153,0.4);padding:6px 16px;border-radius:99px;font-weight:700;font-size:0.75rem;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:6px">✨ CPD ACCREDITED</span>
@@ -188,21 +200,24 @@
         <div class="flex items-center gap-xl text-sm" style="color:rgba(255,255,255,0.9);flex-wrap:wrap">
           <div style="display:flex;align-items:center;gap:6px">⭐ <strong id="course-rating" style="color:#FBBF24">4.8</strong> (<span id="course-reviews">312</span> reviews)</div>
           <div style="display:flex;align-items:center;gap:6px">👨‍🏫 Instructor: <strong id="course-instructor">Dr. Wanjiku Kamau</strong></div>
-          <div style="display:flex;align-items:center;gap:6px">⏱️ Duration: <strong id="course-duration">8 weeks</strong></div>
+          <div style="display:flex;align-items:center;gap:6px">⏱️ Track Duration: <strong id="course-duration">8 weeks</strong></div>
         </div>
       </div>
 
       <div class="card" style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:18px;padding:32px;box-shadow:0 24px 48px rgba(0,0,0,0.3);color:#0F172A">
         <div class="mb-md" style="margin-bottom:20px">
-          <div style="font-size:12px;font-weight:700;color:var(--text-muted, #475569);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">Course Fee</div>
-          <div class="font-heading text-3xl font-extrabold" style="color:var(--cta-color, #F5812D);font-size:34px;line-height:1.1;font-weight:900" id="course-price">KES 15,000</div>
+          <div id="track-pill-indicator" style="font-size:11.5px; font-weight:800; color:#1D4ED8; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px; padding:4px 10px; display:inline-flex; align-items:center; gap:5px; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.06em;">
+            🎓 EDUCATOR CPD PATHWAY
+          </div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-muted, #475569);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">Enrollment Fee</div>
+          <div class="font-heading text-3xl font-extrabold" style="color:var(--cta-color, #F5812D);font-size:34px;line-height:1.1;font-weight:900" id="course-price">KES 14,500</div>
           <div style="font-size:14px;color:#CBD5E1;text-decoration:line-through;margin-top:4px;font-weight:500" id="course-orig-price">KES 22,000</div>
         </div>
         <button onclick="handleEnrollClick()" class="btn btn-lg w-full mb-md" id="enroll-btn" style="width:100%;background:linear-gradient(135deg,#F5812D 0%,#FF4D00 100%);color:#FFFFFF;font-weight:700;font-size:16px;border-radius:99px;padding:14px 24px;border:none;box-shadow:0 6px 20px rgba(220,46,10,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;transition:all 0.2s">⚡ Enroll Now</button>
         <button onclick="toggleWishlist(this)" id="wishlist-btn" data-course-id="" class="btn btn-sm w-full" style="width:100%;background:#F8FAFC;color:#FF4D00;border:1.5px solid #CBD5E1;font-weight:700;font-size:14px;border-radius:99px;padding:11px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s">🤍 Save to Wishlist</button>
         <div style="color:var(--text-muted, #475569);font-size:13px;font-weight:500;text-align:center;margin-top:18px;display:flex;align-items:center;justify-content:center;gap:6px">🔒 30-Day Guarantee • Flexible Installments</div>
         <div style="margin-top:16px; padding:14px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px;">
-          <div style="font-size:12px; font-weight:700; color:#334155; margin-bottom:6px;">🔑 Have an Educator Access Code?</div>
+          <div style="font-size:12px; font-weight:700; color:#334155; margin-bottom:6px;">🔑 Have an Access Code or Voucher?</div>
           <div style="display:flex; gap:6px;">
             <input type="text" id="detail-access-code" placeholder="e.g. CBC-TEACH-2026" aria-label="Course access code" style="text-transform:uppercase; font-family:monospace; font-weight:700; font-size:12px; padding:8px 10px; border:1px solid #CBD5E1; border-radius:8px; width:100%; outline:none; background:#FFF;">
             <button type="button" onclick="handleDetailAccessCode()" class="btn btn-blue btn-sm" style="white-space:nowrap; padding:8px 12px; font-size:12px;">Unlock</button>
@@ -229,12 +244,40 @@
           </div>
         </div>
 
-        <h3 class="font-heading text-xl mb-lg">What You Will Learn</h3>
-        <div class="grid-2 mb-2xl" id="course-outcomes">
-          <div class="flex gap-sm items-center text-sm"><span>✅</span> <span>Integrate digital tools into lesson plans</span></div>
-          <div class="flex gap-sm items-center text-sm"><span>✅</span> <span>Use LMS platforms effectively</span></div>
-          <div class="flex gap-sm items-center text-sm"><span>✅</span> <span>Create interactive digital content</span></div>
-          <div class="flex gap-sm items-center text-sm"><span>✅</span> <span>Apply CBC-aligned technology strategies</span></div>
+        <h3 class="font-heading text-xl mb-md">Tailored Learning Outcomes</h3>
+        <p style="font-size:14.5px; color:#475569; margin-bottom:18px;">
+          Explore competencies aligned distinctly for classroom educators and practical learners:
+        </p>
+
+        <!-- Dynamic Role-Aligned Outcomes Box -->
+        <div id="course-outcomes-container" style="margin-bottom: 36px;">
+          <!-- Educator Outcomes Block -->
+          <div id="outcomes-educator-box" style="background:#F8FAFC; border:1.5px solid #DBEAFE; border-left:5px solid #2563EB; border-radius:12px; padding:20px; margin-bottom:16px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+              <span style="font-size:18px;">🎓</span>
+              <strong style="color:#1D4ED8; font-size:15px;">For Teachers &amp; Educators:</strong>
+            </div>
+            <div class="grid-2" style="gap:10px;">
+              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Master TPACK &amp; SAMR pedagogical integration</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Design standardized 40-min CBC lesson plans in Word</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Build automated 4-level formative gradebooks in Excel</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Author branching trigger-based quiz games in PowerPoint</span></div>
+            </div>
+          </div>
+
+          <!-- Student Outcomes Block -->
+          <div id="outcomes-student-box" style="background:#F0FDF4; border:1.5px solid #BBF7D0; border-left:5px solid #059669; border-radius:12px; padding:20px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+              <span style="font-size:18px;">🎒</span>
+              <strong style="color:#047857; font-size:15px;">For Students &amp; Learners:</strong>
+            </div>
+            <div class="grid-2" style="gap:10px;">
+              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Format academic project reports with auto-TOC &amp; citations</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Calculate personal budgets &amp; plot science data in Excel</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Design 16:9 interactive school project pitch decks</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Earn a verifiable Digital Productivity Skills Certificate</span></div>
+            </div>
+          </div>
         </div>
 
         <h3 class="font-heading text-xl mb-lg">Curriculum Syllabus &amp; Lessons</h3>
@@ -244,13 +287,14 @@
       </div>
 
       <div>
-        <div class="card mb-xl">
-          <h4 class="font-heading text-md mb-md">Course Features</h4>
-          <ul class="flex flex-col gap-sm text-sm text-secondary">
-            <li>✅ 40 CPD Hours Credit</li>
-            <li>✅ Verifiable Digital Badge</li>
-            <li>✅ Live Q&amp;A Webinars</li>
-            <li>✅ Downloadable Templates</li>
+        <div class="card mb-xl" style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; padding:24px;">
+          <h4 class="font-heading text-md mb-md" id="features-box-title">Course Features (Educator Track)</h4>
+          <ul id="course-features-list" class="flex flex-col gap-sm text-sm text-secondary" style="list-style:none; padding:0; margin:0;">
+            <li style="display:flex; align-items:center; gap:8px;">✅ 45 TSC / KICD CPD Hours Credit</li>
+            <li style="display:flex; align-items:center; gap:8px;">✅ CBC Lesson Plan &amp; Rubric Schemas (.docx)</li>
+            <li style="display:flex; align-items:center; gap:8px;">✅ Automated Cohort Gradebook (.xlsx)</li>
+            <li style="display:flex; align-items:center; gap:8px;">✅ Branching Lesson Slide Master (.pptx)</li>
+            <li style="display:flex; align-items:center; gap:8px;">✅ Verifiable Teacher CPD Credential</li>
           </ul>
         </div>
       </div>
@@ -502,6 +546,108 @@ function renderCurriculumAccordion(course) {
   `).join('');
 }
 
+let selectedDetailTrack = 'educator';
+
+function setDetailTrack(track) {
+  selectedDetailTrack = track === 'student' ? 'student' : 'educator';
+  const btnEducator = document.getElementById('track-btn-educator');
+  const btnStudent = document.getElementById('track-btn-student');
+  const pillIndicator = document.getElementById('track-pill-indicator');
+  const priceEl = document.getElementById('course-price');
+  const origPriceEl = document.getElementById('course-orig-price');
+  const durationEl = document.getElementById('course-duration');
+  const badgeEl = document.getElementById('course-badge');
+  const enrollBtn = document.getElementById('enroll-btn');
+  const featuresTitle = document.getElementById('features-box-title');
+  const featuresList = document.getElementById('course-features-list');
+  const outcomesEducator = document.getElementById('outcomes-educator-box');
+  const outcomesStudent = document.getElementById('outcomes-student-box');
+
+  if (selectedDetailTrack === 'student') {
+    if (btnEducator) {
+      btnEducator.style.background = 'transparent';
+      btnEducator.style.color = '#E2E8F0';
+      btnEducator.style.boxShadow = 'none';
+    }
+    if (btnStudent) {
+      btnStudent.style.background = '#FFFFFF';
+      btnStudent.style.color = '#0F172A';
+      btnStudent.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+    }
+    if (pillIndicator) {
+      pillIndicator.innerHTML = '🎒 STUDENT SKILLS PATHWAY';
+      pillIndicator.style.color = '#047857';
+      pillIndicator.style.background = '#ECFDF5';
+      pillIndicator.style.borderColor = '#A7F3D0';
+    }
+    const basePrice = currentCourse && typeof currentCourse.price === 'number' ? currentCourse.price : 14500;
+    const studentPrice = Math.round(basePrice * 0.58 / 100) * 100 || 8500;
+    if (priceEl) priceEl.textContent = `KES ${studentPrice.toLocaleString()}`;
+    if (origPriceEl) origPriceEl.textContent = `KES ${(studentPrice + 5500).toLocaleString()}`;
+    if (durationEl) durationEl.textContent = 'Self-Paced (Lifetime Project Access)';
+    if (badgeEl) badgeEl.textContent = '🎒 STUDENT SKILLS CREDENTIAL';
+    if (enrollBtn && (!window.isEnrolled || !window.isEnrolled(currentCourse?.id))) {
+      enrollBtn.innerHTML = `⚡ Enroll Student Track — KES ${studentPrice.toLocaleString()}`;
+      enrollBtn.style.background = 'linear-gradient(135deg, #059669 0%, #10B981 100%)';
+    }
+    if (featuresTitle) featuresTitle.textContent = 'Course Features (Student Track)';
+    if (featuresList) {
+      featuresList.innerHTML = `
+        <li style="display:flex; align-items:center; gap:8px;">✅ Digital Productivity Skills Credential</li>
+        <li style="display:flex; align-items:center; gap:8px;">✅ Academic Report Starter Template (.docx)</li>
+        <li style="display:flex; align-items:center; gap:8px;">✅ Student Budget &amp; Science Tracker (.xlsx)</li>
+        <li style="display:flex; align-items:center; gap:8px;">✅ Project Pitch Deck Master Deck (.pptx)</li>
+        <li style="display:flex; align-items:center; gap:8px;">✅ Keyboard Shortcuts Speed Desk Card</li>
+      `;
+    }
+    if (outcomesEducator) outcomesEducator.style.opacity = '0.5';
+    if (outcomesStudent) outcomesStudent.style.opacity = '1';
+  } else {
+    selectedDetailTrack = 'educator';
+    if (btnEducator) {
+      btnEducator.style.background = '#FFFFFF';
+      btnEducator.style.color = '#0F172A';
+      btnEducator.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+    }
+    if (btnStudent) {
+      btnStudent.style.background = 'transparent';
+      btnStudent.style.color = '#E2E8F0';
+      btnStudent.style.boxShadow = 'none';
+    }
+    if (pillIndicator) {
+      pillIndicator.innerHTML = '🎓 EDUCATOR CPD PATHWAY';
+      pillIndicator.style.color = '#1D4ED8';
+      pillIndicator.style.background = '#EFF6FF';
+      pillIndicator.style.borderColor = '#BFDBFE';
+    }
+    const educatorPrice = currentCourse && typeof currentCourse.price === 'number' ? currentCourse.price : 14500;
+    if (priceEl) priceEl.textContent = `KES ${educatorPrice.toLocaleString()}`;
+    if (origPriceEl) origPriceEl.textContent = `KES ${(currentCourse?.originalPrice || 22000).toLocaleString()}`;
+    if (durationEl) durationEl.textContent = '8 Weeks (45 CPD Hours)';
+    if (badgeEl) badgeEl.textContent = '✨ CPD ACCREDITED (45 HOURS)';
+    if (enrollBtn && (!window.isEnrolled || !window.isEnrolled(currentCourse?.id))) {
+      enrollBtn.innerHTML = `⚡ Enroll Educator Track — KES ${educatorPrice.toLocaleString()}`;
+      enrollBtn.style.background = 'linear-gradient(135deg, #F5812D 0%, #FF4D00 100%)';
+    }
+    if (featuresTitle) featuresTitle.textContent = 'Course Features (Educator Track)';
+    if (featuresList) {
+      featuresList.innerHTML = `
+        <li style="display:flex; align-items:center; gap:8px;">✅ 45 TSC / KICD CPD Hours Credit</li>
+        <li style="display:flex; align-items:center; gap:8px;">✅ CBC Lesson Plan &amp; Rubric Schemas (.docx)</li>
+        <li style="display:flex; align-items:center; gap:8px;">✅ Automated Cohort Gradebook (.xlsx)</li>
+        <li style="display:flex; align-items:center; gap:8px;">✅ Branching Lesson Slide Master (.pptx)</li>
+        <li style="display:flex; align-items:center; gap:8px;">✅ Verifiable Teacher CPD Credential</li>
+      `;
+    }
+    if (outcomesEducator) outcomesEducator.style.opacity = '1';
+    if (outcomesStudent) outcomesStudent.style.opacity = '0.5';
+  }
+
+  try {
+    localStorage.setItem('ik_course_mode', selectedDetailTrack);
+  } catch (e) {}
+}
+
 function handleEnrollClick() {
   if (!currentCourse) return;
   const btn = document.getElementById('enroll-btn');
@@ -512,17 +658,19 @@ function handleEnrollClick() {
     return;
   }
 
+  const trackQuery = selectedDetailTrack === 'student' ? '&track=student' : '&track=educator';
+
   // Not enrolled — require payment
   const session = window.getSession ? window.getSession() : null;
   if (!session) {
-    localStorage.setItem('ik_return_to', JSON.stringify({ action: 'enroll', courseId: currentCourse.id, url: `checkout.html?id=${currentCourse.id}` }));
+    localStorage.setItem('ik_return_to', JSON.stringify({ action: 'enroll', courseId: currentCourse.id, url: `checkout.html?id=${currentCourse.id}${trackQuery}` }));
     window.showToast('Please sign in to enroll.', 'warning');
     setTimeout(() => window.location.href = 'register.html', 1200);
     return;
   }
 
   if (btn) { btn.disabled = true; btn.textContent = 'Starting checkout…'; }
-  window.location.href = `checkout.html?id=${encodeURIComponent(currentCourse.id)}`;
+  window.location.href = `checkout.html?id=${encodeURIComponent(currentCourse.id)}${trackQuery}`;
 }
 
 // Update enroll button state on page load
@@ -540,21 +688,30 @@ function updateEnrollButtonState() {
       window.location.href = `course-player.html?courseId=${encodeURIComponent(currentCourse.id)}`;
     };
   } else {
-    // Not enrolled — show price in button
-    const price = currentCourse.price || (window.COURSES && window.COURSES.find(c => c.id === currentCourse.id)?.price);
-    const priceText = price ? ` — KES ${price.toLocaleString()}` : '';
-    btn.innerHTML = `⚡ Enroll Now${priceText}`;
+    // Not enrolled — refresh current track values
+    setDetailTrack(selectedDetailTrack);
   }
 }
 
 // Hook into the DOMContentLoaded that already sets currentCourse
 (function() {
+  const initTrack = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const trackParam = urlParams.get('track') || urlParams.get('mode') || localStorage.getItem('ik_course_mode') || 'educator';
+    if (trackParam === 'student') {
+      setDetailTrack('student');
+    } else {
+      setDetailTrack('educator');
+    }
+    updateEnrollButtonState();
+  };
+
   const origDCL = document.readyState === 'loading'
     ? null
-    : setTimeout(updateEnrollButtonState, 300);
+    : setTimeout(initTrack, 300);
   if (!origDCL) {
     document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(updateEnrollButtonState, 300);
+      setTimeout(initTrack, 300);
     });
   }
 })();
