@@ -581,13 +581,14 @@ function setDetailTrack(track) {
       pillIndicator.style.borderColor = '#A7F3D0';
     }
     const basePrice = currentCourse && typeof currentCourse.price === 'number' ? currentCourse.price : 14500;
-    const studentPrice = Math.round(basePrice * 0.58 / 100) * 100 || 8500;
-    if (priceEl) priceEl.textContent = `KES ${studentPrice.toLocaleString()}`;
-    if (origPriceEl) origPriceEl.textContent = `KES ${(studentPrice + 5500).toLocaleString()}`;
+    const isFree = basePrice === 0 || !!(currentCourse && currentCourse.isFree);
+    const studentPrice = isFree ? 0 : (Math.round(basePrice * 0.58 / 100) * 100 || 8500);
+    if (priceEl) priceEl.textContent = isFree ? 'FREE' : `KES ${studentPrice.toLocaleString()}`;
+    if (origPriceEl) origPriceEl.textContent = isFree ? 'KES 14,000 (100% OFF)' : `KES ${(studentPrice + 5500).toLocaleString()}`;
     if (durationEl) durationEl.textContent = 'Self-Paced (Lifetime Project Access)';
-    if (badgeEl) badgeEl.textContent = '🎒 STUDENT SKILLS CREDENTIAL';
+    if (badgeEl) badgeEl.textContent = isFree ? '🎁 100% FREE • STUDENT CREDENTIAL' : '🎒 STUDENT SKILLS CREDENTIAL';
     if (enrollBtn && (!window.isEnrolled || !window.isEnrolled(currentCourse?.id))) {
-      enrollBtn.innerHTML = `⚡ Enroll Student Track — KES ${studentPrice.toLocaleString()}`;
+      enrollBtn.innerHTML = isFree ? '⚡ Start Free Student Track (100% Free)' : `⚡ Enroll Student Track — KES ${studentPrice.toLocaleString()}`;
       enrollBtn.style.background = 'linear-gradient(135deg, #059669 0%, #10B981 100%)';
     }
     if (featuresTitle) featuresTitle.textContent = 'Course Features (Student Track)';
@@ -621,13 +622,14 @@ function setDetailTrack(track) {
       pillIndicator.style.borderColor = '#BFDBFE';
     }
     const educatorPrice = currentCourse && typeof currentCourse.price === 'number' ? currentCourse.price : 14500;
-    if (priceEl) priceEl.textContent = `KES ${educatorPrice.toLocaleString()}`;
-    if (origPriceEl) origPriceEl.textContent = `KES ${(currentCourse?.originalPrice || 22000).toLocaleString()}`;
+    const isFree = educatorPrice === 0 || !!(currentCourse && currentCourse.isFree);
+    if (priceEl) priceEl.textContent = isFree ? 'FREE' : `KES ${educatorPrice.toLocaleString()}`;
+    if (origPriceEl) origPriceEl.textContent = isFree ? 'KES 22,000 (100% OFF)' : `KES ${(currentCourse?.originalPrice || 22000).toLocaleString()}`;
     if (durationEl) durationEl.textContent = '8 Weeks (45 CPD Hours)';
-    if (badgeEl) badgeEl.textContent = '✨ CPD ACCREDITED (45 HOURS)';
+    if (badgeEl) badgeEl.textContent = isFree ? '🎁 100% FREE • CPD ACCREDITED' : '✨ CPD ACCREDITED (45 HOURS)';
     if (enrollBtn && (!window.isEnrolled || !window.isEnrolled(currentCourse?.id))) {
-      enrollBtn.innerHTML = `⚡ Enroll Educator Track — KES ${educatorPrice.toLocaleString()}`;
-      enrollBtn.style.background = 'linear-gradient(135deg, #F5812D 0%, #FF4D00 100%)';
+      enrollBtn.innerHTML = isFree ? '⚡ Start Free Educator Track (100% Free)' : `⚡ Enroll Educator Track — KES ${educatorPrice.toLocaleString()}`;
+      enrollBtn.style.background = isFree ? 'linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%)' : 'linear-gradient(135deg, #F5812D 0%, #FF4D00 100%)';
     }
     if (featuresTitle) featuresTitle.textContent = 'Course Features (Educator Track)';
     if (featuresList) {
@@ -659,6 +661,18 @@ function handleEnrollClick() {
   }
 
   const trackQuery = selectedDetailTrack === 'student' ? '&track=student' : '&track=educator';
+
+  // 100% Free course immediate fulfillment
+  const isFree = currentCourse.price === 0 || !!currentCourse.isFree;
+  if (isFree) {
+    if (window.enrollCourse) window.enrollCourse(currentCourse.id);
+    if (window.showToast) window.showToast('🎉 Free enrollment confirmed! Welcome to the course.', 'success');
+    if (btn) { btn.disabled = true; btn.textContent = 'Launching Course…'; }
+    setTimeout(() => {
+      window.location.href = `course-player.html?courseId=${encodeURIComponent(currentCourse.id)}${trackQuery}`;
+    }, 600);
+    return;
+  }
 
   // Not enrolled — require payment
   const session = window.getSession ? window.getSession() : null;

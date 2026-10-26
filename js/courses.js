@@ -188,10 +188,10 @@ window.COURSES = [
     duration: '8 weeks', level: 'All Levels', format: 'Online + Hands-On',
     targetAudience: 'Pre-Primary, Primary, Junior & Senior Secondary Educators Across All Disciplines',
     accreditation: 'KICD & TSC Accredited CPD (45 Hours)',
-    price: 14500, originalPrice: 22000,
+    price: 0, originalPrice: 22000, isFree: true,
     rating: 4.95, reviewCount: 388, enrollments: 1940,
     image: 'assets/images/home_stem_collaboration.jpg',
-    badge: 'badge-ict', badgeText: 'CBC DIGITAL',
+    badge: 'badge-digital', badgeText: '100% FREE',
     cpd: true, cpdHours: 45,
     outcomes: [
       'Master CBC digital integration concepts & pedagogical frameworks (SAMR & TPACK)',
@@ -326,7 +326,8 @@ window.renderCourseCard = function(course) {
   const targetAudience = course.targetAudience || 'Educators & Lifelong Learners';
   const accreditation = course.accreditation || (course.cpd ? `TSC CPD Accredited (${course.cpdHours || 30} Hours)` : 'Accredited Certificate Included');
   const priceVal = typeof course.price === 'number' ? course.price : parseInt(String(course.price || '0').replace(/[^0-9]/g, ''), 10);
-  const priceStr = priceVal === 0 ? 'FREE ACCESS' : 'KES ' + (priceVal ? priceVal.toLocaleString() : '15,000');
+  const isFreeCourse = priceVal === 0 || !!course.isFree;
+  const priceStr = isFreeCourse ? 'FREE ACCESS' : 'KES ' + (priceVal ? priceVal.toLocaleString() : '15,000');
   const origPriceStr = course.originalPrice ? `KES ${typeof course.originalPrice === 'number' ? course.originalPrice.toLocaleString() : course.originalPrice}` : '';
 
   const CATEGORY_MAP = {
@@ -348,8 +349,8 @@ window.renderCourseCard = function(course) {
 
   const detailUrl = `course-detail.html?id=${encodeURIComponent(course.id)}`;
   const syllabusUrl = `course-detail.html?id=${encodeURIComponent(course.id)}#syllabus`;
-  const enrolUrl = `checkout.html?id=${encodeURIComponent(course.id)}`;
   const playerUrl = `course-player.html?courseId=${encodeURIComponent(course.id)}`;
+  const enrolUrl = isFreeCourse ? playerUrl : `checkout.html?id=${encodeURIComponent(course.id)}`;
   
   return `
     <article class="lms-course-card category-${cat.theme} reveal" data-course-id="${course.id}" aria-label="${course.title}">
@@ -420,14 +421,14 @@ window.renderCourseCard = function(course) {
         <div class="lms-course-price-box">
           <span class="price-label">Tuition / Investment</span>
           <div class="price-wrap">
-            <span class="price-current ${priceVal === 0 ? 'free' : ''}">${priceStr}</span>
+            <span class="price-current ${isFreeCourse ? 'free' : ''}">${priceStr}</span>
             ${origPriceStr ? `<span class="price-original">${origPriceStr}</span>` : ''}
           </div>
         </div>
         <div class="lms-card-button-group">
           <a href="${detailUrl}" class="btn-lms-view" aria-label="View course details for ${course.title}">View Course</a>
-          <a href="${enrolled ? playerUrl : enrolUrl}" class="btn-lms-enrol" aria-label="${enrolled ? `Continue learning ${course.title}` : `Enrol now in ${course.title}`}">
-            ${enrolled ? '▶ Continue Learning' : '⚡ Enrol Now'}
+          <a href="${enrolled ? playerUrl : enrolUrl}" class="btn-lms-enrol" aria-label="${enrolled ? `Continue learning ${course.title}` : (isFreeCourse ? `Start free learning in ${course.title}` : `Enrol now in ${course.title}`)}">
+            ${enrolled ? '▶ Continue Learning' : (isFreeCourse ? '🎁 Start Free' : '⚡ Enrol Now')}
           </a>
         </div>
       </div>

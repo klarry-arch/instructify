@@ -93,8 +93,27 @@
       }
 
       const course = window.COURSES ? window.COURSES.find((c) => c.id === courseId) : null;
-      const defaultPriceKes = course ? course.price : 8500;
+      const defaultPriceKes = course ? (typeof course.price === 'number' ? course.price : 8500) : 8500;
       const defaultTitle = course ? course.title : 'Professional Certification Course';
+
+      // ── Instant Free Course Enrollment (Immediate Fulfillment) ──
+      if (defaultPriceKes === 0 || (course && course.isFree)) {
+        if (window.enrollCourse) window.enrollCourse(courseId);
+        const freeRef = 'FREE-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+        _setState({
+          status: 'paid',
+          courseId,
+          orderReference: freeRef,
+          amount: 0,
+          payableAmountKes: 0,
+          currency: 'KES',
+          courseTitle: defaultTitle,
+          receiptNumber: 'FREE-ACCESS-GRANTED',
+          paidAt: new Date().toISOString(),
+          error: null,
+        });
+        return;
+      }
 
       // ── Instant Order Initialization (0ms transition to payment screen) ──
       const initialRef = 'IK-2026-' + Math.random().toString(36).substring(2, 10).toUpperCase();

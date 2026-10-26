@@ -711,20 +711,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // Pre-fill course details from local data
   const course = window.COURSES ? window.COURSES.find(c => c.id === currentCourseId) : null;
   if (course) {
+    const isFree = course.price === 0 || !!course.isFree;
     document.getElementById('summary-title').textContent = course.title;
-    document.getElementById('summary-price').textContent = `KES ${course.price.toLocaleString()}`;
+    document.getElementById('summary-price').textContent = isFree ? 'FREE (100% Scholarship)' : `KES ${course.price.toLocaleString()}`;
     document.getElementById('summary-original').textContent = `KES ${course.originalPrice.toLocaleString()}`;
     document.getElementById('summary-duration').textContent = course.duration || '—';
     document.getElementById('summary-level').textContent = course.level || '—';
     document.getElementById('summary-cpd').textContent = course.cpdHours ? `${course.cpdHours} hrs` : '—';
     document.getElementById('crumb-course').textContent = course.title;
     document.getElementById('crumb-course').href = `course-detail.html?id=${course.id}`;
-    document.getElementById('pay-amount-mpesa').textContent = course.price.toLocaleString();
-    document.getElementById('pay-amount-card').textContent = course.price.toLocaleString();
+    document.getElementById('pay-amount-mpesa').textContent = isFree ? '0' : course.price.toLocaleString();
+    document.getElementById('pay-amount-card').textContent = isFree ? '0' : course.price.toLocaleString();
     const paybillAmtEl = document.getElementById('paybill-amount-display');
-    if (paybillAmtEl) paybillAmtEl.textContent = `KES ${course.price.toLocaleString()}`;
+    if (paybillAmtEl) paybillAmtEl.textContent = isFree ? 'FREE' : `KES ${course.price.toLocaleString()}`;
     const paybillTxtEl = document.getElementById('paybill-amount-text');
-    if (paybillTxtEl) paybillTxtEl.textContent = `KES ${course.price.toLocaleString()}`;
+    if (paybillTxtEl) paybillTxtEl.textContent = isFree ? '0' : `KES ${course.price.toLocaleString()}`;
+    if (isFree) {
+      const contBtn = document.getElementById('btn-continue-details');
+      if (contBtn) contBtn.innerHTML = '⚡ Complete Free Enrollment &amp; Launch Course →';
+    }
   }
 
   // Pre-fill user details if logged in
