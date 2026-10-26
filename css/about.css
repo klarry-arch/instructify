@@ -692,29 +692,36 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   4. WHO INSTRUCTIFY KENYA SERVES
+   4. WHO INSTRUCTIFY KENYA SERVES (CENTRED & BEAUTIFIED LUXURY CARDS)
    ══════════════════════════════════════════════════════════════ */
 .about-serve-section {
-  padding: 88px 0;
-  background: #FFFFFF;
+  padding: 96px 0;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%);
+  position: relative;
 }
 
 .serve-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 22px;
+  align-items: stretch;
 }
 
 .serve-card {
-  background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
-  border-radius: 18px;
-  padding: 28px 20px 24px;
+  background: radial-gradient(circle at 50% 0%, var(--serve-light, #EFF6FF) 0%, #FFFFFF 72%);
+  border: 1.5px solid var(--serve-border, #E2E8F0);
+  border-radius: 22px;
+  padding: 36px 20px 28px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease;
+  box-shadow: 0 10px 28px -6px rgba(15, 23, 42, 0.06), 0 2px 8px -2px rgba(15, 23, 42, 0.03);
   height: 100%;
 }
 
@@ -724,62 +731,133 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: var(--serve-accent, #123C8C);
+  height: 5px;
+  background: linear-gradient(90deg, var(--serve-accent, #123C8C), var(--serve-accent-bright, var(--serve-accent, #123C8C)));
+  transition: height 0.25s ease;
 }
 
 .serve-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   border-color: var(--serve-accent, #123C8C);
-  box-shadow: 0 18px 36px -6px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 24px 48px -10px var(--serve-glow, rgba(15, 23, 42, 0.16)),
+              0 0 0 1px var(--serve-accent, #123C8C);
+}
+
+.serve-card:hover::before {
+  height: 7px;
+}
+
+.serve-card-index {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-family: var(--font-heading, 'Manrope', sans-serif);
+  font-size: 13px;
+  font-weight: 850;
+  color: var(--serve-accent, #94A3B8);
+  opacity: 0.38;
+  letter-spacing: 0.06em;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.serve-card:hover .serve-card-index {
+  opacity: 0.85;
+  transform: scale(1.08);
 }
 
 .serve-icon-wrap {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
+  width: 66px;
+  height: 66px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  background: var(--serve-light, #EEF4FF);
+  font-size: 28px;
+  line-height: 1;
+  background: linear-gradient(145deg, #FFFFFF 0%, var(--serve-light, #EEF4FF) 100%);
   color: var(--serve-accent, #123C8C);
-  margin-bottom: 18px;
+  border: 1.5px solid var(--serve-border, rgba(37, 99, 235, 0.22));
+  box-shadow: 0 10px 22px -4px var(--serve-glow, rgba(37, 99, 235, 0.25)),
+              inset 0 2px 4px rgba(255, 255, 255, 0.9);
+  margin: 0 auto 20px auto;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+  position: relative;
+}
+
+.serve-card:hover .serve-icon-wrap {
+  transform: translateY(-4px) scale(1.10) rotate(-3deg);
+  box-shadow: 0 16px 30px -4px var(--serve-glow, rgba(37, 99, 235, 0.35)),
+              0 0 0 5px var(--serve-light, #EEF4FF);
+  border-color: var(--serve-accent, #123C8C);
 }
 
 .serve-card-title {
   font-family: var(--font-heading, 'Manrope', sans-serif);
   font-size: 18px;
   font-weight: 800;
-  color: #14213D;
-  margin: 0 0 10px 0;
-  line-height: 1.3;
+  color: #0F172A;
+  margin: 0 0 12px 0;
+  line-height: 1.32;
+  letter-spacing: -0.015em;
+  transition: color 0.25s ease;
+}
+
+.serve-card:hover .serve-card-title {
+  color: var(--serve-accent, #123C8C);
 }
 
 .serve-card-desc {
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 13.8px;
   color: #475569;
-  line-height: 1.62;
-  margin: 0 0 18px 0;
-  flex: 1;
+  line-height: 1.64;
+  margin: 0 0 22px 0;
+  flex: 1 1 auto;
+  font-weight: 450;
 }
 
 .serve-card-link {
   font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 13px;
+  font-size: 12.8px;
   font-weight: 700;
   color: var(--serve-accent, #123C8C);
+  background: var(--serve-light, #EFF6FF);
+  border: 1.5px solid var(--serve-border, rgba(37, 99, 235, 0.25));
+  border-radius: 999px;
+  padding: 9px 18px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 7px;
   margin-top: auto;
-  transition: gap 0.2s ease;
+  width: 100%;
+  max-width: 195px;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
 }
 
+.serve-card-link .serve-link-arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.serve-card:hover .serve-card-link,
 .serve-card-link:hover {
-  gap: 10px;
+  background: var(--serve-accent, #123C8C);
+  color: #FFFFFF !important;
+  border-color: var(--serve-accent, #123C8C);
+  box-shadow: 0 8px 20px -3px var(--serve-glow, rgba(37, 99, 235, 0.35));
+  transform: translateY(-2px);
+}
+
+.serve-card:hover .serve-card-link .serve-link-arrow,
+.serve-card-link:hover .serve-link-arrow {
+  transform: translateX(4px);
 }
 
 /* ══════════════════════════════════════════════════════════════

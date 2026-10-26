@@ -735,12 +735,202 @@
     @media (max-width: 640px) {
       .cv-grid { grid-template-columns: 1fr !important; }
       .mv-card { padding: 28px 22px !important; }
-      .about-mvv-section { padding: 56px 0 !important; }
       .founder-welcome-box {
         padding: 30px 22px !important;
       }
       .founder-statement-box {
         padding: 18px 20px !important;
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       4. WHO WE SERVE: CATCHY & APPEALING CENTRED LUXURY CARDS
+       ══════════════════════════════════════════════════════════════ */
+    .about-serve-section {
+      padding: 96px 0 !important;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #FFFFFF 100%) !important;
+      position: relative !important;
+    }
+
+    .serve-grid {
+      display: grid !important;
+      grid-template-columns: repeat(5, 1fr) !important;
+      gap: 22px !important;
+      align-items: stretch !important;
+    }
+
+    .serve-card {
+      background: radial-gradient(circle at 50% 0%, var(--serve-light, #EFF6FF) 0%, #FFFFFF 72%) !important;
+      border: 1.5px solid var(--serve-border, #E2E8F0) !important;
+      border-radius: 22px !important;
+      padding: 36px 20px 28px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      position: relative !important;
+      overflow: hidden !important;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.35s ease !important;
+      box-shadow: 0 10px 28px -6px rgba(15, 23, 42, 0.06), 0 2px 8px -2px rgba(15, 23, 42, 0.03) !important;
+      height: 100% !important;
+    }
+
+    .serve-card::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 5px !important;
+      background: linear-gradient(90deg, var(--serve-accent, #123C8C), var(--serve-accent-bright, var(--serve-accent, #123C8C))) !important;
+      transition: height 0.25s ease !important;
+    }
+
+    .serve-card:hover {
+      transform: translateY(-8px) !important;
+      border-color: var(--serve-accent, #123C8C) !important;
+      box-shadow: 0 24px 48px -10px var(--serve-glow, rgba(15, 23, 42, 0.16)),
+                  0 0 0 1px var(--serve-accent, #123C8C) !important;
+    }
+
+    .serve-card:hover::before {
+      height: 7px !important;
+    }
+
+    .serve-card-index {
+      position: absolute !important;
+      top: 14px !important;
+      right: 18px !important;
+      font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+      font-size: 13px !important;
+      font-weight: 850 !important;
+      color: var(--serve-accent, #94A3B8) !important;
+      opacity: 0.38 !important;
+      letter-spacing: 0.06em !important;
+      transition: opacity 0.3s ease, transform 0.3s ease !important;
+    }
+
+    .serve-card:hover .serve-card-index {
+      opacity: 0.85 !important;
+      transform: scale(1.08) !important;
+    }
+
+    .serve-icon-wrap {
+      width: 66px !important;
+      height: 66px !important;
+      border-radius: 20px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 28px !important;
+      line-height: 1 !important;
+      background: linear-gradient(145deg, #FFFFFF 0%, var(--serve-light, #EEF4FF) 100%) !important;
+      color: var(--serve-accent, #123C8C) !important;
+      border: 1.5px solid var(--serve-border, rgba(37, 99, 235, 0.22)) !important;
+      box-shadow: 0 10px 22px -4px var(--serve-glow, rgba(37, 99, 235, 0.25)),
+                  inset 0 2px 4px rgba(255, 255, 255, 0.9) !important;
+      margin: 0 auto 20px auto !important;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.35s ease,
+                  border-color 0.35s ease !important;
+      position: relative !important;
+    }
+
+    .serve-card:hover .serve-icon-wrap {
+      transform: translateY(-4px) scale(1.10) rotate(-3deg) !important;
+      box-shadow: 0 16px 30px -4px var(--serve-glow, rgba(37, 99, 235, 0.35)),
+                  0 0 0 5px var(--serve-light, #EEF4FF) !important;
+      border-color: var(--serve-accent, #123C8C) !important;
+    }
+
+    .serve-card-title {
+      font-family: var(--font-heading, 'Manrope', sans-serif) !important;
+      font-size: 18px !important;
+      font-weight: 800 !important;
+      color: #0F172A !important;
+      margin: 0 0 12px 0 !important;
+      line-height: 1.32 !important;
+      letter-spacing: -0.015em !important;
+      transition: color 0.25s ease !important;
+    }
+
+    .serve-card:hover .serve-card-title {
+      color: var(--serve-accent, #123C8C) !important;
+    }
+
+    .serve-card-desc {
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 13.8px !important;
+      color: #475569 !important;
+      line-height: 1.64 !important;
+      margin: 0 0 22px 0 !important;
+      flex: 1 1 auto !important;
+      font-weight: 450 !important;
+    }
+
+    .serve-card-link {
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      font-size: 12.8px !important;
+      font-weight: 700 !important;
+      color: var(--serve-accent, #123C8C) !important;
+      background: var(--serve-light, #EFF6FF) !important;
+      border: 1.5px solid var(--serve-border, rgba(37, 99, 235, 0.25)) !important;
+      border-radius: 999px !important;
+      padding: 9px 18px !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 7px !important;
+      margin-top: auto !important;
+      width: 100%;
+      max-width: 195px !important;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03) !important;
+    }
+
+    .serve-card-link .serve-link-arrow {
+      display: inline-block !important;
+      transition: transform 0.25s ease !important;
+      font-size: 14px !important;
+      line-height: 1 !important;
+    }
+
+    .serve-card:hover .serve-card-link,
+    .serve-card-link:hover {
+      background: var(--serve-accent, #123C8C) !important;
+      color: #FFFFFF !important;
+      border-color: var(--serve-accent, #123C8C) !important;
+      box-shadow: 0 8px 20px -3px var(--serve-glow, rgba(37, 99, 235, 0.35)) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    .serve-card:hover .serve-card-link .serve-link-arrow,
+    .serve-card-link:hover .serve-link-arrow {
+      transform: translateX(4px) !important;
+    }
+
+    @media (max-width: 1200px) and (min-width: 901px) {
+      .serve-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 22px !important;
+      }
+    }
+    @media (max-width: 900px) and (min-width: 641px) {
+      .serve-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+      }
+    }
+    @media (max-width: 640px) {
+      .serve-grid {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+      }
+      .serve-card {
+        padding: 30px 20px 24px !important;
       }
     }
   </style>
@@ -1248,62 +1438,67 @@
 
     <div class="serve-grid">
       <!-- 1: Educators -->
-      <div class="serve-card" style="--serve-accent:#2563EB; --serve-light:#EFF6FF;">
+      <div class="serve-card" style="--serve-accent:#2563EB; --serve-accent-bright:#3B82F6; --serve-light:#EFF6FF; --serve-glow:rgba(37,99,235,0.25); --serve-border:rgba(37,99,235,0.20);">
+        <span class="serve-card-index" aria-hidden="true">01</span>
         <div class="serve-icon-wrap" aria-hidden="true">🎓</div>
         <h3 class="serve-card-title">Educators &amp; Teachers</h3>
         <p class="serve-card-desc">
           Primary and secondary teachers upgrading CBC pedagogical strategies, assessment rubrics, and verified CPD learning hours.
         </p>
         <a href="cpd-registration.html" class="serve-card-link">
-          CPD Pathways <span>→</span>
+          <span>CPD Pathways</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
         </a>
       </div>
 
       <!-- 2: Schools & Institutions -->
-      <div class="serve-card" style="--serve-accent:#7C3AED; --serve-light:#F5F3FF;">
+      <div class="serve-card" style="--serve-accent:#7C3AED; --serve-accent-bright:#8B5CF6; --serve-light:#F5F3FF; --serve-glow:rgba(124,58,237,0.25); --serve-border:rgba(124,58,237,0.20);">
+        <span class="serve-card-index" aria-hidden="true">02</span>
         <div class="serve-icon-wrap" aria-hidden="true">🏛️</div>
         <h3 class="serve-card-title">Schools &amp; Institutions</h3>
         <p class="serve-card-desc">
           Headteachers, school boards, and administrators seeking digital-readiness audits, smart classrooms, and staff capacity building.
         </p>
         <a href="schools.html" class="serve-card-link">
-          Institutional Solutions <span>→</span>
+          <span>Institutional Solutions</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
         </a>
       </div>
 
       <!-- 3: Corporate Organisations -->
-      <div class="serve-card" style="--serve-accent:#D97706; --serve-light:#FFFBEB;">
+      <div class="serve-card" style="--serve-accent:#D97706; --serve-accent-bright:#F59E0B; --serve-light:#FFFBEB; --serve-glow:rgba(217,119,6,0.25); --serve-border:rgba(217,119,6,0.20);">
+        <span class="serve-card-index" aria-hidden="true">03</span>
         <div class="serve-icon-wrap" aria-hidden="true">🏢</div>
         <h3 class="serve-card-title">Corporate Organisations</h3>
         <p class="serve-card-desc">
           Companies investing in high-impact CSR education initiatives, digital literacy workforce upskilling, and community development.
         </p>
         <a href="consultancy.html" class="serve-card-link">
-          Corporate Partnerships <span>→</span>
+          <span>Corporate Partnerships</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
         </a>
       </div>
 
       <!-- 4: Learners -->
-      <div class="serve-card" style="--serve-accent:#059669; --serve-light:#ECFDF5;">
+      <div class="serve-card" style="--serve-accent:#059669; --serve-accent-bright:#10B981; --serve-light:#ECFDF5; --serve-glow:rgba(5,150,105,0.25); --serve-border:rgba(5,150,105,0.20);">
+        <span class="serve-card-index" aria-hidden="true">04</span>
         <div class="serve-icon-wrap" aria-hidden="true">🚀</div>
         <h3 class="serve-card-title">Students &amp; Learners</h3>
         <p class="serve-card-desc">
           Learners of all abilities accessing practical digital skills, coding fundamentals, STEM problem solving, and inclusive courses.
         </p>
         <a href="courses.html" class="serve-card-link">
-          Browse Courses <span>→</span>
+          <span>Browse Courses</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
         </a>
       </div>
 
       <!-- 5: Education Partners -->
-      <div class="serve-card" style="--serve-accent:#E11D48; --serve-light:#FFF1F2;">
+      <div class="serve-card" style="--serve-accent:#E11D48; --serve-accent-bright:#F43F5E; --serve-light:#FFF1F2; --serve-glow:rgba(225,29,72,0.25); --serve-border:rgba(225,29,72,0.20);">
+        <span class="serve-card-index" aria-hidden="true">05</span>
         <div class="serve-icon-wrap" aria-hidden="true">🤝</div>
         <h3 class="serve-card-title">Education Partners &amp; NGOs</h3>
         <p class="serve-card-desc">
           Development agencies, non-profits, and educational bodies co-designing scalable curriculum interventions and community hubs.
         </p>
         <a href="contact.html" class="serve-card-link">
-          Collaborate With Us <span>→</span>
+          <span>Collaborate With Us</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
         </a>
       </div>
     </div>

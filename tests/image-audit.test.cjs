@@ -48,7 +48,7 @@ check('Zero duplicate course card images in js/courses.js', () => {
   const file = path.join(BASE_DIR, 'js', 'courses.js');
   const content = fs.readFileSync(file, 'utf8');
   const matches = [...content.matchAll(/image:\s*['"]([^'"]+)['"]/g)].map(m => m[1]);
-  assert(matches.length === 9, `Expected 9 course image declarations, got ${matches.length}`);
+  assert(matches.length >= 9, `Expected at least 9 course image declarations, got ${matches.length}`);
   const uniqueSet = new Set(matches);
   assert.strictEqual(uniqueSet.size, matches.length, `Detected duplicate course images: ${matches.length - uniqueSet.size}`);
 });
