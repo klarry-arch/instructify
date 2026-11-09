@@ -5,6 +5,7 @@
   "framework": null,
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/coding-bootcamp/?", "dest": "/coding-bootcamp.html" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }

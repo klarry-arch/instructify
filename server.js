@@ -42,6 +42,7 @@ const apiHandlers = {
   '/api/wishlist': () => import('./api/wishlist.js'),
   '/api/contact': () => import('./api/contact.js'),
   '/api/cpd-registration': () => import('./api/cpd-registration.js'),
+  '/api/bootcamp-registration': () => import('./api/bootcamp-registration.js'),
 };
 
 const PORT = process.env.PORT || 8080;
@@ -75,8 +76,8 @@ const server = http.createServer(async (req, res) => {
 
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, X-User-Role, X-User-Id');
 
   if (req.method === 'OPTIONS') {
     res.writeHead(204);
@@ -87,7 +88,7 @@ const server = http.createServer(async (req, res) => {
   const [rawPath] = req.url.split('?');
 
   // ── Handle API Routes ──────────────────────────────────────
-  const normalizedApiPath = rawPath.replace(/\/$/, '');
+  const normalizedApiPath = rawPath.replace(/\/$/, '').replace(/\.(php|js)$/, '');
   if (apiHandlers[normalizedApiPath]) {
     try {
       const module = await apiHandlers[normalizedApiPath]();
@@ -121,12 +122,16 @@ const server = http.createServer(async (req, res) => {
   }
 
   // ── Handle Static File Serving ─────────────────────────────
-  let reqUrl = rawPath;
-  if (reqUrl === '/') reqUrl = '/index.html';
+  let reqUrl = rawPath.replace(/\/$/, '');
+  if (!reqUrl || reqUrl === '/') reqUrl = '/index.html';
 
   const safePath = path.normalize(reqUrl).replace(/^(\.\.[\/\\])+/, '');
-  const filePath = path.join(__dirname, safePath);
-  const ext = path.extname(filePath).toLowerCase();
+  let filePath = path.join(__dirname, safePath);
+  let ext = path.extname(filePath).toLowerCase();
+  if (!ext && fs.existsSync(filePath + '.html')) {
+    filePath = filePath + '.html';
+    ext = '.html';
+  }
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
   fs.readFile(filePath, (err, content) => {

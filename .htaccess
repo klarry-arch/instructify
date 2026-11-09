@@ -21,9 +21,10 @@
   RewriteRule ^services(\.html)?$ /consultancy.html [L,R=301]
   RewriteRule ^accessibility-statement(\.html)?$ /accessibility.html [L,R=301]
 
-  # ── Jumuishi Hub Clean Aliases ──
+  # ── Jumuishi Hub & Coding Boot Camp Clean Aliases ──
   RewriteRule ^jumuishi/?$ jumuishi-learning-hub.html [L,QSA]
   RewriteRule ^jumuishi-hub/?$ jumuishi-learning-hub.html [L,QSA]
+  RewriteRule ^coding-bootcamp/?$ coding-bootcamp.html [L,QSA]
 
   # ── Standalone Educational Resource Pages ──
   RewriteRule ^resources/cbc-lesson-planning-strand-alignment-toolkit/?$ resources/cbc-lesson-planning-strand-alignment-toolkit.html [L,QSA]
@@ -34,6 +35,8 @@
 
   # ── API Routing ──
   RewriteRule ^api/contact/?$ api/contact.php [L,QSA]
+  RewriteRule ^api/cpd-registration/?$ api/cpd-registration.php [L,QSA]
+  RewriteRule ^api/bootcamp-registration/?$ api/bootcamp-registration.php [L,QSA]
   RewriteRule ^api/create-order/?$ api/payment.php?action=create-order [L,QSA]
   RewriteRule ^api/initiate-payment/?$ api/payment.php?action=initiate-payment [L,QSA]
   RewriteRule ^api/verify-payment/?$ api/payment.php?action=verify-payment [L,QSA]
