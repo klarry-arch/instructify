@@ -98,7 +98,8 @@ details summary:focus-visible {
   position: relative;
   z-index: 1010;
 }
-.announcement-bar-inner {
+.announcement-bar-inner,
+.announcement-content {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,44 +157,77 @@ details summary:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: clamp(16px, 2.5vw, 36px);
   height: 72px;
 }
 .brand-link {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  flex-shrink: 0;
+  margin-right: 4px;
 }
 .brand-logo-img {
-  height: 42px;
+  height: 38px;
+  max-height: 38px;
   width: auto;
   display: block;
+}
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
 }
 .header-nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  justify-content: center;
+  gap: clamp(12px, 1.4vw, 22px);
   list-style: none;
   margin: 0;
   padding: 0;
+  white-space: nowrap;
 }
 .header-nav-link {
   font-family: var(--font-body);
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--text-main);
   text-decoration: none;
-  padding: 8px 4px;
+  padding: 8px 6px;
   position: relative;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 .header-nav-link:hover,
 .header-nav-link.active {
   color: var(--blue);
 }
+.nav-bootcamp-badge {
+  color: var(--blue) !important;
+  font-weight: 750;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-bootcamp-badge::after {
+  content: "New";
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: var(--orange-soft);
+  color: var(--orange-hover);
+  padding: 1px 6px;
+  border-radius: var(--radius-pill);
+  line-height: 1.2;
+}
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 .header-phone-link {
   display: inline-flex;
@@ -206,11 +240,28 @@ details summary:focus-visible {
   padding: 8px 12px;
   border-radius: var(--radius-sm);
   background: var(--bg-soft);
+  border: 1px solid var(--border-color);
   transition: all 0.2s ease;
+  white-space: nowrap !important;
+  flex-shrink: 0;
 }
 .header-phone-link:hover {
   background: var(--blue-soft);
+  border-color: var(--blue);
   color: var(--blue);
+}
+.header-phone-link svg {
+  color: var(--green);
+  flex-shrink: 0;
+}
+.header-actions .btn-primary-orange {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 800;
+  min-height: 42px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap !important;
+  flex-shrink: 0;
 }
 
 /* Buttons */
@@ -1580,15 +1631,30 @@ details summary:focus-visible {
   }
 }
 
-/* 768px: Mobile Landscape & Large Phones */
-@media (max-width: 768px) {
-  .header-nav-links,
+/* 1240px: Small Laptops / Narrow Viewports */
+@media (max-width: 1240px) {
+  .header-phone-link {
+    display: none;
+  }
+}
+
+/* 1040px: Tablets & Compact Desktops */
+@media (max-width: 1040px) {
+  .desktop-nav {
+    display: none;
+  }
   .header-phone-link {
     display: none;
   }
   .mobile-nav-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+}
+
+/* 768px: Mobile Landscape & Large Phones */
+@media (max-width: 768px) {
   .hero-section-split {
     padding: 40px 0 52px 0;
   }
