@@ -205,6 +205,16 @@ details summary:focus-visible {
 .header-nav-link.active {
   color: var(--blue);
 }
+.header-nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 6px;
+  right: 6px;
+  height: 2.5px;
+  background: var(--blue);
+  border-radius: 2px;
+}
 .nav-bootcamp-badge {
   color: var(--blue) !important;
   font-weight: 750;
