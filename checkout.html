@@ -153,165 +153,107 @@
   
   </style>
   <link rel="stylesheet" href="css/live-chat.css?v=19.0">
+  <link rel="stylesheet" href="css/site-header.css?v=2026.1">
 </head>
 <body>
 
 <!-- ── Navigation ───────────────────────────────────────────── -->
-<header id="site-header" class="site-header">
-<nav id="navbar" class="navbar" role="navigation" aria-label="Primary site navigation">
-  <div class="container">
-    <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
-      <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo" width="180" height="42">
-    </a>
-
-    <!-- Desktop Navigation Links -->
-    <ul class="nav-links" role="list">
-      <li><a href="index.html" class="nav-link" data-nav="home">Home</a></li>
-        <li><a href="about.html" class="nav-link" data-nav="about">About</a></li>
-      
-      <!-- Courses Dropdown -->
-      <li class="nav-item-dropdown">
-        <a href="courses.html" class="nav-link nav-link-dropdown active" aria-current="page" data-nav="courses" aria-haspopup="true" aria-expanded="false">
-          Courses
-          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <ul class="nav-dropdown-menu" role="menu" aria-label="Courses">
-          <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem"><span>📚</span> Browse All Courses</a></li>
-          <li role="none"><a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem"><span>🎓</span> Teacher CPD Programmes</a></li>
-          <li role="none"><a href="courses/digital-literacy-ict-integration.html" class="nav-dropdown-item" role="menuitem"><span>💻</span> Digital Literacy &amp; ICT Integration</a></li>
-          <li role="none"><a href="jumuishi-learning-hub.html" class="nav-dropdown-item" role="menuitem"><span>♿</span> Inclusive Learning &amp; Assistive Tech</a></li>
-          <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem"><span>🚀</span> Student &amp; Youth Programmes</a></li>
-          <li role="none"><a href="courses.html" class="nav-dropdown-item" role="menuitem"><span>🎁</span> Free Community Courses</a></li>
-        </ul>
-      </li>
-
-      <!-- For Educators Dropdown -->
-      <li class="nav-item-dropdown">
-        <a href="cpd-registration.html" class="nav-link nav-link-dropdown" data-nav="educators" aria-haspopup="true" aria-expanded="false">
-          For Educators
-          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <ul class="nav-dropdown-menu" role="menu" aria-label="For Educators">
-          <li role="none"><a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem"><span>📜</span> Teacher Professional Development</a></li>
-          <li role="none"><a href="workshop-registration.html" class="nav-dropdown-item" role="menuitem"><span>📅</span> Workshops &amp; Boot Camps</a></li>
-          <li role="none"><a href="educator-studio.html" class="nav-dropdown-item" role="menuitem"><span>🛠️</span> Educator Studio</a></li>
-          <li role="none"><a href="register.html?role=educator" class="nav-dropdown-item" role="menuitem"><span>✨</span> Become a Course Creator</a></li>
-          <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem"><span>📁</span> Teaching Toolkits &amp; Rubrics</a></li>
-        </ul>
-      </li>
-
-      <!-- For Institutions Dropdown -->
-      <li class="nav-item-dropdown">
-        <a href="schools.html" class="nav-link nav-link-dropdown" data-nav="institutions" aria-haspopup="true" aria-expanded="false">
-          For Institutions
-          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <ul class="nav-dropdown-menu" role="menu" aria-label="For Institutions">
-          <li role="none"><a href="schools.html" class="nav-dropdown-item" role="menuitem"><span>🏫</span> Institutional &amp; Staff Training</a></li>
-          <li role="none"><a href="schools.html" class="nav-dropdown-item" role="menuitem"><span>💼</span> Corporate &amp; Executive Skills</a></li>
-          <li role="none"><a href="consultancy.html" class="nav-dropdown-item" role="menuitem"><span>📑</span> Educational Consultancy &amp; Advisory</a></li>
-          <li role="none"><a href="consultancy.html" class="nav-dropdown-item" role="menuitem"><span>🔄</span> Digital Transformation &amp; Strategy</a></li>
-          <li role="none"><a href="institution-dashboard.html" class="nav-dropdown-item" role="menuitem"><span>📊</span> Turnkey LMS Deployment</a></li>
-        </ul>
-      </li>
-
-      <li><a href="consultancy.html" class="nav-link" data-nav="consultancy">Consultancy</a></li>
-
-      <!-- Resources Dropdown -->
-      <li class="nav-item-dropdown">
-        <a href="resources.html" class="nav-link nav-link-dropdown" data-nav="resources" aria-haspopup="true" aria-expanded="false">
-          Resources
-          <svg class="nav-chevron" width="9" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <ul class="nav-dropdown-menu" role="menu" aria-label="Resources">
-          <li role="none"><a href="resources.html" class="nav-dropdown-item" role="menuitem"><span>📁</span> Teaching Toolkits &amp; Rubrics</a></li>
-          <li role="none"><a href="blog.html" class="nav-dropdown-item" role="menuitem"><span>📰</span> Articles &amp; Insights</a></li>
-          <li role="none"><a href="events.html" class="nav-dropdown-item" role="menuitem"><span>📅</span> Events &amp; Webinars</a></li>
-          <li role="none"><a href="podcast.html" class="nav-dropdown-item" role="menuitem"><span>🎙️</span> Podcast &amp; Media</a></li>
-          <li role="none"><a href="verify.html" class="nav-dropdown-item" role="menuitem"><span>🔒</span> Verify Certificate</a></li>
-          <li role="none"><a href="accessibility.html" class="nav-dropdown-item" role="menuitem"><span>♿</span> Accessibility Commitment</a></li>
-        </ul>
-      </li>
-    </ul>
-
-    <!-- Concept Navigation Actions: Search, Sign In, Apply Now -->
-    <div class="nav-actions concept-nav-actions">
-      <a href="courses.html#search" class="nav-icon-btn" id="nav-search-trigger" aria-label="Search" title="Search Courses &amp; Resources">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-      </a>
-      <a href="login.html" class="nav-signin-link">Sign In</a>
-      <a href="register.html" class="btn-concept-apply">Apply Now</a>
+<!-- ============================================================
+       ANNOUNCEMENT BAR & UNIFIED STICKY HEADER
+       ============================================================ -->
+  <aside class="announcement-bar" role="complementary" aria-label="Announcement">
+    <div class="home-container">
+      <div class="announcement-content">
+        <span class="announcement-badge">2026 INTAKE OPEN</span>
+        <span class="announcement-text">
+          Booking Open: On-Site Digital Skills &amp; AI Workshops for Kenyan Schools across all 47 counties.
+        </span>
+        <a href="index.html#training-request" class="announcement-link">Book School Training &rarr;</a>
+      </div>
     </div>
+  </aside>
 
-    <!-- Mobile Hamburger Button -->
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-</header>
+  <header class="sticky-header" role="banner">
+    <div class="home-container">
+      <div class="header-nav-wrap">
 
-<!-- Mobile Navigation Drawer -->
-<nav class="nav-mobile" id="nav-mobile" role="navigation" aria-label="Mobile navigation menu">
-  <div class="nav-mobile-inner" style="padding: 20px 16px; display: flex; flex-direction: column; gap: 16px;">
-    <div class="nav-mobile-links">
-      <a href="index.html" class="nav-mobile-link" data-nav="home">Home</a>
-      <a href="about.html" class="nav-mobile-link" data-nav="about" >About</a>
-      
-      <div class="nav-mobile-group" style="margin-top: 10px;">
-        <div style="font-size: 11px; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 0;">Courses</div>
-        <a href="courses.html" class="nav-mobile-sublink" data-nav="courses">Browse All Courses</a>
-        <a href="cpd-registration.html" class="nav-mobile-sublink" data-nav="cpd">Teacher CPD Programmes</a>
-        <a href="courses/digital-literacy-ict-integration.html" class="nav-mobile-sublink">Digital Literacy &amp; ICT</a>
-        <a href="jumuishi-learning-hub.html" class="nav-mobile-sublink" data-nav="jumuishi">Inclusive Learning Hub</a>
+        <!-- Brand Logo -->
+        <a href="index.html" class="brand-link" aria-label="Instructify Kenya Homepage">
+          <img
+            src="assets/images/instructify-kenya-logo.png"
+            alt="Instructify Kenya Logo"
+            class="brand-logo-img"
+            width="160"
+            height="38"
+          >
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="desktop-nav" aria-label="Primary Navigation">
+          <ul class="header-nav-links">
+            <li><a href="index.html" class="header-nav-link">Home</a></li>
+            <li><a href="about.html" class="header-nav-link">About Us</a></li>
+            <li><a href="courses.html" class="header-nav-link">Programmes</a></li>
+            <li><a href="coding-bootcamp" class="header-nav-link nav-bootcamp-badge">Boot Camp</a></li>
+            <li><a href="resources.html" class="header-nav-link">Resources</a></li>
+            <li><a href="index.html#faq" class="header-nav-link">FAQ</a></li>
+            <li><a href="contact.html" class="header-nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <a href="tel:+254143024416" class="header-phone-link" aria-label="Call Instructify Kenya">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>+254 143 024 416</span>
+          </a>
+
+          <a href="index.html#training-request" class="btn-primary-orange">
+            <span>Book School Training</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button
+            type="button"
+            class="mobile-nav-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-nav-drawer"
+          >
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
       </div>
-
-      <div class="nav-mobile-group" style="margin-top: 10px;">
-        <div style="font-size: 11px; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 0;">For Educators</div>
-        <a href="cpd-registration.html" class="nav-mobile-sublink">Professional Development</a>
-        <a href="workshop-registration.html" class="nav-mobile-sublink">Workshops &amp; Boot Camps</a>
-        <a href="educator-studio.html" class="nav-mobile-sublink">Educator Studio</a>
-        <a href="register.html?role=educator" class="nav-mobile-sublink">Become a Course Creator</a>
-      </div>
-
-      <div class="nav-mobile-group" style="margin-top: 10px;">
-        <div style="font-size: 11px; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 0;">For Institutions</div>
-        <a href="schools.html" class="nav-mobile-sublink" data-nav="institutions">Institutional Training</a>
-        <a href="consultancy.html" class="nav-mobile-sublink">Consultancy &amp; Advisory</a>
-        <a href="institution-dashboard.html" class="nav-mobile-sublink">Turnkey LMS Solutions</a>
-      </div>
-
-      <a href="consultancy.html" class="nav-mobile-link" data-nav="consultancy" style="margin-top: 10px;">Consultancy</a>
-
-      <div class="nav-mobile-group" style="margin-top: 10px;">
-        <div style="font-size: 11px; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 0;">Resources</div>
-        <a href="resources.html" class="nav-mobile-sublink" data-nav="resources">Teaching Toolkits</a>
-        <a href="blog.html" class="nav-mobile-sublink" data-nav="blog">Articles &amp; Insights</a>
-        <a href="events.html" class="nav-mobile-sublink">Events &amp; Webinars</a>
-        <a href="podcast.html" class="nav-mobile-sublink">Podcast &amp; Media</a>
-        <a href="verify.html" class="nav-mobile-sublink">Verify Certificate</a>
-        <a href="accessibility.html" class="nav-mobile-sublink">Accessibility</a>
-      </div>
-      <a href="contact.html" class="nav-mobile-link" data-nav="contact">Contact</a>
     </div>
+  </header>
 
-    <div class="nav-mobile-actions" style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #E2E8F0;">
-      <a href="login.html" class="btn btn-outline btn-md" style="width:100%; justify-content:center;">Sign In</a>
-      <a href="register.html" class="btn btn-primary btn-md btn-level-1" style="width:100%; justify-content:center;">Get Started →</a>
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-nav-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <nav class="mobile-drawer-links" aria-label="Mobile Drawer Navigation">
+      <a href="index.html" class="mobile-drawer-link">Home</a>
+      <a href="about.html" class="mobile-drawer-link">About Us</a>
+      <a href="courses.html" class="mobile-drawer-link">Featured Programmes</a>
+      <a href="coding-bootcamp" class="mobile-drawer-link">Coding Boot Camp (Nov–Dec)</a>
+      <a href="index.html#why-instructify" class="mobile-drawer-link">Why Instructify</a>
+      <a href="index.html#training-process" class="mobile-drawer-link">Training Process</a>
+      <a href="index.html#who-we-serve" class="mobile-drawer-link">Who We Serve</a>
+      <a href="index.html#training-formats" class="mobile-drawer-link">Training Formats</a>
+      <a href="resources.html" class="mobile-drawer-link">Teaching Resources</a>
+      <a href="index.html#faq" class="mobile-drawer-link">Frequently Asked Questions</a>
+      <a href="contact.html" class="mobile-drawer-link">Contact Us</a>
+    </nav>
+    <div class="mobile-drawer-cta">
+      <a href="index.html#training-request" class="btn-primary-orange">Book School Training</a>
+      <a href="tel:+254143024416" class="btn-outline-navy">Call +254 143 024 416</a>
     </div>
-  </div>
-</nav><!-- ── State: initializing (hidden by default to avoid blocking) ── -->
+  </div><!-- ── State: initializing (hidden by default to avoid blocking) ── -->
         <div id="screen-loading" class="status-screen" style="display:none;">
           <div class="status-icon spin" style="background:#E8F0F8;border:3px solid #2145E6;">⏳</div>
           <div class="status-title">Preparing your checkout…</div>
@@ -1177,5 +1119,6 @@ function retryCheckout() {
 </script>
   <script src="js/chat-config.js?v=19.0"></script>
   <script src="js/live-chat.js?v=19.0"></script>
+  <script src="js/site-header.js" defer></script>
 </body>
 </html>
