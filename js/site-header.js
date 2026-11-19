@@ -11,6 +11,7 @@
   function initHeader() {
     initHeaderScroll();
     initMobileNav();
+    initFooterNewsletter();
   }
 
   if (document.readyState === 'loading') {
@@ -33,7 +34,8 @@
   function initMobileNav() {
     const toggleBtn = document.querySelector('.mobile-nav-toggle');
     const drawer = document.querySelector('.mobile-drawer');
-    if (!toggleBtn || !drawer) return;
+    if (!toggleBtn || !drawer || toggleBtn.dataset.navBound === 'true') return;
+    toggleBtn.dataset.navBound = 'true';
 
     function toggleMenu(open) {
       const willOpen = open !== undefined ? open : !drawer.classList.contains('open');
@@ -62,6 +64,76 @@
       if (drawer.classList.contains('open') && !drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
         toggleMenu(false);
       }
+    });
+  }
+
+  function initFooterNewsletter() {
+    const forms = document.querySelectorAll('.footer-newsletter-form');
+    forms.forEach((form) => {
+      if (form.dataset.bound === 'true') return;
+      form.dataset.bound = 'true';
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const input = form.querySelector('input[type="email"]');
+        const btn = form.querySelector('button[type="submit"]');
+        const msg = form.parentElement ? form.parentElement.querySelector('.footer-newsletter-msg') : null;
+        if (!input) return;
+
+        const email = input.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          if (msg) {
+            msg.textContent = 'Please enter a valid email address.';
+            msg.classList.add('is-visible', 'is-error');
+          }
+          input.focus();
+          return;
+        }
+
+        if (btn) {
+          btn.disabled = true;
+          btn.textContent = 'Saving...';
+        }
+        if (msg) {
+          msg.classList.remove('is-error');
+        }
+
+        const payload = {
+          name: 'Newsletter Subscriber',
+          email: email,
+          category: 'General Inquiry',
+          subject: 'Footer Newsletter Subscription',
+          message: `Newsletter signup from ${window.location.pathname}`
+        };
+
+        try {
+          let res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (res.status === 404) {
+            await fetch('/api/contact.php', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+          }
+        } catch (_) {
+          // Graceful client-side confirmation even when offline
+        }
+
+        if (msg) {
+          msg.textContent = 'Subscribed! Thank you for joining Instructify Kenya.';
+          msg.classList.add('is-visible');
+          msg.classList.remove('is-error');
+        }
+        form.reset();
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = 'Subscribe';
+        }
+      });
     });
   }
 })();

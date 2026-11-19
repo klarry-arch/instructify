@@ -41,7 +41,8 @@
   function initMobileNav() {
     const toggleBtn = document.querySelector('.mobile-nav-toggle');
     const drawer = document.querySelector('.mobile-drawer');
-    if (!toggleBtn || !drawer) return;
+    if (!toggleBtn || !drawer || toggleBtn.dataset.navBound === 'true') return;
+    toggleBtn.dataset.navBound = 'true';
 
     function toggleMenu(open) {
       const willOpen = open !== undefined ? open : !drawer.classList.contains('open');

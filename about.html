@@ -935,6 +935,7 @@
     }
   </style>
   <link rel="stylesheet" href="css/site-header.css?v=2026.1">
+  <link rel="stylesheet" href="css/site-footer.css?v=2026.1">
 </head>
 <body>
 
@@ -1864,72 +1865,129 @@
 <!-- ══════════════════════════════════════════════════════════
      FOOTER — Dark Logo & Clean Alignment
      ══════════════════════════════════════════════════════════ -->
-<footer class="footer" style="background:var(--color-deep-navy); color:var(--color-white);" role="contentinfo">
-  <div class="container">
-    <div class="grid-4" style="gap:36px; padding:40px 0 48px; border-bottom: 1.5px solid var(--cta-color, #064FC1);">
+<footer class="site-footer" id="site-footer" role="contentinfo">
+  <div class="site-footer-container">
+    <div class="footer-top-grid">
+
+      <!-- Column 1: Brand, Purpose & Socials -->
       <div>
-        <div class="footer-brand-lockup" style="margin-bottom:20px;">
-          <a href="index.html" aria-label="Instructify Kenya Home" style="display:inline-block; text-decoration:none;">
-            <img src="assets/images/instructify-kenya-logo-dark.png" alt="Instructify Kenya Logo" class="footer-brand-logo" style="height:44px; width:auto; max-width:220px; object-fit:contain; display:block;">
-          </a>
-        </div>
-        <p style="font-size:14.5px; color:#CBD5E1 !important; font-weight:500; line-height:1.65; margin-bottom:24px;">
+        <a href="index.html" class="footer-brand-link" aria-label="Instructify Kenya Homepage">
+          <img
+            src="assets/images/instructify-kenya-logo.png"
+            alt="Instructify Kenya Logo"
+            class="footer-brand-img"
+            width="160"
+            height="38"
+          >
+        </a>
+        <p class="footer-brand-tagline">
           We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.
         </p>
-        <div class="footer-social-row" style="margin-bottom:20px;">
+        <p class="footer-brand-summary">
+          Practical digital skills, artificial intelligence training, coding boot camps, and CBC-aligned professional development for educators, schools, and learners across all 47 Kenyan counties.
+        </p>
+        <div class="footer-social-row" aria-label="Social media channels">
           <a href="https://www.linkedin.com/company/instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg>
           </a>
           <a href="https://www.youtube.com/@instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="YouTube">
-            <svg viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 22c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 2c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 22c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 2c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
           </a>
-          <a href="https://wa.me/254143024416?text=Hello%20Instructify%20Kenya,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <a id="footer-wa-link" href="https://wa.me/254143024416?text=Hello%20Instructify%20Kenya,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
           </a>
           <a href="https://www.facebook.com/instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02Z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02Z"/></svg>
           </a>
           <a href="https://x.com/instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="X (Twitter)">
-            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
           <a href="https://www.instagram.com/instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
         </div>
-        <div style="margin-top:14px;">
-          <a href="contact.html" class="btn btn-primary btn-sm">Partner With Us</a>
-        </div>
+        <a href="contact.html" class="footer-partner-cta">Partner With Us &rarr;</a>
       </div>
+
+      <!-- Column 2: Programmes -->
       <div>
-        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Quick Links</h4>
-        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
-          <li><a href="about.html" style="color:var(--color-white); text-decoration:none;">About Us</a></li>
-          <li><a href="courses.html" style="color:var(--color-white); text-decoration:none;">Courses &amp; LMS</a></li>
-          <li><a href="events.html" style="color:var(--color-white); text-decoration:none;">Events &amp; Workshops</a></li>
-          <li><a href="workshop-registration.html" style="color:#2DD4BF; font-weight:700; text-decoration:none;">Workshop Registration</a></li>
+        <h3 class="footer-col-title">Programmes</h3>
+        <ul class="footer-nav-list">
+          <li><a href="index.html#training-request" data-select-programme="AI for Educators">AI for Educators</a></li>
+          <li><a href="index.html#training-request" data-select-programme="Microsoft 365 for Education">Microsoft 365 for Education</a></li>
+          <li><a href="index.html#training-request" data-select-programme="Digital Teaching Skills">Digital Teaching Skills</a></li>
+          <li><a href="index.html#training-request" data-select-programme="Competency-Based Teaching and Assessment">Competency-Based Assessment</a></li>
+          <li><a href="index.html#training-request" data-select-programme="Coding and Digital Creativity">Coding &amp; STEM Creativity</a></li>
+          <li><a href="index.html#training-request" data-select-programme="School Leadership and Digital Transformation">School Leadership Track</a></li>
+          <li><a href="coding-bootcamp" class="footer-link-highlight">Coding Boot Camp <span class="footer-badge-new">NEW</span></a></li>
         </ul>
       </div>
+
+      <!-- Column 3: Quick Links -->
       <div>
-        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Discover</h4>
-        <ul style="display:flex; flex-direction:column; gap:8px; font-size:14px; list-style:none; padding:0;">
-          <li><a href="schools.html" style="color:var(--color-white); text-decoration:none;">Institutions</a></li>
-          <li><a href="community.html" style="color:var(--color-white); text-decoration:none;">Community Impact</a></li>
-          <li><a href="podcast.html" style="color:var(--color-white); text-decoration:none;">Podcast &amp; Media</a></li>
-          <li><a href="blog.html" style="color:var(--color-white); text-decoration:none;">Knowledge Hub &amp; Blog</a></li>
-          <li><a href="resources.html" style="color:var(--color-white); text-decoration:none;">Resources</a></li>
+        <h3 class="footer-col-title">Quick Links</h3>
+        <ul class="footer-nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="courses.html">Courses &amp; LMS</a></li>
+          <li><a href="schools.html">Schools &amp; Institutions</a></li>
+          <li><a href="resources.html">Teaching Resources</a></li>
+          <li><a href="blog.html">Knowledge Hub &amp; Blog</a></li>
+          <li><a href="events.html">Events &amp; Workshops</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
+
+      <!-- Column 4: Contact & Newsletter -->
       <div>
-        <h4 style="font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color: #FFFFFF !important; margin-bottom:16px;">Newsletter Signup</h4>
-        <p style="font-size:13.5px; color:#CBD5E1 !important; font-weight:500; margin-bottom:12px;">Get the latest insights on educational innovation in Kenya.</p>
-        <div style="display:flex; gap:8px;">
-          <input type="email" placeholder="Your email" aria-label="Your email address" style="padding:10px; border-radius:6px; border:none; width:100%;">
-          <button class="btn btn-blue btn-sm" style="border:none; cursor:pointer;">Subscribe</button>
+        <h3 class="footer-col-title">Contact &amp; Updates</h3>
+        <div class="footer-contact-details">
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Nairobi, Kenya — Serving all 47 counties</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <a href="tel:+254143024416">+254 143 024 416</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <a href="mailto:info@instructify.co.ke">info@instructify.co.ke</a>
+          </div>
+        </div>
+
+        <div class="footer-newsletter-box">
+          <h4 class="footer-newsletter-title">Newsletter Signup</h4>
+          <p class="footer-newsletter-desc">Get the latest insights on educational innovation in Kenya.</p>
+          <form class="footer-newsletter-form" novalidate>
+            <input type="email" class="footer-newsletter-input" placeholder="Your email" aria-label="Your email address" required autocomplete="email">
+            <button type="submit" class="footer-newsletter-btn">Subscribe</button>
+          </form>
+          <p class="footer-newsletter-msg" role="status" aria-live="polite"></p>
         </div>
       </div>
+
     </div>
-    <div style="text-align:center; padding:24px 0; font-size:13px; color:#CBD5E1 !important; font-weight:500;">
-      &copy; 2026 Instructify Kenya Ltd. All rights reserved. | <a href="contact.html" style="color: var(--primary); font-weight:700; text-decoration:underline;">Contact Us</a>
+
+    <!-- Bottom Legal Bar -->
+    <div class="footer-bottom-bar">
+      <div>&copy; 2026 Instructify Kenya Ltd. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="accessibility.html">Accessibility</a>
+        <a href="verify.html">Verify Certificate</a>
+        <a href="index.html#training-request">Book School Training</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -1938,6 +1996,6 @@
 <script src="js/chat-config.js?v=19.0"></script>
 <script src="js/live-chat.js?v=19.0"></script>
 
-  <script src="js/site-header.js" defer></script>
+  <script src="js/site-header.js?v=2026.2" defer></script>
 </body>
 </html>
