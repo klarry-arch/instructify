@@ -1091,7 +1091,11 @@
    ══════════════════════════════════════════════════════════════ */
 .about-why-section {
   padding: 96px 0;
-  background: #FFFFFF;
+  background:
+    radial-gradient(ellipse 65% 50% at 12% 10%, rgba(36, 116, 181, 0.065) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 50% at 88% 92%, rgba(245, 158, 61, 0.065) 0%, transparent 65%),
+    linear-gradient(180deg, #F5F9FC 0%, #EDF3F9 100%);
+  position: relative;
 }
 
 .about-why-section .about-heading-lg,
@@ -1110,21 +1114,23 @@
 
 .why-card {
   --why-accent: #059669;
+  --why-grad-start: #10B981;
+  --why-grad-end: #047857;
   --why-soft: #ECFDF5;
   --why-border: rgba(5, 150, 105, 0.24);
-  --why-glow: rgba(5, 150, 105, 0.22);
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 22px;
-  padding: 36px 28px 32px;
+  --why-glow: rgba(5, 150, 105, 0.30);
+  background: linear-gradient(180deg, #FFFFFF 0%, color-mix(in srgb, var(--why-soft) 32%, #FFFFFF) 100%);
+  border: 1px solid rgba(18, 59, 93, 0.09);
+  border-radius: 24px;
+  padding: 38px 28px 26px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 24px -6px rgba(18, 59, 93, 0.06), 0 2px 6px rgba(18, 59, 93, 0.03);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 12px 32px -8px rgba(18, 59, 93, 0.09), 0 2px 8px rgba(18, 59, 93, 0.04);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.32s ease, border-color 0.32s ease;
   height: 100%;
   box-sizing: border-box;
 }
@@ -1135,94 +1141,143 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--why-accent) 0%, color-mix(in srgb, var(--why-accent) 60%, #FFFFFF) 100%);
-  opacity: 0.78;
-  transition: opacity 0.25s ease;
+  height: 5px;
+  background: linear-gradient(90deg, var(--why-grad-start) 0%, var(--why-grad-end) 100%);
+  opacity: 0.92;
+  transition: height 0.25s ease, opacity 0.25s ease;
+}
+
+.why-card::after {
+  content: "";
+  position: absolute;
+  top: -54px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--why-glow) 0%, transparent 72%);
+  opacity: 0.28;
+  pointer-events: none;
+  transition: opacity 0.32s ease, transform 0.32s ease;
 }
 
 .why-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   border-color: var(--why-border);
-  box-shadow: 0 22px 42px -10px rgba(18, 59, 93, 0.14), 0 0 0 1px var(--why-border);
+  box-shadow: 0 26px 48px -14px var(--why-glow), 0 8px 20px -6px rgba(18, 59, 93, 0.08);
 }
 
-.why-card:hover::before {
-  opacity: 1;
+.why-card:hover::after {
+  opacity: 0.45;
+  transform: translateX(-50%) scale(1.1);
 }
 
-/* Individual strength card color harmonies */
+/* Individual jewel-toned card harmonies */
 .why-card.why-emerald {
-  --why-accent: #059669;
-  --why-soft: #ECFDF5;
+  --why-accent: #047857;
+  --why-grad-start: #10B981;
+  --why-grad-end: #047857;
+  --why-soft: #E8FBF3;
   --why-border: rgba(5, 150, 105, 0.24);
-  --why-glow: rgba(5, 150, 105, 0.22);
+  --why-glow: rgba(16, 185, 129, 0.32);
 }
 .why-card.why-blue {
-  --why-accent: #1D5D9B;
-  --why-soft: #EBF4FB;
-  --why-border: rgba(29, 93, 155, 0.24);
-  --why-glow: rgba(29, 93, 155, 0.24);
+  --why-accent: #1B5E96;
+  --why-grad-start: #2E86CE;
+  --why-grad-end: #123B5D;
+  --why-soft: #EAF4FC;
+  --why-border: rgba(36, 116, 181, 0.25);
+  --why-glow: rgba(36, 116, 181, 0.32);
 }
 .why-card.why-violet {
   --why-accent: #6D28D9;
+  --why-grad-start: #8B5CF6;
+  --why-grad-end: #5B21B6;
   --why-soft: #F3EEFF;
   --why-border: rgba(109, 40, 217, 0.24);
-  --why-glow: rgba(109, 40, 217, 0.22);
+  --why-glow: rgba(124, 58, 237, 0.30);
 }
 .why-card.why-amber {
-  --why-accent: #C96A09;
-  --why-soft: #FFF5E6;
-  --why-border: rgba(201, 106, 9, 0.24);
-  --why-glow: rgba(201, 106, 9, 0.22);
+  --why-accent: #C26408;
+  --why-grad-start: #F59E3D;
+  --why-grad-end: #D97706;
+  --why-soft: #FFF4E5;
+  --why-border: rgba(217, 119, 6, 0.26);
+  --why-glow: rgba(245, 158, 61, 0.36);
 }
 .why-card.why-teal {
-  --why-accent: #0D9488;
-  --why-soft: #F0FDFA;
-  --why-border: rgba(13, 148, 136, 0.24);
-  --why-glow: rgba(13, 148, 136, 0.22);
+  --why-accent: #0F766E;
+  --why-grad-start: #14B8A6;
+  --why-grad-end: #0F766E;
+  --why-soft: #E9FBF9;
+  --why-border: rgba(13, 148, 136, 0.25);
+  --why-glow: rgba(20, 184, 166, 0.32);
 }
 .why-card.why-rose {
   --why-accent: #BE123C;
-  --why-soft: #FFF1F4;
-  --why-border: rgba(190, 18, 60, 0.22);
-  --why-glow: rgba(190, 18, 60, 0.22);
+  --why-grad-start: #F43F5E;
+  --why-grad-end: #BE123C;
+  --why-soft: #FFF0F3;
+  --why-border: rgba(190, 18, 60, 0.24);
+  --why-glow: rgba(244, 63, 94, 0.30);
+}
+
+.why-card-num {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em;
+  color: var(--why-accent);
+  background: var(--why-soft);
+  border: 1px solid var(--why-border);
+  padding: 3px 10px;
+  border-radius: 999px;
+  line-height: 1.4;
+  z-index: 2;
 }
 
 .why-icon-wrap {
-  width: 62px;
-  height: 62px;
-  border-radius: 18px;
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px auto;
-  background: linear-gradient(145deg, #FFFFFF 0%, var(--why-soft) 100%);
-  color: var(--why-accent);
-  border: 1.5px solid var(--why-border);
-  box-shadow: 0 10px 22px -6px var(--why-glow), inset 0 2px 4px rgba(255, 255, 255, 0.92);
+  margin: 4px auto 22px auto;
+  background: linear-gradient(135deg, var(--why-grad-start) 0%, var(--why-grad-end) 100%);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 26px -6px var(--why-glow), 0 0 0 6px var(--why-soft), inset 0 1px 1px rgba(255, 255, 255, 0.38);
   flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.32s ease;
 }
 
 .why-card:hover .why-icon-wrap {
-  transform: translateY(-3px) scale(1.06);
-  box-shadow: 0 14px 26px -6px var(--why-glow), 0 0 0 5px var(--why-soft);
+  transform: translateY(-4px) scale(1.08) rotate(-3deg);
+  box-shadow: 0 16px 32px -6px var(--why-glow), 0 0 0 9px var(--why-soft), inset 0 1px 1px rgba(255, 255, 255, 0.45);
 }
 
 .why-card-title {
   font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-size: 18.5px !important;
+  font-size: 19px !important;
   font-weight: 800 !important;
   color: #123B5D !important;
   margin: 0 0 12px 0 !important;
-  line-height: 1.32 !important;
+  line-height: 1.3 !important;
   letter-spacing: -0.02em !important;
   text-align: center !important;
-  min-height: 48px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 2;
 }
 
 .why-card-desc {
@@ -1232,8 +1287,45 @@
   color: #475569 !important;
   line-height: 1.68 !important;
   text-align: center !important;
-  margin: 0 !important;
+  margin: 0 0 24px 0 !important;
   max-width: 34ch;
+  position: relative;
+  z-index: 2;
+}
+
+.why-card-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  width: 100%;
+  border-top: 1px dashed rgba(18, 59, 93, 0.12);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.why-card-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--why-accent);
+  background: var(--why-soft);
+  border: 1px solid var(--why-border);
+  padding: 6px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.why-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--why-accent);
+  flex-shrink: 0;
 }
 
 /* ══════════════════════════════════════════════════════════════
