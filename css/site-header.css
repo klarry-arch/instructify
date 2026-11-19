@@ -237,28 +237,29 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: var(--hdr-orange);
-  color: var(--hdr-navy);
+  background: linear-gradient(135deg, #F7A547 0%, #EA8821 100%);
+  color: #0E2B45;
   font-family: var(--hdr-font-body);
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   padding: 10px 18px;
   min-height: 42px;
-  border-radius: var(--hdr-radius-sm);
-  border: 1.5px solid var(--hdr-orange);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-sizing: border-box;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(245, 158, 61, 0.25);
-  transition: all 0.22s ease;
+  box-shadow: 0 8px 18px -6px rgba(234, 136, 33, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, background 0.22s ease;
   white-space: nowrap !important;
   flex-shrink: 0;
 }
 .header-actions .btn-primary-orange:hover,
 .sticky-header .btn-primary-orange:hover {
-  background: var(--hdr-orange-hover);
-  border-color: var(--hdr-orange-hover);
+  background: linear-gradient(135deg, #F59B34 0%, #DC7A14 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(245, 158, 61, 0.35);
+  box-shadow: 0 12px 22px -6px rgba(234, 136, 33, 0.52);
 }
 
 /* ── Mobile Hamburger Toggle ─────────────────────────────────── */
