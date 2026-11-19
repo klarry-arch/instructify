@@ -864,108 +864,225 @@
    5. SERVICES AND AREAS OF IMPACT (ID: #services)
    ══════════════════════════════════════════════════════════════ */
 .about-services-section {
-  padding: 92px 0;
-  background: #FAFAF7;
-  border-top: 1px solid #E5E7EB;
-  border-bottom: 1px solid #E5E7EB;
+  padding: 96px 0;
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F6FB 100%);
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.about-services-section .about-heading-lg {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  color: #123B5D !important;
+  letter-spacing: -0.025em;
 }
 
 .services-impact-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
+  gap: 28px;
+  align-items: stretch;
 }
 
 .service-impact-card {
+  --svc-accent: #123B5D;
+  --svc-soft: #EBF4FB;
+  --svc-border: rgba(36, 116, 181, 0.24);
+  --svc-glow: rgba(36, 116, 181, 0.22);
   background: #FFFFFF;
-  border: 1.5px solid #DCE3EA;
-  border-radius: 20px;
-  padding: 32px 26px 28px;
+  border: 1px solid #E2E8F0;
+  border-radius: 22px;
+  padding: 34px 26px 26px;
   display: flex;
   flex-direction: column;
   position: relative;
-  box-shadow: 0 4px 18px -2px rgba(20, 33, 61, 0.04);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  box-shadow: 0 8px 24px -6px rgba(18, 59, 93, 0.06), 0 2px 6px rgba(18, 59, 93, 0.03);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   height: 100%;
+  box-sizing: border-box;
+}
+
+.service-impact-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--svc-accent) 0%, color-mix(in srgb, var(--svc-accent) 65%, #FFFFFF) 100%);
+  opacity: 0.78;
+  transition: opacity 0.25s ease;
 }
 
 .service-impact-card:hover {
   transform: translateY(-6px);
-  border-color: #123C8C;
-  box-shadow: 0 20px 38px -8px rgba(18, 60, 140, 0.14);
+  border-color: var(--svc-border);
+  box-shadow: 0 22px 42px -10px rgba(18, 59, 93, 0.14), 0 0 0 1px var(--svc-border);
+}
+
+.service-impact-card:hover::before {
+  opacity: 1;
+}
+
+/* Individual pillar color harmonies */
+.service-impact-card.svc-blue {
+  --svc-accent: #1D5D9B;
+  --svc-soft: #EBF4FB;
+  --svc-border: rgba(29, 93, 155, 0.24);
+  --svc-glow: rgba(29, 93, 155, 0.24);
+}
+.service-impact-card.svc-violet {
+  --svc-accent: #6D28D9;
+  --svc-soft: #F3EEFF;
+  --svc-border: rgba(109, 40, 217, 0.24);
+  --svc-glow: rgba(109, 40, 217, 0.22);
+}
+.service-impact-card.svc-amber {
+  --svc-accent: #C96A09;
+  --svc-soft: #FFF5E6;
+  --svc-border: rgba(201, 106, 9, 0.24);
+  --svc-glow: rgba(201, 106, 9, 0.22);
+}
+.service-impact-card.svc-emerald {
+  --svc-accent: #047857;
+  --svc-soft: #ECFDF5;
+  --svc-border: rgba(4, 120, 87, 0.24);
+  --svc-glow: rgba(4, 120, 87, 0.22);
+}
+.service-impact-card.svc-sky {
+  --svc-accent: #2474B5;
+  --svc-soft: #EBF6FF;
+  --svc-border: rgba(36, 116, 181, 0.24);
+  --svc-glow: rgba(36, 116, 181, 0.24);
+}
+.service-impact-card.svc-rose {
+  --svc-accent: #BE123C;
+  --svc-soft: #FFF1F4;
+  --svc-border: rgba(190, 18, 60, 0.22);
+  --svc-glow: rgba(190, 18, 60, 0.22);
 }
 
 .service-impact-top {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 16px;
+  text-align: center;
+  gap: 16px;
+  margin-bottom: 14px;
 }
 
 .service-impact-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
+  width: 62px;
+  height: 62px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  background: #EEF4FF;
-  color: #123C8C;
+  margin: 0 auto;
+  background: linear-gradient(145deg, #FFFFFF 0%, var(--svc-soft) 100%);
+  color: var(--svc-accent);
+  border: 1.5px solid var(--svc-border);
+  box-shadow: 0 10px 22px -6px var(--svc-glow), inset 0 2px 4px rgba(255, 255, 255, 0.92);
   flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.service-impact-card:hover .service-impact-icon {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 14px 26px -6px var(--svc-glow), 0 0 0 5px var(--svc-soft);
 }
 
 .service-impact-title {
-  font-family: var(--font-heading, 'Manrope', sans-serif);
-  font-size: 19px;
-  font-weight: 800;
-  color: #14213D;
-  margin: 0;
-  line-height: 1.3;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 18.5px !important;
+  font-weight: 800 !important;
+  color: #123B5D !important;
+  margin: 0 !important;
+  line-height: 1.32 !important;
+  letter-spacing: -0.02em !important;
+  text-align: center !important;
+  min-height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .service-impact-desc {
-  font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 14.5px;
-  color: #475569;
-  line-height: 1.65;
-  margin: 0 0 16px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 400 !important;
+  color: #475569 !important;
+  line-height: 1.66 !important;
+  text-align: center !important;
+  margin: 0 0 22px 0 !important;
 }
 
 .service-impact-value {
   background: #F8FAFC;
-  border-left: 3px solid #123C8C;
-  padding: 10px 14px;
-  border-radius: 0 8px 8px 0;
-  margin-bottom: 20px;
-  font-size: 13px;
-  line-height: 1.55;
+  border: 1px solid #E2E8F0;
+  border-left: 3.5px solid var(--svc-accent);
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin: auto 0 20px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 13.5px;
+  line-height: 1.58;
   color: #334155;
+  text-align: left;
 }
 
 .service-impact-value strong {
-  color: #0F172A;
+  font-family: 'Manrope', 'Inter', sans-serif !important;
+  color: var(--svc-accent);
   display: block;
-  font-size: 11.5px;
+  font-size: 11px;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 2px;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
+}
+
+.service-impact-footer {
+  padding-top: 16px;
+  border-top: 1px solid #F1F5F9;
+  display: flex;
+  justify-content: center;
 }
 
 .service-impact-link {
-  font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #123C8C;
-  text-decoration: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  color: var(--svc-accent) !important;
+  background: var(--svc-soft);
+  border: 1px solid var(--svc-border);
+  border-radius: 999px;
+  padding: 9px 20px;
+  text-decoration: none !important;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  margin-top: auto;
-  transition: transform 0.2s ease;
+  justify-content: center;
+  gap: 7px;
+  white-space: nowrap;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.service-impact-link .svc-arrow {
+  display: inline-block;
+  transition: transform 0.22s ease;
+}
+
+.service-impact-card:hover .service-impact-link,
 .service-impact-link:hover {
+  background: var(--svc-accent);
+  border-color: var(--svc-accent);
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 18px -4px var(--svc-glow);
+  transform: translateY(-1px);
+}
+
+.service-impact-card:hover .service-impact-link .svc-arrow,
+.service-impact-link:hover .svc-arrow {
   transform: translateX(4px);
 }
 
@@ -1510,6 +1627,9 @@
   .about-hero-text p {
     margin: 0 auto 28px !important;
   }
+  .service-impact-title {
+    min-height: auto;
+  }
   .about-hero-image-wrap img,
   .about-who-visual img {
     height: 360px;
@@ -1551,6 +1671,9 @@
   .cv-grid,
   .milestones-grid {
     grid-template-columns: 1fr !important;
+  }
+  .service-impact-title {
+    min-height: auto;
   }
   .about-hero-image-wrap img,
   .about-who-visual img {
@@ -1601,7 +1724,8 @@ a:focus-visible, button:focus-visible, .btn:focus-visible,
 
 /* Tablet */
 @media (min-width: 681px) and (max-width: 1100px) {
-  .serve-grid { grid-template-columns: repeat(2, 1fr); }
+  .serve-grid,
+  .services-impact-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Disclaimer */
