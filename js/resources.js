@@ -110,17 +110,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const categoriesGrid = document.getElementById('res-categories-grid');
   if (categoriesGrid) {
     categoriesGrid.innerHTML = categories.map(cat => `
-      <div class="res-cat-card" data-cat-id="${cat.id}" tabindex="0" role="button" aria-label="Browse ${cat.name}">
+      <div class="res-cat-card cat-${cat.color}" data-cat-id="${cat.id}" tabindex="0" role="button" aria-label="Browse ${cat.name}">
         <div class="res-cat-card-header">
-          <div class="res-cat-icon ${cat.color}">
+          <div class="res-cat-icon ${cat.color}" aria-hidden="true">
             ${getSvgIcon(cat.icon)}
           </div>
-          <span class="res-cat-badge">${cat.count} Resources</span>
+          <span class="res-cat-badge"><span class="res-cat-badge-dot" aria-hidden="true"></span>${cat.count} Resources</span>
         </div>
         <h3 class="res-cat-title">${cat.name}</h3>
         <p class="res-cat-desc">${cat.description}</p>
         <div class="res-cat-footer">
-          Explore Category <span>→</span>
+          <span class="res-cat-footer-label">Explore Category</span>
+          <span class="res-cat-arrow-btn" aria-hidden="true">&rarr;</span>
         </div>
       </div>
     `).join('');
