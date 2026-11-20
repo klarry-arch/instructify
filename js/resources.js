@@ -52,6 +52,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // ── Analytics & Event Tracking Engine ───────────────────────
+  // Declared before section renders so attachCardEventListeners can safely observe cards.
+  const ANALYTICS_STORAGE_KEY = 'instructify_resource_analytics';
+
+  function recordResourceAnalytics(eventType, resourceData) {
+    try {
+      const payload = {
+        event: eventType,
+        resource_id: resourceData?.id || 'unknown',
+        resource_title: resourceData?.title || 'Unknown Resource',
+        category: resourceData?.category || '',
+        file_size: resourceData?.fileSize || '',
+        timestamp: new Date().toISOString(),
+        url: window.location.href
+      };
+
+      // Persist in localStorage (latest 100 entries)
+      let logs = [];
+      try {
+        const raw = localStorage.getItem(ANALYTICS_STORAGE_KEY);
+        if (raw) logs = JSON.parse(raw);
+      } catch (_) {}
+      logs.push(payload);
+      if (logs.length > 100) logs = logs.slice(-100);
+      localStorage.setItem(ANALYTICS_STORAGE_KEY, JSON.stringify(logs));
+
+      // Console telemetry
+      console.info(`[Instructify Analytics] ${eventType}:`, payload);
+
+      // Forward to Google Analytics / GTM if loaded
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventType, {
+          resource_id: payload.resource_id,
+          resource_title: payload.resource_title,
+          resource_category: payload.category
+        });
+      } else if (Array.isArray(window.dataLayer)) {
+        window.dataLayer.push(payload);
+      }
+    } catch (err) {
+      console.warn('Analytics recording error:', err);
+    }
+  }
+  window.InstructifyAnalytics = { record: recordResourceAnalytics };
+
+  // IntersectionObserver to record card impressions (resource_view)
+  const recordedViews = new Set();
+  const cardViewObserver = typeof IntersectionObserver !== 'undefined'
+    ? new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const card = entry.target;
+            const resId = card.getAttribute('data-id');
+            if (resId && !recordedViews.has(resId)) {
+              recordedViews.add(resId);
+              const resObj = [...featured, ...library].find(r => r.id === resId);
+              if (resObj) {
+                recordResourceAnalytics('resource_view', resObj);
+              }
+            }
+          }
+        });
+      }, { threshold: 0.35 })
+    : null;
+
+
   // ── 1. Statistics Counter Animation ─────────────────────────
   const statsContainer = document.getElementById('resources-stats-grid');
   if (statsContainer) {
@@ -73,14 +139,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Animate numbers on scroll
     let animatedStats = false;
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !animatedStats) {
-        animatedStats = true;
-        animateAllCounters();
-        observer.disconnect();
-      }
-    }, { threshold: 0.25 });
-    observer.observe(statsContainer);
+    if (typeof IntersectionObserver !== 'undefined') {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !animatedStats) {
+          animatedStats = true;
+          animateAllCounters();
+          observer.disconnect();
+        }
+      }, { threshold: 0.25 });
+      observer.observe(statsContainer);
+    } else {
+      animateAllCounters();
+    }
   }
 
   function animateAllCounters() {
@@ -597,25 +667,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const toolkitsGrid = document.getElementById('res-toolkits-grid');
   if (toolkitsGrid) {
     toolkitsGrid.innerHTML = toolkits.map(tool => `
-      <div class="res-toolkit-card" data-id="${tool.id}">
+      <div class="res-toolkit-card filetype-${tool.fileType.toLowerCase()}" data-id="${tool.id}">
         <div class="res-toolkit-header">
-          <span class="res-filetype-pill ${tool.fileType.toLowerCase()}">${tool.fileType}</span>
-          <span class="res-editable-badge">
-            ${tool.editable ? '✏️ Editable Template' : '📄 Ready to Print'}
+          <span class="res-filetype-pill ${tool.fileType.toLowerCase()}">
+            <span class="res-filetype-dot" aria-hidden="true"></span>${tool.fileType}
+          </span>
+          <span class="res-editable-badge ${tool.editable ? 'is-editable' : 'is-print'}">
+            ${tool.editable
+              ? '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Editable Template'
+              : '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Ready to Print'}
           </span>
         </div>
+        <div class="res-toolkit-category">${tool.category}</div>
         <h4 class="res-toolkit-title">${tool.title}</h4>
         <p class="res-toolkit-desc">${tool.description}</p>
         <div class="res-toolkit-meta">
-          <span>👥 ${tool.audience}</span>
-          <span>💾 ${tool.fileSize}</span>
+          <span class="res-toolkit-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            ${tool.audience}
+          </span>
+          <span class="res-toolkit-meta-item res-toolkit-size">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            ${tool.fileSize}
+          </span>
         </div>
         <div class="res-toolkit-actions">
-          <button class="btn-card-outline res-preview-trigger" data-title="${tool.title}" data-category="${tool.category}" data-desc="${tool.description}" data-size="${tool.fileSize}" data-format="${tool.fileType}">
-            👁 Preview
+          <button type="button" class="btn-card-outline res-preview-trigger" data-title="${tool.title}" data-category="${tool.category}" data-desc="${tool.description}" data-size="${tool.fileSize}" data-format="${tool.fileType}">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Preview
           </button>
-          <button class="btn-card-primary res-download-btn" data-title="${tool.title}">
-            📥 Download
+          <button type="button" class="btn-card-primary res-download-btn" data-title="${tool.title}">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
           </button>
         </div>
       </div>
@@ -650,36 +733,52 @@ document.addEventListener('DOMContentLoaded', () => {
   const mediaGrid = document.getElementById('res-media-grid');
   if (mediaGrid) {
     mediaGrid.innerHTML = media.map(m => `
-      <div class="res-media-card" data-id="${m.id}">
+      <div class="res-media-card" data-id="${m.id}" tabindex="0" role="button" aria-label="Play ${m.title}">
         <div class="res-media-thumb">
           <img src="${m.thumbnail}" alt="${m.title}" loading="lazy">
           <div class="res-play-overlay">
-            <div class="res-play-btn-circle">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"/>
+            <div class="res-play-btn-circle" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="6 3 20 12 6 21 6 3"/>
               </svg>
             </div>
           </div>
           <span class="res-media-type-tag">${m.mediaType}</span>
-          <span class="res-media-duration">⏱ ${m.duration}</span>
+          <span class="res-media-duration">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ${m.duration}
+          </span>
         </div>
         <div class="res-media-body">
           <div class="res-media-topic">${m.topic}</div>
           <h4 class="res-media-title">${m.title}</h4>
           <p class="res-media-desc">${m.description}</p>
           <div class="res-media-footer">
-            <span>🎙 ${m.presenter}</span>
-            <span>👁 ${m.views} views</span>
+            <span class="res-media-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              ${m.presenter}
+            </span>
+            <span class="res-media-meta-item res-media-views">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              ${m.views} views
+            </span>
           </div>
         </div>
       </div>
     `).join('');
 
     mediaGrid.querySelectorAll('.res-media-card').forEach(card => {
-      card.addEventListener('click', () => {
+      const openMedia = () => {
         const id = card.getAttribute('data-id');
         const mediaObj = media.find(item => item.id === id);
         if (mediaObj) openMediaPlayerModal(mediaObj);
+      };
+      card.addEventListener('click', openMedia);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openMedia();
+        }
       });
     });
   }
@@ -691,82 +790,31 @@ document.addEventListener('DOMContentLoaded', () => {
       <article class="res-article-card">
         <div class="res-article-media">
           <img src="${art.image}" alt="${art.title}" loading="lazy">
+          <span class="res-article-date-badge">${art.date}</span>
         </div>
         <div class="res-article-body">
           <div class="res-article-category">${art.category}</div>
           <h4 class="res-article-title">${art.title}</h4>
           <p class="res-article-summary">${art.summary}</p>
           <div class="res-article-meta">
-            <span>✍️ ${art.author}</span>
-            <span>⏱ ${art.readTime}</span>
+            <span class="res-article-meta-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              ${art.author}
+            </span>
+            <span class="res-article-meta-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ${art.readTime}
+            </span>
           </div>
-          <a href="${art.link}" class="res-article-link">Read Full Article →</a>
+          <a href="${art.link}" class="res-article-link">
+            <span>Read Full Article</span>
+            <span class="res-article-arrow" aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </article>
     `).join('');
   }
 
-  // ── Analytics & Event Tracking Engine ───────────────────────
-  const ANALYTICS_STORAGE_KEY = 'instructify_resource_analytics';
-
-  function recordResourceAnalytics(eventType, resourceData) {
-    try {
-      const payload = {
-        event: eventType,
-        resource_id: resourceData?.id || 'unknown',
-        resource_title: resourceData?.title || 'Unknown Resource',
-        category: resourceData?.category || '',
-        file_size: resourceData?.fileSize || '',
-        timestamp: new Date().toISOString(),
-        url: window.location.href
-      };
-
-      // Persist in localStorage (latest 100 entries)
-      let logs = [];
-      try {
-        const raw = localStorage.getItem(ANALYTICS_STORAGE_KEY);
-        if (raw) logs = JSON.parse(raw);
-      } catch (_) {}
-      logs.push(payload);
-      if (logs.length > 100) logs = logs.slice(-100);
-      localStorage.setItem(ANALYTICS_STORAGE_KEY, JSON.stringify(logs));
-
-      // Console telemetry
-      console.info(`[Instructify Analytics] ${eventType}:`, payload);
-
-      // Forward to Google Analytics / GTM if loaded
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', eventType, {
-          resource_id: payload.resource_id,
-          resource_title: payload.resource_title,
-          resource_category: payload.category
-        });
-      } else if (Array.isArray(window.dataLayer)) {
-        window.dataLayer.push(payload);
-      }
-    } catch (err) {
-      console.warn('Analytics recording error:', err);
-    }
-  }
-  window.InstructifyAnalytics = { record: recordResourceAnalytics };
-
-  // IntersectionObserver to record card impressions (resource_view)
-  const recordedViews = new Set();
-  const cardViewObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const card = entry.target;
-        const resId = card.getAttribute('data-id');
-        if (resId && !recordedViews.has(resId)) {
-          recordedViews.add(resId);
-          const resObj = [...featured, ...library].find(r => r.id === resId);
-          if (resObj) {
-            recordResourceAnalytics('resource_view', resObj);
-          }
-        }
-      }
-    });
-  }, { threshold: 0.35 });
 
   // ── Card Rendering Helper ───────────────────────────────────
   function renderResourceCard(res, isFeatured = false) {
@@ -835,9 +883,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!container) return;
 
     // Observe each card for viewport view telemetry
-    container.querySelectorAll('.res-card').forEach(card => {
-      cardViewObserver.observe(card);
-    });
+    if (cardViewObserver) {
+      container.querySelectorAll('.res-card').forEach(card => {
+        cardViewObserver.observe(card);
+      });
+    }
 
     // View Details / Preview
     container.querySelectorAll('.res-preview-btn').forEach(btn => {
