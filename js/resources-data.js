@@ -9,7 +9,7 @@ window.RESOURCES_DATA = (function() {
 
   // ── 1. Statistics Counters ─────────────────────────────────
   const statistics = [
-    { id: 'total-resources', count: 184, suffix: '+', label: 'Available Resources', icon: 'books' },
+    { id: 'total-resources', count: 185, suffix: '+', label: 'Available Resources', icon: 'books' },
     { id: 'templates', count: 68, suffix: '+', label: 'Downloadable Templates', icon: 'file-text' },
     { id: 'pd-materials', count: 52, suffix: '+', label: 'Professional Learning Modules', icon: 'award' },
     { id: 'categories', count: 12, suffix: '', label: 'Specialized Categories', icon: 'grid' },
@@ -24,7 +24,7 @@ window.RESOURCES_DATA = (function() {
       icon: 'book-open',
       color: 'blue',
       description: 'Instructional aids, interactive classroom activities, and subject-specific teaching toolkits.',
-      count: 28
+      count: 29
     },
     {
       id: 'cbc-cbe',
@@ -118,6 +118,46 @@ window.RESOURCES_DATA = (function() {
 
   // ── 3. Featured Resources (8 High-Value Materials) ─────────
   const featured = [
+    {
+      id: 'introduction-to-computers-grade-4',
+      slug: 'introduction-to-computers-grade-4',
+      title: 'Introduction to Computers - Grade 4',
+      category: 'Teaching and Learning Materials',
+      categoryId: 'teaching-learning',
+      resourceType: 'TEACHING PACKAGE',
+      format: 'PDF',
+      audience: 'Teachers',
+      educationLevel: 'Primary School',
+      access: 'Free Resource',
+      accessBadge: 'FREE RESOURCE',
+      readTime: '60 mins',
+      updatedAt: 'Nov 2026',
+      version: 'Version 1.0 (2026 Edition)',
+      rating: 5.0,
+      downloads: 1120,
+      image: 'assets/images/home_hero_classroom.jpg',
+      imageAlt: 'Kenyan Grade 4 learners participating in an interactive computer and Microsoft Word lesson',
+      shortDescription: 'A complete, classroom-ready Grade 4 Kenya CBC teaching package for Introduction to Computers and Creating a Document in Microsoft Word — built for individual and paired computer lab sessions.',
+      description: 'A complete, classroom-ready Grade 4 Kenya CBC teaching package for Introduction to Computers and Creating a Document in Microsoft Word — built for individual and paired computer lab sessions.',
+      expandedDescription: 'Designed for Kenyan primary school computer laboratories under the Competency-Based Curriculum (CBC), this 15-section teaching package covers everything a Grade 4 teacher needs: a 60-minute timed lesson plan, learner-friendly computer fundamentals and lab safety notes, the 20-step "My School" Microsoft Word practical with pair-work role sharing, differentiation and inclusive strategies, an analytical 4-level CBC rubric, a 15-point teacher observation checklist with a completed sample assessment, a photocopy-ready learner activity sheet, 5 assessment questions with an answer key, learner and teacher reflections, and a follow-up lesson plan.',
+      intendedUsers: 'Grade 4 Primary Teachers, ICT Teachers & Teacher Trainers',
+      keyContent: [
+        'Detailed 60-Minute CBC Lesson Plan (8 Timed Stages, Core Competencies, Values & PCIs)',
+        'Complete Learner-Friendly Notes: Computer Meaning, 7 Uses, 4 Types & 6 Desktop Parts (System Unit vs. CPU)',
+        'Computer Lab Safety Rules, Posture, Safe Start-Up & Shutdown Procedures',
+        '20-Step Guided Microsoft Word Practical ("My School") with Model Text & Pair-Work Role Swaps',
+        'Differentiation & Inclusion Strategies for 8 Learner Profiles + Early-Finisher Extension Activity',
+        'Analytical CBC Assessment Rubric (EE, ME, AE, BE) & AE/BE Classroom Interventions',
+        '15-Point Teacher Observation Checklist + Completed Sample Learner Assessment',
+        'Printable Learner Activity Sheet ("My First Microsoft Word Document"), 5 Questions, Answer Key & Follow-Up Lesson'
+      ],
+      curriculumNotice: 'This independently prepared professional resource supports the implementation of Kenya’s competency-based curriculum. Teachers should verify grade-specific strands, sub-strands and learning outcomes against the latest official KICD curriculum designs.',
+      fileType: 'PDF Document',
+      fileSize: '1.1 MB',
+      pdfFileName: 'Introduction_to_Computers_Grade_4.pdf',
+      downloadUrl: 'downloads/Introduction_to_Computers_Grade_4.pdf',
+      canonicalUrl: 'https://instructify.co.ke/resources/introduction-to-computers-grade-4'
+    },
     {
       id: 'cbc-lesson-planning-strand-alignment-toolkit',
       slug: 'cbc-lesson-planning-strand-alignment-toolkit',
@@ -313,6 +353,44 @@ window.RESOURCES_DATA = (function() {
 
   // ── 4. Comprehensive Resource Library (24 Items) ───────────
   const library = [
+    {
+      id: 'res-grade4-intro-computers',
+      slug: 'introduction-to-computers-grade-4',
+      title: 'Introduction to Computers - Grade 4',
+      category: 'Teaching and Learning Materials',
+      categoryId: 'teaching-learning',
+      audience: 'Teachers',
+      educationLevel: 'Primary School',
+      format: 'PDF',
+      resourceType: 'TEACHING PACKAGE',
+      access: 'Free',
+      accessBadge: 'FREE RESOURCE',
+      date: '2026-11-20',
+      updatedAt: 'Nov 2026',
+      readTime: '60 mins',
+      rating: 5.0,
+      downloads: 1120,
+      language: 'English',
+      image: 'assets/images/home_hero_classroom.jpg',
+      imageAlt: 'Kenyan Grade 4 learners participating in an interactive computer and Microsoft Word lesson',
+      description: 'Complete 15-section Grade 4 Kenya CBC teaching package for computer basics, lab safety, and creating the "My School" document in Microsoft Word — with lesson plan, rubric, checklist, and printable learner sheet.',
+      expandedDescription: 'Designed for Kenyan primary school computer laboratories under the Competency-Based Curriculum (CBC), this 15-section teaching package covers a 60-minute timed lesson plan, learner-friendly computer notes, lab safety and start-up/shutdown procedures, the 20-step "My School" Microsoft Word practical with pair-work role swaps, inclusive differentiation strategies, an analytical CBC rubric, a 15-point teacher observation checklist with completed sample, a printable learner activity sheet, 5 assessment questions with an answer key, reflections, and a follow-up lesson.',
+      intendedUsers: 'Grade 4 Primary Teachers, ICT Teachers & Teacher Trainers',
+      keyContent: [
+        '60-Minute CBC Lesson Plan & 8-Stage Teaching Table',
+        'Computer Meaning, Uses, Types, Desktop Parts & Lab Safety Notes',
+        '20-Step "My School" Microsoft Word Practical & Pair-Work Guide',
+        'Differentiation Strategies & Early-Finisher Extension Activity',
+        'CBC Analytical Rubric, 15-Point Checklist & Sample Assessment',
+        'Printable Learner Activity Sheet, 5 Assessment Questions, Answer Key & Follow-Up Lesson'
+      ],
+      fileType: 'PDF Document',
+      fileSize: '1.1 MB',
+      pdfFileName: 'Introduction_to_Computers_Grade_4.pdf',
+      downloadUrl: 'downloads/Introduction_to_Computers_Grade_4.pdf',
+      canonicalUrl: 'https://instructify.co.ke/resources/introduction-to-computers-grade-4',
+      tags: ['Grade 4', 'CBC', 'Introduction to Computers', 'Microsoft Word', 'Lesson Plan', 'Primary School', 'Digital Literacy']
+    },
     {
       id: 'res-1',
       title: 'Junior School Integrated Science Practical Activity Guide',
