@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ${getSvgIcon(stat.icon)}
           </div>
           <div>
-            <div class="res-stat-number" data-target="${stat.count}" data-suffix="${stat.suffix}">0${stat.suffix}</div>
+            <div class="res-stat-number" data-target="${stat.count}" data-suffix="${stat.suffix}">${stat.count.toLocaleString()}${stat.suffix}</div>
             <div class="res-stat-label">${stat.label}</div>
           </div>
         </div>
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
           animateAllCounters();
           observer.disconnect();
         }
-      }, { threshold: 0.25 });
+      }, { threshold: 0.05 });
       observer.observe(statsContainer);
     } else {
       animateAllCounters();

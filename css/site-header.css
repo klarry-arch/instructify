@@ -32,6 +32,11 @@
   --hdr-font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+/* Preserve position: sticky on .sticky-header across all pages */
+html, body {
+  overflow-x: clip !important;
+}
+
 /* ── Accessibility Outline ──────────────────────────────────── */
 .sticky-header a:focus-visible,
 .sticky-header button:focus-visible,
