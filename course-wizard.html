@@ -6,19 +6,19 @@
   <title>Create Course | Instructify Kenya LMS</title>
   <meta name="description" content="Create a new course on Instructify Kenya using the guided 8-step course builder.">
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=19.0">
-  <link rel="stylesheet" href="css/components.css?v=19.0">
-  <link rel="stylesheet" href="css/lms-portal.css?v=19.0">
+  <link rel="stylesheet" href="css/global.css?v=2026.5">
+  <link rel="stylesheet" href="css/components.css?v=2026.5">
+  <link rel="stylesheet" href="css/lms-portal.css?v=2026.5">
 </head>
 <body class="lms-page">
 
 <!-- ── Minimal Header ── -->
-<header style="position:fixed;top:0;left:0;right:0;z-index:100;background:#FFF;border-bottom:1px solid #E2E8F0;height:56px;display:flex;align-items:center;padding:0 24px;">
-  <a href="dashboard-trainer.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#64748B;font-size:13px;font-weight:600;">
+<header style="position:fixed;top:0;left:0;right:0;z-index:100;background:#FFF;border-bottom:1px solid #E8E3D5;height:56px;display:flex;align-items:center;padding:0 24px;">
+  <a href="dashboard-trainer.html" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#5B5882;font-size:13px;font-weight:600;">
     <span>← Back to Dashboard</span>
   </a>
   <div style="flex:1;text-align:center;">
-    <span style="font-size:15px;font-weight:800;color:#0F172A;" id="wizard-header-title">Create New Course</span>
+    <span style="font-size:15px;font-weight:800;color:#1E1B4B;" id="wizard-header-title">Create New Course</span>
   </div>
   <div style="display:flex;align-items:center;gap:10px;">
     <div class="lms-autosave-indicator" id="autosave-indicator">
@@ -180,8 +180,8 @@
     const langOptions = LMSWizard.LANGUAGES.map(l => `<option value="${l}" ${data.language === l ? 'selected' : ''}>${l}</option>`).join('');
 
     return `
-      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">📋 Basic Course Information</h2>
-      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Enter the essential details about your course.</p>
+      <h2 style="font-size:22px;font-weight:800;color:#1E1B4B;margin-bottom:4px;">📋 Basic Course Information</h2>
+      <p style="font-size:14px;color:#5B5882;margin-bottom:28px;">Enter the essential details about your course.</p>
 
       <div class="lms-form-group">
         <label class="lms-label">Course Title <span class="required">*</span></label>
@@ -244,8 +244,8 @@
         <input type="text" class="lms-input" id="field-video" value="${data.promoVideo || ''}" placeholder="YouTube or Vimeo embed URL" onchange="updateWizardField('promoVideo', this.value)">
       </div>
 
-      <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:16px;margin-top:8px;">
-        <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:12px;">Instructor Details</div>
+      <div style="background:#FFFDF7;border:1px solid #E8E3D5;border-radius:12px;padding:16px;margin-top:8px;">
+        <div style="font-size:13px;font-weight:700;color:#1E1B4B;margin-bottom:12px;">Instructor Details</div>
         <div class="lms-input-group">
           <div class="lms-form-group">
             <label class="lms-label">Instructor Name</label>
@@ -265,8 +265,8 @@
     const formatOptions = LMSWizard.FORMATS.map(f => `<option value="${f}" ${data.deliveryMethod === f ? 'selected' : ''}>${f}</option>`).join('');
 
     return `
-      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">🎯 Learning Information</h2>
-      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Define what learners will achieve and who this course is for.</p>
+      <h2 style="font-size:22px;font-weight:800;color:#1E1B4B;margin-bottom:4px;">🎯 Learning Information</h2>
+      <p style="font-size:14px;color:#5B5882;margin-bottom:28px;">Define what learners will achieve and who this course is for.</p>
 
       <div class="lms-form-group">
         <label class="lms-label">Target Audience</label>
@@ -395,8 +395,8 @@
     return `
       <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
         <div>
-          <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">📚 Curriculum Builder (Strands &amp; Topics)</h2>
-          <p style="font-size:14px;color:#64748B;margin-bottom:0;">Build your course structure with strands/sections, modules, and lessons.</p>
+          <h2 style="font-size:22px;font-weight:800;color:#1E1B4B;margin-bottom:4px;">📚 Curriculum Builder (Strands &amp; Topics)</h2>
+          <p style="font-size:14px;color:#5B5882;margin-bottom:0;">Build your course structure with strands/sections, modules, and lessons.</p>
         </div>
         <a href="educator-curriculum.html?course=${data.id || ''}" class="lms-btn lms-btn-outline lms-btn-sm" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
           <span>📑 Open in Full Strand Studio →</span>
@@ -428,7 +428,7 @@
 
     if (allLessons.length === 0) {
       return `
-        <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">✏️ Lesson Content</h2>
+        <h2 style="font-size:22px;font-weight:800;color:#1E1B4B;margin-bottom:4px;">✏️ Lesson Content</h2>
         <div class="lms-empty-state" style="margin-top:32px;">
           <div class="icon">✏️</div>
           <div class="title">No lessons to edit</div>
@@ -438,8 +438,8 @@
     }
 
     return `
-      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">✏️ Lesson Content Editor</h2>
-      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Add content to each lesson. Select a lesson to edit.</p>
+      <h2 style="font-size:22px;font-weight:800;color:#1E1B4B;margin-bottom:4px;">✏️ Lesson Content Editor</h2>
+      <p style="font-size:14px;color:#5B5882;margin-bottom:28px;">Add content to each lesson. Select a lesson to edit.</p>
 
       <div class="lms-tabs" id="lesson-tabs">
         ${allLessons.map((l, i) => `<button class="lms-tab ${i === 0 ? 'active' : ''}" onclick="switchLessonTab(${i})">${l.title}</button>`).join('')}
@@ -451,7 +451,7 @@
             <div class="lms-card-body">
               <div class="lms-form-group">
                 <label class="lms-label">Lesson Title</label>
-                <input type="text" class="lms-input" value="${l.title}" readonly style="background:#F8FAFC;">
+                <input type="text" class="lms-input" value="${l.title}" readonly style="background:#FFFDF7;">
               </div>
               <div class="lms-form-group">
                 <label class="lms-label">Content (HTML supported)</label>
@@ -497,7 +497,7 @@
 
     if (assessments.length === 0) {
       return `
-        <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">📝 Assessment Setup</h2>
+        <h2 style="font-size:22px;font-weight:800;color:#1E1B4B;margin-bottom:4px;">📝 Assessment Setup</h2>
         <div class="lms-empty-state" style="margin-top:32px;">
           <div class="icon">📝</div>
           <div class="title">No assessments yet</div>
@@ -507,8 +507,8 @@
     }
 
     return `
-      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">📝 Assessment Setup</h2>
-      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Configure grading, time limits, and question settings for your assessments.</p>
+      <h2 style="font-size:22px;font-weight:800;color:#1E1B4B;margin-bottom:4px;">📝 Assessment Setup</h2>
+      <p style="font-size:14px;color:#5B5882;margin-bottom:28px;">Configure grading, time limits, and question settings for your assessments.</p>
 
       ${assessments.map(a => `
         <div class="lms-card" style="margin-bottom:16px;">
@@ -534,7 +534,7 @@
                   onchange="updateLessonField('${a.id}','timeLimit',parseInt(this.value)||null)">
               </div>
             </div>
-            ${a.type === 'quiz' ? `<div style="font-size:12px;color:#64748B;margin-top:8px;">📊 ${(a.questions || []).length} question(s) configured</div>` : ''}
+            ${a.type === 'quiz' ? `<div style="font-size:12px;color:#5B5882;margin-top:8px;">📊 ${(a.questions || []).length} question(s) configured</div>` : ''}
             ${a.type === 'assignment' ? `
               <div class="lms-form-group" style="margin-top:12px;">
                 <label class="lms-label">Assignment Instructions</label>
@@ -550,8 +550,8 @@
   // ── Step 6: Enrolment & Access ──
   function renderStep6(data) {
     return `
-      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">👥 Enrolment & Access</h2>
-      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Configure how students can access and enrol in this course.</p>
+      <h2 style="font-size:22px;font-weight:800;color:#1E1B4B;margin-bottom:4px;">👥 Enrolment & Access</h2>
+      <p style="font-size:14px;color:#5B5882;margin-bottom:28px;">Configure how students can access and enrol in this course.</p>
 
       <div class="lms-form-group">
         <label class="lms-label">Access Type <span class="required">*</span></label>
@@ -566,7 +566,7 @@
                   <span style="font-size:18px;">${icons[type]}</span>
                   <span style="font-weight:700;">${labels[type]}</span>
                 </div>
-                <span style="font-size:11px;color:#64748B;">${descs[type]}</span>
+                <span style="font-size:11px;color:#5B5882;">${descs[type]}</span>
               </label>
             `;
           }).join('')}
@@ -595,8 +595,8 @@
         </div>
       </div>
 
-      <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:16px;margin-top:16px;">
-        <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:12px;">💰 Pricing</div>
+      <div style="background:#FFFDF7;border:1px solid #E8E3D5;border-radius:12px;padding:16px;margin-top:16px;">
+        <div style="font-size:13px;font-weight:700;color:#1E1B4B;margin-bottom:12px;">💰 Pricing</div>
         <div class="lms-input-group">
           <div class="lms-form-group">
             <label class="lms-label">Pricing Type</label>
@@ -624,8 +624,8 @@
   function renderStep7(data) {
     const rules = data.completionRules || {};
     return `
-      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">🏆 Completion & Certification</h2>
-      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Define what learners must achieve to complete this course.</p>
+      <h2 style="font-size:22px;font-weight:800;color:#1E1B4B;margin-bottom:4px;">🏆 Completion & Certification</h2>
+      <p style="font-size:14px;color:#5B5882;margin-bottom:28px;">Define what learners must achieve to complete this course.</p>
 
       <div class="lms-card" style="margin-bottom:20px;">
         <div class="lms-card-header"><h3 class="lms-card-title">Completion Rules</h3></div>
@@ -671,8 +671,8 @@
     const isReady = allErrors.length === 0;
 
     return `
-      <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:4px;">🚀 Review & Publish</h2>
-      <p style="font-size:14px;color:#64748B;margin-bottom:28px;">Review your course details before publishing.</p>
+      <h2 style="font-size:22px;font-weight:800;color:#1E1B4B;margin-bottom:4px;">🚀 Review & Publish</h2>
+      <p style="font-size:14px;color:#5B5882;margin-bottom:28px;">Review your course details before publishing.</p>
 
       ${allErrors.length > 0 ? `
         <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:12px;padding:16px;margin-bottom:20px;">
@@ -692,7 +692,7 @@
         <div class="lms-card-header"><h3 class="lms-card-title">Course Summary</h3></div>
         <div class="lms-card-body">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-            <div><span style="font-size:12px;color:#94A3B8;text-transform:uppercase;">Title</span><div style="font-size:14px;font-weight:700;color:#0F172A;">${data.title || '—'}</div></div>
+            <div><span style="font-size:12px;color:#94A3B8;text-transform:uppercase;">Title</span><div style="font-size:14px;font-weight:700;color:#1E1B4B;">${data.title || '—'}</div></div>
             <div><span style="font-size:12px;color:#94A3B8;text-transform:uppercase;">Category</span><div style="font-size:14px;font-weight:600;">${data.category || '—'}</div></div>
             <div><span style="font-size:12px;color:#94A3B8;text-transform:uppercase;">Level</span><div style="font-size:14px;font-weight:600;">${data.level || '—'}</div></div>
             <div><span style="font-size:12px;color:#94A3B8;text-transform:uppercase;">Duration</span><div style="font-size:14px;font-weight:600;">${data.duration || '—'}</div></div>

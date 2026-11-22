@@ -1,0 +1,69 @@
+/* ============================================================
+   INSTRUCTIFY KENYA — CANONICAL BRAND COLOUR SYSTEM & TOKENS
+   Source of Truth for instructify.co.ke
+   Core Palette:
+     - Royal Blue (Primary):         #2563EB
+     - Sunny Gold (Accent):          #FACC15
+     - Warm Off-White (Surface/BG):  #FFFDF7
+     - Deep Indigo (Body Text/Dark): #1E1B4B
+   WCAG 2.1 AA Contrast Verified:
+     - #1E1B4B on #FFFDF7 = 15.72:1 (AAA)
+     - #2563EB on #FFFDF7 =  5.08:1 (AA)
+     - #FFFFFF on #2563EB =  5.17:1 (AA)
+     - #1E1B4B on #FACC15 = 10.44:1 (AAA)
+     - #FACC15 on #1E1B4B = 10.44:1 (AAA)
+   ============================================================ */
+
+:root {
+  /* Core Brand Tokens */
+  --color-primary:            #2563EB;
+  --color-primary-hover:      #1D4ED8;
+  --color-primary-active:     #1E40AF;
+  --color-primary-soft:       #EFF6FF;
+  --color-primary-tint:       #DBEAFE;
+  --color-primary-border:     #BFDBFE;
+  --color-primary-glow:       rgba(37, 99, 235, 0.26);
+
+  --color-accent:             #FACC15;
+  --color-accent-hover:       #EAB308;
+  --color-accent-active:      #CA8A04;
+  --color-accent-soft:        #FEFCE8;
+  --color-accent-tint:        #FEF9C3;
+  --color-accent-border:      #FDE047;
+  --color-accent-glow:        rgba(250, 204, 21, 0.36);
+
+  --color-surface:            #FFFDF7;
+  --color-surface-elevated:   #FFFFFF;
+  --color-surface-subtle:     #F7F3E6;
+  --color-surface-cool:       #F2F6FF;
+
+  --color-text:               #1E1B4B;
+  --color-text-secondary:     #433F6B;
+  --color-text-muted:         #5B5882;
+  --color-text-disabled:      #6B688E;
+  --color-text-inverse:       #FFFFFF;
+  --color-text-inverse-muted: #E0E7FF;
+
+  --color-dark:               #1E1B4B;
+  --color-dark-deep:          #141136;
+
+  --color-border:             rgba(30, 27, 75, 0.12);
+  --color-border-strong:      rgba(30, 27, 75, 0.24);
+  --color-border-warm:        #E8E3D5;
+
+  --color-focus-ring:         #2563EB;
+  --color-focus-halo:         rgba(37, 99, 235, 0.26);
+  --color-disabled-bg:        #EFECE2;
+  --color-disabled-border:    #DDD8C8;
+
+  /* Semantic Status Tokens (WCAG 2.1 AA) */
+  --color-success:            #15803D;
+  --color-success-bg:         #F0FDF4;
+  --color-success-border:     #BBF7D0;
+  --color-warning-bg:         #FEF9C3;
+  --color-warning-border:     #FACC15;
+  --color-warning-text:       #1E1B4B;
+  --color-error:              #DC2626;
+  --color-error-bg:           #FEF2F2;
+  --color-error-border:       #FECACA;
+}

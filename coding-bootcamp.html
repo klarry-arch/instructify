@@ -11,21 +11,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css?v=2026.1">
-  <link rel="stylesheet" href="css/site-header.css?v=2026.1">
-  <link rel="stylesheet" href="css/homepage-redesign.css?v=2026.1">
+  <link rel="stylesheet" href="css/global.css?v=2026.5">
+  <link rel="stylesheet" href="css/site-header.css?v=2026.5">
+  <link rel="stylesheet" href="css/homepage-redesign.css?v=2026.5">
 
   <style>
     :root {
-      --bc-navy: #123B5D;
-      --bc-blue: #2474B5;
-      --bc-orange: #F59E3D;
+      --bc-navy: #1E1B4B;
+      --bc-blue: #2563EB;
+      --bc-orange: #FACC15;
       --bc-green: #38A169;
-      --bc-bg-soft: #F5F9FC;
+      --bc-bg-soft: #FFFDF7;
       --bc-card-bg: #FFFFFF;
-      --bc-text-dark: #1F2937;
-      --bc-text-muted: #4B5563;
-      --bc-border: #E2E8F0;
+      --bc-text-dark: #1E1B4B;
+      --bc-text-muted: #433F6B;
+      --bc-border: #E8E3D5;
     }
 
     body {
@@ -39,7 +39,7 @@
 
     /* ── Hero Section ────────────────────────────────────────── */
     .bc-hero {
-      background: linear-gradient(135deg, #123B5D 0%, #1a4b75 60%, #2474B5 100%);
+      background: linear-gradient(135deg, #1E1B4B 0%, #1E2563 55%, #2563EB 100%);
       color: #FFFFFF;
       padding: 56px 0 64px;
       position: relative;
@@ -53,7 +53,7 @@
       right: -20%;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(245, 158, 61, 0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(250, 204, 21, 0.15) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -81,7 +81,7 @@
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: #FBD38D;
+      color: #FACC15;
       margin-bottom: 20px;
     }
 
@@ -91,17 +91,17 @@
       font-weight: 800;
       line-height: 1.15;
       margin: 0 0 18px;
-      color: #FFFFFF;
+      color: #FFFFFF !important;
     }
 
     .bc-hero-title span {
-      color: var(--bc-orange);
+      color: var(--bc-orange, #FACC15) !important;
     }
 
     .bc-hero-subtitle {
       font-size: clamp(16px, 1.8vw, 19px);
       line-height: 1.6;
-      color: #E2E8F0;
+      color: #E8E3D5;
       margin: 0 0 28px;
       max-width: 620px;
     }
@@ -123,11 +123,11 @@
       border-radius: 10px;
       padding: 8px 14px;
       font-size: 0.9rem;
-      color: #F8FAFC;
+      color: #FFFDF7;
     }
 
     .bc-chip strong {
-      color: #FEFCBF;
+      color: #FACC15;
     }
 
     .bc-hero-actions {
@@ -138,7 +138,7 @@
 
     .bc-btn-primary {
       background: var(--bc-orange);
-      color: #123B5D;
+      color: #1E1B4B;
       font-weight: 700;
       font-size: 1rem;
       padding: 14px 28px;
@@ -147,17 +147,17 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 4px 14px rgba(245, 158, 61, 0.35);
+      box-shadow: 0 4px 14px rgba(250, 204, 21, 0.35);
       transition: all 0.2s ease;
       border: none;
       cursor: pointer;
     }
 
     .bc-btn-primary:hover {
-      background: #E88E28;
-      color: #0c2b45;
+      background: #EAB308;
+      color: #1E1B4B;
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(245, 158, 61, 0.45);
+      box-shadow: 0 6px 18px rgba(250, 204, 21, 0.45);
     }
 
     .bc-btn-secondary {
@@ -193,8 +193,8 @@
 
     .bc-hero-card-badge {
       display: inline-block;
-      background: #EBF8FF;
-      color: #2B6CB0;
+      background: #EFF6FF;
+      color: #2563EB;
       font-weight: 700;
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -236,7 +236,7 @@
       align-items: flex-start;
       gap: 10px;
       font-size: 0.95rem;
-      color: #374151;
+      color: #433F6B;
       margin-bottom: 10px;
     }
 
@@ -307,7 +307,7 @@
 
     .bc-track-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 32px rgba(18, 59, 93, 0.08);
+      box-shadow: 0 16px 32px rgba(30, 27, 75, 0.08);
       border-color: var(--bc-blue);
     }
 
@@ -334,7 +334,7 @@
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--bc-blue);
-      background: #EBF8FF;
+      background: #EFF6FF;
       display: inline-block;
       padding: 3px 10px;
       border-radius: 6px;
@@ -359,7 +359,7 @@
 
     .bc-track-skills li {
       font-size: 0.88rem;
-      color: #374151;
+      color: #433F6B;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -374,7 +374,7 @@
     .bc-track-btn {
       margin-top: auto;
       text-align: center;
-      background: #F1F5F9;
+      background: #F7F3E6;
       color: var(--bc-navy);
       font-weight: 600;
       font-size: 0.9rem;
@@ -439,7 +439,7 @@
       background: #FFFFFF;
       border: 1px solid var(--bc-border);
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(18, 59, 93, 0.06);
+      box-shadow: 0 10px 30px rgba(30, 27, 75, 0.06);
       overflow: hidden;
     }
 
@@ -459,7 +459,7 @@
     }
 
     .bc-form-header p {
-      color: #CBD5E1;
+      color: #E8E3D5;
       font-size: 1rem;
       margin: 0;
     }
@@ -477,7 +477,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      border-bottom: 2px solid #F1F5F9;
+      border-bottom: 2px solid #F7F3E6;
       padding-bottom: 8px;
     }
 
@@ -518,7 +518,7 @@
     .bc-form-field label {
       font-size: 0.9rem;
       font-weight: 600;
-      color: #374151;
+      color: #433F6B;
     }
 
     .bc-form-field label span.req {
@@ -534,7 +534,7 @@
       font-family: inherit;
       font-size: 0.95rem;
       color: var(--bc-text-dark);
-      background-color: #F8FAFC;
+      background-color: #FFFDF7;
       transition: all 0.2s ease;
     }
 
@@ -542,7 +542,7 @@
       outline: none;
       border-color: var(--bc-blue);
       background-color: #FFFFFF;
-      box-shadow: 0 0 0 3px rgba(36, 116, 181, 0.15);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
     }
 
     .bc-textarea {
@@ -585,7 +585,7 @@
 
     /* Payment Instructions Box */
     .bc-payment-box {
-      background: #FFFBEB;
+      background: #FEF9C3;
       border: 1.5px solid #FCD34D;
       border-radius: 14px;
       padding: 24px;
@@ -594,7 +594,7 @@
 
     .bc-payment-box h4 {
       font-size: 1.05rem;
-      color: #92400E;
+      color: #1E1B4B;
       margin: 0 0 12px;
       display: flex;
       align-items: center;
@@ -621,7 +621,7 @@
       align-items: flex-start;
       gap: 10px;
       font-size: 0.88rem;
-      color: #4B5563;
+      color: #433F6B;
       cursor: pointer;
       margin-bottom: 12px;
     }
@@ -637,7 +637,7 @@
     .bc-submit-btn {
       width: 100%;
       background: var(--bc-orange);
-      color: #123B5D;
+      color: #1E1B4B;
       font-family: 'Manrope', sans-serif;
       font-size: 1.15rem;
       font-weight: 800;
@@ -645,7 +645,7 @@
       border-radius: 12px;
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(245, 158, 61, 0.35);
+      box-shadow: 0 4px 14px rgba(250, 204, 21, 0.35);
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
@@ -655,9 +655,9 @@
     }
 
     .bc-submit-btn:hover {
-      background: #E88E28;
+      background: #EAB308;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(245, 158, 61, 0.45);
+      box-shadow: 0 6px 20px rgba(250, 204, 21, 0.45);
     }
 
     .bc-submit-btn:disabled {
@@ -694,7 +694,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(18, 59, 93, 0.7);
+      background: rgba(30, 27, 75, 0.7);
       backdrop-filter: blur(4px);
       display: none;
       align-items: center;
@@ -743,8 +743,8 @@
     }
 
     .bc-pass-box {
-      background: #F8FAFC;
-      border: 2px dashed #CBD5E1;
+      background: #FFFDF7;
+      border: 2px dashed #E8E3D5;
       border-radius: 12px;
       padding: 16px;
       margin: 20px 0;
@@ -790,7 +790,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="css/site-footer.css?v=2026.1">
+  <link rel="stylesheet" href="css/site-footer.css?v=2026.5">
 </head>
 <body>
 
@@ -977,7 +977,7 @@
       <div class="bc-tracks-grid">
         <!-- Track 1: Young Innovators (Primary & JSS) -->
         <div class="bc-track-card">
-          <div class="bc-track-icon" style="background:#FEF3C7; color:#D97706;">
+          <div class="bc-track-icon" style="background:#FEF9C3; color:#2563EB;">
             👾
           </div>
           <span class="bc-track-audience">Primary &amp; Junior School (Ages 8–14)</span>
@@ -1004,7 +1004,7 @@
 
         <!-- Track 2: Web & Python (High School & College) -->
         <div class="bc-track-card">
-          <div class="bc-track-icon" style="background:#E0E7FF; color:#4338CA;">
+          <div class="bc-track-icon" style="background:#E0E7FF; color:#1D4ED8;">
             🐍
           </div>
           <span class="bc-track-audience">High School &amp; College (Ages 15–20)</span>
@@ -1241,7 +1241,7 @@
             </div>
 
             <!-- Minor / Guardian Conditional Section -->
-            <div id="guardian-group" style="display:none; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:16px; margin-bottom:20px;">
+            <div id="guardian-group" style="display:none; background:#FFFDF7; border:1px solid #E8E3D5; border-radius:12px; padding:16px; margin-bottom:20px;">
               <h4 style="margin:0 0 10px; font-size:0.95rem; color:var(--bc-navy);">Parent / Guardian Details (For Minors)</h4>
               <div class="bc-form-row" style="margin-bottom:0;">
                 <div class="bc-form-field">
@@ -1450,9 +1450,9 @@
       </p>
 
       <div class="bc-pass-box">
-        <div style="font-size:0.8rem; text-transform:uppercase; color:#64748B; font-weight:700;">Registration Pass ID</div>
+        <div style="font-size:0.8rem; text-transform:uppercase; color:#5B5882; font-weight:700;">Registration Pass ID</div>
         <div class="bc-pass-id" id="modal-pass-id">IK-BC-2026-000000</div>
-        <div style="margin-top:8px; font-size:0.85rem; color:#475569;">
+        <div style="margin-top:8px; font-size:0.85rem; color:#433F6B;">
           <div><strong>Participant:</strong> <span id="modal-name">-</span></div>
           <div><strong>Track:</strong> <span id="modal-track">-</span></div>
           <div><strong>Mode:</strong> <span id="modal-mode">-</span></div>
@@ -1460,7 +1460,7 @@
         </div>
       </div>
 
-      <p style="font-size:0.88rem; color:#64748B;">
+      <p style="font-size:0.88rem; color:#5B5882;">
         Our academic coordinator will reach out via WhatsApp / phone to confirm your lab setup and onboarding pack before <strong>Monday 9th November 2026</strong>.
       </p>
 

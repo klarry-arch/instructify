@@ -85,7 +85,7 @@
 
     if (score <= 2) return { level: 'weak', label: 'Weak', color: '#DC2626', percent: 25 };
     if (score <= 3) return { level: 'fair', label: 'Fair', color: '#F59E0B', percent: 50 };
-    if (score <= 4) return { level: 'good', label: 'Good', color: '#2145E6', percent: 75 };
+    if (score <= 4) return { level: 'good', label: 'Good', color: '#2563EB', percent: 75 };
     return { level: 'strong', label: 'Strong', color: '#059669', percent: 100 };
   }
 

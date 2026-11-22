@@ -325,8 +325,8 @@ class StudentToolsEngine {
       this.container.innerHTML = `
         <div style="grid-column: 1 / -1; padding: 32px; text-align: center; background: #FFFFFF; border: 1px dashed #CBD5E1; border-radius: 16px;">
           <div style="font-size: 28px; margin-bottom: 8px;">🔍</div>
-          <div style="font-size: 15px; font-weight: 700; color: #0F172A;">No matching learning tools found</div>
-          <div style="font-size: 13px; color: #64748B; margin-top: 4px;">Try searching for "Quiz", "Lab", "Video", or select "All".</div>
+          <div style="font-size: 15px; font-weight: 700; color: #1E1B4B;">No matching learning tools found</div>
+          <div style="font-size: 13px; color: #5B5882; margin-top: 4px;">Try searching for "Quiz", "Lab", "Video", or select "All".</div>
           <button onclick="window.studentToolsEngine.resetFilter()" class="btn btn-outline btn-sm mt-md">Reset Filters</button>
         </div>
       `;
@@ -381,10 +381,10 @@ window.openStudentToolModal = function(toolId) {
     contentElem.innerHTML = `
       <div style="text-align:center; padding:16px 0;">
         <div class="badge badge-primary" style="margin-bottom:12px;">Junior Secondary • Integrated Science</div>
-        <div id="flashcard-box" onclick="this.classList.toggle('flipped')" style="background:linear-gradient(135deg,#EEF2FF,#F8FAFC); border:2px solid #CBD5E1; border-radius:18px; padding:36px 24px; min-height:160px; display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 16px rgba(0,0,0,0.06); transition:transform 0.3s ease;">
-          <div style="font-size:12px; font-weight:700; color:#64748B; margin-bottom:8px;">QUESTION (Click to flip)</div>
-          <div style="font-size:17px; font-weight:800; color:#0F172A;" id="fc-q">What are the three main states of matter and how do particle arrangements differ?</div>
-          <div style="font-size:14px; font-weight:600; color:#2145E6; display:none; margin-top:12px;" id="fc-a">Solid (tightly packed, fixed shape), Liquid (close, flows), Gas (widely spaced, high energy).</div>
+        <div id="flashcard-box" onclick="this.classList.toggle('flipped')" style="background:linear-gradient(135deg,#EFF6FF,#FFFDF7); border:2px solid #CBD5E1; border-radius:18px; padding:36px 24px; min-height:160px; display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 16px rgba(0,0,0,0.06); transition:transform 0.3s ease;">
+          <div style="font-size:12px; font-weight:700; color:#5B5882; margin-bottom:8px;">QUESTION (Click to flip)</div>
+          <div style="font-size:17px; font-weight:800; color:#1E1B4B;" id="fc-q">What are the three main states of matter and how do particle arrangements differ?</div>
+          <div style="font-size:14px; font-weight:600; color:#2563EB; display:none; margin-top:12px;" id="fc-a">Solid (tightly packed, fixed shape), Liquid (close, flows), Gas (widely spaced, high energy).</div>
         </div>
         <div style="display:flex; justify-content:center; gap:10px; margin-top:20px;">
           <button onclick="window.prevFlashcard()" class="btn btn-outline btn-sm">⬅ Previous</button>
@@ -398,26 +398,26 @@ window.openStudentToolModal = function(toolId) {
       <div style="padding:10px 0;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
           <span class="badge badge-success">CBC Mathematics • Grade 9</span>
-          <span style="font-weight:800; color:#FF4D00; font-size:14px;">⏱ 00:45s</span>
+          <span style="font-weight:800; color:#2563EB; font-size:14px;">⏱ 00:45s</span>
         </div>
-        <h4 style="font-size:16px; font-weight:800; color:#0F172A; margin-bottom:16px;">
+        <h4 style="font-size:16px; font-weight:800; color:#1E1B4B; margin-bottom:16px;">
           Question 1: If 2x + 6 = 18, what is the value of x?
         </h4>
         <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">
-          <button onclick="window.checkQuizAnswer(this, false)" class="student-quiz-option" style="padding:12px 16px; border:1.5px solid #CBD5E1; border-radius:12px; background:#F8FAFC; text-align:left; font-weight:600; cursor:pointer; transition:all 0.2s;">A) x = 4</button>
-          <button onclick="window.checkQuizAnswer(this, true)" class="student-quiz-option" style="padding:12px 16px; border:1.5px solid #CBD5E1; border-radius:12px; background:#F8FAFC; text-align:left; font-weight:600; cursor:pointer; transition:all 0.2s;">B) x = 6</button>
-          <button onclick="window.checkQuizAnswer(this, false)" class="student-quiz-option" style="padding:12px 16px; border:1.5px solid #CBD5E1; border-radius:12px; background:#F8FAFC; text-align:left; font-weight:600; cursor:pointer; transition:all 0.2s;">C) x = 8</button>
-          <button onclick="window.checkQuizAnswer(this, false)" class="student-quiz-option" style="padding:12px 16px; border:1.5px solid #CBD5E1; border-radius:12px; background:#F8FAFC; text-align:left; font-weight:600; cursor:pointer; transition:all 0.2s;">D) x = 12</button>
+          <button onclick="window.checkQuizAnswer(this, false)" class="student-quiz-option" style="padding:12px 16px; border:1.5px solid #CBD5E1; border-radius:12px; background:#FFFDF7; text-align:left; font-weight:600; cursor:pointer; transition:all 0.2s;">A) x = 4</button>
+          <button onclick="window.checkQuizAnswer(this, true)" class="student-quiz-option" style="padding:12px 16px; border:1.5px solid #CBD5E1; border-radius:12px; background:#FFFDF7; text-align:left; font-weight:600; cursor:pointer; transition:all 0.2s;">B) x = 6</button>
+          <button onclick="window.checkQuizAnswer(this, false)" class="student-quiz-option" style="padding:12px 16px; border:1.5px solid #CBD5E1; border-radius:12px; background:#FFFDF7; text-align:left; font-weight:600; cursor:pointer; transition:all 0.2s;">C) x = 8</button>
+          <button onclick="window.checkQuizAnswer(this, false)" class="student-quiz-option" style="padding:12px 16px; border:1.5px solid #CBD5E1; border-radius:12px; background:#FFFDF7; text-align:left; font-weight:600; cursor:pointer; transition:all 0.2s;">D) x = 12</button>
         </div>
       </div>
     `;
   } else if (toolId === 'ai-study-buddy') {
     contentElem.innerHTML = `
       <div style="display:flex; flex-direction:column; height:340px;">
-        <div style="flex:1; overflow-y:auto; padding:12px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:14px; margin-bottom:12px;" id="ai-chat-box">
+        <div style="flex:1; overflow-y:auto; padding:12px; background:#FFFDF7; border:1px solid #E8E3D5; border-radius:14px; margin-bottom:12px;" id="ai-chat-box">
           <div style="display:flex; gap:8px; margin-bottom:12px;">
-            <div style="width:28px; height:28px; border-radius:50%; background:#2145E6; color:#FFF; display:flex; align-items:center; justify-content:center; font-size:14px;">🤖</div>
-            <div style="background:#FFFFFF; border:1px solid #CBD5E1; padding:10px 14px; border-radius:14px; font-size:13px; color:#0F172A; max-width:80%;">
+            <div style="width:28px; height:28px; border-radius:50%; background:#2563EB; color:#FFF; display:flex; align-items:center; justify-content:center; font-size:14px;">🤖</div>
+            <div style="background:#FFFFFF; border:1px solid #CBD5E1; padding:10px 14px; border-radius:14px; font-size:13px; color:#1E1B4B; max-width:80%;">
               Jambo James! I am your Instructify AI Study Buddy. Ask me any homework question, concept explanation, or revision quiz for CBC & KCSE!
             </div>
           </div>
@@ -431,7 +431,7 @@ window.openStudentToolModal = function(toolId) {
   } else if (toolId === 'virtual-lab') {
     contentElem.innerHTML = `
       <div style="text-align:center; padding:18px 0;">
-        <div style="background:linear-gradient(135deg, #0F172A, #1E293B); border-radius:16px; padding:28px 20px; color:#FFFFFF; margin-bottom:18px;">
+        <div style="background:linear-gradient(135deg, #1E1B4B, #1E1B4B); border-radius:16px; padding:28px 20px; color:#FFFFFF; margin-bottom:18px;">
           <div style="font-size:36px; margin-bottom:10px;">🔬</div>
           <h4 style="font-size:17px; font-weight:800; color:#FFFFFF; margin-bottom:6px;">Virtual Microscope & Chemical Reaction Simulator</h4>
           <p style="font-size:13px; color:#94A3B8; margin-bottom:16px;">Calibrate magnification and combine solutions in real-time safety simulation.</p>
@@ -446,8 +446,8 @@ window.openStudentToolModal = function(toolId) {
     contentElem.innerHTML = `
       <div style="padding:16px 0; text-align:center;">
         <div style="font-size:40px; margin-bottom:12px;">${tool.icon}</div>
-        <h4 style="font-size:17px; font-weight:800; color:#0F172A; margin-bottom:6px;">${tool.title}</h4>
-        <p style="font-size:13.5px; color:#64748B; margin-bottom:20px;">${tool.desc}</p>
+        <h4 style="font-size:17px; font-weight:800; color:#1E1B4B; margin-bottom:6px;">${tool.title}</h4>
+        <p style="font-size:13.5px; color:#5B5882; margin-bottom:20px;">${tool.desc}</p>
         <button onclick="window.showToast('${tool.title} module launched successfully!','success'); window.closeStudentModal('student-tool-modal');" class="btn btn-primary btn-md">Start Learning Activity</button>
       </div>
     `;
@@ -516,7 +516,7 @@ window.sendStudyBuddyMsg = function() {
   const msg = input.value.trim();
   chatBox.innerHTML += `
     <div style="display:flex; justify-content:flex-end; margin-bottom:10px;">
-      <div style="background:#2145E6; color:#FFF; padding:8px 14px; border-radius:14px; font-size:13px; max-width:80%;">
+      <div style="background:#2563EB; color:#FFF; padding:8px 14px; border-radius:14px; font-size:13px; max-width:80%;">
         ${msg}
       </div>
     </div>
@@ -527,8 +527,8 @@ window.sendStudyBuddyMsg = function() {
   setTimeout(() => {
     chatBox.innerHTML += `
       <div style="display:flex; gap:8px; margin-bottom:10px;">
-        <div style="width:28px; height:28px; border-radius:50%; background:#2145E6; color:#FFF; display:flex; align-items:center; justify-content:center; font-size:14px;">🤖</div>
-        <div style="background:#FFFFFF; border:1px solid #CBD5E1; padding:10px 14px; border-radius:14px; font-size:13px; color:#0F172A; max-width:80%;">
+        <div style="width:28px; height:28px; border-radius:50%; background:#2563EB; color:#FFF; display:flex; align-items:center; justify-content:center; font-size:14px;">🤖</div>
+        <div style="background:#FFFFFF; border:1px solid #CBD5E1; padding:10px 14px; border-radius:14px; font-size:13px; color:#1E1B4B; max-width:80%;">
           Great question! In the Kenyan CBC curriculum, focus on identifying key steps and real-world applications. Here is your targeted summary: Remember to practice with past paper drills!
         </div>
       </div>

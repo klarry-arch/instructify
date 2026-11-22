@@ -6,15 +6,15 @@
   <title>Enroll & Checkout | Instructify Kenya</title>
   <meta name="description" content="Securely complete your course enrollment on Instructify Kenya. Pay via M-Pesa or card.">
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=19.0">
-  <link rel="stylesheet" href="css/animations.css?v=19.0">
-  <link rel="stylesheet" href="css/components.css?v=19.0">
+  <link rel="stylesheet" href="css/global.css?v=2026.5">
+  <link rel="stylesheet" href="css/animations.css?v=2026.5">
+  <link rel="stylesheet" href="css/components.css?v=2026.5">
   <!-- Paystack Inline JS — loaded async; CheckoutEngine checks availability -->
   <script src="https://js.paystack.co/v1/inline.js" async></script>
   <style>
     .checkout-page {
       min-height: 100vh;
-      background: linear-gradient(135deg, #091929 0%, #2145E6 60%, #3C3DDC 100%);
+      background: linear-gradient(135deg, #1E1B4B 0%, #2563EB 60%, #2563EB 100%);
       padding: calc(var(--nav-height, 72px) + 2rem) 0 4rem;
     }
     .checkout-container {
@@ -45,7 +45,7 @@
     .order-card-title { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; line-height: 1.35; margin-bottom: 1.5rem; }
     .order-card-divider { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 1rem 0; }
     .order-card-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: rgba(255,255,255,0.75); margin-bottom: 8px; }
-    .order-card-total { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #FF4D00; line-height: 1; }
+    .order-card-total { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #FACC15; line-height: 1; }
     .order-card-original { font-size: 0.85rem; color: rgba(255,255,255,0.4); text-decoration: line-through; margin-top: 2px; }
     .order-guarantee { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
 
@@ -56,62 +56,62 @@
       padding: 2rem;
       box-shadow: 0 24px 64px rgba(0,0,0,0.25);
     }
-    .form-card-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #0F172A; margin-bottom: 0.25rem; }
-    .form-card-sub { color:var(--text-muted, #475569); font-size: 0.9rem; margin-bottom: 1.75rem; }
+    .form-card-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #1E1B4B; margin-bottom: 0.25rem; }
+    .form-card-sub { color:var(--text-muted, #433F6B); font-size: 0.9rem; margin-bottom: 1.75rem; }
     .step-indicator { display: flex; gap: 8px; margin-bottom: 2rem; }
-    .step { flex: 1; height: 4px; border-radius: 4px; background: #E2E8F0; transition: background 0.3s; }
+    .step { flex: 1; height: 4px; border-radius: 4px; background: #E8E3D5; transition: background 0.3s; }
     .step.active { background: #FFFFFF; }
     .step.done { background: var(--color-tertiary, #0C7A6B); }
 
     /* ── Form fields ── */
     .field-group { margin-bottom: 1.25rem; }
-    .field-label { display: block; font-weight: 600; font-size: 0.875rem; color:var(--text-muted, #475569); margin-bottom: 6px; }
+    .field-label { display: block; font-weight: 600; font-size: 0.875rem; color:var(--text-muted, #433F6B); margin-bottom: 6px; }
     .field-input {
       width: 100%; padding: 0.75rem 1rem;
-      border: 1.5px solid #D1D5DB; border-radius: 10px;
-      font-family: var(--font-body); font-size: 0.95rem; color: #0F172A;
-      background: #F9FAFB; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+      border: 1.5px solid #E8E3D5; border-radius: 10px;
+      font-family: var(--font-body); font-size: 0.95rem; color: #1E1B4B;
+      background: #FFFDF7; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
       box-sizing: border-box;
     }
-    .field-input:focus { border-color: #2145E6; box-shadow: 0 0 0 3px rgba(30,58,138,0.1); background: #fff; }
+    .field-input:focus { border-color: #2563EB; box-shadow: 0 0 0 3px rgba(30,58,138,0.1); background: #fff; }
     .field-input.error { border-color: #DC2626; }
     .field-error { font-size: 0.78rem; color: #DC2626; margin-top: 4px; display: none; }
     .field-error.visible { display: block; }
     .field-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     @media (max-width: 480px) { .field-grid-2 { grid-template-columns: 1fr; } }
-    .field-hint { font-size: 0.78rem; color:#CBD5E1; margin-top: 4px; }
+    .field-hint { font-size: 0.78rem; color:#E8E3D5; margin-top: 4px; }
 
     /* ── Payment method tabs ── */
     .pay-method-tabs { display: flex; gap: 10px; margin-bottom: 1.5rem; }
     .pay-method-tab {
-      flex: 1; padding: 14px 8px; border: 2px solid #E2E8F0;
-      border-radius: 12px; background: #F9FAFB; cursor: pointer;
+      flex: 1; padding: 14px 8px; border: 2px solid #E8E3D5;
+      border-radius: 12px; background: #FFFDF7; cursor: pointer;
       transition: all 0.2s; text-align: center;
     }
-    .pay-method-tab:hover { border-color: #2145E6; }
-    .pay-method-tab.active { border-color: #2145E6; background: #E8F0F8; }
+    .pay-method-tab:hover { border-color: #2563EB; }
+    .pay-method-tab.active { border-color: #2563EB; background: #E8F0F8; }
     .pay-method-tab .tab-icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
-    .pay-method-tab .tab-name { font-size: 0.7rem; font-weight: 700; color:var(--text-muted, #475569); letter-spacing: 0.05em; text-transform: uppercase; }
-    .pay-method-tab.active .tab-name { color: #2145E6; }
+    .pay-method-tab .tab-name { font-size: 0.7rem; font-weight: 700; color:var(--text-muted, #433F6B); letter-spacing: 0.05em; text-transform: uppercase; }
+    .pay-method-tab.active .tab-name { color: #2563EB; }
     .pay-panel { display: none; }
     .pay-panel.active { display: block; }
     .btn-copy-tag {
-      background: #EEF3FF; color: #2145E6; border: 1px solid #C7D7FE;
+      background: #EEF3FF; color: #2563EB; border: 1px solid #C7D7FE;
       border-radius: 6px; font-size: 0.72rem; font-weight: 700;
       padding: 3px 8px; cursor: pointer; transition: all 0.15s ease;
       display: inline-flex; align-items: center; gap: 4px;
     }
-    .btn-copy-tag:hover { background: #2145E6; color: #fff; }
+    .btn-copy-tag:hover { background: #2563EB; color: #fff; }
     .btn-copy-tag.copied { background: #16A34A; color: #fff; border-color: #16A34A; }
 
     /* ── Status screens ── */
     .status-screen { text-align: center; padding: 2rem 1rem; }
     .status-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 1.25rem; }
     .status-icon.spin { animation: spin 1.2s linear infinite; }
-    .status-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #0F172A; margin-bottom: 0.5rem; }
-    .status-sub { color:var(--text-muted, #475569); font-size: 0.9rem; line-height: 1.6; max-width: 360px; margin: 0 auto 1.5rem; }
-    .status-ref { font-size: 0.8rem; color:#CBD5E1; background: #EEF4FB; border-radius: 8px; padding: 8px 14px; display: inline-block; margin-bottom: 1.5rem; }
-    .status-ref strong { color: #2145E6; }
+    .status-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #1E1B4B; margin-bottom: 0.5rem; }
+    .status-sub { color:var(--text-muted, #433F6B); font-size: 0.9rem; line-height: 1.6; max-width: 360px; margin: 0 auto 1.5rem; }
+    .status-ref { font-size: 0.8rem; color:#E8E3D5; background: #EEF4FB; border-radius: 8px; padding: 8px 14px; display: inline-block; margin-bottom: 1.5rem; }
+    .status-ref strong { color: #2563EB; }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     /* ── Submit button ── */
@@ -128,15 +128,15 @@
     .btn-enroll:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
     .btn-secondary-outline {
       width: 100%; padding: 13px;
-      background: transparent; color: #2145E6;
-      border: 1.5px solid #CBD5E1; border-radius: 99px;
+      background: transparent; color: #2563EB;
+      border: 1.5px solid #E8E3D5; border-radius: 99px;
       font-weight: 700; font-size: 0.9rem; cursor: pointer;
       transition: all 0.2s; margin-top: 10px;
     }
-    .btn-secondary-outline:hover { border-color: #2145E6; background: #E8F0F8; }
+    .btn-secondary-outline:hover { border-color: #2563EB; background: #E8F0F8; }
 
     /* ── SSL badge ── */
-    .ssl-badge { text-align: center; font-size: 0.75rem; color:#CBD5E1; margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .ssl-badge { text-align: center; font-size: 0.75rem; color:#E8E3D5; margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
     .installment-badge { background: #E0F5F2; color: #065F46; border: 1px solid rgba(5,150,105,0.2); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 1.25rem; }
   
     @media (max-width: 768px) {
@@ -152,8 +152,8 @@
     }
   
   </style>
-  <link rel="stylesheet" href="css/live-chat.css?v=19.0">
-  <link rel="stylesheet" href="css/site-header.css?v=2026.1">
+  <link rel="stylesheet" href="css/live-chat.css?v=2026.5">
+  <link rel="stylesheet" href="css/site-header.css?v=2026.5">
 </head>
 <body>
 
@@ -255,7 +255,7 @@
     </div>
   </div><!-- ── State: initializing (hidden by default to avoid blocking) ── -->
         <div id="screen-loading" class="status-screen" style="display:none;">
-          <div class="status-icon spin" style="background:#E8F0F8;border:3px solid #2145E6;">⏳</div>
+          <div class="status-icon spin" style="background:#E8F0F8;border:3px solid #2563EB;">⏳</div>
           <div class="status-title">Preparing your checkout…</div>
           <div class="status-sub">Please wait while we load your order details.</div>
         </div>
@@ -319,34 +319,34 @@
 
           <!-- ── Option A: Lipa na M-Pesa Paybill Panel ── -->
           <div id="panel-paybill" class="pay-panel active" role="tabpanel">
-            <div style="background:#F8FAFC; border:2px solid #E2E8F0; border-radius:14px; padding:1.2rem; margin-bottom:1.25rem;">
+            <div style="background:#FFFDF7; border:2px solid #E8E3D5; border-radius:14px; padding:1.2rem; margin-bottom:1.25rem;">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:6px;">
-                <span style="font-size:0.75rem; font-weight:700; color:#2145E6; text-transform:uppercase; letter-spacing:0.05em; background:#EEF3FF; padding:4px 10px; border-radius:99px;">
+                <span style="font-size:0.75rem; font-weight:700; color:#2563EB; text-transform:uppercase; letter-spacing:0.05em; background:#EEF3FF; padding:4px 10px; border-radius:99px;">
                   Option A · Equity Paybill
                 </span>
                 <span style="font-size:0.8rem; color:#16A34A; font-weight:700;">● Recommended &bull; Instant</span>
               </div>
 
               <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
-                <div style="background:#fff; border:1px solid #E2E8F0; border-radius:10px; padding:10px 12px; position:relative;">
-                  <div style="font-size:0.72rem; color:#64748B; font-weight:600; text-transform:uppercase;">Business Number</div>
-                  <div style="font-size:1.25rem; font-weight:800; color:#0F172A; font-family:monospace; margin-top:2px; letter-spacing:1px;">247247</div>
+                <div style="background:#fff; border:1px solid #E8E3D5; border-radius:10px; padding:10px 12px; position:relative;">
+                  <div style="font-size:0.72rem; color:#5B5882; font-weight:600; text-transform:uppercase;">Business Number</div>
+                  <div style="font-size:1.25rem; font-weight:800; color:#1E1B4B; font-family:monospace; margin-top:2px; letter-spacing:1px;">247247</div>
                   <button type="button" class="btn-copy-tag" onclick="copyText('247247', this)" aria-label="Copy business number 247247" style="position:absolute; top:8px; right:8px;">Copy</button>
                 </div>
-                <div style="background:#fff; border:1px solid #E2E8F0; border-radius:10px; padding:10px 12px; position:relative;">
-                  <div style="font-size:0.72rem; color:#64748B; font-weight:600; text-transform:uppercase;">Account Number</div>
-                  <div style="font-size:1.25rem; font-weight:800; color:#0F172A; font-family:monospace; margin-top:2px; letter-spacing:1px;">636445</div>
+                <div style="background:#fff; border:1px solid #E8E3D5; border-radius:10px; padding:10px 12px; position:relative;">
+                  <div style="font-size:0.72rem; color:#5B5882; font-weight:600; text-transform:uppercase;">Account Number</div>
+                  <div style="font-size:1.25rem; font-weight:800; color:#1E1B4B; font-family:monospace; margin-top:2px; letter-spacing:1px;">636445</div>
                   <button type="button" class="btn-copy-tag" onclick="copyText('636445', this)" aria-label="Copy account number 636445" style="position:absolute; top:8px; right:8px;">Copy</button>
                 </div>
               </div>
 
-              <div style="background:#fff; border:1px solid #E2E8F0; border-radius:10px; padding:10px 14px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
-                <span style="font-size:0.85rem; color:#64748B;">Payable Amount:</span>
+              <div style="background:#fff; border:1px solid #E8E3D5; border-radius:10px; padding:10px 14px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.85rem; color:#5B5882;">Payable Amount:</span>
                 <strong style="font-size:1.15rem; color:#16A34A; font-weight:800;" id="paybill-amount-display">KES 8,500</strong>
               </div>
 
-              <div style="font-size:0.82rem; color:#475569; line-height:1.55; border-top:1px solid #E2E8F0; padding-top:10px;">
-                <strong style="color:#0F172A;">How to pay via M-Pesa:</strong>
+              <div style="font-size:0.82rem; color:#433F6B; line-height:1.55; border-top:1px solid #E8E3D5; padding-top:10px;">
+                <strong style="color:#1E1B4B;">How to pay via M-Pesa:</strong>
                 <ol style="margin:6px 0 0 1.2rem; padding:0;">
                   <li>Go to <strong>M-Pesa</strong> &gt; <strong>Lipa na M-Pesa</strong> &gt; <strong>Pay Bill</strong></li>
                   <li>Enter Business No: <strong>247247</strong></li>
@@ -379,19 +379,19 @@
           <div id="panel-mpesa" class="pay-panel" role="tabpanel">
             <div style="background:#EEF3FF; border:1.5px solid #CBD5E1; border-radius:14px; padding:1.15rem; margin-bottom:1.25rem;">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
-                <span style="font-size:0.75rem; font-weight:700; color:#2145E6; text-transform:uppercase; letter-spacing:0.05em; background:#DBEAFE; padding:4px 10px; border-radius:99px;">
+                <span style="font-size:0.75rem; font-weight:700; color:#2563EB; text-transform:uppercase; letter-spacing:0.05em; background:#DBEAFE; padding:4px 10px; border-radius:99px;">
                   Option B · Instructify Kenya Line
                 </span>
-                <span style="font-size:0.85rem; color:#2145E6; font-weight:800; font-family:monospace;">0143 024 416</span>
+                <span style="font-size:0.85rem; color:#2563EB; font-weight:800; font-family:monospace;">0143 024 416</span>
               </div>
-              <p style="font-size:0.84rem; color:#475569; margin:0 0 10px 0; line-height:1.5;">
+              <p style="font-size:0.84rem; color:#433F6B; margin:0 0 10px 0; line-height:1.5;">
                 You can trigger an <strong>Instant M-Pesa STK Prompt</strong> on your phone below, or send funds directly to our verified recipient line:
               </p>
-              <div style="display:flex; gap:10px; align-items:center; background:#fff; border:1px solid #E2E8F0; border-radius:10px; padding:8px 12px; position:relative;">
+              <div style="display:flex; gap:10px; align-items:center; background:#fff; border:1px solid #E8E3D5; border-radius:10px; padding:8px 12px; position:relative;">
                 <span style="font-size:1.3rem;">📱</span>
                 <div style="flex:1;">
-                  <div style="font-size:0.72rem; color:#64748B; font-weight:600; text-transform:uppercase;">Official Line / Recipient</div>
-                  <div style="font-size:1.1rem; font-weight:800; color:#0F172A; font-family:monospace;">0143 024 416</div>
+                  <div style="font-size:0.72rem; color:#5B5882; font-weight:600; text-transform:uppercase;">Official Line / Recipient</div>
+                  <div style="font-size:1.1rem; font-weight:800; color:#1E1B4B; font-family:monospace;">0143 024 416</div>
                 </div>
                 <button type="button" class="btn-copy-tag" onclick="copyText('0143024416', this)" aria-label="Copy phone number 0143024416">Copy</button>
               </div>
@@ -408,10 +408,10 @@
             </div>
 
             <!-- Terms & Refund Policy Acknowledgement -->
-            <div style="margin: 12px 0 16px; font-size: 0.8rem; color: #475569; display: flex; align-items: flex-start; gap: 8px;">
-              <input type="checkbox" id="ck-terms-agree" checked style="margin-top: 3px; accent-color: #123C8C; cursor: pointer;">
+            <div style="margin: 12px 0 16px; font-size: 0.8rem; color: #433F6B; display: flex; align-items: flex-start; gap: 8px;">
+              <input type="checkbox" id="ck-terms-agree" checked style="margin-top: 3px; accent-color: #2563EB; cursor: pointer;">
               <label for="ck-terms-agree" style="cursor: pointer; line-height: 1.45;">
-                I agree to the <a href="contact.html" target="_blank" style="color: #123C8C; font-weight: 650; text-decoration: underline;">Terms of Service</a> and acknowledge the 30-day course enrollment refund policy.
+                I agree to the <a href="contact.html" target="_blank" style="color: #2563EB; font-weight: 650; text-decoration: underline;">Terms of Service</a> and acknowledge the 30-day course enrollment refund policy.
               </label>
             </div>
 
@@ -427,8 +427,8 @@
 
             <!-- Sub-Option B2: Direct code entry if sent manually to 0143 024 416 -->
             <div style="margin-top:1.5rem; padding-top:1.2rem; border-top:1px dashed #CBD5E1;">
-              <div style="font-size:0.85rem; font-weight:700; color:#0F172A; margin-bottom:4px;">Already sent money directly to 0143 024 416?</div>
-              <p style="font-size:0.8rem; color:#64748B; margin-bottom:10px; line-height:1.4;">
+              <div style="font-size:0.85rem; font-weight:700; color:#1E1B4B; margin-bottom:4px;">Already sent money directly to 0143 024 416?</div>
+              <p style="font-size:0.8rem; color:#5B5882; margin-bottom:10px; line-height:1.4;">
                 Enter the M-Pesa confirmation code received from Safaricom to complete your enrollment:
               </p>
               <div style="display:flex; gap:8px;">
@@ -444,7 +444,7 @@
 
           <!-- ── Card Panel ── -->
           <div id="panel-card" class="pay-panel" role="tabpanel">
-            <p style="font-size:0.875rem;color:var(--text-muted, #475569);line-height:1.6;margin-bottom:1.25rem;">
+            <p style="font-size:0.875rem;color:var(--text-muted, #433F6B);line-height:1.6;margin-bottom:1.25rem;">
               Click the button below to open the secure Paystack payment window.
               Your card details are entered directly on Paystack's encrypted form — 
               Instructify never sees or stores your card number.
@@ -460,7 +460,7 @@
 
         <!-- ── State: processing / polling ── -->
         <div id="screen-processing" class="status-screen" style="display:none;">
-          <div class="status-icon spin" style="background:var(--primary-bg, #EEF3FF);border:3px solid var(--primary, #2145E6);font-size:2rem;">⏳</div>
+          <div class="status-icon spin" style="background:var(--primary-bg, #EEF3FF);border:3px solid var(--primary, #2563EB);font-size:2rem;">⏳</div>
           <div class="status-title" id="processing-title">Payment request sent. Check your phone and enter your M-Pesa PIN to complete the payment.</div>
           <div class="status-sub" id="processing-sub">
             We are confirming your payment. Please do not refresh or close this page.
@@ -468,8 +468,8 @@
           <div class="status-ref" style="margin-bottom:1.25rem;">
             Order: <strong id="processing-ref">—</strong> &nbsp;·&nbsp; Phone: <strong id="processing-phone-masked">—</strong> &nbsp;·&nbsp; Amount: <strong id="processing-amount">KES 8,500</strong>
           </div>
-          <div style="width:100%;background:#E2E8F0;border-radius:99px;height:4px;overflow:hidden;max-width:320px;margin:0 auto 1.75rem;">
-            <div id="progress-bar" style="height:100%;background:var(--primary, #2145E6);border-radius:99px;width:0;transition:width 90s linear;"></div>
+          <div style="width:100%;background:#E8E3D5;border-radius:99px;height:4px;overflow:hidden;max-width:320px;margin:0 auto 1.75rem;">
+            <div id="progress-bar" style="height:100%;background:var(--primary, #2563EB);border-radius:99px;width:0;transition:width 90s linear;"></div>
           </div>
           
           <!-- Actions -->
@@ -492,8 +492,8 @@
 
           <!-- Quick Code Verification on Waiting Screen -->
           <div style="margin-top:1.25rem; padding-top:1rem; border-top:1px dashed #CBD5E1; max-width:320px; width:100%; margin-left:auto; margin-right:auto;">
-            <div style="font-size:0.8rem; font-weight:700; color:#0F172A; margin-bottom:4px; text-align:center;">Didn't get the phone prompt?</div>
-            <p style="font-size:0.75rem; color:#64748B; margin-bottom:8px; text-align:center; line-height:1.3;">
+            <div style="font-size:0.8rem; font-weight:700; color:#1E1B4B; margin-bottom:4px; text-align:center;">Didn't get the phone prompt?</div>
+            <p style="font-size:0.75rem; color:#5B5882; margin-bottom:8px; text-align:center; line-height:1.3;">
               Enter your M-Pesa transaction code to verify instantly:
             </p>
             <div style="display:flex; gap:6px;">
@@ -513,26 +513,26 @@
             You are now enrolled in <strong id="success-course-name">the course</strong>. A confirmation has been registered to your account and dispatched to our academic team.
           </div>
 
-          <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:14px;padding:16px 20px;margin-bottom:1.5rem;text-align:left;font-size:13.5px;width:100%;max-width:380px;margin-left:auto;margin-right:auto;">
+          <div style="background:#FFFDF7;border:1px solid #E8E3D5;border-radius:14px;padding:16px 20px;margin-bottom:1.5rem;text-align:left;font-size:13.5px;width:100%;max-width:380px;margin-left:auto;margin-right:auto;">
             <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-              <span style="color:#64748B;">Order Reference:</span>
-              <strong id="success-ref" style="color:#0F172A;font-family:monospace;">—</strong>
+              <span style="color:#5B5882;">Order Reference:</span>
+              <strong id="success-ref" style="color:#1E1B4B;font-family:monospace;">—</strong>
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-              <span style="color:#64748B;">M-Pesa Receipt:</span>
-              <strong id="success-receipt" style="color:#2145E6;font-family:monospace;font-weight:700;">—</strong>
+              <span style="color:#5B5882;">M-Pesa Receipt:</span>
+              <strong id="success-receipt" style="color:#2563EB;font-family:monospace;font-weight:700;">—</strong>
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-              <span style="color:#64748B;">Payment Method:</span>
-              <strong id="success-method" style="color:#0F172A;font-weight:600;">—</strong>
+              <span style="color:#5B5882;">Payment Method:</span>
+              <strong id="success-method" style="color:#1E1B4B;font-weight:600;">—</strong>
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-              <span style="color:#64748B;">Amount Paid:</span>
+              <span style="color:#5B5882;">Amount Paid:</span>
               <strong id="success-amount" style="color:#166534;font-weight:700;">KES 8,500</strong>
             </div>
             <div style="display:flex;justify-content:space-between;">
-              <span style="color:#64748B;">Date:</span>
-              <span id="success-date" style="color:#0F172A;font-weight:600;">—</span>
+              <span style="color:#5B5882;">Date:</span>
+              <span id="success-date" style="color:#1E1B4B;font-weight:600;">—</span>
             </div>
           </div>
 
@@ -556,8 +556,8 @@
           <div class="status-ref" id="error-ref" style="display:none;margin-bottom:1.25rem;">Order: <strong></strong></div>
           <button class="btn-enroll" onclick="retryCheckout()" style="margin-top:0.5rem;max-width:320px;width:100%;">Try Again</button>
           <button class="btn-secondary-outline" onclick="window.location.href='courses.html'" style="max-width:320px;width:100%;margin-top:8px;">Browse Courses</button>
-          <p style="font-size:0.8rem;color:#64748B;margin-top:1.25rem;">
-            Need help? <a href="contact.html" style="color:#2145E6;font-weight:600;">Contact support</a> with your order reference.
+          <p style="font-size:0.8rem;color:#5B5882;margin-top:1.25rem;">
+            Need help? <a href="contact.html" style="color:#2563EB;font-weight:600;">Contact support</a> with your order reference.
           </p>
         </div>
 
@@ -754,7 +754,7 @@ function renderState(state) {
       const maskedEl = document.getElementById('processing-phone-masked');
       if (maskedEl) maskedEl.textContent = masked;
       document.getElementById('processing-sub').innerHTML =
-        `We are confirming your payment. Please do not refresh or close this page.<br><small style="color:#64748B;display:block;margin-top:6px;">Prompt sent to <strong>${masked}</strong></small>`;
+        `We are confirming your payment. Please do not refresh or close this page.<br><small style="color:#5B5882;display:block;margin-top:6px;">Prompt sent to <strong>${masked}</strong></small>`;
     }
 
     // Cooldown button handling

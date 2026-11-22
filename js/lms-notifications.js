@@ -192,8 +192,8 @@
       toast.innerHTML = `
         <span style="font-size:18px;flex-shrink:0;">${typeIcons[notification.type] || 'ℹ️'}</span>
         <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:2px;">${notification.title || ''}</div>
-          <div style="font-size:12px;color:#64748B;line-height:1.4;">${notification.message || ''}</div>
+          <div style="font-size:13px;font-weight:700;color:#1E1B4B;margin-bottom:2px;">${notification.title || ''}</div>
+          <div style="font-size:12px;color:#5B5882;line-height:1.4;">${notification.message || ''}</div>
         </div>
         <button onclick="this.closest('.lms-toast').remove()" style="background:none;border:none;color:#94A3B8;cursor:pointer;font-size:16px;padding:2px;">×</button>
       `;
@@ -258,20 +258,20 @@
       container.innerHTML = notifications.map(function(n) {
         const timeAgo = LMSNotifications.timeAgo(n.timestamp);
         return `
-          <div class="lms-activity-item ${n.read ? '' : 'unread'}" style="${n.read ? '' : 'background:#F8FAFC;'}" data-notif-id="${n.id}">
-            <div class="lms-activity-icon" style="background:${n.read ? '#F1F5F9' : '#EEF2FF'};font-size:16px;">
+          <div class="lms-activity-item ${n.read ? '' : 'unread'}" style="${n.read ? '' : 'background:#FFFDF7;'}" data-notif-id="${n.id}">
+            <div class="lms-activity-icon" style="background:${n.read ? '#F7F3E6' : '#EFF6FF'};font-size:16px;">
               ${typeIcons[n.type] || 'ℹ️'}
             </div>
             <div style="flex:1;min-width:0;">
-              <div style="font-size:13px;font-weight:${n.read ? '500' : '700'};color:#0F172A;line-height:1.4;">
+              <div style="font-size:13px;font-weight:${n.read ? '500' : '700'};color:#1E1B4B;line-height:1.4;">
                 ${n.title}
               </div>
-              <div style="font-size:12px;color:#64748B;margin-top:2px;line-height:1.3;">
+              <div style="font-size:12px;color:#5B5882;margin-top:2px;line-height:1.3;">
                 ${n.message}
               </div>
               <div style="font-size:11px;color:#94A3B8;margin-top:4px;">${timeAgo}</div>
             </div>
-            ${!n.read ? '<div style="width:8px;height:8px;border-radius:50%;background:#2145E6;flex-shrink:0;"></div>' : ''}
+            ${!n.read ? '<div style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0;"></div>' : ''}
           </div>
         `;
       }).join('');

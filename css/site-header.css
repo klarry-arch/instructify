@@ -1,31 +1,32 @@
 /* ============================================================
    INSTRUCTIFY KENYA — UNIFIED SITE HEADER & NAVIGATION STYLES
-   Brand Colors:
-     - Navy:        #123B5D
-     - Blue:        #2474B5
-     - Warm Orange: #F59E3D
-     - Growth Green:#38A169
-     - Soft BG:     #F5F9FC
+   Canonical Brand Palette:
+     - Royal Blue (Primary):        #2563EB
+     - Sunny Gold (Accent):         #FACC15
+     - Warm Off-White (Surface):    #FFFDF7
+     - Deep Indigo (Body/Dark):     #1E1B4B
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800;850&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+@import url('./brand-tokens.css');
 
 :root {
-  --hdr-navy:         #123B5D;
-  --hdr-navy-dark:    #0C273E;
-  --hdr-blue:         #2474B5;
-  --hdr-blue-hover:   #1A5C91;
-  --hdr-blue-soft:    #EBF4FB;
-  --hdr-orange:       #F59E3D;
-  --hdr-orange-hover: #E08726;
-  --hdr-orange-soft:  #FFF5EB;
-  --hdr-green:        #38A169;
-  --hdr-bg-soft:      #F5F9FC;
-  --hdr-text-main:    #1F2937;
-  --hdr-text-muted:   #4B5563;
-  --hdr-white:        #FFFFFF;
-  --hdr-border:       #E2E8F0;
-  --hdr-radius-sm:    6px;
+  --hdr-navy:         var(--color-dark, #1E1B4B);
+  --hdr-navy-dark:    var(--color-dark-deep, #141136);
+  --hdr-blue:         var(--color-primary, #2563EB);
+  --hdr-blue-hover:   var(--color-primary-hover, #1D4ED8);
+  --hdr-blue-active:  var(--color-primary-active, #1E40AF);
+  --hdr-blue-soft:    var(--color-primary-soft, #EFF6FF);
+  --hdr-accent:       var(--color-accent, #FACC15);
+  --hdr-accent-hover: var(--color-accent-hover, #EAB308);
+  --hdr-accent-soft:  var(--color-accent-tint, #FEF9C3);
+  --hdr-green:        var(--color-success, #15803D);
+  --hdr-bg-soft:      var(--color-surface, #FFFDF7);
+  --hdr-text-main:    var(--color-text, #1E1B4B);
+  --hdr-text-muted:   var(--color-text-secondary, #433F6B);
+  --hdr-white:        var(--color-surface-elevated, #FFFFFF);
+  --hdr-border:       var(--color-border-warm, #E8E3D5);
+  --hdr-radius-sm:    8px;
   --hdr-radius-md:    12px;
   --hdr-radius-pill:  999px;
   --hdr-font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -42,18 +43,22 @@ html, body {
 .sticky-header button:focus-visible,
 .mobile-drawer a:focus-visible,
 .mobile-drawer button:focus-visible {
-  outline: 3px solid var(--hdr-orange) !important;
+  outline: 3px solid var(--color-primary, #2563EB) !important;
+  outline-offset: 2px !important;
+}
+.announcement-bar a:focus-visible {
+  outline: 3px solid var(--color-accent, #FACC15) !important;
   outline-offset: 2px !important;
 }
 
 /* ── 1. Announcement Bar ─────────────────────────────────────── */
 .announcement-bar {
   background: var(--hdr-navy);
-  color: #E2E8F0;
-  padding: 8px 16px;
+  color: var(--color-text-inverse-muted, #E0E7FF);
+  padding: 9px 16px;
   font-size: 13px;
   font-family: var(--hdr-font-body);
-  border-bottom: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 2px solid var(--hdr-accent);
   position: relative;
   z-index: 1010;
 }
@@ -73,7 +78,7 @@ html, body {
   text-align: center;
 }
 .announcement-badge {
-  background: var(--hdr-orange);
+  background: var(--hdr-accent);
   color: var(--hdr-navy);
   font-size: 11px;
   font-weight: 800;
@@ -86,10 +91,10 @@ html, body {
 }
 .announcement-text {
   font-weight: 500;
-  color: #F1F5F9;
+  color: var(--color-surface, #FFFDF7);
 }
 .announcement-link {
-  color: var(--hdr-orange);
+  color: var(--hdr-accent);
   font-weight: 700;
   text-decoration: none;
   display: inline-flex;
@@ -98,7 +103,7 @@ html, body {
   transition: color 0.2s ease;
 }
 .announcement-link:hover {
-  color: #FCD34D;
+  color: #FEF08A;
   text-decoration: underline;
 }
 
@@ -108,15 +113,16 @@ html, body {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.98);
+  background: rgba(255, 253, 247, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--hdr-border);
   z-index: 1000;
-  transition: all 0.25s ease;
+  transition: box-shadow 0.25s ease, background-color 0.25s ease;
 }
 .sticky-header.scrolled {
-  box-shadow: 0 4px 20px rgba(18, 59, 93, 0.08);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 6px 22px rgba(30, 27, 75, 0.09);
 }
 .sticky-header .home-container,
 .sticky-header .container {
@@ -182,13 +188,13 @@ html, body {
   bottom: 0;
   left: 6px;
   right: 6px;
-  height: 2.5px;
+  height: 3px;
   background: var(--hdr-blue);
-  border-radius: 2px;
+  border-radius: 3px;
 }
 .nav-bootcamp-badge {
   color: var(--hdr-blue) !important;
-  font-weight: 750;
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -198,10 +204,23 @@ html, body {
   font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
-  background: var(--hdr-orange-soft);
-  color: var(--hdr-orange-hover);
-  padding: 1px 6px;
+  background: var(--hdr-accent);
+  color: var(--hdr-navy);
+  padding: 2px 7px;
   border-radius: var(--hdr-radius-pill);
+  line-height: 1.2;
+}
+.nav-badge-new {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: var(--color-accent, #FACC15);
+  color: var(--color-text, #1E1B4B);
+  padding: 2px 7px;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
   line-height: 1.2;
 }
 .header-actions {
@@ -221,7 +240,7 @@ html, body {
   text-decoration: none;
   padding: 8px 12px;
   border-radius: var(--hdr-radius-sm);
-  background: var(--hdr-bg-soft);
+  background: var(--hdr-white);
   border: 1px solid var(--hdr-border);
   transition: all 0.2s ease;
   white-space: nowrap !important;
@@ -233,7 +252,7 @@ html, body {
   color: var(--hdr-blue);
 }
 .header-phone-link svg {
-  color: var(--hdr-green);
+  color: var(--hdr-blue);
   flex-shrink: 0;
 }
 .header-actions .btn-primary-orange,
@@ -242,8 +261,8 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(135deg, #F7A547 0%, #EA8821 100%);
-  color: #0E2B45;
+  background: var(--hdr-blue);
+  color: var(--hdr-white) !important;
   font-family: var(--hdr-font-body);
   font-size: 14px;
   font-weight: 700;
@@ -251,20 +270,28 @@ html, body {
   padding: 10px 18px;
   min-height: 42px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1.5px solid var(--hdr-blue);
   box-sizing: border-box;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 8px 18px -6px rgba(234, 136, 33, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, background 0.22s ease;
+  box-shadow: 0 8px 18px -6px rgba(37, 99, 235, 0.45);
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, background-color 0.22s ease, border-color 0.22s ease;
   white-space: nowrap !important;
   flex-shrink: 0;
 }
 .header-actions .btn-primary-orange:hover,
 .sticky-header .btn-primary-orange:hover {
-  background: linear-gradient(135deg, #F59B34 0%, #DC7A14 100%);
+  background: var(--hdr-blue-hover);
+  border-color: var(--hdr-blue-hover);
+  color: var(--hdr-white) !important;
   transform: translateY(-2px);
-  box-shadow: 0 12px 22px -6px rgba(234, 136, 33, 0.52);
+  box-shadow: 0 12px 22px -6px rgba(29, 78, 216, 0.52);
+}
+.header-actions .btn-primary-orange:active,
+.sticky-header .btn-primary-orange:active {
+  background: var(--hdr-blue-active);
+  border-color: var(--hdr-blue-active);
+  transform: translateY(0);
 }
 
 /* ── Mobile Hamburger Toggle ─────────────────────────────────── */
@@ -276,6 +303,10 @@ html, body {
   cursor: pointer;
   color: var(--hdr-navy);
   border-radius: var(--hdr-radius-sm);
+}
+.mobile-nav-toggle:hover {
+  background: var(--hdr-blue-soft);
+  color: var(--hdr-blue);
 }
 .mobile-nav-toggle svg {
   display: block;
@@ -289,10 +320,10 @@ html, body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--hdr-white);
+  background: var(--hdr-bg-soft);
   z-index: 999;
   padding: 24px;
-  border-top: 1px solid var(--hdr-border);
+  border-top: 2px solid var(--hdr-accent);
   overflow-y: auto;
   font-family: var(--hdr-font-body);
 }
@@ -307,19 +338,22 @@ html, body {
 .mobile-drawer-links {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 .mobile-drawer-link {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--hdr-navy);
   text-decoration: none;
-  padding: 10px 0;
+  padding: 10px 6px;
   border-bottom: 1px solid var(--hdr-border);
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 .mobile-drawer-link:hover,
 .mobile-drawer-link.active {
   color: var(--hdr-blue);
+  background: var(--hdr-blue-soft);
+  border-radius: 6px;
 }
 .mobile-drawer-cta {
   margin-top: 24px;
@@ -331,29 +365,37 @@ html, body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--hdr-orange);
-  color: var(--hdr-navy);
+  background: var(--hdr-blue);
+  color: var(--hdr-white) !important;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 700;
   padding: 12px 20px;
   min-height: 46px;
-  border-radius: var(--hdr-radius-sm);
+  border-radius: 10px;
   text-decoration: none;
-  border: 1.5px solid var(--hdr-orange);
+  border: 1.5px solid var(--hdr-blue);
+}
+.mobile-drawer-cta .btn-primary-orange:hover {
+  background: var(--hdr-blue-hover);
+  border-color: var(--hdr-blue-hover);
 }
 .mobile-drawer-cta .btn-outline-navy {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
+  background: var(--hdr-white);
   color: var(--hdr-navy);
   font-size: 15px;
   font-weight: 700;
   padding: 12px 20px;
   min-height: 46px;
-  border-radius: var(--hdr-radius-sm);
-  border: 2px solid var(--hdr-navy);
+  border-radius: 10px;
+  border: 1.5px solid var(--hdr-navy);
   text-decoration: none;
+}
+.mobile-drawer-cta .btn-outline-navy:hover {
+  background: var(--hdr-navy);
+  color: var(--hdr-white);
 }
 
 /* ── Responsive Breakpoints ──────────────────────────────────── */
@@ -376,4 +418,3 @@ html, body {
     justify-content: center;
   }
 }
-

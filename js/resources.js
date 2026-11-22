@@ -1110,7 +1110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mediaTitle) mediaTitle.textContent = mediaItem.title;
     if (mediaContainer) {
       mediaContainer.innerHTML = `
-        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; background:#0F172A; margin-bottom:18px;">
+        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; background:#1E1B4B; margin-bottom:18px;">
           <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#FFFFFF; text-align:center; padding:20px;">
             <div style="width:68px; height:68px; border-radius:50%; background:var(--res-blue); display:flex; align-items:center; justify-content:center; margin-bottom:14px; box-shadow:0 8px 24px rgba(48,92,222,0.5);">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">

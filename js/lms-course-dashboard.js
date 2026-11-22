@@ -53,7 +53,7 @@
       desc: 'Smart boards, LMS, digital devices, and safe internet delivery for 21st-century teaching.',
       icon: '💻',
       bg: '#EEF2FF',
-      color: '#2145E6',
+      color: '#2563EB',
       filterKeyword: 'Digital'
     },
     {
@@ -62,7 +62,7 @@
       desc: 'Competency-based lesson plans, portfolio design, rubrics, and strand integration.',
       icon: '📐',
       bg: '#FFF1EB',
-      color: '#FF4D00',
+      color: '#2563EB',
       filterKeyword: 'Curriculum'
     },
     {
@@ -98,7 +98,7 @@
       desc: 'Teacher mentorship, CPD credit compliance, instructional leadership, and growth.',
       icon: '🏆',
       bg: '#F1F5F9',
-      color: '#475569',
+      color: '#433F6B',
       filterKeyword: 'Pedagogy'
     },
     {
@@ -409,7 +409,7 @@
         <div class="lms-qr-header">Ready to Learn?</div>
         <div class="lms-qr-course-title">Explore CBC Accredited Tracks</div>
         <p style="font-size:11.5px; color:#94A3B8; margin:0 0 10px; line-height:1.4;">Pick a course from our catalog to begin earning CPD credit hours.</p>
-        <button onclick="scrollToLmsCatalog()" class="lms-qr-btn" style="background:#2145E6;">Browse Catalog &rarr;</button>
+        <button onclick="scrollToLmsCatalog()" class="lms-qr-btn" style="background:#2563EB;">Browse Catalog &rarr;</button>
       `;
       return;
     }
@@ -736,7 +736,7 @@
                   </div>
                 ` : ''}
               </div>
-              <div class="lms-course-footer" style="padding:16px 0 0 0; margin-top:16px; border-top:1px solid #E2E8F0; background:transparent;">
+              <div class="lms-course-footer" style="padding:16px 0 0 0; margin-top:16px; border-top:1px solid #E8E3D5; background:transparent;">
                 <div class="lms-course-price-box">
                   <span class="price-label">Tuition / Investment</span>
                   <div class="price-wrap">
@@ -1060,14 +1060,14 @@
               <span style="font-size:12px; color:var(--lms-text-muted);">Last active: ${enr.lastActiveAt ? 'Recent' : 'Today'}</span>
             </div>
             <h3 class="lms-course-title" style="font-size:17.5px; margin-bottom:6px;">${course.title}</h3>
-            <div style="font-size:12.5px; color:#2145E6; font-weight:600; margin-bottom:14px;">
+            <div style="font-size:12.5px; color:#2563EB; font-weight:600; margin-bottom:14px;">
               📖 ${lessonTitle}
             </div>
 
             <div class="lms-card-progress-wrap" style="margin-bottom:16px;">
               <div class="lms-card-progress-labels">
                 <span>Course Completion</span>
-                <span style="color:#2145E6;">${percent}%</span>
+                <span style="color:#2563EB;">${percent}%</span>
               </div>
               <div class="lms-card-progress-bar-bg">
                 <div class="lms-card-progress-bar-fill" style="width: ${percent}%;"></div>
@@ -1075,7 +1075,7 @@
             </div>
           </div>
 
-          <div style="display:flex; gap:10px; align-items:center; justify-content:space-between; border-top:1px solid #F1F5F9; padding-top:14px;">
+          <div style="display:flex; gap:10px; align-items:center; justify-content:space-between; border-top:1px solid #F7F3E6; padding-top:14px;">
             <a href="course-player.html?courseId=${enr.courseId}" class="btn ${isComplete ? 'btn-outline' : 'btn-primary'} btn-sm" style="flex:1; text-align:center;">
               ${isComplete ? 'Review Course ↻' : 'Continue Lesson →'}
             </a>
@@ -1097,15 +1097,15 @@
         <div>
           <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
             <span class="lms-badge badge-green">✓ Verified TSC &amp; KICD CPD</span>
-            <span style="font-family:monospace; font-size:11px; color:#64748B;">${cert.id}</span>
+            <span style="font-family:monospace; font-size:11px; color:#5B5882;">${cert.id}</span>
           </div>
           <h3 class="lms-course-title" style="font-size:18px; margin-bottom:6px;">${cert.courseTitle}</h3>
-          <p style="font-size:13px; color:#475569; margin-bottom:12px;">Issued on <strong>${cert.issueDate}</strong> with grade <strong>${cert.grade}</strong>.</p>
+          <p style="font-size:13px; color:#433F6B; margin-bottom:12px;">Issued on <strong>${cert.issueDate}</strong> with grade <strong>${cert.grade}</strong>.</p>
           <div style="font-size:12px; color:#059669; font-weight:600; margin-bottom:16px;">
             🏅 ${cert.accreditation}
           </div>
         </div>
-        <div style="display:flex; gap:10px; border-top:1px solid #F1F5F9; padding-top:14px;">
+        <div style="display:flex; gap:10px; border-top:1px solid #F7F3E6; padding-top:14px;">
           <a href="student-certificates.html" class="btn btn-primary btn-sm" style="flex:1; text-align:center;">View Certificate &rarr;</a>
           <button onclick="window.print()" class="btn btn-outline btn-sm">Print</button>
         </div>

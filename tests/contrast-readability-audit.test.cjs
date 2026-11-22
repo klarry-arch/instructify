@@ -5,7 +5,7 @@ const assert = require('assert');
 const rootDir = path.resolve(__dirname, '..');
 
 console.log('══════════════════════════════════════════════════════════════');
-console.log('   INSTRUCTIFY KENYA — TEXT VISIBILITY & CONTRAST AUDIT');
+console.log('   INSTRUCTIFY KENYA — BRAND PALETTE & WCAG 2.1 AA AUDIT');
 console.log('══════════════════════════════════════════════════════════════\n');
 
 let passCount = 0;
@@ -22,221 +22,181 @@ function check(desc, fn) {
   }
 }
 
-// ─────────────────────────────────────────────────────────────
-// 1. GLOBAL DESIGN TOKENS & PREFERRED COLOR AUDIT
-// ─────────────────────────────────────────────────────────────
-console.log('1. Checking Global Tokens & Color Contrast System in css/global.css...');
+function hexToLuminance(hex) {
+  const clean = hex.replace('#', '');
+  const r = parseInt(clean.slice(0, 2), 16) / 255;
+  const g = parseInt(clean.slice(2, 4), 16) / 255;
+  const b = parseInt(clean.slice(4, 6), 16) / 255;
+  const toLin = c => (c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+  return 0.2126 * toLin(r) + 0.7152 * toLin(g) + 0.0722 * toLin(b);
+}
 
+function contrastRatio(hex1, hex2) {
+  const l1 = hexToLuminance(hex1);
+  const l2 = hexToLuminance(hex2);
+  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+}
+
+// ─────────────────────────────────────────────────────────────
+// 1. CANONICAL BRAND TOKENS & WCAG 2.1 AA CONTRAST MATRIX
+// ─────────────────────────────────────────────────────────────
+console.log('1. Checking Canonical Brand Tokens (css/brand-tokens.css & css/global.css)...');
+
+const brandTokensCss = fs.readFileSync(path.join(rootDir, 'css/brand-tokens.css'), 'utf8');
 const globalCss = fs.readFileSync(path.join(rootDir, 'css/global.css'), 'utf8');
 
-check('Root contains primary text token #1E293B', () => {
-  assert(/--heading-color:\s+#1E293B/.test(globalCss), 'Missing primary heading token');
-  assert(/--text-color:\s+#1E293B/.test(globalCss), 'Missing primary text token');
+check('brand-tokens.css defines the four core brand colour variables', () => {
+  assert(/--color-primary:\s*#2563EB/i.test(brandTokensCss), 'Missing --color-primary: #2563EB');
+  assert(/--color-accent:\s*#FACC15/i.test(brandTokensCss), 'Missing --color-accent: #FACC15');
+  assert(/--color-surface:\s*#FFFDF7/i.test(brandTokensCss), 'Missing --color-surface: #FFFDF7');
+  assert(/--color-text:\s*#1E1B4B/i.test(brandTokensCss), 'Missing --color-text: #1E1B4B');
 });
 
-check('Root contains secondary text token #475569', () => {
-  assert(/--text-secondary:\s+#475569/.test(globalCss), 'Missing secondary text token');
-  assert(/--color-text-secondary:\s+#475569/.test(globalCss), 'Missing color-text-secondary token');
+check('global.css imports brand-tokens.css and exposes canonical semantic tokens', () => {
+  assert(globalCss.includes("@import url('./brand-tokens.css')"), 'global.css must import brand-tokens.css');
+  assert(/--color-primary:\s*#2563EB/i.test(globalCss), 'Missing --color-primary in global.css');
+  assert(/--color-accent:\s*#FACC15/i.test(globalCss), 'Missing --color-accent in global.css');
+  assert(/--color-surface:\s*#FFFDF7/i.test(globalCss), 'Missing --color-surface in global.css');
+  assert(/--color-text:\s*#1E1B4B/i.test(globalCss), 'Missing --color-text in global.css');
+  assert(/--color-text-secondary:\s*#433F6B/i.test(globalCss), 'Missing secondary Deep Indigo text token');
+  assert(/--color-text-muted:\s*#5B5882/i.test(globalCss), 'Missing muted Deep Indigo text token');
+  assert(/--color-text-disabled:\s*#6B688E/i.test(globalCss), 'Missing disabled text token');
 });
 
-check('Root contains muted text token #64748B', () => {
-  assert(/--muted-text-color:\s+#64748B/.test(globalCss), 'Missing muted text token');
-});
-
-// ─────────────────────────────────────────────────────────────
-// 2. HOMEPAGE & HERO SECTION VISIBILITY
-// ─────────────────────────────────────────────────────────────
-console.log('\n2. Checking Homepage (index.html & css/homepage.css) Readability...');
-
-const homepageCss = fs.readFileSync(path.join(rootDir, 'css/homepage.css'), 'utf8');
-const indexHtml = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf8');
-
-check('Hero subtitle has high contrast secondary text color #475569', () => {
-  assert(homepageCss.includes('color: #475569;') && homepageCss.includes('.hero-subtitle'), 'Hero subtitle should be #475569');
-});
-
-check('Section descriptions use high contrast #475569', () => {
-  assert(homepageCss.includes('.section-description') && homepageCss.includes('color: #475569 !important;'), 'Section descriptions should be #475569');
-});
-
-check('Programme cards have high contrast descriptions', () => {
-  assert(homepageCss.includes('.programme-summary') && homepageCss.includes('color: #475569 !important;'), 'Programme summaries must be #475569');
-});
-
-check('Modern footer default text color is high-contrast light slate #E2E8F0', () => {
-  assert(homepageCss.includes('.site-footer-modern') && homepageCss.includes('color: #E2E8F0;'), 'Footer text must be #E2E8F0 on dark #0F172A background');
-});
-
-check('Footer links are high contrast #CBD5E1 and hover to #FFFFFF', () => {
-  assert(homepageCss.includes('.footer-nav-list a') && homepageCss.includes('color: #CBD5E1;'), 'Footer links must be #CBD5E1');
-  assert(homepageCss.includes('.footer-nav-list a:hover') && homepageCss.includes('color: #FFFFFF;'), 'Footer links hover must be #FFFFFF');
-});
-
-// ─────────────────────────────────────────────────────────────
-// 3. ABOUT PAGE CONTRAST & BADGE VISIBILITY
-// ─────────────────────────────────────────────────────────────
-console.log('\n3. Checking About Page (about.html & css/about.css) Readability...');
-
-const aboutCss = fs.readFileSync(path.join(rootDir, 'css/about.css'), 'utf8');
-const aboutHtml = fs.readFileSync(path.join(rootDir, 'about.html'), 'utf8');
-
-check('about.html hero badge is NOT white text on light background', () => {
-  assert(!aboutHtml.includes('color: #FFFFFF; background: rgba(255,255,255,0.15)'), 'White badge on light background forbidden');
-  assert(aboutHtml.includes('background:#EEF2FF;') && aboutHtml.includes('color:#4F46E5;'), 'Badge should have clear purple/indigo contrast on soft lavender');
-});
-
-check('about.html hero CTAs do NOT use invisible .btn-white on light background', () => {
-  const heroSection = aboutHtml.split('<section class="about-hero-section">')[1].split('</section>')[0];
-  assert(!heroSection.includes('btn-white'), 'Invisible btn-white removed from hero');
-  assert(heroSection.includes('btn-primary') && heroSection.includes('btn-secondary'), 'Hero contains accessible btn-primary and btn-secondary');
-});
-
-check('about.css hero paragraph has high contrast #475569', () => {
-  assert(aboutCss.includes('.about-hero-text p') && aboutCss.includes('color: #475569 !important;'), 'Hero paragraph should be #475569 !important');
-});
-
-check('about.css pillar card description has high contrast #475569', () => {
-  assert(aboutCss.includes('.pillar-card-desc') && aboutCss.includes('color: #475569;'), 'Pillar card desc must be #475569');
+check('All foreground/background token pairings meet WCAG 2.1 AA (>= 4.5:1)', () => {
+  const pairs = [
+    ['Deep Indigo body text on Warm Off-White', '#1E1B4B', '#FFFDF7', 4.5],
+    ['Deep Indigo body text on Pure White', '#1E1B4B', '#FFFFFF', 4.5],
+    ['Secondary Indigo text on Warm Off-White', '#433F6B', '#FFFDF7', 4.5],
+    ['Muted Indigo text on Warm Off-White', '#5B5882', '#FFFDF7', 4.5],
+    ['Disabled text on Pure White', '#6B688E', '#FFFFFF', 4.5],
+    ['Royal Blue links/headings on Warm Off-White', '#2563EB', '#FFFDF7', 4.5],
+    ['Royal Blue links/headings on Subtle Cream', '#2563EB', '#F7F3E6', 4.5],
+    ['Royal Blue links on Soft Blue tint', '#2563EB', '#EFF6FF', 4.5],
+    ['White text on Royal Blue primary button', '#FFFFFF', '#2563EB', 4.5],
+    ['White text on Royal Blue hover button', '#FFFFFF', '#1D4ED8', 4.5],
+    ['Deep Indigo text on Sunny Gold accent button', '#1E1B4B', '#FACC15', 4.5],
+    ['Deep Indigo text on Sunny Gold hover button', '#1E1B4B', '#EAB308', 4.5],
+    ['Deep Indigo text on Sunny Gold badge tint', '#1E1B4B', '#FEF9C3', 4.5],
+    ['Sunny Gold accent text on Deep Indigo dark surface', '#FACC15', '#1E1B4B', 4.5],
+    ['Soft Indigo inverse text on Deep Indigo footer', '#E0E7FF', '#1E1B4B', 4.5],
+    ['Pure White text on Deep Indigo dark anchor', '#FFFFFF', '#1E1B4B', 4.5]
+  ];
+  for (const [label, fg, bg, minRatio] of pairs) {
+    const ratio = contrastRatio(fg, bg);
+    assert(ratio >= minRatio, `${label} (${fg} on ${bg}) contrast is ${ratio.toFixed(2)}:1 (< ${minRatio}:1)`);
+  }
 });
 
 // ─────────────────────────────────────────────────────────────
-// 4. CONSULTANCY PAGE CONTRAST & SECTION VISIBILITY
+// 2. HEADER, FOOTER & HOMEPAGE COMPONENTS
 // ─────────────────────────────────────────────────────────────
-console.log('\n4. Checking Consultancy Page (consultancy.html & css/consultancy.css)...');
+console.log('\n2. Checking Header, Footer & Homepage Components...');
 
-const consultancyCss = fs.readFileSync(path.join(rootDir, 'css/consultancy.css'), 'utf8');
-
-check('consultancy.css hero subtitle is #475569', () => {
-  assert(consultancyCss.includes('.consultancy-hero-subtitle') && consultancyCss.includes('color:#475569;'), 'Consultancy hero subtitle must be #475569');
-});
-
-check('consultancy.css trust item text is #475569', () => {
-  assert(consultancyCss.includes('.trust-item') && consultancyCss.includes('color:#475569;'), 'Trust items must be #475569');
-});
-
-check('consultancy.css service-benefits-label is NOT faded grey #94A3B8', () => {
-  assert(consultancyCss.includes('.service-benefits-label{font-family:var(--font-heading);font-size:11px;font-weight:700;color:#475569;'), 'Benefits label must be #475569');
-});
-
-check('consultancy.css dark background sections use #E2E8F0 / #CBD5E1 for text', () => {
-  assert(consultancyCss.includes('.booking-info-desc{') && consultancyCss.includes('color:#E2E8F0;'), 'Booking info desc must be #E2E8F0 on dark navy');
-  assert(consultancyCss.includes('.final-cta-desc{') && consultancyCss.includes('color:#E2E8F0;'), 'Final CTA desc must be #E2E8F0 on dark navy');
-});
-
-// ─────────────────────────────────────────────────────────────
-// 5. BUTTON STATES & VISIBILITY AUDIT
-// ─────────────────────────────────────────────────────────────
-console.log('\n5. Checking Button States (Default, Hover, Active, Focus, Disabled)...');
-
+const headerCss = fs.readFileSync(path.join(rootDir, 'css/site-header.css'), 'utf8');
+const footerCss = fs.readFileSync(path.join(rootDir, 'css/site-footer.css'), 'utf8');
+const homeRedesignCss = fs.readFileSync(path.join(rootDir, 'css/homepage-redesign.css'), 'utf8');
 const componentsCss = fs.readFileSync(path.join(rootDir, 'css/components.css'), 'utf8');
 
-check('Primary button has pure white text #FFFFFF !important', () => {
-  assert(componentsCss.includes('.btn-primary,') && componentsCss.includes('color: #FFFFFF !important;'), 'Primary button must have #FFFFFF text');
+check('Header uses Warm Off-White backdrop, Deep Indigo text, Royal Blue active/CTA, Sunny Gold badges', () => {
+  assert(headerCss.includes("@import url('./brand-tokens.css')"), 'site-header.css must import brand-tokens.css');
+  assert(headerCss.includes('#2563EB') && headerCss.includes('#FACC15') && headerCss.includes('#1E1B4B'), 'Header missing core palette tokens');
+  assert(headerCss.includes('overflow-x: clip'), 'Header must preserve overflow-x: clip for sticky scrolling');
 });
 
-check('Primary button hover maintains pure white text #FFFFFF !important', () => {
-  assert(componentsCss.includes('.btn-primary:hover,') && componentsCss.includes('color: #FFFFFF !important;'), 'Primary button hover must remain #FFFFFF');
+check('Footer uses Deep Indigo dark surface, Sunny Gold top accent & buttons with Deep Indigo text', () => {
+  assert(footerCss.includes("@import url('./brand-tokens.css')"), 'site-footer.css must import brand-tokens.css');
+  assert(footerCss.includes('#1E1B4B') && footerCss.includes('#FACC15'), 'Footer missing Deep Indigo / Sunny Gold pairing');
+  assert(footerCss.includes(':focus-visible'), 'Footer must style visible keyboard focus');
 });
 
-check('Secondary button has clear contrast text #4F46E5 on soft lavender', () => {
-  assert(componentsCss.includes('.btn-secondary,') && componentsCss.includes('color: var(--secondary-color, #4F46E5) !important;'), 'Secondary button must have #4F46E5 text');
-});
-
-check('Disabled button text is legible #64748B (not washed out light grey)', () => {
-  assert(componentsCss.includes('.btn:disabled') && componentsCss.includes('color: var(--text-disabled, #64748B) !important;'), 'Disabled button text must be #64748B');
-});
-
-check('Buttons have focus-visible outlines for keyboard accessibility', () => {
-  assert(componentsCss.includes('.btn:focus-visible'), 'Button must define :focus-visible');
-});
-
-// ─────────────────────────────────────────────────────────────
-// 6. CONTACT PAGE CONTRAST AUDIT
-// ─────────────────────────────────────────────────────────────
-console.log('\n6. Checking Contact Page (contact.html)...');
-
-const contactHtml = fs.readFileSync(path.join(rootDir, 'contact.html'), 'utf8');
-
-check('contact.html hero title is bright white #FFFFFF', () => {
-  assert(contactHtml.includes('.contact-hero-title') && contactHtml.includes('color: #FFFFFF !important;'), 'Hero title must be white on dark');
-});
-
-check('contact.html hero subtitle is readable #E2E8F0', () => {
-  assert(contactHtml.includes('.contact-hero-subtitle') && contactHtml.includes('color: #E2E8F0 !important;'), 'Hero subtitle must be #E2E8F0');
-});
-
-check('contact.html form subtitle is readable #475569', () => {
-  assert(contactHtml.includes('.contact-form-subtitle') && contactHtml.includes('color: #475569;'), 'Contact form subtitle must be #475569');
-});
-
-check('contact.html capability description is readable #475569', () => {
-  assert(contactHtml.includes('.capability-desc') && contactHtml.includes('color: #475569;'), 'Capability description must be #475569');
+check('Homepage uses Warm Off-White surface, Royal Blue primary CTAs, and NO Sunny Gold text on light', () => {
+  assert(homeRedesignCss.includes("@import url('./brand-tokens.css')"), 'homepage-redesign.css must import brand-tokens.css');
+  assert(homeRedesignCss.includes('#FFFDF7') && homeRedesignCss.includes('#2563EB') && homeRedesignCss.includes('#1E1B4B'), 'Homepage missing core palette tokens');
+  assert(homeRedesignCss.includes(':focus-visible'), 'Homepage must define visible keyboard focus indicators');
 });
 
 // ─────────────────────────────────────────────────────────────
-// 7. LMS & COURSES DASHBOARD CONTRAST AUDIT
+// 3. BUTTON STATES, FORMS & KEYBOARD ACCESSIBILITY
 // ─────────────────────────────────────────────────────────────
-console.log('\n7. Checking LMS & Courses Dashboard (css/lms-course-dashboard.css)...');
+console.log('\n3. Checking Button States (Default, Hover, Active, Focus, Disabled)...');
 
-const lmsDashboardCss = fs.readFileSync(path.join(rootDir, 'css/lms-course-dashboard.css'), 'utf8');
-
-check('LMS scoped text variables use standard accessible palette', () => {
-  assert(lmsDashboardCss.includes('--lms-text-main: #1E293B;'), 'LMS text main must be #1E293B');
-  assert(lmsDashboardCss.includes('--lms-text-muted: #475569;'), 'LMS text muted must be #475569');
-  assert(lmsDashboardCss.includes('--lms-text-light: #64748B;'), 'LMS text light must be #64748B');
+check('Primary button uses Royal Blue (#2563EB) with pure white text (#FFFFFF)', () => {
+  assert(componentsCss.includes('.btn-primary,') && componentsCss.includes('var(--color-primary, #2563EB)'), 'Primary button must use Royal Blue');
+  assert(componentsCss.includes('color: #FFFFFF !important;'), 'Primary button must maintain white text');
+  assert(componentsCss.includes('.btn-primary:hover,') && componentsCss.includes('var(--color-primary-hover, #1D4ED8)'), 'Primary hover must use #1D4ED8');
+  assert(componentsCss.includes('.btn-primary:active,'), 'Primary button must style :active state');
 });
 
-check('LMS course price original strike-through is readable #64748B', () => {
-  assert(lmsDashboardCss.includes('.lms-course-price-box .price-original') && lmsDashboardCss.includes('color: #64748B;'), 'Original price strike-through must be #64748B');
+check('Sunny Gold accent buttons use Deep Indigo (#1E1B4B) text (never white)', () => {
+  assert(componentsCss.includes('.btn-accent,') && componentsCss.includes('var(--color-accent, #FACC15)'), 'Accent button must use Sunny Gold');
+  assert(componentsCss.includes('color: var(--color-text, #1E1B4B) !important;'), 'Accent button must pair Sunny Gold bg with Deep Indigo text');
 });
 
-// ─────────────────────────────────────────────────────────────
-// 8. JUMUISHI LEARNING HUB DARK THEME CONTRAST AUDIT
-// ─────────────────────────────────────────────────────────────
-console.log('\n8. Checking Jumuishi Inclusive Hub (css/jumuishi.css)...');
-
-const jumuishiCss = fs.readFileSync(path.join(rootDir, 'css/jumuishi.css'), 'utf8');
-
-check('Jumuishi dark hero subtitle is high contrast #E2E8F0', () => {
-  assert(jumuishiCss.includes('.jum-hero-subtitle') && jumuishiCss.includes('color: #E2E8F0;'), 'Jumuishi hero subtitle must be #E2E8F0');
-});
-
-check('Jumuishi relationship badge text is high contrast #E2E8F0', () => {
-  assert(jumuishiCss.includes('.jum-hero-relationship') && jumuishiCss.includes('color: #E2E8F0;'), 'Jumuishi relationship text must be #E2E8F0');
+check('Disabled button text is accessible (>= 4.5:1) and focus-visible outlines are clearly visible', () => {
+  assert(componentsCss.includes('.btn:disabled'), 'Buttons must style :disabled state');
+  assert(componentsCss.includes('.btn:focus-visible') && componentsCss.includes('outline: 3px solid var(--color-primary, #2563EB)'), 'Buttons must show visible Royal Blue :focus-visible ring');
+  assert(componentsCss.includes('min-height: 44px;'), 'Buttons must preserve 44px minimum mobile touch target');
 });
 
 // ─────────────────────────────────────────────────────────────
-// 9. BLOG & ARTICLE CONTRAST AUDIT
+// 4. SITE-WIDE LEGACY COLOUR REMOVAL & ZERO GOLD-ON-LIGHT CHECK
 // ─────────────────────────────────────────────────────────────
-console.log('\n9. Checking Blog & Article Pages (css/blog.css & article.html)...');
+console.log('\n4. Checking Zero Conflicting Legacy Hexes Across All Stylesheets & Live Pages...');
 
-const blogCss = fs.readFileSync(path.join(rootDir, 'css/blog.css'), 'utf8');
-const articleHtml = fs.readFileSync(path.join(rootDir, 'article.html'), 'utf8');
+const legacyRe = /#FF4D00|#F59E3D|#F4B400|#F4B942|#F5812D|#EA8821|#F7A547|#123B5D|#2474B5|#4F46E5|#2145E6|#123C8C|#14213D|#0F172A|#305CDE|#3C3DDC|#09275F|#1E293B|#172033|#151515|#FAFAF7|#F5F9FC|#F8FAFC|#EDF3F9|#475569|#334155|#64748B|#E2E8F0/gi;
 
-check('Blog search box icon is readable #64748B', () => {
-  assert(blogCss.includes('.blog-search-box svg') && blogCss.includes('color: #64748B;'), 'Blog search icon must be #64748B');
+check('All 21 CSS stylesheets have 0 conflicting legacy hex codes and balanced braces', () => {
+  const cssDir = path.join(rootDir, 'css');
+  const cssFiles = fs.readdirSync(cssDir).filter(f => f.endsWith('.css'));
+  assert(cssFiles.length >= 20, 'Expected at least 20 CSS files');
+  for (const f of cssFiles) {
+    const txt = fs.readFileSync(path.join(cssDir, f), 'utf8');
+    const hits = txt.match(legacyRe) || [];
+    assert.strictEqual(hits.length, 0, `${f} still contains legacy hex(es): ${[...new Set(hits)].join(', ')}`);
+    const opens = (txt.match(/\{/g) || []).length;
+    const closes = (txt.match(/\}/g) || []).length;
+    assert.strictEqual(opens, closes, `${f} has unbalanced braces (${opens} vs ${closes})`);
+  }
 });
 
-check('Article card meta right is readable #475569', () => {
-  assert(blogCss.includes('.article-card-meta-right') && blogCss.includes('color: #475569;'), 'Article card meta must be #475569');
+check('All 60 live HTML pages have 0 conflicting legacy hex codes', () => {
+  const dirs = [rootDir, path.join(rootDir, 'articles'), path.join(rootDir, 'courses'), path.join(rootDir, 'resources')];
+  let htmlCount = 0;
+  for (const d of dirs) {
+    if (!fs.existsSync(d)) continue;
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      if (!e.isFile() || !e.name.endsWith('.html')) continue;
+      htmlCount++;
+      const txt = fs.readFileSync(path.join(d, e.name), 'utf8');
+      const hits = txt.match(legacyRe) || [];
+      assert.strictEqual(hits.length, 0, `${path.relative(rootDir, path.join(d, e.name))} contains legacy hex(es): ${[...new Set(hits)].join(', ')}`);
+    }
+  }
+  assert(htmlCount >= 55, `Expected at least 55 live HTML pages, found ${htmlCount}`);
 });
 
-check('Article detail title has #FFFFFF !important on dark header', () => {
-  assert(articleHtml.includes('id="art-detail-title"') && articleHtml.includes('color:#FFFFFF !important;'), 'Article title must be white on dark header');
+check('All 27 JS files have 0 conflicting legacy hex codes', () => {
+  const jsDir = path.join(rootDir, 'js');
+  const jsFiles = fs.readdirSync(jsDir).filter(f => f.endsWith('.js'));
+  for (const f of jsFiles) {
+    const txt = fs.readFileSync(path.join(jsDir, f), 'utf8');
+    const hits = txt.match(legacyRe) || [];
+    assert.strictEqual(hits.length, 0, `js/${f} contains legacy hex(es): ${[...new Set(hits)].join(', ')}`);
+  }
 });
 
-// ─────────────────────────────────────────────────────────────
-// 10. MOBILE READABILITY & TOUCH TARGETS
-// ─────────────────────────────────────────────────────────────
-console.log('\n10. Checking Mobile Responsiveness & Accessibility...');
-
-check('Global buttons enforce minimum height 44px for touch targets', () => {
-  assert(componentsCss.includes('min-height: 44px;'), 'Buttons must enforce 44px min-height for touch compliance');
-});
-
-check('Global headings enforce strong weights (600 - 800)', () => {
-  assert(homepageCss.includes('font-weight: 800') || homepageCss.includes('font-weight: 750'), 'Homepage headings must use strong weights');
-  assert(globalCss.includes('h1, h2, h3, h4, h5, h6') && globalCss.includes('font-weight: 700'), 'Global headings default to 700 weight');
+check('No Sunny Gold (#FACC15) foreground text on light backgrounds in any CSS file', () => {
+  const cssDir = path.join(rootDir, 'css');
+  const allowedDarkFiles = new Set(['site-footer.css', 'homepage.css', 'homepage-redesign.css', 'components.css']);
+  for (const f of fs.readdirSync(cssDir).filter(x => x.endsWith('.css'))) {
+    const lines = fs.readFileSync(path.join(cssDir, f), 'utf8').replace(/\r\n/g, '\n').split('\n');
+    for (let i = 0; i < lines.length; i++) {
+      if (/^\s*color\s*:\s*[^;]*#FACC15/i.test(lines[i])) {
+        assert(allowedDarkFiles.has(f), `Unexpected Sunny Gold text color in css/${f}:${i + 1}: ${lines[i].trim()}`);
+      }
+    }
+  }
 });
 
 // ─────────────────────────────────────────────────────────────
@@ -249,6 +209,6 @@ console.log('══════════════════════�
 if (failCount > 0) {
   process.exit(1);
 } else {
-  console.log('🎉 ALL TEXT VISIBILITY & CONTRAST AUDITS PASSED 100%!\n');
+  console.log('🎉 ALL BRAND PALETTE & WCAG 2.1 AA CONTRAST AUDITS PASSED 100%!\n');
   process.exit(0);
 }

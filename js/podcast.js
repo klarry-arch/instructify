@@ -266,12 +266,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (episodes.length === 0) {
       episodesGrid.innerHTML = `
-        <div style="grid-column: 1/-1; text-align:center; padding: 60px 20px; background:#F8FAFC; border-radius:24px; border:1.5px dashed #CBD5E1;">
+        <div style="grid-column: 1/-1; text-align:center; padding: 60px 20px; background:#FFFDF7; border-radius:24px; border:1.5px dashed #CBD5E1;">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.5" style="margin-bottom:12px;">
             <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
           </svg>
-          <h3 style="font-size:20px; font-weight:800; color:#0F172A; margin-bottom:8px;">No conversations found</h3>
-          <p style="font-size:14.5px; color:#64748B; margin:0;">Try adjusting your search terms or select "All" categories to view the full library.</p>
+          <h3 style="font-size:20px; font-weight:800; color:#1E1B4B; margin-bottom:8px;">No conversations found</h3>
+          <p style="font-size:14.5px; color:#5B5882; margin:0;">Try adjusting your search terms or select "All" categories to view the full library.</p>
         </div>
       `;
       if (episodesCountEl) episodesCountEl.textContent = `0 conversations`;
@@ -284,10 +284,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     episodesGrid.innerHTML = episodes.map(ep => {
       return `
-        <article class="ep-card" style="--ep-accent:${ep.themeColor}; --ep-glow:rgba(33, 69, 230,0.18);">
+        <article class="ep-card" style="--ep-accent:${ep.themeColor}; --ep-glow:rgba(37, 99, 235,0.18);">
           <div>
             <!-- Episode Thumbnail Banner -->
-            <div style="width:100%; aspect-ratio: 16/9; border-radius:14px; background:${ep.coverGradient}; padding:18px; margin-bottom:18px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden; box-shadow:0 8px 18px -4px rgba(15, 23, 42, 0.18);">
+            <div style="width:100%; aspect-ratio: 16/9; border-radius:14px; background:${ep.coverGradient}; padding:18px; margin-bottom:18px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden; box-shadow:0 8px 18px -4px rgba(30, 27, 75, 0.18);">
               <div style="display:flex; justify-content:space-between; align-items:center;">
                 <span class="ep-badge blue" style="background:rgba(255,255,255,0.92); color:#183AD6; font-size:11px; padding:3px 10px;">
                   ${ep.category}
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
             </div>
 
-            <div style="font-size:12px; font-weight:700; color:#64748B; margin-bottom:6px;">
+            <div style="font-size:12px; font-weight:700; color:#5B5882; margin-bottom:6px;">
               ${ep.number} · ${ep.date}
             </div>
 
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div>
             <!-- Guest Row -->
             <div class="ep-guest-row">
-              <div class="guest-avatar" style="background:${ep.guest.avatarBg}; color:${ep.guest.accentColor || '#2145E6'};">
+              <div class="guest-avatar" style="background:${ep.guest.avatarBg}; color:${ep.guest.accentColor || '#2563EB'};">
                 ${ep.guest.initials}
               </div>
               <div class="guest-info">
@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                   <span>Listen</span>
                 </button>
-                <button class="btn btn-outline btn-sm" onclick="openVideoModal('${ep.id}')" aria-label="Watch video for ${ep.title}" style="font-weight:700; display:inline-flex; align-items:center; gap:5px; border-color:#CBD5E1; color:#334155;">
+                <button class="btn btn-outline btn-sm" onclick="openVideoModal('${ep.id}')" aria-label="Watch video for ${ep.title}" style="font-weight:700; display:inline-flex; align-items:center; gap:5px; border-color:#CBD5E1; color:#433F6B;">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
                   <span>Watch</span>
                 </button>
@@ -792,7 +792,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div>
             <div class="ep-card-header">
               <span class="ep-badge blue">${ep.category}</span>
-              <span style="font-size:12px; font-weight:700; color:#64748B;">${ep.duration}</span>
+              <span style="font-size:12px; font-weight:700; color:#5B5882;">${ep.duration}</span>
             </div>
             <h3 class="ep-card-title">
               <a href="episode.html?id=${ep.id}" style="color:inherit; text-decoration:none;">${ep.title}</a>

@@ -88,8 +88,8 @@ const BLOG_ARTICLES = [
     trending: true,
     views: "3,420",
     coverImage: "assets/images/course-ai.png",
-    coverGradient: "linear-gradient(135deg, #091929 0%, #1E3A8A 60%, #2145E6 100%)",
-    themeColor: "#2145E6",
+    coverGradient: "linear-gradient(135deg, #091929 0%, #1E3A8A 60%, #2563EB 100%)",
+    themeColor: "#2563EB",
     excerpt: "Artificial Intelligence is no longer a distant theoretical concept in African education. From adaptive tutoring tools to localized assessment helpers, discover how educators are leveraging AI ethically to personalize learning.",
     keyTakeaways: [
       "AI serves as an intelligent pedagogical assistant, liberating teachers from repetitive administrative tasks to focus on mentorship.",
@@ -163,7 +163,7 @@ const BLOG_ARTICLES = [
     trending: true,
     views: "2,890",
     coverImage: "assets/images/home_interactive_teaching.jpg",
-    coverGradient: "linear-gradient(135deg, #064E3B 0%, #183AD6 60%, #3C3DDC 100%)",
+    coverGradient: "linear-gradient(135deg, #064E3B 0%, #183AD6 60%, #2563EB 100%)",
     themeColor: "#183AD6",
     excerpt: "Today's learners have the world's knowledge in their pockets. How must our teaching methodologies evolve from transmitting information to cultivating deep inquiry, discernment, and creative synthesis?",
     keyTakeaways: [
@@ -220,8 +220,8 @@ const BLOG_ARTICLES = [
     trending: true,
     views: "4,150",
     coverImage: "assets/images/course_ict_integration.jpg",
-    coverGradient: "linear-gradient(135deg, #3B0764 0%, #CC3E00 60%, #FF4D00 100%)",
-    themeColor: "#FF4D00",
+    coverGradient: "linear-gradient(135deg, #3B0764 0%, #CC3E00 60%, #2563EB 100%)",
+    themeColor: "#2563EB",
     excerpt: "From data fluency and cybersecurity hygiene to computational thinking and prompt engineering, explore the exact competencies that differentiate top graduates in today's dynamic global job market.",
     keyTakeaways: [
       "Digital literacy has evolved far beyond basic typing or word processing into algorithmic problem solving.",
@@ -319,7 +319,7 @@ const BLOG_ARTICLES = [
     trending: false,
     views: "1,940",
     coverImage: "assets/images/course_smart_vr_classroom.jpg",
-    coverGradient: "linear-gradient(135deg, #0F172A 0%, #1E3A8A 60%, #2145E6 100%)",
+    coverGradient: "linear-gradient(135deg, #1E1B4B 0%, #1E3A8A 60%, #2563EB 100%)",
     themeColor: "#2563EB",
     excerpt: "Experience the transition from traditional blackboards to interactive digital teaching stations. Discover cost-effective hardware configurations and pedagogical workflows that ignite classroom curiosity.",
     keyTakeaways: [
@@ -361,8 +361,8 @@ const BLOG_ARTICLES = [
     trending: false,
     views: "3,110",
     coverImage: "assets/images/home_digital_leadership.jpg",
-    coverGradient: "linear-gradient(135deg, #1E1B4B 0%, #4338CA 60%, #2145E6 100%)",
-    themeColor: "#4F46E5",
+    coverGradient: "linear-gradient(135deg, #1E1B4B 0%, #4338CA 60%, #2563EB 100%)",
+    themeColor: "#2563EB",
     excerpt: "Digital transformation is 20% about technology and 80% about culture, psychology, and leadership. Learn how visionary headteachers overcome staff resistance and build sustainable innovation cultures.",
     keyTakeaways: [
       "Top-down technology mandates fail; successful leaders empower internal teacher champions.",
@@ -403,7 +403,7 @@ const BLOG_ARTICLES = [
     trending: false,
     views: "2,460",
     coverImage: "assets/images/home_stem_collaboration.jpg",
-    coverGradient: "linear-gradient(135deg, #0F172A 0%, #0369A1 60%, #0284C7 100%)",
+    coverGradient: "linear-gradient(135deg, #1E1B4B 0%, #0369A1 60%, #0284C7 100%)",
     themeColor: "#0284C7",
     excerpt: "Africa's demographic dividend will only yield prosperity if we teach young people how to create value, not just seek employment. Discover how student hackathons, venture labs, and pitch days ignite enterprise.",
     keyTakeaways: [
@@ -445,7 +445,7 @@ const BLOG_ARTICLES = [
     trending: false,
     views: "2,050",
     coverImage: "assets/images/course-ict.png",
-    coverGradient: "linear-gradient(135deg, #134E4A 0%, #183AD6 60%, #3C3DDC 100%)",
+    coverGradient: "linear-gradient(135deg, #134E4A 0%, #183AD6 60%, #2563EB 100%)",
     themeColor: "#183AD6",
     excerpt: "We cannot afford to wait for universal fiber optic rollout before providing rural learners with world-class educational tools. Discover how edge caching, micro-servers, and solar battery rigs deliver equity today.",
     keyTakeaways: [

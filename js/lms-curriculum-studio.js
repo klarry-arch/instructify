@@ -612,16 +612,16 @@
             mandatory: true,
             freePreview: (sIdx === 0 && mIdx === 0),
             contentHtml: sub.explanation ? (
-              `<div class="lms-strand-meta-badge" style="display:inline-block;padding:4px 10px;background:#EEF2FF;color:#2145E6;border-radius:6px;font-size:12px;font-weight:700;margin-bottom:12px;">` +
+              `<div class="lms-strand-meta-badge" style="display:inline-block;padding:4px 10px;background:#EFF6FF;color:#2563EB;border-radius:6px;font-size:12px;font-weight:700;margin-bottom:12px;">` +
                 `🇰🇪 ${strand.code} › ${sub.code}` +
               `</div>` +
-              `<h2 style="font-size:22px;color:#0F172A;font-weight:800;margin-bottom:12px;">${sub.title}</h2>` +
-              (sub.explanation.overview ? `<p style="font-size:15px;color:#475569;font-weight:500;line-height:1.6;margin-bottom:20px;">${sub.explanation.overview}</p>` : '') +
+              `<h2 style="font-size:22px;color:#1E1B4B;font-weight:800;margin-bottom:12px;">${sub.title}</h2>` +
+              (sub.explanation.overview ? `<p style="font-size:15px;color:#433F6B;font-weight:500;line-height:1.6;margin-bottom:20px;">${sub.explanation.overview}</p>` : '') +
               (sub.explanation.coreContentHtml || '') +
               (sub.explanation.teachingNotes ? `
                 <div class="lms-callout lms-callout-info" style="margin-top:24px;">
-                  <strong style="color:#2145E6;">👨‍🏫 Teacher Facilitation Notes:</strong>
-                  <p style="margin:4px 0 0;font-size:13.5px;color:#1E293B;">${sub.explanation.teachingNotes}</p>
+                  <strong style="color:#2563EB;">👨‍🏫 Teacher Facilitation Notes:</strong>
+                  <p style="margin:4px 0 0;font-size:13.5px;color:#1E1B4B;">${sub.explanation.teachingNotes}</p>
                 </div>
               ` : '')
             ) : '<p>Comprehensive explanatory guide and lesson notes.</p>',

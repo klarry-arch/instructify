@@ -113,7 +113,7 @@
         <rect width="100" height="100" fill="#FFFFFF" rx="4"/>
         <rect x="8" y="8" width="28" height="28" fill="#07132B" rx="3"/>
         <rect x="13" y="13" width="18" height="18" fill="#FFFFFF" rx="1.5"/>
-        <rect x="17" y="17" width="10" height="10" fill="#FF4D00"/>
+        <rect x="17" y="17" width="10" height="10" fill="#2563EB"/>
 
         <rect x="64" y="8" width="28" height="28" fill="#07132B" rx="3"/>
         <rect x="69" y="13" width="18" height="18" fill="#FFFFFF" rx="1.5"/>
@@ -124,33 +124,33 @@
         <rect x="17" y="73" width="10" height="10" fill="#07132B"/>
 
         <rect x="44" y="10" width="6" height="6" fill="#07132B"/>
-        <rect x="52" y="10" width="6" height="6" fill="#FF4D00"/>
+        <rect x="52" y="10" width="6" height="6" fill="#2563EB"/>
         <rect x="44" y="22" width="6" height="6" fill="#07132B"/>
         <rect x="52" y="28" width="6" height="6" fill="#07132B"/>
 
         <rect x="10" y="44" width="6" height="6" fill="#07132B"/>
-        <rect x="22" y="44" width="6" height="6" fill="#FF4D00"/>
+        <rect x="22" y="44" width="6" height="6" fill="#2563EB"/>
         <rect x="34" y="44" width="6" height="6" fill="#07132B"/>
         <rect x="44" y="44" width="6" height="6" fill="#07132B"/>
-        <rect x="54" y="44" width="6" height="6" fill="#FF4D00"/>
+        <rect x="54" y="44" width="6" height="6" fill="#2563EB"/>
         <rect x="64" y="44" width="6" height="6" fill="#07132B"/>
         <rect x="76" y="44" width="6" height="6" fill="#07132B"/>
 
-        <rect x="10" y="52" width="6" height="6" fill="#FF4D00"/>
+        <rect x="10" y="52" width="6" height="6" fill="#2563EB"/>
         <rect x="28" y="52" width="6" height="6" fill="#07132B"/>
         <rect x="44" y="52" width="6" height="6" fill="#07132B"/>
-        <rect x="70" y="52" width="6" height="6" fill="#FF4D00"/>
+        <rect x="70" y="52" width="6" height="6" fill="#2563EB"/>
         <rect x="84" y="52" width="6" height="6" fill="#07132B"/>
 
         <rect x="44" y="64" width="6" height="6" fill="#07132B"/>
-        <rect x="54" y="64" width="6" height="6" fill="#FF4D00"/>
+        <rect x="54" y="64" width="6" height="6" fill="#2563EB"/>
         <rect x="64" y="64" width="6" height="6" fill="#07132B"/>
         <rect x="76" y="64" width="6" height="6" fill="#07132B"/>
 
-        <rect x="44" y="76" width="6" height="6" fill="#FF4D00"/>
+        <rect x="44" y="76" width="6" height="6" fill="#2563EB"/>
         <rect x="54" y="76" width="6" height="6" fill="#07132B"/>
         <rect x="64" y="76" width="6" height="6" fill="#07132B"/>
-        <rect x="76" y="76" width="6" height="6" fill="#FF4D00"/>
+        <rect x="76" y="76" width="6" height="6" fill="#2563EB"/>
         <rect x="84" y="76" width="6" height="6" fill="#07132B"/>
       </svg>
     `;
@@ -497,8 +497,8 @@
         <div class="cert-modal-container" style="max-width:1080px;">
           <div class="cert-modal-header">
             <div>
-              <h3 style="margin:0; font-size:18px; color:#0F172A; font-family:var(--font-heading);">Official Certificate Preview &mdash; ${cert.id}</h3>
-              <div style="font-size:12px; color:#64748B;">Instructify Kenya Verified Digital Credential</div>
+              <h3 style="margin:0; font-size:18px; color:#1E1B4B; font-family:var(--font-heading);">Official Certificate Preview &mdash; ${cert.id}</h3>
+              <div style="font-size:12px; color:#5B5882;">Instructify Kenya Verified Digital Credential</div>
             </div>
             <button onclick="document.getElementById('cert-modal-viewer').classList.remove('open')" class="cert-modal-close">&times;</button>
           </div>

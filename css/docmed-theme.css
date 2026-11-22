@@ -3,29 +3,29 @@
    Visual Reference: https://colorlibhub.com/docmed-blocks/
    Adapted for: Professional Development, EdTech, Consultancy & Infrastructure
    Palette: Deep Navy #0B1F3A · Professional Blue #124E96 · Royal Blue #2454E6
-            Professional Teal #0F8B8D · Soft Gold #D9A928 · Off-White #F8FAFC
+            Professional Teal #0F8B8D · Soft Gold #D9A928 · Off-White #FFFDF7
    ============================================================ */
 
 :root {
   /* Docmed Design Tokens aligned with Teachers' College System */
-  --dm-navy: #14213D;
-  --dm-prof-blue: #14213D;
-  --dm-royal-blue: #4F46E5;
-  --dm-sky-blue: #0F9D91;
-  --dm-teal: #0F9D91;
-  --dm-emerald: #0F9D91;
-  --dm-gold: #F4B942;
-  --dm-surface: #FAFAF7;
-  --dm-light-blue: #EEF2FF;
-  --dm-border: #E5E7EB;
-  --dm-charcoal: #1F2937;
-  --dm-muted: #64748B;
+  --dm-navy: #1E1B4B;
+  --dm-prof-blue: #1E1B4B;
+  --dm-royal-blue: #2563EB;
+  --dm-sky-blue: #2563EB;
+  --dm-teal: #2563EB;
+  --dm-emerald: #2563EB;
+  --dm-gold: #FACC15;
+  --dm-surface: #FFFDF7;
+  --dm-light-blue: #EFF6FF;
+  --dm-border: #E8E3D5;
+  --dm-charcoal: #1E1B4B;
+  --dm-muted: #5B5882;
   --dm-white: #FFFFFF;
 
-  --dm-shadow-sm: 0 2px 8px rgba(20, 33, 61, 0.04);
-  --dm-shadow-card: 0 4px 16px rgba(20, 33, 61, 0.05);
-  --dm-shadow-hover: 0 12px 28px rgba(20, 33, 61, 0.08);
-  --dm-shadow-nav: 0 2px 10px rgba(20, 33, 61, 0.04);
+  --dm-shadow-sm: 0 2px 8px rgba(30, 27, 75, 0.04);
+  --dm-shadow-card: 0 4px 16px rgba(30, 27, 75, 0.05);
+  --dm-shadow-hover: 0 12px 28px rgba(30, 27, 75, 0.08);
+  --dm-shadow-nav: 0 2px 10px rgba(30, 27, 75, 0.04);
 
   --dm-radius-sm: 8px;
   --dm-radius-md: 12px;
@@ -45,7 +45,7 @@
   z-index: 1000;
   background: #FFFFFF !important;
   border-bottom: 1px solid #DCE2EA !important;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 1px 3px rgba(30, 27, 75, 0.04);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
@@ -84,7 +84,7 @@
   align-items: center;
   gap: 6px;
   font-weight: 650;
-  color: #4F46E5 !important;
+  color: #2563EB !important;
 }
 .docmed-topbar__right,
 .docmed-topbar-right {
@@ -97,16 +97,16 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #14213D !important;
+  color: #1E1B4B !important;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 .docmed-topbar__item:hover,
 .docmed-topbar-link:hover {
-  color: #4F46E5 !important;
+  color: #2563EB !important;
 }
 .docmed-topbar__item svg {
-  color: #0F9D91 !important;
+  color: #2563EB !important;
 }
 
 /* Ensure navbar nested inside .site-header is positioned in-flow directly below topbar */
@@ -124,7 +124,7 @@
 /* When scrolled down: dock header smoothly at top with elevation */
 .site-header.scrolled {
   transform: none !important;
-  box-shadow: 0 8px 24px rgba(20, 33, 61, 0.06) !important;
+  box-shadow: 0 8px 24px rgba(30, 27, 75, 0.06) !important;
 }
 
 /* Universal fallback for any page where .docmed-topbar was sibling directly before .navbar */
@@ -189,7 +189,7 @@ body.lms-page {
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #1F7A6E;
+  color: #2563EB;
   margin-bottom: 10px;
 }
 .docmed-kicker.on-dark {
@@ -199,7 +199,7 @@ body.lms-page {
   font-family: var(--font-heading, 'Merriweather', Georgia, serif);
   font-size: clamp(28px, 3.2vw, 42px);
   font-weight: 800;
-  color: #172033;
+  color: #1E1B4B;
   line-height: 1.25;
   letter-spacing: -0.01em;
   margin-bottom: 12px;
@@ -213,7 +213,7 @@ body.lms-page {
   display: block;
   width: 48px;
   height: 3.5px;
-  background: #1F7A6E;
+  background: #2563EB;
   border-radius: 2px;
   margin: 14px auto 16px;
 }
@@ -223,7 +223,7 @@ body.lms-page {
 .docmed-subtitle {
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: clamp(15px, 1.2vw, 17px);
-  color: #475569;
+  color: #433F6B;
   line-height: 1.68;
   max-width: 720px;
   margin: 0 auto;
@@ -243,7 +243,7 @@ body.lms-page {
 .docmed-service-band {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  box-shadow: 0 16px 40px rgba(18, 53, 91, 0.12);
+  box-shadow: 0 16px 40px rgba(30, 27, 75, 0.12);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -258,13 +258,13 @@ body.lms-page {
   filter: brightness(1.05);
 }
 .docmed-band-cell.cell-prof-blue {
-  background: #14213D;
+  background: #1E1B4B;
 }
 .docmed-band-cell.cell-navy {
-  background: #0F172A;
+  background: #1E1B4B;
 }
 .docmed-band-cell.cell-teal {
-  background: #1F7A6E;
+  background: #2563EB;
 }
 .docmed-band-icon-wrap {
   width: 52px;
@@ -313,7 +313,7 @@ body.lms-page {
 }
 .docmed-band-btn:hover {
   background: #FFFFFF;
-  color: #14213D;
+  color: #1E1B4B;
   border-color: #FFFFFF;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
@@ -438,7 +438,7 @@ body.lms-page {
 .docmed-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--dm-shadow-hover);
-  border-color: #CBD5E1;
+  border-color: #E8E3D5;
 }
 .docmed-card-media {
   width: 100%;
@@ -472,14 +472,14 @@ body.lms-page {
   font-family: var(--font-heading, 'Merriweather', Georgia, serif);
   font-size: 18px;
   font-weight: 700;
-  color: #172033;
+  color: #1E1B4B;
   margin-bottom: 10px;
   line-height: 1.35;
 }
 .docmed-card-desc {
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 14.5px;
-  color: #475569;
+  color: #433F6B;
   line-height: 1.6;
   margin-bottom: 20px;
   flex: 1;
@@ -491,13 +491,13 @@ body.lms-page {
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 13.5px;
   font-weight: 700;
-  color: #4F46E5;
+  color: #2563EB;
   text-decoration: none;
   transition: all 0.2s ease;
   margin-top: auto;
 }
 .docmed-card-link:hover {
-  color: #14213D;
+  color: #1E1B4B;
   transform: translateX(4px);
 }
 @media (max-width: 992px) {
@@ -534,7 +534,7 @@ body.lms-page {
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 15px;
   font-weight: 700;
-  color: #475569;
+  color: #433F6B;
   background: transparent;
   border: none;
   border-bottom: 3px solid transparent;
@@ -543,11 +543,11 @@ body.lms-page {
   transition: all 0.2s ease;
 }
 .docmed-tab-btn:hover {
-  color: #14213D;
+  color: #1E1B4B;
 }
 .docmed-tab-btn.active {
-  color: #4F46E5;
-  border-bottom-color: #4F46E5;
+  color: #2563EB;
+  border-bottom-color: #2563EB;
   background: var(--dm-white);
 }
 .docmed-tab-panel {
@@ -564,12 +564,12 @@ body.lms-page {
   font-family: var(--font-heading, 'Merriweather', Georgia, serif);
   font-size: 24px;
   font-weight: 800;
-  color: #172033;
+  color: #1E1B4B;
   margin-bottom: 14px;
 }
 .docmed-tab-info p {
   font-size: 15px;
-  color: #475569;
+  color: #433F6B;
   line-height: 1.65;
   margin-bottom: 20px;
 }
@@ -594,7 +594,7 @@ body.lms-page {
    7. DOCMED TESTIMONIAL / REVIEWS BANNER (Navy Immersion)
    ══════════════════════════════════════════════════════════════ */
 .docmed-reviews-banner {
-  background: linear-gradient(135deg, #14213D 0%, #1E293B 100%);
+  background: linear-gradient(135deg, #1E1B4B 0%, #1E1B4B 100%);
   padding: 96px 0;
   color: var(--dm-white);
   position: relative;
@@ -608,14 +608,14 @@ body.lms-page {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 30%, rgba(31, 122, 110, 0.20) 0%, transparent 60%);
+  background: radial-gradient(circle at 50% 30%, rgba(37, 99, 235, 0.20) 0%, transparent 60%);
   pointer-events: none;
 }
 .docmed-quote-icon {
   width: 56px;
   height: 56px;
   margin: 0 auto 24px;
-  color: #1F7A6E;
+  color: #2563EB;
   opacity: 0.9;
 }
 .docmed-review-text {
@@ -636,7 +636,7 @@ body.lms-page {
 }
 .docmed-review-role {
   font-size: 13px;
-  color: #F4B942;
+  color: #2563EB;
   margin-top: 4px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -677,7 +677,7 @@ body.lms-page {
   font-family: var(--font-heading, 'Merriweather', Georgia, serif);
   font-size: 17px;
   font-weight: 700;
-  color: #172033;
+  color: #1E1B4B;
   margin-bottom: 4px;
 }
 .docmed-trainer-role {
@@ -685,7 +685,7 @@ body.lms-page {
   font-weight: 650;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #1F7A6E;
+  color: #2563EB;
   font-family: var(--font-body, 'Inter', sans-serif);
 }
 @media (max-width: 1024px) {
@@ -718,10 +718,10 @@ body.lms-page {
   gap: 24px;
 }
 .docmed-split-half.navy {
-  background: linear-gradient(135deg, #14213D 0%, #1E293B 100%);
+  background: linear-gradient(135deg, #1E1B4B 0%, #1E1B4B 100%);
 }
 .docmed-split-half.blue {
-  background: linear-gradient(135deg, #14213D 0%, #4F46E5 100%);
+  background: linear-gradient(135deg, #1E1B4B 0%, #2563EB 100%);
 }
 .docmed-split-content h3 {
   font-family: var(--font-heading, 'Manrope', sans-serif);
@@ -754,7 +754,7 @@ body.lms-page {
 }
 .docmed-split-btn:hover {
   background: var(--dm-white);
-  color: #14213D;
+  color: #1E1B4B;
   border-color: var(--dm-white);
   transform: translateY(-2px);
 }
@@ -782,21 +782,21 @@ body.lms-page {
   gap: 8px;
   padding: 12px 28px;
   border-radius: 8px;
-  background: #4F46E5;
+  background: #2563EB;
   color: #FFFFFF;
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
   border: 1.5px solid transparent;
-  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 44px;
 }
 .btn-docmed-primary:hover {
-  background: #4338CA;
+  background: #1D4ED8;
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(79, 70, 229, 0.35);
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
   color: #FFFFFF;
 }
 
@@ -808,20 +808,20 @@ body.lms-page {
   padding: 12px 28px;
   border-radius: 8px;
   background: #FFFFFF;
-  color: #14213D;
+  color: #1E1B4B;
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
-  border: 1.5px solid #E5E7EB;
+  border: 1.5px solid #E8E3D5;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 44px;
 }
 .btn-docmed-outline:hover {
-  border-color: #4F46E5;
-  color: #4F46E5;
+  border-color: #2563EB;
+  color: #2563EB;
   transform: translateY(-2px);
-  background: #EEF2FF;
+  background: #EFF6FF;
 }
 
 .btn-docmed-ghost {
@@ -831,11 +831,11 @@ body.lms-page {
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 14.5px;
   font-weight: 700;
-  color: #4F46E5;
+  color: #2563EB;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 .btn-docmed-ghost:hover {
-  color: #14213D;
+  color: #1E1B4B;
   transform: translateX(4px);
 }

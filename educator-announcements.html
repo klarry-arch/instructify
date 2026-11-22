@@ -6,10 +6,10 @@
   <title>Announcements | Instructify Kenya LMS</title>
   <meta name="description" content="Send announcements and broadcast messages to learners and cohorts on Instructify Kenya.">
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=19.0">
-  <link rel="stylesheet" href="css/components.css?v=19.0">
-  <link rel="stylesheet" href="css/lms-portal.css?v=19.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=19.0">
+  <link rel="stylesheet" href="css/global.css?v=2026.5">
+  <link rel="stylesheet" href="css/components.css?v=2026.5">
+  <link rel="stylesheet" href="css/lms-portal.css?v=2026.5">
+  <link rel="stylesheet" href="css/live-chat.css?v=2026.5">
 </head>
 <body class="lms-page">
 
@@ -19,8 +19,8 @@
     <a href="index.html" class="nav-brand" aria-label="Instructify Kenya Home">
       <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="nav-brand-logo">
       <div class="nav-brand-text-box" style="display: none !important;">
-        <span class="nav-brand-title" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-weight: 800 !important; font-size: 1.25rem !important; color: #0F172A !important; letter-spacing: -0.02em !important; line-height: 1 !important; display: block !important;">Instruct<span class="brand-accent" style="color: #F5812D !important; font-weight: 900 !important;">ify</span></span>
-        <span class="nav-brand-subtitle" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-size: 0.62rem !important; font-weight: 850 !important; color: #FF4D00 !important; text-transform: uppercase !important; letter-spacing: 2.2px !important; line-height: 1 !important; display: block !important;">KENYA</span>
+        <span class="nav-brand-title" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-weight: 800 !important; font-size: 1.25rem !important; color: #1E1B4B !important; letter-spacing: -0.02em !important; line-height: 1 !important; display: block !important;">Instruct<span class="brand-accent" style="color: #2563EB !important; font-weight: 900 !important;">ify</span></span>
+        <span class="nav-brand-subtitle" style="font-family: var(--font-heading), 'Poppins', sans-serif !important; font-size: 0.62rem !important; font-weight: 850 !important; color: #2563EB !important; text-transform: uppercase !important; letter-spacing: 2.2px !important; line-height: 1 !important; display: block !important;">KENYA</span>
       </div>
     </a>
     <ul class="nav-links" role="list">
@@ -43,9 +43,9 @@
     </ul>
 
     <div class="nav-actions" style="display:flex; align-items:center; gap:12px;">
-      <div id="nav-user-area" style="display:inline-flex; align-items:center; gap:8px; background:#F8FAFC; border:1px solid #E2E8F0; padding:4px 12px 4px 6px; border-radius:999px;">
+      <div id="nav-user-area" style="display:inline-flex; align-items:center; gap:8px; background:#FFFDF7; border:1px solid #E8E3D5; padding:4px 12px 4px 6px; border-radius:999px;">
         <div id="nav-avatar" class="lms-avatar avatar-sm">WK</div>
-        <span id="nav-user-name" style="font-size:13px; font-weight:700; color:#0F172A;">Dr. Wanjiku</span>
+        <span id="nav-user-name" style="font-size:13px; font-weight:700; color:#1E1B4B;">Dr. Wanjiku</span>
         <span class="lms-badge lms-badge-published" style="font-size:10px; padding:2px 6px;">Educator</span>
       </div>
       <button onclick="logout()" class="btn btn-outline btn-sm" style="color:#DC2626; border-color:#DC2626;" aria-label="Log Out">Log Out</button>
@@ -188,10 +188,10 @@
 </div>
 
 <!-- Modal: New Announcement -->
-<div id="announcement-modal" class="lms-modal-backdrop" style="display:none; position:fixed; inset:0; background:rgba(15,23,42,0.6); z-index:999; align-items:center; justify-content:center;">
+<div id="announcement-modal" class="lms-modal-backdrop" style="display:none; position:fixed; inset:0; background:rgba(30, 27, 75,0.6); z-index:999; align-items:center; justify-content:center;">
   <div class="lms-card" style="max-width:540px; width:92%; padding:24px;">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-      <h3 style="font-size:18px; font-weight:800; color:#0F172A;">Create Announcement</h3>
+      <h3 style="font-size:18px; font-weight:800; color:#1E1B4B;">Create Announcement</h3>
       <button onclick="closeNewAnnouncementModal()" style="background:none; border:none; font-size:20px; cursor:pointer; color:#94A3B8;">✕</button>
     </div>
 
@@ -223,8 +223,8 @@
       </div>
 
       <div style="display:flex; align-items:center; gap:8px; margin-bottom:20px;">
-        <input type="checkbox" id="ann-send-email" checked style="width:16px; height:16px; accent-color:#2145E6;">
-        <label for="ann-send-email" style="font-size:13px; color:#475569;">Send automated email notification to enrolled students</label>
+        <input type="checkbox" id="ann-send-email" checked style="width:16px; height:16px; accent-color:#2563EB;">
+        <label for="ann-send-email" style="font-size:13px; color:#433F6B;">Send automated email notification to enrolled students</label>
       </div>
 
       <div style="display:flex; justify-content:flex-end; gap:10px;">
@@ -310,8 +310,8 @@
       container.innerHTML = `
         <div class="lms-card" style="padding:48px 24px; text-align:center;">
           <div style="font-size:40px; margin-bottom:10px;">📢</div>
-          <h4 style="font-size:16px; font-weight:700; color:#0F172A;">No announcements found</h4>
-          <p style="color:#64748B; font-size:13px; margin-top:4px;">Publish a new notice or change your filter criteria.</p>
+          <h4 style="font-size:16px; font-weight:700; color:#1E1B4B;">No announcements found</h4>
+          <p style="color:#5B5882; font-size:13px; margin-top:4px;">Publish a new notice or change your filter criteria.</p>
         </div>
       `;
       return;
@@ -319,12 +319,12 @@
 
     container.innerHTML = list.map(a => {
       let prioBadge = '<span class="lms-badge lms-badge-info">Normal</span>';
-      let borderCol = '#E2E8F0';
+      let borderCol = '#E8E3D5';
       if (a.priority === 'urgent') {
         prioBadge = '<span class="lms-badge" style="background:#FEE2E2; color:#DC2626;">Urgent</span>';
         borderCol = '#FECACA';
       } else if (a.priority === 'important') {
-        prioBadge = '<span class="lms-badge" style="background:#FEF3C7; color:#D97706;">Important</span>';
+        prioBadge = '<span class="lms-badge" style="background:#FEF9C3; color:#2563EB;">Important</span>';
         borderCol = '#FDE68A';
       }
 
@@ -336,21 +336,21 @@
           <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
             <div style="display:flex; align-items:center; gap:10px;">
               <span style="font-size:18px;">📢</span>
-              <h3 style="font-size:16px; font-weight:700; color:#0F172A; margin:0;">${a.title}</h3>
+              <h3 style="font-size:16px; font-weight:700; color:#1E1B4B; margin:0;">${a.title}</h3>
               ${prioBadge}
             </div>
-            <span style="font-size:12px; color:#64748B;">${a.date || 'Recent'}</span>
+            <span style="font-size:12px; color:#5B5882;">${a.date || 'Recent'}</span>
           </div>
 
-          <div style="font-size:12px; color:#2145E6; font-weight:600; margin-bottom:10px;">
+          <div style="font-size:12px; color:#2563EB; font-weight:600; margin-bottom:10px;">
             Target: ${targetLabel}
           </div>
 
-          <p style="color:#334155; font-size:14px; line-height:1.6; margin-bottom:14px; white-space:pre-line;">
+          <p style="color:#433F6B; font-size:14px; line-height:1.6; margin-bottom:14px; white-space:pre-line;">
             ${a.content}
           </p>
 
-          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #F1F5F9; padding-top:10px; font-size:12px; color:#64748B;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #F7F3E6; padding-top:10px; font-size:12px; color:#5B5882;">
             <span>Author: <strong>${a.author || 'Dr. Wanjiku Kamau'}</strong></span>
             <button onclick="deleteAnnouncementPrompt('${a.id}')" class="lms-btn lms-btn-ghost lms-btn-sm" style="color:#DC2626;">Delete</button>
           </div>

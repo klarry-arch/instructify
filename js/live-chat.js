@@ -211,7 +211,7 @@
       <div class="chat-bubble">
         <div class="chat-lead-form" id="active-lead-form">
           <h4>📝 Leave a Message (${topic})</h4>
-          <p style="font-size:12px; color:#64748B; margin:0;">Our team will get back to you via WhatsApp or Email.</p>
+          <p style="font-size:12px; color:#5B5882; margin:0;">Our team will get back to you via WhatsApp or Email.</p>
           <input type="text" id="lead-name" class="chat-lead-input" placeholder="Your Full Name *" required>
           <input type="text" id="lead-phone" class="chat-lead-input" placeholder="Phone or WhatsApp Number *" required>
           <input type="email" id="lead-email" class="chat-lead-input" placeholder="Email Address">
@@ -331,7 +331,7 @@
           <div style="text-align:center; padding: 12px 0;">
             <div style="font-size:28px; margin-bottom:6px;">✅</div>
             <strong style="color:#10B981; font-size:14px;">Enquiry Received!</strong>
-            <p style="font-size:12.5px; color:#475569; margin-top:6px;">Thank you, ${escapeHtml(name)}. An Instructify advisor will contact you shortly.</p>
+            <p style="font-size:12.5px; color:#433F6B; margin-top:6px;">Thank you, ${escapeHtml(name)}. An Instructify advisor will contact you shortly.</p>
             <a href="https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent('Hello Instructify Kenya, I just submitted an enquiry regarding ' + topic + '. My name is ' + name + '.')}" 
                target="_blank" rel="noopener noreferrer" class="chat-act-btn whatsapp" style="margin-top:10px; width:100%;">
               Open WhatsApp Chat →

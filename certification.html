@@ -6,11 +6,11 @@
   <meta name="description" content="Official Certificate & Credential Verification Portal — Instructify Kenya. Verify CPD training certificates and professional credentials.">
   <title>Certificate Verification Portal | Instructify Kenya</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=19.0">
-  <link rel="stylesheet" href="css/components.css?v=19.0">
+  <link rel="stylesheet" href="css/global.css?v=2026.5">
+  <link rel="stylesheet" href="css/components.css?v=2026.5">
   <style>
     .cert-hero {
-      background: linear-gradient(135deg, #091929 0%, #2145E6 60%, #3C3DDC 100%);
+      background: linear-gradient(135deg, #1E1B4B 0%, #2563EB 60%, #2563EB 100%);
       padding: calc(var(--nav-height, 76px) + 48px) 0 64px;
       text-align: center;
       color: #FFFFFF;
@@ -19,10 +19,10 @@
       max-width: 980px;
       margin: -40px auto 60px;
       background: #FFFFFF;
-      border: 1px solid #CBD5E1;
+      border: 1px solid #E8E3D5;
       border-radius: 16px;
       padding: 32px;
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.10);
+      box-shadow: 0 12px 32px rgba(30, 27, 75, 0.10);
       position: relative;
       z-index: 10;
     }
@@ -39,9 +39,9 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="css/live-chat.css?v=19.0">
-  <link rel="stylesheet" href="css/site-header.css?v=2026.1">
-  <link rel="stylesheet" href="css/site-footer.css?v=2026.1">
+  <link rel="stylesheet" href="css/live-chat.css?v=2026.5">
+  <link rel="stylesheet" href="css/site-header.css?v=2026.5">
+  <link rel="stylesheet" href="css/site-footer.css?v=2026.5">
 </head>
 <body>
 
@@ -317,7 +317,7 @@ function handleVerificationSubmit(e) {
   if (!query) return;
 
   const resultContainer = document.getElementById('cert-result');
-  resultContainer.innerHTML = '<div style="text-align:center; padding:40px 0; color:var(--text-muted, #475569);">🔍 Checking credential database...</div>';
+  resultContainer.innerHTML = '<div style="text-align:center; padding:40px 0; color:var(--text-muted, #433F6B);">🔍 Checking credential database...</div>';
 
   setTimeout(() => {
     const res = window.CertificateEngine.verify(query);

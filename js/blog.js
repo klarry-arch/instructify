@@ -50,13 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (articles.length === 0) {
       articlesGrid.innerHTML = `
-        <div style="grid-column: 1/-1; text-align:center; padding: 60px 20px; background:#F8FAFC; border-radius:20px; border:1px dashed #CBD5E1;">
+        <div style="grid-column: 1/-1; text-align:center; padding: 60px 20px; background:#FFFDF7; border-radius:20px; border:1px dashed #CBD5E1;">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.5" style="margin-bottom:12px;">
             <circle cx="11" cy="11" r="8"/>
             <path d="M21 21l-4.35-4.35"/>
           </svg>
-          <h3 style="font-size:20px; font-weight:800; color:#0F172A; margin-bottom:8px;">No articles found</h3>
-          <p style="font-size:14.5px; color:#64748B; margin:0;">Try searching for other educational topics, AI keywords, or select "All".</p>
+          <h3 style="font-size:20px; font-weight:800; color:#1E1B4B; margin-bottom:8px;">No articles found</h3>
+          <p style="font-size:14.5px; color:#5B5882; margin:0;">Try searching for other educational topics, AI keywords, or select "All".</p>
         </div>
       `;
       if (articlesCountEl) articlesCountEl.textContent = `0 articles`;
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     articlesGrid.innerHTML = articles.map(art => {
       const articleUrl = `articles/${art.slug}.html`;
       return `
-        <article class="article-card" style="--art-accent:${art.themeColor}; --art-glow:rgba(33, 69, 230,0.18);">
+        <article class="article-card" style="--art-accent:${art.themeColor}; --art-glow:rgba(37, 99, 235,0.18);">
           <a href="${articleUrl}" style="display:block; overflow:hidden;" aria-label="Read ${art.title}">
             <img src="${art.coverImage}" alt="${art.title}" class="article-card-cover" loading="lazy">
           </a>
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="article-card-footer">
-              <span style="font-size:12px; font-weight:600; color:#64748B;">Published by Instructify Kenya</span>
+              <span style="font-size:12px; font-weight:600; color:#5B5882;">Published by Instructify Kenya</span>
               <a href="${articleUrl}" class="article-card-read-btn" style="color:${art.themeColor};">
                 Read Article →
               </a>

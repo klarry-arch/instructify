@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign In | Instructify Kenya LMS</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=19.0">
-  <link rel="stylesheet" href="css/components.css?v=19.0">
-  <link rel="stylesheet" href="css/dashboard.css?v=19.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=19.0">
+  <link rel="stylesheet" href="css/global.css?v=2026.5">
+  <link rel="stylesheet" href="css/components.css?v=2026.5">
+  <link rel="stylesheet" href="css/dashboard.css?v=2026.5">
+  <link rel="stylesheet" href="css/live-chat.css?v=2026.5">
   <style>
     body {
-      background: radial-gradient(120% 120% at 50% 10%, #F8FAFC 0%, #EEF2F6 100%);
+      background: radial-gradient(120% 120% at 50% 10%, #FFFDF7 0%, #EEF2F6 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -25,9 +25,9 @@
     }
     .auth-card {
       background: #FFFFFF;
-      border: 1px solid var(--border-color, #E2E8F0);
+      border: 1px solid var(--border-color, #E8E3D5);
       border-radius: 24px;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 20px 50px rgba(30, 27, 75, 0.08);
       max-width: 480px;
       width: 100%;
       padding: 36px 32px;
@@ -40,17 +40,17 @@
     .auth-title {
       font-size: 24px !important;
       font-weight: 800 !important;
-      color: #0F172A !important;
+      color: #1E1B4B !important;
       margin-bottom: 6px;
     }
     .auth-subtitle {
       font-size: 14px;
-      color: #64748B;
+      color: #5B5882;
       line-height: 1.5;
     }
     .role-switcher-banner {
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
+      background: #FFFDF7;
+      border: 1px solid #E8E3D5;
       border-radius: 14px;
       padding: 12px;
       margin-bottom: 20px;
@@ -60,7 +60,7 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: #475569;
+      color: #433F6B;
       margin-bottom: 8px;
       display: flex;
       align-items: center;
@@ -73,12 +73,12 @@
     }
     .role-quick-btn {
       background: #FFFFFF;
-      border: 1px solid #CBD5E1;
+      border: 1px solid #E8E3D5;
       border-radius: 8px;
       padding: 7px 4px;
       font-size: 12px;
       font-weight: 700;
-      color: #1E293B;
+      color: #1E1B4B;
       cursor: pointer;
       display: flex;
       flex-direction: column;
@@ -87,17 +87,17 @@
       transition: all 0.15s ease;
     }
     .role-quick-btn:hover {
-      border-color: #2145E6;
-      background: #EEF2FF;
-      color: #2145E6;
+      border-color: #2563EB;
+      background: #EFF6FF;
+      color: #2563EB;
     }
     .role-quick-btn.active {
-      border-color: #2145E6;
-      background: #2145E6;
+      border-color: #2563EB;
+      background: #2563EB;
       color: #FFFFFF;
     }
   </style>
-  <link rel="stylesheet" href="css/site-header.css?v=2026.1">
+  <link rel="stylesheet" href="css/site-header.css?v=2026.5">
 </head>
 <body>
 
@@ -217,18 +217,18 @@
       <div>
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
           <label for="login-password" class="form-label" style="margin:0;">Password</label>
-          <a href="forgot-password.html" style="font-size:12.5px; color:var(--primary-color, #064FC1); font-weight:600; text-decoration:none;">Forgot password?</a>
+          <a href="forgot-password.html" style="font-size:12.5px; color:var(--primary-color, #2563EB); font-weight:600; text-decoration:none;">Forgot password?</a>
         </div>
         <div style="position:relative;">
           <input type="password" id="login-password" aria-label="Password" class="form-input" placeholder="Your password" required autocomplete="current-password" style="padding-right:40px;">
-          <button type="button" onclick="togglePasswordVisibility()" aria-label="Toggle Password Visibility" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:#64748B; cursor:pointer; font-size:16px;">
+          <button type="button" onclick="togglePasswordVisibility()" aria-label="Toggle Password Visibility" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:#5B5882; cursor:pointer; font-size:16px;">
             👁️
           </button>
         </div>
       </div>
 
       <div style="display:flex; align-items:center; justify-content:space-between;">
-        <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#475569; cursor:pointer;">
+        <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#433F6B; cursor:pointer;">
           <input type="checkbox" id="login-remember" checked>
           <span>Remember this browser</span>
         </label>
@@ -239,8 +239,8 @@
       </button>
     </form>
 
-    <div style="text-align:center; margin-top:20px; font-size:13.5px; color:#64748B;">
-      Don't have an account? <a href="register.html" style="color:var(--primary-color, #064FC1); font-weight:700; text-decoration:none;">Register for Instructify</a>
+    <div style="text-align:center; margin-top:20px; font-size:13.5px; color:#5B5882;">
+      Don't have an account? <a href="register.html" style="color:var(--primary-color, #2563EB); font-weight:700; text-decoration:none;">Register for Instructify</a>
     </div>
   </div>
 </div>

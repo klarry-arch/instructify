@@ -1,32 +1,32 @@
 /* ============================================================
    INSTRUCTIFY KENYA — COURSE / LMS DASHBOARD STYLESHEET
    Scoped specifically to the Course & LMS Dashboard (courses.html).
-   Brand: #2145E6 (Primary Blue) · #FF4D00 (Action Orange) · #0F172A (Navy)
+   Brand: #2563EB (Primary Blue) · #FACC15 (Action Orange) · #1E1B4B (Navy)
    ============================================================ */
 
 /* ── LMS CSS Variables Scoped ──────────────────────────────── */
 :root {
-  --lms-primary: #14213D;
+  --lms-primary: #1E1B4B;
   --lms-primary-hover: #0D1629;
-  --lms-primary-light: #EEF2FF;
-  --lms-accent: #4F46E5;
-  --lms-accent-hover: #4338CA;
-  --lms-accent-light: rgba(79, 70, 229, 0.10);
-  --lms-navy: #14213D;
-  --lms-navy-card: #14213D;
-  --lms-text-main: #1E293B;
-  --lms-text-muted: #475569;
-  --lms-text-light: #64748B;
-  --lms-border: #E5E7EB;
-  --lms-border-focus: #4F46E5;
-  --lms-bg: #FAFAF7;
+  --lms-primary-light: #EFF6FF;
+  --lms-accent: #2563EB;
+  --lms-accent-hover: #1D4ED8;
+  --lms-accent-light: rgba(37, 99, 235, 0.10);
+  --lms-navy: #1E1B4B;
+  --lms-navy-card: #1E1B4B;
+  --lms-text-main: #1E1B4B;
+  --lms-text-muted: #433F6B;
+  --lms-text-light: #5B5882;
+  --lms-border: #E8E3D5;
+  --lms-border-focus: #2563EB;
+  --lms-bg: #FFFDF7;
   --lms-card: #FFFFFF;
-  --lms-success: #0F9D91;
-  --lms-warning: #F4B942;
-  --lms-purple: #4F46E5;
-  --lms-shadow-sm: 0 1px 3px rgba(18, 53, 91, 0.05);
-  --lms-shadow-md: 0 4px 16px -2px rgba(18, 53, 91, 0.08);
-  --lms-shadow-lg: 0 10px 25px -3px rgba(18, 53, 91, 0.10);
+  --lms-success: #2563EB;
+  --lms-warning: #FACC15;
+  --lms-purple: #2563EB;
+  --lms-shadow-sm: 0 1px 3px rgba(30, 27, 75, 0.05);
+  --lms-shadow-md: 0 4px 16px -2px rgba(30, 27, 75, 0.08);
+  --lms-shadow-lg: 0 10px 25px -3px rgba(30, 27, 75, 0.10);
   --lms-radius-sm: 8px;
   --lms-radius-md: 12px;
   --lms-radius-lg: 16px;
@@ -40,7 +40,7 @@
   position: sticky;
   top: var(--nav-height, 72px);
   z-index: 90;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  box-shadow: 0 2px 8px rgba(30, 27, 75, 0.03);
 }
 
 .lms-subnav-container {
@@ -93,7 +93,7 @@
 .lms-subnav-link.active {
   color: var(--lms-primary);
   background: var(--lms-primary-light);
-  border-color: rgba(33, 69, 230, 0.2);
+  border-color: rgba(37, 99, 235, 0.2);
 }
 
 .lms-subnav-link .badge-counter {
@@ -141,7 +141,7 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--lms-primary), #3C3DDC);
+  background: linear-gradient(135deg, var(--lms-primary), #2563EB);
   color: #FFFFFF;
   display: inline-flex;
   align-items: center;
@@ -161,7 +161,7 @@
 
 /* ── 2. Personalised Welcome Area ─────────────────────────── */
 .lms-welcome-hero {
-  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF7 100%);
   padding: 32px 0 24px;
   border-bottom: 1px solid var(--lms-border);
 }
@@ -260,7 +260,7 @@
 
 .lms-search-box-container:focus-within {
   border-color: var(--lms-primary);
-  box-shadow: 0 0 0 4px rgba(33, 69, 230, 0.12);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
 }
 
 .lms-search-input-field {
@@ -276,14 +276,14 @@
 }
 
 .lms-search-input-field::placeholder {
-  color: #64748B;
+  color: #5B5882;
   font-weight: 400;
 }
 
 .lms-search-clear-btn {
   background: none;
   border: none;
-  color: #64748B;
+  color: #5B5882;
   font-size: 16px;
   cursor: pointer;
   padding: 4px 8px;
@@ -423,14 +423,14 @@
 
 .lms-qa-button:hover {
   border-color: var(--lms-primary);
-  background: #F8FAFC;
+  background: #FFFDF7;
   transform: translateX(3px);
   box-shadow: var(--lms-shadow-sm);
 }
 
 .lms-qa-button.active {
   background: var(--lms-primary-light);
-  border-color: rgba(33, 69, 230, 0.3);
+  border-color: rgba(37, 99, 235, 0.3);
 }
 
 .lms-qa-icon-wrap {
@@ -444,8 +444,8 @@
   font-size: 18px;
 }
 
-.lms-qa-icon-orange { background: #FFF1EB; color: #FF4D00; }
-.lms-qa-icon-blue   { background: #EEF2FF; color: #2145E6; }
+.lms-qa-icon-orange { background: #FFF1EB; color: #FACC15; }
+.lms-qa-icon-blue   { background: #EFF6FF; color: #2563EB; }
 .lms-qa-icon-purple { background: #F5F3FF; color: #7C3AED; }
 .lms-qa-icon-green  { background: #ECFDF5; color: #059669; }
 
@@ -473,7 +473,7 @@
   font-weight: 700;
   padding: 2px 7px;
   border-radius: 999px;
-  background: #F1F5F9;
+  background: #F7F3E6;
   color: var(--lms-text-muted);
 }
 .lms-qa-button:hover .lms-qa-badge {
@@ -489,7 +489,7 @@
 }
 
 .lms-qa-arrow {
-  color: #CBD5E1;
+  color: #E8E3D5;
   font-size: 16px;
   font-weight: 700;
   transition: transform 0.2s ease, color 0.2s ease;
@@ -503,7 +503,7 @@
 .lms-quick-resume-box {
   margin-top: 18px;
   padding: 14px 16px;
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  background: linear-gradient(135deg, #1E1B4B 0%, #1E1B4B 100%);
   border-radius: var(--lms-radius-md);
   color: #FFFFFF;
 }
@@ -544,7 +544,7 @@
 }
 .lms-qr-percent {
   font-size: 11px;
-  color: #64748B;
+  color: #5B5882;
   font-weight: 600;
 }
 .lms-qr-btn {
@@ -552,8 +552,8 @@
   align-items: center;
   gap: 4px;
   padding: 4px 10px;
-  background: #FF4D00;
-  color: #FFFFFF;
+  background: #FACC15;
+  color: #1E1B4B;
   border-radius: 6px;
   font-size: 11px;
   font-weight: 700;
@@ -639,7 +639,7 @@
 .lms-featured-image-box {
   position: relative;
   min-height: 280px;
-  background: #0F172A;
+  background: #1E1B4B;
 }
 
 .lms-featured-image-box img {
@@ -653,7 +653,7 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(30, 27, 75, 0.85);
   color: #FFFFFF;
   backdrop-filter: blur(8px);
   padding: 6px 14px;
@@ -665,7 +665,7 @@
 /* ── 5. Academies & Learning Areas Grid ──────────────────── */
 .lms-academies-section {
   padding: 40px 0 24px;
-  background: #F8FAFC;
+  background: #FFFDF7;
   border-top: 1px solid var(--lms-border);
   border-bottom: 1px solid var(--lms-border);
   margin-bottom: 40px;
@@ -686,8 +686,8 @@
   letter-spacing: 0.08em;
   margin-bottom: 8px;
 }
-.lms-section-tag.blue { background: #EEF2FF; color: #2145E6; }
-.lms-section-tag.orange { background: #FFF1EB; color: #FF4D00; }
+.lms-section-tag.blue { background: #EFF6FF; color: #2563EB; }
+.lms-section-tag.orange { background: #FFF1EB; color: #FACC15; }
 
 .lms-section-h2 {
   font-family: var(--font-heading, 'Poppins', sans-serif) !important;
@@ -767,7 +767,7 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 10px;
-  border-top: 1px solid #F1F5F9;
+  border-top: 1px solid #F7F3E6;
   font-size: 12px;
   font-weight: 600;
   color: var(--lms-primary);
@@ -820,26 +820,26 @@
 /* ── Formal & Colourful LMS Course Card Architecture ────────── */
 .lms-course-card {
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #E8E3D5;
   border-radius: 18px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 18px rgba(30, 27, 75, 0.05);
   position: relative;
   height: 100%;
 }
 
 .lms-course-card:hover {
   transform: translateY(-5px) !important;
-  box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.12) !important;
-  border-color: #CBD5E1;
+  box-shadow: 0 16px 36px -4px rgba(30, 27, 75, 0.12) !important;
+  border-color: #E8E3D5;
 }
 
 .lms-course-card:focus-within {
-  border-color: #064FC1;
+  border-color: #2563EB;
   box-shadow: 0 0 0 3px rgba(6, 79, 193, 0.15);
 }
 
@@ -858,7 +858,7 @@
   position: relative;
   width: 100%;
   height: 200px;
-  background: #0F172A;
+  background: #1E1B4B;
   overflow: hidden;
 }
 
@@ -896,7 +896,7 @@
   position: absolute;
   bottom: 12px;
   right: 12px;
-  background: rgba(15, 23, 42, 0.88);
+  background: rgba(30, 27, 75, 0.88);
   color: #FFFFFF;
   padding: 4px 10px;
   border-radius: 999px;
@@ -936,21 +936,21 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #64748B;
+  color: #5B5882;
   transition: all 0.2s ease;
   backdrop-filter: blur(6px);
   z-index: 2;
 }
 .lms-bookmark-btn:hover {
   background: #FFFFFF;
-  color: #FF4D00;
+  color: #2563EB;
   transform: scale(1.1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 .lms-bookmark-btn.active {
-  background: #FF4D00;
-  color: #FFFFFF;
-  border-color: #FF4D00;
+  background: #FACC15;
+  color: #1E1B4B;
+  border-color: #FACC15;
 }
 
 /* Card Body */
@@ -975,11 +975,11 @@
   align-items: center;
   gap: 4px;
   padding: 3px 8px;
-  background: #F1F5F9;
+  background: #F7F3E6;
   border-radius: 6px;
   font-size: 11.5px;
   font-weight: 600;
-  color: #475569;
+  color: #433F6B;
 }
 
 .lms-rating-badge {
@@ -988,11 +988,11 @@
   gap: 4px;
   font-size: 12px;
   font-weight: 750;
-  color: #D97706;
+  color: #2563EB;
   margin-left: auto;
 }
 .lms-rating-badge .review-count {
-  color: #64748B;
+  color: #5B5882;
   font-weight: 500;
   font-size: 11.5px;
 }
@@ -1002,18 +1002,18 @@
   font-family: var(--font-heading, 'Poppins', sans-serif) !important;
   font-size: 18px !important;
   font-weight: 750 !important;
-  color: #0F172A !important;
+  color: #1E1B4B !important;
   line-height: 1.35 !important;
   margin: 0 0 8px 0 !important;
 }
 
 .lms-course-title a {
-  color: #0F172A;
+  color: #1E1B4B;
   text-decoration: none;
   transition: color 0.15s ease;
 }
 .lms-course-title a:hover {
-  color: #064FC1;
+  color: #2563EB;
 }
 
 /* Target Audience Tag */
@@ -1022,9 +1022,9 @@
   align-items: center;
   gap: 6px;
   font-size: 12px;
-  color: #475569;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
+  color: #433F6B;
+  background: #FFFDF7;
+  border: 1px solid #E8E3D5;
   border-radius: 6px;
   padding: 3px 9px;
   margin-bottom: 12px;
@@ -1032,10 +1032,10 @@
 }
 .lms-audience-tag .audience-label {
   font-weight: 700;
-  color: #0F172A;
+  color: #1E1B4B;
 }
 .lms-audience-tag .audience-value {
-  color: #475569;
+  color: #433F6B;
   font-weight: 500;
 }
 
@@ -1043,15 +1043,15 @@
 .lms-course-desc {
   font-family: var(--font-body, 'Inter', sans-serif) !important;
   font-size: 13.5px !important;
-  color: #475569 !important;
+  color: #433F6B !important;
   line-height: 1.55 !important;
   margin: 0 0 12px 0 !important;
 }
 
 /* What You Will Learn (Outline Block) */
 .lms-outline-block {
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
+  background: #FFFDF7;
+  border: 1px solid #E8E3D5;
   border-radius: 12px;
   padding: 12px 14px;
   margin-bottom: 14px;
@@ -1064,7 +1064,7 @@
   font-family: var(--font-heading, 'Poppins', sans-serif);
   font-size: 12px;
   font-weight: 750;
-  color: #0F172A;
+  color: #1E1B4B;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-bottom: 8px;
@@ -1082,7 +1082,7 @@
 .lms-outline-list li {
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 12.5px;
-  color: #334155;
+  color: #433F6B;
   line-height: 1.4;
   display: flex;
   align-items: flex-start;
@@ -1104,12 +1104,12 @@
   font-family: var(--font-heading, 'Poppins', sans-serif);
   font-size: 12px;
   font-weight: 700;
-  color: #064FC1;
+  color: #2563EB;
   text-decoration: none;
   transition: all 0.15s ease;
 }
 .lms-outline-link:hover {
-  color: #FF4D00;
+  color: #2563EB;
   text-decoration: underline;
   transform: translateX(2px);
 }
@@ -1137,15 +1137,15 @@
   align-items: center;
   gap: 10px;
   padding-top: 10px;
-  border-top: 1px solid #F1F5F9;
+  border-top: 1px solid #F7F3E6;
   margin-top: auto;
 }
 .lms-inst-avatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #EEF2FF;
-  color: #064FC1;
+  background: #EFF6FF;
+  color: #2563EB;
   font-family: var(--font-heading, 'Poppins', sans-serif);
   font-size: 12px;
   font-weight: 800;
@@ -1161,18 +1161,18 @@
 .lms-inst-info .inst-name {
   font-size: 12.5px;
   font-weight: 700;
-  color: #0F172A;
+  color: #1E1B4B;
   line-height: 1.25;
 }
 .lms-inst-info .inst-role {
   font-size: 11px;
-  color: #64748B;
+  color: #5B5882;
 }
 
 /* Card Footer */
 .lms-course-footer {
   padding: 16px 20px;
-  border-top: 1px solid #F1F5F9;
+  border-top: 1px solid #F7F3E6;
   background: #FAFAFC;
   display: flex;
   align-items: center;
@@ -1190,7 +1190,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 700;
-  color: #64748B;
+  color: #5B5882;
 }
 .lms-course-price-box .price-wrap {
   display: flex;
@@ -1201,7 +1201,7 @@
   font-family: var(--font-heading, 'Poppins', sans-serif);
   font-size: 17.5px;
   font-weight: 800;
-  color: #0F172A;
+  color: #1E1B4B;
   letter-spacing: -0.01em;
 }
 .lms-course-price-box .price-current.free {
@@ -1209,7 +1209,7 @@
 }
 .lms-course-price-box .price-original {
   font-size: 12px;
-  color: #64748B;
+  color: #5B5882;
   text-decoration: line-through;
   font-weight: 500;
 }
@@ -1229,9 +1229,9 @@
   font-family: var(--font-heading, 'Poppins', sans-serif);
   font-size: 13px;
   font-weight: 700;
-  color: #0F172A;
+  color: #1E1B4B;
   background: #FFFFFF;
-  border: 1.5px solid #CBD5E1;
+  border: 1.5px solid #E8E3D5;
   border-radius: 10px;
   text-decoration: none;
   transition: all 0.18s ease;
@@ -1239,19 +1239,19 @@
   white-space: nowrap;
 }
 .btn-lms-view:hover {
-  border-color: #064FC1;
-  color: #064FC1;
-  background: #F8FAFC;
+  border-color: #2563EB;
+  color: #2563EB;
+  background: #FFFDF7;
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(6, 79, 193, 0.08);
 }
 .btn-lms-view:focus-visible {
-  outline: 2px solid #064FC1;
+  outline: 2px solid #2563EB;
   outline-offset: 2px;
 }
 .btn-lms-view:active {
   transform: translateY(1px);
-  background: #EEF2FF;
+  background: #EFF6FF;
 }
 
 .btn-lms-enrol {
@@ -1263,28 +1263,28 @@
   font-family: var(--font-heading, 'Poppins', sans-serif);
   font-size: 13px;
   font-weight: 750;
-  color: #FFFFFF !important;
-  background: linear-gradient(135deg, #F5812D 0%, #FF4D00 100%);
+  color: #1E1B4B !important;
+  background: linear-gradient(135deg, #FACC15 0%, #FACC15 100%);
   border: none;
   border-radius: 10px;
   text-decoration: none;
   transition: all 0.18s ease;
-  box-shadow: 0 3px 12px rgba(255, 77, 0, 0.28);
+  box-shadow: 0 3px 12px rgba(250, 204, 21, 0.28);
   min-height: 42px;
   white-space: nowrap;
 }
 .btn-lms-enrol:hover {
   background: linear-gradient(135deg, #FF9142 0%, #E04400 100%);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(255, 77, 0, 0.36);
+  box-shadow: 0 6px 18px rgba(250, 204, 21, 0.36);
 }
 .btn-lms-enrol:focus-visible {
-  outline: 2px solid #FF4D00;
+  outline: 2px solid #FACC15;
   outline-offset: 2px;
 }
 .btn-lms-enrol:active {
   transform: translateY(1px);
-  box-shadow: 0 2px 6px rgba(255, 77, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(250, 204, 21, 0.2);
 }
 
 /* ── Active Filter Indicators Bar ────────────────────────── */
@@ -1294,16 +1294,16 @@
   gap: 10px;
   flex-wrap: wrap;
   padding: 12px 16px;
-  background: #F1F5F9;
+  background: #F7F3E6;
   border-radius: 10px;
   margin-top: 14px;
-  border: 1px dashed #CBD5E1;
+  border: 1px dashed #E8E3D5;
 }
 
 .active-filters-label {
   font-size: 12px;
   font-weight: 750;
-  color: #475569;
+  color: #433F6B;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -1321,18 +1321,18 @@
   gap: 6px;
   padding: 4px 10px;
   background: #FFFFFF;
-  border: 1px solid #CBD5E1;
+  border: 1px solid #E8E3D5;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 600;
-  color: #0F172A;
+  color: #1E1B4B;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .lms-active-chip .chip-remove-btn {
   background: transparent;
   border: none;
-  color: #64748B;
+  color: #5B5882;
   cursor: pointer;
   font-size: 11px;
   font-weight: 800;
@@ -1349,7 +1349,7 @@
 .btn-clear-all-chips {
   background: transparent;
   border: none;
-  color: #064FC1;
+  color: #2563EB;
   font-size: 12px;
   font-weight: 750;
   cursor: pointer;
@@ -1358,7 +1358,7 @@
   text-decoration: underline;
 }
 .btn-clear-all-chips:hover {
-  color: #FF4D00;
+  color: #2563EB;
 }
 
 /* ── 7. My Learning Tab Panels ────────────────────────────── */
@@ -1408,12 +1408,12 @@
 .lms-ml-tab-btn.active {
   color: var(--lms-primary);
   background: var(--lms-primary-light);
-  border-color: rgba(33, 69, 230, 0.25);
+  border-color: rgba(37, 99, 235, 0.25);
   font-weight: 700;
 }
 
 .lms-ml-tab-btn .tab-badge {
-  background: #E2E8F0;
+  background: #E8E3D5;
   color: var(--lms-navy);
   font-size: 11px;
   font-weight: 700;
@@ -1454,8 +1454,8 @@
   grid-column: 1 / -1;
   text-align: center;
   padding: 56px 24px;
-  background: #F8FAFC;
-  border: 2px dashed #CBD5E1;
+  background: #FFFDF7;
+  border: 2px dashed #E8E3D5;
   border-radius: var(--lms-radius-xl);
 }
 .lms-empty-icon { font-size: 44px; margin-bottom: 12px; }

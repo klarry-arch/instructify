@@ -483,31 +483,31 @@
                   <p>To teach and assess effectively, educators must have a precise, standardized understanding of CBC terminology:</p>
 
                   <div style="display: flex; flex-direction: column; gap: 14px; margin: 18px 0;">
-                    <div class="lms-callout" style="border-left: 4px solid #1D4ED8; background: #F8FAFC; padding: 14px 18px;">
+                    <div class="lms-callout" style="border-left: 4px solid #1D4ED8; background: #FFFDF7; padding: 14px 18px;">
                       <h4 style="margin: 0 0 6px 0; color: #1D4ED8;">Strand & Sub-strand</h4>
-                      <p style="margin: 0; font-size: 14px; color: #334155;"><strong>Strand:</strong> A broad conceptual thematic area within a learning area curriculum design (e.g., <em>Numbers</em> in Mathematics or <em>Living Things</em> in Integrated Science).<br>
+                      <p style="margin: 0; font-size: 14px; color: #433F6B;"><strong>Strand:</strong> A broad conceptual thematic area within a learning area curriculum design (e.g., <em>Numbers</em> in Mathematics or <em>Living Things</em> in Integrated Science).<br>
                       <strong>Sub-strand:</strong> A specific sub-topic or modular focus within a strand (e.g., <em>Fractions</em> or <em>The Human Digestive System</em>).</p>
                     </div>
 
-                    <div class="lms-callout" style="border-left: 4px solid #047857; background: #F8FAFC; padding: 14px 18px;">
+                    <div class="lms-callout" style="border-left: 4px solid #047857; background: #FFFDF7; padding: 14px 18px;">
                       <h4 style="margin: 0 0 6px 0; color: #047857;">Specific Learning Outcomes (SLOs)</h4>
-                      <p style="margin: 0; font-size: 14px; color: #334155;">Observable, measurable statements that describe what the learner should know, understand, and demonstrate by the end of a lesson or sub-strand. Formatted using actionable Bloom's taxonomy verbs (e.g., <em>"By the end of the lesson, the learner should be able to create a 3-column table in Word to classify vertebrates"</em>).</p>
+                      <p style="margin: 0; font-size: 14px; color: #433F6B;">Observable, measurable statements that describe what the learner should know, understand, and demonstrate by the end of a lesson or sub-strand. Formatted using actionable Bloom's taxonomy verbs (e.g., <em>"By the end of the lesson, the learner should be able to create a 3-column table in Word to classify vertebrates"</em>).</p>
                     </div>
 
-                    <div class="lms-callout" style="border-left: 4px solid #B45309; background: #F8FAFC; padding: 14px 18px;">
+                    <div class="lms-callout" style="border-left: 4px solid #B45309; background: #FFFDF7; padding: 14px 18px;">
                       <h4 style="margin: 0 0 6px 0; color: #B45309;">Core Competencies</h4>
-                      <p style="margin: 0; font-size: 14px; color: #334155;">The 7 foundational cognitive, social, and practical capabilities that every Kenyan learner must develop: Communication & Collaboration, Critical Thinking & Problem Solving, Imagination & Creativity, Citizenship, Learning to Learn, Self-Efficacy, and Digital Literacy.</p>
+                      <p style="margin: 0; font-size: 14px; color: #433F6B;">The 7 foundational cognitive, social, and practical capabilities that every Kenyan learner must develop: Communication & Collaboration, Critical Thinking & Problem Solving, Imagination & Creativity, Citizenship, Learning to Learn, Self-Efficacy, and Digital Literacy.</p>
                     </div>
 
-                    <div class="lms-callout" style="border-left: 4px solid #6D28D9; background: #F8FAFC; padding: 14px 18px;">
+                    <div class="lms-callout" style="border-left: 4px solid #6D28D9; background: #FFFDF7; padding: 14px 18px;">
                       <h4 style="margin: 0 0 6px 0; color: #6D28D9;">Formative Assessment vs. Summative Assessment</h4>
-                      <p style="margin: 0; font-size: 14px; color: #334155;"><strong>Formative Assessment (Assessment FOR Learning):</strong> Ongoing diagnostic checks, observations, worksheets, and quizzes conducted during instruction to guide remediation and feedback.<br>
+                      <p style="margin: 0; font-size: 14px; color: #433F6B;"><strong>Formative Assessment (Assessment FOR Learning):</strong> Ongoing diagnostic checks, observations, worksheets, and quizzes conducted during instruction to guide remediation and feedback.<br>
                       <strong>Summative Assessment (Assessment OF Learning):</strong> Evaluation conducted at the culmination of a strand, term, or level to measure overall achievement standards.</p>
                     </div>
 
-                    <div class="lms-callout" style="border-left: 4px solid #BE123C; background: #F8FAFC; padding: 14px 18px;">
+                    <div class="lms-callout" style="border-left: 4px solid #BE123C; background: #FFFDF7; padding: 14px 18px;">
                       <h4 style="margin: 0 0 6px 0; color: #BE123C;">Competency Assessment Rubric</h4>
-                      <p style="margin: 0; font-size: 14px; color: #334155;">A scoring tool with explicit qualitative performance criteria across four standardized KICD performance levels:
+                      <p style="margin: 0; font-size: 14px; color: #433F6B;">A scoring tool with explicit qualitative performance criteria across four standardized KICD performance levels:
                         <ul style="margin: 6px 0 0 16px;">
                           <li><strong>Exceeding Expectations (EE):</strong> Consistently demonstrates mastery beyond required criteria with high autonomy, originality, and depth.</li>
                           <li><strong>Meeting Expectations (ME):</strong> Accurately and completely demonstrates all required criteria for the outcome.</li>
@@ -517,9 +517,9 @@
                       </p>
                     </div>
 
-                    <div class="lms-callout" style="border-left: 4px solid #0F766E; background: #F8FAFC; padding: 14px 18px;">
+                    <div class="lms-callout" style="border-left: 4px solid #0F766E; background: #FFFDF7; padding: 14px 18px;">
                       <h4 style="margin: 0 0 6px 0; color: #0F766E;">Digital Learning Artefact & Learner Portfolio</h4>
-                      <p style="margin: 0; font-size: 14px; color: #334155;"><strong>Digital Artefact:</strong> Any digital deliverable produced by a student (e.g., an Excel chart, a Word lab report, a PowerPoint presentation).<br>
+                      <p style="margin: 0; font-size: 14px; color: #433F6B;"><strong>Digital Artefact:</strong> Any digital deliverable produced by a student (e.g., an Excel chart, a Word lab report, a PowerPoint presentation).<br>
                       <strong>Learner Portfolio:</strong> A structured, cumulative digital folder where student artefacts and reflections are archived to demonstrate competency growth over time.</p>
                     </div>
                   </div>
@@ -676,7 +676,7 @@
 
                   <h4>Key Techniques Applied:</h4>
                   <ul>
-                    <li><strong>Form Fields & Shaded Response Areas:</strong> Inserting bordered 1-cell tables with light shading (<code>#F8FAFC</code>) where learners write explanations or record observations.</li>
+                    <li><strong>Form Fields & Shaded Response Areas:</strong> Inserting bordered 1-cell tables with light shading (<code>#FFFDF7</code>) where learners write explanations or record observations.</li>
                     <li><strong>Equation Editor & Special Formatting:</strong> Inserting mathematical fractions, chemical formulas (subscripts/superscripts), and scientific diagrams.</li>
                     <li><strong>Multi-Column Comparison Tables:</strong> Constructing 3-column analysis grids (e.g. <em>Term | Definition in Own Words | Real-World Application Example</em>).</li>
                     <li><strong>Peer Feedback Comment Blocks:</strong> Reserving a footer section for peer review and teacher constructive feedback.</li>

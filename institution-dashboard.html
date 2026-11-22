@@ -12,17 +12,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/global.css?v=19.0">
-  <link rel="stylesheet" href="css/components.css?v=19.0">
-  <link rel="stylesheet" href="css/lms-portal.css?v=19.0">
+  <link rel="stylesheet" href="css/global.css?v=2026.5">
+  <link rel="stylesheet" href="css/components.css?v=2026.5">
+  <link rel="stylesheet" href="css/lms-portal.css?v=2026.5">
 
   <style>
     :root {
       --inst-sidebar-w: 260px;
     }
     body {
-      background: #F8FAFC;
-      color: #1E293B;
+      background: #FFFDF7;
+      color: #1E1B4B;
       font-family: var(--font-body, 'Inter', sans-serif);
       margin: 0;
       padding: 0;
@@ -33,7 +33,7 @@
     }
     .inst-sidebar {
       width: var(--inst-sidebar-w);
-      background: #0F172A;
+      background: #1E1B4B;
       color: #FFFFFF;
       flex-shrink: 0;
       display: flex;
@@ -66,7 +66,7 @@
       align-items: center;
       gap: 12px;
       padding: 10px 14px;
-      color: #CBD5E1;
+      color: #E8E3D5;
       text-decoration: none;
       font-size: 13.5px;
       font-weight: 500;
@@ -81,15 +81,15 @@
       font-weight: 600;
     }
     .inst-nav-item.active {
-      background: #123C8C;
-      border-left: 3px solid #F4B400;
+      background: #2563EB;
+      border-left: 3px solid #FACC15;
     }
     .inst-main {
       flex: 1;
       display: flex;
       flex-direction: column;
       min-width: 0;
-      background: #F8FAFC;
+      background: #FFFDF7;
     }
     .inst-topbar {
       height: 70px;
@@ -131,11 +131,11 @@
       border: 1.5px solid #DCE2EA;
       border-radius: 12px;
       padding: 18px 16px;
-      box-shadow: 0 2px 10px rgba(18, 60, 140, 0.04);
+      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.04);
     }
     .stat-card-label {
       font-size: 12px;
-      color: #64748B;
+      color: #5B5882;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -144,7 +144,7 @@
     .stat-card-num {
       font-size: 26px;
       font-weight: 800;
-      color: #123C8C;
+      color: #2563EB;
       font-family: var(--font-heading, 'Manrope', sans-serif);
       margin-bottom: 2px;
     }
@@ -155,24 +155,24 @@
       text-align: left;
     }
     .report-table th {
-      background: #F1F5F9;
-      color: #1E293B;
+      background: #F7F3E6;
+      color: #1E1B4B;
       font-weight: 700;
       padding: 12px 16px;
       border-bottom: 1px solid #DCE2EA;
     }
     .report-table td {
       padding: 14px 16px;
-      border-bottom: 1px solid #E2E8F0;
-      color: #334155;
+      border-bottom: 1px solid #E8E3D5;
+      color: #433F6B;
     }
     .report-table tr:hover td {
-      background: #F8FAFC;
+      background: #FFFDF7;
     }
     .progress-bar-wrap {
       width: 100px;
       height: 7px;
-      background: #E2E8F0;
+      background: #E8E3D5;
       border-radius: 999px;
       overflow: hidden;
       display: inline-block;
@@ -181,7 +181,7 @@
     }
     .progress-bar-fill {
       height: 100%;
-      background: #123C8C;
+      background: #2563EB;
       border-radius: 999px;
     }
   </style>
@@ -193,7 +193,7 @@
   <aside class="inst-sidebar" aria-label="Institution Dashboard Navigation">
     <div class="inst-brand-box">
       <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya">
-      <span style="font-size: 11px; font-weight: 800; background: #EAF2FF; color: #123C8C; padding: 2px 8px; border-radius: 6px; text-transform: uppercase;">Institutions</span>
+      <span style="font-size: 11px; font-weight: 800; background: #EFF6FF; color: #2563EB; padding: 2px 8px; border-radius: 6px; text-transform: uppercase;">Institutions</span>
     </div>
 
     <ul class="inst-nav-list">
@@ -217,16 +217,16 @@
   <div class="inst-main">
     <header class="inst-topbar">
       <div>
-        <h1 style="font-size: 20px; font-weight: 750; color: #123C8C; margin: 0;">Institutional Management Dashboard</h1>
+        <h1 style="font-size: 20px; font-weight: 750; color: #2563EB; margin: 0;">Institutional Management Dashboard</h1>
       </div>
       <div style="display:flex; align-items:center; gap:16px;">
         <button class="btn btn-gold btn-sm" onclick="exportReport('csv')">Export CSV</button>
         <button class="btn btn-primary btn-sm" onclick="exportReport('pdf')">Export PDF</button>
         <div style="display:flex; align-items:center; gap:8px;">
-          <div style="width:36px; height:36px; border-radius:8px; background:#123C8C; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px;">
+          <div style="width:36px; height:36px; border-radius:8px; background:#2563EB; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px;">
             ST
           </div>
-          <span style="font-size:13px; font-weight:600; color:#1E293B;">St. Teresa Academy</span>
+          <span style="font-size:13px; font-weight:600; color:#1E1B4B;">St. Teresa Academy</span>
         </div>
       </div>
     </header>
@@ -235,8 +235,8 @@
       <!-- Welcome Strip -->
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:28px;">
         <div>
-          <h2 style="font-size: 24px; font-weight: 800; color: #1E293B; margin: 0 0 6px 0;">St. Teresa Educational Group — Staff Training Center</h2>
-          <p style="font-size: 14.5px; color: #475569; margin: 0;">
+          <h2 style="font-size: 24px; font-weight: 800; color: #1E1B4B; margin: 0 0 6px 0;">St. Teresa Educational Group — Staff Training Center</h2>
+          <p style="font-size: 14.5px; color: #433F6B; margin: 0;">
             Track institutional progress, assign curriculum cohorts, and monitor CBC competency development.
           </p>
         </div>
@@ -258,12 +258,12 @@
         <div class="stat-card-inst">
           <div class="stat-card-label">Total Enrolments</div>
           <div class="stat-card-num">348</div>
-          <div style="font-size:11.5px; color:#123C8C; font-weight:600;">Across 4 Programmes</div>
+          <div style="font-size:11.5px; color:#2563EB; font-weight:600;">Across 4 Programmes</div>
         </div>
         <div class="stat-card-inst">
           <div class="stat-card-label">Certificates Issued</div>
           <div class="stat-card-num">104</div>
-          <div style="font-size:11.5px; color:#123C8C; font-weight:600;">Verified on Portal</div>
+          <div style="font-size:11.5px; color:#2563EB; font-weight:600;">Verified on Portal</div>
         </div>
         <div class="stat-card-inst">
           <div class="stat-card-label">Overdue Activities</div>
@@ -281,10 +281,10 @@
       <div id="reports" style="background:#FFFFFF; border:1.5px solid #DCE2EA; border-radius:16px; padding:24px; margin-bottom:32px;">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:20px;">
           <div>
-            <h3 style="font-size: 18px; font-weight: 800; color: #123C8C; margin: 0 0 4px 0;">
+            <h3 style="font-size: 18px; font-weight: 800; color: #2563EB; margin: 0 0 4px 0;">
               Staff Learning &amp; Cohort Progress Report
             </h3>
-            <p style="font-size: 13.5px; color: #475569; margin: 0;">
+            <p style="font-size: 13.5px; color: #433F6B; margin: 0;">
               Confidential, privacy-compliant institutional progress monitoring.
             </p>
           </div>
@@ -354,7 +354,7 @@
                   <span class="progress-bar-wrap"><span class="progress-bar-fill" style="width:90%;"></span></span> 90%
                 </td>
                 <td><strong>91%</strong> (Distinction)</td>
-                <td><span style="color:#123C8C; font-weight:700;">Final Quiz Pending</span></td>
+                <td><span style="color:#2563EB; font-weight:700;">Final Quiz Pending</span></td>
                 <td><button class="btn btn-secondary btn-sm" onclick="sendReminder('ST-112')">Send Reminder</button></td>
               </tr>
               <tr>
@@ -386,16 +386,16 @@
 
       <!-- Assign New Training to Cohort -->
       <div id="assigned-training" style="background:#FFFFFF; border:1.5px solid #DCE2EA; border-radius:16px; padding:28px;">
-        <h3 style="font-size: 19px; font-weight: 800; color: #1E293B; margin: 0 0 8px 0;">
+        <h3 style="font-size: 19px; font-weight: 800; color: #1E1B4B; margin: 0 0 8px 0;">
           Assign Course or CPD Programme to Group
         </h3>
-        <p style="font-size: 14px; color: #475569; margin: 0 0 20px 0;">
+        <p style="font-size: 14px; color: #433F6B; margin: 0 0 20px 0;">
           Select a verified Instructify training curriculum and assign it to a target department with a set target completion deadline.
         </p>
 
         <form onsubmit="handleAssignCourse(event)" style="display:grid; grid-template-columns: 1.5fr 1fr 1fr auto; gap:16px; align-items:flex-end;">
           <div>
-            <label class="form-label" style="font-size:13px; font-weight:600; color:#1E293B; margin-bottom:6px; display:block;">Select Programme</label>
+            <label class="form-label" style="font-size:13px; font-weight:600; color:#1E1B4B; margin-bottom:6px; display:block;">Select Programme</label>
             <select class="form-input" style="width:100%; height:42px; border:1px solid #DCE2EA; border-radius:8px; padding:0 12px; background:#fff;" required>
               <option value="">Choose accredited training course...</option>
               <option value="cpd-1">Teacher CPD: Competency-Based Assessment &amp; Lesson Planning</option>
@@ -405,7 +405,7 @@
             </select>
           </div>
           <div>
-            <label class="form-label" style="font-size:13px; font-weight:600; color:#1E293B; margin-bottom:6px; display:block;">Target Department</label>
+            <label class="form-label" style="font-size:13px; font-weight:600; color:#1E1B4B; margin-bottom:6px; display:block;">Target Department</label>
             <select class="form-input" style="width:100%; height:42px; border:1px solid #DCE2EA; border-radius:8px; padding:0 12px; background:#fff;" required>
               <option value="all">Entire Teaching Faculty</option>
               <option value="stem">STEM Faculty</option>
@@ -414,7 +414,7 @@
             </select>
           </div>
           <div>
-            <label class="form-label" style="font-size:13px; font-weight:600; color:#1E293B; margin-bottom:6px; display:block;">Target Deadline</label>
+            <label class="form-label" style="font-size:13px; font-weight:600; color:#1E1B4B; margin-bottom:6px; display:block;">Target Deadline</label>
             <input type="date" class="form-input" style="width:100%; height:42px; border:1px solid #DCE2EA; border-radius:8px; padding:0 12px;" required>
           </div>
           <div>

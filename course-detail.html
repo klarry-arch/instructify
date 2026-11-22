@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Course Details | Instructify Kenya</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=19.0">
-  <link rel="stylesheet" href="css/animations.css?v=19.0">
-  <link rel="stylesheet" href="css/components.css?v=19.0">
-  <link rel="stylesheet" href="css/homepage.css?v=19.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=19.0">
-  <link rel="stylesheet" href="css/site-header.css?v=2026.1">
-  <link rel="stylesheet" href="css/site-footer.css?v=2026.1">
+  <link rel="stylesheet" href="css/global.css?v=2026.5">
+  <link rel="stylesheet" href="css/animations.css?v=2026.5">
+  <link rel="stylesheet" href="css/components.css?v=2026.5">
+  <link rel="stylesheet" href="css/homepage.css?v=2026.5">
+  <link rel="stylesheet" href="css/live-chat.css?v=2026.5">
+  <link rel="stylesheet" href="css/site-header.css?v=2026.5">
+  <link rel="stylesheet" href="css/site-footer.css?v=2026.5">
 </head>
 <body>
 
@@ -125,11 +125,11 @@
 
     <!-- Dual Track Pathway Selector -->
     <div style="margin-bottom: 22px;">
-      <div style="display: inline-flex; background: rgba(15, 23, 42, 0.45); padding: 5px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); flex-wrap: wrap; gap: 4px;">
-        <button type="button" id="track-btn-educator" onclick="setDetailTrack('educator')" style="border: none; background: #FFFFFF; color: #0F172A; font-weight: 800; font-size: 13px; padding: 8px 18px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+      <div style="display: inline-flex; background: rgba(30, 27, 75, 0.45); padding: 5px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); flex-wrap: wrap; gap: 4px;">
+        <button type="button" id="track-btn-educator" onclick="setDetailTrack('educator')" style="border: none; background: #FFFFFF; color: #1E1B4B; font-weight: 800; font-size: 13px; padding: 8px 18px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
           <span>🎓</span> For Teachers &amp; Educators
         </button>
-        <button type="button" id="track-btn-student" onclick="setDetailTrack('student')" style="border: none; background: transparent; color: #E2E8F0; font-weight: 700; font-size: 13px; padding: 8px 18px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease;">
+        <button type="button" id="track-btn-student" onclick="setDetailTrack('student')" style="border: none; background: transparent; color: #E8E3D5; font-weight: 700; font-size: 13px; padding: 8px 18px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease;">
           <span>🎒</span> For Students &amp; Learners
         </button>
       </div>
@@ -147,20 +147,20 @@
         </div>
       </div>
 
-      <div class="card" style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:18px;padding:32px;box-shadow:0 24px 48px rgba(0,0,0,0.3);color:#0F172A">
+      <div class="card" style="background:#FFFFFF;border:1px solid #E8E3D5;border-radius:18px;padding:32px;box-shadow:0 24px 48px rgba(0,0,0,0.3);color:#1E1B4B">
         <div class="mb-md" style="margin-bottom:20px">
           <div id="track-pill-indicator" style="font-size:11.5px; font-weight:800; color:#1D4ED8; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px; padding:4px 10px; display:inline-flex; align-items:center; gap:5px; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.06em;">
             🎓 EDUCATOR CPD PATHWAY
           </div>
-          <div style="font-size:12px;font-weight:700;color:var(--text-muted, #475569);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">Enrollment Fee</div>
-          <div class="font-heading text-3xl font-extrabold" style="color:var(--cta-color, #F5812D);font-size:34px;line-height:1.1;font-weight:900" id="course-price">KES 14,500</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-muted, #433F6B);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">Enrollment Fee</div>
+          <div class="font-heading text-3xl font-extrabold" style="color:var(--cta-color, #FACC15);font-size:34px;line-height:1.1;font-weight:900" id="course-price">KES 14,500</div>
           <div style="font-size:14px;color:#CBD5E1;text-decoration:line-through;margin-top:4px;font-weight:500" id="course-orig-price">KES 22,000</div>
         </div>
-        <button onclick="handleEnrollClick()" class="btn btn-lg w-full mb-md" id="enroll-btn" style="width:100%;background:linear-gradient(135deg,#F5812D 0%,#FF4D00 100%);color:#FFFFFF;font-weight:700;font-size:16px;border-radius:99px;padding:14px 24px;border:none;box-shadow:0 6px 20px rgba(220,46,10,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;transition:all 0.2s">⚡ Enroll Now</button>
-        <button onclick="toggleWishlist(this)" id="wishlist-btn" data-course-id="" class="btn btn-sm w-full" style="width:100%;background:#F8FAFC;color:#FF4D00;border:1.5px solid #CBD5E1;font-weight:700;font-size:14px;border-radius:99px;padding:11px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s">🤍 Save to Wishlist</button>
-        <div style="color:var(--text-muted, #475569);font-size:13px;font-weight:500;text-align:center;margin-top:18px;display:flex;align-items:center;justify-content:center;gap:6px">🔒 30-Day Guarantee • Flexible Installments</div>
-        <div style="margin-top:16px; padding:14px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px;">
-          <div style="font-size:12px; font-weight:700; color:#334155; margin-bottom:6px;">🔑 Have an Access Code or Voucher?</div>
+        <button onclick="handleEnrollClick()" class="btn btn-lg w-full mb-md" id="enroll-btn" style="width:100%;background:linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);color:#FFFFFF;font-weight:700;font-size:16px;border-radius:99px;padding:14px 24px;border:none;box-shadow:0 6px 20px rgba(220,46,10,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;transition:all 0.2s">⚡ Enroll Now</button>
+        <button onclick="toggleWishlist(this)" id="wishlist-btn" data-course-id="" class="btn btn-sm w-full" style="width:100%;background:#FFFDF7;color:#2563EB;border:1.5px solid #CBD5E1;font-weight:700;font-size:14px;border-radius:99px;padding:11px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s">🤍 Save to Wishlist</button>
+        <div style="color:var(--text-muted, #433F6B);font-size:13px;font-weight:500;text-align:center;margin-top:18px;display:flex;align-items:center;justify-content:center;gap:6px">🔒 30-Day Guarantee • Flexible Installments</div>
+        <div style="margin-top:16px; padding:14px; background:#FFFDF7; border:1px solid #E8E3D5; border-radius:12px;">
+          <div style="font-size:12px; font-weight:700; color:#433F6B; margin-bottom:6px;">🔑 Have an Access Code or Voucher?</div>
           <div style="display:flex; gap:6px;">
             <input type="text" id="detail-access-code" placeholder="e.g. CBC-TEACH-2026" aria-label="Course access code" style="text-transform:uppercase; font-family:monospace; font-weight:700; font-size:12px; padding:8px 10px; border:1px solid #CBD5E1; border-radius:8px; width:100%; outline:none; background:#FFF;">
             <button type="button" onclick="handleDetailAccessCode()" class="btn btn-blue btn-sm" style="white-space:nowrap; padding:8px 12px; font-size:12px;">Unlock</button>
@@ -176,35 +176,35 @@
     <div class="grid-2" style="grid-template-columns:2fr 1fr">
       <div>
                 <!-- Official Teacher Training Manual Highlight Banner -->
-        <div id="course-manual-banner" style="background: linear-gradient(135deg, #2145E6 0%, #183AD6 100%); border-left: 5px solid #FF4D00; border-radius: 12px; padding: 24px; color: #FFFFFF; margin-bottom: 32px; box-shadow: 0 4px 16px rgba(30, 58, 138, 0.15);">
+        <div id="course-manual-banner" style="background: linear-gradient(135deg, #2563EB 0%, #183AD6 100%); border-left: 5px solid #FACC15; border-radius: 12px; padding: 24px; color: #FFFFFF; margin-bottom: 32px; box-shadow: 0 4px 16px rgba(30, 58, 138, 0.15);">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
             <div>
-              <span style="background: #FF4D00; color: #0F172A; padding: 4px 12px; border-radius: 999px; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Instructify Kenya Official Publication</span>
+              <span style="background: #FACC15; color: #1E1B4B; padding: 4px 12px; border-radius: 999px; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Instructify Kenya Official Publication</span>
               <h4 id="manual-banner-title" style="color: #FFFFFF !important; font-size: 20px; font-weight: 800; margin-top: 10px; margin-bottom: 6px;">Complete Professional Teacher Training Manual</h4>
               <p id="manual-banner-desc" style="color: #CBD5E1 !important; font-size: 14.5px; margin: 0;">Access the full 15-section CBC-aligned manual complete with 10 detailed modules, lesson plan templates, digital safety guides, assessment rubrics, and trainer facilitation notes.</p>
             </div>
-            <a id="manual-banner-link" href="courses/digital-literacy-ict-integration.html" class="btn" style="background: #FF4D00 !important; color: #FFFFFF !important; font-weight: 700; white-space: nowrap; padding: 12px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);">Open Full Manual</a>
+            <a id="manual-banner-link" href="courses/digital-literacy-ict-integration.html" class="btn" style="background: #FACC15 !important; color: #1E1B4B !important; font-weight: 700; white-space: nowrap; padding: 12px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);">Open Full Manual</a>
           </div>
         </div>
 
         <h3 class="font-heading text-xl mb-md">Tailored Learning Outcomes</h3>
-        <p style="font-size:14.5px; color:#475569; margin-bottom:18px;">
+        <p style="font-size:14.5px; color:#433F6B; margin-bottom:18px;">
           Explore competencies aligned distinctly for classroom educators and practical learners:
         </p>
 
         <!-- Dynamic Role-Aligned Outcomes Box -->
         <div id="course-outcomes-container" style="margin-bottom: 36px;">
           <!-- Educator Outcomes Block -->
-          <div id="outcomes-educator-box" style="background:#F8FAFC; border:1.5px solid #DBEAFE; border-left:5px solid #2563EB; border-radius:12px; padding:20px; margin-bottom:16px;">
+          <div id="outcomes-educator-box" style="background:#FFFDF7; border:1.5px solid #DBEAFE; border-left:5px solid #2563EB; border-radius:12px; padding:20px; margin-bottom:16px;">
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
               <span style="font-size:18px;">🎓</span>
               <strong style="color:#1D4ED8; font-size:15px;">For Teachers &amp; Educators:</strong>
             </div>
             <div class="grid-2" style="gap:10px;">
-              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Master TPACK &amp; SAMR pedagogical integration</span></div>
-              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Design standardized 40-min CBC lesson plans in Word</span></div>
-              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Build automated 4-level formative gradebooks in Excel</span></div>
-              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Author branching trigger-based quiz games in PowerPoint</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#433F6B;"><span>✅</span> <span>Master TPACK &amp; SAMR pedagogical integration</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#433F6B;"><span>✅</span> <span>Design standardized 40-min CBC lesson plans in Word</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#433F6B;"><span>✅</span> <span>Build automated 4-level formative gradebooks in Excel</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#433F6B;"><span>✅</span> <span>Author branching trigger-based quiz games in PowerPoint</span></div>
             </div>
           </div>
 
@@ -215,10 +215,10 @@
               <strong style="color:#047857; font-size:15px;">For Students &amp; Learners:</strong>
             </div>
             <div class="grid-2" style="gap:10px;">
-              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Format academic project reports with auto-TOC &amp; citations</span></div>
-              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Calculate personal budgets &amp; plot science data in Excel</span></div>
-              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Design 16:9 interactive school project pitch decks</span></div>
-              <div class="flex gap-sm items-center text-sm" style="color:#334155;"><span>✅</span> <span>Earn a verifiable Digital Productivity Skills Certificate</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#433F6B;"><span>✅</span> <span>Format academic project reports with auto-TOC &amp; citations</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#433F6B;"><span>✅</span> <span>Calculate personal budgets &amp; plot science data in Excel</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#433F6B;"><span>✅</span> <span>Design 16:9 interactive school project pitch decks</span></div>
+              <div class="flex gap-sm items-center text-sm" style="color:#433F6B;"><span>✅</span> <span>Earn a verifiable Digital Productivity Skills Certificate</span></div>
             </div>
           </div>
         </div>
@@ -230,7 +230,7 @@
       </div>
 
       <div>
-        <div class="card mb-xl" style="background:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; padding:24px;">
+        <div class="card mb-xl" style="background:#FFFFFF; border:1px solid #E8E3D5; border-radius:16px; padding:24px;">
           <h4 class="font-heading text-md mb-md" id="features-box-title">Course Features (Educator Track)</h4>
           <ul id="course-features-list" class="flex flex-col gap-sm text-sm text-secondary" style="list-style:none; padding:0; margin:0;">
             <li style="display:flex; align-items:center; gap:8px;">✅ 45 TSC / KICD CPD Hours Credit</li>
@@ -494,24 +494,24 @@ function renderCurriculumAccordion(course) {
   ];
 
   container.innerHTML = curriculum.map((sec) => `
-    <div style="background:#FFF; border:1px solid #E2E8F0; border-radius:12px; overflow:hidden; box-shadow:0 2px 6px rgba(15,23,42,0.03);">
-      <div style="padding:14px 18px; background:#F8FAFC; border-bottom:1px solid #E2E8F0; display:flex; justify-content:space-between; align-items:center;">
-        <strong style="font-size:14.5px; color:#0F172A;">${sec.title}</strong>
-        <span style="font-size:12px; color:#64748B;">${sec.modules ? sec.modules.length : 1} Module(s)</span>
+    <div style="background:#FFF; border:1px solid #E8E3D5; border-radius:12px; overflow:hidden; box-shadow:0 2px 6px rgba(30, 27, 75,0.03);">
+      <div style="padding:14px 18px; background:#FFFDF7; border-bottom:1px solid #E8E3D5; display:flex; justify-content:space-between; align-items:center;">
+        <strong style="font-size:14.5px; color:#1E1B4B;">${sec.title}</strong>
+        <span style="font-size:12px; color:#5B5882;">${sec.modules ? sec.modules.length : 1} Module(s)</span>
       </div>
       <div style="padding:12px 18px;">
         ${(sec.modules || []).map(mod => `
           <div style="margin-bottom:12px;">
-            <div style="font-size:13px; font-weight:700; color:#334155; margin-bottom:8px;">${mod.title}</div>
+            <div style="font-size:13px; font-weight:700; color:#433F6B; margin-bottom:8px;">${mod.title}</div>
             <div style="display:flex; flex-direction:column; gap:6px;">
               ${(mod.lessons || []).map(les => `
-                <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 12px; background:#FAFAFC; border-radius:8px; border:1px solid #F1F5F9; font-size:13px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 12px; background:#FAFAFC; border-radius:8px; border:1px solid #F7F3E6; font-size:13px;">
                   <div style="display:flex; align-items:center; gap:8px;">
                     <span>${les.type === 'video' ? '📺' : les.type === 'quiz' ? '❓' : les.type === 'assignment' ? '📑' : '📖'}</span>
-                    <span style="color:#0F172A; font-weight:600;">${les.title}</span>
+                    <span style="color:#1E1B4B; font-weight:600;">${les.title}</span>
                   </div>
                   <div style="display:flex; align-items:center; gap:10px;">
-                    <span style="color:#64748B; font-size:11.5px;">${les.duration || '15 mins'}</span>
+                    <span style="color:#5B5882; font-size:11.5px;">${les.duration || '15 mins'}</span>
                     ${(les.isFree || les.freePreview) ? `
                       <a href="course-player.html?courseId=${course.id}&lessonId=${les.id}" class="btn btn-outline btn-sm" style="font-size:11px; padding:3px 8px;">Free Preview</a>
                     ` : '<span style="font-size:12px; color:#94A3B8;">🔒</span>'}
@@ -546,12 +546,12 @@ function setDetailTrack(track) {
   if (selectedDetailTrack === 'student') {
     if (btnEducator) {
       btnEducator.style.background = 'transparent';
-      btnEducator.style.color = '#E2E8F0';
+      btnEducator.style.color = '#E0E7FF';
       btnEducator.style.boxShadow = 'none';
     }
     if (btnStudent) {
       btnStudent.style.background = '#FFFFFF';
-      btnStudent.style.color = '#0F172A';
+      btnStudent.style.color = '#1E1B4B';
       btnStudent.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
     }
     if (pillIndicator) {
@@ -587,12 +587,12 @@ function setDetailTrack(track) {
     selectedDetailTrack = 'educator';
     if (btnEducator) {
       btnEducator.style.background = '#FFFFFF';
-      btnEducator.style.color = '#0F172A';
+      btnEducator.style.color = '#1E1B4B';
       btnEducator.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
     }
     if (btnStudent) {
       btnStudent.style.background = 'transparent';
-      btnStudent.style.color = '#E2E8F0';
+      btnStudent.style.color = '#E0E7FF';
       btnStudent.style.boxShadow = 'none';
     }
     if (pillIndicator) {
@@ -609,7 +609,7 @@ function setDetailTrack(track) {
     if (badgeEl) badgeEl.textContent = isFree ? '🎁 100% FREE • CPD ACCREDITED' : '✨ CPD ACCREDITED (45 HOURS)';
     if (enrollBtn && (!window.isEnrolled || !window.isEnrolled(currentCourse?.id))) {
       enrollBtn.innerHTML = isFree ? '⚡ Start Free Educator Track (100% Free)' : `⚡ Enroll Educator Track — KES ${educatorPrice.toLocaleString()}`;
-      enrollBtn.style.background = isFree ? 'linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%)' : 'linear-gradient(135deg, #F5812D 0%, #FF4D00 100%)';
+      enrollBtn.style.background = isFree ? 'linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%)' : 'linear-gradient(135deg, #2563EB 0%, #1E40AF 100%)';
     }
     if (featuresTitle) featuresTitle.textContent = 'Course Features (Educator Track)';
     if (featuresList) {

@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Course Player | Instructify Kenya LMS</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=19.0">
-  <link rel="stylesheet" href="css/components.css?v=19.0">
-  <link rel="stylesheet" href="css/course-player.css?v=19.0">
-  <link rel="stylesheet" href="css/live-chat.css?v=19.0">
+  <link rel="stylesheet" href="css/global.css?v=2026.5">
+  <link rel="stylesheet" href="css/components.css?v=2026.5">
+  <link rel="stylesheet" href="css/course-player.css?v=2026.5">
+  <link rel="stylesheet" href="css/live-chat.css?v=2026.5">
 </head>
 <body class="player-mode">
 
@@ -43,10 +43,10 @@
     <!-- Collapsible Curriculum Sidebar -->
     <aside class="player-sidebar" id="player-sidebar">
       <div class="player-sidebar-header">
-        <div style="font-size: 13.5px; font-weight: 800; color: #0F172A; text-transform: uppercase; letter-spacing: 0.05em;">
+        <div style="font-size: 13.5px; font-weight: 800; color: #1E1B4B; text-transform: uppercase; letter-spacing: 0.05em;">
           Course Curriculum
         </div>
-        <button type="button" onclick="toggleCurriculumSidebar()" style="background: none; border: none; font-size: 16px; color: #64748B; cursor: pointer;" aria-label="Close Sidebar">✕</button>
+        <button type="button" onclick="toggleCurriculumSidebar()" style="background: none; border: none; font-size: 16px; color: #5B5882; cursor: pointer;" aria-label="Close Sidebar">✕</button>
       </div>
       <div class="player-curriculum-scroll" id="player-curriculum-list">
         <!-- Rendered dynamically by JS -->
@@ -75,8 +75,8 @@
         </div>
 
         <!-- Downloadable Attachments -->
-        <div id="player-resources-section" style="margin-top: 24px; border-top: 1px solid #F1F5F9; padding-top: 18px;">
-          <h4 style="font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #475569; margin-bottom: 12px;">
+        <div id="player-resources-section" style="margin-top: 24px; border-top: 1px solid #F7F3E6; padding-top: 18px;">
+          <h4 style="font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #433F6B; margin-bottom: 12px;">
             Downloadable Lesson Materials
           </h4>
           <div id="player-resources-list" style="display: flex; flex-direction: column; gap: 8px;">
@@ -95,8 +95,8 @@
         </div>
 
         <div id="tab-notes" class="player-tab-content active">
-          <div style="font-size: 13px; color: #64748B; margin-bottom: 8px;">Notes are automatically saved to your browser session:</div>
-          <textarea id="player-notes-input" aria-label="Personal Notes" style="width: 100%; border: 1.5px solid #CBD5E1; border-radius: 12px; padding: 12px; font-family: inherit; font-size: 13.5px; line-height: 1.5; color: #0F172A; min-height: 100px; resize: vertical; box-sizing: border-box;" placeholder="Type reflective notes, key takeaways, and lesson observations here..."></textarea>
+          <div style="font-size: 13px; color: #5B5882; margin-bottom: 8px;">Notes are automatically saved to your browser session:</div>
+          <textarea id="player-notes-input" aria-label="Personal Notes" style="width: 100%; border: 1.5px solid #CBD5E1; border-radius: 12px; padding: 12px; font-family: inherit; font-size: 13.5px; line-height: 1.5; color: #1E1B4B; min-height: 100px; resize: vertical; box-sizing: border-box;" placeholder="Type reflective notes, key takeaways, and lesson observations here..."></textarea>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
             <span id="notes-status-text" style="font-size: 12px; color: #10B981; font-weight: 600;">✓ Autosaved</span>
             <button type="button" onclick="savePersonalNotes()" class="btn btn-outline btn-sm">Save Note 💾</button>
@@ -105,21 +105,21 @@
 
         <div id="tab-discussion" class="player-tab-content">
           <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:16px;">
-            <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:12px 14px;">
+            <div style="background:#FFFDF7; border:1px solid #E8E3D5; border-radius:12px; padding:12px 14px;">
               <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-                <strong style="font-size:13px; color:#0F172A;">Grace Wanjiku (Colleague)</strong>
-                <span style="font-size:11.5px; color:#64748B;">2 hours ago</span>
+                <strong style="font-size:13px; color:#1E1B4B;">Grace Wanjiku (Colleague)</strong>
+                <span style="font-size:11.5px; color:#5B5882;">2 hours ago</span>
               </div>
-              <p style="font-size:13px; color:#334155; margin:0;">
+              <p style="font-size:13px; color:#433F6B; margin:0;">
                 How do we best adapt this inquiry starter for schools with limited tablet devices?
               </p>
             </div>
-            <div style="background:#EEF2FF; border:1px solid #C7D2FE; border-radius:12px; padding:12px 14px; margin-left:16px;">
+            <div style="background:#EFF6FF; border:1px solid #C7D2FE; border-radius:12px; padding:12px 14px; margin-left:16px;">
               <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-                <strong style="font-size:13px; color:#2145E6;">Dr. Wanjiku Kamau (Facilitator)</strong>
-                <span style="font-size:11.5px; color:#64748B;">1 hour ago</span>
+                <strong style="font-size:13px; color:#2563EB;">Dr. Wanjiku Kamau (Facilitator)</strong>
+                <span style="font-size:11.5px; color:#5B5882;">1 hour ago</span>
               </div>
-              <p style="font-size:13px; color:#1E293B; margin:0;">
+              <p style="font-size:13px; color:#1E1B4B; margin:0;">
                 Great question, Grace! Use "Station Rotation": 1 device shared per group of 4, rotating roles (Researcher, Recorder, Presenter, Checker).
               </p>
             </div>
@@ -235,32 +235,32 @@
       if (stage) {
         stage.innerHTML = `
           <div style="display:flex;align-items:center;justify-content:center;min-height:60vh;padding:32px;">
-            <div style="max-width:520px;width:100%;text-align:center;background:#FFF;border:2px solid #E2E8F0;border-radius:20px;padding:40px 32px;box-shadow:0 8px 32px rgba(15,23,42,0.08);">
+            <div style="max-width:520px;width:100%;text-align:center;background:#FFF;border:2px solid #E8E3D5;border-radius:20px;padding:40px 32px;box-shadow:0 8px 32px rgba(30, 27, 75,0.08);">
               <div style="font-size:48px;margin-bottom:16px;">🔒</div>
-              <h2 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:8px;">Enrollment Required</h2>
-              <p style="font-size:15px;color:#475569;line-height:1.6;margin-bottom:6px;">
+              <h2 style="font-size:22px;font-weight:800;color:#1E1B4B;margin-bottom:8px;">Enrollment Required</h2>
+              <p style="font-size:15px;color:#433F6B;line-height:1.6;margin-bottom:6px;">
                 You need to enroll in <strong>${courseTitle}</strong> before you can access this lesson and receive your accredited CPD certificate.
               </p>
-              ${priceDisplay ? `<div style="font-size:30px;font-weight:900;color:#F5812D;margin:16px 0;">${priceDisplay}</div>` : ''}
+              ${priceDisplay ? `<div style="font-size:30px;font-weight:900;color:#2563EB;margin:16px 0;">${priceDisplay}</div>` : ''}
               <p style="font-size:13px;color:#94A3B8;margin-bottom:24px;">
                 Secure payment via M-Pesa, Paybill, or Card. Includes lifetime access, verifiable digital badge, and facilitator grading.
               </p>
               <a href="checkout.html?id=${encodeURIComponent(currentCourseId)}"
-                 style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#F5812D 0%,#FF4D00 100%);color:#FFF;font-weight:700;font-size:16px;padding:14px 32px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px rgba(220,46,10,0.35);transition:transform 0.2s;">
+                 style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);color:#FFF;font-weight:700;font-size:16px;padding:14px 32px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px rgba(220,46,10,0.35);transition:transform 0.2s;">
                 ⚡ Enroll & Pay Now
               </a>
               <div style="margin-top:16px; display:flex; justify-content:center; gap:16px; font-size:14px;">
-                <a href="courses/digital-integration-cbc-curriculum.html" style="color:#2145E6;font-weight:600;text-decoration:none;">
+                <a href="courses/digital-integration-cbc-curriculum.html" style="color:#2563EB;font-weight:600;text-decoration:none;">
                   📖 View CBC Syllabus
                 </a>
                 <span style="color:#CBD5E1;">•</span>
-                <a href="course-detail.html?id=${encodeURIComponent(currentCourseId)}" style="color:#2145E6;font-weight:600;text-decoration:none;">
+                <a href="course-detail.html?id=${encodeURIComponent(currentCourseId)}" style="color:#2563EB;font-weight:600;text-decoration:none;">
                   ← Course Overview
                 </a>
               </div>
               ${!session ? `
-              <div style="margin-top:20px;padding-top:16px;border-top:1px solid #E2E8F0;">
-                <p style="font-size:13px;color:#64748B;">Already paid? <a href="login.html" style="color:#2145E6;font-weight:600;">Sign in</a> to access your courses.</p>
+              <div style="margin-top:20px;padding-top:16px;border-top:1px solid #E8E3D5;">
+                <p style="font-size:13px;color:#5B5882;">Already paid? <a href="login.html" style="color:#2563EB;font-weight:600;">Sign in</a> to access your courses.</p>
               </div>
               ` : ''}
             </div>
@@ -376,7 +376,7 @@
         header.className = 'player-section-header';
         header.innerHTML = `
           <div style="display:flex; align-items:center; gap:8px; overflow:hidden;">
-            ${sec.strandCode ? `<span style="font-size:10px; font-weight:800; background:#EEF2FF; color:#2145E6; padding:2px 6px; border-radius:4px; flex-shrink:0;">${sec.strandCode}</span>` : ''}
+            ${sec.strandCode ? `<span style="font-size:10px; font-weight:800; background:#EFF6FF; color:#2563EB; padding:2px 6px; border-radius:4px; flex-shrink:0;">${sec.strandCode}</span>` : ''}
             <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${sec.title}</span>
           </div>
           <span>▾</span>
@@ -500,20 +500,20 @@
           glossaryBox.innerHTML = `
             ${teachingNotes ? `
               <div class="lms-callout lms-callout-info" style="margin-bottom:14px;">
-                <strong style="color:#2145E6;">👨‍🏫 Facilitator Pedagogical Notes:</strong>
-                <p style="margin:4px 0 0; font-size:13px; color:#1E293B;">${teachingNotes}</p>
+                <strong style="color:#2563EB;">👨‍🏫 Facilitator Pedagogical Notes:</strong>
+                <p style="margin:4px 0 0; font-size:13px; color:#1E1B4B;">${teachingNotes}</p>
               </div>
             ` : ''}
             ${terms.length > 0 ? `
-              <div style="font-size:13px; font-weight:800; color:#0F172A; margin-bottom:8px;">🔤 Key Competency Terminology:</div>
-              <ul style="margin:0; padding-left:18px; font-size:13px; color:#334155; line-height:1.6;">
+              <div style="font-size:13px; font-weight:800; color:#1E1B4B; margin-bottom:8px;">🔤 Key Competency Terminology:</div>
+              <ul style="margin:0; padding-left:18px; font-size:13px; color:#433F6B; line-height:1.6;">
                 ${terms.map(t => `<li><strong>${t.term}:</strong> ${t.definition}</li>`).join('')}
               </ul>
             ` : ''}
           `;
         } else {
           glossaryBox.innerHTML = `
-            <div style="font-size:13px; color:#64748B;">
+            <div style="font-size:13px; color:#5B5882;">
               Key competency terms and pedagogical guidelines for this strand are aligned with KICD curriculum designs.
             </div>
           `;
@@ -526,12 +526,12 @@
       if (lesson.resources && lesson.resources.length > 0) {
         resSection.style.display = 'block';
         resList.innerHTML = lesson.resources.map(r => `
-          <div style="display:flex; justify-content:space-between; align-items:center; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:10px 14px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; background:#FFFDF7; border:1px solid #E8E3D5; border-radius:10px; padding:10px 14px;">
             <div style="display:flex; align-items:center; gap:8px;">
               <span>📁</span>
               <div>
-                <div style="font-weight:700; font-size:13px; color:#0F172A;">${r.name}</div>
-                <div style="font-size:11.5px; color:#64748B;">${r.size} • Resource Document</div>
+                <div style="font-weight:700; font-size:13px; color:#1E1B4B;">${r.name}</div>
+                <div style="font-size:11.5px; color:#5B5882;">${r.size} • Resource Document</div>
               </div>
             </div>
             <button type="button" onclick="window.showToast('📥 Downloading ${r.name}...','info')" class="btn btn-outline btn-sm">Download</button>
@@ -557,7 +557,7 @@
         document.getElementById('complete-text').textContent = 'Completed';
       } else {
         completeBtn.style.background = '#FFFFFF';
-        completeBtn.style.color = '#475569';
+        completeBtn.style.color = '#433F6B';
         completeBtn.style.borderColor = '#CBD5E1';
         document.getElementById('complete-icon').textContent = '○';
         document.getElementById('complete-text').textContent = 'Mark Complete';
@@ -572,17 +572,17 @@
       let html = `
         <div class="player-quiz-card">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-            <h3 style="margin:0; font-size:18px; color:#0F172A;">Knowledge Check: ${quiz.title}</h3>
+            <h3 style="margin:0; font-size:18px; color:#1E1B4B;">Knowledge Check: ${quiz.title}</h3>
             <span class="badge badge-primary">Pass Mark: ${quiz.passMark || 80}%</span>
           </div>
-          <p style="color:#64748B; font-size:13.5px; margin-bottom:20px;">
+          <p style="color:#5B5882; font-size:13.5px; margin-bottom:20px;">
             Answer the questions below to demonstrate strand competency. Instant feedback is provided upon submission.
           </p>
       `;
 
       questions.forEach((q, qIdx) => {
         html += `
-          <div style="margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid #F1F5F9;">
+          <div style="margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid #F7F3E6;">
             <div class="player-quiz-question">${qIdx + 1}. ${q.text}</div>
             <div class="player-quiz-options">
         `;
@@ -606,7 +606,7 @@
             <button type="button" onclick="submitQuizAnswers('${quiz.id}')" class="btn btn-blue btn-md" id="btn-submit-quiz">
               Submit Quiz Answers 🚀
             </button>
-            <div id="quiz-final-score" style="font-weight:800; font-size:15px; color:#2145E6;"></div>
+            <div id="quiz-final-score" style="font-weight:800; font-size:15px; color:#2563EB;"></div>
           </div>
         </div>
       `;
@@ -661,26 +661,26 @@
         const isCbcTier = assignment.rubric.some(r => r.exceeding || r.meeting);
         if (isCbcTier) {
           rubricHtml = `
-            <h4 style="margin:16px 0 10px; font-size:13px; text-transform:uppercase; color:#475569;">🇰🇪 4-Level CBC Competency Evaluation Rubric</h4>
+            <h4 style="margin:16px 0 10px; font-size:13px; text-transform:uppercase; color:#433F6B;">🇰🇪 4-Level CBC Competency Evaluation Rubric</h4>
             <div style="overflow-x:auto;">
-              <table style="width:100%; border-collapse:collapse; margin-bottom:20px; font-size:12.5px; border:1px solid #E2E8F0; border-radius:8px; overflow:hidden;">
+              <table style="width:100%; border-collapse:collapse; margin-bottom:20px; font-size:12.5px; border:1px solid #E8E3D5; border-radius:8px; overflow:hidden;">
                 <thead>
-                  <tr style="background:#F8FAFC;">
-                    <th style="padding:10px; border:1px solid #E2E8F0; text-align:left; width:22%;">Criterion</th>
-                    <th style="padding:10px; border:1px solid #E2E8F0; color:#059669; text-align:left; width:20%;">🟢 Exceeding (4)</th>
-                    <th style="padding:10px; border:1px solid #E2E8F0; color:#2145E6; text-align:left; width:20%;">🔵 Meeting (3)</th>
-                    <th style="padding:10px; border:1px solid #E2E8F0; color:#D97706; text-align:left; width:19%;">🟡 Approaching (2)</th>
-                    <th style="padding:10px; border:1px solid #E2E8F0; color:#DC2626; text-align:left; width:19%;">🔴 Below (1)</th>
+                  <tr style="background:#FFFDF7;">
+                    <th style="padding:10px; border:1px solid #E8E3D5; text-align:left; width:22%;">Criterion</th>
+                    <th style="padding:10px; border:1px solid #E8E3D5; color:#059669; text-align:left; width:20%;">🟢 Exceeding (4)</th>
+                    <th style="padding:10px; border:1px solid #E8E3D5; color:#2563EB; text-align:left; width:20%;">🔵 Meeting (3)</th>
+                    <th style="padding:10px; border:1px solid #E8E3D5; color:#2563EB; text-align:left; width:19%;">🟡 Approaching (2)</th>
+                    <th style="padding:10px; border:1px solid #E8E3D5; color:#DC2626; text-align:left; width:19%;">🔴 Below (1)</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${assignment.rubric.map(r => `
                     <tr>
-                      <td style="padding:10px; border:1px solid #E2E8F0; font-weight:700; background:#FAFAFA;">${r.criterion}</td>
-                      <td style="padding:10px; border:1px solid #E2E8F0;">${r.exceeding || '—'}</td>
-                      <td style="padding:10px; border:1px solid #E2E8F0;">${r.meeting || '—'}</td>
-                      <td style="padding:10px; border:1px solid #E2E8F0;">${r.approaching || '—'}</td>
-                      <td style="padding:10px; border:1px solid #E2E8F0;">${r.below || '—'}</td>
+                      <td style="padding:10px; border:1px solid #E8E3D5; font-weight:700; background:#FAFAFA;">${r.criterion}</td>
+                      <td style="padding:10px; border:1px solid #E8E3D5;">${r.exceeding || '—'}</td>
+                      <td style="padding:10px; border:1px solid #E8E3D5;">${r.meeting || '—'}</td>
+                      <td style="padding:10px; border:1px solid #E8E3D5;">${r.approaching || '—'}</td>
+                      <td style="padding:10px; border:1px solid #E8E3D5;">${r.below || '—'}</td>
                     </tr>
                   `).join('')}
                 </tbody>
@@ -689,7 +689,7 @@
           `;
         } else {
           rubricHtml = `
-            <h4 style="margin:16px 0 10px; font-size:13px; text-transform:uppercase; color:#475569;">Assessment Criterion Rubric</h4>
+            <h4 style="margin:16px 0 10px; font-size:13px; text-transform:uppercase; color:#433F6B;">Assessment Criterion Rubric</h4>
             <table class="data-table" style="margin-bottom:20px;">
               <thead>
                 <tr><th>Evaluation Criterion</th><th style="width:100px; text-align:right;">Max Points</th></tr>
@@ -703,22 +703,22 @@
       }
 
       container.innerHTML = `
-        <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:16px; padding:24px;">
-          <h3 style="margin-top:0; color:#0F172A;">Assignment Instructions</h3>
-          <p style="font-size:14.5px; line-height:1.6; color:#334155;">
+        <div style="background:#FFFDF7; border:1px solid #E8E3D5; border-radius:16px; padding:24px;">
+          <h3 style="margin-top:0; color:#1E1B4B;">Assignment Instructions</h3>
+          <p style="font-size:14.5px; line-height:1.6; color:#433F6B;">
             ${assignment.instructions || 'Review the curriculum guidelines and upload your completed practical portfolio for facilitator rubric review.'}
           </p>
           ${rubricHtml}
 
           <div style="margin-top:20px; border:2px dashed #CBD5E1; border-radius:14px; padding:28px 20px; text-align:center; background:#FFFFFF;">
             <div style="font-size:32px; margin-bottom:8px;">📤</div>
-            <div style="font-weight:700; font-size:14.5px; color:#0F172A; margin-bottom:4px;">Drag and drop your assignment submission file</div>
-            <div style="font-size:12.5px; color:#64748B; margin-bottom:14px;">Supported formats: PDF, DOCX, ZIP (Max: 25 MB)</div>
+            <div style="font-weight:700; font-size:14.5px; color:#1E1B4B; margin-bottom:4px;">Drag and drop your assignment submission file</div>
+            <div style="font-size:12.5px; color:#5B5882; margin-bottom:14px;">Supported formats: PDF, DOCX, ZIP (Max: 25 MB)</div>
             <input type="file" id="assignment-file-input" style="display:none;" onchange="handleAssignmentFileSelected(event)">
             <button type="button" onclick="document.getElementById('assignment-file-input').click()" class="btn btn-outline btn-sm">
               Browse Files...
             </button>
-            <div id="assignment-selected-filename" style="margin-top:10px; font-weight:700; color:#2145E6; font-size:13px;"></div>
+            <div id="assignment-selected-filename" style="margin-top:10px; font-weight:700; color:#2563EB; font-size:13px;"></div>
           </div>
 
           <div style="display:flex; justify-content:flex-end; margin-top:18px;">

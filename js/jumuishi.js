@@ -903,21 +903,21 @@
             <div style="background:#fff;padding:16px;border-radius:8px;border:1px solid #CBD5E1;text-align:center;">
               <div style="font-size:32px;">👀</div>
               <strong>1. Look & Listen</strong>
-              <p style="font-size:13px;color:#64748B;margin-top:4px;">Watch teacher show how groups work.</p>
+              <p style="font-size:13px;color:#5B5882;margin-top:4px;">Watch teacher show how groups work.</p>
             </div>
             <div style="background:#fff;padding:16px;border-radius:8px;border:1px solid #CBD5E1;text-align:center;">
               <div style="font-size:32px;">🖐️</div>
               <strong>2. Touch & Move</strong>
-              <p style="font-size:13px;color:#64748B;margin-top:4px;">Count counters with your buddy.</p>
+              <p style="font-size:13px;color:#5B5882;margin-top:4px;">Count counters with your buddy.</p>
             </div>
             <div style="background:#fff;padding:16px;border-radius:8px;border:1px solid #CBD5E1;text-align:center;">
               <div style="font-size:32px;">🗣️</div>
               <strong>3. Show Your Way</strong>
-              <p style="font-size:13px;color:#64748B;margin-top:4px;">Point, speak, or draw your answer!</p>
+              <p style="font-size:13px;color:#5B5882;margin-top:4px;">Point, speak, or draw your answer!</p>
             </div>
           </div>
           
-          <p style="font-size:15px;color:#1E293B;"><strong>Remember:</strong> Take your time. Everyone learns differently and everyone can do this! ✨</p>
+          <p style="font-size:15px;color:#1E1B4B;"><strong>Remember:</strong> Take your time. Everyone learns differently and everyone can do this! ✨</p>
         </div>
       `,
 
@@ -935,7 +935,7 @@
       `,
 
       parentGuide: `
-        <div class="jum-resource-section" style="background:#FFFBEB;padding:24px;border-radius:12px;border:2px solid #FCD34D;">
+        <div class="jum-resource-section" style="background:#FEF9C3;padding:24px;border-radius:12px;border:2px solid #FCD34D;">
           <h3 style="font-size:18px;color:#B45309;margin-bottom:12px;">👨‍👩‍👧 Parent & Caregiver Home Practice Guide</h3>
           <p style="font-size:14.5px;line-height:1.65;color:#92400E;">
             This guide is designed for home reinforcement without expensive toys or stress.
@@ -3576,8 +3576,8 @@
 
     if (!Array.isArray(wizardCourse.units) || wizardCourse.units.length === 0) {
       container.innerHTML = `
-        <div style="text-align:center;padding:30px;background:#F8FAFC;border:2px dashed #CBD5E1;border-radius:12px;">
-          <p style="font-size:14px;color:#64748B;margin-bottom:12px;">No curriculum units yet. Click below to add your first syllabus unit!</p>
+        <div style="text-align:center;padding:30px;background:#FFFDF7;border:2px dashed #CBD5E1;border-radius:12px;">
+          <p style="font-size:14px;color:#5B5882;margin-bottom:12px;">No curriculum units yet. Click below to add your first syllabus unit!</p>
           <button type="button" class="jum-btn-wizard-primary" id="jum-btn-tree-add-unit-empty">+ Add Unit 1</button>
         </div>
       `;
@@ -4178,8 +4178,8 @@
 
     if (!Array.isArray(materials) || materials.length === 0) {
       container.innerHTML = `
-        <div style="text-align:center;padding:24px;background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:10px;">
-          <p style="font-size:13.5px;color:#64748B;margin-bottom:8px;">No learning materials or sensory resources attached to this lesson yet.</p>
+        <div style="text-align:center;padding:24px;background:#FFFDF7;border:1px dashed #CBD5E1;border-radius:10px;">
+          <p style="font-size:13.5px;color:#5B5882;margin-bottom:8px;">No learning materials or sensory resources attached to this lesson yet.</p>
           <button type="button" class="jum-btn-use-tpl" style="font-size:12px;" id="jum-btn-quick-add-mat">+ Attach First Resource</button>
         </div>
       `;
@@ -4205,10 +4205,10 @@
                 <span class="jum-file-badge ${(m.fileFormat || 'doc').toLowerCase()}">${escapeHtml(m.fileFormat || 'FILE')}</span>
               </td>
               <td>
-                <div style="font-weight:700;font-size:13.5px;color:#1E293B;">${escapeHtml(m.name || 'Untitled Resource')}</div>
-                <div style="font-size:12px;color:#64748B;">${escapeHtml(m.description || 'Lesson learning material')}</div>
+                <div style="font-weight:700;font-size:13.5px;color:#1E1B4B;">${escapeHtml(m.name || 'Untitled Resource')}</div>
+                <div style="font-size:12px;color:#5B5882;">${escapeHtml(m.description || 'Lesson learning material')}</div>
               </td>
-              <td style="font-size:12px;color:#64748B;">${escapeHtml(m.size || 'Web Link')}</td>
+              <td style="font-size:12px;color:#5B5882;">${escapeHtml(m.size || 'Web Link')}</td>
               <td style="text-align:right;">
                 <button type="button" class="jum-btn-tree-act" data-action="download-lesson-mat" data-mat-idx="${idx}" title="Open / View Resource">👁️</button>
                 <button type="button" class="jum-btn-tree-act danger" data-action="del-lesson-mat" data-mat-idx="${idx}" title="Remove Material">🗑️</button>
@@ -4289,7 +4289,7 @@
 
     if (!Array.isArray(rubric) || rubric.length === 0) {
       wrap.innerHTML = `
-        <div style="padding:14px;background:#F8FAFC;border:1px dashed #CBD5E1;border-radius:8px;font-size:12.5px;color:#64748B;">
+        <div style="padding:14px;background:#FFFDF7;border:1px dashed #CBD5E1;border-radius:8px;font-size:12.5px;color:#5B5882;">
           No criteria rows added yet. Click "+ Add Criterion" above to build an inclusive multi-modal rubric!
         </div>
       `;
@@ -4399,8 +4399,8 @@
 
     if (!Array.isArray(questions) || questions.length === 0) {
       container.innerHTML = `
-        <div style="text-align:center;padding:26px;background:#F8FAFC;border:1.5px dashed #CBD5E1;border-radius:12px;">
-          <p style="font-size:14px;color:#64748B;margin-bottom:12px;">No quiz questions added yet. Click "+ Add Question" above to create multiple-choice, visual pointing, or self-check reflection cards!</p>
+        <div style="text-align:center;padding:26px;background:#FFFDF7;border:1.5px dashed #CBD5E1;border-radius:12px;">
+          <p style="font-size:14px;color:#5B5882;margin-bottom:12px;">No quiz questions added yet. Click "+ Add Question" above to create multiple-choice, visual pointing, or self-check reflection cards!</p>
           <button type="button" class="jum-btn-use-tpl" id="jum-btn-quick-add-q">+ Add First Question</button>
         </div>
       `;
@@ -4434,13 +4434,13 @@
           </div>
 
           <div style="margin-bottom:12px;">
-            <label style="font-size:12px;font-weight:700;color:#334155;margin-bottom:4px;display:block;">Question Prompt:</label>
+            <label style="font-size:12px;font-weight:700;color:#433F6B;margin-bottom:4px;display:block;">Question Prompt:</label>
             <input type="text" class="jum-form-input quiz-prompt-input" data-q-idx="${qIdx}" value="${escapeHtml(q.questionText || '')}" placeholder="Enter question prompt...">
           </div>
 
           <div style="margin-bottom:12px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
-              <label style="font-size:12px;font-weight:700;color:#334155;">Answer Choices (select the radio button for the correct answer):</label>
+              <label style="font-size:12px;font-weight:700;color:#433F6B;">Answer Choices (select the radio button for the correct answer):</label>
               <button type="button" class="jum-btn-tree-act" data-action="add-quiz-opt" data-q-idx="${qIdx}" style="font-size:11px;">+ Add Option</button>
             </div>
             ${optsHtml}
@@ -4448,11 +4448,11 @@
 
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div>
-              <label style="font-size:11.5px;font-weight:700;color:#64748B;display:block;margin-bottom:4px;">Sensory Hint (Optional):</label>
+              <label style="font-size:11.5px;font-weight:700;color:#5B5882;display:block;margin-bottom:4px;">Sensory Hint (Optional):</label>
               <input type="text" class="jum-form-input quiz-hint-input" data-q-idx="${qIdx}" value="${escapeHtml(q.hint || '')}" placeholder="e.g. Count the dots on the blue card">
             </div>
             <div>
-              <label style="font-size:11.5px;font-weight:700;color:#64748B;display:block;margin-bottom:4px;">Affirmative Feedback &amp; Explanation:</label>
+              <label style="font-size:11.5px;font-weight:700;color:#5B5882;display:block;margin-bottom:4px;">Affirmative Feedback &amp; Explanation:</label>
               <input type="text" class="jum-form-input quiz-feedback-input" data-q-idx="${qIdx}" value="${escapeHtml(q.explanation || '')}" placeholder="e.g. Great job! 5 + 5 makes 10.">
             </div>
           </div>
@@ -4661,11 +4661,11 @@
           <span class="jum-file-badge ${(res.fileFormat || 'doc').toLowerCase()}">${escapeHtml(res.fileFormat || 'DOC')}</span>
         </td>
         <td>
-          <div style="font-weight:700;font-size:13.5px;color:#0F172A;">${escapeHtml(res.name)}</div>
-          <div style="font-size:12px;color:#64748B;">${escapeHtml(res.description || 'Curriculum resource')}</div>
+          <div style="font-weight:700;font-size:13.5px;color:#1E1B4B;">${escapeHtml(res.name)}</div>
+          <div style="font-size:12px;color:#5B5882;">${escapeHtml(res.description || 'Curriculum resource')}</div>
         </td>
-        <td style="font-size:12.5px;color:#64748B;">${escapeHtml(res.size || '1.5 MB')}</td>
-        <td style="font-size:12.5px;color:#64748B;">${escapeHtml(res.uploadedAt || 'Recently')}</td>
+        <td style="font-size:12.5px;color:#5B5882;">${escapeHtml(res.size || '1.5 MB')}</td>
+        <td style="font-size:12.5px;color:#5B5882;">${escapeHtml(res.uploadedAt || 'Recently')}</td>
         <td style="text-align:right;">
           <button type="button" class="jum-btn-tree-act" data-action="dl-res" data-res-idx="${idx}" title="Download">⬇️</button>
           <button type="button" class="jum-btn-tree-act" data-action="ren-res" data-res-idx="${idx}" title="Rename">✏️</button>
@@ -4761,26 +4761,26 @@
     const matsHtml = mats.length > 0 ? `
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:12px;margin-top:10px;">
         ${mats.map(m => `
-          <div style="background:#F8FAFC;border:1.5px solid #CBD5E1;border-radius:10px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <div style="background:#FFFDF7;border:1.5px solid #CBD5E1;border-radius:10px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
             <div style="display:flex;align-items:center;gap:10px;overflow:hidden;">
               <span class="jum-file-badge ${(m.fileFormat || 'doc').toLowerCase()}">${escapeHtml(m.fileFormat || 'DOC')}</span>
               <div style="overflow:hidden;">
-                <div style="font-weight:700;font-size:13px;color:#0F172A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escapeHtml(m.name)}</div>
-                <div style="font-size:11.5px;color:#64748B;">${escapeHtml(m.size || 'Web Link')} ${m.description ? '• ' + escapeHtml(m.description) : ''}</div>
+                <div style="font-weight:700;font-size:13px;color:#1E1B4B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escapeHtml(m.name)}</div>
+                <div style="font-size:11.5px;color:#5B5882;">${escapeHtml(m.size || 'Web Link')} ${m.description ? '• ' + escapeHtml(m.description) : ''}</div>
               </div>
             </div>
             <button type="button" class="jum-btn-card-secondary" style="padding:5px 10px;font-size:11.5px;white-space:nowrap;" onclick="alert('Opening resource: ' + '${escapeHtml(m.name)}')">Open ↗</button>
           </div>
         `).join('')}
       </div>
-    ` : '<p style="font-size:13px;color:#64748B;padding:12px 0;">No attached downloadable materials for this lesson.</p>';
+    ` : '<p style="font-size:13px;color:#5B5882;padding:12px 0;">No attached downloadable materials for this lesson.</p>';
 
     // Assignment Rubric Rows
     const rubricRows = (asg.rubric || []).map(r => `
       <tr>
-        <td style="font-weight:700;color:#1E293B;">${escapeHtml(r.criterion)}</td>
-        <td style="font-weight:700;color:#2145E6;">${r.points || 5} pts</td>
-        <td style="color:#64748B;">${escapeHtml(r.description || '')}</td>
+        <td style="font-weight:700;color:#1E1B4B;">${escapeHtml(r.criterion)}</td>
+        <td style="font-weight:700;color:#2563EB;">${r.points || 5} pts</td>
+        <td style="color:#5B5882;">${escapeHtml(r.description || '')}</td>
       </tr>
     `).join('');
 
@@ -4791,15 +4791,15 @@
       if (st === 'photo') { icon = '📸'; lbl = 'Concrete Manipulatives Photo'; }
       if (st === 'voice') { icon = '🎙️'; lbl = 'Voice Audio Recording'; }
       if (st === 'observation') { icon = '🤝'; lbl = 'Teacher / Peer Observation'; }
-      return `<span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;background:#E2E8F0;font-size:12px;font-weight:600;color:#334155;">${icon} ${lbl}</span>`;
+      return `<span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;background:#E8E3D5;font-size:12px;font-weight:600;color:#433F6B;">${icon} ${lbl}</span>`;
     }).join(' ');
 
     // Submission Simulation status
     const subStatus = assignmentSubmissionStates[lesson.id];
     const subBoxHtml = `
       <div class="jum-submission-sim-box" id="jum-sub-box-${playerKey}">
-        <h5 style="font-size:14px;font-weight:800;color:#0F172A;margin-bottom:6px;">Interactive Learner Submission Portal</h5>
-        <p style="font-size:12.5px;color:#64748B;margin-bottom:12px;">
+        <h5 style="font-size:14px;font-weight:800;color:#1E1B4B;margin-bottom:6px;">Interactive Learner Submission Portal</h5>
+        <p style="font-size:12.5px;color:#5B5882;margin-bottom:12px;">
           Learners or shadow teachers can submit evidence of learning using any supported inclusive modality:
         </p>
         <div class="jum-submission-buttons">
@@ -4836,7 +4836,7 @@
 
         return `
           <button type="button" class="${optClasses}" onclick="window.handleLmsQuizSelect('${lesson.id}', '${playerKey}', ${qIdx}, ${oIdx})" ${isSubmitted ? 'disabled' : ''}>
-            <span style="font-weight:800;font-size:13px;color:#2145E6;">${String.fromCharCode(65 + oIdx)}.</span>
+            <span style="font-weight:800;font-size:13px;color:#2563EB;">${String.fromCharCode(65 + oIdx)}.</span>
             <span>${escapeHtml(opt)}</span>
           </button>
         `;
@@ -4868,17 +4868,17 @@
       return `
         <div class="jum-player-quiz-card">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-            <span style="font-size:12px;font-weight:800;color:#2145E6;text-transform:uppercase;">Question ${qIdx + 1} of ${quizQuestions.length}</span>
+            <span style="font-size:12px;font-weight:800;color:#2563EB;text-transform:uppercase;">Question ${qIdx + 1} of ${quizQuestions.length}</span>
             ${q.hint && !isSubmitted ? `<button type="button" class="jum-btn-tree-act" onclick="alert('💡 Hint: ' + '${escapeHtml(q.hint)}')" style="font-size:11.5px;">💡 Need a Hint?</button>` : ''}
           </div>
-          <h5 style="font-size:15px;font-weight:700;color:#0F172A;margin-bottom:12px;">${escapeHtml(q.questionText)}</h5>
+          <h5 style="font-size:15px;font-weight:700;color:#1E1B4B;margin-bottom:12px;">${escapeHtml(q.questionText)}</h5>
           <div class="jum-player-quiz-options">
             ${optionsHtml}
           </div>
           ${feedbackBoxHtml}
         </div>
       `;
-    }).join('') : '<p style="font-size:13px;color:#64748B;padding:12px 0;">No quiz questions configured for this lesson yet.</p>';
+    }).join('') : '<p style="font-size:13px;color:#5B5882;padding:12px 0;">No quiz questions configured for this lesson yet.</p>';
 
     // Calculate score summary if submitted
     let scoreSummaryHtml = '';
@@ -4898,10 +4898,10 @@
       scoreSummaryHtml = `
         <div class="jum-quiz-score-summary">
           <div style="font-size:36px;margin-bottom:6px;">${isPassed ? '🏆' : '🌱'}</div>
-          <h4 style="font-family:var(--font-heading);font-size:20px;font-weight:800;color:#0F172A;margin-bottom:4px;">
+          <h4 style="font-family:var(--font-heading);font-size:20px;font-weight:800;color:#1E1B4B;margin-bottom:4px;">
             ${isPassed ? 'Congratulations! Quiz Completed!' : 'Good Effort! Keep Growing!'}
           </h4>
-          <p style="font-size:14px;color:#475569;margin-bottom:14px;">
+          <p style="font-size:14px;color:#433F6B;margin-bottom:14px;">
             You scored <strong>${scorePct}%</strong> (${correctCount} of ${gradableCount} correct). Passing threshold is ${passPct}%.
           </p>
           <button type="button" class="jum-btn-wizard-primary" onclick="window.handleLmsQuizRetake('${lesson.id}', '${playerKey}')">🔄 Retake Quiz</button>
@@ -4929,7 +4929,7 @@
 
         <!-- Body 1: Notes -->
         <div class="jum-lms-player-body" data-panel="notes" style="display:${activeTab === 'notes' ? 'block' : 'none'};">
-          <div style="font-size:13.5px;color:#1E293B;margin-bottom:14px;">
+          <div style="font-size:13.5px;color:#1E1B4B;margin-bottom:14px;">
             <strong>Specific Learning Outcome:</strong> ${escapeHtml(lesson.outcome || 'Apply foundational concept using concrete realia.')}
           </div>
           <div style="background:#FFFFFF;border:1px solid var(--border-color);border-radius:10px;padding:16px;font-size:13.5px;line-height:1.6;margin-bottom:16px;">
@@ -4937,11 +4937,11 @@
           </div>
 
           <!-- CBC Stages Grid -->
-          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:10px;background:#F8FAFC;padding:14px;border-radius:10px;border:1px solid #E2E8F0;margin-bottom:14px;font-size:12.5px;">
-            <div><strong style="color:#2145E6;">1. Introduction:</strong> ${escapeHtml(lesson.intro || 'Multisensory warm-up.')}</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:10px;background:#FFFDF7;padding:14px;border-radius:10px;border:1px solid #E8E3D5;margin-bottom:14px;font-size:12.5px;">
+            <div><strong style="color:#2563EB;">1. Introduction:</strong> ${escapeHtml(lesson.intro || 'Multisensory warm-up.')}</div>
             <div><strong style="color:#0F766E;">2. Guided Practice:</strong> ${escapeHtml(lesson.guided || 'Teacher modeling with realia.')}</div>
             <div><strong style="color:#B45309;">3. Tiered Activity:</strong> ${escapeHtml(lesson.activity || 'Hands-on practical exploration.')}</div>
-            <div><strong style="color:#475569;">4. Wrap-up:</strong> ${escapeHtml(lesson.wrapup || 'Learner reflection and peer review.')}</div>
+            <div><strong style="color:#433F6B;">4. Wrap-up:</strong> ${escapeHtml(lesson.wrapup || 'Learner reflection and peer review.')}</div>
           </div>
 
           <!-- UDL Tiers Breakdown -->
@@ -4954,29 +4954,29 @@
 
         <!-- Body 2: Materials -->
         <div class="jum-lms-player-body" data-panel="materials" style="display:${activeTab === 'materials' ? 'block' : 'none'};">
-          <h4 style="font-size:15px;font-weight:800;color:#0F172A;margin-bottom:6px;">Lesson Learning Materials &amp; Media</h4>
-          <p style="font-size:13px;color:#64748B;margin-bottom:14px;">Multisensory resources, worksheets, audio narrations, and reference documents:</p>
+          <h4 style="font-size:15px;font-weight:800;color:#1E1B4B;margin-bottom:6px;">Lesson Learning Materials &amp; Media</h4>
+          <p style="font-size:13px;color:#5B5882;margin-bottom:14px;">Multisensory resources, worksheets, audio narrations, and reference documents:</p>
           ${matsHtml}
         </div>
 
         <!-- Body 3: Assignment -->
         <div class="jum-lms-player-body" data-panel="assignment" style="display:${activeTab === 'assignment' ? 'block' : 'none'};">
           <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
-            <h4 style="font-size:16px;font-weight:800;color:#0F172A;margin:0;">${escapeHtml(asg.title)}</h4>
-            <span style="font-size:12px;font-weight:800;color:#2145E6;background:#DBEAFE;padding:4px 10px;border-radius:6px;">Max Points: ${asg.maxPoints || 20} pts</span>
+            <h4 style="font-size:16px;font-weight:800;color:#1E1B4B;margin:0;">${escapeHtml(asg.title)}</h4>
+            <span style="font-size:12px;font-weight:800;color:#2563EB;background:#DBEAFE;padding:4px 10px;border-radius:6px;">Max Points: ${asg.maxPoints || 20} pts</span>
           </div>
 
-          <p style="font-size:14px;color:#334155;line-height:1.6;background:#F8FAFC;border-left:4px solid #2145E6;padding:12px 16px;border-radius:0 8px 8px 0;margin-bottom:16px;">
+          <p style="font-size:14px;color:#433F6B;line-height:1.6;background:#FFFDF7;border-left:4px solid #2563EB;padding:12px 16px;border-radius:0 8px 8px 0;margin-bottom:16px;">
             ${escapeHtml(asg.learnerInstructions || 'Complete the hands-on activity using concrete materials and submit evidence.')}
           </p>
 
           <div style="margin-bottom:16px;">
-            <div style="font-size:12px;font-weight:700;color:#64748B;margin-bottom:6px;">Accepted Inclusive Submission Modalities:</div>
+            <div style="font-size:12px;font-weight:700;color:#5B5882;margin-bottom:6px;">Accepted Inclusive Submission Modalities:</div>
             <div style="display:flex;gap:8px;flex-wrap:wrap;">${subTypesHtml}</div>
           </div>
 
           <div style="margin-bottom:16px;">
-            <h5 style="font-size:13px;font-weight:700;color:#334155;margin-bottom:6px;">Evaluation Rubric:</h5>
+            <h5 style="font-size:13px;font-weight:700;color:#433F6B;margin-bottom:6px;">Evaluation Rubric:</h5>
             <table class="jum-rubric-table" style="background:#FFFFFF;border:1px solid #CBD5E1;border-radius:8px;">
               <thead>
                 <tr>
@@ -4998,8 +4998,8 @@
         <div class="jum-lms-player-body" data-panel="quiz" style="display:${activeTab === 'quiz' ? 'block' : 'none'};">
           <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
             <div>
-              <h4 style="font-size:16px;font-weight:800;color:#0F172A;margin:0;">${escapeHtml(quiz.title)}</h4>
-              <p style="font-size:12.5px;color:#64748B;margin:2px 0 0;">${escapeHtml(quiz.description || 'Interactive check for understanding')}</p>
+              <h4 style="font-size:16px;font-weight:800;color:#1E1B4B;margin:0;">${escapeHtml(quiz.title)}</h4>
+              <p style="font-size:12.5px;color:#5B5882;margin:2px 0 0;">${escapeHtml(quiz.description || 'Interactive check for understanding')}</p>
             </div>
             <span style="font-size:12px;font-weight:800;color:#059669;background:#D1FAE5;padding:4px 10px;border-radius:6px;">Passing Score: ${quiz.passScorePercentage || 70}%</span>
           </div>
@@ -5016,7 +5016,7 @@
             </div>
           ` : `
             <div style="margin-top:20px;">
-              <h5 style="font-size:14px;font-weight:800;color:#0F172A;margin-bottom:12px;">Review Your Answers:</h5>
+              <h5 style="font-size:14px;font-weight:800;color:#1E1B4B;margin-bottom:12px;">Review Your Answers:</h5>
               ${quizQuestionsHtml}
             </div>
           `}
@@ -5132,8 +5132,8 @@
 
     if (allLessons.length === 0) {
       listEl.innerHTML = `
-        <div style="text-align:center;padding:32px;background:#F8FAFC;border:1.5px dashed #CBD5E1;border-radius:12px;">
-          <p style="font-size:14px;color:#64748B;margin-bottom:12px;">No lessons added to this course yet.</p>
+        <div style="text-align:center;padding:32px;background:#FFFDF7;border:1.5px dashed #CBD5E1;border-radius:12px;">
+          <p style="font-size:14px;color:#5B5882;margin-bottom:12px;">No lessons added to this course yet.</p>
           <button type="button" class="jum-btn-wizard-primary" id="jum-btn-viewer-add-first-lesson">+ Add First Lesson</button>
         </div>
       `;
@@ -5319,7 +5319,7 @@
         <h4 style="font-family:var(--font-heading);font-size:16px;font-weight:800;color:var(--heading-color);margin-bottom:8px;">
           Curriculum Framework &amp; Competencies
         </h4>
-        <div style="background:#F8FAFC;border:1px solid var(--border-color);border-radius:12px;padding:16px;font-size:13px;line-height:1.6;">
+        <div style="background:#FFFDF7;border:1px solid var(--border-color);border-radius:12px;padding:16px;font-size:13px;line-height:1.6;">
           <div><strong>Framework:</strong> ${escapeHtml(course.curriculum?.framework || 'Kenyan CBC (KICD Aligned)')}</div>
           <div><strong>Key Inquiry Question:</strong> ${escapeHtml(course.curriculum?.inquiryQuestions || 'How can equal sharing help us solve everyday group problems?')}</div>
           <div><strong>CBC Competencies:</strong> ${escapeHtml(course.competencies || (course.curriculum?.competencies ? course.curriculum.competencies.join(', ') : 'Critical Thinking, Communication'))}</div>
@@ -6062,11 +6062,11 @@
               ${escapeHtml(t.aacTools || 'Multi-modal pointing board, sorting trays, peer partner support.')}
             </div>
 
-            <p style="font-size:13.5px;color:#475569;line-height:1.55;margin:0;">
+            <p style="font-size:13.5px;color:#433F6B;line-height:1.55;margin:0;">
               <strong>Target Learner:</strong> ${escapeHtml(t.target || 'Diverse educational needs')}
             </p>
 
-            <div style="font-size:13px;color:#334155;background:#F8FAFC;padding:10px 12px;border-radius:10px;border:1px solid #E2E8F0;">
+            <div style="font-size:13px;color:#433F6B;background:#FFFDF7;padding:10px 12px;border-radius:10px;border:1px solid #E8E3D5;">
               <strong>CBC Goal:</strong> ${escapeHtml(t.outcome ? t.outcome.substring(0, 110) + '...' : 'CBC competency mastery through differentiated concrete realia.')}
             </div>
 
@@ -6363,7 +6363,7 @@
     if (!modal || !content) return;
 
     content.innerHTML = `
-      <div class="jum-guide-document" style="font-family:var(--font-body);color:#1E293B;line-height:1.65;">
+      <div class="jum-guide-document" style="font-family:var(--font-body);color:#1E1B4B;line-height:1.65;">
         
         <!-- Header Strip -->
         <div style="border-bottom:2px solid #0D9488;padding-bottom:16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
@@ -6371,10 +6371,10 @@
             <span style="font-size:12px;font-weight:800;color:#0D9488;text-transform:uppercase;letter-spacing:1px;background:#F0FDFA;padding:4px 10px;border-radius:6px;border:1px solid #99F6E4;">
               Jumuishi SNE Adaptation Guide &bull; Kenya CBC Aligned
             </span>
-            <h2 style="font-family:var(--font-heading);font-size:24px;font-weight:800;color:#0F172A;margin:10px 0 4px;">
+            <h2 style="font-family:var(--font-heading);font-size:24px;font-weight:800;color:#1E1B4B;margin:10px 0 4px;">
               ${escapeHtml(t.title)}
             </h2>
-            <p style="font-size:14px;color:#475569;margin:0;">
+            <p style="font-size:14px;color:#433F6B;margin:0;">
               <strong>Special Need Category:</strong> ${escapeHtml(t.category)} &bull; 
               <strong>Target Profile:</strong> ${escapeHtml(t.target)}
             </p>
@@ -6727,7 +6727,7 @@ function initCourseStudio() {
     const btnInsTable = document.getElementById('jum-btn-insert-table');
     if (btnInsTable) {
       btnInsTable.addEventListener('click', () => {
-        const tableHtml = '<table style="width:100%;border-collapse:collapse;margin:12px 0;"><thead><tr style="background:#F1F5F9;"><th style="border:1px solid #CBD5E1;padding:8px;">Stage</th><th style="border:1px solid #CBD5E1;padding:8px;">Concrete Focus</th></tr></thead><tbody><tr><td style="border:1px solid #CBD5E1;padding:8px;">Step 1</td><td style="border:1px solid #CBD5E1;padding:8px;">Tactile Exploration</td></tr></tbody></table><p></p>';
+        const tableHtml = '<table style="width:100%;border-collapse:collapse;margin:12px 0;"><thead><tr style="background:#F7F3E6;"><th style="border:1px solid #CBD5E1;padding:8px;">Stage</th><th style="border:1px solid #CBD5E1;padding:8px;">Concrete Focus</th></tr></thead><tbody><tr><td style="border:1px solid #CBD5E1;padding:8px;">Step 1</td><td style="border:1px solid #CBD5E1;padding:8px;">Tactile Exploration</td></tr></tbody></table><p></p>';
         document.execCommand('insertHTML', false, tableHtml);
       });
     }

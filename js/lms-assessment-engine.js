@@ -286,7 +286,7 @@
             <label class="lms-option${checked ? ' selected' : ''}">
               <input type="checkbox" ${checked ? 'checked' : ''} 
                 onchange="LMSAssessment.toggleMultiOption('${question.id}', ${i})"
-                style="accent-color:#2145E6;width:18px;height:18px;cursor:pointer;">
+                style="accent-color:#2563EB;width:18px;height:18px;cursor:pointer;">
               <span>${opt}</span>
             </label>
           `;
@@ -312,7 +312,7 @@
         html += `
           <div style="border:2px dashed #CBD5E1;border-radius:12px;padding:32px;text-align:center;">
             <div style="font-size:32px;margin-bottom:8px;">📎</div>
-            <div style="font-size:14px;font-weight:600;color:#334155;margin-bottom:4px;">Upload your file</div>
+            <div style="font-size:14px;font-weight:600;color:#433F6B;margin-bottom:4px;">Upload your file</div>
             <div style="font-size:12px;color:#94A3B8;margin-bottom:12px;">PDF, DOC, DOCX, PPT, or ZIP (max 25MB)</div>
             <input type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.zip" 
               onchange="LMSAssessment._answers['${question.id}'] = this.files[0] ? this.files[0].name : ''"
@@ -374,12 +374,12 @@
 
     // Quiz header
     html += '<div class="lms-quiz-header">';
-    html += `<div style="font-size:14px;font-weight:700;color:#0F172A;">${displayQuestions.length} Questions</div>`;
+    html += `<div style="font-size:14px;font-weight:700;color:#1E1B4B;">${displayQuestions.length} Questions</div>`;
     if (settings.timeLimit) {
       html += `<div class="lms-quiz-timer" id="quiz-timer">⏱ ${formatTime(settings.timeLimit * 60)}</div>`;
     }
     if (settings.passMark) {
-      html += `<div style="font-size:12px;color:#64748B;">Pass mark: ${settings.passMark}%</div>`;
+      html += `<div style="font-size:12px;color:#5B5882;">Pass mark: ${settings.passMark}%</div>`;
     }
     html += '</div>';
 
@@ -492,17 +492,17 @@
         const summaryHtml = `
           <div class="lms-card" style="margin-top:24px;text-align:center;padding:32px;">
             <div style="font-size:48px;margin-bottom:12px;">${result.passed === false ? '📝' : '🎉'}</div>
-            <h3 style="font-size:22px;font-weight:800;color:#0F172A;margin-bottom:8px;">
+            <h3 style="font-size:22px;font-weight:800;color:#1E1B4B;margin-bottom:8px;">
               ${result.passed === false ? 'Keep Practising!' : 'Quiz Complete!'}
             </h3>
             <div style="font-size:36px;font-weight:900;color:${result.passed === false ? '#DC2626' : '#059669'};margin:16px 0;">
               ${result.percentage}%
             </div>
-            <div style="font-size:14px;color:#64748B;margin-bottom:4px;">
+            <div style="font-size:14px;color:#5B5882;margin-bottom:4px;">
               ${Math.round(result.totalScore)} of ${result.maxScore} correct
             </div>
             ${result.passMark ? `<div style="font-size:13px;color:#94A3B8;">Pass mark: ${result.passMark}%</div>` : ''}
-            ${result.pendingManual > 0 ? `<div style="font-size:13px;color:#D97706;margin-top:8px;">⏳ ${result.pendingManual} question(s) pending manual grading</div>` : ''}
+            ${result.pendingManual > 0 ? `<div style="font-size:13px;color:#2563EB;margin-top:8px;">⏳ ${result.pendingManual} question(s) pending manual grading</div>` : ''}
           </div>
         `;
         container.insertAdjacentHTML('beforeend', summaryHtml);

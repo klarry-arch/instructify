@@ -1,6 +1,6 @@
 /* ============================================================
    INSTRUCTIFY KENYA — ANIMATIONS & MICRO-INTERACTIONS v5.0
-   Brand: #2145E6 · #3C3DDC · #FF4D00
+   Brand: #2563EB · #2563EB · #FACC15
    ============================================================ */
 
 /* ══════════════════════════════════════════════════════════════
@@ -52,8 +52,8 @@
 }
 
 @keyframes pulseBorder {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(33, 69, 230, 0.4); }
-  50%       { box-shadow: 0 0 0 8px rgba(33, 69, 230, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
 }
 
 @keyframes spin {
@@ -83,18 +83,18 @@
 }
 
 @keyframes glow-pulse-blue {
-  0%, 100% { box-shadow: 0 0 20px rgba(33, 69, 230, 0.20); }
-  50%       { box-shadow: 0 0 50px rgba(33, 69, 230, 0.45), 0 0 90px rgba(33, 69, 230, 0.15); }
+  0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.20); }
+  50%       { box-shadow: 0 0 50px rgba(37, 99, 235, 0.45), 0 0 90px rgba(37, 99, 235, 0.15); }
 }
 
 @keyframes glow-pulse-teal {
-  0%, 100% { box-shadow: 0 0 20px rgba(60, 61, 220, 0.20); }
-  50%       { box-shadow: 0 0 50px rgba(60, 61, 220, 0.45), 0 0 90px rgba(60, 61, 220, 0.15); }
+  0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.20); }
+  50%       { box-shadow: 0 0 50px rgba(37, 99, 235, 0.45), 0 0 90px rgba(37, 99, 235, 0.15); }
 }
 
 @keyframes glow-pulse-purple {
-  0%, 100% { box-shadow: 0 0 20px rgba(255, 77, 0, 0.20); }
-  50%       { box-shadow: 0 0 50px rgba(255, 77, 0, 0.45), 0 0 90px rgba(255, 77, 0, 0.15); }
+  0%, 100% { box-shadow: 0 0 20px rgba(250, 204, 21, 0.20); }
+  50%       { box-shadow: 0 0 50px rgba(250, 204, 21, 0.45), 0 0 90px rgba(250, 204, 21, 0.15); }
 }
 
 @keyframes border-spin {
@@ -230,7 +230,7 @@
 }
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-lg, 0 12px 24px rgba(15,23,42,0.10));
+  box-shadow: var(--shadow-lg, 0 12px 24px rgba(30, 27, 75,0.10));
 }
 
 /* Hover Scale */
@@ -244,12 +244,12 @@
   transition: box-shadow 0.25s ease;
 }
 .hover-glow-blue:hover {
-  box-shadow: 0 0 24px rgba(33, 69, 230, 0.30);
+  box-shadow: 0 0 24px rgba(37, 99, 235, 0.30);
 }
 
 /* Focus Ring Override */
 .focus-ring:focus-visible {
-  outline: 3px solid rgba(33, 69, 230, 0.50);
+  outline: 3px solid rgba(37, 99, 235, 0.50);
   outline-offset: 2px;
 }
 
@@ -286,7 +286,7 @@
 
 /* Gradient Animated Background */
 .gradient-animated {
-  background: linear-gradient(270deg, #2145E6, #2145E6, #FF4D00, #3C3DDC);
+  background: linear-gradient(270deg, #2563EB, #2563EB, #FACC15, #2563EB);
   background-size: 400% 400%;
   animation: gradient-shift 8s ease infinite;
 }
