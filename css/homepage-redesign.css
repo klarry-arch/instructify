@@ -638,9 +638,12 @@ details summary:focus-visible {
 .hero-h1 span.highlight-orange {
   display: inline-block;
   color: var(--color-primary, #2563EB);
-  background: linear-gradient(180deg, transparent 78%, rgba(250, 204, 21, 0.62) 78%);
-  padding: 0 4px 2px 0;
-  border-radius: 3px;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent, #FACC15);
+  text-decoration-thickness: 5px;
+  text-underline-offset: 10px;
+  text-decoration-skip-ink: auto;
+  padding: 0;
 }
 .hero-supporting-copy {
   font-size: clamp(16px, 1.18vw, 17.5px);
