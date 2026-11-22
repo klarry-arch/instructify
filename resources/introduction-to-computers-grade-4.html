@@ -25,14 +25,14 @@
   <link rel="icon" href="../assets/images/instructify-logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/global.css?v=2026.5">
-  <link rel="stylesheet" href="../css/animations.css?v=2026.5">
-  <link rel="stylesheet" href="../css/components.css?v=2026.5">
-  <link rel="stylesheet" href="../css/resources.css?v=2026.5">
-  <link rel="stylesheet" href="../css/live-chat.css?v=2026.5">
-  <link rel="stylesheet" href="../css/site-header.css?v=2026.5">
-  <link rel="stylesheet" href="../css/site-footer.css?v=2026.5">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/global.css?v=2026.6">
+  <link rel="stylesheet" href="../css/animations.css?v=2026.6">
+  <link rel="stylesheet" href="../css/components.css?v=2026.6">
+  <link rel="stylesheet" href="../css/resources.css?v=2026.6">
+  <link rel="stylesheet" href="../css/live-chat.css?v=2026.6">
+  <link rel="stylesheet" href="../css/site-header.css?v=2026.6">
+  <link rel="stylesheet" href="../css/site-footer.css?v=2026.6">
 
   <!-- JSON-LD Structured Data: DigitalDocument & Breadcrumbs -->
   <script type="application/ld+json">
@@ -94,7 +94,7 @@
     .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
     .badge-pill-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
     .hero-main-title {
-      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+      font-family: var(--font-heading) !important;
       font-size: clamp(30px, 3.6vw, 42px) !important;
       font-weight: 800 !important;
       color: #1E1B4B !important;
@@ -102,15 +102,15 @@
       letter-spacing: -0.025em;
       margin: 0 0 12px 0 !important;
     }
-    .hero-sub-kicker { font-family: 'Manrope', sans-serif; font-size: 16.5px; font-weight: 700; color: #1D4ED8; margin: 0 0 16px; }
-    .hero-main-lead { font-family: 'Inter', sans-serif; font-size: 15.5px; color: #433F6B; line-height: 1.7; margin: 0 0 26px; }
+    .hero-sub-kicker { font-family: var(--font-heading); font-size: 16.5px; font-weight: 700; color: #1D4ED8; margin: 0 0 16px; }
+    .hero-main-lead { font-family: var(--font-body); font-size: 15.5px; color: #433F6B; line-height: 1.7; margin: 0 0 26px; }
     .hero-actions-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
     .hero-download-btn {
       background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
       color: #FFFFFF !important;
       padding: 13px 24px;
       border-radius: 12px;
-      font-family: 'Manrope', sans-serif;
+      font-family: var(--font-heading);
       font-size: 14.5px;
       font-weight: 700;
       text-decoration: none;
@@ -130,7 +130,7 @@
       border: 1.5px solid rgba(30, 27, 75, 0.18);
       padding: 12px 20px;
       border-radius: 12px;
-      font-family: 'Manrope', sans-serif;
+      font-family: var(--font-heading);
       font-size: 14px;
       font-weight: 700;
       text-decoration: none;
@@ -160,7 +160,7 @@
     .modules-section { padding: 60px 0 40px; background: #FFFFFF; }
     .section-heading-box { text-align: center; max-width: 740px; margin: 0 auto 40px; }
     .section-title {
-      font-family: 'Manrope', sans-serif !important;
+      font-family: var(--font-heading) !important;
       font-size: clamp(24px, 2.8vw, 32px) !important;
       font-weight: 800 !important;
       color: #1E1B4B !important;
@@ -184,7 +184,7 @@
       border-radius: 10px;
       background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
       color: #FFFFFF;
-      font-family: 'Manrope', sans-serif;
+      font-family: var(--font-heading);
       font-weight: 800;
       font-size: 13.5px;
       display: flex;
@@ -193,7 +193,7 @@
       margin-bottom: 14px;
     }
     .module-title {
-      font-family: 'Manrope', sans-serif !important;
+      font-family: var(--font-heading) !important;
       font-size: 16.5px !important;
       font-weight: 800 !important;
       color: #1E1B4B !important;
@@ -216,7 +216,7 @@
       overflow-y: auto;
     }
     .reader-toc-title {
-      font-family: 'Manrope', sans-serif !important;
+      font-family: var(--font-heading) !important;
       font-size: 14px !important;
       font-weight: 800 !important;
       color: #1E1B4B !important;
@@ -242,7 +242,7 @@
     }
     .toc-link:hover { background: #EFF6FF; color: #1E1B4B; }
     .toc-num {
-      font-family: 'Manrope', sans-serif;
+      font-family: var(--font-heading);
       font-size: 11px;
       font-weight: 800;
       color: #1D4ED8;
@@ -274,7 +274,7 @@
       border-radius: 10px;
       background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
       color: #FFFFFF;
-      font-family: 'Manrope', sans-serif;
+      font-family: var(--font-heading);
       font-size: 13.5px;
       font-weight: 800;
       display: inline-flex;
@@ -282,11 +282,11 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    .pkg-h2 { font-family: 'Manrope', sans-serif !important; font-size: 22px !important; font-weight: 800 !important; color: #1E1B4B !important; margin: 0 !important; line-height: 1.25 !important; }
-    .pkg-h3 { font-family: 'Manrope', sans-serif !important; font-size: 17px !important; font-weight: 800 !important; color: #1D4ED8 !important; margin: 22px 0 10px !important; line-height: 1.35 !important; }
-    .pkg-h4 { font-family: 'Manrope', sans-serif !important; font-size: 15px !important; font-weight: 700 !important; color: #1E1B4B !important; margin: 16px 0 8px !important; }
+    .pkg-h2 { font-family: var(--font-heading) !important; font-size: 22px !important; font-weight: 800 !important; color: #1E1B4B !important; margin: 0 !important; line-height: 1.25 !important; }
+    .pkg-h3 { font-family: var(--font-heading) !important; font-size: 17px !important; font-weight: 800 !important; color: #1D4ED8 !important; margin: 22px 0 10px !important; line-height: 1.35 !important; }
+    .pkg-h4 { font-family: var(--font-heading) !important; font-size: 15px !important; font-weight: 700 !important; color: #1E1B4B !important; margin: 16px 0 8px !important; }
     .sheet-banner-title {
-      font-family: 'Manrope', sans-serif !important;
+      font-family: var(--font-heading) !important;
       font-size: 21px !important;
       font-weight: 800 !important;
       color: #1E1B4B !important;
@@ -307,7 +307,7 @@
     .pkg-table-wrap { overflow-x: auto; margin: 14px 0 20px; border-radius: 12px; border: 1px solid rgba(30, 27, 75, 0.14); }
     .pkg-table { width: 100%; border-collapse: collapse; font-size: 13.5px; line-height: 1.55; }
     .pkg-table-compact { font-size: 12.8px; }
-    .pkg-table th { background: #1E1B4B; color: #FFFFFF; font-family: 'Manrope', sans-serif; font-weight: 700; text-align: left; padding: 10px 12px; border-right: 1px solid rgba(255, 255, 255, 0.14); }
+    .pkg-table th { background: #1E1B4B; color: #FFFFFF; font-family: var(--font-heading); font-weight: 700; text-align: left; padding: 10px 12px; border-right: 1px solid rgba(255, 255, 255, 0.14); }
     .pkg-table th:last-child { border-right: none; }
     .pkg-table td { padding: 10px 12px; border-top: 1px solid #E8E3D5; border-right: 1px solid #E8E3D5; vertical-align: top; color: #433F6B; }
     .pkg-table td:last-child { border-right: none; }
@@ -317,7 +317,7 @@
     .callout-tip { border-left-color: #15803D; background: #F0FDF4; }
     .callout-important { border-left-color: #1E1B4B; background: #EFF6FF; }
     .callout-warning { border-left-color: #FACC15; background: #FEF9C3; }
-    .pkg-callout-label { font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #1E1B4B; margin-bottom: 4px; }
+    .pkg-callout-label { font-family: var(--font-heading); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: #1E1B4B; margin-bottom: 4px; }
     .callout-warning .pkg-callout-label { color: #1E1B4B; }
     .callout-tip .pkg-callout-label { color: #15803D; }
     .pkg-callout p { margin: 4px 0; font-size: 14px; color: #433F6B; line-height: 1.62; }
@@ -331,10 +331,10 @@
     .cb-box { font-size: 15px; color: #1E1B4B; margin-right: 4px; }
     .fill-line { display: inline-block; border-bottom: 1.5px solid #94A3B8; height: 15px; vertical-align: bottom; margin: 0 3px; max-width: 100%; }
     .curriculum-banner { background: linear-gradient(135deg, #EFF6FF 0%, #E8FAF7 100%); border: 1px solid rgba(37, 99, 235, 0.25); border-radius: 16px; padding: 28px 30px; margin: 36px 0 28px; }
-    .curriculum-banner h3 { font-family: 'Manrope', sans-serif !important; font-size: 18px !important; font-weight: 800 !important; color: #1E1B4B !important; margin: 0 0 8px 0 !important; }
+    .curriculum-banner h3 { font-family: var(--font-heading) !important; font-size: 18px !important; font-weight: 800 !important; color: #1E1B4B !important; margin: 0 0 8px 0 !important; }
     .curriculum-banner p { font-size: 14.5px; color: #433F6B; line-height: 1.68; margin: 0; }
     .bottom-cta-banner { background: linear-gradient(135deg, #0D2B45 0%, #1E1B4B 60%, #1D4ED8 100%); color: #FFFFFF; padding: 48px 32px; border-radius: 20px; text-align: center; margin: 28px 0 0; }
-    .bottom-cta-title { font-family: 'Manrope', sans-serif !important; font-size: 26px !important; font-weight: 800 !important; color: #FFFFFF !important; margin: 0 0 10px 0 !important; }
+    .bottom-cta-title { font-family: var(--font-heading) !important; font-size: 26px !important; font-weight: 800 !important; color: #FFFFFF !important; margin: 0 0 10px 0 !important; }
     .bottom-cta-desc { font-size: 15px; color: #E8E3D5; max-width: 620px; margin: 0 auto 24px; line-height: 1.65; }
     .bottom-cta-btn {
       background: linear-gradient(135deg, #FACC15 0%, #FACC15 100%);
@@ -342,7 +342,7 @@
       border: none;
       padding: 14px 30px;
       border-radius: 12px;
-      font-family: 'Manrope', sans-serif;
+      font-family: var(--font-heading);
       font-size: 15px;
       font-weight: 800;
       text-decoration: none;

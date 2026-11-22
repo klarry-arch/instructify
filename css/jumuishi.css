@@ -5,7 +5,7 @@
    Brand: #2563EB · #FACC15 · #FACC15 + Jumuishi teal #2563EB
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* ══════════════════════════════════════════════════════════════
    JUMUISHI DESIGN TOKENS (extend global.css)
@@ -127,7 +127,7 @@
   left: 16px;
   background: var(--jum-coral, #F97316);
   color: #fff;
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 700;
   padding: 14px 24px;
@@ -202,8 +202,8 @@ body.jum-high-contrast .btn-jum-teal {
 
 /* ── Dyslexia-Friendly Mode ── */
 body.jum-dyslexia {
-  --font-body: 'Atkinson Hyperlegible', 'Inter', sans-serif;
-  --font-heading: 'Atkinson Hyperlegible', 'Poppins', sans-serif;
+  --font-body:"Inter", Arial, sans-serif;
+  --font-heading: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
   --line-height-body: 1.9;
   --line-height-heading: 1.4;
   letter-spacing: 0.02em;
@@ -422,17 +422,17 @@ html.jum-text-sm  { font-size: 14px; }
 /* ── Jumuishi Typography System ── */
 .jum-page {
   padding-top: var(--nav-height, 72px);
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   color: var(--jum-text-primary);
 }
 .jum-page h1, .jum-page h2, .jum-page h3,
 .jum-page h4, .jum-page h5, .jum-page h6 {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
 }
 .jum-page p, .jum-page li, .jum-page label,
 .jum-page span, .jum-page input, .jum-page select,
 .jum-page textarea, .jum-page button {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
 }
 
 /* Section spacing — generous whitespace */
@@ -476,7 +476,7 @@ html.jum-text-sm  { font-size: 14px; }
   background: var(--jum-teal-bg);
   color: #0F766E;
   border: 1.5px solid rgba(15, 139, 141, 0.25);
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 1.3px;
@@ -507,7 +507,7 @@ html.jum-text-sm  { font-size: 14px; }
   border-color: rgba(124, 58, 237, 0.28);
 }
 .jum-section-title {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(28px, 3.2vw, 38px);
   font-weight: 700;
   line-height: 1.22;
@@ -516,7 +516,7 @@ html.jum-text-sm  { font-size: 14px; }
   margin-bottom: 16px;
 }
 .jum-section-subtitle {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(15.5px, 1.15vw, 17.5px);
   line-height: 1.72;
   color: var(--jum-text-secondary);
@@ -586,7 +586,7 @@ html.jum-text-sm  { font-size: 14px; }
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(45, 212, 191, 0.35);
   color: #2DD4BF;
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 1.2px;
@@ -611,7 +611,7 @@ html.jum-text-sm  { font-size: 14px; }
 }
 
 .jum-hero-h1 {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(38px, 4.4vw, 54px);
   font-weight: 800;
   line-height: 1.16;
@@ -639,7 +639,7 @@ html.jum-text-sm  { font-size: 14px; }
 }
 
 .jum-hero-subtitle {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(15.5px, 1.18vw, 17.5px);
   line-height: 1.72;
   color: #E8E3D5;
@@ -648,7 +648,7 @@ html.jum-text-sm  { font-size: 14px; }
   font-weight: 400;
 }
 .jum-hero-trust {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 13.5px;
   color: #CCFBF1;
   margin-bottom: 26px;
@@ -740,14 +740,14 @@ html.jum-text-sm  { font-size: 14px; }
 .jum-hero-stat-icon.green { background: var(--jum-green-bg); }
 .jum-hero-stat-icon.gold { background: var(--jum-gold-bg); }
 .jum-hero-stat-label {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 11.5px;
   font-weight: 500;
   color: #5B5882;
   line-height: 1.3;
 }
 .jum-hero-stat-value {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 16px;
   font-weight: 700;
   color: #1E1B4B;
@@ -772,7 +772,7 @@ html.jum-text-sm  { font-size: 14px; }
   gap: 10px;
   background: linear-gradient(135deg, #FF6B00 0%, #FACC15 100%);
   color: #1E1B4B;
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 700;
   padding: 14px 30px;
@@ -803,7 +803,7 @@ html.jum-text-sm  { font-size: 14px; }
   gap: 10px;
   background: #FFFFFF;
   color: #2563EB;
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 14.5px;
   font-weight: 700;
   padding: 13px 26px;
@@ -849,7 +849,7 @@ html.jum-text-sm  { font-size: 14px; }
   gap: 8px;
   background: var(--jum-teal);
   color: #fff;
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 700;
   padding: 14px 28px;
@@ -876,7 +876,7 @@ html.jum-text-sm  { font-size: 14px; }
   gap: 8px;
   background: var(--jum-coral);
   color: #fff;
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 700;
   padding: 14px 28px;
@@ -903,7 +903,7 @@ html.jum-text-sm  { font-size: 14px; }
   gap: 8px;
   background: transparent;
   color: var(--jum-teal);
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 600;
   padding: 13px 26px;
@@ -929,7 +929,7 @@ html.jum-text-sm  { font-size: 14px; }
   gap: 8px;
   background: var(--jum-teal-bg);
   color: var(--jum-teal);
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 700;
   padding: 13px 26px;
@@ -955,7 +955,7 @@ html.jum-text-sm  { font-size: 14px; }
   background: none;
   border: none;
   color: rgba(255,255,255,0.85);
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -1025,7 +1025,7 @@ html.jum-text-sm  { font-size: 14px; }
 .jum-philo-icon.green  { background: var(--jum-green-bg); }
 
 .jum-philo-title {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 19px;
   font-weight: 700;
   color: var(--jum-text-primary);
@@ -1034,7 +1034,7 @@ html.jum-text-sm  { font-size: 14px; }
   letter-spacing: -0.015em;
 }
 .jum-philo-desc {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 14.5px;
   color: var(--jum-text-secondary);
   line-height: 1.68;
@@ -1047,7 +1047,7 @@ html.jum-text-sm  { font-size: 14px; }
   border-radius: 22px;
   padding: 36px 44px;
   color: #fff;
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(16px, 1.8vw, 18px);
   line-height: 1.72;
   font-style: italic;
@@ -1116,7 +1116,7 @@ html.jum-text-sm  { font-size: 14px; }
   margin-bottom: 12px;
 }
 .quote-text {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(17px, 1.6vw, 21px);
   line-height: 1.62;
   font-style: italic;
@@ -1125,7 +1125,7 @@ html.jum-text-sm  { font-size: 14px; }
   font-weight: 500;
 }
 .quote-attribution {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 13px;
   font-weight: 600;
   color: #E8E3D5;
@@ -1180,7 +1180,7 @@ html.jum-text-sm  { font-size: 14px; }
 }
 
 .jum-support-card-name {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(18.5px, 1.6vw, 21px);
   font-weight: 700;
   color: var(--jum-text-primary);
@@ -1189,7 +1189,7 @@ html.jum-text-sm  { font-size: 14px; }
   margin-bottom: 6px;
 }
 .jum-support-card-desc {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 14px;
   color: var(--jum-text-secondary);
   line-height: 1.65;
@@ -1204,7 +1204,7 @@ html.jum-text-sm  { font-size: 14px; }
 .jum-adaptation-tag {
   background: var(--jum-bg, #FFFDF7);
   color: #433F6B;
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 500;
   padding: 5px 12px;
@@ -1252,7 +1252,7 @@ html.jum-text-sm  { font-size: 14px; }
   border-left: 4px solid #FACC15;
   border-radius: 14px;
   padding: 18px 24px;
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 13.5px;
   line-height: 1.62;
   color: #1E1B4B;
@@ -1298,7 +1298,7 @@ html.jum-text-sm  { font-size: 14px; }
   height: 50px;
   background: linear-gradient(135deg, var(--jum-sky, #2563EB) 0%, var(--jum-teal) 100%);
   color: #fff;
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 19px;
   font-weight: 800;
   border-radius: 50%;
@@ -1309,7 +1309,7 @@ html.jum-text-sm  { font-size: 14px; }
   box-shadow: 0 8px 18px rgba(37, 99, 235, 0.28);
 }
 .jum-step-title {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 16.5px;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -1318,7 +1318,7 @@ html.jum-text-sm  { font-size: 14px; }
   line-height: 1.35;
 }
 .jum-step-desc {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 13.5px;
   color: var(--jum-text-secondary);
   line-height: 1.62;
@@ -1344,7 +1344,7 @@ html.jum-text-sm  { font-size: 14px; }
   box-shadow: 0 6px 20px rgba(30, 27, 75, 0.10);
 }
 .jum-builder-title {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(20px, 2vw, 24px);
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -1352,7 +1352,7 @@ html.jum-text-sm  { font-size: 14px; }
   color: #fff;
 }
 .jum-builder-desc {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 14.5px;
   opacity: 0.92;
   line-height: 1.62;
@@ -1566,7 +1566,7 @@ html.jum-text-sm  { font-size: 14px; }
   padding: 12px 16px;
   border: 1.5px solid var(--jum-border, #E8E3D5);
   border-radius: 12px;
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   color: var(--jum-text-primary);
   background: var(--jum-surface, #fff);
@@ -2381,14 +2381,14 @@ html.jum-text-sm  { font-size: 14px; }
 .pathway-school   .jum-pathway-icon { background: var(--jum-coral-bg, #FEF9C3); }
 
 .jum-pathway-title {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 22px;
   font-weight: 800;
   color: var(--jum-text-primary);
   margin-bottom: 10px;
 }
 .jum-pathway-desc {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   color: var(--jum-text-secondary);
   line-height: 1.70;
@@ -2484,14 +2484,14 @@ html.jum-text-sm  { font-size: 14px; }
 }
 .jum-impact-icon { font-size: 36px; margin-bottom: 14px; }
 .jum-impact-label {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 700;
   color: #fff;
   margin-bottom: 10px;
 }
 .jum-impact-placeholder {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 13px;
   color: rgba(255,255,255,0.55);
   font-style: italic;
@@ -2542,7 +2542,7 @@ html.jum-text-sm  { font-size: 14px; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 13px;
   font-weight: 700;
   padding: 6px 16px;
@@ -2567,7 +2567,7 @@ html.jum-text-sm  { font-size: 14px; }
 }
 
 .jum-ecosystem-title {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(20px, 1.8vw, 22px);
   font-weight: 700;
   color: var(--jum-text-primary);
@@ -2575,7 +2575,7 @@ html.jum-text-sm  { font-size: 14px; }
   line-height: 1.35;
 }
 .jum-ecosystem-desc {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   color: var(--jum-text-secondary);
   line-height: 1.70;
@@ -2593,7 +2593,7 @@ html.jum-text-sm  { font-size: 14px; }
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 14px;
   color: var(--jum-text-primary);
   line-height: 1.55;
@@ -2661,7 +2661,7 @@ html.jum-text-sm  { font-size: 14px; }
   display: block;
 }
 .jum-banner-heading {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(24px, 2.5vw, 30px);
   font-weight: 800;
   line-height: 1.25;
@@ -2669,7 +2669,7 @@ html.jum-text-sm  { font-size: 14px; }
   margin-bottom: 14px;
 }
 .jum-banner-text {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 15.5px;
   color: var(--jum-text-secondary);
   line-height: 1.72;
@@ -2708,7 +2708,7 @@ html.jum-text-sm  { font-size: 14px; }
   margin-bottom: 16px;
 }
 .jum-testimonial-quote {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.72;
   color: var(--jum-text-primary);
@@ -2730,7 +2730,7 @@ html.jum-text-sm  { font-size: 14px; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 700;
   color: #FFFFFF;
@@ -2742,20 +2742,20 @@ html.jum-text-sm  { font-size: 14px; }
 .avatar-blue   { background: linear-gradient(135deg, #2563EB, #38BDF8); }
 
 .jum-testimonial-name {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 700;
   color: var(--jum-text-primary);
   line-height: 1.3;
 }
 .jum-testimonial-role {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 13px;
   color: var(--jum-text-secondary);
   line-height: 1.35;
 }
 .jum-testimonial-location {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 600;
   color: var(--jum-teal);
@@ -2798,7 +2798,7 @@ html.jum-text-sm  { font-size: 14px; }
   margin: 0 auto;
 }
 .jum-cta-title {
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(28px, 3.5vw, 40px);
   font-weight: 800;
   line-height: 1.22;
@@ -2808,7 +2808,7 @@ html.jum-text-sm  { font-size: 14px; }
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
 }
 .jum-cta-subtitle {
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(15.5px, 1.2vw, 17.5px);
   line-height: 1.70;
   color: #E8E3D5;
@@ -2841,7 +2841,7 @@ html.jum-text-sm  { font-size: 14px; }
   gap: 28px;
   justify-content: center;
   flex-wrap: wrap;
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 13.5px;
   color: #E8E3D5;
 }
@@ -2888,7 +2888,7 @@ html.jum-text-sm  { font-size: 14px; }
   background: none;
   border: none;
   cursor: pointer;
-  font-family: 'Poppins', var(--font-heading), sans-serif;
+  font-family: var(--font-heading);
   font-size: 15.5px;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -2946,7 +2946,7 @@ html.jum-text-sm  { font-size: 14px; }
 }
 .jum-faq-answer-inner {
   padding: 0 24px 22px 70px;
-  font-family: 'Inter', var(--font-body), sans-serif;
+  font-family: var(--font-body);
   font-size: 14.5px;
   color: #433F6B;
   line-height: 1.70;
@@ -5751,7 +5751,7 @@ body.jum-high-contrast .jum-course-btn {
 }
 
 .jum-paywall-course-title {
-  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-family: var(--font-heading);
   font-size: 16px;
   font-weight: 800;
   color: #1E1B4B;
@@ -5799,7 +5799,7 @@ body.jum-high-contrast .jum-course-btn {
 }
 
 .jum-paywall-sec-title {
-  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 800;
   color: #1E1B4B;
@@ -5884,7 +5884,7 @@ body.jum-high-contrast .jum-course-btn {
   border: none;
   background: transparent;
   border-radius: 7px;
-  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-family: var(--font-heading);
   font-size: 12.5px;
   font-weight: 700;
   color: #433F6B;
@@ -5975,7 +5975,7 @@ body.jum-high-contrast .jum-course-btn {
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   padding: 8px 16px !important;
   border-radius: 999px !important;
-  font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+  font-family: var(--font-heading) !important;
   font-size: 13.5px !important;
   font-weight: 700 !important;
   letter-spacing: -0.01em !important;
@@ -6071,7 +6071,7 @@ body.jum-high-contrast .jum-course-btn {
 }
 
 .jum-builder-menu-eyebrow {
-  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-family: var(--font-heading);
   font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
@@ -6083,7 +6083,7 @@ body.jum-high-contrast .jum-course-btn {
 }
 
 .jum-builder-menu-subtitle {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 12px;
   color: #5B5882;
   margin-top: 2px;
@@ -6144,7 +6144,7 @@ body.jum-high-contrast .jum-course-btn {
 }
 
 .jum-builder-menu-title {
-  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-family: var(--font-heading);
   font-size: 13px;
   font-weight: 700;
   color: #1E1B4B;
@@ -6156,7 +6156,7 @@ body.jum-high-contrast .jum-course-btn {
 }
 
 .jum-builder-menu-desc {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 11.5px;
   color: #5B5882;
   line-height: 1.4;
@@ -6179,7 +6179,7 @@ body.jum-high-contrast .jum-course-btn {
   border-radius: 10px !important;
   background: #FFFDF7 !important;
   color: #0F8B8D !important;
-  font-family: var(--font-heading, 'Poppins', sans-serif) !important;
+  font-family: var(--font-heading) !important;
   font-size: 12px !important;
   font-weight: 700 !important;
   text-decoration: none !important;

@@ -133,7 +133,7 @@
   border: 1px solid rgba(37, 99, 235, 0.22);
   padding: 6px 16px;
   border-radius: var(--res-radius-pill);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.07em;
@@ -148,7 +148,7 @@
 }
 
 .res-hero-title {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: clamp(32px, 3.9vw, 46px) !important;
   font-weight: 800 !important;
   line-height: 1.16 !important;
@@ -166,7 +166,7 @@
 }
 
 .res-hero-desc {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: clamp(15px, 1.55vw, 16.5px) !important;
   font-weight: 400 !important;
   color: #433F6B !important;
@@ -216,7 +216,7 @@
   box-shadow: none !important;
   background: transparent !important;
   background-color: transparent !important;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 15px !important;
   color: #1E1B4B !important;
   padding: 9px 6px !important;
@@ -256,7 +256,7 @@
   border-radius: var(--res-radius-pill);
   padding: 11px 24px;
   min-height: 44px;
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 14px;
   font-weight: 700 !important;
   cursor: pointer;
@@ -345,7 +345,7 @@
   padding: 12px 26px;
   min-height: 46px;
   border-radius: 12px;
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 14.5px;
   font-weight: 800 !important;
   letter-spacing: -0.01em;
@@ -372,7 +372,7 @@
   padding: 12px 24px;
   min-height: 46px;
   border-radius: 12px;
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 14.5px;
   font-weight: 700 !important;
   text-decoration: none;
@@ -399,7 +399,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 7px;
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 12.5px;
   color: #433F6B;
 }
@@ -410,7 +410,7 @@
   color: #1E1B4B;
   padding: 5px 11px;
   border-radius: var(--res-radius-pill);
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
@@ -475,7 +475,7 @@
 .res-stat-icon-box.green { background: var(--res-green-soft); color: var(--res-green); }
 
 .res-stat-number {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 26px;
   font-weight: 800 !important;
   color: #1E1B4B !important;
@@ -515,7 +515,7 @@
   gap: 6px;
   padding: 6px 16px;
   border-radius: var(--res-radius-pill);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 11.5px;
   font-weight: 800;
   text-transform: uppercase;
@@ -529,7 +529,7 @@
 .res-section-tag.amber { background: #FEF9C3; color: #1E1B4B; border: 1px solid rgba(217, 119, 6, 0.26); }
 
 .res-section-title {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: clamp(26px, 3vw, 36px) !important;
   font-weight: 800 !important;
   color: #1E1B4B !important;
@@ -539,7 +539,7 @@
 }
 
 .res-section-subtitle {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 16px;
   color: #433F6B;
   line-height: 1.68;
@@ -721,7 +721,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 12px;
   font-weight: 700;
   padding: 5px 12px;
@@ -742,7 +742,7 @@
 }
 
 .res-cat-title {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 17.5px !important;
   font-weight: 800 !important;
   color: #1E1B4B !important;
@@ -760,7 +760,7 @@
 }
 
 .res-cat-desc {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 13.8px !important;
   font-weight: 400 !important;
   color: #433F6B !important;
@@ -779,7 +779,7 @@
   padding-top: 15px;
   margin-top: auto;
   border-top: 1px solid rgba(30, 27, 75, 0.08);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 13.5px;
   font-weight: 700;
   color: var(--cat-accent);
@@ -931,7 +931,7 @@
 }
 
 .res-card-title {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 17.5px !important;
   font-weight: 800 !important;
   color: #1E1B4B !important;
@@ -988,7 +988,7 @@
   border: none;
   border-radius: 10px;
   padding: 11px 16px;
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 13.5px;
   font-weight: 700 !important;
   cursor: pointer;
@@ -1031,7 +1031,7 @@
   border: 1.5px solid rgba(30, 27, 75, 0.16);
   border-radius: 10px;
   padding: 8px 12px;
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 13px;
   font-weight: 700 !important;
   cursor: pointer;
@@ -1123,7 +1123,7 @@
 }
 
 .res-filter-title {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 16px !important;
   font-weight: 800 !important;
   color: #1E1B4B !important;
@@ -1372,7 +1372,7 @@
 }
 
 .res-empty-title {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 20px !important;
   font-weight: 800 !important;
   color: #1E1B4B !important;
@@ -1524,7 +1524,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 11px;
   font-weight: 800;
   padding: 4px 10px;
@@ -1548,7 +1548,7 @@
 .res-filetype-pill.pptx { background: #FEF9C3; color: #1E1B4B; border-color: rgba(234, 179, 8, 0.45); }
 
 .res-editable-badge {
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 11.5px;
   font-weight: 600;
   color: #433F6B;
@@ -1568,7 +1568,7 @@
 }
 
 .res-toolkit-category {
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -1578,7 +1578,7 @@
 }
 
 .res-toolkit-title {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 17px !important;
   font-weight: 800 !important;
   color: #1E1B4B !important;
@@ -1593,7 +1593,7 @@
 }
 
 .res-toolkit-desc {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 13.8px !important;
   color: #433F6B !important;
   line-height: 1.62 !important;
@@ -1606,7 +1606,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 12.2px;
   font-weight: 500;
   color: #5B5882;
@@ -1750,7 +1750,7 @@
   background: rgba(15, 23, 42, 0.84);
   backdrop-filter: blur(6px);
   color: #FFFFFF;
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 11.5px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -1766,7 +1766,7 @@
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(6px);
   color: #1E1B4B;
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 10.5px;
   font-weight: 800;
   padding: 5px 11px;
@@ -1786,7 +1786,7 @@
 .res-media-topic {
   display: inline-flex;
   align-self: flex-start;
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 11px;
   font-weight: 700;
   color: #0F766E;
@@ -1800,7 +1800,7 @@
 }
 
 .res-media-title {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 17.5px !important;
   font-weight: 800 !important;
   color: #1E1B4B !important;
@@ -1815,7 +1815,7 @@
 }
 
 .res-media-desc {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 13.8px !important;
   color: #433F6B !important;
   line-height: 1.6 !important;
@@ -1834,7 +1834,7 @@
   padding-top: 13px;
   margin-top: auto;
   border-top: 1px solid rgba(30, 27, 75, 0.08);
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 12.3px;
   font-weight: 500;
   color: #5B5882;
@@ -1912,7 +1912,7 @@
   background: rgba(30, 27, 75, 0.86);
   backdrop-filter: blur(6px);
   color: #FFFFFF;
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 11px;
   font-weight: 700;
   padding: 4px 10px;
@@ -1930,7 +1930,7 @@
 .res-article-category {
   display: inline-flex;
   align-self: flex-start;
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 11px;
   font-weight: 700;
   color: #6D28D9;
@@ -1944,7 +1944,7 @@
 }
 
 .res-article-title {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-heading) !important;
   font-size: 18px !important;
   font-weight: 800 !important;
   color: #1E1B4B !important;
@@ -1959,7 +1959,7 @@
 }
 
 .res-article-summary {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 14px !important;
   color: #433F6B !important;
   line-height: 1.64 !important;
@@ -1974,7 +1974,7 @@
   gap: 10px;
   padding-top: 13px;
   border-top: 1px solid rgba(30, 27, 75, 0.08);
-  font-family: 'Inter', sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 12.5px;
   font-weight: 500;
   color: #5B5882;
@@ -1992,7 +1992,7 @@
 }
 
 .res-article-link {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-family: var(--font-body) !important;
   font-size: 13.5px;
   font-weight: 700;
   color: #1D4ED8;

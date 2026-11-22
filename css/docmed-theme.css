@@ -184,7 +184,7 @@ body.lms-page {
 }
 .docmed-kicker {
   display: inline-block;
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -196,7 +196,7 @@ body.lms-page {
   color: #2BA091;
 }
 .docmed-title {
-  font-family: var(--font-heading, 'Merriweather', Georgia, serif);
+  font-family: var(--font-heading);
   font-size: clamp(28px, 3.2vw, 42px);
   font-weight: 800;
   color: #1E1B4B;
@@ -221,7 +221,7 @@ body.lms-page {
   margin: 14px 0 16px;
 }
 .docmed-subtitle {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: clamp(15px, 1.2vw, 17px);
   color: #433F6B;
   line-height: 1.68;
@@ -279,7 +279,7 @@ body.lms-page {
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 .docmed-band-title {
-  font-family: var(--font-heading, 'Merriweather', Georgia, serif);
+  font-family: var(--font-heading);
   font-size: 20px;
   font-weight: 700;
   color: #FFFFFF;
@@ -287,7 +287,7 @@ body.lms-page {
   line-height: 1.35;
 }
 .docmed-band-desc {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 14.5px;
   color: rgba(255, 255, 255, 0.90);
   line-height: 1.6;
@@ -304,7 +304,7 @@ body.lms-page {
   border: 1.5px solid rgba(255, 255, 255, 0.65);
   background: transparent;
   color: #FFFFFF;
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 13.5px;
   font-weight: 700;
   text-decoration: none;
@@ -469,7 +469,7 @@ body.lms-page {
   margin-bottom: 12px;
 }
 .docmed-card-title {
-  font-family: var(--font-heading, 'Merriweather', Georgia, serif);
+  font-family: var(--font-heading);
   font-size: 18px;
   font-weight: 700;
   color: #1E1B4B;
@@ -477,7 +477,7 @@ body.lms-page {
   line-height: 1.35;
 }
 .docmed-card-desc {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 14.5px;
   color: #433F6B;
   line-height: 1.6;
@@ -488,7 +488,7 @@ body.lms-page {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 13.5px;
   font-weight: 700;
   color: #2563EB;
@@ -531,7 +531,7 @@ body.lms-page {
 }
 .docmed-tab-btn {
   padding: 18px 24px;
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 15px;
   font-weight: 700;
   color: #433F6B;
@@ -561,7 +561,7 @@ body.lms-page {
   align-items: center;
 }
 .docmed-tab-info h3 {
-  font-family: var(--font-heading, 'Merriweather', Georgia, serif);
+  font-family: var(--font-heading);
   font-size: 24px;
   font-weight: 800;
   color: #1E1B4B;
@@ -619,7 +619,7 @@ body.lms-page {
   opacity: 0.9;
 }
 .docmed-review-text {
-  font-family: var(--font-heading, 'Merriweather', Georgia, serif);
+  font-family: var(--font-heading);
   font-size: clamp(18px, 2.2vw, 24px);
   font-weight: 400;
   line-height: 1.65;
@@ -629,7 +629,7 @@ body.lms-page {
   font-style: italic;
 }
 .docmed-review-author {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 16px;
   font-weight: 750;
   color: var(--dm-white);
@@ -674,7 +674,7 @@ body.lms-page {
   padding: 20px 16px;
 }
 .docmed-trainer-name {
-  font-family: var(--font-heading, 'Merriweather', Georgia, serif);
+  font-family: var(--font-heading);
   font-size: 17px;
   font-weight: 700;
   color: #1E1B4B;
@@ -686,7 +686,7 @@ body.lms-page {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: #2563EB;
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
 }
 @media (max-width: 1024px) {
   .docmed-trainers-grid {
@@ -724,14 +724,14 @@ body.lms-page {
   background: linear-gradient(135deg, #1E1B4B 0%, #2563EB 100%);
 }
 .docmed-split-content h3 {
-  font-family: var(--font-heading, 'Manrope', sans-serif);
+  font-family: var(--font-heading);
   font-size: 22px;
   font-weight: 800;
   color: var(--dm-white);
   margin-bottom: 6px;
 }
 .docmed-split-content p {
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 14px;
   color: rgba(255, 255, 255, 0.88);
   margin: 0;
@@ -745,7 +745,7 @@ body.lms-page {
   border: 1.5px solid rgba(255, 255, 255, 0.7);
   background: transparent;
   color: var(--dm-white);
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
@@ -784,7 +784,7 @@ body.lms-page {
   border-radius: 8px;
   background: #2563EB;
   color: #FFFFFF;
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
@@ -809,7 +809,7 @@ body.lms-page {
   border-radius: 8px;
   background: #FFFFFF;
   color: #1E1B4B;
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
@@ -828,7 +828,7 @@ body.lms-page {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--font-body, 'Inter', sans-serif);
+  font-family: var(--font-body);
   font-size: 14.5px;
   font-weight: 700;
   color: #2563EB;
