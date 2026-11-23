@@ -47,11 +47,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 40px;
   max-width: 1240px;
   margin: 0 auto;
   gap: 16px;
   min-height: 58px;
+}
+@media (max-width: 1023px) {
+  .lms-subnav-container { padding: 0 24px; }
+}
+@media (max-width: 767px) {
+  .lms-subnav-container { padding: 0 16px; }
 }
 
 .lms-subnav-menu {
@@ -162,7 +168,7 @@
 /* ── 2. Personalised Welcome Area ─────────────────────────── */
 .lms-welcome-hero {
   background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF7 100%);
-  padding: 32px 0 24px;
+  padding: 64px 0 48px;
   border-bottom: 1px solid var(--lms-border);
 }
 
@@ -197,7 +203,8 @@
 
 .lms-welcome-h1 {
   font-family: var(--font-heading) !important;
-  font-size: clamp(26px, 3.5vw, 36px) !important;
+  font-size: 24px !important;
+  line-height: 1.25 !important;
   font-weight: 800 !important;
   color: var(--lms-navy) !important;
   line-height: 1.25 !important;
@@ -598,7 +605,8 @@
 
 .lms-featured-title {
   font-family: var(--font-heading) !important;
-  font-size: clamp(22px, 2.5vw, 30px) !important;
+  font-size: 22px !important;
+  line-height: 1.28 !important;
   font-weight: 800 !important;
   color: var(--lms-navy) !important;
   line-height: 1.3 !important;
@@ -691,8 +699,9 @@
 
 .lms-section-h2 {
   font-family: var(--font-heading) !important;
-  font-size: clamp(22px, 2.5vw, 28px) !important;
-  font-weight: 800 !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.28 !important;
   color: var(--lms-navy) !important;
   margin: 0 0 6px !important;
 }
@@ -927,8 +936,10 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.94);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -955,7 +966,7 @@
 
 /* Card Body */
 .lms-course-body {
-  padding: 22px 22px 16px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -1593,3 +1604,46 @@
   }
 }
 
+
+.btn-icon-toggle {
+  min-width: 44px !important;
+  min-height: 44px !important;
+}
+@media (max-width: 1023px) {
+  .lms-welcome-hero { padding: 48px 0 40px; }
+}
+/* Consistent heading hierarchy & section rhythm */
+main h1, .audience-main-heading {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+}
+main h2, .audience-dynamic-title, .lms-section-h2, h2.lms-welcome-h1 {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.28 !important;
+}
+main h3, .audience-card-title, .lms-course-title, .lms-academy-h3 {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 1.30 !important;
+}
+main h4 {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 1.32 !important;
+}
+.lms-academies-section,
+#catalog-section {
+  padding: 64px 0 !important;
+}
+@media (max-width: 1023px) {
+  .lms-academies-section,
+  #catalog-section { padding: 56px 0 !important; }
+}
+@media (max-width: 767px) {
+  .lms-welcome-hero { padding: 32px 0; }
+  .lms-academies-section,
+  #catalog-section { padding: 40px 0 !important; }
+  .lms-course-body { padding: 20px; }
+}

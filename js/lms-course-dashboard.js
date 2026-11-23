@@ -195,15 +195,8 @@
     } else if (session) {
       state.user = session;
     } else {
-      // Default initial learner persona for rich, live demo data
-      state.user = {
-        id: 'std_001',
-        name: 'James Mwangi',
-        email: 'james.mwangi@edu.ke',
-        role: 'learner',
-        title: 'Junior Secondary Teacher',
-        avatar: 'JM'
-      };
+      // Guest browsing mode (do not simulate a signed-in user when logged out)
+      state.user = null;
     }
   }
 
@@ -632,7 +625,7 @@
     }
   }
 
-  window.__clearLmsActiveFilter = function(index) {
+  window.__clearLmsActiveFilter = function (index) {
     if (window.__activeFilterCallbacks && window.__activeFilterCallbacks[index]) {
       window.__activeFilterCallbacks[index]();
     }
@@ -958,10 +951,10 @@
 
     if (results.length === 0) {
       grid.innerHTML = `
-        <div class="lms-empty-state-box" style="grid-column: 1 / -1;">
-          <div class="lms-empty-icon">🔍</div>
-          <h4 class="lms-empty-title">No courses match your filter criteria</h4>
-          <p class="lms-empty-desc">Try clearing search terms or resetting filters to browse all available educational programs.</p>
+        <div class="ik-empty-state" style="grid-column: 1 / -1;">
+          <div class="ik-empty-icon" aria-hidden="true">🔍</div>
+          <h4 class="ik-empty-title">No matching courses found</h4>
+          <p class="ik-empty-desc">Try clearing your search query or resetting category filters to browse all available programmes.</p>
           <button type="button" onclick="resetLmsFilters()" class="btn btn-primary btn-sm">↺ Reset All Filters</button>
         </div>
       `;

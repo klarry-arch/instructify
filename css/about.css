@@ -4,18 +4,24 @@
    ============================================================ */
 
 :root {
-  --about-section-padding-desk: 88px;
-  --about-section-padding-mob: 48px;
+  --about-section-padding-desk: 72px;
+  --about-section-padding-mob: 40px;
   --about-max-width: 1240px;
   --about-text-max: 640px;
-  --about-radius: 20px;
-  --about-gap: 32px;
+  --about-radius: 16px;
+  --about-gap: 24px;
 }
 
 .about-container {
   max-width: var(--about-max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 40px;
+}
+@media (max-width: 1023px) {
+  .about-container { padding: 0 24px; }
+}
+@media (max-width: 767px) {
+  .about-container { padding: 0 16px; }
 }
 
 .about-section {
@@ -32,7 +38,7 @@
    1. ABOUT HERO SECTION
    ══════════════════════════════════════════════════════════════ */
 .about-hero-section {
-  padding: calc(var(--nav-height, 74px) + 36px) 0 84px 0;
+  padding: 64px 0 64px 0;
   background: radial-gradient(circle at 12% 18%, rgba(238, 242, 255, 0.95) 0%, transparent 45%),
               radial-gradient(circle at 88% 80%, rgba(240, 253, 250, 0.85) 0%, transparent 45%),
               #FFFDF7;
@@ -57,27 +63,27 @@
 .about-hero-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: 52px;
+  gap: 24px;
   align-items: center;
 }
 
 .about-hero-text h1 {
   font-family: var(--font-heading);
-  font-size: clamp(30px, 3.2vw, 42px);
-  font-weight: 800;
-  line-height: 1.22;
-  letter-spacing: -0.025em;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
   color: #1E1B4B !important;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   text-wrap: balance;
 }
 
 .about-hero-text p {
   font-family: var(--font-body);
-  font-size: clamp(16px, 1.2vw, 17.5px);
-  line-height: 1.72;
+  font-size: 16px;
+  line-height: 1.60;
   color: #433F6B !important;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   max-width: 620px;
   font-weight: 450;
 }
@@ -1987,3 +1993,85 @@ a:focus-visible, button:focus-visible, .btn:focus-visible,
 .step-card { display: block; background: #FFFDF7; }
 .step-num { display: inline-flex; width: 38px; height: 38px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, #1D4ED8, #5B3FD9); color: #FFFFFF; font-weight: 800; margin-bottom: 14px; }
 @media (max-width: 900px) { .challenge-grid, .steps-grid { grid-template-columns: 1fr; } .about-challenges-section, .about-steps-section { padding: 48px 0; } }
+
+/* Unified About Page Typography & 8px Spacing Scale */
+.about-hero-text h1,
+main h1 {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+}
+.about-heading-lg,
+.mvv-main-heading,
+.about-cta-band h2,
+main h2 {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.28 !important;
+}
+.mv-card-title,
+.serve-card-title,
+.service-impact-title,
+.why-card-title,
+.founder-portrait-name,
+.challenge-card h3,
+.step-card h3,
+main h3 {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 1.30 !important;
+}
+.cv-card-title,
+main h4 {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 1.32 !important;
+}
+main h5 {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+}
+
+.about-section,
+.about-who-section,
+.about-mvv-section,
+.about-serve-section,
+.about-services-section,
+.about-why-section,
+.about-trust-section,
+.about-challenges-section,
+.about-steps-section,
+.about-cta-band {
+  padding: 72px 0 !important;
+}
+.serve-card,
+.service-impact-card,
+.why-card,
+.mvv-card,
+.trust-chip-card,
+.leadership-card,
+.challenge-card,
+.step-card {
+  padding: 24px !important;
+}
+
+@media (max-width: 1023px) {
+  .about-hero-section { padding: 48px 0 !important; }
+  .about-section, .about-who-section, .about-mvv-section, .about-serve-section,
+  .about-services-section, .about-why-section, .about-trust-section,
+  .about-challenges-section, .about-steps-section, .about-cta-band {
+    padding: 56px 0 !important;
+  }
+}
+@media (max-width: 767px) {
+  .about-hero-section { padding: 32px 0 !important; }
+  .about-section, .about-who-section, .about-mvv-section, .about-serve-section,
+  .about-services-section, .about-why-section, .about-trust-section,
+  .about-challenges-section, .about-steps-section, .about-cta-band {
+    padding: 40px 0 !important;
+  }
+  .serve-card, .service-impact-card, .why-card, .mvv-card, .trust-chip-card, .leadership-card, .challenge-card, .step-card {
+    padding: 20px !important;
+  }
+}

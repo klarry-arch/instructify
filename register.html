@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sign in or create your Instructify Kenya account. Join 10,000+ educators transforming Kenyan education through digital learning.">
+  <meta name="description" content="Sign in or create your Instructify Kenya account to access digital skills courses, CBC educator tracks, and M-Pesa verified enrolments.">
   <title>Sign In / Register | Instructify Kenya</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=2026.6">
-  <link rel="stylesheet" href="css/animations.css?v=2026.6">
-  <link rel="stylesheet" href="css/components.css?v=2026.6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/brand-tokens.css?v=2026.10">
+  <link rel="stylesheet" href="css/global.css?v=2026.10">
+  <link rel="stylesheet" href="css/animations.css?v=2026.10">
+  <link rel="stylesheet" href="css/components.css?v=2026.10">
   <style>
     /* ── Page shell ── */
     * { box-sizing: border-box; }
@@ -23,7 +27,7 @@
        LEFT PANEL
     ══════════════════════════════════ */
     .auth-panel-left {
-      background: linear-gradient(150deg, #1832c4 0%, #2563EB 40%, #3430d8 70%, #b83500 100%);
+      background: linear-gradient(150deg, #1E1B4B 0%, #2563EB 65%, #1D4ED8 100%);
       display: flex;
       flex-direction: column;
       padding: 44px 48px;
@@ -90,7 +94,7 @@
     /* Greeting */
     .auth-greeting-title {
       font-family: var(--font-heading) !important;
-      font-size: 24px !important; font-weight: 800 !important;
+      font-size: 22px !important; font-weight: 700 !important; line-height: 1.28 !important;
       color: #FFFFFF !important; margin: 0 0 6px;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
     }
@@ -182,7 +186,7 @@
     /* Headings */
     .auth-heading {
       font-family: var(--font-heading) !important;
-      font-size: 22px !important; font-weight: 800 !important;
+      font-size: 24px !important; font-weight: 700 !important; line-height: 1.25 !important;
       color: #1E1B4B !important; /* deep charcoal slate: blends with the website, zero purple shade */
       margin: 0 0 6px;
       letter-spacing: -0.02em;
@@ -276,7 +280,7 @@
 </head>
 <body>
 
-<div class="auth-page">
+<main id="main-content" class="auth-page">
 
   <!-- ══ LEFT PANEL ══ -->
   <div class="auth-panel-left">
@@ -345,9 +349,9 @@
       <!-- Bottom: Stats -->
       <div class="auth-left-bottom">
         <div class="auth-stat-strip">
-          <div class="auth-stat"><div class="auth-stat-value">10K+</div><div class="auth-stat-label">Learners</div></div>
-          <div class="auth-stat"><div class="auth-stat-value">200+</div><div class="auth-stat-label">Courses</div></div>
-          <div class="auth-stat"><div class="auth-stat-value">98%</div><div class="auth-stat-label">Satisfaction</div></div>
+          <div class="auth-stat"><div class="auth-stat-value">47 Counties</div><div class="auth-stat-label">Kenya Reach</div></div>
+          <div class="auth-stat"><div class="auth-stat-value">CBC &amp; AI</div><div class="auth-stat-label">Focus Areas</div></div>
+          <div class="auth-stat"><div class="auth-stat-value">M-Pesa</div><div class="auth-stat-label">Instant Enrol</div></div>
         </div>
       </div>
 
@@ -378,8 +382,10 @@
 
       <!-- ── SIGN IN TAB ── -->
       <div id="tab-signin" class="tab-panel active">
-        <h2 class="auth-heading">Welcome Back!</h2>
+        <h1 class="auth-heading" style="font-size:24px;line-height:1.25;">Welcome Back!</h1>
         <p class="auth-subheading">Sign in to continue your learning journey</p>
+
+        <div id="signin-error-summary" class="ik-form-error-summary" role="alert" aria-live="polite"></div>
 
         <div id="signin-error" class="alert alert-danger" style="display:none;margin-bottom:20px;">
           <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
@@ -396,10 +402,13 @@
               <label class="form-label" for="signin-password">Password</label>
               <a href="forgot-password.html" style="font-size:13px;color:#2563EB;background:none;border:none;cursor:pointer;font-weight:700;padding:0;text-decoration:none;">Forgot password?</a>
             </div>
-            <input type="password" id="signin-password" class="form-input" placeholder="Your password" required autocomplete="current-password">
+            <div class="ik-password-wrapper">
+              <input type="password" id="signin-password" class="form-input" placeholder="Your password" required autocomplete="current-password">
+              <button type="button" class="ik-password-toggle" onclick="toggleRegisterPassword('signin-password', this)" aria-label="Show password" aria-pressed="false">👁️</button>
+            </div>
           </div>
 
-          <button type="submit" id="signin-btn" style="width:100%;background:#FACC15;color:#1E1B4B;font-family: var(--font-heading);font-size:15px;font-weight:700;padding:13px;border-radius:9px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(245,129,45,0.35);transition:opacity 0.2s;margin-top:8px;margin-bottom:24px;">
+          <button type="submit" id="signin-btn" style="width:100%;background:#FACC15;color:#1E1B4B;font-family: var(--font-heading);font-size:15px;font-weight:700;padding:13px;border-radius:9px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(250, 204, 21, 0.35);transition:opacity 0.2s;margin-top:8px;margin-bottom:24px;">
             Sign In to Instructify
           </button>
         </form>
@@ -414,6 +423,8 @@
       <div id="tab-signup" class="tab-panel" style="display:none;">
         <h2 class="auth-heading">Create Your Account</h2>
         <p class="auth-subheading">Join Kenya's largest professional learning community</p>
+
+        <div id="signup-error-summary" class="ik-form-error-summary" role="alert" aria-live="polite"></div>
 
         <!-- Role Selector -->
         <div style="margin-bottom:20px;">
@@ -482,10 +493,13 @@
           </div>
           <div class="form-group" style="margin-bottom:20px;">
             <label class="form-label" for="signup-password">Create Password</label>
-            <input type="password" id="signup-password" aria-label="Account Password" class="form-input" placeholder="Min. 8 characters" required minlength="8" autocomplete="new-password">
+            <div class="ik-password-wrapper">
+              <input type="password" id="signup-password" aria-label="Account Password" class="form-input" placeholder="Min. 8 characters" required minlength="8" autocomplete="new-password">
+              <button type="button" class="ik-password-toggle" onclick="toggleRegisterPassword('signup-password', this)" aria-label="Show password" aria-pressed="false">👁️</button>
+            </div>
           </div>
 
-          <button type="submit" id="signup-btn" style="width:100%;background:#FACC15;color:#1E1B4B;font-family: var(--font-heading);font-size:15px;font-weight:700;padding:13px;border-radius:9px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(245,129,45,0.35);transition:opacity 0.2s;">
+          <button type="submit" id="signup-btn" style="width:100%;background:#FACC15;color:#1E1B4B;font-family: var(--font-heading);font-size:15px;font-weight:700;padding:13px;border-radius:9px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(250, 204, 21, 0.35);transition:opacity 0.2s;">
             Create Free Account
           </button>
         </form>
@@ -498,7 +512,7 @@
 
     </div><!-- /auth-form-container -->
   </div><!-- /auth-panel-right -->
-</div><!-- /auth-page -->
+</main><!-- /auth-page -->
 
 <script src="js/main.js?v=19.0"></script>
 <script src="js/auth.js?v=19.0"></script>
@@ -574,8 +588,37 @@ function switchTab(tab) {
   buttons[tab === 'signin' ? 0 : 1].classList.add('active');
 }
 
+function toggleRegisterPassword(inputId, btn) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  const nextType = input.type === 'password' ? 'text' : 'password';
+  input.type = nextType;
+  if (btn) {
+    btn.setAttribute('aria-pressed', nextType === 'text' ? 'true' : 'false');
+    btn.setAttribute('aria-label', nextType === 'text' ? 'Hide password' : 'Show password');
+  }
+}
+
+function showRegisterErrorSummary(id, messages) {
+  const box = document.getElementById(id);
+  if (!box) return;
+  if (!messages || !messages.length) {
+    box.classList.remove('is-visible');
+    box.innerHTML = '';
+    return;
+  }
+  const items = messages.map(m => `<li>${String(m).replace(/</g, '&lt;')}</li>`).join('');
+  box.innerHTML = `<strong>Please review the highlighted fields:</strong><ul style="margin:6px 0 0 18px;padding:0;">${items}</ul>`;
+  box.classList.add('is-visible');
+}
+
 function handleSignIn(e) {
   e.preventDefault();
+  const btn = document.getElementById('signin-btn');
+  if (btn && btn.classList.contains('btn-loading')) return;
+  showRegisterErrorSummary('signin-error-summary', []);
+  const errBanner = document.getElementById('signin-error');
+  if (errBanner) errBanner.style.display = 'none';
   if (window.FormValidator) {
     window.FormValidator.clearErrors('tab-signin');
     const val = window.FormValidator.validateGroup([
@@ -594,13 +637,12 @@ function handleSignIn(e) {
       }
     ]);
     if (!val.valid) {
+      showRegisterErrorSummary('signin-error-summary', val.errors);
       if (window.showToast) window.showToast(val.errors[0], 'warning');
       window.FormValidator.focusFirstError(val.firstErrorId);
       return; // BLOCK!
     }
   }
-
-  const btn = document.getElementById('signin-btn');
   btn.classList.add('btn-loading');
   btn.textContent = 'Signing in...';
   setTimeout(() => {
@@ -633,6 +675,9 @@ function handleSignIn(e) {
 
 function handleSignUp(e) {
   e.preventDefault();
+  const btn = document.getElementById('signup-btn');
+  if (btn && btn.classList.contains('btn-loading')) return;
+  showRegisterErrorSummary('signup-error-summary', []);
   const firstNameInput = document.getElementById('signup-firstname');
   const lastNameInput = document.getElementById('signup-lastname');
   const firstName = firstNameInput ? firstNameInput.value.trim() : '';
@@ -692,13 +737,12 @@ function handleSignUp(e) {
 
     const val = window.FormValidator.validateGroup(fields);
     if (!val.valid) {
+      showRegisterErrorSummary('signup-error-summary', val.errors);
       if (window.showToast) window.showToast(val.errors[0], 'warning');
       window.FormValidator.focusFirstError(val.firstErrorId);
       return; // BLOCK!
     }
   }
-
-  const btn = document.getElementById('signup-btn');
   btn.classList.add('btn-loading');
   setTimeout(() => {
     const result = window.attemptRegister({

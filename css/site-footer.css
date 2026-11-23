@@ -5,7 +5,7 @@
      - Sunny Gold (Accent):         #FACC15
      - Warm Off-White (Surface):    #FFFDF7
      - Deep Indigo (Body/Dark):     #1E1B4B / #141136
-     - Typography:                  Manrope (headings) + Inter (body)
+     - Typography:                  Poppins (headings) + Inter (body)
    ============================================================ */
 
 @import url('./brand-tokens.css');
@@ -13,7 +13,7 @@
 .site-footer {
   background: linear-gradient(180deg, var(--color-dark, #1E1B4B) 0%, var(--color-dark-deep, #141136) 100%) !important;
   color: var(--color-text-inverse-muted, #E0E7FF) !important;
-  padding: 64px 0 56px 0 !important;
+  padding: 64px 0 48px 0 !important;
   margin-top: auto;
   border-top: 3px solid var(--color-accent, #FACC15) !important;
   font-family: var(--font-body) !important;
@@ -34,14 +34,14 @@
   max-width: 1240px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 40px;
 }
 
 .site-footer .footer-top-grid {
   display: grid !important;
   grid-template-columns: 1.45fr 1fr 0.95fr 1.25fr !important;
-  gap: 40px !important;
-  padding-bottom: 44px !important;
+  gap: 24px !important;
+  padding-bottom: 40px !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
   align-items: start;
 }
@@ -156,13 +156,13 @@
 /* ── Columns 2 & 3: Navigation Lists ────────────────────────── */
 .site-footer .footer-col-title {
   font-family: var(--font-heading) !important;
-  font-size: 13.5px !important;
-  font-weight: 800 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
   color: #FFFFFF !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  margin: 0 0 18px 0 !important;
-  line-height: 1.3 !important;
+  letter-spacing: 0.06em !important;
+  margin: 0 0 16px 0 !important;
+  line-height: 1.32 !important;
 }
 
 .site-footer .footer-nav-list {
@@ -261,18 +261,19 @@
 
 .site-footer .footer-newsletter-title {
   font-family: var(--font-heading) !important;
-  font-size: 13px !important;
-  font-weight: 800 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
   color: #FFFFFF !important;
   text-transform: uppercase !important;
   letter-spacing: 0.06em !important;
-  margin: 0 0 6px 0 !important;
+  margin: 0 0 8px 0 !important;
+  line-height: 1.35 !important;
 }
 
 .site-footer .footer-newsletter-desc {
-  font-size: 12.5px !important;
+  font-size: 14px !important;
   color: var(--color-text-inverse-muted, #E0E7FF) !important;
-  line-height: 1.5 !important;
+  line-height: 1.55 !important;
   margin: 0 0 12px 0 !important;
 }
 
@@ -288,13 +289,13 @@
   min-width: 0 !important;
   width: auto !important;
   padding: 10px 12px !important;
-  min-height: 42px !important;
+  min-height: 44px !important;
   border-radius: 8px !important;
   border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
   background: var(--color-surface, #FFFDF7) !important;
   color: var(--color-text, #1E1B4B) !important;
   font-family: var(--font-body) !important;
-  font-size: 13.5px !important;
+  font-size: 16px !important;
   outline: none !important;
 }
 
@@ -311,7 +312,7 @@
   flex: 0 0 auto !important;
   white-space: nowrap !important;
   padding: 10px 16px !important;
-  min-height: 42px !important;
+  min-height: 44px !important;
   border-radius: 8px !important;
   border: none !important;
   background: var(--color-accent, #FACC15) !important;
@@ -390,22 +391,35 @@
 
 /* ── Responsive Breakpoints ─────────────────────────────────── */
 @media (max-width: 1080px) {
+  .site-footer {
+    padding: 48px 0 40px 0 !important;
+  }
+  .site-footer .site-footer-container {
+    padding: 0 24px;
+  }
   .site-footer .footer-top-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 36px !important;
+    gap: 24px !important;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .site-footer {
-    padding: 48px 0 36px 0 !important;
+    padding: 40px 0 32px 0 !important;
+  }
+  .site-footer .site-footer-container {
+    padding: 0 16px;
   }
   .site-footer .footer-top-grid {
     grid-template-columns: 1fr !important;
-    gap: 32px !important;
+    gap: 24px !important;
   }
   .site-footer .footer-social-row {
     flex-wrap: wrap !important;
+  }
+  .site-footer .footer-social-row .footer-social-btn {
+    min-width: 44px !important;
+    min-height: 44px !important;
   }
   .site-footer .footer-newsletter-form {
     flex-direction: column !important;

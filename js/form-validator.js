@@ -588,9 +588,18 @@
     form.addEventListener('submit', function (e) {
       if (form.getAttribute('data-no-validate') === 'true') return;
       const result = validateForm(form);
+      const summaryBox = form.querySelector('.ik-form-error-summary')
+        || (form.parentElement && form.parentElement.querySelector('.ik-form-error-summary'));
       if (!result.valid) {
         e.preventDefault();
         e.stopImmediatePropagation();
+        if (summaryBox) {
+          const items = result.errors.slice(0, 5).map(function (msg) {
+            return '<li>' + String(msg).replace(/</g, '&lt;') + '</li>';
+          }).join('');
+          summaryBox.innerHTML = '<strong>Please review ' + result.errors.length + ' field' + (result.errors.length === 1 ? '' : 's') + ' before submitting:</strong><ul style="margin:6px 0 0 18px;padding:0;">' + items + '</ul>';
+          summaryBox.classList.add('is-visible');
+        }
         if (result.firstErrorEl) {
           result.firstErrorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
           setTimeout(function () { result.firstErrorEl.focus(); }, 250);
@@ -599,6 +608,9 @@
           window.showToast(result.errors[0] || 'Please correct the highlighted fields before proceeding.', 'warning');
         }
         return false;
+      } else if (summaryBox) {
+        summaryBox.classList.remove('is-visible');
+        summaryBox.innerHTML = '';
       }
     }, true);
   }

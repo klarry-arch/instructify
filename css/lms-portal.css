@@ -40,7 +40,7 @@
 .lms-main {
   flex: 1;
   margin-left: 260px;
-  padding: 32px 36px;
+  padding: 32px 40px;
   background: #FFFDF7;
   min-height: calc(100vh - var(--nav-height, 72px));
   overflow-x: hidden;
@@ -1862,3 +1862,12 @@
 }
 
 
+
+@media (max-width: 1023px) {
+  .lms-main { padding: 24px !important; }
+}
+@media (max-width: 767px) {
+  .lms-main { padding: 24px 16px !important; }
+  .nav-hamburger { min-width: 44px !important; min-height: 44px !important; }
+  .action-btn { flex: 0 0 44px !important; width: 44px !important; min-width: 44px !important; min-height: 44px !important; box-sizing: border-box !important; }
+}
