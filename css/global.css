@@ -293,32 +293,28 @@
 
   /* ── Typography & Font Stacks (Unified Poppins Design System) ── */
   --font-primary:   "Inter", Arial, sans-serif;
-  --font-heading:   "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+  --font-heading:   "Poppins", "Inter", Arial, sans-serif;
   --font-body:      "Inter", Arial, sans-serif;
   --font-sans:      "Inter", Arial, sans-serif;
-  --font-display:   "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+  --font-display:   "Poppins", "Inter", Arial, sans-serif;
   --font-mono:      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 
   /* ── Desktop & Mobile Heading Scale (Fluid Responsive Clamped) ── */
-  /* H1: Desktop 48px, line-height 1.1, weight 700; Mobile 36px */
-  --font-size-h1:      clamp(2rem, 1.55rem + 1.9vw, 3.25rem);
-  --line-height-h1:    1.10;
+  /* H1–H5 Standardized Scale (8px Grid & Consistent Visual Hierarchy) */
+  --font-size-h1:      24px;
+  --line-height-h1:    1.25;
 
-  /* H2: Desktop 38px, line-height 1.2, weight 700; Mobile 30px */
-  --font-size-h2:      clamp(1.5rem, 1.32rem + 0.8vw, 2.25rem);
-  --line-height-h2:    1.20;
+  --font-size-h2:      22px;
+  --line-height-h2:    1.28;
 
-  /* H3: Desktop 30px, line-height 1.25, weight 700; Mobile 25px */
-  --font-size-h3:      clamp(1.125rem, 1.05rem + 0.45vw, 1.5rem);
+  --font-size-h3:      20px;
   --line-height-h3:    1.30;
 
-  /* H4: Desktop 24px, line-height 1.3, weight 600; Mobile 21px */
-  --font-size-h4:      clamp(1.3125rem, 1.23rem + 0.36vw, 1.5rem);
-  --line-height-h4:    1.30;
+  --font-size-h4:      16px;
+  --line-height-h4:    1.32;
 
-  /* H5: Desktop 20px, line-height 1.4, weight 600; Mobile 18px */
-  --font-size-h5:      clamp(1.125rem, 1.07rem + 0.24vw, 1.25rem);
-  --line-height-h5:    1.40;
+  --font-size-h5:      14px;
+  --line-height-h5:    1.35;
 
   /* H6: Desktop 17px, line-height 1.4, weight 600; Mobile 16px */
   --font-size-h6:      clamp(1rem, 0.97rem + 0.12vw, 1.0625rem);
@@ -329,8 +325,8 @@
   --font-size-intro:    clamp(1.125rem, 1.07rem + 0.24vw, 1.25rem);
   --font-size-lead:     clamp(1.125rem, 1.07rem + 0.24vw, 1.25rem);
 
-  /* Body text: 16–18px (Mobile body minimum 16px) */
-  --font-size-body:     clamp(1rem, 0.95rem + 0.24vw, 1.125rem);
+  /* Body text: Standardized 16px */
+  --font-size-body:     16px;
 
   /* Card descriptions: 15–16px */
   --font-size-card-desc:clamp(0.9375rem, 0.91rem + 0.12vw, 1rem);
@@ -351,12 +347,10 @@
   --font-size-xs:       14px;
 
   /* ── Compact Dashboard Typography Scale ── */
-  /* Dashboard page title: 30–36px */
-  --font-size-dash-title:   clamp(1.875rem, 1.7rem + 0.72vw, 2.25rem);
-  /* Dashboard section heading: 22–26px */
-  --font-size-dash-section: clamp(1.375rem, 1.28rem + 0.48vw, 1.625rem);
-  /* Card heading: 17–20px */
-  --font-size-dash-card:    clamp(1.0625rem, 1rem + 0.36vw, 1.25rem);
+  /* Dashboard heading tokens synced with H1-H3 scale */
+  --font-size-dash-title:   24px;
+  --font-size-dash-section: 22px;
+  --font-size-dash-card:    20px;
   /* Primary statistic: 28–36px */
   --font-size-dash-stat:    clamp(1.75rem, 1.55rem + 0.96vw, 2.25rem);
   /* Dashboard body text: 14–16px */
@@ -526,8 +520,8 @@ h2, .h2 {
 h3, .h3 {
   font-family: var(--font-heading) !important;
   font-size: var(--font-size-h3);
-  font-weight: 700 !important;
-  line-height: var(--line-height-h3, 1.25);
+  font-weight: 600 !important;
+  line-height: var(--line-height-h3, 1.30);
   letter-spacing: -0.015em;
   color: var(--royal-blue, #2563EB) !important;
   margin-bottom: 12px;
@@ -615,9 +609,9 @@ p:last-child { margin-bottom: 0; }
 /* Card Typography */
 .card-title, .course-card-title-custom, .course-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  font-size: 20px;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.30;
   color: var(--dark-royal-blue, #1E1B4B);
   margin-bottom: 8px;
 }
@@ -836,21 +830,21 @@ h1, h2, h3, h4, h5, h6, .hero-title, .page-title, .section-title, .card-title {
   max-width: var(--max-width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1023px) {
   .container {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 767px) {
   .container {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
@@ -858,6 +852,18 @@ h1, h2, h3, h4, h5, h6, .hero-title, .page-title, .section-title, .card-title {
   padding: 72px 0;
   margin: 0;
   position: relative;
+}
+
+@media (max-width: 1023px) {
+  .section, section {
+    padding: 56px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .section, section {
+    padding: 40px 0;
+  }
 }
 .section-sm { padding: 48px 0; }
 
@@ -1014,9 +1020,9 @@ h1, h2, h3, h4, h5, h6, .hero-title, .page-title, .section-title, .card-title {
 .clientele-card h3,
 .learning-step-card h3 {
   font-family: var(--font-heading);
-  font-size: clamp(17.5px, 2.2vw, 20px);
-  font-weight: 750;
-  line-height: 1.32;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.30;
   color: var(--text-main, #1E1B4B);
   margin-bottom: 10px;
   letter-spacing: -0.015em;
@@ -1341,18 +1347,29 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
   .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
   h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
-    font-size: clamp(30px, 4.8vw, 42px) !important;
-    line-height: 1.2 !important;
+    font-size: 24px !important;
+    line-height: 1.25 !important;
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .section, section {
+    padding: 56px 0;
+  }
+}
+
+@media (max-width: 767px) {
   :root {
-    --font-size-h1: clamp(26px, 5.8vw, 34px);
-    --font-size-h2: clamp(21px, 4.8vw, 26px);
-    --font-size-h3: clamp(18px, 4vw, 22px);
+    --font-size-h1: 24px;
+    --font-size-h2: 22px;
+    --font-size-h3: 20px;
     --font-size-h4: 16px;
-    --font-size-h5: 14.5px;
+    --font-size-h5: 14px;
     --nav-height: 68px;
     --space-4xl: 40px;
     --space-3xl: 32px;
@@ -1363,8 +1380,8 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
   }
 
   .container {
-    padding-left: 18px !important;
-    padding-right: 18px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
     width: 100% !important;
     max-width: 100% !important;
   }
@@ -1375,7 +1392,7 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
   }
 
   .section, section {
-    padding: 44px 0 !important;
+    padding: 40px 0 !important;
   }
 
   .section-header {
@@ -1383,25 +1400,36 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
   }
 
   h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
-    font-size: clamp(26px, 6vw, 34px) !important;
-    line-height: 1.22 !important;
+    font-size: 24px !important;
+    line-height: 1.25 !important;
     margin-bottom: 12px !important;
   }
 
   h2, .h2, .section-title, .dashboard-title {
-    font-size: clamp(21px, 4.8vw, 26px) !important;
+    font-size: 22px !important;
     line-height: 1.28 !important;
     margin-bottom: 10px !important;
   }
 
   h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
-    font-size: clamp(17px, 4vw, 21px) !important;
+    font-size: 20px !important;
+    line-height: 1.30 !important;
     margin-bottom: 8px !important;
   }
 
+  h4, .h4 {
+    font-size: 16px !important;
+    line-height: 1.32 !important;
+  }
+
+  h5, .h5 {
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+  }
+
   p, .lead, .hero-lead, .hero-subtitle, .section-subtitle {
-    font-size: 15px !important;
-    line-height: 1.62 !important;
+    font-size: 16px !important;
+    line-height: 1.60 !important;
   }
 
   .hero-ctas, .btn-group {
@@ -1464,21 +1492,23 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
 /* Small Smartphone Optimizations (320px – 430px) */
 @media (max-width: 430px) {
   .container {
-    padding-left: 14px !important;
-    padding-right: 14px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 
   h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
-    font-size: clamp(22px, 7vw, 28px) !important;
+    font-size: 24px !important;
     line-height: 1.25 !important;
   }
 
   h2, .h2, .section-title {
-    font-size: clamp(19px, 5.5vw, 23px) !important;
+    font-size: 22px !important;
+    line-height: 1.28 !important;
   }
 
   h3, .h3, .card-title {
-    font-size: clamp(16px, 4.5vw, 19px) !important;
+    font-size: 20px !important;
+    line-height: 1.30 !important;
   }
 
   .btn {
@@ -1491,12 +1521,13 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
 /* Micro Smartphone Optimizations (<= 360px, e.g. iPhone SE 1st gen, Galaxy Fold outer screen) */
 @media (max-width: 360px) {
   .container {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 
   h1, .h1, .hero-title {
-    font-size: 21px !important;
+    font-size: 24px !important;
+    line-height: 1.25 !important;
   }
 
   .btn {
@@ -1873,68 +1904,99 @@ nav a,
   font-weight: var(--weight-semibold) !important;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .hero-title,
-  .hero-h1 {
-    font-size: 64px;
-    font-weight: 700;
-    line-height: 72px;
-    letter-spacing: -0.03em;
-  }
-
+  .hero-h1,
   h1 {
-    font-size: 56px;
-    line-height: 64px;
-    letter-spacing: -0.025em;
-  }
-
-  h2 {
-    font-size: 44px;
-    line-height: 52px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.25;
     letter-spacing: -0.02em;
   }
 
-  h3 {
-    font-size: 34px;
-    line-height: 42px;
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.28;
     letter-spacing: -0.015em;
   }
 
-  h4 {
-    font-size: 26px;
-    line-height: 34px;
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.30;
     letter-spacing: -0.01em;
+  }
+
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.32;
+  }
+
+  h5 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .hero-title,
-  .hero-h1 {
-    font-size: 48px;
-    line-height: 58px;
-    letter-spacing: -0.025em;
+/* Standardized 8px Grid Safeguards, Cards & Mobile Touch Targets */
+h1, .h1 { font-size: 24px !important; line-height: 1.25 !important; font-weight: 700 !important; }
+h2, .h2 { font-size: 22px !important; line-height: 1.28 !important; font-weight: 700 !important; }
+h3, .h3 { font-size: 20px !important; line-height: 1.30 !important; font-weight: 600 !important; }
+h4, .h4 { font-size: 16px !important; line-height: 1.32 !important; font-weight: 600 !important; }
+h5, .h5 { font-size: 14px !important; line-height: 1.35 !important; font-weight: 600 !important; }
+p, .lead, .hero-desc, .hero-supporting-copy, .section-subtitle, .section-subtext {
+  font-size: 16px;
+  line-height: 1.60;
+}
+
+.dashboard-main section,
+.lms-main section,
+section.student-section-header {
+  padding: 24px 0 !important;
+}
+
+@media (max-width: 767px) {
+  .card-body,
+  .card-content,
+  .dashboard-card,
+  .stat-card {
+    padding: 20px !important;
   }
 
-  h1 {
-    font-size: 44px;
-    line-height: 54px;
-    letter-spacing: -0.02em;
+  button,
+  .btn,
+  a.btn,
+  .btn-sm,
+  .nav-hamburger,
+  .mobile-nav-toggle,
+  .mobile-drawer-close,
+  .student-sidebar-toggle-btn,
+  .student-mobile-menu-btn,
+  .student-icon-btn,
+  .btn-icon-toggle,
+  .lms-bookmark-btn,
+  .btn-icon-control,
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="search"],
+  select {
+    min-height: 44px !important;
   }
 
-  h2 {
-    font-size: 36px;
-    line-height: 44px;
-    letter-spacing: -0.015em;
-  }
-
-  h3 {
-    font-size: 28px;
-    line-height: 36px;
-    letter-spacing: -0.01em;
-  }
-
-  h4 {
-    font-size: 22px;
-    line-height: 30px;
+  button.nav-hamburger,
+  button.mobile-nav-toggle,
+  button.mobile-drawer-close,
+  button.student-sidebar-toggle-btn,
+  button.student-mobile-menu-btn,
+  button.student-icon-btn,
+  button.btn-icon-toggle,
+  button.lms-bookmark-btn,
+  button.btn-icon-control {
+    min-width: 44px !important;
   }
 }

@@ -864,7 +864,7 @@ a[href*="jumuishi"].nav-link.active::after {
 
   /* Desktop nav actions hidden on mobile to prevent navbar crowding */
   .navbar .nav-actions {
-    display: none;
+    display: none !important;
   }
 
   .navbar .nav-actions.concept-nav-actions {
@@ -940,19 +940,24 @@ a[href*="jumuishi"].nav-link.active::after {
 
   .btn-concept-apply,
   .navbar .btn-primary,
+  .navbar .btn-sm,
   .nav-actions .btn-primary,
+  .nav-actions .btn-sm,
   .nav-actions a[href*="register"]:not(.nav-dropdown-item) {
-    font-size: 12px !important;
-    padding: 5px 13px !important;
-    min-height: 32px !important;
-    height: 32px !important;
+    font-size: 13px !important;
+    padding: 8px 12px !important;
+    min-height: 44px !important;
+    height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .nav-hamburger {
-    width: 36px !important;
-    height: 36px !important;
-    min-width: 36px !important;
-    min-height: 36px !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
     border-radius: 50% !important;
     gap: 4.5px !important;
   }
@@ -997,19 +1002,24 @@ a[href*="jumuishi"].nav-link.active::after {
 
   .btn-concept-apply,
   .navbar .btn-primary,
+  .navbar .btn-sm,
   .nav-actions .btn-primary,
+  .nav-actions .btn-sm,
   .nav-actions a[href*="register"]:not(.nav-dropdown-item) {
-    font-size: 11px !important;
-    padding: 4px 10px !important;
-    min-height: 29px !important;
-    height: 29px !important;
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+    min-height: 44px !important;
+    height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .nav-hamburger {
-    width: 32px !important;
-    height: 32px !important;
-    min-width: 32px !important;
-    min-height: 32px !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
     gap: 4px !important;
   }
 
@@ -4237,12 +4247,13 @@ textarea:focus {
 }
 .ik-password-toggle {
   position: absolute;
-  right: 4px;
+  right: 2px;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  min-height: 40px !important;
+  width: 44px;
+  height: 44px;
+  min-width: 44px !important;
+  min-height: 44px !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
