@@ -56,8 +56,22 @@
 @media (max-width: 1023px) {
   .lms-subnav-container { padding: 0 24px; }
 }
-@media (max-width: 767px) {
-  .lms-subnav-container { padding: 0 16px; }
+@media (max-width: 900px) {
+  .lms-subnav-container {
+    flex-wrap: wrap;
+    padding: 8px 16px;
+    gap: 8px;
+  }
+  .lms-subnav-left {
+    width: 100%;
+    flex: 1 1 100% !important;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .lms-subnav-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }
 
 .lms-subnav-menu {
@@ -372,7 +386,7 @@
 /* ── 4. Main Hero Section: Quick-Action + Featured Grid ───── */
 .lms-dashboard-split-grid {
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 360px 1fr;
   gap: 28px;
   margin-bottom: 40px;
   align-items: stretch;
@@ -394,6 +408,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   margin-bottom: 18px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--lms-border);
@@ -401,11 +416,28 @@
 
 .lms-quick-panel-title {
   font-family: var(--font-heading);
-  font-size: 15px;
+  font-size: 13.5px;
   font-weight: 700;
   color: var(--lms-navy);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.lms-quick-panel-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: #2563EB;
+  background: #EFF6FF;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  flex-shrink: 0 !important;
 }
 
 .lms-quick-actions-list {
@@ -570,6 +602,10 @@
 .lms-qr-btn:hover { background: #E04400; }
 
 /* Main Featured Learning Banner (Right Card) */
+section.lms-featured-card {
+  padding: 0 !important;
+  margin: 0 !important;
+}
 .lms-featured-card {
   background: #FFFFFF;
   border: 1.5px solid var(--lms-border);
@@ -578,6 +614,7 @@
   box-shadow: var(--lms-shadow-md);
   display: grid;
   grid-template-columns: 1.15fr 1fr;
+  height: 100%;
 }
 
 .lms-featured-content {
@@ -646,8 +683,13 @@
 
 .lms-featured-image-box {
   position: relative;
-  min-height: 280px;
+  min-height: 340px;
+  height: 100%;
   background: #1E1B4B;
+}
+
+section#lms-mylearning-section {
+  padding-bottom: 36px !important;
 }
 
 .lms-featured-image-box img {
@@ -658,6 +700,9 @@
 }
 
 .lms-featured-overlay-badge {
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
   position: absolute;
   top: 16px;
   right: 16px;
@@ -1547,15 +1592,25 @@
 }
 
 /* ── 9. Responsive Adjustments ────────────────────────────── */
+@media (max-width: 420px) {
+  .lms-quick-panel-title {
+    white-space: normal;
+  }
+}
+
 @media (max-width: 1024px) {
   .lms-dashboard-split-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
+  section.lms-featured-card,
   .lms-featured-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    height: auto !important;
   }
   .lms-featured-image-box {
-    min-height: 240px;
+    min-height: 220px !important;
+    height: auto !important;
+    max-height: 280px;
     order: -1;
   }
   .lms-academies-grid {
