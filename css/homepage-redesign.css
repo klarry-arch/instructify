@@ -40,8 +40,8 @@
   --shadow-sm:       0 2px 8px rgba(30, 27, 75, 0.06);
   --shadow-md:       0 8px 24px rgba(30, 27, 75, 0.09);
   --shadow-lg:       0 16px 36px rgba(30, 27, 75, 0.13);
-  --font-heading:    "Plus Jakarta Sans", "Inter", Arial, sans-serif;
-  --font-body:       "Inter", Arial, sans-serif;
+  --font-heading:    'Plus Jakarta Sans', sans-serif;
+  --font-body:       'Inter', sans-serif;
 }
 
 /* ── Base & Global Normalization ─────────────────────────────── */
@@ -1998,8 +1998,8 @@ details summary:focus-visible {
    Canonical Palette: #2563EB · #FACC15 · #FFFDF7 · #1E1B4B
    ══════════════════════════════════════════════════════════════ */
 :root {
-  --font-heading: "Poppins", "Inter", Arial, sans-serif;
-  --font-body: "Inter", Arial, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
@@ -2010,12 +2010,12 @@ html,
 body.instructify-home {
   overflow-x: clip !important;
   max-width: 100%;
-  font-family: var(--font-body);
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
-  font-weight: var(--weight-regular);
-  line-height: 1.65;
+  font-weight: 400;
+  line-height: 1.7;
   background-color: var(--color-surface, #FFFDF7);
-  color: var(--color-text, #1E1B4B);
+  color: #1E1B4B;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -2701,17 +2701,30 @@ body.instructify-home .outcome-metric {
 
 /* Unified Heading Scale Enforcement Across Homepage (H1 24 / H2 22 / H3 20 / H4 16 / H5 14) */
 body.instructify-home h1,
+body.instructify-home h2,
+body.instructify-home h3,
+body.instructify-home h4,
+body.instructify-home h5,
+body.instructify-home h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  color: #1E1B4B;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+body.instructify-home .bg-navy .section-h2,
+body.instructify-home .final-cta-h2,
+body.instructify-home .site-footer h4,
+body.instructify-home .site-footer h5 {
+  color: #FFFFFF;
+}
+body.instructify-home h1,
 body.instructify-home .hero-h1 {
   font-size: 24px !important;
-  font-weight: 700 !important;
-  line-height: 1.25 !important;
 }
 body.instructify-home h2,
 body.instructify-home .section-h2,
 body.instructify-home .final-cta-h2 {
   font-size: 22px !important;
-  font-weight: 700 !important;
-  line-height: 1.28 !important;
 }
 body.instructify-home h3,
 body.instructify-home .ik-category-title,
@@ -2728,16 +2741,10 @@ body.instructify-home .outcome-title,
 body.instructify-home .story-title,
 body.instructify-home .resource-title {
   font-size: 20px !important;
-  font-weight: 600 !important;
-  line-height: 1.30 !important;
 }
 body.instructify-home h4 {
   font-size: 16px !important;
-  font-weight: 600 !important;
-  line-height: 1.32 !important;
 }
 body.instructify-home h5 {
   font-size: 14px !important;
-  font-weight: 600 !important;
-  line-height: 1.35 !important;
 }
