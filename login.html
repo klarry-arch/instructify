@@ -1,117 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign In | Instructify Kenya LMS</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=2026.6">
-  <link rel="stylesheet" href="css/components.css?v=2026.6">
-  <link rel="stylesheet" href="css/dashboard.css?v=2026.6">
-  <link rel="stylesheet" href="css/live-chat.css?v=2026.6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/brand-tokens.css?v=2026.9">
+  <link rel="stylesheet" href="css/global.css?v=2026.9">
+  <link rel="stylesheet" href="css/components.css?v=2026.9">
+  <link rel="stylesheet" href="css/dashboard.css?v=2026.9">
+  <link rel="stylesheet" href="css/live-chat.css?v=2026.9">
   <style>
     body {
-      background: radial-gradient(120% 120% at 50% 10%, #FFFDF7 0%, #EEF2F6 100%);
+      background: radial-gradient(120% 120% at 50% 10%, #FFFDF7 0%, #F2F6FF 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
+
     .auth-page-wrapper {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: calc(var(--nav-height, 74px) + 32px) 16px 48px;
+      padding: 40px 16px 56px;
     }
+
     .auth-card {
       background: #FFFFFF;
-      border: 1px solid var(--border-color, #E8E3D5);
-      border-radius: 24px;
+      border: 1px solid #E8E3D5;
+      border-radius: 16px;
       box-shadow: 0 20px 50px rgba(30, 27, 75, 0.08);
-      max-width: 480px;
+      max-width: 460px;
       width: 100%;
-      padding: 36px 32px;
+      padding: 32px 28px;
       position: relative;
     }
+
     .auth-header {
       text-align: center;
       margin-bottom: 24px;
     }
+
     .auth-title {
-      font-size: 24px !important;
-      font-weight: 800 !important;
+      font-family: var(--font-heading) !important;
+      font-size: 26px !important;
+      font-weight: 700 !important;
       color: #1E1B4B !important;
       margin-bottom: 6px;
     }
+
     .auth-subtitle {
-      font-size: 14px;
+      font-size: 14.5px;
       color: #5B5882;
       line-height: 1.5;
     }
-    .role-switcher-banner {
-      background: #FFFDF7;
-      border: 1px solid #E8E3D5;
-      border-radius: 14px;
-      padding: 12px;
-      margin-bottom: 20px;
-    }
-    .role-switcher-title {
-      font-size: 11.5px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #433F6B;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .role-btn-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-    }
-    .role-quick-btn {
-      background: #FFFFFF;
-      border: 1px solid #E8E3D5;
-      border-radius: 8px;
-      padding: 7px 4px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #1E1B4B;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      transition: all 0.15s ease;
-    }
-    .role-quick-btn:hover {
-      border-color: #2563EB;
-      background: #EFF6FF;
-      color: #2563EB;
-    }
-    .role-quick-btn.active {
-      border-color: #2563EB;
-      background: #2563EB;
-      color: #FFFFFF;
-    }
   </style>
-  <link rel="stylesheet" href="css/site-header.css?v=2026.6">
+  <link rel="stylesheet" href="css/site-header.css?v=2026.9">
 </head>
-<body>
 
-<!-- ============================================================
-       ANNOUNCEMENT BAR & UNIFIED STICKY HEADER
-       ============================================================ -->
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to sign in</a>
+
   <aside class="announcement-bar" role="complementary" aria-label="Announcement">
     <div class="home-container">
       <div class="announcement-content">
-        <span class="announcement-badge">2026 INTAKE OPEN</span>
-        <span class="announcement-text">
-          Booking Open: On-Site Digital Skills &amp; AI Workshops for Kenyan Schools across all 47 counties.
-        </span>
-        <a href="index.html#training-request" class="announcement-link">Book School Training &rarr;</a>
+        <span class="announcement-badge">LEARNER PORTAL</span>
+        <span class="announcement-text">Sign in to access your enrolled courses, progress, and verifiable CPD
+          certificates.</span>
       </div>
     </div>
   </aside>
@@ -119,191 +81,200 @@
   <header class="sticky-header" role="banner">
     <div class="home-container">
       <div class="header-nav-wrap">
-
-        <!-- Brand Logo -->
         <a href="index.html" class="brand-link" aria-label="Instructify Kenya Homepage">
-          <img
-            src="assets/images/instructify-kenya-logo.png"
-            alt="Instructify Kenya Logo"
-            class="brand-logo-img"
-            width="160"
-            height="38"
-          >
+          <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="brand-logo-img"
+            width="160" height="38">
         </a>
-
-        <!-- Desktop Navigation Links -->
         <nav class="desktop-nav" aria-label="Primary Navigation">
           <ul class="header-nav-links">
-            <li><a href="index.html" class="header-nav-link">Home</a></li>
-            <li><a href="about.html" class="header-nav-link">About Us</a></li>
-            <li><a href="courses.html" class="header-nav-link">Programmes</a></li>
-            <li><a href="coding-bootcamp" class="header-nav-link nav-bootcamp-badge">Boot Camp</a></li>
-            <li><a href="resources.html" class="header-nav-link">Resources</a></li>
-            <li><a href="index.html#faq" class="header-nav-link">FAQ</a></li>
-            <li><a href="contact.html" class="header-nav-link">Contact</a></li>
+            <li class="header-nav-item"><a href="index.html" class="header-nav-link">Home</a></li>
+            <li class="header-nav-item"><a href="courses.html" class="header-nav-link">Courses</a></li>
+            <li class="header-nav-item"><a href="about.html" class="header-nav-link">About Us</a></li>
+            <li class="header-nav-item"><a href="resources.html" class="header-nav-link">Resources</a></li>
+            <li class="header-nav-item"><a href="contact.html" class="header-nav-link">Contact</a></li>
           </ul>
         </nav>
-
-        <!-- Header Actions -->
         <div class="header-actions">
-          <a href="tel:+254143024416" class="header-phone-link" aria-label="Call Instructify Kenya">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-            <span>+254 143 024 416</span>
-          </a>
-
-          <a href="index.html#training-request" class="btn-primary-orange">
-            <span>Book School Training</span>
-          </a>
-
-          <!-- Mobile Hamburger Toggle Button -->
-          <button
-            type="button"
-            class="mobile-nav-toggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="mobile-nav-drawer"
-          >
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
+          <a href="login.html" id="nav-login-btn" class="nav-login-btn" aria-current="page">Log In</a>
+          <a href="register.html" class="btn-primary-orange"><span>Create Account</span></a>
+          <button type="button" class="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false"
+            aria-controls="mobile-nav-drawer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
           </button>
         </div>
-
       </div>
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer -->
   <div id="mobile-nav-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-top">
+      <a href="index.html" class="brand-link"><img src="assets/images/instructify-kenya-logo.png"
+          alt="Instructify Kenya Logo" class="brand-logo-img" width="144" height="34"></a>
+      <button type="button" class="mobile-drawer-close" aria-label="Close navigation menu">&times;</button>
+    </div>
     <nav class="mobile-drawer-links" aria-label="Mobile Drawer Navigation">
       <a href="index.html" class="mobile-drawer-link">Home</a>
+      <a href="courses.html" class="mobile-drawer-link">Courses</a>
       <a href="about.html" class="mobile-drawer-link">About Us</a>
-      <a href="courses.html" class="mobile-drawer-link">Featured Programmes</a>
-      <a href="coding-bootcamp" class="mobile-drawer-link">Coding Boot Camp (Nov–Dec)</a>
-      <a href="index.html#why-instructify" class="mobile-drawer-link">Why Instructify</a>
-      <a href="index.html#training-process" class="mobile-drawer-link">Training Process</a>
-      <a href="index.html#who-we-serve" class="mobile-drawer-link">Who We Serve</a>
-      <a href="index.html#training-formats" class="mobile-drawer-link">Training Formats</a>
-      <a href="resources.html" class="mobile-drawer-link">Teaching Resources</a>
-      <a href="index.html#faq" class="mobile-drawer-link">Frequently Asked Questions</a>
+      <a href="resources.html" class="mobile-drawer-link">Resources</a>
       <a href="contact.html" class="mobile-drawer-link">Contact Us</a>
     </nav>
     <div class="mobile-drawer-cta">
-      <a href="index.html#training-request" class="btn-primary-orange">Book School Training</a>
-      <a href="tel:+254143024416" class="btn-outline-navy">Call +254 143 024 416</a>
+      <a href="register.html" class="btn-primary-orange">Create Free Account</a>
     </div>
   </div>
 
-<div class="auth-page-wrapper">
-  <div class="auth-card">
-    <div class="auth-header" style="text-align:center;">
-      <a href="index.html" aria-label="Instructify Kenya Home" style="display:inline-block; margin-bottom:16px;">
-        <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" style="height:46px; width:auto; max-width:210px; object-fit:contain;">
-      </a>
-      <h1 class="auth-title">Welcome Back</h1>
-      <p class="auth-subtitle">Sign in to your Instructify Educator or Student workspace</p>
-    </div>
-
-    <form id="login-form" onsubmit="handleLoginSubmit(event)" style="display:flex; flex-direction:column; gap:16px;">
-      <div>
-        <label for="login-email" class="form-label">Email Address</label>
-        <input type="email" id="login-email" aria-label="Email Address" class="form-input" placeholder="your@email.com" required autocomplete="email">
+  <main id="main-content" class="auth-page-wrapper">
+    <div class="auth-card">
+      <div class="auth-header" style="text-align:center;">
+        <a href="index.html" aria-label="Instructify Kenya Home" style="display:inline-block; margin-bottom:16px;">
+          <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo"
+            style="height:46px; width:auto; max-width:210px; object-fit:contain;">
+        </a>
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in to your Instructify Educator or Student workspace</p>
       </div>
 
-      <div>
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-          <label for="login-password" class="form-label" style="margin:0;">Password</label>
-          <a href="forgot-password.html" style="font-size:12.5px; color:var(--primary-color, #2563EB); font-weight:600; text-decoration:none;">Forgot password?</a>
+      <div id="login-error-summary" class="ik-form-error-summary" role="alert" aria-live="polite"></div>
+
+      <form id="login-form" onsubmit="handleLoginSubmit(event)" style="display:flex; flex-direction:column; gap:16px;"
+        novalidate>
+        <div>
+          <label for="login-email" class="form-label">Email Address <span style="color:#DC2626;"
+              aria-hidden="true">*</span></label>
+          <input type="email" id="login-email" aria-label="Email Address" class="form-input"
+            placeholder="your@email.com" required autocomplete="email">
         </div>
-        <div style="position:relative;">
-          <input type="password" id="login-password" aria-label="Password" class="form-input" placeholder="Your password" required autocomplete="current-password" style="padding-right:40px;">
-          <button type="button" onclick="togglePasswordVisibility()" aria-label="Toggle Password Visibility" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:#5B5882; cursor:pointer; font-size:16px;">
-            👁️
-          </button>
+
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <label for="login-password" class="form-label" style="margin:0;">Password <span style="color:#DC2626;"
+                aria-hidden="true">*</span></label>
+            <a href="forgot-password.html"
+              style="font-size:13px; color:#2563EB; font-weight:600; text-decoration:none;">Forgot password?</a>
+          </div>
+          <div class="ik-password-wrapper">
+            <input type="password" id="login-password" aria-label="Password" class="form-input"
+              placeholder="Your password" required autocomplete="current-password">
+            <button type="button" class="ik-password-toggle" onclick="togglePasswordVisibility()"
+              aria-label="Toggle Password Visibility" aria-pressed="false">
+              👁️
+            </button>
+          </div>
         </div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <label style="display:flex; align-items:center; gap:8px; font-size:13.5px; color:#433F6B; cursor:pointer;">
+            <input type="checkbox" id="login-remember" checked>
+            <span>Remember this browser</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-full" id="login-submit-btn"
+          style="padding:12px; min-height:48px; font-size:15.5px; font-weight:600; margin-top:4px;">
+          Sign In to Portal →
+        </button>
+      </form>
+
+      <div style="text-align:center; margin-top:20px; font-size:14px; color:#5B5882;">
+        Don't have an account? <a href="register.html"
+          style="color:#2563EB; font-weight:700; text-decoration:none;">Register for Instructify</a>
       </div>
-
-      <div style="display:flex; align-items:center; justify-content:space-between;">
-        <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#433F6B; cursor:pointer;">
-          <input type="checkbox" id="login-remember" checked>
-          <span>Remember this browser</span>
-        </label>
-      </div>
-
-      <button type="submit" class="btn btn-primary w-full" id="login-submit-btn" style="padding:12px; font-size:15px; font-weight:700; margin-top:4px;">
-        Sign In to Portal →
-      </button>
-    </form>
-
-    <div style="text-align:center; margin-top:20px; font-size:13.5px; color:#5B5882;">
-      Don't have an account? <a href="register.html" style="color:var(--primary-color, #2563EB); font-weight:700; text-decoration:none;">Register for Instructify</a>
     </div>
-  </div>
-</div>
+  </main>
 
-<script src="js/form-validator.js?v=19.0"></script>
-<script src="js/auth.js?v=19.0"></script>
-<script src="js/main.js?v=19.0"></script>
-<script>
+  <script src="js/form-validator.js?v=19.0"></script>
+  <script src="js/auth.js?v=19.0"></script>
+  <script src="js/main.js?v=19.0"></script>
+  <script>
 
-function togglePasswordVisibility() {
-  const input = document.getElementById('login-password');
-  input.type = input.type === 'password' ? 'text' : 'password';
-}
-
-function handleLoginSubmit(e) {
-  e.preventDefault();
-  const btn = document.getElementById('login-submit-btn');
-
-  if (window.FormValidator) {
-    const valResult = window.FormValidator.validateForm(document.getElementById('login-form'));
-    if (!valResult.valid) {
-      if (window.showToast) window.showToast(valResult.errors[0] || 'Please enter valid credentials.', 'warning');
-      btn.disabled = false;
-      btn.textContent = 'Sign In to Portal →';
-      if (valResult.firstErrorEl) {
-        valResult.firstErrorEl.focus();
+    function togglePasswordVisibility() {
+      const input = document.getElementById('login-password');
+      const nextType = input.type === 'password' ? 'text' : 'password';
+      input.type = nextType;
+      const toggleBtn = input.parentElement && input.parentElement.querySelector('.ik-password-toggle');
+      if (toggleBtn) {
+        toggleBtn.setAttribute('aria-pressed', nextType === 'text' ? 'true' : 'false');
+        toggleBtn.setAttribute('aria-label', nextType === 'text' ? 'Hide password' : 'Show password');
       }
-      return;
     }
-  }
 
-  const email = document.getElementById('login-email').value.trim();
-  const password = document.getElementById('login-password').value;
+    function showLoginErrorSummary(messages) {
+      const box = document.getElementById('login-error-summary');
+      if (!box) return;
+      if (!messages || !messages.length) {
+        box.classList.remove('is-visible');
+        box.innerHTML = '';
+        return;
+      }
+      const items = messages.map(msg => `<li>${String(msg).replace(/</g, '&lt;')}</li>`).join('');
+      box.innerHTML = `<strong>Please check your sign-in details:</strong><ul style="margin:6px 0 0 18px;padding:0;">${items}</ul>`;
+      box.classList.add('is-visible');
+    }
 
-  btn.disabled = true;
-  btn.textContent = 'Verifying credentials...';
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('login-submit-btn');
+      if (btn.disabled) return;
+      showLoginErrorSummary([]);
 
-  const res = window.attemptLogin(email, password);
-  if (res.success) {
-    window.showToast('✅ Welcome, ' + res.user.name + '! Redirecting...', 'success');
-    setTimeout(() => {
-      try {
-        const returnTo = JSON.parse(localStorage.getItem('ik_return_to') || 'null');
-        if (returnTo && returnTo.url) {
-          localStorage.removeItem('ik_return_to');
-          window.location.href = returnTo.url;
+      if (window.FormValidator) {
+        const valResult = window.FormValidator.validateForm(document.getElementById('login-form'));
+        if (!valResult.valid) {
+          showLoginErrorSummary(valResult.errors);
+          if (window.showToast) window.showToast(valResult.errors[0] || 'Please enter valid credentials.', 'warning');
+          btn.disabled = false;
+          btn.textContent = 'Sign In to Portal →';
+          if (valResult.firstErrorEl) {
+            valResult.firstErrorEl.focus();
+          }
           return;
         }
-      } catch { /* ignore */ }
-      const redirectMap = {
-        admin: 'dashboard-admin.html',
-        trainer: 'dashboard-trainer.html',
-        learner: 'dashboard-learner.html'
-      };
-      window.location.href = redirectMap[res.user.role] || 'index.html';
-    }, 800);
-  } else {
-    btn.disabled = false;
-    btn.textContent = 'Sign In to Portal →';
-    window.showToast('❌ ' + res.message, 'error');
-  }
-}
-</script>
-  <script src="js/site-header.js" defer></script>
+      }
+
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value;
+
+      btn.disabled = true;
+      btn.textContent = 'Verifying credentials...';
+
+      const res = window.attemptLogin(email, password);
+      if (res.success) {
+        window.showToast('✅ Welcome, ' + res.user.name + '! Redirecting...', 'success');
+        setTimeout(() => {
+          try {
+            const returnTo = JSON.parse(localStorage.getItem('ik_return_to') || 'null');
+            if (returnTo && returnTo.url) {
+              localStorage.removeItem('ik_return_to');
+              window.location.href = returnTo.url;
+              return;
+            }
+          } catch { /* ignore */ }
+          const redirectMap = {
+            admin: 'dashboard-admin.html',
+            trainer: 'dashboard-trainer.html',
+            learner: 'dashboard-learner.html'
+          };
+          window.location.href = redirectMap[res.user.role] || 'index.html';
+        }, 800);
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Sign In to Portal →';
+        showLoginErrorSummary([res.message]);
+        window.showToast('❌ ' + res.message, 'error');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof window.updateAuthUI === 'function') window.updateAuthUI();
+    });
+  </script>
+  <script src="js/site-header.js?v=2026.9" defer></script>
 </body>
+
 </html>

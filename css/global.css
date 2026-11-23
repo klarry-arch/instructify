@@ -301,16 +301,16 @@
 
   /* ── Desktop & Mobile Heading Scale (Fluid Responsive Clamped) ── */
   /* H1: Desktop 48px, line-height 1.1, weight 700; Mobile 36px */
-  --font-size-h1:      clamp(2.25rem, 1.91rem + 1.45vw, 3rem);
+  --font-size-h1:      clamp(2rem, 1.55rem + 1.9vw, 3.25rem);
   --line-height-h1:    1.10;
 
   /* H2: Desktop 38px, line-height 1.2, weight 700; Mobile 30px */
-  --font-size-h2:      clamp(1.875rem, 1.65rem + 0.97vw, 2.375rem);
+  --font-size-h2:      clamp(1.5rem, 1.32rem + 0.8vw, 2.25rem);
   --line-height-h2:    1.20;
 
   /* H3: Desktop 30px, line-height 1.25, weight 700; Mobile 25px */
-  --font-size-h3:      clamp(1.5625rem, 1.42rem + 0.6vw, 1.875rem);
-  --line-height-h3:    1.25;
+  --font-size-h3:      clamp(1.125rem, 1.05rem + 0.45vw, 1.5rem);
+  --line-height-h3:    1.30;
 
   /* H4: Desktop 24px, line-height 1.3, weight 600; Mobile 21px */
   --font-size-h4:      clamp(1.3125rem, 1.23rem + 0.36vw, 1.5rem);
@@ -632,7 +632,7 @@ p:last-child { margin-bottom: 0; }
 
 /* Navigation Links */
 .nav-link, .nav-links a {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: var(--font-size-nav) !important;
   font-weight: 500 !important;
   line-height: 1.50;
@@ -640,7 +640,7 @@ p:last-child { margin-bottom: 0; }
 
 /* Buttons */
 .btn, button.btn, a.btn {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: var(--font-size-btn) !important;
   font-weight: 600 !important;
   line-height: 1.40;
@@ -959,7 +959,7 @@ h1, h2, h3, h4, h5, h6, .hero-title, .page-title, .section-title, .card-title {
 .cert-card {
   background-color: var(--surface, #FFFFFF);
   border: 1.5px solid var(--border-color-card, #E8E3D5);
-  border-radius: var(--radius-xl, 20px);
+  border-radius: var(--radius-lg, 16px);
   box-shadow: 0 4px 20px -2px rgba(30, 27, 75, 0.05), 0 2px 6px -1px rgba(30, 27, 75, 0.02);
   display: flex;
   flex-direction: column;

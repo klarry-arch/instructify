@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,10 @@
 
   <!-- Primary SEO Metadata -->
   <title>Instructify Kenya | Digital Skills, AI and Microsoft 365 Training for Educators</title>
-  <meta name="description" content="Instructify provides practical training in artificial intelligence, Microsoft 365, digital teaching, competency-based education, coding, and educational technology for teachers and schools in Kenya.">
-  <meta name="keywords" content="Teacher training Kenya, AI for educators, CBC assessment Kenya, Microsoft 365 education, digital teaching skills, educational technology Nairobi, coding boot camp Kenya">
+  <meta name="description"
+    content="Instructify provides practical training in artificial intelligence, Microsoft 365, digital teaching, competency-based education, coding, and educational technology for teachers and schools in Kenya.">
+  <meta name="keywords"
+    content="Teacher training Kenya, AI for educators, CBC assessment Kenya, Microsoft 365 education, digital teaching skills, educational technology Nairobi, coding boot camp Kenya">
   <meta name="author" content="Instructify Kenya">
   <link rel="canonical" href="https://instructify.co.ke/">
 
@@ -16,7 +19,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://instructify.co.ke/">
   <meta property="og:title" content="Instructify Kenya | Digital Skills, AI and Microsoft 365 Training for Educators">
-  <meta property="og:description" content="Instructify provides practical training in artificial intelligence, Microsoft 365, digital teaching, competency-based education, coding, and educational technology for teachers and schools in Kenya.">
+  <meta property="og:description"
+    content="Instructify provides practical training in artificial intelligence, Microsoft 365, digital teaching, competency-based education, coding, and educational technology for teachers and schools in Kenya.">
   <meta property="og:image" content="https://instructify.co.ke/assets/images/home_hero_classroom.jpg">
   <meta property="og:locale" content="en_KE">
   <meta property="og:site_name" content="Instructify Kenya">
@@ -25,7 +29,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://instructify.co.ke/">
   <meta name="twitter:title" content="Instructify Kenya | Digital Skills, AI and Microsoft 365 Training for Educators">
-  <meta name="twitter:description" content="Instructify provides practical training in artificial intelligence, Microsoft 365, digital teaching, competency-based education, coding, and educational technology for teachers and schools in Kenya.">
+  <meta name="twitter:description"
+    content="Instructify provides practical training in artificial intelligence, Microsoft 365, digital teaching, competency-based education, coding, and educational technology for teachers and schools in Kenya.">
   <meta name="twitter:image" content="https://instructify.co.ke/assets/images/home_hero_classroom.jpg">
 
   <!-- Favicons -->
@@ -34,13 +39,19 @@
   <link rel="icon" href="assets/images/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
 
-  <!-- Google Fonts: Manrope (Headings) & Inter (Body & UI) -->
+  <!-- Google Fonts: Poppins (Headings, Nav, Buttons) & Inter (Body & UI) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 
-  <!-- Modern Homepage Redesign Stylesheet -->
-  <link rel="stylesheet" href="css/homepage-redesign.css?v=2026.8">
+  <!-- Design System & Modern Homepage Stylesheets -->
+  <link rel="stylesheet" href="css/brand-tokens.css?v=2026.9">
+  <link rel="stylesheet" href="css/components.css?v=2026.9">
+  <link rel="stylesheet" href="css/homepage-redesign.css?v=2026.9">
+  <link rel="stylesheet" href="css/site-header.css?v=2026.9">
+  <link rel="stylesheet" href="css/site-footer.css?v=2026.9">
 
   <!-- Structured Data: EducationalOrganization & Visible FAQPage -->
   <script type="application/ld+json">
@@ -134,6 +145,7 @@
 </head>
 
 <body class="instructify-home">
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
   <!-- ============================================================
        SECTION 1: ANNOUNCEMENT BAR
@@ -143,7 +155,7 @@
       <div class="announcement-content">
         <span class="announcement-badge">2026 INTAKE OPEN</span>
         <span class="announcement-text">
-          Booking Open: On-Site Digital Skills &amp; AI Workshops for Kenyan Schools across all 47 counties.
+          On-Site Digital Skills &amp; AI Workshops across all 47 Kenyan counties &middot; Tel: +254 143 024 416
         </span>
         <a href="#training-request" class="announcement-link">Book School Training &rarr;</a>
       </div>
@@ -151,61 +163,191 @@
   </aside>
 
   <!-- ============================================================
-       SECTION 2: STICKY HEADER
+       SECTION 2: STICKY HEADER WITH DROPDOWN MENUS & AUTH STATE
        ============================================================ -->
   <header class="sticky-header" role="banner">
     <div class="home-container">
       <div class="header-nav-wrap">
 
         <!-- Brand Logo -->
-        <a href="/" class="brand-link" aria-label="Instructify Kenya Homepage">
-          <img
-            src="assets/images/instructify-kenya-logo.png"
-            alt="Instructify Kenya Logo"
-            class="brand-logo-img"
-            width="160"
-            height="38"
-          >
+        <a href="index.html" class="brand-link" aria-label="Instructify Kenya Homepage">
+          <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="brand-logo-img"
+            width="160" height="38">
         </a>
 
         <!-- Desktop Navigation Links -->
         <nav class="desktop-nav" aria-label="Primary Navigation">
           <ul class="header-nav-links">
-            <li><a href="/" class="header-nav-link active" aria-current="page">Home</a></li>
-            <li><a href="about.html" class="header-nav-link">About Us</a></li>
-            <li><a href="#featured-programmes" class="header-nav-link">Programmes</a></li>
-            <li><a href="coding-bootcamp" class="header-nav-link nav-bootcamp-badge">Boot Camp</a></li>
-            <li><a href="#resources" class="header-nav-link">Resources</a></li>
-            <li><a href="#faq" class="header-nav-link">FAQ</a></li>
-            <li><a href="contact.html" class="header-nav-link">Contact</a></li>
+            <li class="header-nav-item"><a href="index.html" class="header-nav-link active" aria-current="page">Home</a>
+            </li>
+
+            <li class="header-nav-item nav-has-dropdown">
+              <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true"
+                aria-controls="nav-menu-courses">
+                <span>Courses</span>
+                <svg class="nav-dropdown-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div id="nav-menu-courses" class="nav-dropdown-panel" role="menu">
+                <a href="courses.html?category=AI" class="nav-dropdown-item" role="menuitem">
+                  <span class="nav-dropdown-icon" aria-hidden="true">🤖</span>
+                  <span class="nav-dropdown-meta">
+                    <span class="nav-dropdown-title">AI for Educators</span>
+                    <span class="nav-dropdown-desc">Practical generative AI prompts, lesson design &amp;
+                      assessments</span>
+                  </span>
+                </a>
+                <a href="courses.html?category=Digital" class="nav-dropdown-item" role="menuitem">
+                  <span class="nav-dropdown-icon" aria-hidden="true">💻</span>
+                  <span class="nav-dropdown-meta">
+                    <span class="nav-dropdown-title">Digital Skills</span>
+                    <span class="nav-dropdown-desc">Core digital literacy, Microsoft 365 &amp; online safety</span>
+                  </span>
+                </a>
+                <a href="courses.html?category=ICT" class="nav-dropdown-item" role="menuitem">
+                  <span class="nav-dropdown-icon" aria-hidden="true">🖥️</span>
+                  <span class="nav-dropdown-meta">
+                    <span class="nav-dropdown-title">ICT Integration</span>
+                    <span class="nav-dropdown-desc">Smart classrooms, ClassVR &amp; blended instruction</span>
+                  </span>
+                </a>
+                <a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem">
+                  <span class="nav-dropdown-icon" aria-hidden="true">🎓</span>
+                  <span class="nav-dropdown-meta">
+                    <span class="nav-dropdown-title">CPD Programmes</span>
+                    <span class="nav-dropdown-desc">Professional Development &amp; CBC Teacher Registration</span>
+                  </span>
+                </a>
+                <a href="courses.html?category=Leadership" class="nav-dropdown-item" role="menuitem">
+                  <span class="nav-dropdown-icon" aria-hidden="true">🏛️</span>
+                  <span class="nav-dropdown-meta">
+                    <span class="nav-dropdown-title">School Leadership</span>
+                    <span class="nav-dropdown-desc">Institutional digital strategy &amp; management tracks</span>
+                  </span>
+                </a>
+                <div class="nav-dropdown-divider"></div>
+                <a href="courses.html" class="nav-dropdown-item" role="menuitem">
+                  <span class="nav-dropdown-icon" aria-hidden="true">📚</span>
+                  <span class="nav-dropdown-meta">
+                    <span class="nav-dropdown-title">Browse All Courses &rarr;</span>
+                    <span class="nav-dropdown-desc">Explore free and paid certificate programmes</span>
+                  </span>
+                </a>
+              </div>
+            </li>
+
+            <li class="header-nav-item"><a href="about.html" class="header-nav-link">About Us</a></li>
+
+            <li class="header-nav-item nav-has-dropdown">
+              <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true"
+                aria-controls="nav-menu-resources">
+                <span>Resources</span>
+                <svg class="nav-dropdown-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                  aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div id="nav-menu-resources" class="nav-dropdown-panel" role="menu">
+                <a href="blog.html" class="nav-dropdown-item" role="menuitem">
+                  <span class="nav-dropdown-icon" aria-hidden="true">📰</span>
+                  <span class="nav-dropdown-meta">
+                    <span class="nav-dropdown-title">Blog &amp; Articles</span>
+                    <span class="nav-dropdown-desc">Practical insights on AI, CBC &amp; Kenyan classrooms</span>
+                  </span>
+                </a>
+                <a href="resources.html#guides" class="nav-dropdown-item" role="menuitem">
+                  <span class="nav-dropdown-icon" aria-hidden="true">📘</span>
+                  <span class="nav-dropdown-meta">
+                    <span class="nav-dropdown-title">Teaching Guides</span>
+                    <span class="nav-dropdown-desc">Structured CBC lesson planning &amp; smart classroom toolkits</span>
+                  </span>
+                </a>
+                <a href="resources.html#downloads" class="nav-dropdown-item" role="menuitem">
+                  <span class="nav-dropdown-icon" aria-hidden="true">⬇️</span>
+                  <span class="nav-dropdown-meta">
+                    <span class="nav-dropdown-title">Downloads</span>
+                    <span class="nav-dropdown-desc">Classroom rubrics, templates &amp; offline handouts</span>
+                  </span>
+                </a>
+                <a href="resources.html" class="nav-dropdown-item" role="menuitem">
+                  <span class="nav-dropdown-icon" aria-hidden="true">🛠️</span>
+                  <span class="nav-dropdown-meta">
+                    <span class="nav-dropdown-title">Digital Tools Hub</span>
+                    <span class="nav-dropdown-desc">Curated EdTech tools and educator resource library</span>
+                  </span>
+                </a>
+                <a href="coding-bootcamp" class="nav-dropdown-item" role="menuitem">
+                  <span class="nav-dropdown-icon" aria-hidden="true">🚀</span>
+                  <span class="nav-dropdown-meta">
+                    <span class="nav-dropdown-title">Coding Boot Camp <span class="nav-badge-new">New</span></span>
+                    <span class="nav-dropdown-desc">Hands-on coding and digital creativity intake</span>
+                  </span>
+                </a>
+              </div>
+            </li>
+
+            <li class="header-nav-item"><a href="contact.html" class="header-nav-link">Contact</a></li>
           </ul>
         </nav>
 
-        <!-- Header Actions -->
+        <!-- Header Actions (Auth-aware via js/auth.js) -->
         <div class="header-actions">
-          <a href="tel:+254143024416" class="header-phone-link" aria-label="Call Instructify Kenya">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-            <span>+254 143 024 416</span>
-          </a>
+          <a href="login.html" id="nav-login-btn" class="nav-login-btn">Log In</a>
 
-          <a href="#training-request" class="btn-primary-orange">
-            <span>Book School Training</span>
+          <div id="nav-user-menu" class="nav-user-menu nav-has-dropdown">
+            <button type="button" class="nav-user-trigger" aria-expanded="false" aria-haspopup="true"
+              aria-controls="nav-user-dropdown">
+              <span id="nav-user-avatar" class="nav-user-avatar">IK</span>
+              <span id="nav-user-name">Account</span>
+              <svg class="nav-dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div id="nav-user-dropdown" class="nav-dropdown-panel align-right" role="menu">
+              <a href="courses.html?tab=my-learning" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon" aria-hidden="true">📚</span>
+                <span class="nav-dropdown-meta">
+                  <span class="nav-dropdown-title">My Courses &amp; Dashboard</span>
+                  <span class="nav-dropdown-desc">Continue enrolled courses &amp; progress</span>
+                </span>
+              </a>
+              <a href="verify.html" class="nav-dropdown-item" role="menuitem">
+                <span class="nav-dropdown-icon" aria-hidden="true">🏆</span>
+                <span class="nav-dropdown-meta">
+                  <span class="nav-dropdown-title">Verify Certificate</span>
+                  <span class="nav-dropdown-desc">Check CPD credential codes</span>
+                </span>
+              </a>
+              <div class="nav-dropdown-divider"></div>
+              <button type="button" class="nav-dropdown-item" role="menuitem"
+                onclick="if(window.logout) window.logout();"
+                style="width:100%; border:none; background:transparent; cursor:pointer; text-align:left;">
+                <span class="nav-dropdown-icon" aria-hidden="true">🚪</span>
+                <span class="nav-dropdown-meta">
+                  <span class="nav-dropdown-title" style="color:#DC2626;">Log Out</span>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <a href="courses.html" class="btn-primary-orange">
+            <span>Explore Courses</span>
           </a>
 
           <!-- Mobile Hamburger Toggle Button -->
-          <button
-            type="button"
-            class="mobile-nav-toggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="mobile-nav-drawer"
-          >
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
+          <button type="button" class="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false"
+            aria-controls="mobile-nav-drawer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
           </button>
         </div>
@@ -216,21 +358,56 @@
 
   <!-- Mobile Navigation Drawer -->
   <div id="mobile-nav-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-top">
+      <a href="index.html" class="brand-link" aria-label="Instructify Kenya Homepage">
+        <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="brand-logo-img"
+          width="144" height="34">
+      </a>
+      <button type="button" class="mobile-drawer-close" aria-label="Close navigation menu">&times;</button>
+    </div>
+
     <nav class="mobile-drawer-links" aria-label="Mobile Drawer Navigation">
-      <a href="/" class="mobile-drawer-link">Home</a>
+      <a href="index.html" class="mobile-drawer-link active" aria-current="page">Home</a>
+
+      <div class="mobile-accordion-group">
+        <button type="button" class="mobile-accordion-trigger" aria-expanded="false" aria-controls="mobile-acc-courses">
+          <span>Courses</span>
+          <span aria-hidden="true">+</span>
+        </button>
+        <div id="mobile-acc-courses" class="mobile-accordion-panel">
+          <a href="courses.html" class="mobile-sub-link">All Courses Catalogue</a>
+          <a href="courses.html?category=AI" class="mobile-sub-link">AI for Educators</a>
+          <a href="courses.html?category=Digital" class="mobile-sub-link">Digital Skills</a>
+          <a href="courses.html?category=ICT" class="mobile-sub-link">ICT Integration</a>
+          <a href="cpd-registration.html" class="mobile-sub-link">CPD Programmes</a>
+          <a href="courses.html?category=Leadership" class="mobile-sub-link">School Leadership</a>
+        </div>
+      </div>
+
       <a href="about.html" class="mobile-drawer-link">About Us</a>
-      <a href="#featured-programmes" class="mobile-drawer-link">Featured Programmes</a>
-      <a href="coding-bootcamp" class="mobile-drawer-link">Coding Boot Camp (Nov–Dec)</a>
-      <a href="#why-instructify" class="mobile-drawer-link">Why Instructify</a>
-      <a href="#training-process" class="mobile-drawer-link">Training Process</a>
-      <a href="#who-we-serve" class="mobile-drawer-link">Who We Serve</a>
-      <a href="#training-formats" class="mobile-drawer-link">Training Formats</a>
-      <a href="#resources" class="mobile-drawer-link">Teaching Resources</a>
-      <a href="#faq" class="mobile-drawer-link">Frequently Asked Questions</a>
+
+      <div class="mobile-accordion-group">
+        <button type="button" class="mobile-accordion-trigger" aria-expanded="false"
+          aria-controls="mobile-acc-resources">
+          <span>Resources</span>
+          <span aria-hidden="true">+</span>
+        </button>
+        <div id="mobile-acc-resources" class="mobile-accordion-panel">
+          <a href="blog.html" class="mobile-sub-link">Blog &amp; Articles</a>
+          <a href="resources.html#guides" class="mobile-sub-link">Teaching Guides</a>
+          <a href="resources.html#downloads" class="mobile-sub-link">Downloads &amp; Templates</a>
+          <a href="resources.html" class="mobile-sub-link">Digital Tools Hub</a>
+          <a href="coding-bootcamp" class="mobile-sub-link">Coding Boot Camp (New)</a>
+        </div>
+      </div>
+
       <a href="contact.html" class="mobile-drawer-link">Contact Us</a>
     </nav>
+
     <div class="mobile-drawer-cta">
-      <a href="#training-request" class="btn-primary-orange">Book School Training</a>
+      <a href="courses.html" class="btn-primary-orange">Explore Courses</a>
+      <a href="login.html" class="btn-outline-navy">Log In / Create Account</a>
+      <a href="#training-request" class="btn-outline-navy">Book School Training</a>
       <a href="tel:+254143024416" class="btn-outline-navy">Call +254 143 024 416</a>
     </div>
   </div>
@@ -257,20 +434,24 @@
             </h1>
 
             <p class="hero-supporting-copy">
-              Empower your teachers with practical skills in artificial intelligence, Microsoft 365, digital pedagogy, and competency-based assessment. Customised on-site and virtual workshops designed specifically for Kenyan schools.
+              Empower your teachers with practical skills in artificial intelligence, Microsoft 365, digital pedagogy,
+              and competency-based assessment. Customised on-site and virtual workshops designed specifically for Kenyan
+              schools.
             </p>
 
             <div class="hero-cta-cluster">
-              <a href="#featured-programmes" class="btn-primary-orange btn-hero-lg">
-                <span>Explore Our Programmes</span>
-                <svg class="btn-arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <a href="courses.html" class="btn-primary-orange btn-hero-lg">
+                <span>Explore Courses</span>
+                <svg class="btn-arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
               </a>
 
               <a href="#training-request" class="btn-hero-secondary btn-hero-lg">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                   <line x1="16" y1="2" x2="16" y2="6"></line>
                   <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -282,27 +463,37 @@
 
             <div class="hero-trust-box">
               <div class="hero-trust-statement">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.4"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
                 <span>Supporting teachers, schools, and education leaders across Kenya.</span>
               </div>
               <div class="hero-trust-badges">
                 <span class="hero-trust-badge-item">
                   <span class="trust-check-dot" aria-hidden="true">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
                   </span>
                   CBC-Aligned Pedagogy
                 </span>
                 <span class="hero-trust-badge-item">
                   <span class="trust-check-dot" aria-hidden="true">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
                   </span>
                   100% Practical &amp; Hands-On
                 </span>
                 <span class="hero-trust-badge-item">
                   <span class="trust-check-dot" aria-hidden="true">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
                   </span>
                   Verifiable CPD Certification
                 </span>
@@ -313,21 +504,19 @@
           <!-- Right Column: Authentic Kenyan Classroom Photo & 3 Restrained Badges -->
           <div class="hero-visual-wrapper">
             <div class="hero-image-card">
-              <img
-                src="assets/images/home_hero_classroom.jpg"
+              <img src="assets/images/home_hero_classroom.jpg"
                 alt="Kenyan educators actively engaged in a hands-on digital skills and AI workshop"
-                class="hero-main-photo"
-                width="580"
-                height="440"
-                fetchpriority="high"
-              >
+                class="hero-main-photo" width="580" height="440" fetchpriority="high">
             </div>
 
             <!-- Floating Label 1 -->
             <div class="hero-floating-badge badge-1" aria-hidden="true">
               <div class="badge-icon-box">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
                 </svg>
               </div>
               <span>AI for Educators</span>
@@ -336,7 +525,8 @@
             <!-- Floating Label 2 -->
             <div class="hero-floating-badge badge-2" aria-hidden="true">
               <div class="badge-icon-box">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
                   <line x1="8" y1="21" x2="16" y2="21"></line>
                   <line x1="12" y1="17" x2="12" y2="21"></line>
@@ -348,7 +538,8 @@
             <!-- Floating Label 3 (Hidden gracefully on small mobile screens) -->
             <div class="hero-floating-badge badge-3" aria-hidden="true">
               <div class="badge-icon-box">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" stroke-linejoin="round">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                   <polyline points="14 2 14 8 20 8"></polyline>
                   <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -377,10 +568,13 @@
           </div>
           <div>
             <p class="intro-lead-text">
-              Instructify equips Kenyan teachers, school principals, and academic coordinators with immediately usable digital tools that elevate daily teaching without unnecessary complexity.
+              Instructify equips Kenyan teachers, school principals, and academic coordinators with immediately usable
+              digital tools that elevate daily teaching without unnecessary complexity.
             </p>
             <p class="intro-body-text">
-              We bridge the gap between educational technology and classroom realities. Rather than abstract lectures, every session is grounded in the Kenyan curriculum, enabling educators to create lesson plans, design rubrics, track student competencies, and engage modern learners with confidence.
+              We bridge the gap between educational technology and classroom realities. Rather than abstract lectures,
+              every session is grounded in the Kenyan curriculum, enabling educators to create lesson plans, design
+              rubrics, track student competencies, and engage modern learners with confidence.
             </p>
           </div>
         </div>
@@ -389,32 +583,39 @@
         <div class="intro-pillars-grid">
           <div class="intro-pillar-card">
             <div class="intro-pillar-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
                 <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
               </svg>
             </div>
             <h3 class="intro-pillar-title">Curriculum-Aligned</h3>
             <p class="intro-pillar-desc">
-              Every training module aligns directly with Competency-Based Curriculum (CBC) guidelines and Ministry standards to ensure immediate classroom relevance.
+              Every training module aligns directly with Competency-Based Curriculum (CBC) guidelines and Ministry
+              standards to ensure immediate classroom relevance.
             </p>
           </div>
 
           <div class="intro-pillar-card">
             <div class="intro-pillar-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                </path>
               </svg>
             </div>
             <h3 class="intro-pillar-title">Practice-First Methodology</h3>
             <p class="intro-pillar-desc">
-              Participants build real lesson aids, interactive presentations, and automated assessment templates during the workshop—not hypothetical examples.
+              Participants build real lesson aids, interactive presentations, and automated assessment templates during
+              the workshop—not hypothetical examples.
             </p>
           </div>
 
           <div class="intro-pillar-card">
             <div class="intro-pillar-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                 <circle cx="9" cy="7" r="4"></circle>
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -423,9 +624,57 @@
             </div>
             <h3 class="intro-pillar-title">Sustainable School Impact</h3>
             <p class="intro-pillar-desc">
-              We empower internal school champions with post-training toolkits, follow-up coaching, and practical templates to anchor lasting digital transformation.
+              We empower internal school champions with post-training toolkits, follow-up coaching, and practical
+              templates to anchor lasting digital transformation.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4B: COURSE CATEGORIES (DYNAMIC FROM window.COURSES)
+         ============================================================ -->
+    <section class="home-section bg-soft" id="course-categories" aria-labelledby="categories-heading">
+      <div class="home-container">
+        <div class="section-header-block">
+          <div class="section-eyebrow">LEARNING TRACKS</div>
+          <h2 id="categories-heading" class="section-h2">Browse Course Categories</h2>
+          <p class="section-subtitle">
+            Structured online, blended, and school-based pathways across AI literacy, digital productivity, ICT
+            integration, CBC curriculum design, and leadership.
+          </p>
+        </div>
+
+        <div id="home-categories-grid" class="ik-categories-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4C: FEATURED COURSES (DYNAMIC FROM window.COURSES)
+         ============================================================ -->
+    <section class="home-section" id="featured-courses" aria-labelledby="courses-showcase-heading">
+      <div class="home-container">
+        <div class="section-header-block">
+          <div class="section-eyebrow">PRACTICAL CERTIFICATION &amp; CPD</div>
+          <h2 id="courses-showcase-heading" class="section-h2">Featured Courses &amp; Free Access Tracks</h2>
+          <p class="section-subtitle">
+            Self-paced and blended courses designed for Kenyan educators, students, and school leaders — pay easily via
+            M-Pesa STK Push or start free open access tracks immediately.
+          </p>
+        </div>
+
+        <div id="home-featured-courses-grid" class="ik-featured-courses-grid"></div>
+
+        <div style="text-align:center; margin-top:36px;">
+          <a href="courses.html" class="btn-primary-orange btn-hero-lg">
+            <span>Browse Full Course Catalogue</span>
+            <svg class="btn-arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
@@ -439,7 +688,8 @@
           <div class="section-eyebrow">ACCREDITED CAPACITY BUILDING</div>
           <h2 id="programmes-heading" class="section-h2">Featured Training Programmes</h2>
           <p class="section-subtitle">
-            Targeted professional development programmes engineered to build practical digital confidence in primary, secondary, and tertiary educators.
+            Targeted professional development programmes engineered to build practical digital confidence in primary,
+            secondary, and tertiary educators.
           </p>
         </div>
 
@@ -448,13 +698,16 @@
           <!-- Programme 1: AI for Educators -->
           <article class="programme-card">
             <div class="programme-icon-wrap" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
               </svg>
             </div>
             <h3 class="programme-title">AI for Educators</h3>
             <p class="programme-desc">
-              Master practical generative AI tools to draft structured CBC lesson plans, generate customized reading materials, automate differentiated quiz questions, and dramatically cut lesson preparation time.
+              Master practical generative AI tools to draft structured CBC lesson plans, generate customized reading
+              materials, automate differentiated quiz questions, and dramatically cut lesson preparation time.
             </p>
             <div class="programme-audience-box">
               <span class="programme-audience-label">Intended Audience</span>
@@ -469,21 +722,24 @@
           <!-- Programme 2: Microsoft 365 for Education -->
           <article class="programme-card">
             <div class="programme-icon-wrap" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                <line x1="8" y1="21" x2="16" y2="21"/>
-                <line x1="12" y1="17" x2="12" y2="21"/>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
               </svg>
             </div>
             <h3 class="programme-title">Microsoft 365 for Education</h3>
             <p class="programme-desc">
-              Organize classroom workflows with Microsoft Teams, OneNote Class Notebook, Forms, and OneDrive. Build paperless assignment workflows, manage staff collaboration, and maintain organized digital records.
+              Organize classroom workflows with Microsoft Teams, OneNote Class Notebook, Forms, and OneDrive. Build
+              paperless assignment workflows, manage staff collaboration, and maintain organized digital records.
             </p>
             <div class="programme-audience-box">
               <span class="programme-audience-label">Intended Audience</span>
               Class Teachers, Subject Champions, Academic Registrars, School Administrators
             </div>
-            <a href="#training-request" class="programme-action-link" data-select-programme="Microsoft 365 for Education">
+            <a href="#training-request" class="programme-action-link"
+              data-select-programme="Microsoft 365 for Education">
               <span>Request Training for Your School</span>
               <span aria-hidden="true">&rarr;</span>
             </a>
@@ -492,13 +748,16 @@
           <!-- Programme 3: Digital Teaching Skills -->
           <article class="programme-card">
             <div class="programme-icon-wrap" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="5 3 19 12 5 21 5 3"/>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3" />
               </svg>
             </div>
             <h3 class="programme-title">Digital Teaching Skills</h3>
             <p class="programme-desc">
-              Transition from traditional teacher-led instruction to interactive multimedia delivery. Learn to build engaging presentations, utilize interactive digital whiteboards, and integrate student response tools seamlessly.
+              Transition from traditional teacher-led instruction to interactive multimedia delivery. Learn to build
+              engaging presentations, utilize interactive digital whiteboards, and integrate student response tools
+              seamlessly.
             </p>
             <div class="programme-audience-box">
               <span class="programme-audience-label">Intended Audience</span>
@@ -513,23 +772,27 @@
           <!-- Programme 4: Competency-Based Teaching & Assessment -->
           <article class="programme-card">
             <div class="programme-icon-wrap" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <line x1="16" y1="13" x2="8" y2="13"/>
-                <line x1="16" y1="17" x2="8" y2="17"/>
-                <polyline points="10 9 9 9 8 9"/>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
               </svg>
             </div>
             <h3 class="programme-title">Competency-Based Teaching and Assessment</h3>
             <p class="programme-desc">
-              Design authentic learner-centred tasks and construct objective scoring rubrics for CBC formative assessment. Learn to monitor ongoing learner growth and produce clear, evidence-based learner progress portfolios.
+              Design authentic learner-centred tasks and construct objective scoring rubrics for CBC formative
+              assessment. Learn to monitor ongoing learner growth and produce clear, evidence-based learner progress
+              portfolios.
             </p>
             <div class="programme-audience-box">
               <span class="programme-audience-label">Intended Audience</span>
               CBC Teachers, Deputy Principals (Academics), Assessment Coordinators
             </div>
-            <a href="#training-request" class="programme-action-link" data-select-programme="Competency-Based Teaching and Assessment">
+            <a href="#training-request" class="programme-action-link"
+              data-select-programme="Competency-Based Teaching and Assessment">
               <span>Request Training for Your School</span>
               <span aria-hidden="true">&rarr;</span>
             </a>
@@ -538,20 +801,23 @@
           <!-- Programme 5: Coding and Digital Creativity -->
           <article class="programme-card">
             <div class="programme-icon-wrap" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="16 18 22 12 16 6"/>
-                <polyline points="8 6 2 12 8 18"/>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
               </svg>
             </div>
             <h3 class="programme-title">Coding and Digital Creativity</h3>
             <p class="programme-desc">
-              Equip educators to lead beginner coding, visual block programming (Scratch), and computational thinking clubs in schools. Foster creative problem solving, robotics basics, and digital innovation among students.
+              Equip educators to lead beginner coding, visual block programming (Scratch), and computational thinking
+              clubs in schools. Foster creative problem solving, robotics basics, and digital innovation among students.
             </p>
             <div class="programme-audience-box">
               <span class="programme-audience-label">Intended Audience</span>
               Computer Studies Teachers, STEM Patrons, Coding Club Leaders
             </div>
-            <a href="#training-request" class="programme-action-link" data-select-programme="Coding and Digital Creativity">
+            <a href="#training-request" class="programme-action-link"
+              data-select-programme="Coding and Digital Creativity">
               <span>Request Training for Your School</span>
               <span aria-hidden="true">&rarr;</span>
             </a>
@@ -560,20 +826,24 @@
           <!-- Programme 6: School Leadership & Digital Transformation -->
           <article class="programme-card">
             <div class="programme-icon-wrap" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
               </svg>
             </div>
             <h3 class="programme-title">School Leadership and Digital Transformation</h3>
             <p class="programme-desc">
-              Strategic guidance for school principals and directors: develop institutional ICT policies, establish digital safeguarding guidelines, plan cost-effective technology investments, and drive staff change management.
+              Strategic guidance for school principals and directors: develop institutional ICT policies, establish
+              digital safeguarding guidelines, plan cost-effective technology investments, and drive staff change
+              management.
             </p>
             <div class="programme-audience-box">
               <span class="programme-audience-label">Intended Audience</span>
               Principals, Headteachers, Board Members, Education Directors
             </div>
-            <a href="#training-request" class="programme-action-link" data-select-programme="School Leadership and Digital Transformation">
+            <a href="#training-request" class="programme-action-link"
+              data-select-programme="School Leadership and Digital Transformation">
               <span>Request Training for Your School</span>
               <span aria-hidden="true">&rarr;</span>
             </a>
@@ -592,66 +862,74 @@
           <div class="section-eyebrow">THE INSTRUCTIFY ADVANTAGE</div>
           <h2 id="why-heading" class="section-h2">Why Leading Schools Partner With Us</h2>
           <p class="section-subtitle">
-            We understand the Kenyan educational landscape and tailor every programme to deliver measurable, sustainable classroom improvement.
+            We understand the Kenyan educational landscape and tailor every programme to deliver measurable, sustainable
+            classroom improvement.
           </p>
         </div>
 
-        <div class="why-grid">
+        <div class="why-grid why-grid-4">
           <div class="why-card">
             <div class="why-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
             </div>
             <div class="why-content">
-              <h3>Built for Kenyan Realities</h3>
+              <h3>Practical, Locally Relevant Training</h3>
               <p>
-                Our curriculum accounts for varied connectivity, mixed hardware environments, and national curriculum requirements. We teach solutions that work seamlessly in real Kenyan classrooms.
+                Our curriculum accounts for varied connectivity, mixed hardware environments, and Kenyan CBC
+                requirements so every skill works immediately in real classrooms.
               </p>
             </div>
           </div>
 
           <div class="why-card">
             <div class="why-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
               </svg>
             </div>
             <div class="why-content">
-              <h3>Immediate Practical Application</h3>
+              <h3>Flexible Learning Pacing</h3>
               <p>
-                Teachers leave our sessions with tangible lesson artifacts, working digital rubrics, and automated planning prompts ready to deploy the very next morning.
+                Self-paced online modules, school holiday intensives, and on-site workshops let busy teachers and
+                learners build tangible classroom tools without schedule disruption.
               </p>
             </div>
           </div>
 
           <div class="why-card">
             <div class="why-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                <line x1="2" y1="10" x2="22" y2="10"></line>
+              </svg>
+            </div>
+            <div class="why-content">
+              <h3>Accessible M-Pesa &amp; School Enrolment</h3>
+              <p>
+                Enrol individually in seconds using seamless M-Pesa STK Push, Paybill, or free open courses—or request
+                tailored school-wide training proposals for boards.
+              </p>
+            </div>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               </svg>
             </div>
             <div class="why-content">
-              <h3>Ongoing Post-Workshop Support</h3>
+              <h3>Verifiable Certificates &amp; Ongoing Support</h3>
               <p>
-                Professional development does not end when the workshop concludes. We supply post-training implementation checklists, digital toolkits, and mentor check-ins.
-              </p>
-            </div>
-          </div>
-
-          <div class="why-card">
-            <div class="why-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="20" x2="18" y2="10"></line>
-                <line x1="12" y1="20" x2="12" y2="4"></line>
-                <line x1="6" y1="20" x2="6" y2="14"></line>
-              </svg>
-            </div>
-            <div class="why-content">
-              <h3>Measurable Teacher Productivity</h3>
-              <p>
-                Schools report substantial reductions in routine administrative workloads, allowing teachers to spend more valuable time mentoring and coaching individual learners.
+                Every programme concludes with verifiable digital completion credentials, practical implementation
+                toolkits, and responsive educator support.
               </p>
             </div>
           </div>
@@ -660,48 +938,44 @@
     </section>
 
     <!-- ============================================================
-         SECTION 7: FOUR-STEP TRAINING PROCESS
+         SECTION 7: HOW IT WORKS (3 CLEAR STEPS)
          ============================================================ -->
     <section class="home-section bg-soft" id="training-process" aria-labelledby="process-heading">
       <div class="home-container">
         <div class="section-header-block">
-          <div class="section-eyebrow">HOW WE WORK</div>
-          <h2 id="process-heading" class="section-h2">Our Four-Step Training Process</h2>
+          <div class="section-eyebrow">HOW IT WORKS</div>
+          <h2 id="process-heading" class="section-h2">Start Learning or Book Training in Three Steps</h2>
           <p class="section-subtitle">
-            A structured, consultative methodology ensuring high engagement, customized delivery, and lasting classroom impact.
+            A clear pathway whether you are an individual educator enrolling online or a school leader organising staff
+            training.
           </p>
         </div>
 
-        <div class="process-steps-grid">
+        <div class="process-grid-3">
           <div class="process-step-card">
             <div class="process-step-num" aria-hidden="true">1</div>
-            <h3 class="process-step-title">Needs Discovery</h3>
+            <h3 class="process-step-title">Choose Your Course or Track</h3>
             <p class="process-step-desc">
-              We consult with school leadership to assess existing technology infrastructure, teacher comfort levels, and primary pedagogical goals.
+              Browse practical self-paced courses by category and skill level—or select a school training focus area
+              aligned to your institution's goals.
             </p>
           </div>
 
           <div class="process-step-card">
             <div class="process-step-num" aria-hidden="true">2</div>
-            <h3 class="process-step-title">Curriculum Tailoring</h3>
+            <h3 class="process-step-title">Enrol Easily or Request Proposal</h3>
             <p class="process-step-desc">
-              We customize exercises, case studies, and templates to match your school's exact subjects, grade levels, and calendar commitments.
+              Unlock courses instantly via M-Pesa STK Push, Paybill, card, or free access—or submit a school training
+              request for a custom workshop schedule.
             </p>
           </div>
 
           <div class="process-step-card">
             <div class="process-step-num" aria-hidden="true">3</div>
-            <h3 class="process-step-title">Hands-On Delivery</h3>
+            <h3 class="process-step-title">Apply Practically &amp; Certify</h3>
             <p class="process-step-desc">
-              Our facilitators lead an interactive, practice-first workshop where every educator builds live digital classroom materials on their own devices.
-            </p>
-          </div>
-
-          <div class="process-step-card">
-            <div class="process-step-num" aria-hidden="true">4</div>
-            <h3 class="process-step-title">Follow-Through &amp; Review</h3>
-            <p class="process-step-desc">
-              We provide reference guides, follow-up coaching prompts, and a comprehensive implementation summary for school management.
+              Complete hands-on lessons and templates ready for next-day teaching, and earn a verifiable certificate
+              checkable on our portal.
             </p>
           </div>
         </div>
@@ -724,56 +998,64 @@
         <div class="audiences-grid">
           <div class="audience-card">
             <div class="audience-avatar-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
               </svg>
             </div>
             <h3 class="audience-title">Primary &amp; Secondary Teachers</h3>
             <p class="audience-desc">
-              Educators looking to streamline lesson planning, automate grading rubrics, and deliver captivating, interactive lessons.
+              Educators looking to streamline lesson planning, automate grading rubrics, and deliver captivating,
+              interactive lessons.
             </p>
           </div>
 
           <div class="audience-card">
             <div class="audience-avatar-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c3 3 9 3 12 0v-5" />
               </svg>
             </div>
             <h3 class="audience-title">School Principals &amp; Headteachers</h3>
             <p class="audience-desc">
-              Institutional leaders driving school-wide digital adoption, modernizing records, and developing robust ICT policies.
+              Institutional leaders driving school-wide digital adoption, modernizing records, and developing robust ICT
+              policies.
             </p>
           </div>
 
           <div class="audience-card">
             <div class="audience-avatar-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="2" y1="12" x2="22" y2="12"/>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
               </svg>
             </div>
             <h3 class="audience-title">TVET Tutors &amp; Lecturers</h3>
             <p class="audience-desc">
-              Higher education and vocational instructors integrating blended learning tools, collaboration platforms, and digital assessments.
+              Higher education and vocational instructors integrating blended learning tools, collaboration platforms,
+              and digital assessments.
             </p>
           </div>
 
           <div class="audience-card">
             <div class="audience-avatar-icon" aria-hidden="true">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
               </svg>
             </div>
             <h3 class="audience-title">Education Organizations</h3>
             <p class="audience-desc">
-              NGOs, school networks, and educational foundations running large-scale teacher upskilling initiatives across counties.
+              NGOs, school networks, and educational foundations running large-scale teacher upskilling initiatives
+              across counties.
             </p>
           </div>
         </div>
@@ -789,7 +1071,8 @@
           <div class="section-eyebrow">CONVENIENT DELIVERY</div>
           <h2 id="formats-heading" class="section-h2">Flexible Training Formats</h2>
           <p class="section-subtitle">
-            Choose the delivery mode that best matches your school's academic timetable, staff size, and geographic location.
+            Choose the delivery mode that best matches your school's academic timetable, staff size, and geographic
+            location.
           </p>
         </div>
 
@@ -798,19 +1081,29 @@
             <span class="format-badge campus">ON-SITE WORKSHOPS</span>
             <h3 class="format-title">At Your School Campus</h3>
             <p class="format-desc">
-              Full-day or half-day practical immersion workshops delivered directly at your school anywhere in Kenya with your staff together.
+              Full-day or half-day practical immersion workshops delivered directly at your school anywhere in Kenya
+              with your staff together.
             </p>
             <ul class="format-features-list">
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 Conducted in your computer lab or hall
               </li>
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 Live peer collaboration &amp; team bonding
               </li>
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 Tailored directly to your devices
               </li>
             </ul>
@@ -820,19 +1113,29 @@
             <span class="format-badge virtual">VIRTUAL COHORTS</span>
             <h3 class="format-title">Live Interactive Online</h3>
             <p class="format-desc">
-              Scheduled live interactive sessions via Microsoft Teams or Zoom with direct mentor guidance and real-time screen sharing.
+              Scheduled live interactive sessions via Microsoft Teams or Zoom with direct mentor guidance and real-time
+              screen sharing.
             </p>
             <ul class="format-features-list">
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 Zero travel requirements
               </li>
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 Interactive breakout room exercises
               </li>
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 Full session recordings provided
               </li>
             </ul>
@@ -842,19 +1145,29 @@
             <span class="format-badge blended">HYBRID MODEL</span>
             <h3 class="format-title">Blended Learning</h3>
             <p class="format-desc">
-              Combines an initial on-site kick-off workshop with ongoing self-paced online modules and periodic virtual check-in webinars.
+              Combines an initial on-site kick-off workshop with ongoing self-paced online modules and periodic virtual
+              check-in webinars.
             </p>
             <ul class="format-features-list">
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 Self-paced learning flexibility
               </li>
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 Progress tracking per educator
               </li>
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 Sustainable multi-week mastery
               </li>
             </ul>
@@ -864,19 +1177,29 @@
             <span class="format-badge executive">INTENSIVE CAMPS</span>
             <h3 class="format-title">Holiday &amp; Weekend Intensives</h3>
             <p class="format-desc">
-              Dedicated immersion workshops during school holidays or mid-term breaks designed for deep skill acquisition without term-time disruption.
+              Dedicated immersion workshops during school holidays or mid-term breaks designed for deep skill
+              acquisition without term-time disruption.
             </p>
             <ul class="format-features-list">
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 Zero interruption to classes
               </li>
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 Deep-dive project creation
               </li>
               <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 Comprehensive certification
               </li>
             </ul>
@@ -894,7 +1217,8 @@
           <div class="section-eyebrow">TANGIBLE CAPABILITIES</div>
           <h2 id="outcomes-heading" class="section-h2">What Your Educators Will Achieve</h2>
           <p class="section-subtitle">
-            Every session focuses on actionable competencies that directly enhance teaching effectiveness and learner engagement.
+            Every session focuses on actionable competencies that directly enhance teaching effectiveness and learner
+            engagement.
           </p>
         </div>
 
@@ -903,7 +1227,8 @@
             <div class="outcome-metric">01</div>
             <h3 class="outcome-title">Rapid CBC Lesson Preparation</h3>
             <p class="outcome-desc">
-              Draft comprehensive, curriculum-aligned lesson plans, worksheets, and rubrics in a fraction of the customary time using structured AI workflows.
+              Draft comprehensive, curriculum-aligned lesson plans, worksheets, and rubrics in a fraction of the
+              customary time using structured AI workflows.
             </p>
           </div>
 
@@ -911,7 +1236,8 @@
             <div class="outcome-metric">02</div>
             <h3 class="outcome-title">Paperless Classroom Workflows</h3>
             <p class="outcome-desc">
-              Centralize teaching notes, distribute digital assignments, and collect student submissions seamlessly using Microsoft 365 and digital notebooks.
+              Centralize teaching notes, distribute digital assignments, and collect student submissions seamlessly
+              using Microsoft 365 and digital notebooks.
             </p>
           </div>
 
@@ -919,7 +1245,8 @@
             <div class="outcome-metric">03</div>
             <h3 class="outcome-title">Formative Assessment Mastery</h3>
             <p class="outcome-desc">
-              Construct objective scoring rubrics, record qualitative competency observations, and communicate learner progress transparently with parents.
+              Construct objective scoring rubrics, record qualitative competency observations, and communicate learner
+              progress transparently with parents.
             </p>
           </div>
 
@@ -927,7 +1254,8 @@
             <div class="outcome-metric">04</div>
             <h3 class="outcome-title">Active Student Engagement</h3>
             <p class="outcome-desc">
-              Incorporate interactive polling, digital whiteboards, and visual storytelling to keep students active, curious, and collaborative.
+              Incorporate interactive polling, digital whiteboards, and visual storytelling to keep students active,
+              curious, and collaborative.
             </p>
           </div>
         </div>
@@ -942,7 +1270,9 @@
         <div class="impact-box">
           <div class="impact-quote-icon" aria-hidden="true">&ldquo;</div>
           <blockquote class="impact-statement-text">
-            &ldquo;Meaningful educational transformation begins when teachers feel genuinely supported and capable. When an educator gains confidence with modern technology, every learner in that classroom benefits immediately.&rdquo;
+            &ldquo;Meaningful educational transformation begins when teachers feel genuinely supported and capable. When
+            an educator gains confidence with modern technology, every learner in that classroom benefits
+            immediately.&rdquo;
           </blockquote>
           <div class="impact-footer-note">
             Instructify Kenya — Dedicated to advancing teacher excellence and digital literacy across all 47 counties.
@@ -960,7 +1290,8 @@
           <div class="section-eyebrow">FIELD OBSERVATIONS</div>
           <h2 id="stories-heading" class="section-h2">Classroom Transformation in Action</h2>
           <p class="section-subtitle">
-            Authentic reflections on how practical digital skills training reshapes teacher confidence and institutional efficiency.
+            Authentic reflections on how practical digital skills training reshapes teacher confidence and institutional
+            efficiency.
           </p>
         </div>
 
@@ -971,7 +1302,10 @@
             </div>
             <h3 class="story-title">From Digital Hesitation to Classroom Innovation</h3>
             <p class="story-body">
-              During institutional on-site workshops, educators who previously felt apprehensive about digital tools routinely transition into confident creators. By learning structured prompt engineering and interactive presentation techniques in a supportive environment, teachers rapidly build lesson presentations and formative assessments that spark enthusiasm among their students.
+              During institutional on-site workshops, educators who previously felt apprehensive about digital tools
+              routinely transition into confident creators. By learning structured prompt engineering and interactive
+              presentation techniques in a supportive environment, teachers rapidly build lesson presentations and
+              formative assessments that spark enthusiasm among their students.
             </p>
           </article>
 
@@ -981,7 +1315,9 @@
             </div>
             <h3 class="story-title">Streamlining Assessment and Collaborative Workflows</h3>
             <p class="story-body">
-              Schools implementing Microsoft 365 and digital rubric tools experience a noticeable decline in end-of-term reporting bottlenecks. Departmental heads coordinate scheme-of-work reviews collaboratively online, while class teachers generate clear, competency-based feedback for parents with greater speed and consistency.
+              Schools implementing Microsoft 365 and digital rubric tools experience a noticeable decline in end-of-term
+              reporting bottlenecks. Departmental heads coordinate scheme-of-work reviews collaboratively online, while
+              class teachers generate clear, competency-based feedback for parents with greater speed and consistency.
             </p>
           </article>
         </div>
@@ -1006,7 +1342,8 @@
             <span class="resource-type-badge">PLANNING TOOLKIT</span>
             <h3 class="resource-title">CBC Lesson Planning &amp; Rubric Guide</h3>
             <p class="resource-desc">
-              A comprehensive toolkit outlining structured rubric construction, competency indicators, and formative evaluation methods tailored for Kenyan classrooms.
+              A comprehensive toolkit outlining structured rubric construction, competency indicators, and formative
+              evaluation methods tailored for Kenyan classrooms.
             </p>
             <a href="#training-request" class="resource-action-btn">
               <span>Request School Access</span>
@@ -1018,7 +1355,8 @@
             <span class="resource-type-badge">PRACTICAL GUIDE</span>
             <h3 class="resource-title">Smart Classroom &amp; Digital Pedagogy</h3>
             <p class="resource-desc">
-              A pragmatic guide on integrating projectors, tablets, and interactive whiteboards into daily subject teaching with zero technical overwhelm.
+              A pragmatic guide on integrating projectors, tablets, and interactive whiteboards into daily subject
+              teaching with zero technical overwhelm.
             </p>
             <a href="#training-request" class="resource-action-btn">
               <span>Request School Access</span>
@@ -1030,7 +1368,8 @@
             <span class="resource-type-badge">PROMPT HANDBOOK</span>
             <h3 class="resource-title">AI Prompting Handbook for Teachers</h3>
             <p class="resource-desc">
-              Over 40 tested generative AI prompts designed specifically to draft comprehension passages, science experiment guides, and differentiated review questions.
+              Over 40 tested generative AI prompts designed specifically to draft comprehension passages, science
+              experiment guides, and differentiated review questions.
             </p>
             <a href="#training-request" class="resource-action-btn">
               <span>Request School Access</span>
@@ -1062,7 +1401,9 @@
             </summary>
             <div class="faq-content">
               <p>
-                We deliver on-site workshops directly at your school campus anywhere in Kenya. Alternatively, we offer interactive virtual cohorts via Microsoft Teams or Zoom, and hybrid models blending live sessions with self-paced LMS modules.
+                We deliver on-site workshops directly at your school campus anywhere in Kenya. Alternatively, we offer
+                interactive virtual cohorts via Microsoft Teams or Zoom, and hybrid models blending live sessions with
+                self-paced LMS modules.
               </p>
             </div>
           </details>
@@ -1073,7 +1414,9 @@
             </summary>
             <div class="faq-content">
               <p>
-                Yes. Every institutional engagement begins with a discovery assessment where we align our training modules with your school's current device ecosystem, teacher proficiency levels, and strategic academic priorities.
+                Yes. Every institutional engagement begins with a discovery assessment where we align our training
+                modules with your school's current device ecosystem, teacher proficiency levels, and strategic academic
+                priorities.
               </p>
             </div>
           </details>
@@ -1084,7 +1427,9 @@
             </summary>
             <div class="faq-content">
               <p>
-                Participating educators only need a laptop, tablet, or smartphone with standard internet access. For on-site workshops, we provide downloadable offline templates, exercises, and supplementary instructional materials.
+                Participating educators only need a laptop, tablet, or smartphone with standard internet access. For
+                on-site workshops, we provide downloadable offline templates, exercises, and supplementary instructional
+                materials.
               </p>
             </div>
           </details>
@@ -1095,7 +1440,9 @@
             </summary>
             <div class="faq-content">
               <p>
-                Yes. All educators who successfully complete the hands-on practical exercises receive an official Instructify Certificate of Professional Development with a verifiable credential code suitable for institutional CPD records.
+                Yes. All educators who successfully complete the hands-on practical exercises receive an official
+                Instructify Certificate of Professional Development with a verifiable credential code suitable for
+                institutional CPD records.
               </p>
             </div>
           </details>
@@ -1106,7 +1453,8 @@
             </summary>
             <div class="faq-content">
               <p>
-                We cater to departmental teams of 5 to 15 teachers as well as whole-school staff cohorts of 50 or more. For larger cohorts, we deploy co-facilitators to maintain hands-on coaching ratios.
+                We cater to departmental teams of 5 to 15 teachers as well as whole-school staff cohorts of 50 or more.
+                For larger cohorts, we deploy co-facilitators to maintain hands-on coaching ratios.
               </p>
             </div>
           </details>
@@ -1117,7 +1465,8 @@
             </summary>
             <div class="faq-content">
               <p>
-                Simply submit the Training Request Form on this page or email info@instructify.co.ke. Our educational partnerships team will prepare a formal proposal and itemized quotation within 24 business hours.
+                Simply submit the Training Request Form on this page or email info@instructify.co.ke. Our educational
+                partnerships team will prepare a formal proposal and itemized quotation within 24 business hours.
               </p>
             </div>
           </details>
@@ -1135,7 +1484,8 @@
           <div class="section-eyebrow">BOOK PROFESSIONAL DEVELOPMENT</div>
           <h2 id="form-heading" class="section-h2">Request Training for Your School</h2>
           <p class="section-subtitle">
-            Fill out the details below to request a tailored workshop proposal, quotation, or consultative planning call.
+            Fill out the details below to request a tailored workshop proposal, quotation, or consultative planning
+            call.
           </p>
         </div>
 
@@ -1143,7 +1493,8 @@
           <div class="form-card-header">
             <h3>School Training Enquiry Form</h3>
             <p>
-              Tell us about your institution, preferred focus area, and estimated staff numbers. We will respond within 24 business hours.
+              Tell us about your institution, preferred focus area, and estimated staff numbers. We will respond within
+              24 business hours.
             </p>
           </div>
 
@@ -1152,17 +1503,23 @@
             <!-- Success State Banner -->
             <div id="tr-success-banner" class="form-success-banner" role="status" aria-live="polite">
               <h4>
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                   <polyline points="22 4 12 14.01 9 11.01"></polyline>
                 </svg>
                 <span>Training Enquiry Received Successfully!</span>
               </h4>
               <p>
-                Thank you for reaching out. Your enquiry reference number is: <strong id="tr-success-ref">IK-SCH-2026-PENDING</strong>.<br>
-                Our educational partnerships coordinator will review your school requirements and contact you via email/phone within 24 business hours.
+                Thank you for reaching out. Your enquiry reference number is: <strong
+                  id="tr-success-ref">IK-SCH-2026-PENDING</strong>.<br>
+                Our educational partnerships coordinator will review your school requirements and contact you via
+                email/phone within 24 business hours.
               </p>
             </div>
+
+            <!-- Form Error Summary (ARIA Live) -->
+            <div id="tr-error-summary" class="ik-form-error-summary" role="alert" aria-live="polite"></div>
 
             <!-- Form -->
             <form id="training-request-form" novalidate>
@@ -1171,7 +1528,8 @@
               <div style="position: absolute; left: -9999px; top: -9999px;" aria-hidden="true">
                 <label for="_hp_instructify">Leave this field blank</label>
                 <input type="text" id="_hp_instructify" name="_hp_instructify" tabindex="-1" autocomplete="off">
-                <input type="text" name="website_hp_check" tabindex="-1" autocomplete="off">
+                <input type="text" name="website_hp_check" aria-label="Leave this field blank" tabindex="-1"
+                  autocomplete="off">
               </div>
 
               <!-- Row 1: Full Name & School/Institution -->
@@ -1180,15 +1538,8 @@
                   <label for="tr-fullname" class="form-label">
                     Full Name <span class="req" aria-hidden="true">*</span>
                   </label>
-                  <input
-                    type="text"
-                    id="tr-fullname"
-                    name="fullName"
-                    class="form-input"
-                    placeholder="e.g. Margaret Wanjiru"
-                    required
-                    autocomplete="name"
-                  >
+                  <input type="text" id="tr-fullname" name="fullName" class="form-input"
+                    placeholder="e.g. Margaret Wanjiru" required autocomplete="name">
                   <span id="err-tr-fullname" class="form-error-text" role="alert"></span>
                 </div>
 
@@ -1196,15 +1547,8 @@
                   <label for="tr-institution" class="form-label">
                     School or Institution Name <span class="req" aria-hidden="true">*</span>
                   </label>
-                  <input
-                    type="text"
-                    id="tr-institution"
-                    name="institution"
-                    class="form-input"
-                    placeholder="e.g. Nairobi Academy"
-                    required
-                    autocomplete="organization"
-                  >
+                  <input type="text" id="tr-institution" name="institution" class="form-input"
+                    placeholder="e.g. Nairobi Academy" required autocomplete="organization">
                   <span id="err-tr-institution" class="form-error-text" role="alert"></span>
                 </div>
               </div>
@@ -1232,15 +1576,8 @@
                   <label for="tr-email" class="form-label">
                     Official Email Address <span class="req" aria-hidden="true">*</span>
                   </label>
-                  <input
-                    type="email"
-                    id="tr-email"
-                    name="email"
-                    class="form-input"
-                    placeholder="e.g. m.wanjiru@school.sc.ke"
-                    required
-                    autocomplete="email"
-                  >
+                  <input type="email" id="tr-email" name="email" class="form-input"
+                    placeholder="e.g. m.wanjiru@school.sc.ke" required autocomplete="email">
                   <span id="err-tr-email" class="form-error-text" role="alert"></span>
                 </div>
               </div>
@@ -1251,15 +1588,8 @@
                   <label for="tr-phone" class="form-label">
                     Telephone / WhatsApp Number <span class="req" aria-hidden="true">*</span>
                   </label>
-                  <input
-                    type="tel"
-                    id="tr-phone"
-                    name="phone"
-                    class="form-input"
-                    placeholder="e.g. 0712 345 678"
-                    required
-                    autocomplete="tel"
-                  >
+                  <input type="tel" id="tr-phone" name="phone" class="form-input" placeholder="e.g. 0712 345 678"
+                    required autocomplete="tel">
                   <span id="err-tr-phone" class="form-error-text" role="alert"></span>
                 </div>
 
@@ -1296,14 +1626,8 @@
                   <label for="tr-town" class="form-label">
                     Town or Location <span class="req" aria-hidden="true">*</span>
                   </label>
-                  <input
-                    type="text"
-                    id="tr-town"
-                    name="town"
-                    class="form-input"
-                    placeholder="e.g. Westlands, Nairobi or Thika"
-                    required
-                  >
+                  <input type="text" id="tr-town" name="town" class="form-input"
+                    placeholder="e.g. Westlands, Nairobi or Thika" required>
                   <span id="err-tr-town" class="form-error-text" role="alert"></span>
                 </div>
 
@@ -1316,9 +1640,11 @@
                     <option value="AI for Educators">AI for Educators</option>
                     <option value="Microsoft 365 for Education">Microsoft 365 for Education</option>
                     <option value="Digital Teaching Skills">Digital Teaching Skills</option>
-                    <option value="Competency-Based Teaching and Assessment">Competency-Based Teaching and Assessment</option>
+                    <option value="Competency-Based Teaching and Assessment">Competency-Based Teaching and Assessment
+                    </option>
                     <option value="Coding and Digital Creativity">Coding and Digital Creativity</option>
-                    <option value="School Leadership and Digital Transformation">School Leadership and Digital Transformation</option>
+                    <option value="School Leadership and Digital Transformation">School Leadership and Digital
+                      Transformation</option>
                     <option value="Comprehensive Multi-Module Package">Comprehensive Multi-Module Package</option>
                   </select>
                   <span id="err-tr-programme" class="form-error-text" role="alert"></span>
@@ -1358,13 +1684,8 @@
                 <label for="tr-date" class="form-label">
                   Proposed Date or Preferred Month
                 </label>
-                <input
-                  type="text"
-                  id="tr-date"
-                  name="proposedDate"
-                  class="form-input"
-                  placeholder="e.g. November 2026, December Holiday, or Term 1 2027"
-                >
+                <input type="text" id="tr-date" name="proposedDate" class="form-input"
+                  placeholder="e.g. November 2026, December Holiday, or Term 1 2027">
               </div>
 
               <!-- Row 7: Additional Information -->
@@ -1372,13 +1693,8 @@
                 <label for="tr-info" class="form-label">
                   Specific School Goals or Information
                 </label>
-                <textarea
-                  id="tr-info"
-                  name="additionalInfo"
-                  class="form-textarea"
-                  rows="4"
-                  placeholder="Share details regarding your school's current device setup, specific challenges, or priority outcomes..."
-                ></textarea>
+                <textarea id="tr-info" name="additionalInfo" class="form-textarea" rows="4"
+                  placeholder="Share details regarding your school's current device setup, specific challenges, or priority outcomes..."></textarea>
               </div>
 
               <!-- Row 8: Data Protection Consent Checkbox -->
@@ -1386,7 +1702,8 @@
                 <label class="form-consent-label" for="tr-consent">
                   <input type="checkbox" id="tr-consent" name="consent" required>
                   <span>
-                    I consent to Instructify contacting me regarding this school training request in accordance with the Kenya Data Protection Act 2019. <span class="req" aria-hidden="true">*</span>
+                    I consent to Instructify contacting me regarding this school training request in accordance with the
+                    Kenya Data Protection Act 2019. <span class="req" aria-hidden="true">*</span>
                   </span>
                 </label>
                 <span id="err-tr-consent" class="form-error-text" role="alert"></span>
@@ -1395,9 +1712,10 @@
               <!-- Row 9: Submit Button & Reassurance Note -->
               <div class="form-submit-row">
                 <div class="form-privacy-note">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                   </svg>
                   <span>Your information is protected and never shared with third parties.</span>
                 </div>
@@ -1424,20 +1742,18 @@
             Stay Ahead in Educational Innovation
           </h2>
           <p>
-            Join over 2,000 Kenyan educators receiving our monthly briefing featuring practical AI prompts, CBC assessment templates, and upcoming workshop announcements.
+            Receive our monthly educator briefing featuring practical AI prompts, CBC assessment templates, and upcoming
+            workshop announcements.
           </p>
-          <form id="newsletter-form-home" class="newsletter-form-inline">
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email address"
-              required
-              aria-label="Email address for monthly educational newsletter"
-            >
+          <form id="newsletter-form-home" class="newsletter-form-inline" novalidate>
+            <input type="email" name="email" placeholder="Enter your email address" required
+              aria-label="Email address for monthly educational newsletter">
             <button type="submit" class="btn-secondary-blue">
               <span>Subscribe Free</span>
             </button>
           </form>
+          <div id="newsletter-home-feedback" class="ik-status-banner" style="display:none; margin-top:12px;"
+            role="status" aria-live="polite"></div>
         </div>
       </div>
     </section>
@@ -1451,22 +1767,25 @@
           Ready to Equip Your School for the Digital Future?
         </h2>
         <p class="final-cta-lead">
-          Join progressive Kenyan schools and educators taking practical steps toward modern, engaging, and effective teaching.
+          Join progressive Kenyan schools and educators taking practical steps toward modern, engaging, and effective
+          teaching.
         </p>
         <div class="final-cta-buttons">
           <a href="#training-request" class="btn-primary-orange">
             <span>Book School Training</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </a>
-          <a href="coding-bootcamp" class="btn-outline-white">
-            <span>Explore Coding Boot Camp</span>
+          <a href="courses.html" class="btn-outline-white">
+            <span>Explore Courses</span>
           </a>
         </div>
         <div class="final-cta-reassurance">
-          Need an immediate proposal or board briefing? Call us at <a href="tel:+254143024416">+254 143 024 416</a> or email <a href="mailto:info@instructify.co.ke">info@instructify.co.ke</a>
+          Need an immediate proposal or board briefing? Call us at <a href="tel:+254143024416">+254 143 024 416</a> or
+          email <a href="mailto:info@instructify.co.ke">info@instructify.co.ke</a>
         </div>
       </div>
     </section>
@@ -1477,135 +1796,175 @@
        SECTION 18: FOOTER
        ============================================================ -->
   <footer class="site-footer" id="site-footer" role="contentinfo">
-  <div class="site-footer-container">
-    <div class="footer-top-grid">
+    <div class="site-footer-container">
+      <div class="footer-top-grid">
 
-      <!-- Column 1: Brand, Purpose & Socials -->
-      <div>
-        <a href="index.html" class="footer-brand-link" aria-label="Instructify Kenya Homepage">
-          <img
-            src="assets/images/instructify-kenya-logo.png"
-            alt="Instructify Kenya Logo"
-            class="footer-brand-img"
-            width="160"
-            height="38"
-          >
-        </a>
-        <p class="footer-brand-tagline">
-          We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.
-        </p>
-        <p class="footer-brand-summary">
-          Practical digital skills, artificial intelligence training, coding boot camps, and CBC-aligned professional development for educators, schools, and learners across all 47 Kenyan counties.
-        </p>
-        <div class="footer-social-row" aria-label="Social media channels">
-          <a href="https://www.linkedin.com/company/instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z"/></svg>
+        <!-- Column 1: Brand, Purpose & Socials -->
+        <div>
+          <a href="index.html" class="footer-brand-link" aria-label="Instructify Kenya Homepage">
+            <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="footer-brand-img"
+              width="160" height="38">
           </a>
-          <a href="https://www.youtube.com/@instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 22c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 2c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
-          </a>
-          <a id="footer-wa-link" href="https://wa.me/254143024416?text=Hello%20Instructify%20Kenya,%20I%20would%20like%20to%20connect." target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-          </a>
-          <a href="https://www.facebook.com/instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02Z"/></svg>
-          </a>
-          <a href="https://x.com/instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="X (Twitter)">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-        </div>
-        <a href="contact.html" class="footer-partner-cta">Partner With Us &rarr;</a>
-      </div>
-
-      <!-- Column 2: Programmes -->
-      <div>
-        <h3 class="footer-col-title">Programmes</h3>
-        <ul class="footer-nav-list">
-          <li><a href="#training-request" data-select-programme="AI for Educators">AI for Educators</a></li>
-          <li><a href="#training-request" data-select-programme="Microsoft 365 for Education">Microsoft 365 for Education</a></li>
-          <li><a href="#training-request" data-select-programme="Digital Teaching Skills">Digital Teaching Skills</a></li>
-          <li><a href="#training-request" data-select-programme="Competency-Based Teaching and Assessment">Competency-Based Assessment</a></li>
-          <li><a href="#training-request" data-select-programme="Coding and Digital Creativity">Coding &amp; STEM Creativity</a></li>
-          <li><a href="#training-request" data-select-programme="School Leadership and Digital Transformation">School Leadership Track</a></li>
-          <li><a href="coding-bootcamp" class="footer-link-highlight">Coding Boot Camp <span class="footer-badge-new">NEW</span></a></li>
-        </ul>
-      </div>
-
-      <!-- Column 3: Quick Links -->
-      <div>
-        <h3 class="footer-col-title">Quick Links</h3>
-        <ul class="footer-nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="courses.html">Courses &amp; LMS</a></li>
-          <li><a href="schools.html">Schools &amp; Institutions</a></li>
-          <li><a href="resources.html">Teaching Resources</a></li>
-          <li><a href="blog.html">Knowledge Hub &amp; Blog</a></li>
-          <li><a href="events.html">Events &amp; Workshops</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 4: Contact & Newsletter -->
-      <div>
-        <h3 class="footer-col-title">Contact &amp; Updates</h3>
-        <div class="footer-contact-details">
-          <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-            <span>Nairobi, Kenya — Serving all 47 counties</span>
+          <p class="footer-brand-tagline">
+            We Don’t Just Deliver Content. We Transform. We Awaken. We Ignite Purpose.
+          </p>
+          <p class="footer-brand-summary">
+            Practical digital skills, artificial intelligence training, coding boot camps, and CBC-aligned professional
+            development for educators, schools, and learners across all 47 Kenyan counties.
+          </p>
+          <div class="footer-social-row" aria-label="Social media channels">
+            <a href="https://www.linkedin.com/company/instructifykenya" target="_blank" rel="noopener noreferrer"
+              class="footer-social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28M7.86 18.5V10.13H5.07V18.5h2.79z" />
+              </svg>
+            </a>
+            <a href="https://www.youtube.com/@instructifykenya" target="_blank" rel="noopener noreferrer"
+              class="footer-social-btn" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 22c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 2c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z" />
+              </svg>
+            </a>
+            <a id="footer-wa-link"
+              href="https://wa.me/254143024416?text=Hello%20Instructify%20Kenya,%20I%20would%20like%20to%20connect."
+              target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/instructifykenya" target="_blank" rel="noopener noreferrer"
+              class="footer-social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02Z" />
+              </svg>
+            </a>
+            <a href="https://x.com/instructifykenya" target="_blank" rel="noopener noreferrer" class="footer-social-btn"
+              aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/instructifykenya" target="_blank" rel="noopener noreferrer"
+              class="footer-social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
           </div>
-          <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-            <a href="tel:+254143024416">+254 143 024 416</a>
-          </div>
-          <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-            <a href="mailto:info@instructify.co.ke">info@instructify.co.ke</a>
-          </div>
+          <a href="contact.html" class="footer-partner-cta">Partner With Us &rarr;</a>
         </div>
 
-        <div class="footer-newsletter-box">
-          <h4 class="footer-newsletter-title">Newsletter Signup</h4>
-          <p class="footer-newsletter-desc">Get the latest insights on educational innovation in Kenya.</p>
-          <form class="footer-newsletter-form" novalidate>
-            <input type="email" class="footer-newsletter-input" placeholder="Your email" aria-label="Your email address" required autocomplete="email">
-            <button type="submit" class="footer-newsletter-btn">Subscribe</button>
-          </form>
-          <p class="footer-newsletter-msg" role="status" aria-live="polite"></p>
+        <!-- Column 2: Programmes -->
+        <div>
+          <h3 class="footer-col-title">Programmes</h3>
+          <ul class="footer-nav-list">
+            <li><a href="courses.html?category=AI">AI for Educators</a></li>
+            <li><a href="courses.html?category=Digital">Digital Skills &amp; Literacy</a></li>
+            <li><a href="courses.html?category=ICT">ICT Integration</a></li>
+            <li><a href="cpd-registration.html">CPD Programmes</a></li>
+            <li><a href="courses.html?category=Curriculum">Competency-Based Assessment</a></li>
+            <li><a href="courses.html?category=Leadership">School Leadership Track</a></li>
+            <li><a href="coding-bootcamp" class="footer-link-highlight">Coding Boot Camp <span
+                  class="footer-badge-new">NEW</span></a></li>
+          </ul>
         </div>
+
+        <!-- Column 3: Quick Links -->
+        <div>
+          <h3 class="footer-col-title">Quick Links</h3>
+          <ul class="footer-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="courses.html">Courses &amp; LMS</a></li>
+            <li><a href="schools.html">Schools &amp; Institutions</a></li>
+            <li><a href="resources.html">Teaching Resources</a></li>
+            <li><a href="blog.html">Knowledge Hub &amp; Blog</a></li>
+            <li><a href="verify.html">Verify Certificate</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact & Newsletter -->
+        <div>
+          <h3 class="footer-col-title">Contact &amp; Updates</h3>
+          <div class="footer-contact-details">
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Nairobi, Kenya — Serving all 47 counties</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <a href="tel:+254143024416">+254 143 024 416</a>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <a href="mailto:info@instructify.co.ke">info@instructify.co.ke</a>
+            </div>
+          </div>
+
+          <div class="footer-newsletter-box">
+            <h4 class="footer-newsletter-title">Newsletter Signup</h4>
+            <p class="footer-newsletter-desc">Get the latest insights on educational innovation in Kenya.</p>
+            <form class="footer-newsletter-form" novalidate>
+              <input type="email" class="footer-newsletter-input" placeholder="Your email"
+                aria-label="Your email address" required autocomplete="email">
+              <button type="submit" class="footer-newsletter-btn">Subscribe</button>
+            </form>
+            <p class="footer-newsletter-msg" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+
       </div>
 
+      <!-- Bottom Legal Bar -->
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 Instructify Kenya Ltd. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="accessibility.html">Accessibility</a>
+          <a href="verify.html">Verify Certificate</a>
+          <a href="#training-request">Book School Training</a>
+        </div>
+      </div>
     </div>
+  </footer>
 
-    <!-- Bottom Legal Bar -->
-    <div class="footer-bottom-bar">
-      <div>&copy; 2026 Instructify Kenya Ltd. All rights reserved.</div>
-      <div class="footer-bottom-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="accessibility.html">Accessibility</a>
-        <a href="verify.html">Verify Certificate</a>
-        <a href="#training-request">Book School Training</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-  <!-- Homepage JavaScript Controller -->
-  <script src="js/homepage-redesign.js" defer></script>
-
-  <script src="js/site-header.js?v=2026.2" defer></script>
+  <!-- Auth, Courses, Form Validation & Homepage Controllers -->
+  <script src="js/auth.js?v=2026.9"></script>
+  <script src="js/courses.js?v=2026.9"></script>
+  <script src="js/form-validator.js?v=2026.9"></script>
+  <script src="js/homepage-redesign.js?v=2026.9"></script>
+  <script src="js/site-header.js?v=2026.9"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var trForm = document.getElementById('training-request-form');
+      if (trForm && window.FormValidator) {
+        trForm.addEventListener('submit', function () {
+          window.FormValidator.validateForm(trForm);
+        });
+      }
+    });
+  </script>
 </body>
+
 </html>

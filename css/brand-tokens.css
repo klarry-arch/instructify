@@ -16,13 +16,26 @@
 
 :root {
 
-  /* ── Typography Tokens ── */
-  --font-heading: "Plus Jakarta Sans", "Inter", Arial, sans-serif;
+  /* ── Typography Tokens (Poppins Headings/Nav/Buttons + Inter Body) ── */
+  --font-heading: "Poppins", "Inter", Arial, sans-serif;
   --font-body: "Inter", Arial, sans-serif;
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
   --weight-bold: 700;
+
+  /* ── Section 4 Spacing & Card System Tokens ── */
+  --space-scale-8:  8px;
+  --space-scale-16: 16px;
+  --space-scale-24: 24px;
+  --space-scale-32: 32px;
+  --space-scale-48: 48px;
+  --space-scale-64: 64px;
+  --space-scale-96: 96px;
+  --card-radius:    16px;
+  --card-padding:   24px;
+  --card-border:    1px solid #E8E3D5;
+  --color-success-accent: #22C55E;
 
   /* Core Brand Tokens */
   --color-primary:            #2563EB;

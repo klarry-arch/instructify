@@ -4,171 +4,173 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enroll & Checkout | Instructify Kenya</title>
-  <meta name="description" content="Securely complete your course enrollment on Instructify Kenya. Pay via M-Pesa or card.">
+  <meta name="description" content="Securely complete your course enrollment on Instructify Kenya. Pay via M-Pesa STK Push, Paybill, or card.">
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=2026.6">
-  <link rel="stylesheet" href="css/animations.css?v=2026.6">
-  <link rel="stylesheet" href="css/components.css?v=2026.6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/brand-tokens.css?v=2026.9">
+  <link rel="stylesheet" href="css/global.css?v=2026.9">
+  <link rel="stylesheet" href="css/animations.css?v=2026.9">
+  <link rel="stylesheet" href="css/components.css?v=2026.9">
+  <link rel="stylesheet" href="css/site-header.css?v=2026.9">
   <!-- Paystack Inline JS — loaded async; CheckoutEngine checks availability -->
   <script src="https://js.paystack.co/v1/inline.js" async></script>
   <style>
     .checkout-page {
       min-height: 100vh;
-      background: linear-gradient(135deg, #1E1B4B 0%, #2563EB 60%, #2563EB 100%);
-      padding: calc(var(--nav-height, 72px) + 2rem) 0 4rem;
+      background: linear-gradient(135deg, #1E1B4B 0%, #1E40AF 65%, #2563EB 100%);
+      padding: 40px 0 64px;
     }
     .checkout-container {
-      max-width: 900px;
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 20px;
     }
+    @media (min-width: 768px) { .checkout-container { padding: 0 32px; } }
     .checkout-grid {
       display: grid;
       grid-template-columns: 1fr 380px;
-      gap: 2rem;
+      gap: 32px;
       align-items: start;
     }
-    @media (max-width: 768px) { .checkout-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .checkout-grid { grid-template-columns: 1fr; } }
 
     /* ── Order Summary Card ── */
     .order-card {
-      background: rgba(255,255,255,0.08);
+      background: rgba(20, 17, 54, 0.72);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 20px;
-      padding: 2rem;
-      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px;
+      padding: 24px;
+      color: #FFFFFF;
       position: sticky;
-      top: calc(var(--nav-height, 72px) + 1rem);
+      top: 96px;
     }
-    .order-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
-    .order-card-title { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; line-height: 1.35; margin-bottom: 1.5rem; }
-    .order-card-divider { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 1rem 0; }
-    .order-card-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; color: rgba(255,255,255,0.75); margin-bottom: 8px; }
-    .order-card-total { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #FACC15; line-height: 1; }
-    .order-card-original { font-size: 0.85rem; color: rgba(255,255,255,0.4); text-decoration: line-through; margin-top: 2px; }
-    .order-guarantee { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .order-card-label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #E0E7FF; margin-bottom: 6px; }
+    .order-card-title { font-family: var(--font-heading); font-size: 19px; font-weight: 700; color: #FFFFFF; line-height: 1.35; margin-bottom: 12px; }
+    .order-card-divider { border: none; border-top: 1px solid rgba(255,255,255,0.16); margin: 16px 0; }
+    .order-card-row { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #E0E7FF; margin-bottom: 10px; }
+    .order-card-total { font-family: var(--font-heading); font-size: 32px; font-weight: 800; color: #FACC15; line-height: 1.1; }
+    .order-card-original { font-size: 14px; color: #C7D2FE; text-decoration: line-through; margin-top: 4px; }
+    .order-guarantee { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #E0E7FF; margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.16); }
 
     /* ── Checkout Form Card ── */
     .form-card {
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1px solid #E8E3D5;
+      padding: 32px;
+      box-shadow: 0 24px 64px rgba(20, 17, 54, 0.28);
     }
-    .form-card-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #1E1B4B; margin-bottom: 0.25rem; }
-    .form-card-sub { color:var(--text-muted, #433F6B); font-size: 0.9rem; margin-bottom: 1.75rem; }
-    .step-indicator { display: flex; gap: 8px; margin-bottom: 2rem; }
-    .step { flex: 1; height: 4px; border-radius: 4px; background: #E8E3D5; transition: background 0.3s; }
-    .step.active { background: #FFFFFF; }
-    .step.done { background: var(--color-tertiary, #0C7A6B); }
+    .form-card-title { font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: #1E1B4B; margin-bottom: 4px; }
+    .form-card-sub { color: #433F6B; font-size: 15px; margin-bottom: 24px; }
+    .step-indicator { display: flex; gap: 8px; margin-bottom: 24px; }
+    .step { flex: 1; height: 5px; border-radius: 4px; background: #E8E3D5; transition: background 0.3s; }
+    .step.active { background: #2563EB; }
+    .step.done { background: #15803D; }
 
     /* ── Form fields ── */
-    .field-group { margin-bottom: 1.25rem; }
-    .field-label { display: block; font-weight: 600; font-size: 0.875rem; color:var(--text-muted, #433F6B); margin-bottom: 6px; }
+    .field-group { margin-bottom: 18px; }
+    .field-label { display: block; font-weight: 600; font-size: 14.5px; color: #1E1B4B; margin-bottom: 6px; }
     .field-input {
-      width: 100%; padding: 0.75rem 1rem;
+      width: 100%; padding: 12px 14px; min-height: 46px;
       border: 1.5px solid #E8E3D5; border-radius: 10px;
-      font-family: var(--font-body); font-size: 0.95rem; color: #1E1B4B;
+      font-family: var(--font-body); font-size: 16px; color: #1E1B4B;
       background: #FFFDF7; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
       box-sizing: border-box;
     }
-    .field-input:focus { border-color: #2563EB; box-shadow: 0 0 0 3px rgba(30,58,138,0.1); background: #fff; }
+    .field-input:focus { border-color: #2563EB; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18); background: #FFFFFF; }
     .field-input.error { border-color: #DC2626; }
-    .field-error { font-size: 0.78rem; color: #DC2626; margin-top: 4px; display: none; }
+    .field-error { font-size: 13.5px; color: #DC2626; font-weight: 600; margin-top: 6px; display: none; }
     .field-error.visible { display: block; }
-    .field-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    @media (max-width: 480px) { .field-grid-2 { grid-template-columns: 1fr; } }
-    .field-hint { font-size: 0.78rem; color:#E8E3D5; margin-top: 4px; }
+    .field-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 560px) { .field-grid-2 { grid-template-columns: 1fr; } }
+    .field-hint { font-size: 13.5px; color: #5B5882; margin-top: 6px; line-height: 1.45; }
 
     /* ── Payment method tabs ── */
-    .pay-method-tabs { display: flex; gap: 10px; margin-bottom: 1.5rem; }
+    .pay-method-tabs { display: flex; gap: 10px; margin-bottom: 20px; }
     .pay-method-tab {
-      flex: 1; padding: 14px 8px; border: 2px solid #E8E3D5;
+      flex: 1; padding: 14px 8px; min-height: 54px; border: 1.5px solid #E8E3D5;
       border-radius: 12px; background: #FFFDF7; cursor: pointer;
       transition: all 0.2s; text-align: center;
     }
-    .pay-method-tab:hover { border-color: #2563EB; }
-    .pay-method-tab.active { border-color: #2563EB; background: #E8F0F8; }
-    .pay-method-tab .tab-icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
-    .pay-method-tab .tab-name { font-size: 0.7rem; font-weight: 700; color:var(--text-muted, #433F6B); letter-spacing: 0.05em; text-transform: uppercase; }
-    .pay-method-tab.active .tab-name { color: #2563EB; }
+    .pay-method-tab:hover { border-color: #2563EB; background: #EFF6FF; }
+    .pay-method-tab.active { border-color: #2563EB; background: #EFF6FF; }
+    .pay-method-tab .tab-icon { font-size: 1.4rem; display: block; margin-bottom: 4px; }
+    .pay-method-tab .tab-name { font-family: var(--font-heading); font-size: 13px; font-weight: 600; color: #433F6B; }
+    .pay-method-tab.active .tab-name { color: #1D4ED8; font-weight: 700; }
     .pay-panel { display: none; }
     .pay-panel.active { display: block; }
     .btn-copy-tag {
-      background: #EEF3FF; color: #2563EB; border: 1px solid #C7D7FE;
-      border-radius: 6px; font-size: 0.72rem; font-weight: 700;
-      padding: 3px 8px; cursor: pointer; transition: all 0.15s ease;
+      background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE;
+      border-radius: 6px; font-size: 12.5px; font-weight: 700;
+      padding: 4px 10px; min-height: 32px; cursor: pointer; transition: all 0.15s ease;
       display: inline-flex; align-items: center; gap: 4px;
     }
-    .btn-copy-tag:hover { background: #2563EB; color: #fff; }
-    .btn-copy-tag.copied { background: #16A34A; color: #fff; border-color: #16A34A; }
+    .btn-copy-tag:hover { background: #2563EB; color: #FFFFFF; }
+    .btn-copy-tag.copied { background: #15803D; color: #FFFFFF; border-color: #15803D; }
 
     /* ── Status screens ── */
-    .status-screen { text-align: center; padding: 2rem 1rem; }
-    .status-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 1.25rem; }
+    .status-screen { text-align: center; padding: 24px 8px; }
+    .status-icon { width: 76px; height: 76px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 20px; }
     .status-icon.spin { animation: spin 1.2s linear infinite; }
-    .status-title { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: #1E1B4B; margin-bottom: 0.5rem; }
-    .status-sub { color:var(--text-muted, #433F6B); font-size: 0.9rem; line-height: 1.6; max-width: 360px; margin: 0 auto 1.5rem; }
-    .status-ref { font-size: 0.8rem; color:#E8E3D5; background: #EEF4FB; border-radius: 8px; padding: 8px 14px; display: inline-block; margin-bottom: 1.5rem; }
-    .status-ref strong { color: #2563EB; }
+    .status-title { font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: #1E1B4B; margin-bottom: 8px; line-height: 1.3; }
+    .status-sub { color: #433F6B; font-size: 15px; line-height: 1.6; max-width: 420px; margin: 0 auto 20px; }
+    .status-ref { font-size: 13.5px; color: #433F6B; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 10px; padding: 10px 16px; display: inline-block; margin-bottom: 20px; }
+    .status-ref strong { color: #1D4ED8; }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-    /* ── Submit button ── */
+    /* ── Submit button (Primary Royal Blue) ── */
     .btn-enroll {
-      width: 100%; padding: 16px;
-      background: linear-gradient(135deg, #DC2E0A 0%, #B22206 100%);
-      color: #fff; font-family: var(--font-heading); font-weight: 800;
-      font-size: 1.05rem; border: none; border-radius: 99px;
+      width: 100%; padding: 14px 20px; min-height: 50px;
+      background: #2563EB;
+      color: #FFFFFF !important; font-family: var(--font-heading); font-weight: 600;
+      font-size: 16px; border: 1.5px solid #2563EB; border-radius: 10px;
       cursor: pointer; transition: all 0.2s;
-      box-shadow: 0 6px 20px rgba(220,46,10,0.35);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.30);
       display: flex; align-items: center; justify-content: center; gap: 8px;
     }
-    .btn-enroll:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(220,46,10,0.45); }
-    .btn-enroll:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .btn-enroll:hover:not(:disabled) { background: #1D4ED8; border-color: #1D4ED8; transform: translateY(-1px); box-shadow: 0 12px 24px rgba(29, 78, 216, 0.38); }
+    .btn-enroll:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
     .btn-secondary-outline {
-      width: 100%; padding: 13px;
-      background: transparent; color: #2563EB;
-      border: 1.5px solid #E8E3D5; border-radius: 99px;
-      font-weight: 700; font-size: 0.9rem; cursor: pointer;
-      transition: all 0.2s; margin-top: 10px;
+      width: 100%; padding: 12px 18px; min-height: 46px;
+      background: #FFFFFF; color: #2563EB;
+      border: 1.5px solid #2563EB; border-radius: 10px;
+      font-family: var(--font-heading); font-weight: 600; font-size: 14.5px; cursor: pointer;
+      transition: all 0.2s; margin-top: 12px;
     }
-    .btn-secondary-outline:hover { border-color: #2563EB; background: #E8F0F8; }
+    .btn-secondary-outline:hover { background: #EFF6FF; }
 
     /* ── SSL badge ── */
-    .ssl-badge { text-align: center; font-size: 0.75rem; color:#E8E3D5; margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
-    .installment-badge { background: #E0F5F2; color: #065F46; border: 1px solid rgba(5,150,105,0.2); border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 1.25rem; }
-  
-    @media (max-width: 768px) {
+    .ssl-badge { text-align: center; font-size: 13px; color: #5B5882; margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .installment-badge { background: #F0FDF4; color: #166534; border: 1px solid #BBF7D0; border-radius: 10px; padding: 10px 14px; font-size: 13.5px; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 18px; }
+
+    @media (max-width: 900px) {
       .checkout-grid { display: flex !important; flex-direction: column !important; }
-      .order-card { position: static !important; order: -1 !important; margin-bottom: 1.5rem !important; padding: 1.5rem 1.25rem !important; }
-      .form-card { padding: 1.5rem 1.25rem !important; }
+      .order-card { position: static !important; order: -1 !important; margin-bottom: 8px !important; padding: 20px !important; }
+      .form-card { padding: 22px 18px !important; }
       .pay-method-tabs { flex-direction: row !important; }
-      .pay-method-tab { min-height: 52px !important; padding: 12px 8px !important; }
+      .pay-method-tab { min-height: 52px !important; padding: 10px 6px !important; }
     }
     @media (max-width: 480px) {
-      .order-card-total { font-size: 1.65rem !important; }
-      .btn-enroll { min-height: 52px !important; font-size: 0.98rem !important; }
+      .order-card-total { font-size: 26px !important; }
+      .btn-enroll { min-height: 50px !important; font-size: 15px !important; }
+      .pay-method-tabs { flex-direction: column !important; }
     }
-  
   </style>
-  <link rel="stylesheet" href="css/live-chat.css?v=2026.6">
-  <link rel="stylesheet" href="css/site-header.css?v=2026.6">
+  <link rel="stylesheet" href="css/live-chat.css?v=2026.9">
 </head>
 <body>
+  <a href="#main-content" class="skip-to-content">Skip to checkout</a>
 
-<!-- ── Navigation ───────────────────────────────────────────── -->
-<!-- ============================================================
-       ANNOUNCEMENT BAR & UNIFIED STICKY HEADER
-       ============================================================ -->
   <aside class="announcement-bar" role="complementary" aria-label="Announcement">
     <div class="home-container">
       <div class="announcement-content">
-        <span class="announcement-badge">2026 INTAKE OPEN</span>
+        <span class="announcement-badge">SECURE CHECKOUT</span>
         <span class="announcement-text">
-          Booking Open: On-Site Digital Skills &amp; AI Workshops for Kenyan Schools across all 47 counties.
+          M-Pesa STK Push, Equity Paybill (247247 / 636445), or Card &middot; Need help? Call +254 143 024 416
         </span>
-        <a href="index.html#training-request" class="announcement-link">Book School Training &rarr;</a>
       </div>
     </div>
   </aside>
@@ -176,84 +178,69 @@
   <header class="sticky-header" role="banner">
     <div class="home-container">
       <div class="header-nav-wrap">
-
-        <!-- Brand Logo -->
         <a href="index.html" class="brand-link" aria-label="Instructify Kenya Homepage">
-          <img
-            src="assets/images/instructify-kenya-logo.png"
-            alt="Instructify Kenya Logo"
-            class="brand-logo-img"
-            width="160"
-            height="38"
-          >
+          <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="brand-logo-img" width="160" height="38">
         </a>
-
-        <!-- Desktop Navigation Links -->
         <nav class="desktop-nav" aria-label="Primary Navigation">
           <ul class="header-nav-links">
-            <li><a href="index.html" class="header-nav-link">Home</a></li>
-            <li><a href="about.html" class="header-nav-link">About Us</a></li>
-            <li><a href="courses.html" class="header-nav-link">Programmes</a></li>
-            <li><a href="coding-bootcamp" class="header-nav-link nav-bootcamp-badge">Boot Camp</a></li>
-            <li><a href="resources.html" class="header-nav-link">Resources</a></li>
-            <li><a href="index.html#faq" class="header-nav-link">FAQ</a></li>
-            <li><a href="contact.html" class="header-nav-link">Contact</a></li>
+            <li class="header-nav-item"><a href="index.html" class="header-nav-link">Home</a></li>
+            <li class="header-nav-item"><a href="courses.html" class="header-nav-link active">Courses</a></li>
+            <li class="header-nav-item"><a href="about.html" class="header-nav-link">About Us</a></li>
+            <li class="header-nav-item"><a href="resources.html" class="header-nav-link">Resources</a></li>
+            <li class="header-nav-item"><a href="contact.html" class="header-nav-link">Contact</a></li>
           </ul>
         </nav>
-
-        <!-- Header Actions -->
         <div class="header-actions">
-          <a href="tel:+254143024416" class="header-phone-link" aria-label="Call Instructify Kenya">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-            <span>+254 143 024 416</span>
-          </a>
-
-          <a href="index.html#training-request" class="btn-primary-orange">
-            <span>Book School Training</span>
-          </a>
-
-          <!-- Mobile Hamburger Toggle Button -->
-          <button
-            type="button"
-            class="mobile-nav-toggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="mobile-nav-drawer"
-          >
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
+          <a href="login.html" id="nav-login-btn" class="nav-login-btn">Log In</a>
+          <div id="nav-user-menu" class="nav-user-menu nav-has-dropdown">
+            <button type="button" class="nav-user-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-user-dropdown">
+              <span id="nav-user-avatar" class="nav-user-avatar">IK</span>
+              <span id="nav-user-name">Account</span>
+            </button>
+            <div id="nav-user-dropdown" class="nav-dropdown-panel align-right" role="menu">
+              <a href="courses.html?tab=my-learning" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-meta"><span class="nav-dropdown-title">My Courses</span></span></a>
+              <button type="button" class="nav-dropdown-item" role="menuitem" onclick="if(window.logout) window.logout();" style="width:100%; border:none; background:transparent; cursor:pointer; text-align:left;"><span class="nav-dropdown-meta"><span class="nav-dropdown-title" style="color:#DC2626;">Log Out</span></span></button>
+            </div>
+          </div>
+          <a href="courses.html" class="btn-primary-orange"><span>All Courses</span></a>
+          <button type="button" class="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
             </svg>
           </button>
         </div>
-
       </div>
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer -->
   <div id="mobile-nav-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-top">
+      <a href="index.html" class="brand-link"><img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="brand-logo-img" width="144" height="34"></a>
+      <button type="button" class="mobile-drawer-close" aria-label="Close navigation menu">&times;</button>
+    </div>
     <nav class="mobile-drawer-links" aria-label="Mobile Drawer Navigation">
       <a href="index.html" class="mobile-drawer-link">Home</a>
+      <a href="courses.html" class="mobile-drawer-link active">All Courses</a>
       <a href="about.html" class="mobile-drawer-link">About Us</a>
-      <a href="courses.html" class="mobile-drawer-link">Featured Programmes</a>
-      <a href="coding-bootcamp" class="mobile-drawer-link">Coding Boot Camp (Nov–Dec)</a>
-      <a href="index.html#why-instructify" class="mobile-drawer-link">Why Instructify</a>
-      <a href="index.html#training-process" class="mobile-drawer-link">Training Process</a>
-      <a href="index.html#who-we-serve" class="mobile-drawer-link">Who We Serve</a>
-      <a href="index.html#training-formats" class="mobile-drawer-link">Training Formats</a>
-      <a href="resources.html" class="mobile-drawer-link">Teaching Resources</a>
-      <a href="index.html#faq" class="mobile-drawer-link">Frequently Asked Questions</a>
-      <a href="contact.html" class="mobile-drawer-link">Contact Us</a>
+      <a href="resources.html" class="mobile-drawer-link">Resources</a>
+      <a href="contact.html" class="mobile-drawer-link">Contact Support</a>
     </nav>
     <div class="mobile-drawer-cta">
-      <a href="index.html#training-request" class="btn-primary-orange">Book School Training</a>
       <a href="tel:+254143024416" class="btn-outline-navy">Call +254 143 024 416</a>
     </div>
-  </div><!-- ── State: initializing (hidden by default to avoid blocking) ── -->
+  </div>
+
+  <main id="main-content" class="checkout-page">
+    <div class="checkout-container">
+      <div class="checkout-grid">
+        <div class="form-card">
+          <div class="step-indicator" aria-label="Checkout Steps">
+            <div class="step active" id="step-1"></div>
+            <div class="step" id="step-2"></div>
+            <div class="step" id="step-3"></div>
+          </div>
+
+          <!-- ── State: initializing (hidden by default to avoid blocking) ── -->
         <div id="screen-loading" class="status-screen" style="display:none;">
           <div class="status-icon spin" style="background:#E8F0F8;border:3px solid #2563EB;">⏳</div>
           <div class="status-title">Preparing your checkout…</div>
@@ -408,12 +395,15 @@
             </div>
 
             <!-- Terms & Refund Policy Acknowledgement -->
-            <div style="margin: 12px 0 16px; font-size: 0.8rem; color: #433F6B; display: flex; align-items: flex-start; gap: 8px;">
+            <div style="margin: 12px 0 6px; font-size: 0.8rem; color: #433F6B; display: flex; align-items: flex-start; gap: 8px;">
               <input type="checkbox" id="ck-terms-agree" checked style="margin-top: 3px; accent-color: #2563EB; cursor: pointer;">
               <label for="ck-terms-agree" style="cursor: pointer; line-height: 1.45;">
                 I agree to the <a href="contact.html" target="_blank" style="color: #2563EB; font-weight: 650; text-decoration: underline;">Terms of Service</a> and acknowledge the 30-day course enrollment refund policy.
               </label>
             </div>
+            <div class="field-error" id="ck-terms-error" style="margin-bottom: 12px;">Please accept the Terms of Service and refund policy before paying.</div>
+
+            <div id="mpesa-status-banner" class="ik-status-banner" role="alert" aria-live="polite" style="margin-bottom: 12px;"></div>
 
             <button class="btn-enroll" id="btn-pay-mpesa" onclick="submitMpesa()">
               🔒 Pay Securely with M-Pesa (KES <span id="pay-amount-mpesa">8,500</span>)
@@ -614,7 +604,7 @@
 
     </div><!-- /.checkout-grid -->
   </div>
-</div>
+</main>
 
 <script src="js/main.js?v=19.0"></script>
 <script src="js/auth.js?v=19.0"></script>
@@ -654,14 +644,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const course = window.COURSES ? window.COURSES.find(c => c.id === currentCourseId) : null;
   if (course) {
     const isFree = course.price === 0 || !!course.isFree;
+    const origPrice = course.originalPrice || course.price;
+    const discountAmt = Math.max(0, origPrice - course.price);
     document.getElementById('summary-title').textContent = course.title;
     document.getElementById('summary-price').textContent = isFree ? 'FREE (100% Scholarship)' : `KES ${course.price.toLocaleString()}`;
-    document.getElementById('summary-original').textContent = `KES ${course.originalPrice.toLocaleString()}`;
+    document.getElementById('summary-original').textContent = `KES ${origPrice.toLocaleString()}`;
+    const regEl = document.getElementById('summary-breakdown-regular');
+    if (regEl) regEl.textContent = `KES ${origPrice.toLocaleString()}`;
+    const discEl = document.getElementById('summary-breakdown-discount');
+    if (discEl) discEl.textContent = discountAmt > 0 ? `- KES ${discountAmt.toLocaleString()}` : 'KES 0';
+    const totEl = document.getElementById('summary-breakdown-total');
+    if (totEl) totEl.textContent = isFree ? 'FREE' : `KES ${course.price.toLocaleString()}`;
+    const succAmt = document.getElementById('success-amount');
+    if (succAmt) succAmt.textContent = isFree ? 'FREE' : `KES ${course.price.toLocaleString()}`;
     document.getElementById('summary-duration').textContent = course.duration || '—';
     document.getElementById('summary-level').textContent = course.level || '—';
     document.getElementById('summary-cpd').textContent = course.cpdHours ? `${course.cpdHours} hrs` : '—';
-    document.getElementById('crumb-course').textContent = course.title;
-    document.getElementById('crumb-course').href = `course-detail.html?id=${course.id}`;
+    const crumbEl = document.getElementById('crumb-course');
+    if (crumbEl) {
+      crumbEl.textContent = course.title;
+      crumbEl.href = `course-detail.html?id=${course.id}`;
+    }
     document.getElementById('pay-amount-mpesa').textContent = isFree ? '0' : course.price.toLocaleString();
     document.getElementById('pay-amount-card').textContent = isFree ? '0' : course.price.toLocaleString();
     const paybillAmtEl = document.getElementById('paybill-amount-display');
@@ -1047,6 +1050,27 @@ function submitMpesa() {
   const phoneInput = document.getElementById('mpesa-phone-input');
   const phone = (phoneInput?.value || '').trim();
   const errorEl = document.getElementById('mpesa-phone-error');
+  const termsEl = document.getElementById('ck-terms-agree');
+  const termsErr = document.getElementById('ck-terms-error');
+  const statusBanner = document.getElementById('mpesa-status-banner');
+  const payBtn = document.getElementById('btn-pay-mpesa');
+
+  if (payBtn && payBtn.disabled) return;
+  if (statusBanner) {
+    statusBanner.className = 'ik-status-banner';
+    statusBanner.textContent = '';
+  }
+  if (termsErr) termsErr.classList.remove('visible');
+
+  if (termsEl && !termsEl.checked) {
+    if (termsErr) termsErr.classList.add('visible');
+    if (statusBanner) {
+      statusBanner.className = 'ik-status-banner is-visible is-error';
+      statusBanner.textContent = 'Please agree to the Terms of Service and 30-day refund policy before initiating M-Pesa payment.';
+    }
+    termsEl.focus();
+    return;
+  }
 
   // Strict Safaricom M-Pesa number validation
   let phoneErr = null;
@@ -1063,6 +1087,10 @@ function submitMpesa() {
   }
 
   if (phoneErr) {
+    if (statusBanner) {
+      statusBanner.className = 'ik-status-banner is-visible is-error';
+      statusBanner.textContent = phoneErr;
+    }
     if (window.FormValidator) {
       window.FormValidator.showFieldError('mpesa-phone-input', phoneErr);
       window.FormValidator.focusFirstError('mpesa-phone-input');
@@ -1119,6 +1147,7 @@ function retryCheckout() {
 </script>
   <script src="js/chat-config.js?v=19.0"></script>
   <script src="js/live-chat.js?v=19.0"></script>
-  <script src="js/site-header.js" defer></script>
+  <script src="js/site-header.js?v=2026.9" defer></script>
+  <script>document.addEventListener('DOMContentLoaded', () => { if (typeof window.updateAuthUI === 'function') window.updateAuthUI(); });</script>
 </body>
 </html>

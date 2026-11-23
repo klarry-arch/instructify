@@ -1,12 +1,11 @@
 /* ============================================================
    INSTRUCTIFY KENYA — HOMEPAGE REDESIGN JAVASCRIPT CONTROLLER
    Handles:
-     - Mobile navigation drawer toggle with ARIA states & ESC close
+     - Dynamic Course Categories & Featured Courses from window.COURSES
      - Pre-selection of training programmes from cards to form
-     - Real-time client-side validation for Training Request Form
+     - Real-time client-side validation + error summary for Training Request Form
      - Submission to approved /api/contact endpoint (Node & PHP)
      - Anti-spam honeypots & duplicate submission protection
-     - Accessible FAQ Accordion interactions
      - Newsletter validation & submission
      - Smooth scrolling with sticky header offset
    ============================================================ */
@@ -17,64 +16,155 @@
   document.addEventListener('DOMContentLoaded', initHomepage);
 
   function initHomepage() {
-    initHeaderScroll();
-    initMobileNav();
+    if (typeof window.updateAuthUI === 'function') {
+      window.updateAuthUI();
+    }
+    renderHomepageCategories();
+    renderHomepageFeaturedCourses();
     initProgrammePreselectors();
     initTrainingRequestForm();
     initNewsletterForm();
     initSmoothAnchors();
   }
 
-  // ── 1. Sticky Header Elevation on Scroll ─────────────────────
-  function initHeaderScroll() {
-    const header = document.querySelector('.sticky-header');
-    if (!header) return;
+  // ── 1. Dynamic Course Categories (Computed Strictly from window.COURSES) ─
+  function renderHomepageCategories() {
+    const container = document.getElementById('home-categories-grid');
+    if (!container) return;
 
-    const handleScroll = () => {
-      header.classList.toggle('scrolled', window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    const courses = Array.isArray(window.COURSES) ? window.COURSES : [];
+    const defs = [
+      {
+        title: 'AI for Educators',
+        param: 'AI',
+        icon: '🤖',
+        desc: 'Generative AI lesson design, ethical classroom adoption, and practical teacher prompting workflows.',
+        match: (c) => /ai/i.test(c.category || '') || (c.tags || []).some(t => /^ai$/i.test(t))
+      },
+      {
+        title: 'Digital Skills',
+        param: 'Digital',
+        icon: '💻',
+        desc: 'Foundational digital literacy, online safety, Microsoft 365 fluency, and daily digital productivity.',
+        match: (c) => /digital/i.test(c.category || '')
+      },
+      {
+        title: 'ICT Integration',
+        param: 'ICT',
+        icon: '🖥️',
+        desc: 'Smart classrooms, interactive whiteboards, ClassVR, and technology-enabled lesson delivery.',
+        match: (c) => /ict|edtech/i.test(c.category || '')
+      },
+      {
+        title: 'CBC & Assessment',
+        param: 'Curriculum',
+        icon: '📘',
+        desc: 'Competency-Based Curriculum strands, formative rubrics, learner portfolios, and authentic evaluation.',
+        match: (c) => /curriculum|assessment/i.test(c.category || '')
+      },
+      {
+        title: 'Online Pedagogy',
+        param: 'Pedagogy',
+        icon: '🌐',
+        desc: 'Virtual classroom engagement, blended learning design, and interactive digital facilitation.',
+        match: (c) => /pedagogy/i.test(c.category || '')
+      },
+      {
+        title: 'Professional Development & Leadership',
+        param: 'Leadership',
+        icon: '🏛️',
+        desc: 'Structured CPD compliance tracks and institutional digital leadership for school principals and heads.',
+        match: (c) => /leadership|cpd/i.test(c.category || '')
+      }
+    ];
+
+    container.innerHTML = defs.map((cat) => {
+      const matches = courses.filter(cat.match);
+      const count = matches.length;
+      const countText = count === 1 ? '1 Course Available' : `${count} Courses Available`;
+      return `
+        <a href="courses.html?category=${encodeURIComponent(cat.param)}" class="ik-category-card">
+          <div class="ik-category-top">
+            <div class="ik-category-icon" aria-hidden="true">${cat.icon}</div>
+            <span class="ik-category-count">${countText}</span>
+          </div>
+          <h3 class="ik-category-title">${cat.title}</h3>
+          <p class="ik-category-desc">${cat.desc}</p>
+          <span class="ik-category-cta">Explore category <span aria-hidden="true">&rarr;</span></span>
+        </a>
+      `;
+    }).join('');
   }
 
-  // ── 2. Mobile Navigation Drawer ──────────────────────────────
-  function initMobileNav() {
-    const toggleBtn = document.querySelector('.mobile-nav-toggle');
-    const drawer = document.querySelector('.mobile-drawer');
-    if (!toggleBtn || !drawer || toggleBtn.dataset.navBound === 'true') return;
-    toggleBtn.dataset.navBound = 'true';
+  // ── 2. Dynamic Featured Courses Grid ───────────────────────────
+  function renderHomepageFeaturedCourses() {
+    const container = document.getElementById('home-featured-courses-grid');
+    if (!container) return;
 
-    function toggleMenu(open) {
-      const willOpen = open !== undefined ? open : !drawer.classList.contains('open');
-      drawer.classList.toggle('open', willOpen);
-      toggleBtn.setAttribute('aria-expanded', String(willOpen));
-      document.body.style.overflow = willOpen ? 'hidden' : '';
+    const courses = Array.isArray(window.COURSES) ? window.COURSES : [];
+    if (!courses.length) {
+      container.innerHTML = `
+        <div class="ik-empty-state" style="grid-column: 1 / -1;">
+          <h3 class="ik-empty-title">Courses Loading</h3>
+          <p class="ik-empty-desc">Browse our complete catalogue of practical CPD, AI, and digital skills courses.</p>
+          <a href="courses.html" class="ik-btn-sm-primary">Open Course Catalogue</a>
+        </div>
+      `;
+      return;
     }
 
-    toggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleMenu();
+    const preferredOrder = ['crs_009', 'crs_000', 'crs_004', 'crs_001', 'crs_002', 'crs_006'];
+    const ordered = [];
+    preferredOrder.forEach((id) => {
+      const found = courses.find(c => c.id === id);
+      if (found) ordered.push(found);
     });
-
-    // Close on navigation link click
-    drawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => toggleMenu(false));
-    });
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && drawer.classList.contains('open')) {
-        toggleMenu(false);
-        toggleBtn.focus();
+    courses.forEach((c) => {
+      if (ordered.length < 6 && !ordered.some(x => x.id === c.id)) {
+        ordered.push(c);
       }
     });
 
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (drawer.classList.contains('open') && !drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
-        toggleMenu(false);
-      }
-    });
+    container.innerHTML = ordered.slice(0, 6).map((c) => {
+      const priceNum = typeof c.price === 'number' ? c.price : parseInt(String(c.price || '0').replace(/[^0-9]/g, ''), 10);
+      const isFree = priceNum === 0 || !!c.isFree;
+      const priceLabel = isFree ? 'FREE' : `KES ${priceNum.toLocaleString()}`;
+      const detailUrl = `course-detail.html?id=${encodeURIComponent(c.id)}`;
+      const enrolUrl = isFree ? `course-player.html?courseId=${encodeURIComponent(c.id)}` : `checkout.html?id=${encodeURIComponent(c.id)}`;
+
+      return `
+        <article class="ik-course-card" data-course-id="${c.id}">
+          <div class="ik-course-thumb">
+            <img src="${c.image}" alt="${c.title}" loading="lazy" width="400" height="250"
+                 onerror="this.style.display='none'">
+            <span class="ik-course-cat-pill">${c.category}</span>
+            <span class="ik-course-price-pill ${isFree ? 'is-free' : ''}">${isFree ? 'Free Access' : priceLabel}</span>
+          </div>
+          <div class="ik-course-body">
+            <div class="ik-course-meta">
+              <span>${c.level || 'All Levels'}</span>
+              <span>&bull;</span>
+              <span>${c.duration || 'Self-Paced'}</span>
+              <span>&bull;</span>
+              <span>${c.format || 'Online'}</span>
+            </div>
+            <h3 class="ik-course-title">
+              <a href="${detailUrl}">${c.title}</a>
+            </h3>
+            <p class="ik-course-desc">${(c.description || '').slice(0, 128)}${(c.description || '').length > 128 ? '…' : ''}</p>
+            <div class="ik-course-footer">
+              <span class="ik-course-price-text ${isFree ? 'is-free' : ''}">${priceLabel}</span>
+              <div class="ik-course-actions">
+                <a href="${detailUrl}" class="ik-btn-sm-outline" aria-label="View details for ${c.title}">Details</a>
+                <a href="${enrolUrl}" class="ik-btn-sm-primary" aria-label="${isFree ? 'Start free learning for' : 'Enrol in'} ${c.title}">
+                  ${isFree ? 'Start Free' : 'Enrol'}
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
   }
 
   // ── 3. Programme Card Pre-Selector ──────────────────────────
@@ -95,7 +185,7 @@
           requestSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
           setTimeout(() => {
             if (programmeSelect) programmeSelect.focus();
-          }, 600);
+          }, 500);
         }
       });
     });
@@ -127,8 +217,9 @@
     const submitSpinner = document.getElementById('tr-submit-spinner');
     const successBanner = document.getElementById('tr-success-banner');
     const successRefText = document.getElementById('tr-success-ref');
+    const errorSummary = document.getElementById('tr-error-summary');
+    let isSubmitting = false;
 
-    // Attach real-time validation on blur & input
     Object.keys(fields).forEach(key => {
       const el = fields[key];
       if (!el) return;
@@ -139,6 +230,7 @@
 
     function validateField(key, isTyping) {
       const el = fields[key];
+      if (!el) return true;
       const errEl = document.getElementById(`err-${el.id}`);
       let isValid = true;
       let errorMsg = '';
@@ -162,7 +254,7 @@
             errorMsg = 'Please select your position or role.';
           }
           break;
-        case 'email':
+        case 'email': {
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           if (!el.value.trim()) {
             isValid = false;
@@ -172,7 +264,8 @@
             errorMsg = 'Please enter a valid email address (e.g. principal@school.sc.ke).';
           }
           break;
-        case 'phone':
+        }
+        case 'phone': {
           const phoneClean = el.value.replace(/[\s\-\(\)]/g, '');
           const phoneRegex = /^(?:254|\+254|0)?([71][0-9]{8})$/;
           if (!el.value.trim()) {
@@ -183,6 +276,7 @@
             errorMsg = 'Enter a valid Kenyan number (e.g. 0712 345 678 or +254 712 345 678).';
           }
           break;
+        }
         case 'county':
           if (!el.value) {
             isValid = false;
@@ -222,32 +316,41 @@
         }
       }
 
-      return isValid;
+      return { isValid, errorMsg };
     }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (isSubmitting) return;
 
-      // Validate all fields
       let formValid = true;
       let firstErrorEl = null;
+      const errorList = [];
 
       Object.keys(fields).forEach(key => {
-        const ok = validateField(key, false);
+        const res = validateField(key, false);
+        const ok = typeof res === 'object' ? res.isValid : res;
         if (!ok) {
           formValid = false;
           if (!firstErrorEl) firstErrorEl = fields[key];
+          if (res && res.errorMsg) errorList.push(res.errorMsg);
         }
       });
 
       if (!formValid) {
-        if (firstErrorEl) {
-          firstErrorEl.focus();
+        if (errorSummary) {
+          errorSummary.innerHTML = `<strong>Please review ${errorList.length} field${errorList.length === 1 ? '' : 's'} before submitting:</strong>${errorList[0] || ''}`;
+          errorSummary.classList.add('is-visible');
         }
+        if (firstErrorEl) firstErrorEl.focus();
         return;
       }
 
-      // Check honeypot
+      if (errorSummary) {
+        errorSummary.classList.remove('is-visible');
+        errorSummary.innerHTML = '';
+      }
+
       const hp1 = form.querySelector('[name="_hp_instructify"]');
       const hp2 = form.querySelector('[name="website_hp_check"]');
       if ((hp1 && hp1.value) || (hp2 && hp2.value)) {
@@ -255,7 +358,7 @@
         return;
       }
 
-      // Prevent duplicate submission
+      isSubmitting = true;
       submitBtn.disabled = true;
       if (submitText) submitText.style.display = 'none';
       if (submitSpinner) submitSpinner.style.display = 'inline-flex';
@@ -293,18 +396,14 @@ School Objectives: ${fields.additionalInfo ? fields.additionalInfo.value.trim() 
         let res = null;
         let data = null;
 
-        // Try primary /api/contact endpoint (supports Node and cPanel)
         try {
           res = await fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
           });
-          if (res.ok) {
-            data = await res.json();
-          }
+          if (res.ok) data = await res.json();
         } catch (fetchErr) {
-          // Fallback to api/contact.php
           res = await fetch('api/contact.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -315,7 +414,6 @@ School Objectives: ${fields.additionalInfo ? fields.additionalInfo.value.trim() 
 
         const ticketId = (data && data.ticketId) || `IK-SCH-2026-${Math.floor(100000 + Math.random() * 900000)}`;
 
-        // Save local copy to localStorage for user reference
         try {
           const past = JSON.parse(localStorage.getItem('instructify_school_enquiries') || '[]');
           past.push({ ...payload, ticketId });
@@ -324,9 +422,7 @@ School Objectives: ${fields.additionalInfo ? fields.additionalInfo.value.trim() 
 
         showSuccess({ ticketId });
         form.reset();
-
       } catch (networkErr) {
-        // Graceful offline fallback
         const offlineTicketId = `IK-SCH-2026-${Math.floor(100000 + Math.random() * 900000)}`;
         try {
           const past = JSON.parse(localStorage.getItem('instructify_school_enquiries') || '[]');
@@ -336,6 +432,7 @@ School Objectives: ${fields.additionalInfo ? fields.additionalInfo.value.trim() 
         showSuccess({ ticketId: offlineTicketId });
         form.reset();
       } finally {
+        isSubmitting = false;
         submitBtn.disabled = false;
         if (submitText) submitText.style.display = 'inline-flex';
         if (submitSpinner) submitSpinner.style.display = 'none';
@@ -357,22 +454,30 @@ School Objectives: ${fields.additionalInfo ? fields.additionalInfo.value.trim() 
   function initNewsletterForm() {
     const form = document.getElementById('newsletter-form-home');
     if (!form) return;
+    let isSending = false;
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (isSending) return;
       const emailInput = form.querySelector('input[type="email"]');
       const submitBtn = form.querySelector('button[type="submit"]');
+      const feedback = document.getElementById('newsletter-home-feedback');
       if (!emailInput) return;
 
       const email = emailInput.value.trim().toLowerCase();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       if (!email || !emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
+        if (feedback) {
+          feedback.textContent = 'Please enter a valid email address.';
+          feedback.className = 'ik-status-banner is-error';
+          feedback.style.display = 'flex';
+        }
         emailInput.focus();
         return;
       }
 
+      isSending = true;
       const origText = submitBtn.textContent;
       submitBtn.disabled = true;
       submitBtn.textContent = 'Subscribing…';
@@ -391,19 +496,19 @@ School Objectives: ${fields.additionalInfo ? fields.additionalInfo.value.trim() 
         });
       } catch (_) {}
 
-      submitBtn.textContent = '✓ Subscribed!';
-      submitBtn.style.background = '#38A169';
-      submitBtn.style.borderColor = '#38A169';
-      submitBtn.style.color = '#FFFFFF';
+      if (feedback) {
+        feedback.textContent = 'Subscribed! Thank you for joining our educator briefing.';
+        feedback.className = 'ik-status-banner is-success';
+        feedback.style.display = 'flex';
+      }
+      submitBtn.textContent = 'Subscribed';
       emailInput.value = '';
 
       setTimeout(() => {
+        isSending = false;
         submitBtn.disabled = false;
         submitBtn.textContent = origText;
-        submitBtn.style.background = '';
-        submitBtn.style.borderColor = '';
-        submitBtn.style.color = '';
-      }, 4000);
+      }, 3000);
     });
   }
 
@@ -429,4 +534,3 @@ School Objectives: ${fields.additionalInfo ? fields.additionalInfo.value.trim() 
   }
 
 })();
-

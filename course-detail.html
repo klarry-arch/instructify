@@ -5,26 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Course Details | Instructify Kenya</title>
   <link rel="icon" href="assets/images/instructify-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/global.css?v=2026.6">
-  <link rel="stylesheet" href="css/animations.css?v=2026.6">
-  <link rel="stylesheet" href="css/components.css?v=2026.6">
-  <link rel="stylesheet" href="css/homepage.css?v=2026.6">
-  <link rel="stylesheet" href="css/live-chat.css?v=2026.6">
-  <link rel="stylesheet" href="css/site-header.css?v=2026.6">
-  <link rel="stylesheet" href="css/site-footer.css?v=2026.6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/brand-tokens.css?v=2026.9">
+  <link rel="stylesheet" href="css/global.css?v=2026.9">
+  <link rel="stylesheet" href="css/animations.css?v=2026.9">
+  <link rel="stylesheet" href="css/components.css?v=2026.9">
+  <link rel="stylesheet" href="css/homepage.css?v=2026.9">
+  <link rel="stylesheet" href="css/live-chat.css?v=2026.9">
+  <link rel="stylesheet" href="css/site-header.css?v=2026.9">
+  <link rel="stylesheet" href="css/site-footer.css?v=2026.9">
 </head>
 <body>
+  <a href="#main-content" class="skip-to-content">Skip to course details</a>
 
-<!-- ── Navigation ───────────────────────────────────────────── -->
-<!-- ============================================================
-       ANNOUNCEMENT BAR & UNIFIED STICKY HEADER
-       ============================================================ -->
   <aside class="announcement-bar" role="complementary" aria-label="Announcement">
     <div class="home-container">
       <div class="announcement-content">
         <span class="announcement-badge">2026 INTAKE OPEN</span>
         <span class="announcement-text">
-          Booking Open: On-Site Digital Skills &amp; AI Workshops for Kenyan Schools across all 47 counties.
+          On-Site Digital Skills &amp; AI Workshops across all 47 Kenyan counties &middot; Tel: +254 143 024 416
         </span>
         <a href="index.html#training-request" class="announcement-link">Book School Training &rarr;</a>
       </div>
@@ -34,136 +35,147 @@
   <header class="sticky-header" role="banner">
     <div class="home-container">
       <div class="header-nav-wrap">
-
-        <!-- Brand Logo -->
         <a href="index.html" class="brand-link" aria-label="Instructify Kenya Homepage">
-          <img
-            src="assets/images/instructify-kenya-logo.png"
-            alt="Instructify Kenya Logo"
-            class="brand-logo-img"
-            width="160"
-            height="38"
-          >
+          <img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="brand-logo-img" width="160" height="38">
         </a>
-
-        <!-- Desktop Navigation Links -->
         <nav class="desktop-nav" aria-label="Primary Navigation">
           <ul class="header-nav-links">
-            <li><a href="index.html" class="header-nav-link">Home</a></li>
-            <li><a href="about.html" class="header-nav-link">About Us</a></li>
-            <li><a href="courses.html" class="header-nav-link active" aria-current="page">Programmes</a></li>
-            <li><a href="coding-bootcamp" class="header-nav-link nav-bootcamp-badge">Boot Camp</a></li>
-            <li><a href="resources.html" class="header-nav-link">Resources</a></li>
-            <li><a href="index.html#faq" class="header-nav-link">FAQ</a></li>
-            <li><a href="contact.html" class="header-nav-link">Contact</a></li>
+            <li class="header-nav-item"><a href="index.html" class="header-nav-link">Home</a></li>
+            <li class="header-nav-item nav-has-dropdown">
+              <button type="button" class="nav-dropdown-trigger active" aria-expanded="false" aria-haspopup="true" aria-controls="nav-menu-courses">
+                <span>Courses</span>
+                <svg class="nav-dropdown-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="nav-menu-courses" class="nav-dropdown-panel" role="menu">
+                <a href="courses.html?category=AI" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🤖</span><span class="nav-dropdown-meta"><span class="nav-dropdown-title">AI for Educators</span></span></a>
+                <a href="courses.html?category=Digital" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">💻</span><span class="nav-dropdown-meta"><span class="nav-dropdown-title">Digital Skills</span></span></a>
+                <a href="courses.html?category=ICT" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🖥️</span><span class="nav-dropdown-meta"><span class="nav-dropdown-title">ICT Integration</span></span></a>
+                <a href="cpd-registration.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🎓</span><span class="nav-dropdown-meta"><span class="nav-dropdown-title">CPD Programmes</span></span></a>
+                <a href="courses.html?category=Leadership" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🏛️</span><span class="nav-dropdown-meta"><span class="nav-dropdown-title">School Leadership</span></span></a>
+                <div class="nav-dropdown-divider"></div>
+                <a href="courses.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📚</span><span class="nav-dropdown-meta"><span class="nav-dropdown-title">Browse All Courses &rarr;</span></span></a>
+              </div>
+            </li>
+            <li class="header-nav-item"><a href="about.html" class="header-nav-link">About Us</a></li>
+            <li class="header-nav-item nav-has-dropdown">
+              <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-menu-resources">
+                <span>Resources</span>
+                <svg class="nav-dropdown-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="nav-menu-resources" class="nav-dropdown-panel" role="menu">
+                <a href="blog.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📰</span><span class="nav-dropdown-meta"><span class="nav-dropdown-title">Blog &amp; Articles</span></span></a>
+                <a href="resources.html#guides" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">📘</span><span class="nav-dropdown-meta"><span class="nav-dropdown-title">Teaching Guides</span></span></a>
+                <a href="resources.html#downloads" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">⬇️</span><span class="nav-dropdown-meta"><span class="nav-dropdown-title">Downloads</span></span></a>
+                <a href="resources.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🛠️</span><span class="nav-dropdown-meta"><span class="nav-dropdown-title">Digital Tools Hub</span></span></a>
+                <a href="coding-bootcamp" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-icon" aria-hidden="true">🚀</span><span class="nav-dropdown-meta"><span class="nav-dropdown-title">Coding Boot Camp <span class="nav-badge-new">New</span></span></span></a>
+              </div>
+            </li>
+            <li class="header-nav-item"><a href="contact.html" class="header-nav-link">Contact</a></li>
           </ul>
         </nav>
-
-        <!-- Header Actions -->
         <div class="header-actions">
-          <a href="tel:+254143024416" class="header-phone-link" aria-label="Call Instructify Kenya">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-            <span>+254 143 024 416</span>
-          </a>
-
-          <a href="index.html#training-request" class="btn-primary-orange">
-            <span>Book School Training</span>
-          </a>
-
-          <!-- Mobile Hamburger Toggle Button -->
-          <button
-            type="button"
-            class="mobile-nav-toggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="mobile-nav-drawer"
-          >
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
+          <a href="login.html" id="nav-login-btn" class="nav-login-btn">Log In</a>
+          <div id="nav-user-menu" class="nav-user-menu nav-has-dropdown">
+            <button type="button" class="nav-user-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-user-dropdown">
+              <span id="nav-user-avatar" class="nav-user-avatar">IK</span>
+              <span id="nav-user-name">Account</span>
+            </button>
+            <div id="nav-user-dropdown" class="nav-dropdown-panel align-right" role="menu">
+              <a href="dashboard-learner.html" class="nav-dropdown-item" role="menuitem"><span class="nav-dropdown-meta"><span class="nav-dropdown-title">Learner Dashboard</span></span></a>
+              <button type="button" class="nav-dropdown-item" role="menuitem" onclick="if(window.logout) window.logout();" style="width:100%; border:none; background:transparent; cursor:pointer; text-align:left;"><span class="nav-dropdown-meta"><span class="nav-dropdown-title" style="color:#DC2626;">Log Out</span></span></button>
+            </div>
+          </div>
+          <a href="courses.html" class="btn-primary-orange"><span>Explore Courses</span></a>
+          <button type="button" class="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           </button>
         </div>
-
       </div>
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer -->
   <div id="mobile-nav-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-top">
+      <a href="index.html" class="brand-link"><img src="assets/images/instructify-kenya-logo.png" alt="Instructify Kenya Logo" class="brand-logo-img" width="144" height="34"></a>
+      <button type="button" class="mobile-drawer-close" aria-label="Close navigation menu">&times;</button>
+    </div>
     <nav class="mobile-drawer-links" aria-label="Mobile Drawer Navigation">
       <a href="index.html" class="mobile-drawer-link">Home</a>
+      <div class="mobile-accordion-group">
+        <button type="button" class="mobile-accordion-trigger" aria-expanded="true" aria-controls="mobile-acc-courses"><span>Courses</span><span aria-hidden="true">+</span></button>
+        <div id="mobile-acc-courses" class="mobile-accordion-panel is-open">
+          <a href="courses.html" class="mobile-sub-link">All Courses Catalogue</a>
+          <a href="courses.html?category=AI" class="mobile-sub-link">AI for Educators</a>
+          <a href="courses.html?category=Digital" class="mobile-sub-link">Digital Skills</a>
+          <a href="courses.html?category=ICT" class="mobile-sub-link">ICT Integration</a>
+          <a href="cpd-registration.html" class="mobile-sub-link">CPD Programmes</a>
+        </div>
+      </div>
       <a href="about.html" class="mobile-drawer-link">About Us</a>
-      <a href="courses.html" class="mobile-drawer-link active">Featured Programmes</a>
-      <a href="coding-bootcamp" class="mobile-drawer-link">Coding Boot Camp (Nov–Dec)</a>
-      <a href="index.html#why-instructify" class="mobile-drawer-link">Why Instructify</a>
-      <a href="index.html#training-process" class="mobile-drawer-link">Training Process</a>
-      <a href="index.html#who-we-serve" class="mobile-drawer-link">Who We Serve</a>
-      <a href="index.html#training-formats" class="mobile-drawer-link">Training Formats</a>
       <a href="resources.html" class="mobile-drawer-link">Teaching Resources</a>
-      <a href="index.html#faq" class="mobile-drawer-link">Frequently Asked Questions</a>
       <a href="contact.html" class="mobile-drawer-link">Contact Us</a>
     </nav>
     <div class="mobile-drawer-cta">
+      <a href="login.html" class="btn-outline-navy">Log In / Create Account</a>
       <a href="index.html#training-request" class="btn-primary-orange">Book School Training</a>
       <a href="tel:+254143024416" class="btn-outline-navy">Call +254 143 024 416</a>
     </div>
-  </div><section style="background:var(--gradient-hero);padding:calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);color:#fff;position:relative;overflow:hidden">
+  </div>
+
+  <main id="main-content">
+  <section style="background:linear-gradient(135deg, #1E1B4B 0%, #1E40AF 100%);padding:56px 0 64px;color:#fff;position:relative;overflow:hidden">
   <!-- Ambient background glow elements -->
   <div style="position:absolute;max-width:450px; width:100%;height:450px;background:rgba(37,99,235,0.22);border-radius:50%;filter:blur(90px);top:-100px;left:-100px;pointer-events:none"></div>
-  <div style="position:absolute;width:350px;height:350px;background:rgba(244,81,30,0.18);border-radius:50%;filter:blur(90px);bottom:-50px;right:-50px;pointer-events:none"></div>
+  <div style="position:absolute;width:350px;height:350px;background:rgba(250,204,21,0.14);border-radius:50%;filter:blur(90px);bottom:-50px;right:-50px;pointer-events:none"></div>
 
   <div class="container" style="position:relative;z-index:1">
-    <div class="breadcrumb mb-md" style="color:rgba(255,255,255,0.75);font-weight:500">
-      <a href="index.html" style="color:rgba(255,255,255,0.9)">Home</a><span class="breadcrumb-sep" style="margin:0 8px">›</span>
-      <a href="courses.html" style="color:rgba(255,255,255,0.9)">Courses</a><span class="breadcrumb-sep" style="margin:0 8px">›</span>
+    <div class="breadcrumb mb-md" style="color:rgba(255,255,255,0.85);font-weight:500">
+      <a href="index.html" style="color:#E0E7FF">Home</a><span class="breadcrumb-sep" style="margin:0 8px">›</span>
+      <a href="courses.html" style="color:#E0E7FF">Courses</a><span class="breadcrumb-sep" style="margin:0 8px">›</span>
       <span id="course-title-breadcrumb" style="color:#FFFFFF;font-weight:600">Course Detail</span>
     </div>
 
     <!-- Dual Track Pathway Selector -->
     <div style="margin-bottom: 22px;">
-      <div style="display: inline-flex; background: rgba(30, 27, 75, 0.45); padding: 5px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); flex-wrap: wrap; gap: 4px;">
-        <button type="button" id="track-btn-educator" onclick="setDetailTrack('educator')" style="border: none; background: #FFFFFF; color: #1E1B4B; font-weight: 800; font-size: 13px; padding: 8px 18px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+      <div style="display: inline-flex; background: rgba(20, 17, 54, 0.55); padding: 5px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.25); backdrop-filter: blur(10px); flex-wrap: wrap; gap: 4px;">
+        <button type="button" id="track-btn-educator" onclick="setDetailTrack('educator')" style="border: none; background: #FFFFFF; color: #1E1B4B; font-weight: 700; font-size: 13.5px; padding: 9px 18px; min-height:40px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">
           <span>🎓</span> For Teachers &amp; Educators
         </button>
-        <button type="button" id="track-btn-student" onclick="setDetailTrack('student')" style="border: none; background: transparent; color: #E8E3D5; font-weight: 700; font-size: 13px; padding: 8px 18px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease;">
+        <button type="button" id="track-btn-student" onclick="setDetailTrack('student')" style="border: none; background: transparent; color: #FFFFFF; font-weight: 600; font-size: 13.5px; padding: 9px 18px; min-height:40px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">
           <span>🎒</span> For Students &amp; Learners
         </button>
       </div>
     </div>
 
-    <div class="grid-2 items-center" style="grid-template-columns:2fr 1fr;gap:var(--space-2xl)">
+    <div class="grid-2 items-center" style="grid-template-columns:2fr 1fr;gap:32px">
       <div>
-        <span class="badge mb-md" id="course-badge" style="background:rgba(16,185,129,0.18);color:#2DC3B0;border:1px solid rgba(52,211,153,0.4);padding:6px 16px;border-radius:99px;font-weight:700;font-size:0.75rem;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:6px">✨ CPD ACCREDITED</span>
-        <h1 class="hero-heading" id="course-title" style="font-size:clamp(2rem, 4vw, 3rem);color:#FFFFFF !important;font-weight:800;line-height:1.2;margin-bottom:var(--space-md);text-shadow:0 2px 14px rgba(0,0,0,0.3)">Loading Course Title...</h1>
-        <p id="course-desc" style="color:rgba(241,245,249,0.92);font-size:var(--text-md);line-height:1.7;margin-bottom:var(--space-xl);max-width:720px; width:100%;">Description placeholder...</p>
-        <div class="flex items-center gap-xl text-sm" style="color:rgba(255,255,255,0.9);flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:6px">⭐ <strong id="course-rating" style="color:#FBBF24">4.8</strong> (<span id="course-reviews">312</span> reviews)</div>
+        <span class="badge mb-md" id="course-badge" style="background:rgba(250,204,21,0.18);color:#FACC15;border:1px solid rgba(250,204,21,0.45);padding:6px 16px;border-radius:99px;font-weight:700;font-size:13px;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:6px">✨ CPD ACCREDITED</span>
+        <h1 class="hero-heading" id="course-title" style="font-size:clamp(28px, 3.6vw, 44px);color:#FFFFFF !important;font-weight:700;line-height:1.18;margin-bottom:16px;">Loading Course Title...</h1>
+        <p id="course-desc" style="color:#E0E7FF;font-size:16.5px;line-height:1.68;margin-bottom:24px;max-width:720px; width:100%;">Description placeholder...</p>
+        <div class="flex items-center gap-xl text-sm" style="color:#FFFFFF;flex-wrap:wrap;gap:12px 24px">
+          <div style="display:flex;align-items:center;gap:6px">⭐ <strong id="course-rating" style="color:#FACC15">4.8</strong> (<span id="course-reviews">312</span> reviews)</div>
           <div style="display:flex;align-items:center;gap:6px">👨‍🏫 Instructor: <strong id="course-instructor">Dr. Wanjiku Kamau</strong></div>
           <div style="display:flex;align-items:center;gap:6px">⏱️ Track Duration: <strong id="course-duration">8 weeks</strong></div>
         </div>
       </div>
 
-      <div class="card" style="background:#FFFFFF;border:1px solid #E8E3D5;border-radius:18px;padding:32px;box-shadow:0 24px 48px rgba(0,0,0,0.3);color:#1E1B4B">
-        <div class="mb-md" style="margin-bottom:20px">
-          <div id="track-pill-indicator" style="font-size:11.5px; font-weight:800; color:#1D4ED8; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px; padding:4px 10px; display:inline-flex; align-items:center; gap:5px; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.06em;">
+      <div class="card" style="background:#FFFFFF;border:1px solid #E8E3D5;border-radius:16px;padding:24px;box-shadow:0 24px 48px rgba(20,17,54,0.28);color:#1E1B4B">
+        <div class="mb-md" style="margin-bottom:18px">
+          <div id="track-pill-indicator" style="font-size:12px; font-weight:700; color:#1D4ED8; background:#EFF6FF; border:1px solid #BFDBFE; border-radius:6px; padding:4px 10px; display:inline-flex; align-items:center; gap:5px; margin-bottom:12px; text-transform:uppercase; letter-spacing:0.06em;">
             🎓 EDUCATOR CPD PATHWAY
           </div>
-          <div style="font-size:12px;font-weight:700;color:var(--text-muted, #433F6B);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">Enrollment Fee</div>
-          <div class="font-heading text-3xl font-extrabold" style="color:var(--cta-color, #FACC15);font-size:34px;line-height:1.1;font-weight:900" id="course-price">KES 14,500</div>
-          <div style="font-size:14px;color:#CBD5E1;text-decoration:line-through;margin-top:4px;font-weight:500" id="course-orig-price">KES 22,000</div>
+          <div style="font-size:13px;font-weight:700;color:#433F6B;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Enrollment Fee</div>
+          <div class="font-heading text-3xl font-extrabold" style="color:#1E1B4B;font-size:32px;line-height:1.15;font-weight:800" id="course-price">KES 14,500</div>
+          <div style="font-size:14px;color:#5B5882;text-decoration:line-through;margin-top:4px;font-weight:500" id="course-orig-price">KES 22,000</div>
         </div>
-        <button onclick="handleEnrollClick()" class="btn btn-lg w-full mb-md" id="enroll-btn" style="width:100%;background:linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);color:#FFFFFF;font-weight:700;font-size:16px;border-radius:99px;padding:14px 24px;border:none;box-shadow:0 6px 20px rgba(220,46,10,0.35);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;transition:all 0.2s">⚡ Enroll Now</button>
-        <button onclick="toggleWishlist(this)" id="wishlist-btn" data-course-id="" class="btn btn-sm w-full" style="width:100%;background:#FFFDF7;color:#2563EB;border:1.5px solid #CBD5E1;font-weight:700;font-size:14px;border-radius:99px;padding:11px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s">🤍 Save to Wishlist</button>
-        <div style="color:var(--text-muted, #433F6B);font-size:13px;font-weight:500;text-align:center;margin-top:18px;display:flex;align-items:center;justify-content:center;gap:6px">🔒 30-Day Guarantee • Flexible Installments</div>
+        <button onclick="handleEnrollClick()" class="btn btn-lg w-full mb-md" id="enroll-btn" style="width:100%;background:#2563EB;color:#FFFFFF;font-weight:600;font-size:16px;border-radius:10px;padding:13px 22px;min-height:48px;border:none;box-shadow:0 8px 20px rgba(37,99,235,0.30);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;transition:all 0.2s">⚡ Enroll Now</button>
+        <button onclick="toggleWishlist(this)" id="wishlist-btn" data-course-id="" class="btn btn-sm w-full" style="width:100%;background:#FFFFFF;color:#2563EB;border:1.5px solid #2563EB;font-weight:600;font-size:14.5px;border-radius:10px;padding:11px 20px;min-height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s">🤍 Save to Wishlist</button>
+        <div style="color:#433F6B;font-size:13.5px;font-weight:500;text-align:center;margin-top:16px;display:flex;align-items:center;justify-content:center;gap:6px">🔒 30-Day Guarantee • M-Pesa &amp; Card</div>
         <div style="margin-top:16px; padding:14px; background:#FFFDF7; border:1px solid #E8E3D5; border-radius:12px;">
-          <div style="font-size:12px; font-weight:700; color:#433F6B; margin-bottom:6px;">🔑 Have an Access Code or Voucher?</div>
+          <div style="font-size:13px; font-weight:700; color:#433F6B; margin-bottom:6px;">🔑 Have an Access Code or Voucher?</div>
           <div style="display:flex; gap:6px;">
-            <input type="text" id="detail-access-code" placeholder="e.g. CBC-TEACH-2026" aria-label="Course access code" style="text-transform:uppercase; font-family:monospace; font-weight:700; font-size:12px; padding:8px 10px; border:1px solid #CBD5E1; border-radius:8px; width:100%; outline:none; background:#FFF;">
-            <button type="button" onclick="handleDetailAccessCode()" class="btn btn-blue btn-sm" style="white-space:nowrap; padding:8px 12px; font-size:12px;">Unlock</button>
+            <input type="text" id="detail-access-code" placeholder="e.g. CBC-TEACH-2026" aria-label="Course access code" style="text-transform:uppercase; font-family:monospace; font-weight:700; font-size:14px; padding:8px 10px; min-height:44px; border:1.5px solid #E8E3D5; border-radius:8px; width:100%; outline:none; background:#FFFFFF;">
+            <button type="button" onclick="handleDetailAccessCode()" class="btn btn-blue btn-sm" style="white-space:nowrap; padding:8px 14px; min-height:44px; font-size:13.5px;">Unlock</button>
           </div>
         </div>
       </div>
@@ -181,7 +193,7 @@
             <div>
               <span style="background: #FACC15; color: #1E1B4B; padding: 4px 12px; border-radius: 999px; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Instructify Kenya Official Publication</span>
               <h4 id="manual-banner-title" style="color: #FFFFFF !important; font-size: 20px; font-weight: 800; margin-top: 10px; margin-bottom: 6px;">Complete Professional Teacher Training Manual</h4>
-              <p id="manual-banner-desc" style="color: #CBD5E1 !important; font-size: 14.5px; margin: 0;">Access the full 15-section CBC-aligned manual complete with 10 detailed modules, lesson plan templates, digital safety guides, assessment rubrics, and trainer facilitation notes.</p>
+              <p id="manual-banner-desc" style="color: #E0E7FF !important; font-size: 14.5px; margin: 0;">Access the full 15-section CBC-aligned manual complete with 10 detailed modules, lesson plan templates, digital safety guides, assessment rubrics, and trainer facilitation notes.</p>
             </div>
             <a id="manual-banner-link" href="courses/digital-literacy-ict-integration.html" class="btn" style="background: #FACC15 !important; color: #1E1B4B !important; font-weight: 700; white-space: nowrap; padding: 12px 24px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);">Open Full Manual</a>
           </div>
@@ -244,6 +256,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer class="site-footer" id="site-footer" role="contentinfo">
   <div class="site-footer-container">
@@ -712,6 +725,6 @@ function updateEnrollButtonState() {
 </script>
 <script src="js/chat-config.js?v=19.0"></script>
 <script src="js/live-chat.js?v=19.0"></script>
-  <script src="js/site-header.js?v=2026.2" defer></script>
+  <script src="js/site-header.js?v=2026.9" defer></script>
 </body>
 </html>
