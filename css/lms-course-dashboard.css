@@ -1626,26 +1626,21 @@
 @media (max-width: 1023px) {
   .lms-welcome-hero { padding: 48px 0 40px; }
 }
-/* Consistent heading hierarchy & section rhythm */
-main h1, .audience-main-heading {
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
+@media (min-width: 768px) {
+  main h1, .audience-main-heading { font-size: 24px !important; font-weight: 700 !important; line-height: 1.2 !important; }
+  main h2, .audience-dynamic-title, .lms-section-h2, h2.lms-welcome-h1, .lms-featured-title { font-size: 22px !important; font-weight: 700 !important; line-height: 1.2 !important; }
+  main h3, .audience-card-title, .lms-course-title, .lms-academy-h3 { font-size: 20px !important; font-weight: 700 !important; line-height: 1.2 !important; }
+  main h4 { font-size: 16px !important; font-weight: 700 !important; line-height: 1.2 !important; }
 }
-main h2, .audience-dynamic-title, .lms-section-h2, h2.lms-welcome-h1 {
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
-}
-main h3, .audience-card-title, .lms-course-title, .lms-academy-h3 {
-  font-size: 20px !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
-}
-main h4 {
-  font-size: 16px !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
+@media (max-width: 767px) {
+  main h1, .audience-main-heading { font-size: 32px !important; font-weight: 800 !important; line-height: 1.15 !important; letter-spacing: -0.02em !important; }
+  main h2, .audience-dynamic-title, .lms-section-h2, h2.lms-welcome-h1, .lms-featured-title { font-size: 28px !important; font-weight: 700 !important; line-height: 1.2 !important; letter-spacing: -0.015em !important; }
+  .audience-main-sub, .lms-hero-sub { font-size: 18px !important; font-weight: 400 !important; line-height: 1.6 !important; }
+  .btn-primary, .btn-secondary, .btn-primary-orange, .btn-hero-secondary { font-size: 16px !important; font-weight: 600 !important; line-height: 1.2 !important; }
+  main h3 { font-size: 24px !important; font-weight: 700 !important; line-height: 1.25 !important; }
+  .audience-card-title, .lms-course-title, .lms-academy-h3, .card-title { font-size: 20px !important; font-weight: 700 !important; line-height: 1.25 !important; }
+  main h4 { font-size: 20px !important; font-weight: 600 !important; line-height: 1.3 !important; }
+  .audience-card-desc, .lms-course-desc, .lms-academy-desc, .card-description { font-size: 15px !important; line-height: 1.6 !important; }
 }
 .lms-academies-section,
 #catalog-section {

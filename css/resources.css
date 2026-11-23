@@ -2501,43 +2501,19 @@
   }
 }
 
-/* Unified Resource Library Heading & 8px Spacing Scale */
-.res-hero-title,
-main h1 {
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
+@media (min-width: 768px) {
+  .res-hero-title, main h1 { font-size: 24px !important; font-weight: 700 !important; line-height: 1.2 !important; }
+  .res-section-title, main h2 { font-size: 22px !important; font-weight: 700 !important; line-height: 1.2 !important; }
+  h3.res-filter-title, h3.res-banner-title, h3.res-modal-title, h3.res-cat-title, h3.res-card-title, h3.res-featured-title, h3.res-toolkit-title, h3.res-media-title, h3.res-article-title, main h3 { font-size: 20px !important; font-weight: 700 !important; line-height: 1.2 !important; }
+  h4.res-cat-title, h4.res-card-title, h4.res-featured-title, h4.res-toolkit-title, h4.res-media-title, h4.res-article-title, main h4 { font-size: 16px !important; font-weight: 700 !important; line-height: 1.2 !important; }
 }
-.res-section-title,
-main h2 {
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
-}
-h3.res-filter-title,
-h3.res-banner-title,
-h3.res-modal-title,
-h3.res-cat-title,
-h3.res-card-title,
-h3.res-featured-title,
-h3.res-toolkit-title,
-h3.res-media-title,
-h3.res-article-title,
-main h3 {
-  font-size: 20px !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
-}
-h4.res-cat-title,
-h4.res-card-title,
-h4.res-featured-title,
-h4.res-toolkit-title,
-h4.res-media-title,
-h4.res-article-title,
-main h4 {
-  font-size: 16px !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
+@media (max-width: 767px) {
+  .res-hero-title { font-size: 36px !important; font-weight: 800 !important; line-height: 1.1 !important; }
+  .res-hero-sub { font-size: 18px !important; font-weight: 400 !important; line-height: 1.6 !important; }
+  .res-section-title, main h2 { font-size: 28px !important; font-weight: 700 !important; line-height: 1.2 !important; }
+  h3.res-filter-title, h3.res-banner-title, h3.res-modal-title, main h3 { font-size: 24px !important; font-weight: 700 !important; line-height: 1.25 !important; }
+  .res-cat-title, .res-card-title, .res-featured-title, .res-toolkit-title, .res-media-title, .res-article-title { font-size: 20px !important; font-weight: 700 !important; line-height: 1.25 !important; }
+  .res-cat-desc, .res-card-desc, .res-toolkit-desc { font-size: 15px !important; line-height: 1.6 !important; }
 }
 
 @media (max-width: 1023px) {

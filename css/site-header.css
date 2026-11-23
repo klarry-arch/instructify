@@ -857,3 +857,22 @@ body {
     animation: none;
   }
 }
+/* Mobile Header Typography (320px-767px) */
+@media (max-width: 767px) {
+  .nav-link,
+  .site-nav-link,
+  .mobile-drawer-link,
+  .mobile-sub-link {
+    font-size: 15px !important;
+    font-weight: 500 !important;
+  }
+  .btn-primary,
+  .btn-secondary,
+  .btn-primary-orange,
+  .mobile-drawer-cta .btn-primary-orange,
+  .mobile-drawer-cta .btn-outline-navy {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+  }
+}

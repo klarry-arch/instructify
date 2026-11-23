@@ -4289,3 +4289,14 @@ textarea:focus {
 @media (prefers-reduced-motion: reduce) {
   .ik-spinner { animation-duration: 2s; }
 }
+
+
+@media (max-width: 767px) {
+  /* Mobile Button Typography (320px-767px) */
+  .btn-primary,
+  .btn-secondary {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+  }
+}

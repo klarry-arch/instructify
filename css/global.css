@@ -1345,7 +1345,8 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
 @media (max-width: 1080px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-
+}
+@media (min-width: 768px) and (max-width: 1080px) {
   h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
     font-size: 24px !important;
     line-height: 1.25 !important;
@@ -1399,38 +1400,7 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
     margin-bottom: 24px !important;
   }
 
-  h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
-    font-size: 24px !important;
-    line-height: 1.25 !important;
-    margin-bottom: 12px !important;
-  }
-
-  h2, .h2, .section-title, .dashboard-title {
-    font-size: 22px !important;
-    line-height: 1.28 !important;
-    margin-bottom: 10px !important;
-  }
-
-  h3, .h3, .card-title, .course-card-title, .workshop-title, .widget-title {
-    font-size: 20px !important;
-    line-height: 1.30 !important;
-    margin-bottom: 8px !important;
-  }
-
-  h4, .h4 {
-    font-size: 16px !important;
-    line-height: 1.32 !important;
-  }
-
-  h5, .h5 {
-    font-size: 14px !important;
-    line-height: 1.35 !important;
-  }
-
-  p, .lead, .hero-lead, .hero-subtitle, .section-subtitle {
-    font-size: 16px !important;
-    line-height: 1.60 !important;
-  }
+  /* Mobile heading & body scale managed cleanly by the 320px-767px Mobile Typography System below */
 
   .hero-ctas, .btn-group {
     flex-direction: column !important;
@@ -1496,24 +1466,9 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
     padding-right: 16px !important;
   }
 
-  h1, .h1, .hero-title, .page-title, .hero-heading, .hero-h1 {
-    font-size: 24px !important;
-    line-height: 1.25 !important;
-  }
-
-  h2, .h2, .section-title {
-    font-size: 22px !important;
-    line-height: 1.28 !important;
-  }
-
-  h3, .h3, .card-title {
-    font-size: 20px !important;
-    line-height: 1.30 !important;
-  }
-
+  /* Heading & button typography inherits cleanly from Mobile Typography System below */
   .btn {
     padding: 12px 16px !important;
-    font-size: 14.5px !important;
     letter-spacing: 0;
   }
 }
@@ -1525,10 +1480,7 @@ h1, h2, h3, h4, h5, h6, p, a, span, label, li, pre, code {
     padding-right: 16px !important;
   }
 
-  h1, .h1, .hero-title {
-    font-size: 24px !important;
-    line-height: 1.25 !important;
-  }
+  /* 320px-767px headings inherit Mobile Typography System */
 
   .btn {
     padding: 10px 14px !important;
@@ -1945,17 +1897,173 @@ nav a,
   }
 }
 
-/* Standardized 8px Grid Safeguards, Cards & Mobile Touch Targets */
-h1, .h1 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 24px !important; line-height: 1.2 !important; font-weight: 700 !important; }
-h2, .h2 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 22px !important; line-height: 1.2 !important; font-weight: 700 !important; }
-h3, .h3 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 20px !important; line-height: 1.2 !important; font-weight: 700 !important; }
-h4, .h4 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 16px !important; line-height: 1.2 !important; font-weight: 700 !important; }
-h5, .h5 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 14px !important; line-height: 1.2 !important; font-weight: 700 !important; }
-h6, .h6 { font-family: 'Plus Jakarta Sans', sans-serif !important; line-height: 1.2 !important; font-weight: 700 !important; }
-p, .lead, .hero-desc, .hero-supporting-copy, .section-subtitle, .section-subtext {
-  font-size: 16px;
-  line-height: 1.60;
+/* Standardized Heading Hierarchy (Tablet/Desktop >= 768px) */
+@media (min-width: 768px) {
+  h1, .h1 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 24px !important; line-height: 1.2 !important; font-weight: 700 !important; }
+  h2, .h2 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 22px !important; line-height: 1.2 !important; font-weight: 700 !important; }
+  h3, .h3 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 20px !important; line-height: 1.2 !important; font-weight: 700 !important; }
+  h4, .h4 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 16px !important; line-height: 1.2 !important; font-weight: 700 !important; }
+  h5, .h5 { font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 14px !important; line-height: 1.2 !important; font-weight: 700 !important; }
+  h6, .h6 { font-family: 'Plus Jakarta Sans', sans-serif !important; line-height: 1.2 !important; font-weight: 700 !important; }
+  p, .lead, .hero-desc, .hero-supporting-copy, .section-subtitle, .section-subtext {
+    font-size: 16px;
+    line-height: 1.7;
+  }
 }
+
+/* Mobile Typography System (Viewport: 320px - 767px) */
+@media (max-width: 767px) {
+  :root {
+    --font-heading: "Plus Jakarta Sans", sans-serif;
+    --font-body: "Inter", sans-serif;
+    --text-color: #1E1B4B;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, .h1 {
+    font-family: var(--font-heading) !important;
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 16px !important;
+    overflow-wrap: break-word;
+  }
+
+  h2, .h2 {
+    font-family: var(--font-heading) !important;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.015em !important;
+    margin-bottom: 14px !important;
+    overflow-wrap: break-word;
+  }
+
+  h3, .h3 {
+    font-family: var(--font-heading) !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    margin-bottom: 12px !important;
+    overflow-wrap: break-word;
+  }
+
+  h4, .h4 {
+    font-family: var(--font-heading) !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: 10px !important;
+  }
+
+  h5, .h5 {
+    font-family: var(--font-heading) !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    line-height: 1.35 !important;
+    margin-bottom: 8px !important;
+  }
+
+  h6, .h6 {
+    font-family: var(--font-heading) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .nav-link,
+  .mobile-drawer-link,
+  .nav-mobile-link {
+    font-size: 15px !important;
+    font-weight: 500 !important;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-primary-orange,
+  .btn-hero-secondary,
+  .btn-hero-lg,
+  .mobile-drawer-cta .btn-primary-orange,
+  .mobile-drawer-cta .btn-outline-navy {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+    font-family: var(--font-body);
+  }
+
+  .card-title {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+  }
+
+  .card-description {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
+
+  .hero-title,
+  .hero-h1,
+  .hero-heading,
+  .about-hero-text h1,
+  .res-hero-title,
+  .contact-hero h1 {
+    font-size: 36px !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+    overflow-wrap: break-word;
+  }
+
+  .hero-subtitle,
+  .hero-desc,
+  .hero-supporting-copy,
+  .res-hero-sub,
+  .about-hero-text p,
+  .contact-hero-subtitle,
+  .contact-hero-sub {
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+  }
+
+  .small-text {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  .footer-text,
+  .site-footer .footer-brand-desc,
+  .site-footer .footer-bottom-copy,
+  .site-footer .footer-newsletter-desc,
+  .site-footer .footer-contact-item {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+}
+
 
 .dashboard-main section,
 .lms-main section,

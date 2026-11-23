@@ -1978,17 +1978,10 @@ details summary:focus-visible {
     padding: 6px 12px;
     letter-spacing: 0.06em;
   }
-  .hero-h1 {
-    font-size: 24px;
-    line-height: 1.25;
-  }
   .hero-floating-badge {
     font-size: 12px;
     padding: 7px 11px 7px 8px;
     gap: 8px;
-  }
-  .section-h2 {
-    font-size: 22px;
   }
 }
 
@@ -2117,18 +2110,7 @@ nav a,
 }
 
 @media (max-width: 767px) {
-  .hero-title,
-  .hero-h1,
-  h1 {
-    font-size: 24px !important;
-    line-height: 1.25 !important;
-  }
-
-  .section-h2,
-  h2 {
-    font-size: 22px !important;
-    line-height: 1.28 !important;
-  }
+  /* Mobile heading sizes set by Mobile Typography System at bottom */
 
   .why-card,
   .process-step-card,
@@ -2717,34 +2699,105 @@ body.instructify-home .site-footer h4,
 body.instructify-home .site-footer h5 {
   color: #FFFFFF;
 }
-body.instructify-home h1,
-body.instructify-home .hero-h1 {
-  font-size: 24px !important;
+@media (min-width: 768px) {
+  body.instructify-home h1,
+  body.instructify-home .hero-h1 {
+    font-size: 24px !important;
+  }
+  body.instructify-home h2,
+  body.instructify-home .section-h2,
+  body.instructify-home .final-cta-h2 {
+    font-size: 22px !important;
+  }
+  body.instructify-home h3,
+  body.instructify-home .ik-category-title,
+  body.instructify-home .ik-course-title,
+  body.instructify-home .why-content h3,
+  body.instructify-home .form-card-header h3,
+  body.instructify-home .newsletter-card h3,
+  body.instructify-home .programme-title,
+  body.instructify-home .intro-pillar-title,
+  body.instructify-home .process-step-title,
+  body.instructify-home .audience-title,
+  body.instructify-home .format-title,
+  body.instructify-home .outcome-title,
+  body.instructify-home .story-title,
+  body.instructify-home .resource-title {
+    font-size: 20px !important;
+  }
+  body.instructify-home h4 {
+    font-size: 16px !important;
+  }
+  body.instructify-home h5 {
+    font-size: 14px !important;
+  }
 }
-body.instructify-home h2,
-body.instructify-home .section-h2,
-body.instructify-home .final-cta-h2 {
-  font-size: 22px !important;
-}
-body.instructify-home h3,
-body.instructify-home .ik-category-title,
-body.instructify-home .ik-course-title,
-body.instructify-home .why-content h3,
-body.instructify-home .form-card-header h3,
-body.instructify-home .newsletter-card h3,
-body.instructify-home .programme-title,
-body.instructify-home .intro-pillar-title,
-body.instructify-home .process-step-title,
-body.instructify-home .audience-title,
-body.instructify-home .format-title,
-body.instructify-home .outcome-title,
-body.instructify-home .story-title,
-body.instructify-home .resource-title {
-  font-size: 20px !important;
-}
-body.instructify-home h4 {
-  font-size: 16px !important;
-}
-body.instructify-home h5 {
-  font-size: 14px !important;
+
+@media (max-width: 767px) {
+  body.instructify-home {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #1E1B4B;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body.instructify-home h1 { font-size: 32px !important; font-weight: 800 !important; line-height: 1.15 !important; letter-spacing: -0.02em !important; margin-bottom: 16px !important; }
+  body.instructify-home .hero-title,
+  body.instructify-home .hero-h1 { font-size: 36px !important; font-weight: 800 !important; line-height: 1.1 !important; letter-spacing: -0.02em !important; }
+  body.instructify-home .hero-subtitle,
+  body.instructify-home .hero-desc,
+  body.instructify-home .hero-supporting-copy { font-size: 18px !important; font-weight: 400 !important; line-height: 1.6 !important; }
+  body.instructify-home .btn-primary,
+  body.instructify-home .btn-secondary,
+  body.instructify-home .btn-primary-orange,
+  body.instructify-home .btn-hero-secondary,
+  body.instructify-home .hero-cta-cluster .btn-primary-orange,
+  body.instructify-home .hero-cta-cluster .btn-hero-secondary,
+  body.instructify-home .final-cta-buttons .btn-primary-orange,
+  body.instructify-home .btn-secondary-blue,
+  body.instructify-home .btn-hero-lg {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+  }
+  body.instructify-home h2,
+  body.instructify-home .section-h2,
+  body.instructify-home .final-cta-h2 { font-size: 28px !important; font-weight: 700 !important; line-height: 1.2 !important; letter-spacing: -0.015em !important; margin-bottom: 14px !important; }
+  body.instructify-home h3 { font-size: 24px !important; font-weight: 700 !important; line-height: 1.25 !important; margin-bottom: 12px !important; }
+  body.instructify-home h4 { font-size: 20px !important; font-weight: 600 !important; line-height: 1.3 !important; margin-bottom: 10px !important; }
+  body.instructify-home h5 { font-size: 18px !important; font-weight: 600 !important; line-height: 1.35 !important; margin-bottom: 8px !important; }
+  body.instructify-home h6 { font-size: 16px !important; font-weight: 600 !important; line-height: 1.4 !important; }
+  body.instructify-home .card-title,
+  body.instructify-home .intro-pillar-title,
+  body.instructify-home .ik-category-title,
+  body.instructify-home .ik-course-title,
+  body.instructify-home .programme-title,
+  body.instructify-home .why-content h3,
+  body.instructify-home .process-step-title,
+  body.instructify-home .audience-title,
+  body.instructify-home .format-title,
+  body.instructify-home .outcome-title,
+  body.instructify-home .story-title,
+  body.instructify-home .resource-title {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+  }
+  body.instructify-home .card-description,
+  body.instructify-home .intro-pillar-desc,
+  body.instructify-home .ik-category-desc,
+  body.instructify-home .ik-course-desc,
+  body.instructify-home .programme-desc,
+  body.instructify-home .why-content p,
+  body.instructify-home .process-step-desc,
+  body.instructify-home .audience-desc,
+  body.instructify-home .format-desc,
+  body.instructify-home .outcome-desc,
+  body.instructify-home .story-body,
+  body.instructify-home .resource-desc {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
 }
