@@ -40,8 +40,8 @@
   --shadow-sm:       0 2px 8px rgba(30, 27, 75, 0.06);
   --shadow-md:       0 8px 24px rgba(30, 27, 75, 0.09);
   --shadow-lg:       0 16px 36px rgba(30, 27, 75, 0.13);
-  --font-heading:    'Plus Jakarta Sans', sans-serif;
-  --font-body:       'Inter', sans-serif;
+  --font-heading: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* ── Base & Global Normalization ─────────────────────────────── */
@@ -1991,8 +1991,8 @@ details summary:focus-visible {
    Canonical Palette: #2563EB · #FACC15 · #FFFDF7 · #1E1B4B
    ══════════════════════════════════════════════════════════════ */
 :root {
-  --font-heading: 'Plus Jakarta Sans', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-heading: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
@@ -2003,7 +2003,7 @@ html,
 body.instructify-home {
   overflow-x: clip !important;
   max-width: 100%;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.7;
@@ -2688,7 +2688,7 @@ body.instructify-home h3,
 body.instructify-home h4,
 body.instructify-home h5,
 body.instructify-home h6 {
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
   color: #1E1B4B;
   font-weight: 700 !important;
   line-height: 1.2 !important;
@@ -2735,7 +2735,7 @@ body.instructify-home .site-footer h5 {
 
 @media (max-width: 767px) {
   body.instructify-home {
-    font-family: "Inter", sans-serif;
+    font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.7;
