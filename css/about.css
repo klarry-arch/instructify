@@ -1987,11 +1987,12 @@ a:focus-visible, button:focus-visible, .btn:focus-visible,
 .challenge-card:nth-child(2) { border-top-color: #1D4ED8; }
 .challenge-card:nth-child(3) { border-top-color: #0EA5E9; }
 .step-card:hover, .challenge-card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -10px rgba(29, 78, 216, .28); border-color: #93B4F5; }
-.challenge-icon { display: inline-flex; width: 48px; height: 48px; align-items: center; justify-content: center; font-size: 24px; background: #EFF6FF; border-radius: 12px; margin-bottom: 14px; }
+.challenge-card, .step-card { display: flex; flex-direction: column; align-items: center; text-align: center; border-radius: 20px; position: relative; overflow: hidden; }
+.challenge-icon { display: flex; width: 58px; height: 58px; align-items: center; justify-content: center; font-size: 26px; background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); border: 1px solid #BFDBFE; box-shadow: 0 8px 18px -6px rgba(37, 99, 235, 0.22), 0 0 0 5px #EFF6FF; border-radius: 16px; margin: 2px auto 16px auto; }
 .challenge-card h3, .step-card h3 { font-size: 19px; font-weight: 750; color: #1E1B4B; margin: 0 0 8px; }
 .challenge-card p, .step-card p { font-size: 15px; line-height: 1.65; color: #433F6B; margin: 0; }
 .step-card { display: block; background: #FFFDF7; }
-.step-num { display: inline-flex; width: 38px; height: 38px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, #1D4ED8, #5B3FD9); color: #FFFFFF; font-weight: 800; margin-bottom: 14px; }
+.step-num { display: flex; width: 50px; height: 50px; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); color: #FFFFFF; font-size: 18px; font-weight: 700; box-shadow: 0 8px 18px -4px rgba(37, 99, 235, 0.30), 0 0 0 5px #EFF6FF; margin: 2px auto 16px auto; }
 @media (max-width: 900px) { .challenge-grid, .steps-grid { grid-template-columns: 1fr; } .about-challenges-section, .about-steps-section { padding: 48px 0; } }
 
 /* Unified About Page Typography & 8px Spacing Scale */

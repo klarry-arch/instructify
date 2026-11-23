@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/global.css?v=2026.10">
   <link rel="stylesheet" href="css/animations.css?v=2026.10">
   <link rel="stylesheet" href="css/components.css?v=2026.10">
-  <link rel="stylesheet" href="css/lms-course-dashboard.css?v=2026.10">
+  <link rel="stylesheet" href="css/lms-course-dashboard.css?v=2026.11">
   <link rel="stylesheet" href="css/docmed-theme.css?v=2026.10">
   <link rel="stylesheet" href="css/live-chat.css?v=2026.10">
 
@@ -209,16 +209,31 @@
 
     /* Course Card Architecture */
     .audience-course-card {
-      background: #FFFFFF;
-      border: 1px solid #E8E3D5;
-      border-radius: 18px;
-      padding: 28px 24px;
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%);
+      border: 1.5px solid rgba(30, 27, 75, 0.09);
+      border-radius: 20px;
+      padding: 28px 24px 24px;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
       height: 100%;
-      box-shadow: 0 4px 16px rgba(18, 53, 91, 0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      overflow: hidden;
+      box-shadow: 0 6px 20px -4px rgba(30, 27, 75, 0.05), 0 12px 28px -8px rgba(37, 99, 235, 0.06);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
       position: relative;
+    }
+    .audience-course-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #2563EB 0%, #60A5FA 65%, #FACC15 100%);
+    }
+    .audience-course-card:nth-child(even)::before {
+      background: linear-gradient(90deg, #FACC15 0%, #2563EB 100%);
     }
 
     .audience-course-card:hover {
@@ -233,17 +248,29 @@
 
     /* Top Circular Icon Badge */
     .audience-card-icon-wrap {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: inline-flex;
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
-      margin-bottom: 16px;
+      font-size: 26px;
+      margin: 4px auto 16px auto;
       flex-shrink: 0;
-      background: rgba(15, 157, 145, 0.10);
-      color: #2563EB;
+      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+      box-shadow: 0 8px 18px -6px rgba(37, 99, 235, 0.24), 0 0 0 6px #EFF6FF;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .audience-course-card:hover .audience-card-icon-wrap {
+      transform: translateY(-3px) scale(1.08) rotate(-3deg);
+    }
+    .audience-card-duration {
+      justify-content: center;
+    }
+    .audience-card-meta-row {
+      width: 100%;
     }
 
     /* Duration Tag (Uppercase, e.g. "8 WEEKS") */
@@ -273,7 +300,7 @@
     /* Description */
     .audience-card-desc {
       font-family: var(--font-body) !important;
-      font-size: 14px !important;
+      font-size: 15px !important;
       color: #433F6B !important;
       line-height: 1.6 !important;
       margin: 0 0 18px 0 !important;

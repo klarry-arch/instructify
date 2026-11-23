@@ -867,22 +867,25 @@ details summary:focus-visible {
 /* ── 4. Introduction Section ─────────────────────────────────── */
 .intro-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: center;
-  margin-bottom: 24px;
+  grid-template-columns: 0.94fr 1.06fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 40px;
 }
 .intro-lead-text {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.6;
+  font-size: 16.5px;
+  font-weight: 500;
+  line-height: 1.65;
   color: var(--navy);
-  margin-bottom: 16px;
+  margin-top: 0;
+  margin-bottom: 14px;
 }
 .intro-body-text {
-  font-size: 16px;
+  font-size: 15.5px;
+  font-weight: 400;
   color: var(--text-muted);
-  line-height: 1.7;
+  line-height: 1.68;
+  margin: 0;
 }
 .intro-pillars-grid {
   display: grid;
@@ -2417,6 +2420,282 @@ nav a,
   .process-grid-3,
   .why-grid-4 {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ── 15. Balanced Fonts, Centered Icons & Modern Elevated Card System ─ */
+body.instructify-home .section-subtitle,
+body.instructify-home .section-subtext {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #433F6B;
+}
+
+body.instructify-home .intro-pillar-desc,
+body.instructify-home .ik-category-desc,
+body.instructify-home .ik-course-desc,
+body.instructify-home .programme-desc,
+body.instructify-home .why-content p,
+body.instructify-home .process-step-desc,
+body.instructify-home .audience-desc,
+body.instructify-home .format-desc,
+body.instructify-home .outcome-desc,
+body.instructify-home .story-body,
+body.instructify-home .resource-desc {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.64;
+  color: #433F6B;
+}
+
+/* Modern Elevated Card Container with Top Gradient Accent Stripe */
+body.instructify-home .intro-pillar-card,
+body.instructify-home .ik-category-card,
+body.instructify-home .programme-card,
+body.instructify-home .why-card,
+body.instructify-home .process-step-card,
+body.instructify-home .audience-card,
+body.instructify-home .format-card,
+body.instructify-home .outcome-card,
+body.instructify-home .story-card,
+body.instructify-home .resource-card,
+body.instructify-home .ik-course-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1.5px solid rgba(30, 27, 75, 0.08);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%);
+  box-shadow: 0 4px 16px -4px rgba(30, 27, 75, 0.05), 0 12px 28px -8px rgba(37, 99, 235, 0.06);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s ease,
+              border-color 0.28s ease;
+}
+
+body.instructify-home .intro-pillar-card::before,
+body.instructify-home .ik-category-card::before,
+body.instructify-home .programme-card::before,
+body.instructify-home .why-card::before,
+body.instructify-home .process-step-card::before,
+body.instructify-home .audience-card::before,
+body.instructify-home .format-card::before,
+body.instructify-home .outcome-card::before,
+body.instructify-home .story-card::before,
+body.instructify-home .resource-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2563EB 0%, #60A5FA 65%, #FACC15 100%);
+  opacity: 0.85;
+  transition: height 0.22s ease, opacity 0.22s ease;
+  z-index: 2;
+}
+
+body.instructify-home .intro-pillar-card:nth-child(even)::before,
+body.instructify-home .ik-category-card:nth-child(even)::before,
+body.instructify-home .programme-card:nth-child(even)::before,
+body.instructify-home .why-card:nth-child(even)::before,
+body.instructify-home .process-step-card:nth-child(even)::before,
+body.instructify-home .audience-card:nth-child(even)::before,
+body.instructify-home .format-card:nth-child(even)::before,
+body.instructify-home .outcome-card:nth-child(even)::before,
+body.instructify-home .resource-card:nth-child(even)::before {
+  background: linear-gradient(90deg, #FACC15 0%, #3B82F6 65%, #1D4ED8 100%);
+}
+
+body.instructify-home .intro-pillar-card:hover,
+body.instructify-home .ik-category-card:hover,
+body.instructify-home .programme-card:hover,
+body.instructify-home .why-card:hover,
+body.instructify-home .process-step-card:hover,
+body.instructify-home .audience-card:hover,
+body.instructify-home .format-card:hover,
+body.instructify-home .outcome-card:hover,
+body.instructify-home .story-card:hover,
+body.instructify-home .resource-card:hover,
+body.instructify-home .ik-course-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.36);
+  box-shadow: 0 20px 42px -12px rgba(37, 99, 235, 0.16), 0 8px 18px -6px rgba(30, 27, 75, 0.06);
+}
+
+body.instructify-home .intro-pillar-card:hover::before,
+body.instructify-home .ik-category-card:hover::before,
+body.instructify-home .programme-card:hover::before,
+body.instructify-home .why-card:hover::before,
+body.instructify-home .process-step-card:hover::before,
+body.instructify-home .audience-card:hover::before,
+body.instructify-home .format-card:hover::before,
+body.instructify-home .outcome-card:hover::before,
+body.instructify-home .story-card:hover::before,
+body.instructify-home .resource-card:hover::before {
+  height: 5px;
+  opacity: 1;
+}
+
+/* Centered Card Alignment Across Icon-Led Cards */
+body.instructify-home .intro-pillar-card,
+body.instructify-home .ik-category-card,
+body.instructify-home .programme-card,
+body.instructify-home .why-card,
+body.instructify-home .process-step-card,
+body.instructify-home .audience-card,
+body.instructify-home .outcome-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+/* Centered Elevated Icon Medallions */
+body.instructify-home .intro-pillar-icon,
+body.instructify-home .ik-category-icon,
+body.instructify-home .programme-icon-wrap,
+body.instructify-home .why-icon,
+body.instructify-home .audience-avatar-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px auto 18px auto;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 10px 22px -6px rgba(37, 99, 235, 0.34), 0 0 0 6px #EFF6FF, inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.32s ease;
+}
+
+body.instructify-home .intro-pillar-icon svg,
+body.instructify-home .programme-icon-wrap svg,
+body.instructify-home .why-icon svg,
+body.instructify-home .audience-avatar-icon svg {
+  width: 26px;
+  height: 26px;
+  stroke: currentColor;
+}
+
+body.instructify-home .intro-pillar-card:nth-child(2) .intro-pillar-icon,
+body.instructify-home .ik-category-card:nth-child(even) .ik-category-icon,
+body.instructify-home .programme-card:nth-child(even) .programme-icon-wrap,
+body.instructify-home .why-card:nth-child(even) .why-icon,
+body.instructify-home .audience-card:nth-child(even) .audience-avatar-icon {
+  background: linear-gradient(135deg, #FEF9C3 0%, #FACC15 100%);
+  color: #1E1B4B;
+  border-color: rgba(250, 204, 21, 0.55);
+  box-shadow: 0 10px 22px -6px rgba(250, 204, 21, 0.36), 0 0 0 6px rgba(250, 204, 21, 0.16), inset 0 1px 1px rgba(255, 255, 255, 0.65);
+}
+
+body.instructify-home .intro-pillar-card:nth-child(3) .intro-pillar-icon {
+  background: linear-gradient(135deg, #1E1B4B 0%, #2563EB 100%);
+  color: #FFFFFF;
+  box-shadow: 0 10px 22px -6px rgba(30, 27, 75, 0.32), 0 0 0 6px rgba(30, 27, 75, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+}
+
+body.instructify-home .intro-pillar-card:hover .intro-pillar-icon,
+body.instructify-home .ik-category-card:hover .ik-category-icon,
+body.instructify-home .programme-card:hover .programme-icon-wrap,
+body.instructify-home .why-card:hover .why-icon,
+body.instructify-home .audience-card:hover .audience-avatar-icon {
+  transform: translateY(-4px) scale(1.08) rotate(-3deg);
+  box-shadow: 0 14px 28px -6px rgba(37, 99, 235, 0.40), 0 0 0 8px rgba(37, 99, 235, 0.10);
+}
+
+/* Emoji inside category medallions gets crisp soft halo container */
+body.instructify-home .ik-category-icon {
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  color: #1D4ED8;
+  font-size: 26px;
+}
+
+body.instructify-home .ik-category-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+body.instructify-home .ik-category-icon {
+  margin-bottom: 2px;
+}
+
+body.instructify-home .ik-category-cta,
+body.instructify-home .programme-action-link {
+  justify-content: center;
+  margin-top: auto;
+}
+
+body.instructify-home .programme-audience-box {
+  width: 100%;
+  text-align: center;
+  background: #FFFDF7;
+  border: 1px solid #E8E3D5;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+body.instructify-home .process-step-num {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 4px auto 18px auto;
+  box-shadow: 0 10px 22px -6px rgba(37, 99, 235, 0.36), 0 0 0 6px #EFF6FF;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body.instructify-home .process-step-card:hover .process-step-num {
+  transform: scale(1.08);
+}
+
+body.instructify-home .format-card {
+  align-items: center;
+  text-align: center;
+}
+
+body.instructify-home .format-badge {
+  margin: 4px auto 14px auto;
+}
+
+body.instructify-home .format-features-list {
+  width: 100%;
+  text-align: left;
+  background: #FFFDF7;
+  border: 1px solid #E8E3D5;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: auto;
+}
+
+body.instructify-home .outcome-metric {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border: 1px solid #BFDBFE;
+  margin: 4px auto 14px auto;
+}
+
+@media (max-width: 900px) {
+  body.instructify-home .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 32px;
   }
 }
 

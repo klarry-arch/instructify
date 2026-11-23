@@ -720,17 +720,29 @@
 }
 
 .lms-academy-card {
-  background: #FFFFFF;
-  border: 1.5px solid var(--lms-border);
-  border-radius: var(--lms-radius-xl);
-  padding: 22px 18px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%);
+  border: 1.5px solid rgba(30, 27, 75, 0.09);
+  border-radius: 20px;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   justify-content: space-between;
   cursor: pointer;
-  transition: all 0.22s ease;
+  box-shadow: 0 4px 16px -4px rgba(30, 27, 75, 0.05), 0 10px 24px -8px rgba(37, 99, 235, 0.06);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
+}
+.lms-academy-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2563EB 0%, #60A5FA 65%, #FACC15 100%);
 }
 
 .lms-academy-card:hover {
@@ -745,14 +757,15 @@
 }
 
 .lms-academy-icon-box {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  margin-bottom: 14px;
+  font-size: 24px;
+  margin: 4px auto 14px auto;
+  box-shadow: 0 8px 18px -6px rgba(37, 99, 235, 0.22), 0 0 0 5px #EFF6FF;
 }
 
 .lms-academy-h3 {
@@ -772,6 +785,7 @@
 }
 
 .lms-academy-footer {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
