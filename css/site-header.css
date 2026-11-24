@@ -878,3 +878,10 @@ body {
     line-height: 1.2 !important;
   }
 }
+
+/* Sticky Header Anchor Clearance */
+section[id],
+.home-section[id],
+.about-section[id] {
+  scroll-margin-top: 40px;
+}

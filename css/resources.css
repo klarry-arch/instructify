@@ -120,7 +120,7 @@
 .res-hero .container {
   position: relative;
   z-index: 2;
-  max-width: 1080px;
+  max-width: 1240px;
   text-align: center;
 }
 
@@ -222,7 +222,7 @@
   font-family: var(--font-body) !important;
   font-size: 15px !important;
   color: #1E1B4B !important;
-  padding: 10px 8px !important;
+  padding: 12px 16px !important;
   margin: 0 !important;
   min-height: 44px !important;
   width: 100%;
@@ -261,7 +261,7 @@
   min-height: 44px;
   font-family: var(--font-heading) !important;
   font-size: 14px;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   cursor: pointer;
   box-shadow: 0 6px 16px -4px rgba(30, 27, 75, 0.34);
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
@@ -376,8 +376,8 @@
   min-height: 46px;
   border-radius: 12px;
   font-family: var(--font-heading) !important;
-  font-size: 14.5px;
-  font-weight: 700 !important;
+  font-size: 15px;
+  font-weight: 600 !important;
   text-decoration: none;
   box-shadow: 0 4px 14px -4px rgba(30, 27, 75, 0.08);
   transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
@@ -2501,20 +2501,14 @@
   }
 }
 
-@media (min-width: 768px) {
-  .res-hero-title, main h1 { font-size: 24px !important; font-weight: 700 !important; line-height: 1.2 !important; }
-  .res-section-title, main h2 { font-size: 22px !important; font-weight: 700 !important; line-height: 1.2 !important; }
-  h3.res-filter-title, h3.res-banner-title, h3.res-modal-title, h3.res-cat-title, h3.res-card-title, h3.res-featured-title, h3.res-toolkit-title, h3.res-media-title, h3.res-article-title, main h3 { font-size: 20px !important; font-weight: 700 !important; line-height: 1.2 !important; }
-  h4.res-cat-title, h4.res-card-title, h4.res-featured-title, h4.res-toolkit-title, h4.res-media-title, h4.res-article-title, main h4 { font-size: 16px !important; font-weight: 700 !important; line-height: 1.2 !important; }
-}
-@media (max-width: 767px) {
-  .res-hero-title { font-size: 36px !important; font-weight: 800 !important; line-height: 1.1 !important; }
-  .res-hero-sub { font-size: 18px !important; font-weight: 400 !important; line-height: 1.6 !important; }
-  .res-section-title, main h2 { font-size: 28px !important; font-weight: 700 !important; line-height: 1.2 !important; }
-  h3.res-filter-title, h3.res-banner-title, h3.res-modal-title, main h3 { font-size: 24px !important; font-weight: 700 !important; line-height: 1.25 !important; }
-  .res-cat-title, .res-card-title, .res-featured-title, .res-toolkit-title, .res-media-title, .res-article-title { font-size: 20px !important; font-weight: 700 !important; line-height: 1.25 !important; }
-  .res-cat-desc, .res-card-desc, .res-toolkit-desc { font-size: 15px !important; line-height: 1.6 !important; }
-}
+/* Unified Resource Library Typography Scale (All Viewports) */
+.res-hero-title, main h1 { font-size: 24px !important; font-weight: 700 !important; line-height: 1.25 !important; }
+.res-section-title, main h2 { font-size: 22px !important; font-weight: 700 !important; line-height: 1.28 !important; }
+h3.res-filter-title, h3.res-banner-title, h3.res-modal-title, h3.res-cat-title, h3.res-card-title, h3.res-featured-title, h3.res-toolkit-title, h3.res-media-title, h3.res-article-title, main h3 { font-size: 20px !important; font-weight: 600 !important; line-height: 1.30 !important; }
+h4.res-cat-title, h4.res-card-title, h4.res-featured-title, h4.res-toolkit-title, h4.res-media-title, h4.res-article-title, main h4 { font-size: 16px !important; font-weight: 600 !important; line-height: 1.32 !important; }
+main h5 { font-size: 14px !important; font-weight: 600 !important; line-height: 1.35 !important; }
+.btn-hero-primary, .btn-hero-secondary, .res-search-btn { font-weight: 600 !important; }
+
 
 @media (max-width: 1023px) {
   .res-hero { padding: 48px 0; }

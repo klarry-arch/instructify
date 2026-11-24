@@ -149,7 +149,7 @@
               <span>${c.format || 'Online'}</span>
             </div>
             <h3 class="ik-course-title">
-              <a href="${detailUrl}">${c.title}</a>
+              <a href="${detailUrl}" title="${c.title}">${c.title}</a>
             </h3>
             <p class="ik-course-desc">${(c.description || '').slice(0, 128)}${(c.description || '').length > 128 ? '…' : ''}</p>
             <div class="ik-course-footer">
