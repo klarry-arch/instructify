@@ -2833,3 +2833,56 @@ section[id],
 .about-section[id] {
   scroll-margin-top: 40px;
 }
+
+/* ── Editorial Polish for Homepage Featured Course Photo Cards ── */
+body.instructify-home .ik-course-card {
+  border-radius: 20px;
+  border: 1.5px solid rgba(30, 27, 75, 0.09);
+  box-shadow: 0 4px 16px -4px rgba(30, 27, 75, 0.06), 0 12px 28px -12px rgba(30, 27, 75, 0.08);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease;
+}
+body.instructify-home .ik-course-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.30);
+  box-shadow: 0 20px 40px -14px rgba(30, 27, 75, 0.18), 0 8px 18px -8px rgba(37, 99, 235, 0.14);
+}
+body.instructify-home .ik-course-thumb {
+  aspect-ratio: 16 / 10;
+  height: auto !important;
+}
+body.instructify-home .ik-course-thumb::after {
+  background: linear-gradient(180deg, rgba(20, 17, 54, 0.24) 0%, rgba(20, 17, 54, 0.02) 36%, rgba(20, 17, 54, 0.06) 64%, rgba(20, 17, 54, 0.36) 100%);
+}
+body.instructify-home .ik-course-thumb img {
+  object-position: center 20%;
+  transition: transform 0.48s cubic-bezier(0.16, 1, 0.3, 1);
+}
+body.instructify-home .ik-course-card:hover .ik-course-thumb img {
+  transform: scale(1.055);
+}
+body.instructify-home .ik-course-title {
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.32 !important;
+  letter-spacing: -0.015em !important;
+  color: #1E1B4B !important;
+  min-height: 2.64em;
+}
+body.instructify-home .ik-course-desc {
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.56 !important;
+  color: #433F6B !important;
+}
+body.instructify-home .ik-course-footer {
+  padding-top: 14px;
+  border-top: 1px solid rgba(30, 27, 75, 0.08);
+}
+body.instructify-home .ik-btn-sm-primary {
+  box-shadow: 0 6px 16px -6px rgba(37, 99, 235, 0.42);
+}
+body.instructify-home .ik-btn-sm-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px -6px rgba(29, 78, 216, 0.50);
+}

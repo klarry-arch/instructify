@@ -885,7 +885,7 @@
     };
 
     const topics = Array.isArray(c.outcomes) && c.outcomes.length > 0
-      ? c.outcomes.slice(0, 4)
+      ? c.outcomes.slice(0, 3)
       : ['Competency-based digital pedagogy', 'Practical classroom implementation', 'Reflective portfolio building'];
 
     // Check if enrolled
@@ -1002,9 +1002,8 @@
         <div class="lms-course-body">
           <!-- Meta Strip -->
           <div class="lms-meta-chips-strip">
-            <span class="lms-meta-badge">⏱️ ${duration} ${c.cpdHours ? `(${c.cpdHours} Hrs)` : ''}</span>
-            <span class="lms-meta-badge">🎯 ${level}</span>
-            <span class="lms-rating-badge">★ ${rating} <span class="review-count">(${reviews})</span></span>
+            <span class="lms-meta-inline">⏱ ${duration} &middot; ${level}</span>
+            <span class="lms-rating-badge"><span class="lms-star-gold" aria-hidden="true">★</span> ${rating} <span class="review-count">(${reviews})</span></span>
           </div>
 
           <!-- Course Title -->
@@ -1013,9 +1012,8 @@
           </h3>
 
           <!-- Target Audience -->
-          <div class="lms-audience-tag">
-            <span class="audience-icon">👥</span>
-            <span class="audience-label">Audience:</span>
+          <div class="lms-audience-tag" title="For ${targetAudience}">
+            <span class="audience-label">For:</span>
             <span class="audience-value">${targetAudience}</span>
           </div>
 
@@ -1074,9 +1072,9 @@
             </div>
           </div>
           <div class="lms-card-button-group">
-            <a href="${detailUrl}" class="btn-lms-view" aria-label="View Course ${c.title}">View Course</a>
+            <a href="${detailUrl}" class="btn-lms-view" aria-label="View details for ${c.title}">Details</a>
             <a href="${isEnrolled ? playerUrl : enrolUrl}" class="btn-lms-enrol" aria-label="${isEnrolled ? `Continue learning ${c.title}` : `Enrol now in ${c.title}`}">
-              ${isEnrolled ? '▶ Continue Learning' : '⚡ Enrol Now'}
+              ${isEnrolled ? 'Continue &rarr;' : (priceVal === 0 ? 'Start Free &rarr;' : 'Enrol Now &rarr;')}
             </a>
           </div>
         </div>
