@@ -170,7 +170,7 @@ window.COURSES = [
     accreditation: 'Official TSC CPD Compliance Certificate (20 Hours)',
     price: 6500, originalPrice: 10000,
     rating: 4.5, reviewCount: 612, enrollments: 4231,
-    image: 'assets/images/about_educator_workshop.jpg',
+    image: 'assets/images/about_educator_workshop.jpg?v=2026.21',
     badge: 'badge-cpd', badgeText: 'CPD',
     cpd: true, cpdHours: 20,
     outcomes: ['Build professional teaching portfolio', 'Meet TSC CPD compliance requirements', 'Develop reflective teaching practice', 'Plan structured career growth pathway'],

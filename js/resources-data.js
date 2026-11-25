@@ -173,7 +173,7 @@ window.RESOURCES_DATA = (function() {
       version: 'Version 1.0 (2026 Edition)',
       rating: 4.9,
       downloads: 1420,
-      image: 'assets/images/about_educator_workshop.jpg',
+      image: 'assets/images/about_educator_workshop.jpg?v=2026.21',
       imageAlt: 'Kenyan educators collaborating on CBC lesson planning and strand alignment in a workshop setting',
       shortDescription: 'A practical step-by-step toolkit that helps Kenyan teachers align strands, sub-strands, specific learning outcomes, learning experiences, core competencies, values, pertinent and contemporary issues, assessment and learner support.',
       description: 'A practical step-by-step toolkit that helps Kenyan teachers align strands, sub-strands, specific learning outcomes, learning experiences, core competencies, values, pertinent and contemporary issues, assessment and learner support.',
@@ -530,7 +530,7 @@ window.RESOURCES_DATA = (function() {
       rating: 4.9,
       downloads: 730,
       language: 'English',
-      image: 'assets/images/about_educator_workshop.jpg',
+      image: 'assets/images/about_educator_workshop.jpg?v=2026.21',
       description: 'Three-tiered instruction plan accommodating diverse learning paces, visual/auditory preferences, and tailored formative tasks.',
       fileSize: '780 KB',
       tags: ['Special Needs', 'Inclusion', 'Differentiation', 'Lesson Plans']
