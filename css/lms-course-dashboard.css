@@ -182,7 +182,7 @@
 /* ── 2. Personalised Welcome Area ─────────────────────────── */
 .lms-welcome-hero {
   background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF7 100%);
-  padding: 64px 0 48px;
+  padding: 36px 0 36px;
   border-bottom: 1px solid var(--lms-border);
 }
 
@@ -717,11 +717,11 @@ section#lms-mylearning-section {
 
 /* ── 5. Academies & Learning Areas Grid ──────────────────── */
 .lms-academies-section {
-  padding: 64px 0;
+  padding: 44px 0;
   background: #FFFDF7;
   border-top: 1px solid var(--lms-border);
   border-bottom: 1px solid var(--lms-border);
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 .lms-section-header {
@@ -1716,11 +1716,22 @@ main h5 { font-size: 14px !important; font-weight: 600 !important; line-height: 
   }
 }
 
+.audience-showcase-section {
+  padding: 40px 0 36px !important;
+}
 #catalog-section {
-  padding-top: 48px !important;
-  padding-bottom: 64px !important;
+  padding-top: 44px !important;
+  padding-bottom: 48px !important;
+}
+@media (max-width: 1023px) {
+  .audience-showcase-section { padding: 32px 0 !important; }
+  .lms-welcome-hero { padding: 32px 0 !important; }
+  .lms-academies-section { padding: 36px 0 !important; }
+  #catalog-section { padding-top: 36px !important; padding-bottom: 36px !important; }
 }
 @media (max-width: 767px) {
-  .lms-academies-section { padding: 40px 0 !important; }
-  #catalog-section { padding-top: 32px !important; padding-bottom: 40px !important; }
+  .audience-showcase-section { padding: 24px 0 !important; }
+  .lms-welcome-hero { padding: 24px 0 !important; }
+  .lms-academies-section { padding: 28px 0 !important; }
+  #catalog-section { padding-top: 28px !important; padding-bottom: 28px !important; }
 }

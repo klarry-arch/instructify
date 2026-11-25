@@ -812,3 +812,16 @@
   color: #433F6B;
   margin: 0;
 }
+
+/* Tightened Site-Wide Vertical Rhythm (Blog & News) */
+.blog-hero, .blog-hero-section { padding: 44px 0 40px !important; }
+.featured-article-section { padding: 40px 0 !important; }
+.articles-section { padding: 40px 0 48px !important; }
+@media (max-width: 1023px) {
+  .blog-hero, .blog-hero-section { padding: 36px 0 32px !important; }
+  .featured-article-section, .articles-section { padding: 36px 0 !important; }
+}
+@media (max-width: 767px) {
+  .blog-hero, .blog-hero-section { padding: 28px 0 !important; }
+  .featured-article-section, .articles-section { padding: 28px 0 !important; }
+}

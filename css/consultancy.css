@@ -292,3 +292,24 @@ textarea.form-control{height:96px;resize:vertical}
   .ict-mini-stat{border-right:none;border-bottom:1px solid rgba(37, 99, 235,.12)}
   .ict-mini-stat:last-child{border-bottom:none}
 }
+/* Tightened Site-Wide Vertical Rhythm (Consultancy) */
+.consultancy-hero { padding: 44px 0 40px !important; }
+.consultancy-services-section,
+.ict-infra-section,
+.consultancy-why-section,
+.consultancy-process-section,
+.consultancy-testimonials-section,
+.consultancy-booking-section,
+.consultancy-final-cta { padding: 48px 0 !important; }
+@media (max-width: 1023px) {
+  .consultancy-hero { padding: 36px 0 32px !important; }
+  .consultancy-services-section, .ict-infra-section, .consultancy-why-section,
+  .consultancy-process-section, .consultancy-testimonials-section,
+  .consultancy-booking-section, .consultancy-final-cta { padding: 36px 0 !important; }
+}
+@media (max-width: 767px) {
+  .consultancy-hero { padding: 28px 0 !important; }
+  .consultancy-services-section, .ict-infra-section, .consultancy-why-section,
+  .consultancy-process-section, .consultancy-testimonials-section,
+  .consultancy-booking-section, .consultancy-final-cta { padding: 28px 0 !important; }
+}

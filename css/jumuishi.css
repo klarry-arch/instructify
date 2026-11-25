@@ -6310,3 +6310,17 @@ body.jum-high-contrast .jum-course-btn {
   }
 }
 
+
+/* Tightened Site-Wide Vertical Rhythm (Jumuishi Learning Hub) */
+.jum-page { padding-top: 0 !important; }
+.jumuishi-hero { padding: 44px 0 40px !important; }
+.jum-section, .jum-section-lg, .jum-cta-section { padding: 48px 0 !important; }
+.jum-section-sm { padding: 36px 0 !important; }
+@media (max-width: 1023px) {
+  .jumuishi-hero { padding: 36px 0 32px !important; }
+  .jum-section, .jum-section-lg, .jum-cta-section { padding: 36px 0 !important; }
+}
+@media (max-width: 767px) {
+  .jumuishi-hero { padding: 28px 0 !important; }
+  .jum-section, .jum-section-lg, .jum-cta-section { padding: 28px 0 !important; }
+}

@@ -1563,3 +1563,18 @@
   }
 }
 
+
+/* Tightened Site-Wide Vertical Rhythm (Podcast) */
+.podcast-hero, .podcast-hero-section { padding: 44px 0 40px !important; }
+.latest-ep-section, .episodes-section, .voices-section, .host-section,
+.classroom-actions-section, .guests-section, .suggest-topic-section { padding: 48px 0 !important; }
+@media (max-width: 1023px) {
+  .podcast-hero, .podcast-hero-section { padding: 36px 0 32px !important; }
+  .latest-ep-section, .episodes-section, .voices-section, .host-section,
+  .classroom-actions-section, .guests-section, .suggest-topic-section { padding: 36px 0 !important; }
+}
+@media (max-width: 767px) {
+  .podcast-hero, .podcast-hero-section { padding: 28px 0 !important; }
+  .latest-ep-section, .episodes-section, .voices-section, .host-section,
+  .classroom-actions-section, .guests-section, .suggest-topic-section { padding: 28px 0 !important; }
+}

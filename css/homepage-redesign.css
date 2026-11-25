@@ -568,7 +568,7 @@ details summary:focus-visible {
     radial-gradient(ellipse 62% 55% at 88% 18%, rgba(37, 99, 235, 0.085) 0%, transparent 70%),
     radial-gradient(ellipse 50% 50% at 8% 88%, rgba(250, 204, 21, 0.14) 0%, transparent 65%),
     linear-gradient(180deg, var(--color-surface, #FFFDF7) 0%, var(--color-surface-subtle, #F7F3E6) 100%);
-  padding: 64px 0 64px 0;
+  padding: 44px 0 40px 0;
   border-bottom: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
@@ -788,14 +788,21 @@ details summary:focus-visible {
 
 /* ── Common Section Structure ────────────────────────────────── */
 .home-section {
-  padding: 72px 0;
+  padding: 48px 0;
   position: relative;
 }
+#about-intro.home-section {
+  padding-top: 40px;
+}
 @media (max-width: 1023px) {
-  .home-section { padding: 56px 0; }
+  .hero-section-split { padding: 36px 0 32px 0; }
+  .home-section { padding: 36px 0; }
+  #about-intro.home-section { padding-top: 32px; }
 }
 @media (max-width: 767px) {
-  .home-section { padding: 40px 0; }
+  .hero-section-split { padding: 28px 0 28px 0; }
+  .home-section { padding: 28px 0; }
+  #about-intro.home-section { padding-top: 24px; }
 }
 .bg-soft {
   background-color: var(--bg-soft);
@@ -1662,7 +1669,7 @@ details summary:focus-visible {
 .final-cta-section {
   background: linear-gradient(135deg, var(--color-dark, #1E1B4B) 0%, var(--color-dark-deep, #141136) 100%);
   color: var(--white);
-  padding: 72px 0;
+  padding: 48px 0;
   text-align: center;
   border-top: 3px solid var(--orange);
 }

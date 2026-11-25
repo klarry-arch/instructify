@@ -2519,3 +2519,18 @@ main h5 { font-size: 14px !important; font-weight: 600 !important; line-height: 
   .res-stats-section, .res-section { padding: 40px 0; }
   .res-view-btn { min-width: 44px !important; min-height: 44px !important; }
 }
+
+/* Tightened Site-Wide Vertical Rhythm (Resources Hub) */
+.res-hero { padding: 44px 0 40px !important; }
+.res-stats-section { padding: 36px 0 !important; }
+.res-section { padding: 48px 0 !important; }
+@media (max-width: 1023px) {
+  .res-hero { padding: 36px 0 32px !important; }
+  .res-stats-section { padding: 28px 0 !important; }
+  .res-section { padding: 36px 0 !important; }
+}
+@media (max-width: 767px) {
+  .res-hero { padding: 28px 0 !important; }
+  .res-stats-section { padding: 24px 0 !important; }
+  .res-section { padding: 28px 0 !important; }
+}
