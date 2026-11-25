@@ -38,7 +38,7 @@
    1. ABOUT HERO SECTION
    ══════════════════════════════════════════════════════════════ */
 .about-hero-section {
-  padding: 64px 0 64px 0;
+  padding: 44px 0 40px 0;
   background: radial-gradient(circle at 12% 18%, rgba(238, 242, 255, 0.95) 0%, transparent 45%),
               radial-gradient(circle at 88% 80%, rgba(240, 253, 250, 0.85) 0%, transparent 45%),
               #FFFDF7;
@@ -1890,7 +1890,7 @@
    ══════════════════════════════════════════════════════════════ */
 html, body { overflow-x: hidden; }
 img { max-width: 100%; height: auto; }
-.about-hero-image-wrap img,
+.about-hero-image-wrap img { aspect-ratio: 4 / 3; height: auto; max-height: 330px; }
 .about-who-visual img { aspect-ratio: 4 / 3; height: auto; max-height: 440px; }
 
 /* Header collision shield */
@@ -2016,8 +2016,10 @@ main h4 { font-size: 16px !important; font-weight: 600 !important; line-height: 
 main h5 { font-size: 14px !important; font-weight: 600 !important; line-height: 1.35 !important; }
 
 
+.about-hero-section {
+  padding: 44px 0 40px 0 !important;
+}
 .about-section,
-.about-who-section,
 .about-mvv-section,
 .about-serve-section,
 .about-services-section,
@@ -2026,7 +2028,10 @@ main h5 { font-size: 14px !important; font-weight: 600 !important; line-height: 
 .about-challenges-section,
 .about-steps-section,
 .about-cta-band {
-  padding: 72px 0 !important;
+  padding: 64px 0 !important;
+}
+.about-who-section {
+  padding: 40px 0 64px !important;
 }
 .serve-card,
 .service-impact-card,
@@ -2040,20 +2045,22 @@ main h5 { font-size: 14px !important; font-weight: 600 !important; line-height: 
 }
 
 @media (max-width: 1023px) {
-  .about-hero-section { padding: 48px 0 !important; }
-  .about-section, .about-who-section, .about-mvv-section, .about-serve-section,
+  .about-hero-section { padding: 40px 0 36px !important; }
+  .about-section, .about-mvv-section, .about-serve-section,
   .about-services-section, .about-why-section, .about-trust-section,
   .about-challenges-section, .about-steps-section, .about-cta-band {
-    padding: 56px 0 !important;
+    padding: 48px 0 !important;
   }
+  .about-who-section { padding: 36px 0 48px !important; }
 }
 @media (max-width: 767px) {
-  .about-hero-section { padding: 32px 0 !important; }
-  .about-section, .about-who-section, .about-mvv-section, .about-serve-section,
+  .about-hero-section { padding: 28px 0 28px !important; }
+  .about-section, .about-mvv-section, .about-serve-section,
   .about-services-section, .about-why-section, .about-trust-section,
   .about-challenges-section, .about-steps-section, .about-cta-band {
-    padding: 40px 0 !important;
+    padding: 36px 0 !important;
   }
+  .about-who-section { padding: 28px 0 36px !important; }
   .serve-card, .service-impact-card, .why-card, .mvv-card, .trust-chip-card, .leadership-card, .challenge-card, .step-card {
     padding: 20px !important;
   }
