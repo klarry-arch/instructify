@@ -45,79 +45,302 @@
     enrollments: []
   };
 
-  // ── Academies Definition (Aligned with CBC & EdTech tracks) ──
+  // ── Academies Definition (Modern 3D Multi-Colour EdTech Tracks) ──
   const ACADEMIES = [
     {
       id: 'digital-literacy',
       title: 'Digital Literacy & ICT Integration',
       desc: 'Smart boards, LMS, digital devices, and safe internet delivery for 21st-century teaching.',
-      icon: '💻',
-      bg: '#EEF2FF',
-      color: '#2563EB',
-      filterKeyword: 'Digital'
+      theme: 'cobalt',
+      accent: '#2563EB',
+      accentDark: '#1D4ED8',
+      accentSoft: '#EFF6FF',
+      accentRing: '#DBEAFE',
+      glow: 'rgba(37, 99, 235, 0.28)',
+      barGradient: 'linear-gradient(90deg, #2563EB 0%, #38BDF8 100%)',
+      pedestalGradient: 'linear-gradient(145deg, #EFF6FF 0%, #DBEAFE 100%)',
+      filterKeyword: 'Digital',
+      iconSvg: `<svg class="lms-3d-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="acad1-body" x1="10" y1="12" x2="54" y2="48" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#60A5FA"/><stop offset="55%" stop-color="#2563EB"/><stop offset="100%" stop-color="#1D4ED8"/>
+          </linearGradient>
+          <linearGradient id="acad1-screen" x1="15" y1="16" x2="49" y2="40" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#E0F2FE"/><stop offset="55%" stop-color="#93C5FD"/><stop offset="100%" stop-color="#3B82F6"/>
+          </linearGradient>
+          <linearGradient id="acad1-base" x1="6" y1="45" x2="58" y2="54" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#BFDBFE"/><stop offset="50%" stop-color="#60A5FA"/><stop offset="100%" stop-color="#1D4ED8"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="32" cy="55" rx="22" ry="4.5" fill="#2563EB" opacity="0.18"/>
+        <rect x="11" y="13" width="42" height="31" rx="6" fill="url(#acad1-body)"/>
+        <rect x="14.5" y="16.5" width="35" height="23.5" rx="3.5" fill="url(#acad1-screen)"/>
+        <path d="M15 17.5C15 16.95 15.45 16.5 16 16.5H48C48.55 16.5 49 16.95 49 17.5V22C38 20.5 24 22.5 15 26V17.5Z" fill="#FFFFFF" opacity="0.45"/>
+        <rect x="19" y="22" width="14" height="4" rx="2" fill="#FFFFFF" opacity="0.92"/>
+        <rect x="19" y="29" width="24" height="3" rx="1.5" fill="#1D4ED8" opacity="0.45"/>
+        <rect x="19" y="34" width="16" height="3" rx="1.5" fill="#1D4ED8" opacity="0.32"/>
+        <circle cx="43.5" cy="24" r="4" fill="#FACC15"/>
+        <path d="M42.2 24L43.2 25L45.2 22.8" stroke="#1E1B4B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.5 45.5C6.5 44.12 7.62 43 9 43H55C56.38 43 57.5 44.12 57.5 45.5L55.2 49.6C54.62 50.65 53.52 51.3 52.32 51.3H11.68C10.48 51.3 9.38 50.65 8.8 49.6L6.5 45.5Z" fill="url(#acad1-base)"/>
+        <rect x="26" y="45.2" width="12" height="2.4" rx="1.2" fill="#FFFFFF" opacity="0.8"/>
+      </svg>`
     },
     {
       id: 'cbc-curriculum',
       title: 'Teaching & Learning (CBC Pedagogy)',
       desc: 'Competency-based lesson plans, portfolio design, rubrics, and strand integration.',
-      icon: '📐',
-      bg: '#FFF1EB',
-      color: '#2563EB',
-      filterKeyword: 'Curriculum'
+      theme: 'coral',
+      accent: '#EA580C',
+      accentDark: '#C2410C',
+      accentSoft: '#FFF7ED',
+      accentRing: '#FFEDD5',
+      glow: 'rgba(234, 88, 12, 0.26)',
+      barGradient: 'linear-gradient(90deg, #EA580C 0%, #FACC15 100%)',
+      pedestalGradient: 'linear-gradient(145deg, #FFF7ED 0%, #FFEDD5 100%)',
+      filterKeyword: 'Curriculum',
+      iconSvg: `<svg class="lms-3d-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="acad2-cover" x1="10" y1="14" x2="54" y2="52" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FB923C"/><stop offset="55%" stop-color="#EA580C"/><stop offset="100%" stop-color="#C2410C"/>
+          </linearGradient>
+          <linearGradient id="acad2-pageL" x1="12" y1="16" x2="32" y2="44" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#FFEDD5"/>
+          </linearGradient>
+          <linearGradient id="acad2-pageR" x1="32" y1="16" x2="52" y2="44" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FFF7ED"/><stop offset="100%" stop-color="#FED7AA"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="32" cy="55" rx="22" ry="4.5" fill="#EA580C" opacity="0.18"/>
+        <rect x="8" y="18" width="48" height="31" rx="7" fill="url(#acad2-cover)"/>
+        <path d="M12 16.5C18 14.5 26 15.5 32 19V44.5C26 41.5 18 40.5 12 42.5V16.5Z" fill="url(#acad2-pageL)"/>
+        <path d="M52 16.5C46 14.5 38 15.5 32 19V44.5C38 41.5 46 40.5 52 42.5V16.5Z" fill="url(#acad2-pageR)"/>
+        <path d="M32 19V44.5" stroke="#EA580C" stroke-width="1.6" opacity="0.45"/>
+        <rect x="16" y="23" width="11" height="2.6" rx="1.3" fill="#EA580C" opacity="0.65"/>
+        <rect x="16" y="28.5" width="12" height="2.4" rx="1.2" fill="#C2410C" opacity="0.32"/>
+        <rect x="16" y="33.5" width="9" height="2.4" rx="1.2" fill="#C2410C" opacity="0.25"/>
+        <rect x="36.5" y="23" width="11" height="2.6" rx="1.3" fill="#EA580C" opacity="0.55"/>
+        <rect x="36.5" y="28.5" width="10" height="2.4" rx="1.2" fill="#C2410C" opacity="0.30"/>
+        <path d="M41 11H48V24.5L44.5 21.5L41 24.5V11Z" fill="#FACC15"/>
+        <path d="M41 11H48V15H41V11Z" fill="#FEF08A" opacity="0.8"/>
+        <circle cx="21" cy="12.5" r="4.5" fill="#FACC15"/>
+        <path d="M21 9.5L21.9 11.4L24 11.7L22.5 13.1L22.9 15.1L21 14.1L19.1 15.1L19.5 13.1L18 11.7L20.1 11.4L21 9.5Z" fill="#FFFFFF"/>
+      </svg>`
     },
     {
       id: 'edtech-vr',
       title: 'Educational Technology & VR',
       desc: 'Immersive ClassVR experiences, interactive simulations, and robotics kits in school.',
-      icon: '🥽',
-      bg: '#F5F3FF',
-      color: '#7C3AED',
-      filterKeyword: 'Smart'
+      theme: 'violet',
+      accent: '#7C3AED',
+      accentDark: '#6D28D9',
+      accentSoft: '#F5F3FF',
+      accentRing: '#EDE9FE',
+      glow: 'rgba(124, 58, 237, 0.28)',
+      barGradient: 'linear-gradient(90deg, #7C3AED 0%, #22D3EE 100%)',
+      pedestalGradient: 'linear-gradient(145deg, #F5F3FF 0%, #EDE9FE 100%)',
+      filterKeyword: 'Smart',
+      iconSvg: `<svg class="lms-3d-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="acad3-shell" x1="8" y1="18" x2="56" y2="48" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#C4B5FD"/><stop offset="45%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#5B21B6"/>
+          </linearGradient>
+          <linearGradient id="acad3-visor" x1="13" y1="22" x2="51" y2="43" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#22D3EE"/><stop offset="50%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#1E1B4B"/>
+          </linearGradient>
+          <radialGradient id="acad3-orb" cx="0.35" cy="0.35" r="0.7">
+            <stop offset="0%" stop-color="#FFFFFF"/><stop offset="45%" stop-color="#38BDF8"/><stop offset="100%" stop-color="#7C3AED"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="32" cy="54.5" rx="22" ry="4.5" fill="#7C3AED" opacity="0.20"/>
+        <path d="M10 28C10 20 19 16 32 16C45 16 54 20 54 28V31H10V28Z" fill="#5B21B6" opacity="0.45"/>
+        <path d="M8 26.5C8 22.36 11.36 19 15.5 19H48.5C52.64 19 56 22.36 56 26.5V39.5C56 43.64 52.64 47 48.5 47H41.2C39.2 47 37.4 45.9 36.4 44.2L34.7 41.2C33.5 39.2 30.5 39.2 29.3 41.2L27.6 44.2C26.6 45.9 24.8 47 22.8 47H15.5C11.36 47 8 43.64 8 39.5V26.5Z" fill="url(#acad3-shell)"/>
+        <path d="M13 27.5C13 24.74 15.24 22.5 18 22.5H46C48.76 22.5 51 24.74 51 27.5V37.2C51 39.96 48.76 42.2 46 42.2H40.5C38.8 42.2 37.3 41.3 36.4 39.8L35 37.4C33.6 35.1 30.4 35.1 29 37.4L27.6 39.8C26.7 41.3 25.2 42.2 23.5 42.2H18C15.24 42.2 13 39.96 13 37.2V27.5Z" fill="url(#acad3-visor)"/>
+        <path d="M16 26C16 24.9 16.9 24 18 24H37C31 27.5 23 30 16 31.5V26Z" fill="#FFFFFF" opacity="0.42"/>
+        <circle cx="43" cy="31" r="3" fill="#FFFFFF" opacity="0.65"/>
+        <circle cx="48" cy="13" r="5.5" fill="url(#acad3-orb)"/>
+        <circle cx="15" cy="13.5" r="2.8" fill="#FACC15"/>
+      </svg>`
     },
     {
       id: 'early-years',
-      title: 'Early Years Education (PP1-Grade 3)',
+      title: 'Early Years Education (PP1–Grade 3)',
       desc: 'Foundational literacy, numeracy, creative expression, and inclusive early childhood learning.',
-      icon: '🌱',
-      bg: '#ECFDF5',
-      color: '#059669',
-      filterKeyword: 'Early'
+      theme: 'emerald',
+      accent: '#059669',
+      accentDark: '#047857',
+      accentSoft: '#ECFDF5',
+      accentRing: '#D1FAE5',
+      glow: 'rgba(5, 150, 105, 0.26)',
+      barGradient: 'linear-gradient(90deg, #059669 0%, #34D399 100%)',
+      pedestalGradient: 'linear-gradient(145deg, #ECFDF5 0%, #D1FAE5 100%)',
+      filterKeyword: 'Early',
+      iconSvg: `<svg class="lms-3d-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="acad4-leafL" x1="12" y1="14" x2="32" y2="34" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#6EE7B7"/><stop offset="55%" stop-color="#10B981"/><stop offset="100%" stop-color="#047857"/>
+          </linearGradient>
+          <linearGradient id="acad4-leafR" x1="32" y1="10" x2="54" y2="32" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#A7F3D0"/><stop offset="50%" stop-color="#34D399"/><stop offset="100%" stop-color="#059669"/>
+          </linearGradient>
+          <linearGradient id="acad4-pot" x1="18" y1="36" x2="46" y2="54" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FDBA74"/><stop offset="55%" stop-color="#EA580C"/><stop offset="100%" stop-color="#C2410C"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="32" cy="55.5" rx="19" ry="4" fill="#059669" opacity="0.18"/>
+        <path d="M32 39V22" stroke="#047857" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M32 29C22 29 14 23 14 14C23 14 31 19.5 32 29Z" fill="url(#acad4-leafL)"/>
+        <path d="M17 17C22 18.5 26 21.5 29 26" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" opacity="0.55"/>
+        <path d="M32 25C42.5 25 51 18.5 51 9.5C41.5 9.5 33 15.5 32 25Z" fill="url(#acad4-leafR)"/>
+        <path d="M47.5 13C42.5 14.5 38.5 17.5 35 22" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+        <rect x="17" y="34.5" width="30" height="6.5" rx="3.2" fill="#FB923C"/>
+        <rect x="19" y="35.6" width="16" height="2" rx="1" fill="#FFFFFF" opacity="0.45"/>
+        <path d="M20 40.5H44L41.2 51.2C40.75 52.85 39.25 54 37.54 54H26.46C24.75 54 23.25 52.85 22.8 51.2L20 40.5Z" fill="url(#acad4-pot)"/>
+        <circle cx="48" cy="27" r="3.5" fill="#FACC15"/>
+        <circle cx="16" cy="28" r="2.2" fill="#34D399"/>
+      </svg>`
     },
     {
       id: 'assessment-eval',
       title: 'Assessment & Evaluation',
       desc: 'Formative CBC assessment rubrics, learner progress tracking, and authentic evaluation.',
-      icon: '📊',
-      bg: '#FEF3C7',
-      color: '#D97706',
-      filterKeyword: 'Assessment'
+      theme: 'amber',
+      accent: '#D97706',
+      accentDark: '#B45309',
+      accentSoft: '#FEFCE8',
+      accentRing: '#FEF3C7',
+      glow: 'rgba(217, 119, 6, 0.26)',
+      barGradient: 'linear-gradient(90deg, #D97706 0%, #FACC15 100%)',
+      pedestalGradient: 'linear-gradient(145deg, #FEFCE8 0%, #FEF3C7 100%)',
+      filterKeyword: 'Assessment',
+      iconSvg: `<svg class="lms-3d-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="acad5-b1" x1="12" y1="30" x2="22" y2="50" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FDE047"/><stop offset="100%" stop-color="#D97706"/>
+          </linearGradient>
+          <linearGradient id="acad5-b2" x1="26" y1="22" x2="38" y2="50" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FB923C"/><stop offset="100%" stop-color="#EA580C"/>
+          </linearGradient>
+          <linearGradient id="acad5-b3" x1="42" y1="14" x2="54" y2="50" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#059669"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="32" cy="55.5" rx="22" ry="4" fill="#D97706" opacity="0.18"/>
+        <rect x="11" y="32" width="11" height="19" rx="4" fill="url(#acad5-b1)"/>
+        <rect x="13" y="34" width="3" height="13" rx="1.5" fill="#FFFFFF" opacity="0.45"/>
+        <rect x="26.5" y="23" width="11" height="28" rx="4" fill="url(#acad5-b2)"/>
+        <rect x="28.5" y="25" width="3" height="20" rx="1.5" fill="#FFFFFF" opacity="0.4"/>
+        <rect x="42" y="15" width="11" height="36" rx="4" fill="url(#acad5-b3)"/>
+        <rect x="44" y="17" width="3" height="26" rx="1.5" fill="#FFFFFF" opacity="0.42"/>
+        <rect x="8" y="48.5" width="48" height="4.5" rx="2.25" fill="#1E1B4B" opacity="0.82"/>
+        <circle cx="20" cy="16" r="8" fill="#FACC15"/>
+        <circle cx="20" cy="16" r="6" fill="#D97706" opacity="0.22"/>
+        <path d="M16.8 16.2L19 18.4L23.5 13.6" stroke="#1E1B4B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`
     },
     {
       id: 'pro-development',
       title: 'Professional Development & Coaching',
       desc: 'Teacher mentorship, CPD credit compliance, instructional leadership, and growth.',
-      icon: '🏆',
-      bg: '#F1F5F9',
-      color: '#433F6B',
-      filterKeyword: 'Pedagogy'
+      theme: 'rose',
+      accent: '#DB2777',
+      accentDark: '#BE185D',
+      accentSoft: '#FDF2F8',
+      accentRing: '#FCE7F3',
+      glow: 'rgba(219, 39, 119, 0.26)',
+      barGradient: 'linear-gradient(90deg, #DB2777 0%, #F472B6 100%)',
+      pedestalGradient: 'linear-gradient(145deg, #FDF2F8 0%, #FCE7F3 100%)',
+      filterKeyword: 'Pedagogy',
+      iconSvg: `<svg class="lms-3d-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="acad6-cup" x1="16" y1="10" x2="48" y2="42" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FBCFE8"/><stop offset="40%" stop-color="#EC4899"/><stop offset="100%" stop-color="#BE185D"/>
+          </linearGradient>
+          <linearGradient id="acad6-gold" x1="20" y1="38" x2="44" y2="54" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FDE047"/><stop offset="60%" stop-color="#FACC15"/><stop offset="100%" stop-color="#D97706"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="32" cy="55.5" rx="18" ry="4" fill="#DB2777" opacity="0.18"/>
+        <path d="M19 17H13C11.34 17 10 18.34 10 20V22C10 27.5 14 31.5 19.5 32" stroke="#F472B6" stroke-width="3.6" stroke-linecap="round"/>
+        <path d="M45 17H51C52.66 17 54 18.34 54 20V22C54 27.5 50 31.5 44.5 32" stroke="#DB2777" stroke-width="3.6" stroke-linecap="round"/>
+        <path d="M17 13.5C17 12.12 18.12 11 19.5 11H44.5C45.88 11 47 12.12 47 13.5V24C47 32.28 40.28 39 32 39C23.72 39 17 32.28 17 24V13.5Z" fill="url(#acad6-cup)"/>
+        <path d="M21 15V23.5C21 28 23.5 31.5 27 33.2" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" opacity="0.45"/>
+        <path d="M32 16.5L33.9 20.4L38.2 21L35.1 24L35.8 28.2L32 26.2L28.2 28.2L28.9 24L25.8 21L30.1 20.4L32 16.5Z" fill="#FACC15"/>
+        <rect x="28.5" y="38" width="7" height="8" rx="2" fill="url(#acad6-gold)"/>
+        <rect x="19" y="45" width="26" height="7.5" rx="3.75" fill="url(#acad6-gold)"/>
+        <rect x="22" y="46.6" width="12" height="2" rx="1" fill="#FFFFFF" opacity="0.55"/>
+      </svg>`
     },
     {
       id: 'school-leadership',
       title: 'School Leadership & Management',
       desc: 'Strategic management, education policy, teacher appraisal, and school digitization.',
-      icon: '🏛️',
-      bg: '#F0FDF4',
-      color: '#16A34A',
-      filterKeyword: 'Leadership'
+      theme: 'teal',
+      accent: '#0D9488',
+      accentDark: '#0F766E',
+      accentSoft: '#F0FDFA',
+      accentRing: '#CCFBF1',
+      glow: 'rgba(13, 148, 136, 0.26)',
+      barGradient: 'linear-gradient(90deg, #0D9488 0%, #2DD4BF 100%)',
+      pedestalGradient: 'linear-gradient(145deg, #F0FDFA 0%, #CCFBF1 100%)',
+      filterKeyword: 'Leadership',
+      iconSvg: `<svg class="lms-3d-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="acad7-roof" x1="10" y1="10" x2="54" y2="28" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#5EEAD4"/><stop offset="55%" stop-color="#0D9488"/><stop offset="100%" stop-color="#0F766E"/>
+          </linearGradient>
+          <linearGradient id="acad7-col" x1="16" y1="26" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FFFFFF"/><stop offset="55%" stop-color="#CCFBF1"/><stop offset="100%" stop-color="#5EEAD4"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="32" cy="55.5" rx="23" ry="4" fill="#0D9488" opacity="0.18"/>
+        <path d="M30.4 10.6C31.38 10 32.62 10 33.6 10.6L53.8 22.8C55.4 23.77 54.72 26.2 52.85 26.2H11.15C9.28 26.2 8.6 23.77 10.2 22.8L30.4 10.6Z" fill="url(#acad7-roof)"/>
+        <circle cx="32" cy="19.5" r="3.2" fill="#FACC15"/>
+        <rect x="13" y="26" width="38" height="21" rx="2" fill="#0F766E" opacity="0.16"/>
+        <rect x="15.5" y="27" width="6.5" height="19" rx="2.5" fill="url(#acad7-col)"/>
+        <rect x="28.75" y="27" width="6.5" height="19" rx="2.5" fill="url(#acad7-col)"/>
+        <rect x="42" y="27" width="6.5" height="19" rx="2.5" fill="url(#acad7-col)"/>
+        <rect x="11" y="45" width="42" height="4.5" rx="2.25" fill="#14B8A6"/>
+        <rect x="8" y="49" width="48" height="4.5" rx="2.25" fill="#0F766E"/>
+        <rect x="11" y="50.2" width="16" height="1.6" rx="0.8" fill="#FFFFFF" opacity="0.35"/>
+      </svg>`
     },
     {
       id: 'ai-education',
       title: 'Artificial Intelligence in Education',
       desc: 'GenAI lesson design, automated grading, intelligent tutoring, and ethical AI in school.',
-      icon: '🤖',
-      bg: '#F5F3FF',
-      color: '#6366F1',
-      filterKeyword: 'AI'
+      theme: 'indigo',
+      accent: '#4338CA',
+      accentDark: '#3730A3',
+      accentSoft: '#EEF2FF',
+      accentRing: '#E0E7FF',
+      glow: 'rgba(67, 56, 202, 0.28)',
+      barGradient: 'linear-gradient(90deg, #4338CA 0%, #38BDF8 100%)',
+      pedestalGradient: 'linear-gradient(145deg, #EEF2FF 0%, #E0E7FF 100%)',
+      filterKeyword: 'AI',
+      iconSvg: `<svg class="lms-3d-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="acad8-head" x1="12" y1="16" x2="52" y2="52" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#A5B4FC"/><stop offset="45%" stop-color="#6366F1"/><stop offset="100%" stop-color="#3730A3"/>
+          </linearGradient>
+          <linearGradient id="acad8-face" x1="18" y1="24" x2="46" y2="44" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1E1B4B"/><stop offset="100%" stop-color="#312E81"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="32" cy="55.5" rx="20" ry="4" fill="#4338CA" opacity="0.20"/>
+        <path d="M32 19V12.5" stroke="#6366F1" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="32" cy="10" r="4" fill="#38BDF8"/>
+        <circle cx="30.8" cy="8.8" r="1.4" fill="#FFFFFF" opacity="0.8"/>
+        <rect x="8" y="29" width="6" height="12" rx="3" fill="#4338CA"/>
+        <rect x="50" y="29" width="6" height="12" rx="3" fill="#4338CA"/>
+        <rect x="13" y="18" width="38" height="32" rx="12" fill="url(#acad8-head)"/>
+        <path d="M19 21.5H45" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+        <rect x="18" y="25" width="28" height="18" rx="7" fill="url(#acad8-face)"/>
+        <circle cx="26.5" cy="33.5" r="3.4" fill="#38BDF8"/>
+        <circle cx="25.5" cy="32.4" r="1.2" fill="#FFFFFF"/>
+        <circle cx="37.5" cy="33.5" r="3.4" fill="#38BDF8"/>
+        <circle cx="36.5" cy="32.4" r="1.2" fill="#FFFFFF"/>
+        <path d="M27.5 39.2C29 40.6 35 40.6 36.5 39.2" stroke="#FACC15" stroke-width="2" stroke-linecap="round"/>
+      </svg>`
     }
   ];
 
@@ -433,17 +656,24 @@
     container.innerHTML = ACADEMIES.map(acad => {
       const isSelected = state.filters.academy === acad.id;
       return `
-        <div class="lms-academy-card ${isSelected ? 'active' : ''}" onclick="selectAcademy('${acad.id}', '${acad.filterKeyword}')" role="button" tabindex="0" aria-label="Browse ${acad.title}">
-          <div>
-            <div class="lms-academy-icon-box" style="background: ${acad.bg}; color: ${acad.color};">
-              ${acad.icon}
+        <div class="lms-academy-card lms-academy-theme-${acad.theme} ${isSelected ? 'active' : ''}"
+          style="--acad-accent:${acad.accent}; --acad-accent-dark:${acad.accentDark}; --acad-soft:${acad.accentSoft}; --acad-ring:${acad.accentRing}; --acad-glow:${acad.glow}; --acad-bar:${acad.barGradient}; --acad-pedestal:${acad.pedestalGradient};"
+          onclick="selectAcademy('${acad.id}', '${acad.filterKeyword}')"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectAcademy('${acad.id}','${acad.filterKeyword}');}"
+          role="button" tabindex="0" aria-pressed="${isSelected ? 'true' : 'false'}" aria-label="Browse ${acad.title}">
+          <div class="lms-academy-body">
+            <div class="lms-academy-icon-box" aria-hidden="true">
+              ${acad.iconSvg}
             </div>
+            <span class="lms-academy-badge">✓ Accredited Track</span>
             <h3 class="lms-academy-h3">${acad.title}</h3>
             <p class="lms-academy-desc">${acad.desc}</p>
           </div>
           <div class="lms-academy-footer">
-            <span>Explore Courses &rarr;</span>
-            <span style="font-size:11px; color:#94A3B8;">Accredited</span>
+            <span class="lms-academy-cta">
+              <span>Explore Courses</span>
+              <span class="lms-academy-arrow" aria-hidden="true">&rarr;</span>
+            </span>
           </div>
         </div>
       `;
