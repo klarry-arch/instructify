@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return `
         <article class="article-card" style="--art-accent:${rel.themeColor};">
           <a href="${relUrl}" style="display:block; overflow:hidden;" aria-label="Read ${rel.title}">
-            <img src="${rel.coverImage}" alt="${rel.title}" class="article-card-cover" style="height:170px;" loading="lazy">
+            <img src="${rel.coverImage}" alt="${rel.title}" class="article-card-cover" loading="lazy">
           </a>
           <div class="article-card-body" style="padding:20px;">
             <div>

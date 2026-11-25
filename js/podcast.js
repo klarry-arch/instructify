@@ -418,8 +418,8 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
 
         <div style="margin-bottom:14px; width:100%;">
-          <a href="episode.html?id=${guest.featuredEpisodeId}" class="btn btn-outline btn-sm" style="width:100%; font-size:12px; padding:6px 12px; font-weight:700; border-color:#CBD5E1;">
-            🎙️ ${guest.featuredEpisodes[0] || 'Listen to Episode'} →
+          <a href="episode.html?id=${guest.featuredEpisodeId}" class="guest-episode-pill" title="${(guest.featuredEpisodes && guest.featuredEpisodes[0]) || 'Listen to Episode'}">
+            ${(guest.featuredEpisodes && guest.featuredEpisodes[0]) || 'Listen to Episode'}
           </a>
         </div>
 

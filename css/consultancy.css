@@ -313,3 +313,73 @@ textarea.form-control{height:96px;resize:vertical}
   .consultancy-process-section, .consultancy-testimonials-section,
   .consultancy-booking-section, .consultancy-final-cta { padding: 28px 0 !important; }
 }
+
+/* ── Editorial Consultancy Cards & Contrast Polish v2026.26 ── */
+/* Polished Consultancy Cards, Balanced Headings & Contrast Fixes */
+.service-card,
+.why-card,
+.ict-pillar-card,
+.ict-infra-overview-card,
+.process-step-inner {
+  border-radius: 20px;
+  border: 1.5px solid rgba(30, 27, 75, 0.09);
+  box-shadow: 0 4px 16px -4px rgba(30, 27, 75, 0.06), 0 12px 28px -12px rgba(30, 27, 75, 0.08);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease;
+}
+.service-card:hover,
+.why-card:hover,
+.ict-pillar-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.30);
+  box-shadow: 0 20px 40px -14px rgba(30, 27, 75, 0.16), 0 8px 18px -8px rgba(37, 99, 235, 0.14);
+}
+.service-card-title {
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.015em;
+  color: #1E1B4B !important;
+  min-height: 2.6em;
+}
+.service-card-desc {
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #433F6B !important;
+  min-height: 4.8em;
+}
+.why-card-title,
+.ict-pillar-title,
+.process-step-title {
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  color: #1E1B4B !important;
+  font-weight: 700 !important;
+}
+.why-card-title {
+  font-size: 18px !important;
+  line-height: 1.32 !important;
+}
+.why-card-desc,
+.ict-pillar-desc,
+.process-step-desc {
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.58 !important;
+  color: #433F6B !important;
+}
+/* High-contrast warm amber on light cream backgrounds (replaces low-contrast yellow text) */
+.section-eyebrow.orange,
+.section-eyebrow.amber,
+.service-card.theme-orange .service-tag,
+.service-card.theme-orange .service-icon-box,
+.service-card.theme-orange .check-dot {
+  color: #92400E !important;
+}
+@media (max-width: 1024px) {
+  .service-card-title,
+  .service-card-desc {
+    min-height: 0;
+  }
+}
+/* ── End Editorial Consultancy Cards & Contrast Polish ── */

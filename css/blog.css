@@ -825,3 +825,227 @@
   .blog-hero, .blog-hero-section { padding: 28px 0 !important; }
   .featured-article-section, .articles-section { padding: 28px 0 !important; }
 }
+
+/* ── Editorial Blog Cards & Spotlight Polish v2026.26 ── */
+/* Fix search icon overlap with global.css / components.css input[type="text"] padding */
+input[type="text"].blog-search-input,
+.blog-search-box input.blog-search-input,
+.blog-search-input {
+  padding: 13px 20px 13px 48px !important;
+  padding-left: 48px !important;
+}
+.blog-search-box svg {
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Balanced Editorial Featured Article Spotlight */
+.featured-article-card {
+  border-radius: 22px;
+  border: 1.5px solid rgba(30, 27, 75, 0.09);
+  box-shadow: 0 10px 30px -10px rgba(30, 27, 75, 0.10), 0 4px 12px -4px rgba(30, 27, 75, 0.04);
+  overflow: hidden;
+}
+.featured-content-side {
+  padding: 36px 40px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  gap: 16px;
+}
+.featured-content-side h2 {
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: clamp(22px, 2.1vw, 26px) !important;
+  font-weight: 800 !important;
+  line-height: 1.26 !important;
+  letter-spacing: -0.02em;
+  color: #1E1B4B !important;
+  margin: 0 !important;
+}
+.featured-content-side p {
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.62 !important;
+  color: #433F6B !important;
+  margin: 0 !important;
+}
+.featured-image-side {
+  padding: 0 !important;
+  background: #1E1B4B !important;
+  position: relative;
+  overflow: hidden;
+  min-height: 360px;
+}
+.featured-image-side::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 17, 54, 0.14) 0%, transparent 40%, rgba(20, 17, 54, 0.24) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.featured-image-side img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 20% !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.featured-article-card:hover .featured-image-side img {
+  transform: scale(1.04);
+}
+.featured-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Polished Editorial Article Grid Cards */
+.articles-grid {
+  gap: 28px;
+  align-items: stretch;
+}
+.article-card {
+  border-radius: 20px;
+  border: 1.5px solid rgba(30, 27, 75, 0.09);
+  box-shadow: 0 4px 16px -4px rgba(30, 27, 75, 0.06), 0 12px 28px -12px rgba(30, 27, 75, 0.08);
+  height: 100%;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease;
+}
+.article-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.30);
+  box-shadow: 0 20px 40px -14px rgba(30, 27, 75, 0.18), 0 8px 18px -8px rgba(37, 99, 235, 0.14);
+}
+.article-card > a:first-child {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #1E1B4B;
+  flex-shrink: 0;
+}
+.article-card > a:first-child::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 17, 54, 0.20) 0%, transparent 40%, rgba(20, 17, 54, 0.28) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.article-card-cover {
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  transition: transform 0.48s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.article-card:hover .article-card-cover {
+  transform: scale(1.055);
+}
+.article-card-body {
+  padding: 20px 22px 20px;
+}
+.article-card-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  flex-wrap: nowrap;
+  margin-bottom: 10px;
+}
+.article-card-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.035em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.article-card-meta-right {
+  font-size: 11.5px;
+  letter-spacing: -0.015em;
+  color: #5B5882;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.article-card-title {
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.32 !important;
+  letter-spacing: -0.015em;
+  color: #1E1B4B !important;
+  margin: 0 0 10px !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.64em;
+}
+.article-card-title a {
+  color: #1E1B4B !important;
+}
+.article-card:hover .article-card-title a {
+  color: #2563EB !important;
+}
+.article-card-excerpt {
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.56 !important;
+  color: #433F6B !important;
+  margin: 0 0 16px !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 4.68em;
+}
+.article-card-footer {
+  padding-top: 14px;
+  border-top: 1px solid rgba(30, 27, 75, 0.08);
+  margin-top: auto;
+  font-size: 12.5px;
+}
+.article-card-read-btn {
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #2563EB !important;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.article-card:hover .article-card-read-btn {
+  color: #1D4ED8 !important;
+  transform: translateX(2px);
+}
+@media (max-width: 767px) {
+  .featured-content-side {
+    padding: 24px 20px !important;
+  }
+  .featured-image-side {
+    min-height: 240px;
+  }
+  .article-card-title,
+  .article-card-excerpt {
+    min-height: 0;
+  }
+}
+/* ── End Editorial Blog Cards & Spotlight Polish ── */

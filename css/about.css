@@ -2065,3 +2065,20 @@ main h5 { font-size: 14px !important; font-weight: 600 !important; line-height: 
     padding: 20px !important;
   }
 }
+
+/* ── Editorial Photo Framing Polish v2026.26 ── */
+/* Portrait-Safe Framing & Crisp Elevation on About Photography */
+.about-hero-image-wrap img,
+.about-who-visual img,
+.founder-photo-wrap img,
+.founder-portrait img,
+.about-founder-img {
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 20px;
+}
+.about-hero-image-wrap img,
+.about-who-visual img {
+  box-shadow: 0 20px 44px -14px rgba(30, 27, 75, 0.18), 0 4px 12px -4px rgba(30, 27, 75, 0.06);
+}
+/* ── End Editorial Photo Framing Polish ── */

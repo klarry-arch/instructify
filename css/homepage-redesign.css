@@ -2886,3 +2886,42 @@ body.instructify-home .ik-btn-sm-primary:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 22px -6px rgba(29, 78, 216, 0.50);
 }
+
+/* ── Site-Wide Card Typography Harmonization v2026.26 ── */
+/* Harmonized Typography Across All Homepage Cards (matches Course Cards) */
+body.instructify-home .ik-category-title,
+body.instructify-home .programme-title,
+body.instructify-home .intro-pillar-title,
+body.instructify-home .process-step-title,
+body.instructify-home .audience-title,
+body.instructify-home .format-title,
+body.instructify-home .outcome-title,
+body.instructify-home .story-title,
+body.instructify-home .resource-title,
+body.instructify-home .why-content h3 {
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.32 !important;
+  letter-spacing: -0.015em !important;
+  color: #1E1B4B !important;
+}
+body.instructify-home .intro-pillar-desc,
+body.instructify-home .ik-category-desc,
+body.instructify-home .programme-desc,
+body.instructify-home .why-content p,
+body.instructify-home .process-step-desc,
+body.instructify-home .audience-desc,
+body.instructify-home .format-desc,
+body.instructify-home .outcome-desc,
+body.instructify-home .story-body,
+body.instructify-home .resource-desc {
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.58 !important;
+  color: #433F6B !important;
+}
+body.instructify-home .hero-main-photo {
+  object-position: center 20%;
+}
+/* ── End Site-Wide Card Typography Harmonization ── */

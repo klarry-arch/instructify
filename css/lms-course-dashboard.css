@@ -2326,3 +2326,33 @@ main h5 { font-size: 14px !important; font-weight: 600 !important; line-height: 
     flex-wrap: wrap;
   }
 }
+
+/* ── Featured LMS Banner Photo Polish v2026.26 ── */
+/* Featured LMS Banner Card Editorial Photo Polish */
+.lms-featured-card {
+  border-radius: 20px;
+  border: 1.5px solid rgba(30, 27, 75, 0.09);
+  box-shadow: 0 6px 22px -6px rgba(30, 27, 75, 0.08), 0 14px 32px -14px rgba(30, 27, 75, 0.08);
+}
+.lms-featured-image-box {
+  overflow: hidden;
+}
+.lms-featured-image-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 17, 54, 0.22) 0%, transparent 40%, rgba(20, 17, 54, 0.26) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.lms-featured-image-box img {
+  object-position: center 20%;
+  transition: transform 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lms-featured-card:hover .lms-featured-image-box img {
+  transform: scale(1.045);
+}
+.lms-featured-overlay-badge {
+  z-index: 2;
+}
+/* ── End Featured LMS Banner Photo Polish ── */
