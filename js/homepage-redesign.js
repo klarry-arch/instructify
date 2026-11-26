@@ -37,42 +37,42 @@
       {
         title: 'AI for Educators',
         param: 'AI',
-        icon: '🤖',
+        icon: '<img src="assets/icons/icon-ai-duotone.svg" alt="" width="38" height="38" class="ik-brand-icon" loading="lazy">',
         desc: 'Generative AI lesson design, ethical classroom adoption, and practical teacher prompting workflows.',
         match: (c) => /ai/i.test(c.category || '') || (c.tags || []).some(t => /^ai$/i.test(t))
       },
       {
         title: 'Digital Skills',
         param: 'Digital',
-        icon: '💻',
+        icon: '<img src="assets/icons/icon-digital-duotone.svg" alt="" width="38" height="38" class="ik-brand-icon" loading="lazy">',
         desc: 'Foundational digital literacy, online safety, Microsoft 365 fluency, and daily digital productivity.',
         match: (c) => /digital/i.test(c.category || '')
       },
       {
         title: 'ICT Integration',
         param: 'ICT',
-        icon: '🖥️',
+        icon: '<img src="assets/icons/icon-ict-duotone.svg" alt="" width="38" height="38" class="ik-brand-icon" loading="lazy">',
         desc: 'Smart classrooms, interactive whiteboards, ClassVR, and technology-enabled lesson delivery.',
         match: (c) => /ict|edtech/i.test(c.category || '')
       },
       {
         title: 'CBC & Assessment',
         param: 'Curriculum',
-        icon: '📘',
+        icon: '<img src="assets/icons/icon-cbc-duotone.svg" alt="" width="38" height="38" class="ik-brand-icon" loading="lazy">',
         desc: 'Competency-Based Curriculum strands, formative rubrics, learner portfolios, and authentic evaluation.',
         match: (c) => /curriculum|assessment/i.test(c.category || '')
       },
       {
         title: 'Online Pedagogy',
         param: 'Pedagogy',
-        icon: '🌐',
+        icon: '<img src="assets/icons/icon-pedagogy-duotone.svg" alt="" width="38" height="38" class="ik-brand-icon" loading="lazy">',
         desc: 'Virtual classroom engagement, blended learning design, and interactive digital facilitation.',
         match: (c) => /pedagogy/i.test(c.category || '')
       },
       {
         title: 'Professional Development & Leadership',
         param: 'Leadership',
-        icon: '🏛️',
+        icon: '<img src="assets/icons/icon-leadership-duotone.svg" alt="" width="38" height="38" class="ik-brand-icon" loading="lazy">',
         desc: 'Structured CPD compliance tracks and institutional digital leadership for school principals and heads.',
         match: (c) => /leadership|cpd/i.test(c.category || '')
       }
