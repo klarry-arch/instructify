@@ -2082,3 +2082,81 @@ main h5 { font-size: 14px !important; font-weight: 600 !important; line-height: 
   box-shadow: 0 20px 44px -14px rgba(30, 27, 75, 0.18), 0 4px 12px -4px rgba(30, 27, 75, 0.06);
 }
 /* ── End Editorial Photo Framing Polish ── */
+
+/* ── What We Do (3-Pillar Luxury Card Layout) v2026.27 ── */
+.serve-grid.what-we-do-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 28px !important;
+  align-items: stretch !important;
+}
+.serve-card.what-we-do-card {
+  padding: 36px 28px 30px !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+.serve-card.what-we-do-card .serve-icon-wrap {
+  width: 72px !important;
+  height: 72px !important;
+  border-radius: 20px !important;
+  margin: 0 auto 20px auto !important;
+}
+body .serve-card.what-we-do-card .serve-card-title,
+body main h3.serve-card-title {
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  line-height: 1.28 !important;
+  letter-spacing: -0.015em !important;
+  color: #1E1B4B !important;
+  margin: 0 0 10px 0 !important;
+}
+body .serve-card.what-we-do-card .serve-card-caption,
+body .serve-card.what-we-do-card .serve-card-caption strong {
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  line-height: 1.44 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--serve-accent-dark, #1E1B4B) !important;
+}
+.serve-card.what-we-do-card .serve-card-caption {
+  margin: 0 0 16px 0 !important;
+  min-height: 2.88em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wwd-card-divider {
+  width: 44px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--serve-accent, #2563EB), var(--serve-accent-bright, #60A5FA));
+  margin: 0 auto 18px auto;
+  flex-shrink: 0;
+  opacity: 0.78;
+}
+.serve-card.what-we-do-card .serve-card-desc {
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14.2px !important;
+  font-weight: 400 !important;
+  line-height: 1.68 !important;
+  color: #433F6B !important;
+  text-align: left !important;
+  margin: 0 0 26px 0 !important;
+  flex: 1 1 auto !important;
+}
+.serve-card.what-we-do-card .serve-card-link {
+  max-width: 220px !important;
+  padding: 10px 20px !important;
+  font-size: 13.5px !important;
+}
+@media (max-width: 960px) {
+  .serve-grid.what-we-do-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+  .serve-card.what-we-do-card .serve-card-caption {
+    min-height: 0;
+  }
+}
+/* ── End What We Do Card Layout ── */

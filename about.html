@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/animations.css?v=2026.17">
   <link rel="stylesheet" href="css/components.css?v=2026.26">
   <link rel="stylesheet" href="css/homepage.css?v=2026.17">
-  <link rel="stylesheet" href="css/about.css?v=2026.26">
+  <link rel="stylesheet" href="css/about.css?v=2026.27">
   <link rel="stylesheet" href="css/docmed-theme.css?v=2026.23">
   <link rel="stylesheet" href="css/live-chat.css?v=2026.17">
 
@@ -988,6 +988,84 @@
     @media (max-width: 767px) {
       .about-mvv-section, .about-serve-section { padding: 28px 0 !important; }
     }
+  
+/* ── What We Do (3-Pillar Luxury Card Layout) v2026.27 ── */
+.serve-grid.what-we-do-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 28px !important;
+  align-items: stretch !important;
+}
+.serve-card.what-we-do-card {
+  padding: 36px 28px 30px !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+.serve-card.what-we-do-card .serve-icon-wrap {
+  width: 72px !important;
+  height: 72px !important;
+  border-radius: 20px !important;
+  margin: 0 auto 20px auto !important;
+}
+body .serve-card.what-we-do-card .serve-card-title,
+body main h3.serve-card-title {
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  line-height: 1.28 !important;
+  letter-spacing: -0.015em !important;
+  color: #1E1B4B !important;
+  margin: 0 0 10px 0 !important;
+}
+body .serve-card.what-we-do-card .serve-card-caption,
+body .serve-card.what-we-do-card .serve-card-caption strong {
+  font-family: "Plus Jakarta Sans", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  line-height: 1.44 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--serve-accent-dark, #1E1B4B) !important;
+}
+.serve-card.what-we-do-card .serve-card-caption {
+  margin: 0 0 16px 0 !important;
+  min-height: 2.88em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wwd-card-divider {
+  width: 44px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--serve-accent, #2563EB), var(--serve-accent-bright, #60A5FA));
+  margin: 0 auto 18px auto;
+  flex-shrink: 0;
+  opacity: 0.78;
+}
+.serve-card.what-we-do-card .serve-card-desc {
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14.2px !important;
+  font-weight: 400 !important;
+  line-height: 1.68 !important;
+  color: #433F6B !important;
+  text-align: left !important;
+  margin: 0 0 26px 0 !important;
+  flex: 1 1 auto !important;
+}
+.serve-card.what-we-do-card .serve-card-link {
+  max-width: 220px !important;
+  padding: 10px 20px !important;
+  font-size: 13.5px !important;
+}
+@media (max-width: 960px) {
+  .serve-grid.what-we-do-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+  .serve-card.what-we-do-card .serve-card-caption {
+    min-height: 0;
+  }
+}
+/* ── End What We Do Card Layout ── */
   </style>
 </head>
 <body>
@@ -1571,85 +1649,141 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════
-     4. WHO INSTRUCTIFY KENYA SERVES: 5 DIVERSE AUDIENCES
+     4. WHAT WE DO: 3 CORE SERVICE PILLARS
      ══════════════════════════════════════════════════════════ -->
-<section class="about-serve-section" aria-labelledby="serve-heading">
+<section id="what-we-do" class="about-serve-section" aria-labelledby="what-we-do-heading">
   <div class="about-container">
-    <div class="text-center" style="max-width:720px; margin:0 auto 48px auto;">
-      <span class="about-section-badge badge-emerald">WHO WE SERVE</span>
-      <h2 id="serve-heading" class="about-heading-lg" style="margin-bottom:12px;">
-        Tailored Pathways for the Whole Learning Community
+    <div class="text-center" style="max-width:720px; margin:0 auto 44px auto;">
+      <span class="about-section-badge badge-blue">OUR CORE PILLARS</span>
+      <h2 id="what-we-do-heading" class="about-heading-lg" style="margin-bottom:0;">
+        What We Do
       </h2>
-      <p style="font-size:16px; color:#433F6B; line-height:1.65; margin:0 auto;">
-        Our programmes, advisory services, and digital platforms directly support five core stakeholder groups across Kenya.
-      </p>
     </div>
 
-    <div class="serve-grid">
-      <!-- 1: Educators -->
-      <div class="serve-card" style="--serve-accent:#2563EB; --serve-accent-bright:#3B82F6; --serve-light:#EFF6FF; --serve-glow:rgba(37,99,235,0.25); --serve-border:rgba(37,99,235,0.20);">
+    <div class="serve-grid what-we-do-grid">
+      <!-- 01: Training -->
+      <article class="serve-card what-we-do-card" style="--serve-accent:#2563EB; --serve-accent-dark:#1D4ED8; --serve-accent-bright:#60A5FA; --serve-light:#EFF6FF; --serve-glow:rgba(37,99,235,0.22); --serve-border:rgba(37,99,235,0.20);">
         <span class="serve-card-index" aria-hidden="true">01</span>
-        <div class="serve-icon-wrap" aria-hidden="true">🎓</div>
-        <h3 class="serve-card-title">Educators &amp; Teachers</h3>
+        <div class="serve-icon-wrap" aria-hidden="true">
+          <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="wwd-blue-base" x1="8" y1="8" x2="40" y2="42" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#60A5FA"/>
+                <stop offset="55%" stop-color="#2563EB"/>
+                <stop offset="100%" stop-color="#1D4ED8"/>
+              </linearGradient>
+              <linearGradient id="wwd-blue-screen" x1="12" y1="12" x2="36" y2="30" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#EFF6FF"/>
+                <stop offset="100%" stop-color="#BFDBFE"/>
+              </linearGradient>
+              <linearGradient id="wwd-gold-spark" x1="31" y1="6" x2="41" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FEF08A"/>
+                <stop offset="100%" stop-color="#EAB308"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="24" cy="42" rx="15" ry="3" fill="#2563EB" fill-opacity="0.18"/>
+            <rect x="7" y="10" width="34" height="23" rx="4.5" fill="url(#wwd-blue-base)"/>
+            <rect x="10.5" y="13.5" width="27" height="16" rx="2.5" fill="url(#wwd-blue-screen)"/>
+            <path d="M5 35.5C5 34.4 5.9 33.5 7 33.5H41C42.1 33.5 43 34.4 43 35.5C43 37.2 41.6 38.5 40 38.5H8C6.4 38.5 5 37.2 5 35.5Z" fill="#1D4ED8"/>
+            <path d="M18 33.5H30L28.8 35.5H19.2L18 33.5Z" fill="#93C5FD"/>
+            <path d="M24 16L15 20.2L24 24.4L33 20.2L24 16Z" fill="#1D4ED8"/>
+            <path d="M18.5 22.4V26.2C18.5 27.4 21 28.4 24 28.4C27 28.4 29.5 27.4 29.5 26.2V22.4L24 25L18.5 22.4Z" fill="#2563EB"/>
+            <path d="M37 7L38.3 10.7L42 12L38.3 13.3L37 17L35.7 13.3L32 12L35.7 10.7L37 7Z" fill="url(#wwd-gold-spark)"/>
+          </svg>
+        </div>
+        <h3 class="serve-card-title">Training</h3>
+        <p class="serve-card-caption"><strong>From Chalk to Click: Empowering Educators for the Digital Age</strong></p>
+        <div class="wwd-card-divider" aria-hidden="true"></div>
         <p class="serve-card-desc">
-          Primary and secondary teachers upgrading CBC pedagogical strategies, assessment rubrics, and verified CPD learning hours.
-        </p>
-        <a href="cpd-registration.html" class="serve-card-link">
-          <span>CPD Pathways</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-
-      <!-- 2: Schools & Institutions -->
-      <div class="serve-card" style="--serve-accent:#7C3AED; --serve-accent-bright:#8B5CF6; --serve-light:#F5F3FF; --serve-glow:rgba(124,58,237,0.25); --serve-border:rgba(124,58,237,0.20);">
-        <span class="serve-card-index" aria-hidden="true">02</span>
-        <div class="serve-icon-wrap" aria-hidden="true">🏛️</div>
-        <h3 class="serve-card-title">Schools &amp; Institutions</h3>
-        <p class="serve-card-desc">
-          Headteachers, school boards, and administrators seeking digital-readiness audits, smart classrooms, and staff capacity building.
-        </p>
-        <a href="schools.html" class="serve-card-link">
-          <span>Institutional Solutions</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-
-      <!-- 3: Corporate Organisations -->
-      <div class="serve-card" style="--serve-accent:#D97706; --serve-accent-bright:#F59E0B; --serve-light:#FEF9C3; --serve-glow:rgba(217,119,6,0.25); --serve-border:rgba(217,119,6,0.20);">
-        <span class="serve-card-index" aria-hidden="true">03</span>
-        <div class="serve-icon-wrap" aria-hidden="true">🏢</div>
-        <h3 class="serve-card-title">Corporate Organisations</h3>
-        <p class="serve-card-desc">
-          Companies investing in high-impact CSR education initiatives, digital literacy workforce upskilling, and community development.
-        </p>
-        <a href="consultancy.html" class="serve-card-link">
-          <span>Corporate Partnerships</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-
-      <!-- 4: Learners -->
-      <div class="serve-card" style="--serve-accent:#059669; --serve-accent-bright:#10B981; --serve-light:#ECFDF5; --serve-glow:rgba(5,150,105,0.25); --serve-border:rgba(5,150,105,0.20);">
-        <span class="serve-card-index" aria-hidden="true">04</span>
-        <div class="serve-icon-wrap" aria-hidden="true">🚀</div>
-        <h3 class="serve-card-title">Students &amp; Learners</h3>
-        <p class="serve-card-desc">
-          Learners of all abilities accessing practical digital skills, coding fundamentals, STEM problem solving, and inclusive courses.
+          We deliver transformative professional development programs that equip educators, trainers, and institutional leaders with the skills needed to thrive in modern learning environments. Through practical, hands-on workshops and personalized coaching, we help teaching professionals integrate technology, innovative pedagogy, and learner-centered approaches into their practice. Whether in traditional classrooms, blended settings, or virtual learning spaces, we empower educators to teach with confidence, creativity, and lasting impact.
         </p>
         <a href="courses.html" class="serve-card-link">
-          <span>Browse Courses</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
+          <span>Explore Training</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
         </a>
-      </div>
+      </article>
 
-      <!-- 5: Education Partners -->
-      <div class="serve-card" style="--serve-accent:#E11D48; --serve-accent-bright:#F43F5E; --serve-light:#FFF1F2; --serve-glow:rgba(225,29,72,0.25); --serve-border:rgba(225,29,72,0.20);">
-        <span class="serve-card-index" aria-hidden="true">05</span>
-        <div class="serve-icon-wrap" aria-hidden="true">🤝</div>
-        <h3 class="serve-card-title">Education Partners &amp; NGOs</h3>
+      <!-- 02: Consultancy -->
+      <article class="serve-card what-we-do-card" style="--serve-accent:#7C3AED; --serve-accent-dark:#6D28D9; --serve-accent-bright:#A78BFA; --serve-light:#F5F3FF; --serve-glow:rgba(124,58,237,0.22); --serve-border:rgba(124,58,237,0.20);">
+        <span class="serve-card-index" aria-hidden="true">02</span>
+        <div class="serve-icon-wrap" aria-hidden="true">
+          <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="wwd-violet-ring" x1="8" y1="6" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#A78BFA"/>
+                <stop offset="55%" stop-color="#7C3AED"/>
+                <stop offset="100%" stop-color="#6D28D9"/>
+              </linearGradient>
+              <linearGradient id="wwd-violet-face" x1="12" y1="10" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="100%" stop-color="#EDE9FE"/>
+              </linearGradient>
+              <linearGradient id="wwd-violet-needle" x1="20" y1="14" x2="32" y2="28" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FDE047"/>
+                <stop offset="100%" stop-color="#EAB308"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="24" cy="42.5" rx="13.5" ry="2.8" fill="#7C3AED" fill-opacity="0.18"/>
+            <circle cx="24" cy="23" r="16.5" fill="url(#wwd-violet-ring)"/>
+            <circle cx="24" cy="23" r="12.5" fill="url(#wwd-violet-face)"/>
+            <circle cx="24" cy="13.2" r="1.3" fill="#8B5CF6"/>
+            <circle cx="24" cy="32.8" r="1.3" fill="#8B5CF6"/>
+            <circle cx="14.2" cy="23" r="1.3" fill="#8B5CF6"/>
+            <circle cx="33.8" cy="23" r="1.3" fill="#8B5CF6"/>
+            <path d="M31.2 15.8L26.5 25.5L21.5 20.5L31.2 15.8Z" fill="url(#wwd-violet-needle)"/>
+            <path d="M16.8 30.2L21.5 20.5L26.5 25.5L16.8 30.2Z" fill="#6D28D9"/>
+            <circle cx="24" cy="23" r="2.6" fill="#FFFFFF" stroke="#6D28D9" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="serve-card-title">Consultancy</h3>
+        <p class="serve-card-caption"><strong>Guiding Institutions Toward Purposeful Innovation</strong></p>
+        <div class="wwd-card-divider" aria-hidden="true"></div>
         <p class="serve-card-desc">
-          Development agencies, non-profits, and educational bodies co-designing scalable curriculum interventions and community hubs.
+          Our consultancy services support schools, education ministries, NGOs, and learning organizations in designing sustainable solutions for growth and excellence. From strategic planning and digital transformation to educational branding and leadership development, we partner with institutions to turn vision into action. Combining technical expertise with a deep understanding of educational ecosystems, we help organizations innovate with purpose and achieve meaningful outcomes.
+        </p>
+        <a href="consultancy.html" class="serve-card-link">
+          <span>Explore Consultancy</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
+        </a>
+      </article>
+
+      <!-- 03: Curriculum Development -->
+      <article class="serve-card what-we-do-card" style="--serve-accent:#059669; --serve-accent-dark:#047857; --serve-accent-bright:#34D399; --serve-light:#ECFDF5; --serve-glow:rgba(5,150,105,0.22); --serve-border:rgba(5,150,105,0.20);">
+        <span class="serve-card-index" aria-hidden="true">03</span>
+        <div class="serve-icon-wrap" aria-hidden="true">
+          <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="wwd-green-cover" x1="6" y1="14" x2="42" y2="39" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#34D399"/>
+                <stop offset="55%" stop-color="#059669"/>
+                <stop offset="100%" stop-color="#047857"/>
+              </linearGradient>
+              <linearGradient id="wwd-green-pages" x1="10" y1="12" x2="38" y2="33" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="100%" stop-color="#D1FAE5"/>
+              </linearGradient>
+              <linearGradient id="wwd-green-leaf" x1="22" y1="6" x2="32" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FDE047"/>
+                <stop offset="100%" stop-color="#EAB308"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="24" cy="42" rx="15" ry="2.8" fill="#059669" fill-opacity="0.18"/>
+            <path d="M7 16.5C7 14.8 8.4 13.5 10.1 13.7C15.1 14.2 20.1 15.6 24 18.2C27.9 15.6 32.9 14.2 37.9 13.7C39.6 13.5 41 14.8 41 16.5V35.2C41 36.7 39.8 38 38.3 38.1C33.3 38.5 28.1 39.7 24 41.8C19.9 39.7 14.7 38.5 9.7 38.1C8.2 38 7 36.7 7 35.2V16.5Z" fill="url(#wwd-green-cover)"/>
+            <path d="M10.5 16.8C14.9 17.2 19.6 18.5 23.2 20.8V36.4C19.5 34.7 14.9 33.7 10.5 33.4V16.8Z" fill="url(#wwd-green-pages)"/>
+            <path d="M37.5 16.8C33.1 17.2 28.4 18.5 24.8 20.8V36.4C28.5 34.7 33.1 33.7 37.5 33.4V16.8Z" fill="url(#wwd-green-pages)"/>
+            <path d="M13.5 21.8H20.2M13.5 25.8H20.2M13.5 29.8H18.5" stroke="#10B981" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M27.8 21.8H34.5M27.8 25.8H34.5M27.8 29.8H32.5" stroke="#10B981" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M24 6.5L25.4 10.3L29.2 11.7L25.4 13.1L24 16.9L22.6 13.1L18.8 11.7L22.6 10.3L24 6.5Z" fill="url(#wwd-green-leaf)"/>
+          </svg>
+        </div>
+        <h3 class="serve-card-title">Curriculum Development</h3>
+        <p class="serve-card-caption"><strong>Crafting Curricula That Inspire Learning and Growth</strong></p>
+        <div class="wwd-card-divider" aria-hidden="true"></div>
+        <p class="serve-card-desc">
+          We design engaging, learner-centered curricula that connect knowledge with real-world application. Our curriculum development approach integrates academic rigor, creativity, local relevance, and values-based learning to create meaningful educational experiences. Whether developing school programs, community learning modules, vocational training content, or national curriculum resources, we create frameworks that spark curiosity, strengthen understanding, and prepare learners for lifelong success.
         </p>
         <a href="contact.html" class="serve-card-link">
-          <span>Collaborate With Us</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
+          <span>Partner With Us</span> <span class="serve-link-arrow" aria-hidden="true">→</span>
         </a>
-      </div>
+      </article>
     </div>
   </div>
 </section>
